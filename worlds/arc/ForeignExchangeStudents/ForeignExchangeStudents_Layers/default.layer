@@ -1,0 +1,172 @@
+SCR_AIWorld : "{F98AD67976545756}Prefabs/SCR_AIWorld_Longmoor.et" {
+ coords 1165.573 104.118 878.193
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 1178.43 104.368 865.695
+}
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{64470AF5257ACCE9}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 17
+     m_iStartingMinutes 45
+    }
+   }
+  }
+ }
+ coords 1160.369 104.169 855.545
+ m_iFreezeTime 180000
+ {
+  SCR_FactionManager {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "1"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{64470AF0D1BD8E4B}" {
+        m_sCallsign "4"
+       }
+      }
+      m_sCallsignGroupFormat "%2-%3"
+      m_sCallsignCharacterFormat "%2-%3: %4"
+      m_sCallsignCharacterWithRoleFormat "%2-%3: %4"
+     }
+    }
+    SCR_Faction "{61500924662B6062}" {
+     FactionColor 0.561 0.071 0.071 1
+     m_OutlineFactionColor 0.07 0.012 0.012 1
+     m_NotificationFactionColor 0.561 0.071 0.071 1
+     m_NotificationTextFactionColor 0.561 0.071 0.071 1
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}
+TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/TILW_FactionTrigger.et" {
+ coords 1085.602 106.629 698.088
+ m_queryRadius 28
+ m_captureIterations 12
+ m_sendStatusMessages 1
+ m_flagName "US_CAP"
+ m_stopAfterFirstChange 1
+ m_ownerFactionKey "US"
+ m_ratioThreshold 0.75
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 1172.486 104.429 848.901
+ m_missionEvents {
+  TILW_MissionEvent "{64470AF4F51FC3C5}" {
+   m_name "UK_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{64470AF4CDB09C38}" {
+     m_messageTitle "AMERICAN VICTORY"
+     m_messageBody "British forces defending the compound have been eliminated."
+    }
+    TILW_EndGameInstruction "{64470AF4CE3783FE}" {
+     m_executionDelay 15
+     m_factionKey "US"
+    }
+   }
+   m_condition TILW_LiteralTerm "{64470AF4F3FA60E8}" {
+    m_flagName "UK_KIA"
+   }
+  }
+  TILW_MissionEvent "{64470AF4DE3F7A67}" {
+   m_name "US_CAP"
+   m_instructions {
+    TILW_SendMessageInstruction "{64470AF4CDB09C38}" {
+     m_messageTitle "AMERICAN VICTORY"
+     m_messageBody "The compound has been seized by American forces."
+    }
+    TILW_EndGameInstruction "{64470AF4CE3783FE}" {
+     m_executionDelay 15
+     m_factionKey "US"
+    }
+   }
+   m_condition TILW_LiteralTerm "{64470AF4F3FA60E8}" {
+    m_flagName "US_CAP"
+   }
+  }
+  TILW_MissionEvent "{64470AF4A9549515}" {
+   m_name "US_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{64470AF4A3A520D3}" {
+     m_messageTitle "BRITISH VICTORY"
+     m_messageBody "American forces have been eliminated."
+    }
+    TILW_EndGameInstruction "{64470AF4BBBF006F}" {
+     m_executionDelay 15
+     m_factionKey "UK"
+    }
+   }
+   m_condition TILW_LiteralTerm "{64470AF4A05E6D9B}" {
+    m_flagName "US_KIA"
+   }
+  }
+  TILW_MissionEvent "{64470AF4B108CAAD}" {
+   m_name "TIME_LIMIT"
+   m_instructions {
+    TILW_SendMessageInstruction "{64470AF4A3A520D3}" {
+     m_executionDelay 1985
+     m_messageTitle "BRITISH VICTORY"
+     m_messageBody "Time limit reached."
+    }
+    TILW_EndGameInstruction "{64470AF4BBBF006F}" {
+     m_executionDelay 1995
+     m_factionKey "UK"
+    }
+   }
+   m_condition TILW_LiteralTerm "{64470AF4A05E6D9B}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_factionPlayersKilledFlags {
+  TILW_FactionPlayersKilledFlag "{64470AF4E2F560FF}" {
+   m_flagName "US_KIA"
+   m_factionKey "US"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{64470AF4E2DFFEB9}" {
+   m_flagName "UK_KIA"
+   m_factionKey "UK"
+   m_casualtyRatio 0.9
+  }
+ }
+}
+$grp SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ {
+  coords 1089.997 107.693 694.579
+  m_fWarnRadius 280
+  m_fZoneRadius 300
+  m_fZoneTeleportedRadius 320
+ }
+ {
+  coords 1776.662 125.867 174.472
+  m_fWarnRadius 100
+  m_fZoneRadius 125
+  m_fZoneTeleportedRadius 135
+ }
+}
