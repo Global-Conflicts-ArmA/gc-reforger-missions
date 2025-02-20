@@ -1,0 +1,426 @@
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 8511.824 111.531 6744.208
+}
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 0
+   m_bRandomStartingWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{649D077D108DC7B4}" {
+     m_iStartingHour 0
+    }
+   }
+   m_bRandomWeatherChanges 1
+   m_bUseSpecifiedDate 1
+   m_iSetDay 10
+   m_iSetMonth 10
+   m_iSetYear 2024
+  }
+ }
+ coords 7117.162 341.054 3613.497
+ {
+  SCR_FactionManager "648F202043DF5669" {
+   ID "5ED9088735FF2D8B"
+   coords 0 0 0
+  }
+  SCR_EditorSettingsEntity {
+   ID "61B4E967E6C20362"
+   coords 0 0 0
+  }
+ }
+}
+PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+   m_visibility ALL
+  }
+  TILW_CoverMapComponent "{6473480FCAB7760B}" {
+   Enabled 1
+   m_ratioWidth 1
+  }
+ }
+ coords 7113.557 340.087 3651.01
+ Points {
+  ShapePoint "{648D3181B8092687}" {
+   Position 2810.161 -244.041 313.868
+  }
+  ShapePoint "{648D3181BEDE2FE3}" {
+   Position 2910.513 -201.365 704.697
+  }
+  ShapePoint "{648D3181B082E247}" {
+   Position 2994.781 -272.2 2542.852
+  }
+  ShapePoint "{648D3181B67647BB}" {
+   Position 2702.126 -225.29 5906.021
+  }
+  ShapePoint "{648D31804ACBA401}" {
+   Position 203.282 -192.5 5728.643
+  }
+  ShapePoint "{648D31805EC1DCB4}" {
+   Position -2924.345 -164.978 -30.01
+  }
+  ShapePoint "{648D3180505B5FA0}" {
+   Position -2100.759 -52.685 -3319.162
+  }
+  ShapePoint "{648D3180689B4BB6}" {
+   Position 1033.046 -233.604 -3107.236
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 8511.507 111.531 6740.525
+ m_missionEvents {
+  TILW_MissionEvent "{64985468213C602F}" {
+   m_name "USMC Lose"
+   m_instructions {
+    TILW_EndGameInstruction "{64985468C928871B}" {
+     m_executionDelay 15
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "RHS_USAF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{64985468D2F03F4B}" {
+    m_flagName "USMC Have Lost Too Many!"
+   }
+  }
+  TILW_MissionEvent "{649940ADFDEFFED9}" {
+   m_name "QRF"
+   m_instructions {
+    TILW_SpawnVehicleInstruction "{649D076E94CD9851}" {
+     m_executionDelay 4.4
+     m_prefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+     m_locationName "spawntruck2"
+     m_setEntityName "truck"
+     m_customCrew {
+      "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+     }
+     m_waypointNames {
+      "wp4" "wp5" "wp6"
+     }
+     m_waypointDelay 0.1
+    }
+   }
+   m_condition TILW_LiteralTerm "{649D076C067F63DC}" {
+    m_flagName "OBJ_A_TAKEN"
+   }
+  }
+  TILW_MissionEvent "{649D07717AC9C38F}" {
+   m_name "QRF"
+   m_instructions {
+    TILW_SpawnVehicleInstruction "{649D07717AC9C230}" {
+     m_prefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+     m_locationName "spawntruck"
+     m_setEntityName "truck"
+     m_customCrew {
+      "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+     }
+     m_waypointNames {
+      "wp1" "wp2" "wp3"
+     }
+     m_waypointDelay 0.1
+    }
+   }
+   m_condition TILW_LiteralTerm "{649D07717AC9C23B}" {
+    m_flagName "OBJ_A_TAKEN"
+   }
+  }
+  TILW_MissionEvent "{64A0FA53DE5B2868}" {
+   m_name "QRF"
+   m_instructions {
+    TILW_SpawnVehicleInstruction "{64A0FA53DE5B2809}" {
+     m_executionDelay 0
+     m_prefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+     m_locationName "spawntruck16"
+     m_setEntityName "truck"
+     m_customCrew {
+      "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+     }
+     m_waypointNames {
+      "wp13" "wp14" "wp15"
+     }
+    }
+    TILW_SpawnVehicleInstruction "{64A0FA52554330D4}" {
+     m_executionDelay 26.8
+     m_prefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+     m_locationName "spawntruck16"
+     m_setEntityName "truck"
+     m_customCrew {
+      "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+     }
+     m_waypointNames {
+      "wp13" "wp14" "wp15"
+     }
+    }
+    TILW_SpawnVehicleInstruction "{64A0FA53ABB1C6E7}" {
+     m_executionDelay 0
+     m_prefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+     m_locationName "spawntruck17"
+     m_setEntityName "truck"
+     m_customCrew {
+      "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+     }
+     m_waypointNames {
+      "wp16" "wp17" "wp18"
+     }
+    }
+    TILW_SpawnVehicleInstruction "{64A0FA526FA72048}" {
+     m_executionDelay 25
+     m_prefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+     m_locationName "spawntruck17"
+     m_setEntityName "truck"
+     m_customCrew {
+      "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+     }
+     m_waypointNames {
+      "wp16" "wp17" "wp18"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{64A0FA53DE5B2811}" {
+    m_flagName "OBJ_B_TAKEN"
+   }
+  }
+  TILW_MissionEvent "{649D0776AF5522B0}" {
+   m_name "QRF"
+   m_instructions {
+    TILW_SpawnVehicleInstruction "{649D0776AF552154}" {
+     m_prefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+     m_locationName "spawntruck3"
+     m_setEntityName "truck"
+     m_customCrew {
+      "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+     }
+     m_waypointNames {
+      "wp7" "wp8" "wp9"
+     }
+     m_waypointDelay 0.1
+    }
+   }
+   m_condition TILW_LiteralTerm "{649D0776AF55215E}" {
+    m_flagName "OBJ_A_TAKEN"
+   }
+  }
+  TILW_MissionEvent "{649D0775C3754241}" {
+   m_name "QRF"
+   m_instructions {
+    TILW_SpawnVehicleInstruction "{649D0775C37542E8}" {
+     m_prefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+     m_locationName "spawntruck4"
+     m_setEntityName "truck"
+     m_customCrew {
+      "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et" "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+     }
+     m_waypointNames {
+      "wp10" "wp11" "wp12"
+     }
+     m_waypointDelay 0.1
+    }
+   }
+   m_condition TILW_LiteralTerm "{649D0775C37542F5}" {
+    m_flagName "OBJ_A_TAKEN"
+   }
+  }
+  TILW_MissionEvent "{649D0766AB6C3B39}" {
+   m_name "Time Limit"
+   m_instructions {
+    TILW_EndGameInstruction "{649D076545565342}" {
+     m_executionDelay 5400
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "RHS_USAF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{649D076567627F34}" {
+    m_flagName "90 Minute Time Limit Reached"
+   }
+  }
+  TILW_MissionEvent "{649D074BD91E1743}" {
+   m_name "USMC Wins"
+   m_instructions {
+    TILW_EndGameInstruction "{649E32F3E6EF3049}" {
+     m_executionDelay 15
+     m_factionKey "RHS_USAF"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{649D074A80C039AB}" {
+    m_operands {
+     TILW_LiteralTerm "{649D074A91E5E934}" {
+      m_flagName "Extract"
+     }
+     TILW_LiteralTerm "{649D07407858C6FD}" {
+      m_flagName "assad"
+     }
+     TILW_LiteralTerm "{649D07407F6E0872}" {
+      m_flagName "son1"
+     }
+     TILW_LiteralTerm "{649D07407DC10773}" {
+      m_flagName "son2"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{64A0FA4B8336FDC2}" {
+   m_name "Stationary_Trigger1"
+   m_instructions {
+    TILW_SpawnVehicleInstruction "{64A0FA4B948D11F1}" {
+     m_prefab "{B8C827A45C1347A4}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_USAF_D.et"
+     m_locationName "Stationary1"
+     m_spawnPilot 0
+     m_spawnCargo 0
+     m_customCrew {
+      "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+     }
+    }
+    TILW_SpawnVehicleInstruction "{64A0FA4D6E5FF550}" {
+     m_prefab "{FD109F3702AAB392}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et"
+     m_locationName "spawntruck5"
+     m_spawnPilot 0
+     m_spawnCargo 0
+     m_customCrew {
+      "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+     }
+    }
+    TILW_SpawnVehicleInstruction "{64A0FA4D26AFF69F}" {
+     m_prefab "{FD109F3702AAB392}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et"
+     m_locationName "spawntruck6"
+     m_spawnPilot 0
+     m_spawnCargo 0
+     m_customCrew {
+      "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+     }
+    }
+    TILW_SpawnVehicleInstruction "{64A0FA4DC5408D84}" {
+     m_prefab "{FD109F3702AAB392}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et"
+     m_locationName "spawntruck7"
+     m_spawnPilot 0
+     m_spawnCargo 0
+     m_customCrew {
+      "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+     }
+    }
+    TILW_SpawnVehicleInstruction "{64A0FA4DF9EAE9B6}" {
+     m_prefab "{FD109F3702AAB392}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et"
+     m_locationName "spawntruck8"
+     m_spawnPilot 0
+     m_spawnCargo 0
+     m_customCrew {
+      "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+     }
+    }
+    TILW_SpawnVehicleInstruction "{64A0FA4D9E514071}" {
+     m_prefab "{FD109F3702AAB392}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et"
+     m_locationName "spawntruck9"
+     m_spawnPilot 0
+     m_spawnCargo 0
+     m_customCrew {
+      "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{64A0FA4E32F9B42A}" {
+    m_flagName "Stationary_Trigger1"
+   }
+  }
+  TILW_MissionEvent "{64A0FA4AF500FF17}" {
+   m_name "Stationary_Trigger2"
+   m_instructions {
+    TILW_SpawnVehicleInstruction "{64A0FA4AF500FFB9}" {
+     m_executionDelay 1.2
+     m_prefab "{B8C827A45C1347A4}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_USAF_D.et"
+     m_locationName "Stationary2"
+     m_spawnPilot 0
+     m_spawnCargo 0
+     m_customCrew {
+      "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{64A0FA4AF500FFBE}" {
+    m_flagName "Stationary_Trigger2"
+   }
+  }
+  TILW_MissionEvent "{64A0FA4C704638B7}" {
+   m_name "Stationary_Trigger3"
+   m_instructions {
+    TILW_SpawnVehicleInstruction "{64A0FA4C7046275A}" {
+     m_executionDelay 1
+     m_prefab "{FD109F3702AAB392}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et"
+     m_locationName "spawntruck10"
+     m_spawnPilot 0
+     m_spawnCargo 0
+     m_customCrew {
+      "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+     }
+    }
+    TILW_SpawnVehicleInstruction "{64A0FA4C0E4CBC11}" {
+     m_executionDelay 0.8
+     m_prefab "{FD109F3702AAB392}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et"
+     m_locationName "spawntruck11"
+     m_spawnPilot 0
+     m_spawnCargo 0
+     m_customCrew {
+      "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+     }
+    }
+    TILW_SpawnVehicleInstruction "{64A0FA424F704A8D}" {
+     m_executionDelay 1.2
+     m_prefab "{FD109F3702AAB392}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et"
+     m_locationName "spawntruck12"
+     m_spawnPilot 0
+     m_spawnCargo 0
+     m_customCrew {
+      "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+     }
+    }
+    TILW_SpawnVehicleInstruction "{64A0FA406721569F}" {
+     m_executionDelay 1.2
+     m_prefab "{FD109F3702AAB392}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et"
+     m_locationName "spawntruck13"
+     m_spawnPilot 0
+     m_spawnCargo 0
+     m_customCrew {
+      "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+     }
+    }
+    TILW_SpawnVehicleInstruction "{64A0FA470DC0DB1C}" {
+     m_executionDelay 1.2
+     m_prefab "{FD109F3702AAB392}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et"
+     m_locationName "spawntruck14"
+     m_spawnPilot 0
+     m_spawnCargo 0
+     m_customCrew {
+      "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+     }
+    }
+    TILW_SpawnVehicleInstruction "{64A0FA45A2820CB7}" {
+     m_executionDelay 1.2
+     m_prefab "{FD109F3702AAB392}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et"
+     m_locationName "spawntruck15"
+     m_spawnPilot 0
+     m_spawnCargo 0
+     m_customCrew {
+      "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{64A0FA4C70462722}" {
+    m_flagName "Stationary_Trigger3"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{649854684E7668AD}" {
+   m_flagName "USMC Killed"
+   m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.85
+  }
+  TILW_FactionAIKilledFlag "{64985468FC23D5F0}" {
+  }
+ }
+ m_metaFlags {
+  TILW_MetaFlag "{649D074A2541B200}" {
+   m_definition TILW_LiteralTerm "{649D074A37942792}" {
+   }
+  }
+ }
+}
