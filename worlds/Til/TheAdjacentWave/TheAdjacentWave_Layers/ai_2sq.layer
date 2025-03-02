@@ -1,0 +1,104 @@
+SCR_AIGroup CDF_Squad_2 : "{06EBA3D2678FDB27}Prefabs/Groups/BLUFOR/CDF/Mech_Modern/Group_CDF_Modern_MechSquad_2.et" {
+ coords 2990.436 21.117 2569.093
+ angleY 85.727
+ m_aUnitPrefabSlots {
+  "{D8D30DE8FE5E91BF}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Modern_Mech/Character_CDF_Modern_SL.et" "{6DF39536B5532DF0}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Modern_Mech/Character_CDF_Modern_AT.et" "{E1A4B0A83A384A17}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Modern_Mech/Character_CDF_Modern_Sharpshooter.et"
+ }
+ m_aStaticWaypoints {
+  "wp_def_2"
+ }
+}
+SCR_ChimeraCharacter : "{17E6C181CE0882BD}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Modern_Mech/Character_CDF_Modern_AAT.et" {
+ components {
+  ChimeraAIControlComponent "{520EA1D2DB109F34}" {
+   OverrideAIBehaviorData "{1E81FF0F3EC49323}AI/BehaviorTrees/Chimera/Soldier/TILW_StaticAI.bt"
+   EnableAI 1
+  }
+ }
+ coords 3001.79 20.125 2585.472
+ angleY 75.072
+}
+GenericEntity : "{25861AD07CEE719A}Prefabs/Compositions/Misc/SubCompositions/Sandbag_MG_USSR_01_PKM.et" {
+ coords 2998.954 21.697 2594.715
+ angleY 80.092
+ {
+  Turret {
+   ID "58FEB999CF41D2D6"
+   components {
+    TILW_VehicleCrewComponent "{6306F67F4D25F589}" {
+     m_customCrew {
+      "{597FEF0054FC7880}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Modern_Mech/Character_CDF_Modern_Rifleman.et"
+     }
+     m_noTurretDismount 1
+    }
+   }
+  }
+ }
+}
+$grp SCR_ChimeraCharacter : "{597FEF0054FC7880}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Modern_Mech/Character_CDF_Modern_Rifleman.et" {
+ {
+  components {
+   ChimeraAIControlComponent "{520EA1D2DB109F34}" {
+    OverrideAIBehaviorData "{1E81FF0F3EC49323}AI/BehaviorTrees/Chimera/Soldier/TILW_StaticAI.bt"
+    EnableAI 1
+   }
+  }
+  coords 3003.093 19.81 2544.325
+  angleY 106.404
+ }
+ {
+  components {
+   ChimeraAIControlComponent "{520EA1D2DB109F34}" {
+    OverrideAIBehaviorData "{1E81FF0F3EC49323}AI/BehaviorTrees/Chimera/Soldier/TILW_StaticAI.bt"
+    EnableAI 1
+   }
+  }
+  coords 2999.191 20.75 2610.471
+  angleY 91.647
+ }
+}
+$grp Turret : "{723870DBB19D30B0}Prefabs/Weapons/Tripods/Tripod_6T5_PKM.et" {
+ {
+  components {
+   TILW_VehicleCrewComponent "{6306F6700EDCC91F}" {
+    m_customCrew {
+     "{597FEF0054FC7880}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Modern_Mech/Character_CDF_Modern_Rifleman.et"
+    }
+    m_noTurretDismount 1
+   }
+  }
+  coords 3068.793 20.87 2408.064
+  angleX 1.733
+  angleY 93.458
+  angleZ 1.001
+ }
+ {
+  components {
+   TILW_VehicleCrewComponent "{6310E5E2A0A12A53}" {
+    m_customCrew {
+     "{597FEF0054FC7880}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Modern_Mech/Character_CDF_Modern_Rifleman.et"
+    }
+    m_noTurretDismount 1
+   }
+  }
+  coords 2990.819 20.882 2471.895
+  angleY -0.588
+ }
+}
+Turret : "{73530808E4B455BA}Prefabs/Weapons/Tripods/Tripod_M3_M2HB.et" {
+ components {
+  TILW_VehicleCrewComponent "{6306F67037B16589}" {
+   m_customCrew {
+    "{597FEF0054FC7880}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Modern_Mech/Character_CDF_Modern_Rifleman.et"
+   }
+   m_noTurretDismount 1
+  }
+ }
+ coords 3029.249 21.314 2517.947
+ angleY 68.196
+}
+SCR_DefendWaypoint wp_def_2 : "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et" {
+ coords 2991.401 21.136 2569.307
+ CompletionRadius 15
+ m_fPriorityLevel 25
+}

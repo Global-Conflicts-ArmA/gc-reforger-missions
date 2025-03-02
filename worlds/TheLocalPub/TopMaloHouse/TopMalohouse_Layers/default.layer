@@ -50,10 +50,11 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/
 PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
  components {
   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
-   m_killTimer 6
+   m_killTimer 10
    m_factionKeys {
     "GC_ARG"
    }
+   m_visibility FACTION
   }
  }
  coords 10023.67 307.377 2609.305
@@ -72,166 +73,6 @@ PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" 
   }
  }
  LineColor 0 0 0 0
- {
-  PrefabGeneratorEntity : "{6B59CE9ABF067E0A}Prefabs/WEGenerators/Markers/PG_MarkerGenerator_AOLimit_OPFOR.et" {
-   coords 0 0 0
-   Flags 1048579
-   {
-    $grp PS_ManualMarker : "{5F773B024F23FD0F}PrefabsEditable/Markers/AOLimit/Marker_AOLimit_OPFOR.et" {
-     {
-      coords -6.651 -26.702 91.44
-      angleX 7.195
-      angleY 164.787
-      m_aVisibleForFactions {
-       "GC_ARG"
-      }
-      m_bVisibleForEmptyFaction 0
-      m_bShowForAnyFaction 0
-     }
-     {
-      coords 6.365 -8.177 43.572
-      angleX 7.195
-      angleY 164.787
-      m_aVisibleForFactions {
-       "GC_ARG"
-      }
-      m_bVisibleForEmptyFaction 0
-      m_bShowForAnyFaction 0
-     }
-     {
-      coords 19.383 3.101 -4.296
-      angleX 7.195
-      angleY 164.787
-      m_aVisibleForFactions {
-       "GC_ARG"
-      }
-      m_bVisibleForEmptyFaction 0
-      m_bShowForAnyFaction 0
-     }
-     {
-      coords 22.597 -9.298 -46.531
-      angleX -2.066
-      angleY -104.617
-      m_aVisibleForFactions {
-       "GC_ARG"
-      }
-      m_bVisibleForEmptyFaction 0
-      m_bShowForAnyFaction 0
-     }
-     {
-      coords -25.754 -5.575 -59.141
-      angleX -2.066
-      angleY -104.617
-      m_aVisibleForFactions {
-       "GC_ARG"
-      }
-      m_bVisibleForEmptyFaction 0
-      m_bShowForAnyFaction 0
-     }
-     {
-      coords -74.104 -6.066 -71.751
-      angleX -2.066
-      angleY -104.617
-      m_aVisibleForFactions {
-       "GC_ARG"
-      }
-      m_bVisibleForEmptyFaction 0
-      m_bShowForAnyFaction 0
-     }
-     {
-      coords -122.454 -10.642 -84.361
-      angleX -2.066
-      angleY -104.617
-      m_aVisibleForFactions {
-       "GC_ARG"
-      }
-      m_bVisibleForEmptyFaction 0
-      m_bShowForAnyFaction 0
-     }
-     {
-      coords -170.805 -15.346 -96.97
-      angleX -2.066
-      angleY -104.617
-      m_aVisibleForFactions {
-       "GC_ARG"
-      }
-      m_bVisibleForEmptyFaction 0
-      m_bShowForAnyFaction 0
-     }
-     {
-      coords -197.971 -21.385 -74.222
-      angleX -6.401
-      angleY -13.847
-      m_aVisibleForFactions {
-       "GC_ARG"
-      }
-      m_bVisibleForEmptyFaction 0
-      m_bShowForAnyFaction 0
-     }
-     {
-      coords -209.863 -26.116 -25.977
-      angleX -6.401
-      angleY -13.847
-      m_aVisibleForFactions {
-       "GC_ARG"
-      }
-      m_bVisibleForEmptyFaction 0
-      m_bShowForAnyFaction 0
-     }
-     {
-      coords -221.755 -31.701 22.267
-      angleX -6.401
-      angleY -13.847
-      m_aVisibleForFactions {
-       "GC_ARG"
-      }
-      m_bVisibleForEmptyFaction 0
-      m_bShowForAnyFaction 0
-     }
-     {
-      coords -187.856 -25.182 43.537
-      angleX 1.572
-      angleY 75.192
-      m_aVisibleForFactions {
-       "GC_ARG"
-      }
-      m_bVisibleForEmptyFaction 0
-      m_bShowForAnyFaction 0
-     }
-     {
-      coords -139.535 -27.287 56.311
-      angleX 1.572
-      angleY 75.192
-      m_aVisibleForFactions {
-       "GC_ARG"
-      }
-      m_bVisibleForEmptyFaction 0
-      m_bShowForAnyFaction 0
-     }
-     {
-      coords -91.214 -26.422 69.085
-      angleX 1.572
-      angleY 75.192
-      m_aVisibleForFactions {
-       "GC_ARG"
-      }
-      m_bVisibleForEmptyFaction 0
-      m_bShowForAnyFaction 0
-     }
-     {
-      coords -42.893 -32.165 81.859
-      angleX 1.572
-      angleY 75.192
-      m_aVisibleForFactions {
-       "GC_ARG"
-      }
-      m_bVisibleForEmptyFaction 0
-      m_bShowForAnyFaction 0
-     }
-    }
-   }
-  }
- }
 }
 TILW_FactionTriggerEntity capzone : "{8C576D46F6579229}Prefabs/Logic/TILW_FactionTrigger.et" {
  coords 9927.656 304.913 2602.998
@@ -335,7 +176,7 @@ TILW_MissionFrameworkEntity Framework : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_Missi
    }
   }
  }
- m_factionPlayersKilledFlags {
+ m_casualtyFlags {
   TILW_FactionPlayersKilledFlag "{645926DFC597E415}" {
    m_flagName "Bludead"
    m_factionKey "UK"

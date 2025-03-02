@@ -1,0 +1,266 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{649A9C05C3E1B533}" {
+     NavmeshFile "{98AC6396328F355E}worlds/Navmeshes/Navmesh_Soldier.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{A5ED1C3881448DC2}worlds/Navmeshes/Navmesh_BTR.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{F435824730998C27}worlds/Navmeshes/Navmesh_Lowres.nmn"
+    }
+   }
+  }
+ }
+ coords 7760.429 117.572 12679.342
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 7771.624 117.562 12672.242
+}
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{649A9C1919B55898}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 7
+    }
+   }
+   m_bUseSpecifiedDate 1
+   m_iSetDay 9
+   m_iSetMonth 6
+   m_iSetYear 2025
+  }
+ }
+ coords 7756.774 117.601 12676.748
+ m_iFreezeTime 120000
+ {
+  SCR_FactionManager "649F2D1054E4480A" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{5977478D568C0922}" {
+        m_sCallsign "2"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{5977478D568C092A}" {
+        m_sCallsign "0"
+       }
+       SCR_CallsignInfo "{5977478D568C0929}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{5977478D568C0928}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{5977478D568C092F}" {
+        m_sCallsign "3"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{5977478D568C092E}" {
+        m_sCallsign "1-HQ"
+       }
+       SCR_CallsignInfo "{5977478D568C092D}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{5977478D568D935E}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{5977478D568D935F}" {
+        m_sCallsign "3"
+       }
+      }
+      m_sCallsignGroupFormat "%1%2%3"
+      m_sCallsignCharacterFormat "%1%2%3: %4"
+      m_sCallsignCharacterWithRoleFormat "%1%2%3: %4"
+     }
+    }
+   }
+  }
+ }
+}
+PolylineShapeEntity : "{25C6E66E6C14258D}Prefabs/Logic/CoverMap/Cover_Map.et" {
+ components {
+  TILW_CoverMapComponent "{64734633ABA43B46}" {
+   m_ratioWidth 1
+  }
+ }
+ coords 5470.418 171.161 12821.107
+ Points {
+  ShapePoint "{649A9C137FAA1572}" {
+   Position -648.284 0 -1180.189
+  }
+  ShapePoint "{649A9C137980F71E}" {
+   Position 394.132 0 -1406.443
+  }
+  ShapePoint "{649A9C1374E93B5A}" {
+   Position 967.077 0 1030.863
+  }
+  ShapePoint "{649A9C1375D18DF2}" {
+   Position -367.903 0 1245.808
+  }
+ }
+}
+PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+   m_factionKeys {
+    "GC_CDF"
+   }
+   m_visibility FACTION
+  }
+ }
+ coords 5177.409 191.583 13354.728
+ Points {
+  ShapePoint "{649A9C1C957C24E0}" {
+   Position 132.712 0 -344.429
+  }
+  ShapePoint "{649A9C1C90A6C1D6}" {
+   Position -72.914 0 593.519
+  }
+  ShapePoint "{649A9C1D6EA8E494}" {
+   Position 1267.169 0 402.554
+  }
+  ShapePoint "{649A9C1D6831C8CD}" {
+   Position 1023.224 0 -413.802
+  }
+ }
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/TILW_FactionTrigger.et" {
+ {
+  coords 5676.972 190.205 13120.871
+  m_queryRadius 20
+  m_captureIterations 12
+  m_sendStatusMessages 1
+  m_locationName "the southern objective"
+  m_flagName "RU_CAP_1"
+  m_ownerFactionKey "RHS_AFRF"
+ }
+ {
+  coords 5847.744 226.782 13539.938
+  m_queryRadius 20
+  m_captureIterations 12
+  m_sendStatusMessages 1
+  m_locationName "the northern objective"
+  m_flagName "RU_CAP_2"
+  m_ownerFactionKey "RHS_AFRF"
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 7749.188 118.023 12664.053
+ m_missionEvents {
+  TILW_MissionEvent "{649A9C1E03901A50}" {
+   m_name "CDF_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{649A9C1EEDD0FF4B}" {
+     m_messageTitle "RU VICTORY"
+     m_messageBody "The CDF has taken significant casualties."
+    }
+    TILW_EndGameInstruction "{649A9C1EE46591BA}" {
+     m_executionDelay 15
+     m_factionKey "RHS_AFRF"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{649A9C1E1A1277A5}" {
+    m_operands {
+     TILW_LiteralTerm "{649A9C1E14F26438}" {
+      m_flagName "CDF_KIA_1"
+     }
+     TILW_LiteralTerm "{649A9C1E118E344C}" {
+      m_flagName "CDF_KIA_2"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{649A9C1EFC1FC528}" {
+   m_name "RU_CAP"
+   m_instructions {
+    TILW_SendMessageInstruction "{649A9C1ECDEC3B83}" {
+     m_messageTitle "RU VICTORY"
+     m_messageBody "Both objectives have been captured by the AFRF."
+    }
+    TILW_EndGameInstruction "{649F2D1089B86420}" {
+     m_executionDelay 15
+     m_factionKey "RHS_AFRF"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{649A9C1EFA581603}" {
+    m_operands {
+     TILW_LiteralTerm "{649A9C1EF63494E5}" {
+      m_flagName "RU_CAP_1"
+     }
+     TILW_LiteralTerm "{649A9C1EF1611947}" {
+      m_flagName "RU_CAP_2"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{649A9C1EC54D30F3}" {
+   m_name "RU_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{649A9C1EC3C3E269}" {
+     m_messageTitle "CDF VICTORY"
+     m_messageBody "Russian forces have taken significant casualties."
+    }
+    TILW_EndGameInstruction "{649A9C1E8F78C1C6}" {
+     m_executionDelay 15
+     m_factionKey "GC_CDF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{649A9C1EC0C218FE}" {
+    m_flagName "RU_KIA"
+   }
+  }
+  TILW_MissionEvent "{649A9C1EDB486CD0}" {
+   m_name "TIME_LIMIT"
+   m_instructions {
+    TILW_SendMessageInstruction "{649A9C1ED75C75F5}" {
+     m_executionDelay 2825
+     m_messageTitle "CDF VICTORY"
+     m_messageBody "Time limit reached. CDF reinforcements are arriving shortly."
+    }
+    TILW_EndGameInstruction "{649A9C1EAFF44E0F}" {
+     m_executionDelay 2835
+     m_factionKey "GC_CDF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{649A9C1ED6677013}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{649A9C1E31D241EB}" {
+   m_flagName "RU_KIA"
+   m_factionKey "RHS_AFRF"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{649A9C1E0EB0AEDD}" {
+   m_flagName "CDF_KIA_1"
+   m_factionKey "GC_CDF"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionAIKilledFlag "{649A9C1E044E5BCD}" {
+   m_flagName "CDF_KIA_2"
+   m_factionKey "GC_CDF"
+   m_casualtyRatio 0.9
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 5860.345 241.811 11500.022
+}

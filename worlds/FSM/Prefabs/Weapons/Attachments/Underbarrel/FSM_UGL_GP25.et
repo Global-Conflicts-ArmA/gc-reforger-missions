@@ -1,0 +1,343 @@
+GameEntity : "{8A820ADCE8D05357}Prefabs/Weapons/Core/UGL_Base.et" {
+ ID "50D6D3D8D7C645EE"
+ components {
+  WeaponSoundComponent "{58CED9DB89892C05}" {
+   Filenames + {
+    "{39859EC13335D884}Sounds/Weapons/Attachments/Underbarrel/GP-25/Weapons_Attch_Underbarrel_GP25_Shot.acp" "{C4D47E49B86D1568}Sounds/Weapons/Attachments/Underbarrel/GP-25/Weapons_Attch_Underbarrel_GP25_Handling.acp"
+   }
+  }
+  InventoryItemComponent "{52627A1F45CD4EB6}" {
+   Enabled 0
+   Attributes SCR_ItemAttributeCollection "{52627A1EBB0698FD}" {
+    ItemDisplayName WeaponUIInfo "{6460503F02CD615E}" {
+     Name "#AR-Weapon_GP25_Name"
+     Description "#AR-Weapon_GP25_Description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{6460503F02CD6129}" {
+     Weight 1.5
+     SizeSetupStrategy Manual
+     ItemVolume 500
+    }
+    CustomAttributes {
+     WeaponAttachmentAttributes "{5284D858FFF9BE66}" {
+      AttachmentType AttachmentUnderBarrelGP25 "{58E2B3165B4CE766}" {
+      }
+     }
+     PreviewRenderAttributes "{52D69389645B4E4D}" {
+      CameraDistanceToItem 2
+      ItemRenderRotation 0 -90 0
+      FOV 10
+     }
+    }
+    m_Size SLOT_1x1
+   }
+  }
+  MeshObject "{BB6A64F1D169741D}" {
+   Object "{0023A98ED48CE9A9}Assets/Weapons/Attachments/Underbarrel/GP25/Gp25.xob"
+  }
+  MuzzleInMagComponent "{B3A264F493CC5A18}" {
+   components {
+    SCR_MuzzleEffectComponent "{6460503F02CD6135}" {
+     ParticleEffect "{F93B336C002CB400}Particles/Weapon/Smoke_GP25.ptc"
+     EffectPosition EntitySlotInfo muzzle_effect {
+      Offset 0 0 0.16
+     }
+    }
+    SightsComponent "{BB23A6378CED0346}" {
+     SightsPosition PointInfo "{BB23A6378D8D721A}" {
+      PivotID "w_root_GP25"
+      Offset -0.0417 0.0619 -0.4336
+     }
+     SightsRanges {
+      SightRangeInfo "{6460503F02CD613C}" {
+       Range 0.17 50
+       WeaponPosition PointInfo "{6460503F02CD613F}" {
+        Offset 0.0099 -0.0289 0
+        Angles 2.57 0 -0.02
+       }
+      }
+      SightRangeInfo "{6460503F02CD6101}" {
+       Range 0.224 100
+       WeaponPosition PointInfo "{6460503F02CD6100}" {
+        Offset 0.0099 -0.0519 0
+        Angles 4.92 0 -0.02
+       }
+      }
+      SightRangeInfo "{6460503F02CD6103}" {
+       Range 0.277 150
+       WeaponPosition PointInfo "{6460503F02CD6102}" {
+        Offset 0.0099 -0.0773 0
+        Angles 7.35 0 -0.01
+       }
+      }
+      SightRangeInfo "{6460503F02CD4298}" {
+       Range 0.333 200
+       WeaponPosition PointInfo "{6460503F02CD429E}" {
+        Offset 0.0099 -0.1063 0
+        Angles 9.88 0 -0.03
+       }
+      }
+      SightRangeInfo "{6460503F02CD429C}" {
+       Range 0.389 250
+       WeaponPosition PointInfo "{6460503F02CD5F03}" {
+        Offset 0.0096 -0.1387 0
+        Angles 12.37 0 0.09
+       }
+      }
+      SightRangeInfo "{6460503F02CD5F08}" {
+       Range 0.45 300
+       WeaponPosition PointInfo "{6460503F02CD5F09}" {
+        Offset 0.0096 -0.1797 0
+        Angles 15.06 0 0.11
+       }
+      }
+      SightRangeInfo "{6460503F02CD5F0A}" {
+       Range 0.588 400
+       WeaponPosition PointInfo "{6460503F02CD558E}" {
+        Offset 0.0107 -0.3084 0
+        Angles 21.14 0 0.13
+       }
+      }
+     }
+     SightsPointFront PointInfo "{6460503F02CD5590}" {
+      PivotID "w_sight_GP25"
+      Offset -0.02185 0.0132 -0.0625
+     }
+     SightsPointRear PointInfo "{6460503F02CD5591}" {
+      PivotID "w_sight_GP25"
+      Offset -0.0217 0.0132 0.0581
+     }
+     SoundInt 9002
+    }
+   }
+   ChamberedAmmo 1
+   MissileWeaponLink BaseMissileWeaponLinkClass "{EFCBA537902D109B}" {
+   }
+   MagazineWell MagazineWellRU_GP "{4F72A6CBAFE19FCA}" {
+   }
+   UIInfo MuzzleUIInfo "{560CE8B7320CE1C1}" {
+    m_MagIndicator SCR_MagazineIndicatorConfiguration "{5660B14FCBE3A8CC}" : "{50A057521DC5C821}Configs/WeaponInfo/MagazineIndicators/ugl_vog25.conf" {
+    }
+   }
+   CustomAnimationAttributes ItemAnimationAttributes "{6460503F02CD5599}" {
+    IkSettings {
+     ItemIKSettings "{6460503F02CD559B}" {
+      MovementSpeedRange 0 1
+      IkSettingsStand 7
+      IkSettingsCrouch 7
+      IkSettingsProne 7
+     }
+     ItemIKSettings "{6460503F02CD559D}" {
+      MovementSpeedRange 1 2.5
+      IkSettingsStand 7
+      IkSettingsCrouch 7
+      IkSettingsProne 6
+     }
+     ItemIKSettings "{6460503F02CD559E}" {
+      MovementSpeedRange 2.5 3
+      IkSettingsStand 6
+      IkSettingsCrouch 6
+      IkSettingsProne 6
+     }
+    }
+    AnimationIKPose "{3B93DBA2F1AED3DD}Assets/Weapons/Rifles/AK74/anims/anmGP25/p_ak74_GP25_UGL_ik.anm"
+    AnimIkposeBlendDuration 0.1
+    AnimInjectionPriority -2
+   }
+   AllowWeaponDeployment 0
+   "LEFT HAND TARGET" DeploymentPointInfo lht {
+    PivotID "snap_hand_left"
+    Offset -0.06 -0.032 -0.13
+    Angles -45 -70 92
+   }
+   RIGHT_HAND_TARGET DeploymentPointInfo rht {
+    PivotID "snap_hand_right"
+   }
+   BUTSTOCK_TRANSFORMATION DeploymentPointInfo bt {
+    Offset 0 0.0237 -0.3274
+   }
+   ProjectilePosition InventoryStorageSlot "{517A8378DAC70E2C}" {
+    Offset 0 0 0.1
+   }
+   AmmoTemplate "{0DA967809AE471EA}Prefabs/Weapons/Ammo/FSM_Ammo_Grenade_HE_VOG25.et"
+   ProjectileVisible 1
+   ReloadUGL 1
+  }
+  RigidBody "{0F2AA6AED1D49120}" {
+   ModelGeometry 1
+  }
+  SCR_WeaponAttachmentsStorageComponent "{6460503F02CD556C}" {
+   Attributes SCR_ItemAttributeCollection "{6460503F02CD5576}" {
+    ItemDisplayName WeaponUIInfo "{6460503F02CD5577}" {
+     Name "#AR-Weapon_GP25_Name"
+     Description "#AR-Weapon_GP25_Description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{6460503F02CD5579}" {
+     Weight 1.5
+     SizeSetupStrategy Manual
+     ItemDimensions 15 15 15
+     ItemVolume 500
+     ActivePhysicalSimulation None
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{6460503F02CD557A}" {
+     IkSettings {
+      ItemIKSettings "{6460503F02CD557B}" {
+       MovementSpeedRange 0 1
+       IkSettingsStand 7
+       IkSettingsCrouch 7
+       IkSettingsProne 7
+      }
+      ItemIKSettings "{6460503F02CD557C}" {
+       MovementSpeedRange 1 2.5
+       IkSettingsStand 7
+       IkSettingsCrouch 7
+       IkSettingsProne 6
+      }
+      ItemIKSettings "{6460503F02CD557D}" {
+       MovementSpeedRange 2.5 3
+       IkSettingsStand 6
+       IkSettingsCrouch 6
+       IkSettingsProne 6
+      }
+      ItemIKSettings "{6460503F02CD557E}" {
+       ProneTurn 1
+       IkSettingsStand 7
+      }
+     }
+     AnimationIKPose "{F34F7E3F9ECE0099}Assets/Weapons/Rifles/AK74/anims/anmGP25/p_ak74_GP25_ik.anm"
+     AnimationAttachments {
+      AnimationAttachmentInfo "{6460503F02CD5540}" {
+       AnimGraph "{16E656EDFA89C014}Assets/Weapons/Rifles/workspaces/ak74_GP25.agr"
+       AnimInstance "{B5EE91DF6F0E8EFA}Assets/Weapons/Rifles/workspaces/ak74_GP25_player.asi"
+       StartNode "MasterControl"
+       BindingName "Weapon"
+      }
+     }
+     AnimInjectionPriority -1
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{6460503F02CD5545}" {
+      CameraPreset Right
+      CameraDistanceToItem 2
+      ItemRenderRotation 0 0 0
+      FOV 10
+     }
+     WeaponAttachmentAttributes "{6460503F02CD5546}" {
+      AttachmentType AttachmentUnderBarrelGP25 "{6460503F02CD5547}" {
+      }
+     }
+     SCR_RecoilCameraShakeParams "{6460503F02CD5548}" {
+      m_fBlendOutTime 0.089
+      m_fMaxVelocity 15
+      m_vTranslationMin 0.002 0.002 0
+      m_vTranslationMax 0.003 0.003 0
+      m_fFOVModifier 0.985
+      m_vRotationImpulseMin 0 0 7
+      m_vRotationImpulseMax 0 0 8
+      m_fMinImpulseThreshold 0.01
+      m_fImpulseCrouchMagnitudeModifier 0.7
+      m_fImpulseProneMagnitudeModifier 1
+      m_fCrouchMagnitudeModifier 0.5
+      m_fProneMagnitudeModifier 0.33
+     }
+     ItemOneHandAnimAttributes "{6460503F02CD554D}" {
+      ErectLinearOffsetUpper 0 0 0
+      ErectLinearOffset 0.018 -0.2 -0.1
+      ErectLinearOffsetLower 0 -0.05 0
+      CrouchLinearOffsetUpper 0 0 0
+      CrouchLinearOffset 0.018 -0.16 -0.1
+      CrouchLinearOffsetLower 0 -0.15 0
+      SpringCoefficient 2.2
+      DamperCoefficient 2.4
+     }
+     CharacterModifierAttributes "{6460503F02CD554F}" {
+      ADSSpeedLimit 1.9
+      SpeedLimitHighready 1.9
+      Supress1hShooting 0
+     }
+     ItemMovementSwayAttributes "{6460503F02CD5550}" {
+     }
+     AimingModifierAttributes "{6460503F02CD5552}" {
+      ErectLimitsHorizontal -90 90
+      ErectLimitsVertical -90 90
+      CrouchLimitsHorizontal -90 90
+      CrouchLimitsVertical -90 90
+      ProneLimitsHorizontal -90 90
+      ProneLimitsVertical -90 90
+     }
+     SCR_WeaponAttachmentObstructionAttributes "{6460503F02CD5554}" {
+      AttachmentType AttachmentUnderBarrelGP25 "{6460503F02CD5555}" {
+      }
+      m_aObstructedAttachmentTypes {
+       AttachmentBayonet6Kh4 "{6460503F02CD5556}" {
+       }
+      }
+     }
+    }
+    m_Size SLOT_1x1
+   }
+   StoragePurpose 32
+  }
+  ActionsManagerComponent "{5284E0EFF569AD07}" {
+   Enabled 1
+   ActionContexts {
+    UserActionContext "{5A8889C7F25600B4}" {
+     ContextName "firemode"
+     Position PointInfo "{6460503F02CD555A}" {
+      Offset -0.0144 0.0193 0.0115
+     }
+     Radius 0.075
+    }
+    UserActionContext "{6460503F02CD555C}" {
+     ContextName "magazine"
+     Position PointInfo "{6460503F02CD0328}" {
+      Offset -0.0127 0.0011 0.0609
+     }
+     Radius 0.1
+    }
+   }
+   additionalActions {
+    SCR_AttachementAction "{6460503F02CD032B}" {
+     ParentContextList {
+      "ugl"
+     }
+     UIInfo UIInfo "{6460503F02CDD8C4}" {
+      Name "#AR-UserAction_Detach"
+     }
+     Duration 2
+     CanAggregate 1
+     "Inventory action" 1
+     m_WeaponAttachmentActionType UGL
+    }
+    SCR_AttachItemFromInventoryAction "{6460503F02CDD8B9}" {
+     ParentContextList {
+      "ugl"
+     }
+     UIInfo UIInfo "{6460503F02CDD8B8}" {
+      Name "#AR-UserAction_Attach"
+     }
+     Duration 2
+     "Inventory action" 1
+    }
+    SCR_DetachMagazineUserAction "{6460503F02CDD8B5}" {
+     ParentContextList {
+      "magazine"
+     }
+     UIInfo UIInfo "{6460503F02CD8D6B}" {
+      Name "#AR-UserAction_Detach"
+     }
+     CanAggregate 1
+    }
+   }
+  }
+  UGLAnimationComponent "{6460503F02CD8D75}" {
+   AnimGraph "{16E656EDFA89C014}Assets/Weapons/Rifles/workspaces/ak74_GP25.agr"
+   AnimInstance "{4EB000EEF70FEA16}Assets/Weapons/Rifles/workspaces/ak74_GP25_weapon.asi"
+   StartNode "UGLMasterControl"
+   AutoVariablesBind 1
+   SimulateOnHeadless 0
+  }
+ }
+ coords 5418.032 79.282 5712
+ Flags 4194307
+}

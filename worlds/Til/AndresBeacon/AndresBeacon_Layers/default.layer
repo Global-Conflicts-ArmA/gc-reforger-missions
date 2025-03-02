@@ -29,7 +29,7 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/
    }
   }
  }
- m_iReconnectTime 300000
+ m_iFreezeTime 300000
  {
   SCR_FactionManager "62DA1A61C48DC6B5" {
    ID "5ED9088735FF2D8B"
@@ -139,8 +139,8 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
    m_name "US Victory"
    m_instructions {
     TILW_SendMessageInstruction "{62BB3402FC75B047}" {
-     m_messageTitle "US Victory"
-     m_messageBody "The US seized all enemy positions."
+     m_messageTitle "US VICTORY"
+     m_messageBody "US forces managed to secure the enemy positions."
     }
     TILW_EndGameInstruction "{62BB3402FD24CA94}" {
      m_executionDelay 15
@@ -159,14 +159,14 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
    }
   }
   TILW_MissionEvent "{62BB3402B95475FE}" {
-   m_name "USSR Victory"
+   m_name "US Casualties"
    m_instructions {
     TILW_SendMessageInstruction "{62BB34028A02B926}" {
-     m_messageTitle "USSR Victory"
-     m_messageBody "All US forces were killed."
+     m_messageTitle "USSR VICTORY"
+     m_messageBody "US forces took significant casualties."
     }
     TILW_EndGameInstruction "{62BB340298951EC8}" {
-     m_executionDelay 15
+     m_executionDelay 25
      m_factionKey "USSR"
     }
    }
@@ -174,11 +174,32 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
     m_flagName "us_killed"
    }
   }
+  TILW_MissionEvent "{64AE2A4407FCA632}" {
+   m_name "USSR Casualties"
+   m_instructions {
+    TILW_SendMessageInstruction "{64AE2A446B66B4A9}" {
+     m_messageTitle "US VICTORY"
+     m_messageBody "All Soviets were eliminated."
+    }
+    TILW_EndGameInstruction "{64AE2A44A8170911}" {
+     m_executionDelay 15
+     m_factionKey "US"
+    }
+   }
+   m_condition TILW_LiteralTerm "{64AE2A446135CFF4}" {
+    m_flagName "ussr_killed"
+   }
+  }
  }
- m_factionPlayersKilledFlags {
+ m_casualtyFlags {
   TILW_FactionPlayersKilledFlag "{62BB3402ADECD945}" {
    m_flagName "us_killed"
    m_factionKey "US"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{64AE2A440CAF91B3}" {
+   m_flagName "ussr_killed"
+   m_factionKey "USSR"
   }
  }
 }

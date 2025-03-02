@@ -1,0 +1,105 @@
+Projectile : "{D40A105437369C1D}Prefabs/Weapons/Core/Ammo_GrenadeLauncher_Base.et" {
+ ID "50C6F965BA00F9FA"
+ components {
+  AICombatPropertiesComponent "{59C92CB12877478B}" {
+   IndirectlyUsedAgainst 7
+  }
+  CollisionTriggerComponent "{645A992B4FD19F4C}" {
+   PROJECTILE_EFFECTS {
+    ExplosionEffect "{645A992B4FD19F54}" {
+     EffectPrefab "{729D7EE679AD97E7}Prefabs/Weapons/Warheads/Warhead_Grenade_HE_VOG25.et"
+     ParticleEffect "{728768DE31C8D1DE}Particles/Weapon/Explosion_VOG25.ptc"
+     SoundEvent "SOUND_EXPLOSION"
+    }
+    AIExplosionEffect "{645A992B4FD19F5A}" {
+    }
+   }
+   ArmingTime 0
+   SafetyDistance 10
+  }
+  InventoryItemComponent "{52627A12350994B6}" {
+   Attributes SCR_ItemAttributeCollection "{52627A1234AD20A4}" {
+    ItemDisplayName UIInfo "{645A992B4FD19F20}" {
+     Name "#AR-Magazine_VOG25_Name"
+     Description "#AR-Magazine_VOG25_Description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{645A992B4FD19F22}" {
+     Weight 0.25
+     SizeSetupStrategy Manual
+     ItemDimensions 5 5 5
+     ItemVolume 100
+    }
+    m_Size SLOT_1x1
+   }
+  }
+  MagazineComponent "{645A992B4FD19F27}" {
+   MagazineWell MagazineWellRU_GP "{645A992B4FD19F29}" {
+   }
+   UIInfo MagazineUIInfo "{645A992B4FD19F2B}" {
+    Name "#AR-AmmunitionID_40mm"
+    m_sAmmoCaliber "#AR-AmmunitionID_40mm"
+    m_sAmmoType "#AR-AmmoType_VOG25"
+    m_eAmmoTypeFlags FRAG
+    m_MagIndicator SCR_MagazineIndicatorConfiguration "{5874FAA7B6D57051}" : "{50A057521DC5C821}Configs/WeaponInfo/MagazineIndicators/ugl_vog25.conf" {
+    }
+   }
+   MaxAmmo 1
+  }
+  MeshObject "{851AA4A2AE0A56BF}" {
+   Object "{8B532B0C912902CE}Assets/Weapons/Ammo/Grenades/VOG25/VOG25.xob"
+  }
+  MissileMoveComponent "{645A99364BFD3BD2}" {
+   Enabled 1
+   InitSpeed 77
+   InitSpeedVariation 0.77
+   Mass 0.25
+   TimeToLive 30
+   ProjectileEffects {
+    ProjectileDamage "{645A9936DBC77011}" {
+     DamageValue 80
+    }
+    HitSoundEffect "{645A9936DE307489}" {
+     Filename "{5B4ABAC976A4B5F1}Sounds/Weapons/_SharedData/RocketHits/Weapons_UnderbarrelGrenadeHits.acp"
+    }
+    AIHitEffect "{645A9936A7EF5E34}" {
+    }
+   }
+   BallisticTableConfig "{375D7FAFAD27A129}Configs/Weapons/AIBallisiticTables/AIBT_Grenade_HE_VOG25.conf"
+   MaxControlRange 0
+   Maneuvrability 0
+   TrackOversteer 0
+   TrackLead 0
+   ThrustInitTime 0.1
+   ThrustTime 2
+   ThrustForce 560
+   ForwardAirFriction 0.36
+   SideAirFriction 0.08
+   AlignTorque 0.04
+   DistanceEnableGravitation 0.4
+  }
+  RocketTraceEffectComponent "{645A992B4FD19F38}" {
+   ParticleEffect "{0F364F4CD1D72350}Particles/Weapon/Trail_PG7VL.ptc"
+  }
+  ShellMoveComponent "{20FB66C5FA209A29}" {
+   Enabled 1
+   InitSpeed 77
+   InitSpeedVariation 0.77
+   Mass 0.25
+   TimeToLive 30
+   ProjectileEffects {
+    ProjectileDamage "{5184D7800EFDF1D7}" {
+     DamageValue 80
+    }
+    AIHitEffect "{645A992B4FD19F34}" {
+    }
+   }
+   BallisticTableConfig "{375D7FAFAD27A129}Configs/Weapons/AIBallisiticTables/AIBT_Grenade_HE_VOG25.conf"
+  }
+  Hierarchy "{645A992B4FD19F39}" {
+  }
+ }
+ coords 5754.329 143.625 6609.21
+ ProjectileModel "{8B532B0C912902CE}Assets/Weapons/Ammo/Grenades/VOG25/VOG25.xob"
+ CartridgeModel "{8B532B0C912902CE}Assets/Weapons/Ammo/Grenades/VOG25/VOG25.xob"
+ CartridgeLayerPreset "ItemFireView"
+}

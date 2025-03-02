@@ -1,0 +1,332 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{6494A0C4C9C2BC98}" {
+     NavmeshFile "{98AC6396328F355E}worlds/Navmeshes/Navmesh_Soldier.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{A5ED1C3881448DC2}worlds/Navmeshes/Navmesh_BTR.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{F435824730998C27}worlds/Navmeshes/Navmesh_Lowres.nmn"
+    }
+   }
+  }
+ }
+ coords 3387.827 330.737 7349.715
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 3383.344 331.242 7339.168
+}
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 7
+   m_iStartingMinutes 50
+   m_bRandomStartingWeather 1
+  }
+ }
+ coords 3378.652 331.674 7333.558
+ {
+  SCR_FactionManager "649EF0202E3AA714" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{648D46336748B246}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{648D3C2E4F6005BD}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{648D3C2E4014D4BE}" {
+        m_sCallsign "0"
+       }
+       SCR_CallsignInfo "{648D3C2E41FD0E05}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{648D3C2E41C585C3}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{648D3C2E41AA9237}" {
+        m_sCallsign "3"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+PolylineShapeEntity : "{25C6E66E6C14258D}Prefabs/Logic/CoverMap/Cover_Map.et" {
+ components {
+  TILW_CoverMapComponent "{64734633ABA43B46}" {
+   m_ratioWidth 1.2
+  }
+ }
+ coords 3195.519 205.38 13237.445
+ Points {
+  ShapePoint "{6498C00618B2CD36}" {
+   Position -796.196 0 1395.731
+  }
+  ShapePoint "{6498C0061AD67D4B}" {
+   Position 1293.451 0 1540.976
+  }
+  ShapePoint "{6498C0061B2347C0}" {
+   Position 1476.528 0 -695.449
+  }
+  ShapePoint "{6498C0061742DC41}" {
+   Position -189.573 0 -895.429
+  }
+ }
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/TILW_FactionTrigger.et" {
+ {
+  coords 3245.813 203.313 13044.62
+  m_queryRadius 40
+  m_sendStatusMessages 1
+  m_locationName "the school"
+  m_flagName "CDF_CAP_W"
+  m_ownerFactionKey "GC_CDF"
+ }
+ {
+  coords 3827.165 189.463 13034.255
+  m_queryRadius 65
+  m_sendStatusMessages 1
+  m_locationName "the factory"
+  m_flagName "CDF_CAP_E"
+  m_ownerFactionKey "GC_CDF"
+ }
+ {
+  coords 3519.698 220.093 12530.454
+  m_queryRadius 70
+  m_sendStatusMessages 1
+  m_locationName "the railyard"
+  m_flagName "CDF_CAP_S"
+  m_ownerFactionKey "GC_CDF"
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 3387.31 331.164 7328.49
+ m_missionEvents {
+  TILW_MissionEvent "{6498C00C3165C453}" {
+   m_name "CDF_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{6498C00C08150A62}" {
+     m_messageTitle "DEFEAT"
+     m_messageBody "The CDF has taken significant casualties."
+    }
+    TILW_EndGameInstruction "{6498C00C01ADFA48}" {
+     m_executionDelay 15
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "GC_CDF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6498C00C0EFB9B19}" {
+    m_flagName "CDF_KIA"
+   }
+  }
+  TILW_MissionEvent "{6498C00C1E2A218E}" {
+   m_name "TIME_LIMIT"
+   m_instructions {
+    TILW_SendMessageInstruction "{6498C00C1A3154F3}" {
+     m_executionDelay 4505
+     m_messageTitle "DEFEAT"
+     m_messageBody "Time limit reached."
+    }
+    TILW_EndGameInstruction "{6498C00CE85CE0C6}" {
+     m_executionDelay 4515
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "GC_CDF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{649EF020DFE0A503}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{6498C00CE60B0190}" {
+   m_name "CDF_CAP_E"
+   m_instructions {
+    TILW_SpawnVehicleInstruction "{6498C00CB4E06CE7}" {
+     m_prefab "{AC546547A5D75592}Prefabs/Vehicles/Wheeled/TIGR/KORD/GAZ_TIGR_v2_KORD_Green_Shield.et"
+     m_locationName "E_QRF_SPAWN_1"
+     m_customCrew {
+      "{06127C628A0588EB}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_SL_Random.et" "{B4474D20DB777AB6}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_AR_Random.et" "{E00F026736ABB6E8}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_AT_Random.et" "{98F5A79FC694BFC7}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_AAT_Random.et" "{418BEFD17940435E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_SR_Random.et" "{5C75226D45102461}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_Rifleman_Random.et"
+     }
+     m_waypointNames {
+      "EQrfMoveWp" "Obj1DefWp2"
+     }
+     m_idleGroup 1
+    }
+    TILW_SpawnVehicleInstruction "{6498C00B25CE5979}" {
+     m_prefab "{AC546547A5D75592}Prefabs/Vehicles/Wheeled/TIGR/KORD/GAZ_TIGR_v2_KORD_Green_Shield.et"
+     m_locationName "E_QRF_SPAWN_2"
+     m_customCrew {
+      "{06127C628A0588EB}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_SL_Random.et" "{B4474D20DB777AB6}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_AR_Random.et" "{E00F026736ABB6E8}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_AT_Random.et" "{98F5A79FC694BFC7}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_AAT_Random.et" "{418BEFD17940435E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_SR_Random.et" "{5C75226D45102461}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_Rifleman_Random.et"
+     }
+     m_waypointNames {
+      "EQrfMoveWp" "Obj1DefWp2"
+     }
+     m_waypointDelay 10
+     m_idleGroup 1
+    }
+    TILW_SpawnVehicleInstruction "{6498C00B211C3789}" {
+     m_prefab "{AC546547A5D75592}Prefabs/Vehicles/Wheeled/TIGR/KORD/GAZ_TIGR_v2_KORD_Green_Shield.et"
+     m_locationName "E_QRF_SPAWN_3"
+     m_customCrew {
+      "{06127C628A0588EB}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_SL_Random.et" "{B4474D20DB777AB6}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_AR_Random.et" "{E00F026736ABB6E8}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_AT_Random.et" "{98F5A79FC694BFC7}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_AAT_Random.et" "{418BEFD17940435E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_SR_Random.et" "{5C75226D45102461}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_Rifleman_Random.et"
+     }
+     m_waypointNames {
+      "EQrfMoveWp" "Obj1DefWp2"
+     }
+     m_waypointDelay 15
+     m_idleGroup 1
+    }
+    TILW_SpawnVehicleInstruction "{6498C00B3A6A3BF4}" {
+     m_prefab "{AC546547A5D75592}Prefabs/Vehicles/Wheeled/TIGR/KORD/GAZ_TIGR_v2_KORD_Green_Shield.et"
+     m_locationName "E_QRF_SPAWN_4"
+     m_customCrew {
+      "{06127C628A0588EB}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_SL_Random.et" "{B4474D20DB777AB6}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_AR_Random.et" "{E00F026736ABB6E8}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_AT_Random.et" "{98F5A79FC694BFC7}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_AAT_Random.et" "{418BEFD17940435E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_SR_Random.et" "{5C75226D45102461}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_Rifleman_Random.et"
+     }
+     m_waypointNames {
+      "EQrfMoveWp" "Obj1DefWp2"
+     }
+     m_waypointDelay 20
+     m_idleGroup 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{6498C00CE26DFDCE}" {
+    m_flagName "CDF_CAP_E"
+   }
+  }
+  TILW_MissionEvent "{6498C00B0A37C42E}" {
+   m_name "CDF_CAP_W"
+   m_instructions {
+    TILW_SpawnVehicleInstruction "{6498C00CB4E06CE7}" {
+     m_prefab "{AC546547A5D75592}Prefabs/Vehicles/Wheeled/TIGR/KORD/GAZ_TIGR_v2_KORD_Green_Shield.et"
+     m_locationName "W_QRF_SPAWN_1"
+     m_customCrew {
+      "{06127C628A0588EB}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_SL_Random.et" "{B4474D20DB777AB6}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_AR_Random.et" "{E00F026736ABB6E8}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_AT_Random.et" "{98F5A79FC694BFC7}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_AAT_Random.et" "{418BEFD17940435E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_SR_Random.et" "{5C75226D45102461}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_Rifleman_Random.et"
+     }
+     m_waypointNames {
+      "WQrfMoveWp" "Obj2DefWp1"
+     }
+     m_idleGroup 1
+    }
+    TILW_SpawnVehicleInstruction "{6498C00B25CE5979}" {
+     m_prefab "{AC546547A5D75592}Prefabs/Vehicles/Wheeled/TIGR/KORD/GAZ_TIGR_v2_KORD_Green_Shield.et"
+     m_locationName "W_QRF_SPAWN_2"
+     m_customCrew {
+      "{06127C628A0588EB}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_SL_Random.et" "{B4474D20DB777AB6}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_AR_Random.et" "{E00F026736ABB6E8}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_AT_Random.et" "{98F5A79FC694BFC7}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_AAT_Random.et" "{418BEFD17940435E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_SR_Random.et" "{5C75226D45102461}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_Rifleman_Random.et"
+     }
+     m_waypointNames {
+      "WQrfMoveWp" "Obj2DefWp1"
+     }
+     m_waypointDelay 10
+     m_idleGroup 1
+    }
+    TILW_SpawnVehicleInstruction "{6498C00B211C3789}" {
+     m_prefab "{AC546547A5D75592}Prefabs/Vehicles/Wheeled/TIGR/KORD/GAZ_TIGR_v2_KORD_Green_Shield.et"
+     m_locationName "W_QRF_SPAWN_3"
+     m_customCrew {
+      "{06127C628A0588EB}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_SL_Random.et" "{B4474D20DB777AB6}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_AR_Random.et" "{E00F026736ABB6E8}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_AT_Random.et" "{98F5A79FC694BFC7}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_AAT_Random.et" "{418BEFD17940435E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_SR_Random.et" "{5C75226D45102461}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_Rifleman_Random.et"
+     }
+     m_waypointNames {
+      "WQrfMoveWp" "Obj2DefWp1"
+     }
+     m_waypointDelay 15
+     m_idleGroup 1
+    }
+    TILW_SpawnVehicleInstruction "{6498C00B3A6A3BF4}" {
+     m_prefab "{AC546547A5D75592}Prefabs/Vehicles/Wheeled/TIGR/KORD/GAZ_TIGR_v2_KORD_Green_Shield.et"
+     m_locationName "W_QRF_SPAWN_4"
+     m_customCrew {
+      "{06127C628A0588EB}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_SL_Random.et" "{B4474D20DB777AB6}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_AR_Random.et" "{E00F026736ABB6E8}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_AT_Random.et" "{98F5A79FC694BFC7}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_AAT_Random.et" "{418BEFD17940435E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_SR_Random.et" "{5C75226D45102461}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/RandomSoldiers/Character_RHS_RF_MSV_VKPO_S_Rifleman_Random.et"
+     }
+     m_waypointNames {
+      "WQrfMoveWp" "Obj2DefWp1"
+     }
+     m_waypointDelay 20
+     m_idleGroup 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{6498C00CE26DFDCE}" {
+    m_flagName "CDF_CAP_W"
+   }
+  }
+  TILW_MissionEvent "{6498C00CE612FFB2}" {
+   m_name "CDF_CAP_ALL"
+   m_instructions {
+    TILW_SendMessageInstruction "{6498C00BDF648623}" {
+     m_messageTitle "ALL OBJECTIVES SECURED"
+     m_messageBody "Hold out for 5 minutes or eliminate remaining RU forces."
+    }
+    TILW_SetFlagInstruction "{6498C00BAB3878DF}" {
+     m_executionDelay 30
+     m_flagName "CDF_CAP_ALL"
+    }
+    TILW_SendMessageInstruction "{6498C00BA26E7392}" {
+     m_executionDelay 305
+     m_messageTitle "VICTORY"
+     m_messageBody "The objectives have been captured and secured by the CDF."
+    }
+    TILW_EndGameInstruction "{6498C00BB0C8BA20}" {
+     m_executionDelay 315
+     m_factionKey "GC_CDF"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{6498C00BF6649559}" {
+    m_operands {
+     TILW_LiteralTerm "{6498C00BCC0B5963}" {
+      m_flagName "CDF_CAP_E"
+     }
+     TILW_LiteralTerm "{6498C00BC9DBBCFE}" {
+      m_flagName "CDF_CAP_W"
+     }
+     TILW_LiteralTerm "{6498C00BC4652820}" {
+      m_flagName "CDF_CAP_S"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{6498C00B85C1F452}" {
+   m_name "CDF_VICTORY"
+   m_instructions {
+    TILW_SendMessageInstruction "{6498C00B9BA77703}" {
+     m_messageTitle "VICTORY"
+     m_messageBody "The objectives have been captured and secured by the CDF."
+    }
+    TILW_EndGameInstruction "{6498C00B97DE1CB9}" {
+     m_executionDelay 15
+     m_factionKey "GC_CDF"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{6498C00B800B94AD}" {
+    m_operands {
+     TILW_LiteralTerm "{6498C00B82BF296E}" {
+      m_flagName "CDF_CAP_ALL"
+     }
+     TILW_LiteralTerm "{6498C00B9EDD5369}" {
+      m_flagName "RU_KIA"
+     }
+    }
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionAIKilledFlag "{6498C00E1F35BD32}" {
+   m_flagName "RU_KIA"
+   m_factionKey "RHS_AFRF"
+   m_casualtyRatio 0.95
+  }
+  TILW_FactionPlayersKilledFlag "{6498C00EEEA1C5E6}" {
+   m_flagName "CDF_KIA"
+   m_factionKey "GC_CDF"
+   m_casualtyRatio 0.9
+  }
+ }
+}

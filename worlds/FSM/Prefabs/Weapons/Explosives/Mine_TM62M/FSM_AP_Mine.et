@@ -1,0 +1,52 @@
+GenericEntity : "{CCC00D009D4949B0}Prefabs/Weapons/Explosives/Mine_TM62M/Mine_TM62M_base.et" {
+ ID "5968D2B6A82C6019"
+ components {
+  BaseTriggerComponent "{59E4E69D8E9B4323}" {
+   PROJECTILE_EFFECTS {
+    ExplosionEffect "{59EC98924EA033BD}" {
+     EffectPrefab "{F8DFA475BC5A3B7C}Prefabs/Weapons/Warheads/Warhead_Grenade_RGD5.et"
+    }
+   }
+  }
+  SCR_MineDamageManager "{5A187C4DB2CF86F2}" {
+   "Additional hit zones" {
+    SCR_MineHitZone Main {
+     MaxHealth 9
+    }
+   }
+  }
+  SCR_PressureTriggerComponent "{59E6BE151DCC9953}" {
+   m_bLive 1
+   m_sFuzeMeshName "Mine_Fuse_TM_62M"
+   m_fMinWeight 20
+  }
+  SCR_MineAnimationComponent "{647C320CC83A9436}" {
+   AnimGraph "{61DD6C3BDA7D48F5}Assets/Weapons/Explosives/workspace/mine_TM62M.agr"
+   AnimInstance "{95992E047B24E710}Assets/Weapons/Explosives/workspace/TM62M_weapon.asi"
+   AnimInjection AnimationAttachmentInfo "{647C320CC83A9439}" {
+    AnimGraph "{61DD6C3BDA7D48F5}Assets/Weapons/Explosives/workspace/mine_TM62M.agr"
+    AnimInstance "{6EC7BF35E32583FC}Assets/Weapons/Explosives/workspace/TM62M_player.asi"
+    BindingName "Heavy"
+   }
+   BindWithInjection 1
+   AutoVariablesBind 1
+   MeshVisibilityConfigurations {
+    MeshesVisibilitySwitchConfig "{647C320CC83A95CD}" {
+     Event "ShowFuze"
+     Meshes {
+      "Mine_Fuse_TM_62M" "TM_62M_pin"
+     }
+     HideMesh 0
+    }
+    MeshesVisibilitySwitchConfig "{647C320CC83A95CE}" {
+     Event "HidePin"
+     Meshes {
+      "TM_62M_pin"
+     }
+    }
+   }
+  }
+ }
+ coords 5435.999 81.118 5797.551
+ scale 0.5
+}
