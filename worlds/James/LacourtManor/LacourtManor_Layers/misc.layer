@@ -38,7 +38,7 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/
   }
  }
  coords 3964.286 51.158 7193.984
- m_iFreezeTime 420000
+ m_iFreezeTime 300000
  {
   SCR_FactionManager "64D05DCC5C19A982" {
    ID "5ED9088735FF2D8B"
@@ -47,18 +47,21 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
       m_aCompanyNames {
        SCR_CallsignInfo "{55CCB79282FF010C}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{55CCB792829053B0}" {
         m_sCallsign "2"
        }
       }
       m_aPlatoonNames {
        SCR_CallsignInfo "{55CCB7928490AEEE}" {
-        m_sCallsign "4"
+        m_sCallsign ""
        }
        SCR_CallsignInfo "{55CCB79284BA6D27}" {
-        m_sCallsign "5"
+        m_sCallsign "4"
        }
        SCR_CallsignInfo "{55CCB79284A2F6C9}" {
-        m_sCallsign "6"
+        m_sCallsign "4"
        }
        SCR_CallsignInfo "{55CCB792844D665F}" {
         m_sCallsign "7"
@@ -66,7 +69,7 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/
       }
       m_aSquadNames {
        SCR_CallsignInfo "{55CCB79287E901BC}" {
-        m_sCallsign "4"
+        m_sCallsign "Platoon HQ"
        }
        SCR_CallsignInfo "{55CCB79287936EBD}" {
         m_sCallsign "4"
@@ -111,6 +114,7 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/
   }
  }
 }
+<<<<<<< Updated upstream
 PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
  coords 3958.25 34.425 7332.052
  m_sTitle "Notes"
@@ -120,7 +124,7 @@ PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/Ed
  ""\
  "Notes:"\
  "- Ratio 2:1."\
- "- Setup 7 mins."\
+ "- Setup 5 mins."\
  "- Objective end condition applies when USSR controls the cap zone with no British forces inside."\
  "- USSR loses if they take 90% casualties."\
  "- No time limit."\
@@ -137,19 +141,136 @@ PS_ManualMarker : "{60226647F08EF462}PrefabsEditable/Markers/Group/Marker_GroupF
  m_fWorldSize 175
  m_aVisibleForFactions {
   "USSR"
+=======
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ {
+  coords 3958.25 34.425 7332.052
+  m_sTitle "Scenario"
+  m_sTextData "The remnants of a British rifle platoon have fallen back to the Lacourt manor after beign defeated at Gravette. "\
+  ""\
+  "A Soviet motor rifle platoon in BTRs has been tasked with eliminating the British remants, and seizing the manor and immediate surrounding area."
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 0
+>>>>>>> Stashed changes
  }
- m_bVisibleForEmptyFaction 0
- m_bShowForAnyFaction 0
+ {
+  coords 3972.665 35.429 7330.6
+  m_sTitle "Notes"
+  m_sTextData "- Ratio 2:1."\
+  ""\
+  "- Setup 5 mins."\
+  ""\
+  "- Objective end condition applies when USSR controls the cap zone with no British forces inside."\
+  ""\
+  "- USSR loses if they take 90% casualties."\
+  ""\
+  "- No time limit."\
+  ""\
+  ""
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 9
+ }
 }
-PS_ManualMarker : "{63BCE30CF8B65BCE}PrefabsEditable/Markers/Group/Marker_GroupFlagsOpfor_Base.et" {
- coords 3950.505 29.707 7443.846
- angleY 0
- m_MarkerColor 0.855 0.031 0.028 0.9
- m_fWorldSize 150
- m_aVisibleForFactions {
-  "UK"
+$grp PS_ManualMarker : "{60226647F08EF462}PrefabsEditable/Markers/Group/Marker_GroupFlagsSoviet_Base.et" {
+ {
+  coords 3899.952 97.96 6660.437
+  angleY 90
+  m_MarkerColor 0 0.125 0.502 0.781
+  m_sQuadName "fp"
+  m_fWorldSize 1400
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+  m_bringToFront 0
  }
- m_bShowForAnyFaction 0
+ {
+  coords 4700.2 160.694 7006.585
+  angleY -25
+  m_MarkerColor 0.855 0.031 0.028 0.781
+  m_sQuadName "fp"
+  m_fWorldSize 1000
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+  m_bringToFront 0
+ }
+ {
+  coords 4863.756 170.293 7038.54
+  m_sQuadName "coy_hq"
+  m_fWorldSize 300
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+  m_bringToFront 0
+ }
+ {
+  coords 3989.581 73.86 7306.473
+  angleY -90
+  m_MarkerColor 0.855 0.031 0.028 0.781
+  m_sQuadName "atk_plt"
+  m_fWorldSize 650
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+  m_bringToFront 0
+ }
+ {
+  coords 3989.581 0 7492.836
+  angleY -90
+  m_MarkerColor 0.855 0.031 0.028 0.781
+  m_sQuadName "loc_plt"
+  m_fWorldSize 500
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+  m_bringToFront 0
+ }
+ {
+  coords 4101.549 33.633 7807.059
+  m_sQuadName "coy_hq"
+  m_fWorldSize 300
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+  m_bringToFront 0
+ }
+}
+$grp PS_ManualMarker : "{63BCE30CF8B65BCE}PrefabsEditable/Markers/Group/Marker_GroupFlagsOpfor_Base.et" {
+ {
+  coords 4091.369 36.956 7766.4
+  angleY 0
+  m_MarkerColor 0.855 0.031 0.028 0.9
+  m_fWorldSize 150
+  m_aVisibleForFactions {
+   "UK"
+  }
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4736.904 163.552 7041.72
+  angleY 0
+  m_MarkerColor 0.855 0.031 0.028 0.9
+  m_fWorldSize 150
+  m_aVisibleForFactions {
+   "UK"
+  }
+  m_bShowForAnyFaction 0
+  m_bringToFront 0
+ }
 }
 PS_ManualMarker : "{676B84E0291E12D6}PrefabsEditable/Markers/Group/Marker_GroupFlagsBlufor_Base.et" {
  coords 3820.045 105.854 6273.821
@@ -174,28 +295,44 @@ $grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit
     m_factionKeys {
      "USSR"
     }
+    m_visibility FACTION
     m_useFactionColor 0
    }
   }
   coords 4112.814 79.019 6068.553
   Points {
    ShapePoint "{64D05DD6018A5B41}" {
-    Position 433.238 -35.561 -2.646
+    Position 470.11 -28.456 115.488
+   }
+   ShapePoint "{64D2F7AEC507AC9E}" {
+    Position 320.454 -29.531 -1.083
+   }
+   ShapePoint "{64D2F7AEE1CBA4CA}" {
+    Position 89.056 -27.946 -76.645
+   }
+   ShapePoint "{64D2F7AEA4BC286F}" {
+    Position -355.785 63.714 -70.242
    }
    ShapePoint "{64D0366F6F4A9D09}" {
-    Position -775.33 63.877 48.075
+    Position -723.985 68.375 45.708
    }
-   ShapePoint "{64D05DD17BAA1CF0}" {
-    Position -641.716 -14.175 711.926
+   ShapePoint "{64D2F7AF300EAF0D}" {
+    Position -755.624 29.428 321.646
+   }
+   ShapePoint "{64D2F7AF3F976ADF}" {
+    Position -681.851 -72.84 1110.79
    }
    ShapePoint "{64D036745FBA4157}" {
-    Position -689.704 -115.662 1469.823
+    Position -338.967 -78.315 1428.386
+   }
+   ShapePoint "{64D2F7AF1BE29888}" {
+    Position 114.248 -11.64 1428.949
    }
    ShapePoint "{64D0366F44F346B9}" {
-    Position 387.324 44.053 1407.786
+    Position 449.632 65.113 1079.008
    }
    ShapePoint "{64D0366BA60592EF}" {
-    Position 580.539 71.522 706.005
+    Position 571.328 82.984 857.081
    }
   }
  }
@@ -212,23 +349,38 @@ $grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit
   }
   coords 3410.218 145.291 6130.752
   Points {
+   ShapePoint "{64D2F7AE18934E68}" {
+    Position 27.014 -28.394 209.425
+   }
    ShapePoint "{64D03668EC9263B0}" {
-    Position -72.811 -2.421 -13.959
+    Position 40.335 6.017 -35.947
+   }
+   ShapePoint "{64D2F7AEBF398CDA}" {
+    Position 347.811 -2.475 -132.788
+   }
+   ShapePoint "{64D2F7AE946A6DD8}" {
+    Position 791.907 -94.251 -138.83
    }
    ShapePoint "{64D0366954BB340E}" {
-    Position 1135.779 -101.828 -64.818
+    Position 1022.55 -95.84 -63.682
+   }
+   ShapePoint "{64D2F7AF9FB83638}" {
+    Position 979.177 -77.754 226.561
+   }
+   ShapePoint "{64D2F7AC5BE520E4}" {
+    Position 885.309 -23.596 373.29
    }
    ShapePoint "{64D05DC0C9FA0F8B}" {
-    Position 1283.125 5.234 643.632
-   }
-   ShapePoint "{64D03668F0F1FF7D}" {
-    Position 561.851 -42.01 603.528
+    Position 870.699 -9.92 619.839
    }
    ShapePoint "{64D05DC01DC76AC2}" {
-    Position 517.062 -58.173 699.002
+    Position 331.523 -64.474 588.725
+   }
+   ShapePoint "{64D2F7AC30BA0C9F}" {
+    Position 226.272 -65.544 527.485
    }
    ShapePoint "{64D03669395D7F29}" {
-    Position 60.938 -80.453 649.787
+    Position 10.322 -40.301 315.964
    }
   }
  }
