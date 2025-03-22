@@ -1,0 +1,41 @@
+GenericEntity : "{CD0BE5C399B0752F}Prefabs/Structures/Signs/Signs_Base.et" {
+ ID "50D67C36F4200F97"
+ components {
+  MeshObject "{54969A6AAAADA251}" {
+   Object "{C1749998293A79FD}Assets/Structures/Signs/Large/SignLarge_01_poles.xob"
+  }
+  RigidBody "{54969A6AA8773997}" {
+   ResponseIndex "SmallDestructible"
+  }
+  SCR_DestructionMultiPhaseComponent "{5496C1EF00137501}" {
+   Enabled 1
+   m_fBaseHealth 1500
+   m_DestroySpawnObjects {
+    SCR_DebrisSpawnable "{64C752A1C7E430E3}" {
+     m_ModelPrefabs {
+      "{7B1150A4E4C9D95E}Prefabs/Structures/Signs/Large/Dst/SignLarge_01_dst_base.et"
+     }
+     m_fMass 50
+     m_eMaterialSoundType METAL_HEAVY
+    }
+    SCR_ParticleSpawnable "{64C752A1C7E430FE}" {
+     m_Particle "{6C4FB431F9615647}Particles/Props/Dest_TrafficSigns.ptc"
+    }
+    SCR_DebrisSpawnable "{64C752A1C7E430F2}" {
+     m_ModelPrefabs {
+      "{6CEF83FA04E07D37}Assets/Structures/Signs/Large/Dst/SignLarge_01_dst_02.xob" "{F5F13A6319074CA7}Assets/Structures/Signs/Large/Dst/SignLarge_01_dst_03.xob"
+     }
+     m_fMass 15
+     m_eMaterialSoundType METAL_POLE
+    }
+   }
+   m_bDeleteAfterFinalPhase 0
+   m_aDamagePhases {
+    SCR_DamagePhaseData "{64C752A1C7E430C9}" {
+     m_fPhaseHealth 1000
+     m_PhaseModel "{82FB52EBEDA5A3D7}Assets/Structures/Signs/Large/Dst/SignLarge_01_dst_01.xob"
+    }
+   }
+  }
+ }
+}
