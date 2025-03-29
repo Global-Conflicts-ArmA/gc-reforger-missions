@@ -1,0 +1,203 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{64F16DFACF435CDC}" {
+     NavmeshFile "{4C5DC23B33285CBA}NavMesh/Soldiers.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{6957D1DE8462E9A0}NavMesh/BTRlike.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{0C645FF0DA66996D}NavMesh/lowres.nmn"
+    }
+   }
+  }
+ }
+ coords 1840.342 10.068 3672.97
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 1837.089 10.017 3670.396
+}
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 14
+   m_iStartingMinutes 3
+   m_bRandomStartingWeather 1
+   m_bUseSpecifiedDate 1
+   m_iSetDay 10
+   m_iSetMonth 5
+   m_iSetYear 2025
+  }
+ }
+ coords 1839.207 10.05 3671.945
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ TILW_AOLimit_1_Main {
+  components {
+   TILW_CoverMapComponent "{6473480FCAB7760B}" {
+    Enabled 1
+   }
+  }
+  coords 1854.82 10.332 3695.368
+  Points {
+   ShapePoint "{64F339C4B64C90C6}" {
+    Position -395.295 0 -338.687
+   }
+   ShapePoint "{64F339C49C669320}" {
+    Position -389.628 0 226.042
+   }
+   ShapePoint "{64F339C45063837A}" {
+    Position 1248.358 0 580.59
+   }
+   ShapePoint "{64F339C455C84274}" {
+    Position 1355.417 0 -159.499
+   }
+  }
+ }
+ TILW_AOLimit_2_Opfor {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "RHS_AFRF"
+    }
+    m_visibility FACTION
+    m_defaultColor 0.502 0 0 1
+   }
+  }
+  coords 2915.63 27.719 4051.266
+  Points {
+   ShapePoint "{64F33EA65A001336}" {
+    Position -32.072 -2.237 -80.101
+   }
+   ShapePoint "{64F33EA65C35AD20}" {
+    Position -59.164 0 82.21
+   }
+   ShapePoint "{64F33EA65F39D562}" {
+    Position 86.794 0 97.439
+   }
+   ShapePoint "{64F33EA65247AA9B}" {
+    Position 109.685 0 -64.379
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 1850.27 10.115 3644.804
+ m_missionEvents {
+  TILW_MissionEvent "{64F33EB2D868E8D3}" {
+   m_name "OPFOR_Victory"
+   m_instructions {
+    TILW_EndGameInstruction "{64F33EB2B8E790EA}" {
+     m_executionDelay 8
+     m_factionKey "RHS_AFRF"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{64F33EBFA799F5ED}" {
+    m_operands {
+     TILW_LiteralTerm "{64F33EBF993CE40D}" {
+      m_flagName "INDFOR_Players_Killed"
+     }
+     TILW_LiteralTerm "{64F33EBF9D5F725D}" {
+      m_flagName "INDFOR_AI_Killed"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{64F33EB2D7237926}" {
+   m_name "INDFOR_Victory"
+   m_instructions {
+    TILW_EndGameInstruction "{64F33EB2BC711DE8}" {
+     m_executionDelay 8
+     m_factionKey "GC_CDF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{64F33EBF7755D297}" {
+    m_flagName "OPFOR_Players_Killed"
+   }
+  }
+  TILW_MissionEvent "{64F33EA7795C3740}" {
+   m_name "Time_Limit"
+   m_instructions {
+    TILW_EndGameInstruction "{64F33EA71D30BF9B}" {
+     m_executionDelay 3900
+     m_gameOverType EDITOR_FACTION_DRAW
+    }
+    TILW_SendMessageInstruction "{64F33EA444317FA5}" {
+     m_executionDelay 3300
+     m_messageTitle "Time Limit"
+     m_messageBody "10 minutes until mission end."
+    }
+   }
+   m_condition TILW_LiteralTerm "{64F33EA75C72211E}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{64F33EA6990950F0}" {
+   m_name "Setup_Timer"
+   m_instructions {
+    TILW_DeleteEntitiesInstruction "{64F33EA6944E5B51}" {
+     m_executionDelay 300
+     m_entityNames {
+      "TILW_AOLimit_2_Opfor"
+     }
+    }
+    TILW_SendMessageInstruction "{64F33EA2F30B4B76}" {
+     m_executionDelay 300
+     m_messageTitle "Setup"
+     m_messageBody "The setup phase has ended."
+    }
+   }
+   m_condition TILW_LiteralTerm "{64F33EA681C0CEBA}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{64F33EB291EAB9F7}" {
+   m_flagName "OPFOR_Players_Killed"
+   m_factionKey "RHS_AFRF"
+  }
+  TILW_FactionPlayersKilledFlag "{64F33EB2920A2A57}" {
+   m_flagName "INDFOR_Players_Killed"
+   m_factionKey "GC_CDF"
+  }
+  TILW_FactionAIKilledFlag "{64F33EB2933107A2}" {
+   m_flagName "INDFOR_AI_Killed"
+   m_factionKey "GC_CDF"
+  }
+ }
+}
+$grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ INDFOR_Marker {
+  coords 1864.498 8.987 3678.313
+  angleY 0
+  m_sImageSet "{301FC1A2A46D3E0D}UI/Textures/GroupManagement/FlagIcons/GroupFlagsIndfor.imageset"
+  m_sImageSetGlow "{C07D82625600BA21}UI/Textures/GroupManagement/FlagIcons/GroupFlagsIndfor-outline.imageset"
+  m_MarkerColor 0 0.502 0.125 1
+  m_sQuadName "infantry"
+  m_fWorldSize 60
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ OPFOR_Marker {
+  coords 2951.112 27.406 4082.086
+  angleY 0
+  m_sImageSet "{7CD99D22C7AE8195}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor.imageset"
+  m_sImageSetGlow "{B9356E7B2E974DCD}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor-outline.imageset"
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "motorized-infantry"
+  m_fWorldSize 60
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
