@@ -1,18 +1,9 @@
-SCR_AIGroup : "{04FC2603763DCF52}Prefabs/Groups/OPFOR/USSR/SovietArmy_MotorRiflesBTR_1980ish/P/Group_USSR_MSV80_MotRifleMGSquad_P.et" {
- components {
-  PS_GroupCallsignAssigner "{652F5C6E746ACE30}" {
-   m_iSquadCallsign 4
-  }
- }
- coords 3960.686 30.877 7433.404
- m_iGroupRadioFrequency 42000
- m_sCustomNameSet "MG Squad"
-}
 $grp SCR_AIGroup : "{7544247CE7FBC839}Prefabs/Groups/OPFOR/USSR/SovietArmy_MotorRiflesBTR_1980ish/P/Group_USSR_MSV80_MotRifleSquad_P.et" {
  {
   components {
    PS_GroupCallsignAssigner "{652F5C6E746ACE30}" {
-    m_iSquadCallsign 1
+    m_iPlatoonCallsign 3
+    m_iSquadCallsign 6
    }
   }
   coords 3968.724 30.599 7455.771
@@ -21,6 +12,10 @@ $grp SCR_AIGroup : "{7544247CE7FBC839}Prefabs/Groups/OPFOR/USSR/SovietArmy_Motor
  }
  {
   components {
+   PS_GroupCallsignAssigner "{652F5C6E746ACE30}" {
+    m_iPlatoonCallsign 3
+    m_iSquadCallsign 7
+   }
    SCR_EditableGroupComponent "{50D291F6C83FA532}" {
     m_VariantData SCR_EditableEntityVariantData "{64D2F7A6E083DB57}" {
     }
@@ -30,11 +25,26 @@ $grp SCR_AIGroup : "{7544247CE7FBC839}Prefabs/Groups/OPFOR/USSR/SovietArmy_Motor
   m_iGroupRadioFrequency 42000
   m_sCustomNameSet "2nd Squad + BTR"
  }
+ {
+  components {
+   PS_GroupCallsignAssigner "{652F5C6E746ACE30}" {
+    m_iPlatoonCallsign 4
+   }
+  }
+  coords 3989.688 32.801 7424.229
+  angleY -146
+  m_aUnitPrefabSlots {
+   "{74D7F430C3E7D1E5}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_MortarSL_P.et" "{917178E57AB126D9}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_MortarCrew_P.et" "{917178E57AB126D9}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_MortarCrew_P.et" "{917178E57AB126D9}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_MortarCrew_P.et" "{917178E57AB126D9}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_MortarCrew_P.et"
+  }
+  m_iGroupRadioFrequency 42000
+  m_sCustomNameSet "Mortar Team"
+ }
 }
 SCR_AIGroup : "{82927FFD013CC95B}Prefabs/Groups/OPFOR/USSR/SovietArmy_MotorRiflesBTR_1980ish/P/Group_USSR_MSV80_MotRifleSquadSVD_P.et" {
  components {
   PS_GroupCallsignAssigner "{652F5C6EBE967FCC}" {
-   m_iSquadCallsign 3
+   m_iPlatoonCallsign 3
+   m_iSquadCallsign 8
   }
  }
  coords 3919.031 26.429 7450.189
@@ -42,12 +52,22 @@ SCR_AIGroup : "{82927FFD013CC95B}Prefabs/Groups/OPFOR/USSR/SovietArmy_MotorRifle
  m_sCustomNameSet "3rd Squad + BTR"
 }
 SCR_AIGroup : "{8D35DA8B89880FAF}Prefabs/Groups/OPFOR/USSR/SovietArmy_MotorRiflesBTR_1980ish/P/Group_USSR_MSV80_MotRiflePHQ_P.et" {
- coords 3938.653 29.685 7428.702
+ components {
+  PS_GroupCallsignAssigner "{65136701CA021D8F}" {
+   m_iPlatoonCallsign 3
+   m_iSquadCallsign 5
+  }
+ }
+ coords 3913.161 26.975 7421.848
+ angleY 103
+ m_aUnitPrefabSlots {
+  "{DF8E65CA90B55E3B}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_PL_P.et" "{D1BA3D1164545A8D}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_Medic_P.et" "{A5F4D7FEBDB57183}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_SL_P.et" "{E5C3468BDF19AC4F}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_MG_P.et" "{7ED89FF8122EBF62}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_AMG_P.et" "{E5C3468BDF19AC4F}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_MG_P.et" "{7ED89FF8122EBF62}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_AMG_P.et"
+ }
  m_iGroupRadioFrequency 42000
  m_sCustomNameSet "Commander"
 }
-$grp Vehicle : "{A635AE062BC44714}worlds/James/LacourtManor/Vehicles/BTR70_AFRF_LCM.et" {
- BTR70_AFRF_LCM1 {
+$grp Vehicle : "{AAB3119124C9167A}Prefabs/Vehicles/Wheeled/BTR70/1980 Mot Rifle/BTR70_MSV80.et" {
+ BTR70_MSV1 {
   components {
    RHS_GroupMaterialController "{65151D74DAFD4445}" {
     m_aGroups {
@@ -66,12 +86,10 @@ $grp Vehicle : "{A635AE062BC44714}worlds/James/LacourtManor/Vehicles/BTR70_AFRF_
     }
    }
   }
-  coords 3961.772 31.842 7404.618
-  angleX 1.963
-  angleY 177.185
-  angleZ 3.482
+  coords 3970.304 33.733 7379.076
+  angleY 179.87
  }
- BTR70_AFRF_LCM2 {
+ BTR70_MSV2 {
   components {
    RHS_GroupMaterialController "{65151D74DAFD4445}" {
     m_aGroups {
@@ -90,12 +108,10 @@ $grp Vehicle : "{A635AE062BC44714}worlds/James/LacourtManor/Vehicles/BTR70_AFRF_
     }
    }
   }
-  coords 3951.389 31.302 7403.621
-  angleX 2.81
-  angleY 177.223
-  angleZ 2.548
+  coords 3959.825 33.096 7379.152
+  angleY 179.87
  }
- BTR70_AFRF_LCM3 {
+ BTR70_MSV3 {
   components {
    RHS_GroupMaterialController "{65151D74DAFD4445}" {
     m_aGroups {
@@ -114,9 +130,49 @@ $grp Vehicle : "{A635AE062BC44714}worlds/James/LacourtManor/Vehicles/BTR70_AFRF_
     }
    }
   }
-  coords 3941.844 30.889 7403.548
-  angleX 2.81
-  angleY 177.223
-  angleZ 2.548
+  coords 3948.002 32.45 7379.546
+  angleY 179.87
+ }
+}
+$grp GenericEntity : "{CB56A2564414B7D6}Prefabs/Compositions/Misc/SubCompositions/Foundation_Mortar_USSR.et" {
+ {
+  coords 3967.545 32.772 7398.109
+  angleY 180
+  {
+   GenericEntity {
+    ID "60B8D36A59BEEA13"
+    components {
+     SCR_ResourceComponent "{5E5ABDF371AE8B21}" {
+      m_aContainers {
+       SCR_ResourceContainer "{655505B747B0734B}" {
+        m_eResourceRights ALL
+        m_fResourceValueCurrent 6000
+        m_fResourceValueMax 6000
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 3955.761 32.147 7398.477
+  angleY 180
+  {
+   GenericEntity {
+    ID "60B8D36A59BEEA13"
+    components {
+     SCR_ResourceComponent "{5E5ABDF371AE8B21}" {
+      m_aContainers {
+       SCR_ResourceContainer "{655505B68984F657}" {
+        m_eResourceRights ALL
+        m_fResourceValueCurrent 6000
+        m_fResourceValueMax 6000
+       }
+      }
+     }
+    }
+   }
+  }
  }
 }
