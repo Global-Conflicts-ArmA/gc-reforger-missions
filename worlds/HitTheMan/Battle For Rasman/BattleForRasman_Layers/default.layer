@@ -29,6 +29,7 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF2 : "{4CFD54745CD45673}Prefabs/MP/Modes/
   }
  }
  coords 4512.437 102.467 11792.496
+ m_iFreezeTime 300000
  {
   RadioManagerEntity {
    ID "5ED9088735FF2DEE"
@@ -38,6 +39,18 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF2 : "{4CFD54745CD45673}Prefabs/MP/Modes/
    ID "5ED9088735FF2D8B"
    coords 0 0 0
    Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CCD598D3}" {
+        m_sCallsign "Bravo Company"
+       }
+       SCR_CallsignInfo "{55CCB792CC9C7AD6}" {
+        m_sCallsign "Charlie Company"
+       }
+      }
+     }
+    }
     SCR_Faction "{56DEAC40D3C2E623}" {
      UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
       Name "Soviet Air Force"
@@ -156,21 +169,24 @@ $grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit
     m_factionKeys {
      "US"
     }
+    m_useFactionColor 0
    }
    TILW_MapShapeComponent "{6508F54F9B461198}" {
     Enabled 1
     m_color 0.059 0.059 0.059 0.75
     m_factionKeys {
-     "TAK_GC" "US"
+     "GC_TKA" "US"
     }
-    m_visibleForEmptyFaction 0
    }
   }
-  coords 6320.872 86.141 11288.697
+  coords 6320.872 86.141 11288.696
   angleY -39.396
   Points {
    ShapePoint "{6566F0B8A1451FE2}" {
-    Position 21.799 2.569 151.4
+    Position 245.398 1.647 10.377
+   }
+   ShapePoint "{6568DE52B569576D}" {
+    Position 212.16 3.026 193.982
    }
    ShapePoint "{6566F0B8A0029610}" {
     Position -121.342 2.104 112.101
@@ -181,23 +197,35 @@ $grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit
    ShapePoint "{6566F0B958E72BDF}" {
     Position -371.176 9.922 117.856
    }
-   ShapePoint "{6566F0B95F469098}" {
-    Position -524.784 17.43 144.309
+   ShapePoint "{6568DE537276997A}" {
+    Position -551.858 21.374 -26.188
    }
-   ShapePoint "{6566F0B95E906631}" {
-    Position -835.442 31.636 129.087
+   ShapePoint "{6568DE5370D6A536}" {
+    Position -690.524 23.535 -52.014
    }
-   ShapePoint "{6566F0B953ECC6BD}" {
-    Position -1283.422 45.335 28.88
+   ShapePoint "{6568DE5377B3694A}" {
+    Position -1023.152 29.885 -162.697
    }
-   ShapePoint "{6566F0B95276F398}" {
-    Position -1515.159 43.123 -58.547
+   ShapePoint "{6568DE5376896C02}" {
+    Position -1167.467 31.424 -231.42
    }
-   ShapePoint "{6566F0B950E25BC8}" {
-    Position -1704.341 30.96 -271.786
+   ShapePoint "{6568DE5375A2942A}" {
+    Position -1253.938 34.773 -349.131
    }
-   ShapePoint "{6566F0B956BE382B}" {
-    Position -1807.857 44.469 -604.279
+   ShapePoint "{6568DE536BC4132B}" {
+    Position -1271.42 23.129 -474.312
+   }
+   ShapePoint "{6568DE536AD23FCC}" {
+    Position -1302.611 17.217 -521.202
+   }
+   ShapePoint "{6568DE53697F573A}" {
+    Position -1425.053 19.329 -593.205
+   }
+   ShapePoint "{6568DE536851FBCD}" {
+    Position -1508.979 15.689 -638.043
+   }
+   ShapePoint "{6568DE536F27BFC0}" {
+    Position -1651.301 27.605 -753.011
    }
    ShapePoint "{6566F0B949556FA9}" {
     Position -1552.863 18.529 -899.125
@@ -300,36 +328,6 @@ $grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit
    }
    ShapePoint "{6566F0B965EACBC1}" {
     Position 173.051 2.368 -104.774
-   }
-   ShapePoint "{6566F0B9194ED9CF}" {
-    Position 195.82 2.203 -107.399
-   }
-   ShapePoint "{6566F0B918ADB11D}" {
-    Position 246.529 3.278 -135.927
-   }
-   ShapePoint "{6566F0B91F46BDBB}" {
-    Position 308.49 2.359 -161.819
-   }
-   ShapePoint "{6566F0B913E88918}" {
-    Position 358.589 2.127 -136.442
-   }
-   ShapePoint "{6566F0B91345215C}" {
-    Position 382.05 2.596 -42.188
-   }
-   ShapePoint "{6566F0B912920D24}" {
-    Position 379.758 -0.413 25.046
-   }
-   ShapePoint "{6566F0B9120CB7CE}" {
-    Position 393.636 -5.519 142.095
-   }
-   ShapePoint "{6566F0B917A26201}" {
-    Position 290.173 -1.141 188.441
-   }
-   ShapePoint "{6566F0B916BFA69F}" {
-    Position 217.05 3.355 196.861
-   }
-   ShapePoint "{6566F0B91436261B}" {
-    Position 125.846 4.269 190.88
    }
   }
  }
@@ -337,19 +335,24 @@ $grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit
   components {
    TILW_AOLimitComponent "{6217617AC21DEB7B}" {
     m_factionKeys {
-     "TAK_GC"
+     "GC_TKA"
     }
     m_visibility FACTION
+    m_defaultColor 0.561 0.071 0.071 1
+    m_useFactionColor 0
    }
    TILW_MapShapeComponent "{6508F54F9B461198}" {
     m_color 0.059 0.059 0.059 0.75
    }
   }
-  coords 6320.805 86.156 11288.782
+  coords 6320.887 86.155 11288.692
   angleY -39.396
   Points {
    ShapePoint "{6566F0B8A1451FE2}" {
-    Position 21.799 2.569 151.4
+    Position 244.954 1.629 10.034
+   }
+   ShapePoint "{6568DE52BE38D08F}" {
+    Position 211.621 2.946 193.271
    }
    ShapePoint "{6566F0B8A0029610}" {
     Position -121.342 2.104 112.101
@@ -360,23 +363,144 @@ $grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit
    ShapePoint "{6566F0B958E72BDF}" {
     Position -371.176 9.922 117.856
    }
-   ShapePoint "{6566F0B95F469098}" {
-    Position -524.784 17.43 144.309
+   ShapePoint "{6568DE5351D01A5D}" {
+    Position -485.161 19.951 29.382
    }
-   ShapePoint "{6566F0B95E906631}" {
-    Position -835.442 31.636 129.087
+   ShapePoint "{6568DE7F9C4BDAEB}" {
+    Position -485.92 20.088 -18.271
    }
-   ShapePoint "{6566F0B953ECC6BD}" {
-    Position -1283.422 45.335 28.88
+   ShapePoint "{6568DE7F93912BB2}" {
+    Position -464.802 11.258 -84.52
    }
-   ShapePoint "{6566F0B95276F398}" {
-    Position -1515.159 43.123 -58.547
+   ShapePoint "{6568DE7F92DCBEAA}" {
+    Position -404.231 6.412 -149.177
    }
-   ShapePoint "{6566F0B950E25BC8}" {
-    Position -1704.341 30.96 -271.786
+   ShapePoint "{6568DE7F918C9A64}" {
+    Position -380.903 7.032 -204.719
    }
-   ShapePoint "{6566F0B956BE382B}" {
-    Position -1807.857 44.469 -604.279
+   ShapePoint "{6568DE7F95F70DC1}" {
+    Position -371.282 7.031 -295.685
+   }
+   ShapePoint "{6568DE7F952B71C2}" {
+    Position -377.847 7.032 -346.062
+   }
+   ShapePoint "{6568DE7F8BF1ACE1}" {
+    Position -369.828 7 -391.483
+   }
+   ShapePoint "{6568DE7F8F1A1DC1}" {
+    Position -311.771 7.032 -449.134
+   }
+   ShapePoint "{6568DE7F8E840DFA}" {
+    Position -241.917 4.485 -481.369
+   }
+   ShapePoint "{6568DE7F8DED90D2}" {
+    Position -219.917 6.425 -489.205
+   }
+   ShapePoint "{6566F0B96BB279D6}" {
+    Position -168.828 7.712 -458.613
+   }
+   ShapePoint "{6566F0B96A93B0DF}" {
+    Position -131.197 7.213 -429.351
+   }
+   ShapePoint "{6566F0B96A29200F}" {
+    Position -66.303 4.291 -376.98
+   }
+   ShapePoint "{6566F0B968E59515}" {
+    Position -17.057 3.946 -343.373
+   }
+   ShapePoint "{6566F0B963F70534}" {
+    Position -0.185 3.954 -323.842
+   }
+   ShapePoint "{6566F0B9631F8DF2}" {
+    Position 14.515 2.618 -284.997
+   }
+   ShapePoint "{6566F0B96286B127}" {
+    Position 37.318 1.083 -247.61
+   }
+   ShapePoint "{6566F0B9620E7263}" {
+    Position 74.145 0.47 -204.412
+   }
+   ShapePoint "{6566F0B961532BFD}" {
+    Position 89.082 -0.763 -169.177
+   }
+   ShapePoint "{6566F0B96035DBCE}" {
+    Position 97.222 1.62 -144.038
+   }
+   ShapePoint "{6566F0B96719B5AB}" {
+    Position 111.691 3.547 -121.679
+   }
+   ShapePoint "{6566F0B9661D3378}" {
+    Position 137.85 0.603 -109.856
+   }
+   ShapePoint "{6566F0B965EACBC1}" {
+    Position 173.051 2.368 -104.774
+   }
+  }
+ }
+ BLU_AO_Limit2 {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "US"
+    }
+    m_useFactionColor 0
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+    m_color 0.059 0.059 0.059 0.75
+    m_factionKeys {
+     "GC_TKA" "US"
+    }
+    m_visibleForEmptyFaction 0
+   }
+  }
+  coords 6320.857 86.156 11288.592
+  angleY -39.396
+  Points {
+   ShapePoint "{6566F0B8A1451FE2}" {
+    Position 245.398 1.647 10.377
+   }
+   ShapePoint "{6568DE52B569576D}" {
+    Position 212.16 3.026 193.982
+   }
+   ShapePoint "{6566F0B8A0029610}" {
+    Position -121.342 2.104 112.101
+   }
+   ShapePoint "{6566F0B8A7E016D4}" {
+    Position -274.758 5.806 104.614
+   }
+   ShapePoint "{6566F0B958E72BDF}" {
+    Position -371.176 9.922 117.856
+   }
+   ShapePoint "{6568DE537276997A}" {
+    Position -551.858 21.374 -26.188
+   }
+   ShapePoint "{6568DE5370D6A536}" {
+    Position -690.524 23.535 -52.014
+   }
+   ShapePoint "{6568DE5377B3694A}" {
+    Position -1023.152 29.885 -162.697
+   }
+   ShapePoint "{6568DE5376896C02}" {
+    Position -1167.467 31.424 -231.42
+   }
+   ShapePoint "{6568DE5375A2942A}" {
+    Position -1253.938 34.773 -349.131
+   }
+   ShapePoint "{6568DE536BC4132B}" {
+    Position -1271.42 23.129 -474.312
+   }
+   ShapePoint "{6568DE536AD23FCC}" {
+    Position -1302.611 17.217 -521.202
+   }
+   ShapePoint "{6568DE53697F573A}" {
+    Position -1425.053 19.329 -593.205
+   }
+   ShapePoint "{6568DE536851FBCD}" {
+    Position -1508.979 15.689 -638.043
+   }
+   ShapePoint "{6568DE536F27BFC0}" {
+    Position -1651.301 27.605 -753.011
    }
    ShapePoint "{6566F0B949556FA9}" {
     Position -1552.863 18.529 -899.125
@@ -480,61 +604,85 @@ $grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit
    ShapePoint "{6566F0B965EACBC1}" {
     Position 173.051 2.368 -104.774
    }
-   ShapePoint "{6566F0B9194ED9CF}" {
-    Position 195.82 2.203 -107.399
-   }
-   ShapePoint "{6566F0B918ADB11D}" {
-    Position 246.529 3.278 -135.927
-   }
-   ShapePoint "{6566F0B91F46BDBB}" {
-    Position 308.49 2.359 -161.819
-   }
-   ShapePoint "{6566F0B913E88918}" {
-    Position 358.589 2.127 -136.442
-   }
-   ShapePoint "{6566F0B91345215C}" {
-    Position 382.05 2.596 -42.188
-   }
-   ShapePoint "{6566F0B912920D24}" {
-    Position 379.758 -0.413 25.046
-   }
-   ShapePoint "{6566F0B9120CB7CE}" {
-    Position 393.636 -5.519 142.095
-   }
-   ShapePoint "{6566F0B917A26201}" {
-    Position 290.173 -1.141 188.441
-   }
-   ShapePoint "{6566F0B916BFA69F}" {
-    Position 217.05 3.355 196.861
-   }
-   ShapePoint "{6566F0B91436261B}" {
-    Position 125.846 4.269 190.88
-   }
   }
  }
 }
-TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
- coords 4083.403 66.779 10697.458
- m_queryRadius 120
- m_locationName "the Compound"
- m_flagName "Compound"
- m_stopAfterFirstChange 1
- m_ownerFactionKey "GC_TKA"
- m_ratioThreshold 0.5
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ {
+  coords 6056.629 92.943 10430.933
+  m_queryRadius 180
+  m_locationName "the Compound"
+  m_flagName "Compound"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "US"
+  m_ratioThreshold 0.6
+ }
+ {
+  coords 6404.349 89.03 11348.531
+  m_queryRadius 40
+  m_sendStatusMessages 1
+  m_locationName "the North-Eastern Compound"
+  m_flagName "NECompound"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "US"
+  m_ratioThreshold 0.9
+ }
+ {
+  coords 6302.276 85.684 11357.055
+  m_queryRadius 60
+  m_sendStatusMessages 1
+  m_locationName "the North-Western Compounds"
+  m_flagName "NWCompound"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "US"
+  m_ratioThreshold 0.9
+ }
+ {
+  coords 6247.211 93.157 10961
+  m_queryRadius 90
+  m_sendStatusMessages 1
+  m_locationName "the Southern Compound"
+  m_flagName "SCompound"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "US"
+  m_ratioThreshold 0.9
+ }
+ {
+  coords 6246.438 81.393 11265.717
+  m_queryRadius 70
+  m_sendStatusMessages 1
+  m_locationName "the South-Westerm Compound"
+  m_flagName "SWCompound"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "US"
+  m_ratioThreshold 0.9
+ }
 }
 TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
  coords 4512.436 102.467 11792.496
  m_missionEvents {
   TILW_MissionEvent "{65041578E772535B}" {
-   m_name "Insurgent/US Victory Casualties"
+   m_name "US Victory Casualties"
    m_instructions {
     TILW_SendMessageInstruction "{6504157888C9AF5E}" {
-     m_messageTitle "Insurgent / US  Victory"
-     m_messageBody "Takistan Army Sustained too many casualties.. GM Discretion when to end the mission"
+     m_messageTitle "US Army Victory"
+     m_messageBody "Takistan Army has sustained too many casualties.. GM Discretion when to end the mission"
     }
    }
    m_condition TILW_LiteralTerm "{6504157885FC5C39}" {
-    m_flagName "GC_TKA"
+    m_flagName "TKA_CAS"
+   }
+  }
+  TILW_MissionEvent "{6568DE76BF2F23F5}" {
+   m_name "TAK Victory Casualties"
+   m_instructions {
+    TILW_SendMessageInstruction "{6568DE76BF2F2044}" {
+     m_messageTitle "Takistan Army Victory"
+     m_messageBody "US Army has sustained too many casualties.. GM Discretion when to end the mission"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6568DE76BF2F2040}" {
+    m_flagName "US_CAS"
    }
   }
   TILW_MissionEvent "{6506E408139E95AC}" {
@@ -557,34 +705,41 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
     }
     TILW_SendMessageInstruction "{6506E4089FDE5CA5}" {
      m_executionDelay 3600
-     m_messageTitle "Insurgent / US Victory"
-     m_messageBody "Insurgents managed to hold off the Takistans.. with the help of the US.. GM Discretion when to end the mission"
+     m_messageTitle "Takistan Army Victory"
+     m_messageBody "Takistans managed to hold off the Americans.. GM Discretion when to end the mission"
     }
     TILW_EndGameInstruction "{650CE1979D068E00}" {
      m_executionDelay 5410
-     m_factionKey "US"
+     m_factionKey "GC_TKA"
     }
    }
    m_condition TILW_LiteralTerm "{6506E40BFBED4D76}" {
     m_invertTerm 1
    }
   }
-  TILW_MissionEvent "{650CE1964D967B9C}" {
-   m_name "US Invasion"
+  TILW_MissionEvent "{6568DE655C51C38C}" {
    m_instructions {
-    TILW_SendMessageInstruction "{6550E3610BC8F6E2}" {
-     m_executionDelay 19
-     m_messageTitle "Battalion Radio Report:"
-     m_messageBody "The US has invaded Takistan, mechanized forces are crossing the border with the aid of their airforce.. Report says there's a Mechanized Company inbound on your location.. Hold your ground or fall back to Nagara or flee to the South.. || AO Limit Removed."
-    }
-    TILW_SendMessageInstruction "{6564F314EC0C2D6F}" {
-     m_executionDelay 900
-     m_messageTitle "Takistan has \"Won\""
-     m_messageBody "You survived for 15min or fell back, Takistan Pyrrhic Victory.. GM Discretion when to end the mission"
+    TILW_SendMessageInstruction "{6568DE6524F79094}" {
+     m_executionDelay 10
+     m_messageTitle "US Victory"
+     m_messageBody "US Forces has secured the town of Rasman.. GM Discretion when to end the mission"
     }
    }
-   m_condition TILW_LiteralTerm "{650CE19641F61B04}" {
-    m_flagName "Compound"
+   m_condition TILW_ConjunctionTerm "{6568DE6551D2EAD5}" {
+    m_operands {
+     TILW_LiteralTerm "{6568DE6556D08D6C}" {
+      m_flagName "SWCompound"
+     }
+     TILW_LiteralTerm "{6568DE6549B4F65E}" {
+      m_flagName "SCompound"
+     }
+     TILW_LiteralTerm "{6568DE654A973E2F}" {
+      m_flagName "NWCompound"
+     }
+     TILW_LiteralTerm "{6568DE6554345784}" {
+      m_flagName "NECompound"
+     }
+    }
    }
   }
  }
@@ -594,5 +749,56 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
    m_factionKey "GC_TKA"
    m_casualtyRatio 0.9
   }
+  TILW_FactionPlayersKilledFlag "{6568DE7681798812}" {
+   m_flagName "US_CAS"
+   m_factionKey "US"
+   m_casualtyRatio 0.9
+  }
+ }
+}
+$grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ Obj_Mark_1 {
+  coords 6247.236 93.156 10961.105
+  m_sImageSetGlow ""
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "flag-3"
+  m_fWorldSize 50
+  m_sDescription "Southern Compound"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_bringToFront 0
+ }
+ Obj_Mark_2 {
+  coords 6404.337 89.057 11348.488
+  m_sImageSetGlow ""
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "flag-3"
+  m_fWorldSize 50
+  m_sDescription "North Eastern Compound"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_bringToFront 0
+ }
+ Obj_Mark_3 {
+  coords 6302.301 85.684 11357.07
+  m_sImageSetGlow ""
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "flag-3"
+  m_fWorldSize 50
+  m_sDescription "North Western Compound"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_bringToFront 0
+ }
+ Obj_Mark_4 {
+  coords 6246.469 86.549 11265.726
+  m_sImageSetGlow ""
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "flag-3"
+  m_fWorldSize 50
+  m_sDescription "South Western Compound"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_bringToFront 0
  }
 }
