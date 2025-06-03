@@ -1,13 +1,7 @@
 $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
  D0_Description {
   m_sTitle "Metalwave"
-  m_sTextData "Russian Mechanized Assault on CDF held power plant"\
-  ""\
-  "3:2 RU:CDF"\
-  ""\
-  "Vehicles:"\
-  "RU - 3x K-17, 1x T-14"\
-  "CDF - 1x BTR-70, 1x .50cal HMMWV"
+  m_sTextData "Russian mechanized assault on CDF held power plant"
   m_bEmptyFactionVisibility 1
  }
  D1_Situation_CDF {
@@ -18,7 +12,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   "A Russian motor rifle platoon (mounted in K-17s, with attached T-14) has been spotted near 028 040, preparing to assault the power plant."\
   ""\
   "Previously, another Russian squad established a firing position at 023 038."\
-  ""\
+  "It is expected that the enemy has a mortar available as fire support."\
   ""\
   "B. Friendly Forces"\
   ""\
@@ -26,7 +20,9 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   ""\
   "There are extensive trench networks to the east of the power plant, both south and north of the approaching road."\
   ""\
-  "The third squad will remain at the power plant, with the exception of its vehicle which is in a fighting position 200m north. Another platoon has prepared positions to the south, but will not act as a QRF."
+  "The third squad will remain at the power plant, with the exception of its vehicle which is in a fighting position 200m north. Another platoon has prepared positions to the south, but will not leave its positions."\
+  ""\
+  "Reinforcements have been requested - one squad will arrive after 15 minutes, a second one after 25 minutes. A QRF of decisive size will only arrive after 45 minutes."
   m_aVisibleForFactions {
    "GC_CDF"
   }
@@ -37,7 +33,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   m_sTitle "Mission"
   m_sTextData "Mission"\
   ""\
-  "Defend against the Russian assault."\
+  "Defend against the Russian assault, or delay until reinforcements arrive at T+45m."\
   ""\
   ""\
   "Service / Support"\
@@ -63,13 +59,13 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   ""\
   "One platoon of CDF, defending the power plant to the west (018 036)."\
   "Mostly infantry, possibly with lightly armored vehicle support, like a BTR or armed HMMWV."\
-  "Another CDF platoon is located to their south, but unlikely to act as a QRF."\
+  "Another CDF platoon is located to their south, but unlikely to leave their positions. It is possible there will be a small QRF, but a decisive response is not expected within 45 minutes."\
   "The power plant area is protected by a significant trench network, extending up to 200m east."\
   ""\
   ""\
   "B. Friendly Forces"\
   ""\
-  "One K-17 based motor rifle platoon with an attached T-14 tank, currrently located at 029 040."\
+  "One K-17 based motor rifle platoon with an attached T-14 tank and 2B14 mortar, currrently located at 029 040."\
   ""\
   "Another squad previously established a firing position at 023 038."
   m_aVisibleForFactions {
@@ -82,22 +78,25 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   m_sTitle "Mission"
   m_sTextData "Mission"\
   ""\
-  "Seize the power plant from the CDF."\
+  "Seize the power plant from the CDF, no later than T+45m."\
   ""\
   ""\
   "Service / Support"\
   ""\
   "Resupply: Vehicle inventories"\
-  "Vehicle Support: 3x K-17 IFV, 1x T-14 Tank "\
+  "Vehicle Support: 3x K-17 IFV, 1x T-14 Tank"\
+  "Fire Support: 1x 2B14 Mortar"\
+  "Mortar shells: 1500 supplies - 50 per HE, 10 per Smoke, 5 per Illumination"\
   ""\
   ""\
   "Command / Signal"\
   ""\
-  "HQ - Platoon HQ"\
-  "1 - 1st Squad"\
-  "2 - 2nd Squad"\
-  "3 - 3rd Squad"\
-  "4 - Tank"
+  "HQ / 21 HQ - Platoon HQ"\
+  "21 - 1st Squad"\
+  "22 - 2nd Squad"\
+  "23 - 3rd Squad"\
+  "41 - Tank"\
+  "51 - Mortar"
   m_aVisibleForFactions {
    "RHS_AFRF"
   }
@@ -106,12 +105,14 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
  D3_Notes {
   coords 0 0 0
   m_sTitle "Notes"
-  m_sTextData "- The forest in the south has two small ravines, which are not crossable by vehicles."\
+  m_sTextData "The forest in the south has two small ravines, which are not crossable by vehicles."\
   ""\
-  "- Setup Timer: 5 minutes"\
-  "- End Conditions:"\
-  "  a) AFRF Victory: AFRF has taken the power plant (2m capture timer)"\
-  "  b) CDF Victory: AFRF has suffered 90% casualties, or the 45m time limit is reached"
+  "Setup Timer: 4 minutes"\
+  "CDF have 5 respawns"\
+  ""\
+  "End Conditions:"\
+  "- AFRF Victory: AFRF has taken the power plant (2m capture timer)"\
+  "- CDF Victory: AFRF has suffered 90% casualties, or the 45m time limit is reached"
   m_bShowForAnyFaction 1
   m_iOrder 3
  }

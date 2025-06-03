@@ -1,28 +1,5 @@
-SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
- components {
-  NavmeshWorldComponent "{5584F30E67F617AD}" {
-   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
-    NavmeshFilesConfig BaseNavmeshFilesConfig "{62F56C1E36E1FE1A}" {
-     NavmeshFile "{4C5DC23B33285CBA}NavMesh/Soldiers.nmn"
-    }
-   }
-  }
-  NavmeshWorldComponent "{5584F30EEFEE1223}" {
-   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
-    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
-     NavmeshFile "{6957D1DE8462E9A0}NavMesh/BTRlike.nmn"
-    }
-   }
-  }
-  NavmeshWorldComponent "{5C8C9B750D124A63}" {
-   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
-    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
-     NavmeshFile "{0C645FF0DA66996D}NavMesh/lowres.nmn"
-    }
-   }
-  }
- }
- coords 0 0 0
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 1870.689 9.622 3541.135
 }
 PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
 }
@@ -38,7 +15,13 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/
    }
   }
  }
- m_iFreezeTime 300000
+ m_iFreezeTime 240000
+ m_aFactionRespawnCount {
+  PS_FactionRespawnCount "{64FCD3F7710274D2}" {
+   m_sFactionKey "GC_CDF"
+   m_iCount 5
+  }
+ }
  {
   SCR_FactionManager "6302F7C51C611DFB" {
    ID "5ED9088735FF2D8B"
@@ -47,19 +30,22 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/
      m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
       m_aSquadNames {
        SCR_CallsignInfo "{5977478D568C092E}" {
-        m_sCallsign "311"
+        m_sCallsign "221 HQ"
        }
        SCR_CallsignInfo "{5977478D568C092D}" {
-        m_sCallsign "312"
+        m_sCallsign "221"
        }
        SCR_CallsignInfo "{5977478D568D935E}" {
-        m_sCallsign "313"
+        m_sCallsign "222"
        }
        SCR_CallsignInfo "{5977478D568D935F}" {
-        m_sCallsign "414"
+        m_sCallsign "223"
        }
-       SCR_CallsignInfo "{630222328E89E291}" {
-        m_sCallsign "311 HQ"
+       SCR_CallsignInfo "{64E30A2D51F0B029}" {
+        m_sCallsign "241"
+       }
+       SCR_CallsignInfo "{64E30A2D52199F03}" {
+        m_sCallsign "251"
        }
       }
       m_sCallsignGroupFormat "%3"
@@ -86,6 +72,77 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/
       m_sCallsignCharacterFormat "%3: %4"
       m_sCallsignCharacterWithRoleFormat "%3: %4"
      }
+    }
+   }
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity : "{6144B0BE2EAC6897}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneMedium.et" {
+ coords 2955.802 27.353 4085.601
+ m_fWarnRadius 45
+ m_fZoneRadius 70
+ m_fZoneTeleportedRadius 80
+}
+$grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
+ spawner_qrf2 {
+  coords 1565.704 4.472 3471.999
+  angleX 8.72
+  angleY 47.884
+  angleZ 1.69
+  m_prefab "{FCEC036D7F903A66}Prefabs/Vehicles/Wheeled/BTR70/CDF/BTR70_CDF.et"
+  m_spawnTimings {
+   1515
+  }
+  m_crewConfig TILW_CrewConfig "{64FCD3F661F15CB0}" : "{A48A101CB478559D}Configs/Crews/GC_CDF/BTR70/BTR70_CDF_Crew_AI.conf" {
+   m_crewGroups {
+    TILW_CrewGroup "{64F9164B5538BD6E}" {
+     m_waypointNames {
+      "wp_qrf_2"
+     }
+    }
+   }
+  }
+ }
+ spawner_qrf1 {
+  coords 1534.884 8.332 3554.717
+  angleX 8.72
+  angleY 47.884
+  angleZ 1.69
+  m_prefab "{F005DCAB1810AAE2}Prefabs/Groups/BLUFOR/CDF/Mech_Modern/Group_CDF_Modern_MechSquadNoCrew_1.et"
+  m_spawnTimings {
+   1500
+  }
+  m_waypointNames {
+   "wp_qrf_1" "wp_def_8"
+  }
+ }
+ spawner_qrf3 {
+  coords 1706.433 3.387 3351.018
+  angleX 8.72
+  angleY 47.884
+  angleZ 1.69
+  m_prefab "{9C51E84BA4D425CC}Prefabs/Groups/BLUFOR/CDF/Mech_Modern/Group_CDF_Modern_MechSquadNoCrew_2.et"
+  m_spawnTimings {
+   900
+  }
+  m_waypointNames {
+   "wp_qrf_3" "wp_qrf_4" "wp_def_9"
+  }
+ }
+ spawner_qrf4 {
+  coords 1659.892 1.657 3305.658
+  angleY 47.993
+  m_prefab "{FCEC036D7F903A66}Prefabs/Vehicles/Wheeled/BTR70/CDF/BTR70_CDF.et"
+  m_spawnTimings {
+   915
+  }
+  m_crewConfig TILW_CrewConfig "{64FCD3F661F15CB0}" : "{A48A101CB478559D}Configs/Crews/GC_CDF/BTR70/BTR70_CDF_Crew_AI.conf" {
+   m_crewGroups {
+    TILW_CrewGroup "{64F9164B5538BD6E}" {
+     m_waypointNames {
+      "wp_qrf_6"
+     }
+     m_waypointDelay 10
     }
    }
   }
@@ -145,7 +202,7 @@ PolylineShapeEntity AOLimit_AFRF : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW
   }
  }
 }
-TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/TILW_FactionTrigger.et" {
+TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
  coords 1804.127 9.721 3701.177
  m_queryRadius 60
  m_captureIterations 12
@@ -201,7 +258,7 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
     TILW_SendMessageInstruction "{62F6E925ECB3968C}" {
      m_executionDelay 2705
      m_messageTitle "CDF Victory"
-     m_messageBody "The CDF held out long enough for reinforcements to arrive."
+     m_messageBody "The CDF held out long enough for a decisive amount of reinforcements to arrive."
     }
     TILW_EndGameInstruction "{62F6E925EEAE451D}" {
      m_executionDelay 2720
@@ -220,7 +277,4 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
    m_casualtyRatio 0.9
   }
  }
-}
-SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
- coords 2955.802 27.353 4085.601
 }

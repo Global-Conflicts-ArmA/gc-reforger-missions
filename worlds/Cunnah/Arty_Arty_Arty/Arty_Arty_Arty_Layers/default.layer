@@ -1,0 +1,388 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F9E52831}" {
+     NavmeshFile "{AD5F99CD7C59D5E0}worlds/GameMaster/Navmeshes/GM_Eden.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F3B4EE8A}" {
+     NavmeshFile "{C35ECF3276824654}worlds/GameMaster/Navmeshes/GM_Eden_vehicles.nmn"
+    }
+   }
+  }
+ }
+ coords 9169.455 67.329 2157.308
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 9192.948 64.72 2132.626
+}
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6506DED9A54B07DE}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 13
+     m_iStartingMinutes 10
+    }
+   }
+  }
+ }
+ coords 9151.881 68.377 2142.521
+ m_iFreezeTime 300000
+}
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ Description {
+  coords 8805.923 95.987 2780.748
+  m_sTitle "COTVT 60 Arty Arty Arty"
+  m_sTextData "US forces attempt to delay the Russian invasion of Eden."\
+  ""\
+  "2:1 Ratio."\
+  ""\
+  "Mortar, BTR, and Anti Tank Mine fun to be had! "
+  m_bEmptyFactionVisibility 1
+ }
+ NOTES {
+  coords 8805.923 95.987 2780.748
+  m_sTitle "NOTES"
+  m_sTextData "5 Minute setup timer."\
+  ""\
+  "OPFOR win by extracting 90% of surviving forces at northern end of GREEN VALLEY."\
+  ""\
+  "BLUFOR win either delaying OPFOR for 45 mins (1400 LT) or by destroying 80% of OPFOR. "
+  m_aVisibleForFactions {
+   "US" "USSR"
+  }
+  m_iOrder 10
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 9154.384 68.147 2136.308
+ m_missionEvents {
+  TILW_MissionEvent "{650557F14E0728B7}" {
+   m_name "Opening Cinematics"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{650557F155000933}" {
+     m_executionDelay 305
+     m_prefab "{1DDF7187608968F2}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Large.et"
+     m_locationName "mortar_target_1"
+    }
+    TILW_SpawnPrefabInstruction "{650557F04E1C46BC}" {
+     m_executionDelay 305
+     m_prefab "{1DDF7187608968F2}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Large.et"
+     m_locationName "mortar_target_2"
+    }
+    TILW_SpawnPrefabInstruction "{650557F054F59808}" {
+     m_executionDelay 315
+     m_prefab "{1DDF7187608968F2}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Large.et"
+     m_locationName "mortar_target_1"
+    }
+    TILW_SpawnPrefabInstruction "{650557F0528653D9}" {
+     m_executionDelay 313
+     m_prefab "{1DDF7187608968F2}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Large.et"
+     m_locationName "mortar_target_2"
+    }
+    TILW_SpawnPrefabInstruction "{650557F0FAB21B54}" {
+     m_executionDelay 325
+     m_prefab "{1DDF7187608968F2}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Large.et"
+     m_locationName "mortar_target_3"
+    }
+    TILW_SpawnPrefabInstruction "{650557F0CA155CE3}" {
+     m_executionDelay 325
+     m_prefab "{1DDF7187608968F2}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Large.et"
+     m_locationName "mortar_target_4"
+    }
+    TILW_SpawnPrefabInstruction "{650557F0DC1E6040}" {
+     m_executionDelay 335
+     m_prefab "{1DDF7187608968F2}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Large.et"
+     m_locationName "mortar_target_3"
+    }
+    TILW_SpawnPrefabInstruction "{650557F322A1B1AA}" {
+     m_executionDelay 335
+     m_prefab "{1DDF7187608968F2}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Large.et"
+     m_locationName "mortar_target_4"
+    }
+    TILW_SpawnPrefabInstruction "{650557F2F6658586}" {
+     m_executionDelay 345
+     m_prefab "{1DDF7187608968F2}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Large.et"
+     m_locationName "mortar_target_5"
+    }
+    TILW_SpawnPrefabInstruction "{650557E8AE3A8954}" {
+     m_executionDelay 348
+     m_prefab "{2F690C7C59FB4DBF}Prefabs/Weapons/Warheads/Explosions/Explosion_Tnt_Small.et"
+     m_locationName "explosion_7"
+    }
+    TILW_SpawnPrefabInstruction "{650557F2CDC6E45E}" {
+     m_executionDelay 345
+     m_prefab "{1DDF7187608968F2}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Large.et"
+     m_locationName "mortar_target_6"
+    }
+    TILW_SpawnPrefabInstruction "{650557F2D3823F85}" {
+     m_executionDelay 345
+     m_prefab "{1DDF7187608968F2}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Large.et"
+     m_locationName "mortar_target_7"
+    }
+    TILW_SpawnPrefabInstruction "{650557F5B24BB14C}" {
+     m_executionDelay 355
+     m_prefab "{5E0F494A46B3B604}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Combing.et"
+     m_locationName "motar_target_8"
+    }
+    TILW_SpawnPrefabInstruction "{650557EB220EE2E1}" {
+     m_executionDelay 349
+     m_prefab "{2F690C7C59FB4DBF}Prefabs/Weapons/Warheads/Explosions/Explosion_Tnt_Small.et"
+     m_locationName "explosion_1"
+    }
+    TILW_SpawnPrefabInstruction "{650557EB04D7ED0E}" {
+     m_executionDelay 350
+     m_prefab "{2F690C7C59FB4DBF}Prefabs/Weapons/Warheads/Explosions/Explosion_Tnt_Small.et"
+     m_locationName "explosion_2"
+    }
+    TILW_SpawnPrefabInstruction "{650557EB1148E5C5}" {
+     m_executionDelay 352
+     m_prefab "{2F690C7C59FB4DBF}Prefabs/Weapons/Warheads/Explosions/Explosion_Tnt_Small.et"
+     m_locationName "explosion_3"
+    }
+    TILW_SpawnPrefabInstruction "{650557EB6FA1E137}" {
+     m_executionDelay 310
+     m_prefab "{2F690C7C59FB4DBF}Prefabs/Weapons/Warheads/Explosions/Explosion_Tnt_Small.et"
+     m_locationName "explosion_4"
+    }
+    TILW_SpawnPrefabInstruction "{650557EB79808FFA}" {
+     m_executionDelay 320
+     m_prefab "{2F690C7C59FB4DBF}Prefabs/Weapons/Warheads/Explosions/Explosion_Tnt_Small.et"
+     m_locationName "explosion_5"
+    }
+    TILW_SpawnPrefabInstruction "{650557EB4D0D1170}" {
+     m_executionDelay 345
+     m_prefab "{2F690C7C59FB4DBF}Prefabs/Weapons/Warheads/Explosions/Explosion_Tnt_Small.et"
+     m_locationName "explosion_6"
+    }
+    TILW_SpawnVehicleInstruction "{65070C1E55E9ECC9}" {
+     m_executionDelay 0
+     m_prefab "{E5F73B9D4CEB94E4}Prefabs/Vehicles/Wheeled/S1203/S1203_cargo_white.et"
+     m_locationName "dave_spawn"
+     m_crewConfig TILW_CrewConfig "{65070C1E5B608186}" {
+      m_crewGroups {
+       TILW_CrewGroup "{65070C1E5ACBC880}" {
+        m_crewStations {
+         TILW_CrewStation "{65070C1EAB0C2C56}" {
+          m_allowTurret 0
+          m_allowCargo 0
+          m_characters {
+           "{8C7093AF368F496A}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_CottonShirt_1.et"
+          }
+         }
+        }
+        m_entityName "dave"
+       }
+      }
+     }
+    }
+    TILW_AssignWaypointsInstruction "{65070C1F4896D64E}" {
+     m_groupName "dave"
+     m_waypointNames {
+      "civ_flee"
+     }
+     m_clearExisting 1
+    }
+    TILW_SpawnVehicleInstruction "{65070C1CAF9AC172}" {
+     m_executionDelay 0
+     m_prefab "{4A59DAEFE645E8A0}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker_CIV_orange.et"
+     m_locationName "ralph_spawn"
+     m_crewConfig TILW_CrewConfig "{65070C1CB1508B39}" {
+      m_crewGroups {
+       TILW_CrewGroup "{65070C1CBE8929B6}" {
+        m_crewStations {
+         TILW_CrewStation "{65070C1C8555ACA3}" {
+          m_allowTurret 0
+          m_allowCargo 0
+          m_characters {
+           "{11EB9A0D2A5899EA}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_DenimJacket_1.et"
+          }
+         }
+        }
+        m_entityName "ralph"
+       }
+      }
+     }
+    }
+    TILW_AssignWaypointsInstruction "{65070C1CE5F2B71B}" {
+     m_executionDelay 240
+     m_groupName "ralph"
+     m_waypointNames {
+      "civ_flee"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{65070C1D50F28592}" {
+     m_executionDelay 150
+     m_groupName "bob"
+     m_waypointNames {
+      "bob_get_in" "civ_flee"
+     }
+    }
+    TILW_SpawnVehicleInstruction "{65070C1D92AD6A0C}" {
+     m_executionDelay 0
+     m_prefab "{8000A0F649FB4B0D}Prefabs/Vehicles/Wheeled/S105/S105_darkred.et"
+     m_locationName "boss_spawn"
+     m_crewConfig TILW_CrewConfig "{65070C1D9D229EA1}" {
+      m_crewGroups {
+       TILW_CrewGroup "{65070C1D9C03C92A}" {
+        m_crewStations {
+         TILW_CrewStation "{65070C1D9B4E4BC0}" {
+          m_allowTurret 0
+          m_allowCargo 0
+          m_characters {
+           "{A517C72CEF150898}Prefabs/Characters/Factions/CIV/Businessman/Character_CIV_Businessman_2.et"
+          }
+         }
+        }
+        m_entityName "boss"
+       }
+      }
+     }
+    }
+    TILW_SpawnVehicleInstruction "{650C9D2F947BA01D}" {
+     m_executionDelay 0
+     m_prefab "{4C79EB5FADB89B7A}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_yellow.et"
+     m_locationName "town_folk_spawn"
+     m_crewConfig TILW_CrewConfig "{650C9D2FE329417A}" {
+      m_crewGroups {
+       TILW_CrewGroup "{650C9D2FE2FEEE0A}" {
+        m_crewStations {
+         TILW_CrewStation "{650C9D2FEE6A4624}" {
+          m_allowTurret 0
+          m_allowCargo 0
+          m_characters {
+           "{11D3F19EB64AFA8A}Prefabs/Characters/Factions/CIV/ConstructionWorker/Character_CIV_ConstructionWorker_4.et"
+          }
+         }
+        }
+        m_entityName "town_folk"
+       }
+      }
+     }
+    }
+    TILW_AssignWaypointsInstruction "{65070C1DC0F5690A}" {
+     m_groupName "boss"
+     m_waypointNames {
+      "civ_flee"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{65072041FC5F1458}" {
+     m_executionDelay 300
+     m_groupName "civ_fleeing"
+     m_waypointNames {
+      "civ_flee"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{650C9D2DBCBCE337}" {
+     m_executionDelay 30
+     m_groupName "dock_workers"
+     m_waypointNames {
+      "dock_worker_get_in" "civ_flee"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{650C9D2FD5580185}" {
+     m_groupName "town_folk"
+     m_waypointNames {
+      "civ_flee"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{650557F1FF91B2D0}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{650C9D2E77BBA3D8}" {
+   m_name "BLUFOR AI"
+   m_instructions {
+    TILW_AssignWaypointsInstruction "{650C9D2E7CE4C040}" {
+     m_groupName "defenders_1"
+     m_waypointNames {
+      "defend_1"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{650C9D2E781F8546}" {
+     m_groupName "defenders_2"
+     m_waypointNames {
+      "defend_2"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{650C9D2E5F70760B}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{650CCC37B7DB79B9}" {
+   m_name "Timer"
+   m_instructions {
+    TILW_SendMessageInstruction "{650CCC37BC2DADB0}" {
+     m_executionDelay 2400
+     m_messageTitle "Extraction"
+     m_messageBody "10 minutes Remaining!"
+    }
+    TILW_SendMessageInstruction "{650CCC361329DA05}" {
+     m_executionDelay 2700
+     m_messageTitle "Extraction"
+     m_messageBody "5 minutes Remaining!"
+    }
+    TILW_SendMessageInstruction "{650CCC353F062910}" {
+     m_executionDelay 3000
+     m_messageTitle "US VICTORY!"
+     m_messageBody "Russian forces have been delayed."
+    }
+    TILW_EndGameInstruction "{650CCC362216C4DB}" {
+     m_executionDelay 3005
+     m_factionKey "US"
+    }
+   }
+   m_condition TILW_LiteralTerm "{650CCC365BC1E660}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{650CCC36A43886A2}" {
+   m_name "OPFOR Destroyed"
+   m_instructions {
+    TILW_SendMessageInstruction "{650CCC36FE108E21}" {
+     m_executionDelay 0
+     m_messageTitle "US VICTORY!"
+     m_messageBody "Russian forces are combat ineffective."
+    }
+    TILW_EndGameInstruction "{650CCC36CA4B3B57}" {
+     m_factionKey "US"
+    }
+   }
+   m_condition TILW_LiteralTerm "{650CCC36F5A8EAB7}" {
+    m_flagName "OPFOR_DESTROYED"
+   }
+  }
+  TILW_MissionEvent "{650CCC3512D0408A}" {
+   m_name "OPFOR Breakthrough"
+   m_instructions {
+    TILW_SendMessageInstruction "{650CCC354D448AD3}" {
+     m_executionDelay 0
+     m_messageTitle "USSR Victory!"
+     m_messageBody "Russian forces have broken through!"
+    }
+    TILW_EndGameInstruction "{650CCC35A7CF764C}" {
+     m_factionKey "USSR"
+    }
+   }
+   m_condition TILW_LiteralTerm "{650CCC3541B3AA61}" {
+    m_flagName "OPFOR_EXTRACTED"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{650D07465B3A1373}" {
+   m_flagName "OPFOR_DESTROYED"
+   m_factionKey "USSR"
+   m_casualtyRatio 0.8
+  }
+ }
+}

@@ -1,0 +1,127 @@
+GenericEntity : "{5879D8E9C56E358D}Prefabs/Items/Core/Radio_base.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  BaseRadioComponent "{5A30BAE7673C63CA}" {
+   "Encryption key" "deadmeat"
+   "Turned on" 1
+   Transceivers {
+    RadioTransceiver "{6522D4EA522B34D2}" {
+     ChannelFrequency 39000
+     "Transmitting Range" 4000
+     "Min tunable frequency" 27000
+     "Max tunable frequency" 52000
+     "Frequency resolution" 100
+    }
+    RadioTransceiver "{6522D4DB59184874}" {
+     ChannelFrequency 48000
+    }
+   }
+  }
+  InventoryItemComponent "{5222EB4D0C73006B}" {
+   Attributes SCR_ItemAttributeCollection "{5222EB4D0A2B466B}" {
+    ItemDisplayName UIInfo "{5222EB4D07D865FA}" {
+     Name "#RHS-Item_R187_Name ••"
+     Description "#RHS-Item_R187_Description"
+     Icon "{BF7C73DE63B1FFB7}UI/Textures/VON/R148-100px_UI.edds"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes PhysicalAttributes {
+     Weight 0.5
+     SizeSetupStrategy Manual
+     ItemVolume 250
+     RestingUP Forward
+     RestingAdditiveOffsetLS 0 0 0.18
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{6522D4EA522B34C5}" {
+     AnimationInstance "{5B6413B9125EE731}Assets/Items/Equipment/workspaces/Radio_R148_player.asi"
+     AnimationAttachments {
+      AnimationAttachmentInfo "{6522D4EA522B34C0}" {
+       AnimGraph "{4512B6E152A948B4}Assets/Items/Equipment/workspaces/Radio_R148.agr"
+       AnimInstance "{5B6413B9125EE731}Assets/Items/Equipment/workspaces/Radio_R148_player.asi"
+       BindingName "Gadget"
+      }
+     }
+     AllowInspection 1
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{6522D4EA522B34C8}" {
+      CameraOrbitAngles -40 -10 0
+      CameraDistanceToItem 0.31
+      CameraOffset 0 -0.1 0
+      FOV 40
+     }
+     SCR_VONPreviewAttributes "{6522D4EA522B34F6}" {
+      CameraOrbitAngles -30 0 45
+      CameraDistanceToItem 0.7
+      FOV 40
+     }
+    }
+    CommonItemType "RADIO"
+    m_SlotType SLOT_GADGETS_STORAGE
+   }
+  }
+  MeshObject "{5A30BAE7673C63D1}" {
+   Object "{E8E5E7FCEF0E01CB}Assets/Items/Equipment/Radios/Radio_R187P1/r187p1_OLD.xob"
+  }
+  RigidBody "{5A30BAE7673C63D3}" {
+   Mass 3
+   CenterOfMass 0 0.1 0
+   LinearDamping 0.5
+   AngularDamping 0.5
+   ModelGeometry 1
+   CCDRadius 0.028
+  }
+  ProcAnimComponent "{6522D4EA522B34F1}" {
+   Parameters {
+    ProcAnimParams "{6522D4EA522B34FF}" {
+     ResourceName "{DE57211A364C1700}Assets/Items/Equipment/Radios/Radio_R148/Radio_R148_01.pap"
+     BoneNames {
+      "i_channel01"
+     }
+     SimulationDistance 20
+     SimulateOnDedicatedServer 0
+    }
+   }
+  }
+  SCR_RadioComponent "{5A30BAE7673C63D4}" {
+   m_eAnimVariable R148
+   m_iRadioType ANPRC68
+  }
+  ActionsManagerComponent "{508AB5952B584B2E}" {
+   ActionContexts {
+    UserActionContext "{508AC2ABEC97066C}" {
+     ContextName "default"
+     Position PointInfo "{508AC2ABEAC4A0F5}" {
+      Offset 0.0353 0.1059 0.0202
+     }
+     Radius 0.135
+    }
+    UserActionContext "{6522D4EA522B34E7}" {
+     ContextName "knob_channel"
+     Position PointInfo "{6522D4EA522B34E4}" {
+      Offset 0.0755 0.1576 -0.0056
+     }
+     Radius 0.3
+    }
+   }
+   additionalActions {
+    SCR_EquipItemAction "{553AEBE8806A957C}" : "{068D8D646964D12A}Prefabs/Characters/Core/Actions/EquipGadgetAction.conf" {
+    }
+    SCR_RadioTuningUserAction "{6522D4EA522B34E1}" {
+     ParentContextList {
+      "knob_channel"
+     }
+     UIInfo UIInfo "{6522D4EA522B34EE}" {
+     }
+    }
+    SCR_RadioTuningUserAction "{6522D4EA522B34EC}" {
+     ParentContextList {
+      "knob_channel"
+     }
+     UIInfo UIInfo "{6522D4EA522B3413}" {
+     }
+     m_bTuneUp 1
+    }
+   }
+  }
+ }
+}

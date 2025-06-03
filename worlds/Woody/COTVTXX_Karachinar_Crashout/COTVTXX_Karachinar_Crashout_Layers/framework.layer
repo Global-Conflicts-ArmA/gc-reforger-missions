@@ -1,0 +1,62 @@
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 11652.991 219.382 11369.844
+ m_missionEvents {
+  TILW_MissionEvent "{655B3E0598C728AD}" {
+   m_name "Mujahideen W"
+   m_instructions {
+    TILW_EndGameInstruction "{655B3E05B05698B1}" {
+     m_executionDelay 15
+     m_factionKey "GC_INSURGENT"
+    }
+   }
+   m_condition TILW_LiteralTerm "{655B3E05AA84C32F}" {
+    m_flagName "ussr_casualties"
+   }
+  }
+  TILW_MissionEvent "{655B3E059F0B3585}" {
+   m_name "Soviet W1"
+   m_instructions {
+    TILW_EndGameInstruction "{655B3E05CD1AE6E5}" {
+     m_executionDelay 15
+     m_factionKey "USSR"
+    }
+   }
+   m_condition TILW_LiteralTerm "{655B3E05AE9C4310}" {
+    m_flagName "mujahideen_casualties"
+   }
+  }
+  TILW_MissionEvent "{655B3E0594C1A952}" {
+   m_name "Soviet W2"
+   m_instructions {
+    TILW_EndGameInstruction "{655B3E05C669BD6D}" {
+     m_executionDelay 15
+     m_factionKey "USSR"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{655B3E05A2E83503}" {
+    m_operands {
+     TILW_LiteralTerm "{655B3E05A47672DE}" {
+      m_flagName "obj1"
+     }
+     TILW_LiteralTerm "{655B3E05A5717112}" {
+      m_flagName "obj2"
+     }
+     TILW_LiteralTerm "{655B3E05A66513E4}" {
+      m_flagName "obj3"
+     }
+    }
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{655B3E057D2A634B}" {
+   m_flagName "ussr_casualties"
+   m_factionKey "USSR"
+   m_casualtyRatio 0.8
+  }
+  TILW_FactionPlayersKilledFlag "{655B3E057E1269E2}" {
+   m_flagName "mujahideen_casualties"
+   m_factionKey "GC_INSURGENT"
+  }
+ }
+}

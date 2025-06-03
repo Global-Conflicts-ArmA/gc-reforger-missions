@@ -1,0 +1,152 @@
+TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/TILW_FactionTrigger.et" {
+ coords 4223.862 4.216 10693.847
+ m_queryRadius 12.5
+ m_captureIterations 12
+ m_sendStatusMessages 1
+ m_locationName "the comms hut"
+ m_flagName "obj3"
+ m_stopAfterFirstChange 1
+ m_ownerFactionKey "UK"
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 4401.015 1.623 11070.058
+ m_missionEvents {
+  TILW_MissionEvent "{64DA36F4394FCBFC}" {
+   m_name "UK L 1"
+   m_instructions {
+    TILW_SendMessageInstruction "{64DA36F453C2788B}" {
+     m_executionDelay 10
+     m_messageTitle "Separatist Victory"
+     m_messageBody "Royal Marines have sustained too many casualties!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{64DA36F4497544E6}" {
+    m_flagName "UK_KIA"
+   }
+  }
+  TILW_MissionEvent "{64DA36F44FA6BC4D}" {
+   m_name "SEPARATIST L 1"
+   m_instructions {
+    TILW_SendMessageInstruction "{64DA36F47A7F8D89}" {
+     m_executionDelay 10
+     m_messageTitle "Royal Marines Commandos Victory"
+     m_messageBody "Separatists have sustained too many casualties!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{64DA36F4497544E6}" {
+    m_flagName "GC_SEPARATIST_KIA"
+   }
+  }
+  TILW_MissionEvent "{64DA36F480585EED}" {
+   m_name "UK W - Objectives"
+   m_instructions {
+    TILW_SendMessageInstruction "{64DA36F4AC1FD85C}" {
+     m_messageTitle "Royal Marines Commandos Victory!"
+     m_messageBody "All three objectives completed."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{64DA36F49E38C4DB}" {
+    m_operands {
+     TILW_LiteralTerm "{64DA36F49FC7C04D}" {
+      m_flagName "obj1"
+     }
+     TILW_LiteralTerm "{64DA36F490DDA4D1}" {
+      m_flagName "obj2"
+     }
+     TILW_LiteralTerm "{64DA36F491BE5BE4}" {
+      m_flagName "obj3"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{64DA36F4B2F2E016}" {
+   m_name "Truck 1 destroyed"
+   m_instructions {
+    TILW_SendMessageInstruction "{64DA36F4C0CC83D8}" {
+     m_messageTitle "Royal Marines have completed an objective."
+     m_messageBody "A comms truck has been destroyed"
+    }
+   }
+   m_condition TILW_LiteralTerm "{64DA36F4CC039184}" {
+    m_flagName "obj1"
+   }
+  }
+  TILW_MissionEvent "{64DA36F4E7D252FB}" {
+   m_name "Truck 2 destroyed"
+   m_instructions {
+    TILW_SendMessageInstruction "{64DA36F4C0CC83D8}" {
+     m_messageTitle "Royal Marines have completed an objective."
+     m_messageBody "A comms truck has been destroyed"
+    }
+   }
+   m_condition TILW_LiteralTerm "{64DA36F4CC039184}" {
+    m_flagName "obj2"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{64DA36F413040DF9}" {
+   m_flagName "UK_KIA"
+   m_factionKey "UK"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{64DA36F4203B6A20}" {
+   m_flagName "GC_SEPARATIST_KIA"
+   m_factionKey "GC_SEPARATIST"
+  }
+ }
+}
+$grp Vehicle : "{E6AEC014D162D686}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_command.et" {
+ Ural4320_FIA_command1 {
+  components {
+   BaseVehicleNodeComponent "{20FB66C5B2237133}" {
+    components {
+     SCR_CarControllerComponent "{20FB66C5BC92275B}" {
+      EngineStartupChance 0
+     }
+    }
+   }
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 100
+     }
+     SCR_FuelNode "{5628CA84B129D4CE}" {
+      m_fInitialFuelTankState 40
+     }
+    }
+   }
+   TILW_Flag_EntityDamage "{64DA36F7B8FCB294}" {
+    m_flagName "obj1"
+   }
+  }
+  coords 4466.875 2.581 11085.118
+  angleY -66.782
+ }
+ Ural4320_FIA_command2 {
+  components {
+   BaseVehicleNodeComponent "{20FB66C5B2237133}" {
+    components {
+     SCR_CarControllerComponent "{20FB66C5BC92275B}" {
+      EngineStartupChance 0
+     }
+    }
+   }
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 100
+     }
+     SCR_FuelNode "{5628CA84B129D4CE}" {
+      m_fInitialFuelTankState 40
+     }
+    }
+   }
+   TILW_Flag_EntityDamage "{64DA36F7B709D92D}" {
+    m_flagName "obj2"
+   }
+  }
+  coords 4381.529 1.698 10993.513
+  angleY 58.14
+ }
+}

@@ -1,0 +1,110 @@
+GenericEntity : "{C280B28ED4DF7AC5}Prefabs/Props/Military/Sandbags/Sandbag_01_single_base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  SignalsManagerComponent "{647C19525F210571}" {
+  }
+  MeshObject "{5872F0EB7FA40561}" {
+   ClutterOccluder 0
+   BoundingBox AABBBoundingVolume "{647C32048E4E7FE5}" {
+    Mins -0.14 0.06 -0.1
+    Maxs 0.12 0.12 0.07
+   }
+  }
+  RigidBody "{5872F0EB7DFB5A9D}" {
+   ResponseIndex "TinyDestructible"
+   Static 1
+  }
+  SCR_ExplosiveChargeInventoryItemComponent "{647C321126C956DE}" {
+   Attributes SCR_ItemAttributeCollection "{647C321124FAACFE}" {
+    ItemDisplayName WeaponUIInfo "{647C3211373278F9}" {
+     Name "Placeable Sandbag"
+     Description "Placeable Sandbag"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{647C32113E42D7B9}" {
+     Weight 0.05
+     SizeSetupStrategy Manual
+     ItemVolume 50
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{647C32113D33943B}" {
+     IkSettings {
+      ItemIKSettings "{647C3211E0CFBDBF}" {
+      }
+     }
+     AnimationInstance "{4FCBEA45CAEBC9C0}anims/workspaces/player/player_main_1h.asi"
+     AnimationIKPose "{ADA8287EEE81F47D}Assets/Weapons/Explosives/DemoBlock_M112/anims/p_M112_IK.anm"
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{647C3211AF9E5B61}" {
+     }
+     CharacterModifierAttributes "{647C3211BB0B6C28}" {
+     }
+    }
+   }
+  }
+  SCR_PlaceableItemComponent "{647C19523F6B2FBF}" {
+   m_bCanAttachToDynamicObject 1
+   m_bCanAttachAngled 1
+   m_eIgnoredPhysicsLayers 0
+   m_aIgnoredComponents {
+    "MeshObject"
+   }
+   m_eMeasurementMethod FROM_CENTER_OF_MASS
+   m_fMaxPlacementDistance 1.6
+   m_ePlacementType XYZ
+  }
+  WeaponComponent "{647C1952C147A1A3}" {
+   WeaponType FragGrenade
+   AllowedRaise "ADS, raised and lowered allowed"
+   shouldHandleObstruction 0
+   UIInfo GrenadeUIInfo "{647C321DA4D1DB8D}" {
+    Name "#AR-Weapon_ExplosiveCharge_M112_Name"
+    Description "#AR-Weapon_ExplosiveCharge_M112_Description"
+    m_MagIndicator SCR_MagazineIndicatorConfiguration "{647C3213C7332AEE}" {
+     m_sOutline "explosive-charge"
+     m_bProgressBar 0
+    }
+    m_eAmmoTypeFlags HE
+   }
+   WeaponSlotType "grenade"
+  }
+  ActionsManagerComponent "{647C1952B1C8F792}" {
+   ActionContexts {
+    UserActionContext "{647C1952BBFDC5A8}" {
+     ContextName "default"
+     Position PointInfo "{647C32153AC3EE62}" {
+     }
+    }
+   }
+   additionalActions {
+    SCR_PickUpItemAction "{647C19528066440F}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{647C321FD71917AB}" {
+      Name "#AR-Inventory_PickUp"
+      Description ""
+     }
+    }
+   }
+  }
+  WeaponAnimationComponent "{647C1952C60A2DB6}" {
+   AnimGraph "{7A7092BE09EA333C}Assets/Weapons/Explosives/workspace/M112.agr"
+   AnimInstance "{971AC76515E361D2}Assets/Weapons/Explosives/workspace/M112.asi"
+   AnimInjection AnimationAttachmentInfo "{647C32169BABE98E}" {
+    AnimGraph "{7A7092BE09EA333C}Assets/Weapons/Explosives/workspace/M112.agr"
+    AnimInstance "{971AC76515E361D2}Assets/Weapons/Explosives/workspace/M112.asi"
+    BindingName "Weapon"
+   }
+   BindWithInjection 1
+   AutoVariablesBind 1
+  }
+  RplComponent "{5624A88DC2D9928D}" {
+   "Rpl State Override" Runtime
+   "Parent Node From Parent Entity" 0
+  }
+  Hierarchy "{647C1952CFA2ED8A}" {
+  }
+ }
+ coords 5390.255 77.56 5792.88
+ Flags 3
+}

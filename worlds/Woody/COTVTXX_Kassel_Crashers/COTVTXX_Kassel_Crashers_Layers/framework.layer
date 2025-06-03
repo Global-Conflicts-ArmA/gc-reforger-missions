@@ -1,0 +1,188 @@
+$grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
+ {
+  coords 240.623 156.062 920.606
+  angleY 81.506
+  m_prefab "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MERDC.et"
+  m_conditionFlag "obj1"
+  m_spawnTimings {
+   1 21
+  }
+  m_waypointNames {
+   "m1"
+  }
+  m_crewConfig TILW_CrewConfig "{651314B6C083423D}" {
+   m_crewGroups {
+    TILW_CrewGroup "{651314B6C26C617E}" {
+     m_crewStations {
+      TILW_CrewStation "{651314B6D808A68B}" {
+       m_characters {
+        "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+       }
+      }
+      TILW_CrewStation "{651314B6E9511A3C}" {
+       m_characters {
+        "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+       }
+      }
+      TILW_CrewStation "{651314B6E0979E2E}" {
+       m_characters {
+        "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+       }
+      }
+      TILW_CrewStation "{651314B6E0EB8919}" {
+       m_characters {
+        "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+       }
+      }
+      TILW_CrewStation "{651314B4716912AA}" {
+       m_characters {
+        "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+       }
+      }
+     }
+     m_waypointNames {
+      "m1"
+     }
+    }
+   }
+   m_noTurretDismount 1
+  }
+ }
+ {
+  coords 232.889 156.066 919.091
+  angleY 77.729
+  m_prefab "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MERDC.et"
+  m_conditionFlag "obj2"
+  m_spawnTimings {
+   1 21
+  }
+  m_waypointNames {
+   "m2"
+  }
+  m_crewConfig TILW_CrewConfig "{651314B6C083423D}" {
+   m_crewGroups {
+    TILW_CrewGroup "{651314B6C26C617E}" {
+     m_crewStations {
+      TILW_CrewStation "{651314B6D808A68B}" {
+       m_characters {
+        "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+       }
+      }
+      TILW_CrewStation "{651314B6E9511A3C}" {
+       m_characters {
+        "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+       }
+      }
+      TILW_CrewStation "{651314B6E0979E2E}" {
+       m_characters {
+        "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+       }
+      }
+      TILW_CrewStation "{651314B6E0EB8919}" {
+       m_characters {
+        "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+       }
+      }
+      TILW_CrewStation "{651314B4768A555E}" {
+       m_characters {
+        "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+       }
+      }
+     }
+     m_waypointNames {
+      "m2"
+     }
+    }
+   }
+   m_noTurretDismount 1
+  }
+ }
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ {
+  coords 1411.395 181.164 133.892
+  m_queryRadius 150
+  m_sendStatusMessages 1
+  m_statusMessages {
+   "The %1 has seized the position of %2." "The %1 is taking control of %2." "The %1 is no longer taking control of %2." "The %1 has lost control of %2." "The %1 is losing control of %2." "The %1 is no longer losing control of %2."
+  }
+  m_locationName "the Southern Platoon"
+  m_flagName "obj1"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "USSR"
+  m_ratioThreshold 0.9
+ }
+ {
+  coords 1250.102 286.044 781.254
+  m_queryRadius 300
+  m_sendStatusMessages 1
+  m_statusMessages {
+   "The %1 has seized the position of %2." "The %1 is taking control of %2." "The %1 is no longer taking control of %2." "The %1 has lost control of %2." "The %1 is losing control of %2." "The %1 is no longer losing control of %2."
+  }
+  m_locationName "the Northern Platoon"
+  m_flagName "obj2"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "USSR"
+  m_ratioThreshold 0.9
+ }
+ {
+  coords 207.06 155.407 920.386
+  m_queryRadius 250
+  m_sendStatusMessages 1
+  m_locationName "Kassel"
+  m_flagName "obj3"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "USSR"
+  m_ratioThreshold 0.9
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 1014.677 173.721 439.358
+ m_missionEvents {
+  TILW_MissionEvent "{65131499586DAA1F}" {
+   m_name "USSR L"
+   m_instructions {
+    TILW_SendMessageInstruction "{6513149957D91F88}" {
+     m_messageTitle "USSR Failiure!"
+     m_messageBody "Soviet forces have sustained 80% casualties!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{651314995DCFEE14}" {
+    m_flagName "USSR_casualties"
+   }
+  }
+  TILW_MissionEvent "{65131499EBB2ED01}" {
+   m_name "USSR W"
+   m_instructions {
+    TILW_SendMessageInstruction "{651314980E23727E}" {
+     m_messageTitle "USSR Victory!"
+     m_messageBody "All three objectives complete."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65131499E1B4F6D9}" {
+    m_operands {
+     TILW_ConjunctionTerm "{65131499E377DDE3}" {
+      m_operands {
+       TILW_LiteralTerm "{65131499E6508F30}" {
+        m_flagName "obj1"
+       }
+       TILW_LiteralTerm "{65131499E75D2917}" {
+        m_flagName "obj2"
+       }
+       TILW_LiteralTerm "{65131499F883D598}" {
+        m_flagName "obj3"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{651314994C5D38B9}" {
+   m_flagName "USSR_casualties"
+   m_factionKey "USSR"
+   m_casualtyRatio 0.8
+  }
+ }
+}

@@ -1,0 +1,163 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F9E52831}" {
+     NavmeshFile "{AD5F99CD7C59D5E0}worlds/GameMaster/Navmeshes/GM_Eden.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F3B4EE8A}" {
+     NavmeshFile "{C35ECF3276824654}worlds/GameMaster/Navmeshes/GM_Eden_vehicles.nmn"
+    }
+   }
+  }
+ }
+ coords 4908.685 18.802 3514.264
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 4912.187 16.807 3532.39
+}
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 6
+   m_iStartingMinutes 45
+   m_bUseSpecifiedDate 1
+   m_iSetDay 11
+   m_iSetMonth 9
+   m_bOverrideEnvironment 1
+   m_fFogHeight 6.5
+   m_fWind 10
+  }
+ }
+ coords 4915.44 16.748 3519.363
+ {
+  SCR_FactionManager "6546EA418E35F64A" {
+   ID "5ED9088735FF2D8B"
+   coords 0 0 0
+  }
+  ItemPreviewManagerEntity "6546EA418E35F67D" {
+   ID "5ED9088735FF2DD5"
+   coords -12.245 1 -7.53
+  }
+  SCR_EditorSettingsEntity {
+   ID "61B4E967E6C20362"
+   coords 0 0 0
+  }
+ }
+}
+PS_ManualMarker : "{676B84E0291E12D6}PrefabsEditable/Markers/Group/Marker_GroupFlagsBlufor_Base.et" {
+ coords 6644.828 29.635 2711.493
+ m_sDescription "USMC LAR Platoon"
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ OBJ_A_Taken {
+  coords 5849.858 -6.992 3453.446
+  m_queryRadius 289.4
+  m_locationName "OBJ Seagull"
+  m_flagName "OBJ_A_Taken"
+  m_stopAfterFirstChange 1
+  m_drawShapeSurface 0
+  m_ownerFactionKey "US"
+ }
+ OBJ_B_Taken {
+  coords 5081.71 14.721 3972.623
+  m_queryRadius 289.9
+  m_locationName "OBJ Mike"
+  m_flagName "OBJ_B_Taken"
+  m_stopAfterFirstChange 1
+  m_drawShapeSurface 0
+  m_ownerFactionKey "US"
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 4922.938 11.905 3541.39
+ m_missionEvents {
+  TILW_MissionEvent "{6546EA42673490B9}" {
+   m_name "OBJ A Taken"
+   m_instructions {
+    TILW_SendMessageInstruction "{6546EA438B87F919}" {
+     m_messageTitle "OBJ Seagull Secured"
+     m_messageBody "OBJ Seagull has been secured by the United States"
+    }
+    TILW_AssignWaypointsInstruction "{6546EA466702F078}" {
+     m_executionDelay 0
+     m_groupName "QRF_01"
+     m_waypointNames {
+      "AIWP_Move_01"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{6546EA43D266E920}" {
+    m_flagName "OBJ_A_Taken"
+   }
+  }
+  TILW_MissionEvent "{6546EA4350FD8073}" {
+   m_name "OBJ B Taken"
+   m_instructions {
+    TILW_SendMessageInstruction "{6546EA4348092AB2}" {
+     m_messageTitle "OBJ Mike Secured"
+     m_messageBody "OBJ Mike has been secured by the United States."
+    }
+   }
+   m_condition TILW_LiteralTerm "{6546EA4373F99175}" {
+    m_flagName "OBJ_B_Taken"
+   }
+  }
+  TILW_MissionEvent "{6546EA40DD995B51}" {
+   m_name "US KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{6546EA40C475ECC8}" {
+     m_messageTitle "US KIA"
+     m_messageBody "DEFEAT"\
+     "All of the US Army and USMC are KIA."\
+     ""\
+     "The mission will end in 20 seconds."
+    }
+    TILW_EndGameInstruction "{6546EA402E1F46C0}" {
+     m_executionDelay 20
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "US"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6546EA4018285CA5}" {
+    m_flagName "US_Players_Killed"
+   }
+  }
+  TILW_MissionEvent "{655700EFA96E7818}" {
+   m_name "US Win"
+   m_instructions {
+    TILW_SendMessageInstruction "{655700EFB5034585}" {
+     m_executionDelay 15
+     m_messageTitle "Victory!"
+     m_messageBody "Both Objectives have been taken!"\
+     "Mission will end in 60 seconds!"\
+     ""
+    }
+    TILW_EndGameInstruction "{655700EFE79607A2}" {
+     m_executionDelay 75
+     m_factionKey "US"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{655700EFA00C7330}" {
+    m_operands {
+     TILW_LiteralTerm "{655700EFA19A0B58}" {
+      m_flagName "OBJ_A_Taken"
+     }
+     TILW_LiteralTerm "{655700EFA3157321}" {
+      m_flagName "OBJ_B_Taken"
+     }
+    }
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{6546EA40B8407DD2}" {
+   m_flagName "US_Players_Killed"
+   m_factionKey "US"
+  }
+ }
+}

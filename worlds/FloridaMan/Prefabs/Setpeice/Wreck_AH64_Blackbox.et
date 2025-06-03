@@ -1,0 +1,107 @@
+GenericEntity {
+ ID "655B660447B37DF8"
+ coords 1625.123 36.694 2139.884
+ {
+  GenericEntity {
+   ID "655B660447B37DF7"
+   components {
+    MeshObject "{655B6606344C649C}" {
+     Object "{3B3E7B5EA7C98AA0}Assets/Vehicles/Helicopters/AH64D/AH64D_Wreck.xob"
+    }
+    RigidBody "{655B66062222A35B}" {
+     ModelGeometry 1
+     Static 1
+    }
+    RplComponent "{655B660626A34E19}" {
+    }
+    Hierarchy "{655B66061A6F4792}" {
+    }
+   }
+   coords 0 0 0
+  }
+  $grp ParticleEffectEntity {
+   {
+    ID "655B660447B30171"
+    components {
+     RplComponent "{655B6604654BFC7D}" {
+     }
+     Hierarchy "{655B660467C1CB19}" {
+     }
+    }
+    coords 0.85 2.746 -9.367
+    EffectPath "{4D5CD8B2B5DE8916}Particles/Vehicle/Vehicle_fire_engine_medium.ptc"
+   }
+   {
+    ID "655B660447B37DCF"
+    components {
+     RplComponent "{655B66049F9DA3B6}" {
+     }
+     Hierarchy "{655B66049219F004}" {
+     }
+    }
+    coords 0.052 2.614 -0.976
+    EffectPath "{93CAB5E5559B5C32}Particles/Vehicle/Vehicle_fire_engine_big.ptc"
+   }
+  }
+  GenericEntity : "{7183F1A80BC18B7C}Prefabs/Props/Military/Compositions/US/RadioStation_US.et" {
+   ID "655B660447B37DF4"
+   components {
+    Hierarchy "{655B6605C148FAAB}" {
+    }
+   }
+   coords 0.676 1.207 2.053
+   angleX -9.606
+   angleY -6.17
+   angleZ 32.937
+   {
+    GenericEntity : "{584EB34600E9698D}Prefabs/Utils/Interactions/TILW_BaseInteraction.et" {
+     ID "655B660447B37DF2"
+     components {
+      ActionsManagerComponent "{61F4C18E835074FF}" {
+       additionalActions {
+        TILW_BaseInteraction "{61F4C18E863E752C}" {
+         ActionTitle "Pararescue_RemoveBlackbox"
+         Duration 15
+         m_actionName "Remove Blackbox"
+         m_factionKeys {
+          "RHS_USAF"
+         }
+         m_deleteParent 1
+         m_flagName "BlackboxRemoved"
+        }
+        TILW_BaseInteraction "{655B660524395984}" {
+         ParentContextList {
+          "Interact_A"
+         }
+         ActionTitle "Pilot_RemoveBlackbox"
+         Duration 5
+         m_actionName "Remove Blackbox"
+         m_factionKeys {
+          "US"
+         }
+         m_deleteParent 1
+         m_flagName "BlackboxRemoved"
+        }
+       }
+      }
+     }
+     coords 0.013 0.108 0
+     angleX 11.401
+     angleZ -32.418
+    }
+   }
+  }
+  PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+   ID "655B660447B37DF0"
+   coords 0 0 0
+   angleY 0
+   m_MarkerColor 0.502 0 0 1
+   m_sQuadName "point-special"
+   m_fWorldSize 100
+   m_sDescription "Helicopter Crash Site"
+   m_aVisibleForFactions {
+    "RHS_USAF"
+   }
+  }
+ }
+}

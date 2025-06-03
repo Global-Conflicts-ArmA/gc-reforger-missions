@@ -1,0 +1,174 @@
+SCR_AIWorld : "{DED05ECEF37B333A}Prefabs/AI/SCR_AIWorld_Chernarus.et" {
+ coords 5013.68 267.203 6841.328
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 5019.64 267.336 6844.192
+}
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{651EE312F501270C}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingMinutes 45
+    }
+   }
+   m_bUseSpecifiedDate 1
+   m_iSetYear 2025
+  }
+ }
+ coords 5006.215 267.464 6842.422
+ {
+  SCR_FactionManager "6528D20F5C4BE4DA" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CCD598D3}" {
+        m_sCallsign "Assassin"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE18FB44}" {
+        m_sCallsign "6"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ {
+  coords 4532.703 316.835 8299.755
+  m_queryRadius 65
+  m_sendStatusMessages 1
+  m_locationName "the FOB"
+  m_flagName "OBJ_1_CAP"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "RHS_USAF"
+  m_ratioThreshold 0.9
+ }
+ {
+  coords 5331.947 334.25 8659.833
+  m_queryRadius 65
+  m_sendStatusMessages 1
+  m_locationName "Kabanino"
+  m_flagName "OBJ_2_CAP"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "RHS_USAF"
+  m_ratioThreshold 0.9
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 5009.367 266.689 6833.766
+ m_missionEvents {
+  TILW_MissionEvent "{651ECD980AA5E2AA}" {
+   m_name "VICTORY_CAP"
+   m_instructions {
+    TILW_SendMessageInstruction "{651ECD98165ADB4F}" {
+     m_messageTitle "VICTORY"
+     m_messageBody "Both objectives have been captured by US forces."
+    }
+    TILW_EndGameInstruction "{651ECD98EF3F3AF0}" {
+     m_executionDelay 15
+     m_factionKey "RHS_USAF"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{651ECD9800A89677}" {
+    m_operands {
+     TILW_LiteralTerm "{651ECD9801850B79}" {
+      m_flagName "OBJ_1_CAP"
+     }
+     TILW_LiteralTerm "{651ECD981C7A682C}" {
+      m_flagName "OBJ_2_CAP"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{651ECD98E1F7FAAA}" {
+   m_name "VICTORY_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{651ECD98FC61B7EC}" {
+     m_messageTitle "VICTORY"
+     m_messageBody "Separatist forces have taken significant casualties."
+    }
+    TILW_EndGameInstruction "{651ECD98F59EF165}" {
+     m_executionDelay 15
+     m_factionKey "RHS_USAF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{651ECD98C97F75CB}" {
+    m_flagName "SEP_KIA"
+   }
+  }
+  TILW_MissionEvent "{651ECD98CD521EC7}" {
+   m_name "DEFEAT_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{651ECD98C3B72421}" {
+     m_messageTitle "DEFEAT"
+     m_messageBody "US forces have taken significant casualties."
+    }
+    TILW_EndGameInstruction "{651ECD98DA03EB9D}" {
+     m_executionDelay 15
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "RHS_USAF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{651ECD98C51053FB}" {
+    m_flagName "US_KIA"
+   }
+  }
+  TILW_MissionEvent "{651ECD98D0D32B58}" {
+   m_name "DEFEAT_TL"
+   m_instructions {
+    TILW_SendMessageInstruction "{651ECD98AD22328B}" {
+     m_executionDelay 3605
+     m_messageTitle "DEFEAT"
+     m_messageBody "Time limit reached, separatist forces are breaking through CDF lines."
+    }
+    TILW_EndGameInstruction "{651ECD98B90FA19A}" {
+     m_executionDelay 3615
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "RHS_USAF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{651ECD988FEB49AA}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{651F6BA3EF3BAA15}" {
+   m_name "QRF_SPAWN"
+   m_instructions {
+    TILW_SetFlagInstruction "{651F6BA3E525E1DC}" {
+     m_flagName "QRF_SPAWN"
+    }
+   }
+   m_condition TILW_DisjunctionTerm "{6528D20B0F8F80DF}" {
+    m_operands {
+     TILW_LiteralTerm "{6528D20B084CB423}" {
+      m_flagName "OBJ_1_CAP"
+     }
+     TILW_LiteralTerm "{6528D20B0B8DC96F}" {
+      m_flagName "OBJ_2_CAP"
+     }
+    }
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{651ECD9CAD8F99DE}" {
+   m_flagName "US_KIA"
+   m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionAIKilledFlag "{651ECD9CBEC56006}" {
+   m_flagName "SEP_KIA"
+   m_factionKey "GC_SEPARATIST"
+   m_casualtyRatio 0.95
+  }
+ }
+}

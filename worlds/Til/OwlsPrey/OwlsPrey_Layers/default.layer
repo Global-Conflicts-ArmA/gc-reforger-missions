@@ -1,0 +1,397 @@
+SCR_AIWorld : "{A289632C1F505A78}Prefabs/AI/SCR_AIWorld_SnakeIsland_May.et" {
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+}
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 7
+   m_iStartingMinutes 15
+   m_bUseSpecifiedDate 1
+   m_iSetDay 8
+   m_iSetMonth 5
+   m_iSetYear 2022
+  }
+ }
+ m_iFreezeTime 240000
+}
+TILW_ExtractionTriggerEntity : "{192ABD6B9232E064}Prefabs/Logic/Triggers/TILW_ExtractionTrigger.et" {
+ coords 368 0 368
+ m_queryRadius 750
+ m_comparisonMode EQUAL_OR_LESS
+ m_flagName "CDF_EXTRACT"
+ m_drawShapeSurface 0
+ m_factionKey "GC_CDF"
+ m_ratioThreshold 0
+}
+PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+   m_killTimer 35
+  }
+ }
+ coords -3000 0 -3000
+ Points {
+  ShapePoint "{64DD120B0DA2283F}" {
+   Position 0 0 0
+  }
+  ShapePoint "{64DD120B120B46ED}" {
+   Position 6768 0 0
+  }
+  ShapePoint "{64DD120B104DF499}" {
+   Position 6768 0 7768
+  }
+  ShapePoint "{64DD120B10CF0FBA}" {
+   Position 0 0 7768
+  }
+ }
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ obj2 {
+  coords 607.078 9.972 574.806
+  m_queryRadius 50
+  m_comparisonMode EQUAL_OR_LESS
+  m_sendStatusMessages 1
+  m_locationName "the north-eastern settlement"
+  m_flagName "obj2"
+  m_drawShapeSurface 0
+  m_ownerFactionKey "RHS_AFRF"
+  m_ratioThreshold 0
+  {
+   PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+    coords 0 0 0
+    angleY 0
+    m_sImageSetGlow ""
+    m_MarkerColor 0 0 0 0.5
+    m_fWorldSize 150
+    m_bShowForAnyFaction 1
+    m_bringToFront 0
+   }
+  }
+ }
+ obj1 {
+  coords 308.71 40.48 378.647
+  m_queryRadius 50
+  m_comparisonMode EQUAL_OR_LESS
+  m_sendStatusMessages 1
+  m_locationName "the central building group"
+  m_flagName "obj1"
+  m_drawShapeSurface 0
+  m_ownerFactionKey "RHS_AFRF"
+  m_ratioThreshold 0
+  {
+   PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+    coords 0 0 0
+    angleY 0
+    m_sImageSetGlow ""
+    m_MarkerColor 0 0 0 0.5
+    m_fWorldSize 150
+    m_bShowForAnyFaction 1
+    m_bringToFront 0
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity fw : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ m_missionEvents {
+  TILW_MissionEvent "{64D8E2547453F2DE}" {
+   m_name "CDF Major Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{64D8E253DDA28852}" {
+     m_messageTitle "CDF MAJOR VICTORY"
+     m_messageBody "The CDF set the conditions for a major victory by gaining control of both building groups, forcing remaining stragglers to surrender."
+    }
+    TILW_EndGameInstruction "{64E756EBEEAD4BD0}" {
+     m_executionDelay 20
+     m_factionKey "GC_CDF"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{64D8E2563797A5DE}" {
+    m_operands {
+     TILW_LiteralTerm "{64D8E24A6E66080A}" {
+      m_flagName "ELIGIBLE_MAJOR"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{64D8E25444B5996F}" {
+   m_name "CDF Minor Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{64D8E253BD1F76A9}" {
+     m_messageTitle "CDF MINOR VICTORY"
+     m_messageBody "The CDF extracted after killing a large amount of occupiers."
+    }
+    TILW_EndGameInstruction "{64D8E253CA64C4B4}" {
+     m_executionDelay 20
+     m_factionKey "GC_CDF"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{64D8E2573799C3BB}" {
+    m_operands {
+     TILW_LiteralTerm "{64D8E25735E5F568}" {
+      m_flagName "CDF_EXTRACT"
+     }
+     TILW_LiteralTerm "{64D8E256752D86C9}" {
+      m_flagName "ELIGIBLE_MINOR"
+     }
+     TILW_LiteralTerm "{64D8E253B7D228FA}" {
+      m_invertTerm 1
+      m_flagName "ELIGIBLE_MAJOR"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{64D8E2547C46CB14}" {
+   m_name "CDF Minor Defeat"
+   m_instructions {
+    TILW_SendMessageInstruction "{64D8E250D5D7933D}" {
+     m_messageTitle "CDF MINOR DEFEAT"
+     m_messageBody "After sustaining significant casualties, remaining CDF withdrew from the island."
+    }
+    TILW_EndGameInstruction "{64D8E2530ADA014F}" {
+     m_executionDelay 20
+     m_factionKey "RHS_AFRF"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{64D8E254A3F42A69}" {
+    m_operands {
+     TILW_LiteralTerm "{64D8E254C8C75223}" {
+      m_flagName "CDF_EXTRACT"
+     }
+     TILW_LiteralTerm "{64D8E254D1039C26}" {
+      m_flagName "ELIGIBLE_MINOR"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{64D8E2547851578B}" {
+   m_name "CDF Major Defeat"
+   m_instructions {
+    TILW_SendMessageInstruction "{64E756E833B254DC}" {
+     m_messageTitle "CDF MAJOR DEFEAT"
+     m_messageBody "The CDF took severe casualties."
+    }
+    TILW_EndGameInstruction "{64E756E8478DEB98}" {
+     m_executionDelay 20
+     m_factionKey "RHS_AFRF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{64D8E25458F7B9B9}" {
+    m_flagName "CAS_CDF_HIGH"
+   }
+  }
+  TILW_MissionEvent "{64D8E256BEAD663A}" {
+   m_name "CDF Casualty Warning"
+   m_instructions {
+    TILW_SendMessageInstruction "{64D8E256EC774475}" {
+     m_messageTitle "CASUALTIES WARNING"
+     m_messageBody "You have suffered a medium amount of casualties, consider withdrawing to avoid a major defeat."
+     m_factionKeys {
+      "GC_CDF"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{64D8E250615967C1}" {
+    m_flagName "MINOR_CASUALTIES"
+   }
+  }
+  TILW_MissionEvent "{64D8E251404EA5F9}" {
+   m_name "CDF Minor Info"
+   m_instructions {
+    TILW_SendMessageInstruction "{64D8E24A7CFF4072}" {
+     m_messageTitle "MISSION INFO"
+     m_messageBody "You have killed a large amount of Russians, extracting now will result in a minor victory."
+     m_factionKeys {
+      "GC_CDF"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{64D8E2518955E4A0}" {
+    m_flagName "ELIGIBLE_MINOR"
+   }
+  }
+  TILW_MissionEvent "{64E756F918E00C49}" {
+   m_name "Delete Crate 3"
+   m_instructions {
+    TILW_DeleteEntitiesInstruction "{64E756F96B40F18D}" {
+     m_executionDelay 0
+     m_entityNames {
+      "crate3"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{64E756F9600E4FD1}" {
+    m_flagName "c3"
+   }
+  }
+  TILW_MissionEvent "{64E756F9703179EE}" {
+   m_name "Delete Crate 4"
+   m_instructions {
+    TILW_DeleteEntitiesInstruction "{64E756F96B40F18D}" {
+     m_executionDelay 0
+     m_entityNames {
+      "crate4"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{64E756F9600E4FD1}" {
+    m_flagName "c4"
+   }
+  }
+  TILW_MissionEvent "{64E756F97008C76D}" {
+   m_name "Delete Crate 5"
+   m_instructions {
+    TILW_DeleteEntitiesInstruction "{64E756F96B40F18D}" {
+     m_executionDelay 0
+     m_entityNames {
+      "crate5"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{64E756F9600E4FD1}" {
+    m_flagName "c5"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{64D8E254BC97D451}" {
+   m_flagName "CAS_CDF_HIGH"
+   m_factionKey "GC_CDF"
+   m_casualtyRatio 0.8
+  }
+  TILW_FactionPlayersKilledFlag "{64D8E254B9D582CE}" {
+   m_flagName "CAS_CDF_MEDIUM"
+   m_factionKey "GC_CDF"
+   m_casualtyRatio 0.5
+  }
+  TILW_FactionPlayersKilledFlag "{64D8E2567D015B66}" {
+   m_flagName "CAS_RU_PLAYERS"
+   m_factionKey "RHS_AFRF"
+   m_casualtyRatio 0.6
+  }
+  TILW_FactionAIKilledFlag "{64D8E2564DCC99E6}" {
+   m_flagName "CAS_RU_AI"
+   m_factionKey "RHS_AFRF"
+   m_casualtyRatio 0.6
+  }
+ }
+ m_metaFlags {
+  TILW_MetaFlag "{64D8E251E0B0138A}" {
+   m_flagName "ELIGIBLE_MAJOR"
+   m_definition TILW_ConjunctionTerm "{64D8E24A083CA0C2}" {
+    m_operands {
+     TILW_LiteralTerm "{64D8E2563A0E7453}" {
+      m_flagName "obj1"
+     }
+     TILW_LiteralTerm "{64D8E25639636CF8}" {
+      m_flagName "obj2"
+     }
+    }
+   }
+  }
+  TILW_MetaFlag "{64D8E25158188A6E}" {
+   m_flagName "ELIGIBLE_MINOR"
+   m_definition TILW_ConjunctionTerm "{64D8E2515C6D8784}" {
+    m_operands {
+     TILW_LiteralTerm "{64D8E251A2D380D4}" {
+      m_flagName "CAS_RU_PLAYERS"
+     }
+     TILW_LiteralTerm "{64D8E251A3CB8C86}" {
+      m_flagName "CAS_RU_AI"
+     }
+    }
+   }
+  }
+  TILW_MetaFlag "{64D8E251D705C038}" {
+   m_flagName "MINOR_CASUALTIES"
+   m_definition TILW_ConjunctionTerm "{64D8E250032B9FD4}" {
+    m_operands {
+     TILW_LiteralTerm "{64D8E25009E4E1F5}" {
+      m_flagName "CAS_CDF_MEDIUM"
+     }
+     TILW_LiteralTerm "{64D8E2500ECB9DF7}" {
+      m_invertTerm 1
+      m_flagName "CAS_CDF_HIGH"
+     }
+    }
+   }
+  }
+ }
+ m_randomFlags {
+  TILW_FlagSampling "{64E756F90EA640E9}" {
+   m_flagNames {
+    "c3" "c4" "c5"
+   }
+   m_k 2
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 383.584 0 3748.769
+ m_fWarnRadius 75
+ m_fZoneRadius 150
+ m_fZoneTeleportedRadius 175
+}
+$grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ picmarker {
+  coords 100 0 61.25
+  m_sImageSet "{A4E12732DEAC2453}worlds/Til/OwlsPrey/data/si.edds"
+  m_sImageSetGlow ""
+  m_fWorldSize 200
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_bringToFront 0
+ }
+ poi_helipad {
+  coords 179.882 26.99 483.621
+  m_sImageSetGlow ""
+  m_MarkerColor 0 0 0 0.5
+  m_sQuadName "point-of-interest"
+  m_fWorldSize 10
+  m_sDescription "Helipad"
+  m_bShowForAnyFaction 1
+ }
+ poi_windmill {
+  coords 260.232 68.005 173.981
+  m_sImageSetGlow ""
+  m_MarkerColor 0 0 0 0.5
+  m_sQuadName "point-of-interest"
+  m_fWorldSize 10
+  m_sDescription "Windmill"
+  m_bShowForAnyFaction 1
+ }
+ poi_shelter {
+  coords 458.611 24.66 257.137
+  angleY 90
+  m_sImageSetGlow ""
+  m_MarkerColor 0 0 0 0.5
+  m_sQuadName "point-of-interest"
+  m_fWorldSize 10
+  m_sDescription "Underground Shelter"
+  m_bShowForAnyFaction 1
+ }
+ poi_zu {
+  coords 590.77 9.91 554.782
+  angleY 90
+  m_sImageSetGlow ""
+  m_MarkerColor 0 0 0 0.5
+  m_sQuadName "point-of-interest"
+  m_fWorldSize 10
+  m_sDescription "ZU-23-2"
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+ }
+ poi_aaa {
+  coords 650 24.66 350
+  angleY 90
+  m_sImageSetGlow ""
+  m_MarkerColor 1 0.902 0 0.075
+  m_sQuadName "mark-exclamation"
+  m_fWorldSize 50
+  m_sDescription "AAA threat"
+  m_aVisibleForFactions {
+   "GC_CDF"
+  }
+ }
+}

@@ -1,0 +1,121 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 1475.303 20.35 2193.028
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 1562.062 20.442 2264.238
+}
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bRandomStartingWeather 1
+  }
+ }
+ coords 1570.363 20.406 2250.376
+}
+PolylineShapeEntity TILW_AOLimit_1_Blufor : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+   m_factionKeys {
+    "UK"
+   }
+   m_defaultColor 0 0.125 0.502 1
+  }
+ }
+ coords 1513.182 20.562 2237.324
+ Points {
+  ShapePoint "{64FF66A5D61C51CA}" {
+   Position -231.206 0 -148.14
+  }
+  ShapePoint "{64FF66A5CBFB00B6}" {
+   Position 163.088 0 42.278
+  }
+  ShapePoint "{64FF66A5C0E59A07}" {
+   Position -30.06 0 392.392
+  }
+  ShapePoint "{64FF66A5C4B07E3F}" {
+   Position -309.556 0 230.939
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 1484.253 20.594 2288.965
+ m_missionEvents {
+  TILW_MissionEvent "{650379FFE107D123}" {
+   m_name "Blufor_Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{6506DE0C0280B284}" {
+     m_messageTitle "UK/CDF VICTORY"
+     m_messageBody "The Russians suffered high casualties."
+    }
+    TILW_EndGameInstruction "{650379FF00899D25}" {
+     m_executionDelay 15
+     m_factionKey "UK"
+    }
+   }
+   m_condition TILW_LiteralTerm "{650379FEFF363A55}" {
+    m_flagName "Opfor_Players_Killed"
+   }
+  }
+  TILW_MissionEvent "{650379FFE75FDD24}" {
+   m_name "Opfor_Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{6506DE0C19839EDD}" {
+     m_messageTitle "RU VICTORY"
+     m_messageBody "The Russians cleared out most of the town."
+    }
+    TILW_EndGameInstruction "{650379FF0799FD93}" {
+     m_executionDelay 15
+     m_factionKey "RHS_AFRF"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{650379FEED21BAA6}" {
+    m_operands {
+     TILW_LiteralTerm "{650379FEEF39CDCC}" {
+      m_flagName "Blufor_Players_Killed"
+     }
+     TILW_LiteralTerm "{650379FEE6F0D12D}" {
+      m_flagName "Blufor_AI_Killed"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{650379FFDB404E66}" {
+   m_name "Time_Limit"
+   m_instructions {
+    TILW_SendMessageInstruction "{650379FF6F16842D}" {
+     m_executionDelay 4800
+     m_messageTitle "Time Limit"
+     m_messageBody "10 Minutes until Blufor Victory."
+    }
+    TILW_SendMessageInstruction "{6506DE0CB70E6703}" {
+     m_executionDelay 5400
+     m_messageTitle "UK/CDF VICTORY"
+     m_messageBody "The Russians failed to clear the town in time."
+    }
+    TILW_EndGameInstruction "{650379FF7E5D2976}" {
+     m_executionDelay 5410
+     m_factionKey "UK"
+    }
+   }
+   m_condition TILW_LiteralTerm "{650379FF77C0DEB7}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{650379FFD4AFEE4B}" {
+   m_flagName "Blufor_Players_Killed"
+   m_factionKey "UK"
+  }
+  TILW_FactionAIKilledFlag "{650379FFCD7A0795}" {
+   m_flagName "Blufor_AI_Killed"
+   m_factionKey "GC_CDF"
+   m_casualtyRatio 0.8
+  }
+  TILW_FactionPlayersKilledFlag "{650379FFC37E9792}" {
+   m_flagName "Opfor_Players_Killed"
+   m_factionKey "RHS_AFRF"
+   m_casualtyRatio 0.9
+  }
+ }
+}

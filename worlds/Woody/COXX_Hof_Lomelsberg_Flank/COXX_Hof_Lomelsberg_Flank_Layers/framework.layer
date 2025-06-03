@@ -1,0 +1,88 @@
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ {
+  coords 1085.723 136.827 4280.43
+  m_queryRadius 65
+  m_sendStatusMessages 1
+  m_locationName "the highway overpass"
+  m_flagName "obj1"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "USSR"
+ }
+ {
+  coords 1365.473 147.81 4168.023
+  m_queryRadius 75
+  m_sendStatusMessages 1
+  m_locationName "Schaltstation 34J"
+  m_flagName "obj2"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "USSR"
+ }
+ {
+  coords 1804.143 161.082 4061.835
+  m_queryRadius 100
+  m_sendStatusMessages 1
+  m_locationName "Hof Lomelsberg North"
+  m_flagName "obj3"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "USSR"
+ }
+ {
+  coords 1934.877 164.688 3859.616
+  m_queryRadius 75
+  m_sendStatusMessages 1
+  m_locationName "Hof Lomelsberg South"
+  m_flagName "obj4"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "USSR"
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 966.728 137.668 4471.329
+ m_missionEvents {
+  TILW_MissionEvent "{6508891046921381}" {
+   m_name "L"
+   m_instructions {
+    TILW_SendMessageInstruction "{650889105FBBB2C6}" {
+     m_messageTitle "Mission Failiure"
+     m_messageBody "Soviet forces have sustained 80% casualties!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{650889105A4AA5C4}" {
+    m_flagName "USSR_KIA"
+   }
+  }
+  TILW_MissionEvent "{6508891061116A32}" {
+   m_name "W"
+   m_instructions {
+    TILW_SendMessageInstruction "{6508891077572764}" {
+     m_executionDelay 15
+     m_messageTitle "USSR Victory!"
+     m_messageBody "All three objectives have been taken!"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{650889106378FA08}" {
+    m_operands {
+     TILW_LiteralTerm "{6508891064DB4D49}" {
+      m_flagName "obj1"
+     }
+     TILW_LiteralTerm "{6508891065B64D59}" {
+      m_flagName "obj2"
+     }
+     TILW_LiteralTerm "{65088910669FA93E}" {
+      m_flagName "obj3"
+     }
+     TILW_LiteralTerm "{65088910677D04A7}" {
+      m_flagName "obj4"
+     }
+    }
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{650889104F4BB53A}" {
+   m_flagName "USSR_KIA"
+   m_factionKey "USSR"
+   m_casualtyRatio 0.8
+  }
+ }
+}

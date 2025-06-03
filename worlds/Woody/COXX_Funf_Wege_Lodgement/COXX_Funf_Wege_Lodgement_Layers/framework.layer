@@ -1,0 +1,77 @@
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ {
+  coords 4408.332 244.293 4776.883
+  m_queryRadius 90
+  m_sendStatusMessages 1
+  m_locationName "Forstfahrzeug-Wartungshof"
+  m_flagName "obj1"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "NVA"
+  m_ratioThreshold 0.99
+ }
+ {
+  coords 4283.765 187.871 4383.61
+  m_queryRadius 150
+  m_sendStatusMessages 1
+  m_locationName "Funf-Wege"
+  m_flagName "obj2"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "NVA"
+  m_ratioThreshold 0.99
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 3014.115 202.858 4758.654
+ m_missionEvents {
+  TILW_MissionEvent "{652F7D6834AE4AD8}" {
+   m_name "NVA L"
+   m_instructions {
+    TILW_SendMessageInstruction "{652F7D684CD99FB3}" {
+     m_executionDelay 10
+     m_messageTitle "Mission Failed!"
+     m_messageBody "NVA forces have sustained 80% casualties!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{652F7D6848415ED8}" {
+    m_flagName "nva_killed"
+   }
+  }
+  TILW_MissionEvent "{652F7D73729F78F2}" {
+   m_name "NVA W"
+   m_instructions {
+    TILW_SendMessageInstruction "{652F7D73827A48BD}" {
+     m_executionDelay 15
+     m_messageTitle "Mission Accomplished!"
+     m_messageBody "Both objectives seized!"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{652F7D737670BD34}" {
+    m_operands {
+     TILW_LiteralTerm "{652F7D7377ABBAA3}" {
+      m_flagName "obj1"
+     }
+     TILW_LiteralTerm "{652F7D7388BE2C3C}" {
+      m_flagName "obj2"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65303A1521269BB3}" {
+   m_instructions {
+    TILW_SetFlagInstruction "{65303A153902C647}" {
+     m_flagName "missionstart"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65303A15344111DE}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{652F7D683A151F33}" {
+   m_flagName "nva_killed"
+   m_factionKey "GC_NVA"
+   m_casualtyRatio 0.8
+  }
+ }
+}

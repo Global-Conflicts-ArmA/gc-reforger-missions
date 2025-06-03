@@ -1,0 +1,116 @@
+$grp GenericEntity {
+ B_BTR_SPAWN {
+  coords 1200.961 217.68 7971.815
+  angleY -157.414
+ }
+ D_BTR_SPAWN {
+  coords 1596.033 321.218 8649.626
+  angleY -118.546
+ }
+ F_BTR_SPAWN {
+  coords 1797.273 295.412 9083.83
+  angleY -73.357
+ }
+}
+$grp SCR_AIWaypoint : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
+ B_BTR_WP {
+  coords 1020.97 182.092 7659.797
+ }
+ D_BTR_WP {
+  coords 1356.094 311.116 8400.908
+ }
+ F_BTR_WP {
+  coords 1512.136 301.265 8946.914
+ }
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/TILW_FactionTrigger.et" {
+ B_BTR_TRIGGER {
+  coords 984.461 181.227 7628.079
+  m_queryRadius 34.4
+  m_flagName "B_BTR"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "GC_CDF"
+  m_ratioThreshold 0.5
+ }
+ D_BTR_TRIGGER {
+  coords 1430.509 302.438 8182.231
+  m_queryRadius 34.4
+  m_flagName "D_BTR"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "GC_CDF"
+  m_ratioThreshold 0.5
+ }
+ F_BTR_TRIGGER {
+  coords 1260.56 279.259 8894.541
+  m_queryRadius 34.4
+  m_flagName "F_BTR"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "GC_CDF"
+  m_ratioThreshold 0.5
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 1066.008 152.437 6633.715
+ m_missionEvents {
+  TILW_MissionEvent "{64DAB73D29E94991}" {
+   m_name "B_BTR"
+   m_instructions {
+    TILW_SpawnVehicleInstruction "{64DAB73D2B34CA6D}" {
+     m_prefab "{B47110AA1A806556}Prefabs/Vehicles/Wheeled/BTR70/BTR70_FIA.et"
+     m_locationName "B_BTR_SPAWN"
+     m_spawnCargo 0
+     m_customCrew {
+      "{917322E3B14A77B7}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/Character_GC_SEPARATIST_Rifleman.et" "{917322E3B14A77B7}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/Character_GC_SEPARATIST_Rifleman.et"
+     }
+     m_waypointNames {
+      "B_BTR_WP"
+     }
+     m_idleGroup 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{64DAB73D07F644F2}" {
+    m_flagName "B_BTR"
+   }
+  }
+  TILW_MissionEvent "{64DEA1B2D312FD91}" {
+   m_name "D_BTR"
+   m_instructions {
+    TILW_SpawnVehicleInstruction "{64DAB73D2B34CA6D}" {
+     m_prefab "{B47110AA1A806556}Prefabs/Vehicles/Wheeled/BTR70/BTR70_FIA.et"
+     m_locationName "D_BTR_SPAWN"
+     m_spawnCargo 0
+     m_customCrew {
+      "{917322E3B14A77B7}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/Character_GC_SEPARATIST_Rifleman.et" "{917322E3B14A77B7}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/Character_GC_SEPARATIST_Rifleman.et"
+     }
+     m_waypointNames {
+      "D_BTR_WP"
+     }
+     m_idleGroup 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{64DAB73D07F644F2}" {
+    m_flagName "D_BTR"
+   }
+  }
+  TILW_MissionEvent "{64DEA1B29B3B7A30}" {
+   m_name "F_BTR"
+   m_instructions {
+    TILW_SpawnVehicleInstruction "{64DAB73D2B34CA6D}" {
+     m_prefab "{B47110AA1A806556}Prefabs/Vehicles/Wheeled/BTR70/BTR70_FIA.et"
+     m_locationName "F_BTR_SPAWN"
+     m_spawnCargo 0
+     m_customCrew {
+      "{917322E3B14A77B7}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/Character_GC_SEPARATIST_Rifleman.et" "{917322E3B14A77B7}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/Character_GC_SEPARATIST_Rifleman.et"
+     }
+     m_waypointNames {
+      "F_BTR_WP"
+     }
+     m_idleGroup 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{64DAB73D07F644F2}" {
+    m_flagName "F_BTR"
+   }
+  }
+ }
+}

@@ -1,0 +1,153 @@
+SCR_AIWorld : "{DED05ECEF37B333A}Prefabs/AI/SCR_AIWorld_Chernarus.et" {
+ coords 2460.806 309.311 6329.462
+}
+PerceptionManager PerceptionManager2 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 2476.326 309.042 6336.923
+}
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 17
+   m_bRandomStartingWeather 1
+   m_bUseSpecifiedDate 1
+   m_iSetDay 16
+   m_iSetMonth 6
+   m_iSetYear 1986
+  }
+ }
+ coords 2477.103 309.683 6353.706
+ {
+  SCR_FactionManager "654314208927633D" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{65431423F2DA964A}" {
+        m_sCallsign " "
+       }
+       SCR_CallsignInfo "{65431423F1D2FA44}" {
+        m_sCallsign " "
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+PS_ManualMarker : "{63BCE30CF8B65BCE}PrefabsEditable/Markers/Group/Marker_GroupFlagsOpfor_Base.et" {
+ coords 3789.183 402.775 5939.549
+ angleY 0
+ m_sDescription "COY+"
+}
+PS_ManualMarker : "{676B84E0291E12D6}PrefabsEditable/Markers/Group/Marker_GroupFlagsBlufor_Base.et" {
+ coords 2281.59 357.451 6673.135
+ m_sDescription "A COY"
+}
+PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+   m_factionKeys {
+    "US"
+   }
+  }
+  TILW_MapShapeComponent "{6508F54F9B461198}" {
+   Enabled 1
+   m_factionKeys {
+    "US"
+   }
+  }
+ }
+ coords 3376.357 336.483 6106.386
+ Points {
+  ShapePoint "{6543143C7B13FF8C}" {
+   Position -1076.716 18.252 680.195
+  }
+  ShapePoint "{6543143CAB73B4CE}" {
+   Position -557.255 27.354 539.325
+  }
+  ShapePoint "{6543143C790D059D}" {
+   Position -284.196 28.856 543.153
+  }
+  ShapePoint "{6543143C67E6480A}" {
+   Position 767.415 -3.532 197.856
+  }
+  ShapePoint "{6543143C617C96C1}" {
+   Position 708.63 25.872 -255.392
+  }
+  ShapePoint "{6543143C6FEC6AED}" {
+   Position 564.669 -26.042 -639.131
+  }
+  ShapePoint "{6543143C6EBC3520}" {
+   Position -286.068 -74.964 -301.742
+  }
+  ShapePoint "{6543143C6A48EF11}" {
+   Position -643.757 -75.759 -154.014
+  }
+  ShapePoint "{6543143C9E48B822}" {
+   Position -1018.033 -19.508 236.63
+  }
+  ShapePoint "{6543143C9B770F45}" {
+   Position -1238.659 -15.321 416.754
+  }
+  ShapePoint "{6543143C8635C670}" {
+   Position -1239.783 -7.298 630.69
+  }
+ }
+}
+PS_ManuaMarkerRender : "{88D799C5DED9EC70}PrefabsEditable/Markers/EditableMarkerRender.et" {
+ coords 3731.555 401.915 6013.122
+ angleY 0
+ m_sImageSetGlow ""
+ m_MarkerColor 0 0 0 1
+ m_sQuadName "dot"
+ m_sDescription "Green Mountain"
+ m_bVisibleForEmptyFaction 1
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 3748.637 403.223 5983.417
+ m_missionEvents {
+  TILW_MissionEvent "{65431425B784AB84}" {
+   m_instructions {
+    TILW_SendMessageInstruction "{65431425F21B9AFD}" {
+     m_messageTitle "Mission failed"
+     m_messageBody "Blufor has taken to many casualties. GM's can end the mission when appropriate. "
+    }
+   }
+   m_condition TILW_LiteralTerm "{65431425F1C9EDA6}" {
+    m_flagName "blukill"
+   }
+  }
+  TILW_MissionEvent "{65431425E5857B88}" {
+   m_instructions {
+    TILW_SendMessageInstruction "{65431425E585045B}" {
+     m_messageTitle "Mission complete "
+     m_messageBody "Blufor has taken gReen mountain and the NVA are retreating. GM's can end the mission when appropriate. "
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{6545210AF0217DDD}" {
+    m_operands {
+     TILW_LiteralTerm "{6545210AF115FCCB}" {
+      m_flagName "blu5"
+     }
+     TILW_LiteralTerm "{6545210AF60B54D5}" {
+      m_flagName "redkill"
+     }
+    }
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{654314258583ECEF}" {
+   m_flagName "blukill"
+   m_factionKey "US"
+   m_casualtyRatio 0.8
+  }
+  TILW_FactionAIKilledFlag "{654516EBDEDD02FA}" {
+   m_flagName "redkill"
+   m_factionKey "GC_NVA"
+   m_casualtyRatio 0.95
+  }
+ }
+}

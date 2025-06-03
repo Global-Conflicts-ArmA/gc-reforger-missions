@@ -1,0 +1,118 @@
+GenericEntity : "{79F9A63498708E62}Prefabs/Props/Military/Sandbags/Sandbag_Base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  SignalsManagerComponent "{648469A0AC2367A1}" {
+  }
+  MeshObject "{5872F0EB7FA40561}" {
+   Object "{1FD4092C6933DD2C}Assets/Props/Military/Sandbags/Sandbag_01_round_high.xob"
+   LODFactors {
+    3 2 1 1 0.5 0.5
+   }
+  }
+  NavmeshCustomLinkComponent "{598EA1E3CAB97DB9}" {
+   LinkType NavmeshJumpLink "{598E9EE95957A5BA}" {
+   }
+  }
+  RigidBody "{5872F0EB7DFB5A9D}" {
+   Static 1
+  }
+  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+   Enabled 1
+   "Additional hit zones" {
+    SCR_HitZone Default {
+     DamageThreshold 0
+     "Collision multiplier" 0.05
+     "Kinetic multiplier" 0.9
+    }
+   }
+   m_fBaseHealth 3000
+   m_fForceToDamageScale 0.5
+   m_fDamageThresholdMaximum 10000
+   m_DestroySpawnObjects {
+    SCR_DebrisSpawnable "{5D3462C1BA1FE47E}" : "{2D556E41F306336C}Configs/Destruction/MultiphaseDestruction/FX_Debris/FX_Debris_Snadbags_Plastic.conf" {
+     m_vOffsetPosition -0.8 0.5 0
+     m_eMaterialSoundType SANDBAG
+    }
+    SCR_DebrisSpawnable "{5D3462C1B9CA50C8}" : "{2D556E41F306336C}Configs/Destruction/MultiphaseDestruction/FX_Debris/FX_Debris_Snadbags_Plastic.conf" {
+     m_vOffsetPosition 0.8 0.5 0
+     m_eMaterialSoundType SANDBAG
+    }
+    SCR_ParticleSpawnable "{648469A0DC369A65}" {
+     m_Particle "{8BF4300C0BD96ED7}Particles/Props/Dest_ConcreteWall.ptc"
+    }
+    SCR_ParticleSpawnable "{648469A0DC369A6C}" {
+     m_Particle "{A5ABAB33334E0973}Particles/Props/Dest_Prop_Concrete_Medium.ptc"
+    }
+   }
+   m_bDeleteAfterFinalPhase 0
+   m_aDamagePhases {
+    SCR_DamagePhaseData "{648469A0DC369A70}" {
+     m_fPhaseHealth 10000
+     m_PhaseModel "{BBF98F106580594B}Assets/Props/Military/Sandbags/Dst/Sandbag_01_round_dst_01.xob"
+    }
+   }
+  }
+  SCR_ExplosiveChargeInventoryItemComponent "{648469A0BFF963F6}" {
+   Attributes SCR_ItemAttributeCollection "{648469A350CEEE0E}" {
+    ItemDisplayName UIInfo "{648469A3561B4BDB}" {
+     Name "Placeable Sandbag Wall Round"
+     Description "Placeable Sandbag Wall Round"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{648469A35C851473}" {
+     Weight 1.5
+     SizeSetupStrategy Manual
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{648469A32278333F}" {
+     AnimationAttachments {
+      AnimationAttachmentInfo "{648D55017E71DFA0}" {
+       AnimGraph "{B43CAEC6CB16C36D}Assets/Items/Equipment/workspaces/Shovel_ETool_US.agr"
+       AnimInstance "{5956FB1DD71F9183}Assets/Items/Equipment/workspaces/Shovel_ETool_US.asi"
+       BindingName "Gadget"
+      }
+     }
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{648469A33207C7C9}" {
+      CameraDistanceToItem 6
+      PreviewModel "{1FD4092C6933DD2C}Assets/Props/Military/Sandbags/Sandbag_01_round_high.xob"
+     }
+    }
+    m_Size SLOT_2x1
+   }
+  }
+  SCR_PlaceableItemComponent "{648469A096857E6C}" {
+   m_bCanAttachToDynamicObject 1
+   m_bCanAttachAngled 1
+   m_eMeasurementMethod FROM_CENTER_OF_MASS
+   m_fMaxPlacementDistance 2.1
+   m_ePlacementType XYZ
+  }
+  WeaponComponent "{648469A0B423159D}" {
+   WeaponType SmokeGrenade
+   shouldHandleObstruction 0
+   WeaponSlotType "throwable"
+  }
+  ActionsManagerComponent "{648469A0819EE4C0}" {
+  }
+  WeaponAnimationComponent "{648469A0B6FA2573}" {
+   AnimGraph "{B43CAEC6CB16C36D}Assets/Items/Equipment/workspaces/Shovel_ETool_US.agr"
+   AnimInstance "{5956FB1DD71F9183}Assets/Items/Equipment/workspaces/Shovel_ETool_US.asi"
+   AnimInjection AnimationAttachmentInfo "{648469A376C82EF8}" {
+    AnimGraph "{B43CAEC6CB16C36D}Assets/Items/Equipment/workspaces/Shovel_ETool_US.agr"
+    AnimInstance "{5956FB1DD71F9183}Assets/Items/Equipment/workspaces/Shovel_ETool_US.asi"
+    BindingName "Weapon"
+   }
+   BindWithInjection 1
+   AutoVariablesBind 1
+  }
+  RplComponent "{5624A88DC2D9928D}" {
+   Enabled 1
+   "Rpl State Override" Runtime
+   "Parent Node From Parent Entity" 0
+  }
+  Hierarchy "{648469A0A9EF6EFC}" {
+  }
+ }
+ coords 2326.327 17.152 3755.072
+ Flags 3
+}

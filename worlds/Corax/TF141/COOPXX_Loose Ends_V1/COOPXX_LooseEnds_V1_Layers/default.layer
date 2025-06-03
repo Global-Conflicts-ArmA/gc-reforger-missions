@@ -1,0 +1,167 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 1354.943 1.803 3959.665
+ "Price of roadnetwork paths" 2
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 1154.511 16.625 2771.178
+}
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
+ components {
+  SCR_GameOverScreenManagerComponent "{56DEC646298AD219}" {
+   m_GameOverScreenConfig SCR_GameOverScreenConfig "{56DEC6462FFDD82D}" {
+    m_aGameOverScreens {
+     SCR_FactionVictoryGameOverScreenInfo "{568EB6DFEF507060}" {
+      m_OptionalParams SCR_BaseGameOverScreenInfoOptional "{568EB6DFF87D9C84}" {
+       m_sSubtitle "Delta Force successfully secured and handed over the sensitive hardware"
+      }
+     }
+     SCR_EditorFactionGameOverScreenInfo "{56EED1ED0A9954E6}" {
+      m_OptionalParams SCR_BaseGameOverScreenInfoOptional "{56EED1ED10CDB164}" {
+       m_sSubtitle "Task force casaulties are too high we must retreat"
+      }
+     }
+    }
+   }
+  }
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 0
+   m_iRangeHoursStart 0
+   m_iRangeHoursEnd 0
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{65772E30D9ECF331}" {
+     m_sWeatherPresetName "Heavy Wet Fog"
+    }
+   }
+   m_bUseSpecifiedDate 1
+   m_iSetDay 24
+   m_iSetMonth 11
+   m_iSetYear 2010
+   m_bOverrideGeocoords 1
+   m_fLatitude 49.019
+   m_fLongitude 37.921
+   m_bOverrideTimeZoneInfo 1
+   m_fDSTEnabled 1
+   m_fFogDensity 0.04
+   m_fFogHeight 1.4
+   m_fRain 0
+  }
+ }
+ coords 1155.337 7.664 3284.516
+ {
+  SCR_FactionManager "64FE1D3B1AB446BE" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_aFriendlyFactionsIds {
+      "GC_SEPARATIST"
+     }
+    }
+   }
+  }
+ }
+}
+$grp Vehicle : "{3EA6F47D95867114}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et" {
+ M1025_armed_M2HB4 {
+  coords 2103.12 14.22 3321.373
+  angleY 154.8
+ }
+ M1025_armed_M2HB5 {
+  coords 2107.539 14.423 3312.208
+  angleY 154.8
+ }
+ M1025_armed_M2HB6 {
+  coords 2111.979 14.5 3303.751
+  angleY 154.8
+ }
+ M1025_armed_M2HB7 {
+  coords 2114.809 14.588 3294.987
+  angleY 154.8
+ }
+ M1025_armed_M2HB8 {
+  coords 2119.718 14.746 3284.33
+  angleY 154.8
+ }
+ M1025_armed_M2HB9 {
+  coords 2125.885 14.995 3271.57
+  angleY 154.8
+ }
+ M1025_armed_M2HB10 {
+  coords 2130.788 15.119 3258.822
+  angleY 154.8
+ }
+ M1025_armed_M2HB11 {
+  coords 2098.133 13.921 3333.537
+  angleY 154.8
+ }
+}
+TILW_FactionTriggerEntity atlake : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 251.638 2.856 3214.398
+ m_queryRadius 175
+ m_flagName "atlake"
+ m_playersOnly 1
+ m_ownerFactionKey "RHS_USAF"
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 179.671 17.411 3072.424
+ m_missionEvents {
+  TILW_MissionEvent "{64E510C7769199DC}" {
+   m_name "Couter attack message"
+   m_instructions {
+    TILW_SendMessageInstruction "{64E510C77E9EE70C}" {
+     m_executionDelay 120
+     m_messageTitle "Intel Report"
+     m_messageBody "GLINT SAR Assets have picked up a Company to Battalion sized force operating north of the Lake has started moving south. SIGINT believes it is russian regular forces."
+    }
+   }
+   m_condition TILW_LiteralTerm "{64E510C50CCFFA2F}" {
+    m_flagName "bridgesecure"
+   }
+  }
+  TILW_MissionEvent "{6502C7C5AF37E057}" {
+   m_name "Handover"
+   m_instructions {
+    TILW_EndGameInstruction "{6502C7C5D5130639}" {
+     m_executionDelay 15
+     m_factionKey "RHS_USAF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6502C7C5D22EB0DC}" {
+    m_flagName "Handover"
+   }
+  }
+  TILW_MissionEvent "{6502C7DB642C3980}" {
+   m_name "Casaulties"
+   m_instructions {
+    TILW_EndGameInstruction "{6502C7DB60CFF08C}" {
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "RHS_USAF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6502C7DB6248FEFE}" {
+    m_flagName "CasualtyLimit"
+   }
+  }
+  TILW_MissionEvent "{6528DD86FEDB617A}" {
+   m_instructions {
+    TILW_SendMessageInstruction "{6528DD86F991B5B2}" {
+     m_messageTitle "Ops Command"
+     m_messageBody "Rangers have captured the bridge and Delta are released to attack Lake Krolyk "
+    }
+   }
+   m_condition TILW_LiteralTerm "{6528DD8731C9C398}" {
+    m_flagName "bridgesecure"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{6506F491B804F45C}" {
+   m_flagName "CasualtyLimit"
+   m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.9
+  }
+ }
+}
+Vehicle M998_covered_long1 : "{9B1BF9644E0378D6}Prefabs/Vehicles/Wheeled/M998/M998_covered_long.et" {
+ coords 2093.774 13.661 3343.427
+}

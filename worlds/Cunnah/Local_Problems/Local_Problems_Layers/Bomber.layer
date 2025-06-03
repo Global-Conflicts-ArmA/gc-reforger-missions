@@ -1,0 +1,36 @@
+TILW_PrefabSpawnerEntity Bomber_Vic_Spawner {
+ coords 4947.01 175.045 3795.538
+ angleY -143.711
+ m_prefab "{F66EAD0D2016B6BA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_blue.et"
+ m_setEntityNames {
+  "Bomber_Vic"
+ }
+ m_pregameSpawn 1
+ m_crewConfig TILW_CrewConfig "{651D113D2269324C}" {
+  m_crewGroups {
+   TILW_CrewGroup "{651D113D21D21DA7}" {
+    m_crewStations {
+     TILW_CrewStation "{651D113D3B0AC0CE}" {
+      m_characters {
+       "{035F8F1CEF3B187F}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_CottonShirt_4.et"
+      }
+     }
+    }
+    m_entityName "Bomber"
+   }
+  }
+ }
+}
+SCR_AIWaypoint Bomber_Target : "{06E1B6EBD480C6E0}Prefabs/AI/Waypoints/AIWaypoint_ForcedMove.et" {
+ coords 4779.654 165.375 3608.608
+}
+TILW_PresenceTriggerEntity : "{826E6F2246328952}Prefabs/Logic/Triggers/TILW_PresenceTrigger.et" {
+ coords 4783.07 165.468 3612.169
+ m_queryRadius 4
+ m_queryPeriod 5
+ m_flagName "Bomber_Det"
+ m_stopAfterFirstChange 1
+ m_entityNames {
+  "Bomber_Vic"
+ }
+}

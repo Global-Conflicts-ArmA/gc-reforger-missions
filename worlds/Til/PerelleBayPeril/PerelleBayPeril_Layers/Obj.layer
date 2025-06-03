@@ -1,4 +1,4 @@
-TILW_ExtractionTriggerEntity : "{192ABD6B9232E064}Prefabs/Logic/TILW_ExtractionTrigger.et" {
+TILW_ExtractionTriggerEntity : "{192ABD6B9232E064}Prefabs/Logic/Triggers/TILW_ExtractionTrigger.et" {
  coords 9695.763 1.559 5467.459
  m_queryRadius 100
  m_flagName "NearCoast"
@@ -6,18 +6,18 @@ TILW_ExtractionTriggerEntity : "{192ABD6B9232E064}Prefabs/Logic/TILW_ExtractionT
  m_factionKey "USSR"
  m_ratioThreshold 0.75
 }
-TILW_PresenceTriggerEntity : "{826E6F2246328952}Prefabs/Logic/TILW_PresenceTrigger.et" {
+TILW_PresenceTriggerEntity : "{826E6F2246328952}Prefabs/Logic/Triggers/TILW_PresenceTrigger.et" {
  coords 9583.341 10.875 5205.909
  m_queryRadius 5
- m_prefabFilter {
-  "{ECC4315520263256}Prefabs/Props/Military/MilitaryCrates/CrateStack_01/CrateStack_01_dark.et"
- }
  m_comparisonMode EQUAL_OR_LESS
  m_flagName "CratesDestroyed"
  m_drawShapeSurface 0
- m_countThreshold 0
+ m_entityNames {
+  "cr1" "cr2" "cr3" "cr4" "cr5"
+ }
+ m_ratioThreshold 0
 }
-TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/TILW_FactionTrigger.et" {
+TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
  coords 9616.998 22.499 5273.05
  m_queryRadius 100
  m_comparisonMode EQUAL_OR_LESS
@@ -27,22 +27,22 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/TILW_FactionTrigger
  m_ratioThreshold 0
 }
 $grp GenericEntity : "{ECC4315520263256}Prefabs/Props/Military/MilitaryCrates/CrateStack_01/CrateStack_01_dark.et" {
- {
+ cr1 {
   coords 9581.566 10.875 5203.407
   angleY -5.378
  }
- {
+ cr2 {
   coords 9581.707 10.875 5204.815
  }
- {
+ cr3 {
   coords 9581.424 10.875 5207.403
   angleY -179.401
  }
- {
+ cr4 {
   coords 9581.558 10.875 5206.173
   angleY -174.023
  }
- {
+ cr5 {
   coords 9582.849 10.875 5202.724
   angleY -179.401
  }

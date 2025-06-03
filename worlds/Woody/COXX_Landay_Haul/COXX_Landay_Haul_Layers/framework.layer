@@ -1,0 +1,96 @@
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ {
+  coords 4663.718 343.791 724.136
+  m_queryRadius 125
+  m_flagName "obj1"
+  m_stopAfterFirstChange 1
+  m_drawShapeOutline 0
+  m_ownerFactionKey "GC_TKA"
+  m_ratioThreshold 0.9
+ }
+ {
+  coords 4421.923 372.298 804.173
+  m_queryRadius 100
+  m_flagName "obj2"
+  m_stopAfterFirstChange 1
+  m_drawShapeOutline 0
+  m_ownerFactionKey "GC_TKA"
+  m_ratioThreshold 0.9
+ }
+ {
+  coords 4284.264 351.306 614.943
+  m_queryRadius 100
+  m_flagName "obj3"
+  m_stopAfterFirstChange 1
+  m_drawShapeOutline 0
+  m_ownerFactionKey "GC_TKA"
+  m_ratioThreshold 0.9
+ }
+ {
+  coords 3620.514 392.152 1337.194
+  m_queryRadius 125
+  m_flagName "obj4"
+  m_stopAfterFirstChange 1
+  m_drawShapeOutline 0
+  m_ownerFactionKey "GC_TKA"
+  m_ratioThreshold 0.9
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 4649.585 393.91 239.629
+ m_missionEvents {
+  TILW_MissionEvent "{655E040783D08067}" {
+   m_name "TKA L"
+   m_instructions {
+    TILW_EndGameInstruction "{655E0407925AF602}" {
+     m_executionDelay 15
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "GC_TKA"
+    }
+    TILW_SendMessageInstruction "{655E0407A3C40751}" {
+     m_messageTitle "Mission Failed!"
+     m_messageBody "Too many casualties taken!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{655E04079AA8E36F}" {
+    m_flagName "TKA_casualties"
+   }
+  }
+  TILW_MissionEvent "{655E04361AF29676}" {
+   m_name "TKA W"
+   m_instructions {
+    TILW_EndGameInstruction "{655E043626770209}" {
+     m_executionDelay 15
+     m_factionKey "GC_TKA"
+    }
+    TILW_SendMessageInstruction "{655E04363A10DE33}" {
+     m_messageTitle "Mission Accomplished!"
+     m_messageBody "Chak Chak and Ahmaday have been seized!"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{655E04361F11C39C}" {
+    m_operands {
+     TILW_LiteralTerm "{655E0436109B3FD7}" {
+      m_flagName "obj1"
+     }
+     TILW_LiteralTerm "{655E043611A11E12}" {
+      m_flagName "obj2"
+     }
+     TILW_LiteralTerm "{655E0436125FF7CF}" {
+      m_flagName "obj3"
+     }
+     TILW_LiteralTerm "{655E0436136C9F3B}" {
+      m_flagName "obj4"
+     }
+    }
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{655E040776F1D021}" {
+   m_flagName "TKA_casualties"
+   m_factionKey "GC_TKA"
+   m_casualtyRatio 0.75
+  }
+ }
+}

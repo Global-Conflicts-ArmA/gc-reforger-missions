@@ -1,0 +1,94 @@
+GenericEntity : "{3E4C223A92230572}Prefabs/Props/Military/Sandbags/Sandbag_01_long_high_base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  SignalsManagerComponent "{648469A7C1F96DAA}" {
+  }
+  RigidBody "{5872F0EB7DFB5A9D}" {
+   SimState Simulation
+   Static 1
+  }
+  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+   "Additional hit zones" {
+    SCR_HitZone Default {
+     CriticalDamage 1
+     DamageThreshold 0
+     "Collision multiplier" 0.01
+     "Kinetic multiplier" 0.9
+    }
+   }
+   m_fBaseHealth 3000
+   m_fForceToDamageScale 0.01
+   m_fDamageThresholdMaximum 25000
+   m_eMaterialSoundType BREAK_SANDBAG
+  }
+  SCR_ExplosiveChargeInventoryItemComponent "{648469A7D5DAC4DF}" {
+   Attributes SCR_ItemAttributeCollection "{648469A7BAFB3ADE}" {
+    ItemDisplayName UIInfo "{648469A7B9412EB4}" {
+     Name "Placeable Sandbag Wall"
+     Description "Placeable Sandbag Wall"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{648469A780D348D4}" {
+     Weight 1.5
+     SizeSetupStrategy Manual
+     ActivePhysicalSimulation Simulation
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{648469A787B046CB}" {
+     AnimationAttachments {
+      AnimationAttachmentInfo "{648D5501574788DA}" {
+       AnimGraph "{B43CAEC6CB16C36D}Assets/Items/Equipment/workspaces/Shovel_ETool_US.agr"
+       AnimInstance "{5956FB1DD71F9183}Assets/Items/Equipment/workspaces/Shovel_ETool_US.asi"
+       BindingName "Gadget"
+      }
+     }
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{648469A667639795}" {
+      CameraDistanceToItem 6
+      PreviewModel "{D74B64FED52F4479}Assets/Props/Military/Sandbags/Sandbag_01_long_high.xob"
+     }
+    }
+    m_Size SLOT_2x1
+   }
+  }
+  SCR_PlaceableItemComponent "{648469A7D3EDCE5E}" {
+   m_bCanAttachToDynamicObject 1
+   m_bCanAttachAngled 1
+   m_eMeasurementMethod FROM_CENTER_OF_MASS
+   m_fMaxPlacementDistance 2.1
+   m_ePlacementType XYZ
+  }
+  WeaponComponent "{648469A7CAB9D13D}" {
+   WeaponType SmokeGrenade
+   shouldHandleObstruction 1
+   canGoToFullObstruction 1
+   WeaponSlotType "throwable"
+  }
+  ActionsManagerComponent "{648469A7DCD685CE}" {
+  }
+  WeaponAnimationComponent "{648469A7C6253E0B}" {
+   AnimGraph "{B43CAEC6CB16C36D}Assets/Items/Equipment/workspaces/Shovel_ETool_US.agr"
+   AnimInstance "{5956FB1DD71F9183}Assets/Items/Equipment/workspaces/Shovel_ETool_US.asi"
+   AnimInjection AnimationAttachmentInfo "{648469A159A7C95A}" {
+    AnimGraph "{B43CAEC6CB16C36D}Assets/Items/Equipment/workspaces/Shovel_ETool_US.agr"
+    AnimInstance "{5956FB1DD71F9183}Assets/Items/Equipment/workspaces/Shovel_ETool_US.asi"
+    BindingName "Weapon"
+   }
+   BindWithInjection 1
+   AutoVariablesBind 1
+   MeshVisibilityConfigurations {
+    MeshesVisibilitySwitchConfig "{648D550CB7664761}" {
+     Meshes {
+     }
+    }
+   }
+  }
+  RplComponent "{5624A88DC2D9928D}" {
+   "Rpl State Override" Runtime
+   "Parent Node From Parent Entity" 0
+  }
+  Hierarchy "{648469A7FA8EB83A}" {
+  }
+ }
+ coords 3571.428 25.687 3452.778
+ Flags 3
+}

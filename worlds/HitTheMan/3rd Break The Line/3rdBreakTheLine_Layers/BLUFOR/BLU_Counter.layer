@@ -1,0 +1,123 @@
+$grp SCR_AIWaypoint : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
+ N_Move_13 {
+  coords 2627.359 14.193 2315.266
+ }
+ N_Move_24 {
+  coords 2531.309 19.992 2944.26
+ }
+ N_Move_12 {
+  coords 2601.473 14.273 2281.713
+ }
+}
+$grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
+ CAFInf_CounterTown_Spawn_1 {
+  coords 2422.244 9.063 2346.448
+  angleY 70.945
+  m_prefab "{7A0813F1B65EA589}Prefabs/Groups/BLUFOR/US/Army_1985_Rifles/Group_US_Army_1985_RifleSquad.et.et"
+  m_conditionFlag "SouthCounter"
+  m_spawnTimings {
+   80 100 140 200
+  }
+  m_waypointNames {
+   "CounterAttack"
+  }
+ }
+ CAFInf_CounterTown_Spawn_2 {
+  coords 2262.518 10.77 2740.227
+  angleY 76.635
+  m_prefab "{7A0813F1B65EA589}Prefabs/Groups/BLUFOR/US/Army_1985_Rifles/Group_US_Army_1985_RifleSquad.et.et"
+  m_conditionFlag "WestCounter"
+  m_spawnTimings {
+   80 100 140 200
+  }
+  m_waypointNames {
+   "CounterAttack2"
+  }
+ }
+ M2A2_Counter_Spawn_2 {
+  coords 2198.653 15.853 3173.958
+  angleY 145.986
+  m_prefab "{5CFD8CB5C3E55A4E}Prefabs/Vehicles/Tracked/BFV/M2A2_MERDC.et"
+  m_conditionFlag "WestCounter"
+  m_spawnTimings {
+   60
+  }
+  m_crewConfig TILW_CrewConfig "{655288DD15A9F6AC}" {
+   m_crewGroups {
+    TILW_CrewGroup "{651028E34B0E58D9}" {
+     m_crewStations {
+      TILW_CrewStation "{651028E349419D3E}" {
+       m_allowCargo 0
+       m_characters {
+        "{E1CB513B8B9B08F4}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Crew.et" "{E1CB513B8B9B08F4}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Crew.et"
+       }
+      }
+     }
+     m_waypointNames {
+      "N_Move_24"
+     }
+    }
+   }
+   m_noTurretDismount 0
+   m_useIdleGroups 0
+  }
+ }
+ M2A2_Counter_Spawn_1 {
+  coords 2500.45 7.688 1995.86
+  angleY -37.791
+  m_prefab "{5CFD8CB5C3E55A4E}Prefabs/Vehicles/Tracked/BFV/M2A2_MERDC.et"
+  m_conditionFlag "SouthCounter"
+  m_spawnTimings {
+   60
+  }
+  m_crewConfig TILW_CrewConfig "{655288DD15A9F6AC}" {
+   m_crewGroups {
+    TILW_CrewGroup "{651028E34B0E58D9}" {
+     m_crewStations {
+      TILW_CrewStation "{651028E349419D3E}" {
+       m_allowCargo 0
+       m_characters {
+        "{E1CB513B8B9B08F4}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Crew.et" "{E1CB513B8B9B08F4}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Crew.et"
+       }
+      }
+     }
+     m_waypointNames {
+      "N_Move_12" "N_Move_13"
+     }
+    }
+   }
+   m_noTurretDismount 0
+   m_useIdleGroups 0
+  }
+ }
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ Counter_Trigger_2 {
+  coords 2486.341 10.91 2773.59
+  m_queryRadius 200
+  m_locationName "the Powerstation"
+  m_flagName "WestCounter"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "GC_NVA"
+  m_ratioThreshold 0.01
+ }
+ Counter_Trigger_1 {
+  coords 2601.233 8.753 2458.276
+  m_queryRadius 200
+  m_locationName "the Powerstation"
+  m_flagName "SouthCounter"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "GC_NVA"
+  m_ratioThreshold 0.01
+ }
+}
+$grp SCR_SearchAndDestroyWaypoint : "{B3E7B8DC2BAB8ACC}Prefabs/AI/Waypoints/AIWaypoint_SearchAndDestroy.et" {
+ CounterAttack {
+  coords 2638.408 13.828 2471.28
+  CompletionRadius 100
+ }
+ CounterAttack2 {
+  coords 2526.815 11.721 2744.692
+  CompletionRadius 100
+ }
+}

@@ -1,0 +1,62 @@
+GenericEntity : "{37535B53F57D1632}Prefabs/Items/Demining/MineFlags/MineFlag_base.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  MeshObject "{5A2CCE4594CABF3B}" {
+   Object "{9A49FEF88266C8E5}Assets/Items/Demining/MineFlags/MineFlag_US_01.xob"
+  }
+  RigidBody "{5A2CCE4594CABF3D}" {
+   ModelGeometry 1
+   Static 1
+  }
+  SCR_DestructionMultiPhaseComponent "{5C7EE70A42E61150}" {
+   m_DestroySpawnObjects {
+    SCR_DebrisSpawnable "{5C7EE709989B2A10}" {
+     m_ModelPrefabs {
+      "{9A49FEF88266C8E5}Assets/Items/Demining/MineFlags/MineFlag_US_01.xob"
+     }
+    }
+   }
+  }
+  SCR_MineFlagComponent "{647C32384EDD936E}" {
+  }
+  SCR_PlaceableInventoryItemComponent "{647C32384EDD9375}" {
+   Attributes SCR_ItemAttributeCollection "{647C32384EDD9372}" {
+    ItemDisplayName UIInfo "{647C32384EDD9373}" {
+     Name "#AR-Mines_Flag_Name"
+     Description "#AR-Mines_Flag_Description_US"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{647C32384EDD937D}" {
+     Weight 0.5
+     SizeSetupStrategy Manual
+     ItemDimensions 15 15 15
+     ItemVolume 100
+     RestingAdditiveRotationLS 0 0 0
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{647C323854A17AA2}" {
+     AnimationInstance "{4FCBEA45CAEBC9C0}anims/workspaces/player/player_main_1h.asi"
+     AnimationIKPose "{3E5C93E85F05C6B5}Assets/Weapons/Grenades/RGD5/anims/anm/p_rgd5_ik.anm"
+     AnimationAttachments {
+      AnimationAttachmentInfo "{647C323758C6A399}" {
+       AnimGraph "{1262B0C648B36FB7}Assets/Items/Medicine/Workspaces/Bandage_US.agr"
+       AnimInstance "{CA8E77D43958646F}Assets/Items/Medicine/Workspaces/Bandage_US_player.asi"
+       BindingName "Gadget"
+      }
+     }
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{647C32384EDD9378}" {
+      CameraOffset 0 0.15 -0.2
+     }
+     CharacterModifierAttributes "{647C323668E0B6A7}" {
+     }
+     SCR_SelectionMenuPreviewAttributes "{647C323551929DE9}" {
+     }
+    }
+    CommonItemType "NONE"
+    m_Size SLOT_1x1
+    m_SlotType SLOT_ANY
+   }
+  }
+ }
+ coords 5389.308 77.332 5793.59
+}

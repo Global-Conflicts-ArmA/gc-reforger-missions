@@ -1,0 +1,186 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F9E52831}" {
+     NavmeshFile "{AD5F99CD7C59D5E0}worlds/GameMaster/Navmeshes/GM_Eden.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F3B4EE8A}" {
+     NavmeshFile "{C35ECF3276824654}worlds/GameMaster/Navmeshes/GM_Eden_vehicles.nmn"
+    }
+   }
+  }
+ }
+ coords 3708.573 117.113 4130.594
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 3758.022 128.347 4137.07
+}
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 5
+   m_iStartingMinutes 25
+   m_iSetDay 10
+   m_iSetMonth 6
+   m_iSetYear 1981
+  }
+ }
+ coords 3734.465 124.228 4139.239
+ m_iFreezeTime 120000
+ {
+  SCR_FactionManager "64CF77BF21AE2B07" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+      }
+     }
+    }
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB7928490AEEE}" {
+       }
+       SCR_CallsignInfo "{55CCB79284BA6D27}" {
+       }
+       SCR_CallsignInfo "{55CCB79284A2F6C9}" {
+       }
+       SCR_CallsignInfo "{55CCB792844D665F}" {
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "1 HQ"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "3"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity : "{7846A93EA395CFBA}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneBase.et" {
+ coords 4358.572 65.637 4992.477
+ m_fWarnRadius 40
+ m_fZoneRadius 50
+ m_fZoneTeleportedRadius 51
+}
+PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_CoverMapComponent "{6473480FCAB7760B}" {
+   Enabled 1
+  }
+ }
+ coords 3743.482 152.215 4208.307
+ Points {
+  ShapePoint "{64CF77B9990003C8}" {
+   Position 713.661 0 934.982
+  }
+  ShapePoint "{64CF77B9966D39D4}" {
+   Position -244.346 0 480.905
+  }
+  ShapePoint "{64CF77B991B2AFEB}" {
+   Position 138.262 0 -386.881
+  }
+  ShapePoint "{64CF77B9AF12F1FF}" {
+   Position 1067.615 0 26.459
+  }
+ }
+}
+TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 3869.301 162.148 4308.852
+ m_queryRadius 50
+ m_queryPeriod 60
+ m_captureIterations 5
+ m_locationName "Signal Retransmission Site"
+ m_flagName "OCCUPY_SIGNAL"
+ m_stopAfterFirstChange 1
+ m_drawShapeSurface 0
+ m_ownerFactionKey "USSR"
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 3712.058 131.433 4174.592
+ m_missionEvents {
+  TILW_MissionEvent "{64CF77A0AF831DA4}" {
+   m_name "OPFOR Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{64CF77A0B663460D}" {
+     m_messageTitle "OPFOR Victory"
+     m_messageBody "BLUFOR have been wiped. 2 min to end firefights. "
+    }
+    TILW_EndGameInstruction "{64CF77A0B382B41B}" {
+     m_executionDelay 120
+     m_factionKey "USSR"
+    }
+   }
+   m_condition TILW_LiteralTerm "{64CF77A0A8264411}" {
+    m_flagName "BLUFOR90"
+   }
+  }
+  TILW_MissionEvent "{64CF77A0F77C5F04}" {
+   m_name "OPFOR Victory 2"
+   m_instructions {
+    TILW_SendMessageInstruction "{64CF77A0B663460D}" {
+     m_messageTitle "OPFOR Victory"
+     m_messageBody "Signal Retranmission Site Captured. 2 min to end firefights. "
+    }
+    TILW_EndGameInstruction "{64CF77A0B382B41B}" {
+     m_executionDelay 120
+     m_factionKey "USSR"
+    }
+   }
+   m_condition TILW_LiteralTerm "{64CF77A0A8264411}" {
+    m_flagName "OCCUPY_SIGNAL"
+   }
+  }
+  TILW_MissionEvent "{64CF77A71886D634}" {
+   m_name "BLUFOR Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{64CF77A0B663460D}" {
+     m_messageTitle "BLUFOR Victory"
+     m_messageBody "OPFOR has been destroyed. 2 min to end firefights. "
+    }
+    TILW_EndGameInstruction "{64CF77A0B382B41B}" {
+     m_executionDelay 120
+     m_factionKey "US"
+    }
+   }
+   m_condition TILW_LiteralTerm "{64CF77A0A8264411}" {
+    m_flagName "OPFOR90"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{64CF77A07F189289}" {
+   m_flagName "BLUFOR90"
+   m_factionKey "US"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{64CF77A08C080B7C}" {
+   m_flagName "OPFOR90"
+   m_factionKey "USSR"
+   m_casualtyRatio 0.9
+  }
+ }
+}

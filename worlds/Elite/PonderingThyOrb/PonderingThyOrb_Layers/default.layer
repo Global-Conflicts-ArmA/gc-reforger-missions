@@ -1,0 +1,210 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{65212B01B41611E0}" {
+     NavmeshFile "{7FADC4D5123F81EA}NavMesh/Bad_Orb_soldiers.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{551533FBA5E01BC6}NavMesh/Bad_Orb_btrlike.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{FF19B45E169B591F}NavMesh/Bad_Orb_lowres.nmn"
+    }
+   }
+  }
+ }
+ coords 3665.325 353.507 1661.116
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 3582.549 347.031 1606.97
+}
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 12
+   m_iStartingMinutes 8
+   m_bRandomStartingWeather 1
+   m_iSetDay 6
+   m_iSetMonth 6
+   m_iSetYear 1985
+  }
+ }
+ coords 3603.666 351.735 1618.708
+ m_iFreezeTime 180000
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ {
+  components {
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+   }
+  }
+  coords 3637.218 367.902 1636.119
+  Points {
+   ShapePoint "{65212B0447C93204}" {
+    Position 532.812 0 -293.187
+   }
+   ShapePoint "{65212B04393A39A8}" {
+    Position -315.942 0 901.986
+   }
+   ShapePoint "{65212B043B6A7F75}" {
+    Position -901.791 0 543.982
+   }
+   ShapePoint "{65212B043D68D470}" {
+    Position -24.322 0 -719.99
+   }
+  }
+ }
+ Blufor_Setup {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "US"
+    }
+    m_visibility FACTION
+    m_defaultColor 0 0.125 0.502 1
+   }
+  }
+  coords 3619.913 342.918 1065.112
+  Points {
+   ShapePoint "{65215A844DB58846}" {
+    Position 30.321 0 -20.791
+   }
+   ShapePoint "{65215A844EBA7460}" {
+    Position 16.479 0 28.904
+   }
+   ShapePoint "{65215A844FD36960}" {
+    Position -25.81 0 20.788
+   }
+   ShapePoint "{65215A84408EC27A}" {
+    Position -20.632 0 -31.746
+   }
+  }
+ }
+ Opfor_Setup {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "USSR"
+    }
+    m_visibility FACTION
+    m_defaultColor 0.502 0 0 1
+   }
+  }
+  coords 3270.952 336.092 2374.118
+  Points {
+   ShapePoint "{65215A842C1453F1}" {
+    Position 18.481 -0.032 -19.564
+   }
+   ShapePoint "{65215A842D1BAC19}" {
+    Position 18.984 0 15.124
+   }
+   ShapePoint "{65215A842FD26E8E}" {
+    Position -20.235 0 14.386
+   }
+   ShapePoint "{65215A84208DB987}" {
+    Position -19.932 0 -19.676
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 3662.32 370.199 1649.125
+ m_missionEvents {
+  TILW_MissionEvent "{65212B0EA473D710}" {
+   m_name "Time_Limit"
+   m_instructions {
+    TILW_EndGameInstruction "{65212B0E6652391D}" {
+     m_executionDelay 5410
+     m_gameOverType EDITOR_FACTION_DRAW
+     m_factionKey "GC_CAF"
+    }
+    TILW_SendMessageInstruction "{65212B0E58919053}" {
+     m_executionDelay 4800
+     m_messageTitle "Time Limit"
+     m_messageBody "10 minutes left until mission ends."
+    }
+    TILW_SendMessageInstruction "{65212B0FF8B9E235}" {
+     m_executionDelay 5400
+     m_messageTitle "Time Limit"
+     m_messageBody "Time limit reached, mission ending."
+    }
+   }
+   m_condition TILW_LiteralTerm "{65212B0E59C70713}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{65212B0E99E8FBF1}" {
+   m_name "Blufor_Victory"
+   m_instructions {
+    TILW_EndGameInstruction "{65212B0FDAF3DF95}" {
+     m_executionDelay 15
+     m_factionKey "US"
+    }
+    TILW_SendMessageInstruction "{65212B0FB11D67FE}" {
+     m_messageTitle "BLUFOR Victory"
+     m_messageBody "US has won."
+    }
+   }
+   m_condition TILW_LiteralTerm "{65212B0FD8F213CA}" {
+    m_flagName "Opfor_Killed"
+   }
+  }
+  TILW_MissionEvent "{65212B0E9E1CCF97}" {
+   m_name "Opfor_Victory"
+   m_instructions {
+    TILW_EndGameInstruction "{65212B0FC4D4BB79}" {
+     m_executionDelay 15
+     m_factionKey "USSR"
+    }
+    TILW_SendMessageInstruction "{65212B0F9C323FEC}" {
+     m_messageTitle "OPFOR Victory"
+     m_messageBody "USSR has won."
+    }
+   }
+   m_condition TILW_LiteralTerm "{65212B0FCC822C2A}" {
+    m_flagName "Blufor_Killed"
+   }
+  }
+  TILW_MissionEvent "{65215A8504401B11}" {
+   m_name "Setup_Timer"
+   m_instructions {
+    TILW_SendMessageInstruction "{65215A84F2EFF32A}" {
+     m_executionDelay 180
+     m_messageTitle "Setup Timer"
+     m_messageBody "Setup has ended."
+    }
+    TILW_DeleteEntitiesInstruction "{65215A8400778445}" {
+     m_executionDelay 180
+     m_entityNames {
+      "Blufor_Setup" "Opfor_Setup"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{65215A84FC427C93}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{65212B0E9378C104}" {
+   m_flagName "Blufor_Killed"
+   m_factionKey "US"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{65212B0E9478F059}" {
+   m_flagName "Opfor_Killed"
+   m_factionKey "USSR"
+   m_casualtyRatio 0.9
+  }
+ }
+}

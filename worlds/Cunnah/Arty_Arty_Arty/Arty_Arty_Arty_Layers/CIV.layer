@@ -1,0 +1,69 @@
+$grp GenericEntity {
+ dave_spawn {
+  coords 9221.81 61.827 2088.019
+  angleY -80.988
+ }
+ ralph_spawn {
+  coords 9703.485 22.539 1717.073
+  angleY -70.486
+ }
+ boss_spawn {
+  coords 9828.963 31.656 1162.921
+  angleY -23.541
+ }
+ town_folk_spawn {
+  coords 9815.748 5.188 1407.325
+  angleY -26.281
+ }
+}
+SCR_AIWaypoint civ_flee : "{06E1B6EBD480C6E0}Prefabs/AI/Waypoints/AIWaypoint_ForcedMove.et" {
+ coords 7915.906 202.373 4346.873
+ CompletionRadius 50
+}
+Vehicle S105_rally1 : "{5555DCAFADB8CE2A}Prefabs/Vehicles/Wheeled/S105/S105_rally.et" {
+ components {
+  SCR_BaseLockComponent "{54D6FBC0EA806FE5}" {
+   m_lockPilot 1
+   m_lockTurret 1
+   m_lockCargo 1
+   m_factionLock {
+    "CIV"
+   }
+  }
+ }
+ coords 9938.206 2.438 1550.788
+ angleY -180
+}
+SCR_AIGroup bob : "{84E5BBAB25EA23E5}Prefabs/Groups/BLUFOR/Group_US_FireTeam.et" {
+ coords 8805.854 95.359 2722.428
+ angleY 54.162
+ m_faction "CIV"
+ m_aUnitPrefabSlots {
+  "{8A97F7055F1A003A}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_CottonShirt_6.et"
+ }
+}
+$grp SCR_BoardingTimedWaypoint : "{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et" {
+ bob_get_in {
+  coords 8825.611 94.869 2722.367
+  CompletionRadius 5
+ }
+ dock_worker_get_in {
+  coords 9939.985 2.437 1550.717
+  CompletionRadius 10
+ }
+}
+SCR_AIGroup civ_fleeing : "{DDF3799FA1387848}Prefabs/Groups/BLUFOR/Group_US_RifleSquad.et" {
+ coords 9269.041 65.689 2130.144
+ m_faction "CIV"
+ m_aUnitPrefabSlots {
+  "{22E43956740A6794}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_Randomized.et" "{22E43956740A6794}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_Randomized.et" "{22E43956740A6794}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_Randomized.et" "{22E43956740A6794}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_Randomized.et" "{22E43956740A6794}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_Randomized.et"
+ }
+}
+SCR_AIGroup dock_workers : "{F72EF3429D8C8DF5}Prefabs/Groups/BLUFOR/Group_US_AmmoTeam.et" {
+ coords 9944.636 2.531 1575.269
+ angleY -149.914
+ m_faction "CIV"
+ m_aUnitPrefabSlots {
+  "{2CDFBF355F3410DD}Prefabs/Characters/Factions/CIV/Dockworker/Character_CIV_Dockworker_2.et"
+ }
+}

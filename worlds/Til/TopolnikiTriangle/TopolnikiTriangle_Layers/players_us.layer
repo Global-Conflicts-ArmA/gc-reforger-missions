@@ -1,0 +1,115 @@
+SCR_AIGroup us_inf_hq : "{07C9F3D72826CAB5}Prefabs/Groups/BLUFOR/US/Marines_1990_Rifles/Group_US_Marines_1990_RiflePHQ_P.et" {
+ components {
+  AIFormationComponent "{507E9DC12F541FE6}" {
+   DefaultFormation "Column"
+  }
+ }
+ coords 1816.661 261.937 11503.665
+ angleY 39.772
+ m_aUnitPrefabSlots {
+  "{D0725F1D7828E507}worlds/Til/TopolnikiTriangle/Prefabs/Character_US_PL_P_QRFRadio.et" "{EC7EDB04B4C7B73A}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_RTO_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic_P.et"
+ }
+ m_sCustomNameSet "Marine Rifle Plt. | HQ"
+}
+$grp Vehicle : "{27E2E58E734A80EC}Prefabs/Vehicles/Wheeled/M998/M1025_MERDC.et" {
+ M1025_MERDC1 {
+  coords 1818.966 261.876 11515.748
+  angleX -1.531
+  angleY 58.766
+  angleZ 0.928
+  m_sAttachmentGroupName "us_inf_sq"
+ }
+ us_hmmwv_0 {
+  coords 1822.369 261.721 11511.218
+  angleX -0.183
+  angleY 22.148
+  angleZ 2.823
+  m_sAttachmentGroupName "us_inf_hq"
+ }
+}
+SCR_AIGroup us_inf_mtr : "{2E20F404E398F622}Prefabs/Groups/BLUFOR/US/Marines_1990_Rifles/Group_US_Marines_1990_MortarCrew_P.et" {
+ components {
+  PS_GroupCallsignAssigner "{651367042C5F047E}" {
+   m_iSquadCallsign 2
+  }
+ }
+ coords 1150.975 344.5 9990.322
+ angleY 70.189
+ m_sCustomNameSet "Marine Rifle Coy. | Mortar"
+}
+SCR_AIGroup us_lar_a1 : "{37744AC8AFE74FAC}Prefabs/Groups/BLUFOR/US/Marines_1995_LAR/Group_US_MC_LAR_1990_A1_P.et" {
+ components {
+  PS_GroupCallsignAssigner "{650ACCA00E4EC327}" {
+   m_iSquadCallsign 3
+  }
+ }
+ coords 1774.009 264.26 11437.111
+ angleY 43.522
+}
+SCR_AIGroup us_inf_sq : "{547A69AC528EE2CB}Prefabs/Groups/BLUFOR/US/Marines_1990_Rifles/Group_US_Marines_1990_RifleSquad_P.et" {
+ components {
+  AIFormationComponent "{507E9DC12F541FE6}" {
+   DefaultFormation "Column"
+  }
+  PS_GroupCallsignAssigner "{650ACCA066DD9B15}" {
+   m_iSquadCallsign 1
+  }
+ }
+ coords 1813.586 261.937 11506.226
+ angleY 39.772
+ m_sCustomNameSet "Marine Rifle Plt. | 3rd Squad"
+}
+SCR_AIGroup us_lar_a2 : "{69C23009E7B7075B}Prefabs/Groups/BLUFOR/US/Marines_1995_LAR/Group_US_MC_LAR_1990_A2_P.et" {
+ components {
+  PS_GroupCallsignAssigner "{650ACCA00E4EC327}" {
+   m_iSquadCallsign 4
+  }
+ }
+ coords 1771.083 264.335 11440.119
+ angleY 43.68
+}
+Turret : "{8094D99689ABE241}Prefabs/Weapons/Mortars/M252/Mortar_M252.et" {
+ coords 1181.798 344.531 9997.994
+ angleY 45
+}
+$grp Vehicle : "{B7A8BAA37CB0AC2B}Prefabs/Vehicles/Wheeled/LAV25/LAV25_MERDC.et" {
+ lav25_1 {
+  coords 1782.271 263.53 11440.752
+  angleX -4.231
+  angleY 71.874
+  angleZ -1.434
+  m_sAttachmentGroupName "us_lar_a1"
+ }
+ lav25_2 {
+  coords 1787.863 262.829 11447.164
+  angleX -4.231
+  angleY 71.874
+  angleZ -1.434
+  m_sAttachmentGroupName "us_lar_a2"
+ }
+}
+$grp Vehicle : "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MERDC.et" {
+ us_hmmwv_1 {
+  coords 1818.13 261.885 11527.109
+  angleX -1.599
+  angleY 26.451
+  angleZ 1.204
+  m_sAttachmentGroupName "us_inf_sq"
+ }
+ us_hmmwv_2 {
+  coords 1819.093 261.862 11521.352
+  angleX -0.862
+  angleY 52.062
+  angleZ 1.806
+  m_sAttachmentGroupName "us_inf_sq"
+ }
+}
+GenericEntity : "{E1FD1ACDA98123AE}Prefabs/Props/Military/Arsenal/AmmoBoxes/US/AmmoBoxArsenal_Mortar_US.et" {
+ components {
+  SCR_ResourceComponent "{5E5ABDF371AE8B21}" {
+   Enabled 0
+  }
+ }
+ coords 1178.601 344.553 9991.974
+ angleY 12.589
+}

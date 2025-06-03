@@ -1,0 +1,281 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F9E52831}" {
+     NavmeshFile "{AD5F99CD7C59D5E0}worlds/GameMaster/Navmeshes/GM_Eden.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F3B4EE8A}" {
+     NavmeshFile "{C35ECF3276824654}worlds/GameMaster/Navmeshes/GM_Eden_vehicles.nmn"
+    }
+   }
+  }
+ }
+ coords 3965.664 51.573 7190.597
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 3963.333 51.293 7190.92
+}
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{64D05DF6174B6AF9}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 9
+     m_iStartingMinutes 15
+    }
+   }
+   m_bUseSpecifiedDate 1
+   m_iSetDay 21
+   m_iSetMonth 2
+   m_iSetYear 1981
+  }
+ }
+ coords 3964.286 51.158 7193.984
+ m_iFreezeTime 300000
+ {
+  SCR_FactionManager "64D05DCC5C19A982" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{56DEAC40D3C2E623}" {
+    }
+    SCR_Faction "{61500924662B6062}" {
+    }
+   }
+  }
+ }
+}
+PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ coords 3958.25 34.425 7332.052
+ m_sTitle "Notes"
+ m_sTextData "Scenario:"\
+ "The remnants of a British rifle platoon have fallen back to the Lacourt manor. A Soviet motor rifle platoon in BTRs has been tasked with eliminating the British remants and seizing the manor and immediate surrounding area."\
+ ""\
+ ""\
+ "Notes:"\
+ "- Ratio 2:1."\
+ "- Setup 5 mins."\
+ "- Objective end condition applies when USSR controls the cap zone with no British forces inside."\
+ "- USSR loses if they take 90% casualties."\
+ "- No time limit."\
+ "- There are additional buildings and vegetation not marked on the map"\
+ ""\
+ ""
+ m_bEmptyFactionVisibility 1
+ m_bShowForAnyFaction 1
+ m_iOrder 9
+}
+PS_ManualMarker : "{60226647F08EF462}PrefabsEditable/Markers/Group/Marker_GroupFlagsSoviet_Base.et" {
+ coords 3962.251 29.381 7397.691
+ angleY -90
+ m_fWorldSize 175
+ m_aVisibleForFactions {
+  "USSR"
+ }
+ m_bVisibleForEmptyFaction 0
+ m_bShowForAnyFaction 0
+}
+$grp PS_ManualMarker : "{63BCE30CF8B65BCE}PrefabsEditable/Markers/Group/Marker_GroupFlagsOpfor_Base.et" {
+ {
+  coords 4091.369 36.956 7766.4
+  angleY 0
+  m_MarkerColor 0.855 0.031 0.028 0.9
+  m_fWorldSize 150
+  m_aVisibleForFactions {
+   "UK"
+  }
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4736.904 163.552 7041.72
+  angleY 0
+  m_MarkerColor 0.855 0.031 0.028 0.9
+  m_fWorldSize 150
+  m_aVisibleForFactions {
+   "UK"
+  }
+  m_bShowForAnyFaction 0
+  m_bringToFront 0
+ }
+}
+PS_ManualMarker : "{676B84E0291E12D6}PrefabsEditable/Markers/Group/Marker_GroupFlagsBlufor_Base.et" {
+ coords 3820.045 105.854 6273.821
+ angleY 90
+ m_MarkerColor 0.016 0.552 0.905 0.919
+ m_fWorldSize 75
+ m_aVisibleForFactions {
+  "UK"
+ }
+ m_bShowForAnyFaction 0
+}
+SCR_EditorRestrictionZoneEntity : "{7846A93EA395CFBA}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneBase.et" {
+ coords 3954.392 30.801 7422.116
+ m_fWarnRadius 75
+ m_fZoneRadius 100
+ m_fZoneTeleportedRadius 125
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "USSR"
+    }
+    m_visibility FACTION
+    m_useFactionColor 0
+   }
+  }
+  coords 4112.814 79.019 6068.553
+  Points {
+   ShapePoint "{64D05DD6018A5B41}" {
+    Position 470.11 -28.456 115.488
+   }
+   ShapePoint "{64D2F7AEC507AC9E}" {
+    Position 320.454 -29.531 -1.083
+   }
+   ShapePoint "{64D2F7AEE1CBA4CA}" {
+    Position 89.056 -27.946 -76.645
+   }
+   ShapePoint "{64D2F7AEA4BC286F}" {
+    Position -355.785 63.714 -70.242
+   }
+   ShapePoint "{64D0366F6F4A9D09}" {
+    Position -723.985 68.375 45.708
+   }
+   ShapePoint "{64D2F7AF300EAF0D}" {
+    Position -755.624 29.428 321.646
+   }
+   ShapePoint "{64D2F7AF3F976ADF}" {
+    Position -681.851 -72.84 1110.79
+   }
+   ShapePoint "{64D036745FBA4157}" {
+    Position -338.967 -78.315 1428.386
+   }
+   ShapePoint "{64D2F7AF1BE29888}" {
+    Position 114.248 -11.64 1428.949
+   }
+   ShapePoint "{64D0366F44F346B9}" {
+    Position 449.632 65.113 1079.008
+   }
+   ShapePoint "{64D0366BA60592EF}" {
+    Position 571.328 82.984 857.081
+   }
+  }
+ }
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "UK"
+    }
+    m_visibility FACTION
+    m_defaultColor 0 0.125 0.502 1
+    m_useFactionColor 0
+   }
+  }
+  coords 3410.218 145.291 6130.752
+  Points {
+   ShapePoint "{64D2F7AE18934E68}" {
+    Position 27.014 -28.394 209.425
+   }
+   ShapePoint "{64D03668EC9263B0}" {
+    Position 40.335 6.017 -35.947
+   }
+   ShapePoint "{64D2F7AEBF398CDA}" {
+    Position 347.811 -2.475 -132.788
+   }
+   ShapePoint "{64D2F7AE946A6DD8}" {
+    Position 791.907 -94.251 -138.83
+   }
+   ShapePoint "{64D0366954BB340E}" {
+    Position 1022.55 -95.84 -63.682
+   }
+   ShapePoint "{64D2F7AF9FB83638}" {
+    Position 979.177 -77.754 226.561
+   }
+   ShapePoint "{64D2F7AC5BE520E4}" {
+    Position 885.309 -23.596 373.29
+   }
+   ShapePoint "{64D05DC0C9FA0F8B}" {
+    Position 870.699 -9.92 619.839
+   }
+   ShapePoint "{64D05DC01DC76AC2}" {
+    Position 331.523 -64.474 588.725
+   }
+   ShapePoint "{64D2F7AC30BA0C9F}" {
+    Position 226.272 -65.544 527.485
+   }
+   ShapePoint "{64D03669395D7F29}" {
+    Position 10.322 -40.301 315.964
+   }
+  }
+ }
+}
+TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 3876.718 103.08 6278.129
+ m_queryRadius 175
+ m_flagName "OBJ_A_TAKEN"
+ m_stopAfterFirstChange 1
+ m_ownerFactionKey "USSR"
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 3806.406 101.294 6341.194
+ m_missionEvents {
+  TILW_MissionEvent "{64D05DC9BA12C215}" {
+   m_name "USSR KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{64D05DC9E66ED269}" {
+     m_executionDelay 15
+     m_messageTitle "USSR DEFEATED"
+     m_messageBody "Soviet forces have been reduced by 90%. British forces win."
+    }
+    TILW_EndGameInstruction "{64D1185A5DFF610D}" {
+     m_executionDelay 30
+     m_factionKey "UK"
+    }
+   }
+   m_condition TILW_LiteralTerm "{64D05DC93E07AA31}" {
+    m_flagName "USSR_PLAYERS_KILLED"
+   }
+  }
+  TILW_MissionEvent "{64D05DC9BBE17FA4}" {
+   m_name "CAP ZONE"
+   m_instructions {
+    TILW_SendMessageInstruction "{64D05DC968E49006}" {
+     m_executionDelay 15
+     m_messageTitle "OBJECTIVE CAPTURED"
+     m_messageBody "Soviet forces have captured the objective."
+    }
+    TILW_EndGameInstruction "{64D1185ABBF05736}" {
+     m_executionDelay 30
+     m_factionKey "USSR"
+    }
+   }
+   m_condition TILW_LiteralTerm "{64D05DC953545E36}" {
+    m_flagName "OBJ_A_TAKEN"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{64D05DCE5109EC2C}" {
+   m_flagName "USSR_PLAYERS_KILLED"
+   m_factionKey "USSR"
+   m_casualtyRatio 0.9
+  }
+ }
+}
+PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ coords 3876.718 103.08 6278.129
+ angleY 0
+ m_sImageSetGlow ""
+ m_MarkerColor 0 0 0 0.744
+ m_fWorldSize 550
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}

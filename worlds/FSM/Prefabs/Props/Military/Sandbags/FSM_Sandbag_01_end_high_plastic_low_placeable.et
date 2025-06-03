@@ -1,0 +1,88 @@
+GenericEntity : "{E840D82CE1F92BBD}Prefabs/Props/Military/Sandbags/Sandbag_01_end_high_base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  SignalsManagerComponent "{648D551B109B64E5}" {
+  }
+  MeshObject "{5872F0EB7FA40561}" {
+   Object "{438C6835D671A703}Assets/Props/Military/Sandbags/Sandbag_01_end.xob"
+  }
+  RigidBody "{5872F0EB7DFB5A9D}" {
+   Static 1
+  }
+  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+   "Additional hit zones" {
+    SCR_HitZone Default {
+     DamageThreshold 0
+     "Collision multiplier" 0.01
+     "Kinetic multiplier" 0.9
+    }
+   }
+   m_fBaseHealth 2000
+   m_fForceToDamageScale 0.1
+   m_fDamageThresholdMaximum 25000
+  }
+  SCR_ExplosiveChargeInventoryItemComponent "{648D551B109B64FD}" {
+   Attributes SCR_ItemAttributeCollection "{648D551B109B64F4}" {
+    ItemDisplayName UIInfo "{648D551B109B64F5}" {
+     Name "Placeable short sandbag wall Low"
+     Description "Placeable short sandbag wall Low"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{648D551B109B64F3}" {
+     Weight 0.75
+     SizeSetupStrategy Manual
+     ItemVolume 100
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{648D551B109B64F0}" {
+     AnimationInstance "{4FCBEA45CAEBC9C0}anims/workspaces/player/player_main_1h.asi"
+     AnimationIKPose "{ADA8287EEE81F47D}Assets/Weapons/Explosives/DemoBlock_M112/anims/p_M112_IK.anm"
+     AnimationAttachments {
+      AnimationAttachmentInfo "{648D5501148C98EA}" {
+       AnimGraph "{B43CAEC6CB16C36D}Assets/Items/Equipment/workspaces/Shovel_ETool_US.agr"
+       AnimInstance "{5956FB1DD71F9183}Assets/Items/Equipment/workspaces/Shovel_ETool_US.asi"
+       BindingName "Gadget"
+      }
+     }
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{648D551B109B648F}" {
+      CameraDistanceToItem 4
+      PreviewModel "{438C6835D671A703}Assets/Props/Military/Sandbags/Sandbag_01_end.xob"
+     }
+    }
+   }
+  }
+  SCR_PlaceableItemComponent "{648D551B109B648A}" {
+   m_bCanAttachToDynamicObject 1
+   m_bCanAttachAngled 1
+   m_eMeasurementMethod FROM_CENTER_OF_MASS
+   m_fMaxPlacementDistance 2.1
+   m_ePlacementType XYZ
+  }
+  WeaponComponent "{648D551B109B6488}" {
+   WeaponType SmokeGrenade
+   shouldHandleObstruction 0
+   WeaponSlotType "throwable"
+  }
+  ActionsManagerComponent "{648D551B109B6486}" {
+  }
+  WeaponAnimationComponent "{648D551B109B6487}" {
+   AnimGraph "{7A7092BE09EA333C}Assets/Weapons/Explosives/workspace/M112.agr"
+   AnimInstance "{971AC76515E361D2}Assets/Weapons/Explosives/workspace/M112.asi"
+   AnimInjection AnimationAttachmentInfo "{648D551B109B6485}" {
+    AnimGraph "{7A7092BE09EA333C}Assets/Weapons/Explosives/workspace/M112.agr"
+    AnimInstance "{971AC76515E361D2}Assets/Weapons/Explosives/workspace/M112.asi"
+    BindingName "Weapon"
+   }
+   BindWithInjection 1
+   AutoVariablesBind 1
+  }
+  RplComponent "{5624A88DC2D9928D}" {
+   "Rpl State Override" Runtime
+   "Parent Node From Parent Entity" 0
+  }
+  Hierarchy "{648D551B109B649F}" {
+  }
+ }
+ coords 2338.212 18.195 3755.391
+ Flags 3
+}
