@@ -43,10 +43,14 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/
        }
       }
      }
+     m_sFactionRadioEncryptionKey "GetShotDownDumbasses"
+     m_iFactionRadioFrequency 62000
     }
     SCR_Faction "{5CC8DE37E1FF0F7A}" {
      UIInfo SCR_FactionUIInfo "{5CC8B5EDA0CDBD62}" {
       Name "Pararescue"
+     }
+     m_aFriendlyFactionsIds {
      }
      m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
       m_aCompanyNames {
@@ -346,6 +350,158 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
    }
    m_condition TILW_LiteralTerm "{6556DCC70009B91E}" {
     m_flagName "SeparatistsKilled"
+   }
+  }
+  TILW_MissionEvent "{658EF76999D91723}" {
+   m_name "Spawn OPFOR Marker - Location 1"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{658EF769855A1DF1}" {
+     m_executionDelay 0
+     m_prefab "{02742280107F45D9}worlds/FloridaMan/Prefabs/Setpeice/opfor_notice_marker.et"
+     m_locationName "extract1"
+    }
+    TILW_SendMessageInstruction "{658EF768F2192FED}" {
+     m_executionDelay 0
+     m_messageTitle "INTEL Update"
+     m_messageBody "A group of locals have reported a strange looking military unit moving towards the coast. The area they indicated is now marked on your map."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{658EF76923D12070}" {
+    m_operands {
+     TILW_LiteralTerm "{658EF76925D04683}" {
+      m_flagName "ExtractPoint1"
+     }
+     TILW_LiteralTerm "{658EF7691CF3B935}" {
+      m_flagName "Pilots_Left_Area"
+     }
+     TILW_LiteralTerm "{658F120023F2FA86}" {
+      m_flagName "mission_in_progress"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{658EF768D6B75416}" {
+   m_name "Spawn OPFOR Marker - Location 2"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{658EF768D6B7558E}" {
+     m_executionDelay 0
+     m_prefab "{02742280107F45D9}worlds/FloridaMan/Prefabs/Setpeice/opfor_notice_marker.et"
+     m_locationName "extract2"
+    }
+    TILW_SendMessageInstruction "{658EF768D6B75588}" {
+     m_executionDelay 0
+     m_messageTitle "INTEL Update"
+     m_messageBody "A group of locals have reported a strange looking military unit moving towards the coast. The area they indicated is now marked on your map."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{658EF768D6B75586}" {
+    m_operands {
+     TILW_LiteralTerm "{658EF768D6B75584}" {
+      m_flagName "ExtractPoint2"
+     }
+     TILW_LiteralTerm "{658EF768D6B75583}" {
+      m_flagName "Pilots_Left_Area"
+     }
+     TILW_LiteralTerm "{658F12001B158046}" {
+      m_flagName "mission_in_progress"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{658EF768D7EDE5E3}" {
+   m_name "Spawn OPFOR Marker - Location 3"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{658EF768D7EDE51E}" {
+     m_executionDelay 0
+     m_prefab "{02742280107F45D9}worlds/FloridaMan/Prefabs/Setpeice/opfor_notice_marker.et"
+     m_locationName "extract3"
+    }
+    TILW_SendMessageInstruction "{658EF768D7EDE519}" {
+     m_executionDelay 0
+     m_messageTitle "INTEL Update"
+     m_messageBody "A group of locals have reported a strange looking military unit moving towards the coast. The area they indicated is now marked on your map."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{658EF768D7EDE514}" {
+    m_operands {
+     TILW_LiteralTerm "{658EF768D7EDE512}" {
+      m_flagName "ExtractPoint3"
+     }
+     TILW_LiteralTerm "{658EF768D7EDE511}" {
+      m_flagName "Pilots_Left_Area"
+     }
+     TILW_LiteralTerm "{658F12001048FC5D}" {
+      m_flagName "mission_in_progress"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{658EF768C85C4C06}" {
+   m_name "Spawn OPFOR Marker - Location 4"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{658EF768C85C4DBA}" {
+     m_executionDelay 0
+     m_prefab "{02742280107F45D9}worlds/FloridaMan/Prefabs/Setpeice/opfor_notice_marker.et"
+     m_locationName "extract4"
+    }
+    TILW_SendMessageInstruction "{658EF768C85C4DB4}" {
+     m_executionDelay 0
+     m_messageTitle "INTEL Update"
+     m_messageBody "A group of locals have reported a strange looking military unit moving towards the coast. The area they indicated is now marked on your map."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{658EF768C85C4DB0}" {
+    m_operands {
+     TILW_LiteralTerm "{658EF768C85C4D8E}" {
+      m_flagName "ExtractPoint4"
+     }
+     TILW_LiteralTerm "{658EF768C85C4D8C}" {
+      m_flagName "Pilots_Left_Area"
+     }
+     TILW_LiteralTerm "{658F120016BAED99}" {
+      m_flagName "mission_in_progress"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{658EF768C94DB67A}" {
+   m_name "Spawn OPFOR Marker - Location 5"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{658EF768C94DB7E0}" {
+     m_executionDelay 0
+     m_prefab "{02742280107F45D9}worlds/FloridaMan/Prefabs/Setpeice/opfor_notice_marker.et"
+     m_locationName "extract5"
+    }
+    TILW_SendMessageInstruction "{658EF768C94DB7FB}" {
+     m_executionDelay 0
+     m_messageTitle "INTEL Update"
+     m_messageBody "A group of locals have reported a strange looking military unit moving towards the coast. The area they indicated is now marked on your map."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{658EF768C94DB7F8}" {
+    m_operands {
+     TILW_LiteralTerm "{658EF768C94DB7F6}" {
+      m_flagName "ExtractPoint5"
+     }
+     TILW_LiteralTerm "{658EF768C94DB7F3}" {
+      m_flagName "Pilots_Left_Area"
+     }
+     TILW_LiteralTerm "{658F12000F6BD133}" {
+      m_flagName "mission_in_progress"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{658F1200560AFBEF}" {
+   m_name "MidMission Workaround"
+   m_instructions {
+    TILW_SetFlagInstruction "{658F12003200B37A}" {
+     m_executionDelay 10
+     m_flagName "mission_in_progress"
+    }
+   }
+   m_condition TILW_LiteralTerm "{658F1200459631C8}" {
+    m_invertTerm 1
    }
   }
  }

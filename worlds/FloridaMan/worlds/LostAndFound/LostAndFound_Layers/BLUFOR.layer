@@ -1,17 +1,15 @@
 PolylineShapeEntity {
  components {
-  TILW_AOLimitComponent "{655B6600F628C98D}" {
-   m_factionKeys {
-    "RHS_ION"
-   }
-   m_defaultColor 0 0.125 0.502 1
-   m_useFactionColor 0
-   m_lineWidth 5
-  }
-  TILW_AreaSpawningComponent "{6554E01E2BE20F61}" {
+  TILW_AreaSpawningComponent "{658EF768737FE0CE}" {
    m_prefabs {
     "{C1E798172DA45F29}worlds/FloridaMan/Prefabs/Groups/BLUFOR/US/US_Pilot_Group.et"
    }
+  }
+  TILW_MapShapeComponent "{658EF76B2CE7A972}" {
+   m_visibleForEmptyFaction 0
+   m_drawArea 0
+   m_drawLine 1
+   m_lineColor 0 0.125 0.502 1
   }
   RplComponent "{655B6600DE048346}" {
    Streamable Disabled
@@ -34,6 +32,9 @@ PolylineShapeEntity {
   ShapePoint "{6554E01E5DB78228}" {
    Position 394.718 -3.505 578.88
   }
+  ShapePoint "{658EF76A989A57C9}" {
+   Position 422.997 -18.797 664.021
+  }
   ShapePoint "{6554E01E50B14352}" {
    Position 451.868 -26.027 759.052
   }
@@ -50,19 +51,13 @@ PolylineShapeEntity {
    Position 606.282 -69.913 1351.829
   }
   ShapePoint "{6554E01E538CC914}" {
-   Position 591.725 -72.381 1504.868
+   Position 468.934 -36.767 1409.422
   }
-  ShapePoint "{6554E00703EA8011}" {
-   Position 657.164 -74.067 1539.497
+  ShapePoint "{658EF76AF938A01B}" {
+   Position 385.708 -38.668 1428.428
   }
-  ShapePoint "{6554E00702A3876E}" {
-   Position 524.872 -72.565 1624.223
-  }
-  ShapePoint "{6554E0070198908F}" {
-   Position 331.107 -72.357 1570.31
-  }
-  ShapePoint "{6554E01E5547D186}" {
-   Position 145.23 -72.232 1490.815
+  ShapePoint "{658EF76B06FC6B7B}" {
+   Position 319.041 -46.441 1407.393
   }
   ShapePoint "{6554E01E558B8C9D}" {
    Position 194.851 -55.139 1332.113
@@ -80,31 +75,25 @@ PolylineShapeEntity {
    Position -160.626 -13.553 989.246
   }
   ShapePoint "{6554E004E3D439AD}" {
-   Position -376.043 -29.954 910.657
+   Position -222.114 -19.289 805.615
   }
   ShapePoint "{6554E004E479E52C}" {
-   Position -466.457 -33.467 846.684
+   Position -338.431 -7.585 667.898
   }
   ShapePoint "{6554E004E4C59FBC}" {
-   Position -556.845 -33.51 919.996
-  }
-  ShapePoint "{6554E01E4B25C2CB}" {
-   Position -684.51 -33.859 830.553
-  }
-  ShapePoint "{6554E01E4B83D48E}" {
-   Position -568.483 -13.656 595.943
+   Position -488.577 -15.245 541.078
   }
   ShapePoint "{6554E01E4D0AB52B}" {
-   Position -442.902 -24.449 367.046
+   Position -407.685 -14.343 405.731
   }
   ShapePoint "{6554E01E43BA24FD}" {
    Position -553.91 -41.185 283.644
   }
   ShapePoint "{6554E01E4453D4A0}" {
-   Position -585.642 -47.487 193.024
+   Position -558.396 -47.627 203.034
   }
   ShapePoint "{6554E01E455402C3}" {
-   Position -428.938 -63.783 112.455
+   Position -417.759 -63.385 122.375
   }
   ShapePoint "{6554E01E4693F069}" {
    Position -295.863 -35.439 73.89
@@ -115,6 +104,15 @@ PolylineShapeEntity {
  }
  IsClosed 1
  LineColor 0 0 0 0
+ {
+  TILW_ExtractionTriggerEntity : "{192ABD6B9232E064}Prefabs/Logic/Triggers/TILW_ExtractionTrigger.et" {
+   coords 0 0 0
+   m_comparisonMode EQUAL_OR_LESS
+   m_flagName "Pilots_Left_Area"
+   m_factionKey "US"
+   m_ratioThreshold 0.49
+  }
+ }
 }
 Vehicle Ural4320_FIA_transport1 : "{16E32C3ABEAFC2C6}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_transport.et" {
  coords 1629.298 39.108 2174.349
