@@ -1,0 +1,314 @@
+SCR_AIWorld : "{3DE6090FC602E566}Prefabs/AI/SCR_AIWorld_Takistan.et" {
+ coords 5927.948 109.313 11401.803
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 5935.412 109.313 11395.53
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ coords 5929.44 109.312 11405.396
+ m_iFreezeTime 300000
+ m_aFactionRespawnCount {
+  PS_FactionRespawnCount "{65E365F2E8BB73ED}" {
+   m_sFactionKey "US"
+   m_iCount 10
+   m_bWaveMode 1
+  }
+ }
+ {
+  SCR_FactionManager "65E176E5B87AD296" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CC9C7AD6}" {
+        m_sCallsign "Airgroup"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "0"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "Zulu"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "Alpha"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "Bravo"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "Charlie"
+       }
+       SCR_CallsignInfo "{64E2F896A8C154A9}" {
+        m_sCallsign "Delta"
+       }
+       SCR_CallsignInfo "{64E2F896A8E698B6}" {
+        m_sCallsign "Echo"
+       }
+       SCR_CallsignInfo "{65E55DAF775C2A77}" {
+        m_sCallsign "Foxtrot"
+       }
+      }
+      m_sCallsignGroupFormat "%2 - %3"
+      m_sCallsignCharacterFormat "%2 - %3: %4"
+     }
+    }
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 5921.308 109.313 11395.868
+ m_missionEvents {
+  TILW_MissionEvent "{65E55DBFA388E9D7}" {
+   m_name "Raise Easy Flag"
+   m_instructions {
+    TILW_SetFlagInstruction "{65E55DBF885B91E1}" {
+     m_flagName "Set Difficuty Easy"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65E55DB31005BD64}" {
+    m_invertTerm 1
+   }
+   m_pregameEvent 1
+  }
+  TILW_MissionEvent "{65DF774AC273A4BA}" {
+   m_name "Set Difficuty Median"
+   m_instructions {
+    TILW_SendMessageInstruction "{65DF774AD737C929}" {
+     m_executionDelay 0
+     m_messageTitle "Set Difficuty: Median"
+    }
+    TILW_EditRespawnTicketsInstruction "{65E365D4168B7902}" {
+     m_executionDelay 0
+     m_factionKey "US"
+     m_amount 20
+     m_allowSpecRespawn 1
+    }
+    TILW_SetFlagInstruction "{65E55DB930AF001F}" {
+     m_executionDelay 0
+     m_flagName "Spawn Enemies Median"
+    }
+    TILW_ClearFlagInstruction "{65E55DBF916558D2}" {
+     m_executionDelay 0
+     m_flagName "Set Difficuty Easy"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65DF774AC1951B14}" {
+    m_flagName "Set Difficuty Median"
+   }
+  }
+  TILW_MissionEvent "{65E2050834DE3A78}" {
+   m_name "Set Difficuty Hard"
+   m_instructions {
+    TILW_SendMessageInstruction "{65E2050491B97ADD}" {
+     m_executionDelay 0
+     m_messageTitle "Set Difficuty: Hard"
+    }
+    TILW_EditRespawnTicketsInstruction "{65E365D46AD62AD4}" {
+     m_executionDelay 0
+     m_factionKey "US"
+     m_amount 30
+    }
+    TILW_ClearFlagInstruction "{65E55DBFE0681FC0}" {
+     m_executionDelay 0
+     m_flagName "Set Difficuty Easy"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65E20504E0EEB1CA}" {
+    m_flagName "Set Difficuty Hard"
+   }
+  }
+  TILW_MissionEvent "{65E365D4B7069D80}" {
+   m_name "End Game"
+   m_instructions {
+    TILW_SendMessageInstruction "{65E365D48AEC336C}" {
+     m_messageTitle "Game Over: Defeat"
+     m_messageBody "US has taken too much losses."
+    }
+   }
+   m_condition TILW_LiteralTerm "{65E365D4B1100AA2}" {
+    m_flagName "US Casualty Limit"
+   }
+  }
+  TILW_MissionEvent "{65E365D6ABAC6B82}" {
+   m_name "Insurgent Lost North Warehouse"
+   m_instructions {
+    TILW_SendMessageInstruction "{65E365D6B6B6A95D}" {
+     m_executionDelay 3
+     m_messageTitle "North Warehouse Secure"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65E365D6EC191170}" {
+    m_flagName "Insurgent Lost North Warehouse"
+   }
+  }
+  TILW_MissionEvent "{65E365DEC58CBC9B}" {
+   m_name "Insurgent Lost Warehouse Complex"
+   m_instructions {
+    TILW_SendMessageInstruction "{65E365DF0F9E5908}" {
+     m_executionDelay 3
+     m_messageTitle "Warehouse Complex Secure"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65E365DF2C9D47AE}" {
+    m_flagName "Insurgent Lost Warehouse Complex"
+   }
+  }
+  TILW_MissionEvent "{65E365DEC220A2B5}" {
+   m_name "Insurgent Lost Hangers"
+   m_instructions {
+    TILW_SendMessageInstruction "{65E365DF1BAB6A53}" {
+     m_executionDelay 3
+     m_messageTitle "Hangers Secure"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65E365DF582882BE}" {
+    m_flagName "Insurgent Lost Hangers"
+   }
+  }
+  TILW_MissionEvent "{65E365DEC2F4C7FD}" {
+   m_name "Insurgent Lost Oil Depots"
+   m_instructions {
+    TILW_SendMessageInstruction "{65E365DF78F0E438}" {
+     m_executionDelay 3
+     m_messageTitle "Oil Depots Secure"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65E365DF54C615E5}" {
+    m_flagName "Insurgent Lost Oil Depots"
+   }
+  }
+  TILW_MissionEvent "{65E55DBF4889B447}" {
+   m_name "Phase 1 Done Easy"
+   m_instructions {
+    TILW_SendMessageInstruction "{65E55DB03FA79E21}" {
+     m_messageTitle "Phase 1 Done"
+     m_messageBody "Airfield Seized: Mission concluded."\
+     "Wait for GMs to load the next mission."
+    }
+    TILW_EndGameInstruction "{65E55DB15647BF27}" {
+     m_executionDelay 120
+     m_factionKey "US"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65E55DB307369250}" {
+    m_operands {
+     TILW_LiteralTerm "{65E55DB3016D5A5D}" {
+      m_flagName "Phase 1 Done"
+     }
+     TILW_LiteralTerm "{65E55DB31E143933}" {
+      m_flagName "Set Difficuty Easy"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65E365DE8AAC3921}" {
+   m_name "Phase 1 Done Median Hard"
+   m_instructions {
+    TILW_SendMessageInstruction "{65E365DE9F74EA13}" {
+     m_messageTitle "Phase 1 Concluded"
+     m_messageBody "Dig in and prepare for counter-attack. You have 10 minutes to set up the defense."
+    }
+    TILW_SetFlagInstruction "{65E55DBF0F467F68}" {
+     m_executionDelay 600
+     m_flagName "Phase 2 Start"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65E55DB429607F7E}" {
+    m_operands {
+     TILW_LiteralTerm "{65E55DB426AAC195}" {
+      m_flagName "Phase 1 Done"
+     }
+     TILW_DisjunctionTerm "{65E55DB422D89A5B}" {
+      m_operands {
+       TILW_LiteralTerm "{65E55DB43DB94102}" {
+        m_flagName "Set Difficuty Median"
+       }
+       TILW_LiteralTerm "{65E55DB43B26B0E3}" {
+        m_flagName "Set Difficuty Hard"
+       }
+      }
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65E55DB21F449944}" {
+   m_name "Phase 2 Attack Median"
+   m_instructions {
+    TILW_SetFlagInstruction "{65E55DB2B80FB154}" {
+     m_executionDelay 0
+     m_flagName "Phase 2 Attack Median"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65E55DB26D1F5CA6}" {
+    m_operands {
+     TILW_LiteralTerm "{65E55DB26BA29F4A}" {
+      m_flagName "Phase 2 Start"
+     }
+     TILW_LiteralTerm "{65E55DB2698ABD32}" {
+      m_flagName "Spawn Enemies Median"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65E55DB21FC6946E}" {
+   m_name "Phase 2 Attack Hard"
+   m_instructions {
+    TILW_SetFlagInstruction "{65E55DB28425742E}" {
+     m_executionDelay 0
+     m_flagName "Phase 2 Attack Median"
+    }
+    TILW_ClearFlagInstruction "{65E55DB29D7E1D54}" {
+     m_flagName "Phase 2 Attack Median"
+    }
+    TILW_SetFlagInstruction "{65E55DB2975E419C}" {
+     m_executionDelay 10
+     m_flagName "Phase 2 Attack Median"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65E55DB25F5468AA}" {
+    m_operands {
+     TILW_LiteralTerm "{65E55DB25D143F6E}" {
+      m_flagName "Phase 2 Start"
+     }
+     TILW_LiteralTerm "{65E55DB25AF8C4C4}" {
+      m_flagName "Spawn Enemies Hard"
+     }
+    }
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{65E365D2D4CEFDEF}" {
+   m_flagName "US Casualty Limit"
+   m_factionKey "US"
+   m_casualtyRatio 0.95
+  }
+ }
+ m_metaFlags {
+  TILW_MetaFlag "{65E365D4ED2FC0AC}" {
+   m_flagName "Phase 1 Done"
+   m_definition TILW_ConjunctionTerm "{65E365D4E01009B5}" {
+    m_operands {
+     TILW_LiteralTerm "{65E365D4F29EC26B}" {
+      m_flagName "Insurgent Lost North Warehouse"
+     }
+     TILW_LiteralTerm "{65E365DCEC337641}" {
+      m_flagName "Insurgent Lost Warehouse Complex"
+     }
+     TILW_LiteralTerm "{65E365DEACA312A1}" {
+      m_flagName "Insurgent Lost Hangers"
+     }
+     TILW_LiteralTerm "{65E365DEAA24C4F6}" {
+      m_flagName "Insurgent Lost Oil Depots"
+     }
+    }
+   }
+  }
+ }
+}

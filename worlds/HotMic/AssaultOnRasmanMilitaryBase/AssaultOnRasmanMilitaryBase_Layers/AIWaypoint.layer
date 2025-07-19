@@ -1,0 +1,48 @@
+SCR_EntityWaypoint AIWaypoint_MainAttack : "{1B0E3436C30FA211}Prefabs/AI/Waypoints/AIWaypoint_Attack.et" {
+ coords 5856.466 112.707 11431.896
+ CompletionRadius 175
+}
+TILW_PrefabSpawnerEntity Spawner_Runway_Vehicles : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
+ coords 5778.271 109.312 11535.465
+ m_prefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+ m_conditionFlag "Spawn BTR Runway"
+ m_spawnTimings {
+  0
+ }
+ m_crewConfig TILW_CrewConfig "{65E2050ED004B1CD}" {
+  m_crewGroups {
+   TILW_CrewGroup "{65E365E3FF7FEC90}" {
+    m_crewStations {
+     TILW_CrewStation "{65E365E3F872F44E}" {
+      m_allowCargo 0
+      m_characters {
+       "{756CF0BB5ACB956E}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_SL.et" "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et" "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+      }
+     }
+    }
+    m_waypointNames {
+     "DefendWaypoint_Hangers" "DefendWaypoint_Main_Warehouse_Complex" "DefendWaypoint_North_Warehouse" "DefendWaypoint_Oil_Depots"
+    }
+    m_waypointDelay 180000
+   }
+  }
+  m_noTurretDismount 1
+ }
+}
+$grp SCR_DefendWaypoint : "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et" {
+ DefendWaypoint_Oil_Depots {
+  coords 5725.556 108.969 11141.116
+ }
+ DefendWaypoint_Hangers {
+  coords 5909.342 108.969 11328.562
+  CompletionRadius 150
+ }
+ DefendWaypoint_Main_Warehouse_Complex {
+  coords 6145.207 108.969 11567.311
+  CompletionRadius 80
+ }
+ DefendWaypoint_North_Warehouse {
+  coords 5987.677 108.969 11947.485
+  CompletionRadius 50
+ }
+}
