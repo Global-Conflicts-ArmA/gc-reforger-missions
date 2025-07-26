@@ -1,0 +1,103 @@
+StaticModelEntity : "{BCF54BF42D61C77E}Prefabs/Structures/Core/Tower_Base.et" {
+ ID "50D67C36F43527FE"
+ components {
+  SCR_BuildingSoundComponent "{530290AB81976B75}" {
+   m_vMins -0.5 6 0.5
+   m_vMaxs 0.5 16 0.5
+  }
+  MeshObject "{65DAC248BEED5A51}" {
+   Object "{5C7C4F9F63D25A73}Assets/Structures/Infrastructure/Towers/AntennaR404_01/AntennaR404_01.xob"
+  }
+  RigidBody "{65DAC248BEED5A28}" {
+   ResponseIndex "HugeDestructible"
+   ModelGeometry 1
+   Static 1
+  }
+  SCR_DestructionMultiPhaseComponent "{5A5ED31B16298711}" : "{76DA308CC9E2AB84}Prefabs/Props/Core/DestructionMultiPhase_Base.ct" {
+   Enabled 0
+   "Additional hit zones" {
+    SCR_HitZone Default {
+     DamageReduction 30
+     DamageThreshold 30
+     "Collision multiplier" 0.5
+     "Explosive multiplier" 10
+    }
+   }
+   m_fBaseHealth 5000
+   m_fDamageThresholdMaximum 50000
+   m_bPassDamageToChildren 1
+   m_DestroySpawnObjects {
+    SCR_DebrisSpawnable "{65DAC248BEED5A27}" {
+     m_ModelPrefabs {
+      "{094A9A88FECEF6F5}Assets/Structures/Infrastructure/Towers/AntennaR404_01/Dst/AntennaR404_01_Dst_07.xob" "{E099B1C8710D92D6}Assets/Structures/Infrastructure/Towers/AntennaR404_01/Dst/AntennaR404_01_Dst_02.xob" "{9793D94085AF7DA6}Assets/Structures/Infrastructure/Towers/AntennaR404_01/Dst/AntennaR404_01_Dst_03.xob" "{90542311E329C765}Assets/Structures/Infrastructure/Towers/AntennaR404_01/Dst/AntennaR404_01_Dst_04.xob" "{E75E4B99178B2815}Assets/Structures/Infrastructure/Towers/AntennaR404_01/Dst/AntennaR404_01_Dst_05.xob" "{7E40F2000A6C1985}Assets/Structures/Infrastructure/Towers/AntennaR404_01/Dst/AntennaR404_01_Dst_06.xob"
+     }
+     m_fMass 50
+     m_eMaterialSoundType METAL_HEAVY
+    }
+    SCR_DebrisSpawnable "{65DAC248BEED5A3B}" {
+     m_ModelPrefabs {
+      "{06C56E2A33C38373}Assets/Structures/Infrastructure/Towers/AntennaR404_01/Dst/AntennaR404_01_Dst_09.xob" "{71CF06A2C7616C03}Assets/Structures/Infrastructure/Towers/AntennaR404_01/Dst/AntennaR404_01_Dst_08.xob"
+     }
+     m_fMass 20
+     m_eMaterialSoundType METAL_HEAVY
+    }
+    SCR_ParticleSpawnable "{65DAC248BEED5A3D}" {
+     m_vOffsetPosition 0 15 0
+     m_Particle "{66DAEB775AA8CA4C}Particles/Props/Dest_Prop_Metal_Medium.ptc"
+    }
+    SCR_ParticleSpawnable "{65DAC248BEED5A31}" {
+     m_vOffsetPosition 0 0 0
+     m_Particle "{66DAEB775AA8CA4C}Particles/Props/Dest_Prop_Metal_Medium.ptc"
+    }
+    SCR_ParticleSpawnable "{65DAC248BEED7B8B}" {
+     m_vOffsetPosition 0 -6 0
+     m_Particle "{66DAEB775AA8CA4C}Particles/Props/Dest_Prop_Metal_Medium.ptc"
+    }
+    SCR_ParticleSpawnable "{65DAC248BEED7B8A}" {
+     m_vOffsetPosition 0 -10 0
+     m_Particle "{66DAEB775AA8CA4C}Particles/Props/Dest_Prop_Metal_Medium.ptc"
+    }
+   }
+   m_bDeleteAfterFinalPhase 0
+   m_aDamagePhases {
+    SCR_DamagePhaseData "{65DAC248BEED7B8F}" {
+     m_fPhaseHealth 5000
+     m_PhaseModel "{798708516CEAA346}Assets/Structures/Infrastructure/Towers/AntennaR404_01/Dst/AntennaR404_01_Dst_01.xob"
+    }
+   }
+   m_eMaterialSoundType BREAK_METAL
+  }
+  SCR_MapDescriptorComponent "{65DAC248BEED7BB3}" {
+   MainType Transmitter
+  }
+  TILW_Flag_EntityDamage "{65DAC2488764F7D7}" {
+   m_flagName "RadioDead"
+  }
+  RplComponent "{5A5ED31B1DB23640}" : "{3B686EF5E3C610B9}Prefabs/Props/Core/DestructionMultiPhase_Rpl_Base.ct" {
+   Enabled 1
+  }
+  SCR_DestructibleBuildingComponent "{65DAC2410CBAE7CF}" {
+  }
+  Hierarchy "{65DAC241516CEE3D}" {
+  }
+ }
+ {
+  GenericEntity : "{4A0D1B3EB0396C9F}Prefabs/Structures/Infrastructure/Towers/AntennaR404_01/AntennaR404_01_light.et" {
+   ID "65DAC248BEED5A58"
+   components {
+    LightSourceVisualizationObject "{5A02839A0D5BE210}" {
+     Color 1 0.082 0.082 1
+     LV 8
+    }
+    SCR_DestructionMultiPhaseComponent "{5AC2A871450C4A42}" {
+     Enabled 1
+     m_fBaseHealth 1000
+    }
+    RplComponent "{5AC2A87086509090}" {
+     Enabled 1
+    }
+   }
+   coords 0.001 27.562 0
+  }
+ }
+}

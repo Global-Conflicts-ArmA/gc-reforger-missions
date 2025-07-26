@@ -1,0 +1,671 @@
+SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A2995A7E8BC2}" {
+     NavmeshFile "{D8EF7131FB31AF97}worlds/GameMaster/Navmeshes/GM_Arland.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A299509CF377}" {
+     NavmeshFile "{A0AEEB1E7EF474FA}worlds/GameMaster/Navmeshes/GM_Arland_vehicles.nmn"
+    }
+   }
+  }
+ }
+ coords 3863.556 0 3599.315
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 3879.681 0 3722.359
+}
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 3
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{644918C3EBBB9630}" {
+     m_sWeatherPresetName "Light Rain"
+     m_iStartingHour 3
+    }
+   }
+   m_bRandomWeatherChanges 1
+   m_iSetDay 9
+   m_iSetMonth 5
+  }
+ }
+ coords 3781.905 0 3511.617
+ {
+  SCR_FactionManager "65ACF4489CB17492" {
+   ID "5ED9088735FF2D8B"
+  }
+ }
+}
+TILW_MissionFrameworkEntity Framework : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 3760.915 0 3678.841
+ m_missionEvents {
+  TILW_MissionEvent "{644AB1D3CEA38292}" {
+   m_name "HeliFlag"
+   m_instructions {
+    TILW_SetFlagInstruction "{65CEB4D06AD3CEB5}" {
+     m_executionDelay 1
+     m_flagName "HeliCompleted"
+    }
+    TILW_SendMessageInstruction "{65CEB4D0D27D6ADE}" {
+     m_messageTitle "PRIMARY OBJECTIVE COMPLETED"
+     m_messageBody "ALL helicopters have been destroyed, our primary objective has been completed."\
+     "We can either do our optional objectives or extract back to our staging our now!"
+     m_factionKeys {
+      "UK"
+     }
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65CEB4D08F28E91C}" {
+    m_operands {
+     TILW_LiteralTerm "{65CEB4D084D12452}" {
+      m_flagName "Heli1"
+     }
+     TILW_LiteralTerm "{65CEB4D0F85D2AD9}" {
+      m_flagName "Heli2"
+     }
+     TILW_LiteralTerm "{65CEB4D0FC207DD0}" {
+      m_flagName "Heli3"
+     }
+     TILW_LiteralTerm "{65CEB4D0F1B607A7}" {
+      m_flagName "Heli4"
+     }
+     TILW_LiteralTerm "{65CEB4D0F52ADEB8}" {
+      m_flagName "Heli5"
+     }
+     TILW_LiteralTerm "{65CEB4D0E90CE2DD}" {
+      m_flagName "Heli6"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{6452F6D249007411}" {
+   m_name "ZUFlag"
+   m_instructions {
+    TILW_SetFlagInstruction "{6452F6D2A52E116A}" {
+     m_executionDelay 1
+     m_flagName "ZUCompleted"
+    }
+    TILW_SendMessageInstruction "{65CEB4D1744D0EBF}" {
+     m_messageTitle "AAA destroyed"
+     m_messageBody "Optional objective completed."\
+     "All AAA pieces have been destroyed."
+     m_factionKeys {
+      "UK"
+     }
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{6452F6D247D0B727}" {
+    m_operands {
+     TILW_LiteralTerm "{6452F6D2B8B785AC}" {
+      m_flagName "ZU1"
+     }
+     TILW_LiteralTerm "{6452F6D2B0A3D351}" {
+      m_flagName "ZU2"
+     }
+     TILW_LiteralTerm "{6452F6D2B3EB1A4E}" {
+      m_flagName "ZU3"
+     }
+     TILW_LiteralTerm "{6452F6D2B2DDD323}" {
+      m_flagName "ZU4"
+     }
+     TILW_LiteralTerm "{6452F6D2BD783BBD}" {
+      m_flagName "ZU5"
+     }
+     TILW_LiteralTerm "{65D13534A54C4E36}" {
+      m_flagName "ZU6"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{6452F6D283DC220D}" {
+   m_name "AmmoFlag"
+   m_instructions {
+    TILW_SetFlagInstruction "{65CEB4D01CD2926C}" {
+     m_executionDelay 1
+     m_flagName "AmmoCompleted"
+    }
+    TILW_SendMessageInstruction "{65CEB4D1B4A8D699}" {
+     m_messageTitle "Ammo facility destroyed"
+     m_messageBody "Optional objective completed."\
+     "The ammo facility has been destroyed."
+     m_factionKeys {
+      "UK"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{65CEB4D18DF13135}" {
+    m_flagName "AMMO1"
+   }
+  }
+  TILW_MissionEvent "{65CEB4D1F4807CAC}" {
+   m_name "HVTFlag"
+   m_instructions {
+    TILW_SetFlagInstruction "{65CEB4D1E28669B7}" {
+     m_executionDelay 1
+     m_flagName "HVTCompleted"
+    }
+    TILW_SendMessageInstruction "{65CEB4D1D3741A93}" {
+     m_messageTitle "HVT killed"
+     m_messageBody "Optional objective completed."\
+     "The island commander has been killed."\
+     ""
+     m_factionKeys {
+      "UK"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{65CEB4D1DB1CB819}" {
+    m_flagName "HVTDead"
+   }
+  }
+  TILW_MissionEvent "{65CEB4DE39E66140}" {
+   m_name "RadioFlag"
+   m_instructions {
+    TILW_SetFlagInstruction "{65CEB4DE39E66105}" {
+     m_executionDelay 1
+     m_flagName "RadioCompleted"
+    }
+    TILW_SendMessageInstruction "{65CEB4DE39E66107}" {
+     m_messageTitle "Radio tower destroyed"
+     m_messageBody "Optional objective completed."\
+     "The communications tower at Signal hill has been destroyed."\
+     ""
+     m_factionKeys {
+      "UK"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{65CEB4DE39E66118}" {
+    m_flagName "RadioDead"
+   }
+  }
+  TILW_MissionEvent "{65CEB4C68768E242}" {
+   m_name "IntelFlag"
+   m_instructions {
+    TILW_SetFlagInstruction "{65CEB4C68768E213}" {
+     m_executionDelay 1
+     m_flagName "IntelCompleted"
+    }
+    TILW_SendMessageInstruction "{65CEB4C68768E214}" {
+     m_executionDelay 1
+     m_messageTitle "Intel secured"
+     m_messageBody "Optional objective completed."\
+     "The intel was located and secured back to our staging area."
+     m_factionKeys {
+      "UK"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{65CEB4C68768E216}" {
+    m_flagName "IntelCaptured"
+   }
+  }
+  TILW_MissionEvent "{65CEB4F6F3BEB9CB}" {
+   m_name "FuelFlag"
+   m_instructions {
+    TILW_SetFlagInstruction "{65CEB4F6F3BEB986}" {
+     m_executionDelay 1
+     m_flagName "FuelCompleted"
+    }
+    TILW_SendMessageInstruction "{65CEB4F6F3BEB998}" {
+     m_messageTitle "Fuel storage destroyed"
+     m_messageBody "Optional objective completed."\
+     "The fuel storage at the harbour has been destroyed."
+     m_factionKeys {
+      "UK"
+     }
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65CEB4F6F47B0DE2}" {
+    m_operands {
+     TILW_LiteralTerm "{65CEB4F6EAC5D02B}" {
+      m_flagName "Fuel1"
+     }
+     TILW_LiteralTerm "{65CEB4F6EBD2F40F}" {
+      m_flagName "Fuel2"
+     }
+     TILW_LiteralTerm "{65CEB4F43D94EC96}" {
+      m_flagName "Fuel3"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65CEB4DBAAB69E71}" {
+   m_name "RandomAmmoSpawnLoc1"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{65CEB4DB9B13CF52}" {
+     m_prefab "{8D9D32DB3A70FD7A}worlds/TheLocalPub/BebbleIslandRaid/Prefabs/Props/Military/Camps/AmmoBox.et"
+     m_locationName "AmmoLoc1"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65CEB4DBE4DE4EDB}" {
+    m_flagName "AmmoSpawn1"
+   }
+  }
+  TILW_MissionEvent "{65CEB4D8B95D04FA}" {
+   m_name "RandomAmmoSpawnLoc2"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{65CEB4D8B95D04BA}" {
+     m_prefab "{8D9D32DB3A70FD7A}worlds/TheLocalPub/BebbleIslandRaid/Prefabs/Props/Military/Camps/AmmoBox.et"
+     m_locationName "AmmoLoc2"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65CEB4D8B95D04BF}" {
+    m_flagName "AmmoSpawn2"
+   }
+  }
+  TILW_MissionEvent "{65CEB4D8AA46B005}" {
+   m_name "RandomAmmoSpawnLoc3"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{65CEB4D8AA46B1CE}" {
+     m_prefab "{8D9D32DB3A70FD7A}worlds/TheLocalPub/BebbleIslandRaid/Prefabs/Props/Military/Camps/AmmoBox.et"
+     m_locationName "AmmoLoc3"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65CEB4D8AA46B1C3}" {
+    m_flagName "AmmoSpawn3"
+   }
+  }
+  TILW_MissionEvent "{65D8C93D28E4B02F}" {
+   m_name "BLUFORDEAD"
+   m_instructions {
+    TILW_SendMessageInstruction "{65D8C93D2768B52B}" {
+     m_messageTitle "BLUFOR DEFEAT"
+     m_messageBody "The SBS Squadron has taken to many casualties."\
+     "The remainder of troops have either been captured of withdrawn from the island."\
+     ""\
+     "Well done Argentina!"\
+     "Mission will end soon..."
+    }
+    TILW_EndGameInstruction "{65D8C93D2002F339}" {
+     m_executionDelay 17
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "UK"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65D8C93D0B249ED3}" {
+    m_flagName "UKDead"
+   }
+  }
+  TILW_MissionEvent "{65D8C93D8BA3E456}" {
+   m_name "TOTALFLAG"
+   m_instructions {
+    TILW_ClearFlagInstruction "{65D8C926FA54F90D}" {
+     m_executionDelay 1
+     m_flagName "MajorWin"
+    }
+    TILW_ClearFlagInstruction "{65DAD8549B627A9A}" {
+     m_executionDelay 1
+     m_flagName "RegWin"
+    }
+    TILW_ClearFlagInstruction "{65DAD854976FCE76}" {
+     m_executionDelay 1
+     m_flagName "MinorWin"
+    }
+    TILW_SetFlagInstruction "{65D8C9267AEB1009}" {
+     m_executionDelay 1
+     m_flagName "TotalWin"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65DAD8547155831E}" {
+    m_operands {
+     TILW_LiteralTerm "{65DAD854770D5F48}" {
+      m_flagName "RadioCompleted"
+     }
+     TILW_LiteralTerm "{65DAD854BCDAFB5D}" {
+      m_flagName "HeliCompleted"
+     }
+     TILW_LiteralTerm "{65DAD8546E75E5BE}" {
+      m_flagName "ZUCompleted"
+     }
+     TILW_LiteralTerm "{65DAD854637BA0EE}" {
+      m_flagName "FuelCompleted"
+     }
+     TILW_LiteralTerm "{65DAD85467EE6961}" {
+      m_flagName "AmmoCompleted"
+     }
+     TILW_LiteralTerm "{65DAD8545A498411}" {
+      m_flagName "HVTCompleted"
+     }
+     TILW_LiteralTerm "{65DAD85451B3BF04}" {
+      m_flagName "IntelCompleted"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65D8C9383AC5679F}" {
+   m_name "MAJORFLAG"
+   m_instructions {
+    TILW_SetFlagInstruction "{65D8C92673F0526A}" {
+     m_executionDelay 1
+     m_flagName "MajorWin"
+    }
+    TILW_ClearFlagInstruction "{65D8C9268F662BC9}" {
+     m_executionDelay 1
+     m_flagName "RegWin"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65DAD855D25515BF}" {
+    m_operands {
+     TILW_LiteralTerm "{65DAD852FAE81689}" {
+      m_flagName "HeliCompleted"
+     }
+     TILW_MaxjunctionTerm "{65DAD852CCF3849B}" {
+      m_operands {
+       TILW_LiteralTerm "{65DAD852C1415612}" {
+        m_flagName "RadioCompleted"
+       }
+       TILW_LiteralTerm "{65DAD85527C9EBE6}" {
+        m_flagName "ZUCompleted"
+       }
+       TILW_LiteralTerm "{65DAD85518CFC914}" {
+        m_flagName "FuelCompleted"
+       }
+       TILW_LiteralTerm "{65DAD8551C5DA9BF}" {
+        m_flagName "AmmoCompleted"
+       }
+       TILW_LiteralTerm "{65DAD855160FC175}" {
+        m_flagName "HVTCompleted"
+       }
+       TILW_LiteralTerm "{65DAD8550B9868B3}" {
+        m_flagName "IntelCompleted"
+       }
+      }
+      m_maxTrue 4
+     }
+     TILW_MinjunctionTerm "{65DAD856EA61D905}" {
+      m_operands {
+       TILW_LiteralTerm "{65DAD856EA61D9BE}" {
+        m_flagName "RadioCompleted"
+       }
+       TILW_LiteralTerm "{65DAD856EA61D9B8}" {
+        m_flagName "ZUCompleted"
+       }
+       TILW_LiteralTerm "{65DAD856EA61D9BB}" {
+        m_flagName "FuelCompleted"
+       }
+       TILW_LiteralTerm "{65DAD856EA61EEC7}" {
+        m_flagName "AmmoCompleted"
+       }
+       TILW_LiteralTerm "{65DAD856EA61EEC9}" {
+        m_flagName "HVTCompleted"
+       }
+       TILW_LiteralTerm "{65DAD856EA61687F}" {
+        m_flagName "IntelCompleted"
+       }
+      }
+      m_minTrue 4
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65D8C93908B5EA41}" {
+   m_name "REGULARFLAG"
+   m_instructions {
+    TILW_ClearFlagInstruction "{65D8C926A4484046}" {
+     m_executionDelay 1
+     m_flagName "MinorWin"
+    }
+    TILW_SetFlagInstruction "{65D8C939C0AE512B}" {
+     m_executionDelay 1
+     m_flagName "RegWin"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65DAD85282391AA2}" {
+    m_operands {
+     TILW_LiteralTerm "{65DAD852FAE81689}" {
+      m_flagName "HeliCompleted"
+     }
+     TILW_MaxjunctionTerm "{65DAD852CCF3849B}" {
+      m_operands {
+       TILW_LiteralTerm "{65DAD852C1415612}" {
+        m_flagName "RadioCompleted"
+       }
+       TILW_LiteralTerm "{65DAD85527C9EBE6}" {
+        m_flagName "ZUCompleted"
+       }
+       TILW_LiteralTerm "{65DAD85518CFC914}" {
+        m_flagName "FuelCompleted"
+       }
+       TILW_LiteralTerm "{65DAD8551C5DA9BF}" {
+        m_flagName "AmmoCompleted"
+       }
+       TILW_LiteralTerm "{65DAD855160FC175}" {
+        m_flagName "HVTCompleted"
+       }
+       TILW_LiteralTerm "{65DAD8550B9868B3}" {
+        m_flagName "IntelCompleted"
+       }
+      }
+      m_maxTrue 2
+     }
+     TILW_MinjunctionTerm "{65DAD856D8C2335D}" {
+      m_operands {
+       TILW_LiteralTerm "{65DAD856D8C23087}" {
+        m_flagName "RadioCompleted"
+       }
+       TILW_LiteralTerm "{65DAD856D8C23086}" {
+        m_flagName "ZUCompleted"
+       }
+       TILW_LiteralTerm "{65DAD856D8C23085}" {
+        m_flagName "FuelCompleted"
+       }
+       TILW_LiteralTerm "{65DAD856D8C23084}" {
+        m_flagName "AmmoCompleted"
+       }
+       TILW_LiteralTerm "{65DAD856D8C23082}" {
+        m_flagName "HVTCompleted"
+       }
+       TILW_LiteralTerm "{65DAD856D8C392CD}" {
+        m_flagName "IntelCompleted"
+       }
+      }
+      m_minTrue 2
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65D8C939E5CB0186}" {
+   m_name "MINORFLAG"
+   m_instructions {
+    TILW_SetFlagInstruction "{65D8C939D551E4B8}" {
+     m_executionDelay 1
+     m_flagName "MinorWin"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65D8C923186A0ECE}" {
+    m_flagName "HeliCompleted"
+   }
+  }
+  TILW_MissionEvent "{65D8C926D52108FE}" {
+   m_name "Total win"
+   m_instructions {
+    TILW_SendMessageInstruction "{65D8C926CCE74382}" {
+     m_executionDelay 1
+     m_messageTitle "TOTAL UK VICTORY"
+     m_messageBody "Cracking job lads, you smashed em!"\
+     "We managed to complete our main objective, all optional objectives, and also extract."\
+     ""\
+     "Well done!"\
+     "Mission will end soon..."
+     m_factionKeys {
+      "UK"
+     }
+    }
+    TILW_SendMessageInstruction "{65D8C9270ACFAF9C}" {
+     m_executionDelay 1
+     m_messageTitle "TOTAL UK VICTORY"
+     m_messageBody "The United Kingdom has managed to compelete their main objective, all their optional objectives, and extract."\
+     ""\
+     "Better luck next time."\
+     "Mission will end soon..."
+     m_factionKeys {
+      "GC_ARG"
+     }
+    }
+    TILW_EndGameInstruction "{65D8C926CD44AC07}" {
+     m_executionDelay 15
+     m_factionKey "UK"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65DAD85757308C51}" {
+    m_operands {
+     TILW_LiteralTerm "{65DAD85755C25802}" {
+      m_flagName "TotalWin"
+     }
+     TILW_LiteralTerm "{65DAD8574FB0ECBC}" {
+      m_flagName "BLUExtract"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65D8C9274E5738FE}" {
+   m_name "Major win"
+   m_instructions {
+    TILW_SendMessageInstruction "{65D8C9274E57380D}" {
+     m_executionDelay 1
+     m_messageTitle "MAJOR UK VICTORY"
+     m_messageBody "Smashing job lads, you blew em to bits!"\
+     "We managed to complete our main objective, 4/6 optional objectives, and also extract."\
+     ""\
+     "Well done!"\
+     "Mission will end soon..."
+     m_factionKeys {
+      "UK"
+     }
+    }
+    TILW_SendMessageInstruction "{65D8C9274E57380B}" {
+     m_executionDelay 1
+     m_messageTitle "MAJOR UK VICTORY"
+     m_messageBody "The United Kingdom has managed to compelete their main objective, 4/6 optional objectives, and extract."\
+     ""\
+     "Better luck next time."\
+     "Mission will end soon..."
+     m_factionKeys {
+      "GC_ARG"
+     }
+    }
+    TILW_EndGameInstruction "{65D8C9274E573809}" {
+     m_executionDelay 15
+     m_factionKey "UK"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65DAD85774439134}" {
+    m_operands {
+     TILW_LiteralTerm "{65DAD8576A3156CC}" {
+      m_flagName "MajorWin"
+     }
+     TILW_LiteralTerm "{65DAD8576C368389}" {
+      m_flagName "BLUExtract"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65D8C927A47CC6F9}" {
+   m_name "Reg win"
+   m_instructions {
+    TILW_SendMessageInstruction "{65D8C927A47CC609}" {
+     m_executionDelay 1
+     m_messageTitle "UK VICTORY"
+     m_messageBody "Good effort lads, we sure made a dent today."\
+     "We managed to complete our main objective, 2/6 optional objectives, and also extract."\
+     ""\
+     "Well done!"\
+     "Mission will end soon..."
+     m_factionKeys {
+      "UK"
+     }
+    }
+    TILW_SendMessageInstruction "{65D8C927A47CC607}" {
+     m_executionDelay 1
+     m_messageTitle "UK VICTORY"
+     m_messageBody "The United Kingdom has managed to compelete their main objective, 2/6 optional objectives, and extract."\
+     ""\
+     "Better luck next time."\
+     "Mission will end soon..."
+     m_factionKeys {
+      "GC_ARG"
+     }
+    }
+    TILW_EndGameInstruction "{65D8C927A47CC605}" {
+     m_executionDelay 15
+     m_factionKey "UK"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65DAD8570507E49A}" {
+    m_operands {
+     TILW_LiteralTerm "{65DAD8577BD115EC}" {
+      m_flagName "RegWin"
+     }
+     TILW_LiteralTerm "{65DAD8577F5BA3C7}" {
+      m_flagName "BLUExtract"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65D8C927CE960E11}" {
+   m_name "Minor win"
+   m_instructions {
+    TILW_SendMessageInstruction "{65D8C927CE960FB7}" {
+     m_executionDelay 1
+     m_messageTitle "MINOR UK VICTORY"
+     m_messageBody "Well done lads."\
+     "We managed to complete our main objective and extract, but failed to complete any optional objectives."\
+     ""\
+     "Well done!"\
+     "Mission will end soon..."
+     m_factionKeys {
+      "UK"
+     }
+    }
+    TILW_SendMessageInstruction "{65D8C927CE960FB5}" {
+     m_executionDelay 1
+     m_messageTitle "MINOR UK VICTORY"
+     m_messageBody "The United Kingdom has managed to compelete their main objective and extract, without completing any optional objectives."\
+     ""\
+     "Better luck next time."\
+     "Mission will end soon..."
+     m_factionKeys {
+      "GC_ARG"
+     }
+    }
+    TILW_EndGameInstruction "{65D8C927CE960FB3}" {
+     m_executionDelay 15
+     m_factionKey "UK"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65DAD8573D4051F2}" {
+    m_operands {
+     TILW_LiteralTerm "{65DAD8573305CC67}" {
+      m_flagName "MinorWin"
+     }
+     TILW_LiteralTerm "{65DAD85724A4ABA7}" {
+      m_flagName "BLUExtract"
+     }
+    }
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{65CEB4DB2E37CE83}" {
+   m_flagName "UKDead"
+   m_factionKey "UK"
+   m_casualtyRatio 0.85
+  }
+ }
+ m_randomFlags {
+  TILW_FlagSampling "{65CEB4DB0A97F605}" {
+   m_flagNames {
+    "AmmoSpawn1" "AmmoSpawn2" "AmmoSpawn3"
+   }
+  }
+ }
+ m_suppressGameEnd 0
+}

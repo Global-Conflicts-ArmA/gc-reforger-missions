@@ -1,0 +1,65 @@
+Turret : "{E2E3D404C065544F}Prefabs/Vehicles/Static/BaconZU23/BaconZU23_Turret.et" {
+ ID "51ACD0965653D003"
+ components {
+  SCR_BaseCompartmentManagerComponent "{51ACFBB07A14CFA6}" {
+   DoorInfoList {
+    CompartmentDoorInfo "{61CC8DAB677FE27F}" {
+     EntryPositionInfo PointInfo "{61CC8DAB75E868C3}" {
+      PivotID "w_seat_pilot"
+      Offset 0 0.0717 0
+     }
+     ExitPositionInfo PointInfo "{61CC8DAB760784E4}" {
+      PivotID "w_seat_pilot"
+      Offset -0.6424 -0.3293 -0.2208
+     }
+     GetInTeleport 1
+     GetOutTeleport 1
+     FakeDoor 1
+    }
+   }
+   CompartmentSlots {
+    TurretCompartmentSlot TurretCompartment {
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{5CD7079E50A8CC56}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5CD7079E54146EC8}" {
+    m_Image "{5F08A4FDDD5B260B}Assets/BaconZU23/ArmaReforgerWorkbenchSteam_9lr2gZP21G.edds"
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5C9ADB83B35D0AF4}" {
+   Enabled 1
+   MaxCumulativeVolume 30000
+   m_fMaxWeight 100
+  }
+  TILW_Flag_EntityDamage "{65DAC248FC7D5D37}" {
+  }
+  TurretComponent "{5C9ADB83B35D0AE5}" {
+   components {
+    SightsComponent "{5C9B154C4A52FA5E}" {
+     SightsPosition PointInfo "{5C9B154C37BA320C}" {
+      Offset 0 0 -0.0804
+     }
+    }
+   }
+  }
+  SlotManagerComponent "{5CD14D88ED10DD87}" {
+   Slots {
+    EntitySlotInfo base {
+     PivotID "w_turret_base_mount"
+     ChildPivotID "w_base_turret_mount"
+     Prefab "{CB61133572F1545F}Prefabs/Vehicles/Static/BaconZU23/BaconZU23_Base.et"
+    }
+   }
+  }
+  SCR_TurretInventoryStorageManagerComponent "{65DAC248400D1DB2}" {
+  }
+  ActionsManagerComponent "{51ACD09C7181BA0B}" {
+   additionalActions {
+    SCR_OpenTurretStorageAction "{5C9ADB83B35D639B}" {
+     m_bShowFromOutside 1
+    }
+   }
+  }
+ }
+}
