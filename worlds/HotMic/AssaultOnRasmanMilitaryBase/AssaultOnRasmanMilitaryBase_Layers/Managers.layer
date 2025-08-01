@@ -9,7 +9,7 @@ PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_Game
  m_aFactionRespawnCount {
   PS_FactionRespawnCount "{65E365F2E8BB73ED}" {
    m_sFactionKey "US"
-   m_iCount 10
+   m_iCount 0
    m_iTime 0
   }
  }
@@ -69,6 +69,33 @@ PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_Game
   }
  }
 }
+PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+   m_factionKeys {
+    "USSR"
+   }
+   m_defaultColor 0 1 0 1
+   m_useFactionColor 0
+  }
+ }
+ coords 6145.474 98.634 11389.981
+ Points {
+  ShapePoint "{65FD4537F42E5F22}" {
+   Position 458.359 16.085 480.17
+  }
+  ShapePoint "{65FD4537CA152738}" {
+   Position 284.555 73.823 1027.181
+  }
+  ShapePoint "{65FD4537DD230D01}" {
+   Position -1211.535 0 -196.502
+  }
+  ShapePoint "{65FD4537D59BA836}" {
+   Position -711.944 38.494 -818.283
+  }
+ }
+ LineColor 0 1 0 1
+}
 TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
  coords 5921.308 109.313 11395.868
  m_missionEvents {
@@ -85,16 +112,16 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
    m_pregameEvent 1
   }
   TILW_MissionEvent "{65DF774AC273A4BA}" {
-   m_name "Set Difficuty Median"
+   m_name "Set Difficuty: Medium"
    m_instructions {
     TILW_SendMessageInstruction "{65DF774AD737C929}" {
      m_executionDelay 0
-     m_messageTitle "Set Difficuty: Median"
+     m_messageTitle "Set Difficuty: Medium"
     }
     TILW_EditRespawnTicketsInstruction "{65E365D4168B7902}" {
      m_executionDelay 0
      m_factionKey "US"
-     m_amount 20
+     m_amount 5
      m_allowSpecRespawn 1
     }
     TILW_SetFlagInstruction "{65E55DB930AF001F}" {
@@ -120,7 +147,11 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
     TILW_EditRespawnTicketsInstruction "{65E365D46AD62AD4}" {
      m_executionDelay 0
      m_factionKey "US"
-     m_amount 30
+     m_amount 10
+    }
+    TILW_SetFlagInstruction "{65FB5856EF1EFAED}" {
+     m_executionDelay 0
+     m_flagName "Spawn Enemies Hard"
     }
     TILW_ClearFlagInstruction "{65E55DBFE0681FC0}" {
      m_executionDelay 0
@@ -220,10 +251,10 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
    m_instructions {
     TILW_SendMessageInstruction "{65E365DE9F74EA13}" {
      m_messageTitle "Phase 1 Concluded"
-     m_messageBody "Dig in and prepare for counter-attack. You have 10 minutes to set up the defense."
+     m_messageBody "Dig in and prepare for counter-attack. You have 5 minutes to set up the defense."
     }
     TILW_SetFlagInstruction "{65E55DBF0F467F68}" {
-     m_executionDelay 600
+     m_executionDelay 300
      m_flagName "Phase 2 Start"
     }
    }
@@ -305,6 +336,23 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
    }
    m_condition TILW_LiteralTerm "{65F0057787684D60}" {
     m_flagName "Phase 2 Start"
+   }
+  }
+  TILW_MissionEvent "{65FB587185A8B6A7}" {
+   m_name "Phase 2 Failed"
+   m_instructions {
+    TILW_SendMessageInstruction "{65FB58719BF313F7}" {
+     m_executionDelay 2
+     m_messageTitle "Phase 2 Failed"
+     m_messageBody "Insurgences has captured the ATC Tower. "
+    }
+    TILW_EndGameInstruction "{65FB5871DDA40479}" {
+     m_executionDelay 300
+     m_factionKey "GC_INSURGENT"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65FB587E3888075B}" {
+    m_flagName "Phase 2 Capture Lost"
    }
   }
  }
