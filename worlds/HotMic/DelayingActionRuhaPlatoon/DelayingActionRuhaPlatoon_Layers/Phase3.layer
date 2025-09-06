@@ -1,19 +1,53 @@
 $grp GenericEntity {
- Phase3_ASR_Infantry {
-  coords 5546.534 61.07 4084.729
-  angleY 142.525
- }
  Phase3_ASR_Vics {
-  coords 5409.725 56.442 4247.82
-  angleY 110.668
+  coords 5409.45 56.439 4248.678
+  angleX -1.008
+  angleY -172.25
+  angleZ 0.766
  }
- Phase3_Flanking_Infantry {
-  coords 6252.934 73.666 2991.283
-  angleY 142.525
+ Phase3_Flanking_Vics {
+  coords 7647.451 83.343 3642.231
+  angleY -145.437
  }
  Phase3_Main_Vics {
-  coords 6742.813 60.312 4559.543
-  angleY -152.782
+  coords 6776.226 60.031 4500.182
+  angleY -89.65
+ }
+ Phase3_ASR_Vics2 {
+  coords 5410.971 56.5 4259.184
+  angleY -170.082
+ }
+ Phase3_Flanking_Vics2 {
+  coords 7653.583 83.723 3651.132
+  angleX -1.752
+  angleY -145.446
+  angleZ 0.966
+ }
+ Phase3_Main_Vics2 {
+  coords 6788.987 60.031 4499.848
+  angleY -90.084
+ }
+ Phase3_Main_Vics3 {
+  coords 6800.255 60.031 4499.524
+  angleY -89.327
+ }
+ Phase3_Main_Vics4 {
+  coords 6811.854 60.031 4499.302
+  angleY -90.891
+ }
+}
+$grp SCR_AIWaypoint : "{06E1B6EBD480C6E0}Prefabs/AI/Waypoints/AIWaypoint_ForcedMove.et" {
+ Phase3_ForcedMove_Main_Waypoint {
+  coords 6284.707 62.038 3834.288
+  CompletionRadius 15
+ }
+ Phase3_ForcedMove_ASR_Waypoint {
+  coords 5533.28 60.251 3440.647
+  CompletionRadius 15
+ }
+ Phase3_ForcedMove_MainLineA_Waypoint {
+  coords 6077.529 63.5 3537.966
+  CompletionRadius 15
  }
 }
 SCR_AIWaypoint Phase3_Move_Waypoint : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
@@ -30,4 +64,14 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
  m_stopAfterFirstChange 1
  m_ownerFactionKey "USSR"
  m_ratioThreshold 0.75
+}
+SCR_BoardingWaypoint Phase3_Flanking_Getout_Waypoint : "{C40316EE26846CAB}Prefabs/AI/Waypoints/AIWaypoint_GetOut.et" {
+ coords 6501.302 77.775 3392.636
+ Type "GetOutInstant"
+ Title "GetOutInstantWaypoint"
+ CompletionRadius 45
+ CompletionYPrecision -1
+ Autocomplete 1
+ CompletionType Any
+ m_fPriorityLevel 50
 }
