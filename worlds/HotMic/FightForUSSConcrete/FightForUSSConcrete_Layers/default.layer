@@ -91,6 +91,15 @@ $grp GenericEntity {
     }
    }
    GenericEntity : "{C1E318C4198DFA2A}PrefabLibrary/Props/Military/Duckboard_01.et" {
+    components {
+     SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+      Enabled 0
+      EnableDamage 0
+     }
+     RplComponent "{5EAEA75B09E8BC84}" {
+      Enabled 0
+     }
+    }
     coords -2.835 15.23 -6.44
     angleX -13.031
     angleY 90
@@ -157,6 +166,15 @@ $grp GenericEntity {
     }
    }
    GenericEntity : "{C1E318C4198DFA2A}PrefabLibrary/Props/Military/Duckboard_01.et" {
+    components {
+     SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+      Enabled 0
+      EnableDamage 0
+     }
+     RplComponent "{5EAEA75B09E8BC84}" {
+      Enabled 0
+     }
+    }
     coords 4.077 15.199 1.056
     angleY 176.704
     angleZ 29.972
@@ -223,6 +241,14 @@ $grp GenericEntity {
     }
    }
    GenericEntity : "{C1E318C4198DFA2A}PrefabLibrary/Props/Military/Duckboard_01.et" {
+    components {
+     SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+      Enabled 0
+     }
+     RplComponent "{5EAEA75B09E8BC84}" {
+      Enabled 0
+     }
+    }
     coords 3.71 15.243 1.035
     angleY 176.704
     angleZ 29.972
@@ -343,16 +369,17 @@ $grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit
  }
 }
 TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
- coords 4370.802 34.691 11168.021
+ coords 4370.802 34.691 11169.021
  m_queryRadius 12
  m_captureTime 120
  m_sendStatusMessages 1
  m_statusMessages {
-  "The %1 has taken control of %2. AFRF Victory!" "The %1 is taking control of %2." "The %1 is no longer taking control of %2." "The %1 has lost control of %2." "The %1 is losing control of %2." "The %1 is no longer losing control of %2."
+  "The %1 has taken control of %2. Separatist Victory!" "The %1 is taking control of %2." "The %1 is no longer taking control of %2." "The %1 has lost control of %2." "The %1 is losing control of %2." "The %1 is no longer losing control of %2."
  }
  m_locationName "ATC Tower"
  m_flagName "ATC Tower Capture Flag"
- m_ownerFactionKey "RHS_AFRF"
+ m_stopAfterFirstChange 1
+ m_ownerFactionKey "GC_SEPARATIST"
 }
 TILW_MissionFrameworkEntity MF1 : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
  coords 4502.604 22.971 11333.141
@@ -362,8 +389,8 @@ TILW_MissionFrameworkEntity MF1 : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFram
    m_name "USMC Casualties Limit"
    m_instructions {
     TILW_SendMessageInstruction "{66644935E89E844D}" {
-     m_messageTitle "AFRF Victory!"
-     m_messageBody "90% USMC Casualties"
+     m_messageTitle "Separatist Victory!"
+     m_messageBody "100% USMC Casualties"
     }
    }
    m_condition TILW_LiteralTerm "{66644935E6046F21}" {
@@ -371,15 +398,15 @@ TILW_MissionFrameworkEntity MF1 : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFram
    }
   }
   TILW_MissionEvent "{6664493501DE7BA5}" {
-   m_name "AFRF Casualties"
+   m_name "Separatist Casualties"
    m_instructions {
     TILW_SendMessageInstruction "{66644935D9E585A8}" {
      m_messageTitle "USMC Victory!"
-     m_messageBody "90% AFRF Casualties"
+     m_messageBody "100% Separatist Casualties"
     }
    }
    m_condition TILW_LiteralTerm "{66644935C42831CF}" {
-    m_flagName "AFRF Casualties Flag"
+    m_flagName "Separatist Casualties Flag"
    }
   }
   TILW_MissionEvent "{66652096DAEC80FF}" {
@@ -387,8 +414,8 @@ TILW_MissionFrameworkEntity MF1 : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFram
    m_instructions {
     TILW_SendMessageInstruction "{66652096D04E66D1}" {
      m_executionDelay 10
-     m_messageTitle "AFRF Victory!"
-     m_messageBody "AFRF have captured the tower!"
+     m_messageTitle "Separatist Victory!"
+     m_messageBody "Wait for the GMs to pick the next mission."
     }
    }
    m_condition TILW_LiteralTerm "{66652096D8934A24}" {
@@ -417,23 +444,37 @@ TILW_MissionFrameworkEntity MF1 : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFram
   TILW_FactionPlayersKilledFlag "{6664493DF952136C}" {
    m_flagName "USMC Casualties Flag"
    m_factionKey "RHS_USAF"
-   m_casualtyRatio 0.9
   }
   TILW_FactionPlayersKilledFlag "{6664493E2BCF3BC8}" {
-   m_flagName "AFRF Casualties Flag"
-   m_factionKey "RHS_AFRF"
-   m_casualtyRatio 0.9
+   m_flagName "Separatist Casualties Flag"
+   m_factionKey "GC_SEPARATIST"
   }
  }
 }
 $grp GenericEntity : "{C1E318C4198DFA2A}PrefabLibrary/Props/Military/Duckboard_01.et" {
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    Enabled 0
+   }
+   RplComponent "{5EAEA75B09E8BC84}" {
+    Enabled 0
+   }
+  }
   coords 4373.786 -0.734 11084.016
   angleX -12.005
   angleY -62.665
   scale 5.157
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    Enabled 0
+   }
+   RplComponent "{5EAEA75B09E8BC84}" {
+    Enabled 0
+   }
+  }
   coords 4369.381 -1.544 11092.391
   angleY -2.665
   scale 5.157
