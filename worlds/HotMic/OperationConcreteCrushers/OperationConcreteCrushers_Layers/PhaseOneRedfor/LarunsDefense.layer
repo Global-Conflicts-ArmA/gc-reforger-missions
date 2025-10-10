@@ -150,6 +150,12 @@ GenericEntity : "{144F1136AB4DB0E8}Prefabs/Compositions/Slotted/SlotFlatSmall/Li
    angleX -0.054
    angleY -0.011
    angleZ 11.536
+   {
+    StaticModelEntity {
+     ID "5D1EB454858F64CB"
+     coords 0 0 0
+    }
+   }
   }
   GenericEntity {
    ID "5D22B92C9C68866C"
@@ -225,6 +231,9 @@ GenericEntity : "{144F1136AB4DB0E8}Prefabs/Compositions/Slotted/SlotFlatSmall/Li
 }
 GenericEntity : "{1D2887BB9A7D4670}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_CommandPost_USSR_01.et" {
  coords 7584.629 81.46 5505.69
+ angleX -0.869
+ angleY -0.149
+ angleZ 9.754
  {
   StaticModelEntity {
    ID "5CB6B281C4F9CB49"
@@ -240,6 +249,33 @@ GenericEntity : "{1D2887BB9A7D4670}Prefabs/Compositions/Misc/SubCompositions/Ten
     }
    }
   }
+ }
+}
+$grp SCR_DefendWaypoint : "{2FCBE5C76E285A7B}Prefabs/AI/Waypoints/AIWaypoint_DefendSmall.et" {
+ LarunsDefendWaypoint_1 {
+  coords 7643.821 78.344 5455.327
+ }
+ LarunsDefendWaypoint_2 {
+  coords 7663.051 76.311 5512.399
+ }
+ LarunsDefendWaypoint_3 {
+  coords 7601.375 78.561 5640.309
+ }
+ LarunsDefendWaypoint_4 {
+  coords 7458.175 94.082 5538.308
+ }
+ LarunsDefendWaypoint_5 {
+  coords 7581.257 82.002 5508.005
+  CompletionRadius 20
+ }
+ LarunsDefendWaypoint_6 {
+  coords 7538.225 85.143 5512.804
+ }
+ LarunsDefendWaypoint_7 {
+  coords 7562.725 83.143 5476.804
+ }
+ LarunsDefendWaypoint_8 {
+  coords 7599.225 83.143 5571.304
  }
 }
 GenericEntity : "{3AE1A95C1023F894}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_USSR_04.et" {
@@ -536,33 +572,29 @@ GenericEntity : "{3AE1A95C1023F894}Prefabs/Compositions/Slotted/SlotFlatSmall/Sa
  }
 }
 $grp SCR_AIGroup : "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et" {
- {
-  coords 7580.868 79.734 5606.885
+ LarunDefendSquad1 {
+  coords 7638.025 77.58 5461.167
+  m_aStaticWaypoints {
+   "LarunsDefendWaypoint_1"
+  }
  }
- {
-  coords 7640.231 79.734 5522.817
+ LarunDefendSquad2 {
+  coords 7659.392 75.802 5515.209
+  m_aStaticWaypoints {
+   "LarunsDefendWaypoint_2"
+  }
  }
- {
-  coords 7551.567 82.526 5472.297
+ LarunDefendSquad3 {
+  coords 7600.53 78.679 5636.45
+  m_aStaticWaypoints {
+   "LarunsDefendWaypoint_3"
+  }
  }
- {
-  coords 7460.163 94.014 5543.554
- }
- {
-  coords 7511.789 80.843 5610.566
- }
- {
-  coords 7600.287 78.553 5645.26
- }
- {
-  coords 7550.072 82.781 5501.8
- }
- {
-  coords 7591.875 80.735 5564.372
- }
- {
-  coords 7644.943 79.734 5452.507
-  angleY 150
+ LarunDefendSquad4 {
+  coords 7459.755 94.32 5537.583
+  m_aStaticWaypoints {
+   "LarunsDefendWaypoint_4"
+  }
  }
 }
 $grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
@@ -599,7 +631,7 @@ $grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpaw
   angleZ -1.614
   m_prefab "{1C5FE7B7FF49BB8D}Prefabs/Vehicles/Wheeled/BTR70/BTR70_Base.et"
   m_setEntityNames {
-   "larunsBTR1"
+   "larunsBTR2"
   }
   m_pregameSpawn 1
   m_crewConfig TILW_CrewConfig "{66523C8C37F37CF2}" {
@@ -619,8 +651,11 @@ $grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpaw
   }
  }
 }
-SCR_AIGroup : "{8984FEFAA829ED76}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_PHQ.et" {
+SCR_AIGroup LarunDefendSquad5 : "{8984FEFAA829ED76}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_PHQ.et" {
  coords 7576.111 82.686 5505.947
+ m_aStaticWaypoints {
+  "LarunsDefendWaypoint_5"
+ }
 }
 $grp GenericEntity : "{8E1DF47DD56E69E6}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_USSR_01.et" {
  {
