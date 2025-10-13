@@ -1,0 +1,105 @@
+$grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
+ ambush_05_mine3 {
+  coords 1334.301 29.19 3438.459
+  angleX 0.895
+  angleY -0.014
+  angleZ -0.895
+  m_prefab "{F5C61D19C5FE5209}worlds/Perfk/PrefabsEditable/EffectsModules/Mine/PK_EffectModule_MineField_Single_USSR.et"
+  m_conditionFlag "Ambush_05"
+ }
+ {
+  coords 1325.325 28.759 3435.079
+  angleX -4.817
+  angleY -18.117
+  m_prefab "{B67A4797AED7B3BC}Prefabs/Structures/Wreck/ikarus.et"
+  m_conditionFlag "Ambush_05"
+ }
+ Ambush_05_AT {
+  coords 1401.184 35.622 3416.311
+  angleY -24.012
+  m_prefab "{9DE1C345404CDCA8}worlds/Perfk/Prefabs/Groups/PK_GC_INS_Afghan_AT_team.et"
+  m_conditionFlag "Ambush_04_CloseTrigger"
+  m_waypointNames {
+   "Ambush_05_SD"
+  }
+ }
+ ambush_01_inf5 {
+  coords 1337.428 33.457 3398.703
+  angleX -6.815
+  angleY -28.174
+  m_prefab "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+  m_conditionFlag "Ambush_05"
+  m_crewConfig TILW_CrewConfig "{6662A01EEC3B8FF9}" {
+   m_crewGroups {
+    TILW_CrewGroup "{6662A01EEE967534}" {
+     m_crewStations {
+      TILW_CrewStation "{6662A01EE4F152BB}" {
+       m_allowPilot 0
+       m_allowCargo 0
+       m_characters {
+        "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et" "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ Ambush_05_inf2 {
+  coords 1375.361 26.467 3480.782
+  angleY 159.46
+  m_prefab "{E9969D610C120940}worlds/Perfk/Prefabs/Groups/PK_GC_INS_Afghan_Fireteam_1.et"
+  m_conditionFlag "Ambush_05_CloseTrigger"
+  m_waypointNames {
+   "Ambush_05_SD"
+  }
+ }
+ Ambush_05_Truck4 {
+  coords 1490.236 39.867 3362.177
+  angleY -10.685
+  m_prefab "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+  m_conditionFlag "Ambush_05_CloseTrigger"
+  m_crewConfig TILW_CrewConfig "{6662A01EEC3B8FF9}" {
+   m_crewGroups {
+    TILW_CrewGroup "{6662A01EEE967534}" {
+     m_crewStations {
+      TILW_CrewStation "{6662A01EE4F152BB}" {
+       m_characters {
+        "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et" "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et" "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et" "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+       }
+      }
+     }
+     m_waypointNames {
+      "Ambush_05_SD"
+     }
+    }
+   }
+   m_noTurretDismount 1
+  }
+ }
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ {
+  coords 1448.34 28.995 3459.555
+  angleZ 0.895
+  m_flagName "Ambush_05_Trigger"
+  m_stopAfterFirstChange 1
+  m_setShapeColor 0 0.047 1 1
+  m_playersOnly 1
+  m_ownerFactionKey "US"
+ }
+ {
+  coords 1448.34 28.995 3459.555
+  angleZ 0.895
+  m_flagName "Ambush_05_Trigger"
+  m_stopAfterFirstChange 1
+  m_setShapeColor 0.817 1 0 1
+  m_playersOnly 1
+  m_ownerFactionKey "GC_TKA"
+ }
+}
+SCR_SearchAndDestroyWaypoint Ambush_05_SD : "{B3E7B8DC2BAB8ACC}Prefabs/AI/Waypoints/AIWaypoint_SearchAndDestroy.et" {
+ coords 1348.615 30.276 3446.596
+ angleY -1.671
+ CompletionRadius 10
+}

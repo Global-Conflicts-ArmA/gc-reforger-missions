@@ -1,0 +1,240 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{65D9122AB2622D4A}" {
+     NavmeshFile "{C54FCF0DC85B9642}worlds/Gamemaster/Navmeshes/GM_Ruha_navmesh_soldiers.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{301510D49B59DE2C}worlds/Gamemaster/Navmeshes/GM_Ruha_navmesh_vehicles.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{806B3036EA17E548}worlds/Gamemaster/Navmeshes/GM_Ruha_navmesh_lowres.nmn"
+    }
+   }
+  }
+ }
+ coords 1977.048 66.413 6746.422
+}
+GenericWorldFogEntity : "{78D9BBF0F423FEB4}Prefabs/World/DefaultWorld/FogHaze_Default.et" {
+ coords 1767.751 66.03 6658.533
+ HeightDensity 1
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 1973.152 66.453 6750.959
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bRandomStartingDaytime 1
+   m_bRandomStartingDaytimeRange 1
+   m_iRangeHoursStart 6
+   m_iRangeHoursEnd 16
+   m_bRandomStartingWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{65D9122E96DBA160}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 7
+    }
+   }
+   m_bRandomWeatherChanges 1
+   m_bUseSpecifiedDate 1
+   m_iSetMonth 9
+   m_iSetYear 2025
+   m_fFogDensity 0
+   m_fFogHeight 0
+   m_fRain 0
+   m_fWind 5
+  }
+ }
+ coords 1970.315 66.375 6740.193
+ m_iFreezeTime 180000
+ {
+  SCR_FactionManager "6604E39B4AC18AED" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CD021D5C}" {
+        m_sCallsign "Red"
+       }
+       SCR_CallsignInfo "{55CCB792CCD598D3}" {
+        m_sCallsign "Blue"
+       }
+       SCR_CallsignInfo "{55CCB792CC9C7AD6}" {
+        m_sCallsign "White"
+       }
+       SCR_CallsignInfo "{55CCB792CCB4D441}" {
+        m_sCallsign "Black"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792CE18FB44}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792CE02ECFA}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{55CCB792CE2A44BD}" {
+        m_sCallsign "4"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{66033D9362ED2B8A}" {
+        m_sCallsign "4"
+       }
+       SCR_CallsignInfo "{66050702300DF35C}" {
+        m_sCallsign "5"
+       }
+       SCR_CallsignInfo "{66050702302C8943}" {
+        m_sCallsign "6"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_MapShapeComponent "{6508F54F9B461198}" {
+   Enabled 1
+  }
+ }
+ coords 4281.109 55.066 4044.235
+ angleX 0.895
+ Points {
+  ShapePoint "{65DAD45204ECAC0A}" {
+   Position 1521.164 -64.816 4136.813
+  }
+  ShapePoint "{65DAD4520662E2F6}" {
+   Position -3597.187 71.26 -4031.999
+  }
+  ShapePoint "{65DAD452079001F0}" {
+   Position -2300.399 65.119 -4034.577
+  }
+  ShapePoint "{65DAD4520085AF0D}" {
+   Position 2515.164 -65.1 4140.458
+  }
+ }
+}
+TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 1223.408 61.353 154.998
+ m_queryRadius 150
+ m_captureTime 60
+ m_sendStatusMessages 1
+ m_locationName "the hamlet"
+ m_flagName "RU_CAP"
+ m_ownerFactionKey "RHS_AFRF"
+ m_ratioThreshold 0.75
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 1975.851 66.373 6735.549
+ m_missionEvents {
+  TILW_MissionEvent "{65DAD44B20B959A8}" {
+   m_name "US_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{65DAD44B3E9B04E5}" {
+     m_messageTitle "RU VICTORY"
+     m_messageBody "US forces have taken significant casualties."
+    }
+    TILW_EndGameInstruction "{65DAD44B367A5786}" {
+     m_executionDelay 15
+     m_factionKey "RHS_AFRF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65DAD44B3CEA7945}" {
+    m_flagName "US_KIA"
+   }
+  }
+  TILW_MissionEvent "{65DAD44B0C1F6ABB}" {
+   m_name "RU_CAP"
+   m_instructions {
+    TILW_SendMessageInstruction "{65DAD44B0B639BE4}" {
+     m_messageTitle "RU VICTORY"
+     m_messageBody "RU forces have taken control of the hamlet."
+    }
+    TILW_EndGameInstruction "{65DAD44B1C96CEFC}" {
+     m_executionDelay 15
+     m_factionKey "RHS_AFRF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65DAD44B0F043436}" {
+    m_flagName "RU_CAP"
+   }
+  }
+  TILW_MissionEvent "{65DAD44B18B1FFCF}" {
+   m_name "RU_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{65DAD44B173C3443}" {
+     m_messageTitle "US VICTORY"
+     m_messageBody "RU forces have taken significant casualties."
+    }
+    TILW_EndGameInstruction "{65DAD44BE67D35ED}" {
+     m_executionDelay 15
+     m_factionKey "RHS_USAF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65DAD44B124E4EED}" {
+    m_flagName "RU_KIA"
+   }
+  }
+  TILW_MissionEvent "{65DAD44BE3E4874B}" {
+   m_name "TIME_LIMIT"
+   m_instructions {
+    TILW_SendMessageInstruction "{65DAD44BFF933260}" {
+     m_executionDelay 3600
+     m_messageTitle "US VICTORY"
+     m_messageBody "RU forces have been delayed for long enough."
+    }
+    TILW_EndGameInstruction "{65DAD44BC7EC8D2A}" {
+     m_executionDelay 3610
+     m_factionKey "RHS_USAF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65DAD44BFECA2360}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{65D9122F118E00D3}" {
+   m_flagName "US_KIA"
+   m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{65D9122FEBBAA599}" {
+   m_flagName "RU_KIA"
+   m_factionKey "RHS_AFRF"
+   m_casualtyRatio 0.9
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 6191.661 54.063 8110.966
+}

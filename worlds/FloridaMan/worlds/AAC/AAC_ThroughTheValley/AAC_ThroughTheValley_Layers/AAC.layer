@@ -1,0 +1,76 @@
+SCR_BaseGameMode GameMode_CaptureAndHold1 : "{233229938D468D6B}Prefabs/MP/Modes/AdvanceAndCooperate/GameMode_AdvanceAndCooperate.et" {
+ components {
+  GC_AdvanceAndSecureManager "{644ADAF798AA6F90}" {
+   m_factionOrders {
+    GC_AASOrder "{644CD9274A3E059F}" {
+     m_faction "GC_SEPARATIST"
+     m_order {
+      "A" "B" "C" "D" "E" "F" "G" "H"
+     }
+     m_endGameOnAll 1
+    }
+   }
+  }
+  SCR_CaptureAndHoldManager "{5918D676431D9060}" {
+   m_bUseCustomWeather 1
+   m_sCustomWeatherId "Cloudy"
+   m_bUseCustomTime 1
+   m_fCustomTimeOfTheDay 10
+  }
+ }
+ coords 1689.762 43.851 3357.342
+}
+SCR_FactionManager FactionManager_Base1 : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionManager_Base.et" {
+ coords 1691.301 43.882 3351.381
+ Factions {
+  SCR_Faction "{644769122410F6FD}" : "{0DBA91DB1C526E9F}worlds/FloridaMan/worlds/AAC/AAC_ThroughTheValley/Configs/Factions/RHS_US_ARMY.conf" {
+  }
+  SCR_Faction "{6447691238A9A999}" : "{2FCCF93D27A6ECC4}Configs/Factions/Insurgents.conf" {
+   FactionColor 0.002 0.44 0 1
+   m_iOrder 0
+   m_OutlineFactionColor 0.001 0.082 0.005 1
+   m_NotificationFactionColor 0 0.44 0.01 1
+   m_NotificationTextFactionColor 0.011 0.296 0 1
+   m_sGroupFlagsImageSet "{301FC1A2A46D3E0D}UI/Textures/GroupManagement/FlagIcons/GroupFlagsIndfor.imageset"
+   m_sGroupFlagsImageSetOutlines "{C07D82625600BA21}UI/Textures/GroupManagement/FlagIcons/GroupFlagsIndfor-outline.imageset"
+  }
+ }
+}
+$grp GenericEntity {
+ CAS_F1 {
+  coords 1871.636 34.109 3687.723
+ }
+ CAS_F2 {
+  coords 2092.942 23.031 3899.036
+ }
+}
+SCR_LoadoutManager : "{AA4E7419A1FF65B0}Prefabs/MP/Managers/Loadouts/LoadoutManager_Base.et" {
+ coords 1692.68 43.914 3346.913
+ m_aPlayerLoadouts {
+  SCR_FactionPlayerLoadout "{65976A38A59361B1}" {
+   m_sLoadoutName "Rifleman"
+   m_sLoadoutResource "{9158BEDAA956CF50}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Army Infantry/Character_RHS_USA_Rifleman.et"
+   m_sAffiliatedFaction "RHS_USAF"
+  }
+  SCR_FactionPlayerLoadout "{65976A38864A8215}" {
+   m_sLoadoutName "Grenadier"
+   m_sLoadoutResource "{E851D257DAE2F457}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Army Infantry/Character_RHS_USA_GL.et"
+   m_sAffiliatedFaction "RHS_USAF"
+  }
+  SCR_FactionPlayerLoadout "{65976A387FB6F3B6}" {
+   m_sLoadoutName "Automatic Rifleman"
+   m_sLoadoutResource "{E584AC762D559D7D}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Army Infantry/Character_RHS_USA_AR.et"
+   m_sAffiliatedFaction "RHS_USAF"
+  }
+  SCR_FactionPlayerLoadout "{65976A386FDDC267}" {
+   m_sLoadoutName "Heavy AT Specialist"
+   m_sLoadoutResource "{AEE605ABAC616BC3}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Army Infantry/Character_RHS_USA_HAT.et"
+   m_sAffiliatedFaction "RHS_USAF"
+  }
+  SCR_FactionPlayerLoadout "{65976A385C839A0C}" {
+   m_sLoadoutName "Designated Marksman"
+   m_sLoadoutResource "{8131B46D0D95D157}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Army Infantry/Character_RHS_USA_Rifleman_DMR.et"
+   m_sAffiliatedFaction "RHS_USAF"
+  }
+ }
+}

@@ -1,0 +1,36 @@
+SCR_AIWaypoint HOS_EXTRACT_WP : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
+ coords 2038.872 19.663 3674.78
+ m_fPriorityLevel 1000
+}
+TILW_PresenceTriggerEntity : "{826E6F2246328952}Prefabs/Logic/Triggers/TILW_PresenceTrigger.et" {
+ coords 2038.898 19.676 3674.833
+ m_flagName "INS_EXTRACTED"
+ m_stopAfterFirstChange 1
+ m_entityNames {
+  "ss_hostage"
+ }
+}
+SCR_DefendWaypoint HOS_HOLD_WP : "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et" {
+ coords 1921.146 16.232 3818.187
+ CompletionRadius 1.5
+ m_fPriorityLevel 1000
+}
+SCR_AIGroup HOS_GROUP : "{DF688F0BC937BFC7}Prefabs/Groups/CIV/Group_CIV_Base.et" {
+ coords 1921.365 16.847 3818.249
+ angleY -15.517
+ m_aUnitPrefabSlots {
+  "{598B8AEADDF0384C}worlds/arc/StationSmashers/Prefabs/Hostage_StationSmashers.et"
+ }
+ m_aStaticWaypoints {
+  "HOS_HOLD_WP"
+ }
+}
+GenericEntity : "{E105D2F87098E1D8}Prefabs/Systems/Compositions/PatrolPoint/PatrolPoint_LoiterPoint.et" {
+ components {
+  SCR_AISmartActionSentinelComponent "{5CB0DBCC796A6F1C}" {
+   m_vLookPosition -0.543 0 1.499
+  }
+ }
+ coords 1921.128 16.232 3818.236
+ angleY 0
+}

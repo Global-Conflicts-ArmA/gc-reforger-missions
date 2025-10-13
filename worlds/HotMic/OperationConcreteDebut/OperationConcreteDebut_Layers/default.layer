@@ -1,0 +1,92 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 9481.182 6.443 7007.93
+ angleY 60
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 9490.863 6.981 7006.547
+ angleY 60
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ coords 9480.512 22.799 7001.048
+ angleY 60
+ {
+  RadioManagerEntity {
+   ID "5ED9088735FF2DEE"
+   coords -26.89 38.579 -2.479
+  }
+  SCR_FactionManager "665135073166C568" {
+   ID "5ED9088735FF2D8B"
+   coords 0 0 0.001
+  }
+  ItemPreviewManagerEntity "665135073166C512" {
+   ID "5ED9088735FF2DD5"
+   coords -12.247 1 -7.526
+  }
+  SCR_EditorSettingsEntity {
+   ID "61B4E967E6C20362"
+   coords 0 0 0.001
+  }
+ }
+}
+TILW_MissionFrameworkEntity MF1 : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 9480.127 22.971 7003.064
+ angleY 60
+ m_missionEvents {
+  TILW_MissionEvent "{66474DAD9C7FCC8D}" {
+   m_name "Laruns Final Attack"
+   m_instructions {
+    TILW_AssignWaypointsInstruction "{66523C80C63B3CF9}" {
+    }
+   }
+   m_condition TILW_LiteralTerm "{66474DAD982F7259}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_metaFlags {
+  TILW_MetaFlag "{66474DADE393055E}" {
+   m_flagName "Allow Teleportation A Flag"
+   m_definition TILW_ConjunctionTerm "{66474DADFFD57D73}" {
+    m_operands {
+     TILW_LiteralTerm "{66474DADF8313F3D}" {
+      m_flagName "SpawnAFlag"
+     }
+     TILW_LiteralTerm "{66474DADF48A6F30}" {
+      m_flagName "Allow Teleportation Flag"
+     }
+    }
+   }
+  }
+  TILW_MetaFlag "{66474DADC656D270}" {
+   m_flagName "Allow Teleportation B Flag"
+   m_definition TILW_ConjunctionTerm "{66474DADC656D5BF}" {
+    m_operands {
+     TILW_LiteralTerm "{66474DADC656D5A3}" {
+      m_flagName "SpawnBFlag"
+     }
+     TILW_LiteralTerm "{66474DADC656D55F}" {
+      m_flagName "Allow Teleportation Flag"
+     }
+    }
+   }
+  }
+ }
+ m_randomFlags {
+  TILW_FlagSampling "{66474DA9E6E3F275}" {
+   m_flagNames {
+    "Chotain Intel Spawn Flag" "Chotain Military Site Intel Flag" "Laruns Intel Flag" "Levie Intel Flag" "Military Site Intel Flag"
+   }
+   m_k 3
+  }
+  TILW_FlagSampling "{66523C8787D2B82A}" {
+   m_flagNames {
+    "Morton Flag" "Lamentin Flag" "Montignac Flag" "StPierre Flag" "StPhillipe Flag"
+   }
+  }
+  TILW_FlagSampling "{66523C865E0664AB}" {
+   m_flagNames {
+    "Loc A Flag" "Loc B Flag" "Loc C Flag"
+   }
+  }
+ }
+}

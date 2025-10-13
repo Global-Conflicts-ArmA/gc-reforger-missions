@@ -1,0 +1,179 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{65D9122AB2622D4A}" {
+     NavmeshFile "{C54FCF0DC85B9642}worlds/Gamemaster/Navmeshes/GM_Ruha_navmesh_soldiers.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{301510D49B59DE2C}worlds/Gamemaster/Navmeshes/GM_Ruha_navmesh_vehicles.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{806B3036EA17E548}worlds/Gamemaster/Navmeshes/GM_Ruha_navmesh_lowres.nmn"
+    }
+   }
+  }
+ }
+ coords 1977.048 66.413 6746.422
+}
+GenericWorldFogEntity : "{78D9BBF0F423FEB4}Prefabs/World/DefaultWorld/FogHaze_Default.et" {
+ coords 1767.751 66.03 6658.533
+ HeightDensity 1
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 1973.152 66.453 6750.959
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{65D9122E96DBA160}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 7
+    }
+   }
+   m_bAllowHeaderSettings 1
+   m_bUseSpecifiedDate 1
+   m_iSetMonth 9
+   m_iSetYear 2025
+   m_bOverrideEnvironment 1
+   m_fFogDensity 0
+   m_fFogHeight 0
+   m_fRain 0
+   m_fWind 5
+  }
+ }
+ coords 1970.315 66.375 6740.193
+ m_iFreezeTime 300000
+}
+SCR_EditorRestrictionZoneEntity : "{6144B0BE2EAC6897}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneMedium.et" {
+ coords 3144.414 67.315 6393.211
+}
+PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_MapShapeComponent "{6508F54F9B461198}" {
+   Enabled 1
+  }
+ }
+ coords 2642.367 67.41 6635.017
+ Points {
+  ShapePoint "{65DAD45204ECAC0A}" {
+   Position -603.989 0 613.989
+  }
+  ShapePoint "{65DAD4520662E2F6}" {
+   Position -610.445 0 -373.545
+  }
+  ShapePoint "{65DAD452079001F0}" {
+   Position 668.85 0 -336.357
+  }
+  ShapePoint "{65DAD4520085AF0D}" {
+   Position 609.513 0 637.604
+  }
+ }
+}
+TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 2258.656 71.306 7012.917
+ m_queryRadius 30
+ m_captureIterations 6
+ m_sendStatusMessages 1
+ m_locationName "the hamlet"
+ m_flagName "SEP_CAP"
+ m_ownerFactionKey "GC_SEPARATIST"
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 1975.851 66.373 6735.549
+ m_missionEvents {
+  TILW_MissionEvent "{65DAD44B20B959A8}" {
+   m_name "UK_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{65DAD44B3E9B04E5}" {
+     m_messageTitle "SEPARATIST VICTORY"
+     m_messageBody "British forces have taken significant casualties."
+    }
+    TILW_EndGameInstruction "{65DAD44B367A5786}" {
+     m_executionDelay 15
+     m_factionKey "GC_SEPARATIST"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65DAD44B3CEA7945}" {
+    m_flagName "UK_KIA"
+   }
+  }
+  TILW_MissionEvent "{65DAD44B0C1F6ABB}" {
+   m_name "SEP_CAP"
+   m_instructions {
+    TILW_SendMessageInstruction "{65DAD44B0B639BE4}" {
+     m_messageTitle "SEPARATIST VICTORY"
+     m_messageBody "Separatist forces have taken control of the hamlet."
+    }
+    TILW_EndGameInstruction "{65DAD44B1C96CEFC}" {
+     m_executionDelay 15
+     m_factionKey "GC_SEPARATIST"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65DAD44B0F043436}" {
+    m_flagName "SEP_CAP"
+   }
+  }
+  TILW_MissionEvent "{65DAD44B18B1FFCF}" {
+   m_name "SEP_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{65DAD44B173C3443}" {
+     m_messageTitle "BRITISH VICTORY"
+     m_messageBody "Separatist forces have taken significant casualties."
+    }
+    TILW_EndGameInstruction "{65DAD44BE67D35ED}" {
+     m_executionDelay 15
+     m_factionKey "UK"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65DAD44B124E4EED}" {
+    m_flagName "SEP_KIA"
+   }
+  }
+  TILW_MissionEvent "{65DAD44BE3E4874B}" {
+   m_name "TIME_LIMIT"
+   m_instructions {
+    TILW_SendMessageInstruction "{65DAD44BFF933260}" {
+     m_executionDelay 3600
+     m_messageTitle "BRITISH VICTORY"
+     m_messageBody "Separatist forces have been delayed for long enough."
+    }
+    TILW_EndGameInstruction "{65DAD44BC7EC8D2A}" {
+     m_executionDelay 3610
+     m_factionKey "UK"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65DAD44BFECA2360}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{65D9122F118E00D3}" {
+   m_flagName "UK_KIA"
+   m_factionKey "UK"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{65D9122FEBBAA599}" {
+   m_flagName "SEP_KIA"
+   m_factionKey "GC_SEPARATIST"
+   m_casualtyRatio 0.9
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 2281.739 68.69 6955.156
+ m_fWarnRadius 225
+ m_fZoneRadius 250
+ m_fZoneTeleportedRadius 310
+}

@@ -1,0 +1,61 @@
+SCR_AIWorld : "{E2A016456BBC697D}Prefabs/AI/SCR_AIWorld_Kunar.et" {
+ coords 3076.63 10 3052.439
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 3085.853 10 3058.2
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 6
+  }
+ }
+ coords 3080.505 10.036 3056.896
+ m_iFreezeTime 60000
+ m_eJIPState Deny
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 379.104 352 278.86
+ m_missionEvents {
+  TILW_MissionEvent "{6664B56611AE97FF}" {
+   m_name "RemoveFence"
+   m_instructions {
+    TILW_DeleteEntitiesInstruction "{6664B566E4C323FE}" {
+     m_executionDelay 60
+     m_entityNames {
+      "fence_1" "fence_2" "fence_3" "fence_4" "fence_5" "fence_6" "fence_7" "fence_8" "fence_9" "fence_10" "fence_11" "fence_12" "fence_13" "fence_14" "fence_15" "fence_16" "fence_17" "fence_18" "fence_19" "fence_20" "fence_21" "fence_22" "fence_23" "fence_24" "fence_25" "fence_26" "fence_27" "fence_28" "fence_29" "fence_30" "fence_31" "fence_32" "fence_33" "fence_34" "fence_35" "fence_36" "fence_37" "fence_38" "fence_39" "fence_40" "fence_41" "fence_42" "fence_43" "fence_44"
+     }
+    }
+    TILW_SendMessageInstruction "{6664B56722D6CC5F}" {
+     m_executionDelay 122
+     m_messageTitle "RACE RACE RACE"
+     m_messageBody "RACE RACE RACE"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6664B567E37B6B96}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{6664B56D36864AEF}" {
+   m_instructions {
+    TILW_SendMessageInstruction "{6664B56D0A29E963}" {
+     m_executionDelay 0
+     m_messageTitle "WINNER"
+     m_messageBody "The first player is across the finish line!"
+    }
+    TILW_SendMessageInstruction "{6664B56DA651136B}" {
+     m_executionDelay 15
+     m_messageTitle "GM's decision"
+     m_messageBody "GM's, please give the other slowpokes a few minutes to try and finish before selecting the next mission."
+    }
+   }
+   m_condition TILW_LiteralTerm "{6664B56D0E1FFB87}" {
+    m_flagName "RACEFIRST"
+   }
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity : "{EF72FA7CD87618D5}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneSmall.et" {
+ coords 366.089 352 323.03
+ m_iWarningType SINGLE_PLAYER
+}

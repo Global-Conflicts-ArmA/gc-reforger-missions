@@ -27,7 +27,7 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
  coords 370.961 52.529 4172.959
 }
-PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
  components {
   SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
    m_bUsePredefineStartingTimeAndWeather 1
@@ -255,6 +255,68 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
       m_minTrue 3
      }
     }
+   }
+  }
+  TILW_MissionEvent "{65E158EA7B49CB12}" {
+   m_name "ASSIGN_WAYPOINTS"
+   m_instructions {
+    TILW_AssignWaypointsInstruction "{65E158EA7145B1B4}" {
+     m_groupName "BRIDGEPATROL"
+     m_waypointNames {
+      "BRIDGEPATROLWP1" "BRIDGEPATROLWP2" "BRIDGEPATROLWP3" "BRIDGEPATROLWP4" "BRIDGEPATROLCYCLE"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{65E158EA40733726}" {
+     m_groupName "FACTORYPATROL"
+     m_waypointNames {
+      "FACTORYPATROLWP1" "FACTORYPATROLWP2" "FACTORYPATROLWP3" "FACTORYPATROLWP4" "FACTORYPATROLCYCLE"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{65E158EA50A18F30}" {
+     m_groupName "FORESTPATROL"
+     m_waypointNames {
+      "FORESTPATROLWP1" "FORESTPATROLWP2" "FORESTPATROLWP3" "FORESTPATROLWP4" "FORESTPATROLCYCLE"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{65E158EA2EDD80E5}" {
+     m_groupName "FORESTPATROL2"
+     m_waypointNames {
+      "FORESTPATROL2WP1" "FORESTPATROL2WP2" "FORESTPATROL2WP3" "FORESTPATROL2WP4" "FORESTPATROL2CYCLE"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{65E158EA3AA44987}" {
+     m_groupName "RIVERPATROL"
+     m_waypointNames {
+      "RIVERPATROLWP1" "RIVERPATROLWP2" "RIVERPATROLWP3" "RIVERPATROLWP4" "RIVERPATROLCYCLE"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{65E158EA0ACC00C3}" {
+     m_groupName "SOUTHPATROL"
+     m_waypointNames {
+      "SOUTHPATROLWP1" "SOUTHPATROLWP2" "SOUTHPATROLWP3" "SOUTHPATROLWP4" "SOUTHPATROLCYCLE"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{65E158EA01F8D81D}" {
+     m_groupName "TOWNPATROL"
+     m_waypointNames {
+      "TOWNPATROLWP1" "TOWNPATROLWP2" "TOWNPATROLWP3" "TOWNPATROLWP4" "TOWNPATROLCYCLE"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{65E158EA14F544FC}" {
+     m_groupName "VILLAGEPATROL"
+     m_waypointNames {
+      "VILLAGEPATROLWP1" "VILLAGEPATROLWP2" "VILLAGEPATROLWP3" "VILLAGEPATROLWP4" "VILLAGEPATROLCYCLE"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{65E158EA1323D7D0}" {
+     m_groupName "VILLAGEPATROL2"
+     m_waypointNames {
+      "VILLAGEPATROL2WP1" "VILLAGEPATROL2WP2" "VILLAGEPATROL2WP3" "VILLAGEPATROL2WP4" "VILLAGEPATROL2CYCLE"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{65E158EA773474C9}" {
+    m_invertTerm 1
    }
   }
  }

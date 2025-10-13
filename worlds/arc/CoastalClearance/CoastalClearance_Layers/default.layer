@@ -20,7 +20,7 @@ SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
 PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
  coords 10066.401 0 4891.604
 }
-PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
  components {
   SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
    m_iStartingMinutes 45
@@ -126,6 +126,42 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
    }
    m_condition TILW_LiteralTerm "{62D6F0EA7EF3F318}" {
     m_flagName "TRUCK_DESTROYED"
+   }
+  }
+  TILW_MissionEvent "{65E158E88ADA3A15}" {
+   m_name "ASSIGN_WAYPOINTS"
+   m_instructions {
+    TILW_AssignWaypointsInstruction "{65E158E8816D4871}" {
+     m_groupName "PATROL_1"
+     m_waypointNames {
+      "PatrolPoint1" "PatrolPoint2" "PatrolPoint3" "PatrolPoint4" "CyclePoint"
+     }
+     m_clearExisting 1
+    }
+    TILW_AssignWaypointsInstruction "{65E158E96E5FD490}" {
+     m_groupName "PATROL_2"
+     m_waypointNames {
+      "PatrolPoint5" "PatrolPoint6" "PatrolPoint7" "PatrolPoint8" "CyclePoint2"
+     }
+     m_clearExisting 1
+    }
+    TILW_AssignWaypointsInstruction "{65E158E967CF23E5}" {
+     m_groupName "PATROL_3"
+     m_waypointNames {
+      "PatrolPoint9" "PatrolPoint10" "PatrolPoint11" "PatrolPoint12" "CyclePoint3"
+     }
+     m_clearExisting 1
+    }
+    TILW_AssignWaypointsInstruction "{65E158E9743D8F17}" {
+     m_groupName "PATROL_4"
+     m_waypointNames {
+      "PatrolPoint13" "PatrolPoint14" "PatrolPoint15" "PatrolPoint16" "CyclePoint4"
+     }
+     m_clearExisting 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{65E158E886A6695A}" {
+    m_invertTerm 1
    }
   }
  }

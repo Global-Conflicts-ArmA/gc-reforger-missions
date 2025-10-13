@@ -1,0 +1,30 @@
+$grp GenericEntity {
+ Spawn_hiltop_1 {
+  coords 1820.948 108.165 3428.765
+ }
+ Spawn_hiltop_2 {
+  coords 1793.839 101.865 3427.572
+ }
+}
+TILW_PresenceTriggerEntity PresenceTrigger_Group_Hilltop : "{826E6F2246328952}Prefabs/Logic/Triggers/TILW_PresenceTrigger.et" {
+ coords 1794.4 76.143 3591.548
+ m_queryRadius 250
+ m_comparisonMode EQUAL_OR_LESS
+ m_flagName "Group_hilltop_is_not_present"
+ m_drawShapeOutline 0
+ m_entityNames {
+  "Group_hilltop"
+ }
+ m_ratioThreshold 0
+}
+TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 1799.234 71.913 3694.607
+ m_queryRadius 70
+ m_flagName "BluforOnHilltop"
+ m_playersOnly 1
+ m_ownerFactionKey "US"
+ m_ratioThreshold 0
+}
+SCR_SearchAndDestroyWaypoint WP_SD_Hilltop : "{B3E7B8DC2BAB8ACC}Prefabs/AI/Waypoints/AIWaypoint_SearchAndDestroy.et" {
+ coords 1820.814 68.936 3703.613
+}

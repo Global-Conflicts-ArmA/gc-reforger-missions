@@ -1,0 +1,347 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F9E52831}" {
+     NavmeshFile "{AD5F99CD7C59D5E0}worlds/GameMaster/Navmeshes/GM_Eden.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F3B4EE8A}" {
+     NavmeshFile "{C35ECF3276824654}worlds/GameMaster/Navmeshes/GM_Eden_vehicles.nmn"
+    }
+   }
+  }
+ }
+ coords 5605.034 25.502 10138.488
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 5611.996 25.786 10162.266
+}
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 6
+   m_iStartingMinutes 15
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6592689418C2DF74}" {
+     m_sWeatherPresetName "Overcast Rain"
+     m_iStartingHour 6
+     m_iStartingMinutes 15
+    }
+   }
+   m_bUseSpecifiedDate 1
+   m_iSetDay 12
+   m_iSetMonth 3
+   m_iSetYear 1981
+  }
+ }
+ coords 5586.824 24.106 10150.246
+ m_iFreezeTime 300000
+ m_bFreezeTimeShootingForbiden 1
+ m_safeStartTime 300
+ {
+  SCR_FactionManager "659268D1BE2E1634" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "HQ"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "Bronegruppa"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "221"
+       }
+       SCR_CallsignInfo "{64E2F896E232A50B}" {
+        m_sCallsign "222"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "3%4"
+      m_sCallsignCharacterWithRoleFormat "3 %4"
+     }
+    }
+    SCR_Faction "{61500924662B6062}" {
+    }
+   }
+  }
+ }
+}
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ {
+  coords 5581.146 23.217 10172.432
+  m_sTitle "Scenario Summary"
+  m_sDescriptionLayout "{B6DE04F7CF7A95DA}UI/MissionDescription/DescriptionEditableScrollable.layout"
+  m_sTextData "A Royal Marine troop with mortar and recce support attacks understength Soviet Naval Infantry platoon with BTRs in order to seize crossroads at Etoupe."\
+  ""\
+  "2:1 ratio."\
+  "Time Limit - 75 mins."\
+  "Setup - 5 mins."\
+  ""\
+  "Radios:"\
+  "	Only the CO, RTOs and MFC have radios on UK side."\
+  "	Only the CO, Deputy and BTRs have radios on USSR 		side."\
+  ""\
+  ""
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5599.923 25.059 10155.706
+  m_sTitle "End Conditions"
+  m_sDescriptionLayout "{B6DE04F7CF7A95DA}UI/MissionDescription/DescriptionEditableScrollable.layout"
+  m_sTextData "Win conditions:"\
+  ""\
+  "	UK:"\
+  "		1. OBJ area is held for five minutes with 			no Soviets inside."\
+  "		2. Soviet forces have been eliminated."\
+  ""\
+  "	USSR:"\
+  "		1. British forces have been eliminated."\
+  "		2. Time limit reached. (75 mins)"\
+  ""\
+  "GMs feel free to use your judgement and end mission sooner if required."
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 9
+ }
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ {
+  components {
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+   }
+  }
+  coords 5672.174 33.368 10377.634
+  Points {
+   ShapePoint "{659268D3D755BA1A}" {
+    Position -185.632 8.413 436
+   }
+   ShapePoint "{659268DC486CDB38}" {
+    Position -127.303 10.63 124.37
+   }
+   ShapePoint "{659268DC4AD9B24A}" {
+    Position -186.147 7.639 61.276
+   }
+   ShapePoint "{659268DC5042B346}" {
+    Position -382.999 9.583 87.537
+   }
+   ShapePoint "{659268D3A6B0E220}" {
+    Position -408.268 9.714 66.647
+   }
+   ShapePoint "{659268DC5BE161E4}" {
+    Position -581.908 1.683 6.167
+   }
+   ShapePoint "{659268D380CB32B7}" {
+    Position -700.147 -9.032 -238.333
+   }
+   ShapePoint "{659268D3825B09D6}" {
+    Position -471.304 -10.458 -581.408
+   }
+   ShapePoint "{659268D384178B33}" {
+    Position -291.826 -13.095 -617.473
+   }
+   ShapePoint "{659268D38DACDF7F}" {
+    Position -20.122 -13.428 -588.72
+   }
+   ShapePoint "{659268D396D0761F}" {
+    Position 52.786 -19.948 -551.773
+   }
+   ShapePoint "{659268D39C156BA5}" {
+    Position 381.693 -33.09 -330.862
+   }
+   ShapePoint "{659268D22BAFD3C5}" {
+    Position 309.965 -15.347 186.321
+   }
+   ShapePoint "{659268D3E41524EF}" {
+    Position 218.163 -34.472 517.682
+   }
+  }
+ }
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "USSR"
+    }
+    m_visibility FACTION
+    m_defaultColor 0.502 0 0 1
+    m_useFactionColor 0
+   }
+  }
+  coords 5476.833 25.196 9833.689
+  Points {
+   ShapePoint "{659268D31249930F}" {
+    Position -96.431 -4.924 -73.403
+   }
+   ShapePoint "{659268D314093EBF}" {
+    Position 175.641 -5.278 -44.379
+   }
+   ShapePoint "{659268D316839B33}" {
+    Position 248.21 -11.762 -7.431
+   }
+   ShapePoint "{659268D319222970}" {
+    Position 430.951 -11.664 116.193
+   }
+   ShapePoint "{659268D31BDEE540}" {
+    Position 361.812 2.625 341.794
+   }
+   ShapePoint "{659268D360E0FB3C}" {
+    Position 281.134 5.028 449.479
+   }
+   ShapePoint "{659268D36D698C6B}" {
+    Position -16.829 9.933 532.972
+   }
+   ShapePoint "{659268D37009F719}" {
+    Position -316.649 14.531 574.654
+   }
+   ShapePoint "{659268D37699173C}" {
+    Position -385.72 9.812 549.064
+   }
+   ShapePoint "{659268D377188570}" {
+    Position -503.417 -0.799 305.716
+   }
+   ShapePoint "{659268D37AE11C3C}" {
+    Position -275.684 -2.28 -37.062
+   }
+  }
+ }
+}
+TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 5382.541 18.219 9996.514
+ m_queryRadius 125
+ m_captureTime 300
+ m_flagName "OBJ_TAKEN"
+ m_ownerFactionKey "UK"
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 5580.882 23.343 10164.294
+ m_missionEvents {
+  TILW_MissionEvent "{659268EFCFA9135E}" {
+   m_name "OBJ Taken"
+   m_instructions {
+    TILW_SendMessageInstruction "{659268EF65DF6B22}" {
+     m_messageTitle "OBJ SEIZED"
+     m_messageBody "The Bootnecks have captured the OBJ. "\
+     "They can't read but they sure can fight."\
+     ""\
+     "GMs feel free to end it."
+    }
+   }
+   m_condition TILW_LiteralTerm "{659268EF71C110E0}" {
+    m_flagName "OBJ_TAKEN"
+   }
+  }
+  TILW_MissionEvent "{659268EEEABAA133}" {
+   m_name "UK Players Killed"
+   m_instructions {
+    TILW_EndGameInstruction "{659268EEFA7B4798}" {
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "UK"
+    }
+   }
+   m_condition TILW_LiteralTerm "{659268EEFC26CB59}" {
+    m_flagName "UK_PLAYERS_KILLED"
+   }
+  }
+  TILW_MissionEvent "{659268EEC926BEFE}" {
+   m_name "USSR Players Killed"
+   m_instructions {
+    TILW_EndGameInstruction "{659268EED21A145F}" {
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "USSR"
+    }
+   }
+   m_condition TILW_LiteralTerm "{659268EEDB1D1830}" {
+    m_flagName "USSR_PLAYERS_KILLED"
+   }
+  }
+  TILW_MissionEvent "{659268EE61428F09}" {
+   m_name "USSR Ineffective"
+   m_instructions {
+    TILW_SendMessageInstruction "{659268EE6F2964BB}" {
+     m_messageTitle "Soviet Marines Combat Ineffective"
+     m_messageBody "The Soviets are less than a fireteam in strength."\
+     "They are likely ineffective."\
+     ""\
+     "Recommend GM ends it."
+    }
+   }
+   m_condition TILW_LiteralTerm "{659268EDF34FC1FE}" {
+    m_flagName "USSR_PLAYERS_INEFFECTIVE"
+   }
+  }
+  TILW_MissionEvent "{659268EE623DA5E8}" {
+   m_name "UK Ineffective"
+   m_instructions {
+    TILW_SendMessageInstruction "{659268EE710204DA}" {
+     m_messageTitle "Royal Marines Combat Ineffective"
+     m_messageBody "The Bootnecks have been reduced to less than a section. "\
+     "They are ineffective."\
+     ""\
+     "Recommend GM ends it."
+    }
+   }
+   m_condition TILW_LiteralTerm "{659268EDB2105E68}" {
+    m_flagName "UK_PLAYERS_INEFFECTIVE"
+   }
+  }
+  TILW_MissionEvent "{65932D4E20E646E4}" {
+   m_name "Time Limit"
+   m_instructions {
+    TILW_SendMessageInstruction "{65932D4E2BD2A779}" {
+     m_executionDelay 4500
+     m_messageTitle "Time Limited Reached"
+     m_messageBody "The Bootnecks were too slow to take the OBJ."\
+     "The Brits have lost the intitive, Soviet forces have dug in around Tyrone and further Soviet reinforcements are on their way."\
+     ""\
+     "GMs feel free to end."
+    }
+   }
+   m_condition TILW_LiteralTerm "{65932D4FA0314043}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{659268EFA872FCBD}" {
+   m_flagName "UK_PLAYERS_KILLED"
+   m_factionKey "UK"
+  }
+  TILW_FactionPlayersKilledFlag "{659268EFBCAF56E2}" {
+   m_flagName "USSR_PLAYERS_KILLED"
+   m_factionKey "USSR"
+  }
+  TILW_FactionPlayersKilledFlag "{659268EE29F02EBA}" {
+   m_flagName "UK_PLAYERS_INEFFECTIVE"
+   m_factionKey "UK"
+   m_casualtyRatio 0.85
+  }
+  TILW_FactionPlayersKilledFlag "{659268EE137406BF}" {
+   m_flagName "USSR_PLAYERS_INEFFECTIVE"
+   m_factionKey "USSR"
+   m_casualtyRatio 0.85
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 5790.354 1.166 10735.521
+}
+PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ coords 5382.54 18.219 9996.514
+ angleY 0
+ m_sImageSetGlow ""
+ m_MarkerColor 0 0 0 0.669
+ m_fWorldSize 400
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+ m_bringToFront 0
+}

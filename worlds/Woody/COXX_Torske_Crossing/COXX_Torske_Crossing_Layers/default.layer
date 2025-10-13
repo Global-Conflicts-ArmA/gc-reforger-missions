@@ -1,0 +1,139 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 2408.164 6.761 1042.497
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 2074.611 29.341 811.529
+}
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{655E043AA934CB58}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 16
+     m_iStartingMinutes 30
+    }
+   }
+   m_bUseSpecifiedDate 1
+   m_iSetDay 8
+   m_iSetMonth 5
+   m_iSetYear 2009
+  }
+ }
+ coords 2054.025 27.312 878.064
+ {
+  SCR_FactionManager "659A89393604FA42" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{61500924662B6062}" {
+     UIInfo SCR_FactionUIInfo "{615009275A4B9FE7}" {
+      Name "1 RIFLES"
+      m_sNameUpper "1 RIFLES"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "0"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "C"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "E"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "G"
+       }
+       SCR_CallsignInfo "{65371177AD1EF615}" {
+        m_sCallsign "-"
+       }
+       SCR_CallsignInfo "{65371177AD43CF68}" {
+        m_sCallsign "-"
+       }
+       SCR_CallsignInfo "{65371177AECDA3B3}" {
+        m_sCallsign "-"
+       }
+       SCR_CallsignInfo "{65371177B9B5E302}" {
+        m_sCallsign "-"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ {
+  coords 2754.135 7.048 1108.864
+  m_queryRadius 55
+  m_skipFirstQuery 1
+  m_flagName "obj"
+  m_stopAfterFirstChange 1
+  m_drawShapeSurface 0
+  m_setShapeColor 1 1 1 1
+  m_ownerFactionKey "UK"
+  m_ratioThreshold 0.99
+ }
+ {
+  coords 3185.043 18.269 1116.052
+  m_queryRadius 750
+  m_skipFirstQuery 1
+  m_flagName "crossing"
+  m_stopAfterFirstChange 1
+  m_drawShapeOutline 0
+  m_setShapeColor 1 1 1 1
+  m_ownerFactionKey "UK"
+  m_ratioThreshold 0.001
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 1879.335 18.654 987.023
+ m_missionEvents {
+  TILW_MissionEvent "{659A891A05834072}" {
+   m_name "UK L"
+   m_instructions {
+    TILW_EndGameInstruction "{659A891A1DEE58FF}" {
+     m_executionDelay 15
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "UK"
+    }
+    TILW_SendMessageInstruction "{659A891A144103B6}" {
+     m_messageTitle "UK Defeat"
+     m_messageBody "British Forces have sustained 75% casualties."
+    }
+   }
+   m_condition TILW_LiteralTerm "{659A891A19B75C8E}" {
+    m_flagName "UK_casualties"
+   }
+  }
+  TILW_MissionEvent "{659A89142E428430}" {
+   m_name "UK W"
+   m_instructions {
+    TILW_EndGameInstruction "{659A89143E1C8768}" {
+     m_executionDelay 15
+     m_factionKey "UK"
+    }
+    TILW_SendMessageInstruction "{659A89143716C157}" {
+     m_messageTitle "UK Victory"
+     m_messageBody "British Forces have seized the Russian Company HQ position."
+    }
+   }
+   m_condition TILW_LiteralTerm "{659A8914220D37A2}" {
+    m_flagName "obj"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{659A891A0A9B97A7}" {
+   m_flagName "UK_casualties"
+   m_factionKey "UK"
+   m_casualtyRatio 0.75
+  }
+ }
+}

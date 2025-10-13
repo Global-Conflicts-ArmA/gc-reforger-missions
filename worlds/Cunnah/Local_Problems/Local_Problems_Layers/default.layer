@@ -27,7 +27,7 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
  coords 4761.743 165.196 3608.27
 }
-PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
  coords 4762.247 165.219 3610.154
  {
   SCR_FactionManager FactionManager {
@@ -35,7 +35,7 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/
    Factions {
     SCR_Faction "{5978B9CE6585BBE8}" {
      m_aFriendlyFactionsIds {
-      "GARRISON"
+      "GARRISON" "HVT"
      }
     }
     SCR_Faction "{6522D4FAE53AADFE}" : "{8053DB656DD18B14}Configs/Factions/FIA.conf" {
@@ -69,7 +69,7 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/
      m_sFactionFlag "{72E8159766C00C3D}UI/Textures/Flags/rhs_flag_rus.edds"
      m_FactionFlagMaterial "{15AB376863D1724E}Assets/Props/Fabric/Flags/Data/Flag_1_2_Russia.emat"
      m_aFriendlyFactionsIds {
-      "RHS_AFRF"
+      "RHS_AFRF" "HVT"
      }
      m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
       m_aCompanyNames {
@@ -88,6 +88,48 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/
         m_sCallsign "Patrol 1"
        }
        SCR_CallsignInfo "{6522D4E6CFCD53BD}" {
+        m_sCallsign "Patrol 2"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3 :%4"
+     }
+     m_sFactionRadioEncryptionKey "coldBorscht"
+     m_iFactionRadioFrequency 42000
+    }
+    SCR_Faction "{6692E71F671E2E2C}" {
+     FactionKey "HVT"
+     FactionColor 0.555 0.002 0 1
+     UIInfo SCR_FactionUIInfo "{6692E71F671E2FDE}" {
+      Name "HVT"
+      Icon "{B6039E827FFCE3CD}UI/Textures/Editor/EditableEntities/Factions/RHS_Rus_Icon.edds"
+      m_sNameUpper "HVT"
+     }
+     m_OutlineFactionColor 0.555 0.002 0 1
+     m_NotificationFactionColor 0.555 0.002 0 1
+     m_NotificationTextFactionColor 0.555 0.002 0 1
+     m_sFactionFlag "{72E8159766C00C3D}UI/Textures/Flags/rhs_flag_rus.edds"
+     m_FactionFlagMaterial "{15AB376863D1724E}Assets/Props/Fabric/Flags/Data/Flag_1_2_Russia.emat"
+     m_aFriendlyFactionsIds {
+      "RHS_AFRF" "GARRISON"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{6692E71F671E2FC7}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{6692E71F671E2FC5}" {
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{6692E71F671E2FC3}" {
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{6692E71F671E2FC0}" {
+        m_sCallsign "Governor"
+       }
+       SCR_CallsignInfo "{6692E71F671E2FC1}" {
+        m_sCallsign "Patrol 1"
+       }
+       SCR_CallsignInfo "{6692E71F671E2FCE}" {
         m_sCallsign "Patrol 2"
        }
       }
@@ -172,6 +214,7 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
    m_condition TILW_ConjunctionTerm "{6550F9C54C2CE8E9}" {
     m_operands {
      TILW_LiteralTerm "{6550F9C5AFB86399}" {
+      m_invertTerm 1
       m_flagName "OPFOR_In_Town"
      }
      TILW_LiteralTerm "{6550F9C59CDE6D84}" {
@@ -186,7 +229,7 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
     TILW_SendMessageInstruction "{6522D4E5702CB4EB}" {
      m_executionDelay 0
      m_messageTitle "RUSSIAN VICTORY!"
-     m_messageBody "The garrison has evacuated the area."
+     m_messageBody "The HVT has evacuated the area."
     }
     TILW_EndGameInstruction "{6522D4E5A7581334}" {
      m_factionKey "GARRISON"
@@ -205,7 +248,7 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
     TILW_SendMessageInstruction "{6522D4E59A2DB272}" {
      m_executionDelay 0
      m_messageTitle "RUSSIAN DEFEAT!"
-     m_messageBody "The garrison has been killed."
+     m_messageBody "The HVT has been killed."
     }
     TILW_EndGameInstruction "{6522D4E5DD998B8E}" {
      m_gameOverType EDITOR_FACTION_DEFEAT
@@ -228,11 +271,26 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
     m_invertTerm 1
    }
   }
+  TILW_MissionEvent "{6692F6010398FB84}" {
+   m_name "Truck_Blockade"
+   m_instructions {
+    TILW_AssignWaypointsInstruction "{6692F60115984DD7}" {
+     m_executionDelay 10
+     m_groupName "truck_blockade"
+     m_waypointNames {
+      "truck_blockade_wp"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{6692F6016B374D87}" {
+    m_flagName "truck_blockade_trigger"
+   }
+  }
  }
  m_factionPlayersKilledFlags {
   TILW_FactionPlayersKilledFlag "{6522D4E5835FEDAF}" {
    m_flagName "Garrison_Dead"
-   m_factionKey "GARRISON"
+   m_factionKey "HVT"
   }
  }
 }

@@ -1,0 +1,61 @@
+GenericEntity : "{6BEC092D354A997E}Prefabs/Weapons/Warheads/Explosions/Warhead_Explosion_Base.et" {
+ ID "9D9BE68EA2672F76"
+ components {
+  SoundComponent "{D092A75ECEFAE456}" {
+   Filenames {
+    "{E4EF3755472EC669}Sounds/Particles/Logistics/Explosion/TNT/Particles_Explosions_TNT_Large.acp"
+   }
+  }
+  TimerTriggerComponent "{55129E81CBAA1390}" {
+   PROJECTILE_EFFECTS {
+    ExplosionDamageContainer "{5D8D1EB3E2893B43}" {
+     Enabled 0
+     ExplosionEffects {
+      BaseExplosionDamage "{5D8D1EB3EF9D02C6}" {
+       DamageValue 0
+       PerformTraces 0
+       DamageDistance 50
+      }
+      BaseExplosionDamage "{61DAF5E24D9CA168}" {
+       DamageValue 0
+      }
+      BaseExplosionDamage "{5D8D1EB3EBB36077}" {
+       PerformTraces 0
+      }
+     }
+     ChargeWeight 0
+     TntEquivalent 0
+    }
+    SpawnDecalEffect "{5E24A9E4AE3FCD64}" {
+     Scale 10
+     Material "{D73EF1B0C42AD52E}Assets/Decals/Logistics/Data/Logistics_Explosion_Decal_Large.emat"
+    }
+    SpawnParticleEffect "{5E24A9E49067B7F5}" {
+     ParticleEffect "{8E8011CD24103A49}particles/Logistics/Explosion/Fuel/Explosion_Fuel_Large_anizay.ptc"
+     SoundEvent ""
+    }
+    SpawnParticleEffect "{667B3810DD1D15EB}" {
+     ParticleEffect "{79ED2EDBC38185AB}Particles/Logistics/Explosion/TNT/Explosion_TNT_Large.ptc"
+     SoundEvent "SOUND_EXPLOSION"
+    }
+    ProjectileDamage "{667B3810DD1D15E5}" {
+     TriggerOnce 1
+     Enabled 0
+     DamageValue 10000
+     DamageType Explosive
+     DamageEffects {
+      InstantDamageEffect "{667B3810DD1D15E7}" {
+      }
+     }
+    }
+   }
+  }
+  HitEffectComponent "{667B3810DD1D15F8}" {
+   ParticleEffect "{8E8011CD24103A49}particles/Logistics/Explosion/Fuel/Explosion_Fuel_Large_anizay.ptc"
+   EnabledOnDedicatedServer 1
+  }
+  HitEffectComponent "{9D9BE68D6F65A10F}" {
+   ParticleEffect "{79ED2EDBC38185AB}Particles/Logistics/Explosion/TNT/Explosion_TNT_Large.ptc"
+  }
+ }
+}

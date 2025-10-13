@@ -1,0 +1,313 @@
+SCR_MapEntity SCR_MapEntity1 : "{E1B88C66BF6CA1F9}Prefabs/World/Game/MapEntity_Everon.et" {
+ coords 8247.396 180.407 3813.235
+ "Map Geometry Data" "{70AA39E7089C3C5D}worlds/Corax/SummerDays/SummerDays.topo"
+ "Satellite background image" "{C8BA8787536DB9A7}worlds/Corax/SummerDays/SummerDays.edds"
+}
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5AF8B9A1594F5532}" : "{8BBC73472092902E}Configs/Navmesh/Navmesh_GM_Eden_Soldier.conf" {
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5CF6FEFBD1A09749}" {
+     NavmeshFile "{C35ECF3276824654}worlds/GameMaster/Navmeshes/GM_Eden_vehicles.nmn"
+    }
+   }
+  }
+ }
+ coords 8605.959 173.705 3731.979
+}
+SCR_DestructionManager : "{E5B570B5F32A7BAE}Prefabs/Systems/Destruction/DestructionManager.et" {
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 8441.557 178.954 3453.063
+}
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 0
+   m_iStartingMinutes 15
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6536AA5A2F86C321}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 0
+     m_iStartingMinutes 15
+    }
+   }
+   m_bUseSpecifiedDate 1
+   m_iSetDay 12
+   m_iSetMonth 6
+   m_iSetYear 1982
+   m_bOverrideGeocoords 1
+   m_fLatitude -51.796
+   m_fLongitude -59.524
+   m_bOverrideTimeZoneInfo 1
+   m_fUTCTimeZone -3
+  }
+ }
+ coords 8447.414 179.107 3453.09
+ m_iFreezeTime 900000
+ m_aFactionRespawnCount {
+  PS_FactionRespawnCount "{6683180C38FD134C}" {
+   m_sFactionKey "GC_ARG"
+   m_iCount 44
+   m_iTime 0
+  }
+ }
+ {
+  SCR_FactionManager "653B08960F20674A" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "  "
+       }
+       SCR_CallsignInfo "{653B089713AD9E55}" {
+        m_sCallsign " "
+       }
+      }
+     }
+    }
+    SCR_Faction "{61500924662B6062}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CD021D5C}" {
+        m_sCallsign "Z"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE18FB44}" {
+       }
+       SCR_CallsignInfo "{55CCB792CE02ECFA}" {
+       }
+       SCR_CallsignInfo "{55CCB792CE2A44BD}" {
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+ProjectileSoundsManager : "{B4DA8B0024536625}Prefabs/World/Game/ProjectileSoundsManager.et" {
+}
+StaticModelEntity : "{04160EF46BEB8758}Prefabs/Structures/Military/Fortifications/Trenches/TrenchOld_01/TrenchOld_01_6m_metal_end.et" {
+ coords 9127.781 -0.687 3624.304
+ angleX 7.002
+ angleY 178.991
+ angleZ -11.998
+}
+BasePreloadManager PreloadManager1 : "{104F8505FD1871EF}Prefabs/World/Game/PreloadManager.et" {
+}
+GenericEntity : "{434AFBBE90F2B078}Prefabs/Sounds/Environment/AmbientSounds_Everon.et" {
+}
+RadioBroadcastManager : "{66B93BC296E2F977}Prefabs/Radio/RadioBroadcastManager.et" {
+}
+GCC_Arty : "{6C38A36F9C37A967}Prefabs/Modules/Off_Map_Arty.et" {
+ coords 8025.001 191.097 4355.798
+ m_artyRounds {
+  GCC_ArtyData "{652B743A90CE7EE7}" {
+   m_shellPrefab "{FF4A69FB744267A3}Prefabs/Weapons/Ammo/Ammo_122mm_HE_FRAG_3OF56.et"
+   m_roundName "4.5inch HE"
+   m_factionKeys {
+    "UK"
+   }
+   m_roundCount 58
+   m_roundDelay 150
+   m_roundReload 2
+   m_roundDispersion 100
+  }
+  GCC_ArtyData "{667D1A67C2313F19}" {
+   m_shellPrefab "{14260CFC175F3490}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_HE_L41A3.et"
+   m_roundName "81mm HE"
+   m_factionKeys {
+    "UK"
+   }
+   m_allowedFrequencies {
+    39500
+   }
+   m_roundCount 20
+   m_gunCount 2
+   m_roundDelay 30
+  }
+  GCC_ArtyData "{667D1A6A8B58E5EC}" {
+   m_shellPrefab "{1F761EEB943CEDE2}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_Smoke_L19A2.et"
+   m_roundName "81mm Smoke L19A2"
+   m_factionKeys {
+    "UK"
+   }
+   m_allowedFrequencies {
+    39500
+   }
+   m_roundCount 200
+   m_gunCount 3
+   m_roundDelay 30
+  }
+  GCC_ArtyData "{6689109E4355B646}" {
+   m_shellPrefab "{14260CFC175F3490}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_HE_L41A3.et"
+   m_roundName "81mm HE"
+   m_factionKeys {
+    "GC_ARG"
+   }
+   m_allowedFrequencies {
+    39500
+   }
+   m_roundCount 50
+   m_gunCount 2
+   m_roundDelay 30
+  }
+  GCC_ArtyData "{6689109EAE3208C9}" {
+   m_shellPrefab "{1F761EEB943CEDE2}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_Smoke_L19A2.et"
+   m_roundName "81mm Smoke"
+   m_factionKeys {
+    "GC_ARG"
+   }
+   m_allowedFrequencies {
+    39500
+   }
+   m_roundCount 60
+   m_gunCount 3
+   m_roundDelay 30
+  }
+ }
+}
+GenericEntity : "{7699E66077068406}Prefabs/World/Game/ForestSyncManager.et" {
+}
+SoundWorld : "{8A8604E158704937}Prefabs/Sounds/SoundWorld/SoundWorld_Eden.et" {
+}
+StaticModelEntity : "{8CAE228D5D44DD5F}Prefabs/Structures/Military/Fortifications/Trenches/TrenchOld_01/TrenchOld_01_6m_metal.et" {
+ coords 9122.126 -0.764 3624.391
+ angleX -11.215
+ angleZ 4.596
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 8445.258 179.037 3455.195
+}
+SCR_MPDestructionManager : "{9BB369F2803C6F71}Prefabs/MP/MPDestructionManager.et" {
+}
+SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ components {
+  SCR_EditableDescriptorComponent "{56D8A3C5A31496AC}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{56D8A3C5A31496A4}" {
+    m_sFaction "UK"
+   }
+  }
+ }
+ coords 8067.49 206.323 4332.769
+ m_fWarnRadius 100
+ m_fZoneRadius 100
+ m_fZoneTeleportedRadius 100
+}
+$grp GenericEntity : "{C881F9C1A376D3BB}PrefabsEditable/Auto/Props/Military/AmmoBoxes/EquipmentBoxStack/E_EquipmentBoxStack_US_01_V4.et" {
+ {
+  components {
+   SCR_SoundDataComponent "{5C53391603B5CF41}" {
+    Enabled 1
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    Enabled 1
+    MultiSlots {
+     MultiSlotConfiguration "{668318037F9B265A}" {
+      SlotTemplate InventoryStorageSlot flares {
+       Prefab "{9361BEC03E52E6F8}Prefabs/Weapons/Handguns/Handheld Rocket Flares/Schermuly/Schermuly_Rocket_Flare_White.et"
+      }
+      NumSlots 200
+     }
+     MultiSlotConfiguration "{668318025971971F}" {
+      SlotTemplate InventoryStorageSlot flares {
+       Prefab "{68CFC7B6DE0CC75F}Prefabs/Weapons/Magazines/Magazine_762x51_FAL_Commonwealth_20rnd_Ball.et"
+      }
+      NumSlots 100
+     }
+     MultiSlotConfiguration "{66831803F283F4DF}" {
+      SlotTemplate InventoryStorageSlot flares {
+       Prefab "{CE4BDC1B0C4C6965}Prefabs/Weapons/Handguns/Handheld Rocket Flares/Schermuly/Schermuly_Rocket_Flare_Orange.et"
+      }
+      NumSlots 200
+     }
+     MultiSlotConfiguration "{66831803F3DBB649}" {
+      SlotTemplate InventoryStorageSlot flares {
+       Prefab "{5D694BB6F4A3819B}Prefabs/Weapons/Handguns/Handheld Rocket Flares/Schermuly/Schermuly_Rocket_Flare_Green.et"
+      }
+      NumSlots 200
+     }
+    }
+   }
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    Enabled 1
+    ActionContexts {
+     UserActionContext "{5476B36C47B0461A}" {
+      Position PointInfo "{5476B36C45ADDA89}" {
+       Offset 0 0.5 0
+      }
+      Radius 1
+      Height 1
+     }
+    }
+   }
+  }
+  coords 10224.145 256.81 2598.336
+ }
+ {
+  components {
+   SCR_SoundDataComponent "{5C53391603B5CF41}" {
+    Enabled 1
+   }
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    Enabled 1
+    MultiSlots {
+     MultiSlotConfiguration "{668318037F9B265A}" {
+      SlotTemplate InventoryStorageSlot flares {
+       Prefab "{9361BEC03E52E6F8}Prefabs/Weapons/Handguns/Handheld Rocket Flares/Schermuly/Schermuly_Rocket_Flare_White.et"
+      }
+      NumSlots 200
+     }
+     MultiSlotConfiguration "{668318025971971F}" {
+      SlotTemplate InventoryStorageSlot flares {
+       Prefab "{68CFC7B6DE0CC75F}Prefabs/Weapons/Magazines/Magazine_762x51_FAL_Commonwealth_20rnd_Ball.et"
+      }
+      NumSlots 300
+     }
+     MultiSlotConfiguration "{668318026AA96D65}" {
+      SlotTemplate InventoryStorageSlot flares {
+       Prefab "{96FFE213B19D1D57}Prefabs/Weapons/Grenades/Smoke_No80_WP.et"
+      }
+      NumSlots 40
+     }
+     MultiSlotConfiguration "{66831803F283F4DF}" {
+      SlotTemplate InventoryStorageSlot flares {
+       Prefab "{CE4BDC1B0C4C6965}Prefabs/Weapons/Handguns/Handheld Rocket Flares/Schermuly/Schermuly_Rocket_Flare_Orange.et"
+      }
+      NumSlots 200
+     }
+     MultiSlotConfiguration "{66831803F3DBB649}" {
+      SlotTemplate InventoryStorageSlot flares {
+       Prefab "{5D694BB6F4A3819B}Prefabs/Weapons/Handguns/Handheld Rocket Flares/Schermuly/Schermuly_Rocket_Flare_Green.et"
+      }
+      NumSlots 200
+     }
+    }
+   }
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    Enabled 1
+    ActionContexts {
+     UserActionContext "{5476B36C47B0461A}" {
+      Position PointInfo "{5476B36C45ADDA89}" {
+       Offset 0 0.5 0
+      }
+      Radius 1
+      Height 1
+     }
+    }
+   }
+  }
+  coords 8071.666 193.714 4332.913
+ }
+}

@@ -1,0 +1,84 @@
+StaticModelEntity : "{E4D57D1BA5178563}Prefabs/Structures/Core/Wall_Gate_Base.et" {
+ ID "1133272B8B185691"
+ components {
+  MeshObject "{56DE7C8DCD0F4E0A}" {
+   Object "{9EAA44E6DF4080B2}Assets/Structures/BuildingsParts/Doors/Door_MetalGate_01/DoorFrame_MetalGate_01_Short.xob"
+  }
+  NavmeshCustomLinkComponent "{5088C72B466E73FA}" {
+   LinkType NavmeshJumpLink "{5088C72B44859B28}" {
+    "Navmesh setting presets" {
+     NavmeshCustomLinkSetting "{5C90EA9654F713FE}" {
+      BeginPoint 2 0 1.5
+      EndPoint 2 0 -1.5
+     }
+    }
+   }
+  }
+  SCR_DestructionMultiPhaseComponent "{5AFCF34FE8F1AB15}" : "{76DA308CC9E2AB84}Prefabs/Props/Core/DestructionMultiPhase_Base.ct" {
+   "Additional hit zones" {
+    SCR_HitZone Default {
+     DamageReduction 100
+    }
+   }
+   m_fBaseHealth 1500
+   m_bPassDamageToChildren 1
+   m_DestroySpawnObjects {
+    SCR_DebrisSpawnable "{665CB7A9A76FB33D}" {
+     m_ModelPrefabs {
+      "{6CFD5C5AD03DA7CC}Assets/Structures/Walls/Net/NetFence_01/Dst/NetFence_01_Pole_Metal_dst_01_debris_01.xob"
+     }
+     m_eMaterialSoundType METAL_POLE
+    }
+    SCR_ParticleSpawnable "{665CB7A9A76FB337}" {
+     m_Particle "{C607AE95F068E50F}Particles/Props/Dest_NetFence.ptc"
+    }
+    SCR_ParticleSpawnable "{665CB7A9A76FB30A}" {
+     m_vOffsetPosition 0 3 0
+     m_Particle "{C607AE95F068E50F}Particles/Props/Dest_NetFence.ptc"
+    }
+   }
+   m_bDeleteAfterFinalPhase 0
+   m_aDamagePhases {
+    SCR_DamagePhaseData "{665CB7A9A76FB30F}" {
+     m_fPhaseHealth 1500
+     m_PhaseModel "{48038EFC2C00E35C}Assets/Structures/Walls/Net/NetFence_01/Dst/NetFence_01_Pole_Metal_dst_01.xob"
+     m_PhaseDestroySpawnObjects {
+      SCR_ParticleSpawnable "{665CB7A9A76FB30E}" {
+       m_vOffsetPosition 0 -0.3 0
+       m_Particle "{A5ABAB33334E0973}Particles/Props/Dest_Prop_Concrete_Medium.ptc"
+      }
+     }
+    }
+   }
+   m_eMaterialSoundType BREAK_METAL_POLE
+  }
+ }
+ coords 4956.123 0.001 5611.898
+ placement none
+ {
+  GenericEntity : "{34B08027DBDE322A}Prefabs/Structures/BuildingParts/Doors/Door_MetalGate_01_Short_LEFT_EXT_ST_B.et" {
+   ID "665CB7A9A76FB355"
+   components {
+    SCR_DestructionMultiPhaseComponent "{552AAC960D18849F}" {
+     Enabled 0
+     m_bDeleteAfterFinalPhase 0
+    }
+    Hierarchy "{7642683606C70747}" {
+     PivotID "socket_gate_left"
+    }
+   }
+  }
+  GenericEntity : "{71075182141D86A1}Prefabs/Structures/BuildingParts/Doors/Door_MetalGate_01_Short_RIGHT_EXT_ST_B.et" {
+   ID "665CB7A9A76FB357"
+   components {
+    SCR_DestructionMultiPhaseComponent "{552AAC97CD8A84A2}" {
+     Enabled 0
+     m_bDeleteAfterFinalPhase 0
+    }
+    Hierarchy "{7642683606C70747}" {
+     PivotID "socket_gate_right"
+    }
+   }
+  }
+ }
+}

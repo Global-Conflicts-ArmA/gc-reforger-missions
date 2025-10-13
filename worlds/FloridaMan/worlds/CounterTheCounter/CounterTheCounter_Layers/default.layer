@@ -1,0 +1,313 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{65CD14C55C18CB7B}" {
+     NavmeshFile "{C54FCF0DC85B9642}worlds/Gamemaster/Navmeshes/GM_Ruha_navmesh_soldiers.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{301510D49B59DE2C}worlds/Gamemaster/Navmeshes/GM_Ruha_navmesh_vehicles.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{806B3036EA17E548}worlds/Gamemaster/Navmeshes/GM_Ruha_navmesh_lowres.nmn"
+    }
+   }
+  }
+ }
+ coords 6400.01 57.488 5002.717
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 7067.145 62.516 4592.419
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 7
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{65C703E97E70C09E}" {
+     m_sWeatherPresetName "Light Rain"
+     m_iStartingHour 7
+    }
+    SCR_TimeAndWeatherState "{65C703E964C61072}" {
+     m_sWeatherPresetName "Heavy Wet Fog"
+     m_iStartingHour 7
+     m_iStartingMinutes 45
+    }
+   }
+   m_bUseSpecifiedDate 1
+   m_iSetDay 10
+   m_iSetMonth 4
+  }
+ }
+ coords 7068.057 62.763 4593.733
+ {
+  SCR_FactionManager "65C703D1BD25068A" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{65C703DD27F090DF}" {
+        m_sCallsign "4"
+       }
+       SCR_CallsignInfo "{65C703DD1806DC43}" {
+        m_sCallsign "5"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 7067.344 62.843 4594.291
+ m_missionEvents {
+  TILW_MissionEvent "{65C703C79D38DCB2}" {
+   m_name "Spawn Group A (immediate spawn)"
+   m_instructions {
+    TILW_SpawnGroupInstruction "{65C703C796B5E101}" {
+     m_executionDelay 0
+     m_prefab "{256AEA338E84EC28}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Summer/Group_RHS_RF_MSV_VKPO_S_RifleSquad.et"
+     m_locationName "OPFOR_SPAWN_2"
+     m_waypointNames {
+      "DEFEND_DELAY_2"
+     }
+    }
+    TILW_SpawnGroupInstruction "{65C703C716642B6B}" {
+     m_executionDelay 0.5
+     m_prefab "{0223367D44716E7B}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Summer/Group_RHS_RF_MSV_VKPO_S_PlatoonHQ.et"
+     m_locationName "OPFOR_SPAWN_1"
+     m_waypointNames {
+      "DEFEND_DELAY_1"
+     }
+    }
+    TILW_SpawnGroupInstruction "{65C703C72D5202E7}" {
+     m_executionDelay 1
+     m_prefab "{256AEA338E84EC28}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Summer/Group_RHS_RF_MSV_VKPO_S_RifleSquad.et"
+     m_locationName "OPFOR_SPAWN_2"
+     m_waypointNames {
+      "SAD_DELAY_2"
+     }
+    }
+    TILW_SpawnGroupInstruction "{65C703C70E79A1A7}" {
+     m_executionDelay 1.5
+     m_prefab "{256AEA338E84EC28}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Summer/Group_RHS_RF_MSV_VKPO_S_RifleSquad.et"
+     m_locationName "OPFOR_SPAWN_1"
+     m_waypointNames {
+      "SAD_DELAY_1"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{65C703C7925750DB}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{65C703C658526865}" {
+   m_name "Spawn Group B"
+   m_instructions {
+    TILW_SpawnGroupInstruction "{65C703C65EDF2348}" {
+     m_executionDelay 0
+     m_prefab "{256AEA338E84EC28}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Summer/Group_RHS_RF_MSV_VKPO_S_RifleSquad.et"
+     m_locationName "OPFOR_SPAWN_3"
+     m_waypointNames {
+      "DEFEND_DELAY_3"
+     }
+    }
+    TILW_SpawnGroupInstruction "{65C703C63851E583}" {
+     m_executionDelay 0.5
+     m_prefab "{256AEA338E84EC28}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Summer/Group_RHS_RF_MSV_VKPO_S_RifleSquad.et"
+     m_locationName "OPFOR_SPAWN_4"
+     m_waypointNames {
+      "DEFEND_DELAY_4"
+     }
+    }
+    TILW_SpawnGroupInstruction "{65C703C63962ABA5}" {
+     m_executionDelay 1
+     m_prefab "{256AEA338E84EC28}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Summer/Group_RHS_RF_MSV_VKPO_S_RifleSquad.et"
+     m_locationName "OPFOR_SPAWN_5"
+     m_waypointNames {
+      "DEFEND_DELAY_5"
+     }
+    }
+    TILW_SpawnGroupInstruction "{65C703C63A3B6F16}" {
+     m_executionDelay 1.5
+     m_prefab "{256AEA338E84EC28}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Summer/Group_RHS_RF_MSV_VKPO_S_RifleSquad.et"
+     m_locationName "OPFOR_SPAWN_6"
+     m_waypointNames {
+      "DEFEND_DELAY_6"
+     }
+    }
+    TILW_SpawnGroupInstruction "{65C703C63CA6E332}" {
+     m_executionDelay 2
+     m_prefab "{256AEA338E84EC28}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Summer/Group_RHS_RF_MSV_VKPO_S_RifleSquad.et"
+     m_locationName "OPFOR_SPAWN_7"
+     m_waypointNames {
+      "DEFEND_DELAY_7"
+     }
+    }
+    TILW_SpawnGroupInstruction "{65C703C63D98F622}" {
+     m_executionDelay 2.5
+     m_prefab "{256AEA338E84EC28}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Summer/Group_RHS_RF_MSV_VKPO_S_RifleSquad.et"
+     m_locationName "OPFOR_SPAWN_8"
+     m_waypointNames {
+      "DEFEND_DELAY_8"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{65C703C5F3F7331C}" {
+    m_flagName "SPAWN_GROUP_B"
+   }
+  }
+  TILW_MissionEvent "{65C703C5AB2138F9}" {
+   m_name "Spawn Group  C"
+   m_instructions {
+    TILW_SpawnGroupInstruction "{65C703C5A19A3C46}" {
+     m_executionDelay 0
+     m_prefab "{256AEA338E84EC28}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Summer/Group_RHS_RF_MSV_VKPO_S_RifleSquad.et"
+     m_locationName "OPFOR_SPAWN_9"
+     m_waypointNames {
+      "DEFEND_DELAY_9"
+     }
+    }
+    TILW_SpawnGroupInstruction "{65C703C58A687914}" {
+     m_executionDelay 0.5
+     m_prefab "{256AEA338E84EC28}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Summer/Group_RHS_RF_MSV_VKPO_S_RifleSquad.et"
+     m_locationName "OPFOR_SPAWN_10"
+     m_waypointNames {
+      "DEFEND_DELAY_10"
+     }
+    }
+    TILW_SpawnGroupInstruction "{65C703C58233C643}" {
+     m_executionDelay 1
+     m_prefab "{256AEA338E84EC28}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Summer/Group_RHS_RF_MSV_VKPO_S_RifleSquad.et"
+     m_locationName "OPFOR_SPAWN_11"
+     m_waypointNames {
+      "DEFEND_DELAY_11"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{65C703C57898544A}" {
+    m_flagName "SPAWN_GROUP_C"
+   }
+  }
+  TILW_MissionEvent "{65C703C53E75CEB4}" {
+   m_name "Mission End Timer"
+   m_instructions {
+    TILW_SetFlagInstruction "{65C703C52F23D57B}" {
+     m_executionDelay 3600
+     m_flagName "TIMER_EXPIRED"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65C703C51E44E438}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{65C703C510338988}" {
+   m_name "Mission Fail"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{65C703C516366C3C}" {
+     m_executionDelay 0
+     m_prefab "{A79737B19CBFD5EC}Prefabs/Systems/Explosions/Wrapper_Bomb_Large.et"
+     m_locationName "EXPLOSION_1"
+    }
+    TILW_SpawnPrefabInstruction "{65C703EBB71C68A2}" {
+     m_executionDelay 0.386
+     m_prefab "{A79737B19CBFD5EC}Prefabs/Systems/Explosions/Wrapper_Bomb_Large.et"
+     m_locationName "EXPLOSION_2"
+    }
+    TILW_SpawnPrefabInstruction "{65C703EBAD00A882}" {
+     m_executionDelay 1.745
+     m_prefab "{A79737B19CBFD5EC}Prefabs/Systems/Explosions/Wrapper_Bomb_Large.et"
+     m_locationName "EXPLOSION_3"
+    }
+    TILW_SpawnPrefabInstruction "{65C703EBA40B52DF}" {
+     m_executionDelay 2.024
+     m_prefab "{A79737B19CBFD5EC}Prefabs/Systems/Explosions/Wrapper_Bomb_Large.et"
+     m_locationName "EXPLOSION_4"
+    }
+    TILW_SpawnPrefabInstruction "{65C703EB9855BBDC}" {
+     m_executionDelay 3.002
+     m_prefab "{DDDDBEC77B49A995}Prefabs/Systems/Explosions/Wrapper_Bomb_Huge.et"
+     m_locationName "OPFOR_SPAWN_10"
+    }
+    TILW_SendMessageInstruction "{65C703C46AEE82BB}" {
+     m_executionDelay 15
+     m_messageTitle "Mission Failed"
+     m_messageBody "The Russians were successful in destroying the railroad bridges. Our ciritical supply line has been permanently halted."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65C703C4828D1EA2}" {
+    m_operands {
+     TILW_LiteralTerm "{65C703C4840D1930}" {
+      m_invertTerm 1
+      m_flagName "BRIDGE_SECURE"
+     }
+     TILW_LiteralTerm "{65C703C471EE6543}" {
+      m_flagName "TIMER_EXPIRED"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65C703C443C40959}" {
+   m_name "Mission Success"
+   m_instructions {
+    TILW_EndGameInstruction "{65C703C43C3CB103}" {
+     m_executionDelay 30
+     m_factionKey "RHS_USAF"
+    }
+    TILW_SendMessageInstruction "{65C703C4291AE01B}" {
+     m_executionDelay 0
+     m_messageTitle "Bridges Resecured"
+     m_messageBody "The railroad bridges have been successfully re-secured and all explosives disarmed."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65C703C40AFE2D77}" {
+    m_operands {
+     TILW_LiteralTerm "{65C703C40C7774D1}" {
+      m_flagName "BRIDGE_SECURED"
+     }
+     TILW_LiteralTerm "{65C703C404469052}" {
+      m_invertTerm 1
+      m_flagName "TIMER_EXPIRED"
+     }
+    }
+   }
+  }
+ }
+ m_metaFlags {
+  TILW_MetaFlag "{65C703C5FDCED80C}" {
+   m_flagName "SPAWN_GROUP_B"
+   m_definition TILW_DisjunctionTerm "{65C703C5D871F98E}" {
+    m_operands {
+     TILW_LiteralTerm "{65C703C5DC66F26D}" {
+      m_flagName "SPAWN_GROUP_B1"
+     }
+     TILW_LiteralTerm "{65C703C5D21F17E3}" {
+      m_flagName "SPAWN_GROUP_B2"
+     }
+    }
+   }
+  }
+ }
+}

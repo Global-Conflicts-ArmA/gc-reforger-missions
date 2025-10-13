@@ -1,0 +1,388 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{65E0A3C69E0CA6A0}" {
+     NavmeshFile "{C54FCF0DC85B9642}worlds/Gamemaster/Navmeshes/GM_Ruha_navmesh_soldiers.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{301510D49B59DE2C}worlds/Gamemaster/Navmeshes/GM_Ruha_navmesh_vehicles.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{806B3036EA17E548}worlds/Gamemaster/Navmeshes/GM_Ruha_navmesh_lowres.nmn"
+    }
+   }
+  }
+ }
+ coords 2759.753 63.434 107.974
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 2764.117 63.469 106.048
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{65DCB72F2BB1199A}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 7
+     m_iStartingMinutes 50
+    }
+   }
+   m_bUseSpecifiedDate 1
+   m_iSetMonth 10
+   m_iSetYear 2025
+  }
+ }
+ coords 2756.432 63.393 108.838
+}
+$grp TILW_PresenceTriggerEntity : "{826E6F2246328952}Prefabs/Logic/Triggers/TILW_PresenceTrigger.et" {
+ {
+  coords 3161.175 75.862 158.322
+  m_flagName "HOSTAGE_1_SUCCESS"
+  m_stopAfterFirstChange 1
+  m_entityNames {
+   "hostage_1"
+  }
+ }
+ {
+  coords 3160.748 75.841 158.401
+  m_flagName "HOSTAGE_2_SUCCESS"
+  m_stopAfterFirstChange 1
+  m_entityNames {
+   "hostage_2"
+  }
+ }
+ {
+  coords 3161.115 75.865 157.99
+  m_flagName "HOSTAGE_3_SUCCESS"
+  m_stopAfterFirstChange 1
+  m_entityNames {
+   "hostage_3"
+  }
+ }
+ {
+  coords 3161.588 75.885 158.091
+  m_flagName "HOSTAGE_4_SUCCESS"
+  m_stopAfterFirstChange 1
+  m_entityNames {
+   "hostage_4"
+  }
+ }
+}
+PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+   Enabled 0
+  }
+  TILW_MapShapeComponent "{6508F54F9B461198}" {
+   Enabled 1
+  }
+ }
+ coords 2800.652 59.864 112.201
+ Points {
+  ShapePoint "{65E137A4EA1122C1}" {
+   Position 126.75 0 -106.076
+  }
+  ShapePoint "{65E137A4E6DA08FC}" {
+   Position 121.509 0 640.847
+  }
+  ShapePoint "{65E137A4E1DC288F}" {
+   Position 1145.579 0 666.716
+  }
+  ShapePoint "{65E137A4E2C39E9C}" {
+   Position 1162.186 0 -107.828
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 2751.774 63.313 111.773
+ m_missionEvents {
+  TILW_MissionEvent "{65E137A2424B24CE}" {
+   m_name "HOSTAGE_1_EXTRACT"
+   m_instructions {
+    TILW_AssignWaypointsInstruction "{65E137A25E3322DB}" {
+     m_executionDelay 3
+     m_groupName "HOSTAGE_1_GROUP"
+     m_waypointNames {
+      "HOSTAGEWP"
+     }
+     m_clearExisting 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{65E137A222C0877A}" {
+    m_flagName "HOSTAGE_1_EXTRACT"
+   }
+  }
+  TILW_MissionEvent "{65E137A3B5F2E583}" {
+   m_name "HOSTAGE_1_RESOLVED"
+   m_instructions {
+    TILW_SetFlagInstruction "{65E137A465D6027A}" {
+     m_flagName "HOSTAGE_1_RESOLVED"
+    }
+   }
+   m_condition TILW_DisjunctionTerm "{65E137A3B2E0849F}" {
+    m_operands {
+     TILW_LiteralTerm "{65E137A38EC81EBC}" {
+      m_flagName "HOSTAGE_1_SUCCESS"
+     }
+     TILW_LiteralTerm "{65E137A38AEEB9D5}" {
+      m_flagName "HOSTAGE_1_KIA"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65E137A23E0AEBC5}" {
+   m_name "HOSTAGE_2_EXTRACT"
+   m_instructions {
+    TILW_AssignWaypointsInstruction "{65E137A25E3322DB}" {
+     m_executionDelay 3
+     m_groupName "HOSTAGE_2_GROUP"
+     m_waypointNames {
+      "HOSTAGEWP"
+     }
+     m_clearExisting 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{65E137A222C0877A}" {
+    m_flagName "HOSTAGE_2_EXTRACT"
+   }
+  }
+  TILW_MissionEvent "{65E137A3864AD1F6}" {
+   m_name "HOSTAGE_2_RESOLVED"
+   m_instructions {
+    TILW_SetFlagInstruction "{65E137A47C3DFA6C}" {
+     m_flagName "HOSTAGE_2_RESOLVED"
+    }
+   }
+   m_condition TILW_DisjunctionTerm "{65E137A3B2E0849F}" {
+    m_operands {
+     TILW_LiteralTerm "{65E137A38EC81EBC}" {
+      m_flagName "HOSTAGE_2_SUCCESS"
+     }
+     TILW_LiteralTerm "{65E137A38AEEB9D5}" {
+      m_flagName "HOSTAGE_2_KIA"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65E137A235F500CF}" {
+   m_name "HOSTAGE_3_EXTRACT"
+   m_instructions {
+    TILW_AssignWaypointsInstruction "{65E137A25E3322DB}" {
+     m_executionDelay 3
+     m_groupName "HOSTAGE_3_GROUP"
+     m_waypointNames {
+      "HOSTAGEWP"
+     }
+     m_clearExisting 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{65E137A222C0877A}" {
+    m_flagName "HOSTAGE_3_EXTRACT"
+   }
+  }
+  TILW_MissionEvent "{65E137A39B2EBE57}" {
+   m_name "HOSTAGE_3_RESOLVED"
+   m_instructions {
+    TILW_SetFlagInstruction "{65E137A4787BC339}" {
+     m_flagName "HOSTAGE_3_RESOLVED"
+    }
+   }
+   m_condition TILW_DisjunctionTerm "{65E137A3B2E0849F}" {
+    m_operands {
+     TILW_LiteralTerm "{65E137A38EC81EBC}" {
+      m_flagName "HOSTAGE_3_SUCCESS"
+     }
+     TILW_LiteralTerm "{65E137A38AEEB9D5}" {
+      m_flagName "HOSTAGE_3_KIA"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65E137A23381B077}" {
+   m_name "HOSTAGE_4_EXTRACT"
+   m_instructions {
+    TILW_AssignWaypointsInstruction "{65E137A25E3322DB}" {
+     m_executionDelay 3
+     m_groupName "HOSTAGE_4_GROUP"
+     m_waypointNames {
+      "HOSTAGEWP"
+     }
+     m_clearExisting 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{65E137A222C0877A}" {
+    m_flagName "HOSTAGE_4_EXTRACT"
+   }
+  }
+  TILW_MissionEvent "{65E137A46C5C8FDB}" {
+   m_name "HOSTAGE_4_RESOLVED"
+   m_instructions {
+    TILW_SetFlagInstruction "{65E137A4743FB5B4}" {
+     m_flagName "HOSTAGE_4_RESOLVED"
+    }
+   }
+   m_condition TILW_DisjunctionTerm "{65E137A3B2E0849F}" {
+    m_operands {
+     TILW_LiteralTerm "{65E137A38EC81EBC}" {
+      m_flagName "HOSTAGE_4_SUCCESS"
+     }
+     TILW_LiteralTerm "{65E137A38AEEB9D5}" {
+      m_flagName "HOSTAGE_4_KIA"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65E137A203456A63}" {
+   m_name "UK_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{65E137A21FD4467B}" {
+     m_messageTitle "DEFEAT"
+     m_messageBody "The SAS have taken significant casualties."
+    }
+    TILW_EndGameInstruction "{65E137A21628A5BA}" {
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "UK"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65E137A212667B95}" {
+    m_flagName "UK_KIA"
+   }
+  }
+  TILW_MissionEvent "{65E137A2ED6F3207}" {
+   m_name "TIME_LIMIT"
+   m_instructions {
+    TILW_SendMessageInstruction "{65E137A2EA7FD4F0}" {
+     m_executionDelay 3605
+     m_messageTitle "DEFEAT"
+     m_messageBody "Time limit reached."
+    }
+    TILW_EndGameInstruction "{65E137A2F9E9FA3C}" {
+     m_executionDelay 3615
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "UK"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65E137A2F6179870}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{65E137A2B385E5D6}" {
+   m_name "EXTRACTED"
+   m_instructions {
+    TILW_SendMessageInstruction "{65E137A28F99146A}" {
+     m_messageTitle "VICTORY"
+     m_messageBody "All surviving hostages have been successfully extracted."
+    }
+    TILW_EndGameInstruction "{65E137A298E328CC}" {
+     m_executionDelay 15
+     m_factionKey "UK"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65E137A42578B3D4}" {
+    m_operands {
+     TILW_MinjunctionTerm "{65E137A427B8C5CD}" {
+      m_operands {
+       TILW_LiteralTerm "{65E137A447286B77}" {
+        m_flagName "HOSTAGE_1_RESOLVED"
+       }
+       TILW_LiteralTerm "{65E137A45CB2EC1D}" {
+        m_flagName "HOSTAGE_2_RESOLVED"
+       }
+       TILW_LiteralTerm "{65E137A4583DE5CC}" {
+        m_flagName "HOSTAGE_3_RESOLVED"
+       }
+       TILW_LiteralTerm "{65E137A456CAA587}" {
+        m_flagName "HOSTAGE_4_RESOLVED"
+       }
+      }
+      m_minTrue 4
+     }
+     TILW_MinjunctionTerm "{65E137A423BB18C7}" {
+      m_operands {
+       TILW_LiteralTerm "{65E137A43EA4F47C}" {
+        m_flagName "HOSTAGE_1_SUCCESS"
+       }
+       TILW_LiteralTerm "{65E137A43A85C123}" {
+        m_flagName "HOSTAGE_2_SUCCESS"
+       }
+       TILW_LiteralTerm "{65E137A43564F181}" {
+        m_flagName "HOSTAGE_3_SUCCESS"
+       }
+       TILW_LiteralTerm "{65E137A431D5B334}" {
+        m_flagName "HOSTAGE_4_SUCCESS"
+       }
+      }
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65E137A377A03830}" {
+   m_name "HOS_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{65E137A34E9965E5}" {
+     m_messageTitle "DEFEAT"
+     m_messageBody "All hostages have been killed."
+    }
+    TILW_EndGameInstruction "{65E137A344665A39}" {
+     m_executionDelay 15
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "UK"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65E137A372860B68}" {
+    m_flagName "HOS_KIA"
+   }
+  }
+  TILW_MissionEvent "{65E14614430F84D4}" {
+   m_name "INIT_WAYPOINTS"
+   m_instructions {
+    TILW_AssignWaypointsInstruction "{65E146145FC04B84}" {
+     m_groupName "SEPFT1"
+     m_waypointNames {
+      "SEPFT1WP1" "SEPFT1WP2" "SEPFT1WP3" "SEPFT1WP4" "SEPFT1WPCYCLE"
+     }
+     m_clearExisting 1
+    }
+    TILW_AssignWaypointsInstruction "{65E146142C0E74B9}" {
+     m_groupName "SEPFT2"
+     m_waypointNames {
+      "SEPFT2WP1" "SEPFT2WP2" "SEPFT2WP3" "SEPFT2WP4" "SEPFT2WP5" "SEPFT2WPCYCLE"
+     }
+     m_clearExisting 1
+    }
+    TILW_AssignWaypointsInstruction "{65E146168F0D4F75}" {
+     m_groupName "SEPHQ"
+     m_waypointNames {
+      "SEPHQWP"
+     }
+     m_clearExisting 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{65E1461425D3792D}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{65E137A35D16BF7F}" {
+   m_flagName "UK_KIA"
+   m_factionKey "UK"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionAIKilledFlag "{65E137A35BCCFCCA}" {
+   m_flagName "HOS_KIA"
+   m_factionKey "CIV"
+  }
+ }
+}

@@ -1,0 +1,214 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{66713999EF780A22}" {
+     NavmeshFile "{BA41723F3F314964}worlds/Navmesh/Soldiers.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{496DB79F7F4F33BE}worlds/Navmesh/BTRLike.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{7C34271D8EC6FA18}worlds/Navmesh/LowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 7170.129 1.992 8034.724
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 7169.162 2.067 8033.866
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6671403B428409DB}" {
+     m_sWeatherPresetName "Heavy Wet Fog"
+     m_iStartingHour 2
+    }
+   }
+   m_bUseSpecifiedDate 1
+   m_iSetDay 28
+   m_iSetMonth 5
+   m_iSetYear 1982
+   m_bOverrideGeocoords 1
+   m_fLatitude -50
+  }
+ }
+ coords 7170.058 1.997 8034.046
+ m_iFreezeTime 300000
+ m_aFactionRespawnCount {
+  PS_FactionRespawnCount "{6672C6107EDB3E36}" {
+   m_sFactionKey "GC_ARG"
+   m_iCount 30
+  }
+ }
+ {
+  SCR_FactionManager "668344502E623A5E" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{61500924662B6062}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CD021D5C}" {
+       }
+       SCR_CallsignInfo "{55CCB792CCD598D3}" {
+        m_sCallsign "Mortar Crew"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{65371176557C60E6}" {
+        m_sCallsign ""
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+       }
+      }
+     }
+    }
+    SCR_Faction "{652544E87DFA8253}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB79282FF010C}" {
+        m_sCallsign "B"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "3"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+PS_MissionDescription NOTES : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ coords 7134.384 1.366 8023.406
+ m_sTitle "NOTES"
+ m_sTextData "5 min setup timer."\
+ "60 min timer."\
+ "		"\
+ "ARG win when UK suffer 90% casualties or hold DARWIN HILL for 60 mins."\
+ ""\
+ "UK win when they hold DARWIN HILL for 5 mins uncontested or ARG are completely destroyed"\
+ ""\
+ "GM NOTE: Weather should be \"Heavy Wet Fog\" if not could you please change it to that weather."
+ m_aVisibleForFactions {
+  "UK" "GC_ARG"
+ }
+ m_bEmptyFactionVisibility 1
+ m_iOrder 10
+}
+SCR_EditorRestrictionZoneEntity : "{6144B0BE2EAC6897}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneMedium.et" {
+ coords 7117.525 1.72 8011.81
+}
+TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 7148.854 41.194 7430.352
+ m_queryRadius 130
+ m_captureTime 300
+ m_flagName "uk_taken_hill"
+ m_stopAfterFirstChange 1
+ m_ownerFactionKey "UK"
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 7139.276 1.077 8025.966
+ m_missionEvents {
+  TILW_MissionEvent "{6684EE37B6DD34CB}" {
+   m_name "arg_all_killed"
+   m_instructions {
+    TILW_SendMessageInstruction "{6684EE3783220FB5}" {
+     m_messageTitle "UK WIN!"
+     m_messageBody "Argentine forces have been destroyed!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6684EE37BA33BCF3}" {
+    m_flagName "arg_killed"
+   }
+  }
+  TILW_MissionEvent "{6684EE379BA9F0F6}" {
+   m_name "uk_all_killed"
+   m_instructions {
+    TILW_SendMessageInstruction "{6684EE37E00ABBB1}" {
+     m_messageTitle "ARGENTINA WIN!"
+     m_messageBody "UK foreces have been destroyed!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6684EE342B35EDBA}" {
+    m_flagName "uk_killed"
+   }
+  }
+  TILW_MissionEvent "{6684EE37DE4B06B8}" {
+   m_name "uk_win"
+   m_instructions {
+    TILW_SendMessageInstruction "{6684EE344CC82480}" {
+     m_messageTitle "UK WIN!"
+     m_messageBody "UK forces have taken DARWIN HILL!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6684EE35AA721D51}" {
+    m_flagName "uk_taken_hill"
+   }
+  }
+  TILW_MissionEvent "{6684EE37D8FC3860}" {
+   m_name "arg_win"
+   m_instructions {
+    TILW_SendMessageInstruction "{6684EE340268B56E}" {
+     m_executionDelay 3900
+     m_messageTitle "ARGENTINA WIN!"
+     m_messageBody "Argentine forces have held DARWIN HILL!"
+    }
+    TILW_SendMessageInstruction "{6684FB9E078F59F1}" {
+     m_executionDelay 3000
+     m_messageTitle "15 MINUTES LEFT!"
+     m_messageBody "Argentine forces are still holding DARWIN HILL!"
+     m_factionKeys {
+      "UK" "GC_ARG"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{6684EE3438C5A102}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{6684EE374D860791}" {
+   m_flagName "arg_killed"
+   m_factionKey "GC_ARG"
+  }
+  TILW_FactionPlayersKilledFlag "{6684EE375EE133B4}" {
+   m_flagName "uk_killed"
+   m_factionKey "UK"
+   m_casualtyRatio 0.9
+  }
+ }
+}

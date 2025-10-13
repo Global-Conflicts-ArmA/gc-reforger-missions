@@ -1,64 +1,40 @@
 SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
- coords 2168.983 53.296 2654.726
-}
-PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
- coords 2153.431 51.941 2649.539
-}
-PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
  components {
-  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
-   m_bUsePredefineStartingTimeAndWeather 1
-   m_aStartingWeatherAndTime {
-    SCR_TimeAndWeatherState "{62D8B35DF3E9ADE2}" {
-     m_sWeatherPresetName "Cloudy"
-     m_iStartingHour 12
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A2995A7E8BC2}" {
+     NavmeshFile "{D8EF7131FB31AF97}worlds/GameMaster/Navmeshes/GM_Arland.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A299509CF377}" {
+     NavmeshFile "{A0AEEB1E7EF474FA}worlds/GameMaster/Navmeshes/GM_Arland_vehicles.nmn"
     }
    }
   }
  }
- coords 2147.629 51.472 2630.997
+ coords 2168.983 53.296 2654.726
+ Formations {
+  AIFormationDefinition "{56ACE3951AA8D3EB}" {
+   Offsets + {
+    0 0 -33 0 0 -36
+   }
+  }
+ }
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 2153.431 51.941 2649.539
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ coords 3109.346 40.582 2484.015
+ m_iFreezeTime 180000
  {
-  SCR_FactionManager "62D9045C6BF85483" {
+  SCR_FactionManager "6610CB4D73C363A1" {
    ID "5ED9088735FF2D8B"
    Factions {
-    SCR_Faction "{56DEAC40D2DBC8B1}" {
-     UIInfo SCR_FactionUIInfo "{528C961236B7DCD3}" {
-      Name "Red Team"
-      m_sNameUpper "RED TEAM"
-     }
-     m_bIsPlayable 1
-    }
-    SCR_Faction "{5978B9CE6585BBE8}" {
-     UIInfo SCR_FactionUIInfo "{5977478D568C0938}" {
-      Name "Red Team"
-      m_sNameUpper "RED TEAM"
-     }
-     m_bIsPlayable 1
-     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
-      m_aSquadNames {
-       SCR_CallsignInfo "{5977478D568C092E}" {
-        m_sCallsign "6"
-       }
-       SCR_CallsignInfo "{5977478D568C092D}" {
-        m_sCallsign "1"
-       }
-       SCR_CallsignInfo "{5977478D568D935E}" {
-        m_sCallsign "2"
-       }
-       SCR_CallsignInfo "{5977478D568D935F}" {
-        m_sCallsign "3"
-       }
-      }
-      m_sCallsignGroupFormat "RED %2-%3"
-      m_sCallsignCharacterFormat "RED %2-%3: %4"
-     }
-    }
     SCR_Faction "{5CC8DE37E1FF0F7A}" {
-     UIInfo SCR_FactionUIInfo "{5CC8B5EDA0CDBD62}" {
-      Name "Blue Team"
-      m_sNameUpper "BLUE TEAM"
-     }
-     m_bIsPlayable 1
      m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
       m_aPlatoonNames {
        SCR_CallsignInfo "{55CCB792CE6E998D}" {
@@ -79,129 +55,133 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/
         m_sCallsign "3"
        }
       }
-      m_sCallsignGroupFormat "BLUE %2-%3"
-      m_sCallsignCharacterFormat "BLUE %2-%3: %4"
+      m_sCallsignGroupFormat "%2-%3"
+      m_sCallsignCharacterFormat "%2-%3: %4"
      }
     }
    }
   }
  }
 }
+SCR_EditorRestrictionZoneEntity : "{6144B0BE2EAC6897}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneMedium.et" {
+ coords 2432.974 12.964 3130.256
+}
 PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_MapShapeComponent "{6508F54F9B461198}" {
+   Enabled 1
+  }
+ }
  coords 2736.207 108.358 2854.532
  Points {
   ShapePoint "{62D9045A084F7739}" {
-   Position 459.347 0 6.965
+   Position 542.505 0 128.591
   }
   ShapePoint "{62D9045A0A88E8B8}" {
-   Position -337.586 0 430.659
+   Position -300.589 0 526.544
   }
   ShapePoint "{62D9045A1BD03C84}" {
-   Position -589.029 0 -221.007
+   Position -605.741 0 -251.444
   }
   ShapePoint "{62D9045A14958EB2}" {
-   Position 117.284 0 -608.827
+   Position 96.999 0 -644.005
   }
  }
 }
-$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/TILW_FactionTrigger.et" {
- BLUE_CAP {
-  coords 2617.795 102.7 2617.066
-  m_queryRadius 25
-  m_captureIterations 18
-  m_sendStatusMessages 1
-  m_locationName "Timber Ridge"
-  m_flagName "BLUE_CAP"
-  m_playersOnly 1
-  m_ownerFactionKey "RHS_USAF"
- }
- RED_CAP {
-  coords 2617.795 102.7 2617.066
-  m_queryRadius 25
-  m_captureIterations 18
-  m_sendStatusMessages 1
-  m_locationName "Timber Ridge"
-  m_flagName "RED_CAP"
-  m_playersOnly 1
-  m_ownerFactionKey "RHS_AFRF"
- }
+TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 2617.774 102.49 2615.537
+ m_captureTime 180
+ m_sendStatusMessages 1
+ m_locationName "timber ridge"
+ m_flagName "US_CAP"
+ m_stopAfterFirstChange 1
+ m_ownerFactionKey "RHS_USAF"
 }
 TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
  coords 2468.943 0 3358.459
  m_missionEvents {
-  TILW_MissionEvent "{62D9045B0F0A19C3}" {
-   m_name "RED KIA"
+  TILW_MissionEvent "{6610CB4CD606A6CC}" {
+   m_name "UK_KIA"
    m_instructions {
-    TILW_SendMessageInstruction "{62D9045B0317FB69}" {
-     m_messageTitle "BLUE VICTORY"
-     m_messageBody "Red team has been eliminated."
+    TILW_SendMessageInstruction "{6610CB4CAC64D7D5}" {
+     m_messageTitle "US VICTORY"
+     m_messageBody "British forces have taken significant casualties."
     }
-    TILW_EndGameInstruction "{62D9045BE9F33741}" {
+    TILW_EndGameInstruction "{6610CB4CAB868028}" {
      m_executionDelay 15
      m_factionKey "RHS_USAF"
     }
    }
-   m_condition TILW_LiteralTerm "{62D90454CE58675A}" {
-    m_flagName "RED_KIA"
+   m_condition TILW_LiteralTerm "{6610CB4CD10BCC61}" {
+    m_flagName "UK_KIA"
    }
   }
-  TILW_MissionEvent "{62D9045BF126A5E2}" {
-   m_name "BLUE KIA"
+  TILW_MissionEvent "{6610CB4CA1670C17}" {
+   m_name "US_KIA"
    m_instructions {
-    TILW_SendMessageInstruction "{62D9045B0317FB69}" {
-     m_messageTitle "RED VICTORY"
-     m_messageBody "Blue team has been eliminated."
+    TILW_SendMessageInstruction "{6610CB4CAC64D7D5}" {
+     m_messageTitle "UK VICTORY"
+     m_messageBody "American forces have taken significant casualties."
     }
-    TILW_EndGameInstruction "{62D9045B1130F2BD}" {
+    TILW_EndGameInstruction "{6610CB4CAB868028}" {
      m_executionDelay 15
-     m_factionKey "RHS_AFRF"
+     m_factionKey "UK"
     }
    }
-   m_condition TILW_LiteralTerm "{62D90454C53ACBC0}" {
-    m_flagName "BLUE_KIA"
-   }
-  }
-  TILW_MissionEvent "{62D90454E3DA22A4}" {
-   m_name "RED CAP"
-   m_instructions {
-    TILW_SendMessageInstruction "{62D9045B0317FB69}" {
-     m_messageTitle "RED VICTORY"
-     m_messageBody "Timber Ridge has been captured."
-    }
-    TILW_EndGameInstruction "{62D9045B1130F2BD}" {
-     m_executionDelay 15
-     m_factionKey "RHS_AFRF"
-    }
-   }
-   m_condition TILW_LiteralTerm "{62D90454C53ACBC0}" {
-    m_flagName "RED_CAP"
+   m_condition TILW_LiteralTerm "{6610CB4CD10BCC61}" {
+    m_flagName "US_KIA"
    }
   }
-  TILW_MissionEvent "{62D90454D3B60D5C}" {
-   m_name "BLUE CAP"
+  TILW_MissionEvent "{6610CB4CB15066CE}" {
+   m_name "US_CAP"
    m_instructions {
-    TILW_SendMessageInstruction "{62D9045B0317FB69}" {
-     m_messageTitle "BLUE VICTORY"
-     m_messageBody "Timber Ridge has been captured.."
+    TILW_SendMessageInstruction "{6610CB4CAC64D7D5}" {
+     m_messageTitle "US VICTORY"
+     m_messageBody "Timber Ridge has been secured by American forces."
     }
-    TILW_EndGameInstruction "{62D9045BE9F33741}" {
+    TILW_EndGameInstruction "{6610CB4CAB868028}" {
      m_executionDelay 15
      m_factionKey "RHS_USAF"
     }
    }
-   m_condition TILW_LiteralTerm "{62D90454CE58675A}" {
-    m_flagName "BLUE_CAP"
+   m_condition TILW_LiteralTerm "{6610CB4CD10BCC61}" {
+    m_flagName "US_CAP"
+   }
+  }
+  TILW_MissionEvent "{6610CB4F6E4DB8B6}" {
+   m_name "TIME_LIMIT"
+   m_instructions {
+    TILW_SendMessageInstruction "{6610CB4F6B8C0FB2}" {
+     m_executionDelay 2885
+     m_messageTitle "UK VICTORY"
+     m_messageBody "Time limit reached."
+    }
+    TILW_EndGameInstruction "{6610CB4F635C51CB}" {
+     m_executionDelay 2895
+     m_factionKey "UK"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6610CB4F6AE318DB}" {
+    m_invertTerm 1
    }
   }
  }
  m_casualtyFlags {
-  TILW_FactionPlayersKilledFlag "{62D9045B3EC1497C}" {
-   m_flagName "RED_KIA"
-   m_factionKey "RHS_AFRF"
+  TILW_FactionPlayersKilledFlag "{6610CB4CEFFCFC98}" {
+   m_flagName "UK_KIA"
+   m_factionKey "UK"
+   m_casualtyRatio 0.8
   }
-  TILW_FactionPlayersKilledFlag "{62D9045B369469B3}" {
-   m_flagName "BLUE_KIA"
+  TILW_FactionPlayersKilledFlag "{6610CB4CE4CB3DE1}" {
+   m_flagName "US_KIA"
    m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.8
   }
  }
+}
+SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 2608.12 104.078 2593.325
+ m_fWarnRadius 135
+ m_fZoneRadius 160
+ m_fZoneTeleportedRadius 155
 }

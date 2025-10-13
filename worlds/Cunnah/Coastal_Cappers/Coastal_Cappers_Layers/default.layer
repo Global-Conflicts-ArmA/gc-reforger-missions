@@ -1,0 +1,201 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 8143.124 2.089 1188.81
+}
+PerceptionManager PerceptionManager2 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 19
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6666B361F8550C31}" {
+     m_sWeatherPresetName "Extreme Rain"
+     m_iStartingHour 17
+    }
+   }
+   m_bUseSpecifiedDate 1
+   m_iSetDay 11
+   m_iSetMonth 10
+  }
+ }
+ coords 7928.787 11.917 1446.529
+ m_iFreezeTime 300000
+ m_aFactionRespawnCount {
+  PS_FactionRespawnCount "{6664DC895657CC38}" {
+   m_sFactionKey "UK"
+   m_iCount 20
+  }
+ }
+ {
+  SCR_FactionManager "6666C62F2AA0DD82" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB7928223BB00}" {
+       }
+       SCR_CallsignInfo "{55CCB79285FF31DB}" {
+        m_sCallsign "Convoy Drivers"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{64E2F896D3989F52}" {
+       }
+       SCR_CallsignInfo "{64E2F896D3B9CBAD}" {
+        m_sCallsign ""
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{64E2F896FFC45153}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{64E2F896F01D8C83}" {
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 7719.355 1.256 1470.474
+ m_missionEvents {
+  TILW_MissionEvent "{6664EA2814C420E9}" {
+   m_name "Enable_Teleports"
+   m_instructions {
+    TILW_SetFlagInstruction "{6664EA28F91B53D6}" {
+     m_executionDelay 0.1
+     m_flagName "TP_1_control"
+    }
+    TILW_SetFlagInstruction "{6664EA28CF9638D8}" {
+     m_executionDelay 0.1
+     m_flagName "TP_2_control"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6664EA28F728286E}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{6664EA292700C71D}" {
+   m_name "Disable_Teleport_1"
+   m_instructions {
+    TILW_ClearFlagInstruction "{6664EA2A41D41B75}" {
+     m_executionDelay 0
+     m_flagName "TP_1_control"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6664EA292955E6F5}" {
+    m_flagName "disable_TP_1"
+   }
+  }
+  TILW_MissionEvent "{6664EA290A55E83A}" {
+   m_name "Disable_Teleport_2"
+   m_instructions {
+    TILW_ClearFlagInstruction "{6664EA2A550F37C1}" {
+     m_executionDelay 0
+     m_flagName "TP_2_control"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6664EA290A55E87A}" {
+    m_flagName "disable_TP_2"
+   }
+  }
+  TILW_MissionEvent "{66654CD5B3F6C139}" {
+   m_name "1_Truck_Arrived"
+   m_instructions {
+    TILW_SendMessageInstruction "{66654CD58D721460}" {
+     m_messageTitle "Truck Arrived!"
+     m_messageBody "1 Convoy Truck has Arrived."
+     m_factionKeys {
+      "USSR" "UK"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{66654CD5E9E7ED74}" {
+    m_flagName "convoy_arrived_1"
+   }
+  }
+  TILW_MissionEvent "{66654CD5CFD281AF}" {
+   m_name "2_Truck_Arrived"
+   m_instructions {
+    TILW_SendMessageInstruction "{66654CD5CFD28111}" {
+     m_messageTitle "Truck Arrived!"
+     m_messageBody "2 Convoy Trucks have Arrived."
+     m_factionKeys {
+      "USSR" "UK"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{66654CD5CFD2811D}" {
+    m_flagName "convoy_arrived_2"
+   }
+  }
+  TILW_MissionEvent "{66654CD5CF057712}" {
+   m_name "3_Truck_Arrived"
+   m_instructions {
+    TILW_SendMessageInstruction "{66654CD5CF057753}" {
+     m_messageTitle "Truck Arrived!"
+     m_messageBody "3 Convoy Trucks have Arrived."
+    }
+   }
+   m_condition TILW_LiteralTerm "{66654CD5CF05775E}" {
+    m_flagName "convoy_arrived_3"
+   }
+  }
+  TILW_MissionEvent "{66654CD5C04C0F20}" {
+   m_name "4_Truck_Arrived"
+   m_instructions {
+    TILW_SendMessageInstruction "{66654CD5C04C0F6B}" {
+     m_messageTitle "Truck Arrived!"
+     m_messageBody "4 Convoy Trucks have Arrived."
+    }
+   }
+   m_condition TILW_LiteralTerm "{66654CD5C04C0C96}" {
+    m_flagName "convoy_arrived_4"
+   }
+  }
+  TILW_MissionEvent "{66654CD5C1360807}" {
+   m_name "5_Truck_Arrived"
+   m_instructions {
+    TILW_SendMessageInstruction "{66654CD5C136084C}" {
+     m_messageTitle "Truck Arrived!"
+     m_messageBody "All Convoy Trucks have Arrived."
+    }
+   }
+   m_condition TILW_LiteralTerm "{66654CD5C136084B}" {
+    m_flagName "convoy_arrived_5"
+   }
+  }
+  TILW_MissionEvent "{6666B367CC8D05EC}" {
+   m_name "Convoy_Destroyed"
+   m_instructions {
+    TILW_SendMessageInstruction "{6666B367DA1F007F}" {
+     m_messageTitle "BLUFOR VICTORY!"
+     m_messageBody "All convoy trucks destroyed!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6666B367D4F02B43}" {
+    m_flagName "convoy_destroyed"
+   }
+  }
+  TILW_MissionEvent "{6676CC167E18D45B}" {
+   m_name "Timer"
+   m_instructions {
+    TILW_SendMessageInstruction "{6676CC16458A18D6}" {
+     m_executionDelay 3600
+     m_messageTitle "OPFOR LOSE"
+     m_messageBody "OPFOR has failed to deliver in time."
+    }
+   }
+   m_condition TILW_LiteralTerm "{6676CC167B69A322}" {
+    m_invertTerm 1
+   }
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 7156.592 146.679 2165.574
+}

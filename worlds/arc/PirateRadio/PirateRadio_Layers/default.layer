@@ -1,0 +1,196 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 7071.97 96.656 1329.173
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 7077.749 96.7 1329.84
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ coords 7086.471 96.7 1329.428
+ m_iFreezeTime 180000
+ {
+  SCR_FactionManager "660AA7E57DAE66EC" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_aFriendlyFactionsIds {
+      "GC_SEPARATIST"
+     }
+    }
+    SCR_Faction "{62EB308733CA83DD}" {
+     m_aFriendlyFactionsIds {
+      "RHS_AFRF"
+     }
+    }
+   }
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity : "{6144B0BE2EAC6897}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneMedium.et" {
+ coords 2692.503 59.851 4248.62
+}
+PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_MapShapeComponent "{6508F54F9B461198}" {
+   Enabled 1
+  }
+ }
+ coords 2888.061 59.562 4367.188
+ Points {
+  ShapePoint "{66096BE13A3BFC37}" {
+   Position 133.853 0 -238.717
+  }
+  ShapePoint "{66096BE134A33E6B}" {
+   Position -262.057 0 960.327
+  }
+  ShapePoint "{66096BE13649CE37}" {
+   Position -2338.731 0 1097.931
+  }
+  ShapePoint "{66096BE130E232F3}" {
+   Position -1988.137 0 -523.807
+  }
+ }
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ OBJ1CAP {
+  coords 1329.77 72.335 4912.095
+  m_queryRadius 10
+  m_captureTime 60
+  m_locationName "the safehouse"
+  m_flagName "OBJ_1_CAP"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "GC_CDF"
+ }
+ OBJ2CAP {
+  coords 1000.34 69.169 4996.113
+  m_queryRadius 15
+  m_captureTime 60
+  m_locationName "the radio tower"
+  m_flagName "OBJ_2_CAP"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "GC_CDF"
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 7082.937 96.7 1329.877
+ m_missionEvents {
+  TILW_MissionEvent "{66096BE415EAA6EF}" {
+   m_name "ASSIGN_WAYPOINTS"
+   m_instructions {
+    TILW_AssignWaypointsInstruction "{66096BE412BF0951}" {
+     m_groupName "OBJ1SQD1"
+     m_waypointNames {
+      "OBJ1SQD1WP"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{66096BE4E97A0D93}" {
+     m_groupName "OBJ1SQD2"
+     m_waypointNames {
+      "OBJ1SQD2WP"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{66096BE4E2D4BA35}" {
+     m_groupName "OBJ1PHQ"
+     m_waypointNames {
+      "OBJ1PHQWP"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{66096BE4F6FBFFDE}" {
+     m_groupName "OBJ1EXTRA"
+     m_waypointNames {
+      "OBJ1EXTRAWP"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{66096BE4C020F490}" {
+     m_groupName "OBJ2SQD1"
+     m_waypointNames {
+      "OBJ2SQD1WP"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{66096BE4DE56A7A9}" {
+     m_groupName "OBJ2SQD2"
+     m_waypointNames {
+      "OBJ2SQD2WP"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{66096BE4D5553BD0}" {
+     m_groupName "OBJ2PHQ"
+     m_waypointNames {
+      "OBJ2PHQWP"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{66096BE411F0C75E}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{660AA7E7A81D9B73}" {
+   m_name "CDF_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{660AA7E7A1F17B53}" {
+     m_messageTitle "AFRF/SEPARATIST VICTORY"
+     m_messageBody "The CDF have taken significant casualties."
+    }
+    TILW_EndGameInstruction "{660AA7E7B4DAA6F2}" {
+     m_executionDelay 15
+     m_factionKey "RHS_AFRF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{660AA7E7A51578DB}" {
+    m_flagName "CDF_KIA"
+   }
+  }
+  TILW_MissionEvent "{660AA7E78D8386F2}" {
+   m_name "TIME_LIMIT"
+   m_instructions {
+    TILW_SendMessageInstruction "{660AA7E785CF87DD}" {
+     m_executionDelay 2885
+     m_messageTitle "AFRF/SEPARATIST VICTORY"
+     m_messageBody "Time limit reached."
+    }
+    TILW_EndGameInstruction "{660AA7E795078373}" {
+     m_executionDelay 2895
+     m_factionKey "RHS_AFRF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{660AA7E7887AD307}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{660AA7E66C904FE7}" {
+   m_name "CDF_CAP"
+   m_instructions {
+    TILW_SendMessageInstruction "{660AA7E66F3B4BE9}" {
+     m_messageTitle "CDF VICTORY"
+     m_messageBody "The safehouse and radio tower have been secured by the CDF."
+    }
+    TILW_EndGameInstruction "{660AA7E6716D6A8B}" {
+     m_executionDelay 15
+     m_factionKey "GC_CDF"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{660AA7E6697434F5}" {
+    m_operands {
+     TILW_LiteralTerm "{660AA7E6647E3509}" {
+      m_flagName "OBJ_1_CAP"
+     }
+     TILW_LiteralTerm "{660AA7E67D67E7CC}" {
+      m_flagName "OBJ_2_CAP"
+     }
+    }
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{660AA7E7D3CC557A}" {
+   m_flagName "CDF_KIA"
+   m_factionKey "GC_CDF"
+   m_casualtyRatio 0.9
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 1264.334 67.838 4902.631
+ m_fWarnRadius 350
+ m_fZoneRadius 400
+ m_fZoneTeleportedRadius 420
+}

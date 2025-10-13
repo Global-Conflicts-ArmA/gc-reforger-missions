@@ -1,0 +1,282 @@
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ {
+  coords 3490.5 263.562 3573.001
+  m_queryRadius 75
+  m_sendStatusMessages 1
+  m_locationName "Wasserberg"
+  m_flagName "obj1"
+  m_stopAfterFirstChange 1
+  m_drawShapeSurface 0
+  m_ownerFactionKey "US"
+  {
+   PS_ManualMarker Marker_Wasserberg : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+    coords 0 0 0
+    angleY 90
+    m_sImageSetGlow ""
+    m_MarkerColor 0 0 0 0.5
+    m_fWorldSize 225
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+    {
+     $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+      Marker_Plt1_NVA {
+       coords 10 0 0
+       angleY 0
+       m_sImageSet "{83B695FF662AC163}imagesets/Soviet_Tactical_Graphics.imageset"
+       m_sImageSetGlow ""
+       m_MarkerColor 1 0 0 0.75
+       m_sQuadName "plt_hq"
+       m_fWorldSize 150
+       m_aVisibleForFactions {
+        "GC_NVA"
+       }
+      }
+      Marker_Plt1_US {
+       coords 0 0 0
+       angleY 0
+       m_sImageSet "{7CD99D22C7AE8195}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor.imageset"
+       m_sImageSetGlow ""
+       m_MarkerColor 0.502 0 0 0.65
+       m_sQuadName "motorized-infantry"
+       m_fWorldSize 150
+       m_aVisibleForFactions {
+        "US"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 3234.348 233.437 3344.784
+  m_queryRadius 75
+  m_sendStatusMessages 1
+  m_locationName "Allenburg"
+  m_flagName "obj2"
+  m_stopAfterFirstChange 1
+  m_drawShapeSurface 0
+  m_ownerFactionKey "US"
+  {
+   PS_ManualMarker Marker_Allenburg : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+    coords 0 0 0
+    angleY 90
+    m_sImageSetGlow ""
+    m_MarkerColor 0 0 0 0.5
+    m_fWorldSize 225
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+    {
+     $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+      Marker_Plt2_NVA {
+       coords 5 0 0
+       angleY 0
+       m_sImageSet "{83B695FF662AC163}imagesets/Soviet_Tactical_Graphics.imageset"
+       m_sImageSetGlow ""
+       m_MarkerColor 1 0 0 0.75
+       m_sQuadName "plt_hq"
+       m_fWorldSize 150
+       m_aVisibleForFactions {
+        "GC_NVA"
+       }
+      }
+      Marker_Plt2_US {
+       coords 0 0 0
+       angleY 0
+       m_sImageSet "{7CD99D22C7AE8195}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor.imageset"
+       m_sImageSetGlow ""
+       m_MarkerColor 0.502 0 0 0.65
+       m_sQuadName "motorized-infantry"
+       m_fWorldSize 150
+       m_aVisibleForFactions {
+        "US"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 3490.125 311.424 2861.179
+  m_queryRadius 75
+  m_sendStatusMessages 1
+  m_locationName "Kasselberg"
+  m_flagName "obj3"
+  m_drawShapeSurface 0
+  m_ownerFactionKey "US"
+  {
+   PS_ManualMarker Marker_Kasselberg : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+    coords 0 0 0
+    angleY 90
+    m_sImageSetGlow ""
+    m_MarkerColor 0 0 0 0.5
+    m_fWorldSize 225
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+    {
+     $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+      Marker_Coy_NVA {
+       coords 10 0 0
+       angleY 0
+       m_sImageSet "{83B695FF662AC163}imagesets/Soviet_Tactical_Graphics.imageset"
+       m_sImageSetGlow ""
+       m_MarkerColor 1 0 0 0.75
+       m_sQuadName "coy_hq"
+       m_fWorldSize 200
+       m_aVisibleForFactions {
+        "GC_NVA"
+       }
+      }
+      Marker_Coy_US {
+       coords 0 0 0
+       angleY 0
+       m_sImageSet "{7CD99D22C7AE8195}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor.imageset"
+       m_sImageSetGlow ""
+       m_MarkerColor 0.502 0 0 0.65
+       m_sQuadName "motorized-infantry"
+       m_fWorldSize 150
+       m_aVisibleForFactions {
+        "US"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ m_missionEvents {
+  TILW_MissionEvent "{658530FA15D24B58}" {
+   m_name "US Major Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{658530FD1BE664BC}" {
+     m_messageTitle "US MAJOR VICTORY"
+     m_messageBody "US forces reached Kasselberg without significant delays."
+    }
+    TILW_EndGameInstruction "{658530FD1E02E3A9}" {
+     m_factionKey "US"
+    }
+    TILW_DeactivateEventsInstruction "{6589720F24AD078F}" {
+     m_executionDelay 0
+     m_eventNames {
+      "US Minor Victory"
+     }
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{658530FA8F9E195A}" {
+    m_operands {
+     TILW_LiteralTerm "{658966E8DAF8D214}" {
+      m_flagName "objs"
+     }
+     TILW_LiteralTerm "{658530FD3935DD34}" {
+      m_invertTerm 1
+      m_flagName "time"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{658530FA62711DFD}" {
+   m_name "US Minor Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{658530FD1DB93136}" {
+     m_messageTitle "US MINOR VICTORY"
+     m_messageBody "US forces reached Kasselberg, but were somewhat delayed by the NVA."
+    }
+    TILW_EndGameInstruction "{658530FD61674336}" {
+     m_factionKey "US"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{658530FA8E606439}" {
+    m_operands {
+     TILW_LiteralTerm "{658530FD2CBE7E4A}" {
+      m_flagName "objs"
+     }
+     TILW_LiteralTerm "{658530FD2DB7EE91}" {
+      m_flagName "time"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{658530FAFABA739C}" {
+   m_name "Time flag"
+   m_instructions {
+    TILW_SetFlagInstruction "{658530FAFDBDD2C0}" {
+     m_executionDelay 2400
+     m_flagName "time"
+    }
+   }
+   m_condition TILW_LiteralTerm "{658530FAFEA4AEC9}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{658530FA66501BB0}" {
+   m_name "NVA Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{658530FA42DB74F5}" {
+     m_messageTitle "NVA VICTORY"
+     m_messageBody "US forces took severe casualties."
+    }
+    TILW_EndGameInstruction "{658530FABD973D8C}" {
+     m_factionKey "GC_NVA"
+    }
+   }
+   m_condition TILW_LiteralTerm "{658530FA7F66B55B}" {
+    m_flagName "us_cas"
+   }
+  }
+  TILW_MissionEvent "{658A89DF40435B68}" {
+   m_name "Release OBJ3 group"
+   m_instructions {
+    TILW_AssignWaypointsInstruction "{658A89DFA15CACB2}" {
+     m_executionDelay 0
+     m_groupName "gr_nva_33"
+     m_clearExisting 1
+    }
+   }
+   m_condition TILW_DisjunctionTerm "{658A89DF4FAE560F}" {
+    m_operands {
+     TILW_LiteralTerm "{658A89DF4D85C0D1}" {
+      m_flagName "obj1"
+     }
+     TILW_LiteralTerm "{658A89DF536AE8B8}" {
+      m_flagName "obj2"
+     }
+     TILW_LiteralTerm "{658A89DF5478105D}" {
+      m_flagName "obj3"
+     }
+    }
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{658530FA6E36C5DE}" {
+   m_flagName "us_cas"
+   m_factionKey "US"
+   m_casualtyRatio 0.8
+  }
+ }
+ m_metaFlags {
+  TILW_MetaFlag "{658530FA93A8578C}" {
+   m_flagName "objs"
+   m_definition TILW_ConjunctionTerm "{658530FA9C267915}" {
+    m_operands {
+     TILW_DisjunctionTerm "{658530FAE39E6F6C}" {
+      m_operands {
+       TILW_LiteralTerm "{658530FAE75376C9}" {
+        m_flagName "obj1"
+       }
+       TILW_LiteralTerm "{658530FAE408EF53}" {
+        m_flagName "obj2"
+       }
+      }
+     }
+     TILW_LiteralTerm "{658530FAE2A178E3}" {
+      m_flagName "obj3"
+     }
+    }
+   }
+  }
+ }
+}

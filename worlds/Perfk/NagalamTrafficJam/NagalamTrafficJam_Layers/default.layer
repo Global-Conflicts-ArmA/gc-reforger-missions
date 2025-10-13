@@ -1,0 +1,379 @@
+SCR_MapEntity MapEntity_Kunar : "{02367029C55BAE5E}Prefabs/World/Game/Kunar/MapEntity_Kunar.et" {
+ coords 2893.436 9.999 3197.449
+ "Map Geometry Data" "{E25E842F90019134}Worlds/Kunar/GameMaster_Kunar.topo"
+ "Satellite background image" "{5A4E3A4FCBF014CE}Worlds/Kunar/GameMaster_Kunar.edds"
+}
+SCR_AIWorld : "{E2A016456BBC697D}Prefabs/AI/SCR_AIWorld_Kunar.et" {
+ coords 2844.464 10 3205.75
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 2836.212 10 3169.186
+}
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 6
+  }
+ }
+ coords 2850.667 9.929 3182.794
+ m_iFreezeTime 300000
+ m_bDisableBuildingModeAfterFreezeTime 1
+ m_safeStartTime 30
+ {
+  SCR_FactionManager "65A0D5654C3D0CED" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{655D481EFA969864}" {
+     UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
+      Name "ANA"
+      Icon "{7D9A08C4F71CB8FC}worlds/Perfk/Images/Faction_Flags/Roundel_of_Afghanistan.edds"
+      m_sNameUpper "ANA"
+     }
+     m_sFactionFlag "{7D9A08C4F71CB8FC}worlds/Perfk/Images/Faction_Flags/Roundel_of_Afghanistan.edds"
+     m_aFriendlyFactionsIds {
+      "US"
+     }
+    }
+   }
+  }
+ }
+}
+PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+   m_killTimer 30
+   m_defaultColor 1 0 0 1
+   m_lineWidth 4
+  }
+ }
+ coords 159.344 97.225 3287.058
+ Points {
+  ShapePoint "{65B4BA0416F97FB7}" {
+   Position -33.565 9.222 -5.103
+  }
+  ShapePoint "{65B4BA04EC23766D}" {
+   Position 455.198 -10.03 111.415
+  }
+  ShapePoint "{65B4BA04E6AD7B0A}" {
+   Position 758.681 -26.297 205.882
+  }
+  ShapePoint "{65B4BA04E1867696}" {
+   Position 1224.973 -37.878 403.768
+  }
+  ShapePoint "{65B4BA04E2FE8827}" {
+   Position 1402.113 -46.857 589.877
+  }
+  ShapePoint "{65B4BA04FC210A68}" {
+   Position 1575.635 -40.853 723.629
+  }
+  ShapePoint "{65B4BA04F6C1BEAC}" {
+   Position 1804.305 -55.874 627.175
+  }
+  ShapePoint "{65B4BA072D902C60}" {
+   Position 1961.004 -71.433 451.024
+  }
+  ShapePoint "{65B4BA04CC8D6174}" {
+   Position 2081.343 -79.777 313.207
+  }
+  ShapePoint "{65B4BA04CFEA934A}" {
+   Position 1981.153 -83.271 251.552
+  }
+  ShapePoint "{65B4BA04CEAF647E}" {
+   Position 1867.954 -83.085 243.008
+  }
+  ShapePoint "{65B4BA04C9B6727A}" {
+   Position 1661.001 -24.655 305.989
+  }
+  ShapePoint "{65B4BA04C61D6A12}" {
+   Position 1538.775 -53.458 209.756
+  }
+  ShapePoint "{65B4BA04C0D800F3}" {
+   Position 1431.416 -54.69 141.436
+  }
+  ShapePoint "{65B4BA04DDC87693}" {
+   Position 1425.844 -6.494 -101.473
+  }
+  ShapePoint "{65B4BA04DC0734ED}" {
+   Position 1073.136 -13.662 -236.215
+  }
+  ShapePoint "{65B4BA04DFB9AB40}" {
+   Position 590.356 -17.646 -353.216
+  }
+  ShapePoint "{65B4BA04D9D2DDF1}" {
+   Position -57.833 37.873 -361.241
+  }
+ }
+}
+TILW_MissionFrameworkEntity MissionFramework : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 3127.465 31.703 3227.127
+ m_missionEvents {
+  TILW_MissionEvent "{6572FC0A9ECE093E}" {
+   m_name "Start_Mission"
+   m_instructions {
+    TILW_SetFlagInstruction "{6572FC08F9A97460}" {
+     m_executionDelay 1
+     m_flagName "Mission_Started"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6572FC0D05CAF1BF}" {
+    m_invertTerm 1
+    m_flagName "Mission_Started"
+   }
+  }
+  TILW_MissionEvent "{65732C275FAF3F20}" {
+   m_name "RunOverRoad"
+   m_instructions {
+    TILW_SpawnGroupInstruction "{65732C275FAF3C9B}" {
+     m_executionDelay 0
+     m_prefab "{E9969D610C120940}worlds/Perfk/Prefabs/Groups/PK_GC_INS_Afghan_Fireteam_1.et"
+     m_locationName "spawn_Runaway"
+     m_waypointNames {
+      "wp_Runaway"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{65732C27250F66A6}" {
+    m_flagName "Runaway_flag"
+   }
+  }
+  TILW_MissionEvent "{65B6ACED3569BDCF}" {
+   m_name "Spawn_Hiltop"
+   m_instructions {
+    TILW_SpawnGroupInstruction "{65B6ACED3569BD57}" {
+     m_executionDelay 0
+     m_prefab "{E9969D610C120940}worlds/Perfk/Prefabs/Groups/PK_GC_INS_Afghan_Fireteam_1.et"
+     m_locationName "Spawn_hiltop_1"
+     m_waypointNames {
+      "WP_SD_Hilltop"
+     }
+    }
+    TILW_SpawnGroupInstruction "{6660B0D23D297CD5}" {
+     m_executionDelay 10
+     m_prefab "{9DE1C345404CDCA8}worlds/Perfk/Prefabs/Groups/PK_GC_INS_Afghan_AT_team.et"
+     m_locationName "Spawn_hiltop_1"
+     m_waypointNames {
+      "WP_SD_Hilltop"
+     }
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65B6ACED3569BD58}" {
+    m_operands {
+     TILW_LiteralTerm "{65B6ACED3569BD5B}" {
+      m_flagName "Mission_Started"
+     }
+     TILW_LiteralTerm "{65B6ACED148A094B}" {
+      m_flagName "BluforOnHilltop"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65B6ACE5A7FDC3D8}" {
+   m_name "ambush_BlockedRoadStone"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{65B6ACE5A7FDC3BC}" {
+     m_executionDelay 0
+     m_prefab "{6650B2B969248F4C}Prefabs/Structures/Rock/Afghan_Rock/GraniteCliff_Afghan_03.et"
+     m_locationName "Spawn_ambush_stoneRoad"
+    }
+    TILW_SpawnPrefabInstruction "{65B6ACE5A7FDC3BF}" {
+     m_executionDelay 0
+     m_prefab "{3A3331F61766D055}PrefabsEditable/EffectsModules/Mortar/EffectModule_MortarShell.et"
+     m_locationName "Spawn_ambush_stoneexplosion"
+    }
+    TILW_SendMessageInstruction "{65B6ACE42A5CF6F0}" {
+     m_executionDelay 30
+     m_messageTitle "Intel"
+     m_messageBody "All stations, this is Higher. MSR Toyota is blocked. Recommend reroute via ASR Dodge for return trip. Cause: enemy explosives triggered landslide. Out."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65B6ACE5A7FDC3BA}" {
+    m_operands {
+     TILW_LiteralTerm "{65B6ACE5A7FDC3A1}" {
+      m_flagName "QRF_Arrived"
+     }
+     TILW_LiteralTerm "{65B6ACE5A7FDC3A2}" {
+      m_flagName "Mission_Started"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{6598AE7DFC5D2F78}" {
+   m_name "US Casualty Hint"
+   m_instructions {
+    TILW_SendMessageInstruction "{6598AE7DF3FF1026}" {
+     m_messageTitle "US Casualty 85%"
+     m_messageBody "US Forces have lost more than 85%, GM please consider if the missions should be ended at this time."
+    }
+   }
+   m_condition TILW_LiteralTerm "{6598AE7DCC5990B3}" {
+    m_flagName "US_Casualty_Flag"
+   }
+  }
+  TILW_MissionEvent "{6598AE7DACE18BBE}" {
+   m_name "Time Limit"
+   m_instructions {
+    TILW_SendMessageInstruction "{6598AE7DA17446D0}" {
+     m_executionDelay 3600
+     m_messageTitle "Timelimit"
+     m_messageBody "The 60 min timelimit have been met. GM please consider if the missions should be ended at this time."
+    }
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{6598AE7D03F100EC}" {
+   m_flagName "US_Casualty_Flag"
+   m_factionKey "US"
+   m_casualtyRatio 0.85
+  }
+ }
+ m_metaFlags {
+  TILW_MetaFlag "{6660B0C027848A0D}" {
+   m_flagName "TownSpawnActive"
+   m_definition TILW_DisjunctionTerm "{6660B0C08422C3E1}" {
+    m_operands {
+     TILW_LiteralTerm "{6660B0C0868FE43F}" {
+      m_flagName "Mission_Started"
+     }
+    }
+   }
+  }
+  TILW_MetaFlag "{6662A01F643793FA}" {
+   m_flagName "Ambush_01"
+   m_definition TILW_ConjunctionTerm "{6662A01F643793AE}" {
+    m_operands {
+     TILW_LiteralTerm "{6662A01F643793A8}" {
+      m_flagName "QRF_Arrived"
+     }
+     TILW_LiteralTerm "{6662A01F643793A9}" {
+      m_flagName "Ambush_01_Random"
+     }
+    }
+   }
+  }
+  TILW_MetaFlag "{6662A01DBE4E1347}" {
+   m_flagName "Ambush_01_CloseTrigger"
+   m_definition TILW_ConjunctionTerm "{6662A01D8DF15E48}" {
+    m_operands {
+     TILW_LiteralTerm "{6662A01E9C497520}" {
+      m_flagName "Ambush_01"
+     }
+     TILW_LiteralTerm "{6662A01D952E1BDB}" {
+      m_flagName "Ambush_01_Trigger"
+     }
+    }
+   }
+  }
+  TILW_MetaFlag "{6662A01BE58B34D7}" {
+   m_flagName "Ambush_02"
+   m_definition TILW_ConjunctionTerm "{6662A01BE58B349F}" {
+    m_operands {
+     TILW_LiteralTerm "{6662A01BE58B3499}" {
+      m_flagName "QRF_Arrived"
+     }
+     TILW_LiteralTerm "{6662A01BE58B349B}" {
+      m_flagName "Ambush_02_Random"
+     }
+    }
+   }
+  }
+  TILW_MetaFlag "{6662A01ACAD014A6}" {
+   m_flagName "Ambush_02_CloseTrigger"
+   m_definition TILW_ConjunctionTerm "{6662A01ACAD01404}" {
+    m_operands {
+     TILW_LiteralTerm "{6662A01ACAD01406}" {
+      m_flagName "Ambush_02"
+     }
+     TILW_LiteralTerm "{6662A01ACAD01407}" {
+      m_flagName "Ambush_02_Trigger"
+     }
+    }
+   }
+  }
+  TILW_MetaFlag "{6662A01AF3CB12A9}" {
+   m_flagName "Ambush_03"
+   m_definition TILW_ConjunctionTerm "{6662A01AF3CB121C}" {
+    m_operands {
+     TILW_LiteralTerm "{6662A01AF3CB121E}" {
+      m_flagName "QRF_Arrived"
+     }
+     TILW_LiteralTerm "{6662A01AF3CB1218}" {
+      m_flagName "Ambush_03_Random"
+     }
+    }
+   }
+  }
+  TILW_MetaFlag "{6662A01BE4F68469}" {
+   m_flagName "Ambush_03_CloseTrigger"
+   m_definition TILW_ConjunctionTerm "{6662A01BE4F6842E}" {
+    m_operands {
+     TILW_LiteralTerm "{6662A01BE4F68428}" {
+      m_flagName "Ambush_03"
+     }
+     TILW_LiteralTerm "{6662A01BE4F68429}" {
+      m_flagName "Ambush_03_Trigger"
+     }
+    }
+   }
+  }
+  TILW_MetaFlag "{6662A02C8487D567}" {
+   m_flagName "Ambush_04"
+   m_definition TILW_ConjunctionTerm "{6662A02C8487D52C}" {
+    m_operands {
+     TILW_LiteralTerm "{6662A02C8487D52E}" {
+      m_flagName "QRF_Arrived"
+     }
+     TILW_LiteralTerm "{6662A02C8487D52F}" {
+      m_flagName "Ambush_04_Random"
+     }
+    }
+   }
+  }
+  TILW_MetaFlag "{6662A02C85B6FAE6}" {
+   m_flagName "Ambush_04_CloseTrigger"
+   m_definition TILW_ConjunctionTerm "{6662A02C85B6FAA2}" {
+    m_operands {
+     TILW_LiteralTerm "{6662A02C85B6FAAC}" {
+      m_flagName "Ambush_04"
+     }
+     TILW_LiteralTerm "{6662A02C85B6FAAE}" {
+      m_flagName "Ambush_04_Trigger"
+     }
+    }
+   }
+  }
+  TILW_MetaFlag "{6662A02C9298459E}" {
+   m_flagName "Ambush_05"
+   m_definition TILW_ConjunctionTerm "{6662A02C92984553}" {
+    m_operands {
+     TILW_LiteralTerm "{6662A02C9298455E}" {
+      m_flagName "QRF_Arrived"
+     }
+     TILW_LiteralTerm "{6662A02C9298455F}" {
+      m_flagName "Ambush_05_Random"
+     }
+    }
+   }
+  }
+  TILW_MetaFlag "{6662A02D6DCF5C8C}" {
+   m_flagName "Ambush_05_CloseTrigger"
+   m_definition TILW_ConjunctionTerm "{6662A02D6DCF5C46}" {
+    m_operands {
+     TILW_LiteralTerm "{6662A02D6DCF5C40}" {
+      m_flagName "Ambush_05"
+     }
+     TILW_LiteralTerm "{6662A02D6DCF5C42}" {
+      m_flagName "Ambush_05_Trigger"
+     }
+    }
+   }
+  }
+ }
+ m_randomFlags {
+  TILW_FlagSampling "{6662A01CA979DD7C}" {
+   m_flagNames {
+    "Ambush_01_Random" "Ambush_02_Random" "Ambush_03_Random" "Ambush_04_Random" "Ambush_05_Random"
+   }
+  }
+ }
+}

@@ -1,0 +1,69 @@
+TILW_FactionTriggerEntity cap : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 3452.319 56.608 1915.714
+ m_queryRadius 125
+ m_captureTime 120
+ m_sendStatusMessages 1
+ m_locationName "the bridge"
+ m_flagName "cap"
+ m_drawShapeSurface 0
+ m_ownerFactionKey "GC_NVA"
+ m_ratioThreshold 0.8
+ {
+  PS_ManualMarker nva_marker_obj : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+   coords 0 0 0
+   m_sImageSetGlow ""
+   m_MarkerColor 0 0 0 0.5
+   m_fWorldSize 375
+   m_bVisibleForEmptyFaction 1
+   m_bShowForAnyFaction 1
+  }
+ }
+}
+TILW_MissionFrameworkEntity fw : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ m_missionEvents {
+  TILW_MissionEvent "{664B5C1DCAE2E96F}" {
+   m_name "Major UK Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{664B5C1DD5AC4165}" {
+     m_messageTitle "MAJOR UK VICTORY"
+     m_messageBody "Defending British forces inflicted heavy casualties upon the NVA platoon."
+    }
+   }
+   m_condition TILW_LiteralTerm "{664B5C1C07B639C1}" {
+    m_flagName "nva_cas"
+   }
+  }
+  TILW_MissionEvent "{664B5C1DCF347DA0}" {
+   m_name "NVA Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{664B5C1CEB43ACD6}" {
+     m_messageTitle "NVA VICTORY"
+     m_messageBody "The NVA took control of the bridge."
+    }
+   }
+   m_condition TILW_LiteralTerm "{664B5C1CE6334E35}" {
+    m_flagName "cap"
+   }
+  }
+  TILW_MissionEvent "{664B5C1DCFDA3013}" {
+   m_name "Minor UK Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{664B5C1CA5C2AC2F}" {
+     m_executionDelay 2400
+     m_messageTitle "MINOR UK VICTORY"
+     m_messageBody "NVA forces were delayed significantly."
+    }
+   }
+   m_condition TILW_LiteralTerm "{664B5C1CA624FFBE}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{664B5C1DF54C71C5}" {
+   m_flagName "nva_cas"
+   m_factionKey "GC_NVA"
+   m_casualtyRatio 0.8
+  }
+ }
+}

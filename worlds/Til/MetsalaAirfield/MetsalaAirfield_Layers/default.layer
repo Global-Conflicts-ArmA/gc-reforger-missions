@@ -1,0 +1,103 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 0 0 0
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{65F17CBB722D7067}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 12
+     m_iStartingMinutes 15
+    }
+   }
+  }
+ }
+ m_iFreezeTime 300000
+ m_aFactionRespawnCount {
+  PS_FactionRespawnCount "{65EF2E081E388EB4}" {
+   m_sFactionKey "GC_CDF"
+   m_iCount 5
+  }
+  PS_FactionRespawnCount "{65EF2E081F2FA6A3}" {
+   m_sFactionKey "RHS_AFRF"
+   m_iCount 10
+  }
+ }
+ m_eJIPState Deny
+ {
+  SCR_FactionManager "65F0C491A360DE71" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     UIInfo SCR_FactionUIInfo "{5977478D568C0938}" {
+      Name "VDV"
+      Icon "{51B9E47090841936}UI/Textures/Editor/ContentBrowser/RHS_AFRF_GF_VDV_Icon.edds"
+     }
+    }
+   }
+  }
+ }
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "GC_CDF"
+    }
+    m_lineWidth 5
+   }
+  }
+  coords 7500 102.621 800
+  Points {
+   ShapePoint "{65EEE0A23256D385}" {
+    Position 0 0 0
+   }
+   ShapePoint "{65EEE0A230D14A20}" {
+    Position 0 0 1100
+   }
+   ShapePoint "{65EEE0A205A71317}" {
+    Position -1500 0 1100
+   }
+   ShapePoint "{65EEE0A20E2E0AF3}" {
+    Position -1500 0 0
+   }
+  }
+ }
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_killTimer 40
+    m_lineWidth 7
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+   }
+  }
+  coords 8000 102.621 200
+  Points {
+   ShapePoint "{65EEE0A23256D385}" {
+    Position 0 0 0
+   }
+   ShapePoint "{65EEE0A230D14A20}" {
+    Position 0 0 6800
+   }
+   ShapePoint "{65EEE0A205A71317}" {
+    Position -4000 0 6800
+   }
+   ShapePoint "{65EEE0A20E2E0AF3}" {
+    Position -4000 0 0
+   }
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 4980.606 73.693 6270.59
+ m_fWarnRadius 125
+ m_fZoneRadius 150
+ m_fZoneTeleportedRadius 160
+}

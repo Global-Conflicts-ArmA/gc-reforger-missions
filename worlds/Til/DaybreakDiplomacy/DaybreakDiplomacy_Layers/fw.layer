@@ -1,0 +1,379 @@
+$grp TILW_ExtractionTriggerEntity : "{192ABD6B9232E064}Prefabs/Logic/Triggers/TILW_ExtractionTrigger.et" {
+ hostage_extract {
+  coords 2744.224 64.907 3679.214
+  m_queryRadius 400
+  m_flagName "hostage_extract"
+  m_stopAfterFirstChange 1
+  m_drawShapeSurface 0
+  m_factionKey "CIV"
+ }
+ us_extract {
+  coords 2744.224 64.907 3679.214
+  m_queryRadius 400
+  m_flagName "us_extract"
+  m_stopAfterFirstChange 1
+  m_drawShapeSurface 0
+  m_factionKey "RHS_USAF"
+ }
+}
+TILW_MissionFrameworkEntity fw : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ m_missionEvents {
+  TILW_MissionEvent "{65F3724BD83137A9}" {
+   m_name "Hostages: Both rescued"
+   m_instructions {
+    TILW_SendMessageInstruction "{65F3724511E7FE69}" {
+     m_messageTitle "HOSTAGE OUTCOME"
+     m_messageBody "Delta Force managed to rescue both US diplomats."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65F3724713F5E7CA}" {
+    m_operands {
+     TILW_ConjunctionTerm "{65F372453951129F}" {
+      m_operands {
+       TILW_LiteralTerm "{65F372453FD08065}" {
+        m_flagName "us_extract"
+       }
+       TILW_LiteralTerm "{65F372453CD4FEFE}" {
+        m_flagName "both_rescued"
+       }
+      }
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65F3724A25C9E6FD}" {
+   m_name "Hostages: One rescued"
+   m_instructions {
+    TILW_SendMessageInstruction "{65F37246C5976600}" {
+     m_messageTitle "HOSTAGE OUTCOME"
+     m_messageBody "Delta Force managed to rescue one of the US diplomats, the other was killed."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65F37246E78BD571}" {
+    m_operands {
+     TILW_LiteralTerm "{65F37246EACF048A}" {
+      m_flagName "us_extract"
+     }
+     TILW_LiteralTerm "{65F37246E9563434}" {
+      m_flagName "one_rescued"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65F37245A560A811}" {
+   m_name "Hostages: Both killed"
+   m_instructions {
+    TILW_SendMessageInstruction "{65F37245E56DE112}" {
+     m_messageTitle "HOSTAGE OUTCOME"
+     m_messageBody "Delta Force did not suceed in rescuing the US diplomats, both of them were killed."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65F37245B182B99B}" {
+    m_operands {
+     TILW_ConjunctionTerm "{65F37245BA88140E}" {
+      m_operands {
+       TILW_LiteralTerm "{65F37245B8BD51AF}" {
+        m_flagName "us_extract"
+       }
+       TILW_LiteralTerm "{65F37245B9B2A219}" {
+        m_flagName "both_killed"
+       }
+      }
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65F3724BCE478A33}" {
+   m_name "Delta: High casualties"
+   m_instructions {
+    TILW_SendMessageInstruction "{65F37243432DBD97}" {
+     m_executionDelay 15
+     m_messageTitle "DELTA OUTCOME"
+     m_messageBody "Delta suffered extreme casualties, forcing them to abandon the mission."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65F372439E619B30}" {
+    m_operands {
+     TILW_LiteralTerm "{65F372439CBDE5A0}" {
+      m_flagName "mission_end"
+     }
+     TILW_LiteralTerm "{65F372439FA4AA96}" {
+      m_flagName "us_cas_high"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65F37244696FE022}" {
+   m_name "Delta: Medium casualties"
+   m_instructions {
+    TILW_SendMessageInstruction "{65F372430E162318}" {
+     m_executionDelay 15
+     m_messageTitle "DELTA OUTCOME"
+     m_messageBody "Delta Force sustained significant casualties in the process."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65F3724471A6CA66}" {
+    m_operands {
+     TILW_LiteralTerm "{65F37243372AF411}" {
+      m_flagName "mission_end"
+     }
+     TILW_LiteralTerm "{65F37243340B61AD}" {
+      m_flagName "us_cas_med"
+     }
+     TILW_LiteralTerm "{65F372433AF069D9}" {
+      m_invertTerm 1
+      m_flagName "us_cas_high"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65F37244A25DACA7}" {
+   m_name "Delta: Low casualites"
+   m_instructions {
+    TILW_SendMessageInstruction "{65F3724491B14D86}" {
+     m_executionDelay 15
+     m_messageTitle "DELTA OUTCOME"
+     m_messageBody "Delta Force did not take overly high casualties during the operation."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65F37244BC984A99}" {
+    m_operands {
+     TILW_LiteralTerm "{65F3724483482704}" {
+      m_flagName "mission_end"
+     }
+     TILW_LiteralTerm "{65F37244807A9BB3}" {
+      m_invertTerm 1
+      m_flagName "us_cas_med"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65F3724A39FF122A}" {
+   m_name "Extremists: High casualties"
+   m_instructions {
+    TILW_SendMessageInstruction "{65F37247945302F9}" {
+     m_executionDelay 25
+     m_messageTitle "EXTREMIST OUTCOME"
+     m_messageBody "Nearly all members of the extremist group were eliminated, bringing an decisive end to its activities."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65F37247BB1098AF}" {
+    m_operands {
+     TILW_ConjunctionTerm "{65F37247BD8FC53D}" {
+      m_operands {
+       TILW_LiteralTerm "{65F37247810B0710}" {
+        m_flagName "mission_end"
+       }
+       TILW_LiteralTerm "{65F37247860DC754}" {
+        m_flagName "sep_cas_high"
+       }
+      }
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65F3724A69B1BA74}" {
+   m_name "Extremists: Medium casualties"
+   m_instructions {
+    TILW_SendMessageInstruction "{65F372476025D08E}" {
+     m_executionDelay 25
+     m_messageTitle "EXTREMIST OUTCOME"
+     m_messageBody "The hostage takers took significant casualties, but a fair share survived the encounter."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65F372474E55ECDD}" {
+    m_operands {
+     TILW_LiteralTerm "{65F372474C476EA1}" {
+      m_flagName "mission_end"
+     }
+     TILW_LiteralTerm "{65F372474DEE6CC6}" {
+      m_flagName "sep_cas_med"
+     }
+     TILW_LiteralTerm "{65F37247AB1A8FAB}" {
+      m_invertTerm 1
+      m_flagName "sep_cas_high"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65F372485097B981}" {
+   m_name "Extremists: Low casualties"
+   m_instructions {
+    TILW_SendMessageInstruction "{65F3724883A1FA69}" {
+     m_executionDelay 25
+     m_messageTitle "EXTREMIST OUTCOME"
+     m_messageBody "The hostage takers got off lightly, managing to avoid significant losses for the time being."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65F37248A925D0A6}" {
+    m_operands {
+     TILW_LiteralTerm "{65F37248AF0F800A}" {
+      m_flagName "mission_end"
+     }
+     TILW_LiteralTerm "{65F37248AD4B083C}" {
+      m_invertTerm 1
+      m_flagName "sep_cas_med"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{6602E4EA3A9EE824}" {
+   m_name "Delete recon 1"
+   m_instructions {
+    TILW_DeleteEntitiesInstruction "{6602E4EA4B21B64F}" {
+     m_executionDelay 0
+     m_entityNames {
+      "us_team_4_1" "marker_rec1"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{6602E4EA3E500901}" {
+    m_flagName "rec1"
+   }
+   m_pregameEvent 1
+  }
+  TILW_MissionEvent "{6602E4EA1833C9F5}" {
+   m_name "Delete recon 2"
+   m_instructions {
+    TILW_DeleteEntitiesInstruction "{6602E4EA5010752B}" {
+     m_executionDelay 0
+     m_entityNames {
+      "us_team_4_2" "marker_rec2"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{6602E4EA1DEB9C66}" {
+    m_flagName "rec2"
+   }
+   m_pregameEvent 1
+  }
+  TILW_MissionEvent "{66070218616A19C7}" {
+   m_name "Delete recon 3"
+   m_instructions {
+    TILW_DeleteEntitiesInstruction "{660702185B7FED0B}" {
+     m_executionDelay 0
+     m_entityNames {
+      "us_team_4_3" "marker_rec3"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{660702186BB8C5A4}" {
+    m_flagName "rec3"
+   }
+   m_pregameEvent 1
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{65F3725E835DED39}" {
+   m_flagName "us_cas_high"
+   m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.75
+  }
+  TILW_FactionPlayersKilledFlag "{65F372447B4D4768}" {
+   m_flagName "us_cas_med"
+   m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.25
+  }
+  TILW_FactionPlayersKilledFlag "{65F3724950111C52}" {
+   m_flagName "sep_cas_high"
+   m_factionKey "GC_SEPARATIST"
+   m_casualtyRatio 0.8
+  }
+  TILW_FactionPlayersKilledFlag "{65F37249566D6C56}" {
+   m_flagName "sep_cas_med"
+   m_factionKey "GC_SEPARATIST"
+   m_casualtyRatio 0.4
+  }
+ }
+ m_metaFlags {
+  TILW_MetaFlag "{65F3724A572FB1E0}" {
+   m_flagName "both_rescued"
+   m_definition TILW_ConjunctionTerm "{65F3724AA91D147B}" {
+    m_operands {
+     TILW_LiteralTerm "{65F3724AAC089C61}" {
+      m_flagName "hostage_extract"
+     }
+     TILW_LiteralTerm "{65F3724ABF5D98F1}" {
+      m_invertTerm 1
+      m_flagName "bm1_killed"
+     }
+     TILW_LiteralTerm "{65F3724A82B62B2A}" {
+      m_invertTerm 1
+      m_flagName "bm2_killed"
+     }
+    }
+   }
+  }
+  TILW_MetaFlag "{65F3724AF2CF82F3}" {
+   m_flagName "one_rescued"
+   m_definition TILW_ConjunctionTerm "{65F3724AC5DFB2E3}" {
+    m_operands {
+     TILW_LiteralTerm "{65F3724AC8145F08}" {
+      m_flagName "hostage_extract"
+     }
+     TILW_MatchjunctionTerm "{65F3724AD21641D3}" {
+      m_operands {
+       TILW_LiteralTerm "{65F3724AD4485845}" {
+        m_flagName "bm1_killed"
+       }
+       TILW_LiteralTerm "{65F3724ADB48247E}" {
+        m_flagName "bm2_killed"
+       }
+      }
+     }
+    }
+   }
+  }
+  TILW_MetaFlag "{65F37249CE496783}" {
+   m_flagName "both_killed"
+   m_definition TILW_ConjunctionTerm "{65F37249D1B0BCC6}" {
+    m_operands {
+     TILW_LiteralTerm "{65F37249D4CA95B9}" {
+      m_flagName "bm1_killed"
+     }
+     TILW_LiteralTerm "{65F37249DA511F8E}" {
+      m_flagName "bm2_killed"
+     }
+    }
+   }
+  }
+  TILW_MetaFlag "{65F37249EE17B673}" {
+   m_flagName "mission_end"
+   m_definition TILW_DisjunctionTerm "{65F37249F4DF8968}" {
+    m_operands {
+     TILW_LiteralTerm "{65F37248093E5C6B}" {
+      m_flagName "us_cas_high"
+     }
+     TILW_ConjunctionTerm "{65F372481EB2D8E7}" {
+      m_operands {
+       TILW_LiteralTerm "{65F3724863877339}" {
+        m_flagName "us_extract"
+       }
+       TILW_DisjunctionTerm "{65F372486B619806}" {
+        m_operands {
+         TILW_LiteralTerm "{65F37248762C37F6}" {
+          m_flagName "both_rescued"
+         }
+         TILW_LiteralTerm "{65F3724871083A5D}" {
+          m_flagName "one_rescued"
+         }
+         TILW_LiteralTerm "{65F3724870420412}" {
+          m_flagName "both_killed"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ m_randomFlags {
+  TILW_FlagSampling "{6602E4EA76E40736}" {
+   m_flagNames {
+    "rec1" "rec2" "rec3"
+   }
+   m_k 2
+  }
+ }
+}

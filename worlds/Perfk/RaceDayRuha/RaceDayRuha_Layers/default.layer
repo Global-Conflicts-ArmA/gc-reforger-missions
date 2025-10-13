@@ -1,0 +1,103 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 6022.944 59.5 4140.025
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 5518.984 58.188 4519.761
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 6
+  }
+ }
+ coords 5513.636 58.224 4518.457
+ m_iFreezeTime 60000
+ m_eJIPState Deny
+}
+$grp GenericEntity : "{0831D4051CEB3EC1}Prefabs/Props/Airport/JetBlastDeflector_01/JetBlastDeflector_E_01.et" {
+ {
+  coords 7719.703 79.539 6508.509
+  angleX 17.828
+  angleY 110.152
+ }
+ {
+  coords 7718.207 79.539 6504.432
+  angleX 17.828
+  angleY 110.152
+ }
+ {
+  coords 7716.692 79.539 6500.301
+  angleX 17.828
+  angleY 110.152
+ }
+}
+PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ coords 7721.635 80.729 6527.704
+ m_sTitle "Mission Overview"
+ m_sTextData "This is a LOL race mission, your objective is to get to the finish line."\
+ "There will be green arrows showing the way at intersections."\
+ "You spawn inside a fenced area. The fences are removed when the setup timer is done. The race is LIVE once the fences are down!"\
+ ""\
+ "Route is marked by the AO limit."\
+ "There are two simple rules: Dont cross through the AO limit. and you must be on your bike when crossing the finish line"\
+ ""\
+ "At the finish line, there will be a flag, this can teleport you back to the start where 10 AH-6 with guns and rockets await you, feel free to clean up the slow competition. But please dont kill anyone that entered the last racetrack. Thanks"\
+ ""\
+ "Setup timer: 2 min"\
+ ""\
+ "Take any Motorbike (it may start with the handbrake on, look down at your feet and interact with the “cancel handbrake”)"\
+ ""\
+ "A message will appear when the first player reaches the airfield. GM´s should give players a few minutes and then call the mission."\
+ ""\
+ "Mission makers, you are welcome to expand on the race functinality like adding checkpoints or race timers etc."\
+ ""\
+ "Mission by Perfk"\
+ "Updated: 2025-10-09"
+ m_bEmptyFactionVisibility 1
+ m_bShowForAnyFaction 1
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 2812.235 400.188 1740.421
+ m_missionEvents {
+  TILW_MissionEvent "{6664B56611AE97FF}" {
+   m_name "RemoveFence"
+   m_instructions {
+    TILW_DeleteEntitiesInstruction "{6664B566E4C323FE}" {
+     m_executionDelay 60
+     m_entityNames {
+      "fence_1" "fence_2" "fence_3" "fence_4" "fence_5" "fence_6" "fence_7" "fence_8" "fence_9" "fence_10" "fence_11" "fence_12" "fence_13" "fence_14" "fence_15" "fence_16" "fence_17" "fence_18" "fence_19" "fence_20" "fence_21" "fence_22" "fence_23" "fence_24" "fence_25" "fence_26" "fence_27" "fence_28" "fence_29" "fence_30" "fence_31" "fence_32" "fence_33" "fence_34" "fence_35" "fence_36" "fence_37" "fence_38" "fence_39" "fence_40" "fence_41" "fence_42" "fence_43" "fence_44"
+     }
+    }
+    TILW_SendMessageInstruction "{6664B56722D6CC5F}" {
+     m_executionDelay 122
+     m_messageTitle "RACE RACE RACE"
+     m_messageBody "RACE RACE RACE"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6664B567E37B6B96}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{6664B56D36864AEF}" {
+   m_instructions {
+    TILW_SendMessageInstruction "{6664B56D0A29E963}" {
+     m_executionDelay 0
+     m_messageTitle "WINNER"
+     m_messageBody "The first player is across the finish line!"
+    }
+    TILW_SendMessageInstruction "{6664B56DA651136B}" {
+     m_executionDelay 15
+     m_messageTitle "GM's decision"
+     m_messageBody "GM's, please give the other slowpokes a few minutes to try and finish before selecting the next mission."
+    }
+   }
+   m_condition TILW_LiteralTerm "{6664B56D0E1FFB87}" {
+    m_flagName "RACEFIRST"
+   }
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity : "{EF72FA7CD87618D5}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneSmall.et" {
+ coords 6075.257 60.022 4258.184
+ m_iWarningType SINGLE_PLAYER
+}

@@ -1,0 +1,234 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F9E52831}" {
+     NavmeshFile "{AD5F99CD7C59D5E0}worlds/GameMaster/Navmeshes/GM_Eden.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F3B4EE8A}" {
+     NavmeshFile "{C35ECF3276824654}worlds/GameMaster/Navmeshes/GM_Eden_vehicles.nmn"
+    }
+   }
+  }
+ }
+ coords 3643.909 4.414 3628.102
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 3639.944 4.869 3622.751
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{65EB56D41E5AAAAE}" {
+     m_sWeatherPresetName "Heavy Wet Fog"
+     m_iStartingHour 7
+     m_iStartingMinutes 45
+    }
+   }
+   m_bUseSpecifiedDate 1
+   m_iSetDay 14
+   m_iSetMonth 10
+   m_iSetYear 2025
+  }
+ }
+ coords 3641.458 4.592 3618.494
+}
+PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_MapShapeComponent "{6508F54F9B461198}" {
+   Enabled 1
+  }
+ }
+ coords 3387.354 0 3207.151
+ Points {
+  ShapePoint "{65ED5B805D575380}" {
+   Position -619.161 0 623.799
+  }
+  ShapePoint "{65ED5B805FFCFCFD}" {
+   Position -1513.171 0 -1462.912
+  }
+  ShapePoint "{65ED5B805F3766C7}" {
+   Position 311.402 0 -2128.832
+  }
+  ShapePoint "{65ED5B805852BC0F}" {
+   Position 706.597 0 214.879
+  }
+ }
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ {
+  coords 3079.249 7.768 2103.233
+  m_queryRadius 15
+  m_captureTime 180
+  m_sendStatusMessages 1
+  m_locationName "the first safehouse"
+  m_flagName "UK_CAP_1"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "UK"
+ }
+ {
+  coords 2893.276 8.043 2184.715
+  m_queryRadius 15
+  m_captureTime 180
+  m_sendStatusMessages 1
+  m_locationName "the second safehouse"
+  m_flagName "UK_CAP_2"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "UK"
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 3635.31 5.456 3619.698
+ m_missionEvents {
+  TILW_MissionEvent "{65ED5B8F540919DE}" {
+   m_name "IRA_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{65ED5B8F2A5B9B0A}" {
+     m_messageTitle "BRITISH VICTORY"
+     m_messageBody "All IRA defenders have been eliminated."
+    }
+    TILW_EndGameInstruction "{65ED5B8F2209A9B8}" {
+     m_executionDelay 15
+     m_factionKey "UK"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65ED5B8F52D32362}" {
+    m_operands {
+     TILW_LiteralTerm "{65ED5B8F539C7FED}" {
+      m_flagName "IRA_AI_KIA"
+     }
+     TILW_LiteralTerm "{65ED5B8F2F9E8C6E}" {
+      m_flagName "IRA_P_KIA"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65ED5B8F383622BC}" {
+   m_name "UK_CAP"
+   m_instructions {
+    TILW_SendMessageInstruction "{65ED5B8F2A5B9B0A}" {
+     m_messageTitle "BRITISH VICTORY"
+     m_messageBody "Both safehouses have been secured."
+    }
+    TILW_EndGameInstruction "{65ED5B8F2209A9B8}" {
+     m_executionDelay 15
+     m_factionKey "UK"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65ED5B8F52D32362}" {
+    m_operands {
+     TILW_LiteralTerm "{65ED5B8F539C7FED}" {
+      m_flagName "UK_CAP_1"
+     }
+     TILW_LiteralTerm "{65ED5B8F2F9E8C6E}" {
+      m_flagName "UK_CAP_2"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65ED5B8F043A5905}" {
+   m_name "UK_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{65ED5B8F078A5770}" {
+     m_messageTitle "IRA VICTORY"
+     m_messageBody "British forces have taken significant casualties."
+    }
+    TILW_EndGameInstruction "{65ED5B8F17C2494A}" {
+     m_executionDelay 15
+     m_factionKey "GC_IRA"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65ED5B8FEC9634B5}" {
+    m_flagName "UK_KIA"
+   }
+  }
+  TILW_MissionEvent "{65ED5B8FA0A9658E}" {
+   m_name "TIME_LIMIT"
+   m_instructions {
+    TILW_SendMessageInstruction "{65ED5B8F078A5770}" {
+     m_executionDelay 3005
+     m_messageTitle "IRA VICTORY"
+     m_messageBody "Time limit reached."
+    }
+    TILW_EndGameInstruction "{65ED5B8F17C2494A}" {
+     m_executionDelay 3015
+     m_factionKey "GC_IRA"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65ED5B8FBCE1FF62}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{65ED5B833D35E17D}" {
+   m_name "ASSIGN_WAYPOINTS"
+   m_instructions {
+    TILW_AssignWaypointsInstruction "{65ED5B833AF0F988}" {
+     m_groupName "OBJ1PHQ"
+     m_waypointNames {
+      "OBJ1PHQWP"
+     }
+     m_clearExisting 1
+    }
+    TILW_AssignWaypointsInstruction "{65ED5B830C17DEF8}" {
+     m_groupName "OBJ1SQD1"
+     m_waypointNames {
+      "OBJ1SQD1WP"
+     }
+     m_clearExisting 1
+    }
+    TILW_AssignWaypointsInstruction "{65ED5B830BABDD9B}" {
+     m_groupName "OBJ1SQD2"
+     m_waypointNames {
+      "OBJ1SQD2WP"
+     }
+     m_clearExisting 1
+    }
+    TILW_AssignWaypointsInstruction "{65ED5B831FEF0B8C}" {
+     m_groupName "OBJ2PHQ"
+     m_waypointNames {
+      "OBJ2PHQWP"
+     }
+     m_clearExisting 1
+    }
+    TILW_AssignWaypointsInstruction "{65ED5B831259CC7E}" {
+     m_groupName "OBJ2SQD1"
+     m_waypointNames {
+      "OBJ2SQD1WP"
+     }
+     m_clearExisting 1
+    }
+    TILW_AssignWaypointsInstruction "{65ED5B83E9040F0B}" {
+     m_groupName "OBJ2SQD2"
+     m_waypointNames {
+      "OBJ2SQD2WP"
+     }
+     m_clearExisting 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{65ED5B83A5F04B21}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionAIKilledFlag "{65ED5B8E1C379735}" {
+   m_flagName "IRA_AI_KIA"
+   m_factionKey "GC_IRA"
+  }
+  TILW_FactionPlayersKilledFlag "{65ED5B8E19ADA00D}" {
+   m_flagName "IRA_P_KIA"
+   m_factionKey "GC_IRA"
+  }
+  TILW_FactionPlayersKilledFlag "{65ED5B8EE276A8EA}" {
+   m_flagName "UK_KIA"
+   m_factionKey "UK"
+   m_casualtyRatio 0.8
+  }
+ }
+}

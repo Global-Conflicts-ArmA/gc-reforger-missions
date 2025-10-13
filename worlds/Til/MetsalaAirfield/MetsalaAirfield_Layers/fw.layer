@@ -1,0 +1,171 @@
+TILW_PrefabSpawnerEntity kh55_flyby : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
+ coords 7036.094 104.132 123.507
+ angleY -100
+ m_prefab "{17B08DA4B050BBFE}Prefabs/Vehicles/Missles/kh55/KH55_CAS.et"
+ m_spawnTimings {
+  120
+ }
+ m_setEntityNames {
+  "cm1"
+ }
+}
+TILW_MissionFrameworkEntity fw : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ m_missionEvents {
+  TILW_MissionEvent "{65EF2E087CAB0ECD}" {
+   m_name "VDV Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{65EF2E084A1F955A}" {
+     m_messageTitle "VDV VICTORY"
+     m_messageBody "The VDV took control of the airfield."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65EF2E08BF684F13}" {
+    m_operands {
+     TILW_LiteralTerm "{65EF2E08BC1A7207}" {
+      m_flagName "cap_n"
+     }
+     TILW_LiteralTerm "{65EF2E08BDFC4E9F}" {
+      m_flagName "cap_s"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65EF2E088DFF8187}" {
+   m_name "CDF Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{65EF2E089C07E288}" {
+     m_messageTitle "CDF VICTORY"
+     m_messageBody "After suffering 80% casualties, the VDV is unable to take control of the airfield."
+    }
+   }
+   m_condition TILW_LiteralTerm "{65EF2E0894AF3256}" {
+    m_flagName "vdv_cas"
+   }
+  }
+  TILW_MissionEvent "{65F0C48A0C8EA105}" {
+   m_name "Mission Start"
+   m_instructions {
+    TILW_DeleteEntitiesInstruction "{65F1444A3DEAB9EC}" {
+     m_executionDelay 150
+     m_entityNames {
+      "cm1"
+     }
+    }
+    TILW_SendMessageInstruction "{65F0C48A15DE5409}" {
+     m_executionDelay 4200
+     m_messageTitle "CDF VICTORY"
+     m_messageBody "The VDV company was unable to secure the airfield before the arrival of CDF reinforcements."
+    }
+   }
+   m_condition TILW_LiteralTerm "{65F0C48A11306C7A}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{65EF2E0873B91E2A}" {
+   m_flagName "vdv_cas"
+   m_factionKey "RHS_AFRF"
+   m_casualtyRatio 0.8
+  }
+ }
+}
+$grp PolylineShapeEntity : "{A0468F86F76FCEE7}Prefabs/Logic/Map/TILW_MapShape.et" {
+ {
+  components {
+   TILW_MapShapeComponent "{6508F5526836BC09}" {
+    m_drawArea 0
+    m_color 0.251 0.502 0 0.333
+    m_drawLine 1
+    m_lineColor 0 0 0 0.66
+    m_lineWidth 8
+   }
+  }
+  coords 6715 96.8 1685
+  angleY 20
+  Points {
+   ShapePoint "{65F17CAE0357C57C}" {
+    Position 0 0 0
+   }
+   ShapePoint "{65F17CAE0621E0B4}" {
+    Position 140 0 0
+   }
+   ShapePoint "{65F17CAE73C1C3B6}" {
+    Position 140 -0.205 -90
+   }
+   ShapePoint "{65F17CAE75EE80A9}" {
+    Position 10 -0.548 -90
+   }
+   ShapePoint "{65F17CAE7F460258}" {
+    Position 10 0.341 -185
+   }
+   ShapePoint "{65F17CAE40F3B9EA}" {
+    Position -85 -1.583 -185
+   }
+   ShapePoint "{65F17CAE5FC78628}" {
+    Position -135 -1 -86
+   }
+   ShapePoint "{65F17CA12D139BCD}" {
+    Position -135 -0.519 -70
+   }
+   ShapePoint "{65F17CAEA1E988A2}" {
+    Position -80 -0.582 0
+   }
+  }
+  {
+   TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+    coords 0 0 0
+    m_sendStatusMessages 1
+    m_locationName "the northern facility"
+    m_flagName "cap_n"
+    m_stopAfterFirstChange 1
+    m_ownerFactionKey "RHS_AFRF"
+   }
+  }
+ }
+ {
+  components {
+   TILW_MapShapeComponent "{6508F5526836BC09}" {
+    m_drawArea 0
+    m_color 0.251 0.502 0 0.333
+    m_drawLine 1
+    m_lineColor 0 0 0 0.66
+    m_lineWidth 8
+   }
+  }
+  coords 6750 106.7 1100
+  Points {
+   ShapePoint "{65EF2E3E9DB4A3FB}" {
+    Position 0 -9.981 100
+   }
+   ShapePoint "{65F129DB429D16BF}" {
+    Position 0 -10.574 50
+   }
+   ShapePoint "{65EF2E3D17A30412}" {
+    Position -50 -10.044 0
+   }
+   ShapePoint "{65EF2E3D72B29AF4}" {
+    Position -250 -10.474 0
+   }
+   ShapePoint "{65EF2E3EC9436E38}" {
+    Position -450 -10.556 50
+   }
+   ShapePoint "{65EF2E3D2FF139E9}" {
+    Position -450 -10.044 200
+   }
+   ShapePoint "{65EF2E3D2C9F34F3}" {
+    Position 0 -10.044 200
+   }
+  }
+  {
+   TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+    coords 105.58 -13.729 535.276
+    m_sendStatusMessages 1
+    m_locationName "the southern area"
+    m_flagName "cap_s"
+    m_stopAfterFirstChange 1
+    m_ownerFactionKey "RHS_AFRF"
+   }
+  }
+ }
+}

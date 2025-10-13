@@ -1,0 +1,94 @@
+GenericEntity : "{2351FA1249150AE6}Prefabs/Props/Military/Arsenal/AmmoBoxes/USSR/AmmoBoxArsenal_Mortar_USSR.et" {
+ components {
+  SCR_ResourceComponent "{5E5ABDF371AE8B21}" {
+   Enabled 0
+  }
+ }
+ coords 3486.436 312.468 2833.519
+}
+SCR_AIGroup gr_nva_mortar : "{9AF7BEDB33D0E147}Prefabs/Groups/OPFOR/GC_NVA/P/Group_GC_NVA_MortarCrew_P.et" {
+ components {
+  PS_GroupCallsignAssigner "{65894BA68EC2E361}" {
+   m_iCompanyCallsign 1
+   m_iPlatoonCallsign 5
+   m_iSquadCallsign 1
+  }
+ }
+ coords 3494.785 312.409 2840.692
+ angleY -176.423
+}
+$grp SCR_AIGroup : "{B8BFDDDEEFB02E28}Prefabs/Groups/OPFOR/GC_NVA/P/Group_GC_NVA_VehicleCrew_P.et" {
+ gr_nva_brdm1 {
+  components {
+   PS_GroupCallsignAssigner "{65894BA656D8CD87}" {
+    m_iCompanyCallsign 1
+    m_iPlatoonCallsign 1
+    m_iSquadCallsign 1
+   }
+  }
+  coords 3240.338 253.943 3099.501
+  angleY -58.267
+  m_sCustomNameSet "1st BRDM"
+ }
+ gr_nva_brdm2 {
+  components {
+   PS_GroupCallsignAssigner "{65894BA656D8CD87}" {
+    m_iCompanyCallsign 1
+    m_iPlatoonCallsign 1
+    m_iSquadCallsign 3
+   }
+  }
+  coords 3228.458 255.895 3081.882
+  angleY 71.332
+  m_sCustomNameSet "2nd BRDM"
+ }
+}
+Turret : "{D1FFE458E8AC4BDB}Prefabs/Weapons/Mortars/2B14/Mortar_2B14.et" {
+ coords 3482.307 312.365 2833.022
+}
+$grp Vehicle : "{EC4811AC7C17DC7E}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2_NVA.et" {
+ BRDM2_1 {
+  components {
+   RHS_GroupMaterialController "{6584F7946A30454E}" {
+    m_aGroups {
+     RHS_MaterialGroupProperties "{6584F7946ECC1310}" {
+      m_iTextureID 2
+     }
+     RHS_MaterialGroupProperties "{6584F7946F67236B}" {
+      m_iTextureID 2
+     }
+     RHS_MaterialGroupProperties "{6584F7946F344A1E}" {
+      m_iTextureID 2
+     }
+    }
+   }
+  }
+  coords 3233.832 255.559 3083.545
+  angleX -3.942
+  angleY -17.042
+  angleZ -0.661
+  m_sAttachmentGroupName "gr_nva_brdm1"
+ }
+ BRDM2_2 {
+  components {
+   RHS_GroupMaterialController "{6584F7946A30454E}" {
+    m_aGroups {
+     RHS_MaterialGroupProperties "{6584F7946ECC1310}" {
+      m_iTextureID 2
+     }
+     RHS_MaterialGroupProperties "{6584F7946F67236B}" {
+      m_iTextureID 2
+     }
+     RHS_MaterialGroupProperties "{6584F7946F344A1E}" {
+      m_iTextureID 1
+     }
+    }
+   }
+  }
+  coords 3236.623 253.836 3101.809
+  angleX -3.991
+  angleY 29.784
+  angleZ -0.224
+  m_sAttachmentGroupName "gr_nva_brdm2"
+ }
+}

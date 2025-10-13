@@ -1,0 +1,367 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{65CD2CEC61969E79}" {
+     NavmeshFile "{C54FCF0DC85B9642}worlds/Gamemaster/Navmeshes/GM_Ruha_navmesh_soldiers.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{301510D49B59DE2C}worlds/Gamemaster/Navmeshes/GM_Ruha_navmesh_vehicles.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{806B3036EA17E548}worlds/Gamemaster/Navmeshes/GM_Ruha_navmesh_lowres.nmn"
+    }
+   }
+  }
+ }
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 7119.408 63.938 5095.001
+}
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{65CA0B9D666C0EE8}" {
+     m_sWeatherPresetName "Rainy"
+     m_iStartingHour 4
+     m_iStartingMinutes 30
+    }
+   }
+   m_bUseSpecifiedDate 1
+  }
+ }
+ coords 7123.291 63.878 5093.458
+ m_iFreezeTime 300000
+ m_bFreezeTimeShootingForbiden 1
+ m_safeStartTime 300
+ {
+  SCR_FactionManager "65C831C7ACD5AE5D" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1 Bronegruppa"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{64E2F896E232A50B}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{64E2F896FFC45153}" {
+        m_sCallsign "3"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ {
+  coords 7131.268 67.206 4152.088
+  m_sTitle "Summary"
+  m_sTextData "British Royal Marine troop attacks Russian held hamlet."\
+  ""\
+  "Setup Timer: 5 mins"\
+  ""\
+  "Time: 0430 (Sunrise)"\
+  ""\
+  "Weather: Rain"
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 7131.268 67.206 4152.088
+  m_sTitle "Win Conditions"
+  m_sTextData "100% of one faction killed; other faction victory - End Game Instruction"\
+  ""\
+  "OBJ captured by Brits with no Russians inside - Message Instruction; Brit Victory"\
+  ""\
+  "One faction reduced to combat ineffective strength - GM Judgement"\
+  ""
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 9
+ }
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "UK"
+    }
+    m_visibility FACTION
+    m_defaultColor 0 0.251 1 1
+    m_useFactionColor 0
+    m_lineWidth 5
+   }
+  }
+  coords 6570.873 65.388 3776.853
+  Points {
+   ShapePoint "{65C635DF7AB86ECD}" {
+    Position -335.707 -2.732 -5.178
+   }
+   ShapePoint "{65C635DF7CA24D8C}" {
+    Position 464.224 17.506 -527.903
+   }
+   ShapePoint "{65C635DEB1F9CF24}" {
+    Position 740.366 14.094 -239.443
+   }
+   ShapePoint "{65C635DEBB0EE302}" {
+    Position 917.491 13.656 4.661
+   }
+   ShapePoint "{65C635DECBBEA70C}" {
+    Position 1055.734 14.756 277.339
+   }
+   ShapePoint "{65C635DEF744F7CB}" {
+    Position 1091.907 14.112 608.07
+   }
+   ShapePoint "{65C635DE8FA0BF67}" {
+    Position 1282.586 17.638 932.779
+   }
+   ShapePoint "{65C635DE9AE7D0F1}" {
+    Position 488.06 -2.544 1535.667
+   }
+   ShapePoint "{65C635DEE0D6C47A}" {
+    Position 326.49 -3.326 1113.773
+   }
+   ShapePoint "{65C635DEE38132CE}" {
+    Position 138.259 -5.406 724.858
+   }
+   ShapePoint "{65C635DEE63FE30B}" {
+    Position -64.069 -4.318 386.656
+   }
+  }
+  LineColor 0 0.251 1 1
+ }
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "USSR"
+    }
+    m_visibility FACTION
+    m_defaultColor 1 0 0 1
+    m_useFactionColor 0
+    m_lineWidth 5
+   }
+  }
+  coords 6780.806 66.096 3833.746
+  Points {
+   ShapePoint "{65C635DCD62E1A99}" {
+    Position 254.294 16.789 -584.751
+   }
+   ShapePoint "{65C635DC2C8EEBB3}" {
+    Position 530.259 13.37 -296.177
+   }
+   ShapePoint "{65C635DC31844D55}" {
+    Position 707.439 12.945 -52.17
+   }
+   ShapePoint "{65C635DC360BC157}" {
+    Position 521.469 7.197 101.78
+   }
+   ShapePoint "{65C635DC384B1AA3}" {
+    Position 248.995 -0.247 309.265
+   }
+   ShapePoint "{65C635DC39FB98EC}" {
+    Position 264.589 -0.293 378.747
+   }
+   ShapePoint "{65C635DC00BF98E7}" {
+    Position 188.974 -3.699 466.629
+   }
+   ShapePoint "{65C635DC011E82A6}" {
+    Position 184.174 -4.108 545.899
+   }
+   ShapePoint "{65C635DC03A366CF}" {
+    Position 108.945 -7.036 618.798
+   }
+   ShapePoint "{65C635DC07DE1877}" {
+    Position -82.086 -6.19 650.565
+   }
+   ShapePoint "{65C635DC0E040E27}" {
+    Position -273.932 -5.025 329.712
+   }
+   ShapePoint "{65C635DC13D6CAAC}" {
+    Position -545.635 -3.44 -62.07
+   }
+  }
+ }
+}
+TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 6730.156 68.917 3657.377
+ m_queryRadius 125
+ m_flagName "OBJ_CAP"
+ m_ownerFactionKey "UK"
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 6698.36 64.917 3899.486
+ m_missionEvents {
+  TILW_MissionEvent "{65C83543435D2AEB}" {
+   m_name "UK Killed"
+   m_instructions {
+    TILW_EndGameInstruction "{65C835435689EA81}" {
+     m_factionKey "USSR"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65C835435F33BFAD}" {
+    m_flagName "UK_Killed"
+   }
+  }
+  TILW_MissionEvent "{65C8354344981AF0}" {
+   m_name "USSR Killed"
+   m_instructions {
+    TILW_EndGameInstruction "{65C83542AFC9FD9A}" {
+     m_factionKey "UK"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65C83542AD5A784A}" {
+    m_flagName "USSR_Killed"
+   }
+  }
+  TILW_MissionEvent "{65C8354344DD0E3C}" {
+   m_name "OBJ Captured"
+   m_instructions {
+    TILW_SendMessageInstruction "{65C8354291055053}" {
+     m_messageTitle "OBJ Captured"
+     m_messageBody "British forces have captured the objective."
+    }
+   }
+   m_condition TILW_LiteralTerm "{65C83542BD29AA49}" {
+    m_flagName "OBJ_CAP"
+   }
+  }
+  TILW_MissionEvent "{65D9513A8E1C0871}" {
+   m_name "Time Limit"
+   m_instructions {
+    TILW_EndGameInstruction "{65D9513A9D80E4ED}" {
+     m_executionDelay 3900
+    }
+    TILW_SendMessageInstruction "{65D9513AC2F4273B}" {
+     m_executionDelay 3000
+     m_messageTitle "Time Limit Approaching"
+     m_messageBody "You have 15 minutes left."
+    }
+   }
+   m_condition TILW_LiteralTerm "{65D9513AE28EB988}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{65C835436F294D60}" {
+   m_flagName "UK_Killed"
+   m_factionKey "UK"
+  }
+  TILW_FactionPlayersKilledFlag "{65C8354378C10216}" {
+   m_flagName "USSR_Killed"
+   m_factionKey "USSR"
+  }
+ }
+}
+PolylineShapeEntity : "{A0468F86F76FCEE7}Prefabs/Logic/Map/TILW_MapShape.et" {
+ components {
+  TILW_MapShapeComponent "{6508F5526836BC09}" {
+   m_color 0 0 0 0.844
+   m_invert 1
+  }
+ }
+ coords 6287.623 63.609 3579.807
+ Points {
+  ShapePoint "{65C83543C911A81C}" {
+   Position -151.207 -1.91 187.289
+  }
+  ShapePoint "{65C83543CA63A14A}" {
+   Position 836.687 29.15 -493.464
+  }
+  ShapePoint "{65C83543CDF28BFE}" {
+   Position 1792.503 25.263 1058.746
+  }
+  ShapePoint "{65C83543CE4B226B}" {
+   Position 716.929 -1.359 1831.403
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 7123.995 63.867 5093.46
+}
+$grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ {
+  coords 7366.406 64.344 4907.773
+  m_sImageSet "{8479B3B5347DF5CF}UI/Imagesets/MilitarySymbol/ID_D.imageset"
+  m_sImageSetGlow ""
+  m_MarkerColor 0 0.251 1 1
+  m_sQuadName "Friend_Land"
+  m_fWorldSize 200
+  m_aVisibleForFactions {
+   ""
+  }
+  m_bVisibleForEmptyFaction 1
+  m_iZOrder 1
+ }
+ {
+  coords 7366.406 64.344 4907.773
+  m_sImageSet "{8479B3B5347DF5CF}UI/Imagesets/MilitarySymbol/ID_D.imageset"
+  m_sImageSetGlow ""
+  m_MarkerColor 0 0.251 1 0.294
+  m_sQuadName "Friend_Land_Bcg"
+  m_fWorldSize 200
+  m_aVisibleForFactions {
+   ""
+  }
+  m_bVisibleForEmptyFaction 1
+  m_iZOrder -1
+  m_bringToFront 0
+ }
+ {
+  coords 7366.404 64.344 4965.743
+  m_sImageSet "{17F77EFE27CABC03}UI/Imagesets/MilitarySymbol/AMP.imageset"
+  m_sImageSetGlow ""
+  m_MarkerColor 0 0.251 1 1
+  m_sQuadName "3"
+  m_fWorldSize 75
+  m_aVisibleForFactions {
+   ""
+  }
+  m_bVisibleForEmptyFaction 1
+  m_iZOrder 1
+ }
+ {
+  coords 7366.406 64.344 4907.773
+  m_sImageSet "{27F2439D610D02B3}UI/Imagesets/MilitarySymbol/ICO_Land.imageset"
+  m_sImageSetGlow ""
+  m_MarkerColor 0 0.251 1 1
+  m_sQuadName "Infantry_Friend"
+  m_fWorldSize 200
+  m_aVisibleForFactions {
+   ""
+  }
+  m_bVisibleForEmptyFaction 1
+  m_iZOrder 1
+ }
+ {
+  coords 6730.156 68.917 3657.377
+  angleY 0
+  m_sImageSetGlow ""
+  m_MarkerColor 0 0 0 0.875
+  m_fWorldSize 375
+  m_bVisibleForEmptyFaction 1
+  m_iZOrder -3
+  m_bShowForAnyFaction 1
+  m_bringToFront 0
+ }
+}

@@ -1,0 +1,167 @@
+$grp SCR_AIGroup : "{2BA4FF1232A6371C}Prefabs/Groups/OPFOR/GC_NVA/Group_GC_NVA_Base.et" {
+ mi24crew {
+  components {
+   PS_GroupCallsignAssigner "{662D2CAAD34A36AB}" {
+    m_iSquadCallsign 6
+   }
+  }
+  coords 5209.04 69.89 7505.967
+  angleX 0.595
+  angleY -138.309
+  angleZ -0.669
+  m_aUnitPrefabSlots {
+   "{E3D02636057FC2B4}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Pilot_P.et" "{E3CF674456A804A1}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Aircrew_P.et"
+  }
+  m_sCustomNameSet "1st Mi-24"
+ }
+ t72crew1 {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "line"
+   }
+   PS_GroupCallsignAssigner "{660A03A3B6EF351F}" {
+    m_iSquadCallsign 2
+   }
+  }
+  coords 7142.254 63.063 5554.151
+  angleY -74.426
+  m_aUnitPrefabSlots {
+   "{FAA88FDED9B93B93}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Commander_P.et" "{46122282EBE905E0}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Gunner_P.et" "{9766DC8C4E69A883}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Driver_P.et"
+  }
+  m_sCustomNameSet "1st Tank"
+ }
+ t72crew2 {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "line"
+   }
+   PS_GroupCallsignAssigner "{660A03A3B6EF351F}" {
+    m_iSquadCallsign 3
+   }
+  }
+  coords 7146.601 63.063 5569.751
+  angleY -74.426
+  m_aUnitPrefabSlots {
+   "{FAA88FDED9B93B93}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Commander_P.et" "{46122282EBE905E0}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Gunner_P.et" "{9766DC8C4E69A883}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Driver_P.et"
+  }
+  m_sCustomNameSet "2nd Tank"
+ }
+ t72crew3 {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "line"
+   }
+   PS_GroupCallsignAssigner "{660A03A3B6EF351F}" {
+    m_iSquadCallsign 4
+   }
+  }
+  coords 7151.134 63.031 5586.013
+  angleY -74.426
+  m_aUnitPrefabSlots {
+   "{FAA88FDED9B93B93}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Commander_P.et" "{46122282EBE905E0}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Gunner_P.et" "{9766DC8C4E69A883}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Driver_P.et"
+  }
+  m_sCustomNameSet "3rd Tank"
+ }
+ mi24crew2 {
+  components {
+   PS_GroupCallsignAssigner "{662D2CAAD34A36AB}" {
+    m_iSquadCallsign 7
+   }
+  }
+  coords 5169.97 71.368 7480.474
+  angleX 1.264
+  angleY -138.304
+  angleZ -0.073
+  m_aUnitPrefabSlots {
+   "{E3D02636057FC2B4}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Pilot_P.et" "{E3CF674456A804A1}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Aircrew_P.et"
+  }
+  m_sCustomNameSet "2nd Mi-24"
+ }
+}
+$grp Vehicle : "{2FA364D8E326CB3C}Prefabs/Vehicles/Helicopters/Mi24/Mi24P_armed_9M114.et" {
+ Mi24P_armed_9M1 {
+  coords 5197.167 70.362 7498.5
+  angleX -0.293
+  angleY 145.01
+  angleZ -1.979
+  m_sAttachmentGroupName "mi24crew"
+ }
+ Mi24P_armed_9M2 {
+  coords 5158.097 71.67 7473.008
+  angleX 0.22
+  angleY 144.999
+  angleZ -1.247
+  m_sAttachmentGroupName "mi24crew2"
+ }
+}
+$grp Tank : "{83FC98FFD5D48825}Prefabs/Vehicles/Tracked/T-72A/T72A_NVA.et" {
+ T72A_NVA1 {
+  components {
+   RHS_GroupMaterialController "{658AB6326777B95D}" {
+    m_aGroups {
+     RHS_MaterialGroupProperties "{658AB632658732AD}" {
+      m_iTextureID 1
+     }
+     RHS_MaterialGroupProperties "{658AB63265A8D549}" {
+      m_iTextureID 3
+     }
+     RHS_MaterialGroupProperties "{658AB6326548B8DA}" {
+      m_iTextureID 4
+     }
+     RHS_MaterialGroupProperties "{658AB632656B9B60}" {
+      m_iTextureID 1
+     }
+    }
+   }
+  }
+  coords 7132.093 63.063 5557.621
+  angleY -165.749
+  m_sAttachmentGroupName "t72crew1"
+ }
+ T72A_NVA2 {
+  components {
+   RHS_GroupMaterialController "{658AB6326777B95D}" {
+    m_aGroups {
+     RHS_MaterialGroupProperties "{658AB632658732AD}" {
+      m_iTextureID 1
+     }
+     RHS_MaterialGroupProperties "{658AB63265A8D549}" {
+      m_iTextureID 3
+     }
+     RHS_MaterialGroupProperties "{658AB6326548B8DA}" {
+      m_iTextureID 4
+     }
+     RHS_MaterialGroupProperties "{658AB632656B9B60}" {
+      m_iTextureID 2
+     }
+    }
+   }
+  }
+  coords 7136.333 63.063 5573.367
+  angleY -164.546
+  m_sAttachmentGroupName "t72crew2"
+ }
+ T72A_NVA3 {
+  components {
+   RHS_GroupMaterialController "{658AB6326777B95D}" {
+    m_aGroups {
+     RHS_MaterialGroupProperties "{658AB632658732AD}" {
+      m_iTextureID 1
+     }
+     RHS_MaterialGroupProperties "{658AB63265A8D549}" {
+      m_iTextureID 3
+     }
+     RHS_MaterialGroupProperties "{658AB6326548B8DA}" {
+      m_iTextureID 4
+     }
+     RHS_MaterialGroupProperties "{658AB632656B9B60}" {
+      m_iTextureID 3
+     }
+    }
+   }
+  }
+  coords 7140.635 63.031 5589.781
+  angleY -166.068
+  m_sAttachmentGroupName "t72crew3"
+ }
+}

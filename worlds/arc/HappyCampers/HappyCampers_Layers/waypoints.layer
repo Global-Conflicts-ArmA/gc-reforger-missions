@@ -1,0 +1,122 @@
+SCR_AIWaypoint HOSTAGEWP : "{06E1B6EBD480C6E0}Prefabs/AI/Waypoints/AIWaypoint_ForcedMove.et" {
+ coords 3161.373 75.879 157.844
+}
+$grp SCR_AIWaypoint : "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et" {
+ SEPFT1WP1 {
+  coords 3473.086 77.829 533.842
+ }
+ SEPFT1WP2 {
+  coords 3347.739 75.551 423.465
+ }
+ SEPFT1WP3 {
+  coords 3318.917 71.463 549.863
+ }
+ SEPFT1WP4 {
+  coords 3420.893 74.385 600.841
+ }
+ SEPFT2WP1 {
+  coords 3382.975 88.25 88.27
+  m_fPriorityLevel 1
+ }
+ SEPFT2WP2 {
+  coords 3295.373 79.796 150.303
+  m_fPriorityLevel 1
+ }
+ SEPFT2WP3 {
+  coords 3300.933 80.249 236.44
+  m_fPriorityLevel 1
+ }
+ SEPFT2WP4 {
+  coords 3445.401 84.611 263.449
+  m_fPriorityLevel 1
+ }
+ SEPFT2WP5 {
+  coords 3524.125 85.211 165.5
+  m_fPriorityLevel 1
+ }
+}
+$grp AIWaypointCycle : "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et" {
+ SEPFT1WPCYCLE {
+  coords 3425.677 73.897 598.003
+  CycleWaypoints {
+   "SEPFT1WP1" "SEPFT1WP2" "SEPFT1WP3" "SEPFT1WP4"
+  }
+ }
+ SEPFT2WPCYCLE {
+  coords 3526.475 85.79 173.626
+  CycleWaypoints {
+   "SEPFT2WP1" "SEPFT2WP2" "SEPFT2WP3" "SEPFT2WP4" "SEPFT2WP5"
+  }
+ }
+}
+$grp GenericEntity : "{910D0810DB232ED5}PrefabsEditable/Auto/Systems/Compositions/PatrolPoint/E_PatrolPoint_LoiterPoint.et" {
+ {
+  components {
+   SCR_AISmartActionSentinelComponent "{5CB0DBCC796A6F1C}" {
+    AIBehaviorTree "{BC53D77D23308CD6}AI/BehaviorTrees/SmartActions/SA_ObservationPost.bt"
+    m_vLookPosition 3.695 0 0
+   }
+  }
+  coords 3571.424 85.09 413.997
+ }
+ {
+  components {
+   SCR_AISmartActionSentinelComponent "{5CB0DBCC796A6F1C}" {
+    AIBehaviorTree "{BC53D77D23308CD6}AI/BehaviorTrees/SmartActions/SA_ObservationPost.bt"
+    m_vLookPosition -0.336 -0.277 3.024
+   }
+  }
+  coords 3564.75 88.446 415.723
+ }
+ {
+  components {
+   SCR_AISmartActionSentinelComponent "{5CB0DBCC796A6F1C}" {
+    AIBehaviorTree "{BC53D77D23308CD6}AI/BehaviorTrees/SmartActions/SA_ObservationPost.bt"
+    m_vLookPosition 1.475 0 3.509
+   }
+  }
+  coords 3565.611 88.474 409.013
+ }
+ {
+  components {
+   SCR_AISmartActionSentinelComponent "{5CB0DBCC796A6F1C}" {
+    AIBehaviorTree "{BC53D77D23308CD6}AI/BehaviorTrees/SmartActions/SA_ObservationPost.bt"
+    m_vLookPosition 3.024 0 0.965
+   }
+  }
+  coords 3566.241 84.778 418.504
+ }
+ {
+  components {
+   SCR_AISmartActionSentinelComponent "{5CB0DBCC796A6F1C}" {
+    AIBehaviorTree "{BC53D77D23308CD6}AI/BehaviorTrees/SmartActions/SA_ObservationPost.bt"
+    m_vLookPosition 3.024 0 -2.077
+   }
+  }
+  coords 3571.337 85.085 430.582
+ }
+ {
+  components {
+   SCR_AISmartActionSentinelComponent "{5CB0DBCC796A6F1C}" {
+    AIBehaviorTree "{BC53D77D23308CD6}AI/BehaviorTrees/SmartActions/SA_ObservationPost.bt"
+    m_vLookPosition -4.024 0 -2.077
+   }
+  }
+  coords 3568.737 88.522 421.279
+ }
+}
+$grp SCR_DefendWaypoint : "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et" {
+ SEPHQWP {
+  coords 3569.267 86.85 418.196
+  CompletionRadius 22.5
+  m_fPriorityLevel 10
+ }
+ SEPSQD1WP {
+  coords 3397.89 80.343 357.908
+  CompletionRadius 80
+ }
+ SEPSQD2WP {
+  coords 3658.16 84.191 441.167
+  CompletionRadius 75
+ }
+}

@@ -1,0 +1,66 @@
+$grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
+ Ambush_03_inf4 {
+  coords 1000.641 33.989 3270.568
+  angleY 151.182
+  m_prefab "{E9969D610C120940}worlds/Perfk/Prefabs/Groups/PK_GC_INS_Afghan_Fireteam_1.et"
+  m_conditionFlag "Ambush_03_CloseTrigger"
+  m_waypointNames {
+   "Ambush_03_SD"
+  }
+ }
+ ambush_03_mine {
+  coords 1004.681 33.728 3261.734
+  m_prefab "{F5C61D19C5FE5209}worlds/Perfk/PrefabsEditable/EffectsModules/Mine/PK_EffectModule_MineField_Single_USSR.et"
+  m_conditionFlag "Ambush_03"
+ }
+ ambush_03_mine2 {
+  coords 1005.779 33.74 3260.17
+  m_prefab "{F5C61D19C5FE5209}worlds/Perfk/PrefabsEditable/EffectsModules/Mine/PK_EffectModule_MineField_Single_USSR.et"
+  m_conditionFlag "Ambush_03"
+ }
+ Ambush_03_inf2 {
+  coords 970.846 44.599 3203.272
+  angleY -24.012
+  m_prefab "{9DE1C345404CDCA8}worlds/Perfk/Prefabs/Groups/PK_GC_INS_Afghan_AT_team.et"
+  m_conditionFlag "Ambush_03_CloseTrigger"
+  m_waypointNames {
+   "Ambush_03_SD"
+  }
+ }
+ Ambush_03_inf3 {
+  coords 1047.557 39.118 3255.22
+  angleY 151.182
+  m_prefab "{E9969D610C120940}worlds/Perfk/Prefabs/Groups/PK_GC_INS_Afghan_Fireteam_1.et"
+  m_conditionFlag "Ambush_03_CloseTrigger"
+  m_waypointNames {
+   "Ambush_03_SD"
+  }
+ }
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ {
+  coords 1075.469 38.584 3277.582
+  angleZ 0.895
+  m_flagName "Ambush_03_Trigger"
+  m_stopAfterFirstChange 1
+  m_setShapeColor 0.817 1 0 1
+  m_playersOnly 1
+  m_ownerFactionKey "GC_TKA"
+ }
+ {
+  coords 1075.469 38.584 3277.582
+  angleZ 0.895
+  m_flagName "Ambush_03_Trigger"
+  m_stopAfterFirstChange 1
+  m_setShapeColor 0 0.047 1 1
+  m_playersOnly 1
+  m_ownerFactionKey "US"
+ }
+}
+SCR_SearchAndDestroyWaypoint Ambush_03_SD : "{B3E7B8DC2BAB8ACC}Prefabs/AI/Waypoints/AIWaypoint_SearchAndDestroy.et" {
+ coords 1021.417 36.125 3256.216
+ angleX 2.412
+ angleY -1.671
+ angleZ -4.64
+ CompletionRadius 20
+}

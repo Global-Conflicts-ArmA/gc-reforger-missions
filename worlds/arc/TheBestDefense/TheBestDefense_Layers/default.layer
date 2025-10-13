@@ -20,7 +20,7 @@ SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
 PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
  coords 2822.864 0 1304.394
 }
-PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
  components {
   SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
    m_bUsePredefineStartingTimeAndWeather 1
@@ -44,14 +44,14 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/
        SCR_CallsignInfo "{55CCB792CE6E998D}" {
         m_sCallsign "1"
        }
-       SCR_CallsignInfo "{6539256C26FC4EA6}" {
-        m_sCallsign "2"
-       }
        SCR_CallsignInfo "{55CCB792CE18FB44}" {
         m_sCallsign "Crossbow"
        }
        SCR_CallsignInfo "{55CCB792CE02ECFA}" {
         m_sCallsign "Chariot"
+       }
+       SCR_CallsignInfo "{6539256C26FC4EA6}" {
+        m_sCallsign "2"
        }
       }
       m_aSquadNames {
@@ -331,6 +331,28 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
    }
    m_condition TILW_LiteralTerm "{644565517393BFD5}" {
     m_flagName "US_CAP"
+   }
+  }
+  TILW_MissionEvent "{65E158E8FF2DA1EB}" {
+   m_name "ASSIGN_WAYPOINTS"
+   m_instructions {
+    TILW_AssignWaypointsInstruction "{65E158E8F4B10846}" {
+     m_groupName "PATROL_E"
+     m_waypointNames {
+      "ReginaPatrolWpE1" "ReginaPatrolWpE2" "ReginaPatrolWpE3" "ReginaPatrolWpE4" "ReginaPatrolWpECycle"
+     }
+     m_clearExisting 1
+    }
+    TILW_AssignWaypointsInstruction "{65E158E8C8870167}" {
+     m_groupName "PATROL_W"
+     m_waypointNames {
+      "ReginaPatrolWpW1" "ReginaPatrolWpW2" "ReginaPatrolWpW3" "ReginaPatrolWpW4" "ReginaPatrolWpWCycle"
+     }
+     m_clearExisting 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{65E158E8FA37C629}" {
+    m_invertTerm 1
    }
   }
  }

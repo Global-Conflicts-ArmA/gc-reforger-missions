@@ -1,0 +1,124 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F9E52831}" {
+     NavmeshFile "{AD5F99CD7C59D5E0}worlds/GameMaster/Navmeshes/GM_Eden.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F3B4EE8A}" {
+     NavmeshFile "{C35ECF3276824654}worlds/GameMaster/Navmeshes/GM_Eden_vehicles.nmn"
+    }
+   }
+  }
+ }
+ coords 7603.995 79.374 5495.325
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 7601.439 79.34 5493.916
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bRandomStartingDaytime 1
+   m_bRandomStartingWeather 1
+   m_bRandomWeatherChanges 1
+  }
+ }
+ coords 7600.099 79.429 5495.817
+}
+GenericEntity cacheExpSpawn {
+ coords 9578.216 10.875 5203.963
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 7601.359 79.414 5495.919
+ m_missionEvents {
+  TILW_MissionEvent "{660916AFB7E9BA21}" {
+   m_name "UK Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{660E1744C5DA3629}" {
+     m_executionDelay 10
+     m_messageTitle "UK VICTORY"
+     m_messageBody "The British killed most separatists and destroyed the cache."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{660916AF9A635FE4}" {
+    m_operands {
+     TILW_LiteralTerm "{660916AF9FD3159C}" {
+      m_flagName "CacheDestroyed"
+     }
+     TILW_LiteralTerm "{660916AF957897E2}" {
+      m_flagName "SeparatistKilled"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{660916AF15EFB3E8}" {
+   m_name "Separatist Minor Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{660E17432CFD5A5E}" {
+     m_messageTitle "MINOR SEPARATIST VICTORY"
+     m_messageBody "The separatists managed to inflict heavy casualties on the British, but the cache was destroyed."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{660916AF15EFB30C}" {
+    m_operands {
+     TILW_LiteralTerm "{660916AF15EFB30B}" {
+      m_flagName "CacheDestroyed"
+     }
+     TILW_LiteralTerm "{660916AF15EFB309}" {
+      m_flagName "BritishKilled"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{660916AF02390146}" {
+   m_name "Separatist Major Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{660E17431814B20D}" {
+     m_messageTitle "MAJOR SEPARATIST VICTORY"
+     m_messageBody "The separatists managed to protect the cache and inflict heavy casualties on the British."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{660916AF023906F8}" {
+    m_operands {
+     TILW_LiteralTerm "{660916AF023906F6}" {
+      m_invertTerm 1
+      m_flagName "CacheDestroyed"
+     }
+     TILW_LiteralTerm "{660916AF023906F5}" {
+      m_flagName "BritishKilled"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{660916AC76D3F7CC}" {
+   m_name "Cache Explosion Flair"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{660916AC6512746F}" {
+     m_executionDelay 1
+     m_prefab "{DDDDBEC77B49A995}Prefabs/Systems/Explosions/Wrapper_Bomb_Huge.et"
+     m_locationName "cacheExpSpawn"
+    }
+   }
+   m_condition TILW_LiteralTerm "{660916AC6D0FB4D6}" {
+    m_flagName "CacheDestroyed"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{660E174646A91809}" {
+   m_flagName "SeparatistKilled"
+   m_factionKey "GC_SEPARATIST"
+   m_casualtyRatio 0.95
+  }
+  TILW_FactionPlayersKilledFlag "{660E174648720C05}" {
+   m_flagName "BritishKilled"
+   m_factionKey "UK"
+   m_casualtyRatio 0.9
+  }
+ }
+}

@@ -1,0 +1,371 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 6638.526 96.656 1345.924
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 6643.771 96.656 1346.222
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{660F35A841A8F893}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 15
+     m_iStartingMinutes 15
+    }
+   }
+   m_bUseSpecifiedDate 1
+   m_iSetDay 10
+   m_iSetYear 2025
+  }
+ }
+ coords 6646.714 96.656 1346.413
+ {
+  SCR_FactionManager {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{648D46336748B246}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{648D3C2E4F6005BD}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{648D3C2E4A762E8E}" {
+        m_sCallsign "Spear-"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{648D3C2E4014D4BE}" {
+        m_sCallsign "0"
+       }
+       SCR_CallsignInfo "{648D3C2E41FD0E05}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{648D3C2E41C585C3}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{648D3C2E41AA9237}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{660F35AB3E23C914}" {
+        m_sCallsign "4"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{47B7E8CA1935BB28}PrefabsEditable/SupportStationSystems/E_SupportStationSystem_Fuel.et" {
+ components {
+  SCR_FuelSupportStationComponent "{5E1CF311DF6C3CBE}" {
+   m_fRange 200
+  }
+  SCR_RepairSupportStationComponent "{660F35AF83301960}" {
+   m_eSupportStationPriority HIGH
+   m_fRange 200
+   m_iSupplyCostDamageHealed 0
+   m_iSuppliesPerDoTHealed 0
+   m_iSupplyCostPerFireRateReduction 0
+  }
+  WCS_RearmSupportStationComponent "{660F35AC691E6DDB}" {
+   m_eSupportStationPriority HIGH
+   m_fRange 200
+  }
+ }
+ coords 6690.952 96.656 1214.05
+}
+PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+   Enabled 0
+  }
+  TILW_MapShapeComponent "{6508F54F9B461198}" {
+   Enabled 1
+  }
+ }
+ coords 7772.215 112.983 1166.322
+ Points {
+  ShapePoint "{660F35BAE1D7E7BD}" {
+   Position -63.304 0 -619.321
+  }
+  ShapePoint "{660F35BAFD5C4A56}" {
+   Position -6710.831 0 -646.913
+  }
+  ShapePoint "{660F35BAFF75E851}" {
+   Position -6835.799 0 924.132
+  }
+  ShapePoint "{660F35BAFB4C12D6}" {
+   Position -29.433 0 933.394
+  }
+ }
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ {
+  coords 2349.637 61.198 1561.877
+  m_queryRadius 70
+  m_captureTime 10
+  m_sendStatusMessages 1
+  m_locationName "east Jarvela"
+  m_flagName "CDF_CAP_1"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "GC_CDF"
+  m_ratioThreshold 0.9
+ }
+ {
+  coords 1759.498 63.376 1699.893
+  m_queryRadius 70
+  m_captureTime 10
+  m_sendStatusMessages 1
+  m_locationName "west Jarvela"
+  m_flagName "CDF_CAP_2"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "GC_CDF"
+  m_ratioThreshold 0.9
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 6648.07 96.656 1346.807
+ m_missionEvents {
+  TILW_MissionEvent "{660F35BFCC57E1AD}" {
+   m_name "ASSIGN_WAYPOINTS_CDF"
+   m_instructions {
+    TILW_AssignWaypointsInstruction "{660F35BFC92E5493}" {
+     m_groupName "CDFMECHSQD1"
+     m_waypointNames {
+      "CDFMECHSQD1WP"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{660F35BFDD85EE5D}" {
+     m_groupName "CDFMECHSQD2"
+     m_waypointNames {
+      "CDFMECHSQD2WP"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{660F35BFDAFB5707}" {
+     m_groupName "CDFMECHSQD3"
+     m_waypointNames {
+      "CDFMECHSQD3WP"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{660F35BC78033964}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{660F35BC63F4E5C9}" {
+   m_name "ASSIGN_WAYPOINTS_SEP"
+   m_instructions {
+    TILW_AssignWaypointsInstruction "{660F35BC75E50D6C}" {
+     m_groupName "DEFPLT1HQ"
+     m_waypointNames {
+      "DEFPLT1HQWP"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{660F35A3FF0250B9}" {
+    }
+    TILW_AssignWaypointsInstruction "{660F35BC4D5D610B}" {
+     m_groupName "DEFPLT1SQD1"
+     m_waypointNames {
+      "DEFPLT1SQD1WP"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{660F35BC418AF9A3}" {
+     m_groupName "DEFPLT1SQD2"
+     m_waypointNames {
+      "DEFPLT1SQD2WP"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{660F35BC5EBEEA46}" {
+     m_groupName "DEFPLT1SQD3"
+     m_waypointNames {
+      "DEFPLT1SQD3WP"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{660F35BC5BF1F1FC}" {
+     m_groupName "DEFPLT2HQ"
+     m_waypointNames {
+      "DEFPLT2HQWP"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{660F35A3F5B36115}" {
+     m_groupName "DEFPLT2SQD1"
+     m_waypointNames {
+      "DEFPLT2SQD1WP"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{660F35A3CEBA4724}" {
+     m_groupName "DEFPLT2SQD2"
+     m_waypointNames {
+      "DEFPLT2SQD2WP"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{660F35A3C4E8BFEF}" {
+     m_groupName "DEFPLT2SQD3"
+     m_waypointNames {
+      "DEFPLT2SQD3WP"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{660F35A3DF6433CE}" {
+     m_groupName "DEFPLT2SQD4"
+     m_waypointNames {
+      "DEFPLT2SQD4WP"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{660F35A3D42597F3}" {
+     m_groupName "DEFPLT3HQ"
+     m_waypointNames {
+      "DEFPLT3HQWP"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{660F35A3AC493E2A}" {
+     m_groupName "DEFPLT3SQD1"
+     m_waypointNames {
+      "DEFPLT3SQD1WP"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{660F35A3A3830FD6}" {
+     m_groupName "DEFPLT3SQD2"
+     m_waypointNames {
+      "DEFPLT3SQD2WP"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{660F35A3B9FF1A55}" {
+     m_groupName "DEFPLT3SQD3"
+     m_waypointNames {
+      "DEFPLT3SQD3WP"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{660F35A3B64C7A06}" {
+     m_groupName "DEFPLT3SQD4"
+     m_waypointNames {
+      "DEFPLT3SQD4WP"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{660F35BC7B55E41A}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{660F35B492940773}" {
+   m_name "CDF_CAPPED"
+   m_instructions {
+    TILW_SetFlagInstruction "{660F35B55AE3AA27}" {
+     m_flagName "CDF_CAPPED"
+    }
+    TILW_SetFlagInstruction "{660F35AAE6932A67}" {
+     m_executionDelay 60
+     m_flagName "CDF_CAPPED_WINCON"
+    }
+    TILW_SetFlagInstruction "{660F35AA0C5A42DF}" {
+     m_executionDelay 600
+     m_flagName "CDF_CAPPED_TL"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{660F35B568207791}" {
+    m_operands {
+     TILW_LiteralTerm "{660F35B56BB9C592}" {
+      m_flagName "CDF_CAP_1"
+     }
+     TILW_LiteralTerm "{660F35B5665B8692}" {
+      m_flagName "CDF_CAP_2"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{660F35B526AD000D}" {
+   m_name "TIME_LIMIT_FLAG"
+   m_instructions {
+    TILW_SetFlagInstruction "{660F35B5225B364B}" {
+     m_executionDelay 4500
+     m_flagName "TIME_LIMIT"
+    }
+   }
+   m_condition TILW_LiteralTerm "{660F35B53B3FC3C4}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{660F35B5361EE00E}" {
+   m_name "TIME_LIMIT"
+   m_instructions {
+    TILW_SendMessageInstruction "{660F35AAD6A23AE6}" {
+     m_messageTitle "DEFEAT"
+     m_messageBody "Jarvela was not secured within the time limit."
+    }
+    TILW_EndGameInstruction "{660F35AAAFB56185}" {
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "GC_CDF"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{660F35B53286E4C2}" {
+    m_operands {
+     TILW_LiteralTerm "{660F35B504C25C5C}" {
+      m_flagName "TIME_LIMIT"
+     }
+     TILW_LiteralTerm "{660F35B5023BC9C9}" {
+      m_invertTerm 1
+      m_flagName "CDF_CAPPED"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{660F35AAAB7B8B92}" {
+   m_name "CDF_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{660F35AAA05DC181}" {
+     m_messageTitle "DEFEAT"
+     m_messageBody "CDF forces have taken significant casualties."
+    }
+    TILW_EndGameInstruction "{660F35AAB197C94C}" {
+     m_executionDelay 15
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "GC_CDF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{660F35AAA67BD9E5}" {
+    m_flagName "CDF_KIA"
+   }
+  }
+  TILW_MissionEvent "{660F35AA0A64471A}" {
+   m_name "CDF_VICTORY"
+   m_instructions {
+    TILW_SendMessageInstruction "{660F35AAC46BBCFF}" {
+     m_messageTitle "VICTORY"
+     m_messageBody "CDF forces have secured Jarvela and halted the ChDKZ advance."
+    }
+    TILW_EndGameInstruction "{660F35AADF6F6D22}" {
+     m_executionDelay 15
+     m_factionKey "GC_CDF"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{660F35AA02AF18A6}" {
+    m_operands {
+     TILW_LiteralTerm "{660F35AA03B3D2FC}" {
+      m_flagName "CDF_CAPPED_WINCON"
+     }
+     TILW_DisjunctionTerm "{660F35AAF923BAE5}" {
+      m_operands {
+       TILW_LiteralTerm "{660F35AAF4F8A0A4}" {
+        m_flagName "SEP_KIA"
+       }
+       TILW_LiteralTerm "{660F35AAF2F33203}" {
+        m_flagName "CDF_CAPPED_TL"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{660F35B54CD62588}" {
+   m_flagName "CDF_KIA"
+   m_factionKey "GC_CDF"
+   m_casualtyRatio 0.8
+  }
+  TILW_FactionAIKilledFlag "{660F35B54A2D3C2F}" {
+   m_flagName "SEP_KIA"
+   m_factionKey "GC_SEPARATIST"
+   m_casualtyRatio 0.9
+  }
+ }
+}

@@ -20,7 +20,7 @@ SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
 PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
  coords 6883.706 118.97 7325.869
 }
-PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
  components {
   SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
    m_bUsePredefineStartingTimeAndWeather 1
@@ -55,7 +55,7 @@ PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" 
   }
  }
 }
-$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/TILW_FactionTrigger.et" {
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
  {
   coords 6462.197 161.991 6480.183
   m_queryRadius 29.6
@@ -212,6 +212,46 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
       m_flagName "OBJ_3"
      }
     }
+   }
+  }
+  TILW_MissionEvent "{65E158EA84782FD8}" {
+   m_name "ASSIGN_WAYPOINTS"
+   m_instructions {
+    TILW_AssignWaypointsInstruction "{65E158EA82FD0ED1}" {
+     m_groupName "IndustrialPatrol1"
+     m_waypointNames {
+      "IndustrialPatrolWp1" "IndustrialPatrolWp2" "IndustrialPatrolWp3" "IndustrialPatrolWp4" "IndustrialPatrolCycle1"
+     }
+     m_clearExisting 1
+    }
+    TILW_AssignWaypointsInstruction "{65E158EA931F8E89}" {
+     m_groupName "IndustrialPatrol2"
+     m_waypointNames {
+      "IndustrialPatrolWp5" "IndustrialPatrolWp6" "IndustrialPatrolWp7" "IndustrialPatrolWp8" "IndustrialPatrolCycle2"
+     }
+     m_clearExisting 1
+    }
+    TILW_AssignWaypointsInstruction "{65E158EB615829E4}" {
+     m_groupName "MidPatrolSquad"
+     m_waypointNames {
+      "MidPatrolWp1" "MidPatrolWp2" "MidPatrolWp3" "MidPatrolWp4" "MidPatrolCycle"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{65E158EB7AEC11CC}" {
+     m_groupName "PeriwinklePatrol"
+     m_waypointNames {
+      "PeriwinklePatrolWp1" "PeriwinklePatrolWp2" "PeriwinklePatrolWp3" "PeriwinklePatrolWp4" "PeriwinklePatrolCycle"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{65E158EB47B327EC}" {
+     m_groupName "SouthPatrolSquad"
+     m_waypointNames {
+      "SouthPatrolWp1" "SouthPatrolWp2" "SouthPatrolWp3" "SouthPatrolWp4" "SouthPatrolCycle"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{65E158EA873B32FC}" {
+    m_invertTerm 1
    }
   }
  }

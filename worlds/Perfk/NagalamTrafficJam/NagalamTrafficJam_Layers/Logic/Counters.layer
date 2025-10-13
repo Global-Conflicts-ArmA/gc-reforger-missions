@@ -1,0 +1,445 @@
+GenericEntity BaseFlag : "{0DBE058F13F0C7E8}PrefabsEditable/Auto/Structures/Military/Flags/E_FlagPole_02_V1_US.et" {
+ components {
+  TILW_SetNameComponent "{6598AE54788268A1}" {
+   m_setName "BaseFlag"
+  }
+  ActionsManagerComponent "{647748C989962145}" {
+   ActionContexts {
+    UserActionContext "{647748C98A34A72A}" {
+     ContextName "default"
+     Position PointInfo "{647748C9C1AFF675}" {
+      Offset 0 1.5 0
+     }
+     Radius 1.5
+     Height 0
+    }
+   }
+   additionalActions {
+    PK_MissionNagalamTrafficJamInteraction "{659952B8D3A630F1}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{659952B8AE05366D}" {
+      Name "ShowMissionStatus"
+     }
+     ActionTitle "Show Mission Status"
+     Duration 3
+    }
+   }
+  }
+ }
+ coords 288.833 40 3170.133
+}
+$grp GenericEntity : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
+ Area6 {
+  coords 198.577 41.722 3155.921
+  {
+   GenericEntity Layer1 : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
+    coords 0 0 0
+    {
+     GenericEntity Slot1 : "{AA01691FDC4E9167}Prefabs/Systems/ScenarioFramework/Components/Slot.et" {
+      components {
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_aPlugins {
+         SCR_ScenarioFrameworkPluginOnDestroyEvent "{65B4BA0AD39B2FB8}" {
+         }
+        }
+       }
+      }
+      coords 0 0 0
+     }
+    }
+   }
+  }
+ }
+ Area7 {
+  components {
+   SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
+    m_aActivationActions {
+     SCR_ScenarioFrameworkCreateVariable "{65B4BA0F3AB122E9}" {
+      m_sVariableName "pk_sWounded_01_returned"
+      m_sVariableValue "false"
+     }
+     SCR_ScenarioFrameworkCreateVariable "{65B4BA13FF0EDF7F}" {
+      m_sVariableName "pk_sWounded_02_returned"
+      m_sVariableValue "false"
+     }
+     SCR_ScenarioFrameworkCreateVariable "{65B4BA13FC737CE8}" {
+      m_sVariableName "pk_sWounded_03_returned"
+      m_sVariableValue "false"
+     }
+     SCR_ScenarioFrameworkCreateVariable "{65B4BA13FDF69324}" {
+      m_sVariableName "pk_sWounded_04_returned"
+      m_sVariableValue "false"
+     }
+     SCR_ScenarioFrameworkCreateVariable "{65B4BA13FD52723D}" {
+      m_sVariableName "pk_sWounded_05_returned"
+      m_sVariableValue "false"
+     }
+     SCR_ScenarioFrameworkCreateVariable "{65B4BA13E264B30D}" {
+      m_sVariableName "pk_sWounded_06_returned"
+      m_sVariableValue "false"
+     }
+    }
+   }
+  }
+  coords 298.05 40 3151.415
+  {
+   $grp GenericEntity : "{032C15BBEBE9E1E9}Prefabs/Systems/ScenarioFramework/Components/SlotTrigger.et" {
+    SlotTrigger1 {
+     components {
+      SCR_ScenarioFrameworkSlotTrigger "{6118D659EDB7084E}" {
+       m_bShowDebugShapesInWorkbench 0
+       m_aPlugins {
+        SCR_ScenarioFrameworkPluginTrigger "{6118D659EDB7085B}" {
+         m_fAreaRadius 150
+         m_eActivationPresence ANY_CHARACTER
+         m_aSpecificEntityNames {
+          "rescueUnit_1"
+         }
+         m_fMinimumPlayersNeededPercentage 1
+         m_aEntityEnteredActions {
+          SCR_ScenarioFrameworkSetVariable "{65B4BA11ECAD5D06}" {
+           m_sVariableName "pk_sWounded_01_returned"
+           m_sVariableValue "true"
+          }
+         }
+        }
+       }
+      }
+     }
+     coords 0 0 0
+    }
+    SlotTrigger2 {
+     components {
+      SCR_ScenarioFrameworkSlotTrigger "{6118D659EDB7084E}" {
+       m_bShowDebugShapesInWorkbench 0
+       m_aPlugins {
+        SCR_ScenarioFrameworkPluginTrigger "{6118D659EDB7085B}" {
+         m_fAreaRadius 150
+         m_eActivationPresence ANY_CHARACTER
+         m_aSpecificEntityNames {
+          "rescueUnit_2"
+         }
+         m_fMinimumPlayersNeededPercentage 1
+         m_aEntityEnteredActions {
+          SCR_ScenarioFrameworkSetVariable "{65B4BA11ECAD5D06}" {
+           m_sVariableName "pk_sWounded_02_returned"
+           m_sVariableValue "true"
+          }
+         }
+        }
+       }
+      }
+     }
+     coords -11.962 4.218 0.789
+    }
+    SlotTrigger3 {
+     components {
+      SCR_ScenarioFrameworkSlotTrigger "{6118D659EDB7084E}" {
+       m_bShowDebugShapesInWorkbench 0
+       m_aPlugins {
+        SCR_ScenarioFrameworkPluginTrigger "{6118D659EDB7085B}" {
+         m_fAreaRadius 150
+         m_eActivationPresence ANY_CHARACTER
+         m_aSpecificEntityNames {
+          "rescueUnit_3"
+         }
+         m_fMinimumPlayersNeededPercentage 1
+         m_aEntityEnteredActions {
+          SCR_ScenarioFrameworkSetVariable "{65B4BA11ECAD5D06}" {
+           m_sVariableName "pk_sWounded_03_returned"
+           m_sVariableValue "true"
+          }
+         }
+        }
+       }
+      }
+     }
+     coords -11.962 4.218 0.789
+    }
+    SlotTrigger4 {
+     components {
+      SCR_ScenarioFrameworkSlotTrigger "{6118D659EDB7084E}" {
+       m_bShowDebugShapesInWorkbench 0
+       m_aPlugins {
+        SCR_ScenarioFrameworkPluginTrigger "{6118D659EDB7085B}" {
+         m_fAreaRadius 150
+         m_eActivationPresence ANY_CHARACTER
+         m_aSpecificEntityNames {
+          "rescueUnit_4"
+         }
+         m_fMinimumPlayersNeededPercentage 1
+         m_aEntityEnteredActions {
+          SCR_ScenarioFrameworkSetVariable "{65B4BA11ECAD5D06}" {
+           m_sVariableName "pk_sWounded_04_returned"
+           m_sVariableValue "true"
+          }
+         }
+        }
+       }
+      }
+     }
+     coords -11.962 4.218 0.789
+    }
+    SlotTrigger5 {
+     components {
+      SCR_ScenarioFrameworkSlotTrigger "{6118D659EDB7084E}" {
+       m_bShowDebugShapesInWorkbench 0
+       m_aPlugins {
+        SCR_ScenarioFrameworkPluginTrigger "{6118D659EDB7085B}" {
+         m_fAreaRadius 150
+         m_eActivationPresence ANY_CHARACTER
+         m_aSpecificEntityNames {
+          "rescueUnit_5"
+         }
+         m_fMinimumPlayersNeededPercentage 1
+         m_aEntityEnteredActions {
+          SCR_ScenarioFrameworkSetVariable "{65B4BA11ECAD5D06}" {
+           m_sVariableName "pk_sWounded_05_returned"
+           m_sVariableValue "true"
+          }
+         }
+        }
+       }
+      }
+     }
+     coords -11.962 4.218 0.789
+    }
+    SlotTrigger6 {
+     components {
+      SCR_ScenarioFrameworkSlotTrigger "{6118D659EDB7084E}" {
+       m_bShowDebugShapesInWorkbench 0
+       m_aPlugins {
+        SCR_ScenarioFrameworkPluginTrigger "{6118D659EDB7085B}" {
+         m_fAreaRadius 150
+         m_eActivationPresence ANY_CHARACTER
+         m_aSpecificEntityNames {
+          "rescueUnit_6"
+         }
+         m_fMinimumPlayersNeededPercentage 1
+         m_aEntityEnteredActions {
+          SCR_ScenarioFrameworkSetVariable "{65B4BA11ECAD5D06}" {
+           m_sVariableName "pk_sWounded_06_returned"
+           m_sVariableValue "true"
+          }
+         }
+        }
+       }
+      }
+     }
+     coords -11.962 4.218 0.789
+    }
+   }
+  }
+ }
+ Area9 {
+  components {
+   SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
+    m_aActivationActions {
+     SCR_ScenarioFrameworkCreateVariable "{65B4BA0F3AB122E9}" {
+      m_sVariableName "pk_sVehicle_01_returned"
+      m_sVariableValue "false"
+     }
+     SCR_ScenarioFrameworkCreateVariable "{65B4BA13FF0EDF7F}" {
+      m_sVariableName "pk_sVehicle_02_returned"
+      m_sVariableValue "false"
+     }
+     SCR_ScenarioFrameworkCreateVariable "{65B4BA13FC737CE8}" {
+      m_sVariableName "pk_sVehicle_03_returned"
+      m_sVariableValue "false"
+     }
+     SCR_ScenarioFrameworkCreateVariable "{65B4BA13FDF69324}" {
+      m_sVariableName "pk_sVehicle_04_returned"
+      m_sVariableValue "false"
+     }
+     SCR_ScenarioFrameworkCreateVariable "{65B4BA13FD52723D}" {
+      m_sVariableName "pk_sVehicle_05_returned"
+      m_sVariableValue "false"
+     }
+     SCR_ScenarioFrameworkCreateVariable "{65B4BA13E264B30D}" {
+      m_sVariableName "pk_sVehicle_06_returned"
+      m_sVariableValue "false"
+     }
+     SCR_ScenarioFrameworkCreateVariable "{65B4BA19286F05A5}" {
+      m_sVariableName "pk_sVehicle_07_returned"
+      m_sVariableValue "false"
+     }
+    }
+   }
+  }
+  coords 269.049 40 3176.634
+  {
+   $grp GenericEntity : "{032C15BBEBE9E1E9}Prefabs/Systems/ScenarioFramework/Components/SlotTrigger.et" {
+    SlotTrigger08 {
+     components {
+      SCR_ScenarioFrameworkSlotTrigger "{6118D659EDB7084E}" {
+       m_bShowDebugShapesInWorkbench 0
+       m_aPlugins {
+        SCR_ScenarioFrameworkPluginTrigger "{6118D659EDB7085B}" {
+         m_fAreaRadius 150
+         m_eActivationPresence ANY_CHARACTER
+         m_aSpecificEntityNames {
+          "M1025_armed_M2HB_USAF_D1"
+         }
+         m_fMinimumPlayersNeededPercentage 1
+         m_aEntityEnteredActions {
+          SCR_ScenarioFrameworkSetVariable "{65B4BA11ECAD5D06}" {
+           m_sVariableName "pk_sVehicle_01_returned"
+           m_sVariableValue "true"
+          }
+         }
+        }
+       }
+      }
+     }
+     coords 0 0 0
+    }
+    SlotTrigger09 {
+     components {
+      SCR_ScenarioFrameworkSlotTrigger "{6118D659EDB7084E}" {
+       m_bShowDebugShapesInWorkbench 0
+       m_aPlugins {
+        SCR_ScenarioFrameworkPluginTrigger "{6118D659EDB7085B}" {
+         m_fAreaRadius 150
+         m_eActivationPresence ANY_CHARACTER
+         m_aSpecificEntityNames {
+          "M1025_armed_M2HB_USAF_D2"
+         }
+         m_fMinimumPlayersNeededPercentage 1
+         m_aEntityEnteredActions {
+          SCR_ScenarioFrameworkSetVariable "{65B4BA11ECAD5D06}" {
+           m_sVariableName "pk_sVehicle_02_returned"
+           m_sVariableValue "true"
+          }
+         }
+        }
+       }
+      }
+     }
+     coords -11.962 4.218 0.789
+    }
+    SlotTrigger10 {
+     components {
+      SCR_ScenarioFrameworkSlotTrigger "{6118D659EDB7084E}" {
+       m_bShowDebugShapesInWorkbench 0
+       m_aPlugins {
+        SCR_ScenarioFrameworkPluginTrigger "{6118D659EDB7085B}" {
+         m_fAreaRadius 150
+         m_eActivationPresence ANY_CHARACTER
+         m_aSpecificEntityNames {
+          "M998_covered_long_USAF_D1"
+         }
+         m_fMinimumPlayersNeededPercentage 1
+         m_aEntityEnteredActions {
+          SCR_ScenarioFrameworkSetVariable "{65B4BA11ECAD5D06}" {
+           m_sVariableName "pk_sVehicle_03_returned"
+           m_sVariableValue "true"
+          }
+         }
+        }
+       }
+      }
+     }
+     coords -11.962 4.218 0.789
+    }
+    SlotTrigger11 {
+     components {
+      SCR_ScenarioFrameworkSlotTrigger "{6118D659EDB7084E}" {
+       m_bShowDebugShapesInWorkbench 0
+       m_aPlugins {
+        SCR_ScenarioFrameworkPluginTrigger "{6118D659EDB7085B}" {
+         m_fAreaRadius 150
+         m_eActivationPresence ANY_CHARACTER
+         m_aSpecificEntityNames {
+          "Ural4320_ammo_tan1"
+         }
+         m_fMinimumPlayersNeededPercentage 1
+         m_aEntityEnteredActions {
+          SCR_ScenarioFrameworkSetVariable "{65B4BA11ECAD5D06}" {
+           m_sVariableName "pk_sVehicle_04_returned"
+           m_sVariableValue "true"
+          }
+         }
+        }
+       }
+      }
+     }
+     coords -11.962 4.218 0.789
+    }
+    SlotTrigger12 {
+     components {
+      SCR_ScenarioFrameworkSlotTrigger "{6118D659EDB7084E}" {
+       m_bShowDebugShapesInWorkbench 0
+       m_aPlugins {
+        SCR_ScenarioFrameworkPluginTrigger "{6118D659EDB7085B}" {
+         m_fAreaRadius 150
+         m_eActivationPresence ANY_CHARACTER
+         m_aSpecificEntityNames {
+          "Ural4320_ammo_tan2"
+         }
+         m_fMinimumPlayersNeededPercentage 1
+         m_aEntityEnteredActions {
+          SCR_ScenarioFrameworkSetVariable "{65B4BA11ECAD5D06}" {
+           m_sVariableName "pk_sVehicle_05_returned"
+           m_sVariableValue "true"
+          }
+         }
+        }
+       }
+      }
+     }
+     coords -11.962 4.218 0.789
+    }
+    SlotTrigger13 {
+     components {
+      SCR_ScenarioFrameworkSlotTrigger "{6118D659EDB7084E}" {
+       m_bShowDebugShapesInWorkbench 0
+       m_aPlugins {
+        SCR_ScenarioFrameworkPluginTrigger "{6118D659EDB7085B}" {
+         m_fAreaRadius 150
+         m_eActivationPresence ANY_CHARACTER
+         m_aSpecificEntityNames {
+          "Ural4320_tanker_tan1"
+         }
+         m_fMinimumPlayersNeededPercentage 1
+         m_aEntityEnteredActions {
+          SCR_ScenarioFrameworkSetVariable "{65B4BA11ECAD5D06}" {
+           m_sVariableName "pk_sVehicle_06_returned"
+           m_sVariableValue "true"
+          }
+         }
+        }
+       }
+      }
+     }
+     coords -11.962 4.218 0.789
+    }
+    SlotTrigger14 {
+     components {
+      SCR_ScenarioFrameworkSlotTrigger "{6118D659EDB7084E}" {
+       m_bShowDebugShapesInWorkbench 0
+       m_aPlugins {
+        SCR_ScenarioFrameworkPluginTrigger "{6118D659EDB7085B}" {
+         m_fAreaRadius 150
+         m_eActivationPresence ANY_CHARACTER
+         m_aSpecificEntityNames {
+          "Ural4320_transport_tan1"
+         }
+         m_fMinimumPlayersNeededPercentage 1
+         m_aEntityEnteredActions {
+          SCR_ScenarioFrameworkSetVariable "{65B4BA11ECAD5D06}" {
+           m_sVariableName "pk_sVehicle_07_returned"
+           m_sVariableValue "true"
+          }
+         }
+        }
+       }
+      }
+     }
+     coords -1.569 1.723 4.478
+    }
+   }
+  }
+ }
+}

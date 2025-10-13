@@ -1,0 +1,401 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{658AC0031DF1C060}" {
+     NavmeshFile "{7FADC4D5123F81EA}NavMesh/Bad_Orb_soldiers.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{551533FBA5E01BC6}NavMesh/Bad_Orb_btrlike.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{FF19B45E169B591F}NavMesh/Bad_Orb_lowres.nmn"
+    }
+   }
+  }
+ }
+ coords 0 0 0
+}
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{65951B574883320A}" {
+     m_sWeatherPresetName "Heavy Wet Fog"
+     m_iStartingHour 5
+     m_iStartingMinutes 40
+    }
+   }
+  }
+ }
+ m_iFreezeTime 360000
+ {
+  SCR_FactionManager "659AD60438A7B89C" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     UIInfo SCR_FactionUIInfo "{528C961236B7DCD3}" {
+      Name "USMC"
+      m_sNameUpper "USMC"
+     }
+    }
+   }
+  }
+ }
+}
+PolylineShapeEntity AOLimit_NVA : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+   m_killTimer 30
+   m_factionKeys {
+    "GC_NVA"
+   }
+   m_visibility FACTION
+  }
+  TILW_MapShapeComponent "{6508F54F9B461198}" {
+   Enabled 1
+  }
+ }
+ coords 400 224.15 400
+ Points {
+  ShapePoint "{658AB022DE80A4A7}" {
+   Position 0 0 0
+  }
+  ShapePoint "{658AB02337B576C2}" {
+   Position 4200 0 0
+  }
+  ShapePoint "{658AB023047FF687}" {
+   Position 4200 0 1200
+  }
+  ShapePoint "{658AB02322548290}" {
+   Position 0 0 1200
+  }
+ }
+ {
+  PS_ManualMarker marker_screen_us : "{676B84E0291E12D6}PrefabsEditable/Markers/Group/Marker_GroupFlagsBlufor_Base.et" {
+   coords 2600 0 600
+   angleY 90
+   m_sQuadName "recon-motorized"
+   m_fWorldSize 142.5
+   m_aVisibleForFactions {
+    "US"
+   }
+   m_bShowForAnyFaction 0
+   {
+    $grp PolylineShapeEntity : "{A0468F86F76FCEE7}Prefabs/Logic/Map/TILW_MapShape.et" {
+     Shape_Screen {
+      components {
+       TILW_MapShapeComponent "{6508F5526836BC09}" {
+        m_factionKeys {
+         "US"
+        }
+        m_drawArea 0
+        m_drawLine 1
+        m_lineColor 0.016 0.552 0.905 1
+        m_lineWidth 15
+       }
+      }
+      coords 0 0 -100
+      angleY -90
+      Points {
+       ShapePoint "{6594F732C609EACB}" {
+        Position 0 0 500
+       }
+       ShapePoint "{6594F73509CB611D}" {
+        Position 0 0 200
+       }
+       ShapePoint "{6594F735107E6510}" {
+        Position 100 0 300
+       }
+       ShapePoint "{6594F7351B8E5179}" {
+        Position 100 0 100
+       }
+      }
+      IsClosed 0
+      {
+       PolylineShapeEntity : "{A0468F86F76FCEE7}Prefabs/Logic/Map/TILW_MapShape.et" {
+        components {
+         TILW_MapShapeComponent "{6508F5526836BC09}" {
+          m_factionKeys {
+           "US"
+          }
+          m_color 0.016 0.552 0.905 1
+         }
+        }
+        coords 0 0 500
+        Points {
+         ShapePoint "{6594F735CFBF1589}" {
+          Position -30 0 0
+         }
+         ShapePoint "{6594F735CCD60AE9}" {
+          Position 30 0 0
+         }
+         ShapePoint "{6594F735CD2EC18C}" {
+          Position 0 0 40
+         }
+        }
+       }
+      }
+     }
+     Shape_Screen2 {
+      components {
+       TILW_MapShapeComponent "{6508F5526836BC09}" {
+        m_factionKeys {
+         "US"
+        }
+        m_drawArea 0
+        m_drawLine 1
+        m_lineColor 0.016 0.552 0.905 1
+        m_lineWidth 15
+       }
+      }
+      coords 0 0 -100
+      angleY -90
+      Points {
+       ShapePoint "{6594F732C609EACB}" {
+        Position 0 0 -500
+       }
+       ShapePoint "{6594F73509CB611D}" {
+        Position 0 0 -200
+       }
+       ShapePoint "{6594F735107E6510}" {
+        Position 100 0 -300
+       }
+       ShapePoint "{6594F7351B8E5179}" {
+        Position 100 0 -100
+       }
+      }
+      IsClosed 0
+      {
+       PolylineShapeEntity : "{A0468F86F76FCEE7}Prefabs/Logic/Map/TILW_MapShape.et" {
+        components {
+         TILW_MapShapeComponent "{6508F5526836BC09}" {
+          m_factionKeys {
+           "US"
+          }
+          m_color 0.016 0.552 0.905 1
+         }
+        }
+        coords 0 0 -500
+        Points {
+         ShapePoint "{6594F735CFBF1589}" {
+          Position -30 0 0
+         }
+         ShapePoint "{6594F735CCD60AE9}" {
+          Position 30 0 0
+         }
+         ShapePoint "{6594F735CD2EC18C}" {
+          Position 0 0 -40
+         }
+        }
+       }
+      }
+     }
+    }
+    PS_ManualMarker : "{BE928AD6BC4B14CB}PrefabsEditable/Markers/Group/Marker_AMP.et" {
+     coords -54 0 0
+     angleY 0
+     m_fWorldSize 67.5
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bShowForAnyFaction 0
+    }
+   }
+  }
+  PolylineShapeEntity AOLimit_US : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+   components {
+    TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+     m_killTimer 30
+     m_factionKeys {
+      "US"
+     }
+     m_visibility FACTION
+    }
+   }
+   coords 1200 0 0
+   Points {
+    ShapePoint "{658AB022DE80A4A7}" {
+     Position 0 0 0
+    }
+    ShapePoint "{658AB02337B576C2}" {
+     Position 1800 0 0
+    }
+    ShapePoint "{658AB023047FF687}" {
+     Position 1800 0 1200
+    }
+    ShapePoint "{658AB02322548290}" {
+     Position 0 0 1200
+    }
+   }
+  }
+  PolylineShapeEntity MapShape_ExfilArea : "{A0468F86F76FCEE7}Prefabs/Logic/Map/TILW_MapShape.et" {
+   components {
+    TILW_MapShapeComponent "{6508F5526836BC09}" {
+     m_factionKeys {
+      "GC_NVA"
+     }
+     m_visibleForEmptyFaction 0
+     m_drawArea 0
+     m_drawLine 1
+     m_lineColor 0.071 0.561 0.192 0.575
+     m_lineWidth 8
+    }
+   }
+   Points {
+    ShapePoint "{659370A624FFC05C}" {
+     Position 200 0 200
+    }
+    ShapePoint "{659370A62BFCDB0C}" {
+     Position 200 0 1000
+    }
+    ShapePoint "{659370A62F6FB5E5}" {
+     Position 1000 0 1000
+    }
+    ShapePoint "{659370A631C9C7EF}" {
+     Position 1000 0 200
+    }
+   }
+   {
+    TILW_ExtractionTriggerEntity Trigger_ExtrPlayers : "{192ABD6B9232E064}Prefabs/Logic/Triggers/TILW_ExtractionTrigger.et" {
+     coords 0 0 0
+     m_flagName "extr_players"
+     m_stopAfterFirstChange 1
+     m_factionKey "GC_NVA"
+     m_ratioThreshold 0.95
+    }
+    $grp TILW_PresenceTriggerEntity : "{826E6F2246328952}Prefabs/Logic/Triggers/TILW_PresenceTrigger.et" {
+     Trigger_ExtrHigh {
+      coords 0 0 0
+      m_flagName "extr_high"
+      m_stopAfterFirstChange 1
+      m_entityNames {
+       "BRDM2_NVA0" "BRDM2_NVA1" "BRDM2_NVA2" "BRDM2_NVA3" "BRDM2_NVA4" "BRDM2_NVA5" "BRDM2_NVA6" "BRDM2_NVA7"
+      }
+      m_ratioThreshold 0.62
+     }
+     Trigger_ExtrLow {
+      coords 0 0 0
+      m_flagName "extr_low"
+      m_stopAfterFirstChange 1
+      m_entityNames {
+       "BRDM2_NVA0" "BRDM2_NVA1" "BRDM2_NVA2" "BRDM2_NVA3" "BRDM2_NVA4" "BRDM2_NVA5" "BRDM2_NVA6" "BRDM2_NVA7"
+      }
+      m_ratioThreshold 0.37
+     }
+    }
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ m_missionEvents {
+  TILW_MissionEvent "{659370B0AF440442}" {
+   m_name "US Major"
+   m_instructions {
+    TILW_SendMessageInstruction "{659370B090CC9596}" {
+     m_messageTitle "MAJOR US VICTORY"
+     m_messageBody "The NVA company suffered extreme casualties."
+    }
+    TILW_EndGameInstruction "{659370B097FCA304}" {
+     m_executionDelay 15
+     m_factionKey "US"
+    }
+   }
+   m_condition TILW_DisjunctionTerm "{659370AC76040F7E}" {
+    m_operands {
+     TILW_LiteralTerm "{659370AC78655126}" {
+      m_flagName "nva_cas"
+     }
+     TILW_ConjunctionTerm "{659370AC4449AA62}" {
+      m_operands {
+       TILW_LiteralTerm "{659370AC4B494D04}" {
+        m_flagName "extr_players"
+       }
+       TILW_LiteralTerm "{659370AC4855EC79}" {
+        m_invertTerm 1
+        m_flagName "extr_low"
+       }
+      }
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{659370A2CD478268}" {
+   m_name "US Minor"
+   m_instructions {
+    TILW_SendMessageInstruction "{659370A2D7DD7557}" {
+     m_executionDelay 2700
+     m_messageTitle "MINOR US VICTORY"
+     m_messageBody "Reinforcements arrive, forcing the remaining NVA troops to withdraw."
+    }
+    TILW_EndGameInstruction "{659370A361024006}" {
+     m_executionDelay 2730
+     m_factionKey "US"
+    }
+   }
+   m_condition TILW_LiteralTerm "{659370A2D0B804A0}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{659370A2C37135BB}" {
+   m_name "NVA Major"
+   m_instructions {
+    TILW_SendMessageInstruction "{659370AC0D12801B}" {
+     m_messageTitle "MAJOR NVA VICTORY"
+     m_messageBody "The NVA reconnaissance company completed its movement without suffering high losses."
+    }
+    TILW_EndGameInstruction "{659370ACE60CD79F}" {
+     m_executionDelay 15
+     m_factionKey "GC_NVA"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{659370A37496A9F1}" {
+    m_operands {
+     TILW_LiteralTerm "{659370A37B9CE3E2}" {
+      m_flagName "extr_high"
+     }
+     TILW_LiteralTerm "{659370ACF6276C20}" {
+      m_flagName "extr_players"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{659370A2C046CDF7}" {
+   m_name "NVA Minor"
+   m_condition TILW_ConjunctionTerm "{659370ACC32694FF}" {
+    m_operands {
+     TILW_LiteralTerm "{659370ACC15579B7}" {
+      m_flagName "extr_low"
+     }
+     TILW_LiteralTerm "{659370ACC6BA82E1}" {
+      m_invertTerm 1
+      m_flagName "extr_high"
+     }
+     TILW_LiteralTerm "{659370ACD206B60C}" {
+      m_flagName "extr_players"
+     }
+    }
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{658AC02A759E6C88}" {
+   m_flagName "nva_cas"
+   m_factionKey "GC_NVA"
+   m_casualtyRatio 0.7
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 4212.352 397.142 1014.834
+}

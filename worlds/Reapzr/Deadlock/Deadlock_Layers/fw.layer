@@ -1,0 +1,199 @@
+$grp TILW_ExtractionTriggerEntity : "{192ABD6B9232E064}Prefabs/Logic/Triggers/TILW_ExtractionTrigger.et" {
+ extr_sep {
+  coords 6943.117 61.447 4779.474
+  m_queryRadius 1000
+  m_sendStatusMessages 1
+  m_locationName "the SSO Base"
+  m_flagName "extr_sep"
+  m_factionKey "GC_SEPARATIST"
+  m_ratioThreshold 0.8
+ }
+ extr_uk {
+  coords 3310.777 58.188 2144.618
+  m_queryRadius 1000
+  m_sendStatusMessages 1
+  m_locationName "the Ranger Base"
+  m_flagName "extr_uk"
+  m_factionKey "UK"
+  m_ratioThreshold 0.8
+ }
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ cap_uk {
+  coords 6653.175 103.797 1653.825
+  m_queryRadius 15
+  m_captureTime 300
+  m_sendStatusMessages 1
+  m_locationName "the reinforced building"
+  m_displayTo {
+   "UK" "GC_SEPARATIST"
+  }
+  m_flagName "cap_uk"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "UK"
+ }
+ cap_sep {
+  coords 6653.175 103.797 1653.825
+  m_queryRadius 15
+  m_captureTime 300
+  m_sendStatusMessages 1
+  m_locationName "the reinforced building"
+  m_displayTo {
+   "UK" "GC_SEPARATIST"
+  }
+  m_flagName "cap_sep"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "GC_SEPARATIST"
+ }
+}
+TILW_MissionFrameworkEntity fw : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 6658.176 96.281 1634.889
+ m_missionEvents {
+  TILW_MissionEvent "{665A0CB841D80BD6}" {
+   m_name "CAP UK"
+   m_instructions {
+    TILW_SendMessageInstruction "{665A0CB8A306DCB3}" {
+     m_messageTitle "BUILDING CAPTURED"
+     m_messageBody "The building was captured by the SAS."
+    }
+    TILW_DeleteEntitiesInstruction "{665A0CB9756B147E}" {
+     m_executionDelay 10
+     m_entityNames {
+      "cap_sep" "cap_uk"
+     }
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{665A0CB8496EE5CE}" {
+    m_operands {
+     TILW_LiteralTerm "{665A0CB84F39C59E}" {
+      m_flagName "cap_uk"
+     }
+     TILW_LiteralTerm "{665A0CB84CC6ECB8}" {
+      m_invertTerm 1
+      m_flagName "cap_sep"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{665A0CB8959B5EB6}" {
+   m_name "CAP SEP"
+   m_instructions {
+    TILW_SendMessageInstruction "{665A0CB8A306DCB3}" {
+     m_messageTitle "BUILDING CAPTURED"
+     m_messageBody "The building was captured by the SAS."
+    }
+    TILW_DeleteEntitiesInstruction "{665A0CB91F64C61D}" {
+     m_executionDelay 10
+     m_entityNames {
+      "cap_sep" "cap_uk"
+     }
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{665A0CB8496EE5CE}" {
+    m_operands {
+     TILW_LiteralTerm "{665A0CB84F39C59E}" {
+      m_invertTerm 1
+      m_flagName "cap_uk"
+     }
+     TILW_LiteralTerm "{665A0CB84CC6ECB8}" {
+      m_flagName "cap_sep"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{665A0CB99417FB43}" {
+   m_name "EXTR SEP"
+   m_instructions {
+    TILW_SendMessageInstruction "{665A0CB9DCD4BFD9}" {
+     m_messageTitle "SEP EXTRACTION COMPLETE"
+     m_messageBody "Surviving separatists were extracted successfully."
+    }
+   }
+   m_condition TILW_LiteralTerm "{665A0CB9C8EDEF39}" {
+    m_flagName "extr_sep"
+   }
+  }
+  TILW_MissionEvent "{665A0CB9D9358BD8}" {
+   m_name "EXTR UK"
+   m_instructions {
+    TILW_SendMessageInstruction "{665A0CB9DCD4BFD9}" {
+     m_messageTitle "UK EXTRACTION COMPLETE"
+     m_messageBody "Surviving SAS forces were extracted successfully."
+    }
+   }
+   m_condition TILW_LiteralTerm "{665A0CB9C8EDEF39}" {
+    m_flagName "extr_uk"
+   }
+  }
+  TILW_MissionEvent "{665A0CBE6B99441E}" {
+   m_name "CAS RU"
+   m_instructions {
+    TILW_SendMessageInstruction "{665A0CBE53C619AA}" {
+     m_messageTitle "RU DEFEAT"
+     m_messageBody "Separatists took severe casualties before they could be extracted."
+    }
+   }
+   m_condition TILW_LiteralTerm "{665A0CBE4857C577}" {
+    m_flagName "sep_cas"
+   }
+  }
+  TILW_MissionEvent "{665A0CBE692514B6}" {
+   m_name "CAS UK"
+   m_instructions {
+    TILW_SendMessageInstruction "{665A0CBE53C619AA}" {
+     m_messageTitle "UK DEFEAT"
+     m_messageBody "UK forces took severe casualties before they could be extracted."
+    }
+   }
+   m_condition TILW_LiteralTerm "{665A0CBE4857C577}" {
+    m_flagName "uk_cas"
+   }
+  }
+  TILW_MissionEvent "{665A0CBE690B6CA5}" {
+   m_name "CAS US"
+   m_instructions {
+    TILW_SendMessageInstruction "{665A0CBE53C619AA}" {
+     m_messageTitle "US DEFEAT"
+     m_messageBody "US forces took severe casualties."
+    }
+   }
+   m_condition TILW_LiteralTerm "{665A0CBE4857C577}" {
+    m_flagName "us_cas"
+   }
+  }
+  TILW_MissionEvent "{665A0CBE69D53C5A}" {
+   m_name "CAS RU"
+   m_instructions {
+    TILW_SendMessageInstruction "{665A0CBE53C619AA}" {
+     m_messageTitle "RU DEFEAT"
+     m_messageBody "Russian forces took severe casualties."
+    }
+   }
+   m_condition TILW_LiteralTerm "{665A0CBE4857C577}" {
+    m_flagName "ru_cas"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{665A0CB951CABB19}" {
+   m_flagName "ru_cas"
+   m_factionKey "RHS_AFRF"
+   m_casualtyRatio 0.75
+  }
+  TILW_FactionPlayersKilledFlag "{665A0CB95749FED1}" {
+   m_flagName "us_cas"
+   m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.75
+  }
+  TILW_FactionPlayersKilledFlag "{665A0CB954A9C7B6}" {
+   m_flagName "sep_cas"
+   m_factionKey "GC_SEPARATIST"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{665A0CB955BB1EE3}" {
+   m_flagName "uk_cas"
+   m_factionKey "UK"
+   m_casualtyRatio 0.9
+  }
+ }
+}

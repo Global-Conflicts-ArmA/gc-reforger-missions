@@ -1,0 +1,148 @@
+SCR_AIWorld : "{3D0FE80570D5BFCC}Prefabs/AI/SCR_AIWorld_Anizay.et" {
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+}
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ {
+  coords 5403.001 78.47 5293.505
+  m_sTitle "Overview"
+  m_sTextData "US army lead a convoy to deliver food and other supplies to civilians in Naudeh."
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 10
+ }
+ {
+  coords 5412.931 78.47 5244.146
+  m_sTitle "Mission Notes"
+  m_sTextData "End conditions:"\
+  "Deliver at least 1 truck: US Victory"\
+  "90% US casualties: INS Victory"\
+  "All trucks destroyed: INS Victory (could let things play out)"\
+  ""\
+  "There is a cap zone marked (NW Naudeh) that trucks need to remain in for 5 minutes to deliver."
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 15
+ }
+}
+TILW_PresenceTriggerEntity : "{826E6F2246328952}Prefabs/Logic/Triggers/TILW_PresenceTrigger.et" {
+ coords 8353.646 77.579 5215.299
+ m_queryRadius 30
+ m_queryPeriod 1
+ m_captureTime 300
+ m_sendStatusMessages 1
+ m_statusMessages {
+  "US forces delivered the trucks to %2." "US forces are delivering the trucks to %2." "US forces are no longer delivering the trucks to %2." "Abandoned presence at %2." "Abandoning presence at %2." "No longer abandoning presence at %2."
+ }
+ m_locationName "the Bath House"
+ m_flagName "Blufor Capture"
+ m_stopAfterFirstChange 1
+ m_entityNames {
+  "Truck_1" "Truck_2"
+ }
+ m_ratioThreshold 0.5
+}
+PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_CoverMapComponent "{6473480FCAB7760B}" {
+   Enabled 1
+   m_ratioWidth 1
+  }
+  TILW_MapShapeComponent "{6508F54F9B461198}" {
+   Enabled 1
+  }
+ }
+ coords 8390.264 78.303 5192.576
+ Points {
+  ShapePoint "{660E525517D613D2}" {
+   Position 1830 0 -4264
+  }
+  ShapePoint "{660E52552213F63E}" {
+   Position -787.283 0 -2969.91
+  }
+  ShapePoint "{660E525525269998}" {
+   Position -672.083 0 -2031.057
+  }
+  ShapePoint "{660E52552B88DD53}" {
+   Position -1235.467 0 -1218.626
+  }
+  ShapePoint "{660E52552F7EF877}" {
+   Position -672.083 0 -783.171
+  }
+  ShapePoint "{660E52552D1E4E65}" {
+   Position -672.083 0 232.48
+  }
+  ShapePoint "{660E525532D74A02}" {
+   Position 916.094 0 232.48
+  }
+  ShapePoint "{660E52553C72FE58}" {
+   Position 916.094 0 -1388.296
+  }
+  ShapePoint "{660E525543E68DC6}" {
+   Position 1830 0 -2000.218
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ m_missionEvents {
+  TILW_MissionEvent "{661002208C97A955}" {
+   m_name "INS VIctory"
+   m_instructions {
+    TILW_SendMessageInstruction "{66130B6CB67A6C0F}" {
+     m_messageTitle "INSURGENT VICTORY"
+     m_messageBody "US forces suffered severe casualties."
+    }
+   }
+   m_condition TILW_LiteralTerm "{66100220B0CB9E64}" {
+    m_flagName "BLUFOR Cas"
+   }
+  }
+  TILW_MissionEvent "{6610022132098454}" {
+   m_name "Blufor Capture"
+   m_instructions {
+    TILW_SendMessageInstruction "{66130B6C54C4DA71}" {
+     m_messageTitle "US VICTORY"
+     m_messageBody "The truck was delivered."
+    }
+   }
+   m_condition TILW_LiteralTerm "{66100221DAF493BA}" {
+    m_flagName "Blufor Capture"
+   }
+  }
+  TILW_MissionEvent "{66130B6C52415505}" {
+   m_name "Trucks destroyed"
+   m_instructions {
+    TILW_SendMessageInstruction "{66130B6CF9821862}" {
+     m_messageTitle "US DEFEAT"
+     m_messageBody "Both trucks were destroyed."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{66130B6CEBCAEC86}" {
+    m_operands {
+     TILW_LiteralTerm "{66130B6CEC7A66BF}" {
+      m_flagName "t1d"
+     }
+     TILW_LiteralTerm "{66130B6CF2355DC1}" {
+      m_flagName "t2d"
+     }
+    }
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{66100220C3C4DCD1}" {
+   m_flagName "BLUFOR Cas"
+   m_factionKey "US"
+   m_casualtyRatio 0.9
+  }
+ }
+}
+PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ coords 8353.444 77.875 5215.021
+ m_MarkerColor 0.22 0.227 1 1
+ m_sQuadName "flag"
+ m_fWorldSize 50
+ m_bUseWorldScale 0
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}

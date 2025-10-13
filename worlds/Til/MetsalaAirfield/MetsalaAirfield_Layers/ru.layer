@@ -1,0 +1,423 @@
+SCR_AIGroup ru_coyhq : "{26E9D09E8E3C0CC0}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/P/AFRF_MotRifles_2020_CoyHQ_P.et" {
+ components {
+  AIFormationComponent "{507E9DC12F541FE6}" {
+   DefaultFormation "Column"
+  }
+  PS_GroupCallsignAssigner "{65EEE0B0DAF9BF22}" {
+   m_iCompanyCallsign 1
+  }
+ }
+ coords 5048.129 73.431 6342.682
+ angleY -135
+ m_sCustomNameSet "Coy HQ"
+ {
+  $grp SCR_AIGroup : "{26E9D09E8E3C0CC0}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/P/AFRF_MotRifles_2020_CoyHQ_P.et" {
+   ru_pilots_tp {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Column"
+     }
+     PS_GroupCallsignAssigner "{65EEE0B0DAF9BF22}" {
+      m_iCompanyCallsign 1
+      m_iPlatoonCallsign 1
+      m_iSquadCallsign 2
+     }
+    }
+    coords 5 0 0
+    m_aUnitPrefabSlots {
+     "{5601772757B7D7FA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_Pilot_P.et" "{5601772757B7D7FA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_Pilot_P.et" "{5601772757B7D7FA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_Pilot_P.et"
+    }
+    m_sCustomNameSet "DYATEL (Mi-8)"
+   }
+   ru_pilots_atk {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Column"
+     }
+     PS_GroupCallsignAssigner "{65EEE0B0DAF9BF22}" {
+      m_iCompanyCallsign 1
+      m_iPlatoonCallsign 1
+      m_iSquadCallsign 1
+     }
+    }
+    coords -5 0 0
+    m_aUnitPrefabSlots {
+     "{5601772757B7D7FA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_Pilot_P.et" "{43E1BAF5C559EFC9}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_HeliCrew_P.et" "{5601772757B7D7FA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_Pilot_P.et" "{43E1BAF5C559EFC9}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_HeliCrew_P.et"
+    }
+    m_sCustomNameSet "SOKOL (Mi-24)"
+   }
+  }
+ }
+}
+$grp Vehicle : "{658B80A790C7EFA7}Prefabs/Vehicles/Helicopters/Mi24/Mi24V_armed_9M114.et" {
+ Mi24V_armed_9M1 {
+  components {
+   RigidBody "{51DAA09FECF52BBF}" {
+    Active Active
+   }
+   WCS_Armament_LoadoutComponent "{62A6BA2373E69A6E}" {
+    m_ArmamentGroups {
+     WCS_ArmamentWeaponGroup "{6291293707B485C3}" {
+      weaponsInfo {
+       WCS_ArmamentWeaponInfo "{62F33B9484BCAD2F}" {
+        isEnabled 0
+       }
+       WCS_ArmamentWeaponInfo "{62F33B94B578B045}" {
+        isEnabled 0
+       }
+      }
+     }
+    }
+   }
+  }
+  coords 5052.194 74.173 6251.644
+  angleY 180
+  m_sAttachmentGroupName "ru_pilots_atk"
+ }
+ Mi24V_armed_9M2 {
+  components {
+   RigidBody "{51DAA09FECF52BBF}" {
+    Active Active
+   }
+   WCS_Armament_LoadoutComponent "{62A6BA2373E69A6E}" {
+    m_ArmamentGroups {
+     WCS_ArmamentWeaponGroup "{6291293707B485C3}" {
+      weaponsInfo {
+       WCS_ArmamentWeaponInfo "{62F33B94BA845D24}" {
+        isEnabled 0
+       }
+       WCS_ArmamentWeaponInfo "{62F33B94B578B045}" {
+        isEnabled 0
+       }
+      }
+     }
+    }
+   }
+  }
+  coords 5002.194 74.187 6201.644
+  angleY -180
+  m_sAttachmentGroupName "ru_pilots_atk"
+ }
+}
+$grp Vehicle : "{80C975F8482DEE97}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed_black.et" {
+ ru_mi8_1 {
+  components {
+   RHS_GroupMaterialController "{61AC9DD825A8E2BE}" {
+    m_aGroups {
+     RHS_MaterialGroupProperties "{61AC9DD83D9B833A}" {
+      m_iTextureID 5
+      m_bRandomize 0
+     }
+     RHS_MaterialGroupProperties "{61AC9DD83D7FD63D}" {
+      m_bRandomize 0
+     }
+    }
+   }
+   RigidBody "{51DAA09FECF52BBF}" {
+    Active Active
+   }
+   SlotManagerComponent "{55BCE45E438E4CFF}" {
+    Slots {
+     SCR_WeaponRackSlotInfo Hardpoints {
+      Prefab "{A3CD87AA652B2D42}Prefabs/Vehicles/Helicopters/Mi8MT/VehParts/WeapSystems/Mi8MT_Hardpoints_black_HEDP_4.et"
+     }
+    }
+   }
+  }
+  coords 5009.293 73.821 6344.544
+  angleY -180
+  m_sAttachmentGroupName "ru_pilots_tp"
+  {
+   SCR_AIGroup ru_plt1_hq : "{312B31A3D81EF88A}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/P/AFRF_MotRifles_2020_PHQ_P.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Column"
+     }
+     PS_GroupCallsignAssigner "{65EEE0BF1CE2A863}" {
+      m_iCompanyCallsign 1
+      m_iSquadCallsign 1
+     }
+    }
+    coords -20 -0.125 -10
+    angleY 45
+    m_aUnitPrefabSlots {
+     "{38E7CC05E50D0B54}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_PL_P.et"
+    }
+    m_sCustomNameSet "1st Plt | HQ"
+    {
+     SCR_AIGroup ru_plt1_sq1 : "{C4A6E2B567A5EEA3}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/P/AFRF_MotRifles_2020_RifleOnlySquad_P.et" {
+      components {
+       AIFormationComponent "{507E9DC12F541FE6}" {
+        DefaultFormation "Column"
+       }
+       PS_GroupCallsignAssigner "{65EEE0BF601891BE}" {
+        m_iCompanyCallsign 1
+        m_iSquadCallsign 2
+       }
+      }
+      coords 5 0 0
+      m_aUnitPrefabSlots {
+       "{1BE41B126CD952A5}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_Sergeant_P.et" "{72DD9A563F52FA91}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_SR_GL_P.et" "{02AAEF44AAA1F920}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_MG_P.et" "{79D602DEE89A3934}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_AMG_P.et" "{2F5E3906F00D4B17}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_Rifleman_P.et"
+      }
+      m_sCustomNameSet "1st Plt | 1st Sqd"
+      {
+       SCR_AIGroup ru_plt1_sq2 : "{C4A6E2B567A5EEA3}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/P/AFRF_MotRifles_2020_RifleOnlySquad_P.et" {
+        components {
+         AIFormationComponent "{507E9DC12F541FE6}" {
+          DefaultFormation "Column"
+         }
+         PS_GroupCallsignAssigner "{65EEE0BF67C6A56E}" {
+          m_iCompanyCallsign 1
+          m_iSquadCallsign 3
+         }
+        }
+        coords 5 0 0
+        m_aUnitPrefabSlots {
+         "{32429C48531DF8D3}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_SL_P.et" "{72DD9A563F52FA91}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_SR_GL_P.et" "{02AAEF44AAA1F920}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_MG_P.et" "{79D602DEE89A3934}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_AMG_P.et" "{2F5E3906F00D4B17}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_Rifleman_P.et"
+        }
+        m_sCustomNameSet "1st Plt | 2nd Sqd"
+        {
+         SCR_AIGroup ru_plt1_sq3 : "{C4A6E2B567A5EEA3}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/P/AFRF_MotRifles_2020_RifleOnlySquad_P.et" {
+          components {
+           AIFormationComponent "{507E9DC12F541FE6}" {
+            DefaultFormation "Column"
+           }
+           PS_GroupCallsignAssigner "{65EEE0BF6596E15F}" {
+            m_iCompanyCallsign 1
+            m_iSquadCallsign 4
+           }
+          }
+          coords 5 0 0
+          m_aUnitPrefabSlots {
+           "{32429C48531DF8D3}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_SL_P.et" "{72DD9A563F52FA91}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_SR_GL_P.et" "{2A177642F84050A7}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_AT_P.et" "{516B9BD8BA7B90B3}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_AAT_P.et"
+          }
+          m_sCustomNameSet "1st Plt | 3rd Sqd"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ ru_mi8_2 {
+  components {
+   RHS_GroupMaterialController "{61AC9DD825A8E2BE}" {
+    m_aGroups {
+     RHS_MaterialGroupProperties "{61AC9DD83D9B833A}" {
+      m_iTextureID 5
+      m_bRandomize 0
+     }
+     RHS_MaterialGroupProperties "{61AC9DD83D7FD63D}" {
+      m_iTextureID 2
+      m_bRandomize 0
+     }
+    }
+   }
+   RigidBody "{51DAA09FECF52BBF}" {
+    Active Active
+   }
+   SlotManagerComponent "{55BCE45E438E4CFF}" {
+    Slots {
+     SCR_WeaponRackSlotInfo Hardpoints {
+      Prefab "{A3CD87AA652B2D42}Prefabs/Vehicles/Helicopters/Mi8MT/VehParts/WeapSystems/Mi8MT_Hardpoints_black_HEDP_4.et"
+     }
+    }
+   }
+  }
+  coords 4959.293 73.821 6294.544
+  angleY 180
+  m_sAttachmentGroupName "ru_pilots_tp"
+  {
+   SCR_AIGroup ru_plt2_hq : "{312B31A3D81EF88A}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/P/AFRF_MotRifles_2020_PHQ_P.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Column"
+     }
+     PS_GroupCallsignAssigner "{65EEE0BF1CE2A863}" {
+      m_iCompanyCallsign 1
+      m_iSquadCallsign 5
+     }
+    }
+    coords -20 -0.125 -10
+    angleY 45
+    m_aUnitPrefabSlots {
+     "{38E7CC05E50D0B54}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_PL_P.et"
+    }
+    m_sCustomNameSet "2nd Plt | HQ"
+    {
+     SCR_AIGroup ru_plt2_sq1 : "{C4A6E2B567A5EEA3}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/P/AFRF_MotRifles_2020_RifleOnlySquad_P.et" {
+      components {
+       AIFormationComponent "{507E9DC12F541FE6}" {
+        DefaultFormation "Column"
+       }
+       PS_GroupCallsignAssigner "{65EEE0BF601891BE}" {
+        m_iCompanyCallsign 1
+        m_iSquadCallsign 6
+       }
+      }
+      coords 5 0 0
+      m_aUnitPrefabSlots {
+       "{1BE41B126CD952A5}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_Sergeant_P.et" "{72DD9A563F52FA91}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_SR_GL_P.et" "{02AAEF44AAA1F920}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_MG_P.et" "{79D602DEE89A3934}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_AMG_P.et" "{2F5E3906F00D4B17}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_Rifleman_P.et"
+      }
+      m_sCustomNameSet "2nd Plt | 1st Sqd"
+      {
+       SCR_AIGroup ru_plt2_sq2 : "{C4A6E2B567A5EEA3}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/P/AFRF_MotRifles_2020_RifleOnlySquad_P.et" {
+        components {
+         AIFormationComponent "{507E9DC12F541FE6}" {
+          DefaultFormation "Column"
+         }
+         PS_GroupCallsignAssigner "{65EEE0BF67C6A56E}" {
+          m_iCompanyCallsign 1
+          m_iSquadCallsign 7
+         }
+        }
+        coords 5 0 0
+        m_aUnitPrefabSlots {
+         "{32429C48531DF8D3}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_SL_P.et" "{72DD9A563F52FA91}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_SR_GL_P.et" "{02AAEF44AAA1F920}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_MG_P.et" "{79D602DEE89A3934}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_AMG_P.et" "{2F5E3906F00D4B17}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_Rifleman_P.et"
+        }
+        m_sCustomNameSet "2nd Plt | 2nd Sqd"
+        {
+         SCR_AIGroup ru_plt2_sq3 : "{C4A6E2B567A5EEA3}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/P/AFRF_MotRifles_2020_RifleOnlySquad_P.et" {
+          components {
+           AIFormationComponent "{507E9DC12F541FE6}" {
+            DefaultFormation "Column"
+           }
+           PS_GroupCallsignAssigner "{65EEE0BF6596E15F}" {
+            m_iCompanyCallsign 1
+            m_iSquadCallsign 8
+           }
+          }
+          coords 5 0 0
+          m_aUnitPrefabSlots {
+           "{32429C48531DF8D3}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_SL_P.et" "{72DD9A563F52FA91}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_SR_GL_P.et" "{2A177642F84050A7}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_AT_P.et" "{516B9BD8BA7B90B3}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_AAT_P.et"
+          }
+          m_sCustomNameSet "2nd Plt | 3rd Sqd"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ ru_mi8_3 {
+  components {
+   RHS_GroupMaterialController "{61AC9DD825A8E2BE}" {
+    m_aGroups {
+     RHS_MaterialGroupProperties "{61AC9DD83D9B833A}" {
+      m_iTextureID 5
+      m_bRandomize 0
+     }
+     RHS_MaterialGroupProperties "{61AC9DD83D7FD63D}" {
+      m_iTextureID 3
+      m_bRandomize 0
+     }
+    }
+   }
+   RigidBody "{51DAA09FECF52BBF}" {
+    Active Active
+   }
+   SlotManagerComponent "{55BCE45E438E4CFF}" {
+    Slots {
+     SCR_WeaponRackSlotInfo Hardpoints {
+      Prefab "{A3CD87AA652B2D42}Prefabs/Vehicles/Helicopters/Mi8MT/VehParts/WeapSystems/Mi8MT_Hardpoints_black_HEDP_4.et"
+     }
+    }
+   }
+  }
+  coords 4909.293 73.821 6244.544
+  angleY 180
+  m_sAttachmentGroupName "ru_pilots_tp"
+  {
+   SCR_AIGroup ru_plt3_hq : "{312B31A3D81EF88A}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/P/AFRF_MotRifles_2020_PHQ_P.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Column"
+     }
+     PS_GroupCallsignAssigner "{65EEE0BF1CE2A863}" {
+      m_iCompanyCallsign 1
+      m_iSquadCallsign 9
+     }
+    }
+    coords -20 -0.125 -10
+    angleY 45
+    m_aUnitPrefabSlots {
+     "{38E7CC05E50D0B54}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_PL_P.et"
+    }
+    m_sCustomNameSet "3rd Plt | HQ"
+    {
+     SCR_AIGroup ru_plt3_sq1 : "{C4A6E2B567A5EEA3}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/P/AFRF_MotRifles_2020_RifleOnlySquad_P.et" {
+      components {
+       AIFormationComponent "{507E9DC12F541FE6}" {
+        DefaultFormation "Column"
+       }
+       PS_GroupCallsignAssigner "{65EEE0BF601891BE}" {
+        m_iCompanyCallsign 1
+        m_iSquadCallsign 10
+       }
+      }
+      coords 5 0 0
+      m_aUnitPrefabSlots {
+       "{1BE41B126CD952A5}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_Sergeant_P.et" "{72DD9A563F52FA91}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_SR_GL_P.et" "{02AAEF44AAA1F920}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_MG_P.et" "{79D602DEE89A3934}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_AMG_P.et" "{2F5E3906F00D4B17}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_Rifleman_P.et"
+      }
+      m_sCustomNameSet "3rd Plt | 1st Sqd"
+      {
+       SCR_AIGroup ru_plt3_sq2 : "{C4A6E2B567A5EEA3}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/P/AFRF_MotRifles_2020_RifleOnlySquad_P.et" {
+        components {
+         AIFormationComponent "{507E9DC12F541FE6}" {
+          DefaultFormation "Column"
+         }
+         PS_GroupCallsignAssigner "{65EEE0BF67C6A56E}" {
+          m_iCompanyCallsign 1
+          m_iSquadCallsign 11
+         }
+        }
+        coords 5 0 0
+        m_aUnitPrefabSlots {
+         "{32429C48531DF8D3}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_SL_P.et" "{72DD9A563F52FA91}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_SR_GL_P.et" "{02AAEF44AAA1F920}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_MG_P.et" "{79D602DEE89A3934}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_AMG_P.et" "{2F5E3906F00D4B17}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_Rifleman_P.et"
+        }
+        m_sCustomNameSet "3rd Plt | 2nd Sqd"
+        {
+         SCR_AIGroup ru_plt3_sq3 : "{C4A6E2B567A5EEA3}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/P/AFRF_MotRifles_2020_RifleOnlySquad_P.et" {
+          components {
+           AIFormationComponent "{507E9DC12F541FE6}" {
+            DefaultFormation "Column"
+           }
+           PS_GroupCallsignAssigner "{65EEE0BF6596E15F}" {
+            m_iCompanyCallsign 1
+            m_iSquadCallsign 12
+           }
+          }
+          coords 5 0 0
+          m_aUnitPrefabSlots {
+           "{32429C48531DF8D3}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_SL_P.et" "{72DD9A563F52FA91}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_SR_GL_P.et" "{2A177642F84050A7}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_AT_P.et" "{516B9BD8BA7B90B3}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_AAT_P.et"
+          }
+          m_sCustomNameSet "3rd Plt | 3rd Sqd"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+StaticModelEntity : "{C1AE5D901C3A93C6}PrefabsEditable/Auto/Structures/Military/Camps/HelipadImprovised_01/E_HelipadImprovised_USSR_01.et" {
+ coords 4952.194 0 6151.644
+ {
+  GenericEntity : "{47B7E8CA1935BB28}PrefabsEditable/SupportStationSystems/E_SupportStationSystem_Fuel.et" {
+   components {
+    SCR_FuelSupportStationComponent "{5E1CF311DF6C3CBE}" {
+     m_fRange 15
+    }
+    WCS_RearmSupportStationComponent "{65EEE0A55750CBF2}" {
+     m_fRange 15
+    }
+   }
+  }
+ }
+}

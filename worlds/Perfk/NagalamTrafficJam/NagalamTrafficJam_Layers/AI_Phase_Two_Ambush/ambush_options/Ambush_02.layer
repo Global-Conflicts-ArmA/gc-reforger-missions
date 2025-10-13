@@ -1,0 +1,112 @@
+SCR_AIWaypoint Ambush_02_forceMove : "{06E1B6EBD480C6E0}Prefabs/AI/Waypoints/AIWaypoint_ForcedMove.et" {
+ coords 875.03 34.474 3217.801
+ CompletionRadius 3
+}
+$grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
+ ambush_02_inf5 {
+  coords 846.354 32.182 3246.602
+  angleY 151.182
+  m_prefab "{E9969D610C120940}worlds/Perfk/Prefabs/Groups/PK_GC_INS_Afghan_Fireteam_1.et"
+  m_conditionFlag "Ambush_01_CloseTrigger"
+  m_waypointNames {
+   "Ambush_02_SD"
+  }
+ }
+ ambush_02_Truck {
+  coords 766.005 42.969 3186.135
+  angleY 81.999
+  m_prefab "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+  m_conditionFlag "Ambush_02_CloseTrigger"
+  m_crewConfig TILW_CrewConfig "{6662A01EEC3B8FF9}" {
+   m_crewGroups {
+    TILW_CrewGroup "{6662A01EEE967534}" {
+     m_crewStations {
+      TILW_CrewStation "{6662A01EE4F152BB}" {
+       m_characters {
+        "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et" "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et" "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et" "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+       }
+      }
+     }
+     m_waypointNames {
+      "Ambush_02_SD"
+     }
+    }
+   }
+   m_noTurretDismount 1
+  }
+ }
+ ambush_02_TruckBlock {
+  coords 868.101 40.663 3201.995
+  angleX -12.026
+  angleY -18.69
+  angleZ -0.232
+  m_prefab "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+  m_conditionFlag "Ambush_02_CloseTrigger"
+  m_crewConfig TILW_CrewConfig "{6662A01EEC3B8FF9}" {
+   m_crewGroups {
+    TILW_CrewGroup "{6662A01EEE967534}" {
+     m_crewStations {
+      TILW_CrewStation "{6662A01EE4F152BB}" {
+       m_characters {
+        "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et" "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+       }
+      }
+     }
+     m_waypointNames {
+      "Ambush_02_forceMove"
+     }
+    }
+   }
+  }
+ }
+ ambush_02_truck {
+  coords 749.554 41.526 3203.39
+  angleY 63.447
+  m_prefab "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+  m_conditionFlag "Ambush_02_CloseTrigger"
+  m_crewConfig TILW_CrewConfig "{6662A01EEC3B8FF9}" {
+   m_crewGroups {
+    TILW_CrewGroup "{6662A01EEE967534}" {
+     m_crewStations {
+      TILW_CrewStation "{6662A01EE4F152BB}" {
+       m_characters {
+        "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et" "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et" "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et" "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+       }
+      }
+     }
+     m_waypointNames {
+      "Ambush_02_SD"
+     }
+    }
+   }
+   m_noTurretDismount 1
+  }
+ }
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ {
+  coords 922.716 32.895 3232.9
+  angleZ 0.895
+  m_flagName "Ambush_02_Trigger"
+  m_stopAfterFirstChange 1
+  m_setShapeColor 0.817 1 0 1
+  m_playersOnly 1
+  m_ownerFactionKey "GC_TKA"
+ }
+ {
+  coords 922.716 32.895 3232.9
+  angleZ 0.895
+  m_flagName "Ambush_02_Trigger"
+  m_stopAfterFirstChange 1
+  m_setShapeColor 0 0.047 1 1
+  m_playersOnly 1
+  m_ownerFactionKey "US"
+ }
+}
+SCR_SearchAndDestroyWaypoint Ambush_02_SD : "{B3E7B8DC2BAB8ACC}Prefabs/AI/Waypoints/AIWaypoint_SearchAndDestroy.et" {
+ coords 885.454 34.042 3222.392
+ angleX 2.412
+ angleY -1.671
+ angleZ -4.64
+ CompletionRadius 20
+}

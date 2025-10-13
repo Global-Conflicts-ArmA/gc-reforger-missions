@@ -1,0 +1,534 @@
+SCR_AIWorld : "{E2A016456BBC697D}Prefabs/AI/SCR_AIWorld_Kunar.et" {
+ coords 2683.716 8 3054.829
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 2680.799 8 3050.624
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 11
+   m_bRandomStartingWeather 1
+  }
+ }
+ coords 2680.271 8 3051.191
+}
+GenericEntity Market3Location {
+ coords 3616.143 280 407.93
+ angleY 90
+}
+$grp SplineShapeEntity {
+ {
+  coords 841.105 114.928 2411.302
+  Points {
+   ShapePoint "{660400C69AF2D863}" {
+    Position -4.137 0 9.681
+   }
+   ShapePoint "{660400C69861C58A}" {
+    Position 3.176 0.783 -5.248
+   }
+  }
+  {
+   RoadGeneratorEntity : "{8E83BBD5CEC42A11}Prefabs/WEGenerators/Roads/Dirt/RG_Road_Dirt_01.et" {
+    coords 0 0 0
+    GeneratorType GeneratorType "{663867FAE634CC73}" {
+    }
+    {
+     RoadEntity {
+      ID "523EAA80CAA6C6B5"
+      SplinePoints {
+       ShapePoint "{52346539D885C296}" {
+        Position -4.137 0 9.681
+       }
+       ShapePoint "{52346539D885C1A2}" {
+        Position 3.176 0.783 -5.249
+       }
+      }
+      IsClosedSpline 0
+      Type "Road Minor"
+      Width 4
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 3810.841 146.064 1558.279
+  Points {
+   ShapePoint "{660400C69AF2D863}" {
+    Position 13.88 -5.296 43.626
+   }
+   ShapePoint "{660400C69861C58A}" {
+    Position -10.28 -0.225 8.53
+   }
+  }
+  {
+   RoadGeneratorEntity : "{8E83BBD5CEC42A11}Prefabs/WEGenerators/Roads/Dirt/RG_Road_Dirt_01.et" {
+    coords 0 0 0
+    GeneratorType GeneratorType "{663867FAE634CC73}" {
+    }
+    {
+     RoadEntity {
+      ID "523EAA80CAA6C6B5"
+      SplinePoints {
+       ShapePoint "{52346539D885C296}" {
+        Position 13.88 -5.296 43.626
+       }
+       ShapePoint "{52346539D885C1A2}" {
+        Position -10.28 -0.225 8.53
+       }
+      }
+      IsClosedSpline 0
+      Type "Road Minor"
+      Width 4
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 3612.439 282.438 401.515
+  Points {
+   ShapePoint "{660400C69AF2D863}" {
+    Position -11.056 -2.55 6.761
+   }
+   ShapePoint "{660400C69861C58A}" {
+    Position -4.202 -2.643 -0.751
+   }
+  }
+  {
+   RoadGeneratorEntity : "{8E83BBD5CEC42A11}Prefabs/WEGenerators/Roads/Dirt/RG_Road_Dirt_01.et" {
+    coords 0 0 0
+    GeneratorType GeneratorType "{663867FAE634CC73}" {
+    }
+    {
+     RoadEntity {
+      ID "523EAA80CAA6C6B5"
+      SplinePoints {
+       ShapePoint "{52346539D885C296}" {
+        Position -11.056 -2.55 6.761
+       }
+       ShapePoint "{52346539D885C1A2}" {
+        Position -4.202 -2.643 -0.751
+       }
+      }
+      IsClosedSpline 0
+      Type "Road Minor"
+      Width 4
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{47B7E8CA1935BB28}PrefabsEditable/SupportStationSystems/E_SupportStationSystem_Fuel.et" {
+ components {
+  SCR_FuelSupportStationComponent "{5E1CF311DF6C3CBE}" {
+   m_fRange 150
+  }
+  SCR_RepairSupportStationComponent "{66276DFCDF5C947F}" {
+   m_eSupportStationPriority HIGH
+   m_fRange 290
+   m_iSupplyCostDamageHealed 0
+   m_iSupplyCostPerFireRateReduction 0
+  }
+  SCR_SupportStationAreaMeshComponent "{5B2AD5B869A9C26D}" {
+   m_eShape RECTANGLE
+   m_fRadius 25
+  }
+  WCS_RearmSupportStationComponent "{66283DAFD30D92CB}" {
+   m_eSupportStationPriority HIGH
+   m_fRange 290
+  }
+ }
+ coords 2975.203 10 3036.359
+ angleY 32.126
+}
+GenericEntity : "{5A25DAC561B3BFF8}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Medical_USSR_01.et" {
+ coords 2898.679 10 3004.281
+ angleY 34.458
+ {
+  GenericEntity {
+   ID "620EDD9FE2C8259B"
+   components {
+    SCR_ArsenalComponent "{589F01C9C8D4A475}" {
+     m_eSupportedArsenalItemTypes 192
+     m_OverwriteArsenalConfig SCR_ArsenalItemListConfig "{663C4C72BDE3A245}" {
+      m_aArsenalItems {
+       SCR_ArsenalItemStandalone "{663C4C715C4797F3}" {
+        m_eItemType HEAL
+        m_ItemResourceName "{0D9A5DCF89AE7AA9}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01.et"
+       }
+       SCR_ArsenalItemStandalone "{663C4C72E415B779}" {
+        m_eItemType HEAL
+        m_ItemResourceName "{D511F5C330B1697E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_USSR_01_Base.et"
+       }
+       SCR_ArsenalItemStandalone "{663C4C71A652736F}" {
+        m_eItemType HEAL
+        m_ItemResourceName "{80E75A71C29190DB}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_USSR_01.et"
+       }
+       SCR_ArsenalItemStandalone "{663C4C72E6CFDAB6}" {
+        m_eItemType HEAL
+        m_ItemResourceName "{5B2FD067D70C1E8F}Prefabs/Items/Medicine/EpinephrineInjection/ACE_Medical_EpinephrineInjection.et"
+       }
+       SCR_ArsenalItemStandalone "{663C4C72E317B572}" {
+        m_eItemType HEAL
+        m_ItemResourceName "{02DD34077F51F65E}Prefabs/Items/Medicine/NaloxoneInjection/ACE_Medical_NaloxoneInjection.et"
+       }
+       SCR_ArsenalItemStandalone "{663C4C72E08A4257}" {
+        m_eItemType HEAL
+        m_ItemResourceName "{9BBA766CD869002C}Prefabs/Items/Medicine/PhenylephrineInjection/ACE_Medical_PhenylephrineInjection.et"
+       }
+       SCR_ArsenalItemStandalone "{663C4C72E2721C23}" {
+        m_eItemType HEAL
+        m_ItemResourceName "{D0434D5215B54181}Prefabs/Items/Medicine/MetoprololInjection/ACE_Medical_MetoprololInjection.et"
+       }
+       SCR_ArsenalItemStandalone "{663C4C729DCF7478}" {
+        m_eItemType HEAL
+        m_ItemResourceName "{58CF3AB87C441295}Prefabs/Items/Medicine/AmmoniumCarbonatePackage/ACE_Medical_AmmoniumCarbonatePackage.et"
+       }
+       SCR_ArsenalItemStandalone "{663C4C72D6A0602E}" {
+        m_eItemType HEAL
+        m_ItemResourceName "{527D7C5D2E476BDC}Prefabs/Items/Medicine/SalineBag_01/SalineBag_USSR_01.et"
+       }
+       SCR_ArsenalItemStandalone "{663C4C72D601C973}" {
+        m_eItemType HEAL
+        m_ItemResourceName "{21EF98BFC1EB3793}Prefabs/Items/Equipment/Kits/MedicalKit_01/MedicalKit_01_USSR.et"
+       }
+       SCR_ArsenalItemStandalone "{663C4C72BAF74927}" {
+        m_eItemType BACKPACK
+        m_ItemResourceName "{41A9C55B61F375F0}Prefabs/Items/Equipment/Backpacks/Backpack_Kolobok.et"
+       }
+       SCR_ArsenalItemStandalone "{663C4C728925859F}" {
+        m_eItemType BACKPACK
+        m_ItemResourceName "{3DE0155EC9767B98}Prefabs/Items/Equipment/Backpacks/Backpack_Veshmeshok.et"
+       }
+      }
+     }
+    }
+    SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
+     Enabled 0
+    }
+    SCR_ResourceComponent "{5E5ABDF371AE8B21}" {
+     m_aContainers {
+      SCR_ResourceContainer "{663E2286C4C8F5FF}" {
+       m_eResourceRights ALL
+       m_eStorageType STORED
+       m_fResourceValueCurrent 30
+       m_fResourceValueMax 30
+       m_bEnableResourceGain 1
+       m_fResourceGain 2
+       m_fResourceGainTickrate 300
+      }
+     }
+     m_aConsumers {
+      SCR_ResourceConsumerServicePoint "{5E5ABDF28A4FEC1F}" {
+       m_fBuyMultiplier 0
+      }
+     }
+    }
+   }
+  }
+  StaticModelEntity {
+   ID "5CC4E286B5B34824"
+   {
+    SCR_DestructibleBuildingEntity {
+     ID "5A5344E1BED63C5B"
+     components {
+      SCR_HealSupportStationComponent "{5EE8A81A8ACCE524}" {
+       m_iSupplyCostDamageHealed 0
+      }
+     }
+     {
+      GenericEntity {
+       ID "5EE8A819345602B2"
+       components {
+        SCR_SupportStationAreaMeshComponent "{5EE8A8193109F3F1}" {
+         m_eSearchForType NONE
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+PolylineShapeEntity Phase1AO : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+   m_defaultColor 0 1 0 1
+   m_useFactionColor 0
+   m_lineWidth 5
+  }
+ }
+ coords 3016.182 7.685 2815.005
+ Points {
+  ShapePoint "{668D5B36B92F2C87}" {
+   Position 652.025 0 216.341
+  }
+  ShapePoint "{668D5B368B1C4C03}" {
+   Position -1064.709 0 1110.858
+  }
+  ShapePoint "{668D5B368763F729}" {
+   Position -3014.944 282.549 1171.206
+  }
+  ShapePoint "{668D5B369B844353}" {
+   Position -3014.343 435.682 -2812.332
+  }
+  ShapePoint "{668D5B3697950C3F}" {
+   Position -569.785 0 -1536.449
+  }
+ }
+}
+$grp StaticModelEntity : "{8CDB9C117669AF4A}Prefabs/Structures/Military/Camps/HelipadImprovised_01/HelipadImprovised_USSR_01.et" {
+ {
+  coords 3000.883 0 3019.504
+  angleY 32.698
+ }
+ {
+  coords 2969.948 0 3039.362
+  angleY 32.698
+ }
+ {
+  coords 2930.824 0 3064.477
+  angleY 32.698
+ }
+}
+TILW_MissionFrameworkEntity fw1 : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 2682.254 8 3053.212
+ userScript "	// code here"\
+ "	IEntity BlueSupplyDepot;"\
+ "	SCR_ResourceComponent BlueRC;"\
+ " 	SCR_ResourceContainer BlueContainer;"\
+ "	int currentPhaseIndex = 1;"
+ FrameworkScript2 ""\
+ "		// Check the Current Supply value of Supply Depot with Target value(500) or value(750)"\
+ "		"\
+ "		float currentSuppliesValue = BlueContainer.GetResourceValue();"\
+ "		if (currentPhaseIndex == 1 && currentSuppliesValue == 500) "\
+ "		{"\
+ "			AdjustMissionFlag(\"Phase 1 Done Flag\", true);"\
+ "			currentPhaseIndex++;"\
+ "		} else if ((currentPhaseIndex == 2 && currentSuppliesValue == 1000)) "\
+ "		{"\
+ "			AdjustMissionFlag(\"Phase 2 Done Flag\", true);"\
+ "		} else {"\
+ "			PrintFormat(\"FW2 Check fail | current supplies value: %1\", currentSuppliesValue);"\
+ "		}"\
+ "	"
+ FrameworkScript3 ""\
+ "		// Set the Variables that will be use in Framework Script 2"\
+ " 		"\
+ " 		BlueSupplyDepot = GetGame().GetWorld().FindEntityByName(\"Bluefor_Supply_Depot\");"\
+ "		"\
+ "		if (!BlueSupplyDepot)"\
+ " 		{"\
+ "			Print(\"No entity of Bluefor Supply Depot found\");"\
+ " 			RaiseFailedFlag3();"\
+ " 		}"\
+ "			"\
+ "		BlueRC = SCR_ResourceComponent.FindResourceComponent(BlueSupplyDepot, true);"\
+ "		if (!(BlueRC && BlueRC.GetContainer(EResourceType.SUPPLIES, BlueContainer)))"\
+ " 		{"\
+ "			Print(\"Bluefor Supply Depot did not have either a resource component or resource container\");"\
+ " 			RaiseFailedFlag3();"\
+ " 		}"\
+ "			"\
+ " 		Print(\"FW3 Script ran successfully\");"\
+ " 	}"\
+ "			"\
+ " 	private void RaiseFailedFlag3()"\
+ "	{"\
+ " 		Print(\"FW3 Script soft failed\");"\
+ " 		return;"\
+ "	"
+ m_missionEvents {
+  TILW_MissionEvent "{663A0081039CC233}" {
+   m_name "Phase 1 Setup"
+   m_instructions {
+    TILW_ServiceVehiclesInstruction "{669329458AEFB8E3}" {
+     m_aVehicleNames {
+      "Market1Van" "Market2Van" "Market3Van" "Market3Van2"
+     }
+     m_bAdjustSupplies 1
+     m_iAmountSupplies 250
+    }
+    TILW_RunScriptInstruction "{66863C8ED09B03D3}" {
+     m_executionDelay 0
+     m_iScriptNumber 3
+    }
+    TILW_SetFlagInstruction "{66863C8F6662DDB3}" {
+     m_executionDelay 180
+     m_flagName "Check Supplies Flag"
+    }
+   }
+   m_condition TILW_LiteralTerm "{663A00874667FE90}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{668635AFF9DF6353}" {
+   m_name "Start Phase 2"
+   m_instructions {
+    TILW_SendMessageInstruction "{668635AD3D276267}" {
+     m_messageTitle "Phase 1 Done"
+     m_messageBody "Excellent work. The third and final market has been identified in Jharnok."\
+     "Happy hunting!"
+    }
+    TILW_SetFlagInstruction "{66863C8CAF846497}" {
+     m_flagName "Phase 2 Units Spawn Flag"
+    }
+    TILW_DeleteEntitiesInstruction "{668D5B396B064242}" {
+     m_entityNames {
+      "Phase1AO"
+     }
+    }
+    TILW_EditMapItemInstruction "{66932941973C8EB0}" {
+     m_itemNames {
+      "Market1" "Market2"
+     }
+     m_factionVisibility {
+      TILW_FactionVisibility "{66932941973C9D31}" {
+       m_factionKey "GC_TKA"
+      }
+     }
+    }
+    TILW_EditMapItemInstruction "{66932946AE43D62F}" {
+     m_itemNames {
+      "Market3"
+     }
+     m_factionVisibility {
+      TILW_FactionVisibility "{6693294691576EC6}" {
+       m_factionKey "GC_TKA"
+       m_visible 1
+      }
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{668635AEC43DE132}" {
+    m_flagName "Phase 1 Done Flag"
+   }
+  }
+  TILW_MissionEvent "{668635AED6C68F1F}" {
+   m_name "End Phase 2"
+   m_instructions {
+    TILW_SendMessageInstruction "{668635AD317B60E5}" {
+     m_messageTitle "Mission Complete: Victory!"
+     m_messageBody "Excellent Job. Now the world will learned what happen when one conduct an illegal FOOD market in our country."
+    }
+   }
+   m_condition TILW_LiteralTerm "{668635AD2E93ADEC}" {
+    m_flagName "Phase 2 Done Flag"
+   }
+  }
+  TILW_MissionEvent "{663E442F4CE5A736}" {
+   m_name "Check Supplies for Completion"
+   m_instructions {
+    TILW_RunScriptInstruction "{663E442FB72511EF}" {
+     m_executionDelay 0
+     m_iScriptNumber 2
+     m_bAllowRerun 1
+    }
+    TILW_ReactivateEventsInstruction "{66423301ADA67538}" {
+     m_executionDelay 10
+     m_eventNames {
+      "Check Supplies for Completion"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{663E442663C15956}" {
+    m_flagName "Check Supplies Flag"
+   }
+  }
+  TILW_MissionEvent "{663E442F9EF221A3}" {
+   m_name "Check Supplies: Success"
+   m_instructions {
+    TILW_SendMessageInstruction "{66423301EB2641DE}" {
+     m_executionDelay 1
+     m_messageTitle "TKA VICTORY"
+     m_messageBody "Great job, wait for GMs to end the mission."
+    }
+   }
+   m_condition TILW_LiteralTerm "{663E442FD552629F}" {
+    m_flagName "Check Supplies Success Flag"
+   }
+  }
+  TILW_MissionEvent "{663E442AAC35D189}" {
+   m_name "Casualties Limit "
+   m_instructions {
+    TILW_SendMessageInstruction "{663E442AA21BFB97}" {
+     m_messageTitle "TKA DEFEAT"
+     m_messageBody "The TKA has taken too many losses! Fall back!"
+    }
+    TILW_EndGameInstruction "{663E442A92CB347A}" {
+     m_executionDelay 120
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "GC_TKA"
+    }
+   }
+   m_condition TILW_LiteralTerm "{663E442AA972A6CD}" {
+    m_flagName "Casualties Limit Flag"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{663E2289531C8765}" {
+   m_flagName "Casualties Limit Flag"
+   m_factionKey "GC_TKA"
+   m_casualtyRatio 0.9
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 2953.004 10 3002.024
+ m_fZoneRadius 85
+ m_fZoneTeleportedRadius 95
+}
+GenericEntity : "{FA7A86697340C58C}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_05.et" {
+ coords 2915.016 10 2997.727
+ angleY 30.753
+ {
+  GenericEntity Bluefor_Supply_Depot {
+   ID "5D4539393E1536C3"
+   components {
+    SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+     m_aContainers {
+      SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+       m_bEnableResourceGain 0
+      }
+     }
+    }
+   }
+   {
+    GenericEntity {
+     ID "5D45393936823FC0"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+         m_fResourceValueMax 500
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5D45393936823FC3"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+         m_fResourceValueMax 500
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,325 @@
+SCR_AIWorld : "{E2A016456BBC697D}Prefabs/AI/SCR_AIWorld_Kunar.et" {
+ coords 1788.582 18.974 3835.039
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 1787.207 19.191 3833.248
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66373B3362E2400C}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 7
+    }
+   }
+  }
+ }
+ coords 1786.249 19.424 3830.906
+ m_iFreezeTime 120000
+ m_aFactionRespawnCount {
+  PS_FactionRespawnCount "{662A8B8D6FA584AA}" {
+   m_sFactionKey "GC_INSURGENT"
+   m_iCount 10
+   m_iTime 5
+  }
+ }
+ {
+  SCR_FactionManager "663A8DD904F7DD97" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792CE18FB44}" {
+        m_sCallsign "2"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+      }
+      m_sCallsignGroupFormat "%2-%3"
+      m_sCallsignCharacterFormat "%2-%3: %4"
+     }
+    }
+   }
+  }
+ }
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "RHS_USAF"
+    }
+   }
+  }
+  coords 1841.467 16.689 3793.018
+  Points {
+   ShapePoint "{66369BE42F37EC47}" {
+    Position 21.461 0 40.884
+   }
+   ShapePoint "{66369BE42856F31C}" {
+    Position 37.797 0 -21.235
+   }
+   ShapePoint "{66369BE42AF14489}" {
+    Position 179.901 0 20.629
+   }
+   ShapePoint "{66369BE42A151FAA}" {
+    Position 160.477 0 81.799
+   }
+  }
+ }
+ {
+  components {
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+   }
+  }
+  coords 1781.477 57.912 3651.919
+  Points {
+   ShapePoint "{66369BE4A8748E7C}" {
+    Position 24.687 0 164.064
+   }
+   ShapePoint "{66369BE4A93C2C9A}" {
+    Position 28.611 0 -133.171
+   }
+   ShapePoint "{66369BE4AA7AB940}" {
+    Position 524.195 0 -129.376
+   }
+   ShapePoint "{66369BE4AB952D49}" {
+    Position 464.786 0 336.27
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 1786.683 19.155 3834.89
+ m_missionEvents {
+  TILW_MissionEvent "{66369BE2A29C6C02}" {
+   m_name "INS_MAJOR"
+   m_instructions {
+    TILW_SendMessageInstruction "{66369BE2B8471DB5}" {
+     m_messageTitle "INSURGENT MAJOR VICTORY"
+     m_messageBody "US forces have taken significant casualties and the HVT has been extracted."
+    }
+    TILW_EndGameInstruction "{66369BE2B102B2E8}" {
+     m_executionDelay 15
+     m_factionKey "GC_INSURGENT"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{663A8DD83AEEF8D8}" {
+    m_operands {
+     TILW_LiteralTerm "{663A8DD83384917A}" {
+      m_flagName "US_KIA"
+     }
+     TILW_LiteralTerm "{663A8DD80EB852B0}" {
+      m_flagName "INS_EXTRACTED"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{663A8DD8227A894D}" {
+   m_name "INS_MINOR"
+   m_instructions {
+    TILW_SendMessageInstruction "{66369BE2B8471DB5}" {
+     m_messageTitle "INSURGENT MINOR VICTORY"
+     m_messageBody "US forces have taken significant casualties but the HVT was killed."
+    }
+    TILW_EndGameInstruction "{66369BE2B102B2E8}" {
+     m_executionDelay 15
+     m_factionKey "GC_INSURGENT"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{663A8DD819B0EE92}" {
+    m_operands {
+     TILW_LiteralTerm "{663A8DD83384917A}" {
+      m_flagName "US_KIA"
+     }
+     TILW_LiteralTerm "{663A8DD80EB852B0}" {
+      m_flagName "HOSTAGE_KIA"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{66369BE28F5A1E4A}" {
+   m_name "US_MAJOR_1"
+   m_instructions {
+    TILW_SendMessageInstruction "{66369BE2B8471DB5}" {
+     m_messageTitle "US MAJOR VICTORY"
+     m_messageBody "Insurgent forces have taken significant casualties and the HVT remains captive."
+    }
+    TILW_EndGameInstruction "{66369BE2B102B2E8}" {
+     m_executionDelay 15
+     m_factionKey "RHS_USAF"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{663A8DD8C467C07B}" {
+    m_operands {
+     TILW_LiteralTerm "{663A8DD8C6861B23}" {
+      m_flagName "INS_KIA"
+     }
+     TILW_LiteralTerm "{663A8DD8C1A30A7A}" {
+      m_invertTerm 1
+      m_flagName "INS_EXTRACTED"
+     }
+     TILW_LiteralTerm "{663A8DD8A9E045CE}" {
+      m_invertTerm 1
+      m_flagName "INS_EXTRACT"
+     }
+     TILW_LiteralTerm "{663CF9350E3D3CE6}" {
+      m_invertTerm 1
+      m_flagName "HOSTAGE_KIA"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{663A8DD8A13DEE2B}" {
+   m_name "US_MINOR_1"
+   m_instructions {
+    TILW_SendMessageInstruction "{66369BE2B8471DB5}" {
+     m_messageTitle "US MINOR VICTORY"
+     m_messageBody "Insurgent forces have taken significant casualties but the HVT was killed or extracted."
+    }
+    TILW_EndGameInstruction "{66369BE2B102B2E8}" {
+     m_executionDelay 15
+     m_factionKey "RHS_USAF"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{663A8DD8C467C07B}" {
+    m_operands {
+     TILW_LiteralTerm "{663A8DD8C6861B23}" {
+      m_flagName "INS_KIA"
+     }
+     TILW_DisjunctionTerm "{663CF9352EA341C6}" {
+      m_operands {
+       TILW_LiteralTerm "{663CF93529BA5260}" {
+        m_flagName "INS_EXTRACTED"
+       }
+       TILW_LiteralTerm "{663CF9352438AB0C}" {
+        m_flagName "HOSTAGE_KIA"
+       }
+      }
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{663A8DDB75486399}" {
+   m_name "US_MAJOR_2"
+   m_instructions {
+    TILW_SendMessageInstruction "{66369BE2B8471DB5}" {
+     m_messageTitle "US MAJOR VICTORY"
+     m_messageBody "Extraction has arrived for the US and the HVT remains captive."
+    }
+    TILW_EndGameInstruction "{66369BE2B102B2E8}" {
+     m_executionDelay 15
+     m_factionKey "RHS_USAF"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{663A8DD8C467C07B}" {
+    m_operands {
+     TILW_LiteralTerm "{663A8DD8C6861B23}" {
+      m_flagName "TIME_LIMIT"
+     }
+     TILW_LiteralTerm "{663A8DD8C1A30A7A}" {
+      m_invertTerm 1
+      m_flagName "INS_EXTRACTED"
+     }
+     TILW_LiteralTerm "{663A8DD8A9E045CE}" {
+      m_invertTerm 1
+      m_flagName "INS_EXTRACT"
+     }
+     TILW_LiteralTerm "{663CF93506B1CDB3}" {
+      m_invertTerm 1
+      m_flagName "HOSTAGE_KIA"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{663A8DDBF0BD3C20}" {
+   m_name "US_MINOR_2"
+   m_instructions {
+    TILW_SendMessageInstruction "{66369BE2B8471DB5}" {
+     m_messageTitle "US MINOR VICTORY"
+     m_messageBody "Extraction has arrived for the US but the HVT was killed or extracted."
+    }
+    TILW_EndGameInstruction "{66369BE2B102B2E8}" {
+     m_executionDelay 15
+     m_factionKey "RHS_USAF"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{663A8DD8C467C07B}" {
+    m_operands {
+     TILW_LiteralTerm "{663A8DD8C6861B23}" {
+      m_flagName "TIME_LIMIT"
+     }
+     TILW_DisjunctionTerm "{663CF9353AB69A7B}" {
+      m_operands {
+       TILW_LiteralTerm "{663CF93529BA5260}" {
+        m_flagName "INS_EXTRACTED"
+       }
+       TILW_LiteralTerm "{663CF9352438AB0C}" {
+        m_flagName "HOSTAGE_KIA"
+       }
+      }
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{66369BE36A5BEDBE}" {
+   m_name "TIME_LIMIT"
+   m_instructions {
+    TILW_SetFlagInstruction "{663A8DD84E862620}" {
+     m_executionDelay 1920
+     m_flagName "TIME_LIMIT"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66369BE362A849C4}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{663A8DD918E25170}" {
+   m_name "INS_EXTRACT"
+   m_instructions {
+    TILW_AssignWaypointsInstruction "{663A8DD9165F9472}" {
+     m_groupName "HOS_GROUP"
+     m_waypointNames {
+      "HOS_EXTRACT_WP"
+     }
+     m_clearExisting 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{663A8DD91B93F3B6}" {
+    m_flagName "INS_EXTRACT"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{66369BE540BCC3C9}" {
+   m_flagName "US_KIA"
+   m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{66369BE5590A04CF}" {
+   m_flagName "INS_KIA"
+   m_factionKey "GC_INSURGENT"
+   m_casualtyRatio 0.9
+  }
+ }
+}

@@ -1,0 +1,240 @@
+$grp GenericEntity {
+ ambush_TP_1 {
+  coords 7925.789 12.791 1453.108
+ }
+ ambush_TP_2 {
+  coords 8888.66 49.397 655.202
+ }
+ ambush_TP_3 {
+  coords 9355.952 4.953 241.421
+  angleY -107.494
+ }
+ return_TP {
+  coords 8223.807 223.127 2172.283
+ }
+}
+$grp GenericEntity : "{2C303FA30DF3D73F}Prefabs/Props/Military/AmmoBoxes/US/EquipmentBoxWooden_Ammunition_01_US.et" {
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    Enabled 1
+    MultiSlots {
+     MultiSlotConfiguration "{6506DED06CD82A8A}" {
+      SlotTemplate InventoryStorageSlot InventoryStorageSlot {
+       Prefab "{49FFE8F373F55960}Prefabs/Weapons/Explosives/Mine_M15AT/Mine_M15AT.et"
+      }
+      NumSlots 4
+     }
+    }
+   }
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    Enabled 1
+   }
+   RplComponent "{5476B36C54387F41}" {
+    Enabled 1
+   }
+  }
+  coords 7923.674 13.925 1455.129
+  angleY 171.725
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    Enabled 1
+    MultiSlots {
+     MultiSlotConfiguration "{6506DED06CD82A8A}" {
+      SlotTemplate InventoryStorageSlot InventoryStorageSlot {
+       Prefab "{49FFE8F373F55960}Prefabs/Weapons/Explosives/Mine_M15AT/Mine_M15AT.et"
+      }
+      NumSlots 4
+     }
+    }
+   }
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    Enabled 1
+   }
+   RplComponent "{5476B36C54387F41}" {
+    Enabled 1
+   }
+  }
+  coords 8895.676 50.597 650.712
+ }
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+    Enabled 1
+    MultiSlots {
+     MultiSlotConfiguration "{6506DED06CD82A8A}" {
+      SlotTemplate InventoryStorageSlot InventoryStorageSlot {
+       Prefab "{49FFE8F373F55960}Prefabs/Weapons/Explosives/Mine_M15AT/Mine_M15AT.et"
+      }
+      NumSlots 4
+     }
+     MultiSlotConfiguration "{6663359725123347}" {
+      SlotTemplate InventoryStorageSlot rpg {
+       Prefab "{E0CFA3FE78FC5190}Prefabs/Weapons/Launchers/M72/Launcher_LAW66_L1A1.et"
+      }
+      NumSlots 4
+     }
+    }
+   }
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    Enabled 1
+   }
+   RplComponent "{5476B36C54387F41}" {
+    Enabled 1
+   }
+  }
+  coords 9360.515 3.045 243.366
+  angleX -2.14
+  angleY 64.172
+  angleZ 1.594
+ }
+}
+$grp GenericEntity : "{6B33C7FD1918B48B}Prefabs/Structures/Civilian/BoardMap_01/BoardMap_01_base.et" {
+ ambush_board_2 {
+  coords 8226.495 223.193 2180.26
+  angleY -146.883
+  {
+   GenericEntity : "{5B462DF843A26368}Prefabs/Utils/Interactions/TILW_TeleportInteraction.et" {
+    components {
+     ActionsManagerComponent "{62EF76E0D47ED96A}" {
+      additionalActions {
+       TILW_TeleportInteraction "{62EF76E608B6CB36}" {
+        m_actionName "Ambush Position 2"
+        m_locationName "ambush_TP_2"
+        m_factionKeys {
+         "UK"
+        }
+        m_conditionFlag "TP_2_control"
+       }
+      }
+     }
+    }
+    coords 0.003 0.937 0.018
+    angleY 178.363
+   }
+  }
+ }
+ ambush_board_3 {
+  coords 8229.583 223.193 2178.246
+  angleY -146.883
+  {
+   GenericEntity : "{5B462DF843A26368}Prefabs/Utils/Interactions/TILW_TeleportInteraction.et" {
+    components {
+     ActionsManagerComponent "{62EF76E0D47ED96A}" {
+      additionalActions {
+       TILW_TeleportInteraction "{62EF76E608B6CB36}" {
+        m_actionName "Ambush Position 3"
+        m_locationName "ambush_TP_3"
+        m_factionKeys {
+         "UK"
+        }
+       }
+      }
+     }
+    }
+    coords -0.054 0.903 0.021
+    angleY 178.363
+   }
+  }
+ }
+ ambush_board_1 {
+  coords 8223.143 223.193 2182.447
+  angleY -146.883
+  {
+   GenericEntity : "{5B462DF843A26368}Prefabs/Utils/Interactions/TILW_TeleportInteraction.et" {
+    components {
+     ActionsManagerComponent "{62EF76E0D47ED96A}" {
+      additionalActions {
+       TILW_TeleportInteraction "{62EF76E608B6CB36}" {
+        m_actionName "Ambush Position 1"
+        m_locationName "ambush_TP_1"
+        m_factionKeys {
+         "UK"
+        }
+        m_conditionFlag "TP_1_control"
+       }
+      }
+     }
+    }
+    coords 0.075 1.002 0.013
+    angleY 178.363
+   }
+  }
+ }
+ return_board2 {
+  coords 7922.433 12.902 1452.101
+  angleY 39.317
+  {
+   GenericEntity : "{5B462DF843A26368}Prefabs/Utils/Interactions/TILW_TeleportInteraction.et" {
+    components {
+     ActionsManagerComponent "{62EF76E0D47ED96A}" {
+      additionalActions {
+       TILW_TeleportInteraction "{62EF76E608B6CB36}" {
+        m_actionName "Return to spawn"
+        m_locationName "return_TP"
+        m_factionKeys {
+         "UK"
+        }
+       }
+      }
+     }
+    }
+    coords 0.035 1.059 -0.002
+    angleY -175.886
+   }
+  }
+ }
+ return_board3 {
+  coords 8887.773 49.482 653.071
+  angleY 37.604
+  {
+   GenericEntity : "{5B462DF843A26368}Prefabs/Utils/Interactions/TILW_TeleportInteraction.et" {
+    components {
+     ActionsManagerComponent "{62EF76E0D47ED96A}" {
+      additionalActions {
+       TILW_TeleportInteraction "{62EF76E608B6CB36}" {
+        m_actionName "Return to spawn"
+        m_locationName "return_TP"
+        m_factionKeys {
+         "UK"
+        }
+       }
+      }
+     }
+    }
+    coords 0.043 1.06 0.012
+    angleY 174.299
+   }
+  }
+ }
+}
+SCR_AIGroup : "{89792EAE79CEF9DF}Prefabs/Groups/BLUFOR/British Forces/1983/P/Paras/Group_UK_1983_REG_ParaPHQ_P.et" {
+ components {
+  AIFormationComponent "{507E9DC12F541FE6}" {
+   DefaultFormation "line"
+  }
+  PS_GroupCallsignAssigner "{6666B363053B8D33}" {
+   m_iPlatoonCallsign 2
+  }
+ }
+ coords 8217.355 223.101 2178.685
+ angleY 29.625
+ m_aUnitPrefabSlots {
+  "{A8D2B4284BA4C39E}Prefabs/Characters/Factions/BLUFOR/UK_Army/1983/Paras/Character_UK_1983_Paras_PlatoonLeader_P.et" "{F5FCA2D30AED97A2}Prefabs/Characters/Factions/BLUFOR/UK_Army/1983/Paras/Character_UK_1983_Paras_Medic_P.et"
+ }
+}
+SCR_AIGroup : "{A5F2431C2DCF3118}Prefabs/Groups/BLUFOR/British Forces/1983/P/Paras/Group_UK_1983_REG_ParaSection_P.et" {
+ components {
+  AIFormationComponent "{507E9DC12F541FE6}" {
+   DefaultFormation "line"
+  }
+  PS_GroupCallsignAssigner "{6666B36313606BF3}" {
+   m_iPlatoonCallsign 2
+   m_iSquadCallsign 1
+  }
+ }
+ coords 8221.921 223.125 2176.022
+ angleY 22.779
+}

@@ -87,7 +87,7 @@ $grp TILW_PrefabSpawnerEntity {
   }
  }
  BRDM_1 {
-  coords 4421.338 182.622 3636.382
+  coords 4420.593 181.464 3650.134
   angleY -78.011
   m_prefab "{254289B9C09904AB}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2.et"
   m_crewConfig TILW_CrewConfig "{651F1656361D57F1}" {
@@ -319,19 +319,41 @@ SCR_AIGroup Delay_MG : "{7B626931CD41BC3F}worlds/Cunnah/Prefabs/Groups/INDFOR/Mi
   "WP_Delay_1"
  }
 }
-TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
- coords 3813.448 170.914 3940.897
- angleY 29.789
- m_prefab "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et"
- m_conditionFlag "Extract_Ambush"
+$grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
+ {
+  coords 3813.448 170.914 3940.897
+  angleY 29.789
+  m_prefab "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et"
+  m_conditionFlag "Extract_Ambush"
+ }
+ {
+  coords 4155.576 199.433 3661.181
+  angleX -14.116
+  angleY 98.036
+  m_prefab "{076B33106723D087}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_engineer_FIA.et"
+  m_crewConfig TILW_CrewConfig "{66870C12F28B0BA5}" {
+   m_crewGroups {
+    TILW_CrewGroup "{66870C12FD36ADD2}" {
+     m_crewStations {
+      TILW_CrewStation "{66870C12FB714205}" {
+       m_allowTurret 0
+       m_allowCargo 0
+       m_characters {
+        "{C943F3CC53D187B6}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_Turtleneck_1.et"
+       }
+      }
+     }
+     m_entityName "truck_blockade"
+    }
+   }
+  }
+ }
 }
-TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
- coords 4791.923 170.612 3576.914
- m_queryRadius 14
- m_comparisonMode EQUAL_OR_LESS
- m_flagName "OPFOR_In_Town"
- m_ownerFactionKey "GARRISON"
- m_ratioThreshold 0
+TILW_FactionTriggerEntity truck_blockade_trigger : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 3569.9 166.56 4125.428
+ m_flagName "truck_blockade_trigger"
+ m_ownerFactionKey "RHS_AFRF"
+ m_ratioThreshold 0.01
 }
 $grp SCR_DefendWaypoint : "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et" {
  WP_Secure {
@@ -370,11 +392,11 @@ $grp SCR_DefendWaypoint : "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Def
   coords 4622.757 170.995 3891.838
  }
  WP_Ambush_Defend_4 {
-  coords 3612.058 193.031 3966.666
+  coords 3711.311 163.482 4067.248
   CompletionRadius 40
  }
  WP_Ambush_Defend_5 {
-  coords 3391.239 207.747 4109.923
+  coords 3362.349 167.354 4177.813
   CompletionRadius 40
  }
  WP_Ambush_Defend_6 {
@@ -408,6 +430,10 @@ SCR_SearchAndDestroyWaypoint WP_Assault : "{B3E7B8DC2BAB8ACC}Prefabs/AI/Waypoint
  m_TimedWaypointParameters SCR_AITimedWaypointParameters "{60DAE2484F999078}" {
   m_holdingTime -1
  }
+}
+SCR_BoardingWaypoint truck_blockade_wp : "{C40316EE26846CAB}Prefabs/AI/Waypoints/AIWaypoint_GetOut.et" {
+ coords 4391.722 180.887 3639.935
+ CompletionRadius 2
 }
 $grp SCR_AIGroup : "{E86B8D95400DA31C}worlds/Cunnah/Prefabs/Groups/INDFOR/Militia/Militia_Rifle_Squad.et" {
  Delay_South {
@@ -451,6 +477,22 @@ $grp SCR_AIGroup : "{E86B8D95400DA31C}worlds/Cunnah/Prefabs/Groups/INDFOR/Militi
  }
  {
   coords 4635.359 197.63 3686.123
+ }
+ {
+  components {
+   AIFormationComponent "{6522D4FBAA37ABB8}" {
+    DefaultFormation "Line"
+   }
+   SCR_AIGroupSettingsComponent "{6522D4FBAA37AB31}" {
+    m_aDefaultSettings {
+     SCR_AIGroupFormationSetting "{66872B61048478CC}" {
+      m_eFormation Line
+     }
+    }
+   }
+  }
+  coords 4403.452 180.906 3654.779
+  angleY -68.143
  }
 }
 SCR_SuppressWaypoint WP_Tech_Ambush : "{ED8277F35B46B4AA}Prefabs/AI/Waypoints/AIWaypoint_Suppress.et" {

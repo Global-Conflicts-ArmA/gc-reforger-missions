@@ -20,7 +20,7 @@ SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
 PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
  coords 11748.967 0 11840.878
 }
-PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
  components {
   SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
    m_bUsePredefineStartingTimeAndWeather 1
@@ -34,6 +34,12 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/
   }
  }
  coords 11777.352 0 11649.996
+ m_aFactionRespawnCount {
+  PS_FactionRespawnCount "{6608E42402CB2460}" {
+   m_sFactionKey "UK"
+   m_iCount 5
+  }
+ }
  {
   SCR_FactionManager "62E564E462BC6804" {
    ID "5ED9088735FF2D8B"
@@ -61,33 +67,33 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
       m_aCompanyNames {
        SCR_CallsignInfo "{55CCB792CCD598D3}" {
+       }
+       SCR_CallsignInfo "{55CCB792CC9C7AD6}" {
         m_sCallsign "Longbow-"
        }
       }
       m_aPlatoonNames {
        SCR_CallsignInfo "{55CCB792CE02ECFA}" {
+       }
+       SCR_CallsignInfo "{55CCB792CE2A44BD}" {
         m_sCallsign "6"
        }
       }
       m_aSquadNames {
        SCR_CallsignInfo "{55CCB792D1218E95}" {
-        m_sCallsign "D"
        }
        SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
-        m_sCallsign "E"
        }
        SCR_CallsignInfo "{62E6C1B918E898C6}" {
         m_sCallsign "1"
        }
-       SCR_CallsignInfo "{62E6C1B918F7C3B2}" {
+       SCR_CallsignInfo "{65371177AECDA3B3}" {
         m_sCallsign "2"
        }
-       SCR_CallsignInfo "{62E6C1B918D4FF0E}" {
+       SCR_CallsignInfo "{65371177B9B5E302}" {
         m_sCallsign "3"
        }
       }
-      m_sCallsignCharacterFormat "%1%2%3: %4"
-      m_sCallsignCharacterWithRoleFormat "%1%2%3: %4"
      }
      m_iFactionRadioFrequency 45000
     }
@@ -121,7 +127,7 @@ $grp GenericEntity {
   angleY 105.845
  }
 }
-$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/TILW_FactionTrigger.et" {
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
  {
   coords 5823.769 4.592 9722.262
   m_queryRadius 100
@@ -270,6 +276,50 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
     }
    }
    m_condition TILW_LiteralTerm "{62E4D154E433FDCA}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{65E158E9EAC36680}" {
+   m_name "ASSIGN_WAYPOINTS"
+   m_instructions {
+    TILW_AssignWaypointsInstruction "{65E158E9E7E09076}" {
+     m_groupName "OBJ1SQD3"
+     m_waypointNames {
+      "OBJ1PATROL1WP1" "OBJ1PATROL1WP2" "OBJ1PATROL1WP3" "OBJ1PATROL1WP4" "OBJ1PATROL1CYCLE"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{65E158E9C61FB8C1}" {
+     m_groupName "OBJ1SQD4"
+     m_waypointNames {
+      "OBJ1PATROL2WP1" "OBJ1PATROL2WP1" "OBJ1PATROL2WP1" "OBJ1PATROL2WP1" "OBJ1PATROL2CYCLE"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{65E158E9D6FF1694}" {
+     m_groupName "OBJ2SQD1"
+     m_waypointNames {
+      "OBJ2PATROL1WP1" "OBJ2PATROL1WP2" "OBJ2PATROL1WP3" "OBJ2PATROL1WP4" "OBJ2PATROL1CYCLE"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{65E158E9AB4138EF}" {
+     m_groupName "OBJ2SQD2"
+     m_waypointNames {
+      "OBJ2PATROL2WP1" "OBJ2PATROL2WP2" "OBJ2PATROL2WP3" "OBJ2PATROL2WP4" "OBJ2PATROL2CYCLE"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{65E158E9B4C39A18}" {
+     m_groupName "OBJ3SQD1"
+     m_waypointNames {
+      "OBJ3PATROL1WP1" "OBJ3PATROL1WP2" "OBJ3PATROL1WP3" "OBJ3PATROL1WP4" "OBJ3PATROL1CYCLE"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{65E158E98F4E3A72}" {
+     m_groupName "OBJ3SQD2"
+     m_waypointNames {
+      "OBJ3PATROL2WP1" "OBJ3PATROL2WP2" "OBJ3PATROL2WP3" "OBJ3PATROL2WP4" "OBJ3PATROL2CYCLE"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{65E158E9E56B6212}" {
     m_invertTerm 1
    }
   }

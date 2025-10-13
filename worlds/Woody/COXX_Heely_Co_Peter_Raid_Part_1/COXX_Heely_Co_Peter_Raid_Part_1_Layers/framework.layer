@@ -1,0 +1,97 @@
+PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_CoverMapComponent "{6473480FCAB7760B}" {
+   Enabled 1
+   m_ratioWidth 1.1
+  }
+  TILW_MapShapeComponent "{6508F54F9B461198}" {
+   Enabled 1
+   m_drawLine 1
+  }
+ }
+ coords 3150.816 307.178 1599.903
+ Points {
+  ShapePoint "{65FB7A704B79E3BE}" {
+   Position -512.507 -278.559 1837.351
+  }
+  ShapePoint "{65FB7A704DFC99C6}" {
+   Position 930.448 -181.305 1718.426
+  }
+  ShapePoint "{65FB7A7040D1CC18}" {
+   Position 911.052 4.548 -1571.225
+  }
+  ShapePoint "{65FB7A7045233768}" {
+   Position -1798.501 62.804 -1591.26
+  }
+  ShapePoint "{65FB7A705920049C}" {
+   Position -1499.401 -27.617 -74.519
+  }
+  ShapePoint "{65FB7A705F6ECAE9}" {
+   Position -940.032 -277.989 1323.563
+  }
+ }
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ {
+  coords 3679.138 280.07 414.436
+  m_queryRadius 125
+  m_sendStatusMessages 1
+  m_locationName "an objective"
+  m_flagName "obj1"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "RHS_USAF"
+  m_ratioThreshold 0.9
+ }
+ {
+  coords 1946.091 200 326.83
+  angleY 179.962
+  m_queryRadius 100
+  m_sendStatusMessages 1
+  m_locationName "an objective"
+  m_flagName "obj2"
+  m_ownerFactionKey "RHS_USAF"
+  m_ratioThreshold 0.9
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 3227.465 342.492 1511.383
+ m_missionEvents {
+  TILW_MissionEvent "{65FB7A713F622F96}" {
+   m_name "US W"
+   m_instructions {
+    TILW_EndGameInstruction "{65FB7A716F4087E7}" {
+     m_factionKey "RHS_USAF"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{65FB7A71493DAB59}" {
+    m_operands {
+     TILW_LiteralTerm "{65FB7A714B649E24}" {
+      m_flagName "obj1"
+     }
+     TILW_LiteralTerm "{65FB7A714C65E179}" {
+      m_flagName "obj2"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{65FB7A71335B61F4}" {
+   m_name "US L"
+   m_instructions {
+    TILW_EndGameInstruction "{65FB7A715FFEC6E5}" {
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "RHS_USAF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{65FB7A715B3F5902}" {
+    m_flagName "US_KIA"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{65FB7A71276D7222}" {
+   m_flagName "US_KIA"
+   m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.75
+  }
+ }
+}
