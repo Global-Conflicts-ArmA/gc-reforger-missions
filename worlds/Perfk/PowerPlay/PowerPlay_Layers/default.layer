@@ -1,0 +1,221 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{64EF613827D811A2}" {
+     NavmeshFileOveride {
+      "{5CE37881212BDBAE}worlds/Perfk/NavMesh/Ruha_Power_Plant/PK_Ruha_Power_Plant.nmn"
+     }
+    }
+   }
+  }
+ }
+ coords 3899.376 61.647 1356.94
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 3878.04 62.748 1318.008
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ components {
+  SCR_GroupsManagerComponent "{5706EC99934496F5}" {
+   m_aGroupFlags {
+   }
+  }
+  SCR_InitWeatherComponent "{61B68227C35BFE9A}" {
+   m_sInitialStartingWeatherId "Heavy Thunderstorm"
+  }
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 1
+   m_iRangeHoursStart 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6694DC330BC6219C}" {
+     m_sWeatherPresetName "Heavy Thunderstorm"
+     m_iStartingHour 1
+    }
+   }
+   m_iSetDay 19
+   m_iSetMonth 2
+  }
+ }
+ coords 3888.29 61.607 1341.115
+ m_aFactionRespawnCount {
+  PS_FactionRespawnCount "{669C915D25CC44EC}" {
+   m_sFactionKey "RHS_USAF"
+   m_iCount 10
+   m_iTime 30000
+  }
+ }
+ m_bDisableBuildingModeAfterFreezeTime 1
+ {
+  SCR_FactionManager "669CC4757DB51EF5" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     UIInfo SCR_FactionUIInfo "{5CC8B5EDA0CDBD62}" {
+      Name "US Rangers"
+      Icon "{46FB2FB2C2125A3C}UI/Textures/Flags/US-flag-base-3it.edds"
+      m_sNameUpper "US Rangers"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CD021D5C}" {
+        m_sCallsign "A"
+       }
+       SCR_CallsignInfo "{55CCB792CCD598D3}" {
+        m_sCallsign "B"
+       }
+       SCR_CallsignInfo "{55CCB792CC9C7AD6}" {
+        m_sCallsign "C"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "0"
+       }
+       SCR_CallsignInfo "{55CCB792CE18FB44}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792CE02ECFA}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792CE2A44BD}" {
+        m_sCallsign "3"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+      }
+      m_sCallsignGroupFormat "%1 %2'%3"
+      m_sCallsignCharacterWithRoleFormat "%1 %2 %3: %4"
+     }
+    }
+   }
+  }
+ }
+}
+PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+   m_killTimer 0
+   m_factionKeys {
+    "GC_SEPARATIST"
+   }
+   m_visibility FACTION
+  }
+ }
+ coords 1687.086 64.344 3341.927
+ Points {
+  ShapePoint "{669CCDF4ADCE545A}" {
+   Position -0.429 0 -0.502
+  }
+  ShapePoint "{669CCDF4A80A094C}" {
+   Position -0.383 0 115.555
+  }
+  ShapePoint "{669CCDF4A17C6C1E}" {
+   Position 123.835 0 115.516
+  }
+  ShapePoint "{669CCDF4BE784E14}" {
+   Position 123.773 0 -0.385
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 1829.102 65.71 3225.516
+ m_missionEvents {
+  TILW_MissionEvent "{669CC4746CEEA3CD}" {
+   m_name "ReactorSecured"
+   m_instructions {
+    TILW_SendMessageInstruction "{669CC4744FFE1013}" {
+     m_executionDelay 0
+     m_messageTitle "Intel"
+     m_messageBody "Reactor area secured, bomb defused - Continue clearing the power plant"
+    }
+   }
+   m_condition TILW_LiteralTerm "{669CC474640BEEE0}" {
+    m_flagName "BombSecured"
+   }
+  }
+  TILW_MissionEvent "{669CC476E0A3BB3A}" {
+   m_name "ReactorArmed"
+   m_instructions {
+    TILW_SendMessageInstruction "{669CC476F55B326C}" {
+     m_executionDelay 1200
+     m_messageTitle "Intel"
+     m_messageBody "Bomb in reactor is armed and is expected to go off in 5 min unless the area is secured"
+    }
+   }
+   m_condition TILW_LiteralTerm "{669CC476D259BE73}" {
+    m_invertTerm 1
+    m_flagName "BombSecured"
+   }
+  }
+  TILW_MissionEvent "{669CC476A91F7F5D}" {
+   m_name "ReactorCritical"
+   m_instructions {
+    TILW_SetFlagInstruction "{669CCDFBD58C8078}" {
+     m_executionDelay 1500
+     m_flagName "BombActive"
+    }
+    TILW_DeleteEntitiesInstruction "{669CCDF376DDC45C}" {
+     m_executionDelay 1560
+     m_entityNames {
+      "airraidsiren_sound"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{669CC476A91F7F0C}" {
+    m_invertTerm 1
+    m_flagName "BombSecured"
+   }
+  }
+  TILW_MissionEvent "{669CCDF2E55C7C27}" {
+   m_name "OpforCASMessage"
+   m_instructions {
+    TILW_SendMessageInstruction "{669CCDF2FF10513B}" {
+     m_executionDelay 0
+     m_messageTitle "Opfor 85% Casualty limit"
+     m_messageBody "Opfor has lost 85% of its forces, GMs consider calling the mission as Blufor Victory"
+    }
+   }
+   m_condition TILW_LiteralTerm "{669CCDF2E3275162}" {
+    m_flagName "OpforCAS"
+   }
+  }
+  TILW_MissionEvent "{669CCDF2A22D95B2}" {
+   m_name "BluforCASMessage"
+   m_instructions {
+    TILW_SendMessageInstruction "{669CCDF2A22D9535}" {
+     m_executionDelay 0
+     m_messageTitle "Blufor 85% Casualty limit"
+     m_messageBody "Blufor has lost 85% of its forces, GMs consider calling the mission as Opfor Victory"
+    }
+   }
+   m_condition TILW_LiteralTerm "{669CCDF2A22D9530}" {
+    m_flagName "BluforCAS"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionAIKilledFlag "{669CCDF39E2E6FF4}" {
+   m_flagName "OpforCAS"
+   m_factionKey "GC_SEPARATIST"
+   m_casualtyRatio 0.85
+  }
+  TILW_FactionPlayersKilledFlag "{669CCDF21D7E7310}" {
+   m_flagName "BluforCAS"
+   m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.85
+  }
+ }
+}

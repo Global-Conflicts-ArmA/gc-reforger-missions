@@ -1,0 +1,140 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 10376.799 33.755 360.228
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 10377.773 33.53 358.962
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_InitWeatherComponent "{61B68227C35BFE9A}" {
+   m_sInitialStartingWeatherId "Heavy Wet Fog"
+   m_iSetWeatherConstant 1
+  }
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{669C6E21848314D4}" {
+     m_sWeatherPresetName "Heavy Wet Fog"
+    }
+   }
+  }
+ }
+ coords 10379.097 33.977 361.378
+ m_iFreezeTime 180000
+ m_aFactionRespawnCount {
+  PS_FactionRespawnCount "{669E0CB858D8FB06}" {
+   m_sFactionKey "USSR"
+   m_iCount 3
+  }
+  PS_FactionRespawnCount "{669E0CB8A743B706}" {
+   m_sFactionKey "UK"
+   m_iCount 10
+  }
+ }
+ {
+  RadioManagerEntity {
+   ID "5ED9088735FF2DEE"
+   coords -26.889 38.133 -2.478
+  }
+  SCR_FactionManager "669C6E31DF4E222D" {
+   ID "5ED9088735FF2D8B"
+   coords 0 -0.003 0
+   Factions {
+    SCR_Faction "{61500924662B6062}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CD021D5C}" {
+        m_sCallsign "Robin 24"
+       }
+      }
+     }
+    }
+   }
+  }
+  ItemPreviewManagerEntity "669C6E31DF4E220D" {
+   ID "5ED9088735FF2DD5"
+   coords -12.245 -1.252 -7.529
+  }
+  SCR_EditorSettingsEntity {
+   ID "61B4E967E6C20362"
+   coords 0 -0.003 0
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 6924.097 39.074 3418.288
+ m_missionEvents {
+  TILW_MissionEvent "{669E0CB8E2CE3C12}" {
+   m_name "USSR Captured Regina"
+   m_instructions {
+    TILW_SendMessageInstruction "{669E0CB924D495AE}" {
+     m_messageTitle "USSR Victory!"
+     m_messageBody "USSR has captured Regina."
+    }
+   }
+   m_condition TILW_LiteralTerm "{669E0CB93E09F7D7}" {
+    m_flagName "regina_captured"
+   }
+  }
+  TILW_MissionEvent "{669E0CB903EE702F}" {
+   m_name "USSR Destroyed"
+   m_instructions {
+    TILW_SendMessageInstruction "{669E0CB9096AAC88}" {
+     m_messageTitle "UK Victory!"
+     m_messageBody "UK forces have repelled the enemy."
+    }
+   }
+   m_condition TILW_LiteralTerm "{669E0CB9608F21B4}" {
+    m_flagName "ussr_killed"
+   }
+  }
+  TILW_MissionEvent "{669E0CB977F2E5AD}" {
+   m_name "UK Held Regina"
+   m_instructions {
+    TILW_SendMessageInstruction "{669E0CB97FE62AF2}" {
+     m_executionDelay 2880
+     m_messageTitle "UK Victory!"
+     m_messageBody "UK forces have held Regina."
+    }
+   }
+   m_condition TILW_LiteralTerm "{669E0CB94D1884AD}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{669E0CB9A24EC9EF}" {
+   m_name "UK Destroyed"
+   m_instructions {
+    TILW_SendMessageInstruction "{669E0CB9AAA1B0EB}" {
+     m_messageTitle "USSR Victory!"
+     m_messageBody "USSR have destroyed UK forces."
+    }
+   }
+   m_condition TILW_LiteralTerm "{669E0CB9BAB1C14C}" {
+    m_flagName "uk_killed"
+   }
+  }
+  TILW_MissionEvent "{669E0CB9854F08FE}" {
+   m_name "Hurry Up"
+   m_instructions {
+    TILW_SendMessageInstruction "{669E0CB98F00E032}" {
+     m_executionDelay 1980
+     m_messageTitle "15 minutes left!"
+     m_messageBody "Hurry up!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{669E0CB9E3DD9355}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{669E0CB8EE1D6AE6}" {
+   m_flagName "ussr_killed"
+   m_factionKey "USSR"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{669E0CB8ECFD2CC2}" {
+   m_flagName "uk_killed"
+   m_factionKey "UK"
+  }
+ }
+}

@@ -1,0 +1,75 @@
+GenericEntity : "{492CA9A2919ECA45}Prefabs/Weapons/Warheads/Warhead_Mine_HE.et" {
+ ID "9D9BE68EA2672F76"
+ components {
+  BaseTriggerComponent "{55129E81CBAA1390}" {
+   PROJECTILE_EFFECTS {
+    ExplosionDamageContainer "{5A12D2D8ABE24913}" : "{8A81F4702F919838}Prefabs/Weapons/Core/Damage/ExplosionContainer_HE.conf" {
+     ExplosionEffects {
+      BaseExplosionDamage "{5D8D1EB3EF9D02C6}" {
+       DamageDistance 7
+       ExplosionDamagePower 0.64
+      }
+      BaseExplosionDamage "{61DAF5E24D9CA168}" {
+       DamageValue 2500
+       DamageDistance 3
+       ExplosionDamagePower 0.64
+      }
+      BaseExplosionDamage "{5D8D1EB3EBB36077}" {
+       DamageDistance 5
+       ExplosionDamagePower 0.8
+      }
+      ExplosionImpulseEffect "{5E6D1CEE09A33086}" {
+       DamageDistance 5
+       ExplosionDamagePower 0.64
+      }
+      ExplosionFragmentationEffect "{567CBC1D7AB652C7}" : "{9264AB458027FBA7}Prefabs/Weapons/Core/Damage/FragmentationDamageEffect_AT.conf" {
+       DamageValue 50
+       DamageDistance 10
+       DamageFragmentCount 400
+       GurneyConstant 2700
+       CaseWeight 4000
+      }
+     }
+     ChargeWeight 15000
+     TntEquivalent 10
+    }
+    SpawnDistanceParticleEffect "{669A5A25D6E474F8}" {
+     ShouldReplicate 0
+     UseFrameEvent 1
+     SubEffects {
+      SCR_MineDistanceParticleEffect "{669A5A25D6E47487}" {
+       ParticleEffect "{6B8EFE20AD228A9B}Particles/Weapon/Explosion_M15_AT_Mine_LOD2.ptc"
+       SubEffects {
+        SubDistanceParticleEffect "{669A5A25D6E4749D}" {
+         ModuloSpawned 20
+         ParticleEffect "{8105B9A5EA395C54}Particles/Weapon/Explosion_M15_AT_Mine.ptc"
+        }
+        SubDistanceParticleEffect "{669A5A25D6E47499}" {
+         ModuloSpawned 10
+         ParticleEffect "{F29047B9B0C5BB0B}Particles/Weapon/Explosion_M15_AT_Mine_LOD1.ptc"
+        }
+       }
+      }
+      SCR_MineDistanceParticleEffect "{669A5A25D6E47494}" {
+       ParticleEffect "{F29047B9B0C5BB0B}Particles/Weapon/Explosion_M15_AT_Mine_LOD1.ptc"
+       MinDist 3
+       SubEffects {
+        SubDistanceParticleEffect "{669A5A25D6E47497}" {
+         ModuloSpawned 6
+         ParticleEffect "{8105B9A5EA395C54}Particles/Weapon/Explosion_M15_AT_Mine.ptc"
+        }
+       }
+      }
+      SCR_MineDistanceParticleEffect "{669A5A25D6E47496}" {
+       ParticleEffect "{8105B9A5EA395C54}Particles/Weapon/Explosion_M15_AT_Mine.ptc"
+       MinDist 5
+      }
+     }
+    }
+   }
+  }
+  HitEffectComponent "{9D9BE68D6F65A10F}" {
+   ParticleEffect ""
+  }
+ }
+}

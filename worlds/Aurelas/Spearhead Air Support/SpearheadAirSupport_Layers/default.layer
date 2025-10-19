@@ -1,0 +1,205 @@
+SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
+ coords 1466.282 38.017 2876.815
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 1464.268 38.001 2884.881
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 11
+   m_iStartingMinutes 15
+   m_iRangeMinutesStart 15
+   m_iRangeHoursEnd 13
+   m_iRangeMinutesEnd 15
+   m_iSetDay 13
+   m_iSetYear 1986
+  }
+ }
+ coords 1478.697 38.001 2898.635
+ {
+  SCR_FactionManager "669A31D518B1AB54" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "Spearhead"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3: %4"
+      m_sCallsignCharacterWithRoleFormat "%3: %4"
+     }
+    }
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 3452.211 39.271 2577.153
+ m_missionEvents {
+  TILW_MissionEvent "{669B367346C5F6A8}" {
+   m_name "Mission Start"
+   m_instructions {
+    TILW_SendMessageInstruction "{669B3673529CFAD7}" {
+     m_executionDelay 15
+     m_messageTitle "All Spearhead Callsigns this is the USS Concrete"
+     m_messageBody "Spearhead you are cleared for liftoff. Remember to disrupt the Soviet Comms Center and await tasking from FAC."\
+     ""\
+     "Stay Safe and Happy Hunting!"\
+     ""\
+     "USS Concrete out."
+    }
+    TILW_SendMessageInstruction "{669EC4D2ED7F65C5}" {
+     m_executionDelay 420
+     m_messageTitle "All Spearhead Callsigns this is FAC"
+     m_messageBody "A Forward Ammunition and Resupply Point has been established at the Airfield at Grid (009,028) for you to use."\
+     "The FARP is marked by Blue Smoke."\
+     ""\
+     "FAC Out."
+    }
+    TILW_SendMessageInstruction "{669EC4D22EC38635}" {
+     m_executionDelay 2700
+     m_messageTitle "TIME LIMIT REACHED"
+     m_messageBody "The time window has closed."
+    }
+   }
+   m_condition TILW_LiteralTerm "{669B367377CCB7CB}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{669D6ED80A52E83B}" {
+   m_name "Signal Hill Clear"
+   m_instructions {
+    TILW_SendMessageInstruction "{669D6ED653351035}" {
+     m_executionDelay 0
+     m_messageTitle "All Spearhead Callsigns this is FAC"
+     m_messageBody "Ground observers report significant Soviet casualities at Signal Hill."\
+     ""\
+     "Good work."\
+     ""\
+     "Standby for next tasking."\
+     ""\
+     "Over."
+    }
+    TILW_SendMessageInstruction "{669D6ED6C5B7185B}" {
+     m_executionDelay 25
+     m_messageTitle "All Spearhead Callsigns this is FAC"
+     m_messageBody "Troops in contact at Beauregard are requesting support against Soviet Mechanized Infantry holding the town. "\
+     "Break. "\
+     "Friendly troops marking positions with green smoke. All weapons cleared hot."\
+     ""\
+     "FAC Out."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{669D6ED6BA024D9A}" {
+    m_operands {
+     TILW_LiteralTerm "{669D6ED6B8329497}" {
+      m_flagName "Signal_Hill_Clear"
+     }
+     TILW_LiteralTerm "{669D6ED6B99449CC}" {
+      m_flagName "BRDM_1_Destroyed"
+     }
+     TILW_LiteralTerm "{669D6ED6BEBF549B}" {
+      m_flagName "BRDM_2_Destroyed"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{668D6D025B258CD9}" {
+   m_name "Soviet Comms Destroyed"
+   m_instructions {
+    TILW_SendMessageInstruction "{668D6D027EE29083}" {
+     m_executionDelay 10
+     m_messageTitle "All Spearhead Callsigns this is FAC"
+     m_messageBody "Reports indicate Soviet communications have been disrupted."\
+     "Clean up remaining troops at signal hill and await next tasking. "\
+     ""\
+     "Over."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{669D6ED5E385CC1D}" {
+    m_operands {
+     TILW_LiteralTerm "{669D6ED5F85D066C}" {
+      m_flagName "SH_Destroyed_1"
+     }
+     TILW_LiteralTerm "{669D6ED5F97430EA}" {
+      m_flagName "SH_Destroyed_2"
+     }
+     TILW_LiteralTerm "{669D6ED5FED9E126}" {
+      m_flagName "SH_Destroyed_3"
+     }
+     TILW_LiteralTerm "{669D6ED5FF9EAC12}" {
+      m_flagName "SH_Destroyed_4"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{669A6D441B83D035}" {
+   m_name "Beauregard Clear"
+   m_instructions {
+    TILW_SendMessageInstruction "{669A6D4424ECF0D3}" {
+     m_messageTitle "All Spearhead Callsigns this is FAC"
+     m_messageBody "Soviet troops have taken signifigant casualties and our Marines have secured the town of Beauregard."\
+     "Return to the USS Concrete to rearm and refuel."\
+     ""\
+     "Good work today."\
+     ""\
+     "FAC Out."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{669A6D54CABB6552}" {
+    m_operands {
+     TILW_LiteralTerm "{669A6D54CEFF87D6}" {
+      m_flagName "Signal_Hill_Clear"
+     }
+     TILW_LiteralTerm "{669A6D54C3D92AAB}" {
+      m_flagName "Beauregard_Clear"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{669A6D449589292C}" {
+   m_name "US Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{669A6D44A18D9484}" {
+     m_executionDelay 20
+     m_messageTitle "US Victory"
+     m_messageBody "Spearhead squad has succeed in providing air support and the US has taken a significant foothold on the island of Arland."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{669A6D45E172D0D5}" {
+    m_operands {
+     TILW_LiteralTerm "{669A6D45F306D779}" {
+      m_flagName "Signal_Hill_Clear"
+     }
+     TILW_LiteralTerm "{669A6D4A0BA4AD8A}" {
+      m_flagName "Beauregard_Clear"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{669A6D45940742B9}" {
+   m_name "US Defeat"
+   m_instructions {
+    TILW_EndGameInstruction "{669A6D45AD7AD039}" {
+     m_executionDelay 20
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "US"
+    }
+   }
+   m_condition TILW_LiteralTerm "{669A6D45B128A5E7}" {
+    m_flagName "US_Players_Killed"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{669D6ED88444F260}" {
+   m_flagName "US_Players_Killed"
+   m_factionKey "US"
+   m_casualtyRatio 0.9
+  }
+ }
+}

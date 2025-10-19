@@ -1,0 +1,623 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 9481.182 6.443 7007.93
+ angleY 60
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 9490.863 6.981 7006.547
+ angleY 60
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 10
+   m_bRandomStartingWeather 1
+   m_bRandomWeatherChanges 1
+  }
+ }
+ coords 9480.512 22.799 7001.048
+ angleY 60
+ m_aFactionRespawnCount {
+  PS_FactionRespawnCount "{66632CD04B095CA9}" {
+   m_sFactionKey "RHS_USAF"
+   m_iCount 20
+  }
+ }
+ {
+  RadioManagerEntity {
+   ID "5ED9088735FF2DEE"
+   coords -26.89 38.579 -2.479
+  }
+  SCR_FactionManager "665135073166C568" {
+   ID "5ED9088735FF2D8B"
+   coords 0 0 0.001
+   Factions {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "#AR-Callsign_US_Platoon_2"
+       }
+       SCR_CallsignInfo "{55CCB792CE18FB44}" {
+        m_sCallsign "#AR-Callsign_US_Platoon_1"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{66632CF14F47B95D}" {
+        m_sCallsign "4"
+       }
+      }
+     }
+    }
+   }
+  }
+  ItemPreviewManagerEntity "665135073166C512" {
+   ID "5ED9088735FF2DD5"
+   coords -12.247 1 -7.526
+  }
+  SCR_EditorSettingsEntity {
+   ID "61B4E967E6C20362"
+   coords 0 0 0.001
+  }
+ }
+}
+TILW_ExtractionTriggerEntity : "{192ABD6B9232E064}Prefabs/Logic/Triggers/TILW_ExtractionTrigger.et" {
+ coords 9473.101 19.171 6989.059
+ m_queryRadius 100
+ m_flagName "US Extraction Flag"
+ m_drawShapeSurface 0
+ m_drawShapeOutline 0
+ m_factionKey "RHS_USAF"
+ m_ratioThreshold 0.95
+}
+PolylineShapeEntity AOPhase1 : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+   m_factionKeys {
+    "RHS_USAF"
+   }
+   m_defaultColor 0 0 1 1
+   m_useFactionColor 0
+   m_lineWidth 4
+  }
+ }
+ coords 8678.081 265.259 4384.686
+ Points {
+  ShapePoint "{669153F490730CFB}" {
+   Position 2487.179 -258.028 -420.494
+  }
+  ShapePoint "{669153F4CE1643A7}" {
+   Position 2453.832 0 2385.138
+  }
+  ShapePoint "{669153F4DCAF34A8}" {
+   Position -1141.565 0 5261.237
+  }
+  ShapePoint "{669153F4D67EE665}" {
+   Position -2194.526 0 4599.839
+  }
+  ShapePoint "{669153F52AA4407C}" {
+   Position -2695.163 0 2070.503
+  }
+  ShapePoint "{669153F5233295AD}" {
+   Position -2164.679 0 -432.573
+  }
+ }
+}
+TILW_MissionFrameworkEntity MF1 : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 9480.127 22.971 7003.064
+ angleY 60
+ userScript "	// Global count for Intel Gatherning"\
+ "	float intelCount = 0;"
+ FrameworkScript1 ""\
+ "		// Increase the count and then check the condition."\
+ "		intelCount++;"\
+ "		"\
+ "		if (intelCount == 2) "\
+ "			AdjustMissionFlag(\"Phase 1 Done Flag\", true);"\
+ "	"
+ FrameworkScript2 ""\
+ "		// Based on the result of the random flags, select which town location to spawn units and location for enemy commander"\
+ "		array<string> townList = {\"Lamentin Flag\", \"Montignac Flag\", \"Morton Flag\", \"StPhillipe Flag\", \"StPierre Flag\"};"\
+ "		"\
+ "		array<string> townSpawnFlagList = {\"Lamentin Spawn Flag\", \"Montignac Spawn Flag\", \"Morton Spawn Flag\", \"StPhillipe Spawn Flag\", \"StPierre Spawn Flag\"};"\
+ "		"\
+ "		int townNumber;"\
+ "		string commanderLocation;"\
+ "						"\
+ "		for (int i = 0; i < townList.Count(); i++){"\
+ "			if (IsMissionFlag(townList[i])){"\
+ "				PrintFormat(\"%1 has been chosen!\", townList[i]);"\
+ "				AdjustMissionFlag(townSpawnFlagList[i], true);"\
+ "				townNumber = i + 1;"\
+ "				continue;"\
+ "			}			"\
+ "		}"\
+ "		"\
+ "		PrintFormat(\"FW2: The Commander's spawn location is %1, %2!\", commanderLocation, townList[townNumber-1]);"\
+ "		"\
+ "		// Get Faction class for USMC "\
+ "		Faction USMCFaction = GetGame().GetFactionManager().GetFactionByKey(\"RHS_USAF\");"\
+ "		array<string> factionKey = {\"RHS_USAF\"};"\
+ ""\
+ "		"\
+ "		// Send a Message about locating a Enemy Commander's location"\
+ "		array<string> outTokens = new array<string>();"\
+ "		townList[townNumber-1].Split(\" \", outTokens, false);"\
+ "		TILW_MissionFrameworkEntity.GetInstance().ShowGlobalHint(\"Enemy Commander Located!\", \"The Commander is located at \" + outTokens[0], 10, factionKey);"\
+ "						"\
+ "		Print(\"FW2 Done!\");"\
+ "	"
+ FrameworkScript3 ""\
+ "		// Delete Intel Entities based on non-active flags"\
+ "		array<string> intelEntityFlagsList = {\"Chotain_Intel\", \"ChotainMilitarySite_Intel\", \"Laruns_Intel\", \"Levie_Intel\", \"MilitarySite_Intel\"};"\
+ "		array<string> markerEntityFlagsList = {\"Chotain_Intel\", \"ChotainMilitarySite_Intel\", \"Laruns_Intel\", \"Levie_Intel\", \"MilitarySite_Intel\"};"\
+ "		"\
+ "		foreach (string intelEntity : intelEntityFlagsList){"\
+ "			if (!IsMissionFlag(intelEntity)) {"\
+ "				PrintFormat(\"FW3: Deleting %1\", intelEntity);"\
+ "				SCR_EntityHelper.DeleteEntityAndChildren(GetGame().GetWorld().FindEntityByName(intelEntity));"\
+ "				SCR_EntityHelper.DeleteEntityAndChildren(GetGame().GetWorld().FindEntityByName(intelEntity + \"_Marker\"));"\
+ "			}			"\
+ "		}"\
+ "		"\
+ "		Print(\"FW3 Done!\");"\
+ "	"
+ m_missionEvents {
+  TILW_MissionEvent "{665C5BA8E1FB65E1}" {
+   m_name "Phase 1 Setup"
+   m_instructions {
+    TILW_RunScriptInstruction "{669153F5E43B311F}" {
+     m_executionDelay 0.5
+     m_iScriptNumber 3
+    }
+   }
+   m_condition TILW_LiteralTerm "{665C5BA8CC5F83F7}" {
+    m_invertTerm 1
+   }
+   m_pregameEvent 1
+  }
+  TILW_MissionEvent "{66554E0AD84D4EF5}" {
+   m_name "Chotain Intel"
+   m_instructions {
+    TILW_SendMessageInstruction "{66554E0AD46FB456}" {
+     m_executionDelay 1
+     m_messageTitle "Secured Intel at Chotain "
+    }
+    TILW_RunScriptInstruction "{665643AB299C015D}" {
+     m_executionDelay 1
+     m_bAllowRerun 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{66554E0AD5ED84F0}" {
+    m_flagName "Chotain Objective Flag"
+   }
+  }
+  TILW_MissionEvent "{665643AB3940E3F9}" {
+   m_name "Chotain Military Site Intel"
+   m_instructions {
+    TILW_SendMessageInstruction "{665643AB3940E351}" {
+     m_executionDelay 1
+     m_messageTitle "Secured Intel at Chotain Military Site"
+    }
+    TILW_RunScriptInstruction "{665643AB3940E34C}" {
+     m_executionDelay 1
+     m_bAllowRerun 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{665643AB3940E34E}" {
+    m_flagName "Chotain Military Site Objective Flag"
+   }
+  }
+  TILW_MissionEvent "{665643AB362B4744}" {
+   m_name "Laruns Intel"
+   m_instructions {
+    TILW_SendMessageInstruction "{665643AB362B4720}" {
+     m_executionDelay 1
+     m_messageTitle "Secured Intel at Laruns "
+    }
+    TILW_RunScriptInstruction "{665643AB362B4723}" {
+     m_executionDelay 1
+     m_bAllowRerun 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{665643AB362B44DD}" {
+    m_flagName "Laruns Objective Flag"
+   }
+  }
+  TILW_MissionEvent "{665643AB375BC51E}" {
+   m_name "Levie Intel"
+   m_instructions {
+    TILW_SendMessageInstruction "{665643AB375BCACB}" {
+     m_executionDelay 1
+     m_messageTitle "Secured Intel at Levie "
+    }
+    TILW_RunScriptInstruction "{665643AB375BCAC6}" {
+     m_executionDelay 1
+     m_bAllowRerun 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{665643AB375BCAC0}" {
+    m_flagName "Levie Objective Flag"
+   }
+  }
+  TILW_MissionEvent "{665643AB347483DB}" {
+   m_name "Military Site Intel"
+   m_instructions {
+    TILW_SendMessageInstruction "{665643AB347483BC}" {
+     m_executionDelay 1
+     m_messageTitle "Secured Intel at Military Site "
+    }
+    TILW_RunScriptInstruction "{665643AB347483BF}" {
+     m_executionDelay 1
+     m_bAllowRerun 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{665643AB347483B9}" {
+    m_flagName "Military Site Objective Flag"
+   }
+  }
+  TILW_MissionEvent "{665643AB306D4587}" {
+   m_name "Phase 1 Done"
+   m_instructions {
+    TILW_SendMessageInstruction "{665643AB306D4565}" {
+     m_executionDelay 2
+     m_messageTitle "Phase 1 Done"
+    }
+    TILW_SendMessageInstruction "{66632CFE4F8DF90B}" {
+     m_messageTitle "Live Map Edit is allowed!"
+     m_messageBody "Only top 2 ground CO and Flight Lead is allowed to place markers on the map. You have 5 mins."
+    }
+    TILW_RunScriptInstruction "{665766ABA6FD5DAE}" {
+     m_executionDelay 10
+     m_iScriptNumber 2
+    }
+    TILW_DeleteEntitiesInstruction "{669153F093220C28}" {
+     m_executionDelay 15
+     m_entityNames {
+      "AOPhase1"
+     }
+    }
+    TILW_SendMessageInstruction "{66632CFEA0AA20D0}" {
+     m_executionDelay 305
+     m_messageTitle "Live Map Edit is now close!"
+     m_messageBody "Happy Hunting and good luck!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{665643AB306D4563}" {
+    m_flagName "Phase 1 Done Flag"
+   }
+  }
+  TILW_MissionEvent "{665766B871DC0A5A}" {
+   m_name "Phase 1 Delete Units"
+   m_instructions {
+    TILW_DeleteEntitiesInstruction "{665766B85B6D5210}" {
+     m_executionDelay 0
+     m_entityNames {
+      "ChotainDefendSquad1" "ChotainDefendSquad2" "ChotainDefendSquad3" "ChotainDefendSquad4"
+     }
+    }
+    TILW_DeleteEntitiesInstruction "{665766B95E5C7F94}" {
+     m_executionDelay 3
+     m_entityNames {
+      "ChotainMilitarySiteDefendSquad1" "ChotainMilitarySiteDefendSquad2" "ChotainMilitarySiteDefendSquad3" "ChotainMilitarySiteDefendSquad4"
+     }
+    }
+    TILW_DeleteEntitiesInstruction "{665766B9E3D4F688}" {
+     m_executionDelay 6
+     m_entityNames {
+      "LarunDefendSquad1" "LarunDefendSquad2" "LarunDefendSquad3" "LarunDefendSquad4" "LarunDefendSquad5"
+     }
+    }
+    TILW_DeleteEntitiesInstruction "{665766B9DCCDD2B0}" {
+     m_executionDelay 9
+     m_entityNames {
+      "LevieDefendSquad1" "LevieDefendSquad2" "LevieDefendSquad3" "LevieDefendSquad4"
+     }
+    }
+    TILW_DeleteEntitiesInstruction "{665766B9D20F92A6}" {
+     m_executionDelay 12
+     m_entityNames {
+      "MilitarySiteDefendSquad1" "MilitarySiteDefendSquad2" "MilitarySiteDefendSquad3" "MilitarySiteDefendSquad4"
+     }
+    }
+    TILW_DeleteEntitiesInstruction "{665766BEC915422E}" {
+     m_executionDelay 15
+     m_entityNames {
+      "ChotainMilitarySitePatrolSquadNorth" "ChotainMilitarySitePatrolSquadWest" "LarunsPatrolSquadEast" "LarunsPatrolSquadNorth" "LarunsPatrolSquadWest" "LeviePatrolSquadEast" "LeviePatrolSquadNorth" "LeviePatrolSquadSouth" "MilitarySitePatrolSquadEast" "MilitarySitePatrolSquadWest"
+     }
+    }
+    TILW_DeleteEntitiesInstruction "{665766A232F9218B}" {
+     m_executionDelay 18
+     m_entityNames {
+      "chotainBTR1" "chotainBTR2" "cmsBTR1" "larunsBTR1" "larunsBTR2" "LevieBTR1" "msBTR1"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{665766BC6A08B335}" {
+    m_flagName "Phase 1 Delete Units Flag"
+   }
+  }
+  TILW_MissionEvent "{669536FCC6882285}" {
+   m_name "Show Lamentin Marker"
+   m_instructions {
+    TILW_EditMapItemInstruction "{669536FD6B98F4AF}" {
+     m_executionDelay 0
+     m_itemNames {
+      "LamentinMarker"
+     }
+     m_factionVisibility {
+      TILW_FactionVisibility "{6695689FA2813975}" {
+       m_factionKey "RHS_USAF"
+       m_visible 1
+      }
+     }
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{669536FD781C5F9D}" {
+    m_operands {
+     TILW_LiteralTerm "{6695689F8BAE6038}" {
+      m_flagName "Lamentin Location A Flag"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{6695689FEDF0DC49}" {
+   m_name "Show Montignac Marker"
+   m_instructions {
+    TILW_EditMapItemInstruction "{6695689FEDF0DDF4}" {
+     m_executionDelay 0
+     m_itemNames {
+      "MontignacMarker"
+     }
+     m_factionVisibility {
+      TILW_FactionVisibility "{6695689FEDF0DDF6}" {
+       m_factionKey "RHS_USAF"
+       m_visible 1
+      }
+     }
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{6695689FEDF0DDF2}" {
+    m_operands {
+     TILW_LiteralTerm "{6695689FEDF0DDF3}" {
+      m_flagName "Montignac Location A Flag"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{6695689FCBDB3FA9}" {
+   m_name "Show Morton Marker"
+   m_instructions {
+    TILW_EditMapItemInstruction "{6695689FCBDB3F3B}" {
+     m_executionDelay 0
+     m_itemNames {
+      "MortonMarker"
+     }
+     m_factionVisibility {
+      TILW_FactionVisibility "{6695689FCBDB3F35}" {
+       m_factionKey "RHS_USAF"
+       m_visible 1
+      }
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{6695689FCBDB3F2D}" {
+    m_flagName "Morton Location A Flag"
+   }
+  }
+  TILW_MissionEvent "{6695689E2A43F775}" {
+   m_name "Show StPhilipe Marker"
+   m_instructions {
+    TILW_EditMapItemInstruction "{6695689E2A43F4C8}" {
+     m_executionDelay 0
+     m_itemNames {
+      "StPhilipeMarker"
+     }
+     m_factionVisibility {
+      TILW_FactionVisibility "{6695689E2A43F4CA}" {
+       m_factionKey "RHS_USAF"
+       m_visible 1
+      }
+     }
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{6695689E2A43F4C6}" {
+    m_operands {
+     TILW_LiteralTerm "{6695689E2A43F4C7}" {
+      m_flagName "StPhillipe Location A Flag"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{6695689E075D2158}" {
+   m_name "Show StPierre Marker"
+   m_instructions {
+    TILW_EditMapItemInstruction "{6695689E075D2132}" {
+     m_executionDelay 0
+     m_itemNames {
+      "StPierreMarker"
+     }
+     m_factionVisibility {
+      TILW_FactionVisibility "{6695689E075D212C}" {
+       m_factionKey "RHS_USAF"
+       m_visible 1
+      }
+     }
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{6695689E075D2128}" {
+    m_operands {
+     TILW_LiteralTerm "{6695689E075D2129}" {
+      m_flagName "StPierre Location A Flag"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{665A6785A04306DC}" {
+   m_name "Phase 2 Commander Killed"
+   m_instructions {
+    TILW_SendMessageInstruction "{665C38BCDB4BD69D}" {
+     m_messageTitle "Enemy Commander is killed! "
+     m_messageBody "Start extracting back to LHD."
+    }
+    TILW_SetFlagInstruction "{665C38BF05CB3285}" {
+     m_flagName "Mission Complete Flag"
+    }
+   }
+   m_condition TILW_LiteralTerm "{665A67865663B9F7}" {
+    m_flagName "RHS RF Commander Killed Flag"
+   }
+  }
+  TILW_MissionEvent "{665C5BAF43483A20}" {
+   m_name "Phase 2 Complete"
+   m_instructions {
+    TILW_SendMessageInstruction "{665C5BAF5BC6E7BD}" {
+     m_messageTitle "Mission Complete!"
+     m_messageBody "Excellent Job. Now wait for GMs to pick the next mission."
+    }
+    TILW_EndGameInstruction "{665C5BAF564207B4}" {
+     m_executionDelay 300
+     m_factionKey "RHS_USAF"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{665C5BAF8D17E7D5}" {
+    m_operands {
+     TILW_LiteralTerm "{665C5BAF89063456}" {
+      m_flagName "Mission Complete Flag"
+     }
+     TILW_LiteralTerm "{665C5BAF87154BBD}" {
+      m_flagName "US Extraction Flag"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{66780D03BD20BDC7}" {
+   m_name "Time Limit"
+   m_instructions {
+    TILW_SendMessageInstruction "{66780D03B550C1D4}" {
+     m_executionDelay 3600
+     m_messageTitle "20 Minutes Left"
+    }
+    TILW_SendMessageInstruction "{66780D0384748D27}" {
+     m_executionDelay 4800
+     m_messageTitle "USMC Defeat!"
+     m_messageBody "Time Limit Reach"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66780D03B6EC3821}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{665C5BAF14C4EB72}" {
+   m_name "US Casualties"
+   m_instructions {
+    TILW_SendMessageInstruction "{665C5BAF6639CD55}" {
+     m_executionDelay 2
+     m_messageTitle "US Defeat!"
+     m_messageBody "We have taken too much casualties!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{665C5BAF468FB56B}" {
+    m_flagName "US Casualties Flag"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{665C5BAF3133C463}" {
+   m_flagName "US Casualties Flag"
+   m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.9
+  }
+ }
+ m_metaFlags {
+  TILW_MetaFlag "{669536F6AD181507}" {
+   m_flagName "Lamentin Location A Flag"
+   m_definition TILW_ConjunctionTerm "{669536F68EAE6641}" {
+    m_operands {
+     TILW_LiteralTerm "{669536F68D9E7C2C}" {
+      m_flagName "Lamentin Flag"
+     }
+     TILW_LiteralTerm "{669536F6ED49EA77}" {
+      m_flagName "Phase 1 Done Flag"
+     }
+    }
+   }
+  }
+  TILW_MetaFlag "{669536F73D74BC5F}" {
+   m_flagName "Montignac Location A Flag"
+   m_definition TILW_ConjunctionTerm "{669536F73D74BC04}" {
+    m_operands {
+     TILW_LiteralTerm "{669536F73D74BC06}" {
+      m_flagName "Montignac Flag"
+     }
+     TILW_LiteralTerm "{669536F73D74BC01}" {
+      m_flagName "Phase 1 Done Flag"
+     }
+    }
+   }
+  }
+  TILW_MetaFlag "{669536F748D16DD9}" {
+   m_flagName "Morton Location A Flag"
+   m_definition TILW_ConjunctionTerm "{669536F748D16D8A}" {
+    m_operands {
+     TILW_LiteralTerm "{669536F748D16D84}" {
+      m_flagName "Morton Flag"
+     }
+     TILW_LiteralTerm "{669536F748D1C16F}" {
+      m_flagName "Phase 1 Done Flag"
+     }
+    }
+   }
+  }
+  TILW_MetaFlag "{669536F7C664B7DD}" {
+   m_flagName "StPhillipe Location A Flag"
+   m_definition TILW_ConjunctionTerm "{669536F7C664B789}" {
+    m_operands {
+     TILW_LiteralTerm "{669536F7C664A874}" {
+      m_flagName "StPhillipe Flag"
+     }
+     TILW_LiteralTerm "{669536F7C6653752}" {
+      m_flagName "Phase 1 Done Flag"
+     }
+    }
+   }
+  }
+  TILW_MetaFlag "{669536F7B011C75A}" {
+   m_flagName "StPierre Location A Flag"
+   m_definition TILW_ConjunctionTerm "{669536F7B011C7F2}" {
+    m_operands {
+     TILW_LiteralTerm "{669536F7B011C7FC}" {
+      m_flagName "StPierre Flag"
+     }
+     TILW_LiteralTerm "{669536F7B011C7FF}" {
+      m_flagName "Phase 1 Done Flag"
+     }
+    }
+   }
+  }
+ }
+ m_randomFlags {
+  TILW_FlagSampling "{66474DA9E6E3F275}" {
+   m_flagNames {
+    "Chotain_Intel" "ChotainMilitarySite_Intel" "Laruns_Intel" "Levie_Intel" "MilitarySite_Intel"
+   }
+   m_k 2
+  }
+  TILW_FlagSampling "{66523C8787D2B82A}" {
+   m_flagNames {
+    "Lamentin Flag" "Montignac Flag" "Morton Flag" "StPierre Flag" "StPhillipe Flag"
+   }
+  }
+ }
+}

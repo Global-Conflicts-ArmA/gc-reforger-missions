@@ -1,0 +1,69 @@
+$grp SCR_AIWaypoint : "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et" {
+ LeviePatrolEast1 {
+  coords 7888.495 145.547 4797.264
+  AIBehaviorTreeMoveTo "{A3755C1F88DED8D6}AI/BehaviorTrees/Waypoints/WP_Move.bt"
+ }
+ LeviePatrolEast2 {
+  coords 7820.893 141.112 4995.832
+  AIBehaviorTreeMoveTo "{A3755C1F88DED8D6}AI/BehaviorTrees/Waypoints/WP_Move.bt"
+ }
+ LeviePatrolEast3 {
+  coords 7689.66 129.655 5012.912
+  AIBehaviorTreeMoveTo "{A3755C1F88DED8D6}AI/BehaviorTrees/Waypoints/WP_Move.bt"
+ }
+ LeviePatrolNorth1 {
+  coords 7475.35 123.094 5042.737
+  AIBehaviorTreeMoveTo "{A3755C1F88DED8D6}AI/BehaviorTrees/Waypoints/WP_Move.bt"
+ }
+ LeviePatrolNorth2 {
+  coords 7182.1 118.622 4880.283
+  AIBehaviorTreeMoveTo "{A3755C1F88DED8D6}AI/BehaviorTrees/Waypoints/WP_Move.bt"
+ }
+ LeviePatrolSouth1 {
+  coords 7192.349 120.413 4556.737
+ }
+ LeviePatrolSouth2 {
+  coords 7498.847 158.663 4448.237
+  AIBehaviorTreeMoveTo "{A3755C1F88DED8D6}AI/BehaviorTrees/Waypoints/WP_Move.bt"
+ }
+}
+$grp AIWaypointCycle : "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et" {
+ LeviePatrolEastCycle {
+  coords 7782.353 142.165 4959.66
+  CycleWaypoints {
+   "LeviePatrolEast1" "LeviePatrolEast2" "LeviePatrolEast3"
+  }
+ }
+ LeviePatrolNorthCycle {
+  coords 7367.853 142.165 4994.16
+  CycleWaypoints {
+   "LeviePatrolNorth1" "LeviePatrolNorth2"
+  }
+ }
+ LeviePatrolSouthCycle {
+  coords 7370.352 142.25 4496.16
+  CycleWaypoints {
+   "LeviePatrolSouth1" "LeviePatrolSouth2"
+  }
+ }
+}
+$grp SCR_AIGroup : "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et" {
+ LeviePatrolSquadNorth {
+  coords 7443.992 127.588 5045.565
+  m_aStaticWaypoints {
+   "LeviePatrolNorthCycle"
+  }
+ }
+ LeviePatrolSquadEast {
+  coords 7850.451 138.954 4828.581
+  m_aStaticWaypoints {
+   "LeviePatrolEastCycle"
+  }
+ }
+ LeviePatrolSquadSouth {
+  coords 7278.028 138.984 4548.982
+  m_aStaticWaypoints {
+   "LeviePatrolSouthCycle"
+  }
+ }
+}

@@ -21,7 +21,7 @@ PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/Per
 }
 PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
  coords 5120.286 82.446 6397.29
- m_iFreezeTime 300000
+ m_iFreezeTime 180000
  {
   SCR_FactionManager "660F34146F787BC2" {
    ID "5ED9088735FF2D8B"
@@ -394,6 +394,39 @@ TILW_MissionFrameworkEntity Main_MF : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_Mission
  "		}"\
  "	  "
  m_missionEvents {
+  TILW_MissionEvent "{669A4B46C559B930}" {
+   m_name "Set Supplies to Trucks"
+   m_instructions {
+    TILW_ServiceVehiclesInstruction "{669A4B46D63927D9}" {
+     m_aVehicleNames {
+      "truck_supplies_1" "truck_supplies_2"
+     }
+     m_bAdjustFuel 1
+     m_bAdjustSupplies 1
+     m_iAmountSupplies 300
+    }
+    TILW_ServiceVehiclesInstruction "{669A4B47830A6BE7}" {
+     m_aVehicleNames {
+      "truck_supplies_3"
+     }
+     m_bAdjustFuel 1
+     m_bAdjustSupplies 1
+     m_iAmountSupplies 900
+    }
+    TILW_ServiceVehiclesInstruction "{669A4B47BF86482E}" {
+     m_executionDelay 10
+     m_aVehicleNames {
+      "truck_supplies_4" "truck_supplies_5"
+     }
+     m_bAdjustFuel 1
+     m_bAdjustSupplies 1
+     m_iAmountSupplies 600
+    }
+   }
+   m_condition TILW_LiteralTerm "{669A4B46DC064C56}" {
+    m_invertTerm 1
+   }
+  }
   TILW_MissionEvent "{65C749517D83AB0A}" {
    m_name "BLUFOR Casualty Limit"
    m_instructions {
@@ -499,6 +532,14 @@ TILW_MissionFrameworkEntity Main_MF : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_Mission
      m_executionDelay 0
      m_messageTitle "Truck 'South' Secured at US HQ"
     }
+    TILW_ServiceVehiclesInstruction "{669B40EAE28EFA01}" {
+     m_executionDelay 7
+     m_aVehicleNames {
+      "truck_supplies_1"
+     }
+     m_bAdjustFuel 1
+     m_fFuelRatio 0
+    }
    }
    m_condition TILW_LiteralTerm "{65D05BF5C833DC47}" {
     m_flagName "US_Spawn_Jeep_1"
@@ -510,6 +551,14 @@ TILW_MissionFrameworkEntity Main_MF : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_Mission
     TILW_SendMessageInstruction "{65D1510FF334F2C2}" {
      m_executionDelay 0
      m_messageTitle "Truck 'South' Secured at Russsia HQ"
+    }
+    TILW_ServiceVehiclesInstruction "{669B40E93F41090D}" {
+     m_executionDelay 7
+     m_aVehicleNames {
+      "truck_supplies_1"
+     }
+     m_bAdjustFuel 1
+     m_fFuelRatio 0
     }
    }
    m_condition TILW_LiteralTerm "{65D1510FF334F2FE}" {
@@ -523,6 +572,14 @@ TILW_MissionFrameworkEntity Main_MF : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_Mission
      m_executionDelay 0
      m_messageTitle "Truck 'North' Secured at US HQ"
     }
+    TILW_ServiceVehiclesInstruction "{669B40E93494E521}" {
+     m_executionDelay 7
+     m_aVehicleNames {
+      "truck_supplies_2"
+     }
+     m_bAdjustFuel 1
+     m_fFuelRatio 0
+    }
    }
    m_condition TILW_LiteralTerm "{65D1510B87A95C89}" {
     m_flagName "US_Spawn_Jeep_2"
@@ -534,6 +591,14 @@ TILW_MissionFrameworkEntity Main_MF : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_Mission
     TILW_SendMessageInstruction "{65D1510FD41B47BA}" {
      m_executionDelay 0
      m_messageTitle "Truck 'North' Secured at USSR HQ"
+    }
+    TILW_ServiceVehiclesInstruction "{669B40E96C360485}" {
+     m_executionDelay 7
+     m_aVehicleNames {
+      "truck_supplies_2"
+     }
+     m_bAdjustFuel 1
+     m_fFuelRatio 0
     }
    }
    m_condition TILW_LiteralTerm "{65D1510FD41B47B6}" {
@@ -547,6 +612,14 @@ TILW_MissionFrameworkEntity Main_MF : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_Mission
      m_executionDelay 0
      m_messageTitle "Truck 'Center' Secured at US HQ"
     }
+    TILW_ServiceVehiclesInstruction "{669B40E9734B168E}" {
+     m_executionDelay 7
+     m_aVehicleNames {
+      "truck_supplies_3"
+     }
+     m_bAdjustFuel 1
+     m_fFuelRatio 0
+    }
    }
    m_condition TILW_LiteralTerm "{65D1510B850BB18A}" {
     m_flagName "US_Spawn_Jeep_3"
@@ -558,6 +631,14 @@ TILW_MissionFrameworkEntity Main_MF : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_Mission
     TILW_SendMessageInstruction "{65D1510C38358586}" {
      m_executionDelay 0
      m_messageTitle "Truck 'Center' Secured at Russia HQ"
+    }
+    TILW_ServiceVehiclesInstruction "{669B40E95D14001F}" {
+     m_executionDelay 7
+     m_aVehicleNames {
+      "truck_supplies_3"
+     }
+     m_bAdjustFuel 1
+     m_fFuelRatio 0
     }
    }
    m_condition TILW_LiteralTerm "{65D1510C38358582}" {
@@ -571,6 +652,14 @@ TILW_MissionFrameworkEntity Main_MF : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_Mission
      m_executionDelay 0
      m_messageTitle "Truck 'West' Secured at US HQ"
     }
+    TILW_ServiceVehiclesInstruction "{669B40E952B2B55A}" {
+     m_executionDelay 7
+     m_aVehicleNames {
+      "truck_supplies_4"
+     }
+     m_bAdjustFuel 1
+     m_fFuelRatio 0
+    }
    }
    m_condition TILW_LiteralTerm "{65D1510B82F8A9F8}" {
     m_flagName "US_Spawn_Jeep_4"
@@ -582,6 +671,14 @@ TILW_MissionFrameworkEntity Main_MF : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_Mission
     TILW_SendMessageInstruction "{65D1510C04017260}" {
      m_executionDelay 0
      m_messageTitle "Truck 'West' Secured at Russia HQ"
+    }
+    TILW_ServiceVehiclesInstruction "{669B67185C6D0A39}" {
+     m_executionDelay 7
+     m_aVehicleNames {
+      "truck_supplies_4"
+     }
+     m_bAdjustFuel 1
+     m_fFuelRatio 0
     }
    }
    m_condition TILW_LiteralTerm "{65D1510C0401721C}" {
@@ -595,6 +692,14 @@ TILW_MissionFrameworkEntity Main_MF : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_Mission
      m_executionDelay 0
      m_messageTitle "Truck 'East' Secured at US HQ"
     }
+    TILW_ServiceVehiclesInstruction "{669B40E9A07DA5DD}" {
+     m_executionDelay 7
+     m_aVehicleNames {
+      "truck_supplies_5"
+     }
+     m_bAdjustFuel 1
+     m_fFuelRatio 0
+    }
    }
    m_condition TILW_LiteralTerm "{65D1510B80680C95}" {
     m_flagName "US_Spawn_Jeep_5"
@@ -606,6 +711,14 @@ TILW_MissionFrameworkEntity Main_MF : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_Mission
     TILW_SendMessageInstruction "{65D1510C55A42C43}" {
      m_executionDelay 0
      m_messageTitle "Truck 'East' Secured at Russia HQ"
+    }
+    TILW_ServiceVehiclesInstruction "{669B40E9B1BA4622}" {
+     m_executionDelay 7
+     m_aVehicleNames {
+      "truck_supplies_5"
+     }
+     m_bAdjustFuel 1
+     m_fFuelRatio 0
     }
    }
    m_condition TILW_LiteralTerm "{65D1510C55A42C7A}" {
@@ -638,12 +751,12 @@ TILW_MissionFrameworkEntity Main_MF : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_Mission
   }
   TILW_FlagSampling "{65D1510341902952}" {
    m_flagNames {
-    "Spawnpoint West A" "Spawnpoint West B" "Spawnpoint West C"
+    "Spawnpoint West A" "Spawnpoint West B"
    }
   }
   TILW_FlagSampling "{65D151035F4136A0}" {
    m_flagNames {
-    "Spawnpoint East A" "Spawnpoint East B" "Spawnpoint East C"
+    "Spawnpoint East A" "Spawnpoint East B"
    }
   }
  }

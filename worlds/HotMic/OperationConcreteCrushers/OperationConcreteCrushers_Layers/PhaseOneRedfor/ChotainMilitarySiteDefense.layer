@@ -1,0 +1,65 @@
+GenericEntity : "{1D2887BB9A7D4670}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_CommandPost_USSR_01.et" {
+ coords 7465.208 7.875 6696.222
+ angleY -21.087
+}
+SCR_DefendWaypoint ChotainMilitarySiteDefendWaypoint2 : "{2FCBE5C76E285A7B}Prefabs/AI/Waypoints/AIWaypoint_DefendSmall.et" {
+ coords 7466.573 7.92 6697.626
+}
+$grp SCR_AIGroup : "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et" {
+ ChotainMilitarySiteDefendSquad1 {
+  coords 7440.398 9.688 6781.785
+  m_aStaticWaypoints {
+   "ChotainMilitarySiteDefendWaypoint"
+  }
+ }
+ ChotainMilitarySiteDefendSquad2 {
+  coords 7465.497 8.183 6706.375
+  m_aStaticWaypoints {
+   "ChotainMilitarySiteDefendWaypoint"
+  }
+ }
+ ChotainMilitarySiteDefendSquad3 {
+  coords 7531.543 2.501 6689.596
+  m_aStaticWaypoints {
+   "ChotainMilitarySiteDefendWaypoint"
+  }
+ }
+}
+GenericEntity : "{607E00F1C367D129}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Barracks_USSR_01.et" {
+ coords 7455.056 7.772 6717.636
+ angleY 150
+}
+TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
+ coords 7473.611 7.455 6712.043
+ angleY 90
+ m_prefab "{1C5FE7B7FF49BB8D}Prefabs/Vehicles/Wheeled/BTR70/BTR70_Base.et"
+ m_setEntityNames {
+  "cmsBTR1"
+ }
+ m_pregameSpawn 1
+ m_crewConfig TILW_CrewConfig "{66523C8C37F37CF2}" {
+  m_crewGroups {
+   TILW_CrewGroup "{66523C8C35570432}" {
+    m_crewStations {
+     TILW_CrewStation "{66523C8C32B0934C}" {
+      m_allowCargo 0
+      m_characters {
+       "{234A37EC8608DFAC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_Rifleman_Random.et" "{234A37EC8608DFAC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_Rifleman_Random.et" "{1701B425406974A0}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_SL_Random.et"
+      }
+     }
+    }
+   }
+  }
+  m_useIdleGroups 0
+ }
+}
+SCR_AIGroup ChotainMilitarySiteDefendSquad4 : "{8984FEFAA829ED76}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_PHQ.et" {
+ coords 7478.63 7.468 6706.087
+ m_aStaticWaypoints {
+  "ChotainMilitarySiteDefendWaypoint2"
+ }
+}
+SCR_DefendWaypoint ChotainMilitarySiteDefendWaypoint : "{A33AF7FC5004F294}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large_CO.et" {
+ coords 7462.729 7.874 6736.477
+ CompletionRadius 150
+}

@@ -12,6 +12,12 @@ PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_Game
   }
  }
  coords 2680.271 8 3051.191
+ m_aFactionRespawnCount {
+  PS_FactionRespawnCount "{669A2ADE790237B2}" {
+   m_sFactionKey "GC_TKA"
+   m_iCount 14
+  }
+ }
 }
 GenericEntity Market3Location {
  coords 3616.143 280 407.93
@@ -281,20 +287,6 @@ PolylineShapeEntity Phase1AO : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOL
   }
  }
 }
-$grp StaticModelEntity : "{8CDB9C117669AF4A}Prefabs/Structures/Military/Camps/HelipadImprovised_01/HelipadImprovised_USSR_01.et" {
- {
-  coords 3000.883 0 3019.504
-  angleY 32.698
- }
- {
-  coords 2969.948 0 3039.362
-  angleY 32.698
- }
- {
-  coords 2930.824 0 3064.477
-  angleY 32.698
- }
-}
 TILW_MissionFrameworkEntity fw1 : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
  coords 2682.254 8 3053.212
  userScript "	// code here"\
@@ -306,11 +298,11 @@ TILW_MissionFrameworkEntity fw1 : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFram
  "		// Check the Current Supply value of Supply Depot with Target value(500) or value(750)"\
  "		"\
  "		float currentSuppliesValue = BlueContainer.GetResourceValue();"\
- "		if (currentPhaseIndex == 1 && currentSuppliesValue == 500) "\
+ "		if (currentPhaseIndex == 1 && currentSuppliesValue >= 500) "\
  "		{"\
  "			AdjustMissionFlag(\"Phase 1 Done Flag\", true);"\
  "			currentPhaseIndex++;"\
- "		} else if ((currentPhaseIndex == 2 && currentSuppliesValue == 1000)) "\
+ "		} else if ((currentPhaseIndex == 2 && currentSuppliesValue >= 1000)) "\
  "		{"\
  "			AdjustMissionFlag(\"Phase 2 Done Flag\", true);"\
  "		} else {"\
@@ -470,6 +462,18 @@ TILW_MissionFrameworkEntity fw1 : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFram
     m_flagName "Casualties Limit Flag"
    }
   }
+  TILW_MissionEvent "{669A2ADE0F9828A7}" {
+   m_name "Van Destroy"
+   m_instructions {
+    TILW_SendMessageInstruction "{669A2ADE0246EA72}" {
+     m_messageTitle "Mission Complete: Defeat!"
+     m_messageBody "One of the vans has been blown up,"
+    }
+   }
+   m_condition TILW_LiteralTerm "{669A2ADE0922CC46}" {
+    m_flagName "Van Destroy Flag"
+   }
+  }
  }
  m_casualtyFlags {
   TILW_FactionPlayersKilledFlag "{663E2289531C8765}" {
@@ -483,6 +487,25 @@ SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/Restriction
  coords 2953.004 10 3002.024
  m_fZoneRadius 85
  m_fZoneTeleportedRadius 95
+}
+$grp StaticModelEntity : "{CF1FFB7BAA1A0769}Prefabs/Structures/Military/Camps/HelipadImprovised_01/HelipadImprovised_US_01.et" {
+ {
+  coords 962.981 0.974 2843.938
+  angleY -37.175
+  scale 0.76
+ }
+ {
+  coords 3001.022 -0 3019.648
+  angleY 33.51
+ }
+ {
+  coords 2976.008 0 3036.211
+  angleY 33.51
+ }
+ {
+  coords 2951.411 0 3052.497
+  angleY 33.51
+ }
 }
 GenericEntity : "{FA7A86697340C58C}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_05.et" {
  coords 2915.016 10 2997.727
