@@ -1,0 +1,409 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 2739.022 58.551 1470.356
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 2729.67 58.597 1477.204
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingMinutes 30
+   m_bUseSpecifiedDate 1
+   m_iSetDay 31
+   m_iSetMonth 12
+   m_iSetYear 2014
+   m_bOverrideEnvironment 1
+   m_fFogHeight 0
+   m_fWind 3
+  }
+ }
+ coords 2731.626 58.578 1475.883
+ {
+  SCR_FactionManager "668F5C8A059D4363" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792829053B0}" {
+        m_sCallsign "ROMAN"
+       }
+       SCR_CallsignInfo "{55CCB79282A19687}" {
+        m_sCallsign "ANNA"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB79284BA6D27}" {
+        m_sCallsign "35"
+       }
+       SCR_CallsignInfo "{55CCB79284A2F6C9}" {
+        m_sCallsign "33"
+       }
+      }
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{668F5D7DC27DBBAB}" {
+        m_sCallsign "4"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+TILW_ExtractionTriggerEntity : "{192ABD6B9232E064}Prefabs/Logic/Triggers/TILW_ExtractionTrigger.et" {
+ coords 3153.008 67.906 913.991
+ angleX -7.097
+ angleY -0.446
+ angleZ 3.604
+ m_queryRadius 50
+ m_locationName "Railway Extract"
+ m_flagName "BLUFOR_EXTRACTED"
+ m_factionKey "RHS_USAF"
+ m_ratioThreshold 0.6
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_ignoredVehicles {
+     "{1DF4C30C130D8FAD}Prefabs/Vehicles/Wheeled/K4386/K4386_Armed_Camo.et"
+    }
+   }
+   TILW_CoverMapComponent "{6473480FCAB7760B}" {
+    Enabled 1
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    m_color 0.246 0.246 0.246 0.75
+   }
+  }
+  coords 2722.47 58.863 1474.302
+  Points {
+   ShapePoint "{668F5D66832FEE89}" {
+    Position 139.776 -0.777 313.364
+   }
+   ShapePoint "{668F5D66842CA636}" {
+    Position -603.15 7.696 657.492
+   }
+   ShapePoint "{668F5D66BC82BACC}" {
+    Position -989.448 6.756 -228.657
+   }
+   ShapePoint "{668F5D66BE43C322}" {
+    Position -403.67 1.762 -574.199
+   }
+   ShapePoint "{668F5D66B233DA75}" {
+    Position 283.536 -0.675 -1051.721
+   }
+   ShapePoint "{668F5D66AE021B1F}" {
+    Position 931.36 0.449 -99.369
+   }
+   ShapePoint "{668F5D66A1BE0973}" {
+    Position 546.533 -0.606 127.405
+   }
+  }
+ }
+ QRFRestrict {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_killTimer 30
+    m_factionKeys {
+     "RHS_AFRF"
+    }
+    m_visibility NONE
+   }
+  }
+  coords 2137.384 63.68 1443.077
+  Points {
+   ShapePoint "{66992DE78237DE92}" {
+    Position 0 0 0
+   }
+   ShapePoint "{66992DE780B41B7D}" {
+    Position 100 0 0
+   }
+   ShapePoint "{66992DE784C94BD7}" {
+    Position 100 0 100
+   }
+   ShapePoint "{66992DE7892BF8CC}" {
+    Position 0 0 100
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 2730.387 58.375 1476.323
+ m_missionEvents {
+  TILW_MissionEvent "{66992DE7CD94F081}" {
+   m_name "Release QRF"
+   m_instructions {
+    TILW_DeleteEntitiesInstruction "{66992DE6200C6E07}" {
+     m_entityNames {
+      "QRFRestrict"
+     }
+    }
+    TILW_SendMessageInstruction "{66992DE602981933}" {
+     m_messageTitle "ANNA 331 RELEASED"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66992DE7D84763E1}" {
+    m_flagName "QRFReleased"
+   }
+  }
+  TILW_MissionEvent "{669365F0D6D838DE}" {
+   m_name "Mission Start"
+   m_instructions {
+    TILW_SetFlagInstruction "{6693657C9E44D10D}" {
+     m_executionDelay 720
+     m_flagName "QRFReleased"
+    }
+    TILW_SendMessageInstruction "{66992DE67F05E552}" {
+     m_executionDelay 2700
+     m_messageTitle "TIME LIMIT REACHED"
+     m_messageBody "US forces were unable to accomplish their objective in time."
+    }
+   }
+   m_condition TILW_LiteralTerm "{66950002F744816D}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{66936563F9C7D20E}" {
+   m_name "Early QRF Release"
+   m_instructions {
+    TILW_SetFlagInstruction "{66992DE6A5617B30}" {
+     m_flagName "QRFReleased"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{669365620E4597B9}" {
+    m_operands {
+     TILW_LiteralTerm "{66936562006D336E}" {
+      m_invertTerm 1
+      m_flagName "QRFReleased"
+     }
+     TILW_LiteralTerm "{6693656228292843}" {
+      m_flagName "1-Hit"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{669500182FB93266}" {
+   m_name "Total US Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{66950018D391BC61}" {
+     m_messageTitle "Total US Victory"
+     m_messageBody "RU Forces Destroyed"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6695001FA2B34004}" {
+    m_flagName "RU-90"
+   }
+  }
+  TILW_MissionEvent "{66950014039FCD64}" {
+   m_name "Decisive US Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{66950014D4908564}" {
+     m_messageTitle "Decisive US Victory"
+     m_messageBody "3 RU artillery pieces neutralized, mission success"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{66950014E86F5468}" {
+    m_operands {
+     TILW_LiteralTerm "{66950014EDAB4EA8}" {
+      m_flagName "3-Hit"
+     }
+     TILW_LiteralTerm "{6695001489D23BE7}" {
+      m_invertTerm 1
+      m_flagName "US-60"
+     }
+     TILW_LiteralTerm "{669500186F99C894}" {
+      m_flagName "BLUFOR_EXTRACTED"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{669500271EBC57FA}" {
+   m_name "Strategic US Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{669500271EBC543A}" {
+     m_messageTitle "Medium US Victory"
+     m_messageBody "3 RU artillery pieces neutralized, mission success"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{66950027871EF2D7}" {
+    m_operands {
+     TILW_LiteralTerm "{66950027B937664D}" {
+      m_flagName "3-Hit"
+     }
+     TILW_LiteralTerm "{66950027BB7EA5DC}" {
+      m_flagName "BLUFOR_EXTRACTED"
+     }
+     TILW_LiteralTerm "{669500264E66ED7A}" {
+      m_flagName "US-60"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{66950027AB61F447}" {
+   m_name "Strategic US Victory 2"
+   m_instructions {
+    TILW_SendMessageInstruction "{66950027AB61F4F3}" {
+     m_messageTitle "Medium US Victory"
+     m_messageBody "2 RU artillery pieces neutralized, mission success"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{66950027AB61F4EE}" {
+    m_operands {
+     TILW_LiteralTerm "{66950027AB61F4EF}" {
+      m_flagName "2-Hit"
+     }
+     TILW_LiteralTerm "{66950027AB61F4EC}" {
+      m_flagName "BLUFOR_EXTRACTED"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{669500234DCCAB3F}" {
+   m_name "Minor US Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{6695002375E9CAC1}" {
+     m_messageTitle "Minor US Victory"
+     m_messageBody "1 RU artillery pieces neutralized, mission success"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{66950026DCD3CA1A}" {
+    m_operands {
+     TILW_LiteralTerm "{66950026DE234362}" {
+      m_flagName "1-Hit"
+     }
+     TILW_LiteralTerm "{66950026D0EA9A30}" {
+      m_flagName "BLUFOR_EXTRACTED"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{66950026F2381749}" {
+   m_name "RU Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{66950026E9E0D145}" {
+     m_messageTitle "RU Major Victory"
+     m_messageBody "OPPROTUNITY NOT SIEZED!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{669500269DDBE4AC}" {
+    m_flagName "US-85"
+   }
+  }
+  TILW_MissionEvent "{669500268B8D0B73}" {
+   m_name "DRAW"
+   m_instructions {
+    TILW_SendMessageInstruction "{6695002682B64412}" {
+     m_messageTitle "Draw"
+     m_messageBody "Both sides atritted."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{66950026A117BC6E}" {
+    m_operands {
+     TILW_LiteralTerm "{6695002547E0628E}" {
+      m_flagName "RU-85"
+     }
+     TILW_LiteralTerm "{669500257C9C6E15}" {
+      m_flagName "US-80"
+     }
+    }
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{6695001B43C6F129}" {
+   m_flagName "US-85"
+   m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{6695001B73168E1C}" {
+   m_flagName "US-60"
+   m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.61
+  }
+  TILW_FactionPlayersKilledFlag "{669500255C82A2B5}" {
+   m_flagName "US-80"
+   m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.85
+  }
+  TILW_FactionPlayersKilledFlag "{66950018575D7BD8}" {
+   m_flagName "RU-90"
+   m_factionKey "RHS_AFRF"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{6695002549EA4977}" {
+   m_flagName "RU-85"
+   m_factionKey "RHS_AFRF"
+   m_casualtyRatio 0.85
+  }
+ }
+ m_metaFlags {
+  TILW_MetaFlag "{6695001D6AA3E9AA}" {
+   m_flagName "1-Hit"
+   m_definition TILW_MaxjunctionTerm "{6695001D059524E5}" {
+    m_operands {
+     TILW_LiteralTerm "{6695001D38A28CC9}" {
+      m_flagName "VIC1"
+     }
+     TILW_LiteralTerm "{6695001D3A7F02EB}" {
+      m_flagName "VIC2"
+     }
+     TILW_LiteralTerm "{6695001D3B3100C4}" {
+      m_flagName "VIC3"
+     }
+    }
+    m_maxTrue 2
+   }
+  }
+  TILW_MetaFlag "{6695001DC4E408A0}" {
+   m_flagName "2-Hit"
+   m_definition TILW_MaxjunctionTerm "{6695001DC4E408CA}" {
+    m_operands {
+     TILW_LiteralTerm "{6695001DC4E408C9}" {
+      m_flagName "VIC1"
+     }
+     TILW_LiteralTerm "{6695001DC4E408C7}" {
+      m_flagName "VIC2"
+     }
+     TILW_LiteralTerm "{6695001DC4E408C4}" {
+      m_flagName "VIC3"
+     }
+    }
+   }
+  }
+  TILW_MetaFlag "{6695001DF2675CF2}" {
+   m_flagName "3-Hit"
+   m_definition TILW_MaxjunctionTerm "{6695001DF2675D23}" {
+    m_operands {
+     TILW_LiteralTerm "{6695001DF2675D21}" {
+      m_flagName "VIC1"
+     }
+     TILW_LiteralTerm "{6695001DF2675D1F}" {
+      m_flagName "VIC2"
+     }
+     TILW_LiteralTerm "{6695001DF2675D1D}" {
+      m_flagName "VIC3"
+     }
+    }
+    m_maxTrue 0
+   }
+  }
+ }
+}
