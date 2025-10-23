@@ -1,0 +1,284 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{65D9122AB2622D4A}" {
+     NavmeshFile "{22BCE6ADD2DCD94C}Worlds/Gamemaster/Navmeshes/Anizay_soldiers_navmesh.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{CFCD9E2EA1CAA291}Worlds/Gamemaster/Navmeshes/Vehicle_navmesh/anizay_vehicle_navmesh.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{B077E4658D03DDA5}Worlds/Gamemaster/Navmeshes/lowres_navmesh/Anizay_lowres_navmesh.nmn"
+    }
+   }
+  }
+ }
+ coords 1977.048 66.413 6746.422
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 1973.152 66.453 6750.959
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{65D9122E96DBA160}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 7
+    }
+   }
+   m_bAllowHeaderSettings 1
+   m_bUseSpecifiedDate 1
+   m_iSetMonth 9
+   m_iSetYear 2025
+   m_bOverrideEnvironment 1
+   m_fFogDensity 0
+   m_fFogHeight 0
+   m_fRain 0
+   m_fWind 5
+  }
+ }
+ coords 1970.315 66.375 6740.193
+ m_iFreezeTime 300000
+ {
+  SCR_FactionManager "6604F1DC1BDEE206" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CD021D5C}" {
+        m_sCallsign "Hammer"
+       }
+       SCR_CallsignInfo "{55CCB792CCD598D3}" {
+        m_sCallsign "Bandit"
+       }
+       SCR_CallsignInfo "{55CCB792CC9C7AD6}" {
+        m_sCallsign "Cutter"
+       }
+       SCR_CallsignInfo "{55CCB792CCB4D441}" {
+        m_sCallsign "Draco"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792CE18FB44}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792CE02ECFA}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{55CCB792CE2A44BD}" {
+        m_sCallsign "4"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{66033D9362ED2B8A}" {
+        m_sCallsign "4"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ ao_tka {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "GC_TKA"
+    }
+    m_visibility FACTION
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+    m_factionKeys {
+     "GC_TKA"
+    }
+    m_visibleForEmptyFaction 0
+   }
+  }
+  coords 1251.164 143.172 8140.145
+  angleX 0.895
+  Points {
+   ShapePoint "{65DAD45204ECAC0A}" {
+    Position -1235.238 0.967 373.372
+   }
+   ShapePoint "{65DAD4520662E2F6}" {
+    Position -1207.372 21.051 -1516.143
+   }
+   ShapePoint "{65DAD452079001F0}" {
+    Position 668.564 6.919 -693.771
+   }
+   ShapePoint "{65DAD4520085AF0D}" {
+    Position 608.657 -6.924 383.782
+   }
+  }
+  LineColor 0 0 0 0
+ }
+ ao_us {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "RHS_USAF"
+    }
+    m_visibility FACTION
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+    m_factionKeys {
+     "RHS_USAF"
+    }
+    m_visibleForEmptyFaction 0
+   }
+  }
+  coords 1243.328 141.762 8762.461
+  angleX 0.895
+  Points {
+   ShapePoint "{65DAD45204ECAC0A}" {
+    Position -690.895 -4.857 825.486
+   }
+   ShapePoint "{65DAD4520662E2F6}" {
+    Position -619.487 16.003 -1294.146
+   }
+   ShapePoint "{65DAD452079001F0}" {
+    Position 669.692 17.8 -1320.255
+   }
+   ShapePoint "{65DAD4520085AF0D}" {
+    Position 868.186 -7.857 1004.005
+   }
+  }
+ }
+}
+TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 1309.118 142.083 8127.053
+ m_queryRadius 200
+ m_captureTime 60
+ m_sendStatusMessages 1
+ m_locationName "The intersection"
+ m_flagName "US_CAP"
+ m_playersOnly 1
+ m_ownerFactionKey "RHS_USAF"
+ m_ratioThreshold 0.9
+ {
+  PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+   coords 0 0 0
+   m_sImageSetGlow ""
+   m_MarkerColor 0 0 0 0.5
+   m_fWorldSize 600
+   m_bVisibleForEmptyFaction 1
+   m_bShowForAnyFaction 1
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 1975.851 66.373 6735.549
+ m_missionEvents {
+  TILW_MissionEvent "{65DAD44B20B959A8}" {
+   m_name "USMC_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{65DAD44B3E9B04E5}" {
+     m_messageTitle "Taki VICTORY"
+     m_messageBody "US forces (Players) have taken significant casualties."
+    }
+   }
+   m_condition TILW_LiteralTerm "{65DAD44B3CEA7945}" {
+    m_flagName "USMC_KIA"
+   }
+  }
+  TILW_MissionEvent "{65DAD44B0C1F6ABB}" {
+   m_name "US_CAP"
+   m_instructions {
+    TILW_SendMessageInstruction "{65DAD44B0B639BE4}" {
+     m_messageTitle "US VICTORY"
+     m_messageBody "US forces have taken control of the intersection."
+    }
+   }
+   m_condition TILW_LiteralTerm "{65DAD44B0F043436}" {
+    m_flagName "US_CAP"
+   }
+  }
+  TILW_MissionEvent "{65DAD44B18B1FFCF}" {
+   m_name "RU_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{65DAD44B173C3443}" {
+     m_messageTitle "USMC VICTORY"
+     m_messageBody "TKA forces have taken significant casualties."
+    }
+   }
+   m_condition TILW_LiteralTerm "{65DAD44B124E4EED}" {
+    m_flagName "RU_KIA"
+   }
+  }
+  TILW_MissionEvent "{66AF1CB687B2E50F}" {
+   m_name "TKA_AI_KiA"
+   m_instructions {
+    TILW_SendMessageInstruction "{66AF1CB69DD516CD}" {
+     m_messageTitle "TKA Mech Company Destroyed"
+     m_messageBody "USMC forces have destroyed the TKA AI: Play on"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66AF1CB6C6FB796B}" {
+    m_flagName "TKA_AI_KIA"
+   }
+  }
+  TILW_MissionEvent "{65DAD44BE3E4874B}" {
+   m_name "TIME_LIMIT"
+   m_instructions {
+    TILW_SendMessageInstruction "{65DAD44BFF933260}" {
+     m_executionDelay 3600
+     m_messageTitle "TKA VICTORY"
+     m_messageBody "US forces have been delayed for long enough."
+    }
+   }
+   m_condition TILW_LiteralTerm "{65DAD44BFECA2360}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{65D9122F118E00D3}" {
+   m_flagName "USMC_KIA"
+   m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{65D9122FEBBAA599}" {
+   m_flagName "RU_KIA"
+   m_factionKey "GC_TKA"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionAIKilledFlag "{66AEF1C2AA1448F3}" {
+   m_flagName "TKA_AI_KIA"
+   m_factionKey "GC_TKA"
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 1275.572 149.484 9616.95
+}
