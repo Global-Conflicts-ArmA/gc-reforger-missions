@@ -34,23 +34,31 @@ class GC_R_Manager : GameEntity
 	
 	void NewScenario()
 	{
-		int index = m_random.RandIntInclusive(0, m_scenarios.Count());
+		int index = m_random.RandIntInclusive(0, m_scenarios.Count()-1);
 		m_currentScenario = m_scenarios[index];
 		
 		Print("GC Roulette | NewScenario = " + m_currentScenario);
 		m_currentScenario.Intialize()	
 	}
 	
-	void Intialize()
+	protected void Intialize()
 	{
 		Print("GC Roulette | Intialize");
-
+		
+		SetSeed();
+		
 		m_instance = this;
-		SetSeed(System.GetUnixTime());
-		SetSeed(1);
 		m_world = GetGame().GetWorld();
 		m_worldSize = GetMapSize();
 		
+		NewScenario();
+		
+		GetGame().GetCallqueue().CallLater(Reroll, 1000, true);
+	}
+	
+	void Reroll()
+	{
+		SetSeed();
 		NewScenario();
 	}
 	
@@ -71,7 +79,7 @@ class GC_R_Manager : GameEntity
 			if(buildings.IsEmpty())
 				continue;
 
-			int index = m_random.RandIntInclusive(0, buildings.Count());
+			int index = m_random.RandIntInclusive(0, buildings.Count()-1);
 			building = buildings[index];
 		}
 		
@@ -93,8 +101,11 @@ class GC_R_Manager : GameEntity
 		return m_instance;
 	}
 	
-	void SetSeed(int seed = 0)
+	void SetSeed(int seed = -1)
 	{
+		if(seed == -1)
+			seed = (System.GetUnixTime() << 8) ^ System.GetTickCount() ^ Math.RandomInt(0, 999999);
+		
 		m_random.SetSeed(seed);
 		Print("GC Roulette | Seed = " + seed);
 	}
