@@ -19,12 +19,12 @@ PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_Game
   PS_FactionRespawnCount "{66AF77FBD8266306}" {
    m_sFactionKey "US"
    m_iCount 100
-   m_iTime 5
+   m_iTime 5000
   }
   PS_FactionRespawnCount "{66AF77FA381F779F}" {
    m_sFactionKey "GC_NVA"
    m_iCount 999
-   m_iTime 90
+   m_iTime 60000
   }
  }
  {
@@ -318,9 +318,6 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   ""\
   "101st Airborne Platoon conducts paradrops and attacks the Wehrmacht's artillery pieces."\
   ""\
-  "-- Pre-Slotting -- "\
-  "Make the most of the 5-minute setup. The Wehrmacht players should make a simple plan, and the 101st will use 5 minutes for an in-game brief."\
-  ""\
   "45 Minutes Time Limit"\
   ""\
   "Mission by Hot Mic"\
@@ -376,6 +373,11 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
  m_ratioThreshold 0.02
 }
 SCR_ChimeraCharacter : "{8DD993D745B6658A}worlds/HotMic/Prefabs/Characters/WW2/Germany/Character_GC_Germany_BaseLoadout.et" {
+ components {
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponTemplate "{DA4407BB1566D997}worlds/HotMic/Prefabs/Mauser 1898 Karabiner.et"
+  }
+ }
  coords 2425.042 17.829 3339.515
  angleY 165
 }
@@ -453,9 +455,48 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
      m_executionDelay 300
      m_flagName "Live Flag"
     }
+    TILW_DeleteEntitiesInstruction "{66B1434A33F3E861}" {
+     m_executionDelay 300
+     m_entityNames {
+      "BuildService"
+     }
+    }
    }
    m_condition TILW_LiteralTerm "{66AF77FA4D613AA4}" {
     m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{66B14355B43D32A4}" {
+   m_name "Gun 1 Explosion"
+   m_instructions {
+    TILW_SendMessageInstruction "{66B14354936D1B75}" {
+     m_messageTitle "Explosion at Gun 1! BOOM!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66B1435588A874B9}" {
+    m_flagName "Spike Arty A Flag"
+   }
+  }
+  TILW_MissionEvent "{66B143571E4E87B4}" {
+   m_name "Gun 2 Explosion"
+   m_instructions {
+    TILW_SendMessageInstruction "{66B143571E4E873D}" {
+     m_messageTitle "Explosion at Gun 2! BOOM!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66B143571E4E873A}" {
+    m_flagName "Spike Arty B Flag"
+   }
+  }
+  TILW_MissionEvent "{66B14357103F55F1}" {
+   m_name "Gun 3 Explosion"
+   m_instructions {
+    TILW_SendMessageInstruction "{66B14357103F5556}" {
+     m_messageTitle "Explosion at Gun 3! BOOM!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66B14357103F5552}" {
+    m_flagName "Spike Arty C Flag"
    }
   }
  }
