@@ -1,10 +1,14 @@
+Vehicle M997_maxi_ambulance1 : "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et" {
+ coords 1842.095 64.344 3342.437
+ angleY 166.077
+}
 $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
  BRIEF_00_overview {
   coords 2983.011 59.665 2386.651
   m_sTitle "Mission Overview:"
   m_sTextData "3.6 roentgen, not great, not terrible…"\
   ""\
-  "A US Ranger platoon is tasked with responding to a separatist attack on a power plant."\
+  "A US Delta platoon is tasked with responding to a separatist attack on a power plant."\
   ""\
   "Objective: Clear the power plant and retake control of the reactor core before a bomb detonates."\
   "Blufor spawns directly outside the power plant doors, ready to breach."\
@@ -12,6 +16,8 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   "The bomb detonation is not a hard end condition — Blufor can continue efforts to secure the power plant."\
   ""\
   "This mission does not have any hard end conditions. GM’s discretion applies (see Mission Notes)."\
+  ""\
+  "The large image on the map shows the main power plant buildings floors."\
   ""
   m_bEmptyFactionVisibility 1
   m_bShowForAnyFaction 1
@@ -24,18 +30,18 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   "Concrete power plant with multiple floors."\
   ""\
   "<h2>Light:</h2>"\
-  "- First Light: 0410h"\
-  "- Last Light: 2345h"\
-  "- Time Now: 0100h"\
+  "- First Light: 0845 local"\
+  "- Last Light: 1645 local"\
+  "- Time Now: 0100 local"\
   ""\
   "<h2>Weather:</h2>"\
-  "Thunderstorm"\
+  "Clear"\
   ""\
   "<h2>Forecast:</h2>"\
   "Weather is not expected to change"\
   ""\
   "<h2>Moonstate:</h2>"\
-  "Full"\
+  "New Moon"\
   ""\
   "<h2>Visibility:</h2>"\
   "Most lights inside the power plant have been turned off — expect limited visibility."\
@@ -99,7 +105,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   "<h2>C. Attachments/Detachment</h2>"\
   "<b>Attachments: None</b>"\
   ""\
-  "<b>Detachments: 3rd Platoon.</b>"\
+  "<b>Detachments: None.</b>"\
   ""
   m_aVisibleForFactions {
    "RHS_USAF"
@@ -110,8 +116,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   coords 3036.316 59.665 2454.379
   m_sTitle "II. Mission:"
   m_sDescriptionLayout "{E7AB311330BF986C}worlds/Perfk/UI/MissionDescription/DescriptionEditableScrollable_size18.layout"
-  m_sTextData "Alpha Company, minus 3rd Platoon, positioned on the perimeter and ready to breach, will raid the power plant in order to secure the reactor room no later than (NLT) 25 minutes after mission start. Once the reactor room is secured, the remainder of the power plant is to be cleared and secured."\
-  ""
+  m_sTextData "Alpha Company, positioned on the perimeter and ready to breach, will raid the power plant in order to secure the reactor room no later than (NLT) 25 minutes after mission start. Once the reactor room is secured, the remainder of the power plant is to be cleared and secured."
   m_aVisibleForFactions {
    "RHS_USAF"
   }
@@ -123,7 +128,9 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   m_sDescriptionLayout "{E7AB311330BF986C}worlds/Perfk/UI/MissionDescription/DescriptionEditableScrollable_size18.layout"
   m_sTextData "At the COs discretion."\
   ""\
-  "Note that the Power Plant roof is only accessible from the outside and does not provide any vantage points inside."\
+  "It’s recommended to use smoke to block sightlines on entry"\
+  ""\
+  "Note that the Power Plant roof is only accessible from the outside and does not provide any vantage points for looking inside the plant."\
   ""
   m_aVisibleForFactions {
    "RHS_USAF"
@@ -169,23 +176,13 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   m_sDescriptionLayout "{E7AB311330BF986C}worlds/Perfk/UI/MissionDescription/DescriptionEditableScrollable_size18.layout"
   m_sTextData "<h2>A. Signal</h2>"\
   "<b>1. Callsigns:</b>"\
-  "Company"\
-  "0'6 - Commander"\
-  "0'7 - Sergeant"\
-  ""\
   "1st Platoon"\
   "1'6 - Commander"\
   "1'7 - Sergeant"\
   "1’1 - 1st Platoon 1st Squad"\
   "1’2 - 1st Platoon 2nd Squad"\
   "1’3 - 1st Platoon 3rd Squad"\
-  ""\
-  "2nd Platoon"\
-  "2'6 - Commander"\
-  "2'7 - Sergeant"\
-  "2’1 - 2nd Platoon 1st Squad"\
-  "2’2 - 2nd Platoon 2nd Squad"\
-  "2’3 - 2nd Platoon 3rd Squad"\
+  "1’4 - 1st Platoon 4th Squad"\
   ""\
   "<b>2. Radios:</b>"\
   ""\
@@ -198,11 +195,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   "Reference ingame “Group Menu” default keybind “P”"\
   ""\
   "/// LRR Net:"\
-  "40.5 MHz - COY"\
-  "42.0 MHz - 1st Platoon"\
-  "40.0 MHz - 2nd Platoon"\
-  ""\
-  "Everyone starts on 48.0, please ensure your team moves to the correct channel."\
+  "48.0 MHz - 1st Platoon"\
   ""\
   "<b>4. Recognition Signals</b>"\
   ""\
@@ -238,7 +231,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   ""\
   "<h2>AO limit</h2>"\
   "Opfor players are not allowed to leave the main power plant via any doors."\
-  "There will be no warning if you move outside you die"\
+  "There will be no warning, if you move outside you die"\
   ""\
   "<h2>Setup timer</h2>"\
   "None - the mission is live immediately upon spawn."\
@@ -259,61 +252,115 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   "<h2>Fire Teams are assigned colors prestart</h2>"\
   "Alpha: Red"\
   "Bravo: Blue"\
+  "Charlie: Green"\
   ""\
   "<h2>Game Mastering</h2>"\
   "Game Masters are authorized to reposition or spawn additional AI if the mission becomes too easy for the players."\
   ""\
   ""\
   "<h2>Mission by Perfk</h2>"\
-  "Last updated: 2025-10-14"\
+  "Last updated: 2025-10-23"\
   ""
   m_bEmptyFactionVisibility 1
   m_bShowForAnyFaction 1
   m_iOrder 10
  }
 }
+GenericEntity : "{47F8D83F71EB2B74}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LampStreet_E_02_addon.et" {
+ coords 1787.09 14.593 3386.17
+ angleX -21.428
+ angleY -93.621
+ {
+  GameEntity {
+   ID "5A42D80F564F3E8B"
+   coords -2.341 0 0
+  }
+ }
+}
 $grp GenericEntity : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
- Area3 {
-  coords 1825.645 64.344 3347.584
+ Area2 {
+  coords 1818.933 64.344 3418.696
   {
    GenericEntity SlotMarker3 : "{E537867C6E760514}Prefabs/Systems/ScenarioFramework/Components/SlotMarker.et" {
     components {
      SCR_ScenarioFrameworkSlotMarker "{5EA2BD9901E5E82E}" {
-      m_MapMarkerType SCR_ScenarioFrameworkMarkerMilitary "{652ED7FE1C848ECB}" {
-       m_sMapMarkerText "1st Platoon"
+      m_MapMarkerType SCR_ScenarioFrameworkMarkerMilitary "{66AE83A29BB1E366}" {
+       m_sMapMarkerText "2nd Squad"
       }
-      m_bCanBeRemovedByOwner 1
      }
     }
-    coords -0.053 0 0.31
+    coords 0 0 0
    }
   }
  }
  Area1 {
-  coords 1779.835 64.344 3472.529
+  coords 1832.844 64.344 3357.754
+  {
+   GenericEntity SlotMarker1 : "{E537867C6E760514}Prefabs/Systems/ScenarioFramework/Components/SlotMarker.et" {
+    components {
+     SCR_ScenarioFrameworkSlotMarker "{5EA2BD9901E5E82E}" {
+      m_MapMarkerType SCR_ScenarioFrameworkMarkerMilitary "{66AE83A29BB1E366}" {
+       m_sMapMarkerText "1st Squad"
+      }
+     }
+    }
+    coords 0 0 0
+   }
+  }
+ }
+ Area4 {
+  coords 1817.417 64.344 3470.639
   {
    GenericEntity SlotMarker4 : "{E537867C6E760514}Prefabs/Systems/ScenarioFramework/Components/SlotMarker.et" {
     components {
      SCR_ScenarioFrameworkSlotMarker "{5EA2BD9901E5E82E}" {
-      m_MapMarkerType SCR_ScenarioFrameworkMarkerMilitary "{652ED7FE1C848ECB}" {
-       m_sMapMarkerText "2nd Platoon"
+      m_MapMarkerType SCR_ScenarioFrameworkMarkerMilitary "{66AE83A29BB1E366}" {
+       m_sMapMarkerText "3rd Squad"
       }
-      m_bCanBeRemovedByOwner 1
      }
     }
-    coords -0.053 0 0.31
+    coords 0 0 0
+   }
+  }
+ }
+ Area5 {
+  coords 1747.609 64.344 3469.261
+  {
+   GenericEntity SlotMarker5 : "{E537867C6E760514}Prefabs/Systems/ScenarioFramework/Components/SlotMarker.et" {
+    components {
+     SCR_ScenarioFrameworkSlotMarker "{5EA2BD9901E5E82E}" {
+      m_MapMarkerType SCR_ScenarioFrameworkMarkerMilitary "{66AE83A29BB1E366}" {
+       m_sMapMarkerText "4th Squad"
+      }
+     }
+    }
+    coords 0 0 0
    }
   }
  }
 }
-PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
- coords 1734.067 64.125 1916.352
- m_sImageSet "{A5C50F0E5122D467}worlds/Perfk/PowerPlay/PowerPlay_map.edds"
- m_sImageSetGlow "{A5C50F0E5122D467}worlds/Perfk/PowerPlay/PowerPlay_map.edds"
- m_sQuadName ""
- m_fWorldSize 3000
- m_bVisibleForEmptyFaction 1
- m_iZOrder -99
- m_bShowForAnyFaction 1
- m_bringToFront 0
+$grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ {
+  coords 1734.067 64.125 1916.352
+  m_sImageSet "{2046CA0620F46E30}worlds/Perfk/PowerPlay/powerplant_v8.edds"
+  m_sImageSetGlow "{2046CA0620F46E30}worlds/Perfk/PowerPlay/powerplant_v8.edds"
+  m_sQuadName ""
+  m_fWorldSize 3000
+  m_bVisibleForEmptyFaction 1
+  m_iZOrder -99
+  m_bShowForAnyFaction 1
+  m_bringToFront 0
+ }
+ {
+  coords 1721.618 64.813 3388.966
+  m_MarkerColor 1 0 0 1
+  m_sQuadName "objective-marker-2"
+  m_fWorldSize 10
+  m_sDescription "Reactor Objective"
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
 }
