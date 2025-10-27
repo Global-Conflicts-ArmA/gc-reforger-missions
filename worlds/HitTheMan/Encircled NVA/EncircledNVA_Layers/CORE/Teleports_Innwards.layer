@@ -1,0 +1,185 @@
+GenericEntity TPSpawn {
+ coords 6945.104 61.516 4826.042
+ angleX -4.45
+ angleY -52.31
+ angleZ -3.587
+}
+$grp GenericEntity : "{071B55C2A5E0346F}PrefabsEditable/Auto/Structures/Military/Flags/E_FlagPole_02_V2_US.et" {
+ TPPole_East {
+  coords 6483.116 55.849 5322.129
+ }
+ TPPole_North {
+  coords 6288.699 53.168 5658.766
+ }
+ TPPole_South {
+  coords 6076.626 50.781 4873.426
+  angleY -34.404
+ }
+ TPPole_West {
+  coords 5909.817 50.323 5400.597
+ }
+ TPPole_Spawn {
+  coords 6940.508 61.508 4829.356
+  angleY -52.589
+ }
+}
+$grp GenericEntity : "{5B462DF843A26368}Prefabs/Utils/Interactions/TILW_TeleportInteraction.et" {
+ TPInt_PoleEast {
+  components {
+   ActionsManagerComponent "{62EF76E0D47ED96A}" {
+    ActionContexts {
+     UserActionContext "{62EF76E0D47ED970}" {
+      ContextName "Interact_B"
+     }
+    }
+    additionalActions {
+     TILW_TeleportInteraction "{62EF76E608B6CB36}" {
+      ParentContextList {
+       "Interact_B"
+      }
+      ActionTitle "Spawn1"
+      m_actionName "Teleport ->Spawn"
+      m_locationName "TPSpawn"
+      m_factionKeys {
+       "GC_CAF"
+      }
+     }
+    }
+   }
+  }
+  coords 6483.089 58.393 5322.076
+ }
+ TPInt_PoleNorth {
+  components {
+   ActionsManagerComponent "{62EF76E0D47ED96A}" {
+    ActionContexts {
+     UserActionContext "{62EF76E0D47ED970}" {
+      ContextName "Interact_C"
+     }
+    }
+    additionalActions {
+     TILW_TeleportInteraction "{62EF76E608B6CB36}" {
+      ParentContextList {
+       "Interact_C"
+      }
+      ActionTitle "Spawn2"
+      m_actionName "Teleport ->Spawn"
+      m_locationName "TPSpawn"
+      m_factionKeys {
+       "GC_CAF"
+      }
+     }
+    }
+   }
+  }
+  coords 6288.67 54.813 5658.712
+ }
+ TPInt_PoleSouth {
+  components {
+   ActionsManagerComponent "{62EF76E0D47ED96A}" {
+    ActionContexts {
+     UserActionContext "{62EF76E0D47ED970}" {
+      ContextName "Interact_D"
+     }
+    }
+    additionalActions {
+     TILW_TeleportInteraction "{62EF76E608B6CB36}" {
+      ParentContextList {
+       "Interact_D"
+      }
+      ActionTitle "Spawn3"
+      m_actionName "Teleport ->Spawn"
+      m_locationName "TPSpawn"
+      m_factionKeys {
+       "GC_CAF"
+      }
+     }
+    }
+   }
+  }
+  coords 6076.634 52.076 4873.366
+  angleY -34.404
+ }
+ TPInt_PoleWest {
+  components {
+   ActionsManagerComponent "{62EF76E0D47ED96A}" {
+    ActionContexts {
+     UserActionContext "{62EF76E0D47ED970}" {
+      ContextName "Interact_E"
+     }
+    }
+    additionalActions {
+     TILW_TeleportInteraction "{62EF76E608B6CB36}" {
+      ParentContextList {
+       "Interact_E"
+      }
+      ActionTitle "Spawn4"
+      m_actionName "Teleport ->Spawn"
+      m_locationName "TPSpawn"
+      m_factionKeys {
+       "GC_CAF"
+      }
+     }
+    }
+   }
+  }
+  coords 5909.79 51.653 5400.544
+ }
+ TPInt_Spawn {
+  components {
+   ActionsManagerComponent "{62EF76E0D47ED96A}" {
+    additionalActions {
+     TILW_TeleportInteraction "{62EF76E608B6CB36}" {
+      ActionTitle "Teleport -> North"
+      m_actionName "Teleport -> North"
+      m_locationName "TPNorth"
+      m_factionKeys {
+       "GC_CAF"
+      }
+     }
+     TILW_TeleportInteraction "{66A23DF15D2F4333}" {
+      ParentContextList {
+       "Interact_A"
+      }
+      ActionTitle "Teleport -> East"
+      Duration 1
+      "Sort Priority" 1
+      m_actionName "Teleport -> East"
+      m_locationName "TPEast"
+      m_factionKeys {
+       "GC_CAF"
+      }
+     }
+     TILW_TeleportInteraction "{66A23DF14E30DFA3}" {
+      ParentContextList {
+       "Interact_A"
+      }
+      ActionTitle "Teleport -> South"
+      Duration 1
+      "Sort Priority" 2
+      m_actionName "Teleport -> South"
+      m_locationName "TPSouth"
+      m_factionKeys {
+       "GC_CAF"
+      }
+     }
+     TILW_TeleportInteraction "{66A23DF17BAB913A}" {
+      ParentContextList {
+       "Interact_A"
+      }
+      ActionTitle "Teleport -> West"
+      Duration 1
+      "Sort Priority" 3
+      m_actionName "Teleport -> West"
+      m_locationName "TPWest"
+      m_factionKeys {
+       "GC_CAF"
+      }
+     }
+    }
+   }
+  }
+  coords 6940.533 62.826 4829.302
+  angleY -52.589
+ }
+}
