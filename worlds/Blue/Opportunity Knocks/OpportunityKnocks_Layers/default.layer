@@ -78,71 +78,82 @@ TILW_ExtractionTriggerEntity : "{192ABD6B9232E064}Prefabs/Logic/Triggers/TILW_Ex
  m_factionKey "RHS_USAF"
  m_ratioThreshold 0.6
 }
-$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
- {
-  components {
-   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
-    m_ignoredVehicles {
-     "{1DF4C30C130D8FAD}Prefabs/Vehicles/Wheeled/K4386/K4386_Armed_Camo.et"
-    }
-   }
-   TILW_CoverMapComponent "{6473480FCAB7760B}" {
-    Enabled 1
-   }
-   TILW_MapShapeComponent "{6508F54F9B461198}" {
-    m_color 0.246 0.246 0.246 0.75
+PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+   m_ignoredVehicles {
+    "{1DF4C30C130D8FAD}Prefabs/Vehicles/Wheeled/K4386/K4386_Armed_Camo.et"
    }
   }
-  coords 2722.47 58.863 1474.302
-  Points {
-   ShapePoint "{668F5D66832FEE89}" {
-    Position 139.776 -0.777 313.364
-   }
-   ShapePoint "{668F5D66842CA636}" {
-    Position -603.15 7.696 657.492
-   }
-   ShapePoint "{668F5D66BC82BACC}" {
-    Position -989.448 6.756 -228.657
-   }
-   ShapePoint "{668F5D66BE43C322}" {
-    Position -403.67 1.762 -574.199
-   }
-   ShapePoint "{668F5D66B233DA75}" {
-    Position 283.536 -0.675 -1051.721
-   }
-   ShapePoint "{668F5D66AE021B1F}" {
-    Position 931.36 0.449 -99.369
-   }
-   ShapePoint "{668F5D66A1BE0973}" {
-    Position 546.533 -0.606 127.405
-   }
+  TILW_CoverMapComponent "{6473480FCAB7760B}" {
+   Enabled 1
+  }
+  TILW_MapShapeComponent "{6508F54F9B461198}" {
+   m_color 0.246 0.246 0.246 0.75
   }
  }
- QRFRestrict {
-  components {
-   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
-    m_killTimer 30
-    m_factionKeys {
-     "RHS_AFRF"
-    }
-    m_visibility NONE
-   }
+ coords 2722.47 58.863 1474.302
+ Points {
+  ShapePoint "{668F5D66832FEE89}" {
+   Position 236.817 0.292 469.739
   }
-  coords 2137.384 63.68 1443.077
-  Points {
-   ShapePoint "{66992DE78237DE92}" {
-    Position 0 0 0
-   }
-   ShapePoint "{66992DE780B41B7D}" {
-    Position 100 0 0
-   }
-   ShapePoint "{66992DE784C94BD7}" {
-    Position 100 0 100
-   }
-   ShapePoint "{66992DE7892BF8CC}" {
-    Position 0 0 100
-   }
+  ShapePoint "{668F5D66842CA636}" {
+   Position 3.214 6.481 2048.462
   }
+  ShapePoint "{66A945DA0F187405}" {
+   Position -725.827 -2.565 2385.442
+  }
+  ShapePoint "{66A945DA0074F7CF}" {
+   Position -1359.197 6.849 2299.211
+  }
+  ShapePoint "{66A945DA00ABF403}" {
+   Position -1527.107 8.496 1612.66
+  }
+  ShapePoint "{66A945DA019A09B9}" {
+   Position -2057.709 5.027 -1384.565
+  }
+  ShapePoint "{66A945DA3F788F80}" {
+   Position -1273.688 2.298 -1401.968
+  }
+  ShapePoint "{668F5D66BC82BACC}" {
+   Position -777.323 2.769 -535.059
+  }
+  ShapePoint "{668F5D66BE43C322}" {
+   Position -403.67 1.762 -574.199
+  }
+  ShapePoint "{668F5D66B233DA75}" {
+   Position 283.536 -0.675 -1051.721
+  }
+  ShapePoint "{668F5D66AE021B1F}" {
+   Position 931.36 0.449 -99.369
+  }
+  ShapePoint "{668F5D66A1BE0973}" {
+   Position 546.533 -0.606 127.405
+  }
+ }
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ {
+  coords 2661.553 57.637 1742.39
+  m_queryRadius 500
+  m_flagName "BLUFORCROSS2"
+  m_playersOnly 1
+  m_ignoredFactions {
+   "RHS_AFRF"
+  }
+  m_ownerFactionKey "RHS_USAF"
+  m_ratioThreshold 0.1
+ }
+ {
+  coords 2356.643 77.8 1330.063
+  m_queryRadius 500
+  m_flagName "BLUFORCROSS1"
+  m_playersOnly 1
+  m_ignoredFactions {
+   "RHS_AFRF"
+  }
+  m_ownerFactionKey "RHS_USAF"
+  m_ratioThreshold 0.1
  }
 }
 TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
@@ -157,20 +168,20 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
      }
     }
     TILW_SendMessageInstruction "{66992DE602981933}" {
+     m_executionDelay 1
      m_messageTitle "ANNA 331 RELEASED"
+     m_factionKeys {
+      "RHS_USAF"
+     }
     }
    }
    m_condition TILW_LiteralTerm "{66992DE7D84763E1}" {
-    m_flagName "QRFReleased"
+    m_flagName "BLUFORCROSSED"
    }
   }
   TILW_MissionEvent "{669365F0D6D838DE}" {
    m_name "Mission Start"
    m_instructions {
-    TILW_SetFlagInstruction "{6693657C9E44D10D}" {
-     m_executionDelay 720
-     m_flagName "QRFReleased"
-    }
     TILW_SendMessageInstruction "{66992DE67F05E552}" {
      m_executionDelay 2700
      m_messageTitle "TIME LIMIT REACHED"
@@ -179,25 +190,6 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
    }
    m_condition TILW_LiteralTerm "{66950002F744816D}" {
     m_invertTerm 1
-   }
-  }
-  TILW_MissionEvent "{66936563F9C7D20E}" {
-   m_name "Early QRF Release"
-   m_instructions {
-    TILW_SetFlagInstruction "{66992DE6A5617B30}" {
-     m_flagName "QRFReleased"
-    }
-   }
-   m_condition TILW_ConjunctionTerm "{669365620E4597B9}" {
-    m_operands {
-     TILW_LiteralTerm "{66936562006D336E}" {
-      m_invertTerm 1
-      m_flagName "QRFReleased"
-     }
-     TILW_LiteralTerm "{6693656228292843}" {
-      m_flagName "1-Hit"
-     }
-    }
    }
   }
   TILW_MissionEvent "{669500182FB93266}" {
@@ -403,6 +395,19 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
      }
     }
     m_maxTrue 0
+   }
+  }
+  TILW_MetaFlag "{66A93837E412422E}" {
+   m_flagName "BLUFORCROSSED"
+   m_definition TILW_MinjunctionTerm "{66A9383798F61B2C}" {
+    m_operands {
+     TILW_LiteralTerm "{66A938379C1DA72C}" {
+      m_flagName "BLUFORCROSS2"
+     }
+     TILW_LiteralTerm "{66A938379D2FB366}" {
+      m_flagName "BLUFORCROSS1"
+     }
+    }
    }
   }
  }

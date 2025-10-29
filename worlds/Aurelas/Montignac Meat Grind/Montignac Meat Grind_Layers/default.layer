@@ -1,0 +1,168 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 10919.209 24.924 11702.873
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 9
+   m_iStartingMinutes 30
+   m_bRandomStartingWeather 1
+   m_bRandomWeatherChanges 1
+  }
+ }
+ coords 10915.243 24.876 11706.942
+ m_iFreezeTime 180000
+ {
+  SCR_FactionManager "66B220611B1A5888" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+    }
+    SCR_Faction "{61500924662B6062}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 10945.683 25.121 11680.11
+ m_missionEvents {
+  TILW_MissionEvent "{66AB7ECA8F4AA508}" {
+   m_name "UK Major Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{66AB7ECAF2E525BA}" {
+     m_messageTitle "UK Major Victory"
+     m_messageBody "British troops have held the City Center of Montignac for 5 minutes with low casualties!"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{66AB7ECB317285FE}" {
+    m_operands {
+     TILW_LiteralTerm "{66AB7ECB3742FB6D}" {
+      m_flagName "UK_Cap_CM"
+     }
+     TILW_LiteralTerm "{66AB7ECB4B331BB0}" {
+      m_invertTerm 1
+      m_flagName "UK_Low_Casualties"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{66AB7ECBD3787691}" {
+   m_name "UK Minor Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{66AB7ECBE901C7CE}" {
+     m_messageTitle "UK Minor Victory"
+     m_messageBody "British troops have held the City Center of Montignac for 5 minutes with high casualties!"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{66AB7ECBEF63B72B}" {
+    m_operands {
+     TILW_LiteralTerm "{66AB7ECBED830515}" {
+      m_flagName "UK_Cap_CM"
+     }
+     TILW_LiteralTerm "{66AB7ECBF3CC34B2}" {
+      m_flagName "UK_Low_Casualties"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{66AB7ED439A46E17}" {
+   m_name "US Major Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{66AB7ED45D254A31}" {
+     m_messageTitle "US Major Victory"
+     m_messageBody "American troops have held the City Center of Montignac for 5 minutes with low casualties!"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{66AB7ED450671880}" {
+    m_operands {
+     TILW_LiteralTerm "{66AB7ED45681B19E}" {
+      m_flagName "US_Cap_CM"
+     }
+     TILW_LiteralTerm "{66AB7ED454D32A1B}" {
+      m_invertTerm 1
+      m_flagName "US_Low_Casualties"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{66AB7ED43EB9D3A6}" {
+   m_name "US Minor Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{66AB7ED48A133F2D}" {
+     m_messageTitle "US Minor Victory"
+     m_messageBody "American troops have held the City Center of Montignac for 5 minutes with high casualties!"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{66AB7ED49C49E2BC}" {
+    m_operands {
+     TILW_LiteralTerm "{66AB7ED49D140908}" {
+      m_flagName "US_Cap_CM"
+     }
+     TILW_LiteralTerm "{66AB7ED4932E40C0}" {
+      m_flagName "US_Low_Casualties"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{66AB7ED43F7B1CE0}" {
+   m_name "Draw"
+   m_instructions {
+    TILW_SendMessageInstruction "{66AB7ED4F82AB99E}" {
+     m_messageTitle "Draw"
+     m_messageBody "Both teams have sustained heavy casualties without holding the City Center of Montignac."\
+     ""
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{66AB7ED53A2EDC07}" {
+    m_operands {
+     TILW_LiteralTerm "{66AB7ED538A9D73B}" {
+      m_flagName "UK_High_Casualties"
+     }
+     TILW_LiteralTerm "{66AB7ED5373F0C82}" {
+      m_flagName "US_High_Casualties"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{66B22061D44F0309}" {
+   m_name "Timer"
+   m_instructions {
+    TILW_SendMessageInstruction "{66B22061EF60189E}" {
+     m_executionDelay 3000
+     m_messageTitle "Time Limit Reached"
+     m_messageBody "The time limit for this mission has been reached."
+    }
+   }
+   m_condition TILW_LiteralTerm "{66B22061E06FD8DC}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{66AB7ECB4EA7FE20}" {
+   m_flagName "US_Low_Casualties"
+   m_factionKey "US"
+   m_casualtyRatio 0.3
+  }
+  TILW_FactionPlayersKilledFlag "{66AB7ECB545E64AD}" {
+   m_flagName "US_High_Casualties"
+   m_factionKey "US"
+   m_casualtyRatio 0.7
+  }
+  TILW_FactionPlayersKilledFlag "{66AB7ECB85BBDA7F}" {
+   m_flagName "UK_Low_Casualties"
+   m_factionKey "UK"
+   m_casualtyRatio 0.3
+  }
+  TILW_FactionPlayersKilledFlag "{66AB7ECB9BAF88D3}" {
+   m_flagName "UK_High_Casualties"
+   m_factionKey "UK"
+   m_casualtyRatio 0.7
+  }
+ }
+}
