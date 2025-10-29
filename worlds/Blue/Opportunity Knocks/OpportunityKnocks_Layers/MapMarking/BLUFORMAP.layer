@@ -38,7 +38,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   m_sTitle "4. SERVICE SUPPORT"
   m_sTextData "a. Logistics"\
   ""\
-  "Ammo: Platoon carries organic resupply only; no scheduled vehicle resupply inside the AO. Conserve heavy munitions for gun kills."\
+  "Ammo: Platoon carries organic resupply only; no scheduled vehicle resupply inside the AO. 8x DEMO Blocks provided in crate infront of Platoon HQ"\
   ""\
   "Medical: On-site CLS."\
   ""\
@@ -174,4 +174,26 @@ PS_ManualMarker : "{BA3177FCACC39F3A}PrefabsEditable/Markers/Icons/Marker_Object
  m_sDescription "ENY ARTY"
  m_bVisibleForEmptyFaction 0
  m_bShowForAnyFaction 0
+}
+GenericEntity : "{BAE3E8ECD206B88F}PrefabsEditable/Auto/Props/Military/AmmoBoxes/US/E_EquipmentBoxWooden_Explosives_01_US.et" {
+ components {
+  SCR_SoundDataComponent "{5C53391603B5CF41}" {
+   Enabled 1
+  }
+  SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+   Enabled 1
+   MultiSlots {
+    MultiSlotConfiguration "{66A945DB7C226894}" {
+     SlotTemplate InventoryStorageSlot DEMO {
+      Prefab "{33CBDE73AB48172A}Prefabs/Weapons/Explosives/DemoBlock_M112/DemoBlock_M112.et"
+     }
+     NumSlots 8
+    }
+   }
+  }
+  ActionsManagerComponent "{5476B36C403D4CC0}" {
+   Enabled 1
+  }
+ }
+ coords 3422.257 58.188 1105.93
 }
