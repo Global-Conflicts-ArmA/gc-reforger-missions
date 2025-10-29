@@ -1,0 +1,909 @@
+Vehicle BRDM : "{254289B9C09904AB}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2.et" {
+ components {
+  SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+   FuelNodes {
+    SCR_FuelNode "{5622A70CD4036C5A}" {
+     m_fInitialFuelTankState 130
+     m_iFuelLeakSpeed 1
+    }
+    SCR_FuelNode "{58F8DC78283E1F75}" {
+     m_fInitialFuelTankState 130
+     m_iFuelLeakSpeed 1
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{607E9AA3D83AA29D}" {
+   MultiSlots {
+    MultiSlotConfiguration "{62F49BC471C9DCC6}" {
+     NumSlots 8
+    }
+    MultiSlotConfiguration "{62F49BC4723FE6A4}" {
+     SlotTemplate InventoryStorageSlot flares {
+      Enabled 0
+     }
+    }
+    MultiSlotConfiguration "{62F49BC4727D7B7B}" {
+     NumSlots 4
+    }
+    MultiSlotConfiguration "{66B04765514C2DA3}" {
+     SlotTemplate InventoryStorageSlot RPG {
+      Prefab "{E8A55396050E1762}Prefabs/Weapons/Launchers/RPG7/Launcher_RPG7_pgo7.et"
+     }
+     NumSlots 2
+    }
+    MultiSlotConfiguration "{66B047645C1AD85A}" {
+     SlotTemplate InventoryStorageSlot heatrounds {
+      Prefab "{32E12D322E107F1C}Prefabs/Weapons/Ammo/Ammo_Rocket_PG7VM.et"
+     }
+     NumSlots 3
+    }
+   }
+   m_aSlotsToShow {
+   }
+  }
+ }
+ coords 5496.633 89.807 4889.375
+ angleX 1.207
+ angleY -109.695
+ angleZ 3.367
+ m_sAttachmentGroupName "ekho69i"
+}
+Vehicle Mi24P_armed_9M1 : "{2FA364D8E326CB3C}Prefabs/Vehicles/Helicopters/Mi24/Mi24P_armed_9M114.et" {
+ components {
+  SCR_FuelConsumptionComponent "{628933A358A1568C}" {
+   m_fFuelConsumption 10
+   m_fFuelConsumptionIdle 0.25
+  }
+  SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+   FuelNodes {
+    SCR_FuelNode "{5622A70CD4036C5A}" {
+     m_fInitialFuelTankState 950
+     m_iFuelLeakSpeed 1
+    }
+    SCR_FuelNode "{628933A358A15681}" {
+     m_fInitialFuelTankState 380
+     m_iFuelLeakSpeed 1
+    }
+    SCR_FuelNode "{628933A358A15683}" {
+     m_fInitialFuelTankState 800
+     m_iFuelLeakSpeed 1
+    }
+   }
+  }
+  SCR_HelicopterDamageManagerComponent "{141326E9FD94FE40}" {
+   "Additional hit zones" {
+    SCR_FlammableHitZone Hull {
+     MaxHealth 6000
+    }
+    SCR_EngineHitZone Engine_01 {
+     MaxHealth 675
+    }
+    SCR_EngineHitZone Engine_02 {
+     MaxHealth 675
+    }
+    SCR_GearboxHitZone Gearbox_01 {
+     MaxHealth 675
+    }
+    SCR_RotorHitZone Gearbox_02 {
+     MaxHealth 675
+    }
+    SCR_RotorHitZone Gearbox_03 {
+     MaxHealth 450
+    }
+    SCR_RotorHitZone DriveShaft_02 {
+     MaxHealth 450
+    }
+    SCR_RotorHitZone DriveShaft_03 {
+     MaxHealth 450
+    }
+    SCR_FuelHitZone FuelTank_01 {
+     MaxHealth 675
+    }
+    SCR_FuelHitZone FuelTank_02 {
+     MaxHealth 675
+    }
+    SCR_FuelHitZone FuelTank_03 {
+     MaxHealth 675
+    }
+    SCR_BatteryHitZone Battery {
+     MaxHealth 500
+    }
+   }
+   m_RepairConfig SCR_RepairConfig "{60B8D85543CD83C4}" {
+    m_aSmokeRemovalHealthPercentage {
+     SCR_HealthAndBurn "{60B8D855BF390429}" {
+      m_fSmokeThreshold 0.7
+     }
+     SCR_HealthAndBurn "{60B8D855BF3904D1}" {
+      m_fSmokeThreshold 0.5
+     }
+    }
+   }
+   m_fOccupantsDamageSpeedThreshold 45
+   m_fEngineMalfunctioningThreshold 0.4
+  }
+ }
+ coords 3810.644 167.408 4341.664
+ angleX 2.1
+ angleY -307.808
+ TiltThreshold 0.05
+}
+$grp Tank : "{726286E1F9570EA1}Prefabs/Vehicles/Tracked/T-72B/T72B_base.et" {
+ ekho20 {
+  components {
+   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
+    m_fFuelConsumption 10
+    m_fFuelConsumptionIdle 0.5
+   }
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 590
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3D936017D8}" {
+      m_fInitialFuelTankState 590
+      m_iFuelLeakSpeed 1
+     }
+    }
+   }
+   SCR_WheeledDamageManagerComponent "{141326E9FD94FE40}" {
+    "Additional hit zones" {
+     SCR_FlammableHitZone Hull {
+     }
+    }
+   }
+   VehicleWheeledSimulation "{731B26FCA2F19855}" {
+    Simulation Wheeled "{4D8B26DEA5F25978}" {
+     Engine Engine Engine {
+      MaxPower 820
+      MaxTorque 4000
+      Friction 210.7
+      RpmRedline 2500
+      RpmMax 2700
+     }
+    }
+   }
+  }
+  coords 5486.822 96.175 4822.039
+  angleX 6.542
+  angleY -109.804
+  angleZ 2.375
+  m_sAttachmentGroupName "ekho20i"
+ }
+ ekho31 {
+  components {
+   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
+    m_fFuelConsumption 10
+    m_fFuelConsumptionIdle 0.5
+   }
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 590
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3D936017D8}" {
+      m_fInitialFuelTankState 590
+      m_iFuelLeakSpeed 1
+     }
+    }
+   }
+   SCR_WheeledDamageManagerComponent "{141326E9FD94FE40}" {
+    "Additional hit zones" {
+     SCR_FlammableHitZone Hull {
+     }
+    }
+   }
+   VehicleWheeledSimulation "{731B26FCA2F19855}" {
+    Simulation Wheeled "{4D8B26DEA5F25978}" {
+     Engine Engine Engine {
+      MaxPower 820
+      MaxTorque 4000
+      Friction 210.7
+      RpmRedline 2500
+      RpmMax 2700
+     }
+    }
+   }
+  }
+  coords 5466.044 92.26 4878.661
+  angleX 7.432
+  angleY -109.727
+  angleZ 4.875
+  m_sAttachmentGroupName "ekho31i"
+ }
+ ekho32 {
+  components {
+   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
+    m_fFuelConsumption 10
+    m_fFuelConsumptionIdle 0.5
+   }
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 590
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3D936017D8}" {
+      m_fInitialFuelTankState 590
+      m_iFuelLeakSpeed 1
+     }
+    }
+   }
+   SCR_WheeledDamageManagerComponent "{141326E9FD94FE40}" {
+    "Additional hit zones" {
+     SCR_FlammableHitZone Hull {
+     }
+    }
+   }
+   VehicleWheeledSimulation "{731B26FCA2F19855}" {
+    Simulation Wheeled "{4D8B26DEA5F25978}" {
+     Engine Engine Engine {
+      MaxPower 820
+      MaxTorque 4000
+      Friction 210.7
+      RpmRedline 2500
+      RpmMax 2700
+     }
+    }
+   }
+  }
+  coords 5460.458 90.955 4893.875
+  angleX 7.963
+  angleY -109.727
+  angleZ 3.742
+  m_sAttachmentGroupName "ekho32i"
+ }
+ ekho30 {
+  components {
+   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
+    m_fFuelConsumption 10
+    m_fFuelConsumptionIdle 0.5
+   }
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 590
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3D936017D8}" {
+      m_fInitialFuelTankState 590
+      m_iFuelLeakSpeed 1
+     }
+    }
+   }
+   SCR_WheeledDamageManagerComponent "{141326E9FD94FE40}" {
+    "Additional hit zones" {
+     SCR_FlammableHitZone Hull {
+     }
+    }
+   }
+   VehicleWheeledSimulation "{731B26FCA2F19855}" {
+    Simulation Wheeled "{4D8B26DEA5F25978}" {
+     Engine Engine Engine {
+      MaxPower 820
+      MaxTorque 4000
+      Friction 210.7
+      RpmRedline 2500
+      RpmMax 2700
+     }
+    }
+   }
+  }
+  coords 5471.5 93.468 4864.676
+  angleX 7.136
+  angleY -109.748
+  angleZ 4.045
+  m_sAttachmentGroupName "ekho30i"
+ }
+ ekho22 {
+  components {
+   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
+    m_fFuelConsumption 10
+    m_fFuelConsumptionIdle 0.5
+   }
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 590
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3D936017D8}" {
+      m_fInitialFuelTankState 590
+      m_iFuelLeakSpeed 1
+     }
+    }
+   }
+   SCR_WheeledDamageManagerComponent "{141326E9FD94FE40}" {
+    "Additional hit zones" {
+     SCR_FlammableHitZone Hull {
+     }
+    }
+   }
+   VehicleWheeledSimulation "{731B26FCA2F19855}" {
+    Simulation Wheeled "{4D8B26DEA5F25978}" {
+     Engine Engine Engine {
+      MaxPower 820
+      MaxTorque 4000
+      Friction 210.7
+      RpmRedline 2500
+      RpmMax 2700
+     }
+    }
+   }
+  }
+  coords 5476.504 94.543 4850.317
+  angleX 6.84
+  angleY -109.787
+  angleZ 3.21
+  m_sAttachmentGroupName "ekho22i"
+ }
+ ekho21 {
+  components {
+   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
+    m_fFuelConsumption 10
+    m_fFuelConsumptionIdle 0.5
+   }
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 590
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3D936017D8}" {
+      m_fInitialFuelTankState 590
+      m_iFuelLeakSpeed 1
+     }
+    }
+   }
+   SCR_WheeledDamageManagerComponent "{141326E9FD94FE40}" {
+    "Additional hit zones" {
+     SCR_FlammableHitZone Hull {
+     }
+    }
+   }
+   VehicleWheeledSimulation "{731B26FCA2F19855}" {
+    Simulation Wheeled "{4D8B26DEA5F25978}" {
+     Engine Engine Engine {
+      MaxPower 820
+      MaxTorque 4000
+      Friction 210.7
+      RpmRedline 2500
+      RpmMax 2700
+     }
+    }
+   }
+  }
+  coords 5481.639 95.371 4836.409
+  angleX 6.84
+  angleY -109.787
+  angleZ 3.21
+  m_sAttachmentGroupName "ekho21i"
+ }
+ ekho11 {
+  components {
+   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
+    m_fFuelConsumption 10
+    m_fFuelConsumptionIdle 0.5
+   }
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 590
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3D936017D8}" {
+      m_fInitialFuelTankState 590
+      m_iFuelLeakSpeed 1
+     }
+    }
+   }
+   SCR_WheeledDamageManagerComponent "{141326E9FD94FE40}" {
+    "Additional hit zones" {
+     SCR_FlammableHitZone Hull {
+     }
+    }
+   }
+   VehicleWheeledSimulation "{731B26FCA2F19855}" {
+    Simulation Wheeled "{4D8B26DEA5F25978}" {
+     Engine Engine Engine {
+      MaxPower 820
+      MaxTorque 4000
+      Friction 210.7
+      RpmRedline 2500
+      RpmMax 2700
+     }
+    }
+   }
+  }
+  coords 5506.208 91.302 4863.606
+  angleX 3.74
+  angleY -109.92
+  angleZ 2.445
+  m_sAttachmentGroupName "ekho11i"
+ }
+ ekho_HQ {
+  components {
+   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
+    m_fFuelConsumption 10
+    m_fFuelConsumptionIdle 0.5
+   }
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 590
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3D936017D8}" {
+      m_fInitialFuelTankState 590
+      m_iFuelLeakSpeed 1
+     }
+    }
+   }
+   SCR_WheeledDamageManagerComponent "{141326E9FD94FE40}" {
+    "Additional hit zones" {
+     SCR_FlammableHitZone Hull {
+     }
+    }
+   }
+   VehicleWheeledSimulation "{731B26FCA2F19855}" {
+    Simulation Wheeled "{4D8B26DEA5F25978}" {
+     Engine Engine Engine {
+      MaxPower 820
+      MaxTorque 4000
+      Friction 210.7
+      RpmRedline 2500
+      RpmMax 2700
+     }
+    }
+   }
+  }
+  coords 5515.811 92.516 4837.368
+  angleX 4.576
+  angleY -109.878
+  angleZ 2.142
+  m_sAttachmentGroupName "ekho_HQi"
+ }
+ ekho10 {
+  components {
+   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
+    m_fFuelConsumption 10
+    m_fFuelConsumptionIdle 0.5
+   }
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 590
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3D936017D8}" {
+      m_fInitialFuelTankState 590
+      m_iFuelLeakSpeed 1
+     }
+    }
+   }
+   SCR_WheeledDamageManagerComponent "{141326E9FD94FE40}" {
+    "Additional hit zones" {
+     SCR_FlammableHitZone Hull {
+     }
+    }
+   }
+   VehicleWheeledSimulation "{731B26FCA2F19855}" {
+    Simulation Wheeled "{4D8B26DEA5F25978}" {
+     Engine Engine Engine {
+      MaxPower 820
+      MaxTorque 4000
+      Friction 210.7
+      RpmRedline 2500
+      RpmMax 2700
+     }
+    }
+   }
+  }
+  coords 5511.009 91.889 4850.598
+  angleX 4.575
+  angleY -109.872
+  angleZ 2.143
+  m_sAttachmentGroupName "ekho10i"
+ }
+ ekho12 {
+  components {
+   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
+    m_fFuelConsumption 10
+    m_fFuelConsumptionIdle 0.5
+   }
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 590
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3D936017D8}" {
+      m_fInitialFuelTankState 590
+      m_iFuelLeakSpeed 1
+     }
+    }
+   }
+   SCR_WheeledDamageManagerComponent "{141326E9FD94FE40}" {
+    "Additional hit zones" {
+     SCR_FlammableHitZone Hull {
+     }
+    }
+   }
+   VehicleWheeledSimulation "{731B26FCA2F19855}" {
+    Simulation Wheeled "{4D8B26DEA5F25978}" {
+     Engine Engine Engine {
+      MaxPower 820
+      MaxTorque 4000
+      Friction 210.7
+      RpmRedline 2500
+      RpmMax 2700
+     }
+    }
+   }
+  }
+  coords 5501.325 90.792 4875.84
+  angleX 2.904
+  angleY -109.977
+  angleZ 2.748
+  m_sAttachmentGroupName "ekho12i"
+ }
+}
+StaticModelEntity LZWolfhill : "{8CDB9C117669AF4A}Prefabs/Structures/Military/Camps/HelipadImprovised_01/HelipadImprovised_USSR_01.et" {
+ coords 3809.708 4.599 4340.829
+ angleY 51.975
+ scale 1.7
+}
+$grp Tank : "{C0EAEB0DDE3C496E}Prefabs/Vehicles/Tracked/M1A1/M1A1_TUSK_MERDC.et" {
+ B26 {
+  components {
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3FCBC2960E}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3F8E490A2E}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3F8DF1D173}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3CAEDA71BC}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+    }
+   }
+  }
+  coords 3523.408 161.137 5991.822
+  angleX -0.89
+  angleY -179.93
+  angleZ -4.468
+  m_sAttachmentGroupName "Tank1_HQ"
+ }
+ B_21 {
+  components {
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3FCBC2960E}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3F8E490A2E}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3F8DF1D173}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3CAEDA71BC}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+    }
+   }
+  }
+  coords 3508.56 162.107 5991.1
+  angleX -0.892
+  angleY -179.944
+  angleZ -3.577
+  m_sAttachmentGroupName "Tank2"
+ }
+ B_22 {
+  components {
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3FCBC2960E}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3F8E490A2E}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3F8DF1D173}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3CAEDA71BC}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+    }
+   }
+  }
+  coords 3493.53 162.967 5990.379
+  angleY 180
+  angleZ -3.576
+  m_sAttachmentGroupName "Tank3"
+ }
+ B_23 {
+  components {
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3FCBC2960E}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3F8E490A2E}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3F8DF1D173}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3CAEDA71BC}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+    }
+   }
+  }
+  coords 3479.509 163.609 5990.251
+  angleX -0.001
+  angleY 179.972
+  angleZ -1.79
+  m_sAttachmentGroupName "Tank4"
+ }
+ Bravo12vic {
+  components {
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3FCBC2960E}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3F8E490A2E}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3F8DF1D173}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3CAEDA71BC}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+    }
+   }
+  }
+  coords 3488.741 158.716 6021.131
+  angleX 8.005
+  angleY -179.732
+  angleZ 0.037
+  m_sAttachmentGroupName "Bravo12"
+ }
+ Bravovic {
+  components {
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3FCBC2960E}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3F8E490A2E}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3F8DF1D173}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3CAEDA71BC}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+    }
+   }
+  }
+  coords 3527.856 157.018 6021.962
+  angleX 7.081
+  angleY 179.53
+  angleZ -5.373
+  m_sAttachmentGroupName "Bravo"
+ }
+ Bravo016vic {
+  components {
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3FCBC2960E}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3F8E490A2E}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3F8DF1D173}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3CAEDA71BC}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+    }
+   }
+  }
+  coords 3514.682 157.923 6021.695
+  angleX 5.341
+  angleY 179.763
+  angleZ -3.583
+  m_sAttachmentGroupName "Bravo016"
+ }
+ Bravo11vic {
+  components {
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3FCBC2960E}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3F8E490A2E}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3F8DF1D173}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3CAEDA71BC}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+    }
+   }
+  }
+  coords 3501.263 158.544 6021.327
+  angleX 7.137
+  angleY -179.618
+  angleZ -1.729
+  m_sAttachmentGroupName "Bravo11"
+ }
+ Bravo13vic {
+  components {
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3FCBC2960E}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3F8E490A2E}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3F8DF1D173}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+     SCR_FuelNode "{5E8A1B3CAEDA71BC}" {
+      m_fInitialFuelTankState 340
+      m_iFuelLeakSpeed 1
+     }
+    }
+   }
+  }
+  coords 3477.609 158.667 6021.468
+  angleX 7.129
+  angleY -179.718
+  angleZ -0.853
+  m_sAttachmentGroupName "Bravo13"
+ }
+}
+$grp Vehicle : "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MERDC.et" {
+ Whiskey1vic {
+  components {
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 90
+      m_iFuelLeakSpeed 1
+     }
+    }
+   }
+   SCR_UniversalInventoryStorageComponent "{5916C587FC993363}" {
+    MultiSlots {
+     MultiSlotConfiguration "{62EACA4482A6FEC6}" {
+      SlotTemplate InventoryStorageSlot SAWammo {
+       Prefab "{9C5C20FB0E01E64F}Prefabs/Weapons/Launchers/M72/Launcher_M72A3.et"
+      }
+     }
+    }
+   }
+  }
+  coords 3463.765 159.341 6018.775
+  angleX 5.35
+  angleY 179.815
+  angleZ -1.799
+  m_sAttachmentGroupName "Whiskey1i"
+ }
+ Whiskey2vic {
+  components {
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 90
+      m_iFuelLeakSpeed 1
+     }
+    }
+   }
+   SCR_UniversalInventoryStorageComponent "{5916C587FC993363}" {
+    MultiSlots {
+     MultiSlotConfiguration "{62EACA4482A6FEC6}" {
+      SlotTemplate InventoryStorageSlot SAWammo {
+       Prefab "{9C5C20FB0E01E64F}Prefabs/Weapons/Launchers/M72/Launcher_M72A3.et"
+      }
+     }
+    }
+   }
+  }
+  coords 3455.537 159.547 6018.983
+  angleX 5.35
+  angleY 179.801
+  angleZ -1.801
+  m_sAttachmentGroupName "Whiskey2i"
+ }
+}

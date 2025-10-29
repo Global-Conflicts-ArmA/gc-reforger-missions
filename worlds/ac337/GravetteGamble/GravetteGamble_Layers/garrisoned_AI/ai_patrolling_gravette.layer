@@ -1,0 +1,33 @@
+$grp SCR_AIWaypoint : "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et" {
+ patrol_WP1 {
+  coords 4237.069 50.821 7707.548
+  CompletionRadius 8
+  m_aSettings {
+   SCR_AIGroupFormationSetting "{66AE0ED4563D7AB7}" {
+    m_eFormation Column
+   }
+  }
+ }
+ patrol_WP2 {
+  coords 4129.304 35.931 7793.891
+ }
+ patrol_WP3 {
+  coords 4171.446 40.917 7854.484
+ }
+ patrol_WP4 {
+  coords 4048.238 29.515 7771.729
+ }
+}
+AIWaypointCycle patrol_WP_Cycle : "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et" {
+ coords 4120.114 35.424 7792.448
+ CycleWaypoints {
+  "patrol_WP1" "patrol_WP2" "patrol_WP3" "patrol_WP2" "patrol_WP4" "patrol_WP2"
+ }
+}
+TILW_PrefabSpawnerEntity patrol_spawner : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
+ coords 4118.243 35.116 7796.51
+ m_prefab "{8A265F54C454DD93}Prefabs/Groups/OPFOR/Group_USSR_ManeuverGroup_Late.et"
+ m_waypointNames {
+  "patrol_WP_Cycle"
+ }
+}
