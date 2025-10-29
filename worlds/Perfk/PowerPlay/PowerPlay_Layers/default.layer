@@ -22,18 +22,19 @@ PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_Game
    }
   }
   SCR_InitWeatherComponent "{61B68227C35BFE9A}" {
-   m_sInitialStartingWeatherId "Heavy Thunderstorm"
+   m_sInitialStartingWeatherId "Clear"
   }
   SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
    m_iStartingHours 1
    m_iRangeHoursStart 1
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{6694DC330BC6219C}" {
-     m_sWeatherPresetName "Heavy Thunderstorm"
+     m_sWeatherPresetName "Clear"
      m_iStartingHour 1
     }
    }
-   m_iSetDay 19
+   m_bUseSpecifiedDate 1
+   m_iSetDay 3
    m_iSetMonth 2
   }
  }
@@ -204,6 +205,30 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
    m_condition TILW_LiteralTerm "{669CCDF2A22D9530}" {
     m_flagName "BluforCAS"
    }
+  }
+  TILW_MissionEvent "{66A8D7020E247DBA}" {
+   m_name "ReleaseOpfor"
+   m_instructions {
+    TILW_DeleteEntitiesInstruction "{66A8D702014759B7}" {
+     m_executionDelay 30
+     m_entityNames {
+      "opforAoLimit"
+     }
+    }
+    TILW_SendMessageInstruction "{66A8D706DCADF8EE}" {
+     m_executionDelay 30
+     m_messageTitle "BLUFOR BREACHED"
+     m_messageBody "Starting AO LIMIT REMOVED, you are free to roam the Power Plant"
+     m_factionKeys {
+      "GC_SEPARATIST"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{66A8D7020AFBF632}" {
+    m_flagName "ReleaseOpfor"
+   }
+  }
+  TILW_MissionEvent "{66A9271774862F8E}" {
   }
  }
  m_casualtyFlags {

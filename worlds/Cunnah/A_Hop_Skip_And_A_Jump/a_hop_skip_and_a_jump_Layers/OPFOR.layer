@@ -103,65 +103,11 @@ $grp SCR_AIGroup : "{8D35DA8B89880FAF}Prefabs/Groups/OPFOR/Russia/1980s/Motorise
   coords 6921.775 37.439 3458.012
   angleY 87.79
  }
- OPFOR_tank_crew_2 {
-  components {
-   AIFormationComponent "{507E9DC12F541FE6}" {
-    DefaultFormation "line"
-   }
-   PS_GroupCallsignAssigner "{65136701CA021D8F}" {
-    m_iCompanyCallsign 3
-    m_iPlatoonCallsign 4
-    m_iSquadCallsign 3
-   }
-  }
-  coords 6922.609 37.825 3439.215
-  angleY 87.79
-  m_aUnitPrefabSlots {
-   "{B4A947AA09E9F15E}Prefabs/Characters/Factions/OPFOR/USSR_Army/Extra/Character_USSR_CrewCommander_P.et" "{F818395904C3AE6A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Extra/Character_USSR_CrewGunner_P.et" "{296CC757A1430309}Prefabs/Characters/Factions/OPFOR/USSR_Army/Extra/Character_USSR_CrewDriver_P.et"
-  }
-  m_aStaticVehicles {
-   "T72A_2"
-  }
-  m_sCustomNameSet "Tank 2 Crew"
- }
- OPFOR_tank_crew_3 {
-  components {
-   AIFormationComponent "{507E9DC12F541FE6}" {
-    DefaultFormation "line"
-   }
-   PS_GroupCallsignAssigner "{65136701CA021D8F}" {
-    m_iCompanyCallsign 3
-    m_iPlatoonCallsign 4
-    m_iSquadCallsign 4
-   }
-  }
-  coords 6923.135 38.119 3427.494
-  angleY 87.79
-  m_aUnitPrefabSlots {
-   "{B4A947AA09E9F15E}Prefabs/Characters/Factions/OPFOR/USSR_Army/Extra/Character_USSR_CrewCommander_P.et" "{F818395904C3AE6A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Extra/Character_USSR_CrewGunner_P.et" "{296CC757A1430309}Prefabs/Characters/Factions/OPFOR/USSR_Army/Extra/Character_USSR_CrewDriver_P.et"
-  }
-  m_aStaticVehicles {
-   "T72A_3"
-  }
-  m_sCustomNameSet "Tank 3 Crew"
- }
 }
-$grp Tank : "{BC07885176C7FF8A}Prefabs/Vehicles/Tracked/T-72A/T72A_base.et" {
- T72A_1 {
-  coords 6926.531 37.889 3437.072
-  angleY 178.723
-  m_sAttachmentGroupName "OPFOR_tank_crew_2"
- }
- T72A_2 {
-  coords 6926.045 37.641 3446.964
-  angleY 178.723
-  m_sAttachmentGroupName "OPFOR_tank_crew_1"
- }
- T72A_3 {
-  coords 6927.01 38.202 3425.532
-  angleY 178.723
-  m_sAttachmentGroupName "OPFOR_tank_crew_3"
- }
+Tank T72A_2 : "{BC07885176C7FF8A}Prefabs/Vehicles/Tracked/T-72A/T72A_base.et" {
+ coords 6926.045 37.641 3446.964
+ angleY 178.723
+ m_sAttachmentGroupName "OPFOR_tank_crew_1"
 }
 $grp Vehicle : "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et" {
  BTR1 {
@@ -178,5 +124,46 @@ $grp Vehicle : "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et" {
   coords 6924.202 37.038 3489.522
   angleY 179.191
   m_sAttachmentGroupName "OPFOR_rifle_squad_3"
+ }
+}
+$grp GenericEntity : "{E54FEBE04DBDD4CE}PrefabsEditable/EffectsModules/Mine/EffectModule_MineField_Large_US.et" {
+ {
+  coords 7187.685 145.644 2860.412
+  angleX -11.442
+  angleY -42.056
+  angleZ 1.481
+ }
+ {
+  coords 7159.937 152.023 2822.573
+  angleZ -16.08
+ }
+ {
+  coords 7173.448 157.751 2769.227
+  angleY -30.049
+  angleZ -10.061
+ }
+ {
+  coords 7211.79 158.802 2730.39
+  angleY -58.512
+  angleZ -7.933
+ }
+ {
+  coords 7271.812 159.924 2703.071
+  angleX -1.404
+  angleY -68.644
+  angleZ -7.808
+ }
+ {
+  coords 7271.812 159.924 2703.071
+  angleX -1.404
+  angleY -68.644
+  angleZ -7.808
+  {
+   GenericEntity {
+    ID "616C96D8967A1736"
+    coords 10.5 0 -62.304
+    angleY -17.83
+   }
+  }
  }
 }
