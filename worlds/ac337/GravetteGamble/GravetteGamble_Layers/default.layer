@@ -1,0 +1,149 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 5978.46 150.427 6372.828
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 6005.205 152.704 6336.073
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 4
+   m_iStartingMinutes 45
+   m_bUseSpecifiedDate 1
+   m_iSetDay 14
+  }
+ }
+ coords 6065.067 154.595 6227.009
+}
+PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+   Enabled 0
+  }
+  TILW_MapShapeComponent "{6508F54F9B461198}" {
+   Enabled 1
+   m_drawArea 0
+   m_drawLine 1
+   m_lineWidth 50
+  }
+ }
+ coords 3854.927 6.917 7754.552
+ Points {
+  ShapePoint "{66B157982D333D86}" {
+   Position 1356.414 140.722 1022.078
+  }
+  ShapePoint "{66B15798227604AB}" {
+   Position -860.058 69.447 1186.168
+  }
+  ShapePoint "{66B157982782E14D}" {
+   Position -935.996 36.678 -829.064
+  }
+  ShapePoint "{66B157982513A650}" {
+   Position 1223.129 167.091 -912
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 4132.522 39.479 7739.065
+ m_missionEvents {
+  TILW_MissionEvent "{66A369DE151E12ED}" {
+   m_name "Truck Destroyed"
+   m_instructions {
+    TILW_SendMessageInstruction "{66A369DDE1AADE89}" {
+     m_messageTitle "Truck Destroyed!"
+     m_messageBody "The target truck has been destroyed"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66A369DDB5D46424}" {
+    m_flagName "truck_explode_flag"
+   }
+  }
+  TILW_MissionEvent "{66B1579073A92742}" {
+   m_name "Time Limit"
+   m_instructions {
+    TILW_SendMessageInstruction "{66B50EADB3364941}" {
+     m_executionDelay 3000
+     m_messageTitle "Time Limit Warning!"
+     m_messageBody "Only 10 minutes left in the mission."
+    }
+    TILW_SendMessageInstruction "{66B1579067624DB1}" {
+     m_executionDelay 3600
+     m_messageTitle "BLUFOR Defeat: Time Limit Reached"
+     m_messageBody "The 60 minute time limit has been reached"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66B25787AB8DC68F}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{66A369D32332B494}" {
+   m_name "Objective 2 setup"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{66A369D312164E4A}" {
+     m_prefab "{263F16A0D6679165}worlds/ac337/prefab/prefab_East_radio_truck.et"
+     m_locationName "location_2"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66A369D2F2ED11E2}" {
+    m_flagName "location 2 flag"
+   }
+  }
+  TILW_MissionEvent "{66B013033595A16A}" {
+   m_name "BLUFOR Extracted and Mission Complete"
+   m_instructions {
+    TILW_SendMessageInstruction "{66B01302AA8FA0C3}" {
+     m_messageTitle "Mission Complete"
+     m_messageBody "BLUFOR has destroyed their target and left the area. Mission complete!"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{66B0130327FFD960}" {
+    m_operands {
+     TILW_LiteralTerm "{66B01302F4F65F18}" {
+      m_flagName "truck_explode_flag"
+     }
+     TILW_LiteralTerm "{66B01302EAFCB5CF}" {
+      m_flagName "blufor_extracted"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{66B1579118850604}" {
+   m_name "BLUFOR 90% Casualties"
+   m_instructions {
+    TILW_SendMessageInstruction "{66B15790B51DE6E2}" {
+     m_messageTitle "BLUFOR Defeat"
+     m_messageBody "Blufor has taken 90% casualties"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66B15790BA186872}" {
+    m_flagName "blufor_Casualty_Limit"
+   }
+  }
+  TILW_MissionEvent "{66B157977B81D13C}" {
+   m_name "QRF Warning"
+   m_instructions {
+    TILW_SendMessageInstruction "{66B15797750E14BE}" {
+     m_messageTitle "Activity in Montignac!"
+     m_messageBody "Our local contact just radioed in that three armored vehicles just flew through Montignac headed West towards us."
+    }
+   }
+   m_condition TILW_LiteralTerm "{66B1579771EA76FF}" {
+    m_flagName "send_qrf"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{66B157915EDC06D0}" {
+   m_flagName "blufor_Casualty_Limit"
+   m_factionKey "US"
+   m_casualtyRatio 0.9
+  }
+ }
+ m_randomFlags {
+  TILW_FlagSampling "{66A369D3E05238A0}" {
+   m_flagNames {
+    "location 1 flag" "location 2 flag" "location 3 flag"
+   }
+  }
+ }
+}
