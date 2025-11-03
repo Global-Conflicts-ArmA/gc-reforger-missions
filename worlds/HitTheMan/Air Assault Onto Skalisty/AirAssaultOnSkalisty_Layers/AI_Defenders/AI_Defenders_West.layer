@@ -1,68 +1,53 @@
-$grp SCR_DefendWaypoint : "{4ECD14650D82F5CA}Prefabs/AI/Waypoints/AIWaypoint_Loiter_CO.et" {
- Def_WPEast_US_1 {
-  coords 10124.601 21.787 1895.318
-  CompletionRadius 80
- }
- Def_WPEast_US_2 {
-  coords 10295.132 18.168 1672.865
-  CompletionRadius 60
- }
- Def_WPEast_US_3 {
-  coords 10302.723 29.831 1835.979
-  CompletionRadius 120
- }
- Def_WPEast_US_4 {
-  coords 10066.166 29.14 1775.335
-  CompletionRadius 70
- }
- DefInside_WPEast_US_1 {
+$grp SCR_DefendWaypoint : "{1E4818C263E3AB78}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small_CO_Interior.et" {
+ DefInside_WPWest_US_1 {
   coords 10068.503 32.303 1840.696
-  CompletionRadius 7
  }
- DefInside_WPEast_US_2 {
+ DefInside_WPWest_US_2 {
   coords 10068.374 27.12 1839.359
-  CompletionRadius 7
  }
 }
+SCR_DefendWaypoint TestWP_1 : "{4ECD14650D82F5CA}Prefabs/AI/Waypoints/AIWaypoint_Loiter_CO.et" {
+ coords 10461.54 31.024 1690.551
+}
 $grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
- AI_SpawnEast_1 {
+ AI_SpawnWest_1 {
   coords 10136.316 19.766 1881.542
   angles 0 74.431 0
   m_prefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
   m_conditionFlag "SpawnEast"
   m_spawnTimings {
-   2
+   3
   }
   m_waypointNames {
-   "Def_WPEast_US_1"
+   "Def_WPWest_US_1"
   }
  }
- AI_SpawnEast_2 {
+ AI_SpawnWest_2 {
   coords 10279.04 17.587 1678.502
   angles 0 74.431 0
   m_prefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
   m_conditionFlag "SpawnEast"
   m_spawnTimings {
-   2
+   4
   }
   m_waypointNames {
-   "Def_WPEast_US_2"
+   "Def_WPWest_US_2"
   }
  }
- AI_SpawnEast_3 {
+ AI_SpawnWest_3 {
   coords 10286.631 29.25 1841.616
   angles 0 74.431 0
   m_prefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
   m_conditionFlag "SpawnEast"
   m_spawnTimings {
-   2
+   5
    6
   }
   m_waypointNames {
-   "Def_WPEast_US_3"
+   "Def_WPWest_US_3"
   }
  }
- AI_SpawnEast_4 {
+ AI_SpawnWest_4 {
   coords 10079.174 28.09 1780.889
   angles 0 116.078 0
   m_prefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
@@ -71,10 +56,10 @@ $grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpaw
    2
   }
   m_waypointNames {
-   "Def_WPEast_US_4"
+   "Def_WPWest_US_4"
   }
  }
- LAV25_Counter_Spawn_3 {
+ LAV25_Spawn_South_1 {
   coords 10273.717 27.42 1821.381
   angles -3.561 -95.283 0.329
   m_prefab "{3312ADBF53A16DD8}Prefabs/Vehicles/Wheeled/LAV25/LAV25_RHS.et"
@@ -94,27 +79,73 @@ $grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpaw
        }
       }
      }
-     m_waypointNames {
-      "RecaptureBadOrb"
-     }
     }
    }
    m_noTurretDismount 1
    m_useIdleGroups 0
   }
  }
+ AI_SpawnWest_5 {
+  coords 10468.521 31.102 1691.606
+  angles 0 74.431 0
+  m_prefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+  m_conditionFlag "SpawnEast"
+  m_spawnTimings {
+   3
+  }
+  m_waypointNames {
+   "TestWP_1"
+  }
+ }
+ AI_SpawnWest_6 {
+  coords 10881.527 38.494 1648.557
+  angles 0 74.431 0
+  m_prefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+  m_conditionFlag "SpawnEast"
+  m_spawnTimings {
+   3
+  }
+  m_waypointNames {
+   "TestWP_2"
+  }
+ }
 }
-TILW_FactionTriggerEntity AI_Spawn_Trigger_1 : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
- coords 10096.327 25.412 1817.424
- m_queryRadius 400
- m_locationName "HQ Building"
- m_flagName "SpawnEast"
- m_stopAfterFirstChange 1
- m_ownerFactionKey "USSR"
- m_ratioThreshold 0.9
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ AI_Spawn_Trigger_1 {
+  coords 10242.017 -519.998 1788.354
+  m_queryRadius 750
+  m_locationName "HQ Building"
+  m_flagName "SpawnEast"
+  m_stopAfterFirstChange 1
+  m_drawShapeOutline 0
+  m_ownerFactionKey "USSR"
+  m_ratioThreshold 0.001
+ }
+ Sector_West2 {
+  coords 9952.663 -0 2078.111
+  m_queryRadius 20
+  m_locationName "HQ Building"
+  m_flagName "WestSector"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "USSR"
+  m_ratioThreshold 0.9
+ }
+}
+SCR_DefendWaypoint TestWP_2 : "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et" {
+ coords 10879.332 38.724 1643.662
+}
+$grp SCR_DefendWaypoint : "{A33AF7FC5004F294}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large_CO.et" {
+ Def_WPWest_US_1 {
+  coords 10124.601 21.787 1895.318
+  CompletionRadius 70
+ }
+ Def_WPWest_US_2 {
+  coords 10295.132 18.168 1672.865
+  CompletionRadius 60
+ }
 }
 $grp SCR_AIGroup : "{CCF5BB1B99D150E4}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_Rifle_Sect.et" {
- AIInside_SpawnEast_1 {
+ AIInside_SpawnWest_1 {
   components {
    AIFormationComponent "{507E9DC12F541FE6}" {
     DefaultFormation "Wedge"
@@ -132,10 +163,10 @@ $grp SCR_AIGroup : "{CCF5BB1B99D150E4}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian
   }
   m_bSnapToTerrain 0
   m_aStaticWaypoints {
-   "DefInside_WPEast_US_1"
+   "DefInside_WPWest_US_1"
   }
  }
- AIInside_SpawnEast_2 {
+ AIInside_SpawnWest_2 {
   components {
    AIFormationComponent "{507E9DC12F541FE6}" {
     DefaultFormation "Wedge"
@@ -153,7 +184,17 @@ $grp SCR_AIGroup : "{CCF5BB1B99D150E4}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian
   }
   m_bSnapToTerrain 0
   m_aStaticWaypoints {
-   "DefInside_WPEast_US_2"
+   "DefInside_WPWest_US_2"
   }
+ }
+}
+$grp SCR_DefendWaypoint : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
+ Def_WPWest_US_3 {
+  coords 10302.723 29.831 1835.979
+  CompletionRadius 80
+ }
+ Def_WPWest_US_4 {
+  coords 10066.166 29.14 1775.335
+  CompletionRadius 70
  }
 }

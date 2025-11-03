@@ -1,5 +1,5 @@
 SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
- coords 6861.554 429.98 6580.258
+ coords 10353.959 29.487 1724.855
 }
 PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
  coords 3727.142 525.044 1643.412
@@ -27,6 +27,17 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF2 : "{4CFD54745CD45673}Prefabs/MP/Modes/
  }
  coords 7756.999 312.503 8163.458
  m_iFreezeTime 300000
+ m_aFactionRespawnCount {
+  PS_FactionRespawnCount "{66C704CE14EE4401}" {
+   m_sFactionKey "USSR"
+   m_iCount 10
+  }
+  PS_FactionRespawnCount "{66C704CE0AD6274D}" {
+   m_sFactionKey "GC_CAF"
+   m_iCount 12
+  }
+ }
+ m_bDisableArmaVision 1
  m_safeStartTime 20
  {
   RadioManagerEntity {
@@ -60,9 +71,11 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF2 : "{4CFD54745CD45673}Prefabs/MP/Modes/
     }
     SCR_Faction "{56DEAC40D3C2E623}" {
      UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
-      Name "Soviet Air Force"
+      Name "VDV Forces"
+      Icon "{B522FE456D7F091A}worlds/HitTheMan/Screening The Orb/330px-Flag_of_the_Soviet_Air_Force.svg.edds"
      }
      m_iOrder 1
+     m_sFactionFlag "{B522FE456D7F091A}worlds/HitTheMan/Screening The Orb/330px-Flag_of_the_Soviet_Air_Force.svg.edds"
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
       m_aCompanyNames {
        SCR_CallsignInfo "{55CCB79282FF010C}" {
@@ -169,8 +182,17 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF2 : "{4CFD54745CD45673}Prefabs/MP/Modes/
   }
  }
 }
+TILW_PrefabSpawnerEntity AO_Spawner : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
+ coords 11067.25 35.567 1663.884
+ angles 0 74.431 0
+ m_prefab "{125391372E502FA0}worlds/HitTheMan/Air Assault Onto Skalisty/Prefab/AO_Limit_BLU_Main.et"
+ m_conditionFlag "FallBack"
+ m_spawnTimings {
+  1
+ }
+}
 $grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
- AO_Limit_BLU {
+ AO_Limit_BLU_Temp {
   components {
    TILW_AOLimitComponent "{6217617AC21DEB7B}" {
     m_killTimer 15
@@ -192,17 +214,32 @@ $grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit
    ShapePoint "{66C6D28D61D9B926}" {
     Position -340.149 -48.245 419.055
    }
-   ShapePoint "{66C6D28D66F5534E}" {
-    Position -493.446 -21.919 215.473
+   ShapePoint "{66C6D296440AAF70}" {
+    Position -675.683 -50.894 501.217
    }
-   ShapePoint "{66C6D28D6641DA67}" {
-    Position -525.272 2.107 46.018
+   ShapePoint "{66C6D2967B558D12}" {
+    Position -1026.606 -68.089 524.815
    }
-   ShapePoint "{66C6D28D66280884}" {
-    Position -511.41 -33.249 -162.097
+   ShapePoint "{66C6D2967B39273A}" {
+    Position -1351.727 -49.152 303.781
+   }
+   ShapePoint "{66C6D2967AE9E1A2}" {
+    Position -1370.968 -42.435 72.172
+   }
+   ShapePoint "{66C6D2967A4B2B00}" {
+    Position -1218.813 -59.221 -149.112
+   }
+   ShapePoint "{66C6D2967A2578CC}" {
+    Position -894.871 -55.86 -244.424
+   }
+   ShapePoint "{66C6D29679B9680B}" {
+    Position -620.308 -47.041 -286.925
    }
    ShapePoint "{66C6D28D65BB4AE4}" {
     Position -444.445 -34.016 -266.464
+   }
+   ShapePoint "{66C6D2967829DB84}" {
+    Position -327.962 -49.992 -383.783
    }
    ShapePoint "{66C6D28D644FCD28}" {
     Position -221.922 -95.016 -589.996
@@ -222,83 +259,41 @@ $grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit
    ShapePoint "{66C6D28D1D8554A7}" {
     Position 604.472 -95.314 -24.754
    }
-   ShapePoint "{66C6D28D17775473}" {
-    Position 514.062 -38.17 196.001
+   ShapePoint "{66C6D2967D3FA7A7}" {
+    Position 641.575 -43.489 266.846
    }
-   ShapePoint "{66C6D28D1685C92C}" {
-    Position 356.539 -4.98 338.646
+   ShapePoint "{66C6D2967CBE27D6}" {
+    Position 785.426 -49.61 501.026
    }
-   ShapePoint "{66C6D28D15D4449C}" {
-    Position 165.342 -2.399 460.914
+   ShapePoint "{66C6D2967C17E5DA}" {
+    Position 842.621 -51.227 734.48
    }
-   ShapePoint "{66C6D28D1568DDAB}" {
-    Position -11.236 -45.245 513.016
+   ShapePoint "{66C6D29673488A8A}" {
+    Position 848.23 -57.04 1023.145
    }
-  }
- }
- AO_Limit_BLU2 {
-  components {
-   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
-    m_killTimer 60
-    m_factionKeys {
-     "GC_CAF"
-    }
-    m_visibility FACTION
-    m_defaultColor 0.502 0 0 1
-    m_useFactionColor 0
-    m_lineWidth 5
+   ShapePoint "{66C6D29672DBA0FA}" {
+    Position 839.174 -56.473 1220.6
    }
-  }
-  coords 10214.725 22.899 1767.865
-  angles 0.895 0 0
-  Points {
-   ShapePoint "{66C6D28D395BE98A}" {
-    Position 326.562 -41.155 462.146
+   ShapePoint "{66C6D29672AEB145}" {
+    Position 653.215 -61.086 1341.515
    }
-   ShapePoint "{66C6D28D38B75B7E}" {
-    Position -76.619 -85.037 532.978
+   ShapePoint "{66C6D29672308420}" {
+    Position 436.026 -60.618 1247.816
    }
-   ShapePoint "{66C6D28D3868FEE7}" {
-    Position -450.971 -106.213 424.607
+   ShapePoint "{66C6D29671915E4B}" {
+    Position 253.258 -61.827 1135.184
    }
-   ShapePoint "{66C6D28D3E85C861}" {
-    Position -627.644 -40.438 170.423
+   ShapePoint "{66C6D29670FEBD24}" {
+    Position 37.727 -72.051 1034.765
    }
-   ShapePoint "{66C6D28D3E7443E6}" {
-    Position -641.827 -29.203 -60.545
+   ShapePoint "{66C6D2967044AC21}" {
+    Position -71.317 -61.637 891.716
    }
-   ShapePoint "{66C6D28D3E22D75B}" {
-    Position -534.353 -44.865 -216.106
+   ShapePoint "{66C6D296702367BD}" {
+    Position -64.248 -51.941 733.455
    }
-   ShapePoint "{66C6D28D3D90D7C3}" {
-    Position -300.531 -84.261 -391.555
-   }
-   ShapePoint "{66C6D28D3360B0B6}" {
-    Position -42.79 -75.026 -418.671
-   }
-   ShapePoint "{66C6D28D32E02869}" {
-    Position 259.544 -48.427 -434.577
-   }
-   ShapePoint "{66C6D28C9E045B3A}" {
-    Position 632.828 -17.935 -417.921
-   }
-   ShapePoint "{66C6D28C9DCCC781}" {
-    Position 859.953 1.651 -304.994
-   }
-   ShapePoint "{66C6D28C9D8AC84E}" {
-    Position 1037.167 6.486 -94.84
-   }
-   ShapePoint "{66C6D28C9D5E589C}" {
-    Position 1073.061 13.224 71.381
-   }
-   ShapePoint "{66C6D28C9D10D939}" {
-    Position 969.945 0.224 209.39
-   }
-   ShapePoint "{66C6D28C9D26547B}" {
-    Position 819.339 -29.267 327.634
-   }
-   ShapePoint "{66C6D28C9C36A3E3}" {
-    Position 649.902 -33.873 413.848
+   ShapePoint "{66C6D2967796E596}" {
+    Position -73.119 -50.744 599.794
    }
   }
  }
@@ -341,23 +336,17 @@ $grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit
    ShapePoint "{66C6D28DCD4F5BB2}" {
     Position 1167.969 -151.901 603.536
    }
-   ShapePoint "{66C6D28DCCA6952E}" {
-    Position 1231.222 -124.026 1361.351
+   ShapePoint "{66C6D2966FD48504}" {
+    Position 1097.817 -114.999 1080.606
    }
-   ShapePoint "{66C6D28DCC30D828}" {
-    Position 1044.903 -106.672 1956.095
+   ShapePoint "{66C6D2966F507083}" {
+    Position 811.915 -63.887 1321.927
    }
-   ShapePoint "{66C6D28DC3729A3A}" {
-    Position 773.643 -78.264 2153.979
+   ShapePoint "{66C6D2966EC9F65F}" {
+    Position 522.605 -60.573 1364.674
    }
-   ShapePoint "{66C6D28DC33E45E3}" {
-    Position 449.452 -79.998 2145.97
-   }
-   ShapePoint "{66C6D28DC2E732C4}" {
-    Position 175.492 -119.128 1987.537
-   }
-   ShapePoint "{66C6D28DC1C38E74}" {
-    Position -12.002 -134.676 1455.799
+   ShapePoint "{66C6D2966E7004B1}" {
+    Position 183.088 -83.703 1237.227
    }
    ShapePoint "{66C6D28DC1B7F28E}" {
     Position -167.514 -110.476 1004.053
@@ -392,14 +381,33 @@ $grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit
   }
  }
 }
-TILW_FactionTriggerEntity Sector1_Trigger : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
- coords 9959.184 -0.029 1326.88
- m_queryRadius 3
- m_locationName "HQ Building"
- m_flagName "HQBuilding"
- m_stopAfterFirstChange 1
- m_ownerFactionKey "GC_CAF"
- m_ratioThreshold 0.9
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ Sector_West {
+  coords 10068.091 38.702 1839.764
+  m_queryRadius 20
+  m_locationName "HQ Building"
+  m_flagName "WestSector"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "USSR"
+  m_ratioThreshold 0.9
+ }
+ Sector_North {
+  coords 11502.757 9.735 2549.334
+  m_locationName "HQ Building"
+  m_flagName "NorthSector"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "USSR"
+  m_ratioThreshold 0.9
+ }
+ Sector_Main {
+  coords 11095.567 47.621 1633.053
+  m_queryRadius 22
+  m_locationName "HQ Building"
+  m_flagName "MainSector"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "USSR"
+  m_ratioThreshold 0.9
+ }
 }
 TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
  coords 3720.089 354.787 1640.119
@@ -450,11 +458,7 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
     TILW_SendMessageInstruction "{6506E4089FDE5CA5}" {
      m_executionDelay 3600
      m_messageTitle "Soviet Army Victory"
-     m_messageBody "USSR held the town long enough forcing CAF to fall back... GM Discretion when to end the mission"
-    }
-    TILW_EndGameInstruction "{650CE1979D068E00}" {
-     m_executionDelay 3610
-     m_factionKey "USSR"
+     m_messageBody "CAF held the island long enough forcing VDV to fall back... GM Discretion when to end the mission"
     }
    }
    m_condition TILW_LiteralTerm "{6506E40BFBED4D76}" {
@@ -462,21 +466,116 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
    }
   }
   TILW_MissionEvent "{650750E2E1A73F1D}" {
-   m_name "CAF OBJ Victory"
+   m_name "USSR OBJ Victory"
    m_instructions {
     TILW_SendMessageInstruction "{6550E36ED08C418C}" {
-     m_executionDelay 10
-     m_messageTitle "Canadian Armed Forces Victory"
-     m_messageBody "CAF has managed to secure the Military Site... "\
+     m_messageTitle "VDV Forces Victory"
+     m_messageBody "VDV has managed to secure the Island... "\
      "GM Discretion when to end the mission"
     }
    }
    m_condition TILW_ConjunctionTerm "{650AE15E5BA69298}" {
     m_operands {
-     TILW_LiteralTerm "{650AE15E59E990F8}" {
-      m_flagName "HQBuilding"
+     TILW_ConjunctionTerm "{66C704CFEA7DA687}" {
+      m_operands {
+       TILW_LiteralTerm "{66C704CFE13CAEEA}" {
+        m_flagName "WestSector"
+       }
+       TILW_LiteralTerm "{66C704CFE7DCD76F}" {
+        m_flagName "MainSector"
+       }
+      }
+     }
+     TILW_ConjunctionTerm "{66C704CFE9371695}" {
+      m_operands {
+       TILW_LiteralTerm "{66C704CF9FEB724A}" {
+        m_flagName "NorthSector"
+       }
+       TILW_LiteralTerm "{66C704CF9EDFEA2C}" {
+        m_flagName "MainSector"
+       }
+      }
      }
     }
+   }
+  }
+  TILW_MissionEvent "{66C6D2955531FC2B}" {
+   m_name "Fall Back Event"
+   m_instructions {
+    TILW_SendMessageInstruction "{66C6D29539EBA9C7}" {
+     m_messageTitle "We've lost a Sector"
+     m_messageBody "Fall back to the main base"
+     m_factionKeys {
+      "GC_CAF"
+     }
+    }
+    TILW_DeleteEntitiesInstruction "{66C6D29593176EA0}" {
+     m_entityNames {
+      "AO_Limit_BLU_Temp"
+     }
+    }
+    TILW_SetFlagInstruction "{66C6D29418378FA3}" {
+     m_executionDelay 4
+     m_flagName "FallBack"
+    }
+    TILW_EditRespawnTicketsInstruction "{66C704CF73792110}" {
+     m_factionKey "GC_CAF"
+     m_operation ADD
+     m_amount 6
+     m_allowSpecRespawn 1
+    }
+   }
+   m_condition TILW_DisjunctionTerm "{66C6D2954F9CD195}" {
+    m_operands {
+     TILW_LiteralTerm "{66C6D2951BC95F1D}" {
+      m_flagName "WestSector"
+     }
+     TILW_LiteralTerm "{66C6D29500DCB18A}" {
+      m_flagName "NorthSector"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{66C704CEF723FB91}" {
+   m_name "West Sector Respawn"
+   m_instructions {
+    TILW_EditRespawnTicketsInstruction "{66C704CEE02B1ABF}" {
+     m_factionKey "USSR"
+     m_operation ADD
+     m_amount 10
+     m_allowSpecRespawn 1
+    }
+    TILW_SendMessageInstruction "{66C704CF4D34EBF7}" {
+     m_messageTitle "Reinforcements"
+     m_messageBody "Reinforcements has arrived at the Airfield, requesting airlift to the AO"
+     m_factionKeys {
+      "USSR"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{66C704CEE83F29D9}" {
+    m_flagName "WestSector"
+   }
+  }
+  TILW_MissionEvent "{66C704CE8DDB1E3C}" {
+   m_name "North Sector Respawn"
+   m_instructions {
+    TILW_EditRespawnTicketsInstruction "{66C704CE8DDB1EA8}" {
+     m_factionKey "USSR"
+     m_operation ADD
+     m_amount 10
+     m_allowSpecRespawn 1
+    }
+    TILW_SendMessageInstruction "{66C704CEA3B5B73F}" {
+     m_messageTitle "Reinforcements"
+     m_messageBody "Reinforcements has arrived at the Airfield, requesting airlift to the AO"
+     m_factionKeys {
+      "USSR"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{66C704CE8DDB1EA4}" {
+    m_flagName "NorthSector"
    }
   }
  }
