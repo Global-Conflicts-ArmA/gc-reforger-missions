@@ -1,3 +1,8 @@
+Vehicle UAZ469_PKM1 : "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et" {
+ coords 6089.764 418.288 6241.99
+ angles 0 -89.698 0
+ m_sAttachmentGroupName "TruckEscorts"
+}
 $grp Vehicle : "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et" {
  UAZ452_transport1 {
   coords 2056.404 119.282 7397.487
@@ -42,10 +47,33 @@ $grp Vehicle : "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et" {
   m_sAttachmentGroupName "PLHQ2"
  }
  UAZ3 {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5AD4F813E67ECB5D}" {
+    MultiSlots {
+     MultiSlotConfiguration "{66C90821C5F358F0}" {
+      SlotTemplate InventoryStorageSlot Bandages {
+       Prefab "{BFEA719491610A45}Prefabs/Weapons/Rifles/AKS74U/Rifle_AKS74U.et"
+      }
+      NumSlots 2
+     }
+     MultiSlotConfiguration "{66C90821F8A352CA}" {
+      SlotTemplate InventoryStorageSlot Bandages {
+       Prefab "{0A84AA5A3884176F}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Last_5Tracer.et"
+      }
+      NumSlots 12
+     }
+    }
+   }
+  }
   coords 2027.749 129.469 7331.968
   angles 0 -53.543 0
   m_sAttachmentGroupName "Pilot_Hind_1"
  }
+}
+Vehicle Ural4320_tanker1 : "{4C81D7ED8F8C0D87}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker.et" {
+ coords 6098.1 417.995 6240.584
+ angles 0 -71.464 0
+ m_sAttachmentGroupName "TruckEscorts"
 }
 Vehicle Mi24V_armed_UPK1 : "{65ED07118C75B32F}Prefabs/Vehicles/Helicopters/Mi24/Mi24V_armed_UPK23.et" {
  components {
@@ -407,13 +435,27 @@ $grp SCR_AIGroup : "{7544247CE7FBC839}Prefabs/Groups/OPFOR/Russia/1980s/Motorise
   m_bSnapToTerrain 0
   m_sCustomNameSet "3rd Squad"
  }
-}
-TILW_PrefabSpawnerEntity FuelTruck : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
- coords 2701.391 220.406 6989.02
- angles 0 -157.632 0
- m_prefab "{4C81D7ED8F8C0D87}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker.et"
- m_spawnTimings {
-  1
+ TruckEscorts {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "line"
+   }
+   PS_GroupCallsignAssigner "{652F5C6E746ACE30}" {
+    m_iCompanyCallsign 0
+    m_iSquadCallsign 10
+   }
+  }
+  coords 6086.564 418.406 6238.227
+  angles 0.347 33.112 0.825
+  m_aUnitPrefabSlots {
+   "{A50E1A5B20D1D731}worlds/HitTheMan/Stealthing Into Villa/Prefab/Character_USSR_MSV80_PO_P_HTM.et"
+   "{1A5BEECAF606ACFC}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_SR_P.et"
+   "{A491F9108F01E180}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_Rifleman_P.et"
+  }
+  m_bSnapToTerrain 0
+  m_sCustomNameSet "Fuel Truck + Escorts (MUST BE FILLED)"
  }
- m_pregameSpawn 1
+}
+SCR_EditorRestrictionZoneEntity : "{EF72FA7CD87618D5}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneSmall.et" {
+ coords 6092.936 418.19 6240.939
 }
