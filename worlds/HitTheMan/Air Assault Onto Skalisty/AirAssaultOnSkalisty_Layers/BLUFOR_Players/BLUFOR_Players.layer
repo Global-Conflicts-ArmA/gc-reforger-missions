@@ -18,12 +18,30 @@ $grp Vehicle : "{3EA6F47D95867114}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB
   angles 0 177.224 0
  }
 }
-SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
- coords 7748.293 313.028 8149.922
- angles -2.688 0.126 1.782
- m_fWarnRadius 40
- m_fZoneRadius 45
- m_fZoneTeleportedRadius 43
+GenericEntity : "{A0E432F0BBED71B4}PrefabsEditable/Auto/Props/Military/AmmoBoxes/US/E_EquipmentBoxWooden_Equipment_01_US.et" {
+ components {
+  SCR_DestructionMultiPhaseComponent "{58F89684469E44B1}" {
+   Enabled 1
+  }
+  SCR_SoundDataComponent "{5C53391603B5CF41}" {
+   Enabled 1
+  }
+  SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+   Enabled 1
+   MultiSlots {
+    MultiSlotConfiguration "{66C72052050E9512}" {
+     SlotTemplate EquipmentStorageSlot Stinger {
+      Prefab "{3DF204EEE0534EF2}Prefabs/Weapons/Launchers/FIM92_Stinger/Launcher_FIM92_Stinger.et"
+     }
+     NumSlots 6
+    }
+   }
+  }
+  ActionsManagerComponent "{5476B36C403D4CC0}" {
+   Enabled 1
+  }
+ }
+ coords 11144.561 35.687 1656.385
 }
 $grp SCR_AIGroup : "{F9D2A10B5E4A9DCE}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/P/Group_CAF_1993_Rifle_Sect_P.et" {
  CAFRifle_1 {
