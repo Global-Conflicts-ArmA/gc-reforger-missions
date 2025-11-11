@@ -1,30 +1,38 @@
 SCR_AIWorld SCR_AIWorld_Takistan : "{3DE6090FC602E566}Prefabs/AI/SCR_AIWorld_Takistan.et" {
  coords 10539.188 197.925 10730.347
- angleX 1.817
- angleY -0.559
- angleZ -17.104
+ angles 1.817 -0.559 -17.104
 }
 PerceptionManager PerceptionManager : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
  coords 10560.724 205.778 10691.135
 }
 PS_GameModeCoop GameModeLobby : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
  components {
+  SCR_InitWeatherComponent "{61B68227C35BFE9A}" {
+   Enabled 0
+  }
   SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
    m_iStartingHours 19
-   m_iStartingMinutes 30
+   m_bFogOverride 1
+   m_fFogAmount 0.77
+   m_fFogHeightDensity 0.86
+   m_bDateOverride 1
+   m_iDay 7
+   m_iMonth 7
+   m_iYear 2012
    m_bUseSpecifiedDate 1
    m_iSetDay 7
    m_iSetMonth 7
    m_iSetYear 2012
    m_bOverrideGeocoords 1
-   m_fLatitude 14.615
-   m_fLongitude 13.846
+   m_fLatitude -52.308
+   m_fLongitude 10.769
    m_bOverrideTimeZoneInfo 1
+   m_fUTCTimeZone 4.3
    m_fDSTEnabled 1
    m_fDSTOffsetHours 0
    m_bOverrideEnvironment 1
-   m_fFogDensity 0.8
-   m_fFogHeight 86
+   m_fFogDensity 0.86
+   m_fFogHeight 77
    m_fRain 0
    m_fWind 8
   }
@@ -102,9 +110,7 @@ $grp SCR_EditorRestrictionZoneEntity : "{6144B0BE2EAC6897}PrefabsEditable/Restri
  }
  RestrictZone_Opfor {
   coords 10896.501 175.68 10734.265
-  angleX -0.568
-  angleY 0.009
-  angleZ -0.853
+  angles -0.568 0.009 -0.853
   m_fZoneRadius 50
   m_fZoneTeleportedRadius 65
  }
@@ -122,9 +128,7 @@ PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" 
   }
  }
  coords 10557.396 200.858 10645.384
- angleX 4.741
- angleY 0.613
- angleZ 7.373
+ angles 4.741 0.613 7.373
  Points {
   ShapePoint "{66BA23B9F5B08EAD}" {
    Position 519.044 0 -3.061
@@ -289,9 +293,7 @@ PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" 
 }
 TILW_MissionFrameworkEntity TILW_MissionFramework : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
  coords 10573.509 198.792 10719.378
- angleX -0.568
- angleY -0.014
- angleZ 1.421
+ angles -0.568 -0.014 1.421
  m_missionEvents {
   TILW_MissionEvent "{66B975553FA9BABD}" {
    m_name "Blufor Victory"
@@ -329,18 +331,6 @@ TILW_MissionFrameworkEntity TILW_MissionFramework : "{8F846D0FD5D6EA51}Prefabs/M
    }
    m_condition TILW_LiteralTerm "{66B9754A2D9BF7D2}" {
     m_invertTerm 1
-   }
-  }
-  TILW_MissionEvent "{66BA6524F01B9883}" {
-   m_name "Blufor Capture Win"
-   m_instructions {
-    TILW_SendMessageInstruction "{66BA652310571673}" {
-     m_executionDelay 2.5
-     m_messageTitle "The U.S. Army has fully captured the objective!"
-    }
-   }
-   m_condition TILW_LiteralTerm "{66BA652303AED109}" {
-    m_flagName "Blufor Capture Victory FlagDISABLE"
    }
   }
  }
