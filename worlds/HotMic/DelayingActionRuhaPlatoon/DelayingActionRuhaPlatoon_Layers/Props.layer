@@ -1,41 +1,31 @@
 GenericEntity Stop_Signs {
  coords 4101.715 61.844 1352.524
  {
-  $grp GenericEntity : "{988959E287244FD1}PrefabLibrary/Infrastructure/Sings/SignStop.et" {
+  $grp GenericEntity : "{988959E287244FD1}PrefabLibrary/DefaultLibrary/Infrastructure/Sings/SignStop.et" {
    {
     coords -2.918 -0.244 11.468
-    angleX 0.767
-    angleY 81.334
-    angleZ -0.593
+    angles 0.767 81.334 -0.593
    }
    {
     coords 7.286 0.023 -2.722
-    angleX -0.161
-    angleY 19.501
-    angleZ -0.956
+    angles -0.161 19.501 -0.956
    }
    {
     coords -6.657 -0.168 -4.584
-    angleX 0.264
-    angleY 44.812
-    angleZ -0.933
+    angles 0.264 44.812 -0.933
    }
    {
     coords 6.235 -0.172 19.136
-    angleX 0.767
-    angleY 81.334
-    angleZ -0.593
+    angles 0.767 81.334 -0.593
    }
    {
     coords 17.046 0.086 7.312
-    angleX -0.161
-    angleY 19.501
-    angleZ -0.956
+    angles -0.161 19.501 -0.956
    }
   }
   GenericEntity : "{A76FBE3B139F227A}PrefabsEditable/Auto/Structures/Signs/Military/E_SignCheckpoint_01_stop.et" {
    coords -9.965 -0.034 -3.07
-   angleY 41.845
+   angles 0 41.845 0
   }
  }
 }
@@ -97,10 +87,47 @@ SplineShapeEntity {
   }
  }
 }
+Vehicle M923A1_engineer2 : "{2D74C39A650A3030}Prefabs/Vehicles/Wheeled/M923A1/M923A1_engineer.et" {
+ components {
+  SCR_UniversalInventoryStorageComponent "{5916C580F1DA28BB}" {
+   MultiSlots {
+    MultiSlotConfiguration "{66D601559E180A2E}" {
+     NumSlots 1
+    }
+    MultiSlotConfiguration "{66D60155EFCCE6DA}" {
+     SlotTemplate InventoryStorageSlot Bandages {
+      Prefab "{9B625CAE6DEE1DAB}Prefabs/Items/Equipment/Tripods/M2/Part_M2_Gun.et"
+     }
+     NumSlots 6
+    }
+    MultiSlotConfiguration "{66D60155FCDDEC8B}" {
+     SlotTemplate InventoryStorageSlot Bandages {
+      Prefab "{6A3EF260029FE220}Prefabs/Items/Equipment/Tripods/M2/Part_M3_Tripod.et"
+     }
+     NumSlots 3
+    }
+    MultiSlotConfiguration "{66D6015282AAB79E}" {
+     SlotTemplate InventoryStorageSlot Bandages {
+      Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
+     }
+     NumSlots 200
+    }
+   }
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo EngineerBox {
+     Prefab "{808A34E26203B82D}worlds/HotMic/Prefabs/Trucks/truck_engineer_box_wo_commandPost_HotMic.et"
+    }
+   }
+  }
+ }
+ coords 6675.536 96.658 1176.169
+ m_sAttachmentGroupName "ConstructionSquad"
+}
 DecalEntity : "{7C184D5F132A8987}Prefabs/Decals/Asphalt/Decal_Asphalt_Crossroad_01.et" {
  coords 6578.197 0.547 1280.324
- angleY 88.384
- angleZ 180
+ angles 0 88.384 180
  scale 3.43
  FarPlane 8.61
  Stretch 33.07
@@ -108,5 +135,5 @@ DecalEntity : "{7C184D5F132A8987}Prefabs/Decals/Asphalt/Decal_Asphalt_Crossroad_
 }
 GenericEntity : "{E74D2F51CD4F03D0}Prefabs/Compositions/Slotted/SlotRoadLarge/Checkpoint_L_US_01.et" {
  coords 4098.366 61.844 1351.497
- angleY 47.541
+ angles 0 47.541 0
 }

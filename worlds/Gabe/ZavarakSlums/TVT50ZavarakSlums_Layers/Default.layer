@@ -8,14 +8,13 @@ PerceptionManager PerceptionManager : "{028DAEAD63E056BE}Prefabs/World/Game/Perc
 PS_GameModeCoop GameModeLobby : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
  components {
   SCR_InitWeatherComponent "{61B68227C35BFE9A}" {
-   Enabled 0
+   m_initialWeatherDurationMin 5
+   m_initialWeatherDurationMax 6
   }
   SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
    m_iStartingHours 19
-   m_bFogOverride 1
-   m_fFogAmount 0.77
+   m_fFogAmount 0.8
    m_fFogHeightDensity 0.86
-   m_bDateOverride 1
    m_iDay 7
    m_iMonth 7
    m_iYear 2012
@@ -31,8 +30,8 @@ PS_GameModeCoop GameModeLobby : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_
    m_fDSTEnabled 1
    m_fDSTOffsetHours 0
    m_bOverrideEnvironment 1
-   m_fFogDensity 0.86
-   m_fFogHeight 77
+   m_fFogDensity 0.8
+   m_fFogHeight 86
    m_fRain 0
    m_fWind 8
   }
@@ -109,8 +108,8 @@ $grp SCR_EditorRestrictionZoneEntity : "{6144B0BE2EAC6897}PrefabsEditable/Restri
   m_fZoneTeleportedRadius 65
  }
  RestrictZone_Opfor {
-  coords 10896.501 175.68 10734.265
-  angles -0.568 0.009 -0.853
+  coords 10895.964 174.331 10736.731
+  angles -1.136 0.022 -0.853
   m_fZoneRadius 50
   m_fZoneTeleportedRadius 65
  }
@@ -291,6 +290,45 @@ PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" 
   }
  }
 }
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ CapZoneOpfor {
+  coords 10478.855 160.823 11084.951
+  m_queryRadius 85
+  m_captureTime 600
+  m_sendStatusMessages 1
+  m_statusMessages {
+   "The %1 WIN! They've taken control of %2."
+   "The %1 are taking control of %2."
+   "The %1 are no longer taking control of %2."
+   "The %1 have lost control of %2."
+   "The %1 are losing control of %2."
+   "The %1 are no longer losing control of %2."
+  }
+  m_locationName "the objective"
+  m_playersOnly 1
+  m_ownerFactionKey "GC_INSURGENT"
+  m_ratioThreshold 0.51
+ }
+ CapZoneBlufor {
+  coords 10478.855 160.823 11084.951
+  m_queryRadius 85
+  m_captureTime 600
+  m_sendStatusMessages 1
+  m_statusMessages {
+   "The %1 WINS! They've taken control of %2."
+   "The %1 is taking control of %2."
+   "The %1 is no longer taking control of %2."
+   "The %1 has lost control of %2."
+   "The %1 is losing control of %2."
+   "The %1 is no longer losing control of %2."
+  }
+  m_locationName "the objective"
+  m_setShapeColor 0.175 0.01 0.01 1
+  m_playersOnly 1
+  m_ownerFactionKey "RHS_USAF"
+  m_ratioThreshold 0.51
+ }
+}
 TILW_MissionFrameworkEntity TILW_MissionFramework : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
  coords 10573.509 198.792 10719.378
  angles -0.568 -0.014 1.421
@@ -345,21 +383,5 @@ TILW_MissionFrameworkEntity TILW_MissionFramework : "{8F846D0FD5D6EA51}Prefabs/M
    m_factionKey "RHS_USAF"
    m_casualtyRatio 0.9
   }
- }
-}
-$grp PS_ManualMarker : "{BC5F78D7A380E856}PrefabsEditable/Markers/Group/Marker_GroupFlagsIndfor_Base.et" {
- SpawnMarkerBlufor {
-  coords 10219.005 173.381 10670.203
-  m_sImageSet "{1228936E5DB30403}UI/Textures/GroupManagement/FlagIcons/GroupFlagsBlufor.imageset"
-  m_sImageSetGlow "{D1BFDF90DD7A4E01}UI/Textures/GroupManagement/FlagIcons/GroupFlagsBlufor-outline.imageset"
-  m_MarkerColor 0.016 0.308 0.58 1
-  m_fWorldSize 60
- }
- SpawnMarkerOpfor {
-  coords 10898.086 176.78 10732.891
-  m_sImageSet "{7CD99D22C7AE8195}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor.imageset"
-  m_sImageSetGlow "{B9356E7B2E974DCD}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor-outline.imageset"
-  m_MarkerColor 0.623 0.022 0.022 1
-  m_fWorldSize 90
  }
 }

@@ -24,15 +24,15 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF2 : "{4CFD54745CD45673}Prefabs/MP/Modes/
  components {
   SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
    m_iStartingHours 5
-   m_iStartingMinutes 30
+   m_iStartingMinutes 48
    m_fDayTimeAcceleration 0.1
    m_fNightTimeAcceleration 0.1
    m_bUsePredefineStartingTimeAndWeather 1
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{650415CBAFAE6875}" {
-     m_sWeatherPresetName "Cloudy"
+     m_sWeatherPresetName "Extreme Wind (Thunderstorm}"
      m_iStartingHour 5
-     m_iStartingMinutes 30
+     m_iStartingMinutes 48
     }
    }
    m_bUseSpecifiedDate 1
@@ -45,11 +45,11 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF2 : "{4CFD54745CD45673}Prefabs/MP/Modes/
  m_aFactionRespawnCount {
   PS_FactionRespawnCount "{66C704CE14EE4401}" {
    m_sFactionKey "USSR"
-   m_iCount 10
+   m_iCount 30
   }
   PS_FactionRespawnCount "{66C704CE0AD6274D}" {
    m_sFactionKey "GC_CAF"
-   m_iCount 12
+   m_iCount 6
   }
  }
  m_bDisableArmaVision 1
@@ -417,6 +417,54 @@ $grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit
    }
   }
  }
+ DrawMap_Lobby {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    Enabled 0
+    m_killTimer 15
+    m_factionKeys {
+     "GC_CAF"
+    }
+    m_useFactionColor 0
+    m_lineWidth 5
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+    m_factionKeys {
+     "USSR"
+    }
+    m_drawLine 1
+   }
+  }
+  coords 6036.706 51.948 3596.022
+  angles 0.895 0 0
+  Points {
+   ShapePoint "{66D4DA0395AE4FA9}" {
+    Position -6010.849 55.906 -3578.708
+   }
+   ShapePoint "{66D4DA0389CAA5C9}" {
+    Position 6755.243 56.331 -3605.855
+   }
+   ShapePoint "{66D4DA038D21DCB2}" {
+    Position 6665.658 -212.022 2591.639
+   }
+   ShapePoint "{66D4DA03831FFAD1}" {
+    Position 571.392 339.748 3251.807
+   }
+   ShapePoint "{66D4DA038789E3B6}" {
+    Position -613.309 -94.86 4435.84
+   }
+   ShapePoint "{66D4DA0387105674}" {
+    Position -2432.092 -186.504 5132.697
+   }
+   ShapePoint "{66D4DA0386FE36E8}" {
+    Position -4386.547 -215.714 5247.625
+   }
+   ShapePoint "{66D4DA0384D1D440}" {
+    Position -6075.438 -76.464 4894.624
+   }
+  }
+ }
 }
 $grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
  Sector_West {
@@ -466,6 +514,10 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
    m_name "Time Limit"
    m_instructions {
     TILW_SendMessageInstruction "{6506E408307D3B9A}" {
+     m_messageTitle "Time Limit"
+     m_messageBody "The Mission will end in 60 minutes - At GM's Discretion"
+    }
+    TILW_SendMessageInstruction "{66D4DA0EA5FAB09D}" {
      m_executionDelay 1800
      m_messageTitle "Time Limit"
      m_messageBody "The Mission will end in 30 minutes"
@@ -531,7 +583,8 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
      m_messageTitle "VDV has landed successfully"
      m_messageBody "VDV has established a foothold, fall back to the main compound"\
      ""\
-     "- New AO updated on map"
+     "- New AO updated on map"\
+     "- Final Respawn Wave, no more after this."
      m_factionKeys {
       "GC_CAF"
      }
@@ -545,10 +598,15 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
      m_executionDelay 4
      m_flagName "FallBack"
     }
-    TILW_EditRespawnTicketsInstruction "{66C704CF73792110}" {
+    TILW_EditRespawnTicketsInstruction "{66D4DA0CFC1C5C65}" {
+     m_executionDelay 10
      m_factionKey "GC_CAF"
-     m_operation ADD
-     m_amount 6
+     m_amount 100
+     m_allowSpecRespawn 1
+    }
+    TILW_EditRespawnTicketsInstruction "{66D4DA0A58BF98A1}" {
+     m_executionDelay 40
+     m_factionKey "GC_CAF"
      m_allowSpecRespawn 1
     }
    }
@@ -569,12 +627,14 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
     TILW_EditRespawnTicketsInstruction "{66C704CEE02B1ABF}" {
      m_factionKey "USSR"
      m_operation ADD
-     m_amount 10
+     m_amount 40
      m_allowSpecRespawn 1
     }
     TILW_SendMessageInstruction "{66C704CF4D34EBF7}" {
      m_messageTitle "Reinforcements"
-     m_messageBody "Reinforcements has arrived at the Airfield, requesting airlift to the AO"
+     m_messageBody "Reinforcements has arrived at the Airfield, requesting airlift to the AO"\
+     ""\
+     "- 40x more Respawns added"
      m_factionKeys {
       "USSR"
      }
@@ -590,12 +650,14 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
     TILW_EditRespawnTicketsInstruction "{66C704CE8DDB1EA8}" {
      m_factionKey "USSR"
      m_operation ADD
-     m_amount 10
+     m_amount 40
      m_allowSpecRespawn 1
     }
     TILW_SendMessageInstruction "{66C704CEA3B5B73F}" {
      m_messageTitle "Reinforcements"
-     m_messageBody "Reinforcements has arrived at the Airfield, requesting airlift to the AO"
+     m_messageBody "Reinforcements has arrived at the Airfield, requesting airlift to the AO"\
+     ""\
+     "- 40x more Respawns added"
      m_factionKeys {
       "USSR"
      }
