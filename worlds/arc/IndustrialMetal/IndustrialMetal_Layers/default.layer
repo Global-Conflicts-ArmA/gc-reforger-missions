@@ -1,0 +1,142 @@
+SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
+ coords 7759.032 0 4013.224
+}
+PerceptionManager PerceptionManager2 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 7800.26 0 4023.763
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66E3761341CE331C}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 16
+     m_iStartingMinutes 30
+    }
+   }
+   m_bDateOverride 1
+   m_iMonth 8
+   m_iYear 2025
+  }
+ }
+ coords 7778.027 0 3997.521
+ m_iFreezeTime 180000
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "GC_CDF"
+    }
+   }
+  }
+  coords 7734.777 0 4098.608
+  Points {
+   ShapePoint "{66E3761FF8592DFC}" {
+    Position -150.53 0 -138.795
+   }
+   ShapePoint "{66E3761FF9DFFA7F}" {
+    Position -612.194 0 172.786
+   }
+   ShapePoint "{66E3761FF0D6B4CC}" {
+    Position -274.182 -0 547.121
+   }
+   ShapePoint "{66E3761FF2FFCCCE}" {
+    Position 157.233 -0 503.995
+   }
+  }
+ }
+ {
+  components {
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+   }
+  }
+  coords 7480.929 0 3687.923
+  Points {
+   ShapePoint "{66E3761E1AEC514B}" {
+    Position 996.825 -0 849.312
+   }
+   ShapePoint "{66E3761E1B20B478}" {
+    Position -205.957 0 -691.565
+   }
+   ShapePoint "{66E3761E144F5BFB}" {
+    Position -1222.78 0 244.107
+   }
+   ShapePoint "{66E3761E16E4BABD}" {
+    Position -20 -0 1680.112
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 7780.228 0 3978.597
+ m_missionEvents {
+  TILW_MissionEvent "{66E376152AE4355F}" {
+   m_name "TIME_LIMIT"
+   m_instructions {
+    TILW_SendMessageInstruction "{66E3761520C368F7}" {
+     m_executionDelay 2705
+     m_messageTitle "CDF VICTORY"
+     m_messageBody "Time limit reached."
+    }
+    TILW_EndGameInstruction "{66E37615340F88EA}" {
+     m_executionDelay 2715
+     m_factionKey "GC_CDF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66E3761526660634}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{66E376150CA909CB}" {
+   m_name "RU_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{66E3761520C368F7}" {
+     m_messageTitle "CDF VICTORY"
+     m_messageBody "Russian forces have taken significant casualties."
+    }
+    TILW_EndGameInstruction "{66E37615340F88EA}" {
+     m_executionDelay 15
+     m_factionKey "GC_CDF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66E376150EE8BE6E}" {
+    m_flagName "RU_KIA"
+   }
+  }
+  TILW_MissionEvent "{66E3761514B5AEEC}" {
+   m_name "CDF_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{66E3761520C368F7}" {
+     m_messageTitle "AFRF VICTORY"
+     m_messageBody "The CDF has taken significant casualties."
+    }
+    TILW_EndGameInstruction "{66E37615340F88EA}" {
+     m_executionDelay 15
+     m_factionKey "RHS_AFRF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66E376150EE8BE6E}" {
+    m_flagName "CDF_KIA"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{66E3761554A9E4AC}" {
+   m_flagName "RU_KIA"
+   m_factionKey "RHS_AFRF"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{66E376155249E2D7}" {
+   m_flagName "CDF_KIA"
+   m_factionKey "GC_CDF"
+   m_casualtyRatio 0.9
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 6631.145 25.154 3905.466
+}
