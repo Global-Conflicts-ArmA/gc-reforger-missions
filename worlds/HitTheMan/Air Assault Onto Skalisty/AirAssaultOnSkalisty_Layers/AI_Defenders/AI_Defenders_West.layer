@@ -1,0 +1,269 @@
+$grp SCR_DefendWaypoint : "{1E4818C263E3AB78}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small_CO_Interior.et" {
+ DefInside_WPWest_US_1 {
+  coords 10083.268 25.303 1858.653
+  CompletionRadius 15
+ }
+ DefInside_WPWest_US_2 {
+  coords 10036.031 42.609 1790.726
+  CompletionRadius 3
+ }
+ DefInside_WPWest_US_3 {
+  coords 10038.127 48.395 1791.895
+  CompletionRadius 4
+ }
+}
+$grp SCR_DefendWaypoint : "{4ECD14650D82F5CA}Prefabs/AI/Waypoints/AIWaypoint_Loiter_CO.et" {
+ Def_WPWest_US_1 {
+  coords 10116.115 19.45 1888.3
+  CompletionRadius 80
+ }
+ Def_WPWest_US_2 {
+  coords 10314.691 22.436 1709.841
+  CompletionRadius 80
+ }
+ Def_WPWest_US_3 {
+  coords 10267.056 28.817 1813.86
+  CompletionRadius 80
+ }
+ Def_WPWest_US_4 {
+  coords 10056.521 35.567 1789.74
+  CompletionRadius 60
+ }
+ Def_WPWest_US_5 {
+  coords 10474.637 31.252 1694.531
+  CompletionRadius 60
+ }
+}
+$grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
+ AI_SpawnWest_1 {
+  coords 10136.316 19.766 1881.542
+  angles 0 74.431 0
+  m_prefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+  m_conditionFlag "SpawnEast"
+  m_spawnTimings {
+   3
+  }
+  m_waypointNames {
+   "Def_WPWest_US_1"
+  }
+ }
+ AI_SpawnWest_2 {
+  coords 10279.04 17.587 1678.502
+  angles 0 74.431 0
+  m_prefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+  m_conditionFlag "SpawnEast"
+  m_spawnTimings {
+   4
+  }
+  m_waypointNames {
+   "Def_WPWest_US_2"
+  }
+ }
+ AI_SpawnWest_3 {
+  coords 10286.631 29.25 1841.616
+  angles 0 74.431 0
+  m_prefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+  m_conditionFlag "SpawnEast"
+  m_spawnTimings {
+   5
+   6
+  }
+  m_waypointNames {
+   "Def_WPWest_US_3"
+  }
+ }
+ AI_SpawnWest_4 {
+  coords 10079.174 28.09 1780.889
+  angles 0 116.078 0
+  m_prefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+  m_conditionFlag "SpawnEast"
+  m_spawnTimings {
+   2
+  }
+  m_waypointNames {
+   "Def_WPWest_US_4"
+  }
+ }
+ LAV25_Spawn_South_1 {
+  coords 10293.18 28.49 1821.928
+  angles -3.561 -95.283 0.329
+  m_prefab "{3312ADBF53A16DD8}Prefabs/Vehicles/Wheeled/LAV25/LAV25_RHS.et"
+  m_conditionFlag "SpawnEast"
+  m_spawnTimings {
+   8
+  }
+  m_crewConfig TILW_CrewConfig "{655288DD15A9F6AC}" {
+   m_crewGroups {
+    TILW_CrewGroup "{651028E34B0E58D9}" {
+     m_crewStations {
+      TILW_CrewStation "{651028E349419D3E}" {
+       m_allowCargo 0
+       m_characters {
+        "{D75570BC69E802A7}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_Vehicle_Commander_1_AI.et"
+        "{661FC333B3EE3AF3}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_Vehicle_Gunner_1_AI.et"
+       }
+      }
+     }
+    }
+   }
+   m_noTurretDismount 1
+   m_useIdleGroups 0
+  }
+ }
+ AI_SpawnWest_5 {
+  coords 10497.289 23.775 1685.68
+  angles 0 116.078 0
+  m_prefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+  m_conditionFlag "SpawnEast"
+  m_spawnTimings {
+   7
+  }
+  m_waypointNames {
+   "Def_WPWest_US_4"
+  }
+ }
+}
+TILW_FactionTriggerEntity AI_Spawn_Trigger_1 : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 10242.017 -1905.359 1788.354
+ m_queryRadius 2000
+ m_locationName "HQ Building"
+ m_flagName "SpawnEast"
+ m_stopAfterFirstChange 1
+ m_drawShapeOutline 0
+ m_ownerFactionKey "USSR"
+ m_ratioThreshold 0.001
+}
+$grp SCR_AIGroup : "{CCF5BB1B99D150E4}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_Rifle_Sect.et" {
+ AIInside_SpawnWest_1 {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "Wedge"
+   }
+  }
+  coords 10084.059 26.037 1856.327
+  angles 0 -177.773 0
+  m_aUnitPrefabSlots {
+   "{9FB82322D0798CEE}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_1IC_1_AI.et"
+   "{646FAFEE922316F5}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_AR_1_AI.et"
+   "{F1AFDEA32E60A294}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_MG_1_AI.et"
+   "{6CD86521FAE527A4}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_MG2_1_AI.et"
+   "{907A4F6D1D74CAF9}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_RF_1_AI.et"
+   "{907A4F6D1D74CAF9}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_RF_1_AI.et"
+  }
+  m_bSnapToTerrain 0
+  m_aStaticWaypoints {
+   "DefInside_WPWest_US_1"
+  }
+ }
+ AIInside_SpawnWest_2 {
+  coords 10037.479 41.65 1790.293
+  angles 0 -177.773 0
+  m_aUnitPrefabSlots {
+   "{9FB82322D0798CEE}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_1IC_1_AI.et"
+   "{646FAFEE922316F5}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_AR_1_AI.et"
+  }
+  m_bSnapToTerrain 0
+  m_aStaticWaypoints {
+   "DefInside_WPWest_US_2"
+  }
+ }
+ AIInside_SpawnWest_3 {
+  coords 10037.705 46.796 1789.984
+  angles 0 -155.508 0
+  m_aUnitPrefabSlots {
+   "{646FAFEE922316F5}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_AR_1_AI.et"
+  }
+  m_bSnapToTerrain 0
+  m_aStaticWaypoints {
+   "DefInside_WPWest_US_3"
+  }
+ }
+ AIInside_SpawnWest_4 {
+  coords 10035.357 41.201 1793.985
+  angles 0 -24.354 0
+  m_aUnitPrefabSlots {
+   "{646FAFEE922316F5}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_AR_1_AI.et"
+  }
+  m_bSnapToTerrain 0
+ }
+ AIInside_SpawnWest_5 {
+  coords 10038.826 41.201 1789.23
+  angles 0 171.68 0
+  m_aUnitPrefabSlots {
+   "{F1AFDEA32E60A294}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_MG_1_AI.et"
+  }
+  m_bSnapToTerrain 0
+ }
+ AIInside_SpawnWest_6 {
+  coords 10041.158 46.739 1794.114
+  angles 0 43.427 0
+  m_aUnitPrefabSlots {
+   "{F1AFDEA32E60A294}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_MG_1_AI.et"
+  }
+  m_bSnapToTerrain 0
+ }
+ AIInside_SpawnWest_7 {
+  coords 11197.1 49.699 1256.752
+  angles 0 -169.383 0
+  m_aUnitPrefabSlots {
+   "{F1AFDEA32E60A294}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_MG_1_AI.et"
+  }
+  m_bSnapToTerrain 0
+ }
+ AIInside_SpawnWest_8 {
+  coords 11195.492 49.45 1263.929
+  angles 0 -45.594 0
+  m_aUnitPrefabSlots {
+   "{F1AFDEA32E60A294}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_MG_1_AI.et"
+  }
+  m_bSnapToTerrain 0
+ }
+ AIInside_SpawnWest_9 {
+  coords 11199.41 49.468 1259.078
+  angles 0 100.133 0
+  m_aUnitPrefabSlots {
+   "{646FAFEE922316F5}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_AR_1_AI.et"
+  }
+  m_bSnapToTerrain 0
+ }
+ AIInside_SpawnWest_10 {
+  coords 11196.191 55.776 1261.339
+  angles 0 -169.383 0
+  m_aUnitPrefabSlots {
+   "{F1AFDEA32E60A294}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_MG_1_AI.et"
+  }
+  m_bSnapToTerrain 0
+ }
+ AIInside_SpawnWest_11 {
+  coords 11195.654 55.006 1263.884
+  angles 0 -59.551 0
+  m_aUnitPrefabSlots {
+   "{F1AFDEA32E60A294}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_MG_1_AI.et"
+  }
+  m_bSnapToTerrain 0
+ }
+ AIInside_SpawnWest_12 {
+  coords 11197.062 55.061 1257.113
+  angles 0 -169.383 0
+  m_aUnitPrefabSlots {
+   "{646FAFEE922316F5}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_AR_1_AI.et"
+  }
+  m_bSnapToTerrain 0
+ }
+ AIInside_SpawnWest_13 {
+  coords 11086.536 47.591 1626.315
+  angles 0 -169.383 0
+  m_aUnitPrefabSlots {
+   "{F1AFDEA32E60A294}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_MG_1_AI.et"
+  }
+  m_bSnapToTerrain 0
+ }
+ AIInside_SpawnWest_14 {
+  coords 11105.543 50.784 1633.931
+  angles 0 -48.852 0
+  m_aUnitPrefabSlots {
+   "{F1AFDEA32E60A294}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_MG_1_AI.et"
+  }
+  m_bSnapToTerrain 0
+ }
+}
