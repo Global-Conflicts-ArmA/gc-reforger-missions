@@ -1,0 +1,68 @@
+$grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
+ CAFInf_CounterTown_Spawn_1 {
+  coords 4889.375 167.844 3657.453
+  angleY -137.912
+  m_prefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+  m_conditionFlag "SouthCounter"
+  m_spawnTimings {
+   20
+  }
+  m_waypointNames {
+   "CounterAttack"
+  }
+ }
+ CAFInf_CounterTown_Spawn_2 {
+  coords 4734.614 165.071 3910.566
+  angleY -145.675
+  m_prefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+  m_conditionFlag "WestCounter"
+  m_spawnTimings {
+   20 80
+  }
+  m_waypointNames {
+   "CounterAttack2"
+  }
+ }
+ CAFInf_CounterTown_Spawn_3 {
+  coords 4812.552 164.97 3700.135
+  angleY -137.912
+  m_prefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+  m_conditionFlag "SouthCounter"
+  m_spawnTimings {
+   80
+  }
+  m_waypointNames {
+   "CounterAttack"
+  }
+ }
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ WestCounter_Trigger {
+  coords 4686.287 163.776 3847.365
+  m_queryRadius 200
+  m_locationName "the Powerstation"
+  m_flagName "WestCounter"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "GC_NVA"
+  m_ratioThreshold 0.01
+ }
+ SouthCounter_Trigger {
+  coords 4816.639 168.223 3632.616
+  m_queryRadius 200
+  m_locationName "the Powerstation"
+  m_flagName "SouthCounter"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "GC_NVA"
+  m_ratioThreshold 0.01
+ }
+}
+$grp SCR_SearchAndDestroyWaypoint : "{B3E7B8DC2BAB8ACC}Prefabs/AI/Waypoints/AIWaypoint_SearchAndDestroy.et" {
+ CounterAttack {
+  coords 4669.72 171.846 3475.012
+  CompletionRadius 100
+ }
+ CounterAttack2 {
+  coords 4538.589 161.937 3882.828
+  CompletionRadius 100
+ }
+}

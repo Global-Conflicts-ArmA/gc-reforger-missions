@@ -1,0 +1,112 @@
+$grp TILW_ExtractionTriggerEntity : "{192ABD6B9232E064}Prefabs/Logic/Triggers/TILW_ExtractionTrigger.et" {
+ us_extr {
+  coords 11367.664 87.142 10472.439
+  m_queryRadius 175
+  m_flagName "us_extr"
+  m_stopAfterFirstChange 1
+  m_drawShapeSurface 0
+  m_factionKey "US"
+  m_ratioThreshold 0.7
+ }
+ no_tp2 {
+  coords 10436.824 111.33 10221.318
+  m_queryRadius 350
+  m_flagName "no_tp2"
+  m_stopAfterFirstChange 1
+  m_drawShapeSurface 0
+  m_factionKey "US"
+  m_ratioThreshold 0.333
+ }
+}
+TILW_PresenceTriggerEntity heli_5m : "{826E6F2246328952}Prefabs/Logic/Triggers/TILW_PresenceTrigger.et" {
+ coords 10549.805 127.262 10354.169
+ m_queryRadius 2500
+ m_captureTime 300
+ m_flagName "heli_5m"
+ m_stopAfterFirstChange 1
+ m_drawShapeSurface 0
+ m_drawShapeOutline 0
+ m_entityNames {
+  "AH1S_Marines"
+ }
+}
+TILW_MissionFrameworkEntity fw : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ m_missionEvents {
+  TILW_MissionEvent "{66DB544E4AED9186}" {
+   m_name "Helicopter Tickets"
+   m_instructions {
+    TILW_EditRespawnTicketsInstruction "{66DB544E52812E5E}" {
+     m_factionKey "GC_SEPARATIST"
+     m_operation ADD
+     m_amount 5
+    }
+   }
+   m_condition TILW_LiteralTerm "{66DB544E48B8DDE7}" {
+    m_flagName "heli_5m"
+   }
+  }
+  TILW_MissionEvent "{66DB544E81BC70CE}" {
+   m_name "US Defeat"
+   m_instructions {
+    TILW_SendMessageInstruction "{66DB544E8D8B39D9}" {
+     m_messageTitle "US DEFEAT"
+     m_messageBody "The LAR platoon took severe casualties."
+    }
+   }
+   m_condition TILW_LiteralTerm "{66DB544E888D1B9E}" {
+    m_flagName "us_cas"
+   }
+  }
+  TILW_MissionEvent "{66DC174991E4D6CF}" {
+   m_name "Mission Start"
+   m_instructions {
+    TILW_SetFlagInstruction "{66DC17499C12A1D8}" {
+     m_executionDelay 0
+     m_flagName "tp1"
+    }
+    TILW_SetFlagInstruction "{66DC1749E2E64847}" {
+     m_executionDelay 0
+     m_flagName "tp2"
+    }
+    TILW_SendMessageInstruction "{66DC1749E89EAC1B}" {
+     m_executionDelay 2700
+     m_messageTitle "US DEFEAT"
+     m_messageBody "The LAR platoon did not complete its mission in time."
+    }
+   }
+   m_condition TILW_LiteralTerm "{66DC17499AA9B4A3}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{66DC174866468EA4}" {
+   m_name "US Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{66DC174874BE576B}" {
+     m_messageTitle "US VICTORY"
+     m_messageBody "The LAR platoon completed its mission and arrived at Le Rocher."
+    }
+   }
+   m_condition TILW_LiteralTerm "{66DC174865AFA5F4}" {
+    m_flagName "us_extr"
+   }
+  }
+  TILW_MissionEvent "{66DC174FA4129E70}" {
+   m_name "Disable TP2"
+   m_instructions {
+    TILW_ClearFlagInstruction "{66DC174F8125ADCD}" {
+     m_flagName "tp2"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66DC174FABFD0A05}" {
+    m_flagName "no_tp2"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{66DB544EB522A486}" {
+   m_flagName "us_cas"
+   m_factionKey "US"
+   m_casualtyRatio 0.8
+  }
+ }
+}

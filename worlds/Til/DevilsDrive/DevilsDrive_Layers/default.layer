@@ -1,0 +1,262 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66D8DEDD28E88C20}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 12
+     m_iStartingMinutes 30
+    }
+   }
+  }
+ }
+ m_iFreezeTime 300000
+ m_safeStartTime 120
+ {
+  SCR_FactionManager "668CC1A158FDF893" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     UIInfo SCR_FactionUIInfo "{528C961236B7DCD3}" {
+      Name "2nd AD"
+      Icon "{F26D4640C79D4B2F}Images/flag_us_2ad.edds"
+      m_sNameUpper "2nd AD"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" : "{4F81B91B436B51FE}Configs/Callsigns/Callsigns_US_Armor.conf" {
+     }
+    }
+    SCR_Faction "{652F615735715119}" {
+     UIInfo SCR_FactionUIInfo "{65C4CC57CC9F23DA}" {
+      Name "LStR-40 | 9. PD"
+      m_sNameUpper "LStR-40 | 9. PD"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "30"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "31"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "32"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "33"
+       }
+       SCR_CallsignInfo "{64E2F896E232A50B}" {
+        m_sCallsign "Falke-1"
+       }
+       SCR_CallsignInfo "{64E2F896FFC45153}" {
+        m_sCallsign "Falke-2"
+       }
+       SCR_CallsignInfo "{64E2F896FFF772BB}" {
+        m_sCallsign "2327"
+       }
+       SCR_CallsignInfo "{64E2F896F01D8C83}" {
+        m_sCallsign "2328"
+       }
+       SCR_CallsignInfo "{64E2F896F044B7B6}" {
+        m_sCallsign "2329"
+       }
+       SCR_CallsignInfo "{64E2F896F0699D6A}" {
+        m_sCallsign "2710"
+       }
+       SCR_CallsignInfo "{64E2F896F08C1FC2}" {
+        m_sCallsign "2711"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3%4"
+      m_sCallsignCharacterWithRoleFormat "%3 %4"
+     }
+    }
+   }
+  }
+ }
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ ao_nva {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "GC_NVA"
+    }
+    m_ignoredVehicles {
+     "{38DE44985B0AD338}Prefabs/Vehicles/Helicopters/Mi24/Mi24P_base.et"
+    }
+    m_lineWidth 5
+   }
+  }
+  coords 4300 62.065 5600
+  Points {
+   ShapePoint "{668CC1B365863052}" {
+    Position 0 0 0
+   }
+   ShapePoint "{668CC1B36EC555CB}" {
+    Position 0 0 -200
+   }
+   ShapePoint "{668CC1B37EA99FC5}" {
+    Position 600 -14.091 -800
+   }
+   ShapePoint "{668CC1B23186CDDE}" {
+    Position 1000 -13.626 -800
+   }
+   ShapePoint "{668CC1B2781B3256}" {
+    Position 1600 -10.67 -200
+   }
+   ShapePoint "{668CC1B2A8975E0A}" {
+    Position 1600 -11.326 400
+   }
+   ShapePoint "{668CC1B167D40B15}" {
+    Position 1500 -10.368 500
+   }
+   ShapePoint "{668CC1B140A58264}" {
+    Position 1500 -9.096 1100
+   }
+   ShapePoint "{668CC1BB87E0311E}" {
+    Position 800 13.155 1100
+   }
+   ShapePoint "{668CC1B2E6943CAA}" {
+    Position 700 12.529 1000
+   }
+   ShapePoint "{668CC1B2BF427AFD}" {
+    Position 700 11.189 500
+   }
+   ShapePoint "{668CC1B28C1ABBEA}" {
+    Position 300 11.867 100
+   }
+   ShapePoint "{668CC1B2BDFC8A08}" {
+    Position 100 9.225 100
+   }
+  }
+  {
+   PolylineShapeEntity ao_us : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+    components {
+     TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+      m_factionKeys {
+       "US"
+      }
+      m_lineWidth 6
+     }
+     TILW_MapShapeComponent "{6508F54F9B461198}" {
+      Enabled 1
+      m_color 0 0 0 0.5
+     }
+    }
+    coords 0 0 0
+    Points {
+     ShapePoint "{668CC1B365863052}" {
+      Position 0 0 0
+     }
+     ShapePoint "{668CC1B36EC555CB}" {
+      Position 0 0 -200
+     }
+     ShapePoint "{668CC1B37EA99FC5}" {
+      Position 600 -14.091 -800
+     }
+     ShapePoint "{668CC1B23186CDDE}" {
+      Position 1000 -13.626 -800
+     }
+     ShapePoint "{668CC1B2781B3256}" {
+      Position 1600 -10.67 -200
+     }
+     ShapePoint "{668CC1B2A8975E0A}" {
+      Position 1600 -11.326 400
+     }
+     ShapePoint "{668CC1B167D40B15}" {
+      Position 1500 -10.368 500
+     }
+     ShapePoint "{668CC1B140A58264}" {
+      Position 1500 -9.096 1400
+     }
+     ShapePoint "{668CC1B14DA5BF1E}" {
+      Position 1700 -8.171 1600
+     }
+     ShapePoint "{668CC1B18E96E005}" {
+      Position 1900 -8.53 1600
+     }
+     ShapePoint "{668CC1B19C89DB98}" {
+      Position 2200 -9.637 1900
+     }
+     ShapePoint "{668CC1B1F587C338}" {
+      Position 2200 -12.534 2200
+     }
+     ShapePoint "{668CC1B1FD3431B0}" {
+      Position 2100 -9.359 2300
+     }
+     ShapePoint "{668CC1B1C7BBD178}" {
+      Position 1500 -6.571 2300
+     }
+     ShapePoint "{668CC1B020F323C4}" {
+      Position 900 10.235 1700
+     }
+     ShapePoint "{668CC1B1D229291D}" {
+      Position 900 9.267 1200
+     }
+     ShapePoint "{668CC1B2E6943CAA}" {
+      Position 700 12.529 1000
+     }
+     ShapePoint "{668CC1B2BF427AFD}" {
+      Position 700 11.189 500
+     }
+     ShapePoint "{668CC1B28C1ABBEA}" {
+      Position 300 11.867 100
+     }
+     ShapePoint "{668CC1B2BDFC8A08}" {
+      Position 100 9.225 100
+     }
+    }
+   }
+  }
+ }
+ ao_nva_air {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_killTimer 40
+    m_factionKeys {
+     "GC_NVA"
+    }
+    m_visibility NONE
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+    m_color 0 0 0 1
+   }
+  }
+  coords 2000 63.906 1000
+  Points {
+   ShapePoint "{6697151522B92E08}" {
+    Position 0 0 0
+   }
+   ShapePoint "{6697151526CDE879}" {
+    Position 6000 0 0
+   }
+   ShapePoint "{669715152AB6B743}" {
+    Position 6000 0 7000
+   }
+   ShapePoint "{669715152C1DE7B9}" {
+    Position 0 0 7000
+   }
+  }
+ }
+}
+$grp SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ restric_us {
+  coords 6014.954 55.344 7607.778
+  m_fWarnRadius 175
+  m_fZoneRadius 225
+  m_fZoneTeleportedRadius 250
+ }
+ restric_nva {
+  coords 6527.498 96.656 1264.464
+  m_fWarnRadius 75
+  m_fZoneRadius 250
+  m_fZoneTeleportedRadius 300
+ }
+}
