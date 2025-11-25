@@ -1,0 +1,229 @@
+SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
+ coords 6016.315 419.453 6347.044
+}
+PerceptionManager PerceptionManager2 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 6008.819 420.185 6369.589
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66E56C9F7424A193}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingMinutes 30
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 4
+   m_iMonth 9
+   m_iYear 1995
+  }
+ }
+ coords 6003.665 420.787 6372.926
+ m_iFreezeTime 180000
+}
+SCR_EditorRestrictionZoneEntity : "{6144B0BE2EAC6897}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneMedium.et" {
+ coords 4291.027 409.207 5814.913
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ {
+  components {
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+   }
+  }
+  coords 4650.892 404.474 5426.346
+  Points {
+   ShapePoint "{66E4D602B8BF6876}" {
+    Position -348.969 0 646.7
+   }
+   ShapePoint "{66E4D602B932F15F}" {
+    Position -638.198 0 239.334
+   }
+   ShapePoint "{66E4D602BBB2888E}" {
+    Position -65.891 0 -233.944
+   }
+   ShapePoint "{66E4D602BB5C1A32}" {
+    Position 23.268 0 -358.7
+   }
+   ShapePoint "{66E4D602B5AE793E}" {
+    Position 200.712 0 -466.483
+   }
+   ShapePoint "{66E4D602B6C1D9D5}" {
+    Position 373.691 0 -392.178
+   }
+   ShapePoint "{66E4D602B65A261F}" {
+    Position 452.474 0 -443.857
+   }
+   ShapePoint "{66E4D602B00A4B9D}" {
+    Position 641.515 0 -483.587
+   }
+   ShapePoint "{66E4D6028C2AF73A}" {
+    Position 945.124 0 -302.483
+   }
+   ShapePoint "{66E4D6028E904B47}" {
+    Position 961.477 0 -4.505
+   }
+   ShapePoint "{66E4D60284C112BB}" {
+    Position 877.852 0 96.667
+   }
+   ShapePoint "{66E4D60286F14E92}" {
+    Position 875.069 0 256.55
+   }
+   ShapePoint "{66E4D60286533C6C}" {
+    Position 804.872 3.376 387.909
+   }
+   ShapePoint "{66E4D60281E7168A}" {
+    Position 447.052 0 261.644
+   }
+   ShapePoint "{66E4D602813E75BC}" {
+    Position 242.802 0 209.063
+   }
+  }
+ }
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "GC_SEPARATIST"
+    }
+   }
+  }
+  coords 5210.267 411.11 5373.819
+  Points {
+   ShapePoint "{66E4D601FDC1D78C}" {
+    Position 318.585 0 148.793
+   }
+   ShapePoint "{66E4D601FD3D1455}" {
+    Position 317.055 0 306.365
+   }
+   ShapePoint "{66E4D601FEB0EF14}" {
+    Position 244.414 0 438.723
+   }
+   ShapePoint "{66E4D601FF8D90BD}" {
+    Position -108.283 0 309.639
+   }
+   ShapePoint "{66E4D601F875AB29}" {
+    Position -313.467 0 259.398
+   }
+   ShapePoint "{66E4D601F953592E}" {
+    Position -614.554 0 -170.073
+   }
+   ShapePoint "{66E4D601FACA7FC9}" {
+    Position -533.155 0 -295.049
+   }
+   ShapePoint "{66E4D601FA3745D2}" {
+    Position -355.276 0 -404.115
+   }
+   ShapePoint "{66E4D601FB8D8EB0}" {
+    Position -184.614 0 -327.931
+   }
+   ShapePoint "{66E4D601F4FAFF32}" {
+    Position -107.464 0 -381.803
+   }
+   ShapePoint "{66E4D601F4043AF3}" {
+    Position 76.299 0 -421.103
+   }
+   ShapePoint "{66E4D601F543FB91}" {
+    Position 370.82 0 -239.001
+   }
+   ShapePoint "{66E4D601F6DA3D16}" {
+    Position 397.357 0 51.834
+   }
+  }
+ }
+}
+TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 5351.424 403.156 5306.196
+ m_queryRadius 30
+ m_captureTime 120
+ m_sendStatusMessages 1
+ m_locationName "the sawmill"
+ m_flagName "RU_CAP"
+ m_stopAfterFirstChange 1
+ m_playersOnly 1
+ m_ownerFactionKey "RHS_AFRF"
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 6011.148 419.812 6352.504
+ m_missionEvents {
+  TILW_MissionEvent "{66E56C9E1FC1B20D}" {
+   m_name "TIME_LIMIT"
+   m_instructions {
+    TILW_SendMessageInstruction "{66E56C9E148A338A}" {
+     m_executionDelay 2885
+     m_messageTitle "CHECHEN VICTORY"
+     m_messageBody "Time limit reached."
+    }
+    TILW_EndGameInstruction "{66E56C9EEA683E6A}" {
+     m_executionDelay 2895
+     m_factionKey "GC_SEPARATIST"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66E56C9E1BD0CDE5}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{66E56C9EE2797B1B}" {
+   m_name "RU_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{66E56C9E148A338A}" {
+     m_messageTitle "CHECHEN VICTORY"
+     m_messageBody "Russian forces have taken significant casualties."
+    }
+    TILW_EndGameInstruction "{66E56C9EEA683E6A}" {
+     m_executionDelay 15
+     m_factionKey "GC_SEPARATIST"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66E56C9E1BD0CDE5}" {
+    m_flagName "RU_KIA"
+   }
+  }
+  TILW_MissionEvent "{66E56C9EBD99640D}" {
+   m_name "SEP_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{66E56C9E148A338A}" {
+     m_messageTitle "RUSSIAN VICTORY"
+     m_messageBody "Chechen forces have taken significant casualties."
+    }
+    TILW_EndGameInstruction "{66E56C9EEA683E6A}" {
+     m_executionDelay 15
+     m_factionKey "RHS_AFRF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66E56C9E1BD0CDE5}" {
+    m_flagName "SEP_KIA"
+   }
+  }
+  TILW_MissionEvent "{66E56C9E8136EBFC}" {
+   m_name "RU_CAP"
+   m_instructions {
+    TILW_SendMessageInstruction "{66E56C9E9B8EFBDF}" {
+     m_messageTitle "RUSSIAN VICTORY"
+     m_messageBody "The sawmill has been seized by Russian forces."
+    }
+    TILW_EndGameInstruction "{66E56C996D9DBEB1}" {
+     m_executionDelay 15
+     m_factionKey "RHS_AFRF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66E56C9E9C5A2ADE}" {
+    m_flagName "RU_CAP"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{66E56C9E35A3C8BC}" {
+   m_flagName "RU_KIA"
+   m_factionKey "RHS_AFRF"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{66E56C9E0ED5E640}" {
+   m_flagName "SEP_KIA"
+   m_factionKey "GC_SEPARATIST"
+   m_casualtyRatio 0.9
+  }
+ }
+}

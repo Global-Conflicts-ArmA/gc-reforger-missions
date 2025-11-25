@@ -1,0 +1,207 @@
+SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
+ coords 2368.602 0 4907.127
+}
+PerceptionManager PerceptionManager2 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 2372.129 0 4887.04
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bRandomStartingDaytime 1
+   m_bRandomStartingDaytimeRange 1
+   m_iRangeHoursStart 7
+   m_iRangeHoursEnd 18
+   m_bRandomStartingWeather 1
+   m_bUseSpecifiedDate 1
+   m_iSetYear 2025
+  }
+ }
+ coords 2360.578 0 4912.484
+ {
+  SCR_FactionManager "66E33A437BF8DBA0" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792829053B0}" {
+        m_sCallsign "Paladin-"
+       }
+       SCR_CallsignInfo "{55CCB79282A19687}" {
+        m_sCallsign "Crusader-"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{47B7E8CA1935BB28}PrefabsEditable/SupportStationSystems/E_SupportStationSystem_Fuel.et" {
+ components {
+  SCR_FuelSupportStationComponent "{5E1CF311DF6C3CBE}" {
+   m_fRange 550
+  }
+  SCR_RepairSupportStationComponent "{66E33A43FF0BBBB3}" {
+   m_eSupportStationPriority HIGH
+   m_fRange 550
+   m_iSupplyCostDamageHealed 0
+   m_iSuppliesPerDoTHealed 0
+  }
+ }
+ coords 2755.659 24.218 5092.565
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 2379.527 0 4903.097
+ m_missionEvents {
+  TILW_MissionEvent "{66E2CDBFFF68C639}" {
+   m_name "ASSIGN_WP"
+   m_instructions {
+    TILW_AssignWaypointsInstruction "{66E2CDBFF4A3AB61}" {
+     m_groupName "S1HQ"
+     m_waypointNames {
+      "S1HQW"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{66E2CDBFCC9B168E}" {
+     m_groupName "S1SQD1"
+     m_waypointNames {
+      "S1SQD1W"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{66E2CDBFC41376DC}" {
+     m_groupName "S1SQD2"
+     m_waypointNames {
+      "S1SQD2W"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{66E2CDBFC10A46DA}" {
+     m_groupName "S1SQD3"
+     m_waypointNames {
+      "S1SQD3W"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{66E2CDBFDFE5DEB2}" {
+     m_groupName "S2HQ"
+     m_waypointNames {
+      "S2HQW"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{66E2CDBFD772D76C}" {
+     m_groupName "S2SQD1"
+     m_waypointNames {
+      "S2SQD1W"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{66E2CDBFAC121A69}" {
+     m_groupName "S2SQD2"
+     m_waypointNames {
+      "S2SQD2W"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{66E2CDBFA94CB888}" {
+     m_groupName "S2SQD3"
+     m_waypointNames {
+      "S2SQD3W"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{66E2CDBFA66AB201}" {
+     m_groupName "S3HQ"
+     m_waypointNames {
+      "S3HQW"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{66E2CDBFBD927B95}" {
+     m_groupName "S3SQD1"
+     m_waypointNames {
+      "S3SQD1W"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{66E2CDBFBB933B04}" {
+     m_groupName "S3SQD2"
+     m_waypointNames {
+      "S3SQD2W"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{66E2CDBFB1AACADD}" {
+     m_groupName "S3SQD3"
+     m_waypointNames {
+      "S3SQD3W"
+     }
+    }
+    TILW_AssignWaypointsInstruction "{66E2CDBF8D11DC17}" {
+     m_groupName "S4HQ"
+     m_waypointNames {
+      "S4HQW"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{66E2CDBFFA546626}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{66E33A42E69191F1}" {
+   m_name "TIME_LIMIT"
+   m_instructions {
+    TILW_SendMessageInstruction "{66E33A42FD63D16C}" {
+     m_executionDelay 4505
+     m_messageTitle "DEFEAT"
+     m_messageBody "Time limit reached."
+    }
+    TILW_EndGameInstruction "{66E33A42F023A9CC}" {
+     m_executionDelay 4515
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "RHS_AFRF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66E33A42E1AE7772}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{66E33A42C46913A5}" {
+   m_name "RU_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{66E33A42FD63D16C}" {
+     m_messageTitle "DEFEAT"
+     m_messageBody "Russian forces have taken significant casualties."
+    }
+    TILW_EndGameInstruction "{66E33A42F023A9CC}" {
+     m_executionDelay 15
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "RHS_AFRF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66E33A42E1AE7772}" {
+    m_flagName "RU_KIA"
+   }
+  }
+  TILW_MissionEvent "{66E33A42D651C4DD}" {
+   m_name "SEP_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{66E33A42FD63D16C}" {
+     m_messageTitle "VICTORY"
+     m_messageBody "Separatist forces occupying AO Mars have taken significant casualties."
+    }
+    TILW_EndGameInstruction "{66E33A42F023A9CC}" {
+     m_executionDelay 15
+     m_factionKey "RHS_AFRF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66E33A42E1AE7772}" {
+    m_flagName "SEP_KIA"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{66E33A42169FF765}" {
+   m_flagName "RU_KIA"
+   m_factionKey "RHS_AFRF"
+   m_casualtyRatio 0.8
+  }
+  TILW_FactionAIKilledFlag "{66E33A42EEF50355}" {
+   m_flagName "SEP_KIA"
+   m_factionKey "GC_SEPARATIST"
+   m_casualtyRatio 0.8
+  }
+ }
+}

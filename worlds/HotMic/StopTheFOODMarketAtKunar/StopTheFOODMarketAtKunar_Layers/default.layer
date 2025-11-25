@@ -1,5 +1,28 @@
-SCR_AIWorld : "{E2A016456BBC697D}Prefabs/AI/SCR_AIWorld_Kunar.et" {
- coords 2683.716 8 3054.829
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{66D53A8D8EBA0763}" {
+     NavmeshFile "{D7F7994B2259BC99}NavMesh/Kunar_Soldiers.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{62C73AECEEA884E5}NavMesh/Kunar_BTR.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{935C52C1479660D1}NavMesh/Kunar_LowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 2659.631 8 3061.286
 }
 PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
  coords 2680.799 8 3050.624
@@ -21,7 +44,7 @@ PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_Game
 }
 GenericEntity Market3Location {
  coords 3616.143 280 407.93
- angleY 90
+ angles 0 90 0
 }
 $grp SplineShapeEntity {
  {
@@ -148,117 +171,7 @@ GenericEntity : "{47B7E8CA1935BB28}PrefabsEditable/SupportStationSystems/E_Suppo
   }
  }
  coords 2975.203 10 3036.359
- angleY 32.126
-}
-GenericEntity : "{5A25DAC561B3BFF8}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Medical_USSR_01.et" {
- coords 2898.679 10 3004.281
- angleY 34.458
- {
-  GenericEntity {
-   ID "620EDD9FE2C8259B"
-   components {
-    SCR_ArsenalComponent "{589F01C9C8D4A475}" {
-     m_eSupportedArsenalItemTypes 192
-     m_OverwriteArsenalConfig SCR_ArsenalItemListConfig "{663C4C72BDE3A245}" {
-      m_aArsenalItems {
-       SCR_ArsenalItemStandalone "{663C4C715C4797F3}" {
-        m_eItemType HEAL
-        m_ItemResourceName "{0D9A5DCF89AE7AA9}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01.et"
-       }
-       SCR_ArsenalItemStandalone "{663C4C72E415B779}" {
-        m_eItemType HEAL
-        m_ItemResourceName "{D511F5C330B1697E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_USSR_01_Base.et"
-       }
-       SCR_ArsenalItemStandalone "{663C4C71A652736F}" {
-        m_eItemType HEAL
-        m_ItemResourceName "{80E75A71C29190DB}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_USSR_01.et"
-       }
-       SCR_ArsenalItemStandalone "{663C4C72E6CFDAB6}" {
-        m_eItemType HEAL
-        m_ItemResourceName "{5B2FD067D70C1E8F}Prefabs/Items/Medicine/EpinephrineInjection/ACE_Medical_EpinephrineInjection.et"
-       }
-       SCR_ArsenalItemStandalone "{663C4C72E317B572}" {
-        m_eItemType HEAL
-        m_ItemResourceName "{02DD34077F51F65E}Prefabs/Items/Medicine/NaloxoneInjection/ACE_Medical_NaloxoneInjection.et"
-       }
-       SCR_ArsenalItemStandalone "{663C4C72E08A4257}" {
-        m_eItemType HEAL
-        m_ItemResourceName "{9BBA766CD869002C}Prefabs/Items/Medicine/PhenylephrineInjection/ACE_Medical_PhenylephrineInjection.et"
-       }
-       SCR_ArsenalItemStandalone "{663C4C72E2721C23}" {
-        m_eItemType HEAL
-        m_ItemResourceName "{D0434D5215B54181}Prefabs/Items/Medicine/MetoprololInjection/ACE_Medical_MetoprololInjection.et"
-       }
-       SCR_ArsenalItemStandalone "{663C4C729DCF7478}" {
-        m_eItemType HEAL
-        m_ItemResourceName "{58CF3AB87C441295}Prefabs/Items/Medicine/AmmoniumCarbonatePackage/ACE_Medical_AmmoniumCarbonatePackage.et"
-       }
-       SCR_ArsenalItemStandalone "{663C4C72D6A0602E}" {
-        m_eItemType HEAL
-        m_ItemResourceName "{527D7C5D2E476BDC}Prefabs/Items/Medicine/SalineBag_01/SalineBag_USSR_01.et"
-       }
-       SCR_ArsenalItemStandalone "{663C4C72D601C973}" {
-        m_eItemType HEAL
-        m_ItemResourceName "{21EF98BFC1EB3793}Prefabs/Items/Equipment/Kits/MedicalKit_01/MedicalKit_01_USSR.et"
-       }
-       SCR_ArsenalItemStandalone "{663C4C72BAF74927}" {
-        m_eItemType BACKPACK
-        m_ItemResourceName "{41A9C55B61F375F0}Prefabs/Items/Equipment/Backpacks/Backpack_Kolobok.et"
-       }
-       SCR_ArsenalItemStandalone "{663C4C728925859F}" {
-        m_eItemType BACKPACK
-        m_ItemResourceName "{3DE0155EC9767B98}Prefabs/Items/Equipment/Backpacks/Backpack_Veshmeshok.et"
-       }
-      }
-     }
-    }
-    SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
-     Enabled 0
-    }
-    SCR_ResourceComponent "{5E5ABDF371AE8B21}" {
-     m_aContainers {
-      SCR_ResourceContainer "{663E2286C4C8F5FF}" {
-       m_eResourceRights ALL
-       m_eStorageType STORED
-       m_fResourceValueCurrent 30
-       m_fResourceValueMax 30
-       m_bEnableResourceGain 1
-       m_fResourceGain 2
-       m_fResourceGainTickrate 300
-      }
-     }
-     m_aConsumers {
-      SCR_ResourceConsumerServicePoint "{5E5ABDF28A4FEC1F}" {
-       m_fBuyMultiplier 0
-      }
-     }
-    }
-   }
-  }
-  StaticModelEntity {
-   ID "5CC4E286B5B34824"
-   {
-    SCR_DestructibleBuildingEntity {
-     ID "5A5344E1BED63C5B"
-     components {
-      SCR_HealSupportStationComponent "{5EE8A81A8ACCE524}" {
-       m_iSupplyCostDamageHealed 0
-      }
-     }
-     {
-      GenericEntity {
-       ID "5EE8A819345602B2"
-       components {
-        SCR_SupportStationAreaMeshComponent "{5EE8A8193109F3F1}" {
-         m_eSearchForType NONE
-        }
-       }
-      }
-     }
-    }
-   }
-  }
- }
+ angles 0 32.126 0
 }
 PolylineShapeEntity Phase1AO : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
  components {
@@ -341,7 +254,10 @@ TILW_MissionFrameworkEntity fw1 : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFram
    m_instructions {
     TILW_ServiceVehiclesInstruction "{669329458AEFB8E3}" {
      m_aVehicleNames {
-      "Market1Van" "Market2Van" "Market3Van" "Market3Van2"
+      "Market1Van"
+      "Market2Van"
+      "Market3Van"
+      "Market3Van2"
      }
      m_bAdjustSupplies 1
      m_iAmountSupplies 250
@@ -363,9 +279,20 @@ TILW_MissionFrameworkEntity fw1 : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFram
    m_name "Start Phase 2"
    m_instructions {
     TILW_SendMessageInstruction "{668635AD3D276267}" {
+     m_executionDelay 2
      m_messageTitle "Phase 1 Done"
      m_messageBody "Excellent work. The third and final market has been identified in Jharnok."\
      "Happy hunting!"
+    }
+    TILW_SendMessageInstruction "{66D563385ED49A62}" {
+     m_executionDelay 8
+     m_messageTitle "Live Map Edit Live"
+     m_messageBody "CO(s), you have 5 minutes. Plan well."
+    }
+    TILW_SendMessageInstruction "{66D56338805EBF8D}" {
+     m_executionDelay 308
+     m_messageTitle "Live Map Edit Close"
+     m_messageBody "Stop planning and go for it."
     }
     TILW_SetFlagInstruction "{66863C8CAF846497}" {
      m_flagName "Phase 2 Units Spawn Flag"
@@ -373,16 +300,6 @@ TILW_MissionFrameworkEntity fw1 : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFram
     TILW_DeleteEntitiesInstruction "{668D5B396B064242}" {
      m_entityNames {
       "Phase1AO"
-     }
-    }
-    TILW_EditMapItemInstruction "{66932941973C8EB0}" {
-     m_itemNames {
-      "Market1" "Market2"
-     }
-     m_factionVisibility {
-      TILW_FactionVisibility "{66932941973C9D31}" {
-       m_factionKey "GC_TKA"
-      }
      }
     }
     TILW_EditMapItemInstruction "{66932946AE43D62F}" {
@@ -394,6 +311,12 @@ TILW_MissionFrameworkEntity fw1 : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFram
        m_factionKey "GC_TKA"
        m_visible 1
       }
+     }
+    }
+    TILW_DeleteEntitiesInstruction "{66D563381EAEA82A}" {
+     m_entityNames {
+      "Market1"
+      "Market2"
      }
     }
    }
@@ -487,71 +410,4 @@ SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/Restriction
  coords 2953.004 10 3002.024
  m_fZoneRadius 85
  m_fZoneTeleportedRadius 95
-}
-$grp StaticModelEntity : "{CF1FFB7BAA1A0769}Prefabs/Structures/Military/Camps/HelipadImprovised_01/HelipadImprovised_US_01.et" {
- {
-  coords 962.981 0.974 2843.938
-  angleY -37.175
-  scale 0.76
- }
- {
-  coords 3001.022 -0 3019.648
-  angleY 33.51
- }
- {
-  coords 2976.008 0 3036.211
-  angleY 33.51
- }
- {
-  coords 2951.411 0 3052.497
-  angleY 33.51
- }
-}
-GenericEntity : "{FA7A86697340C58C}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_05.et" {
- coords 2915.016 10 2997.727
- angleY 30.753
- {
-  GenericEntity Bluefor_Supply_Depot {
-   ID "5D4539393E1536C3"
-   components {
-    SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
-     m_aContainers {
-      SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
-       m_bEnableResourceGain 0
-      }
-     }
-    }
-   }
-   {
-    GenericEntity {
-     ID "5D45393936823FC0"
-     components {
-      SCR_ResourceComponent "{5D247A59598D71AE}" {
-       m_aContainers {
-        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-         m_fResourceValueCurrent 0
-         m_fResourceValueMax 500
-         m_eOnEmptyBehavior NONE
-        }
-       }
-      }
-     }
-    }
-    GenericEntity {
-     ID "5D45393936823FC3"
-     components {
-      SCR_ResourceComponent "{5D247A59598D71AE}" {
-       m_aContainers {
-        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-         m_fResourceValueCurrent 0
-         m_fResourceValueMax 500
-         m_eOnEmptyBehavior NONE
-        }
-       }
-      }
-     }
-    }
-   }
-  }
- }
 }
