@@ -1,0 +1,201 @@
+SCR_AIWorld : "{3DE6090FC602E566}Prefabs/AI/SCR_AIWorld_Takistan.et" {
+ coords 5916.66 109.313 11380.693
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 5942.497 109.313 11398.953
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ coords 5935.771 109.313 11404.763
+ m_iFreezeTime 300000
+ {
+  SCR_FactionManager "66EC6286C570044B" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "Kilo"
+       }
+      }
+      m_sCallsignGroupFormat "%2'%3"
+      m_sCallsignCharacterFormat "%2 %3: %4"
+      m_sCallsignCharacterWithRoleFormat " %2 %3: %4"
+     }
+    }
+    SCR_Faction "{632925D53C7F1148}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{58B2B630FDD64B65}" {
+        m_sCallsign "Sabir"
+       }
+      }
+      m_sCallsignGroupFormat "%2%3"
+      m_sCallsignCharacterFormat "%2%3%4"
+      m_sCallsignCharacterWithRoleFormat "%2%3 %4"
+     }
+    }
+   }
+  }
+ }
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "US"
+    }
+   }
+   TILW_CoverMapComponent "{6473480FCAB7760B}" {
+    Enabled 1
+    m_ratioWidth 1
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+    m_factionKeys {
+     "US"
+    }
+    m_visibleForEmptyFaction 0
+   }
+  }
+  coords 5703.243 107.955 9014.216
+  Points {
+   ShapePoint "{66AA68448A84036B}" {
+    Position 321.964 9.559 -451.803
+   }
+   ShapePoint "{66AA68448554E92C}" {
+    Position -189.358 19.125 -620.699
+   }
+   ShapePoint "{66AA68449FEA1FCB}" {
+    Position -207.817 -26.881 944.213
+   }
+   ShapePoint "{66AA68449ED7548B}" {
+    Position -478.398 0 1727.934
+   }
+   ShapePoint "{66AA68449AEA5CB2}" {
+    Position -243.193 0 2054.468
+   }
+   ShapePoint "{66AA68449954AA17}" {
+    Position -21.744 0 2313.072
+   }
+   ShapePoint "{66AA684496950C83}" {
+    Position 227.112 0 2568.006
+   }
+   ShapePoint "{66AA684495A596C6}" {
+    Position 518.266 0 2824.344
+   }
+   ShapePoint "{66AA684492D543ED}" {
+    Position 1015.289 0 2308.276
+   }
+   ShapePoint "{66AA6844AFDFF9DD}" {
+    Position 729.256 0 1622.367
+   }
+   ShapePoint "{66AA6844AB8CDD83}" {
+    Position 363.238 86.042 889.725
+   }
+  }
+ }
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "GC_INSURGENT"
+    }
+   }
+   TILW_CoverMapComponent "{6473480FCAB7760B}" {
+    m_ratioWidth 1
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+    m_factionKeys {
+     "GC_INSURGENT"
+    }
+    m_visibleForEmptyFaction 0
+   }
+  }
+  coords 5859.613 125.318 8625.404
+  Points {
+   ShapePoint "{66AA684425C4F74A}" {
+    Position -416.045 -48.007 1543.309
+   }
+   ShapePoint "{66AA684422D5647E}" {
+    Position 194.213 35.003 1324.618
+   }
+   ShapePoint "{66AA68443C4F5DEE}" {
+    Position 164.949 -6.728 -62.155
+   }
+   ShapePoint "{66AA68443BF02A78}" {
+    Position -353.004 0 -231.971
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 6256.512 55.282 11450.201
+ m_missionEvents {
+  TILW_MissionEvent "{66AA34BC223CCFF9}" {
+   m_name "Town 1 Civ Disappearing"
+   m_instructions {
+    TILW_DeleteEntitiesInstruction "{66AA34BDD46DE751}" {
+     m_entityNames {
+      "rasman_group1"
+      "rasman_group2"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{66AA34BDCAF6E85C}" {
+    m_flagName "Loiter1Flag"
+   }
+  }
+  TILW_MissionEvent "{66AA34BBFBC60F57}" {
+   m_name "Town 2 Civ Disappearing"
+   m_instructions {
+    TILW_DeleteEntitiesInstruction "{66AA34BB8BE3A905}" {
+     m_entityNames {
+      "rasman2_group2"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{66AA34BB88C619C2}" {
+    m_flagName "Loiter3Flag"
+   }
+  }
+  TILW_MissionEvent "{66AA68595AE78912}" {
+   m_name "OPFOR Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{66AA6859640E149D}" {
+     m_messageTitle "OPFOR Victory"
+     m_messageBody "90% of US Forces have been killed in action."
+    }
+   }
+   m_condition TILW_LiteralTerm "{66AA68596D0D992E}" {
+    m_flagName "US90"
+   }
+  }
+  TILW_MissionEvent "{66AA68590B8926C0}" {
+   m_name "Blufor Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{66AA685911BF45F7}" {
+     m_messageTitle "BLUFOR Victory"
+     m_messageBody "90% of Insurgent forces have been killed in action."
+    }
+   }
+   m_condition TILW_LiteralTerm "{66AA68591E0124DA}" {
+    m_flagName "OPFOR90"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{66AA68583F776719}" {
+   m_flagName "US90"
+   m_factionKey "US"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{66AA6859D45059D0}" {
+   m_flagName "OPFOR90"
+   m_factionKey "GC_INSURGENT"
+   m_casualtyRatio 0.9
+  }
+ }
+}

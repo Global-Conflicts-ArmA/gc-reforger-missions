@@ -4,17 +4,18 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   m_sTitle "Overview"
   m_sTextData "Delta Force rescues two US diplomats that are being held hostage by foreign anti-US extremists."\
   ""\
-  "Note that I slightly changed the mission concept, in particular negotiation is (usually) no longer done on a high level between factions, facilitates surrender of individual enemies."\
+  "The mission concept has been adjusted:"\
+  "- There is no longer a designated negotiator"\
+  "- A formal high-level negotation process between the factions is not intended (at least not usually, it's still allowed)"\
   ""\
   "The following roles MUST be slotted:"\
   "- Both US Diplomats (hostages)"\
   "- Hostage guards"\
-  "- US negotiator"\
   "- US pilots (at least 3 at full strength)"\
   ""\
-  "Only slot hostage, guard or negotiator if you're capable of engaging in a little roleplay."\
+  "Only slot hostage or guard if you're capable of engaging in a little roleplay."\
   ""\
-  "Commanders, hostage guards, negotiator and hostages must read the briefing, you can have an extra 2 minutes for that if you need them."
+  "Commanders, hostage guards and hostages MUST read the briefing."
   m_bEmptyFactionVisibility 1
  }
  A0b_Background {
@@ -66,7 +67,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   "After insertion, the pilots may collapse into just 2 helicopters for increased surveillance capabilities."\
   ""\
   "CAS is coordinated by the FAC."\
-  "Fire into the compound is restricted to Type 1 and should ONLY be considered if it is known the hostages are not in the targets vicinity."
+  "Fire into the compound is restricted to Type 1 and should ONLY be considered if it is KNOWN the hostages are not in the targets vicinity."
   m_aVisibleForFactions {
    "RHS_USAF"
   }
@@ -76,7 +77,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   coords 3472.466 82.781 7140.113
   m_sTitle "II. Mission"
   m_sTextData "<h2>Mission</h2>"\
-  "Secure and extract the hostages, by force or through negotiation."
+  "Secure and extract the hostages."
   m_aVisibleForFactions {
    "RHS_USAF"
   }
@@ -92,7 +93,6 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   "The desired end state is that both hostages and all US forces have been extracted to the starting position."\
   ""\
   "<h2>b. Concept of Operations</h2>"\
-  "The hostages can be secured by force, negotiation or their combination."\
   ""\
   "The reconnaissance team can e. g. be used to secure an LZ, establish a screen ahead of the landing or attempt to gather intelligence on enemy disposition."\
   "While still unsupported by the main force, it should avoid revealing itself or opening fire unless absolutely necessary."
@@ -107,13 +107,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   m_sDescriptionLayout "{B6DE04F7CF7A95DA}UI/MissionDescription/DescriptionEditableScrollable.layout"
   m_sTextData "<h2>Negotiation</h2>"\
   "In some situations, it may be required that a situation is deescalated to ensure safety of the hostages."\
-  "For this purpose, there is a designated negotiator with the task of facilitating surrender of individual enemies or similar."\
-  ""\
-  "<b>Example goals:</b>"\
-  "- Decrease general enemy strength by getting individual enemies to surrender or desert."\
-  "- Safely secure a threatened hostage that might otherwise have been killed."\
-  "- Avoid friedly casualties by getting an enemy to abandon an advantageous position."\
-  "- Deceive or distract an enemy by pretending to negotiate."\
+  "There is no designated negotiator, anyone can attempt to get individual enemies to surrender."\
   ""\
   "<b>Example means:</b>"\
   "- Offer that an enemy can surrender (F1 key) and be captured alive (zip ties are available)."\
@@ -171,7 +165,8 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   "- The hostage takers cannot bring the hostages away from the compound or swap clothes."\
   "-  While threats can be made, the hostage takers should not kill hostages unless it is deemed absolutely necessary. The hostages are valuable leverage, and there is no inherent benefit to killing them."
   m_aVisibleForFactions {
-   "CIV" "GC_SEPARATIST"
+   "CIV"
+   "GC_SEPARATIST"
   }
   m_iOrder 7
  }
@@ -263,7 +258,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
  }
  E6_Negotiation {
   coords 3472.466 82.781 7140.113
-  m_sTitle "NEGOTIATION"
+  m_sTitle "SURRENDERING"
   m_sTextData "<h2>Negotiation</h2>"\
   "Individual fighters may consider surrender if they see no other way to survive."\
   "Negotiating a surrender may become critical if a continued fight is looking too costly and personal survival is under serious danger."\
@@ -286,9 +281,10 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   m_sTitle "Mission Notes"
   m_sTextData "- Setup Timer: 3 minutes, only affects the main US starting position"\
   "Extremists can leave the compound, but not with the hostages."\
-  "- Default time is just before dawn, if desired the US commander can request something brighter from GMs during briefing."\
+  "- Default start time is just before dawn, the US CO may request something brighter if desired."\
   "- The red rectangle is NOT an AO limit, the extremists can leave the compound."\
   "- Both factions can see an image of the sawmill compound to the right of the AO"\
+  "- The mission no longer features a designated negotiator, instead any US forces may attempt to convince individual fighters to surrender."\
   ""\
   "End conditions:"\
   "Upon US extraction and rescue/death of both hostages, the mission ends."\

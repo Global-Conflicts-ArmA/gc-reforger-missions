@@ -1,0 +1,387 @@
+SCR_AIWorld SCR_AIWorld_Takistan : "{3DE6090FC602E566}Prefabs/AI/SCR_AIWorld_Takistan.et" {
+ coords 10539.188 197.925 10730.347
+ angles 1.817 -0.559 -17.104
+}
+PerceptionManager PerceptionManager : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 10560.724 205.778 10691.135
+}
+PS_GameModeCoop GameModeLobby : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_InitWeatherComponent "{61B68227C35BFE9A}" {
+   m_initialWeatherDurationMin 5
+   m_initialWeatherDurationMax 6
+  }
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 19
+   m_fFogAmount 0.8
+   m_fFogHeightDensity 0.86
+   m_iDay 7
+   m_iMonth 7
+   m_iYear 2012
+   m_bUseSpecifiedDate 1
+   m_iSetDay 7
+   m_iSetMonth 7
+   m_iSetYear 2012
+   m_bOverrideGeocoords 1
+   m_fLatitude -52.308
+   m_fLongitude 10.769
+   m_bOverrideTimeZoneInfo 1
+   m_fUTCTimeZone 4.3
+   m_fDSTEnabled 1
+   m_fDSTOffsetHours 0
+   m_bOverrideEnvironment 1
+   m_fFogDensity 0.8
+   m_fFogHeight 86
+   m_fRain 0
+   m_fWind 8
+  }
+ }
+ coords 10570.682 204.87 10699.063
+ m_iReconnectTime 180000
+ m_iFreezeTime 150000
+ {
+  SCR_FactionManager "66B9754EFB899195" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     FactionKey "RHS_USAF"
+     m_iOrder 1
+     m_FactionLabel FACTION_RHS_USAF
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CCD598D3}" {
+        m_sCallsign "Bravo"
+       }
+      }
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     FactionKey "US"
+     m_FactionLabel FACTION_US
+    }
+    SCR_Faction "{632925D53C7F1148}" {
+     m_iOrder 2
+     m_bShowInWelcomeScreenIfNonPlayable 1
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_bIsAssignedRandomly 0
+      m_aCompanyNames {
+       SCR_CallsignInfo "{58B2B630FDD64B73}" {
+        m_sCallsign "Zavarak"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{58B2B630FDD64B65}" {
+        m_sCallsign "Cell"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "HQ"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+        m_sCallsign "4"
+       }
+      }
+      m_sCallsignGroupFormat "%1 %2 %3"
+      m_sCallsignCharacterFormat "%1 %2 %3 %4"
+      m_sCallsignCharacterWithRoleFormat "%1 %2 %3 %4"
+     }
+     m_iFactionRadioFrequency 42000
+    }
+   }
+  }
+ }
+}
+$grp SCR_EditorRestrictionZoneEntity : "{6144B0BE2EAC6897}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneMedium.et" {
+ RestrictZone_Blufor {
+  coords 10220.632 174.433 10668.896
+  m_fZoneRadius 50
+  m_fZoneTeleportedRadius 65
+ }
+ RestrictZone_Opfor {
+  coords 10895.964 174.331 10736.731
+  angles -1.136 0.022 -0.853
+  m_fZoneRadius 50
+  m_fZoneTeleportedRadius 65
+ }
+}
+PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+   m_killTimer 15
+   m_defaultColor 0 0 0 0
+  }
+  TILW_MapShapeComponent "{6508F54F9B461198}" {
+   Enabled 1
+   m_drawLine 1
+   m_lineWidth 3
+  }
+ }
+ coords 10557.396 200.858 10645.384
+ angles 4.741 0.613 7.373
+ Points {
+  ShapePoint "{66BA23B9F5B08EAD}" {
+   Position 519.044 0 -3.061
+  }
+  ShapePoint "{66BA23B9E48C7FA7}" {
+   Position 219.783 0 440.812
+  }
+  ShapePoint "{66BA23B9EEF19774}" {
+   Position 184.796 0 482.335
+  }
+  ShapePoint "{66BA23B9EE5ABB78}" {
+   Position 145.986 0 520.958
+  }
+  ShapePoint "{66BA23BA150CF886}" {
+   Position 91.031 0 559.257
+  }
+  ShapePoint "{66BA23BA1791DA31}" {
+   Position 15.7 0 608.715
+  }
+  ShapePoint "{66BA23BA1D2C0A57}" {
+   Position -23.967 0 632.946
+  }
+  ShapePoint "{66BA23BA35992847}" {
+   Position -81.662 0 655.676
+  }
+  ShapePoint "{66BA23BA351D4DF8}" {
+   Position -113.522 0 661.303
+  }
+  ShapePoint "{66BA23BA36861709}" {
+   Position -134.875 0 661.412
+  }
+  ShapePoint "{66BC00C5B3A86F5D}" {
+   Position -151.303 0 655.074
+  }
+  ShapePoint "{66BC00C5B307BA3D}" {
+   Position -174.071 0 633.741
+  }
+  ShapePoint "{66BA23BA367AA379}" {
+   Position -190.827 0 603.978
+  }
+  ShapePoint "{66BA23BA37DBF0EC}" {
+   Position -221.233 0 534.048
+  }
+  ShapePoint "{66BA23BA3CB93352}" {
+   Position -460.878 0 -0.478
+  }
+  ShapePoint "{66BA23BA3B01E777}" {
+   Position -456.014 0 -82.601
+  }
+  ShapePoint "{66BA23BA24AF67F3}" {
+   Position -389.114 0 -188.404
+  }
+  ShapePoint "{66BA23BA207AF407}" {
+   Position -304.899 0 -232.329
+  }
+  ShapePoint "{66BA23BA21F60EA3}" {
+   Position -168.655 0 -277.432
+  }
+  ShapePoint "{66BA23BA217CE762}" {
+   Position -66.397 0 -292.99
+  }
+  ShapePoint "{66BA23BA47C5F6A9}" {
+   Position -45.27 0 -286.156
+  }
+  ShapePoint "{66BA23BA4708390D}" {
+   Position -32.588 10.056 -270.139
+  }
+  ShapePoint "{66BA23BA40FE1AF6}" {
+   Position -22.9 9.441 -237.538
+  }
+  ShapePoint "{66BA23BA41F9E744}" {
+   Position -27.942 6.109 -190.329
+  }
+  ShapePoint "{66BA23BA4C83C466}" {
+   Position -25.998 0 -143.873
+  }
+  ShapePoint "{66BA23BA4F960076}" {
+   Position -37.993 0 -18.141
+  }
+  ShapePoint "{66BA23BA49ADE663}" {
+   Position -47.695 0 54.211
+  }
+  ShapePoint "{66BA23BA4AF84324}" {
+   Position -53.717 0 123.074
+  }
+  ShapePoint "{66BA23BA7C2237F5}" {
+   Position -53.549 -6.948 149.729
+  }
+  ShapePoint "{66BC00C25CB1E8F3}" {
+   Position -51.916 -8.469 170.149
+  }
+  ShapePoint "{66BA23BA7D57A51A}" {
+   Position -48.094 -12.989 185.828
+  }
+  ShapePoint "{66BA23BA7ED67B93}" {
+   Position -41.542 -7.154 196.922
+  }
+  ShapePoint "{66BA23BA7E5DE467}" {
+   Position -32.217 -6.524 206.331
+  }
+  ShapePoint "{66BA23BA7F2E052C}" {
+   Position -13.935 -4.335 218.263
+  }
+  ShapePoint "{66BA23BA660F0E7B}" {
+   Position 1.903 -6.802 223.072
+  }
+  ShapePoint "{66BC00C3C921F57C}" {
+   Position 19.373 -2.141 218.608
+  }
+  ShapePoint "{66BA23BA67F71516}" {
+   Position 37.077 -4.017 211.494
+  }
+  ShapePoint "{66BC00C3CC941A12}" {
+   Position 48.699 -9.45 197.518
+  }
+  ShapePoint "{66BA23BA677DA2BC}" {
+   Position 55.813 -8.277 175.946
+  }
+  ShapePoint "{66BA23BA81EEF70A}" {
+   Position 63.087 -7.306 153.662
+  }
+  ShapePoint "{66BA23BA82B72E30}" {
+   Position 71.837 -2.851 110.265
+  }
+  ShapePoint "{66BA23BA837A1D13}" {
+   Position 79.976 0 58.428
+  }
+  ShapePoint "{66BA23BA8F1A1F6D}" {
+   Position 104.908 0 -69.007
+  }
+  ShapePoint "{66BA23BA8B523A02}" {
+   Position 128.894 0 -131.49
+  }
+  ShapePoint "{66BA23BAB4F0DC64}" {
+   Position 166.519 0 -169.295
+  }
+  ShapePoint "{66BA23BAB42DD3C1}" {
+   Position 243.281 0 -175.466
+  }
+  ShapePoint "{66BA23BAB5BCDFDE}" {
+   Position 380.103 0 -158.969
+  }
+  ShapePoint "{66BA23BAB7971D34}" {
+   Position 442.589 0 -147.271
+  }
+  ShapePoint "{66BA23BAB7C98229}" {
+   Position 483.093 0 -126.979
+  }
+  ShapePoint "{66BA23BAB74587BC}" {
+   Position 510.848 0 -98.354
+  }
+  ShapePoint "{66BA23BAB0F04983}" {
+   Position 531.688 0 -47.698
+  }
+  ShapePoint "{66BA23BABD4C5ACD}" {
+   Position 531.608 0 -31.579
+  }
+  ShapePoint "{66BA23BABE3083E3}" {
+   Position 526.755 0 -17.12
+  }
+ }
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ CapZoneOpfor {
+  coords 10478.855 160.823 11084.951
+  m_queryRadius 85
+  m_captureTime 600
+  m_sendStatusMessages 1
+  m_statusMessages {
+   "The %1 WIN! They've taken control of %2."
+   "The %1 are taking control of %2."
+   "The %1 are no longer taking control of %2."
+   "The %1 have lost control of %2."
+   "The %1 are losing control of %2."
+   "The %1 are no longer losing control of %2."
+  }
+  m_locationName "the objective"
+  m_playersOnly 1
+  m_ownerFactionKey "GC_INSURGENT"
+  m_ratioThreshold 0.51
+ }
+ CapZoneBlufor {
+  coords 10478.855 160.823 11084.951
+  m_queryRadius 85
+  m_captureTime 600
+  m_sendStatusMessages 1
+  m_statusMessages {
+   "The %1 WINS! They've taken control of %2."
+   "The %1 is taking control of %2."
+   "The %1 is no longer taking control of %2."
+   "The %1 has lost control of %2."
+   "The %1 is losing control of %2."
+   "The %1 is no longer losing control of %2."
+  }
+  m_locationName "the objective"
+  m_setShapeColor 0.175 0.01 0.01 1
+  m_playersOnly 1
+  m_ownerFactionKey "RHS_USAF"
+  m_ratioThreshold 0.51
+ }
+}
+TILW_MissionFrameworkEntity TILW_MissionFramework : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 10573.509 198.792 10719.378
+ angles -0.568 -0.014 1.421
+ m_missionEvents {
+  TILW_MissionEvent "{66B975553FA9BABD}" {
+   m_name "Blufor Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{66B97555287D4885}" {
+     m_executionDelay 2.5
+     m_messageTitle "US Victory (BLUFOR)"
+     m_messageBody "Insurgents (OPFOR) have taken 90% casualties"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66B975552BDB8B9A}" {
+    m_flagName "Blufor Victory Flag"
+   }
+  }
+  TILW_MissionEvent "{66B97554FE80DD0E}" {
+   m_name "Opfor Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{66B97554E7E27370}" {
+     m_executionDelay 2.5
+     m_messageTitle "Insurgent Victory (OPFOR)"
+     m_messageBody "US (BLUFOR) has taken 90% casualties"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66B9754B41B3896E}" {
+    m_flagName "Opfor Victory Flag"
+   }
+  }
+  TILW_MissionEvent "{66B97554F85C8747}" {
+   m_name "Time Limit"
+   m_instructions {
+    TILW_SendMessageInstruction "{66B9754A0E42D3BD}" {
+     m_executionDelay 3750
+     m_messageTitle "Time Limit Reached!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66B9754A2D9BF7D2}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{66B97555B5F7C2AA}" {
+   m_flagName "Blufor Victory Flag"
+   m_factionKey "GC_INSURGENT"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{66B9754B77A972E4}" {
+   m_flagName "Opfor Victory Flag"
+   m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.9
+  }
+ }
+}

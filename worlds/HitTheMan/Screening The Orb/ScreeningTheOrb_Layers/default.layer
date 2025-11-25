@@ -27,7 +27,7 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
  coords 3727.142 525.044 1643.412
 }
-PS_GameModeCoop PS_GameMode_Lobby_TILWMF2 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF2 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
  components {
   SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
    m_iStartingHours 4
@@ -52,6 +52,12 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF2 : "{4CFD54745CD45673}Prefabs/MP/Modes/
   }
  }
  coords 3697.287 353.796 1652.506
+ m_aFactionRespawnCount {
+  PS_FactionRespawnCount "{66B6FD01461336E8}" {
+   m_sFactionKey "GC_NVA"
+   m_iCount 10
+  }
+ }
  {
   RadioManagerEntity {
    ID "5ED9088735FF2DEE"
@@ -173,10 +179,9 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF2 : "{4CFD54745CD45673}Prefabs/MP/Modes/
  }
 }
 $grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
- {
+ AOLimit_NVA {
   components {
    TILW_AOLimitComponent "{6217617AC21DEB7B}" {
-    Enabled 0
     m_killTimer 30
     m_factionKeys {
      "GC_NVA"
@@ -190,7 +195,7 @@ $grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit
     m_factionKeys {
      "GC_NVA"
     }
-    m_visibleForEmptyFaction 0
+    m_drawLine 1
    }
   }
   coords 4347.826 215.058 2818.183
@@ -257,15 +262,12 @@ $grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit
    }
   }
  }
- {
+ AOLimit_USSR {
   components {
    TILW_AOLimitComponent "{6217617AC21DEB7B}" {
     Enabled 0
     m_visibility FACTION
     m_useFactionColor 0
-   }
-   TILW_CoverMapComponent "{6473480FCAB7760B}" {
-    Enabled 1
    }
    TILW_MapShapeComponent "{6508F54F9B461198}" {
     Enabled 1
@@ -273,6 +275,7 @@ $grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit
      "USSR"
     }
     m_visibleForEmptyFaction 0
+    m_drawLine 1
    }
   }
   coords 4438.202 215.833 2868.938
@@ -317,7 +320,7 @@ $grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit
  }
 }
 $grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
- {
+ Obj_Trigger_COYHQ {
   coords 4867.711 169.405 3763.792
   m_sendStatusMessages 1
   m_locationName "the Company HQ"
@@ -326,7 +329,7 @@ $grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_
   m_ownerFactionKey "GC_NVA"
   m_ratioThreshold 0.9
  }
- {
+ Obj_Trigger_TownHall {
   coords 4790.618 177.337 3575.845
   m_queryRadius 17
   m_sendStatusMessages 1
@@ -336,7 +339,7 @@ $grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_
   m_ownerFactionKey "GC_NVA"
   m_ratioThreshold 0.9
  }
- {
+ Obj_Trigger_Powerstation {
   coords 4488.111 174.746 3834.134
   m_queryRadius 13
   m_sendStatusMessages 1
@@ -347,7 +350,7 @@ $grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_
   m_ratioThreshold 0.9
  }
 }
-TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+TILW_MissionFrameworkEntity MissionFramework : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
  coords 3720.089 354.787 1640.119
  angleZ -3.576
  m_missionEvents {
@@ -367,27 +370,27 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
    m_name "Time Limit"
    m_instructions {
     TILW_SendMessageInstruction "{6506E408307D3B9A}" {
-     m_executionDelay 2700
+     m_executionDelay 1800
      m_messageTitle "Time Limit"
-     m_messageBody "The Mission will end in 45 minutes"
+     m_messageBody "The Mission will end in 30 minutes"
     }
     TILW_SendMessageInstruction "{6550E36F53005626}" {
-     m_executionDelay 4200
+     m_executionDelay 2400
      m_messageTitle "Time Limit"
      m_messageBody "The Mission will end in 20 minutes"
     }
     TILW_SendMessageInstruction "{6550E36F43F2544F}" {
-     m_executionDelay 4800
+     m_executionDelay 3000
      m_messageTitle "Time Limit"
      m_messageBody "The Mission will end in 10 minutes"
     }
     TILW_SendMessageInstruction "{6506E4089FDE5CA5}" {
-     m_executionDelay 5400
+     m_executionDelay 3600
      m_messageTitle "Canadian Armed Forces Victory"
      m_messageBody "CAF held the town long enough forcing the NVA to fall back... GM Discretion when to end the mission"
     }
     TILW_EndGameInstruction "{650CE1979D068E00}" {
-     m_executionDelay 5410
+     m_executionDelay 3610
      m_factionKey "GC_CAF"
     }
    }
@@ -401,10 +404,10 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
     TILW_SendMessageInstruction "{6507662C26CDA08C}" {
      m_executionDelay 10
      m_messageTitle "Status Report:"
-     m_messageBody "Town of Bad Orb has been secured, hold it for 15 Minutes.."
+     m_messageBody "Town of Bad Orb has been secured, hold it for 10 Minutes.."
     }
     TILW_SendMessageInstruction "{6550E36ED08C418C}" {
-     m_executionDelay 900
+     m_executionDelay 600
      m_messageTitle "NVA Victory"
      m_messageBody "NVA has managed to secure & hold the town of Western Bad Orb... "\
      "GM Discretion when to end the mission"
@@ -466,6 +469,48 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
     }
    }
    m_condition TILW_LiteralTerm "{650CE19641F61B04}" {
+    m_flagName "COYHQ"
+   }
+  }
+  TILW_MissionEvent "{66B6C978F0961D61}" {
+   m_name "Respawn Reward TownHall"
+   m_instructions {
+    TILW_EditRespawnTicketsInstruction "{66B6C97899181BA7}" {
+     m_factionKey "GC_NVA"
+     m_operation ADD
+     m_amount 5
+     m_allowSpecRespawn 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{66B6C978EE0B4D73}" {
+    m_flagName "TownHall"
+   }
+  }
+  TILW_MissionEvent "{66B6C978BE98C5C1}" {
+   m_name "Respawn Reward Powerstation"
+   m_instructions {
+    TILW_EditRespawnTicketsInstruction "{66B6C978BE98C5A9}" {
+     m_factionKey "GC_NVA"
+     m_operation ADD
+     m_amount 5
+     m_allowSpecRespawn 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{66B6C978BE98C5A4}" {
+    m_flagName "Powerstation"
+   }
+  }
+  TILW_MissionEvent "{66B6C97F515BBE8D}" {
+   m_name "Respawn Reward COYHQ"
+   m_instructions {
+    TILW_EditRespawnTicketsInstruction "{66B6C97F515BBF46}" {
+     m_factionKey "GC_NVA"
+     m_operation ADD
+     m_amount 5
+     m_allowSpecRespawn 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{66B6C97F515BBF42}" {
     m_flagName "COYHQ"
    }
   }

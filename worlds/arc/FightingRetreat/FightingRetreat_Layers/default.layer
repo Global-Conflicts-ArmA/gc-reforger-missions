@@ -1,33 +1,10 @@
-SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
- components {
-  NavmeshWorldComponent "{5584F30E67F617AD}" {
-   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
-    NavmeshFilesConfig BaseNavmeshFilesConfig "{646EE59BC22F2D23}" {
-     NavmeshFile "{26764981146D437B}NavMesh/Zarichne_Soldiers.nmn"
-    }
-   }
-  }
-  NavmeshWorldComponent "{5584F30EEFEE1223}" {
-   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
-    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
-     NavmeshFile "{7CF5039956B33F65}NavMesh/Zarichne_BTR.nmn"
-    }
-   }
-  }
-  NavmeshWorldComponent "{5C8C9B750D124A63}" {
-   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
-    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
-     NavmeshFile "{C4AE9581E30730A8}NavMesh/Zarichne_LowRes.nmn"
-    }
-   }
-  }
- }
- coords 2844.666 6.104 734.643
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 2845.705 6.125 736.015
 }
 PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
  coords 2673.322 3.137 683.477
 }
-PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
  components {
   SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
    m_bRandomStartingDaytime 1
@@ -37,7 +14,7 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/
  coords 2665.687 2.748 648.22
  m_iFreezeTime 120000
  {
-  SCR_FactionManager {
+  SCR_FactionManager "66ECA01073E999AA" {
    ID "5ED9088735FF2D8B"
    Factions {
     SCR_Faction "{5978B9CE6585BBE8}" {
@@ -99,7 +76,7 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/
   }
  }
 }
-TILW_ExtractionTriggerEntity : "{192ABD6B9232E064}Prefabs/Logic/TILW_ExtractionTrigger.et" {
+TILW_ExtractionTriggerEntity : "{192ABD6B9232E064}Prefabs/Logic/Triggers/TILW_ExtractionTrigger.et" {
  coords 702.329 15.4 2150.596
  m_queryRadius 50
  m_flagName "US_EXTRACT"
@@ -111,10 +88,10 @@ PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" 
  coords 2213.238 4.68 224.51
  Points {
   ShapePoint "{646F720DD7E65EAB}" {
-   Position 354.332 -0 49.599
+   Position 354.332 0 49.599
   }
   ShapePoint "{646F720DD14DF559}" {
-   Position -2189.03 -0 6.307
+   Position -2189.03 0 6.307
   }
   ShapePoint "{646F720DBD6EC6FE}" {
    Position -2190.94 0 2285.036

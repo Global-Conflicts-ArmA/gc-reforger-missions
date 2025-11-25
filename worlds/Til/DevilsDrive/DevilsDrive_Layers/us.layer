@@ -1,0 +1,295 @@
+$grp SCR_AIGroup : "{0FBF1CDC687208F9}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/P/Group_US_1986_BDU_Brad_RifleSquad_M60_P.et" {
+ GR_US_BLUE2 {
+  components {
+   PS_GroupCallsignAssigner "{6582D12528A726C4}" {
+    m_iPlatoonCallsign 3
+    m_iSquadCallsign 2
+   }
+  }
+  coords 6069.061 55.031 7665.565
+  angles 0 -75 0
+  m_sCustomNameSet "BFV Plt | 1st Sqd"
+ }
+ GR_US_BLUE3 {
+  components {
+   PS_GroupCallsignAssigner "{6582D12528A726C4}" {
+    m_iPlatoonCallsign 3
+    m_iSquadCallsign 3
+   }
+  }
+  coords 6077.555 54.957 7697.269
+  angles 0 -75 0
+  m_sCustomNameSet "BFV Plt | 2nd Sqd"
+ }
+ GR_US_BLUE4 {
+  components {
+   PS_GroupCallsignAssigner "{6582D12528A726C4}" {
+    m_iPlatoonCallsign 3
+    m_iSquadCallsign 4
+   }
+  }
+  coords 6086.593 54.626 7731.353
+  angles 0 -80 0
+  m_sCustomNameSet "BFV Plt | 3rd Sqd"
+ }
+}
+SCR_AIGroup GR_US_BLUE1 : "{3604F255669A4346}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/P/Group_US_1986_BDU_Brad_PLT_HQ_P.et" {
+ components {
+  PS_GroupCallsignAssigner "{6582D12528A64B04}" {
+   m_iPlatoonCallsign 3
+   m_iSquadCallsign 1
+  }
+ }
+ coords 6059.233 55.061 7635.3
+ angles 0 -70 0
+ m_sCustomNameSet "BFV Plt | HQ"
+}
+$grp Tank : "{5CFD8CB5C3E55A4E}Prefabs/Vehicles/Tracked/BFV/M2A2_MERDC.et" {
+ BFV_31 {
+  components {
+   SCR_UniversalInventoryStorageComponent "{631366138943B0C8}" {
+    MultiSlots {
+     MultiSlotConfiguration "{66E0F066C8F45ADD}" {
+      SlotTemplate InventoryStorageSlot stinger {
+       Prefab "{3DF204EEE0534EF2}Prefabs/Weapons/Launchers/FIM92_Stinger/Launcher_FIM92_Stinger.et"
+      }
+      NumSlots 1
+     }
+    }
+   }
+  }
+  coords 6030.564 55.281 7649.191
+  angles 0 -161.194 0
+  m_sAttachmentGroupName "GR_US_BLUE1"
+ }
+ BFV_32 {
+  coords 6039.39 55.125 7678.432
+  angles 0 -163.766 0
+  m_sAttachmentGroupName "GR_US_BLUE2"
+ }
+ BFV_33 {
+  coords 6047.717 54.938 7709.253
+  angles 0 -164.958 0
+  m_sAttachmentGroupName "GR_US_BLUE3"
+ }
+ BFV_34 {
+  coords 6055.963 54.75 7741.919
+  angles 0 -166.087 0
+  m_sAttachmentGroupName "GR_US_BLUE4"
+ }
+}
+Tank M113_03 : "{953523CFE2DB9769}Prefabs/Vehicles/Tracked/M113/M113_APC_MERDC.et" {
+ coords 5945.112 56.702 7557.949
+ angles -0.78 60.649 0.439
+ m_sAttachmentGroupName "GR_US_BLACK7"
+ {
+  SCR_AIGroup GR_US_BLACK7 : "{3CC80518BD9541C4}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/P/Group_US_1986_BDU_TankCrew_P.et" {
+   components {
+    PS_GroupCallsignAssigner "{66641BD329AD3B5C}" {
+     m_iSquadCallsign 7
+    }
+   }
+   coords -1 0 -7.5
+   m_aUnitPrefabSlots {
+    "{D2C9DE096046B8E3}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Crew_Coy1SG_P.et"
+    "{84045A64127AC7C8}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Brad_Driver_P.et"
+   }
+   m_sCustomNameSet "Coy HQ | 1SG"
+  }
+ }
+}
+$grp Tank : "{E59B0861ABEF1EBC}Prefabs/Vehicles/Tracked/M1A1/M1A1_MERDC.et" {
+ ABRAMS_01 {
+  coords 5952.746 56.656 7585.185
+  angles 0 60.655 0
+  m_sAttachmentGroupName "GR_US_BLACK6"
+  {
+   SCR_AIGroup GR_US_BLACK6 : "{3CC80518BD9541C4}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/P/Group_US_1986_BDU_TankCrew_P.et" {
+    coords -1 0 -7.5
+    m_aUnitPrefabSlots {
+     "{A91445FB1F230431}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Crew_CoyL_P.et"
+     "{7B1C194621AD2553}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Brad_Gunner_P.et"
+     "{84045A64127AC7C8}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Brad_Driver_P.et"
+    }
+    m_sCustomNameSet "Coy HQ | Coy CDR"
+   }
+  }
+ }
+ ABRAMS_02 {
+  coords 5948.929 56.632 7571.567
+  angles -0.439 60.661 -0.78
+  m_sAttachmentGroupName "GR_US_BLACK5"
+  {
+   SCR_AIGroup GR_US_BLACK5 : "{3CC80518BD9541C4}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/P/Group_US_1986_BDU_TankCrew_P.et" {
+    components {
+     PS_GroupCallsignAssigner "{66641BD329AD3B5C}" {
+      m_iSquadCallsign 5
+     }
+    }
+    coords -1 0 -7.5
+    m_aUnitPrefabSlots {
+     "{8837D5D7BB40F996}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Crew_CoyXO_P.et"
+     "{7B1C194621AD2553}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Brad_Gunner_P.et"
+     "{84045A64127AC7C8}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Brad_Driver_P.et"
+    }
+    m_sCustomNameSet "Coy HQ | XO"
+   }
+  }
+ }
+ ABRAMS_11 {
+  coords 6054.012 55.345 7579.983
+  angles -0.811 -25.008 0.378
+  m_sAttachmentGroupName "GR_US_RED1"
+  {
+   SCR_AIGroup GR_US_RED1 : "{3CC80518BD9541C4}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/P/Group_US_1986_BDU_TankCrew_P.et" {
+    components {
+     PS_GroupCallsignAssigner "{66641BD329AD3B5C}" {
+      m_iPlatoonCallsign 1
+      m_iSquadCallsign 1
+     }
+    }
+    coords -1 0 -7.5
+    m_aUnitPrefabSlots {
+     "{45E7181593DEFC6E}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Crew_PL_P.et"
+     "{7B1C194621AD2553}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Brad_Gunner_P.et"
+     "{84045A64127AC7C8}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Brad_Driver_P.et"
+    }
+    m_sCustomNameSet "1st Tank Plt | PL"
+   }
+  }
+ }
+ ABRAMS_21 {
+  coords 5959.894 56.191 7645.684
+  angles -1.268 134.892 -1.263
+  m_sAttachmentGroupName "GR_US_WHITE1"
+  {
+   SCR_AIGroup GR_US_WHITE1 : "{3CC80518BD9541C4}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/P/Group_US_1986_BDU_TankCrew_P.et" {
+    components {
+     PS_GroupCallsignAssigner "{66641BD329AD3B5C}" {
+      m_iPlatoonCallsign 2
+      m_iSquadCallsign 1
+     }
+    }
+    coords -1 0 -7.5
+    m_aUnitPrefabSlots {
+     "{45E7181593DEFC6E}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Crew_PL_P.et"
+     "{7B1C194621AD2553}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Brad_Gunner_P.et"
+     "{84045A64127AC7C8}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Brad_Driver_P.et"
+    }
+    m_sCustomNameSet "2nd Tank Plt | PL"
+   }
+  }
+ }
+ ABRAMS_22 {
+  coords 5942.238 56.469 7642.111
+  angles 0 134.911 0
+  m_sAttachmentGroupName "GR_US_WHITE2"
+  {
+   SCR_AIGroup GR_US_WHITE2 : "{3CC80518BD9541C4}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/P/Group_US_1986_BDU_TankCrew_P.et" {
+    components {
+     PS_GroupCallsignAssigner "{66641BD329AD3B5C}" {
+      m_iPlatoonCallsign 2
+      m_iSquadCallsign 2
+     }
+    }
+    coords -1 0 -7.5
+    m_sCustomNameSet "2nd Tank Plt | 2"
+   }
+  }
+ }
+ ABRAMS_23 {
+  coords 5985.821 55.248 7668.282
+  angles 0.895 179.997 -0.895
+  m_sAttachmentGroupName "GR_US_WHITE3"
+  {
+   SCR_AIGroup GR_US_WHITE3 : "{3CC80518BD9541C4}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/P/Group_US_1986_BDU_TankCrew_P.et" {
+    components {
+     PS_GroupCallsignAssigner "{66641BD329AD3B5C}" {
+      m_iPlatoonCallsign 2
+      m_iSquadCallsign 3
+     }
+    }
+    coords -1 0 -7.5
+    m_sCustomNameSet "2nd Tank Plt | 3"
+   }
+  }
+ }
+ ABRAMS_24 {
+  coords 6000.826 55.17 7678.265
+  angles 0.895 179.986 -0.895
+  m_sAttachmentGroupName "GR_US_WHITE4"
+  {
+   SCR_AIGroup GR_US_WHITE4 : "{3CC80518BD9541C4}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/P/Group_US_1986_BDU_TankCrew_P.et" {
+    components {
+     PS_GroupCallsignAssigner "{66641BD329AD3B5C}" {
+      m_iPlatoonCallsign 2
+      m_iSquadCallsign 4
+     }
+    }
+    coords -1 0 -7.5
+    m_aUnitPrefabSlots {
+     "{240CF1FD74E49B72}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Crew_PSG_P.et"
+     "{7B1C194621AD2553}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Brad_Gunner_P.et"
+     "{84045A64127AC7C8}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Brad_Driver_P.et"
+    }
+    m_sCustomNameSet "2nd Tank Plt | PSG"
+   }
+  }
+ }
+ ABRAMS_12 {
+  coords 6049.176 55.394 7566.696
+  angles -0.379 -25.014 -0.811
+  m_sAttachmentGroupName "GR_US_RED2"
+  {
+   SCR_AIGroup GR_US_RED2 : "{3CC80518BD9541C4}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/P/Group_US_1986_BDU_TankCrew_P.et" {
+    components {
+     PS_GroupCallsignAssigner "{66641BD329AD3B5C}" {
+      m_iPlatoonCallsign 1
+      m_iSquadCallsign 2
+     }
+    }
+    coords -1 0 -7.5
+    m_sCustomNameSet "1st Tank Plt | 2"
+   }
+  }
+ }
+ ABRAMS_13 {
+  coords 6037.709 55.482 7549.128
+  angles -0.892 -5 0.078
+  m_sAttachmentGroupName "GR_US_RED3"
+  {
+   SCR_AIGroup GR_US_RED3 : "{3CC80518BD9541C4}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/P/Group_US_1986_BDU_TankCrew_P.et" {
+    components {
+     PS_GroupCallsignAssigner "{66641BD329AD3B5C}" {
+      m_iPlatoonCallsign 1
+      m_iSquadCallsign 3
+     }
+    }
+    coords -1 0 -7.5
+    m_sCustomNameSet "1st Tank Plt | 3"
+   }
+  }
+ }
+ ABRAMS_14 {
+  coords 6028.618 55.541 7538.296
+  angles -0.078 -5.013 -0.892
+  m_sAttachmentGroupName "GR_US_RED4"
+  {
+   SCR_AIGroup GR_US_RED4 : "{3CC80518BD9541C4}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/P/Group_US_1986_BDU_TankCrew_P.et" {
+    components {
+     PS_GroupCallsignAssigner "{66641BD329AD3B5C}" {
+      m_iPlatoonCallsign 1
+      m_iSquadCallsign 4
+     }
+    }
+    coords -1 0 -7.5
+    m_aUnitPrefabSlots {
+     "{240CF1FD74E49B72}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Crew_PSG_P.et"
+     "{7B1C194621AD2553}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Brad_Gunner_P.et"
+     "{84045A64127AC7C8}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Brad_Driver_P.et"
+    }
+    m_sCustomNameSet "1st Tank Plt | PSG"
+   }
+  }
+ }
+}
