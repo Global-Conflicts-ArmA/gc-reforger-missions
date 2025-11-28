@@ -1,0 +1,125 @@
+$grp GenericEntity {
+ ZSUPOS {
+  coords 6563.34 135.864 7827.184
+  angles 0 -100.072 0
+ }
+ MI24POS {
+  coords 2166.427 9.123 883.188
+  angles 0 -100.072 0
+ }
+}
+Vehicle Mi24P_armed_R5 : "{3DD336DB69DCD4AC}Prefabs/Vehicles/Helicopters/Mi24/Mi24P_armed_R60.et" {
+ components {
+  WCS_Armament_LoadoutComponent "{62E74E9634E5D544}" {
+   m_ArmamentGroups {
+    WCS_ArmamentWeaponGroup "{64D7270910D95A90}" {
+     weaponsInfo {
+      WCS_ArmamentWeaponInfo "{64D7270910D95A6C}" {
+      }
+      WCS_ArmamentWeaponInfo "{64D7270955DC4899}" {
+       isEnabled 0
+      }
+     }
+    }
+    WCS_ArmamentWeaponGroup "{64D727090270F382}" {
+     weaponsInfo {
+      WCS_ArmamentWeaponInfo "{64D727090270F35B}" {
+      }
+      WCS_ArmamentWeaponInfo "{64D7270EB719D276}" {
+       Position PointInfo "{64D7270EB719D1D3}" {
+        PivotID "pylon_R02"
+       }
+       isEnabled 0
+      }
+     }
+    }
+   }
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Turret {
+     Prefab "{2FFB1076C8040CB4}Prefabs/Vehicles/Helicopters/Mi24/VehParts/Weapons/Mi24_Turret_base.et"
+    }
+   }
+  }
+  WeaponSlotComponent "{62E74E97AAE8F407}" {
+   WeaponTemplate "{52120E4BA120661B}Prefabs/Weapons/Core/Armament_Empty.et"
+  }
+ }
+ coords 2173.077 8.778 877.882
+ angles 1.663 -68.325 0.661
+}
+SCR_AIGroup RifleSquad_1 : "{7544247CE7FBC839}Prefabs/Groups/OPFOR/Russia/1980s/Motorised Rifles (BTR-Early)/P/Group_USSR_MSV80_MotRifleSquad_P.et" {
+ components {
+  AIFormationComponent "{507E9DC12F541FE6}" {
+   DefaultFormation "line"
+  }
+  PS_GroupCallsignAssigner "{652F5C6E746ACE30}" {
+   m_iPlatoonCallsign 2
+   m_iSquadCallsign 0
+  }
+ }
+ coords 5868.28 222.123 4649.73
+ angles 0 127.198 0
+ m_aUnitPrefabSlots {
+  "{E5C3468BDF19AC4F}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_MG_P.et"
+  "{E5C3468BDF19AC4F}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_MG_P.et"
+ }
+ m_bSnapToTerrain 0
+ m_sCustomNameSet "1st Squad"
+}
+GenericEntity : "{D5DCF3520C2A8C41}Prefabs/Props/Furniture/Flipchart_01/Flipchart_01.et" {
+ components {
+  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+   EnableDamage 0
+  }
+ }
+ coords 5871.309 222.073 4647.307
+ angles 0 -53.759 0
+ {
+  GenericEntity : "{5B462DF843A26368}Prefabs/Utils/Interactions/TILW_TeleportInteraction.et" {
+   components {
+    ActionsManagerComponent "{62EF76E0D47ED96A}" {
+     ActionContexts {
+      UserActionContext "{62EF76E0D47ED970}" {
+       ContextName "Interact_B"
+      }
+     }
+     additionalActions {
+      TILW_TeleportInteraction "{62EF76E608B6CB36}" {
+       ParentContextList {
+        "Interact_B"
+       }
+       ActionTitle "Interact_B"
+       Duration 2
+       m_actionName "Teleport -> Mi-24 Hind | R60 + S5 Rockets"
+       m_locationName "MI24POS"
+       m_factionKeys {
+        "USSR"
+       }
+       m_conditionFlag "RespawnWave"
+      }
+      TILW_TeleportInteraction "{66F36CE539BCC270}" {
+       ParentContextList {
+        "Interact_B"
+       }
+       ActionTitle "Interact_B"
+       Duration 2
+       m_actionName "Teleport -> ZSU-24 Ural AAA"
+       m_locationName "ZSUPOS"
+       m_factionKeys {
+        "USSR"
+       }
+      }
+     }
+    }
+   }
+   coords -0.01 1.189 0.103
+   angles 0 2.587 0
+  }
+ }
+}
+Vehicle Ural4320_ZU1 : "{FD109F3702AAB392}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et" {
+ coords 6562.619 135.725 7818.995
+ angles 0 134.897 0
+}
