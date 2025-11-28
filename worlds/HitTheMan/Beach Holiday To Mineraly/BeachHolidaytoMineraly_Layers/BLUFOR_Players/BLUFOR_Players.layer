@@ -12,10 +12,27 @@ SCR_DestructibleBuildingEntity : "{02128ED43CA97BCF}Prefabs/Structures/Industria
  coords 5865.477 221.871 4639.152
  angles 0 138.756 0
 }
-Vehicle AIR_UH1H_armed_sharkNose : "{3133602B406D131C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed_gunship_HEDP_sharkNose.et" {
- coords 5064.412 1.347 10011.982
- angles 0 155.206 0
- m_sAttachmentGroupName "AIR_Spawn_UH1H"
+$grp Vehicle : "{3133602B406D131C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed_gunship_HEDP_sharkNose.et" {
+ AIR_UH1H_armed_sharkNose {
+  coords 5064.412 1.347 10011.982
+  angles 0 155.206 0
+  m_sAttachmentGroupName "AIR_Spawn_UH1H"
+ }
+ AIR_UH1H_armed_sharkNose_FAKE_1 {
+  coords 11030.472 35.969 1635.271
+  angles 0 92.101 0
+  m_sAttachmentGroupName "AIR_Spawn_UH1H"
+ }
+ AIR_UH1H_armed_sharkNose_FAKE_3 {
+  coords 11030.943 35.969 1621.488
+  angles 0 92.101 0
+  m_sAttachmentGroupName "Pilots_AH1S_2"
+ }
+ AIR_UH1H_armed_sharkNose_FAKE_2 {
+  coords 11031.271 35.969 1629.054
+  angles 0 92.101 0
+  m_sAttachmentGroupName "Pilots_AH1S_1"
+ }
 }
 $grp Vehicle : "{3312ADBF53A16DD8}Prefabs/Vehicles/Wheeled/LAV25/LAV25_RHS.et" {
  LAV25_RHS1 {
@@ -465,6 +482,60 @@ $grp Vehicle : "{3312ADBF53A16DD8}Prefabs/Vehicles/Wheeled/LAV25/LAV25_RHS.et" {
 GameEntity : "{50E6A3845C9F20FD}Prefabs/Props/Military/Camps/LanternMilitary_US_01.et" {
  coords 5869.72 222.037 4646.274
 }
+$grp Vehicle : "{685A81835A3E6BC0}Prefabs/Vehicles/Helicopters/AH1S/Army/AH1S_Army_AIM9.et" {
+ AH1S_Army_AIM1 {
+  components {
+   WCS_Armament_LoadoutComponent "{6242ECBBA878773B}" {
+    m_ArmamentGroups {
+     WCS_ArmamentWeaponGroup "{6242ECBBA8787739}" {
+      weaponsInfo {
+       WCS_ArmamentWeaponInfo "{6242ECBBA878773F}" {
+        isEnabled 0
+       }
+       WCS_ArmamentWeaponInfo "{6242ECBBA8787730}" {
+       }
+       WCS_ArmamentWeaponInfo "{6242ECBBA8787734}" {
+        isEnabled 0
+       }
+       WCS_ArmamentWeaponInfo "{6242ECBBA878770A}" {
+        isEnabled 0
+       }
+      }
+     }
+    }
+   }
+  }
+  coords 5046.858 1.384 10003.375
+  angles 0 155.206 0
+  m_sAttachmentGroupName "Pilots_AH1S_1"
+ }
+ AH1S_Army_AIM2 {
+  components {
+   WCS_Armament_LoadoutComponent "{6242ECBBA878773B}" {
+    m_ArmamentGroups {
+     WCS_ArmamentWeaponGroup "{6242ECBBA8787739}" {
+      weaponsInfo {
+       WCS_ArmamentWeaponInfo "{6242ECBBA878773F}" {
+        isEnabled 0
+       }
+       WCS_ArmamentWeaponInfo "{6242ECBBA8787730}" {
+       }
+       WCS_ArmamentWeaponInfo "{6242ECBBA8787734}" {
+        isEnabled 0
+       }
+       WCS_ArmamentWeaponInfo "{6242ECBBA878770A}" {
+        isEnabled 0
+       }
+      }
+     }
+    }
+   }
+  }
+  coords 5028.825 1.39 9995.226
+  angles 0 155.206 0
+  m_sAttachmentGroupName "Pilots_AH1S_2"
+ }
+}
 $grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
  AIR_Spawn_UH1H {
   coords 5064.412 1.347 10011.982
@@ -602,39 +673,6 @@ GenericEntity : "{A0E432F0BBED71B4}PrefabsEditable/Auto/Props/Military/AmmoBoxes
  coords 5093.142 1.521 10004.442
  angles 0 172.187 0
 }
-$grp Vehicle : "{C3F186EAA807431B}worlds/HitTheMan/NewMechAssault/Prefab/AIR_AH1S_Army_AIM2_HTM.et" {
- AIR_AH1S_Army_AIM2 {
-  components {
-   WCS_Armament_LoadoutComponent "{6242ECBBA878773B}" {
-    m_ArmamentGroups {
-     WCS_ArmamentWeaponGroup "{6242ECBBA8787739}" {
-      weaponsInfo {
-       WCS_ArmamentWeaponInfo "{6242ECBBA8787730}" {
-       }
-       WCS_ArmamentWeaponInfo "{6242ECBBA8787734}" {
-       }
-       WCS_ArmamentWeaponInfo "{6242ECBBA878770A}" {
-       }
-      }
-     }
-    }
-   }
-  }
-  coords 5046.844 1.384 10003.368
-  angles 0 155.206 0
-  m_sAttachmentGroupName "AIR_Spawn_AH1_1"
- }
- AIR_AH1S_Army_AIM1 {
-  components {
-   TILW_Flag_EntityDamage "{66F36CF184C7A6CD}" {
-    m_flagName "AH1_2"
-   }
-  }
-  coords 5028.825 1.39 9995.226
-  angles 0 155.206 0
-  m_sAttachmentGroupName "AIR_Spawn_AH1_1"
- }
-}
 GenericEntity : "{D5DCF3520C2A8C41}Prefabs/Props/Furniture/Flipchart_01/Flipchart_01.et" {
  components {
   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
@@ -682,13 +720,13 @@ $grp SCR_AIGroup : "{F9D2A10B5E4A9DCE}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian
   angles -10.578 148.612 6.39
   m_aUnitPrefabSlots {
    "{E0C8CB8559AC550E}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Headquarters/Character_1993_CAF_COY_Commander_1_P.et"
-   "{852C67BA11722EAD}worlds/HitTheMan/NewMechAssault/Prefab/Character_1993_CAF_COY_2iC_12_P.et"
-   "{F2141EA1106CBB32}worlds/HitTheMan/NewMechAssault/Prefab/Character_1993_CAF_FAC_1_P_HTM.et"
+   "{4F93D8A18F7D21B5}worlds/HitTheMan/Beach Holiday To Mineraly/Prefab/Character_1993_CAF_COY_2iC_12_P_2.et"
+   "{06FF99097A17145F}worlds/HitTheMan/Beach Holiday To Mineraly/Prefab/Character_1993_CAF_FAC_1_P_HTM_2.et"
    "{B4C4A4C1E9C987B6}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Headquarters/Character_1993_CAF_Signaller_1_P.et"
    "{521F896E060E6696}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Headquarters/Character_1993_CAF_COY_CSM_1_P.et"
    "{E22C3DDB5BCE6B3C}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Headquarters/Character_1993_CAF_Medic_1_P.et"
    "{E22C3DDB5BCE6B3C}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Headquarters/Character_1993_CAF_Medic_1_P.et"
-   "{FACA61ACA90F73D2}worlds/HitTheMan/NewMechAssault/Prefab/Character_1993_CAF_Vehicle_Gunner_12_P_HTM.et"
+   "{805A8AF6D131DCC2}worlds/HitTheMan/Beach Holiday To Mineraly/Prefab/Character_1993_CAF_Vehicle_Gunner_12_P_HTM_2.et"
    "{80BF0A15249B2F27}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Character_1993_CAF_Vehicle_Driver_1_P.et"
   }
   m_sCustomNameSet "Company HQ"
@@ -708,7 +746,7 @@ $grp SCR_AIGroup : "{F9D2A10B5E4A9DCE}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian
    "{373B40FAB9F262CA}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Headquarters/Character_1993_CAF_PLT_Commander_1_P.et"
    "{E1B0E0478D68E303}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Headquarters/Character_1993_CAF_PLT_Warrant_1_P.et"
    "{B4C4A4C1E9C987B6}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Headquarters/Character_1993_CAF_Signaller_1_P.et"
-   "{FACA61ACA90F73D2}worlds/HitTheMan/NewMechAssault/Prefab/Character_1993_CAF_Vehicle_Gunner_12_P_HTM.et"
+   "{805A8AF6D131DCC2}worlds/HitTheMan/Beach Holiday To Mineraly/Prefab/Character_1993_CAF_Vehicle_Gunner_12_P_HTM_2.et"
    "{80BF0A15249B2F27}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Character_1993_CAF_Vehicle_Driver_1_P.et"
   }
   m_sCustomNameSet "1st Platoon HQ"
@@ -728,7 +766,7 @@ $grp SCR_AIGroup : "{F9D2A10B5E4A9DCE}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian
    "{373B40FAB9F262CA}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Headquarters/Character_1993_CAF_PLT_Commander_1_P.et"
    "{E1B0E0478D68E303}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Headquarters/Character_1993_CAF_PLT_Warrant_1_P.et"
    "{B4C4A4C1E9C987B6}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Headquarters/Character_1993_CAF_Signaller_1_P.et"
-   "{FACA61ACA90F73D2}worlds/HitTheMan/NewMechAssault/Prefab/Character_1993_CAF_Vehicle_Gunner_12_P_HTM.et"
+   "{805A8AF6D131DCC2}worlds/HitTheMan/Beach Holiday To Mineraly/Prefab/Character_1993_CAF_Vehicle_Gunner_12_P_HTM_2.et"
    "{80BF0A15249B2F27}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Character_1993_CAF_Vehicle_Driver_1_P.et"
   }
   m_sCustomNameSet "2nd Platoon HQ"
@@ -752,7 +790,7 @@ $grp SCR_AIGroup : "{F9D2A10B5E4A9DCE}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian
    "{C8A1A5B03388350F}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Character_1993_CAF_2IC_1_P.et"
    "{32E19CB521F9F2E2}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Character_1993_CAF_AR_1_P.et"
    "{652F146EF6635151}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Character_1993_CAF_LAT_1_P.et"
-   "{FACA61ACA90F73D2}worlds/HitTheMan/NewMechAssault/Prefab/Character_1993_CAF_Vehicle_Gunner_12_P_HTM.et"
+   "{805A8AF6D131DCC2}worlds/HitTheMan/Beach Holiday To Mineraly/Prefab/Character_1993_CAF_Vehicle_Gunner_12_P_HTM_2.et"
    "{80BF0A15249B2F27}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Character_1993_CAF_Vehicle_Driver_1_P.et"
   }
   m_sCustomNameSet "1st Section"
@@ -776,7 +814,7 @@ $grp SCR_AIGroup : "{F9D2A10B5E4A9DCE}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian
    "{C8A1A5B03388350F}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Character_1993_CAF_2IC_1_P.et"
    "{32E19CB521F9F2E2}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Character_1993_CAF_AR_1_P.et"
    "{652F146EF6635151}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Character_1993_CAF_LAT_1_P.et"
-   "{FACA61ACA90F73D2}worlds/HitTheMan/NewMechAssault/Prefab/Character_1993_CAF_Vehicle_Gunner_12_P_HTM.et"
+   "{805A8AF6D131DCC2}worlds/HitTheMan/Beach Holiday To Mineraly/Prefab/Character_1993_CAF_Vehicle_Gunner_12_P_HTM_2.et"
    "{80BF0A15249B2F27}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Character_1993_CAF_Vehicle_Driver_1_P.et"
   }
   m_sCustomNameSet "2nd Section"
@@ -800,7 +838,7 @@ $grp SCR_AIGroup : "{F9D2A10B5E4A9DCE}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian
    "{C8A1A5B03388350F}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Character_1993_CAF_2IC_1_P.et"
    "{32E19CB521F9F2E2}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Character_1993_CAF_AR_1_P.et"
    "{652F146EF6635151}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Character_1993_CAF_LAT_1_P.et"
-   "{FACA61ACA90F73D2}worlds/HitTheMan/NewMechAssault/Prefab/Character_1993_CAF_Vehicle_Gunner_12_P_HTM.et"
+   "{805A8AF6D131DCC2}worlds/HitTheMan/Beach Holiday To Mineraly/Prefab/Character_1993_CAF_Vehicle_Gunner_12_P_HTM_2.et"
    "{80BF0A15249B2F27}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Character_1993_CAF_Vehicle_Driver_1_P.et"
   }
   m_sCustomNameSet "1st Section"
@@ -824,7 +862,7 @@ $grp SCR_AIGroup : "{F9D2A10B5E4A9DCE}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian
    "{C8A1A5B03388350F}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Character_1993_CAF_2IC_1_P.et"
    "{32E19CB521F9F2E2}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Character_1993_CAF_AR_1_P.et"
    "{652F146EF6635151}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Character_1993_CAF_LAT_1_P.et"
-   "{FACA61ACA90F73D2}worlds/HitTheMan/NewMechAssault/Prefab/Character_1993_CAF_Vehicle_Gunner_12_P_HTM.et"
+   "{805A8AF6D131DCC2}worlds/HitTheMan/Beach Holiday To Mineraly/Prefab/Character_1993_CAF_Vehicle_Gunner_12_P_HTM_2.et"
    "{80BF0A15249B2F27}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Character_1993_CAF_Vehicle_Driver_1_P.et"
   }
   m_sCustomNameSet "2nd Section"
@@ -886,7 +924,7 @@ $grp SCR_AIGroup : "{F9D2A10B5E4A9DCE}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian
    "{C8A1A5B03388350F}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Character_1993_CAF_2IC_1_P.et"
    "{32E19CB521F9F2E2}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Character_1993_CAF_AR_1_P.et"
    "{652F146EF6635151}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Character_1993_CAF_LAT_1_P.et"
-   "{FACA61ACA90F73D2}worlds/HitTheMan/NewMechAssault/Prefab/Character_1993_CAF_Vehicle_Gunner_12_P_HTM.et"
+   "{805A8AF6D131DCC2}worlds/HitTheMan/Beach Holiday To Mineraly/Prefab/Character_1993_CAF_Vehicle_Gunner_12_P_HTM_2.et"
    "{80BF0A15249B2F27}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Character_1993_CAF_Vehicle_Driver_1_P.et"
   }
   m_sCustomNameSet "2nd Section"
@@ -910,7 +948,7 @@ $grp SCR_AIGroup : "{F9D2A10B5E4A9DCE}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian
    "{C8A1A5B03388350F}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Character_1993_CAF_2IC_1_P.et"
    "{32E19CB521F9F2E2}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Character_1993_CAF_AR_1_P.et"
    "{652F146EF6635151}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Character_1993_CAF_LAT_1_P.et"
-   "{FACA61ACA90F73D2}worlds/HitTheMan/NewMechAssault/Prefab/Character_1993_CAF_Vehicle_Gunner_12_P_HTM.et"
+   "{805A8AF6D131DCC2}worlds/HitTheMan/Beach Holiday To Mineraly/Prefab/Character_1993_CAF_Vehicle_Gunner_12_P_HTM_2.et"
    "{80BF0A15249B2F27}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Players/Character_1993_CAF_Vehicle_Driver_1_P.et"
   }
   m_sCustomNameSet "2nd Section"
@@ -927,9 +965,9 @@ $grp SCR_AIGroup : "{F9D2A10B5E4A9DCE}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian
   coords 5090.381 1.536 10007.933
   angles -0.788 -116.351 -3.601
   m_aUnitPrefabSlots {
-   "{2912CE2541E611F5}worlds/HitTheMan/FixMeMissionLAV/Prefab/Character_1993_CAF_Pilot_1_P_HTM.et"
-   "{6BEBD6C267285489}worlds/HitTheMan/FixMeMissionLAV/Prefab/Character_1993_CAF_Crew_1_P_HTM.et"
-   "{C03DF90D1077CDB8}worlds/HitTheMan/NewMechAssault/Prefab/Character_1993_CAF_FACA_1_P_HTM.et"
+   "{48EDFB3FC750543F}worlds/HitTheMan/Beach Holiday To Mineraly/Prefab/Character_1993_CAF_Pilot_1_P_HTM_2.et"
+   "{6DE508F3B896D601}worlds/HitTheMan/Beach Holiday To Mineraly/Prefab/Character_1993_CAF_Crew_1_P_HTM_2.et"
+   "{D1630E262C692AEA}worlds/HitTheMan/Beach Holiday To Mineraly/Prefab/Character_1993_CAF_FACA_1_P_HTM_2.et"
   }
   m_sCustomNameSet "Goldfish + 29 SIERRA FAC(A)"
   m_bSetPlayable 0
@@ -945,10 +983,10 @@ $grp SCR_AIGroup : "{F9D2A10B5E4A9DCE}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian
   coords 5088.613 1.54 10012.074
   angles -0.788 -116.351 -3.601
   m_aUnitPrefabSlots {
-   "{46F1062AF0141170}worlds/HitTheMan/FixMeMissionLAV/Prefab/Character_1993_CAF_PilotFlightLead_1_P_HTM.et"
-   "{6BEBD6C267285489}worlds/HitTheMan/FixMeMissionLAV/Prefab/Character_1993_CAF_Crew_1_P_HTM.et"
+   "{07CFF325CB1BD00E}worlds/HitTheMan/Beach Holiday To Mineraly/Prefab/Character_1993_CAF_PilotFlightLead_1_P_HTM_2.et"
+   "{6DE508F3B896D601}worlds/HitTheMan/Beach Holiday To Mineraly/Prefab/Character_1993_CAF_Crew_1_P_HTM_2.et"
   }
-  m_sCustomNameSet "Stingray 1-1"
+  m_sCustomNameSet "Stingray 1-1 | AH-1S"
   m_bSetPlayable 0
  }
  Pilots_AH1S_2 {
@@ -962,10 +1000,10 @@ $grp SCR_AIGroup : "{F9D2A10B5E4A9DCE}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian
   coords 5087.085 1.553 10015.616
   angles -0.788 -116.351 -3.601
   m_aUnitPrefabSlots {
-   "{2912CE2541E611F5}worlds/HitTheMan/FixMeMissionLAV/Prefab/Character_1993_CAF_Pilot_1_P_HTM.et"
-   "{6BEBD6C267285489}worlds/HitTheMan/FixMeMissionLAV/Prefab/Character_1993_CAF_Crew_1_P_HTM.et"
+   "{48EDFB3FC750543F}worlds/HitTheMan/Beach Holiday To Mineraly/Prefab/Character_1993_CAF_Pilot_1_P_HTM_2.et"
+   "{6DE508F3B896D601}worlds/HitTheMan/Beach Holiday To Mineraly/Prefab/Character_1993_CAF_Crew_1_P_HTM_2.et"
   }
-  m_sCustomNameSet "Stingray 1-2"
+  m_sCustomNameSet "Stingray 1-2 | AH-1S"
   m_bSetPlayable 0
  }
 }
