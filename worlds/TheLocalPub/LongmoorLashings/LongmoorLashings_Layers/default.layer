@@ -1,20 +1,17 @@
-SCR_AIWorld : "{F98AD67976545756}Prefabs/SCR_AIWorld_Longmoor.et" {
- coords 1494.757 104.514 508.886
-}
 PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
  coords 1489.201 336.759 280.833
 }
-PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
  components {
   SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
    m_iStartingHours 5
-   m_iStartingMinutes 45
+   m_iStartingMinutes 30
    m_bUsePredefineStartingTimeAndWeather 1
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{62F56305E6873A67}" {
-     m_sWeatherPresetName "Rainy"
+     m_sWeatherPresetName "Overcast Rain"
      m_iStartingHour 5
-     m_iStartingMinutes 45
+     m_iStartingMinutes 30
     }
    }
   }
@@ -23,22 +20,159 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/
  m_bMarkersOnlyOnBriefing 1
  m_iFreezeTime 300000
 }
+$grp GenericEntity {
+ ObjLoc1 {
+  coords 869.038 103.921 902.607
+  angles 0 38.975 0
+ }
+ ObjLoc2 {
+  coords 860.959 107.229 821.398
+ }
+ ObjLoc3 {
+  coords 788.216 109.293 754.384
+ }
+}
 TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
  coords 1400.171 106.908 613.984
  m_missionEvents {
+  TILW_MissionEvent "{66F943D9061055E5}" {
+   m_name "SpawnBox1"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{66F943D97C17602A}" {
+     m_executionDelay 1
+     m_prefab "{D717FA910C159EB1}PrefabsEditable/Auto/Props/Military/AmmoBoxes/EquipmentBoxStack/E_EquipmentBoxStack_USSR_01_V2_covered_LongmoorLashings.et"
+     m_locationName "ObjLoc1"
+    }
+    TILW_EditMapItemInstruction "{66FB2328DB91378B}" {
+     m_executionDelay 1
+     m_itemNames {
+      "AmmoBoxLocBlufor1"
+     }
+     m_factionVisibility {
+      TILW_FactionVisibility "{66FB2328C4B67637}" {
+       m_factionKey "UK"
+       m_visible 1
+      }
+     }
+    }
+    TILW_EditMapItemInstruction "{66FB23295125E815}" {
+     m_executionDelay 1
+     m_itemNames {
+      "AmmoBoxLocOpfor1"
+     }
+     m_factionVisibility {
+      TILW_FactionVisibility "{66FB23295125E998}" {
+       m_factionKey "GC_SEPARATIST"
+       m_visible 1
+      }
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{66F943D973C01C6B}" {
+    m_flagName "SpawnBox1"
+   }
+   m_pregameEvent 1
+  }
+  TILW_MissionEvent "{66FAE881559E2E75}" {
+   m_name "SpawnBox2"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{66FAE881559E2FE3}" {
+     m_executionDelay 1
+     m_prefab "{D717FA910C159EB1}PrefabsEditable/Auto/Props/Military/AmmoBoxes/EquipmentBoxStack/E_EquipmentBoxStack_USSR_01_V2_covered_LongmoorLashings.et"
+     m_locationName "ObjLoc2"
+    }
+    TILW_EditMapItemInstruction "{66FB2329293A1D16}" {
+     m_executionDelay 1
+     m_itemNames {
+      "AmmoBoxLocBlufor2"
+     }
+     m_factionVisibility {
+      TILW_FactionVisibility "{66FB2328C4B67637}" {
+       m_factionKey "UK"
+       m_visible 1
+      }
+     }
+    }
+    TILW_EditMapItemInstruction "{66FB2329BABADA9D}" {
+     m_executionDelay 1
+     m_itemNames {
+      "AmmoBoxLocOpfor2"
+     }
+     m_factionVisibility {
+      TILW_FactionVisibility "{66FB23295125E998}" {
+       m_factionKey "GC_SEPARATIST"
+       m_visible 1
+      }
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{66FAE881559E2FE6}" {
+    m_flagName "SpawnBox2"
+   }
+   m_pregameEvent 1
+  }
+  TILW_MissionEvent "{66FAE8814AB61B7E}" {
+   m_name "SpawnBox3"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{66FAE8814AB61B0D}" {
+     m_executionDelay 1
+     m_prefab "{D717FA910C159EB1}PrefabsEditable/Auto/Props/Military/AmmoBoxes/EquipmentBoxStack/E_EquipmentBoxStack_USSR_01_V2_covered_LongmoorLashings.et"
+     m_locationName "ObjLoc3"
+    }
+    TILW_EditMapItemInstruction "{66FB23291BE95103}" {
+     m_executionDelay 1
+     m_itemNames {
+      "AmmoBoxLocBlufor3"
+     }
+     m_factionVisibility {
+      TILW_FactionVisibility "{66FB2328C4B67637}" {
+       m_factionKey "UK"
+       m_visible 1
+      }
+     }
+    }
+    TILW_EditMapItemInstruction "{66FB2329AB68CF92}" {
+     m_executionDelay 1
+     m_itemNames {
+      "AmmoBoxLocOpfor3"
+     }
+     m_factionVisibility {
+      TILW_FactionVisibility "{66FB23295125E998}" {
+       m_factionKey "GC_SEPARATIST"
+       m_visible 1
+      }
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{66FAE8814AB61B01}" {
+    m_flagName "SpawnBox3"
+   }
+   m_pregameEvent 1
+  }
+  TILW_MissionEvent "{66F920CDB38EEDBA}" {
+   m_name "DeleteAmmoBoxes"
+   m_instructions {
+    TILW_DeleteEntitiesInstruction "{66F920CDAEA842F6}" {
+     m_executionDelay 300
+     m_entityNames {
+      "OpforAmmoBox"
+      "BluforAmmoBox"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{66F920CDAA34B707}" {
+    m_invertTerm 1
+   }
+  }
   TILW_MissionEvent "{62F518CDA67C880C}" {
    m_name "EndMissionBLUWIN"
    m_instructions {
     TILW_SendMessageInstruction "{62F555E1EDF917B8}" {
-     m_messageTitle "BLUFOR VICTORY!"
-     m_messageBody "The SAPA cell and supplies have been destroyed. "\
-     "Well done BLUFOR!"\
+     m_messageTitle "UK VICTORY!"
+     m_messageBody "British forces have managed to destroy the SAPA cell and their supplies."\
+     "The last few a beginning to flee."\
      ""\
      "Mission will end shortly..."
-    }
-    TILW_EndGameInstruction "{62F518CD88457617}" {
-     m_executionDelay 20
-     m_factionKey "UK"
     }
    }
    m_condition TILW_ConjunctionTerm "{62F555E1FA580DE2}" {
@@ -56,39 +190,16 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
    m_name "EndMissionREDWIN"
    m_instructions {
     TILW_SendMessageInstruction "{62F7223731EFB197}" {
-     m_messageTitle "OPFOR VICTORY!"
-     m_messageBody "The British troops has been made combat ineffective and thus have withdrawn from the AO."\
-     "Well done OPFOR!"\
+     m_messageTitle "SAPA VICTORY!"
+     m_messageBody "British forces have been smashed by the SAPA cell."\
+     "The last few have turned around and are beginning to withdraw."\
+     "RUN THEM DOWN!"\
      ""\
      "Mission will end shortly..."
-    }
-    TILW_EndGameInstruction "{62F7223732C676EB}" {
-     m_executionDelay 20
-     m_factionKey "GC_SEPARATIST"
     }
    }
    m_condition TILW_LiteralTerm "{62F722373805AE73}" {
     m_flagName "BLUFORDead"
-   }
-  }
-  TILW_MissionEvent "{62F72237C84BDB64}" {
-   m_name "Timelimit"
-   m_instructions {
-    TILW_SendMessageInstruction "{62F72237C6CEB0F7}" {
-     m_executionDelay 1788
-     m_messageTitle "OPFOR VICTORY - Timelimit"
-     m_messageBody "The British troops have withdrawn from the AO as this window of operations have closed."\
-     "Well done OPFOR!"\
-     ""\
-     "Mission will end shortly..."
-    }
-    TILW_EndGameInstruction "{62F72237C18EC691}" {
-     m_executionDelay 1800
-     m_factionKey "GC_SEPARATIST"
-    }
-   }
-   m_condition TILW_LiteralTerm "{62F72237CFF32CF2}" {
-    m_invertTerm 1
    }
   }
  }
@@ -96,12 +207,21 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
   TILW_FactionPlayersKilledFlag "{62F555E1029497F4}" {
    m_flagName "OPFORDead"
    m_factionKey "GC_SEPARATIST"
-   m_casualtyRatio 0.85
+   m_casualtyRatio 0.9
   }
   TILW_FactionPlayersKilledFlag "{62F72237A3D24D11}" {
    m_flagName "BLUFORDead"
    m_factionKey "UK"
-   m_casualtyRatio 0.8
+   m_casualtyRatio 0.85
+  }
+ }
+ m_randomFlags {
+  TILW_FlagSampling "{66F920D6A4BBF6A7}" {
+   m_flagNames {
+    "SpawnBox1"
+    "SpawnBox2"
+    "SpawnBox3"
+   }
   }
  }
 }
