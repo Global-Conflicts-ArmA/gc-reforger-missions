@@ -22,9 +22,6 @@ PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/Per
 }
 PS_GameModeCoop PS_GameMode_Lobby_TILWMF2 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
  components {
-  SCR_NametagConfigComponent "{571AA9E54FC9210D}" {
-   Enabled 0
-  }
   SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
    m_iStartingHours 20
    m_fDayTimeAcceleration 0.1
@@ -522,6 +519,21 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
    }
    m_condition TILW_LiteralTerm "{66E8091B0E696B48}" {
     m_flagName "Town"
+   }
+  }
+  TILW_MissionEvent "{66EF29A00C070E81}" {
+   m_name "Delete Event"
+   m_instructions {
+    TILW_DeleteEntitiesInstruction "{66EF29A007977CB9}" {
+     m_executionDelay 150
+     m_entityNames {
+      "Sandbag_1"
+      "Sandbag_2"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{66EF29A00258758A}" {
+    m_invertTerm 1
    }
   }
  }

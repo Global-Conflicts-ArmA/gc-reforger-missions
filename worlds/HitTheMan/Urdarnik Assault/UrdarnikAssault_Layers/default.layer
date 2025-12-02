@@ -384,9 +384,9 @@ PolylineShapeEntity AO_Limit_BLU : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW
  }
 }
 $grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
- OBJ_Sector1 {
-  coords 5378.895 65.387 3375.454
-  m_queryRadius 100
+ OBJ_Sector1_MotorPool {
+  coords 5386.942 65.387 3402.257
+  m_queryRadius 90
   m_locationName "HQ Building"
   m_flagName "MotorPool"
   m_stopAfterFirstChange 1
@@ -417,6 +417,28 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
    }
    m_condition TILW_LiteralTerm "{6504157885FC5C39}" {
     m_flagName "CAF_CAS"
+   }
+  }
+  TILW_MissionEvent "{66E35E650AFA7C49}" {
+   m_name "CAF Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{66E35E650AFA7CC0}" {
+     m_messageTitle "Canadian Armed Forces Victory"
+     m_messageBody "Canadians have secured the fortified apartment and the Motor Pool.."\
+     "GM Discretion when to end the mission"\
+     ""\
+     "Note, AI will keep spawning so best find a new mission now GMs."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{66E35E650F4468C4}" {
+    m_operands {
+     TILW_LiteralTerm "{66E35E650CF8AB19}" {
+      m_flagName "MotorPoolSecured"
+     }
+     TILW_LiteralTerm "{66E35E65035EE63F}" {
+      m_flagName "MainBuilding"
+     }
+    }
    }
   }
   TILW_MissionEvent "{6506E408139E95AC}" {
@@ -455,6 +477,7 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
    m_name "Motor Pool Secured"
    m_instructions {
     TILW_SendMessageInstruction "{6550E36ED08C418C}" {
+     m_executionDelay 8
      m_messageTitle "Motorpool Secured.. Reinforcements inbound"
      m_messageBody "Canadians have secured the Motorpool, reinforcements to replace our losses are inbound via trucks."
     }
@@ -470,28 +493,6 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
     }
    }
   }
-  TILW_MissionEvent "{66E35E650AFA7C49}" {
-   m_name "CAF Victory"
-   m_instructions {
-    TILW_SendMessageInstruction "{66E35E650AFA7CC0}" {
-     m_messageTitle "Canadian Armed Forces Victory"
-     m_messageBody "Canadians have secured the fortified apartment and the Motor Pool.."\
-     "GM Discretion when to end the mission"\
-     ""\
-     "Note, AI will keep spawning so best find a new mission now GMs."
-    }
-   }
-   m_condition TILW_ConjunctionTerm "{66E35E650F4468C4}" {
-    m_operands {
-     TILW_LiteralTerm "{66E35E650CF8AB19}" {
-      m_flagName "MotorPoolSecured"
-     }
-     TILW_LiteralTerm "{66E35E65035EE63F}" {
-      m_flagName "MainBuilding"
-     }
-    }
-   }
-  }
   TILW_MissionEvent "{66E706851F28D96F}" {
    m_name "Respawn Event"
    m_instructions {
@@ -501,13 +502,13 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
      m_allowSpecRespawn 1
     }
     TILW_EditRespawnTicketsInstruction "{66E7068501AFE100}" {
-     m_executionDelay 30
+     m_executionDelay 45
      m_factionKey "GC_CAF"
      m_allowSpecRespawn 1
     }
    }
    m_condition TILW_LiteralTerm "{66E7068512006E8A}" {
-    m_flagName "MotorPool"
+    m_flagName "MotorPoolSecured"
    }
   }
  }
