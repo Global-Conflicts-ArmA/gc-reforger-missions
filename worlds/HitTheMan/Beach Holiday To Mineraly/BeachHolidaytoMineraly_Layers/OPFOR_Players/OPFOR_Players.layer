@@ -1,0 +1,83 @@
+$grp GenericEntity {
+ ZSUPOS {
+  coords 6563.34 135.864 7827.184
+  angles 0 -100.072 0
+ }
+ MI24POS {
+  coords 2166.427 9.123 883.188
+  angles 0 -100.072 0
+ }
+}
+SCR_AIGroup : "{8D35DA8B89880FAF}Prefabs/Groups/OPFOR/Russia/1980s/Motorised Rifles (BTR-Early)/P/Group_USSR_MSV80_MotRiflePHQ_P.et" {
+ components {
+  AIFormationComponent "{507E9DC12F541FE6}" {
+   DefaultFormation "line"
+  }
+  PS_GroupCallsignAssigner "{65136701CA021D8F}" {
+   m_iPlatoonCallsign 2
+  }
+ }
+ coords 5870.296 222.089 4649.899
+ angles 0 135.279 0
+ m_aUnitPrefabSlots {
+  "{5DCBC97B2CA1EB2C}worlds/HitTheMan/Beach Holiday To Mineraly/Prefab/Character_CustomTest_1.et"
+  "{0323E038932C6523}worlds/HitTheMan/Beach Holiday To Mineraly/Prefab/Character_CustomTest_2.et"
+ }
+ m_sCustomNameSet "Spetznaz Group"
+}
+GenericEntity : "{D5DCF3520C2A8C41}Prefabs/Props/Furniture/Flipchart_01/Flipchart_01.et" {
+ components {
+  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+   EnableDamage 0
+  }
+ }
+ coords 5871.309 222.073 4647.307
+ angles 0 -53.759 0
+ {
+  GenericEntity : "{5B462DF843A26368}Prefabs/Utils/Interactions/TILW_TeleportInteraction.et" {
+   components {
+    ActionsManagerComponent "{62EF76E0D47ED96A}" {
+     ActionContexts {
+      UserActionContext "{62EF76E0D47ED970}" {
+       ContextName "Interact_B"
+      }
+     }
+     additionalActions {
+      TILW_TeleportInteraction "{62EF76E608B6CB36}" {
+       ParentContextList {
+        "Interact_B"
+       }
+       ActionTitle "Interact_B"
+       Duration 2
+       m_actionName "Teleport -> Mi-24 Hind | R60 + S5 Rockets"
+       m_locationName "MI24POS"
+       m_factionKeys {
+        "USSR"
+       }
+       m_conditionFlag "RespawnWave"
+      }
+      TILW_TeleportInteraction "{66F36CE539BCC270}" {
+       ParentContextList {
+        "Interact_B"
+       }
+       ActionTitle "Interact_B"
+       Duration 2
+       m_actionName "Teleport -> ZSU-24 Ural AAA"
+       m_locationName "ZSUPOS"
+       m_factionKeys {
+        "USSR"
+       }
+       m_conditionFlag "ZSUTP"
+      }
+     }
+    }
+   }
+   coords -0.01 1.189 0.103
+   angles 0 2.587 0
+  }
+ }
+}
+Vehicle Ural4320_ZU1 : "{FD109F3702AAB392}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et" {
+ coords 6562.619 135.725 7818.995
+ angles 0 134.897 0
+}

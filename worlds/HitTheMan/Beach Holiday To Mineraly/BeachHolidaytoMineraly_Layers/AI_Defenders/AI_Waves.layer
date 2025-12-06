@@ -1,0 +1,169 @@
+$grp SCR_AIWaypoint : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
+ Move_WP_Wave_1 {
+  coords 6185.683 37.62 7985.174
+ }
+ Move_WP_Wave_2 {
+  coords 6063.955 3.659 8237.098
+ }
+}
+$grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
+ AI_Spawn_Wave_1 {
+  coords 5614.145 89.78 7874.161
+  angles 0 33.422 0
+  m_prefab "{5736F94D76C26150}Prefabs/Groups/OPFOR/Russia/1980s/Motorised Rifles (BTR-Early)/Group_USSR_MSV80_MotRifleSquad.et"
+  m_conditionFlag "Waves"
+  m_spawnTimings {
+   10
+   120
+   240
+   360
+   480
+   600
+  }
+  m_waypointNames {
+   "AI_SnD_1"
+  }
+ }
+ AI_Spawn_Wave_3 {
+  coords 6279.852 186.814 7593.201
+  angles 0 -13.722 0
+  m_prefab "{5736F94D76C26150}Prefabs/Groups/OPFOR/Russia/1980s/Motorised Rifles (BTR-Early)/Group_USSR_MSV80_MotRifleSquad.et"
+  m_conditionFlag "Waves"
+  m_spawnTimings {
+   10
+   120
+   240
+   360
+   480
+   600
+  }
+  m_waypointNames {
+   "AI_SnD_1"
+  }
+ }
+ AI_Spawn_Wave_2 {
+  coords 6617.089 112.837 8253.155
+  angles 0 -57.658 0
+  m_prefab "{5736F94D76C26150}Prefabs/Groups/OPFOR/Russia/1980s/Motorised Rifles (BTR-Early)/Group_USSR_MSV80_MotRifleSquad.et"
+  m_conditionFlag "Waves"
+  m_spawnTimings {
+   10
+   120
+   240
+   360
+   480
+   600
+  }
+  m_waypointNames {
+   "AI_SnD_1"
+  }
+ }
+ BMP_Spawn_Wave_1 {
+  coords 4351.254 118.774 7639.779
+  angles -0.441 64.162 3.194
+  m_prefab "{3868E03D9A4AF186}Prefabs/Vehicles/Tracked/BMP1/BMP1P_base.et"
+  m_conditionFlag "Waves"
+  m_spawnTimings {
+   10
+   360
+  }
+  m_waypointNames {
+   "Move_WP_Wave_1"
+  }
+  m_crewConfig TILW_CrewConfig "{655288DD15A9F6AC}" {
+   m_crewGroups {
+    TILW_CrewGroup "{651028E34B0E58D9}" {
+     m_crewStations {
+      TILW_CrewStation "{651028E349419D3E}" {
+       m_allowCargo 0
+       m_characters {
+        "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+        "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+       }
+      }
+     }
+     m_waypointNames {
+      "Move_WP_Wave_1"
+     }
+    }
+   }
+   m_noTurretDismount 1
+   m_useIdleGroups 0
+  }
+ }
+ BMP_Spawn_Wave_2 {
+  coords 7646.496 115.476 8765.136
+  angles -0.317 -129.323 -3.209
+  m_prefab "{3868E03D9A4AF186}Prefabs/Vehicles/Tracked/BMP1/BMP1P_base.et"
+  m_conditionFlag "Waves"
+  m_spawnTimings {
+   10
+   480
+  }
+  m_waypointNames {
+   "Move_WP_Wave_2"
+  }
+  m_crewConfig TILW_CrewConfig "{655288DD15A9F6AC}" {
+   m_crewGroups {
+    TILW_CrewGroup "{651028E34B0E58D9}" {
+     m_crewStations {
+      TILW_CrewStation "{651028E349419D3E}" {
+       m_allowCargo 0
+       m_characters {
+        "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+        "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+       }
+      }
+     }
+     m_waypointNames {
+      "Move_WP_Wave_2"
+     }
+    }
+   }
+   m_noTurretDismount 1
+   m_useIdleGroups 0
+  }
+ }
+ AI_Spawn_Wave_4 {
+  coords 6778.493 167.251 7786.311
+  angles 0 -78.05 0
+  m_prefab "{5736F94D76C26150}Prefabs/Groups/OPFOR/Russia/1980s/Motorised Rifles (BTR-Early)/Group_USSR_MSV80_MotRifleSquad.et"
+  m_conditionFlag "Waves"
+  m_spawnTimings {
+   10
+   120
+   240
+   360
+   480
+   600
+  }
+  m_waypointNames {
+   "AI_SnD_1"
+  }
+ }
+}
+TILW_FactionTriggerEntity AI_Waves_Trigger : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 6313.318 -384.67 7960.793
+ m_queryRadius 500
+ m_locationName "HQ Building"
+ m_flagName "Waves"
+ m_eventsOnlyDuringGame 0
+ m_drawShapeSurface 0
+ m_drawShapeOutline 0
+ m_ownerFactionKey "GC_CAF"
+ m_ratioThreshold 0.001
+}
+$grp SCR_SearchAndDestroyWaypoint : "{B3E7B8DC2BAB8ACC}Prefabs/AI/Waypoints/AIWaypoint_SearchAndDestroy.et" {
+ AI_SnD_1 {
+  coords 5713.247 8.97 8259.802
+  CompletionRadius 50
+ }
+ AI_SnD_2 {
+  coords 6078.35 9.929 8283.861
+  CompletionRadius 50
+ }
+ AI_SnD_3 {
+  coords 6209.862 37.063 8005.644
+  CompletionRadius 50
+ }
+}

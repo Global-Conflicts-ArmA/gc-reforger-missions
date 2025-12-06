@@ -1,0 +1,104 @@
+Vehicle : "{38DE44985B0AD338}Prefabs/Vehicles/Helicopters/Mi24/Mi24P_base.et" {
+ ID "57DA6675519A417B"
+ components {
+  SCR_HelicopterSoundComponent "{5A7CE769E7A9C43E}" {
+   Filenames + {
+    "{C45C3238BFA3D3A9}Sounds/Weapons/Launchers/FIM92_Stinger/Weapons_Launchers_FIM92_Stinger_Lock.acp"
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "#WCS-Helicopter_MI24P_Name - #WCS-Weapon_R60_Name/#WCS-Weapon_UB1657_Name"
+    m_Image "{54B4D76AFE0FA31B}UI/Textures/EditorPreviews/Vehicles/Helicopters/Mi24V/Mi24P_armed_R60.edds"
+   }
+  }
+  WCS_Armament_LoadoutComponent "{62E74E9634E5D544}" {
+   m_ArmamentGroups {
+    WCS_ArmamentWeaponGroup "{6706935DE403E09D}" {
+     prefab "{6547A281622ADD71}Prefabs/Weapons/AircraftWeapons/RocketPods/UB1657/Pod_UB1657.et"
+     weaponsInfo {
+      WCS_ArmamentWeaponInfo "{6706935DE403E08F}" {
+       Position PointInfo "{6706935DE403E08D}" {
+        PivotID "pylon_L01"
+        Offset 0 -0.1705 0.1182
+        Angles 1.8 0 0
+       }
+      }
+      WCS_ArmamentWeaponInfo "{6706935DE403E088}" {
+       Position PointInfo "{6706935DE403E089}" {
+        PivotID "pylon_R01"
+        Offset 0 -0.1705 0.1182
+        Angles 1.8 0 0
+       }
+      }
+     }
+     fireModes {
+      WCS_Armament_WeaponSingleFireMode "{6706935DE403E0F7}" {
+       m_iFireIntervalMS 90
+      }
+      WCS_Armament_WeaponSalvoFireMode "{6706935DE403E0F4}" {
+      }
+     }
+     slotIndex 1
+    }
+    WCS_ArmamentWeaponGroup "{6706935DE403E0F2}" {
+     prefab "{0288489064436380}Prefabs/Weapons/AircraftWeapons/MissilePods/R60/Pod_R60.et"
+     weaponsInfo {
+      WCS_ArmamentWeaponInfo "{6706935DE403E0F3}" {
+       Position PointInfo "{6706935DE403E0F0}" {
+        PivotID "pylon_R02"
+       }
+      }
+      WCS_ArmamentWeaponInfo "{6706935DE403E0F1}" {
+       Position PointInfo "{6706935DE403E0FE}" {
+        PivotID "pylon_L02"
+       }
+       isEnabled 0
+      }
+     }
+     fireModes {
+      WCS_Armament_WeaponSingleFireMode "{6706935DE403E0FF}" {
+       m_iFireIntervalMS 200
+      }
+     }
+     slotIndex 2
+    }
+   }
+  }
+  WCS_Armament_VehicleWeaponStationComponent "{6706935DE403E03C}" {
+   components {
+    WCS_Armament_InfraredMissileWeaponStationModuleComponent "{6706935DE403E03A}" {
+     m_fLockStartupDelayInSeconds 3
+    }
+   }
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Turret {
+     Prefab "{2FFB1076C8040CB4}Prefabs/Vehicles/Helicopters/Mi24/VehParts/Weapons/Mi24_Turret_base.et"
+    }
+   }
+  }
+  WeaponSlotComponent "{62E74E97AAE8F407}" {
+   AttachType InventoryStorageSlot "{62E74E975C462DBC}" {
+    Prefab "{52120E4BA120661B}Prefabs/Weapons/Core/Armament_Empty.et"
+    DisablePhysicsInteraction 0
+   }
+   WeaponTemplate ""
+  }
+  WeaponSlotComponent "{6706935DE403E020}" {
+   shouldHandleObstruction 0
+   obstructionTestCharacterOffset 0 0 0
+   obstructionTestAddedLength 0
+   WeaponTemplate "{52120E4BA120661B}Prefabs/Weapons/Core/Armament_Empty.et"
+   WeaponSlotIndex 2
+  }
+  WeaponSlotComponent "{6706935DE403E022}" {
+   shouldHandleObstruction 0
+   obstructionTestCharacterOffset 0 0 0
+   obstructionTestAddedLength 0
+   WeaponTemplate "{52120E4BA120661B}Prefabs/Weapons/Core/Armament_Empty.et"
+   WeaponSlotIndex 1
+  }
+ }
+}
