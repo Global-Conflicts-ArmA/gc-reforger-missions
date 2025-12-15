@@ -1,0 +1,145 @@
+$grp SCR_DefendWaypoint : "{4ECD14650D82F5CA}Prefabs/AI/Waypoints/AIWaypoint_Loiter_CO.et" {
+ def_wp_CAF_Exterior_3 {
+  coords 4752.156 165.562 3517.48
+  CompletionRadius 120
+ }
+ def_wp_CAF_WestExterior_1 {
+  coords 4527.604 161.906 3888.801
+  CompletionRadius 120
+ }
+ def_wp_CAF_WestExterior_2 {
+  coords 4768.347 164.688 3789.403
+  CompletionRadius 120
+ }
+}
+$grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
+ AI_South_Exterior_3 {
+  coords 4768.156 165.761 3501.469
+  angleY -68.466
+  m_prefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+  m_conditionFlag "SouthExterior2"
+  m_spawnTimings {
+   2 12
+  }
+  m_waypointNames {
+   "def_wp_CAF_Exterior_3"
+  }
+ }
+ AI_South_Exterior_2 {
+  coords 4622.465 181.737 3670.664
+  angleY -68.466
+  m_prefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+  m_conditionFlag "SouthExterior1"
+  m_spawnTimings {
+   2
+  }
+  m_waypointNames {
+   "def_wp_CAF_Exterior_2"
+  }
+ }
+ AI_South_Exterior_1 {
+  coords 4551.225 181.375 3670.998
+  angleY -68.466
+  m_prefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+  m_conditionFlag "SouthExterior1"
+  m_spawnTimings {
+   2
+  }
+  m_waypointNames {
+   "def_wp_CAF_Exterior_1"
+  }
+ }
+ AI_West_Exterior_1 {
+  coords 4522.641 161.935 3947.293
+  angleY -161.614
+  m_prefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+  m_conditionFlag "WestExterior1"
+  m_spawnTimings {
+   2 12
+  }
+  m_waypointNames {
+   "def_wp_CAF_WestExterior_1"
+  }
+ }
+ AI_West_Exterior_2 {
+  coords 4774.363 165.565 3840.739
+  angleY -154.757
+  m_prefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+  m_conditionFlag "WestExterior2"
+  m_spawnTimings {
+   2 12
+  }
+  m_waypointNames {
+   "def_wp_CAF_WestExterior_2"
+  }
+ }
+ AI_Middle_Exterior {
+  coords 4874.807 169.342 3751.834
+  angleY -138.312
+  m_prefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+  m_conditionFlag "MiddleExterior_Trigger_1"
+  m_spawnTimings {
+   2
+  }
+  m_waypointNames {
+   "def_wp_CAF_MiddleExterior_1"
+  }
+ }
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ SouthExterior_Trigger {
+  coords 4601.794 176.125 3727.144
+  m_queryRadius 200
+  m_locationName "the Powerstation"
+  m_flagName "SouthExterior1"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "GC_NVA"
+  m_ratioThreshold 0.01
+ }
+ WestExterior_Trigger_2 {
+  coords 4769.837 164.753 3806.181
+  m_queryRadius 200
+  m_locationName "the Powerstation"
+  m_flagName "WestExterior2"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "GC_NVA"
+  m_ratioThreshold 0.01
+ }
+ SouthExterior_Trigger_2 {
+  coords 4797.473 165.126 3595.649
+  m_queryRadius 200
+  m_locationName "the Powerstation"
+  m_flagName "SouthExterior2"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "GC_NVA"
+  m_ratioThreshold 0.01
+ }
+ MiddleExterior_Trigger_1 {
+  coords 4870.438 169.452 3757.79
+  m_queryRadius 200
+  m_locationName "the Powerstation"
+  m_flagName "SouthExterior2"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "GC_NVA"
+  m_ratioThreshold 0.01
+ }
+}
+$grp SCR_DefendWaypoint : "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et" {
+ def_wp_CAF_Exterior_1 {
+  coords 4550.247 181.434 3676.72
+  angleY -66.498
+  CompletionRadius 60
+ }
+ def_wp_CAF_Exterior_2 {
+  coords 4639.149 180.359 3656.458
+  angleY -66.498
+  CompletionRadius 50
+ }
+ def_wp_CAF_MiddleExterior_1 {
+  coords 4872.99 169.458 3755.344
+  angleX 1.804
+  angleY 114.118
+  angleZ 4.719
+  CompletionRadius 24.7
+ }
+}

@@ -5,8 +5,14 @@ PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/Per
 PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
  components {
   SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
-   m_iStartingHours 7
-   m_iStartingMinutes 15
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{67031E019CD9FE6C}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 7
+     m_iStartingMinutes 30
+    }
+   }
    m_bUseSpecifiedDate 1
    m_iSetDay 8
    m_iSetMonth 5
@@ -14,6 +20,29 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/
   }
  }
  m_iFreezeTime 120000
+ {
+  SCR_FactionManager "67031E0197FF7B62" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{648D46336748B246}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{648D3C2E4F6005BD}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{648D3C2E5DD97C6B}" {
+        m_sCallsign "Neptune"
+       }
+       SCR_CallsignInfo "{66D9144DF60A7F57}" {
+        m_sCallsign "Salacia"
+       }
+       SCR_CallsignInfo "{66D9144DF51EC0E5}" {
+        m_sCallsign "Venilia"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+   }
+  }
+ }
 }
 TILW_ExtractionTriggerEntity : "{192ABD6B9232E064}Prefabs/Logic/Triggers/TILW_ExtractionTrigger.et" {
  coords 368 0 368
@@ -60,7 +89,7 @@ $grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_
   {
    PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
     coords 0 0 0
-    angleY 0
+    angles 0 0 0
     m_sImageSetGlow ""
     m_MarkerColor 0 0 0 0.5
     m_fWorldSize 150
@@ -82,7 +111,7 @@ $grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_
   {
    PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
     coords 0 0 0
-    angleY 0
+    angles 0 0 0
     m_sImageSetGlow ""
     m_MarkerColor 0 0 0 0.5
     m_fWorldSize 150
@@ -320,7 +349,9 @@ TILW_MissionFrameworkEntity fw : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFrame
  m_randomFlags {
   TILW_FlagSampling "{64E756F90EA640E9}" {
    m_flagNames {
-    "c3" "c4" "c5"
+    "c3"
+    "c4"
+    "c5"
    }
    m_k 2
   }
@@ -362,7 +393,7 @@ $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker
  }
  poi_shelter {
   coords 458.611 24.66 257.137
-  angleY 90
+  angles 0 90 0
   m_sImageSetGlow ""
   m_MarkerColor 0 0 0 0.5
   m_sQuadName "point-of-interest"
@@ -372,7 +403,7 @@ $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker
  }
  poi_zu {
   coords 590.77 9.91 554.782
-  angleY 90
+  angles 0 90 0
   m_sImageSetGlow ""
   m_MarkerColor 0 0 0 0.5
   m_sQuadName "point-of-interest"
@@ -384,7 +415,7 @@ $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker
  }
  poi_aaa {
   coords 650 24.66 350
-  angleY 90
+  angles 0 90 0
   m_sImageSetGlow ""
   m_MarkerColor 1 0.902 0 0.075
   m_sQuadName "mark-exclamation"

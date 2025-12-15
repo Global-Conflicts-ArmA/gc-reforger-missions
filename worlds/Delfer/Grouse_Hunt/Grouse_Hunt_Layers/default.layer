@@ -1,0 +1,166 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 6390.121 158.892 6421.301
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 6398.559 159.398 6425.77
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ components {
+  SCR_InitWeatherComponent "{61B68227C35BFE9A}" {
+   m_sInitialStartingWeatherId "Heavy Wet Fog"
+   m_iSetWeatherConstant 1
+  }
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 15
+   m_iStartingMinutes 20
+   m_bRandomStartingWeather 1
+   m_bUseSpecifiedDate 1
+   m_iSetDay 9
+   m_iSetMonth 5
+   m_iSetYear 1979
+   m_fFogHeight 0
+  }
+ }
+ coords 6394.121 159.125 6423.654
+ {
+  SCR_FactionManager "66EB0A141A722C56" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{633D460D559977CA}" {
+     UIInfo SCR_FactionUIInfo "{633D46001FC1655D}" {
+      Name "West German Militia"
+      Icon "{29BD4B2192625A29}worlds/Delfer/Grouse_Hunt/GC_BDW_icon.edds"
+     }
+     m_sFactionFlag "{29BD4B2192625A29}worlds/Delfer/Grouse_Hunt/GC_BDW_icon.edds"
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_bIsAssignedRandomly 0
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{58B2B630FDD64B65}" {
+        m_sCallsign "Spatel"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "HQ"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+        m_sCallsign ""
+       }
+      }
+      m_sCallsignGroupFormat "%2-%3"
+      m_sCallsignCharacterFormat "%2-%3 %4"
+      m_sCallsignCharacterWithRoleFormat "%2-%3 %4"
+     }
+    }
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 2769.05 86.211 6295.662
+ m_missionEvents {
+  TILW_MissionEvent "{66AB2C0D01248150}" {
+   m_name "OPFOR Victory 1"
+   m_instructions {
+    TILW_SendMessageInstruction "{66AB2C0DAD1FE802}" {
+     m_messageTitle "OPFOR Victory"
+     m_messageBody "US and Indfor Dead"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{66AB2C0D3D67E253}" {
+    m_operands {
+     TILW_LiteralTerm "{66AB2C0D355ABDB8}" {
+      m_flagName "US100"
+     }
+     TILW_LiteralTerm "{66AB2C0D8E8003FF}" {
+      m_flagName "IRA100"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{66AB2C0DB611983C}" {
+   m_name "OPFOR Victory 2"
+   m_condition TILW_ConjunctionTerm "{66AB2C0DC0036945}" {
+    m_operands {
+     TILW_ConjunctionTerm "{66AB2C0DF982B7AA}" {
+      m_operands {
+       TILW_LiteralTerm "{66AB2C0DF22ABF26}" {
+        m_flagName "US100"
+       }
+       TILW_LiteralTerm "{66AB2C0C02A7954B}" {
+        m_flagName "intelopfor"
+       }
+      }
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{66AB2C0E2DD67A8F}" {
+   m_name "INDFOR Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{66AB2C0E45651AEC}" {
+     m_messageTitle "INDFOR Victory"
+     m_messageBody "OPFOR Dead"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66AB2C0E39052A65}" {
+    m_flagName "USSR90"
+   }
+  }
+  TILW_MissionEvent "{66AB2C0E6E38F401}" {
+   m_name "INDFOR Victory 2"
+   m_instructions {
+    TILW_SendMessageInstruction "{66AB2C0E92A8066A}" {
+     m_messageTitle "INDFOR Victory"
+     m_messageBody "Pilot and Intel Extracted"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{66AB2C0E678346BE}" {
+    m_operands {
+     TILW_LiteralTerm "{66AB2C0E7801D203}" {
+      m_flagName "Blufor_Extract"
+     }
+     TILW_LiteralTerm "{66AB2C0E7E504EA9}" {
+      m_flagName "intelblufor"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{66B20AE4DC8F44E8}" {
+   m_name "timelimit"
+   m_instructions {
+    TILW_SendMessageInstruction "{66B20AE4E9DF25C5}" {
+     m_executionDelay 3600
+     m_messageTitle "Timelimit Reached"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66B20AE508875892}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{66AB2C081D05B16F}" {
+   m_flagName "USSR90"
+   m_factionKey "USSR"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{66AB2C0B90BFF9AC}" {
+   m_flagName "IRA100"
+   m_factionKey "GC_IRA"
+  }
+  TILW_FactionPlayersKilledFlag "{66AB2C0BA5F0F739}" {
+   m_flagName "US100"
+   m_factionKey "US"
+  }
+ }
+}

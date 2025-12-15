@@ -1,0 +1,173 @@
+$grp SCR_AIWaypoint : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
+ Move_WP_Wave_1 {
+  coords 4510.988 40.219 3474.854
+ }
+ Move_WP_Wave_2 {
+  coords 4214.397 11.297 2988.057
+ }
+ Move_WP_Wave_3 {
+  coords 4491.516 38.587 3385.619
+ }
+}
+$grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
+ AI_Spawn_Wave_1 {
+  coords 4346.868 87.239 3921.043
+  angles 0 142.234 0
+  m_prefab "{5736F94D76C26150}Prefabs/Groups/OPFOR/Russia/1980s/Motorised Rifles (BTR-Early)/Group_USSR_MSV80_MotRifleSquad.et"
+  m_conditionFlag "Waves"
+  m_spawnTimings {
+   10
+   60
+   120
+   180
+   240
+   300
+   360
+   420
+   480
+   540
+   600
+  }
+  m_waypointNames {
+   "AI_SnD_1"
+  }
+ }
+ AI_Spawn_Wave_3 {
+  coords 3943.832 9.594 3610.47
+  angles 0 91.382 0
+  m_prefab "{5736F94D76C26150}Prefabs/Groups/OPFOR/Russia/1980s/Motorised Rifles (BTR-Early)/Group_USSR_MSV80_MotRifleSquad.et"
+  m_conditionFlag "Waves"
+  m_spawnTimings {
+   10
+   60
+   120
+   180
+   240
+   300
+   360
+   420
+   480
+   540
+   600
+  }
+  m_waypointNames {
+   "AI_SnD_1"
+  }
+ }
+ AI_Spawn_Wave_2 {
+  coords 4097.648 26.249 3759.185
+  angles 0 128.905 0
+  m_prefab "{5736F94D76C26150}Prefabs/Groups/OPFOR/Russia/1980s/Motorised Rifles (BTR-Early)/Group_USSR_MSV80_MotRifleSquad.et"
+  m_conditionFlag "Waves"
+  m_spawnTimings {
+   10
+   60
+   120
+   180
+   240
+   300
+   360
+   420
+   480
+   540
+   600
+  }
+  m_waypointNames {
+   "AI_SnD_1"
+  }
+ }
+ BRDM_Spawn_Wave_1 {
+  coords 3671.906 27.474 4192.247
+  angles -2.946 122.301 1.311
+  m_prefab "{3868E03D9A4AF186}Prefabs/Vehicles/Tracked/BMP1/BMP1P_base.et"
+  m_conditionFlag "Waves"
+  m_spawnTimings {
+   10
+   120
+   360
+  }
+  m_waypointNames {
+   "Move_WP_Wave_1"
+  }
+  m_crewConfig TILW_CrewConfig "{655288DD15A9F6AC}" {
+   m_crewGroups {
+    TILW_CrewGroup "{651028E34B0E58D9}" {
+     m_crewStations {
+      TILW_CrewStation "{651028E349419D3E}" {
+       m_allowCargo 0
+       m_characters {
+        "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+        "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+       }
+      }
+     }
+     m_waypointNames {
+      "Move_WP_Wave_1"
+     }
+    }
+   }
+   m_noTurretDismount 1
+   m_useIdleGroups 0
+  }
+ }
+ BRDM_Spawn_Wave_2 {
+  coords 3632.131 27.415 4218.592
+  angles -2.946 122.301 1.311
+  m_prefab "{3868E03D9A4AF186}Prefabs/Vehicles/Tracked/BMP1/BMP1P_base.et"
+  m_conditionFlag "Waves"
+  m_spawnTimings {
+   10
+   240
+   480
+  }
+  m_waypointNames {
+   "Move_WP_Wave_2"
+   "Move_WP_Wave_3"
+  }
+  m_crewConfig TILW_CrewConfig "{655288DD15A9F6AC}" {
+   m_crewGroups {
+    TILW_CrewGroup "{651028E34B0E58D9}" {
+     m_crewStations {
+      TILW_CrewStation "{651028E349419D3E}" {
+       m_allowCargo 0
+       m_characters {
+        "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+        "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+       }
+      }
+     }
+     m_waypointNames {
+      "Move_WP_Wave_2"
+      "Move_WP_Wave_3"
+     }
+    }
+   }
+   m_noTurretDismount 1
+   m_useIdleGroups 0
+  }
+ }
+}
+TILW_FactionTriggerEntity AI_Waves_Trigger : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 4185.807 14.697 3519.824
+ m_queryRadius 250
+ m_locationName "HQ Building"
+ m_flagName "Waves"
+ m_stopAfterFirstChange 1
+ m_drawShapeOutline 0
+ m_ownerFactionKey "GC_CAF"
+ m_ratioThreshold 0.001
+}
+$grp SCR_SearchAndDestroyWaypoint : "{B3E7B8DC2BAB8ACC}Prefabs/AI/Waypoints/AIWaypoint_SearchAndDestroy.et" {
+ AI_SnD_1 {
+  coords 4611.974 40.331 3519.14
+  CompletionRadius 50
+ }
+ AI_SnD_2 {
+  coords 4440.627 40.234 3546.232
+  CompletionRadius 50
+ }
+ AI_SnD_3 {
+  coords 4398.434 40.175 3452.392
+  CompletionRadius 50
+ }
+}

@@ -1,0 +1,730 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 2758.863 11.932 2454.95
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 3727.142 525.044 1643.412
+}
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF2 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 2
+   m_iStartingMinutes 15
+   m_fDayTimeAcceleration 0.1
+   m_fNightTimeAcceleration 0.1
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{650415CBAFAE6875}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 2
+     m_iStartingMinutes 15
+    }
+   }
+   m_bUseSpecifiedDate 1
+   m_iSetDay 21
+   m_iSetMonth 7
+   m_iSetYear 1983
+   m_fRain 0
+   m_fWind 6
+  }
+ }
+ coords 3697.287 353.796 1652.506
+ m_iFreezeTime 180000
+ m_safeStartTime 20
+ {
+  RadioManagerEntity {
+   ID "5ED9088735FF2DEE"
+   coords -26.889 23.04 -2.478
+  }
+  SCR_FactionManager "650415CC01AFC059" {
+   ID "5ED9088735FF2D8B"
+   coords 0 0 0
+   Factions {
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
+      Name "Soviet Air Force"
+      Icon "{B522FE456D7F091A}worlds/HitTheMan/Screening The Orb/330px-Flag_of_the_Soviet_Air_Force.svg.edds"
+     }
+     m_iOrder 1
+     m_sFactionFlag "{B522FE456D7F091A}worlds/HitTheMan/Screening The Orb/330px-Flag_of_the_Soviet_Air_Force.svg.edds"
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB79282FF010C}" {
+       }
+       SCR_CallsignInfo "{55CCB792829053B0}" {
+        m_sCallsign "Berkut"
+       }
+       SCR_CallsignInfo "{55CCB79282A19687}" {
+        m_sCallsign "2"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB79284A2F6C9}" {
+        m_sCallsign " "
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{64E2F896E232A50B}" {
+        m_sCallsign "5"
+       }
+       SCR_CallsignInfo "{64E2F896FFC45153}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{64E2F896E5466F70}" {
+        m_sCallsign "4v"
+       }
+      }
+     }
+    }
+    SCR_Faction "{64AA098AEA5B1498}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{64AA098204A61453}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{64AA098204A6145D}" {
+        m_sCallsign "9"
+       }
+       SCR_CallsignInfo "{64AA098204A61443}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{64AA098204A61441}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{64AA098204A61446}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{650AE15C940BA34B}" {
+        m_sCallsign "4"
+       }
+       SCR_CallsignInfo "{650AE15C8B7A1EC2}" {
+        m_sCallsign "5"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "Sunray"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "Alpha"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "Bravo"
+       }
+       SCR_CallsignInfo "{61677618371B4C91}" {
+        m_sCallsign "Charlie"
+       }
+       SCR_CallsignInfo "{65055DBDAC6F7853}" {
+        m_sCallsign "Whiskey"
+       }
+       SCR_CallsignInfo "{65055DB6CE3F5934}" {
+        m_sCallsign "Echo"
+       }
+       SCR_CallsignInfo "{650AE1494DA67E1D}" {
+        m_sCallsign "Foxtrot"
+       }
+      }
+     }
+     m_iFactionRadioFrequency 50000
+    }
+    SCR_Faction "{652F615735715119}" {
+    }
+   }
+  }
+  ScriptedChatEntity {
+   ID "5ED9088735FF2DC2"
+   coords -318.966 137.025 1.838
+  }
+  ItemPreviewManagerEntity "6506E4095D53BA70" {
+   ID "5ED9088735FF2DD5"
+   coords -12.245 -3.267 -7.529
+  }
+  SCR_EditorSettingsEntity {
+   ID "61B4E967E6C20362"
+   coords 0 0 0
+  }
+ }
+}
+$grp SCR_AIWaypoint : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
+ LAV_M_1 {
+  coords 1428.457 20.125 2160.562
+ }
+ LAV_M_2 {
+  coords 1642.519 17.383 2270.066
+ }
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ AO_Limit_OPF {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_killTimer 30
+    m_factionKeys {
+     "GC_NVA"
+    }
+    m_useFactionColor 0
+    m_lineWidth 5
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+    m_factionKeys {
+     "GC_NVA"
+    }
+   }
+  }
+  coords 1415.306 20.625 2406.769
+  angles 0.895 0 0
+  Points {
+   ShapePoint "{6584FEF13579190F}" {
+    Position 309.684 -2.52 -192.794
+   }
+   ShapePoint "{6584FEF079D89774}" {
+    Position 323.245 -2.226 -211.625
+   }
+   ShapePoint "{6584FEF078FE69FC}" {
+    Position 336.718 -1.799 -238.975
+   }
+   ShapePoint "{6584FEF07834359F}" {
+    Position 346.562 -1.408 -263.956
+   }
+   ShapePoint "{6584FEF07E8FB1D4}" {
+    Position 355.391 -2.264 -311.146
+   }
+   ShapePoint "{6584FEF1281977C7}" {
+    Position 366.678 -4.363 -360.875
+   }
+   ShapePoint "{6584FEF12F012699}" {
+    Position 373.283 -5.185 -406.855
+   }
+   ShapePoint "{6584FEF123323481}" {
+    Position 389.568 -5.066 -518.83
+   }
+   ShapePoint "{6584FEF1220AA268}" {
+    Position 408.947 -4.169 -613.968
+   }
+   ShapePoint "{6584FEF1251136D8}" {
+    Position 416.237 -2.094 -706.224
+   }
+   ShapePoint "{6584FEF12431F003}" {
+    Position 429.589 -0.395 -813.011
+   }
+   ShapePoint "{6584FEF1DB26B37F}" {
+    Position 444.05 1.893 -896.799
+   }
+   ShapePoint "{6584FEF1D07B31A9}" {
+    Position 442.881 3.074 -999.027
+   }
+   ShapePoint "{6584FEF1D6D43CA6}" {
+    Position 435.396 5.924 -1076.468
+   }
+   ShapePoint "{6584FEF1D6A51730}" {
+    Position 426.563 7.166 -1140.916
+   }
+   ShapePoint "{6584FEF1D5B067F0}" {
+    Position 332.264 7.206 -1143.519
+   }
+   ShapePoint "{6584FEF1CC94C327}" {
+    Position 237.241 7.179 -1141.776
+   }
+   ShapePoint "{6584FEF1C3AE0A2A}" {
+    Position 143.184 7.099 -1143.967
+   }
+   ShapePoint "{6584FEF1C337BC0A}" {
+    Position 93.187 11.349 -1135.156
+   }
+   ShapePoint "{6584FEF1C2F141EF}" {
+    Position 53.589 12.976 -1132.142
+   }
+   ShapePoint "{6584FEF1FFDBC984}" {
+    Position -2.234 16.941 -1118.721
+   }
+   ShapePoint "{66FAF95BE98D3FE0}" {
+    Position -28.898 14.568 -924.498
+   }
+   ShapePoint "{66FAF95BE908B10B}" {
+    Position -39.103 5.969 -736.245
+   }
+   ShapePoint "{66FAF95BEFC64F1D}" {
+    Position -68.443 -0.461 -537.802
+   }
+   ShapePoint "{66FAF95BEF4B938B}" {
+    Position -91.454 -2.056 -391.562
+   }
+   ShapePoint "{66FAF95BEEBB7B00}" {
+    Position -101.477 0.182 -314.362
+   }
+   ShapePoint "{65B95BED67EC4AE8}" {
+    Position -94.156 2.465 -270.516
+   }
+   ShapePoint "{66FAE9B08C1046A4}" {
+    Position -86.127 3.217 -244.76
+   }
+   ShapePoint "{66FAE9B083190369}" {
+    Position -79.24 3.303 -217.42
+   }
+   ShapePoint "{66FAE9B08166F909}" {
+    Position -79.522 2.899 -183.557
+   }
+   ShapePoint "{66FAE9B087D87C98}" {
+    Position -85.419 2.413 -152.488
+   }
+   ShapePoint "{66FAE9B087A40067}" {
+    Position -81.233 2.399 -151.593
+   }
+   ShapePoint "{66FAE9B086B6C1FE}" {
+    Position -82.609 2.291 -144.674
+   }
+   ShapePoint "{66FAE9B0858206F4}" {
+    Position -86.634 2.304 -145.462
+   }
+   ShapePoint "{66FAE9B084F6747B}" {
+    Position -89.103 2.109 -132.994
+   }
+   ShapePoint "{66FAE9B0BB054B50}" {
+    Position -96.54 1.422 -89.012
+   }
+   ShapePoint "{66FAE9B0B9D6A409}" {
+    Position -76.331 1.333 -83.335
+   }
+   ShapePoint "{66FAE9B0B8D41F83}" {
+    Position -57.403 1.112 -69.153
+   }
+   ShapePoint "{66FAE9B0BE387BE6}" {
+    Position -55.425 1.052 -65.312
+   }
+   ShapePoint "{66FAE9B0BCB702C4}" {
+    Position -47.951 0.602 -36.552
+   }
+   ShapePoint "{66FAE9B0B21AB9E3}" {
+    Position -30.405 0.37 -24.793
+   }
+   ShapePoint "{66FAE9B0B1401585}" {
+    Position -4.681 0.447 -15.552
+   }
+   ShapePoint "{66FAE9B0B78BF71E}" {
+    Position 30.38 0.099 -4.359
+   }
+   ShapePoint "{66FAE9B0B5239664}" {
+    Position 53.564 -0.074 8.76
+   }
+   ShapePoint "{66FAE9B0AB4052F1}" {
+    Position 68.352 -0.179 15.468
+   }
+   ShapePoint "{66FAE9B0A9BC41AB}" {
+    Position 106.115 0.861 -53.118
+   }
+   ShapePoint "{66FAE9B0A93A9560}" {
+    Position 108.969 0.937 -58.229
+   }
+   ShapePoint "{66FAE9B0AFD5A871}" {
+    Position 127.491 1.399 -89.787
+   }
+   ShapePoint "{66FAE9B0AC2B71C3}" {
+    Position 173.022 1.766 -119.371
+   }
+   ShapePoint "{66FAE9B0A333048F}" {
+    Position 223.15 -0.807 -127.343
+   }
+   ShapePoint "{66FAE9B0A2752FFC}" {
+    Position 248.837 -3.089 -118.637
+   }
+   ShapePoint "{66FAE9B0A143FCD7}" {
+    Position 271.06 -3.301 -115.544
+   }
+   ShapePoint "{66FAE9B0A0F834C4}" {
+    Position 282.931 -3.556 -122.497
+   }
+   ShapePoint "{6584FEF04CCFA2B6}" {
+    Position 284.099 -3.349 -135.156
+   }
+   ShapePoint "{6584FEF04C26ACC5}" {
+    Position 286.779 -3.001 -156.523
+   }
+   ShapePoint "{6584FEF041C9486E}" {
+    Position 295.418 -2.896 -168.698
+   }
+  }
+ }
+ AO_Limit_BLU {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_killTimer 30
+    m_factionKeys {
+     "GC_SEPARATIST"
+    }
+    m_defaultColor 0.071 0.192 0.561 1
+    m_lineWidth 5
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+    m_factionKeys {
+     "GC_SEPARATIST"
+    }
+    m_visibleForEmptyFaction 0
+   }
+  }
+  coords 1415.307 20.625 2406.774
+  angles 0.895 0 0
+  Points {
+   ShapePoint "{66FAE9B74EF741A2}" {
+    Position 157.558 2.298 -165.109
+   }
+   ShapePoint "{66FAE9B7435DF869}" {
+    Position 134.083 1.867 -126.918
+   }
+   ShapePoint "{66FAE9B742E3DD5F}" {
+    Position 94.055 0.943 -58.365
+   }
+   ShapePoint "{66FAE9B74064244E}" {
+    Position 58.15 0.023 2.543
+   }
+   ShapePoint "{66FAE9B77B9EB7FB}" {
+    Position 53.488 -0.074 8.715
+   }
+   ShapePoint "{66FAE9B77A57201F}" {
+    Position 30.321 0.099 -4.341
+   }
+   ShapePoint "{66FAE9B778D69CC2}" {
+    Position -4.791 0.432 -15.608
+   }
+   ShapePoint "{66FAE9B77FBF1BBE}" {
+    Position -30.411 0.37 -24.804
+   }
+   ShapePoint "{66FAE9B77E547228}" {
+    Position -47.941 0.604 -36.636
+   }
+   ShapePoint "{66FAE9B77D1600ED}" {
+    Position -55.427 1.051 -65.305
+   }
+   ShapePoint "{66FAE9B77C9F8FEF}" {
+    Position -57.433 1.111 -69.097
+   }
+   ShapePoint "{66FAE9B7633E8711}" {
+    Position -73.62 1.301 -81.308
+   }
+   ShapePoint "{66FAE9B76115A5FA}" {
+    Position -64.06 1.9 -119.645
+   }
+   ShapePoint "{66FAE9B760619A5B}" {
+    Position -60.1 2.226 -140.462
+   }
+   ShapePoint "{66FAE9B76715B5B8}" {
+    Position -50.676 2.835 -179.497
+   }
+   ShapePoint "{66FAE9B7661D9888}" {
+    Position -46.169 3.276 -207.707
+   }
+   ShapePoint "{66FAE9B7653F572F}" {
+    Position -42.574 3.351 -262.802
+   }
+   ShapePoint "{66FAE9B71B169E56}" {
+    Position -36.532 3.242 -265.555
+   }
+   ShapePoint "{66FAE9B7185B6708}" {
+    Position 43.288 3.173 -225.1
+   }
+   ShapePoint "{66FAE9B71E23340C}" {
+    Position 97.619 2.817 -196.314
+   }
+   ShapePoint "{66FAE9B71D2C7A2C}" {
+    Position 118.728 2.651 -185.695
+   }
+  }
+ }
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ Trigger_Compound {
+  coords 1410.905 26.391 2201.354
+  m_queryRadius 50
+  m_locationName "Compound"
+  m_flagName "Compound"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "GC_NVA"
+  m_ratioThreshold 0.9
+ }
+ Trigger_Apartment1 {
+  coords 1505.577 40.338 2310.451
+  m_queryRadius 31
+  m_locationName "Apartment 1"
+  m_flagName "Apartment1"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "GC_NVA"
+  m_ratioThreshold 0.9
+ }
+ Trigger_Apartment2 {
+  coords 1371.416 39.918 2320.159
+  m_queryRadius 24
+  m_locationName "Apartment 2"
+  m_flagName "Apartment2"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "GC_NVA"
+  m_ratioThreshold 0.9
+ }
+ Trigger_Apartment3 {
+  coords 1470.599 40.964 2374.493
+  m_queryRadius 32
+  m_locationName "Apartment 3"
+  m_flagName "Apartment3"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "GC_NVA"
+  m_ratioThreshold 0.9
+ }
+ Airstrike_trigger {
+  coords 1542.157 14.441 1988.976
+  m_queryRadius 300
+  m_locationName "the Compound"
+  m_flagName "Compound"
+  m_stopAfterFirstChange 1
+  m_drawShapeSurface 0
+  m_drawShapeOutline 0
+  m_playersOnly 1
+  m_ownerFactionKey "GC_NVA"
+  m_ratioThreshold 0.6
+ }
+ Trigger_LAVs {
+  coords 1394.057 20.656 2483.233
+  m_queryRadius 300
+  m_locationName "the Compound"
+  m_flagName "LAVs"
+  m_stopAfterFirstChange 1
+  m_playersOnly 1
+  m_ownerFactionKey "GC_NVA"
+  m_ratioThreshold 0.001
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 3720.089 354.787 1640.119
+ angles 0 0 -3.576
+ m_missionEvents {
+  TILW_MissionEvent "{65041578E772535B}" {
+   m_name "SEP Victory Casualties"
+   m_instructions {
+    TILW_SendMessageInstruction "{6504157888C9AF5E}" {
+     m_messageTitle "Seperatists Victory"
+     m_messageBody "NVA Sustained too many casualties.. GM Discretion when to end the mission"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6504157885FC5C39}" {
+    m_flagName "NVA_CAS"
+   }
+  }
+  TILW_MissionEvent "{6586BE009547FF6D}" {
+   m_name "NVA Victory Casualties"
+   m_instructions {
+    TILW_SendMessageInstruction "{6586BE009547FF29}" {
+     m_messageTitle "East German Army Victory"
+     m_messageBody "US Sustained too many casualties.. GM Discretion when to end the mission"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6586BE009547FF25}" {
+    m_flagName "SEP_CAS"
+   }
+  }
+  TILW_MissionEvent "{6506E408139E95AC}" {
+   m_name "Time Limit"
+   m_instructions {
+    TILW_SendMessageInstruction "{6506E408307D3B9A}" {
+     m_executionDelay 2700
+     m_messageTitle "Time Limit"
+     m_messageBody "The Mission will end in 45 minutes"
+    }
+    TILW_SendMessageInstruction "{6550E36F53005626}" {
+     m_executionDelay 4200
+     m_messageTitle "Time Limit"
+     m_messageBody "The Mission will end in 20 minutes"
+    }
+    TILW_SendMessageInstruction "{6550E36F43F2544F}" {
+     m_executionDelay 4800
+     m_messageTitle "Time Limit"
+     m_messageBody "The Mission will end in 10 minutes"
+    }
+    TILW_SendMessageInstruction "{6506E4089FDE5CA5}" {
+     m_executionDelay 5400
+     m_messageTitle "Seperatists Victory"
+     m_messageBody "Seperatists held the town long enough forcing the NVA to fall back... GM Discretion when to end the mission"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6506E40BFBED4D76}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{650750E2E1A73F1D}" {
+   m_name "NVA OBJ Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{6550E36ED08C418C}" {
+     m_executionDelay 8
+     m_messageTitle "East German Victory"
+     m_messageBody "NVA has managed to secure the town... "\
+     "GM Discretion when to end the mission"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{650AE15E5BA69298}" {
+    m_operands {
+     TILW_LiteralTerm "{650AE15E59E990F8}" {
+      m_flagName "Compound"
+     }
+     TILW_LiteralTerm "{6586BE0770F4B9C7}" {
+      m_flagName "Apartment1"
+     }
+     TILW_LiteralTerm "{6586BE0771BA4769}" {
+      m_flagName "Apartment2"
+     }
+     TILW_LiteralTerm "{6550E36E8EA64081}" {
+      m_flagName "Apartment3"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{66FAF95D9973669F}" {
+   m_name "--------------------------------"
+  }
+  TILW_MissionEvent "{66FAF95D919E5763}" {
+   m_name "Compound Message"
+   m_instructions {
+    TILW_SendMessageInstruction "{66FAF95D82F08C06}" {
+     m_messageTitle "NVA Secured the Compound"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66FAF95D8E6BC275}" {
+    m_flagName "Compound"
+   }
+  }
+  TILW_MissionEvent "{66FAF95DADAFF003}" {
+   m_name "Apartment 1 Message"
+   m_instructions {
+    TILW_SendMessageInstruction "{66FAF95DADAFF0D0}" {
+     m_messageTitle "NVA Secured the Apartment ONE"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66FAF95DADAFF0ED}" {
+    m_flagName "Apartment1"
+   }
+  }
+  TILW_MissionEvent "{66FAF95A5EA57E53}" {
+   m_name "Apartment 2 Message"
+   m_instructions {
+    TILW_SendMessageInstruction "{66FAF95A5EA57E26}" {
+     m_messageTitle "NVA Secured the Apartment TWO"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66FAF95A5EA57E23}" {
+    m_flagName "Apartment2"
+   }
+  }
+  TILW_MissionEvent "{66FAF95A5D9603CD}" {
+   m_name "Apartment 3 Message"
+   m_instructions {
+    TILW_SendMessageInstruction "{66FAF95A5D960383}" {
+     m_messageTitle "NVA Secured the Apartment THREE"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66FAF95A5D96039C}" {
+    m_flagName "Apartment3"
+   }
+  }
+  TILW_MissionEvent "{66FAF95D93417DCB}" {
+   m_name "--------------------------------"
+  }
+  TILW_MissionEvent "{66FAF95AFA06902E}" {
+   m_name "LAVWaypoint"
+   m_instructions {
+    TILW_AssignWaypointsInstruction "{66FAF95AF1F88607}" {
+     m_groupName "LAVCrew1"
+     m_waypointNames {
+      "LAV_M_1"
+      "LAVSnD"
+     }
+     m_clearExisting 1
+    }
+    TILW_AssignWaypointsInstruction "{66FAF95AE9536A9C}" {
+     m_groupName "LAVCrew2"
+     m_waypointNames {
+      "LAV_M_1"
+      "LAVSnD"
+     }
+     m_clearExisting 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{66FAF95AFD62E57F}" {
+    m_flagName "LAVs"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{6506E4081586428B}" {
+   m_flagName "NVA_CAS"
+   m_factionKey "GC_NVA"
+   m_casualtyRatio 0.85
+  }
+  TILW_FactionPlayersKilledFlag "{6586BE008E89787A}" {
+   m_flagName "SEP_CAS"
+   m_factionKey "GC_SEPARATIST"
+   m_casualtyRatio 0.9
+  }
+ }
+}
+$grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ Obj_Mark_1 {
+  coords 1411.548 20.705 2203.901
+  angles 0 90 0
+  m_sImageSetGlow ""
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "objective-marker"
+  m_fWorldSize 30
+  m_sDescription "Compound"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_bringToFront 0
+ }
+ Obj_Mark_2 {
+  coords 1505.763 20.594 2309.09
+  angles 0 90 0
+  m_sImageSetGlow ""
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "objective-marker"
+  m_fWorldSize 30
+  m_sDescription "Apartment 1"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_bringToFront 0
+ }
+ Obj_Mark_3 {
+  coords 1471.789 20.656 2373.686
+  angles 0 90 0
+  m_sImageSetGlow ""
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "objective-marker"
+  m_fWorldSize 30
+  m_sDescription "Apartment 2"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_bringToFront 0
+ }
+ Obj_Mark_4 {
+  coords 1368.573 20.656 2320.822
+  angles 0 90 0
+  m_sImageSetGlow ""
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "objective-marker"
+  m_fWorldSize 30
+  m_sDescription "Apartment 3"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_bringToFront 0
+ }
+ Blu_Mark_10 {
+  coords 3055.146 17.987 2124.035
+  angles 0 90 0
+  m_sImageSet "{14CA3FF5DFC10722}worlds/HitTheMan/Battle For Zarichne/AOMapJPGPerfection.edds"
+  m_sImageSetGlow ""
+  m_sQuadName ""
+  m_fWorldSize 2000
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  m_bringToFront 0
+ }
+}
