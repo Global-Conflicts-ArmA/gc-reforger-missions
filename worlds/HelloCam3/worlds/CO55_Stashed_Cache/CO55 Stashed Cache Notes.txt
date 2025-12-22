@@ -1,0 +1,67 @@
+--------------------------------------------------
+Mission Details
+--------------------------------------------------
+Filename: CO55_Stashed_Cache.ent
+Name: COOP (34-55) Stashed Cache
+Author: HelloCam3
+Max Players: 55
+Min Players: 34 (minimum required leadership and support roles with 4x squads)
+
+--------------------------------------------------
+Changelog
+--------------------------------------------------
+Version 1 (27/12/2024):
+- Initial Release
+
+Version 1.1 (7/1/2025):
+- Replaced 'PS_GameMode_Lobby.et' with 'PS_GameMode_Lobby_TILWMF1.et'
+- Reduced player count from 63 to 55
+- Edited briefing 'Mission' and 'Notes' tab to clarify win conditions
+- Edited briefing 'Notes' tab with maximum and minimum player count
+- Corrected mission header file with correct maximum player count and changed mission name to include minimum and maximum player counts
+
+Version 1.2 (12/1/2025):
+- Added a message to show when players have cleared the objective area
+- Edited briefing 'Notes' tab to clarify the AO limit
+- Edited AO Limit polyline
+- Edited player group 'PS_GroupCallsignAssigner' to remove duplicates in assigned callsigns
+- Edited 'SCR_FactionManager' to retain original unit callsigns
+
+Version 1.3 (14/1/2025):
+- Added an extra waypoint for BTRs spawning in Figari to ensure they approach from the south
+- Changed attack waypoints for the QRF to move
+- Changed how the status message is triggered: now triggered in the 'TILW_MissionFramework' win condition to display five seconds before mission end
+
+Version 1.4 (29/1/2025):
+- Edited win condition to trigger mission end after 10 minutes to allow for players to deal with reinforcements
+- Added a third QRF wave to spawn during the 10 minute hold timer
+- Edited briefing 'Notes' tab to make GMs and players aware about the 10 minute timer and when to end the mission early after the objective has been taken
+- Added extra enemy AI inside and outside the objective area
+- Enabled 'TILW_AOLimitComponent' in the 'TILW_AOLimit' prefab to replace the older method of using the marker generator for marking out and enforcing the AO limit
+
+Version 1.5 (10/2/2025):
+- Placed multiple 'PatrolPoint_ObservationPoint.et' prefabs to define positions for the AI to move to within defensive waypoints
+- Enabled 'Fast Init' option on some defensive waypoints to speed up AI positioning at mission start
+
+Version 1.6 (28/3/2025):
+- Fixed some unit names that were not appearing correctly in the lobby list
+- Swapped Company HQ's BTR for a BRDM
+- Edited briefing 'Situation' to inform players they have 6x BTRs and 1x BRDM
+- Edited 'hc3_Character_USSR_Crew_P.et' prefab to spawn with new USSR tanker helmet
+- Changed QRF spawning method using the new 'TILW_PrefabSpawner.et' prefab
+- Added meta flag for house, barn, and camp triggers to enable QRF spawning using the new 'TILW_PrefabSpawner.et' prefab
+
+Version 1.7 (4/4/2025):
+- Generated new 'Soldiers' navmesh for the AO to ensure props and buildings are factored into AI pathing, lines of sight, and behaviour
+
+Version 1.8 (11/4/2025):
+- Reorganised briefing tabs into five tabs (SMEAC)
+- Adjusted AI reinforcement move waypoints to mitigate AI BTRs crashing into barriers
+- AO Limit kill timer now 120 seconds
+- Enabled 'TILW_MapShapeComponent' in the 'TILW_AOLimit' prefab to better highlight the AO
+
+Version 1.9 (19/10/2025):
+- Edited 'Crew Config' to spawn 3x crew members in FIA BTRs to ensure guns are manned
+- Edited 'Mission' tab in briefing to correct bad grammar and syntax
+
+

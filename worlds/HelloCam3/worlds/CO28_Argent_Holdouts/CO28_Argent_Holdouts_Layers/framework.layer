@@ -1,0 +1,89 @@
+PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+   m_killTimer 9999
+   m_factionKeys {
+    "US"
+   }
+   m_ignoredVehicles {
+    "{46FE5867DB0ACCA1}Prefabs/Vehicles/Helicopters/Mi8MT/hc3_Mi8MT_armed_fia.et" "{DF654C4F218E2B9C}Prefabs/Vehicles/Helicopters/Mi8MT/hc3_Mi8MT_armed_gunship_HEDP_fia.et"
+   }
+   m_visibility ALL
+   m_useFactionColor 0
+  }
+ }
+ coords 11066.567 5.518 8591.987
+ Points {
+  ShapePoint "{64583A052765D1F3}" {
+   Position -7500 0 4000
+  }
+  ShapePoint "{64583A052AD47109}" {
+   Position -5000 0 4000
+  }
+  ShapePoint "{64583A041F3012F9}" {
+   Position -5000 0 2700
+  }
+  ShapePoint "{64583A050E623C82}" {
+   Position -550 0 600
+  }
+  ShapePoint "{64583A0511FF0131}" {
+   Position 400 0 600
+  }
+  ShapePoint "{64583A05E3E37DD4}" {
+   Position 400 0 -400
+  }
+  ShapePoint "{64583A05F22B1A4F}" {
+   Position -1000 0 -400
+  }
+  ShapePoint "{64583A05D6433A24}" {
+   Position -7500 0 2000
+  }
+ }
+ LineColor 0 0 0 0
+}
+TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 10915.789 26.943 8667.279
+ m_queryRadius 350
+ m_flagName "objclear"
+ m_stopAfterFirstChange 1
+ m_ownerFactionKey "US"
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 11066.406 5.464 8601.534
+ m_missionEvents {
+  TILW_MissionEvent "{645273618501D5D3}" {
+   m_name "L"
+   m_instructions {
+    TILW_EndGameInstruction "{645273618A9C07BB}" {
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "US"
+    }
+   }
+   m_condition TILW_LiteralTerm "{64527361839ECCB8}" {
+    m_flagName "playerskilled"
+   }
+  }
+  TILW_MissionEvent "{645273620268893B}" {
+   m_name "W"
+   m_instructions {
+    TILW_EndGameInstruction "{645273620E7CE952}" {
+     m_factionKey "US"
+    }
+    TILW_SendMessageInstruction "{645B76D2011D0690}" {
+     m_executionDelay 0
+     m_messageTitle "Objective Status"
+     m_messageBody "The US-FIA has cleared the island of enemy forces."
+    }
+   }
+   m_condition TILW_LiteralTerm "{645273620B79E7E4}" {
+    m_flagName "objclear"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{64527361BFBB031E}" {
+   m_flagName "playerskilled"
+   m_factionKey "US"
+  }
+ }
+}
