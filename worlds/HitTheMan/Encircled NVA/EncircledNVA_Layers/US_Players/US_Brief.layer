@@ -6,7 +6,9 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   "None."\
   ""\
   "II. Logistical Support:"\
-  "None."\
+  "Crate contains"\
+  "20x Blasting Machine M34"\
+  "50x Demoblocks M112"\
   ""\
   "III. Medical:"\
   "None."\
@@ -22,13 +24,17 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   coords 5771.033 101.263 10125.119
   m_sTitle "V. Command & Signals:"
   m_sTextData "I. Chain of Command:"\
-  "1'1, 1'2, etc etc"\
+  "11 Sunray, 11 Sunray Minor, 11, 12, etc etc"\
   ""\
   "II. Callsigns:"\
-  "1st Platoon Leader 	- 1'1 Sunray"\
-  "1st Section 		- 1'1 Alpha"\
-  "2nd Section 		- 1'1 Bravo"\
-  "Weapon Section	- 1'1 Whisky"\
+  "Platoon - 11"\
+  "Platoon OC 	- 11 Sunray"\
+  "Platoon 2iC 	- 11 Sunray Minor"\
+  ""\
+  "1st Section 		- 11 Alpha"\
+  "2nd Section 		- 11 Bravo"\
+  "3rd Section 		- 11 Charlie"\
+  "Weapon Section	- 11 Whisky"\
   ""\
   "III. Frequencies:"\
   "Platoon Net		- 48.00 MHz"
@@ -113,10 +119,62 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   "Teleportation notes:"\
   "- West is the most difficult (For added challenge & time)"\
   "- North & East are the more easier routes & time to establish"\
-  "- South is a medium challenge, buildings to utilize to bound up."
+  "- South is a medium challenge, buildings to utilize to bound up."\
+  ""\
+  "Utilize Demoblocks to blow up any established sandbags blocking or hindering the path"
   m_aVisibleForFactions {
    "GC_CAF"
   }
   m_iOrder 4
  }
+}
+$grp SCR_DestructibleBuildingEntity : "{C7A59DCCFF7BF19F}Prefabs/Structures/Industrial/Containers/FuelTanks/FuelTank_02/FuelTank_02_Base.et" {
+ {
+  coords 6089.81 0.677 5348.036
+  angles 0 32.796 0
+ }
+ {
+  coords 6051.283 0.453 5295.267
+  angles 0 -57.385 0
+ }
+ {
+  coords 6094.014 0.728 5269.051
+  angles 0 -57.385 0
+ }
+ {
+  coords 6140.831 1.905 5307.156
+  angles 0 -57.385 0
+ }
+}
+GenericEntity : "{CD62E36CFDCB8FD8}Prefabs/Props/Military/AmmoBoxes/USSR/EquipmentBoxWooden_Equipment_01_USSR.et" {
+ components {
+  SCR_SoundDataComponent "{5C53391603B5CF41}" {
+   Enabled 1
+  }
+  SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+   Enabled 1
+   MultiSlots {
+    MultiSlotConfiguration "{671081EA641B09AB}" {
+     SlotTemplate InventoryStorageSlot Sandbags {
+      Prefab "{CE0AF733722B3978}Prefabs/Items/Equipment/Detonators/BlastingMachine_M34/BlastingMachine_M34.et"
+     }
+     NumSlots 20
+    }
+    MultiSlotConfiguration "{671081EAD9EEB1FD}" {
+     SlotTemplate InventoryStorageSlot Sandbags {
+      Prefab "{33CBDE73AB48172A}Prefabs/Weapons/Explosives/DemoBlock_M112/DemoBlock_M112.et"
+     }
+     NumSlots 50
+    }
+   }
+  }
+  ActionsManagerComponent "{5476B36C403D4CC0}" {
+   Enabled 1
+  }
+  RplComponent "{5476B36C54387F41}" {
+   Enabled 1
+  }
+ }
+ coords 6981.191 62.018 4800.11
+ angles 0 -59.859 0
 }

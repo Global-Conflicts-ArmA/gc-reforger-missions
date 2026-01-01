@@ -1,0 +1,374 @@
+SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F9E52831}" {
+     NavmeshFile "{ACBE49C3E71A9E65}worlds/GameMaster/Navmeshes/GM_Cain.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F3B4EE8A}" {
+     NavmeshFile "{27D8B11BF4E78009}worlds/GameMaster/Navmeshes/GM_Cain_vehicles.nmn"
+    }
+   }
+  }
+ }
+ coords 9707.47 0 4288.958
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ components {
+  GC_CommandosManager "{66FA7E68E581F311}" {
+   m_minObjectiveCount 1
+   m_maxObjectiveCount 1
+   m_objectives {
+    GC_CommandosTracker "{66FA7E68FF0981CB}" {
+     m_name "HVT"
+     m_objectiveCompletedMsg ""
+     m_completeDelay 0
+     m_briefingDescription "Capture the HVT"
+     m_markerPrefab "{A7D20E8743A78B4E}worlds/Wade/TheLocalFiles/Objective_Marker_Lunchyyy.et"
+     m_briefingPrefab ""
+     m_updateDelay 600
+    }
+   }
+  }
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 1
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{67235C4D9DB6C924}" {
+     m_sWeatherPresetName "Rainy"
+     m_iStartingHour 1
+    }
+   }
+   m_bRandomWeatherChanges 1
+   m_bWindOverride 1
+   m_fWindSpeed 5
+   m_fWindDirection 0.187
+   m_bFogOverride 1
+   m_fFogAmount 0.708
+   m_fFogHeightDensity 0.544
+  }
+ }
+ coords 3061.744 2.762 1734.644
+ m_iFreezeTime 300000
+ m_eJIPState Deny
+ {
+  SCR_FactionManager "673A25C2F7430F47" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB79282FF010C}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792829053B0}" {
+        m_sCallsign "Auora"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB7928490AEEE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{55CCB79284BA6D27}" {
+        m_sCallsign " "
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign " "
+       }
+      }
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CD021D5C}" {
+       }
+       SCR_CallsignInfo "{55CCB792CCD598D3}" {
+        m_sCallsign "Alpha"
+       }
+       SCR_CallsignInfo "{55CCB792CC9C7AD6}" {
+        m_sCallsign "Chaos"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE18FB44}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{672A2C571F679A55}" {
+        m_sCallsign " "
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "'6"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "'1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "'2"
+       }
+       SCR_CallsignInfo "{672A2C57134407CE}" {
+        m_sCallsign " "
+       }
+      }
+      m_sCallsignGroupFormat "%1 %2%3"
+     }
+    }
+   }
+  }
+ }
+}
+$grp TILW_PresenceTriggerEntity {
+ IntelExtractBlufor {
+  coords 3070.019 18.105 12599.194
+  m_queryRadius 130
+  m_flagName "IntelExtractBlufor"
+  m_entityNames {
+   "Intel"
+  }
+ }
+ IntelExtractOpfor {
+  coords 8892.158 18.106 -955.31
+  angles 0 -18.534 0
+  m_queryRadius 130
+  m_flagName "IntelExtractOpfor"
+  m_entityNames {
+   "Intel"
+  }
+ }
+}
+PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ coords 6685.379 1.555 4528.548
+ m_sTitle "TheLocalFiles"
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ HVTExtractOpfor {
+  coords 8892.158 18.106 -955.31
+  angles 0 -18.534 0
+  m_queryRadius 130
+  m_sendStatusMessages 1
+  m_flagName "HVTExtractOpfor"
+  m_ownerFactionKey "CIV"
+ }
+ HVTExtractBlufor {
+  coords 3070.015 18.105 12599.181
+  m_queryRadius 130
+  m_sendStatusMessages 1
+  m_flagName "HVTExtractBlufor"
+  m_ownerFactionKey "CIV"
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 6007.018 6.285 3375.691
+ FrameworkScript1 ""\
+ "		/* code here */"\
+ "		Print(\"HelloWorld, I'm Wade\");"\
+ "	"
+ m_missionEvents {
+  TILW_MissionEvent "{66FC4EC5FC3B7A0E}" {
+   m_name "BothExtractBlufor"
+   m_instructions {
+    TILW_SendMessageInstruction "{66FC4EDC9300FE32}" {
+     m_messageTitle "BLUFOR Major Victory"
+     m_messageBody "Both the HVT and intel were extracted."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{66FC4EDA3A31ECC5}" {
+    m_operands {
+     TILW_LiteralTerm "{66FC4EDA3688A998}" {
+      m_flagName "HVTExtractBlufor"
+     }
+     TILW_LiteralTerm "{66FC4EDA3716173E}" {
+      m_flagName "IntelExtractBlufor"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{66FC4EC5C57A9AE2}" {
+   m_name "BothExtractOpfor"
+   m_instructions {
+    TILW_SendMessageInstruction "{66FC4EDC2CECED3D}" {
+     m_messageTitle "OPFOR Major Victory"
+     m_messageBody "Both the HVT and intel were extracted."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{66FC4EDA49445C8B}" {
+    m_operands {
+     TILW_LiteralTerm "{66FC4EDA40F2C3D8}" {
+      m_flagName "HVTExtractOpfor"
+     }
+     TILW_LiteralTerm "{66FC4EDA4102681D}" {
+      m_flagName "IntelExtractOpfor"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{66FC4EC5DEEDD207}" {
+   m_name "IntelExtractBlufor"
+   m_instructions {
+    TILW_SendMessageInstruction "{66FC4EDF5E9D6C0A}" {
+     m_messageTitle "BLUFOR Minor Victory"
+     m_messageBody "The intel was extracted."
+    }
+   }
+   m_condition TILW_MatchjunctionTerm "{66FC4ED12B12E9DD}" {
+    m_operands {
+     TILW_LiteralTerm "{66FC4ED13C0E84F3}" {
+      m_flagName "HVTExtractBlufor"
+     }
+     TILW_LiteralTerm "{66FC4ED13ABFFB62}" {
+      m_flagName "IntelExtractBlufor"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{66FC4EC5D6BC928F}" {
+   m_name "IntelExtractOpfor"
+   m_instructions {
+    TILW_SendMessageInstruction "{66FC4EDF127FBC0A}" {
+     m_messageTitle "OPFOR Minor Victory"
+     m_messageBody "The intel was extracted."
+    }
+   }
+   m_condition TILW_MatchjunctionTerm "{66FC4ED10902AEB3}" {
+    m_operands {
+     TILW_LiteralTerm "{66FC4ED1075C3183}" {
+      m_flagName "HVTExtractOpfor"
+     }
+     TILW_LiteralTerm "{66FC4ED105D7E0E0}" {
+      m_flagName "IntelExtractOpfor"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{67040B70CA48C2A5}" {
+   m_name "LocalFileSearchMessage"
+   m_instructions {
+    TILW_SendMessageInstruction "{67040B70C38E2D18}" {
+     m_executionDelay 60
+     m_messageTitle "Computer Searched!"
+     m_messageBody "Lunchyyy has searched another computer for the Pub files!"
+    }
+    TILW_ClearFlagInstruction "{6719160044333F34}" {
+     m_executionDelay 0
+     m_flagName "ComputerCaptured"
+    }
+    TILW_ReactivateEventsInstruction "{6719160055A85812}" {
+     m_executionDelay 0
+     m_eventNames {
+      "LocalFileSearchMessage"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{67191612E522412A}" {
+    m_flagName "ComputerCaptured"
+   }
+  }
+  TILW_MissionEvent "{671666048808E584}" {
+   m_name "BluforMessage"
+   m_instructions {
+    TILW_SendMessageInstruction "{671666040A83087A}" {
+     m_executionDelay 60
+     m_messageTitle "BLUFOR has sustained significant causalties!"
+     m_messageBody "If BLUFOR ain't doing radical shit right now, then they have lost."
+    }
+   }
+   m_condition TILW_LiteralTerm "{67166616716DA521}" {
+    m_flagName "BluforDead"
+   }
+  }
+  TILW_MissionEvent "{671666048989FB58}" {
+   m_name "OpforMessage"
+   m_instructions {
+    TILW_SendMessageInstruction "{671666040C96FB2E}" {
+     m_executionDelay 60
+     m_messageTitle "OPFOR has sustained significant causalties!"
+     m_messageBody "If OPFOR ain't doing radical shit right now, then they have lost."
+    }
+   }
+   m_condition TILW_LiteralTerm "{6716661673B87EC6}" {
+    m_flagName "OpforDead"
+   }
+  }
+  TILW_MissionEvent "{6716661314F216DC}" {
+   m_name "BothTeamsDead"
+   m_instructions {
+    TILW_SendMessageInstruction "{67166612EE62382A}" {
+     m_executionDelay 75
+     m_messageTitle "BLUFOR and OPFOR have sustained signifcant casualties!"
+     m_messageBody "Put it in the leadership feedback. How did they let this happen?"
+    }
+    TILW_SetFlagInstruction "{6716A2EB82041A3A}" {
+     m_executionDelay 0
+     m_flagName "BothTeamsDead"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{67166612EC41D0F0}" {
+    m_operands {
+     TILW_LiteralTerm "{67166612EBEB086B}" {
+      m_flagName "BluforDead"
+     }
+     TILW_LiteralTerm "{67166612E6895E9E}" {
+      m_flagName "OpforDead"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{671666125216A93D}" {
+   m_name "HVTWins"
+   m_instructions {
+    TILW_SendMessageInstruction "{6716661227F240EF}" {
+     m_executionDelay 90
+     m_messageTitle "HVT Wins!"
+     m_messageBody "If radical shit ain't happening, then the HVT has won."\
+     ""\
+     "This should never happen. Get better CO's."
+    }
+   }
+   m_condition TILW_LiteralTerm "{67166612242A9114}" {
+    m_flagName "BothTeamsDead"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{6716660600CA91F1}" {
+   m_flagName "BluforDead"
+   m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{67166605B1E5B684}" {
+   m_flagName "OpforDead"
+   m_factionKey "RHS_AFRF"
+   m_casualtyRatio 0.9
+  }
+ }
+ m_randomFlags {
+  TILW_FlagSampling "{66D517DA2F599A89}" {
+   m_flagNames {
+    "BananaRandomFlag1"
+    "BananaRandomFlag2"
+    "BananaRandomFlag3"
+    "BananaRandomFlag4"
+    "BananaRandomFlag5"
+    "BananaRandomFlag6"
+   }
+  }
+ }
+}
+GenericEntity Intel : "{F3739484332D8932}worlds/Wade/TheLocalFiles/Intel.et" {
+ coords 2720.457 25.492 5480.746
+ angles 0 -178.961 0
+}

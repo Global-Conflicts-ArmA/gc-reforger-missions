@@ -1,0 +1,46 @@
+Turret : "{3474BEBB23BA5793}Prefabs/Vehicles/Tracked/T-72A/VehParts/Turret/T72_turret_base.et" {
+ ID "51ACD0965653D003"
+ components {
+  RigidBody "{51ACD09C423F175F}" {
+   ResponseIndex "Normal"
+  }
+  SCR_TurretControllerComponent "{51ACD09C61C183E4}" {
+   components {
+    AITurretAimingComponent "{5549077A3C06B25E}" {
+     AimingPID 5 3 0
+     AimingPIDMaxErrorIntegral 0.04
+     AimingBasePID 4 3 0
+     AimingBasePIDMaxErrorIntegral 0.05
+    }
+   }
+   LimitsVert -5 30
+  }
+  TurretComponent "{648607B051371287}" {
+   AimingMaxSpeed 1 1
+   TurretInitStabilization None
+   aimRotationBones {
+    ""
+   }
+   TurretSpeed 25 25
+   TurretAcceleration 25 25
+   TurretDeceleration 285 285
+   BaseSpeed 57.295
+   BaseAcceleration 57.295
+   BaseDeceleration 171.887
+  }
+  WeaponSlotComponent "{51ACD09C6BFEEE6A}" {
+   WeaponType Autocannon
+   AttachType InventoryStorageSlot "{0AACE7470E421D82}" {
+    Angles 0 -0.04 0
+   }
+   WeaponTemplate "{2A9342A7BFFDE05D}worlds/HitTheMan/Prefabs/Vehicles/Heavy Weapon/Cannon_2A46_T72A_HTM.et"
+  }
+  WeaponSlotComponent "{648607B05137124D}" {
+   WeaponType Autocannon
+   WeaponTemplate "{BB4F8485E51B256D}worlds/HitTheMan/Prefabs/Vehicles/Heavy Weapon/Cannon_2A466_T72A_HE_HTM.et"
+  }
+  WeaponSlotComponent "{648607B051371279}" {
+   WeaponTemplate ""
+  }
+ }
+}
