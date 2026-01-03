@@ -1,0 +1,143 @@
+Turret : "{419D5A88C92E2540}Prefabs/Vehicles/Helicopters/Mi8MT/VehParts/WeapSystems/Mi8MT_PKMT_mount_base.et" {
+ ID "51ACD0965653D003"
+ components {
+  MeshObject "{51ACD09C4E0B7D16}" {
+   Object "{E9F8E08CB412CAED}Assets/Weapons/MachineGuns/PKMT/PKMT_Mi8_mount_front.xob"
+   Materials {
+    MaterialAssignClass "{669C98A77AB992FE}" {
+     SourceMaterial "Exterier_35715EB3956D22B9"
+     AssignedMaterial "{2D5EDDCBB53A9BB3}Assets/Vehicles/Helicopters/Mi8/Data/hc3_Mi8_Body_fia.emat"
+    }
+   }
+  }
+  ProcAnimComponent "{51ACD09DB14C45C0}" {
+   Parameters {
+    ProcAnimParams "{60DCDE19ABC0CD26}" {
+     BoneNames {
+      "w_front_mount_yaw" "w_front_mount_pitch"
+     }
+    }
+   }
+  }
+  SCR_BaseCompartmentManagerComponent "{51ACFBB07A14CFA6}" {
+   DoorInfoList {
+    CompartmentDoorReference "{61866E79DE5FF348}" {
+    }
+   }
+   CompartmentSlots {
+    TurretCompartmentSlot TurretCompartment {
+     CompartmentUniqueName "FrontTurretCompartment"
+     CompartmentAction SCR_GetInUserAction "{5086CC2CFDD3A05A}" {
+      UIInfo SCR_ActionUIInfo "{5086CC2CF6E6E730}" {
+      }
+      "Sort Priority" 5
+     }
+     GetOutAction SCR_GetOutAction "{509D56664FF79DDB}" {
+      ParentContextList {
+       "door_m01_cockpit" "gunner_front"
+      }
+      "Sort Priority" 12
+     }
+     JumpOutAction SCR_JumpOutAction "{5D0B1D47DC1C5730}" {
+      "Sort Priority" 12
+     }
+     SwitchSeatAction SCR_SwitchSeatAction "{509D566648F37562}" {
+      ParentContextList {
+       "frontGunner_switch_seat"
+      }
+      "Sort Priority" 5
+     }
+     AdditionalActions {
+      SCR_RemoveCasualtyUserAction "{5D56867A46DBE769}" {
+       ParentContextList {
+        "frontGunner_switch_seat" "door_m01_cargo" "rearGunner_switch_seat"
+       }
+       "Sort Priority" 4
+      }
+      SCR_RemoveCasualtyUserAction "{61089D59F48D7BD2}" {
+       "Sort Priority" 4
+      }
+      SCR_SwitchSeatAction "{669C98A869F80CCD}" {
+       ParentContextList {
+        "door_m01_cargo" "rearGunner_switch_seat"
+       }
+       UIInfo SCR_ActionUIInfo "{669C98A869F80D37}" {
+        Name "#AR-UserAction_SwitchSeat"
+        m_sIconName "mountAsDriverCommand"
+       }
+       Duration 0.5
+       "Sort Priority" 5
+      }
+     }
+     PassengerPositionInfo EntitySlotInfo "{B1CB25848A3D93A8}" {
+     }
+     SkipCharacterDoorAnimationsFromSeat 1
+     SeatType 4
+     DoorInfoList +{
+     }
+     UIInfo SCR_ActionUIInfo "{50870A10DCCDED83}" {
+      Name "#AR-VehiclePosition_FrontGunner"
+     }
+    }
+   }
+  }
+  TurretControllerComponent "{51ACD09C61C183E4}" {
+   LimitsHoriz -24 24
+   LimitsVert -30 9
+   TurretUnconsciousPosition 0 -8
+  }
+  TurretComponent "{60DCDE19ABC0CD6B}" {
+   components {
+    SightsComponent "{60DCDE19ABC0CD69}" {
+     SightsPosition PointInfo "{61333E84A9F0F603}" {
+      PivotID "slot_weapon"
+      Offset -0.0001 0.3141 -0.2535
+     }
+    }
+   }
+   ikTargets {
+    AnimationIKTargetInfo "{60DCDE19ABC0329B}" {
+     PositionInfo PointInfo "{60DCDE19ABC0329A}" {
+      PivotID "hand_slot_L"
+     }
+    }
+    AnimationIKTargetInfo "{60DCDE19ABC03298}" {
+     PositionInfo PointInfo "{60DCDE19ABC03297}" {
+      PivotID "hand_slot_R"
+     }
+    }
+   }
+  }
+  WeaponSlotComponent "{51ACD09C6BFEEE6A}" {
+   AttachType InventoryStorageSlot "{0AACE7470E421D82}" {
+    PivotID "slot_weapon"
+    Offset 0 -0.0008 0
+    Prefab "{36C74DDCB2C9E2DB}Prefabs/Weapons/MachineGuns/PKM/MG_PKMT_Mi8_front.et"
+   }
+   WeaponTemplate "{36C74DDCB2C9E2DB}Prefabs/Weapons/MachineGuns/PKM/MG_PKMT_Mi8_front.et"
+  }
+  ActionsManagerComponent "{51ACD09C7181BA0B}" {
+   ActionContexts {
+    UserActionContext "{51ACFBB064390C6E}" {
+     Position PointInfo "{51ACFBB061993925}" {
+      Offset 0.0278 0.5413 0.2879
+     }
+    }
+    UserActionContext "{60DCDE19ABC03288}" {
+     Position PointInfo "{669C98A869F80D2E}" {
+      Offset 0 0.5232 0.0197
+     }
+    }
+   }
+  }
+  BaseItemAnimationComponent "{5242E42C7B4B2CEE}" {
+   AnimGraph "{6B6D8BBA4F72D890}Assets/Weapons/MachineGuns/workspaces/PKMT_Mi8_Front.agr"
+   AnimInstance "{8607DE61537B8A7E}Assets/Weapons/MachineGuns/workspaces/PKMT_Mi8_Front.asi"
+   AnimInjection AnimationAttachmentInfo "{5242E42C74AC2BF7}" {
+    AnimGraph "{6B6D8BBA4F72D890}Assets/Weapons/MachineGuns/workspaces/PKMT_Mi8_Front.agr"
+    AnimInstance "{8607DE61537B8A7E}Assets/Weapons/MachineGuns/workspaces/PKMT_Mi8_Front.asi"
+   }
+  }
+ }
+ coords 1.8 0.444 4.472
+}
