@@ -1,35 +1,47 @@
+SCR_AIWorld : "{3DE6090FC602E566}Prefabs/AI/SCR_AIWorld_Takistan.et" {
+ coords 8337.187 322.188 1950.261
+}
 GameEntity WallsForPlatoon {
- coords 8305.405 319.394 2171.347
- angleY -30.473
+ coords 8370.371 319.394 1930.195
+ angles 0 29.527 0
  {
-  SCR_DestructibleBuildingEntity : "{625C23A0F9BF5D2C}PrefabLibrary/Structures/Landmarks/Castle_01_OuterWall_Stairs.et" {
+  SCR_DestructibleBuildingEntity : "{625C23A0F9BF5D2C}PrefabLibrary/DefaultLibrary/Structures/Landmarks/Castle_01_OuterWall_Stairs.et" {
    coords -4.134 3.656 1.596
-   angleY 30.473
+   angles 0 30.473 0
    scale 0.323
   }
-  $grp SCR_DestructibleBuildingEntity : "{CABFB6EDB5AF6D0A}PrefabLibrary/Walls/Concrete/ConcreteRetainingWall_01_90.et" {
+  $grp SCR_DestructibleBuildingEntity : "{CABFB6EDB5AF6D0A}PrefabLibrary/DefaultLibrary/Walls/Concrete/ConcreteRetainingWall_01_90.et" {
    {
     coords -1.208 1.813 4.85
-    angleY 30.473
+    angles 0 30.473 0
    }
    {
     coords 4.942 1.813 1.23
-    angleY 120.473
+    angles 0 120.473 0
    }
    {
     coords 1.331 1.813 -4.948
-    angleY -149.527
+    angles 0 -149.527 0
    }
    {
     coords -4.829 1.813 -1.318
-    angleY -59.527
+    angles 0 -59.527 0
    }
   }
  }
 }
+GenericEntity : "{2F17BFBCDB329CCA}Prefabs/Props/Military/Compositions/US/ArsenalBox_US_Weapons.et" {
+ components {
+  SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+   m_eSupportedArsenalItemTypes 62
+  }
+ }
+ coords 8310.968 322.188 2020.332
+ angles 0 -38.419 0
+}
 GenericEntity : "{47789BA6E9CA2928}Prefabs/MP/Campaign/SupplyDepots/SupplyCache_S_FIA_03_Campaign.et" {
  coords 8306.424 322.188 2040.96
- angleY -28.999
+ angles 0 -28.999 0
  {
   GenericEntity {
    ID "5D45393876460D01"
@@ -37,7 +49,7 @@ GenericEntity : "{47789BA6E9CA2928}Prefabs/MP/Campaign/SupplyDepots/SupplyCache_
     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
      m_aContainers {
       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
-       m_fResourceGain 500
+       m_fResourceGain 1000
       }
      }
     }
@@ -49,8 +61,8 @@ GenericEntity : "{47789BA6E9CA2928}Prefabs/MP/Campaign/SupplyDepots/SupplyCache_
       SCR_ResourceComponent "{5D247A59598D71AE}" {
        m_aContainers {
         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-         m_fResourceValueCurrent 2000
-         m_fResourceValueMax 2000
+         m_fResourceValueCurrent 3000
+         m_fResourceValueMax 3000
         }
        }
       }
@@ -62,8 +74,8 @@ GenericEntity : "{47789BA6E9CA2928}Prefabs/MP/Campaign/SupplyDepots/SupplyCache_
       SCR_ResourceComponent "{5D247A59598D71AE}" {
        m_aContainers {
         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-         m_fResourceValueCurrent 2000
-         m_fResourceValueMax 2000
+         m_fResourceValueCurrent 3000
+         m_fResourceValueMax 3000
         }
        }
       }
@@ -76,22 +88,53 @@ GenericEntity : "{47789BA6E9CA2928}Prefabs/MP/Campaign/SupplyDepots/SupplyCache_
       SCR_ResourceComponent "{5D247A59598D71AE}" {
        m_aContainers {
         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-         m_fResourceValueCurrent 2000
-         m_fResourceValueMax 2000
+         m_fResourceValueCurrent 3000
+         m_fResourceValueMax 3000
         }
        }
       }
      }
      coords 2.712 -0.001 0.48
-     angleY 92.564
+     angles 0 92.564 0
     }
    }
   }
  }
 }
+GenericEntity : "{705D4C030A30D4A3}Prefabs/Compositions/Misc/CustomEntities/InteractionPoints/ArsenalBox_US_Equipment_NoAffiliation.et" {
+ components {
+  SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+   m_eSupportedArsenalItemTypes BACKPACK
+   m_OverwriteArsenalConfig SCR_ArsenalItemListConfig "{673B6323D6182100}" {
+    m_aArsenalItems {
+     SCR_ArsenalItemStandalone "{673B6323D7DC6A0E}" {
+      m_eItemType BACKPACK
+      m_iSupplyCost 0
+      m_ItemResourceName "{95D4766BBE46F23D}Prefabs/Items/Equipment/Backpacks/Backpack_IIFS_FieldPack.et"
+     }
+     SCR_ArsenalItemStandalone "{673B6320DF916FED}" {
+      m_eItemType BACKPACK
+      m_iSupplyCost 1
+      m_ItemResourceName "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
+     }
+    }
+   }
+  }
+  SCR_ResourceComponent "{5D7D07D2F7A252D2}" {
+   m_aContainers {
+    SCR_ResourceContainer "{673B6321294BDE2D}" {
+     m_eStorageType STORED
+     m_fResourceValueCurrent 1000
+    }
+   }
+  }
+ }
+ coords 8312.378 322.187 2021.141
+ angles 0 -38.419 0
+}
 GenericEntity : "{76167BEC292DCF79}Prefabs/Structures/Signs/Military/SignRectangle_01_140x100/Sign_Warzone_US_01.et" {
- coords 8299.969 325.303 2171.082
- angleY 88.739
+ coords 8367.424 325.303 1934.771
+ angles 0 148.739 0
  {
   GenericEntity : "{584EB34600E9698D}Prefabs/Utils/Interactions/TILW_BaseInteraction.et" {
    components {
@@ -103,7 +146,7 @@ GenericEntity : "{76167BEC292DCF79}Prefabs/Structures/Signs/Military/SignRectang
      }
      additionalActions {
       TILW_BaseInteraction "{61F4C18E863E752C}" {
-       m_actionName "Set Difficuty: Median"
+       m_actionName "Set Difficuty: Medium"
        m_deleteParent 1
        m_flagName "Set Difficuty Median"
       }
@@ -122,14 +165,24 @@ GenericEntity : "{76167BEC292DCF79}Prefabs/Structures/Signs/Military/SignRectang
     }
    }
    coords 0 1.367 0
-   angleY 95.431
+   angles 0 95.431 0
   }
+ }
+}
+GenericEntity : "{891EF8A5FB7162F1}Prefabs/Props/Military/Arsenal/AmmoBoxes/US/AmmoBoxArsenal_Medical_US.et" {
+ coords 8314.629 322.187 2022.527
+ angles 0 147.446 0
+}
+SCR_AIGroup : "{AD6A6865CC0F4D68}Prefabs/Groups/OPFOR/GC_INSURGENT/Afghan Insurgents/GC_INS_Afghan_Squad.et" {
+ coords 5904.5 110.842 11309.129
+ m_aStaticWaypoints {
+  "DefendWaypoint_Hangers"
  }
 }
 $grp GenericEntity : "{C6B534F64C60C583}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatLarge/E_Helipad_L_US_01.et" {
  {
   coords 8292.054 322.187 2023.517
-  angleY -121.304
+  angles 0 -121.304 0
   {
    GenericEntity {
     ID "5E64C0F12EB3EA3D"
@@ -137,9 +190,7 @@ $grp GenericEntity : "{C6B534F64C60C583}PrefabsEditable/Auto/Compositions/Slotte
      DecalEntity {
       ID "56DEFDB4A9499F9B"
       coords 0 0 0
-      angleX -90
-      angleY -180
-      angleZ -180
+      angles -90 -180 -180
      }
     }
    }
@@ -340,6 +391,9 @@ $grp GenericEntity : "{C6B534F64C60C583}PrefabsEditable/Auto/Compositions/Slotte
    GenericEntity {
     ID "5E64C0FB916EAF90"
     components {
+     SCR_CampaignBuildingProviderComponent "{5ED49CDEA85A0083}" {
+      m_fBuildingRadius 10000
+     }
      SCR_CatalogEntitySpawnerComponent "{5D22B968F23A847A}" {
       m_bSuppliesConsumptionEnabled 0
      }
@@ -349,7 +403,7 @@ $grp GenericEntity : "{C6B534F64C60C583}PrefabsEditable/Auto/Compositions/Slotte
  }
  {
   coords 8324.666 322.187 2043.349
-  angleY -121.304
+  angles 0 -121.304 0
   {
    GenericEntity {
     ID "5E64C0F12EB3EA3D"
@@ -357,9 +411,7 @@ $grp GenericEntity : "{C6B534F64C60C583}PrefabsEditable/Auto/Compositions/Slotte
      DecalEntity {
       ID "56DEFDB4A9499F9B"
       coords 0 0 0
-      angleX -90
-      angleY -180
-      angleZ -180
+      angles -90 -180 -180
      }
     }
    }
@@ -560,6 +612,18 @@ $grp GenericEntity : "{C6B534F64C60C583}PrefabsEditable/Auto/Compositions/Slotte
    GenericEntity {
     ID "5E64C0FB916EAF90"
     components {
+     SCR_CampaignBuildingProviderComponent "{5ED49CDEA85A0083}" {
+      m_fBuildingRadius 10000
+      m_aBudgetsToEvaluate {
+       SCR_CampaignBuildingCooldownWithRankBudgetToEvaluateData "{5EE71CAB5BFCF9A3}" {
+        m_aCustomCooldownData {
+         SCR_CooldownData "{5EEEF52515996867}" {
+          m_fDefaultTimeMultiplier 10
+         }
+        }
+       }
+      }
+     }
      SCR_CatalogEntitySpawnerComponent "{5D22B968F23A847A}" {
       m_bSuppliesConsumptionEnabled 0
      }
