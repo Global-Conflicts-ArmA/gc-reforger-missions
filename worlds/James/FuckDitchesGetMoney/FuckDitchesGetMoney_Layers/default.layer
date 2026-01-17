@@ -1,0 +1,197 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 5825.977 56.995 7653.192
+}
+PerceptionManager PerceptionManager2 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 5835.637 56.918 7622.953
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ coords 5815.147 57.653 7634.109
+ m_iFreezeTime 300000
+ {
+  SCR_FactionManager "6860BC2025618282" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{685E9CE0BBE29029}" {
+        m_sCallsign "K"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ {
+  coords 4687.682 76.974 7308.136
+  m_sTitle "Scenario"
+  m_sTextData "Bradley inf platoon reinforced with cav scout section attacks BMP platoon reinforced with tank."\
+  ""\
+  "Note: "\
+  "I have filled in a lot of sections of the ditches in the open fields to make crossing the terrain easier for vehicles. The forests are still rough terrain for vehicles. The swamp is shallow and traversible by vehicles. You've been warned."\
+  ""
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4716.84 76.737 7319.07
+  m_sTitle "End Conditions"
+  m_sTextData "Time limit 65 mins, inclusive of 5 min setup."\
+  ""\
+  "BLU wins when OPF mostly dead (hint appears at 85% casualties)"\
+  "BLU wins when cap zone held by BLU with no OPF."\
+  "OPF wins when BLU mostly dead (hint appears at 85% casualties)"\
+  "OPF wins when time limit reached and cap zone not held by BLU."\
+  ""
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 9
+ }
+ {
+  coords 4717.447 76.657 7291.186
+  m_sTitle "How to reload ATGMs"
+  m_sTextData "Dismounted:"\
+  "Equip missile tube in your hands. Look at rear of ATGM and interact."\
+  ""\
+  "Mounted:"\
+  "Look at rear of ATGM launcher and hold interact. "\
+  "Mounted inf in back can reload the Bradleys if you open the hatch and angle the turret correctly."
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 8
+ }
+ {
+  coords 3898.103 99.831 7442.906
+  m_sTitle "Whats a Master Gunner?"
+  m_sTextData "PL commands HQ BFV when mounted with master gunner in gunner seat."\
+  "Upon dismount master gunner takes over HQ vic and the spare gunner takes the gunner seat."\
+  ""\
+  "PSG commands from the last BFV and leads the mounted element. "\
+  "That BFV's SL & Asst SL dismounts."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bEmptyFactionVisibility 1
+  m_iOrder 5
+ }
+ {
+  coords 3903.035 98.106 7450.428
+  m_sTitle "Why dont my Soviet SLs have radios?"
+  m_sTextData "The SL commands the BMP when mounted. If he wants to mount he can take a radio from the driver."\
+  ""\
+  "When dismounted he has no radio, and the BMP can relay orders."\
+  ""\
+  "If/when the infantry is seperated from their BMPs the PL is expected to lead the dismounted force and communicate to the vehicles over the radio. Use runners if you need."
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_bEmptyFactionVisibility 1
+  m_iOrder 7
+ }
+ {
+  coords 3897.464 99.802 7444.513
+  m_sTitle "Scouts?"
+  m_sTextData "When mounted, scouts act as loaders for the CFVs. "\
+  "For most of the mission they are likely to be riding in back of a CFV, hence the slot last instruction."\
+  "If people want to vibe in the back and load TOWs then be my guest. "\
+  "They are NOT rambo slots."\
+  ""
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bEmptyFactionVisibility 1
+  m_iOrder 6
+ }
+}
+TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 5986.441 56.843 7416.166
+ m_queryRadius 150
+ m_flagName "obj"
+ m_stopAfterFirstChange 1
+ m_ownerFactionKey "US"
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 5822.272 56.656 7670.746
+ m_missionEvents {
+  TILW_MissionEvent "{68629062AA30AB62}" {
+   m_name "US Dead"
+   m_instructions {
+    TILW_SendMessageInstruction "{68629062B1D7E046}" {
+     m_executionDelay 15
+     m_messageTitle "US Forces Killed"
+     m_messageBody "US forces have taken 85% casualties."
+    }
+   }
+   m_condition TILW_LiteralTerm "{6862906282FF9A0C}" {
+    m_flagName "US_Dead"
+   }
+  }
+  TILW_MissionEvent "{6862906298DB1A09}" {
+   m_name "OBJ Cap"
+   m_instructions {
+    TILW_SendMessageInstruction "{68629062EE6AB3B2}" {
+     m_executionDelay 15
+     m_messageTitle "OBJ Captured"
+     m_messageBody "The cap zone has been secured by US forces."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68629062FC6EB256}" {
+    m_flagName "obj"
+   }
+  }
+  TILW_MissionEvent "{6862906286AA53AC}" {
+   m_name "USSR Dead"
+   m_instructions {
+    TILW_SendMessageInstruction "{6862906286AA53EF}" {
+     m_executionDelay 15
+     m_messageTitle "Soviet Forces Killed"
+     m_messageBody "Soviet forces have taken 85% casualties."
+    }
+   }
+   m_condition TILW_LiteralTerm "{6862906286AA53ED}" {
+    m_flagName "USSR_Dead"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{686290634C727BF4}" {
+   m_flagName "US_Dead"
+   m_factionKey "US"
+   m_casualtyRatio 0.85
+  }
+  TILW_FactionPlayersKilledFlag "{686290635D9DCFB9}" {
+   m_flagName "USSR_Dead"
+   m_factionKey "USSR"
+   m_casualtyRatio 0.85
+  }
+ }
+}
+GenericEntity : "{A3CF425C1BE37485}Prefabs/World/Locations/Common/Natural/LocationNaturalMajor.et" {
+ components {
+  SCR_EditableCommentComponent "{529AB059519FE609}" {
+   m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+    Name "Shallow Swamp"
+   }
+  }
+  SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+   DisplayName "Shallow Swamp"
+   MainType "Name Water Major"
+  }
+ }
+ coords 3943.176 104.967 7632.938
+}
+SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 3820.937 96.522 7503.194
+}
+PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ coords 5986.441 56.843 7416.166
+ angles 0 0 0
+ m_sImageSetGlow ""
+ m_MarkerColor 0 0 0 0.881
+ m_fWorldSize 415
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}

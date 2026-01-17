@@ -1,0 +1,51 @@
+Projectile : "{38BAE094333E31BF}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_HE_M821.et" {
+ ID "5098E3DEA78F878B"
+ components {
+  SCR_ShellSoundComponent "{60C8EAEE6F7B13A8}" {
+   Filenames {
+    "{F5DFD164933A6AA9}Sounds/Weapons/_SharedData/ProjectileTravelling/Weapons_ProjectileTravelling_HeliRocket_Generic.acp"
+   }
+  }
+  CollisionTriggerComponent "{60AC9441243E3504}" {
+   PROJECTILE_EFFECTS {
+    ExplosionEffect "{66448E9CBD7626AB}" {
+     EffectPrefab "{BFB9519D6937DE20}Prefabs/Weapons/Warheads/Warhead_9M22HE.et"
+     ParticleEffect "{547C6C06A48E38F3}Particles/Weapon/9M133HE_expl.ptc"
+    }
+   }
+   TRIGGER_ALIVE 1
+   SafetyDistance 100
+  }
+  MagazineComponent "{51A2B9D6DA866EF0}" {
+   UIInfo MagazineUIInfo "{60AC9440C81EC976}" {
+    Name "122 mm"
+    Description "122 mm"
+    m_sAmmoCaliber "122 mm"
+    m_sAmmoType ""
+    m_bShowAmmoTypeText 1
+    m_eAmmoTypeFlags HE
+    m_MagIndicator SCR_MagazineIndicatorConfiguration "{6860BC5E48740949}" {
+     m_sOutline "rocket-pg7vm"
+     m_bProgressBar 0
+    }
+   }
+   ItemModel "{44B5E2C5D9BEA8D3}Assets/Vehicles/Wheeled/Ural_4320_Grad/missileBM2.xob"
+  }
+  MeshObject "{5098E3DEA78F87BE}" {
+   Object "{44B5E2C5D9BEA8D3}Assets/Vehicles/Wheeled/Ural_4320_Grad/missileBM2.xob"
+   LODFactors {
+    1 1 1
+   }
+  }
+  SCR_EffectsModuleChildComponent "{6860BC5E09DE4D5E}" {
+  }
+  ShellMoveComponent "{5098E3DEA78F87A3}" {
+   DispersionMultiplier 0
+  }
+  RplComponent "{51A2B9D6823E09EC}" {
+   "Rpl State Override" Runtime
+  }
+ }
+ ProjectileModel "{44B5E2C5D9BEA8D3}Assets/Vehicles/Wheeled/Ural_4320_Grad/missileBM2.xob"
+ CartridgeModel "{EC9C264071FF4913}Assets/Vehicles/Wheeled/Ural_4320_Grad/missileBM21_project.xob"
+}
