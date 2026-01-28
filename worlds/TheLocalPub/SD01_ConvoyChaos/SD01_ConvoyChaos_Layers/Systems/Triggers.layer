@@ -1,0 +1,129 @@
+TILW_ExtractionTriggerEntity OpforExtractTrigger : "{192ABD6B9232E064}Prefabs/Logic/Triggers/TILW_ExtractionTrigger.et" {
+ coords 836.801 572.137 10552.266
+ m_queryRadius 225
+ m_flagName "Opfor35"
+ m_stopAfterFirstChange 1
+ m_factionKey "USSR"
+ m_ratioThreshold 0.35
+}
+GenericEntity EndMissionInteract : "{584EB34600E9698D}Prefabs/Utils/Interactions/TILW_SetFlagInteraction.et" {
+ components {
+  ActionsManagerComponent "{61F4C18E835074FF}" {
+   ActionContexts {
+    UserActionContext "{61F4C18ECB0A8B85}" {
+     Position PointInfo "{61F4C18F31FA02AA}" {
+      Offset -0.1986 0.0001 -0.0002
+     }
+    }
+   }
+   additionalActions {
+    TILW_BaseInteraction "{61F4C18E863E752C}" {
+     ActionTitle "Minwin"
+     Duration 3
+     m_actionName "END MISSION: Minor win"
+     m_factionKeys {
+      "USSR"
+     }
+     m_flagName "MinWin"
+     m_conditionFlag "SetMinWin"
+    }
+    TILW_BaseInteraction "{684AE013AA86AAC3}" {
+     ActionTitle "Regwin"
+     Duration 3
+     m_actionName "END MISSION: Regular win"
+     m_factionKeys {
+      "USSR"
+     }
+     m_flagName "RegWin"
+     m_conditionFlag "SetRegWin"
+    }
+    TILW_BaseInteraction "{684AE013AB5083EB}" {
+     ActionTitle "Majwin"
+     Duration 3
+     m_actionName "END MISSION: Major win"
+     m_factionKeys {
+      "USSR"
+     }
+     m_flagName "MajWin"
+     m_conditionFlag "SetMajWin"
+    }
+   }
+  }
+ }
+ coords 834.424 576.397 10563.682
+ angles 12.96 -38.674 -0.457
+}
+$grp TILW_PresenceTriggerEntity : "{826E6F2246328952}Prefabs/Logic/Triggers/TILW_PresenceTrigger.et" {
+ ExitTrigger6Truck {
+  coords 837.917 573.795 10551.881
+  m_queryRadius 225
+  m_captureTime 1
+  m_flagName "6TruckExit"
+  m_stopAfterFirstChange 1
+  m_entityNames {
+   "Truck1"
+   "Truck2"
+   "Truck3"
+   "Truck4"
+   "Truck5"
+   "Truck6"
+  }
+  m_ratioThreshold 0.99
+ }
+ ExitTrigger4Truck {
+  coords 837.917 573.795 10551.881
+  m_queryRadius 225
+  m_captureTime 1
+  m_flagName "4TruckExit"
+  m_stopAfterFirstChange 1
+  m_entityNames {
+   "Truck1"
+   "Truck2"
+   "Truck3"
+   "Truck4"
+   "Truck5"
+   "Truck6"
+  }
+  m_ratioThreshold 0.66
+ }
+ ExitTrigger2Truck {
+  coords 837.917 573.795 10551.881
+  m_queryRadius 225
+  m_captureTime 1
+  m_flagName "2TruckExit"
+  m_stopAfterFirstChange 1
+  m_entityNames {
+   "Truck1"
+   "Truck2"
+   "Truck3"
+   "Truck4"
+   "Truck5"
+   "Truck6"
+  }
+  m_ratioThreshold 0.33
+ }
+}
+TILW_FactionTriggerEntity IndofrCutoffTrigger : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 3116.067 89.155 10021.863
+ m_queryRadius 600
+ m_sendStatusMessages 1
+ m_statusMessages {
+  "The Soviets have reached Nagara and cut off our reinforcements!"
+  ""
+  ""
+  ""
+  ""
+  ""
+ }
+ m_locationName ""
+ m_displayTo {
+  "GC_MUJ"
+ }
+ m_flagName "IndforCutoff"
+ m_stopAfterFirstChange 1
+ m_playersOnly 1
+ m_ignoredFactions {
+  "GC_MUJ"
+ }
+ m_ownerFactionKey "USSR"
+}
