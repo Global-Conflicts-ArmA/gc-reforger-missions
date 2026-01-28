@@ -1,13 +1,3 @@
-$grp GenericEntity : "{1845D7099C6F1323}Prefabs/Weapons/Tripods/9M133_Kornet/Pod_9M133_Kornet.et" {
- {
-  coords 5929.159 56.106 7355.808
-  angles 0 -96.186 0
- }
- {
-  coords 5929.118 55.938 7355.765
-  angles 0 -96.571 0
- }
-}
 $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
  {
   coords 6175.437 56.321 7385.069
@@ -32,7 +22,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   m_sTitle "Orders"
   m_sTextData "Defend the farmstead at Kelloja. Prevent US mech platoon from taking the marked area."\
   ""\
-  "You have additional AT in your vehicles and a pre-placed ATGM position with 3x missiles SW side of Kelloja (marked on map)."\
+  "You have additional ammo and AT in your vehicles."\
   ""\
   "Platoon net 42MHz."\
   "1st BMP - 431"\
@@ -48,6 +38,19 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
 $grp Tank : "{3868E03D9A4AF186}Prefabs/Vehicles/Tracked/BMP1/BMP1P_base.et" {
  BMP1P_base1 {
   components {
+   RHS_GroupMaterialController "{68686390A098EBB2}" {
+    m_aGroups {
+     RHS_MaterialGroupProperties "{68686390A1D17A63}" {
+      m_iTextureID 4
+     }
+     RHS_MaterialGroupProperties "{68686390A1EBC4E8}" {
+      m_iTextureID 3
+     }
+     RHS_MaterialGroupProperties "{68686390A150EE71}" {
+      m_iTextureID 1
+     }
+    }
+   }
    SCR_UniversalInventoryStorageComponent "{5E529ED09B647D03}" {
     MultiSlots {
      MultiSlotConfiguration "{685E9CEECF5EA3B4}" {
@@ -62,6 +65,14 @@ $grp Tank : "{3868E03D9A4AF186}Prefabs/Vehicles/Tracked/BMP1/BMP1P_base.et" {
       }
       NumSlots 3
      }
+     MultiSlotConfiguration "{686A25CFFA8A3CE0}" {
+      SlotTemplate InventoryStorageSlot at14 {
+      }
+     }
+     MultiSlotConfiguration "{686A25CFFACCC5CE}" {
+     }
+     MultiSlotConfiguration "{686A25CFFA12845B}" {
+     }
     }
    }
   }
@@ -71,6 +82,19 @@ $grp Tank : "{3868E03D9A4AF186}Prefabs/Vehicles/Tracked/BMP1/BMP1P_base.et" {
  }
  BMP1P_base2 {
   components {
+   RHS_GroupMaterialController "{68686390A098EBB2}" {
+    m_aGroups {
+     RHS_MaterialGroupProperties "{68686390A1D17A63}" {
+      m_iTextureID 4
+     }
+     RHS_MaterialGroupProperties "{68686390A1EBC4E8}" {
+      m_iTextureID 3
+     }
+     RHS_MaterialGroupProperties "{68686390A150EE71}" {
+      m_iTextureID 2
+     }
+    }
+   }
    SCR_UniversalInventoryStorageComponent "{5E529ED09B647D03}" {
     MultiSlots {
      MultiSlotConfiguration "{685E9CEE37C9B57A}" {
@@ -94,6 +118,19 @@ $grp Tank : "{3868E03D9A4AF186}Prefabs/Vehicles/Tracked/BMP1/BMP1P_base.et" {
  }
  BMP1P_base3 {
   components {
+   RHS_GroupMaterialController "{68686390A098EBB2}" {
+    m_aGroups {
+     RHS_MaterialGroupProperties "{68686390A1D17A63}" {
+      m_iTextureID 4
+     }
+     RHS_MaterialGroupProperties "{68686390A1EBC4E8}" {
+      m_iTextureID 3
+     }
+     RHS_MaterialGroupProperties "{68686390A150EE71}" {
+      m_iTextureID 3
+     }
+    }
+   }
    SCR_UniversalInventoryStorageComponent "{5E529ED09B647D03}" {
     MultiSlots {
      MultiSlotConfiguration "{685E9CEE3B656A7C}" {
@@ -117,6 +154,21 @@ $grp Tank : "{3868E03D9A4AF186}Prefabs/Vehicles/Tracked/BMP1/BMP1P_base.et" {
  }
 }
 Tank T72B_base1 : "{726286E1F9570EA1}Prefabs/Vehicles/Tracked/T-72B/T72B_base.et" {
+ components {
+  RHS_GroupMaterialController "{686863902FC16A1D}" {
+   m_aGroups {
+    RHS_MaterialGroupProperties "{686863902F6ACF37}" {
+     m_iTextureID 5
+    }
+    RHS_MaterialGroupProperties "{6868639030BA1E45}" {
+     m_iTextureID 5
+    }
+    RHS_MaterialGroupProperties "{6868639030E58630}" {
+     m_iTextureID 3
+    }
+   }
+  }
+ }
  coords 6070.429 56.688 7455.184
  angles 0 -102 0
  m_sAttachmentGroupName "red_tank"
@@ -269,7 +321,7 @@ PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" 
    Position -97.32 2.058 -896.77
   }
   ShapePoint "{685E9CE640EBCF83}" {
-   Position -356.189 9.968 -905.348
+   Position -264.439 9.634 -1002.418
   }
   ShapePoint "{685E9CE6424521A7}" {
    Position -383.889 9.671 -879.421
@@ -343,20 +395,4 @@ $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker
    "USSR"
   }
  }
- {
-  coords 5929.284 56.015 7355.042
-  angles 0 0.631 0
-  m_sImageSet "{83B695FF662AC163}imagesets/Soviet_Tactical_Graphics.imageset"
-  m_sImageSetGlow ""
-  m_MarkerColor 0.502 0 0 1
-  m_sQuadName "atgm"
-  m_fWorldSize 75
-  m_aVisibleForFactions {
-   "USSR"
-  }
- }
-}
-Turret : "{E8F0DA0C05A8FED4}Prefabs/Weapons/Tripods/9M133_Kornet/Tripod_9M133_Kornet.et" {
- coords 5927.87 56.084 7355.235
- angles -0.824 -86 0
 }
