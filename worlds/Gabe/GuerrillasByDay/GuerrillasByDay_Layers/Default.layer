@@ -1,0 +1,400 @@
+SCR_AIWorld : "{0CB65E4CC0AFBCC0}Prefabs/SCR_AIWorld_Kunar.et" {
+ coords 690.737 47.637 3112.802
+}
+PerceptionManager PerceptionManager : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 680.361 94.777 3414.728
+}
+PS_GameModeCoop GameModeLobby : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_InitWeatherComponent "{61B68227C35BFE9A}" {
+   m_initialWeatherDurationMin 5
+   m_initialWeatherDurationMax 6
+  }
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 12
+   m_bWindOverride 1
+   m_fWindSpeed 8
+   m_fWindDirection 0.67
+   m_fFogAmount 0.8
+   m_fFogHeightDensity 0.86
+   m_iDay 7
+   m_iMonth 7
+   m_iYear 2012
+   m_bUseSpecifiedDate 1
+   m_iSetDay 29
+   m_iSetMonth 11
+   m_iSetYear 2003
+   m_fLatitude -52.308
+   m_fLongitude 10.769
+   m_fUTCTimeZone 4.3
+   m_fDSTOffsetHours 0
+   m_fFogDensity 0.8
+   m_fFogHeight 86
+   m_fRain 0
+   m_fWind 8
+  }
+ }
+ coords 600.144 126.739 3414.728
+ m_iReconnectTime 180000
+ m_iFreezeTime 300000
+ {
+  SCR_FactionManager "66B9754EFB899195" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     FactionKey "RHS_USAF"
+     m_iOrder 1
+     m_FactionLabel FACTION_RHS_USAF
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CCD598D3}" {
+        m_sCallsign "Bravo"
+       }
+      }
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     FactionKey "US"
+     m_FactionLabel FACTION_US
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CD021D5C}" {
+        m_sCallsign "Bravo"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "1"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{685E078F2F05FC93}" {
+        m_sCallsign "4"
+       }
+      }
+      m_sCallsignGroupFormat "%1 %2'%3"
+      m_sCallsignCharacterFormat "%1 %2'%3: %4"
+     }
+    }
+    SCR_Faction "{632925D53C7F1148}" {
+     m_iOrder 2
+     m_bShowInWelcomeScreenIfNonPlayable 1
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_bIsAssignedRandomly 0
+      m_aCompanyNames {
+       SCR_CallsignInfo "{58B2B630FDD64B73}" {
+        m_sCallsign "Pech"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{58B2B630FDD64B65}" {
+        m_sCallsign "Cell"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "HQ"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+        m_sCallsign "4"
+       }
+      }
+      m_sCallsignGroupFormat "%1 %2 %3"
+      m_sCallsignCharacterFormat "%1 %2 %3 %4"
+      m_sCallsignCharacterWithRoleFormat "%1 %2 %3 %4"
+     }
+     m_iFactionRadioFrequency 42000
+    }
+   }
+  }
+ }
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ AOLimitBlufor {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "US"
+     "CIV"
+    }
+    m_visibility FACTION
+    m_lineWidth 5
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+    m_factionKeys {
+     "US"
+     "CIV"
+    }
+    m_color 0 0 0 0.513
+    m_drawLine 1
+    m_lineWidth 3
+   }
+  }
+  coords 840.984 105.016 3410.923
+  Points {
+   ShapePoint "{685C3238BA84E183}" {
+    Position -638.242 -62.957 -192.856
+   }
+   ShapePoint "{685C323890331F35}" {
+    Position -577.52 32.284 -491.891
+   }
+   ShapePoint "{685C32388478BE6D}" {
+    Position 75.679 17.662 -407.251
+   }
+   ShapePoint "{685C32388C74EF11}" {
+    Position 264.077 70.277 -663.595
+   }
+   ShapePoint "{685C323875C8D835}" {
+    Position 379.849 43.013 -731.871
+   }
+   ShapePoint "{685C32387439790D}" {
+    Position 508.822 74.368 -711.136
+   }
+   ShapePoint "{685C323873F32EA3}" {
+    Position 600.135 96.886 -630.791
+   }
+   ShapePoint "{685C3238644DE286}" {
+    Position 529.441 30.904 -356.543
+   }
+   ShapePoint "{685C323861551187}" {
+    Position 567.086 -5.323 -296.187
+   }
+   ShapePoint "{685C32386EF6D72F}" {
+    Position 630.981 -7.584 -264.38
+   }
+   ShapePoint "{685C3238520E38A6}" {
+    Position 940.199 46.263 -264.49
+   }
+   ShapePoint "{685C32385DCA9607}" {
+    Position 961.89 -33.593 291.013
+   }
+   ShapePoint "{685C3238477B0BD9}" {
+    Position 805.027 -73.534 494.525
+   }
+  }
+ }
+ AOLimitOpfor {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "GC_INSURGENT"
+    }
+    m_visibility FACTION
+    m_lineWidth 5
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+    m_factionKeys {
+     "GC_INSURGENT"
+    }
+    m_visibleForEmptyFaction 0
+    m_color 0 0 0 0.513
+   }
+  }
+  coords 840.984 105.016 3410.923
+  Points {
+   ShapePoint "{685C3238BA84E183}" {
+    Position -213.801 -1.784 9.208
+   }
+   ShapePoint "{685C323890331F35}" {
+    Position -116.165 -40.693 -432.109
+   }
+   ShapePoint "{685C32388478BE6D}" {
+    Position 75.679 17.662 -407.251
+   }
+   ShapePoint "{685C32388C74EF11}" {
+    Position 264.077 70.277 -663.595
+   }
+   ShapePoint "{685C323875C8D835}" {
+    Position 379.849 43.013 -731.871
+   }
+   ShapePoint "{685C32387439790D}" {
+    Position 508.822 74.368 -711.136
+   }
+   ShapePoint "{685C323873F32EA3}" {
+    Position 600.135 96.886 -630.791
+   }
+   ShapePoint "{685C3238644DE286}" {
+    Position 529.467 30.961 -356.718
+   }
+   ShapePoint "{685C323861551187}" {
+    Position 567.086 -5.323 -296.187
+   }
+   ShapePoint "{685C32386EF6D72F}" {
+    Position 630.981 -7.584 -264.38
+   }
+   ShapePoint "{685C3238520E38A6}" {
+    Position 940.199 46.263 -264.49
+   }
+   ShapePoint "{685C32385DCA9607}" {
+    Position 961.89 -33.593 291.013
+   }
+   ShapePoint "{685C3238477B0BD9}" {
+    Position 805.027 -73.534 494.525
+   }
+  }
+ }
+ Greenzone {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    Enabled 0
+    m_factionKeys {
+     "US"
+     "CIV"
+    }
+    m_visibility FACTION
+    m_lineWidth 5
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+    m_color 0.13 0.254 0 0.196
+    m_invert 0
+    m_drawLine 1
+    m_lineWidth 3
+   }
+  }
+  coords 720.229 43.997 3414.728
+  Points {
+   ShapePoint "{685C3238BA84E183}" {
+    Position -517.608 -1.943 -196.667
+   }
+   ShapePoint "{685C323890331F35}" {
+    Position -456.392 93.597 -496.001
+   }
+   ShapePoint "{685C32388478BE6D}" {
+    Position 5.473 20.493 -434.839
+   }
+   ShapePoint "{685C32387439790D}" {
+    Position -93.056 59.246 5.418
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity TILW_MissionFramework : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 721.417 91.903 3415.203
+ angles -0.568 -0.014 1.421
+ m_missionEvents {
+  TILW_MissionEvent "{685E0791FDBEAD40}" {
+   m_name "Blufor Victory by Objectives"
+   m_instructions {
+    TILW_SendMessageInstruction "{685E0791E1625F45}" {
+     m_messageTitle "US Victory"
+     m_messageBody "They have successfully patrolled 4 objectives."
+    }
+   }
+   m_condition TILW_MinjunctionTerm "{685E0793D4F181C3}" {
+    m_operands {
+     TILW_LiteralTerm "{685E0793DF1A37C0}" {
+      m_flagName "RichahlamCaptured"
+     }
+     TILW_LiteralTerm "{685E0793DEBF368F}" {
+      m_flagName "GasStationCaptured"
+     }
+     TILW_LiteralTerm "{685E0793DDE8DA94}" {
+      m_flagName "SouthWadiCaptured"
+     }
+     TILW_LiteralTerm "{685E0793DCED46B5}" {
+      m_flagName "KhandarProperCaptured"
+     }
+     TILW_LiteralTerm "{685E0793DB16DC54}" {
+      m_flagName "KhandarFarmCaptured"
+     }
+     TILW_LiteralTerm "{685E0793DA500341}" {
+      m_flagName "AzhdarLakeCaptured"
+     }
+    }
+    m_minTrue 4
+   }
+  }
+  TILW_MissionEvent "{66B975553FA9BABD}" {
+   m_name "Blufor Victory by Kills"
+   m_instructions {
+    TILW_SendMessageInstruction "{66B97555287D4885}" {
+     m_executionDelay 2.5
+     m_messageTitle "US Victory"
+     m_messageBody "Insurgents have been eliminated!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66B975552BDB8B9A}" {
+    m_flagName "Blufor Victory Flag"
+   }
+  }
+  TILW_MissionEvent "{66B97554FE80DD0E}" {
+   m_name "Opfor Victory by Kills"
+   m_instructions {
+    TILW_SendMessageInstruction "{66B97554E7E27370}" {
+     m_executionDelay 2.5
+     m_messageTitle "Insurgent Victory"
+     m_messageBody "US (BLUFOR) has taken too many casualties!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66B9754B41B3896E}" {
+    m_flagName "Opfor Victory Flag"
+   }
+  }
+  TILW_MissionEvent "{66B97554F85C8747}" {
+   m_name "Opfor Victory by Time Limit"
+   m_instructions {
+    TILW_SendMessageInstruction "{66B9754A0E42D3BD}" {
+     m_executionDelay 3900
+     m_messageTitle "Time Limit Reached"
+     m_messageBody "Insurgents WIN!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66B9754A2D9BF7D2}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{685E07A434F95793}" {
+   m_name "CIV Deaths"
+   m_instructions {
+    TILW_SendMessageInstruction "{686013024A536EF5}" {
+     m_messageTitle "Too many civilians have perished"
+     m_messageBody "Way to win those hearts and minds, gents... US ARMY TACTICAL FAILURE!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6860130255043A1F}" {
+    m_flagName "Blufor Punishment Flag"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{66B97555B5F7C2AA}" {
+   m_flagName "Blufor Victory Flag"
+   m_factionKey "GC_INSURGENT"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{685E07A75F52FAFD}" {
+   m_flagName "Blufor Punishment Flag"
+   m_factionKey "CIV"
+   m_casualtyRatio 0.8
+  }
+  TILW_FactionPlayersKilledFlag "{66B9754B77A972E4}" {
+   m_flagName "Opfor Victory Flag"
+   m_factionKey "US"
+   m_casualtyRatio 0.75
+  }
+ }
+}

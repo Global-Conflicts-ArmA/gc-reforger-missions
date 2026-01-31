@@ -1,0 +1,297 @@
+SCR_AIWorld : "{3DE6090FC602E566}Prefabs/AI/SCR_AIWorld_Takistan.et" {
+ coords 140.348 574.294 6616.438
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 159.034 597.426 6686.224
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 15
+   m_iStartingMinutes 30
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6848B13057EB4FC9}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 15
+     m_iStartingMinutes 30
+    }
+   }
+   m_bUseSpecifiedDate 1
+   m_iSetDay 4
+   m_iSetMonth 4
+   m_iSetYear 1982
+  }
+ }
+ coords 203.581 588.453 6602.052
+ m_aFactionRespawnCount {
+  PS_FactionRespawnCount "{673F65A875FC552E}" {
+   m_sFactionKey "GC_MUJ"
+   m_iCount 6
+   m_iTime 10
+  }
+ }
+ m_safeStartTime 120
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 144.945 596.078 6638.463
+ m_missionEvents {
+  TILW_MissionEvent "{6842C23ACDC0AFFC}" {
+   m_name "IndforSetTicket0"
+   m_instructions {
+    TILW_EditRespawnTicketsInstruction "{6842C23D2C685BAD}" {
+     m_executionDelay 1
+     m_factionKey "GC_MUJ"
+    }
+    TILW_DeleteEntitiesInstruction "{6846ADD486EBD194}" {
+     m_executionDelay 1
+     m_entityNames {
+      "IndforSpawn"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{6842C23D3963FBE6}" {
+    m_flagName "IndforCutoff"
+   }
+  }
+  TILW_MissionEvent "{684938CF64A60027}" {
+   m_name "IndforVictory"
+   m_instructions {
+    TILW_SendMessageInstruction "{684938CF51B3941C}" {
+     m_messageTitle "MUJAHIDEEN VICTORY"
+     m_messageBody "Mujahideen forces have managed to inflict enough damage on the Soviet convoy that they've effectively been made combat ineffective and thus neutralized."\
+     ""\
+     "Well done Indfor!"\
+     "Mission will end soon..."
+    }
+   }
+   m_condition TILW_LiteralTerm "{684938CF5987F704}" {
+    m_flagName "OpforDead"
+   }
+  }
+  TILW_MissionEvent "{684938C83FD60D02}" {
+   m_name "OpforMajVicCon"
+   m_instructions {
+    TILW_SetFlagInstruction "{684AE01467F57A8B}" {
+     m_executionDelay 1
+     m_flagName "SetMajWin"
+    }
+    TILW_ClearFlagInstruction "{684AE0147DC37BB7}" {
+     m_executionDelay 1
+     m_flagName "SetRegWin"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{684AE00DCF70665B}" {
+    m_operands {
+     TILW_LiteralTerm "{684AE00DC60E97DF}" {
+      m_flagName "6TruckExit"
+     }
+     TILW_LiteralTerm "{684AE0080D21B131}" {
+      m_flagName "Opfor35"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{684AE013E8F99D47}" {
+   m_name "OpforMajWin"
+   m_instructions {
+    TILW_SendMessageInstruction "{684AE013E8F992F4}" {
+     m_executionDelay 1
+     m_messageTitle "USSR MAJOR VICTORY"
+     m_messageBody "Amazing work troops!"\
+     "We've managed to reach the finish point with all 6x Ural trucks and atleast 40% of our company remaining alive."\
+     ""\
+     "Well done Opfor."\
+     "Mission will end soon..."
+     m_factionKeys {
+      "USSR"
+     }
+    }
+    TILW_SendMessageInstruction "{684AE013E8F992C9}" {
+     m_executionDelay 1
+     m_messageTitle "USSR MAJOR VICTORY"
+     m_messageBody "The Soviets have reached their end point and exfilled from the region."\
+     "They've sustained minimum casualties and got away with all of their supplies!"\
+     ""\
+     "The boss won't be happy about this... Someone will be losing their hands tonight. "\
+     "Mission will end soon..."
+     m_factionKeys {
+      "GC_MUJ"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{684AE013E5630721}" {
+    m_flagName "MajWin"
+   }
+  }
+  TILW_MissionEvent "{684AE00CF2DC0C4A}" {
+   m_name "OpforRegVicCon"
+   m_instructions {
+    TILW_SetFlagInstruction "{684AE0144B60E26C}" {
+     m_executionDelay 1
+     m_flagName "SetRegWin"
+    }
+    TILW_ClearFlagInstruction "{684AE014B87CDEC9}" {
+     m_executionDelay 1
+     m_flagName "SetMinWin"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{684AE00CF2D0936F}" {
+    m_operands {
+     TILW_LiteralTerm "{684AE00CF2D09362}" {
+      m_flagName "4TruckExit"
+     }
+     TILW_LiteralTerm "{684AE0085316EF10}" {
+      m_flagName "Opfor35"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{684AE013D007DBD7}" {
+   m_name "OpforRegWin"
+   m_instructions {
+    TILW_SendMessageInstruction "{684AE013D007DB6F}" {
+     m_executionDelay 1
+     m_messageTitle "USSR REGULAR VICTORY"
+     m_messageBody "Well done everybody."\
+     "We've managed to reach the finish point with all 4x Ural trucks and atleast 40% of our company remaining alive."\
+     ""\
+     "Well done Opfor."\
+     "Mission will end soon..."
+     m_factionKeys {
+      "USSR"
+     }
+    }
+    TILW_SendMessageInstruction "{684AE013D007DB60}" {
+     m_executionDelay 1
+     m_messageTitle "USSR REGULAR VICTORY"
+     m_messageBody "Soviet forces have reached their end point and exfilled out of the region."\
+     "They've managed to sustain a number of casualties but got away with over half of their supplies."\
+     ""\
+     "Better luck next time brothers."\
+     "Mission will end soon..."
+     m_factionKeys {
+      "GC_MUJ"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{684AE013D007DB62}" {
+    m_flagName "RegWin"
+   }
+  }
+  TILW_MissionEvent "{684AE00CEEC0E983}" {
+   m_name "OpforMinVicCon"
+   m_instructions {
+    TILW_SetFlagInstruction "{684AE01492640190}" {
+     m_executionDelay 1
+     m_flagName "SetMinWin"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{684AE00CEEC0E95C}" {
+    m_operands {
+     TILW_LiteralTerm "{684AE00CEEC0E95F}" {
+      m_flagName "2TruckExit"
+     }
+     TILW_LiteralTerm "{684AE009478263C6}" {
+      m_flagName "Opfor35"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{684AE01230BC28E7}" {
+   m_name "OpforMinWin"
+   m_instructions {
+    TILW_SendMessageInstruction "{684AE01230BC2898}" {
+     m_executionDelay 1
+     m_messageTitle "USSR MINOR VICTORY"
+     m_messageBody "Good work troops!"\
+     "We've managed to reach the finish point with 2x Ural trucks and atleast 40% of our company remaining alive."\
+     ""\
+     "Well done Opfor."\
+     "Mission will end soon..."
+     m_factionKeys {
+      "USSR"
+     }
+    }
+    TILW_SendMessageInstruction "{684AE01230BC289D}" {
+     m_executionDelay 1
+     m_messageTitle "USSR MINOR VICTORY"
+     m_messageBody "The Soviets managed to reach their end point and exfill from the region."\
+     "They've sustained casualties and we've destoryed at least more then half of their supplies."\
+     ""\
+     "Good effort brothers, we'll wipe them out next time!"\
+     "Mission will end soon..."
+     m_factionKeys {
+      "GC_MUJ"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{684AE01228541CD9}" {
+    m_flagName "MinWin"
+   }
+  }
+  TILW_MissionEvent "{684AE00B3C2D9DDA}" {
+   m_name "OpforPyrricVic"
+   m_instructions {
+    TILW_SendMessageInstruction "{684AE00B3C2D9D79}" {
+     m_messageTitle "USSR PYRRHIC VICTORY"
+     m_messageBody "Yikes... We just about made it to the finish point."\
+     "We've lost all our Urals that contained the supplies for our company and took alot of casualties."\
+     ""\
+     "Good effort troops."\
+     "Mission will end soon..."
+     m_factionKeys {
+      "USSR"
+     }
+    }
+    TILW_SendMessageInstruction "{684AE00ACD94597E}" {
+     m_messageTitle "USSR PYRRHIC VICTORY"
+     m_messageBody "The Soviets managed to reach their end point and exfill from the region, but sustained large casualties and lots all of their supplies."\
+     ""\
+     "Very good effort brothers, we'll wipe them out next time!"\
+     "Mission will end soon..."
+     m_factionKeys {
+      "GC_MUJ"
+     }
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{684AE00B3C2D9D7D}" {
+    m_operands {
+     TILW_MinjunctionTerm "{684AE00B7389BC7A}" {
+      m_operands {
+       TILW_LiteralTerm "{684AE00B684B4575}" {
+        m_flagName "T1Dead"
+       }
+       TILW_LiteralTerm "{684AE00B6CB0A419}" {
+        m_flagName "T2Dead"
+       }
+       TILW_LiteralTerm "{684AE00B6D932F62}" {
+        m_flagName "T3Dead"
+       }
+       TILW_LiteralTerm "{684AE00B62211A2E}" {
+        m_flagName "T4Dead"
+       }
+       TILW_LiteralTerm "{684AE00B6370C6B9}" {
+        m_flagName "T5Dead"
+       }
+       TILW_LiteralTerm "{684AE00B66F6119C}" {
+        m_flagName "T6Dead"
+       }
+      }
+      m_minTrue 5
+     }
+     TILW_LiteralTerm "{684AE00BA6D80CCF}" {
+      m_flagName "Opfor35"
+     }
+    }
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{684938CF73B4C1A2}" {
+   m_flagName "OpforDead"
+   m_factionKey "USSR"
+   m_casualtyRatio 0.75
+  }
+ }
+}

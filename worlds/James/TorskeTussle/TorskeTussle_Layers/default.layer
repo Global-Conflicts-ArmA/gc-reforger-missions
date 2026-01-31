@@ -1,0 +1,321 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 3883.007 15.223 615.885
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 3887.714 15.13 619.841
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{686A25D818FA9BA9}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 9
+     m_iStartingMinutes 30
+    }
+   }
+   m_fFogDensity 0.9
+   m_fFogHeight 32.7
+  }
+ }
+ coords 3475.72 3.5 686.128
+ m_iFreezeTime 300000
+}
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ {
+  coords 3266.447 15 868.035
+  m_sTitle "Scenario"
+  m_sTextData "US mechanised infantry platoon with Bradleys reinforced with cav scout attacks position on edge of Torske held by motorised rifle platoon with BMPs."\
+  ""\
+  "Weather: Overcast"\
+  "H-hour: 0930"
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 3262.099 14.969 869.241
+  m_sTitle "Mission Notes"
+  m_sTextData "Time limit is 65 mins, inclusive of 5 min setup."\
+  ""\
+  "End conditions:"\
+  "BLU wins when OPF combat ineffective (hint appears at 85% but GMs can use judgement)."\
+  "OPF wins when BLU combat ineffective (hint appears at 85%)."\
+  "BLU wins when OBJ secured with no OPF inside OBJ area."\
+  "OPF wins when time limit reached and BLU not secured OBJ."\
+  ""
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 9
+ }
+ {
+  coords 3907.835 28.834 434.145
+  m_sTitle "Whats a master gunner?"
+  m_sTextData "PL commands HQ BFV when mounted with master gunner in gunner seat."\
+  "Upon dismount master gunner takes over HQ vic and the spare gunner takes the gunner seat."\
+  ""\
+  "PSG commands from the last BFV and leads the mounted element."\
+  "That BFV's SL & Asst SL dismounts."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bEmptyFactionVisibility 1
+  m_iOrder 6
+ }
+ {
+  coords 3909.08 27.873 451.256
+  m_sTitle "How to use ATGMs"
+  m_sTextData "Hold V to cycle weapons to select ATGM."\
+  ""\
+  "To reload, look at rear of ATGM launcher and hold interact."\
+  "Mounted inf in back can reload the Bradleys if you open the hatch and angle the turret correctly."
+  m_bShowForAnyFaction 1
+  m_iOrder 5
+ }
+ {
+  coords 2728.763 5.853 811.837
+  m_sTitle "Why dont Soviet SLs have radios?"
+  m_sTextData "The SL commands the BMP when mounted. If he wants to stay mounted he can take a radio from the driver."\
+  ""\
+  "When dismounted he has no radio, and the BMP can relay orders."\
+  ""\
+  "If/when the infantry is seperated from their BMPs the PL is expected to lead the dismounted force and communicate to the vehicles over the radio. Use runners if you need."\
+  ""
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_iOrder 8
+ }
+ {
+  coords 3909.906 27.654 454.564
+  m_sTitle "Scouts?"
+  m_sTextData "When mounted, scouts act as loaders for the CFVs."\
+  "For most of the mission they are likely to be riding in back of a CFV, hence the slot last instruction."\
+  "If people want to vibe in the back and load TOWs then be my guest."\
+  "They are NOT rambo slots."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bEmptyFactionVisibility 1
+  m_iOrder 7
+ }
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "US"
+    }
+    m_useFactionColor 0
+    m_lineWidth 5
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+   }
+  }
+  coords 3261.153 16.48 932.872
+  Points {
+   ShapePoint "{6868B8CA395D0DA0}" {
+    Position 803.5 27.651 -628.055
+   }
+   ShapePoint "{6868B8CDFBD76736}" {
+    Position 187.175 21.587 -499.275
+   }
+   ShapePoint "{686A1ACE28655D03}" {
+    Position 85.907 13.394 -469.629
+   }
+   ShapePoint "{686A1ACE5C9244BC}" {
+    Position -98.062 16.013 -524.334
+   }
+   ShapePoint "{686A1ACE106429DB}" {
+    Position -309.172 -7.735 -536.971
+   }
+   ShapePoint "{6868B8CA3C1D770E}" {
+    Position -674.069 -16.946 -556.96
+   }
+   ShapePoint "{6868B8CA01E9BA3A}" {
+    Position -722.992 -10.043 19.654
+   }
+   ShapePoint "{6868B8CA0C4C4260}" {
+    Position -506.5 -9.886 150.107
+   }
+   ShapePoint "{6868B8CA1A07EB01}" {
+    Position -566.246 -9.886 253.401
+   }
+   ShapePoint "{6868B8CA1CCFBD60}" {
+    Position -339.824 -5.529 319.329
+   }
+   ShapePoint "{6868B8CA65EE6B6B}" {
+    Position -217.547 -3.061 397.529
+   }
+   ShapePoint "{686A25D6CDF94783}" {
+    Position -112.712 -2.456 416.685
+   }
+   ShapePoint "{6868B8CA6E1957F6}" {
+    Position 24.784 -1.503 409.661
+   }
+   ShapePoint "{6868B8CA707ACF27}" {
+    Position 600.455 -0.174 432.966
+   }
+   ShapePoint "{6868B8CA76472227}" {
+    Position 919.99 -3.488 392.423
+   }
+  }
+ }
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "USSR"
+    }
+   }
+  }
+  coords 2980.627 9.212 360.628
+  Points {
+   ShapePoint "{6868B8CA4E9848D1}" {
+    Position -393.429 -9.674 15.417
+   }
+   ShapePoint "{6868B8CA51BD94CD}" {
+    Position -442.408 -2.774 591.844
+   }
+   ShapePoint "{6868B8CA5587EB5F}" {
+    Position -225.962 -2.618 722.343
+   }
+   ShapePoint "{6868B8CA586F0256}" {
+    Position -285.673 -2.618 825.64
+   }
+   ShapePoint "{6868B8CA5C7E66A3}" {
+    Position -59.291 1.739 891.541
+   }
+   ShapePoint "{6868B8CDA1C3FC0C}" {
+    Position 62.987 4.21 969.88
+   }
+   ShapePoint "{686A25D6F5D7E95E}" {
+    Position 167.834 4.813 988.959
+   }
+   ShapePoint "{6868B8CDA6F5697A}" {
+    Position 305.35 5.766 981.938
+   }
+   ShapePoint "{6868B8CDB7A531F4}" {
+    Position 309.645 17.787 811.883
+   }
+   ShapePoint "{6868B8CD85C3EDA8}" {
+    Position 499.078 16.445 791.577
+   }
+   ShapePoint "{6868B8CD87ACCC7D}" {
+    Position 584.681 15.061 724.978
+   }
+   ShapePoint "{6868B8CD8E831001}" {
+    Position 609.055 14.867 650.621
+   }
+   ShapePoint "{6868B8CD91D5C5D4}" {
+    Position 468.099 11.511 617.485
+   }
+   ShapePoint "{6868B8CD958B5B7D}" {
+    Position 442.741 -1.846 292.792
+   }
+   ShapePoint "{686A1ACF8D0B4586}" {
+    Position 398.564 -1.03 270.74
+   }
+   ShapePoint "{686A1ACE373A2A35}" {
+    Position 366.316 20.656 102.629
+   }
+   ShapePoint "{686A1ACE4F3FC404}" {
+    Position 182.447 23.281 47.908
+   }
+   ShapePoint "{686A1ACE0AF90C4A}" {
+    Position -28.615 -0.464 35.29
+   }
+  }
+ }
+}
+TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 2870.541 7.231 846.44
+ m_queryRadius 125
+ m_flagName "objcap"
+ m_playersOnly 1
+ m_ownerFactionKey "US"
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 3899.23 14.992 626.585
+ m_missionEvents {
+  TILW_MissionEvent "{686A25C46F2B1DDF}" {
+   m_name "USSR ded"
+   m_instructions {
+    TILW_SendMessageInstruction "{686A25C449D14A42}" {
+     m_executionDelay 15
+     m_messageTitle "USSR Combat Ineffective "
+     m_messageBody "USSR took too many casualties"
+    }
+   }
+   m_condition TILW_LiteralTerm "{686A25C44257C7D6}" {
+    m_flagName "USSRded"
+   }
+  }
+  TILW_MissionEvent "{686A25C7A8008639}" {
+   m_name "US ded"
+   m_instructions {
+    TILW_SendMessageInstruction "{686A25C7A8009990}" {
+     m_executionDelay 15
+     m_messageTitle "US Combat Ineffective "
+     m_messageBody "US took too many casualties"
+    }
+   }
+   m_condition TILW_LiteralTerm "{686A25C7A8009995}" {
+    m_flagName "USded"
+   }
+  }
+  TILW_MissionEvent "{686A25C7B62FA184}" {
+   m_name "Time limit"
+   m_instructions {
+    TILW_SendMessageInstruction "{686A25C7BF4AA208}" {
+     m_executionDelay 3900
+     m_messageTitle "Time Limit Reached"
+     m_messageBody "US forces took too long to secure the OBJ"
+    }
+   }
+   m_condition TILW_LiteralTerm "{686A25C7B82888FA}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{686A25C7E3448780}" {
+   m_name "OBJ Cap"
+   m_instructions {
+    TILW_SendMessageInstruction "{686A25C7EC1E937B}" {
+     m_executionDelay 15
+     m_messageTitle "OBJ Secured"
+     m_messageBody "US forces have taken the OBJ"
+    }
+   }
+   m_condition TILW_LiteralTerm "{686A25C7E8CF6E27}" {
+    m_flagName "objcap"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{686A25C47112DBF3}" {
+   m_flagName "USded"
+   m_factionKey "US"
+   m_casualtyRatio 0.85
+  }
+  TILW_FactionPlayersKilledFlag "{686A25C4798B9FD9}" {
+   m_flagName "USSRded"
+   m_factionKey "USSR"
+   m_casualtyRatio 0.85
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 3879.865 27.087 440.965
+ angles 0 -2 0
+}
+PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ coords 2870.541 7.231 846.44
+ angles 0 0 0
+ m_sImageSetGlow ""
+ m_MarkerColor 0 0 0 0.866
+ m_fWorldSize 380
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}

@@ -1,0 +1,226 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{6877661275BB39EE}" {
+     NavmeshFile "{E08B16AADAB901D8}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Soldier.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{04F808CEFD545B32}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Vehicle.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{6D7CE9C2F346F22E}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_LowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 3028.725 221.497 7589.45
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 3043.134 220.66 7586.725
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{68777C4D7743F0D3}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 7
+    }
+   }
+  }
+ }
+ coords 3019.004 222.082 7584.521
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ {
+  components {
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+   }
+  }
+  coords 3736.528 215.584 7895.145
+  Points {
+   ShapePoint "{68776619FF898608}" {
+    Position 29.073 0 -100.21
+   }
+   ShapePoint "{68776619FABCC8DF}" {
+    Position -684.111 0 307.5
+   }
+   ShapePoint "{68776619F0887B27}" {
+    Position -758.156 0 333.033
+   }
+   ShapePoint "{68776619F1024D11}" {
+    Position -816.536 0 412.926
+   }
+   ShapePoint "{68776619F2569ADB}" {
+    Position -877.397 0 440.194
+   }
+   ShapePoint "{68776619C83D3F37}" {
+    Position -1091.24 0 515.355
+   }
+   ShapePoint "{68776619CB45C4D1}" {
+    Position -1159.896 -3.334 736.165
+   }
+   ShapePoint "{68776619C74E7C3F}" {
+    Position -943.057 0 867.045
+   }
+   ShapePoint "{68776619C006CB73}" {
+    Position -642.281 0 855.96
+   }
+   ShapePoint "{68776619DD4BB567}" {
+    Position -606.077 0 775.568
+   }
+   ShapePoint "{68776619A974C5AF}" {
+    Position -556.426 3.066 707.416
+   }
+   ShapePoint "{68776619A747DEED}" {
+    Position -449.138 0 623.454
+   }
+   ShapePoint "{68776619A0A618ED}" {
+    Position -420.665 0 597.016
+   }
+   ShapePoint "{68776619BCE320D5}" {
+    Position 205.532 0 181.211
+   }
+  }
+ }
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "GC_CDF"
+    }
+   }
+  }
+  coords 2762.189 296.783 8777.944
+  Points {
+   ShapePoint "{68776618001C1D70}" {
+    Position -184.122 0 -147.353
+   }
+   ShapePoint "{68776618029779B5}" {
+    Position -104.827 0 -367.541
+   }
+   ShapePoint "{68776618030D293B}" {
+    Position 98.996 0 -438.457
+   }
+   ShapePoint "{6877661819DA3F73}" {
+    Position 153.27 0 -474.964
+   }
+   ShapePoint "{68776618EC7CE202}" {
+    Position 420.539 0 -174.621
+   }
+   ShapePoint "{68776618EEE80CE4}" {
+    Position 375.571 0 -104.369
+   }
+   ShapePoint "{68776618EFA6B7B3}" {
+    Position 336.981 0 -30.479
+   }
+   ShapePoint "{68776618EAEC35C2}" {
+    Position 29.131 0 -10.818
+   }
+  }
+ }
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ {
+  coords 3014.261 263.875 8670.721
+  m_queryRadius 30
+  m_captureTime 300
+  m_sendStatusMessages 1
+  m_locationName "the north checkpoint"
+  m_flagName "CHECKPOINT_N"
+  m_ownerFactionKey "RHS_AFRF"
+ }
+ {
+  coords 2718.658 283.749 8543.276
+  m_queryRadius 30
+  m_captureTime 300
+  m_sendStatusMessages 1
+  m_locationName "the west checkpoint"
+  m_flagName "CHECKPOINT_W"
+  m_ownerFactionKey "RHS_AFRF"
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 3010.773 222.581 7585.052
+ m_missionEvents {
+  TILW_MissionEvent "{68777C4AEFC0A797}" {
+   m_name "RU_CAP"
+   m_instructions {
+    TILW_SendMessageInstruction "{68777C4AFFA28FE2}" {
+     m_messageTitle "AFRF VICTORY"
+     m_messageBody "Russian forces have secured a route out of Kamoryn."
+    }
+   }
+   m_condition TILW_DisjunctionTerm "{68777C4AE5732B99}" {
+    m_operands {
+     TILW_LiteralTerm "{68777C4AE7E9E09D}" {
+      m_flagName "CHECKPOINT_N"
+     }
+     TILW_LiteralTerm "{68777C4AE3EE6B91}" {
+      m_flagName "CHECKPOINT_W"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{68777C4AF0FE0437}" {
+   m_name "CDF_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{68777C4ACE7D6F7E}" {
+     m_messageTitle "AFRF VICTORY"
+     m_messageBody "CDF defenders have taken significant casualties."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68777C4AF3E80B7B}" {
+    m_flagName "CDF_KIA"
+   }
+  }
+  TILW_MissionEvent "{68777C4AC0AF0553}" {
+   m_name "RU_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{68777C4ADF81B035}" {
+     m_messageTitle "CDF VICTORY"
+     m_messageBody "Russian attackers have taken significant casualties."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68777C4AC3D9EED8}" {
+    m_flagName "RU_KIA"
+   }
+  }
+  TILW_MissionEvent "{68777C4AD084DBB1}" {
+   m_name "TIME_LIMIT"
+   m_instructions {
+    TILW_SendMessageInstruction "{68777C4AA5EA85EF}" {
+     m_executionDelay 3005
+     m_messageTitle "CDF VICTORY"
+     m_messageBody "Time limit reached."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68777C4AD30241FB}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{68777C4A14F76AA5}" {
+   m_flagName "CDF_KIA"
+   m_factionKey "GC_CDF"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{68777C4A10916D87}" {
+   m_flagName "RU_KIA"
+   m_factionKey "RHS_AFRF"
+   m_casualtyRatio 0.9
+  }
+ }
+}
