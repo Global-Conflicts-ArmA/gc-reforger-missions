@@ -5,7 +5,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
    m_setName "Obj_Trigger"
   }
  }
- coords 3412.074 225.821 8276.382
+ coords 5121.509 242.805 8644.506
  m_queryRadius 500
  m_flagName "AOClear"
  m_drawShapeOutline 0
@@ -13,7 +13,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
  m_ratioThreshold 0.6
  {
   PS_ManualMarker Seperatists_Supplies_Markers_Road : "{24F7652F8EC73491}worlds/HitTheMan/Seeder Cold War Domination/Prefabs/Rewards/Seperatists_Supplies_Markers_Road.et" {
-   ID "687EBED3F8FC63B3"
+   ID "688972470C80CE03"
    coords 85.6 -2.069 -87.764
    m_sImageSet "{C9D19DBFDE7AD72D}UI/Imagesets/Conflict/conflict-icons.imageset"
    m_MarkerColor 0.251 0.502 0 1
@@ -21,18 +21,78 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
    m_fWorldSize 20
   }
   GenericEntity Seperatists_Supplies : "{2CD070D1419FF6DC}worlds/HitTheMan/Seeder Cold War Domination/Prefabs/Rewards/Seperatists_Supplies.et" {
-   ID "687EBED3F8CE1E03"
+   ID "688972470C80CE02"
    coords -154.773 6.866 0.118
    angles 0 0 0
   }
   PS_ManualMarker Seperatists_Supplies_Markers : "{730596B079706592}worlds/HitTheMan/Seeder Cold War Domination/Prefabs/Rewards/Seperatists_Supplies_Markers.et" {
-   ID "687EBED3F8FC604D"
+   ID "688972470C80CEF9"
    coords -154.773 6.866 0.118
    m_fWorldSize 20
   }
   $grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
+   VehicleSpawner_Contact_1 {
+    ID "688972470C809D32"
+    components {
+     TILW_SetNameComponent "{687B6417F0205EAC}" {
+      m_setName "VehicleSpawner_Contact_1"
+     }
+    }
+    coords -34.939 -25.236 -862.896
+    angles -0.688 45.738 3.09
+    m_prefab "{4355537BD75ED98A}worlds/HitTheMan/Prefabs/Vehicles/T72A_Green_AI.et"
+    m_conditionFlag "SpawnReinforcements"
+    m_waypointNames {
+     "Def_WP_Vehicle_5" "Def_WP_Vehicle_6"
+    }
+    m_crewConfig TILW_CrewConfig "{687AB8210ABAF7EF}" {
+     m_crewGroups {
+      TILW_CrewGroup "{687AB8210ED32F5B}" {
+       m_crewStations {
+        TILW_CrewStation "{687AB821039E86D0}" {
+         m_allowCargo 0
+         m_characters {
+          "{140B6687EDDBF1FC}Prefabs/Characters/Factions/OPFOR/GC_SEP/1990/Character_SEP_1990_Crew.et" "{140B6687EDDBF1FC}Prefabs/Characters/Factions/OPFOR/GC_SEP/1990/Character_SEP_1990_Crew.et" "{140B6687EDDBF1FC}Prefabs/Characters/Factions/OPFOR/GC_SEP/1990/Character_SEP_1990_Crew.et"
+         }
+        }
+       }
+       m_waypointNames {
+        "Def_WP_Vehicle_5" "Def_WP_Vehicle_6"
+       }
+      }
+     }
+     m_noTurretDismount 1
+     m_useIdleGroups 0
+    }
+    {
+     $grp SCR_AIWaypoint : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
+      Def_WP_Vehicle_6 {
+       ID "688972470C835315"
+       components {
+        TILW_SetNameComponent "{687B6417D802491B}" {
+         m_setName "Def_WP_Vehicle_6"
+        }
+       }
+       coords -607.148 -0.765 591.403
+       angles -0.461 11.142 -5.549
+       CompletionRadius 4
+      }
+      Def_WP_Vehicle_5 {
+       ID "688972470C836193"
+       components {
+        TILW_SetNameComponent "{687B6417DD371B3D}" {
+         m_setName "Def_WP_Vehicle_5"
+        }
+       }
+       coords -58.456 14.971 489.443
+       angles -1.732 56.843 -2.649
+       CompletionRadius 4
+      }
+     }
+    }
+   }
    VehicleSpawner_3 {
-    ID "687EBED3F8F4398D"
+    ID "688972470C80CEFB"
     components {
      TILW_SetNameComponent "{687B64176F0E44CC}" {
       m_setName "VehicleSpawner_3"
@@ -69,7 +129,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
     }
     {
      SCR_AIWaypoint Def_WP_Vehicle_3 : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
-      ID "687EBED3F8F434F0"
+      ID "688972470C80CEFD"
       components {
        TILW_SetNameComponent "{687B64170CFE86BA}" {
         m_setName "Def_WP_Vehicle_3"
@@ -81,19 +141,132 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
      }
     }
    }
-   VehicleSpawner_Contact_1 {
-    ID "687EBED3F8F4973C"
+   AI_Squad_Spawner_16 {
+    ID "688972470C820D03"
     components {
-     TILW_SetNameComponent "{687B6417F0205EAC}" {
-      m_setName "VehicleSpawner_Contact_1"
+     TILW_SetNameComponent "{687B64144C6EE9EA}" {
+      m_setName "AI_Squad_Spawner_16"
      }
     }
-    coords -34.939 -25.236 -862.896
-    angles -0.688 45.738 3.09
-    m_prefab "{4355537BD75ED98A}worlds/HitTheMan/Prefabs/Vehicles/T72A_Green_AI.et"
+    coords 104.784 -48.108 312.792
+    m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
+    m_conditionFlag "VehicleSpawner"
+    m_spawnTimings {
+     40
+    }
+    m_setEntityNames {
+     "AI_Squad_Spawner_16"
+    }
+    m_waypointNames {
+     "Def_WP_16"
+    }
+    {
+     SCR_DefendWaypoint Def_WP_16 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
+      ID "688972470C823EDE"
+      components {
+       TILW_SetNameComponent "{687B641679F9B890}" {
+        m_setName "Def_WP_16"
+       }
+      }
+      coords 3.005 0.421 2.12
+      angles 1.192 -0.05 -1.194
+     }
+    }
+   }
+   InfantryQRF_4 {
+    ID "688972470C823EDF"
+    components {
+     TILW_SetNameComponent "{687B64175D6BE330}" {
+      m_setName "InfantryQRF_4"
+     }
+    }
+    coords 101.572 -10.639 -514.623
+    m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
+    m_conditionFlag "SpawnReinforcements"
+    m_spawnTimings {
+     5 120 300 600 900 1200 1500 1800
+    }
+    m_waypointNames {
+     "SnD_WP_1"
+    }
+   }
+   AI_Squad_Spawner_14 {
+    ID "688972470C82479A"
+    components {
+     TILW_SetNameComponent "{687B641450839001}" {
+      m_setName "AI_Squad_Spawner_14"
+     }
+    }
+    coords 76.141 -2.919 -19.555
+    m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
+    m_conditionFlag "VehicleSpawner"
+    m_spawnTimings {
+     40
+    }
+    m_setEntityNames {
+     "AI_Squad_Spawner_14"
+    }
+    m_waypointNames {
+     "Def_WP_14"
+    }
+    {
+     SCR_DefendWaypoint Def_WP_14 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
+      ID "688972470C824795"
+      components {
+       TILW_SetNameComponent "{687B641679F9B890}" {
+        m_setName "Def_WP_14"
+       }
+      }
+      coords 3.005 0.421 2.12
+      angles 1.192 -0.05 -1.194
+     }
+    }
+   }
+   AI_Squad_Spawner_11 {
+    ID "688972470C82B5EE"
+    components {
+     TILW_SetNameComponent "{687B64145A09D395}" {
+      m_setName "AI_Squad_Spawner_11"
+     }
+    }
+    coords -121.928 -0.52 -75.83
+    m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
+    m_conditionFlag "VehicleSpawner"
+    m_spawnTimings {
+     40
+    }
+    m_setEntityNames {
+     "AI_Squad_Spawner_11"
+    }
+    m_waypointNames {
+     "Def_WP_11"
+    }
+    {
+     SCR_DefendWaypoint Def_WP_11 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
+      ID "688972470C851859"
+      components {
+       TILW_SetNameComponent "{687B641679F9B890}" {
+        m_setName "Def_WP_11"
+       }
+      }
+      coords 3.005 0.421 2.12
+      angles 1.192 -0.05 -1.194
+     }
+    }
+   }
+   VehicleSpawner_Contact_2 {
+    ID "688972470C82DE8A"
+    components {
+     TILW_SetNameComponent "{687B6417ECAD2031}" {
+      m_setName "VehicleSpawner_Contact_2"
+     }
+    }
+    coords -278.362 -10.423 -690.046
+    angles 2.543 -20.231 1.885
+    m_prefab "{B47110AA1A806556}Prefabs/Vehicles/Wheeled/BTR70/BTR70_FIA.et"
     m_conditionFlag "SpawnReinforcements"
     m_waypointNames {
-     "Def_WP_Vehicle_5" "Def_WP_Vehicle_6"
+     "Def_WP_Vehicle_7" "Def_WP_Vehicle_8"
     }
     m_crewConfig TILW_CrewConfig "{687AB8210ABAF7EF}" {
      m_crewGroups {
@@ -107,7 +280,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
         }
        }
        m_waypointNames {
-        "Def_WP_Vehicle_5" "Def_WP_Vehicle_6"
+        "Def_WP_Vehicle_7" "Def_WP_Vehicle_8"
        }
       }
      }
@@ -116,33 +289,33 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
     }
     {
      $grp SCR_AIWaypoint : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
-      Def_WP_Vehicle_6 {
-       ID "687EBED3F8F4D6D2"
+      Def_WP_Vehicle_7 {
+       ID "688972470C82B5ED"
        components {
-        TILW_SetNameComponent "{687B6417D802491B}" {
-         m_setName "Def_WP_Vehicle_6"
+        TILW_SetNameComponent "{687B6417D696BA91}" {
+         m_setName "Def_WP_Vehicle_7"
         }
        }
-       coords -607.148 -0.765 591.403
-       angles -0.461 11.142 -5.549
+       coords 310.828 0.243 666.906
+       angles -2.13 11.21 -2.342
        CompletionRadius 4
       }
-      Def_WP_Vehicle_5 {
-       ID "687EBED3F8F4D6D3"
+      Def_WP_Vehicle_8 {
+       ID "688972470C82F4C4"
        components {
-        TILW_SetNameComponent "{687B6417DD371B3D}" {
-         m_setName "Def_WP_Vehicle_5"
+        TILW_SetNameComponent "{687B6417D2D9403D}" {
+         m_setName "Def_WP_Vehicle_8"
         }
        }
-       coords -58.456 14.971 489.443
-       angles -1.732 56.843 -2.649
+       coords 163.123 -12.306 575.682
+       angles 0.432 56.786 -1.491
        CompletionRadius 4
       }
      }
     }
    }
    VehicleSpawner_4 {
-    ID "687EBED3F8F4ADE0"
+    ID "688972470C836192"
     components {
      TILW_SetNameComponent "{687B641773BF2B80}" {
       m_setName "VehicleSpawner_4"
@@ -179,7 +352,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
     }
     {
      SCR_AIWaypoint Def_WP_Vehicle_4 : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
-      ID "687EBED3F8F4ADFF"
+      ID "688972470C83D4BC"
       components {
        TILW_SetNameComponent "{687B641715F4AAF5}" {
         m_setName "Def_WP_Vehicle_4"
@@ -191,40 +364,39 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
      }
     }
    }
-   AI_Squad_Spawner_4 {
-    ID "687EBED3F8F4D6D0"
+   InfantryQRF_1 {
+    ID "688972470C8396F4"
     components {
-     TILW_SetNameComponent "{687B6414421F56EA}" {
-      m_setName "AI_Squad_Spawner_4"
+     TILW_SetNameComponent "{687B6416AD64A167}" {
+      m_setName "InfantryQRF_1"
      }
     }
-    coords -377.217 3.311 -4.562
+    coords -499.491 51.506 402.829
     m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
-    m_conditionFlag "VehicleSpawner"
+    m_conditionFlag "SpawnReinforcements"
     m_spawnTimings {
-     20
-    }
-    m_setEntityNames {
-     "AI_Squad_Spawner_4"
+     5 120 300 600 900 1200 1500 1800
     }
     m_waypointNames {
-     "Def_WP_4"
+     "SnD_WP_1"
     }
-    {
-     SCR_DefendWaypoint Def_WP_4 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
-      ID "687EBED3F8F51DEC"
-      components {
-       TILW_SetNameComponent "{687B641679F9B890}" {
-        m_setName "Def_WP_4"
-       }
-      }
-      coords 3.005 0.421 2.12
-      angles 1.192 -0.05 -1.194
+   }
+   Deleter {
+    ID "688972470C83E122"
+    components {
+     TILW_SetNameComponent "{687B6417FC66D645}" {
+      m_setName "Deleter"
      }
+    }
+    coords -7.852 0.196 5.158
+    m_prefab "{3D54A6583D027631}worlds/HitTheMan/Seeder Cold War Domination/Prefabs/DeleteAllAIBodies.et"
+    m_conditionFlag "ClearAI"
+    m_spawnTimings {
+     1
     }
    }
    VehicleSpawner_5 {
-    ID "687EBED3F8F59CF0"
+    ID "688972470C83FB98"
     components {
      TILW_SetNameComponent "{687B6417639D9303}" {
       m_setName "VehicleSpawner_1"
@@ -254,267 +426,31 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
      m_useIdleGroups 0
     }
    }
-   Deleter {
-    ID "687EBED3F8F5D8FC"
+   AI_Squad_Spawner_4 {
+    ID "688972470C83FB9A"
     components {
-     TILW_SetNameComponent "{687B6417FC66D645}" {
-      m_setName "Deleter"
+     TILW_SetNameComponent "{687B6414421F56EA}" {
+      m_setName "AI_Squad_Spawner_4"
      }
     }
-    coords -7.852 0.196 5.158
-    m_prefab "{94CBFD955F3581AE}worlds/HitTheMan/Seeder Cold War Domination/Prefabs/DeleteAllAIBodies.et"
-    m_conditionFlag "ClearAI"
-    m_spawnTimings {
-     1
-    }
-   }
-   InfantryQRF_1 {
-    ID "687EBED3F8F5D8FD"
-    components {
-     TILW_SetNameComponent "{687B6416AD64A167}" {
-      m_setName "InfantryQRF_1"
-     }
-    }
-    coords -499.491 51.506 402.829
-    m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
-    m_conditionFlag "SpawnReinforcements"
-    m_spawnTimings {
-     5 120 300 600 900 1200 1500 1800
-    }
-    m_waypointNames {
-     "SnD_WP_1"
-    }
-   }
-   AI_Squad_Spawner_14 {
-    ID "687EBED3F8F6315D"
-    components {
-     TILW_SetNameComponent "{687B641450839001}" {
-      m_setName "AI_Squad_Spawner_14"
-     }
-    }
-    coords 76.141 -2.919 -19.555
-    m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
-    m_conditionFlag "VehicleSpawner"
-    m_spawnTimings {
-     40
-    }
-    m_setEntityNames {
-     "AI_Squad_Spawner_14"
-    }
-    m_waypointNames {
-     "Def_WP_14"
-    }
-    {
-     SCR_DefendWaypoint Def_WP_14 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
-      ID "687EBED3F8F634D7"
-      components {
-       TILW_SetNameComponent "{687B641679F9B890}" {
-        m_setName "Def_WP_14"
-       }
-      }
-      coords 3.005 0.421 2.12
-      angles 1.192 -0.05 -1.194
-     }
-    }
-   }
-   AI_Squad_Spawner_16 {
-    ID "687EBED3F8F66493"
-    components {
-     TILW_SetNameComponent "{687B64144C6EE9EA}" {
-      m_setName "AI_Squad_Spawner_16"
-     }
-    }
-    coords 104.784 -48.108 312.792
-    m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
-    m_conditionFlag "VehicleSpawner"
-    m_spawnTimings {
-     40
-    }
-    m_setEntityNames {
-     "AI_Squad_Spawner_16"
-    }
-    m_waypointNames {
-     "Def_WP_16"
-    }
-    {
-     SCR_DefendWaypoint Def_WP_16 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
-      ID "687EBED3F8F66494"
-      components {
-       TILW_SetNameComponent "{687B641679F9B890}" {
-        m_setName "Def_WP_16"
-       }
-      }
-      coords 3.005 0.421 2.12
-      angles 1.192 -0.05 -1.194
-     }
-    }
-   }
-   InfantryQRF_4 {
-    ID "687EBED3F8F68DA7"
-    components {
-     TILW_SetNameComponent "{687B64175D6BE330}" {
-      m_setName "InfantryQRF_4"
-     }
-    }
-    coords 101.572 -10.639 -514.623
-    m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
-    m_conditionFlag "SpawnReinforcements"
-    m_spawnTimings {
-     5 120 300 600 900 1200 1500 1800
-    }
-    m_waypointNames {
-     "SnD_WP_1"
-    }
-   }
-   VehicleSpawner_Contact_2 {
-    ID "687EBED3F8F861BD"
-    components {
-     TILW_SetNameComponent "{687B6417ECAD2031}" {
-      m_setName "VehicleSpawner_Contact_2"
-     }
-    }
-    coords -278.362 -10.423 -690.046
-    angles 2.543 -20.231 1.885
-    m_prefab "{B47110AA1A806556}Prefabs/Vehicles/Wheeled/BTR70/BTR70_FIA.et"
-    m_conditionFlag "SpawnReinforcements"
-    m_waypointNames {
-     "Def_WP_Vehicle_7" "Def_WP_Vehicle_8"
-    }
-    m_crewConfig TILW_CrewConfig "{687AB8210ABAF7EF}" {
-     m_crewGroups {
-      TILW_CrewGroup "{687AB8210ED32F5B}" {
-       m_crewStations {
-        TILW_CrewStation "{687AB821039E86D0}" {
-         m_allowCargo 0
-         m_characters {
-          "{140B6687EDDBF1FC}Prefabs/Characters/Factions/OPFOR/GC_SEP/1990/Character_SEP_1990_Crew.et" "{140B6687EDDBF1FC}Prefabs/Characters/Factions/OPFOR/GC_SEP/1990/Character_SEP_1990_Crew.et" "{140B6687EDDBF1FC}Prefabs/Characters/Factions/OPFOR/GC_SEP/1990/Character_SEP_1990_Crew.et"
-         }
-        }
-       }
-       m_waypointNames {
-        "Def_WP_Vehicle_7" "Def_WP_Vehicle_8"
-       }
-      }
-     }
-     m_noTurretDismount 1
-     m_useIdleGroups 0
-    }
-    {
-     $grp SCR_AIWaypoint : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
-      Def_WP_Vehicle_8 {
-       ID "687EBED3F8F861BC"
-       components {
-        TILW_SetNameComponent "{687B6417D2D9403D}" {
-         m_setName "Def_WP_Vehicle_8"
-        }
-       }
-       coords 163.123 -12.306 575.682
-       angles 0.432 56.786 -1.491
-       CompletionRadius 4
-      }
-      Def_WP_Vehicle_7 {
-       ID "687EBED3F8F8B6FF"
-       components {
-        TILW_SetNameComponent "{687B6417D696BA91}" {
-         m_setName "Def_WP_Vehicle_7"
-        }
-       }
-       coords 310.828 0.243 666.906
-       angles -2.13 11.21 -2.342
-       CompletionRadius 4
-      }
-     }
-    }
-   }
-   AI_Squad_Spawner_11 {
-    ID "687EBED3F8F8D14D"
-    components {
-     TILW_SetNameComponent "{687B64145A09D395}" {
-      m_setName "AI_Squad_Spawner_11"
-     }
-    }
-    coords -121.928 -0.52 -75.83
-    m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
-    m_conditionFlag "VehicleSpawner"
-    m_spawnTimings {
-     40
-    }
-    m_setEntityNames {
-     "AI_Squad_Spawner_11"
-    }
-    m_waypointNames {
-     "Def_WP_11"
-    }
-    {
-     SCR_DefendWaypoint Def_WP_11 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
-      ID "687EBED3F8F90B17"
-      components {
-       TILW_SetNameComponent "{687B641679F9B890}" {
-        m_setName "Def_WP_11"
-       }
-      }
-      coords 3.005 0.421 2.12
-      angles 1.192 -0.05 -1.194
-     }
-    }
-   }
-   AI_Squad_Spawner_2 {
-    ID "687EBED3F8F90B10"
-    components {
-     TILW_SetNameComponent "{687B64144ACF4A86}" {
-      m_setName "AI_Squad_Spawner_2"
-     }
-    }
-    coords 319.53 -18.644 100.78
+    coords -377.217 3.311 -4.562
     m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
     m_conditionFlag "VehicleSpawner"
     m_spawnTimings {
      20
     }
     m_setEntityNames {
-     "AI_Squad_Spawner_2"
+     "AI_Squad_Spawner_4"
     }
     m_waypointNames {
-     "Def_WP_2"
+     "Def_WP_4"
     }
     {
-     SCR_DefendWaypoint Def_WP_2 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
-      ID "687EBED3F8F904C2"
+     SCR_DefendWaypoint Def_WP_4 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
+      ID "688972470C83FB99"
       components {
        TILW_SetNameComponent "{687B641679F9B890}" {
-        m_setName "Def_WP_2"
-       }
-      }
-      coords 3.005 0.421 2.12
-      angles 1.192 -0.05 -1.194
-     }
-    }
-   }
-   AI_Squad_Spawner_6 {
-    ID "687EBED3F8F943A9"
-    components {
-     TILW_SetNameComponent "{687B64147DECEF9F}" {
-      m_setName "AI_Squad_Spawner_6"
-     }
-    }
-    coords -34.114 0.087 -41.331
-    m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
-    m_conditionFlag "VehicleSpawner"
-    m_spawnTimings {
-     20
-    }
-    m_setEntityNames {
-     "AI_Squad_Spawner_6"
-    }
-    m_waypointNames {
-     "Def_WP_6"
-    }
-    {
-     SCR_DefendWaypoint Def_WP_6 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
-      ID "687EBED3F8F9E502"
-      components {
-       TILW_SetNameComponent "{687B641679F9B890}" {
-        m_setName "Def_WP_6"
+        m_setName "Def_WP_4"
        }
       }
       coords 3.005 0.421 2.12
@@ -523,7 +459,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
     }
    }
    AI_Squad_Spawner_15 {
-    ID "687EBED3F8FA1421"
+    ID "688972470C8438AD"
     components {
      TILW_SetNameComponent "{687B641452038D73}" {
       m_setName "AI_Squad_Spawner_15"
@@ -543,7 +479,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
     }
     {
      SCR_DefendWaypoint Def_WP_15 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
-      ID "687EBED3F8FA1420"
+      ID "688972470C84DB14"
       components {
        TILW_SetNameComponent "{687B641679F9B890}" {
         m_setName "Def_WP_15"
@@ -554,40 +490,8 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
      }
     }
    }
-   AI_Squad_Spawner_3 {
-    ID "687EBED3F8FA7F99"
-    components {
-     TILW_SetNameComponent "{687B6414471E243B}" {
-      m_setName "AI_Squad_Spawner_3"
-     }
-    }
-    coords -372.868 20.898 185.645
-    m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
-    m_conditionFlag "VehicleSpawner"
-    m_spawnTimings {
-     20
-    }
-    m_setEntityNames {
-     "AI_Squad_Spawner_3"
-    }
-    m_waypointNames {
-     "Def_WP_3"
-    }
-    {
-     SCR_DefendWaypoint Def_WP_3 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
-      ID "687EBED3F8FA94D8"
-      components {
-       TILW_SetNameComponent "{687B641679F9B890}" {
-        m_setName "Def_WP_3"
-       }
-      }
-      coords 3.005 0.421 2.12
-      angles 1.192 -0.05 -1.194
-     }
-    }
-   }
    AI_Squad_Spawner_18 {
-    ID "687EBED3F8FAEBAF"
+    ID "688972470C848234"
     components {
      TILW_SetNameComponent "{687B641448D9025A}" {
       m_setName "AI_Squad_Spawner_18"
@@ -607,7 +511,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
     }
     {
      SCR_DefendWaypoint Def_WP_18 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
-      ID "687EBED3F8FAEBAC"
+      ID "688972470C84BD18"
       components {
        TILW_SetNameComponent "{687B641679F9B890}" {
         m_setName "Def_WP_18"
@@ -618,93 +522,127 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
      }
     }
    }
-   VehicleSpawner_9 {
-    ID "687EBED3F8FB16E3"
+   AI_Squad_Spawner_3 {
+    ID "688972470C84DB13"
     components {
-     TILW_SetNameComponent "{687B6417639D9303}" {
-      m_setName "VehicleSpawner_1"
+     TILW_SetNameComponent "{687B6414471E243B}" {
+      m_setName "AI_Squad_Spawner_3"
      }
     }
-    coords -307.019 15.342 135.311
-    angles 3.08 -43.457 0.73
-    m_prefab "{1A407760EEAE4156}Prefabs/Vehicles/Static/BaconZU23/BaconZU23_Turret_Deployed.et"
-    m_conditionFlag "VehicleSpawner"
-    m_spawnTimings {
-     15
-    }
-    m_crewConfig TILW_CrewConfig "{687AB8210ABAF7EF}" {
-     m_crewGroups {
-      TILW_CrewGroup "{687AB8210ED32F5B}" {
-       m_crewStations {
-        TILW_CrewStation "{687AB821039E86D0}" {
-         m_allowCargo 0
-         m_characters {
-          "{140B6687EDDBF1FC}Prefabs/Characters/Factions/OPFOR/GC_SEP/1990/Character_SEP_1990_Crew.et" "{140B6687EDDBF1FC}Prefabs/Characters/Factions/OPFOR/GC_SEP/1990/Character_SEP_1990_Crew.et"
-         }
-        }
-       }
-      }
-     }
-     m_noTurretDismount 1
-     m_useIdleGroups 0
-    }
-   }
-   VehicleSpawner_6 {
-    ID "687EBED3F8FB4209"
-    components {
-     TILW_SetNameComponent "{687B6417639D9303}" {
-      m_setName "VehicleSpawner_1"
-     }
-    }
-    coords -61.677 1.023 -38.183
-    angles 0.635 21.635 3.101
-    m_prefab "{1A407760EEAE4156}Prefabs/Vehicles/Static/BaconZU23/BaconZU23_Turret_Deployed.et"
-    m_conditionFlag "VehicleSpawner"
-    m_spawnTimings {
-     15
-    }
-    m_crewConfig TILW_CrewConfig "{687AB8210ABAF7EF}" {
-     m_crewGroups {
-      TILW_CrewGroup "{687AB8210ED32F5B}" {
-       m_crewStations {
-        TILW_CrewStation "{687AB821039E86D0}" {
-         m_allowCargo 0
-         m_characters {
-          "{140B6687EDDBF1FC}Prefabs/Characters/Factions/OPFOR/GC_SEP/1990/Character_SEP_1990_Crew.et" "{140B6687EDDBF1FC}Prefabs/Characters/Factions/OPFOR/GC_SEP/1990/Character_SEP_1990_Crew.et"
-         }
-        }
-       }
-      }
-     }
-     m_noTurretDismount 1
-     m_useIdleGroups 0
-    }
-   }
-   AI_Squad_Spawner_13 {
-    ID "687EBED3F8FB97C4"
-    components {
-     TILW_SetNameComponent "{687B641456F43959}" {
-      m_setName "AI_Squad_Spawner_13"
-     }
-    }
-    coords -61.889 4.543 34.64
+    coords -372.868 20.898 185.645
     m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
     m_conditionFlag "VehicleSpawner"
     m_spawnTimings {
-     40
+     20
     }
     m_setEntityNames {
-     "AI_Squad_Spawner_13"
+     "AI_Squad_Spawner_3"
     }
     m_waypointNames {
-     "Def_WP_13"
+     "Def_WP_3"
     }
     {
-     SCR_DefendWaypoint Def_WP_13 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
-      ID "687EBED3F8FB97C5"
+     SCR_DefendWaypoint Def_WP_3 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
+      ID "688972470C84C459"
       components {
        TILW_SetNameComponent "{687B641679F9B890}" {
-        m_setName "Def_WP_13"
+        m_setName "Def_WP_3"
+       }
+      }
+      coords 3.005 0.421 2.12
+      angles 1.192 -0.05 -1.194
+     }
+    }
+   }
+   AI_Squad_Spawner_2 {
+    ID "688972470C85207A"
+    components {
+     TILW_SetNameComponent "{687B64144ACF4A86}" {
+      m_setName "AI_Squad_Spawner_2"
+     }
+    }
+    coords 319.53 -18.644 100.78
+    m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
+    m_conditionFlag "VehicleSpawner"
+    m_spawnTimings {
+     20
+    }
+    m_setEntityNames {
+     "AI_Squad_Spawner_2"
+    }
+    m_waypointNames {
+     "Def_WP_2"
+    }
+    {
+     SCR_DefendWaypoint Def_WP_2 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
+      ID "688972470C85949E"
+      components {
+       TILW_SetNameComponent "{687B641679F9B890}" {
+        m_setName "Def_WP_2"
+       }
+      }
+      coords 3.005 0.421 2.12
+      angles 1.192 -0.05 -1.194
+     }
+    }
+   }
+   AI_Squad_Spawner_6 {
+    ID "688972470C85949F"
+    components {
+     TILW_SetNameComponent "{687B64147DECEF9F}" {
+      m_setName "AI_Squad_Spawner_6"
+     }
+    }
+    coords -34.114 0.087 -41.331
+    m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
+    m_conditionFlag "VehicleSpawner"
+    m_spawnTimings {
+     20
+    }
+    m_setEntityNames {
+     "AI_Squad_Spawner_6"
+    }
+    m_waypointNames {
+     "Def_WP_6"
+    }
+    {
+     SCR_DefendWaypoint Def_WP_6 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
+      ID "688972470C8466EA"
+      components {
+       TILW_SetNameComponent "{687B641679F9B890}" {
+        m_setName "Def_WP_6"
+       }
+      }
+      coords 3.005 0.421 2.12
+      angles 1.192 -0.05 -1.194
+     }
+    }
+   }
+   AI_Squad_Spawner_5 {
+    ID "688972470C860690"
+    components {
+     TILW_SetNameComponent "{687B64147C408003}" {
+      m_setName "AI_Squad_Spawner_5"
+     }
+    }
+    coords -187.712 8.295 44.755
+    m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
+    m_conditionFlag "VehicleSpawner"
+    m_spawnTimings {
+     20
+    }
+    m_setEntityNames {
+     "AI_Squad_Spawner_5"
+    }
+    m_waypointNames {
+     "Def_WP_5"
+    }
+    {
+     SCR_DefendWaypoint Def_WP_5 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
+      ID "688972470C868410"
+      components {
+       TILW_SetNameComponent "{687B641679F9B890}" {
+        m_setName "Def_WP_5"
        }
       }
       coords 3.005 0.421 2.12
@@ -713,7 +651,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
     }
    }
    VehicleSpawner_7 {
-    ID "687EBED3F8FC5343"
+    ID "688972470C8647B1"
     components {
      TILW_SetNameComponent "{687B6417639D9303}" {
       m_setName "VehicleSpawner_1"
@@ -744,7 +682,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
     }
    }
    VehicleSpawner_8 {
-    ID "687EBED3F8FC5344"
+    ID "688972470C8647B2"
     components {
      TILW_SetNameComponent "{687B6417639D9303}" {
       m_setName "VehicleSpawner_1"
@@ -774,118 +712,19 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
      m_useIdleGroups 0
     }
    }
-   AI_Squad_Spawner_5 {
-    ID "687EBED3F8FC604C"
+   VehicleSpawner_9 {
+    ID "688972470C8732FA"
     components {
-     TILW_SetNameComponent "{687B64147C408003}" {
-      m_setName "AI_Squad_Spawner_5"
+     TILW_SetNameComponent "{687B6417639D9303}" {
+      m_setName "VehicleSpawner_1"
      }
     }
-    coords -187.712 8.295 44.755
-    m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
+    coords -307.019 15.342 135.311
+    angles 3.08 -43.457 0.73
+    m_prefab "{1A407760EEAE4156}Prefabs/Vehicles/Static/BaconZU23/BaconZU23_Turret_Deployed.et"
     m_conditionFlag "VehicleSpawner"
     m_spawnTimings {
-     20
-    }
-    m_setEntityNames {
-     "AI_Squad_Spawner_5"
-    }
-    m_waypointNames {
-     "Def_WP_5"
-    }
-    {
-     SCR_DefendWaypoint Def_WP_5 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
-      ID "687EBED3F8FC604E"
-      components {
-       TILW_SetNameComponent "{687B641679F9B890}" {
-        m_setName "Def_WP_5"
-       }
-      }
-      coords 3.005 0.421 2.12
-      angles 1.192 -0.05 -1.194
-     }
-    }
-   }
-   AI_Squad_Spawner_17 {
-    ID "687EBED3F8FC8DB6"
-    components {
-     TILW_SetNameComponent "{687B64144ECB9AA9}" {
-      m_setName "AI_Squad_Spawner_17"
-     }
-    }
-    coords -37.218 -16.559 212.009
-    m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
-    m_conditionFlag "VehicleSpawner"
-    m_spawnTimings {
-     40
-    }
-    m_setEntityNames {
-     "AI_Squad_Spawner_17"
-    }
-    m_waypointNames {
-     "Def_WP_17"
-    }
-    {
-     SCR_DefendWaypoint Def_WP_17 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
-      ID "687EBED3F8FCC5F4"
-      components {
-       TILW_SetNameComponent "{687B641679F9B890}" {
-        m_setName "Def_WP_17"
-       }
-      }
-      coords 3.005 0.421 2.12
-      angles 1.192 -0.05 -1.194
-     }
-    }
-   }
-   AI_Squad_Spawner_12 {
-    ID "687EBED3F8FCC5F5"
-    components {
-     TILW_SetNameComponent "{687B64145448709D}" {
-      m_setName "AI_Squad_Spawner_12"
-     }
-    }
-    coords 6.452 -5.778 -147.01
-    m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
-    m_conditionFlag "VehicleSpawner"
-    m_spawnTimings {
-     40
-    }
-    m_setEntityNames {
-     "AI_Squad_Spawner_112"
-    }
-    m_waypointNames {
-     "Def_WP_12"
-    }
-    {
-     SCR_DefendWaypoint Def_WP_12 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
-      ID "687EBED3F8FD1865"
-      components {
-       TILW_SetNameComponent "{687B641679F9B890}" {
-        m_setName "Def_WP_12"
-       }
-      }
-      coords 3.005 0.421 2.12
-      angles 1.192 -0.05 -1.194
-     }
-    }
-   }
-   VehicleSpawner_2 {
-    ID "687EBED3F8FD1428"
-    components {
-     TILW_SetNameComponent "{687B64176B3BF4CF}" {
-      m_setName "VehicleSpawner_2"
-     }
-    }
-    coords 71.991 -3.514 -132.378
-    angles -0.517 42.592 3.123
-    m_prefab "{29FB8893F52B807B}Prefabs/Vehicles/Tracked/M113/M113A2_APC_FIA.et"
-    m_conditionFlag "VehicleSpawner"
-    m_spawnTimings {
-     10
-    }
-    m_waypointNames {
-     "Def_WP_Vehicle_2"
+     15
     }
     m_crewConfig TILW_CrewConfig "{687AB8210ABAF7EF}" {
      m_crewGroups {
@@ -898,47 +737,77 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
          }
         }
        }
-       m_waypointNames {
-        "Def_WP_Vehicle_2"
+      }
+     }
+     m_noTurretDismount 1
+     m_useIdleGroups 0
+    }
+   }
+   VehicleSpawner_6 {
+    ID "688972470C8732FB"
+    components {
+     TILW_SetNameComponent "{687B6417639D9303}" {
+      m_setName "VehicleSpawner_1"
+     }
+    }
+    coords -61.677 1.023 -38.183
+    angles 0.635 21.635 3.101
+    m_prefab "{1A407760EEAE4156}Prefabs/Vehicles/Static/BaconZU23/BaconZU23_Turret_Deployed.et"
+    m_conditionFlag "VehicleSpawner"
+    m_spawnTimings {
+     15
+    }
+    m_crewConfig TILW_CrewConfig "{687AB8210ABAF7EF}" {
+     m_crewGroups {
+      TILW_CrewGroup "{687AB8210ED32F5B}" {
+       m_crewStations {
+        TILW_CrewStation "{687AB821039E86D0}" {
+         m_allowCargo 0
+         m_characters {
+          "{140B6687EDDBF1FC}Prefabs/Characters/Factions/OPFOR/GC_SEP/1990/Character_SEP_1990_Crew.et" "{140B6687EDDBF1FC}Prefabs/Characters/Factions/OPFOR/GC_SEP/1990/Character_SEP_1990_Crew.et"
+         }
+        }
        }
       }
      }
      m_noTurretDismount 1
      m_useIdleGroups 0
     }
-    {
-     SCR_AIWaypoint Def_WP_Vehicle_2 : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
-      ID "687EBED3F8FD142A"
-      components {
-       TILW_SetNameComponent "{687B641704C8459E}" {
-        m_setName "Def_WP_Vehicle_2"
-       }
-      }
-      coords 0.224 -0.279 20.758
-      angles -1.732 56.843 -2.649
-      CompletionRadius 4
-     }
-    }
    }
-   InfantryQRF_2 {
-    ID "687EBED3F8FD73FF"
+   AI_Squad_Spawner_13 {
+    ID "688972470C87D828"
     components {
-     TILW_SetNameComponent "{687B6416A4F8D13E}" {
-      m_setName "InfantryQRF_2"
+     TILW_SetNameComponent "{687B641456F43959}" {
+      m_setName "AI_Squad_Spawner_13"
      }
     }
-    coords -612.885 -18.358 -231.88
+    coords -61.889 4.543 34.64
     m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
-    m_conditionFlag "SpawnReinforcements"
+    m_conditionFlag "VehicleSpawner"
     m_spawnTimings {
-     5 120 300 600 900 1200 1500 1800
+     40
+    }
+    m_setEntityNames {
+     "AI_Squad_Spawner_13"
     }
     m_waypointNames {
-     "SnD_WP_1"
+     "Def_WP_13"
+    }
+    {
+     SCR_DefendWaypoint Def_WP_13 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
+      ID "688972470C87E6C8"
+      components {
+       TILW_SetNameComponent "{687B641679F9B890}" {
+        m_setName "Def_WP_13"
+       }
+      }
+      coords 3.005 0.421 2.12
+      angles 1.192 -0.05 -1.194
+     }
     }
    }
    VehicleSpawner_1 {
-    ID "687EBED3F8FDAFB8"
+    ID "688972470C88083C"
     components {
      TILW_SetNameComponent "{687B6417639D9303}" {
       m_setName "VehicleSpawner_1"
@@ -975,7 +844,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
     }
     {
      SCR_AIWaypoint Def_WP_Vehicle_16 : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
-      ID "687EBED3F8FDAFB7"
+      ID "688972470C88F18E"
       components {
        TILW_SetNameComponent "{687B64173CF4FEC0}" {
         m_setName "Def_WP_Vehicle_1"
@@ -987,14 +856,14 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
      }
     }
    }
-   InfantryQRF_3 {
-    ID "687EBED3F8FDDF17"
+   InfantryQRF_2 {
+    ID "688972470C884C6A"
     components {
-     TILW_SetNameComponent "{687B6416A16876A2}" {
-      m_setName "InfantryQRF_3"
+     TILW_SetNameComponent "{687B6416A4F8D13E}" {
+      m_setName "InfantryQRF_2"
      }
     }
-    coords 680.723 -46.028 244.904
+    coords -612.885 -18.358 -231.88
     m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
     m_conditionFlag "SpawnReinforcements"
     m_spawnTimings {
@@ -1004,95 +873,31 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
      "SnD_WP_1"
     }
    }
-   AI_Squad_Spawner_1 {
-    ID "687EBED3F8FE4EB3"
+   AI_Squad_Spawner_12 {
+    ID "688972470C89295A"
     components {
-     TILW_SetNameComponent "{687B6417A3F754DE}" {
-      m_setName "AI_Squad_Spawner_1"
+     TILW_SetNameComponent "{687B64145448709D}" {
+      m_setName "AI_Squad_Spawner_12"
      }
     }
-    coords -213.303 23.188 372.582
-    m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
-    m_conditionFlag "VehicleSpawner"
-    m_spawnTimings {
-     20
-    }
-    m_setEntityNames {
-     "AI_Squad_Spawner_1"
-    }
-    m_waypointNames {
-     "Def_WP_1"
-    }
-    {
-     SCR_DefendWaypoint Def_WP_1 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
-      ID "687EBED3F8FEEB74"
-      components {
-       TILW_SetNameComponent "{687B641679F9B890}" {
-        m_setName "Def_WP_1"
-       }
-      }
-      coords 3.005 0.421 2.12
-      angles 1.192 -0.05 -1.194
-     }
-    }
-   }
-   AI_Squad_Spawner_8 {
-    ID "687EBED3F8FEC868"
-    components {
-     TILW_SetNameComponent "{687B6414796182E0}" {
-      m_setName "AI_Squad_Spawner_8"
-     }
-    }
-    coords 291.864 -7.708 -251.972
-    m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
-    m_conditionFlag "VehicleSpawner"
-    m_spawnTimings {
-     20
-    }
-    m_setEntityNames {
-     "AI_Squad_Spawner_8"
-    }
-    m_waypointNames {
-     "Def_WP_8"
-    }
-    {
-     SCR_DefendWaypoint Def_WP_8 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
-      ID "687EBED3F8FF014C"
-      components {
-       TILW_SetNameComponent "{687B641679F9B890}" {
-        m_setName "Def_WP_8"
-       }
-      }
-      coords 3.005 0.421 2.12
-      angles 1.192 -0.05 -1.194
-     }
-    }
-   }
-   AI_Squad_Spawner_10 {
-    ID "687EBED3F8FEEB75"
-    components {
-     TILW_SetNameComponent "{687B64145FE92334}" {
-      m_setName "AI_Squad_Spawner_10"
-     }
-    }
-    coords -1.654 -7.382 404.833
+    coords 6.452 -5.778 -147.01
     m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
     m_conditionFlag "VehicleSpawner"
     m_spawnTimings {
      40
     }
     m_setEntityNames {
-     "AI_Squad_Spawner_10"
+     "AI_Squad_Spawner_12"
     }
     m_waypointNames {
-     "Def_WP_10"
+     "Def_WP_12"
     }
     {
-     SCR_DefendWaypoint Def_WP_10 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
-      ID "687EBED3F8FECA67"
+     SCR_DefendWaypoint Def_WP_12 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
+      ID "688972470C89D2AB"
       components {
        TILW_SetNameComponent "{687B641679F9B890}" {
-        m_setName "Def_WP_10"
+        m_setName "Def_WP_12"
        }
       }
       coords 3.005 0.421 2.12
@@ -1100,8 +905,90 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
      }
     }
    }
+   AI_Squad_Spawner_17 {
+    ID "688972470C897C16"
+    components {
+     TILW_SetNameComponent "{687B64144ECB9AA9}" {
+      m_setName "AI_Squad_Spawner_17"
+     }
+    }
+    coords -37.218 -16.559 212.009
+    m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
+    m_conditionFlag "VehicleSpawner"
+    m_spawnTimings {
+     40
+    }
+    m_setEntityNames {
+     "AI_Squad_Spawner_17"
+    }
+    m_waypointNames {
+     "Def_WP_17"
+    }
+    {
+     SCR_DefendWaypoint Def_WP_17 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
+      ID "688972470C897C17"
+      components {
+       TILW_SetNameComponent "{687B641679F9B890}" {
+        m_setName "Def_WP_17"
+       }
+      }
+      coords 3.005 0.421 2.12
+      angles 1.192 -0.05 -1.194
+     }
+    }
+   }
+   VehicleSpawner_2 {
+    ID "688972470C898856"
+    components {
+     TILW_SetNameComponent "{687B64176B3BF4CF}" {
+      m_setName "VehicleSpawner_2"
+     }
+    }
+    coords 71.991 -3.514 -132.378
+    angles -0.517 42.592 3.123
+    m_prefab "{29FB8893F52B807B}Prefabs/Vehicles/Tracked/M113/M113A2_APC_FIA.et"
+    m_conditionFlag "VehicleSpawner"
+    m_spawnTimings {
+     10
+    }
+    m_waypointNames {
+     "Def_WP_Vehicle_2"
+    }
+    m_crewConfig TILW_CrewConfig "{687AB8210ABAF7EF}" {
+     m_crewGroups {
+      TILW_CrewGroup "{687AB8210ED32F5B}" {
+       m_crewStations {
+        TILW_CrewStation "{687AB821039E86D0}" {
+         m_allowCargo 0
+         m_characters {
+          "{140B6687EDDBF1FC}Prefabs/Characters/Factions/OPFOR/GC_SEP/1990/Character_SEP_1990_Crew.et" "{140B6687EDDBF1FC}Prefabs/Characters/Factions/OPFOR/GC_SEP/1990/Character_SEP_1990_Crew.et"
+         }
+        }
+       }
+       m_waypointNames {
+        "Def_WP_Vehicle_2"
+       }
+      }
+     }
+     m_noTurretDismount 1
+     m_useIdleGroups 0
+    }
+    {
+     SCR_AIWaypoint Def_WP_Vehicle_2 : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
+      ID "688972470C884C75"
+      components {
+       TILW_SetNameComponent "{687B641704C8459E}" {
+        m_setName "Def_WP_Vehicle_2"
+       }
+      }
+      coords 0.224 -0.279 20.758
+      angles -1.732 56.843 -2.649
+      CompletionRadius 4
+     }
+    }
+   }
    AI_Squad_Spawner_7 {
-    ID "687EBED3F8FF014F"
+    ID "688972470C8A0DCB"
     components {
      TILW_SetNameComponent "{687B64147F249B6E}" {
       m_setName "AI_Squad_Spawner_7"
@@ -1121,7 +1008,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
     }
     {
      SCR_DefendWaypoint Def_WP_7 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
-      ID "687EBED3F8FF636C"
+      ID "688972470C8A9CD4"
       components {
        TILW_SetNameComponent "{687B641679F9B890}" {
         m_setName "Def_WP_7"
@@ -1132,8 +1019,121 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
      }
     }
    }
+   InfantryQRF_3 {
+    ID "688972470C8B50B4"
+    components {
+     TILW_SetNameComponent "{687B6416A16876A2}" {
+      m_setName "InfantryQRF_3"
+     }
+    }
+    coords 680.723 -46.028 244.904
+    m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
+    m_conditionFlag "SpawnReinforcements"
+    m_spawnTimings {
+     5 120 300 600 900 1200 1500 1800
+    }
+    m_waypointNames {
+     "SnD_WP_1"
+    }
+   }
+   AI_Squad_Spawner_1 {
+    ID "688972470C8B50B5"
+    components {
+     TILW_SetNameComponent "{687B6417A3F754DE}" {
+      m_setName "AI_Squad_Spawner_1"
+     }
+    }
+    coords -213.303 23.188 372.582
+    m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
+    m_conditionFlag "VehicleSpawner"
+    m_spawnTimings {
+     20
+    }
+    m_setEntityNames {
+     "AI_Squad_Spawner_1"
+    }
+    m_waypointNames {
+     "Def_WP_1"
+    }
+    {
+     SCR_DefendWaypoint Def_WP_1 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
+      ID "688972470C8B5FF2"
+      components {
+       TILW_SetNameComponent "{687B641679F9B890}" {
+        m_setName "Def_WP_1"
+       }
+      }
+      coords 3.005 0.421 2.12
+      angles 1.192 -0.05 -1.194
+     }
+    }
+   }
+   AI_Squad_Spawner_10 {
+    ID "688972470C8BA6CA"
+    components {
+     TILW_SetNameComponent "{687B64145FE92334}" {
+      m_setName "AI_Squad_Spawner_10"
+     }
+    }
+    coords -1.654 -7.382 404.833
+    m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
+    m_conditionFlag "VehicleSpawner"
+    m_spawnTimings {
+     40
+    }
+    m_setEntityNames {
+     "AI_Squad_Spawner_10"
+    }
+    m_waypointNames {
+     "Def_WP_10"
+    }
+    {
+     SCR_DefendWaypoint Def_WP_10 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
+      ID "688972470C8BA6C9"
+      components {
+       TILW_SetNameComponent "{687B641679F9B890}" {
+        m_setName "Def_WP_10"
+       }
+      }
+      coords 3.005 0.421 2.12
+      angles 1.192 -0.05 -1.194
+     }
+    }
+   }
+   AI_Squad_Spawner_8 {
+    ID "688972470C8BD258"
+    components {
+     TILW_SetNameComponent "{687B6414796182E0}" {
+      m_setName "AI_Squad_Spawner_8"
+     }
+    }
+    coords 291.864 -7.708 -251.972
+    m_prefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
+    m_conditionFlag "VehicleSpawner"
+    m_spawnTimings {
+     20
+    }
+    m_setEntityNames {
+     "AI_Squad_Spawner_8"
+    }
+    m_waypointNames {
+     "Def_WP_8"
+    }
+    {
+     SCR_DefendWaypoint Def_WP_8 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
+      ID "688972470C8BD9A3"
+      components {
+       TILW_SetNameComponent "{687B641679F9B890}" {
+        m_setName "Def_WP_8"
+       }
+      }
+      coords 3.005 0.421 2.12
+      angles 1.192 -0.05 -1.194
+     }
+    }
+   }
    AI_Squad_Spawner_9 {
-    ID "687EBED3F8FF91DF"
+    ID "688972470C8D5482"
     components {
      TILW_SetNameComponent "{687B64147B456C18}" {
       m_setName "AI_Squad_Spawner_9"
@@ -1153,7 +1153,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
     }
     {
      SCR_DefendWaypoint Def_WP_9 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
-      ID "687EBED3F8FFD4B5"
+      ID "688972470C8D5483"
       components {
        TILW_SetNameComponent "{687B641679F9B890}" {
         m_setName "Def_WP_9"
@@ -1166,7 +1166,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
    }
   }
   StaticModelEntity Antenna : "{82CCE96E35DC6A6E}Prefabs/Structures/Military/Antennas/Antenna_BARS_01/Antenna_BARS_01_transmitter.et" {
-   ID "687EBED3F8F68DA5"
+   ID "688972470C8D5485"
    components {
     TILW_Flag_EntityDamage "{687AB824C6B459B0}" {
      m_flagName "AntennaDead"
@@ -1182,13 +1182,13 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
    coords -0.504 -3.319 -111.593
    angles 0 43.034 0
    {
-    PS_ManualMarker AntennaMarker : "{5A5E1D38034BDB2F}worlds/HitTheMan/Seeder Cold War Domination/Prefabs/Objectives/AntennaMarker.et" {
-     ID "687EBED3F8F68DAA"
+    PS_ManualMarker AntennaMarker : "{5A5E1D38034BDB2F}worlds/HitTheMan/Seeder Cold War Domination/Prefabs/AntennaMarker.et" {
+     ID "688972470C8D5488"
      coords -0.224 6.447 0.418
      angles 0 46.966 0
     }
     TILW_FactionTriggerEntity ContactTrigger : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
-     ID "687EBED3F8F72ECF"
+     ID "688972470C8D34E3"
      components {
       TILW_SetNameComponent "{687AB8394D3EE6FB}" {
        m_setName "ContactTrigger"
@@ -1206,7 +1206,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
    }
   }
   PolylineShapeEntity AO_Draw : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
-   ID "687EBED3F8F72ECC"
+   ID "688972470C8D34E2"
    components {
     TILW_AOLimitComponent "{6217617AC21DEB7B}" {
      Enabled 0
@@ -1325,7 +1325,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
    }
   }
   SCR_SearchAndDestroyWaypoint SnD_WP_1 : "{B3E7B8DC2BAB8ACC}Prefabs/AI/Waypoints/AIWaypoint_SearchAndDestroy.et" {
-   ID "687EBED3F8F72ECA"
+   ID "688972470C8D34E1"
    components {
     TILW_SetNameComponent "{687B6417592EDCEA}" {
      m_setName "SnD_WP_1"
@@ -1335,89 +1335,8 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
    CompletionRadius 100
   }
   $grp SCR_AIGroup : "{CBC76AF6C9126ED2}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_FireTeam.et" {
-   AI_Squad_Inside_12 {
-    ID "687EBED3F8CC3130"
-    components {
-     TILW_SetNameComponent "{687B641409F876BB}" {
-      m_setName "AI_Squad_Inside_12"
-     }
-    }
-    coords -162.581 6.608 -28.811
-    angles 0 23.125 0
-    m_bSnapToTerrain 0
-    m_aStaticWaypoints {
-     "Def_Inside_WP_12"
-    }
-    {
-     SCR_DefendWaypoint Def_Inside_WP_12 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
-      ID "687EBED3F8CCAA40"
-      components {
-       TILW_SetNameComponent "{687B6414C4AD04E8}" {
-        m_setName "Def_Inside_WP_12"
-       }
-      }
-      coords 0.014 0 -0.226
-      angles 0 -23.125 0
-      CompletionRadius 6
-     }
-    }
-   }
-   AI_Squad_Inside_7 {
-    ID "687EBED3F8CC8F8C"
-    components {
-     TILW_SetNameComponent "{687B641435AFD652}" {
-      m_setName "AI_Squad_Inside_7"
-     }
-    }
-    coords 18.857 2.9 -58.288
-    angles 0 23.125 0
-    m_bSnapToTerrain 0
-    m_aStaticWaypoints {
-     "Def_Inside_WP_7"
-    }
-    {
-     SCR_DefendWaypoint Def_Inside_WP_7 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
-      ID "687EBED3F8CCEBBC"
-      components {
-       TILW_SetNameComponent "{687B6414EC0A39C0}" {
-        m_setName "Def_Inside_WP_7"
-       }
-      }
-      coords 0.014 0 -0.226
-      angles 0 -23.125 0
-      CompletionRadius 6
-     }
-    }
-   }
-   AI_Squad_Inside_9 {
-    ID "687EBED3F8CCEBBD"
-    components {
-     TILW_SetNameComponent "{687B6414309719E6}" {
-      m_setName "AI_Squad_Inside_9"
-     }
-    }
-    coords -102.241 9.761 41.677
-    angles 0 23.125 0
-    m_bSnapToTerrain 0
-    m_aStaticWaypoints {
-     "Def_Inside_WP_9"
-    }
-    {
-     SCR_DefendWaypoint Def_Inside_WP_9 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
-      ID "687EBED3F8CCE4FC"
-      components {
-       TILW_SetNameComponent "{687B6414EF26F347}" {
-        m_setName "Def_Inside_WP_9"
-       }
-      }
-      coords 0.014 0 -0.226
-      angles 0 -23.125 0
-      CompletionRadius 6
-     }
-    }
-   }
    AI_Squad_Inside_18 {
-    ID "687EBED3F8CCF77E"
+    ID "688972470C8C6DC0"
     components {
      TILW_SetNameComponent "{687B6414030AAE1F}" {
       m_setName "AI_Squad_Inside_18"
@@ -1431,7 +1350,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
     }
     {
      SCR_DefendWaypoint Def_Inside_WP_18 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
-      ID "687EBED3F8CD02C9"
+      ID "688972470C8C69C3"
       components {
        TILW_SetNameComponent "{687B6414F8287976}" {
         m_setName "Def_Inside_WP_18"
@@ -1443,35 +1362,8 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
      }
     }
    }
-   AI_Squad_Inside_15 {
-    ID "687EBED3F8CD53AA"
-    components {
-     TILW_SetNameComponent "{687B641406CBEC7A}" {
-      m_setName "AI_Squad_Inside_15"
-     }
-    }
-    coords 344.76 -6.93 -167.764
-    angles 0 23.125 0
-    m_bSnapToTerrain 0
-    m_aStaticWaypoints {
-     "Def_Inside_WP_15"
-    }
-    {
-     SCR_DefendWaypoint Def_Inside_WP_15 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
-      ID "687EBED3F8CD53A9"
-      components {
-       TILW_SetNameComponent "{687B6414C1240759}" {
-        m_setName "Def_Inside_WP_15"
-       }
-      }
-      coords 0.014 0 -0.226
-      angles 0 -23.125 0
-      CompletionRadius 6
-     }
-    }
-   }
    AI_Squad_Inside_19 {
-    ID "687EBED3F8CDE00C"
+    ID "688972470C8CE4E8"
     components {
      TILW_SetNameComponent "{687B64143CEEE080}" {
       m_setName "AI_Squad_Inside_19"
@@ -1485,7 +1377,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
     }
     {
      SCR_DefendWaypoint Def_Inside_WP_19 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
-      ID "687EBED3F8CDCBA6"
+      ID "688972470C8CA20C"
       components {
        TILW_SetNameComponent "{687B6414FA484AF4}" {
         m_setName "Def_Inside_WP_19"
@@ -1497,25 +1389,25 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
      }
     }
    }
-   AI_Squad_Inside_16 {
-    ID "687EBED3F8F0096E"
+   AI_Squad_Inside_15 {
+    ID "688972470C8CF226"
     components {
-     TILW_SetNameComponent "{687B64140067B716}" {
-      m_setName "AI_Squad_Inside_16"
+     TILW_SetNameComponent "{687B641406CBEC7A}" {
+      m_setName "AI_Squad_Inside_15"
      }
     }
-    coords -73.717 8.01 71.63
+    coords 344.76 -6.93 -167.764
     angles 0 23.125 0
     m_bSnapToTerrain 0
     m_aStaticWaypoints {
-     "Def_Inside_WP_16"
+     "Def_Inside_WP_15"
     }
     {
-     SCR_DefendWaypoint Def_Inside_WP_16 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
-      ID "687EBED3F8F00951"
+     SCR_DefendWaypoint Def_Inside_WP_15 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
+      ID "688972470C8CE4E9"
       components {
-       TILW_SetNameComponent "{687B6414FC4FCBDE}" {
-        m_setName "Def_Inside_WP_16"
+       TILW_SetNameComponent "{687B6414C1240759}" {
+        m_setName "Def_Inside_WP_15"
        }
       }
       coords 0.014 0 -0.226
@@ -1524,25 +1416,25 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
      }
     }
    }
-   AI_Squad_Inside_2 {
-    ID "687EBED3F8F0AC41"
+   AI_Squad_Inside_12 {
+    ID "688972470C8D34E0"
     components {
-     TILW_SetNameComponent "{687B64143EC58CD3}" {
-      m_setName "AI_Squad_Inside_2"
+     TILW_SetNameComponent "{687B641409F876BB}" {
+      m_setName "AI_Squad_Inside_12"
      }
     }
-    coords 5.255 0.156 -21.487
+    coords -162.581 6.608 -28.811
     angles 0 23.125 0
     m_bSnapToTerrain 0
     m_aStaticWaypoints {
-     "Def_Inside_WP_2"
+     "Def_Inside_WP_12"
     }
     {
-     SCR_DefendWaypoint Def_Inside_WP_2 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
-      ID "687EBED3F8F0E4DA"
+     SCR_DefendWaypoint Def_Inside_WP_12 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
+      ID "688972470C8D34E7"
       components {
-       TILW_SetNameComponent "{687B6414FB23C9AF}" {
-        m_setName "Def_Inside_WP_2"
+       TILW_SetNameComponent "{687B6414C4AD04E8}" {
+        m_setName "Def_Inside_WP_12"
        }
       }
       coords 0.014 0 -0.226
@@ -1551,25 +1443,25 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
      }
     }
    }
-   AI_Squad_Inside_11 {
-    ID "687EBED3F8F119C5"
+   AI_Squad_Inside_7 {
+    ID "688972470C8D34E6"
     components {
-     TILW_SetNameComponent "{687B64140F7B6979}" {
-      m_setName "AI_Squad_Inside_11"
+     TILW_SetNameComponent "{687B641435AFD652}" {
+      m_setName "AI_Squad_Inside_7"
      }
     }
-    coords -288.826 14.091 109.372
+    coords 18.857 2.9 -58.288
     angles 0 23.125 0
     m_bSnapToTerrain 0
     m_aStaticWaypoints {
-     "Def_Inside_WP_11"
+     "Def_Inside_WP_7"
     }
     {
-     SCR_DefendWaypoint Def_Inside_WP_11 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
-      ID "687EBED3F8F17DB8"
+     SCR_DefendWaypoint Def_Inside_WP_7 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
+      ID "688972470C8DD95A"
       components {
-       TILW_SetNameComponent "{687B6414CB1AC852}" {
-        m_setName "Def_Inside_WP_11"
+       TILW_SetNameComponent "{687B6414EC0A39C0}" {
+        m_setName "Def_Inside_WP_7"
        }
       }
       coords 0.014 0 -0.226
@@ -1578,25 +1470,25 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
      }
     }
    }
-   AI_Squad_Inside_6 {
-    ID "687EBED3F8F12615"
+   AI_Squad_Inside_9 {
+    ID "688972470C8D9A48"
     components {
-     TILW_SetNameComponent "{687B641434CCBB4E}" {
-      m_setName "AI_Squad_Inside_6"
+     TILW_SetNameComponent "{687B6414309719E6}" {
+      m_setName "AI_Squad_Inside_9"
      }
     }
-    coords 66.347 -2.089 -103.298
+    coords -102.241 9.761 41.677
     angles 0 23.125 0
     m_bSnapToTerrain 0
     m_aStaticWaypoints {
-     "Def_Inside_WP_6"
+     "Def_Inside_WP_9"
     }
     {
-     SCR_DefendWaypoint Def_Inside_WP_6 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
-      ID "687EBED3F8F119C4"
+     SCR_DefendWaypoint Def_Inside_WP_9 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
+      ID "688972470C8C6DC3"
       components {
-       TILW_SetNameComponent "{687B6414F2C1441E}" {
-        m_setName "Def_Inside_WP_6"
+       TILW_SetNameComponent "{687B6414EF26F347}" {
+        m_setName "Def_Inside_WP_9"
        }
       }
       coords 0.014 0 -0.226
@@ -1606,7 +1498,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
     }
    }
    AI_Squad_Inside_17 {
-    ID "687EBED3F8F17DEB"
+    ID "688972470C8E3A87"
     components {
      TILW_SetNameComponent "{687B641401E93A60}" {
       m_setName "AI_Squad_Inside_17"
@@ -1620,7 +1512,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
     }
     {
      SCR_DefendWaypoint Def_Inside_WP_17 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
-      ID "687EBED3F8F1A2F1"
+      ID "688972470C8E9874"
       components {
        TILW_SetNameComponent "{687B6414FE8EF6AC}" {
         m_setName "Def_Inside_WP_17"
@@ -1632,8 +1524,35 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
      }
     }
    }
+   AI_Squad_Inside_6 {
+    ID "688972470C8E6A9D"
+    components {
+     TILW_SetNameComponent "{687B641434CCBB4E}" {
+      m_setName "AI_Squad_Inside_6"
+     }
+    }
+    coords 66.347 -2.089 -103.298
+    angles 0 23.125 0
+    m_bSnapToTerrain 0
+    m_aStaticWaypoints {
+     "Def_Inside_WP_6"
+    }
+    {
+     SCR_DefendWaypoint Def_Inside_WP_6 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
+      ID "688972470C8E3A86"
+      components {
+       TILW_SetNameComponent "{687B6414F2C1441E}" {
+        m_setName "Def_Inside_WP_6"
+       }
+      }
+      coords 0.014 0 -0.226
+      angles 0 -23.125 0
+      CompletionRadius 6
+     }
+    }
+   }
    AI_Squad_Inside_5 {
-    ID "687EBED3F8F1A2F2"
+    ID "688972470C8EA4A7"
     components {
      TILW_SetNameComponent "{687B64143B7F98DC}" {
       m_setName "AI_Squad_Inside_5"
@@ -1647,7 +1566,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
     }
     {
      SCR_DefendWaypoint Def_Inside_WP_5 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
-      ID "687EBED3F8F1C68E"
+      ID "688972470C911B02"
       components {
        TILW_SetNameComponent "{687B6414F0BF7FD8}" {
         m_setName "Def_Inside_WP_5"
@@ -1659,25 +1578,25 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
      }
     }
    }
-   AI_Squad_Inside_14 {
-    ID "687EBED3F8F27550"
+   AI_Squad_Inside_16 {
+    ID "688972470C8F16B6"
     components {
-     TILW_SetNameComponent "{687B6414049FF038}" {
-      m_setName "AI_Squad_Inside_14"
+     TILW_SetNameComponent "{687B64140067B716}" {
+      m_setName "AI_Squad_Inside_16"
      }
     }
-    coords 3.757 -7.309 -169.115
+    coords -73.717 8.01 71.63
     angles 0 23.125 0
     m_bSnapToTerrain 0
     m_aStaticWaypoints {
-     "Def_Inside_WP_14"
+     "Def_Inside_WP_16"
     }
     {
-     SCR_DefendWaypoint Def_Inside_WP_14 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
-      ID "687EBED3F8F2A2C8"
+     SCR_DefendWaypoint Def_Inside_WP_16 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
+      ID "688972470C8F008B"
       components {
-       TILW_SetNameComponent "{687B6414C07A9C6B}" {
-        m_setName "Def_Inside_WP_14"
+       TILW_SetNameComponent "{687B6414FC4FCBDE}" {
+        m_setName "Def_Inside_WP_16"
        }
       }
       coords 0.014 0 -0.226
@@ -1686,25 +1605,52 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
      }
     }
    }
-   AI_Squad_Inside_3 {
-    ID "687EBED3F8F2BCC8"
+   AI_Squad_Inside_11 {
+    ID "688972470C8FB7E2"
     components {
-     TILW_SetNameComponent "{687B641438201B65}" {
-      m_setName "AI_Squad_Inside_3"
+     TILW_SetNameComponent "{687B64140F7B6979}" {
+      m_setName "AI_Squad_Inside_11"
      }
     }
-    coords 48.552 -0.593 -35.142
+    coords -288.826 14.091 109.372
     angles 0 23.125 0
     m_bSnapToTerrain 0
     m_aStaticWaypoints {
-     "Def_Inside_WP_3"
+     "Def_Inside_WP_11"
     }
     {
-     SCR_DefendWaypoint Def_Inside_WP_3 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
-      ID "687EBED3F8F2BCC9"
+     SCR_DefendWaypoint Def_Inside_WP_11 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
+      ID "688972470C8E4DD2"
       components {
-       TILW_SetNameComponent "{687B6414F567E43A}" {
-        m_setName "Def_Inside_WP_3"
+       TILW_SetNameComponent "{687B6414CB1AC852}" {
+        m_setName "Def_Inside_WP_11"
+       }
+      }
+      coords 0.014 0 -0.226
+      angles 0 -23.125 0
+      CompletionRadius 6
+     }
+    }
+   }
+   AI_Squad_Inside_2 {
+    ID "688972470C8FEFF9"
+    components {
+     TILW_SetNameComponent "{687B64143EC58CD3}" {
+      m_setName "AI_Squad_Inside_2"
+     }
+    }
+    coords 5.255 0.156 -21.487
+    angles 0 23.125 0
+    m_bSnapToTerrain 0
+    m_aStaticWaypoints {
+     "Def_Inside_WP_2"
+    }
+    {
+     SCR_DefendWaypoint Def_Inside_WP_2 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
+      ID "688972470C8FEFC6"
+      components {
+       TILW_SetNameComponent "{687B6414FB23C9AF}" {
+        m_setName "Def_Inside_WP_2"
        }
       }
       coords 0.014 0 -0.226
@@ -1714,7 +1660,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
     }
    }
    AI_Squad_Inside_4 {
-    ID "687EBED3F8F32E81"
+    ID "688972470C9038EA"
     components {
      TILW_SetNameComponent "{687B641439A04819}" {
       m_setName "AI_Squad_Inside_4"
@@ -1728,7 +1674,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
     }
     {
      SCR_DefendWaypoint Def_Inside_WP_4 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
-      ID "687EBED3F8F35F90"
+      ID "688972470C909C30"
       components {
        TILW_SetNameComponent "{687B6414F6A773AF}" {
         m_setName "Def_Inside_WP_4"
@@ -1741,7 +1687,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
     }
    }
    AI_Squad_Inside_1 {
-    ID "687EBED3F8F3FFCA"
+    ID "688972470C909C31"
     components {
      TILW_SetNameComponent "{687B6414127D1E8D}" {
       m_setName "AI_Squad_Inside_1"
@@ -1755,7 +1701,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
     }
     {
      SCR_DefendWaypoint Def_Inside_WP_1 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
-      ID "687EBED3F8CC3137"
+      ID "688972470C937353"
       components {
        TILW_SetNameComponent "{687B6414C85DC13A}" {
         m_setName "Def_Inside_WP_1"
@@ -1767,25 +1713,52 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
      }
     }
    }
-   AI_Squad_Inside_13 {
-    ID "687EBED3F8F72ECB"
+   AI_Squad_Inside_3 {
+    ID "688972470C91A414"
     components {
-     TILW_SetNameComponent "{687B64140AAB8C62}" {
-      m_setName "AI_Squad_Inside_13"
+     TILW_SetNameComponent "{687B641438201B65}" {
+      m_setName "AI_Squad_Inside_3"
      }
     }
-    coords -23.908 -4.416 -141.207
+    coords 48.552 -0.593 -35.142
     angles 0 23.125 0
     m_bSnapToTerrain 0
     m_aStaticWaypoints {
-     "Def_Inside_WP_13"
+     "Def_Inside_WP_3"
     }
     {
-     SCR_DefendWaypoint Def_Inside_WP_13 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
-      ID "687EBED3F8F72EC8"
+     SCR_DefendWaypoint Def_Inside_WP_3 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
+      ID "688972470C91A2CF"
       components {
-       TILW_SetNameComponent "{687B6414C6DE953D}" {
-        m_setName "Def_Inside_WP_13"
+       TILW_SetNameComponent "{687B6414F567E43A}" {
+        m_setName "Def_Inside_WP_3"
+       }
+      }
+      coords 0.014 0 -0.226
+      angles 0 -23.125 0
+      CompletionRadius 6
+     }
+    }
+   }
+   AI_Squad_Inside_14 {
+    ID "688972470C91F273"
+    components {
+     TILW_SetNameComponent "{687B6414049FF038}" {
+      m_setName "AI_Squad_Inside_14"
+     }
+    }
+    coords 3.757 -7.309 -169.115
+    angles 0 23.125 0
+    m_bSnapToTerrain 0
+    m_aStaticWaypoints {
+     "Def_Inside_WP_14"
+    }
+    {
+     SCR_DefendWaypoint Def_Inside_WP_14 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
+      ID "688972470C91F270"
+      components {
+       TILW_SetNameComponent "{687B6414C07A9C6B}" {
+        m_setName "Def_Inside_WP_14"
        }
       }
       coords 0.014 0 -0.226
@@ -1795,7 +1768,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
     }
    }
    AI_Squad_Inside_8 {
-    ID "687EBED3F8F75985"
+    ID "688972470C92129E"
     components {
      TILW_SetNameComponent "{687B64143706E1C0}" {
       m_setName "AI_Squad_Inside_8"
@@ -1809,7 +1782,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
     }
     {
      SCR_DefendWaypoint Def_Inside_WP_8 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
-      ID "687EBED3F8F75984"
+      ID "688972470C921299"
       components {
        TILW_SetNameComponent "{687B6414EDAD6E9A}" {
         m_setName "Def_Inside_WP_8"
@@ -1822,7 +1795,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
     }
    }
    AI_Squad_Inside_10 {
-    ID "687EBED3F8F793C8"
+    ID "688972470C92F796"
     components {
      TILW_SetNameComponent "{687B64140D3A0820}" {
       m_setName "AI_Squad_Inside_10"
@@ -1836,7 +1809,7 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
     }
     {
      SCR_DefendWaypoint Def_Inside_WP_10 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
-      ID "687EBED3F8F7CC95"
+      ID "688972470C92B9EC"
       components {
        TILW_SetNameComponent "{687B6414C92650A2}" {
         m_setName "Def_Inside_WP_10"
@@ -1848,9 +1821,36 @@ TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_Facti
      }
     }
    }
+   AI_Squad_Inside_13 {
+    ID "688972470C93DEB8"
+    components {
+     TILW_SetNameComponent "{687B64140AAB8C62}" {
+      m_setName "AI_Squad_Inside_13"
+     }
+    }
+    coords -23.908 -4.416 -141.207
+    angles 0 23.125 0
+    m_bSnapToTerrain 0
+    m_aStaticWaypoints {
+     "Def_Inside_WP_13"
+    }
+    {
+     SCR_DefendWaypoint Def_Inside_WP_13 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
+      ID "688972470C93A691"
+      components {
+       TILW_SetNameComponent "{687B6414C6DE953D}" {
+        m_setName "Def_Inside_WP_13"
+       }
+      }
+      coords 0.014 0 -0.226
+      angles 0 -23.125 0
+      CompletionRadius 6
+     }
+    }
+   }
   }
   GenericEntity Seperatists_Supplies_Road : "{E172BEB0AAD0244E}worlds/HitTheMan/Seeder Cold War Domination/Prefabs/Rewards/Seperatists_Supplies_Road.et" {
-   ID "687EBED3F8CE1E09"
+   ID "688972470C92B9ED"
    coords 85.6 -2.069 -87.764
    angles 1.022 31.118 0.617
   }

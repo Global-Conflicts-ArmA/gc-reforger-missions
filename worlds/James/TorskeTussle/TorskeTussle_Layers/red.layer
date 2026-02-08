@@ -2,7 +2,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
  {
   coords 2730.995 5.733 857.363
   m_sTitle "Enemy"
-  m_sTextData "Mechanised infantry platoon with Bradley fighting vehicles forming up to our east. "\
+  m_sTextData "Mechanised infantry platoon with M113s and Bradley fighting vehicles forming up to our east. "\
   "Expect them to attack in the direction of Torske."
   m_aVisibleForFactions {
    "USSR"
@@ -23,7 +23,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   m_sTitle "Orders"
   m_sTextData "331 Plt is to defend the approach to Torske on the SE side of town against enemy attack in the direction of Torske."\
   ""\
-  "You have been given an additional PKM MG, stored in the 1st BMP, alongside additional ammo and disposable AT."\
+  "You have been given an additional PKM MG, stored in the BMP, alongside additional ammo and disposable AT."\
   ""
   m_aVisibleForFactions {
    "USSR"
@@ -42,121 +42,50 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   m_iOrder 4
  }
 }
-$grp Tank : "{3868E03D9A4AF186}Prefabs/Vehicles/Tracked/BMP1/BMP1P_base.et" {
- BMP1P_base1 {
-  components {
-   RHS_GroupMaterialController "{68686390A098EBB2}" {
-    m_aGroups {
-     RHS_MaterialGroupProperties "{68686390A1D17A63}" {
-      m_iTextureID 3
-     }
-     RHS_MaterialGroupProperties "{68686390A1EBC4E8}" {
-      m_iTextureID 3
-     }
-     RHS_MaterialGroupProperties "{68686390A150EE71}" {
-      m_iTextureID 1
-     }
+Tank BMP1P_base1 : "{3868E03D9A4AF186}Prefabs/Vehicles/Tracked/BMP1/BMP1P_base.et" {
+ components {
+  RHS_GroupMaterialController "{68686390A098EBB2}" {
+   m_aGroups {
+    RHS_MaterialGroupProperties "{68686390A1D17A63}" {
+     m_iTextureID 3
     }
-   }
-   SCR_UniversalInventoryStorageComponent "{5E529ED09B647D03}" {
-    MultiSlots {
-     MultiSlotConfiguration "{5E546E7AD86459B2}" {
-      NumSlots 10
-     }
-     MultiSlotConfiguration "{68689CDDE20A7EED}" {
-      SlotTemplate InventoryStorageSlot backpack {
-       Prefab "{41A9C55B61F375F0}Prefabs/Items/Equipment/Backpacks/Backpack_Kolobok.et"
-      }
-      NumSlots 2
-     }
-     MultiSlotConfiguration "{68689CDDE8EC0F13}" {
-      SlotTemplate InventoryStorageSlot pkm {
-       Prefab "{A89BC9D55FFB4CD8}Prefabs/Weapons/MachineGuns/PKM/MG_PKM.et"
-      }
-      NumSlots 1
-     }
-     MultiSlotConfiguration "{68689CDD23DE280F}" {
-      SlotTemplate InventoryStorageSlot rpg22 {
-       Prefab "{722CE6FEC39EE896}Prefabs/Weapons/Launchers/RPG22/Launcher_RPG22.et"
-      }
-      NumSlots 2
-     }
+    RHS_MaterialGroupProperties "{68686390A1EBC4E8}" {
+     m_iTextureID 3
+    }
+    RHS_MaterialGroupProperties "{68686390A150EE71}" {
+     m_iTextureID 1
     }
    }
   }
-  coords 2725.714 5.98 845.78
-  angles 0 57 0
- }
- BMP1P_base2 {
-  components {
-   RHS_GroupMaterialController "{68686390A098EBB2}" {
-    m_aGroups {
-     RHS_MaterialGroupProperties "{68686390A1D17A63}" {
-      m_iTextureID 3
-     }
-     RHS_MaterialGroupProperties "{68686390A1EBC4E8}" {
-      m_iTextureID 3
-     }
-     RHS_MaterialGroupProperties "{68686390A150EE71}" {
-      m_iTextureID 2
-     }
+  SCR_UniversalInventoryStorageComponent "{5E529ED09B647D03}" {
+   MultiSlots {
+    MultiSlotConfiguration "{5E546E7AD86459B2}" {
+     NumSlots 10
     }
-   }
-   SCR_UniversalInventoryStorageComponent "{5E529ED09B647D03}" {
-    MultiSlots {
-     MultiSlotConfiguration "{68689CDDE0E2BE73}" {
-      SlotTemplate InventoryStorageSlot backpack {
-       Prefab "{41A9C55B61F375F0}Prefabs/Items/Equipment/Backpacks/Backpack_Kolobok.et"
-      }
-      NumSlots 2
+    MultiSlotConfiguration "{68689CDDE20A7EED}" {
+     SlotTemplate InventoryStorageSlot backpack {
+      Prefab "{41A9C55B61F375F0}Prefabs/Items/Equipment/Backpacks/Backpack_Kolobok.et"
      }
-     MultiSlotConfiguration "{68689CDD2E824211}" {
-      SlotTemplate InventoryStorageSlot rpg22 {
-       Prefab "{722CE6FEC39EE896}Prefabs/Weapons/Launchers/RPG22/Launcher_RPG22.et"
-      }
-      NumSlots 2
+     NumSlots 6
+    }
+    MultiSlotConfiguration "{68689CDDE8EC0F13}" {
+     SlotTemplate InventoryStorageSlot pkm {
+      Prefab "{A89BC9D55FFB4CD8}Prefabs/Weapons/MachineGuns/PKM/MG_PKM.et"
      }
+     NumSlots 1
+    }
+    MultiSlotConfiguration "{68689CDD23DE280F}" {
+     SlotTemplate InventoryStorageSlot rpg22 {
+      Prefab "{722CE6FEC39EE896}Prefabs/Weapons/Launchers/RPG22/Launcher_RPG22.et"
+     }
+     NumSlots 6
     }
    }
   }
-  coords 2729.388 6.146 835.14
-  angles 0 57 0
  }
- BMP1P_base3 {
-  components {
-   RHS_GroupMaterialController "{68686390A098EBB2}" {
-    m_aGroups {
-     RHS_MaterialGroupProperties "{68686390A1D17A63}" {
-      m_iTextureID 3
-     }
-     RHS_MaterialGroupProperties "{68686390A1EBC4E8}" {
-      m_iTextureID 3
-     }
-     RHS_MaterialGroupProperties "{68686390A150EE71}" {
-      m_iTextureID 3
-     }
-    }
-   }
-   SCR_UniversalInventoryStorageComponent "{5E529ED09B647D03}" {
-    MultiSlots {
-     MultiSlotConfiguration "{68689CDE630378FE}" {
-      SlotTemplate InventoryStorageSlot backpack {
-       Prefab "{41A9C55B61F375F0}Prefabs/Items/Equipment/Backpacks/Backpack_Kolobok.et"
-      }
-      NumSlots 2
-     }
-     MultiSlotConfiguration "{68689CDD346C87B2}" {
-      SlotTemplate InventoryStorageSlot rpg22 {
-       Prefab "{722CE6FEC39EE896}Prefabs/Weapons/Launchers/RPG22/Launcher_RPG22.et"
-      }
-      NumSlots 2
-     }
-    }
-   }
-  }
-  coords 2732.767 6.072 824.281
-  angles 0 57 0
- }
+ coords 2725.714 5.98 845.78
+ angles 0 57 0
+ m_sAttachmentGroupName "redhq"
 }
 $grp PS_ManualMarker : "{60226647F08EF462}PrefabsEditable/Markers/Group/Marker_GroupFlagsSoviet_Base.et" {
  {
@@ -197,8 +126,6 @@ $grp SCR_AIGroup : "{7544247CE7FBC839}Prefabs/Groups/OPFOR/Russia/1980s/Motorise
   angles 0 59 0
   m_aUnitPrefabSlots {
    "{07299990D00B0823}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_DPL_P.et"
-   "{B4A947AA09E9F15E}Prefabs/Characters/Factions/OPFOR/USSR_Army/Extra/Character_USSR_CrewCommander_P.et"
-   "{296CC757A1430309}Prefabs/Characters/Factions/OPFOR/USSR_Army/Extra/Character_USSR_CrewDriver_P.et"
    "{70AE8D0AF2E319D6}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_AR_P.et"
    "{CD7EDF8D8DF805C8}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_AT_P.et"
    "{566506FE40CF16E5}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_AAT_P.et"
@@ -221,8 +148,6 @@ $grp SCR_AIGroup : "{7544247CE7FBC839}Prefabs/Groups/OPFOR/Russia/1980s/Motorise
   angles 0 59 0
   m_aUnitPrefabSlots {
    "{A5F4D7FEBDB57183}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_SL_NoRadio_P.et"
-   "{B4A947AA09E9F15E}Prefabs/Characters/Factions/OPFOR/USSR_Army/Extra/Character_USSR_CrewCommander_P.et"
-   "{296CC757A1430309}Prefabs/Characters/Factions/OPFOR/USSR_Army/Extra/Character_USSR_CrewDriver_P.et"
    "{70AE8D0AF2E319D6}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_AR_P.et"
    "{CD7EDF8D8DF805C8}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_AT_P.et"
    "{566506FE40CF16E5}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_AAT_P.et"
@@ -245,8 +170,6 @@ $grp SCR_AIGroup : "{7544247CE7FBC839}Prefabs/Groups/OPFOR/Russia/1980s/Motorise
   angles 0 59 0
   m_aUnitPrefabSlots {
    "{A5F4D7FEBDB57183}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_SL_NoRadio_P.et"
-   "{B4A947AA09E9F15E}Prefabs/Characters/Factions/OPFOR/USSR_Army/Extra/Character_USSR_CrewCommander_P.et"
-   "{296CC757A1430309}Prefabs/Characters/Factions/OPFOR/USSR_Army/Extra/Character_USSR_CrewDriver_P.et"
    "{70AE8D0AF2E319D6}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_AR_P.et"
    "{CD7EDF8D8DF805C8}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_AT_P.et"
    "{566506FE40CF16E5}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_AAT_P.et"
@@ -268,5 +191,7 @@ SCR_AIGroup redhq : "{8D35DA8B89880FAF}Prefabs/Groups/OPFOR/Russia/1980s/Motoris
  m_aUnitPrefabSlots {
   "{DF8E65CA90B55E3B}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_PL_P.et"
   "{D1BA3D1164545A8D}Prefabs/Characters/Factions/OPFOR/USSR_Army/MotorRifle_1980/Character_USSR_MSV80_Medic_P.et"
+  "{B4A947AA09E9F15E}Prefabs/Characters/Factions/OPFOR/USSR_Army/Extra/Character_USSR_CrewCommander_P.et"
+  "{296CC757A1430309}Prefabs/Characters/Factions/OPFOR/USSR_Army/Extra/Character_USSR_CrewDriver_P.et"
  }
 }

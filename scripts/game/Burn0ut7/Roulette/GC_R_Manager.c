@@ -14,6 +14,9 @@ class GC_R_Manager : GameEntity
 	[Attribute(defvalue: "", UIWidgets.Object)]
     ref array<ref GC_R_BaseScenario> m_scenarios;
 	
+	[Attribute(defvalue: "", uiwidget: UIWidgets.Auto, desc: "Forced seed.")]
+    int m_iForcedSeed;
+	
 	protected const static ResourceName m_AOPrefab = "{09D028F45D7163FF}worlds/Burn0ut7/Roulette/Prefabs/RouletteAO.et";
 	
 	protected const static float m_searchDistance = 250;
@@ -24,6 +27,9 @@ class GC_R_Manager : GameEntity
 	protected ref RandomGenerator m_random = new RandomGenerator();
 	protected ref GC_R_BaseScenario m_currentScenario;
 	protected ref array<IEntity> m_entites = {};
+	
+	protected int m_iForcedScenario = -1;
+	ref array<int> m_aForcedTeams = {};
 	
 	protected int m_seed;
 	
@@ -56,7 +62,11 @@ class GC_R_Manager : GameEntity
 			return;
 		
 		GC_R_BaseScenario selected = GC_R_Helper<GC_R_BaseScenario>.RandomElementR(m_scenarios, m_random);
-		m_currentScenario = GC_R_BaseScenario.Cast(selected.Clone());
+		
+		if(m_iForcedScenario != -1)
+			m_currentScenario = GC_R_BaseScenario.Cast(m_scenarios[m_iForcedScenario].Clone());
+		else
+			m_currentScenario = GC_R_BaseScenario.Cast(selected.Clone());
 
 
 		for (int i = m_entites.Count() - 1; i >= 0; i--)
@@ -497,6 +507,13 @@ class GC_R_Manager : GameEntity
 	
 	void SetSeed(int seed = -1)
 	{
+		if(m_iForcedSeed)
+		{
+			m_seed = m_iForcedSeed;
+			Print("GC Roulette | Forced Seed = " + m_seed);
+			return;
+		}
+		
 		if(seed == -1)
 		{
 			int t = System.GetUnixTime();
@@ -630,6 +647,26 @@ class GC_R_Manager : GameEntity
 		SetWeather();
 	}
 	
+	int GetScenarioIndex()
+	{
+		if (!m_currentScenario)
+			return -1;
+	
+		string name = m_currentScenario.m_scenarioName;
+	
+		for (int i = 0; i < m_scenarios.Count(); i++)
+		{
+			GC_R_BaseScenario scenario = m_scenarios[i];
+			if (!scenario)
+				continue;
+	
+			if (scenario.m_scenarioName == name)
+				return i;
+		}
+	
+		return -1;
+	}
+	
 	void SetRandomEnvironment(int year)
 	{
 		SetDate(year);
@@ -645,6 +682,8 @@ class GC_R_Manager : GameEntity
 	    chatPanelManager.GetCommandInvoker("seed").Insert(ClientSeed);
 	    chatPanelManager.GetCommandInvoker("reroll").Insert(ClientReroll);
 	    chatPanelManager.GetCommandInvoker("players").Insert(ClientPlayers);
+	    chatPanelManager.GetCommandInvoker("teams").Insert(ClientTeams);
+	    chatPanelManager.GetCommandInvoker("scenario").Insert(ClientScenario);
 	}
 	
 	void InvokeCommand(SCR_PlayerController pc, string command, string data)
@@ -657,9 +696,203 @@ class GC_R_Manager : GameEntity
 				return CommandReroll(pc, command, data);
 			case "players":
 				return CommandPlayers(pc, command, data);
+			case "scenario":
+				return CommandScenario(pc, command, data);
+			case "teams":
+				return CommandTeams(pc, command, data);
 		}
 	}
+	
+	protected void ClientScenario(SCR_ChatPanel panel, string data)
+	{
+		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerController());
+		if(!pc)
+			return;
+		
+		pc.GC_R_SendCommandServer("scenario", data)
+	}
+	
+	protected void CommandScenario(SCR_PlayerController pc, string command, string data)
+	{
+		data.TrimInPlace();
+	
+		if (data.IsEmpty())
+		{
+			SendScenarioList(pc);
+			return;
+		}
+	
+		if (!SCR_Global.IsAdmin(pc.GetPlayerId()))
+		{
+			pc.GC_R_SendChatMsg("Unable to complete command - Not admin");
+			return;
+		}
+	
+		int index = data.ToInt(-1);
+		if (index == -1)
+		{
+			pc.GC_R_SendChatMsg("Invalid scenario index. Usage: /scenario 0");
+			return;
+		}
+	
+		if (index < 0 || index >= m_scenarios.Count())
+		{
+			pc.GC_R_SendChatMsg(string.Format("Index out of range (0-%1).", m_scenarios.Count() - 1));
+			return;
+		}
+	
+		m_iForcedScenario = index;
+		pc.GC_R_SendChatMsg(string.Format("Forced scenario set: %1 (%2)", index, m_scenarios[index].m_scenarioName));
+	}
+	
+	protected void SendScenarioList(SCR_PlayerController pc)
+	{
+		for (int i = 0; i < m_scenarios.Count(); i++)
+		{
+			GC_R_BaseScenario scenario = m_scenarios[i];
+			if (!scenario)
+				continue;
+	
+			pc.GC_R_SendChatMsg(string.Format("Scenario %1: %2", i, scenario.m_scenarioName));
+		}
+	}
+	
+	protected void ClientTeams(SCR_ChatPanel panel, string data)
+	{
+		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerController());
+		if(!pc)
+			return;
+		
+		pc.GC_R_SendCommandServer("teams", data)
+	}
+	
+	protected void CommandTeams(SCR_PlayerController pc, string command, string data)
+	{
+		data.TrimInPlace();
+	
+		if (data.IsEmpty())
+		{
+			SendTeamsList(pc);
+			return;
+		}
+	
+		if (!SCR_Global.IsAdmin(pc.GetPlayerId()))
+		{
+			pc.GC_R_SendChatMsg("Unable to complete command - Not admin");
+			return;
+		}
+	
+		array<int> teams = {};
+		if (!TryParseIntList(data, teams))
+		{
+			pc.GC_R_SendChatMsg("Usage: /teams 0 1 2");
+			return;
+		}
+	
+		if (!ValidateTeamIndices(pc, teams))
+			return;
+	
+		m_aForcedTeams = teams;
+	
+		pc.GC_R_SendChatMsg("Forced teams set: " + FormatIntList(teams));
+	}
+	
+	protected void SendTeamsList(SCR_PlayerController pc)
+	{
+		if (!m_currentScenario)
+		{
+			pc.GC_R_SendChatMsg("No scenario selected.");
+			return;
+		}
+	
+		int scenarioIndex = GetScenarioIndex();
+		pc.GC_R_SendChatMsg(string.Format("Scenario %1: %2", scenarioIndex, m_currentScenario.m_scenarioName));
+	
+		for (int i = 0; i < m_currentScenario.m_teamsList.Count(); i++)
+		{
+			GC_R_Team team = m_currentScenario.m_teamsList[i];
+			if (!team)
+				continue;
+	
+			pc.GC_R_SendChatMsg(string.Format("Team %1: %2", i, team.GetName()));
+		}
+	}
+	
+	protected bool TryParseIntList(string data, notnull array<int> outInts)
+	{
+		outInts.Clear();
+	
+		data.TrimInPlace();
+		if (data.IsEmpty())
+			return false;
+	
+		data.Replace(",", " ");
+	
+		array<string> parts = {};
+		data.Split(" ", parts, true);
+	
+		foreach (string part : parts)
+		{
+			part.TrimInPlace();
+	
+			if (part.IsEmpty())
+				continue;
+	
+			int v = part.ToInt(-1);
+			if (v == -1)
+				continue;
+	
+			outInts.Insert(v);
+		}
+	
+		if (outInts.IsEmpty())
+			return false;
+	
+		return true;
+	}
+	
+	protected bool ValidateTeamIndices(SCR_PlayerController pc, notnull array<int> teams)
+	{
+		if (!m_currentScenario)
+		{
+			pc.GC_R_SendChatMsg("No scenario selected.");
+			return false;
+		}
+	
+		int maxIdx = m_currentScenario.m_teamsList.Count() - 1;
+		if (maxIdx < 0)
+		{
+			pc.GC_R_SendChatMsg("Scenario has no teams.");
+			return false;
+		}
+	
+		foreach (int id : teams)
+		{
+			if (id < 0 || id > maxIdx)
+			{
+				pc.GC_R_SendChatMsg(string.Format("Invalid team index: %1 (0-%2).", id, maxIdx));
+				return false;
+			}
+		}
+	
+		return true;
+	}
+	
+	protected string FormatIntList(notnull array<int> values)
+	{
+		string outString;
+		for (int i = 0; i < values.Count(); i++)
+		{
+			if (i > 0)
+				outString = outString + " ";
+	
+			outString = outString + values[i];
+		}
+	
+		return outString;
+	}
 
+	
 	protected void ClientSeed(SCR_ChatPanel panel, string data)
 	{
 		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerController());
