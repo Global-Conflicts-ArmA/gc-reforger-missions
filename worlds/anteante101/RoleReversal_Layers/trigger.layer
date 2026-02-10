@@ -1,0 +1,138 @@
+Vehicle Ural4320_ammo1 : "{3336BE330C4F355B}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ammo.et" {
+ coords 3635.101 141.353 7874.886
+ angles 0 -177.377 0
+}
+PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_MapShapeComponent "{6508F54F9B461198}" {
+   Enabled 1
+  }
+ }
+ coords 3573.664 143.058 8223.063
+ Points {
+  ShapePoint "{688D62DD1026D20C}" {
+   Position 72.861 0 -10.758
+  }
+  ShapePoint "{688D62DD11B9CFAA}" {
+   Position 188.58 0 -11.43
+  }
+  ShapePoint "{688D62DD17C6B5D8}" {
+   Position 194.161 -59.82 -357.032
+  }
+  ShapePoint "{688D62DD1BDF5D6B}" {
+   Position -14.714 0 -348.422
+  }
+  ShapePoint "{688D62DD1DB59B9F}" {
+   Position -11.814 0 -19.137
+  }
+ }
+}
+TILW_FactionTriggerEntity EXTRACT_TRIGGER : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 3635.485 145.113 7877.472
+ angles 0 90.768 0
+ m_queryRadius 6.2
+ m_flagName "EXTRACT"
+ m_stopAfterFirstChange 1
+ m_playersOnly 1
+ m_ownerFactionKey "CIV"
+}
+$grp TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ players_being_killed {
+  coords 3665.075 143.076 8201.724
+  m_missionEvents {
+   TILW_MissionEvent "{688D62C2DE04F31F}" {
+    m_name "HVT Killed OP4"
+    m_instructions {
+     TILW_SendMessageInstruction "{688D62C2F5D75D94}" {
+      m_executionDelay 1
+      m_messageTitle "HVT DEAD"
+      m_messageBody "HVT is kiled. The infidels won."
+      m_factionKeys {
+       "GC_INSURGENT"
+      }
+     }
+    }
+    m_condition TILW_LiteralTerm "{688D62C40D81E79D}" {
+     m_flagName "HVT_DEAD"
+    }
+   }
+   TILW_MissionEvent "{688D62D8E43E4029}" {
+    m_name "HVT KILLED US"
+    m_instructions {
+     TILW_SendMessageInstruction "{688D62D8EAF5CC32}" {
+      m_executionDelay 1
+      m_messageTitle "HVT DEAD"
+      m_messageBody "HVT IS DEAD. Good job. Fall back and extract."
+      m_factionKeys {
+       "US"
+      }
+     }
+    }
+    m_condition TILW_LiteralTerm "{688D62D8EC433583}" {
+     m_flagName "HVT_DEAD"
+    }
+   }
+   TILW_MissionEvent "{688D62DA105155F9}" {
+    m_name "us killed"
+    m_instructions {
+     TILW_SendMessageInstruction "{688D62DA1B0183AF}" {
+      m_executionDelay 1
+      m_messageTitle "US KILLED"
+      m_messageBody "The US are combat ineffective. Good job! "
+      m_factionKeys {
+       "GC_INSURGENT"
+      }
+     }
+    }
+    m_condition TILW_LiteralTerm "{688D62DA9FD76D5B}" {
+     m_flagName "B4_KILLED"
+    }
+   }
+   TILW_MissionEvent "{688D62DAABA93AA6}" {
+    m_name "OP4"
+    m_instructions {
+     TILW_SendMessageInstruction "{688D62DAAFAE2D34}" {
+      m_executionDelay 1
+      m_messageTitle "THE INSURGENTS KILLED"
+      m_messageBody "The insurgents are combat ineffective. Good job! "
+      m_factionKeys {
+       "US"
+      }
+     }
+    }
+    m_condition TILW_LiteralTerm "{688D62DAB1DCDB67}" {
+     m_flagName "OP4_KILLED"
+    }
+   }
+  }
+  m_casualtyFlags {
+   TILW_FactionPlayersKilledFlag "{688D62DBB8D3BE73}" {
+    m_flagName "B4_KILLED"
+    m_factionKey "US"
+    m_casualtyRatio 0.9
+   }
+   TILW_FactionPlayersKilledFlag "{688D62DBD4F99F18}" {
+    m_flagName "OP4_KILLED"
+    m_factionKey "GC_INSURGENT"
+    m_casualtyRatio 0.9
+   }
+  }
+ }
+ hvt_extarcted {
+  coords 3574.572 140.04 7929.82
+  m_missionEvents {
+   TILW_MissionEvent "{688D62DE6EB0AB88}" {
+    m_instructions {
+     TILW_SendMessageInstruction "{688D62DE7187841D}" {
+      m_executionDelay 1
+      m_messageTitle "HVT EXTRACTED"
+      m_messageBody "THE INSURGENTS WON"
+     }
+    }
+    m_condition TILW_LiteralTerm "{688D62DE8469FD32}" {
+     m_flagName "EXTRACT"
+    }
+   }
+  }
+ }
+}
