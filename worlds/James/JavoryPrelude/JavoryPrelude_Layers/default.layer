@@ -1,0 +1,401 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{673CBDB623F7611C}" {
+     NavmeshFile "{E08B16AADAB901D8}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Soldier.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{04F808CEFD545B32}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Vehicle.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{6D7CE9C2F346F22E}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_LowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 4703.718 272.716 9399.651
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 4684.339 269.598 9381.211
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{673CFAD59EB8AFE1}" {
+     m_sWeatherPresetName "Rainy"
+     m_iStartingHour 6
+    }
+   }
+  }
+ }
+ coords 4693.332 271.193 9390.447
+ m_iFreezeTime 300000
+ {
+  SCR_FactionManager "684520745370F70F" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{652F615735715119}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB79284A2F6C9}" {
+        m_sCallsign "33"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ {
+  coords 4120.055 251.403 8919.692
+  m_sTitle "Scenario"
+  m_sTextData "Reinforced British infantry platoon with Land Rovers attacks NVA BTR platoon defending farmstead."
+  m_bEmptyFactionVisibility 1
+ }
+ {
+  coords 4138.328 250.941 8916.655
+  m_sTitle "Notes"
+  m_sTextData "Conditions:"\
+  "Brit victory - Secured OBJ with no NVA inside, or 90% enemy dead."\
+  "NVA victory - Time limit reached (65 mins, inclusive of setup), or 90% enemy dead."\
+  ""\
+  "Setup timer: 5 mins."\
+  ""
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 8
+ }
+}
+SCR_EditorRestrictionZoneEntity : "{6144B0BE2EAC6897}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneMedium.et" {
+ coords 3569.002 269.39 8933.496
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "UK"
+    }
+    m_visibility FACTION
+    m_useFactionColor 0
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+    m_factionKeys {
+     "UK"
+    }
+    m_visibleForEmptyFaction 0
+   }
+  }
+  coords 4085.911 273.956 9090.669
+  Points {
+   ShapePoint "{673CC9C9CA098343}" {
+    Position -474.297 -30.667 -238.936
+   }
+   ShapePoint "{673CC9C9C9C68B1A}" {
+    Position -545.314 -34.72 -207.312
+   }
+   ShapePoint "{673CC9C9DB88BF26}" {
+    Position -545.969 -6.33 -143.854
+   }
+   ShapePoint "{673CC9C9C5E288D1}" {
+    Position -540.658 7.7 -64.883
+   }
+   ShapePoint "{673CC9C9FC78F1B4}" {
+    Position -267.069 7.596 -64.167
+   }
+   ShapePoint "{673CBDB66E2BFB78}" {
+    Position -266.191 7.794 67.761
+   }
+   ShapePoint "{673CBDB6768C5A89}" {
+    Position 134.437 17.885 94.456
+   }
+   ShapePoint "{673CBDB6798FE52F}" {
+    Position 220.98 13.151 165.93
+   }
+   ShapePoint "{673CC9D5565C82B9}" {
+    Position 235.997 0.331 323.544
+   }
+   ShapePoint "{673CBDB67F4B5EF6}" {
+    Position 250.854 0.856 462.16
+   }
+   ShapePoint "{673CBDB642212FFF}" {
+    Position 490.826 -0.019 507.962
+   }
+   ShapePoint "{673CBDB64E3D11A9}" {
+    Position 473.732 -0.019 590.467
+   }
+   ShapePoint "{673CBDB7A4351FDB}" {
+    Position 573.072 0.781 610.281
+   }
+   ShapePoint "{673CBDB7ADC8A8BA}" {
+    Position 617.628 -1.495 636.937
+   }
+   ShapePoint "{673CBDB7B01A9AB3}" {
+    Position 722.119 1.294 473.08
+   }
+   ShapePoint "{673CBDB781202114}" {
+    Position 765.35 2.635 284.742
+   }
+   ShapePoint "{673CBDB784CFBFB1}" {
+    Position 832.471 -9.506 185.158
+   }
+   ShapePoint "{673CBDB78D0D4970}" {
+    Position 919.276 -15.374 87.284
+   }
+   ShapePoint "{673CBDB7ECC6C56E}" {
+    Position 833.963 -17.252 34.656
+   }
+   ShapePoint "{673CBDB7EDAD4D9D}" {
+    Position 756.887 -17.346 -34.283
+   }
+   ShapePoint "{673CBDB7EFA7496D}" {
+    Position 730.334 -17.484 -89.014
+   }
+   ShapePoint "{673CFAD35C97544D}" {
+    Position 850.513 -22.929 -244.17
+   }
+   ShapePoint "{673CFAD2A3E836D0}" {
+    Position 809.232 -28.493 -418.061
+   }
+   ShapePoint "{673CC9C1F5F77086}" {
+    Position 622.281 -25.595 -345.688
+   }
+   ShapePoint "{673CC9C1EE105B13}" {
+    Position 370.785 -32.533 -408.944
+   }
+   ShapePoint "{673CBDB7DC49209B}" {
+    Position 324.935 -34.906 -383.12
+   }
+   ShapePoint "{673CBDB7DEA1C56A}" {
+    Position 138.783 -24.851 -333.465
+   }
+   ShapePoint "{673CBDB7237F0677}" {
+    Position 84.597 -22.915 -335.372
+   }
+   ShapePoint "{673CBDB725870972}" {
+    Position 38.616 -27.714 -309.412
+   }
+   ShapePoint "{673CBDB726B7A7B2}" {
+    Position 4.031 -31.3 -270.79
+   }
+   ShapePoint "{673CBDB72AC7FE0B}" {
+    Position -277.095 -32.789 -295.249
+   }
+  }
+ }
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "GC_NVA"
+    }
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+    m_factionKeys {
+     "GC_NVA"
+    }
+   }
+  }
+  coords 4667.136 272.506 9406.624
+  Points {
+   ShapePoint "{673CC9D29E87B4E1}" {
+    Position 36.33 -0.026 320.67
+   }
+   ShapePoint "{673CC9D2E11C562C}" {
+    Position 140.607 2.748 156.963
+   }
+   ShapePoint "{673CC9D2E4B53EAF}" {
+    Position 183.924 4.011 -31.256
+   }
+   ShapePoint "{673CC9D2E60345CF}" {
+    Position 250.941 -8.08 -131.039
+   }
+   ShapePoint "{673CC9D2E9F63D22}" {
+    Position 337.688 -13.923 -228.676
+   }
+   ShapePoint "{673CC9D2EB36C516}" {
+    Position 252.561 -15.799 -281.186
+   }
+   ShapePoint "{673CC9D2EE890D54}" {
+    Position 175.546 -15.89 -350.214
+   }
+   ShapePoint "{673CC9D2F0F75B31}" {
+    Position 148.995 -16.032 -404.903
+   }
+   ShapePoint "{673CFAD374621EEB}" {
+    Position 269.227 -21.483 -560.108
+   }
+   ShapePoint "{673CFAD372CF8D6A}" {
+    Position 227.994 -27.043 -734.003
+   }
+   ShapePoint "{673CC9C1361BB0F0}" {
+    Position 41.235 -24.16 -661.678
+   }
+   ShapePoint "{673CC9D6D77DC2B9}" {
+    Position -60.58 -19.628 -616.78
+   }
+   ShapePoint "{673CC9D6CDAC4796}" {
+    Position -150.323 -20.224 -550.936
+   }
+   ShapePoint "{673CC9C199C7F0BF}" {
+    Position -242.808 -18.228 -435.278
+   }
+   ShapePoint "{673CFAFE4A905C5E}" {
+    Position -256.32 -5.79 -263.307
+   }
+   ShapePoint "{673CC9D7BFF532B2}" {
+    Position -241.189 -3.537 -112.108
+   }
+   ShapePoint "{673CC9D593459E20}" {
+    Position -293.676 0.388 -13.248
+   }
+   ShapePoint "{673CC9D54BBA3AF0}" {
+    Position -345.22 1.787 7.444
+   }
+   ShapePoint "{673CC9D2706FFD75}" {
+    Position -330.292 2.307 146.204
+   }
+   ShapePoint "{673CC9D273ACC25B}" {
+    Position -90.256 1.432 191.814
+   }
+   ShapePoint "{673CC9D2744BCF91}" {
+    Position -107.383 1.432 274.465
+   }
+   ShapePoint "{673CC9D276205B81}" {
+    Position -8.112 2.227 294.226
+   }
+  }
+ }
+}
+TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 4721.766 274.395 9475.418
+ m_queryRadius 80
+ m_flagName "OBJ_TAKEN"
+ m_stopAfterFirstChange 1
+ m_playersOnly 1
+ m_ownerFactionKey "UK"
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 4700.608 272.499 9397.064
+ m_missionEvents {
+  TILW_MissionEvent "{673D654F1FB93E62}" {
+   m_name "UK Casualty"
+   m_instructions {
+    TILW_SendMessageInstruction "{673D654F4057FB71}" {
+     m_messageTitle "NVA Victory"
+     m_messageBody "UK forces have been eliminated"
+    }
+   }
+   m_condition TILW_LiteralTerm "{673D654EA00D6F22}" {
+    m_flagName "UK_Killed"
+   }
+  }
+  TILW_MissionEvent "{673D654EB4713491}" {
+   m_name "NVA Casualty"
+   m_instructions {
+    TILW_SendMessageInstruction "{673D654EBE038F82}" {
+     m_messageTitle "UK Victory"
+     m_messageBody "NVA forces have been eliminated"
+    }
+   }
+   m_condition TILW_LiteralTerm "{673D654E813FEE2F}" {
+    m_flagName "NVA_Killed"
+   }
+  }
+  TILW_MissionEvent "{673D654ED90E88DB}" {
+   m_name "OBJ Captured"
+   m_instructions {
+    TILW_SendMessageInstruction "{673D654E3D4141AF}" {
+     m_messageTitle "OBJ Captured"
+     m_messageBody "British forces have secured the OBJ"
+    }
+   }
+   m_condition TILW_LiteralTerm "{673D654E3A52D3F1}" {
+    m_flagName "OBJ_TAKEN"
+   }
+  }
+  TILW_MissionEvent "{673D654E5897FF25}" {
+   m_name "Time Limit"
+   m_instructions {
+    TILW_SendMessageInstruction "{673D6549A4A8FD34}" {
+     m_executionDelay 3900
+     m_messageTitle "Time Limit Reached"
+     m_messageBody "NVA forces win, they succesfully delayed the British attack."
+    }
+    TILW_SendMessageInstruction "{673D654918860150}" {
+     m_executionDelay 3300
+     m_messageTitle "Time Limit Approaching"
+     m_messageBody "Brits have 10 minutes left to take the OBJ."
+    }
+   }
+   m_condition TILW_LiteralTerm "{673D65497F99527F}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{673D654F326AFF13}" {
+   m_flagName "UK_Killed"
+   m_factionKey "UK"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{673D654F0C744F06}" {
+   m_flagName "NVA_Killed"
+   m_factionKey "GC_NVA"
+   m_casualtyRatio 0.9
+  }
+ }
+}
+Vehicle _Series_SWB_GPMG1 : "{CC4DFA3A23A5BA41}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_SWB_GPMG.et" {
+ components {
+  SCR_UniversalInventoryStorageComponent "{648B4DF41C28F11F}" {
+   MultiSlots {
+    MultiSlotConfiguration "{673EEDE5B96E975F}" {
+     SlotTemplate InventoryStorageSlot demo {
+      Prefab "{3909998CAFD62EA3}Prefabs/Weapons/Explosives/DemoBlock_Hayrick/DemoBlock_Hayrick.et"
+     }
+     NumSlots 8
+    }
+    MultiSlotConfiguration "{673EEDE5BACF3B73}" {
+     SlotTemplate InventoryStorageSlot demo2 {
+      Prefab "{74369C511864A660}Prefabs/Weapons/Explosives/Mine_L9A1_Barmine/Mine_L9A1_Barmine.et"
+     }
+     NumSlots 12
+    }
+    MultiSlotConfiguration "{673EEDEF25032B8A}" {
+     SlotTemplate InventoryStorageSlot clacker {
+      Prefab "{9F268F34D83C9519}Prefabs/Items/Equipment/Detonators/BlastingMachine_M34/BlastingMachine_Shrike.et"
+     }
+     NumSlots 3
+    }
+   }
+  }
+ }
+ coords 3545.157 267.624 8943.694
+ angles 0 111 0
+ m_sAttachmentGroupName "gr_uk_86a"
+}
+PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ coords 4723.725 274.688 9473.413
+ angles 0 0 0
+ m_sImageSetGlow ""
+ m_MarkerColor 0 0 0 0.706
+ m_fWorldSize 240
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}

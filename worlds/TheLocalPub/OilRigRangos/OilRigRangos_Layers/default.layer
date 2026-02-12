@@ -7,7 +7,7 @@ PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/Per
 PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
  components {
   SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
-   m_bRandomStartingDaytime 1
+   m_iStartingHours 12
    m_bRandomStartingWeather 1
    m_bRandomWeatherChanges 1
    m_bUseSpecifiedDate 1
@@ -16,399 +16,33 @@ PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_G
   }
  }
  coords 6027.628 0 11724.013
- m_eJIPState Deny
- m_denyJIPTime 360
- m_minDistance 5
  {
-  SCR_FactionManager "6668BB7A55F2CA66" {
+  SCR_FactionManager {
    ID "5ED9088735FF2D8B"
    Factions {
-    SCR_Faction "{607AA5C7A94496DA}" {
-     m_aEntityCatalogs {
-      SCR_EntityCatalogMultiList "{607A9A9FE55EDF5F}" {
-       m_aEntityEntryList {
-        SCR_EntityCatalogEntry "{61069305D5AC1E3E}" {
-         m_sEntityPrefab "{852D0202975BD6AF}worlds/TheLocalPub/OilRigRangos/Prefabs/Characters/Factions/CIV/ConstructionWorker/Character_CIV_ConstructionWorker_P_1.et"
-        }
-        SCR_EntityCatalogEntry "{667AB1BC27AE361B}" {
-         m_sEntityPrefab "{B18D7B30D4C389FA}worlds/TheLocalPub/OilRigRangos/Prefabs/Characters/Factions/CIV/ConstructionWorker/Character_CIV_ConstructionWorker_Randomized_P.et"
-         m_aEntityDataList {
-          SCR_EntityCatalogEditorData "{667AB1BC27AE37D8}" {
-          }
-          SCR_EntityCatalogLoadoutData "{667AB1BC27AE37DD}" {
-           m_fSpawnSupplyCost 0
-          }
-         }
-        }
-        SCR_EntityCatalogEntry "{667AB1BC1A37B50E}" {
-         m_sEntityPrefab "{B18D7B30D4C389FA}worlds/TheLocalPub/OilRigRangos/Prefabs/Characters/Factions/CIV/ConstructionWorker/Character_CIV_ConstructionWorker_Randomized_P.et"
-         m_aEntityDataList {
-          SCR_EntityCatalogEditorData "{667AB1BC1A374AF4}" {
-          }
-          SCR_EntityCatalogLoadoutData "{667AB1BC1A374AF6}" {
-           m_fSpawnSupplyCost 0
-          }
-         }
-        }
-        SCR_EntityCatalogEntry "{667AB1BC15BEC6DA}" {
-         m_sEntityPrefab "{5D856BC3EED2C8F3}worlds/TheLocalPub/OilRigRangos/Prefabs/Characters/Factions/CIV/ConstructionWorker/Character_CIV_ConstructionWorker_P_2.et"
-        }
-        SCR_EntityCatalogEntry "{667AB1BC0862EBEF}" {
-         m_sEntityPrefab "{054D4FC766489A69}worlds/TheLocalPub/OilRigRangos/Prefabs/Characters/Factions/CIV/ConstructionWorker/Character_CIV_ConstructionWorker_P_3.et"
-        }
-       }
-      }
-     }
-    }
-    SCR_Faction "{61500924662B6062}" {
-     m_iOrder 1000
-    }
-    SCR_Faction "{66671359CBDC7F9F}" : "{DE288250A40C53B2}worlds/TheLocalPub/OilRigRangos/Configs/Factions/ECOTERROR.conf" {
-     m_iOrder 2000
-     m_aEntityCatalogs {
-      SCR_EntityCatalogMultiList "{6667135A2BF7C218}" {
-       m_aEntityEntryList {
-        SCR_EntityCatalogEntry "{668D06B0A7D0FEA0}" {
-         m_sEntityPrefab "{A29A973FE71E29E9}worlds/TheLocalPub/OilRigRangos/Prefabs/Characters/Factions/OPFOR/ECO/Character_ECO_Marksman3_P.et"
-        }
-       }
-      }
-     }
+    SCR_Faction "{6854D86151966894}" : "{DE288250A40C53B2}worlds/TheLocalPub/OilRigRangos/Configs/Factions/ECOTERROR.conf" {
     }
    }
   }
- }
-}
-$grp GenericEntity {
- TP2 {
-  coords 2702.135 1.031 1872.023
- }
- TP1 {
-  coords 5799.986 1.75 3563.625
- }
-}
-$grp GenericEntity : "{584EB34600E9698D}Prefabs/Utils/Interactions/TILW_BaseInteraction.et" {
- BombDetonator {
-  components {
-   ActionsManagerComponent "{61F4C18E835074FF}" {
-    additionalActions {
-     TILW_BaseInteraction "{61F4C18E863E752C}" {
-      ActionTitle "Detonate bomb"
-      m_actionName "Detonate Bomb"
-      m_factionKeys {
-       "ECO"
-      }
-      m_flagName "DropBomb"
-      m_conditionFlag "UnlockBomb"
-     }
-    }
-   }
-  }
-  coords 4859.477 28.177 1721.992
- }
- BombDefuser {
-  components {
-   ActionsManagerComponent "{61F4C18E835074FF}" {
-    additionalActions {
-     TILW_BaseInteraction "{61F4C18E863E752C}" {
-      ActionTitle "DEFUSE BOMB "
-      m_actionName "DEFUSE BOMB "
-      m_factionKeys {
-       "UK"
-      }
-      m_flagName "BombDefused"
-      m_conditionFlag "BombDefuseable"
-     }
-    }
-   }
-  }
-  coords 4859.477 28.177 1721.992
- }
-}
-GenericEntity AirfieldTP : "{5B462DF843A26368}Prefabs/Utils/Interactions/TILW_TeleportInteraction.et" {
- components {
-  ActionsManagerComponent "{62EF76E0D47ED96A}" {
-   additionalActions {
-    TILW_TeleportInteraction "{62EF76E608B6CB36}" {
-     ActionTitle "insert1"
-     m_actionName "TP1 (NORTH-EAST)"
-     m_locationName "TP1"
-     m_factionKeys {
-      "UK"
-     }
-    }
-    TILW_TeleportInteraction "{664E9A481B886FD6}" {
-     ParentContextList {
-      "Interact_A"
-     }
-     ActionTitle "insert2"
-     "Sort Priority" 1
-     m_actionName "Teleport: TP2 (WEST)"
-     m_locationName "TP2"
-     m_factionKeys {
-      "UK"
-     }
-    }
-   }
-  }
- }
- coords 4895.826 29.963 11759.215
-}
-$grp SCR_DestructibleEntity : "{712644F239049059}Prefabs/Models/walls/tem_concrete_wall3.et" {
- {
-  coords 4848.565 82.862 1721.45
-  angleY -90.851
- }
- {
-  coords 4848.591 83.211 1719.961
-  angleY -90.851
- }
- {
-  coords 4848.591 83.56 1718.47
-  angleY -90.851
- }
-}
-$grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
- BigBomb1 {
-  coords 4859.67 28.086 1722.83
-  m_prefab "{D4700A8D41E53F1E}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_Tnt_Large.et"
-  m_conditionFlag "DropBomb"
- }
- {
-  coords 4903.74 30.606 1758.21
-  m_prefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
-  m_conditionFlag "DropBomb"
-  m_spawnTimings {
-   3
-  }
- }
- {
-  coords 4884.919 44.091 1688.418
-  m_prefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
-  m_conditionFlag "DropBomb"
-  m_spawnTimings {
-   2
-  }
- }
- {
-  coords 4827.006 30.465 1691.088
-  m_prefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
-  m_conditionFlag "DropBomb"
-  m_spawnTimings {
-   4
-  }
- }
- {
-  coords 4802.674 24.015 1732.709
-  angleZ -105
-  m_prefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
-  m_conditionFlag "DropBomb"
-  m_spawnTimings {
-   4
-  }
- }
- {
-  coords 4871.895 26.007 1768.867
-  m_prefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
-  m_conditionFlag "DropBomb"
-  m_spawnTimings {
-   1
-  }
- }
- {
-  coords 4885.743 19.542 1732.89
-  angleY -180
-  angleZ -180
-  m_prefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
-  m_conditionFlag "DropBomb"
-  m_spawnTimings {
-   2.3
-  }
- }
- {
-  coords 4856.206 33.229 1752.431
-  m_prefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
-  m_conditionFlag "DropBomb"
-  m_spawnTimings {
-   1.5
-  }
- }
- {
-  coords 4906.905 33.981 1730.307
-  angleZ 90
-  m_prefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
-  m_conditionFlag "DropBomb"
-  m_spawnTimings {
-   3.6
-  }
- }
- {
-  coords 4858.078 47.777 1721.73
-  m_prefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
-  m_conditionFlag "DropBomb"
-  m_spawnTimings {
-   0.5
-  }
- }
- {
-  coords 4858.078 64.152 1721.73
-  m_prefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
-  m_conditionFlag "DropBomb"
-  m_spawnTimings {
-   1
-  }
- }
- {
-  coords 4858.078 81.703 1721.73
-  m_prefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
-  m_conditionFlag "DropBomb"
-  m_spawnTimings {
-   1.5
-  }
- }
- {
-  coords 4858.078 101.595 1721.73
-  m_prefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
-  m_conditionFlag "DropBomb"
-  m_spawnTimings {
-   2
-  }
- }
- {
-  coords 4922.11 7.452 1677.532
-  m_prefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
-  m_conditionFlag "DropBomb"
-  m_spawnTimings {
-   7
-  }
- }
- BigBomb2 {
-  coords 4822.954 37.254 1691.449
-  m_prefab "{D4700A8D41E53F1E}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_Tnt_Large.et"
-  m_conditionFlag "DropBomb"
-  m_spawnTimings {
-   2
-  }
- }
- {
-  coords 4877.682 24.494 1770.443
-  m_prefab "{48DE06CF94DC6DAA}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage_fire.et"
-  m_conditionFlag "DropBomb"
-  m_spawnTimings {
-   5
-  }
- }
- {
-  coords 4853.191 27.437 1724.889
-  m_prefab "{48DE06CF94DC6DAA}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage_fire.et"
-  m_conditionFlag "DropBomb"
-  m_spawnTimings {
-   1
-  }
- }
- {
-  coords 4798.625 12.944 1672.295
-  m_prefab "{48DE06CF94DC6DAA}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage_fire.et"
-  m_conditionFlag "DropBomb"
-  m_spawnTimings {
-   2.5
-  }
- }
- {
-  coords 4858.078 178.691 1721.73
-  m_prefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
-  m_conditionFlag "DropBomb"
-  m_spawnTimings {
-   3
-  }
- }
- {
-  coords 4858.078 135.702 1721.73
-  m_prefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
-  m_conditionFlag "DropBomb"
-  m_spawnTimings {
-   2.5
-  }
- }
- {
-  coords 4828.778 29.966 1736.986
-  angleX 59.825
-  angleY 64.362
-  m_prefab "{48DE06CF94DC6DAA}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage_fire.et"
-  m_conditionFlag "DropBomb"
-  m_spawnTimings {
-   4
-  }
- }
- BigBomb3 {
-  coords 4893.542 17.64 1754.303
-  m_prefab "{D4700A8D41E53F1E}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_Tnt_Large.et"
-  m_conditionFlag "DropBomb"
-  m_spawnTimings {
-   3
-  }
- }
-}
-PolylineShapeEntity AO : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
- components {
-  TILW_AOLimitComponent "{6217617AC21DEB7B}" {
-   m_factionKeys {
-    "ECO"
-   }
-   m_visibility NONE
-  }
- }
- coords 4941.531 0 1802.574
- Points {
-  ShapePoint "{667AB19CD6232368}" {
-   Position -156.896 0 -141.538
-  }
-  ShapePoint "{667AB19CCFA76D73}" {
-   Position -8.547 0 -144.515
-  }
-  ShapePoint "{667AB19CC2B764D9}" {
-   Position -7.165 0 -15.559
-  }
-  ShapePoint "{667AB19CC62E55ED}" {
-   Position -156.851 0 -16.033
-  }
- }
-}
-$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
- BombCapture {
-  coords 4857.448 25.771 1721.827
-  m_queryRadius 9
-  m_captureTime 180
-  m_sendStatusMessages 1
-  m_statusMessages {
-   "" "The %1 have been spotted in the %2." "The %1 are no longer defusing the bomb." "The %1 has lost control of %2." "The %1 is losing control of %2." "The %1 is no longer losing control of %2."
-  }
-  m_locationName "bomb site"
-  m_flagName "BombCaptured"
-  m_stopAfterFirstChange 1
-  m_playersOnly 1
-  m_ignoredFactions {
-   "ECO"
-  }
-  m_ownerFactionKey "UK"
- }
- CivChecker {
-  coords 4856.047 36.843 1727.852
-  m_queryRadius 100
-  m_comparisonMode EQUAL_OR_LESS
-  m_flagName "Hostage<"
-  m_stopAfterFirstChange 1
-  m_playersOnly 1
-  m_ignoredFactions {
-   "UK" "ECO"
-  }
-  m_ownerFactionKey "CIV"
-  m_ratioThreshold 0.49
  }
 }
 TILW_MissionFrameworkEntity FRAMEWORK : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
  coords 6052.344 0 11726.234
  m_missionEvents {
+  TILW_MissionEvent "{673CF9922181EA4A}" {
+   m_name "DeleteOpforSlots"
+   m_instructions {
+    TILW_DeleteOpenSlotsInstruction "{673CF9921D0D2398}" {
+     m_executionDelay 300
+     m_factionKeys {
+      "ECO"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{673CF9920095FB4B}" {
+    m_invertTerm 1
+   }
+  }
   TILW_MissionEvent "{668D06927571A8E2}" {
    m_name "FLAGSET"
    m_instructions {
@@ -491,7 +125,9 @@ TILW_MissionFrameworkEntity FRAMEWORK : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_Missi
     TILW_DeactivateEventsInstruction "{668D06942FD99F3F}" {
      m_executionDelay 1
      m_eventNames {
-      "UKWinPyr/ECOMinWin" "ECOWinMaj1" "UKMinVic"
+      "UKWinPyr/ECOMinWin"
+      "ECOWinMaj1"
+      "UKMinVic"
      }
     }
     TILW_SendMessageInstruction "{668D0695B706299F}" {
@@ -523,7 +159,8 @@ TILW_MissionFrameworkEntity FRAMEWORK : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_Missi
     TILW_DeactivateEventsInstruction "{668D0694C1953353}" {
      m_executionDelay 1
      m_eventNames {
-      "UKWinPyr/ECOMinWin" "ECOWinMaj1"
+      "UKWinPyr/ECOMinWin"
+      "ECOWinMaj1"
      }
     }
     TILW_SendMessageInstruction "{668D069AD6996329}" {
@@ -685,7 +322,4 @@ TILW_MissionFrameworkEntity FRAMEWORK : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_Missi
    m_casualtyRatio 0.9
   }
  }
-}
-GenericEntity : "{A80E80B60FEAE52D}PrefabsEditable/Auto/Structures/Military/Flags/E_FlagPole_02_V1_UK.et" {
- coords 4895.815 28.593 11759.223
 }

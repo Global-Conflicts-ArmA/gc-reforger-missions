@@ -1,0 +1,82 @@
+Vehicle : "{A8C732BE755F8BD0}Prefabs/Vehicles/Helicopters/Mi24/Mi24V_base.et" {
+ ID "57DA6675519A417B"
+ components {
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "DomiTest2"
+    m_Image "{AEDC01E3A422D09E}UI/Textures/EditorPreviews/Vehicles/Helicopters/Mi24V/Mi24V_armed_S5.edds"
+    m_aAuthoredLabels {
+     ENTITYTYPE_VEHICLE VEHICLE_HELICOPTER TRAIT_PASSENGERS_LARGE TRAIT_ARMED
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {
+      m_Value 6000
+     }
+    }
+   }
+  }
+  WCS_Armament_LoadoutComponent "{687EBEC98C558133}" {
+   m_ArmamentGroups {
+    WCS_ArmamentWeaponGroup "{687EBEC98C55813C}" {
+     prefab "{6547A281622ADD71}Prefabs/Weapons/AircraftWeapons/RocketPods/UB1657/Pod_UB1657.et"
+     weaponsInfo {
+      WCS_ArmamentWeaponInfo "{687EBEC98C55813E}" {
+       Position PointInfo "{687EBEC98C558142}" {
+        PivotID "pylon_L01"
+        Offset 0 -0.1716 0.2461
+        Angles 1.8 0 0
+       }
+      }
+      WCS_ArmamentWeaponInfo "{687EBEC98C558145}" {
+       Position PointInfo "{687EBEC98C55C2EC}" {
+        PivotID "pylon_L02"
+        Offset 0 -0.1716 0.2461
+        Angles 1.8 0 0
+       }
+      }
+      WCS_ArmamentWeaponInfo "{687EBEC98C55C2ED}" {
+       Position PointInfo "{687EBEC98C55C2EE}" {
+        PivotID "pylon_R01"
+        Offset 0 -0.1716 0.2461
+        Angles 1.8 0 0
+       }
+      }
+      WCS_ArmamentWeaponInfo "{687EBEC98C55C2EF}" {
+       Position PointInfo "{687EBEC98C56090F}" {
+        PivotID "pylon_R02"
+        Offset 0 -0.1716 0.2461
+        Angles 1.8 0 0
+       }
+      }
+     }
+     fireModes {
+      WCS_Armament_WeaponSingleFireMode "{687EBEC98C560901}" {
+       m_iFireIntervalMS 100
+      }
+      WCS_Armament_WeaponSalvoFireMode "{687EBEC98C560903}" {
+       m_iFireIntervalMS 1000
+      }
+     }
+    }
+   }
+  }
+  WCS_Armament_VehicleWeaponStationComponent "{685E632884D689B1}" {
+   Enabled 1
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Turret {
+     Prefab "{8FCC897602A4BEB1}Prefabs/Vehicles/Helicopters/Mi24/VehParts/Weapons/Mi24_Turret_9m114.et"
+    }
+   }
+  }
+  WeaponSlotComponent "{687EBEC98C56091C}" {
+   shouldHandleObstruction 0
+   AttachType InventoryStorageSlot Armament {
+    PivotID "Scene_Root"
+   }
+   WeaponTemplate "{52120E4BA120661B}Prefabs/Weapons/Core/Armament_Empty.et"
+   WeaponSlotIndex 0
+  }
+ }
+}

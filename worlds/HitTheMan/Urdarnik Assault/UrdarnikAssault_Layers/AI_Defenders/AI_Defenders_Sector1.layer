@@ -88,6 +88,34 @@ $grp SCR_DefendWaypoint : "{4ECD14650D82F5CA}Prefabs/AI/Waypoints/AIWaypoint_Loi
   angles 0 32.334 0
   CompletionRadius 5
  }
+ Def_WPSector1_23 {
+  coords 4886.34 4.527 2928.073
+  CompletionRadius 80
+ }
+ Def_WPSector1_24 {
+  coords 5162.211 6.154 2827.021
+  CompletionRadius 80
+ }
+ Def_WPSector1_25 {
+  coords 5837.479 96.409 3607.965
+  CompletionRadius 80
+ }
+ Def_WPSector1_26 {
+  coords 5740.227 9.957 3149.544
+  CompletionRadius 80
+ }
+ Def_WPSector1_27 {
+  coords 5960.685 61.313 3493.424
+  CompletionRadius 80
+ }
+ Def_WPSector1_28 {
+  coords 5885.034 77.031 3527.658
+  CompletionRadius 80
+ }
+ Def_WPSector1_29 {
+  coords 6094.428 11.251 3187.152
+  CompletionRadius 80
+ }
 }
 $grp SCR_AIWaypoint : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
  Move_WPSector1_1 {
@@ -95,6 +123,9 @@ $grp SCR_AIWaypoint : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et
  }
  Move_WPSector1_2 {
   coords 5411.426 64.761 3436.71
+ }
+ Move_WPSector1_3 {
+  coords 5464.832 99.972 3711.537
  }
 }
 $grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
@@ -273,10 +304,10 @@ $grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpaw
    m_useIdleGroups 0
   }
  }
- BRDM_Spawn_Sector2 {
+ T72_Spawn_Sector1 {
   coords 4725.108 27.459 3257.212
   angles -3.194 138.401 0.444
-  m_prefab "{83FC98FFD5D48825}Prefabs/Vehicles/Tracked/T-72A/T72A_NVA.et"
+  m_prefab "{4355537BD75ED98A}worlds/HitTheMan/Prefabs/Vehicles/T72A_Green_AI.et"
   m_conditionFlag "Sector1_2"
   m_spawnTimings {
    30
@@ -320,7 +351,7 @@ $grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpaw
  BMP_Spawn_Sector1 {
   coords 5406.948 65.713 3462.686
   angles 1.282 32.902 2.959
-  m_prefab "{3868E03D9A4AF186}Prefabs/Vehicles/Tracked/BMP1/BMP1P_base.et"
+  m_prefab "{84A2CD45010EC22E}worlds/HitTheMan/Prefabs/Vehicles/BMP1_base_HTM.et"
   m_spawnTimings {
    1
   }
@@ -455,6 +486,148 @@ $grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpaw
   }
   m_waypointNames {
    "Def_WPSector1_22"
+  }
+ }
+ T72_Spawn_Sector2 {
+  coords 5622.382 173.118 4133.855
+  angles -0.613 -134.63 -3.166
+  m_prefab "{4355537BD75ED98A}worlds/HitTheMan/Prefabs/Vehicles/T72A_Green_AI.et"
+  m_conditionFlag "Sector1_2"
+  m_spawnTimings {
+   30
+  }
+  m_waypointNames {
+   "Move_WPSector1_2"
+  }
+  m_crewConfig TILW_CrewConfig "{655288DD15A9F6AC}" {
+   m_crewGroups {
+    TILW_CrewGroup "{651028E34B0E58D9}" {
+     m_crewStations {
+      TILW_CrewStation "{651028E349419D3E}" {
+       m_allowCargo 0
+       m_characters {
+        "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+        "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+        "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+       }
+      }
+     }
+     m_waypointNames {
+      "Move_WPSector1_2"
+     }
+    }
+   }
+   m_noTurretDismount 1
+   m_useIdleGroups 0
+  }
+ }
+ BRDM_Spawn_Wave_3 {
+  coords 4581.833 7.471 2963.513
+  angles -1.665 87.371 2.761
+  m_prefab "{84A2CD45010EC22E}worlds/HitTheMan/Prefabs/Vehicles/BMP1_base_HTM.et"
+  m_conditionFlag "Sector1"
+  m_spawnTimings {
+   1
+  }
+  m_waypointNames {
+   "Move_WPSector1_2"
+  }
+  m_crewConfig TILW_CrewConfig "{655288DD15A9F6AC}" {
+   m_crewGroups {
+    TILW_CrewGroup "{651028E34B0E58D9}" {
+     m_crewStations {
+      TILW_CrewStation "{651028E349419D3E}" {
+       m_allowCargo 0
+       m_characters {
+        "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+        "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+       }
+      }
+     }
+     m_waypointNames {
+      "Move_WPSector1_2"
+     }
+    }
+   }
+   m_noTurretDismount 1
+   m_useIdleGroups 0
+  }
+ }
+ AI_Spawn_Sector1_23 {
+  coords 4845.764 5.719 2908.542
+  angles 0 74.431 0
+  m_prefab "{5736F94D76C26150}Prefabs/Groups/OPFOR/Russia/1980s/Motorised Rifles (BTR-Early)/Group_USSR_MSV80_MotRifleSquad.et"
+  m_spawnTimings {
+   1
+  }
+  m_waypointNames {
+   "Def_WPSector1_23"
+  }
+ }
+ AI_Spawn_Sector1_24 {
+  coords 5121.635 7.346 2807.489
+  angles 0 74.431 0
+  m_prefab "{5736F94D76C26150}Prefabs/Groups/OPFOR/Russia/1980s/Motorised Rifles (BTR-Early)/Group_USSR_MSV80_MotRifleSquad.et"
+  m_spawnTimings {
+   1
+  }
+  m_waypointNames {
+   "Def_WPSector1_24"
+  }
+ }
+ AI_Spawn_Sector1_25 {
+  coords 5796.903 97.601 3588.433
+  angles 0 74.431 0
+  m_prefab "{5736F94D76C26150}Prefabs/Groups/OPFOR/Russia/1980s/Motorised Rifles (BTR-Early)/Group_USSR_MSV80_MotRifleSquad.et"
+  m_spawnTimings {
+   1
+  }
+  m_waypointNames {
+   "Def_WPSector1_25"
+  }
+ }
+ AI_Spawn_Sector1_26 {
+  coords 5699.651 11.149 3130.012
+  angles 0 74.431 0
+  m_prefab "{5736F94D76C26150}Prefabs/Groups/OPFOR/Russia/1980s/Motorised Rifles (BTR-Early)/Group_USSR_MSV80_MotRifleSquad.et"
+  m_spawnTimings {
+   1
+  }
+  m_waypointNames {
+   "Def_WPSector1_26"
+  }
+ }
+ AI_Spawn_Sector1_27 {
+  coords 5920.108 62.505 3473.892
+  angles 0 74.431 0
+  m_prefab "{5736F94D76C26150}Prefabs/Groups/OPFOR/Russia/1980s/Motorised Rifles (BTR-Early)/Group_USSR_MSV80_MotRifleSquad.et"
+  m_spawnTimings {
+   1
+  }
+  m_waypointNames {
+   "Def_WPSector1_27"
+  }
+ }
+ AI_Spawn_Sector1_28 {
+  coords 5844.458 78.223 3508.126
+  angles 0 74.431 0
+  m_prefab "{5736F94D76C26150}Prefabs/Groups/OPFOR/Russia/1980s/Motorised Rifles (BTR-Early)/Group_USSR_MSV80_MotRifleSquad.et"
+  m_spawnTimings {
+   1
+  }
+  m_waypointNames {
+   "Def_WPSector1_28"
+  }
+ }
+ AI_Spawn_Sector1_29 {
+  coords 6053.852 12.443 3167.62
+  angles 0 74.431 0
+  m_prefab "{5736F94D76C26150}Prefabs/Groups/OPFOR/Russia/1980s/Motorised Rifles (BTR-Early)/Group_USSR_MSV80_MotRifleSquad.et"
+  m_spawnTimings {
+   1
+  }
+  m_waypointNames {
+   "Def_WPSector1_29"
   }
  }
 }

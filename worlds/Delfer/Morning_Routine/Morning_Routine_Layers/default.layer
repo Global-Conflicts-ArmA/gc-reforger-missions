@@ -1,0 +1,146 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 2010.978 6.346 2804.216
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 2000.903 6.008 2805.778
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 1
+   m_iStartingMinutes 45
+   m_iSetMonth 1
+  }
+ }
+ coords 2006.52 6.215 2804.748
+ {
+  SCR_FactionManager "66F12D602F290404" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{56DEAC40D3C2E623}" {
+    }
+    SCR_Faction "{61500924662B6062}" {
+    }
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 3333.299 24.48 3186.674
+ m_missionEvents {
+  TILW_MissionEvent "{6704E60C9D69729D}" {
+   m_name "west_pos_taken"
+   m_instructions {
+    TILW_SendMessageInstruction "{6704E60BFF6E3239}" {
+     m_executionDelay 0
+     m_messageTitle "Western Gun Position Secured by Soviets"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6704E60CAF6006B2}" {
+    m_flagName "west"
+   }
+  }
+  TILW_MissionEvent "{6704E60CB5FEBF95}" {
+   m_name "east_pos_taken"
+   m_instructions {
+    TILW_SendMessageInstruction "{6704E60A1392D243}" {
+     m_executionDelay 0
+     m_messageTitle "Eastern Gun Position Secured by Soviets"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6704E60CC87CB0B2}" {
+    m_flagName "east"
+   }
+  }
+  TILW_MissionEvent "{6704E60CC757C568}" {
+   m_name "town_taken"
+   m_instructions {
+    TILW_SendMessageInstruction "{6704E60A2FE7BBCA}" {
+     m_executionDelay 0
+     m_messageTitle "Town Objective Secured by Soviets"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6704E60CDABA7D2E}" {
+    m_flagName "town"
+   }
+  }
+  TILW_MissionEvent "{6704E60954E3B47D}" {
+   m_name "ussr_kia"
+   m_instructions {
+    TILW_SendMessageInstruction "{6704E6096DE95C7E}" {
+     m_executionDelay 0
+     m_messageTitle "Blufor Victory"
+     m_messageBody "USSR has taken 70% casualties"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6704E609B544A76D}" {
+    m_flagName "USSR_killed"
+   }
+  }
+  TILW_MissionEvent "{6704E60804371DA6}" {
+   m_name "uk_kia"
+   m_instructions {
+    TILW_SendMessageInstruction "{6704E60814B6EAAB}" {
+     m_executionDelay 0
+     m_messageTitle "OPFOR Victory"
+     m_messageBody "Blufor has taken 90% casualties"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6704E6081EFFB879}" {
+    m_flagName "UK_killed"
+   }
+  }
+  TILW_MissionEvent "{6704E608735A2D33}" {
+   m_name "time"
+   m_instructions {
+    TILW_SendMessageInstruction "{6704E6088C3658DD}" {
+     m_executionDelay 3000
+     m_messageTitle "Time Limit Reached"
+     m_messageBody "If OPFOR has not captured the town yet, they lose."
+    }
+    TILW_SendMessageInstruction "{6704E608DFED54D4}" {
+     m_executionDelay 2700
+     m_messageTitle "5 Minutes Remaining"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6704E608F0DFE070}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{6704E61745EDC029}" {
+   m_name "opfor_obj_victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{6704E61761813212}" {
+     m_executionDelay 0
+     m_messageTitle "OPFOR Victory"
+     m_messageBody "OPFOR has secured all 3 objectives."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{6704E61751C6DD37}" {
+    m_operands {
+     TILW_LiteralTerm "{6704E617578403C8}" {
+      m_flagName "east"
+     }
+     TILW_LiteralTerm "{6704E61755A43AE0}" {
+      m_flagName "west"
+     }
+     TILW_LiteralTerm "{6704E6176A649540}" {
+      m_flagName "town"
+     }
+    }
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{6704E6091C935C4A}" {
+   m_flagName "USSR_killed"
+   m_factionKey "USSR"
+   m_casualtyRatio 0.7
+  }
+  TILW_FactionPlayersKilledFlag "{6704E609E61FF93C}" {
+   m_flagName "UK_killed"
+   m_factionKey "UK"
+   m_casualtyRatio 0.9
+  }
+ }
+}

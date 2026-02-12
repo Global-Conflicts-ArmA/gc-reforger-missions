@@ -1,0 +1,503 @@
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ {
+  coords 3875.602 101.666 7467.684
+  m_sTitle "Situation"
+  m_sTextData "Enemy:"\
+  "Motorised rifle platoon with BMP-1s and a T-72B vicinity Kelloja."\
+  "Expected to defend in and around the farmstead."\
+  "They may also have use of a dismounted ATGM."\
+  ""\
+  "Friendly:"\
+  "Mechanised infantry platoon with attached cav scout section."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_iOrder 1
+ }
+ {
+  coords 3875.211 101.027 7455.777
+  m_sTitle "Mission"
+  m_sTextData "Attack and secure the farmstead marked Kelloja."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_iOrder 2
+ }
+ {
+  coords 3888.462 100.464 7457.362
+  m_sTitle "Sustainment"
+  m_sTextData "Additional small arms ammo in the vehicles."\
+  "M2 Bradleys also have additional dismounted AT and 4x extra TOWs."\
+  "'M3' Bradleys have 10x extra TOWs."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_iOrder 3
+ }
+ {
+  coords 3888.03 100.848 7445.899
+  m_sTitle "Command and Signal"
+  m_sTextData "Inf platoon net 48MHz"\
+  "Scout net 47Mhz (Optional)"\
+  ""\
+  "Inf platoon HQ - D16"\
+  "Inf platoon PSG - D17"\
+  "Inf plt 1st Squad - D11"\
+  "Inf plt 2nd Squad - D12"\
+  "Inf plt 3rd Squad - D13"\
+  ""\
+  "Scout section lead - K13"\
+  "Scout sect wingman - K14"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_iOrder 4
+ }
+}
+SCR_AIGroup blu_hq : "{3604F255669A4346}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/P/Group_US_1986_BDU_Brad_PLT_HQ_P.et" {
+ components {
+  PS_GroupCallsignAssigner "{6582D12528A64B04}" {
+   m_iCompanyCallsign 3
+   m_iPlatoonCallsign 1
+  }
+ }
+ coords 3819.581 96.752 7510.552
+ angles 0 -179 0
+ m_aUnitPrefabSlots {
+  "{B84BD723E682B978}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Infantry (Woodland)/P/Character_US_1986_BDU_PL_CO_P.et"
+  "{81D3F65CC7054E96}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Infantry (Woodland)/P/Character_US_1986_BDU_PSG_P.et"
+  "{A1AFC251AE26C34E}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Infantry (Woodland)/P/Character_US_1986_BDU_RTO_P.et"
+  "{F841D41888F73D00}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Infantry (Woodland)/P/Character_US_1986_BDU_Medic_P.et"
+  "{F841D41888F73D00}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Infantry (Woodland)/P/Character_US_1986_BDU_Medic_P.et"
+  "{210E86F1B72C72CA}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Brad_Master_Gunner_P.et"
+  "{7B1C194621AD2553}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Brad_Gunner_P.et"
+  "{84045A64127AC7C8}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Brad_Driver_P.et"
+ }
+}
+$grp Tank : "{5CFD8CB5C3E55A4E}Prefabs/Vehicles/Tracked/BFV/M2A2_MERDC.et" {
+ M2A2_MERDC1 {
+  components {
+   SCR_UniversalInventoryStorageComponent "{631366138943B0C8}" {
+    MultiSlots {
+     MultiSlotConfiguration "{63252C15AB3A6F1A}" {
+      SlotTemplate InventoryStorageSlot M16ammo {
+       Prefab "{4D2C1E8F3A81F894}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_4Ball_1Tracer.et"
+      }
+      NumSlots 8
+     }
+     MultiSlotConfiguration "{685E9CE3E3F11932}" {
+      SlotTemplate InventoryStorageSlot m67ammo {
+       Prefab "{4D44C563104F77BB}Prefabs/Weapons/Ammo/BC_Ammo_Rocket_M37A1.et"
+      }
+      NumSlots 4
+     }
+     MultiSlotConfiguration "{685E9CE3E3367BCA}" {
+      SlotTemplate InventoryStorageSlot backpacks {
+       Prefab "{06B68C58B72EAAC6}Prefabs/Items/Equipment/Backpacks/Backpack_ALICE_Medium.et"
+      }
+      NumSlots 2
+     }
+     MultiSlotConfiguration "{68629079880DA464}" {
+      SlotTemplate InventoryStorageSlot cvc {
+       Prefab "{FBFA6A4F1872BC97}Prefabs/Characters/HeadGear/Helmet_CVC_01/Helmet_CVC_02.et"
+      }
+      NumSlots 1
+     }
+     MultiSlotConfiguration "{686290798829BCA7}" {
+      SlotTemplate InventoryStorageSlot pasgt {
+       Prefab "{E685A8D337D36204}Prefabs/Characters/HeadGear/Helmet_PASGT_01/Helmet_PASGT_01_cover_w_goggles.et"
+      }
+     }
+    }
+   }
+  }
+  coords 3815.608 96.565 7503.178
+  angles 0 -179 0
+  m_sAttachmentGroupName "blu_hq"
+ }
+ M2A2_MERDC3 {
+  components {
+   SCR_UniversalInventoryStorageComponent "{631366138943B0C8}" {
+    MultiSlots {
+     MultiSlotConfiguration "{63252C15AB3A6F1A}" {
+      SlotTemplate InventoryStorageSlot M16ammo {
+       Prefab "{4D2C1E8F3A81F894}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_4Ball_1Tracer.et"
+      }
+      NumSlots 8
+     }
+     MultiSlotConfiguration "{685E9CE3D28606CC}" {
+      SlotTemplate InventoryStorageSlot m67ammo {
+       Prefab "{4D44C563104F77BB}Prefabs/Weapons/Ammo/BC_Ammo_Rocket_M37A1.et"
+      }
+      NumSlots 4
+     }
+     MultiSlotConfiguration "{685E9CE3D2D0DE7D}" {
+      SlotTemplate InventoryStorageSlot backpacks {
+       Prefab "{06B68C58B72EAAC6}Prefabs/Items/Equipment/Backpacks/Backpack_ALICE_Medium.et"
+      }
+      NumSlots 2
+     }
+     MultiSlotConfiguration "{68629079FF684D08}" {
+      SlotTemplate InventoryStorageSlot cvc {
+       Prefab "{FBFA6A4F1872BC97}Prefabs/Characters/HeadGear/Helmet_CVC_01/Helmet_CVC_02.et"
+      }
+      NumSlots 1
+     }
+     MultiSlotConfiguration "{68629079C0BAA985}" {
+      SlotTemplate InventoryStorageSlot pasgt {
+       Prefab "{E685A8D337D36204}Prefabs/Characters/HeadGear/Helmet_PASGT_01/Helmet_PASGT_01_cover_w_goggles.et"
+      }
+     }
+    }
+   }
+  }
+  coords 3817.898 97.486 7535.099
+  angles 0 -178 0
+  m_sAttachmentGroupName "blu_12"
+ }
+ M2A2_MERDC2 {
+  components {
+   SCR_UniversalInventoryStorageComponent "{631366138943B0C8}" {
+    MultiSlots {
+     MultiSlotConfiguration "{63252C15AB3A6F1A}" {
+      SlotTemplate InventoryStorageSlot M16ammo {
+       Prefab "{4D2C1E8F3A81F894}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_4Ball_1Tracer.et"
+      }
+      NumSlots 8
+     }
+     MultiSlotConfiguration "{685E9CE3C83E19BC}" {
+      SlotTemplate InventoryStorageSlot m67ammo {
+       Prefab "{4D44C563104F77BB}Prefabs/Weapons/Ammo/BC_Ammo_Rocket_M37A1.et"
+      }
+      NumSlots 4
+     }
+     MultiSlotConfiguration "{685E9CE3C846B014}" {
+      SlotTemplate InventoryStorageSlot backpacks {
+       Prefab "{06B68C58B72EAAC6}Prefabs/Items/Equipment/Backpacks/Backpack_ALICE_Medium.et"
+      }
+      NumSlots 2
+     }
+     MultiSlotConfiguration "{68629079FC7BAC90}" {
+      SlotTemplate InventoryStorageSlot cvc {
+       Prefab "{FBFA6A4F1872BC97}Prefabs/Characters/HeadGear/Helmet_CVC_01/Helmet_CVC_02.et"
+      }
+      NumSlots 1
+     }
+     MultiSlotConfiguration "{68629079FD8C920A}" {
+      SlotTemplate InventoryStorageSlot pasgt {
+       Prefab "{E685A8D337D36204}Prefabs/Characters/HeadGear/Helmet_PASGT_01/Helmet_PASGT_01_cover_w_goggles.et"
+      }
+     }
+    }
+   }
+  }
+  coords 3816.088 97.037 7519.145
+  angles 0 -177 0
+  m_sAttachmentGroupName "blu_11"
+ }
+ M2A2_MERDC4 {
+  components {
+   SCR_UniversalInventoryStorageComponent "{631366138943B0C8}" {
+    MultiSlots {
+     MultiSlotConfiguration "{63252C15AB3A6F1A}" {
+      SlotTemplate InventoryStorageSlot M16ammo {
+       Prefab "{4D2C1E8F3A81F894}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_4Ball_1Tracer.et"
+      }
+      NumSlots 8
+     }
+     MultiSlotConfiguration "{685E9CE3D4F34405}" {
+      SlotTemplate InventoryStorageSlot m67ammo {
+       Prefab "{4D44C563104F77BB}Prefabs/Weapons/Ammo/BC_Ammo_Rocket_M37A1.et"
+      }
+      NumSlots 4
+     }
+     MultiSlotConfiguration "{685E9CE3D432A204}" {
+      SlotTemplate InventoryStorageSlot backpacks {
+       Prefab "{06B68C58B72EAAC6}Prefabs/Items/Equipment/Backpacks/Backpack_ALICE_Medium.et"
+      }
+      NumSlots 2
+     }
+     MultiSlotConfiguration "{68629079C3270A2B}" {
+      SlotTemplate InventoryStorageSlot cvc {
+       Prefab "{FBFA6A4F1872BC97}Prefabs/Characters/HeadGear/Helmet_CVC_01/Helmet_CVC_02.et"
+      }
+      NumSlots 1
+     }
+     MultiSlotConfiguration "{68629079C3714569}" {
+      SlotTemplate InventoryStorageSlot pasgt {
+       Prefab "{E685A8D337D36204}Prefabs/Characters/HeadGear/Helmet_PASGT_01/Helmet_PASGT_01_cover_w_goggles.et"
+      }
+     }
+    }
+   }
+  }
+  coords 3819.089 97.901 7551.878
+  angles 0 -176 0
+  m_sAttachmentGroupName "blu_13"
+ }
+ M2A2_MERDC5 {
+  components {
+   SCR_UniversalInventoryStorageComponent "{631366138943B0C8}" {
+    MultiSlots {
+     MultiSlotConfiguration "{63252C15AB3A6F1A}" {
+      SlotTemplate InventoryStorageSlot M16ammo {
+       Prefab "{4D2C1E8F3A81F894}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_4Ball_1Tracer.et"
+      }
+      NumSlots 8
+     }
+     MultiSlotConfiguration "{631366146EB83641}" {
+      SlotTemplate InventoryStorageSlot UGLammo {
+       Prefab "{06B68C58B72EAAC6}Prefabs/Items/Equipment/Backpacks/Backpack_ALICE_Medium.et"
+      }
+      NumSlots 1
+     }
+     MultiSlotConfiguration "{63252C151AD04D72}" {
+      SlotTemplate InventoryStorageSlot UGLammo {
+       Enabled 0
+       Prefab ""
+      }
+      NumSlots 0
+     }
+     MultiSlotConfiguration "{64F11B25C811ACD3}" {
+      NumSlots 10
+     }
+    }
+   }
+  }
+  coords 3821.446 94.848 7453.103
+  angles 0 166 0
+  m_sAttachmentGroupName "blu_cav1"
+ }
+ M2A2_MERDC6 {
+  components {
+   SCR_UniversalInventoryStorageComponent "{631366138943B0C8}" {
+    MultiSlots {
+     MultiSlotConfiguration "{63252C15AB3A6F1A}" {
+      SlotTemplate InventoryStorageSlot M16ammo {
+       Prefab "{4D2C1E8F3A81F894}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_4Ball_1Tracer.et"
+      }
+      NumSlots 8
+     }
+     MultiSlotConfiguration "{631366146EB83641}" {
+      SlotTemplate InventoryStorageSlot UGLammo {
+       Prefab "{06B68C58B72EAAC6}Prefabs/Items/Equipment/Backpacks/Backpack_ALICE_Medium.et"
+      }
+      NumSlots 1
+     }
+     MultiSlotConfiguration "{63252C151AD04D72}" {
+      SlotTemplate InventoryStorageSlot UGLammo {
+       Enabled 0
+       Prefab ""
+      }
+      NumSlots 0
+     }
+     MultiSlotConfiguration "{64F11B25C811ACD3}" {
+      NumSlots 10
+     }
+    }
+   }
+  }
+  coords 3817.921 95.566 7473.042
+  angles 0 171 0
+  m_sAttachmentGroupName "blu_cav2"
+ }
+}
+PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+   m_factionKeys {
+    "US"
+   }
+   m_useFactionColor 0
+   m_lineWidth 5
+  }
+  TILW_MapShapeComponent "{6508F54F9B461198}" {
+   Enabled 1
+  }
+ }
+ coords 4685.14 76.901 7246.809
+ Points {
+  ShapePoint "{685E9CE0D472C5C6}" {
+   Position -792.493 8.554 -523.84
+  }
+  ShapePoint "{685E9CE552D9CD7E}" {
+   Position -1076.043 10.892 -21.564
+  }
+  ShapePoint "{685E9CE55517F508}" {
+   Position -1076.179 22.314 627.575
+  }
+  ShapePoint "{685E9CE0D7695D83}" {
+   Position -328.687 10.96 933.336
+  }
+  ShapePoint "{685E9CE03EB867E1}" {
+   Position 1760.322 -24.255 935.39
+  }
+  ShapePoint "{685E9CE001CC77A4}" {
+   Position 1774.66 -28.246 869.102
+  }
+  ShapePoint "{685E9CE0014C8712}" {
+   Position 1726.981 -27.725 758.866
+  }
+  ShapePoint "{685E9CE002AA9955}" {
+   Position 1733.471 -27.438 681.532
+  }
+  ShapePoint "{685E9CE0023EAEEF}" {
+   Position 1830.132 -27.4 573.141
+  }
+  ShapePoint "{685E9CE0049B6FBF}" {
+   Position 1872.021 -27.91 405.243
+  }
+  ShapePoint "{685E9CE005BE08BE}" {
+   Position 1880.797 -28.119 237.451
+  }
+  ShapePoint "{685E9CE00529358F}" {
+   Position 1822.601 -27.329 125.102
+  }
+  ShapePoint "{685E9CE0072747DD}" {
+   Position 1663.716 -28.351 102.694
+  }
+  ShapePoint "{685E9CE008F4D2BB}" {
+   Position 1616.581 -27.843 -49.482
+  }
+  ShapePoint "{685E9CE0086E5415}" {
+   Position 1580.344 -27.703 -148.699
+  }
+  ShapePoint "{685E9CE0108727A1}" {
+   Position 1499.396 -27.307 -69.881
+  }
+  ShapePoint "{685E9CE012F3EF85}" {
+   Position 1296.625 -27.869 -91.861
+  }
+  ShapePoint "{685E9CE0133E6946}" {
+   Position 1195.468 -27.536 -57.627
+  }
+  ShapePoint "{685E9CE015A3F1B0}" {
+   Position 1161.248 -27.483 -213.594
+  }
+  ShapePoint "{685E9CE01FFF70B0}" {
+   Position 1112.558 -27.658 -425.124
+  }
+  ShapePoint "{685E9CE064F6C08E}" {
+   Position 1131.502 -27.548 -525.247
+  }
+  ShapePoint "{685E9CE6F04C8EBA}" {
+   Position 943.53 -16.682 -545.89
+  }
+  ShapePoint "{686863864868F63E}" {
+   Position 776.033 -9.118 -651.396
+  }
+  ShapePoint "{6868638666126B30}" {
+   Position 713.907 -10.195 -738.429
+  }
+  ShapePoint "{685E9CE6D7C7E7C2}" {
+   Position 528.969 -2.701 -549.673
+  }
+  ShapePoint "{6868639BAB224ECF}" {
+   Position 263.729 -2.128 -553.166
+  }
+  ShapePoint "{685E9CE63583A5A2}" {
+   Position 150.994 3.436 -527.566
+  }
+  ShapePoint "{685E9CE059E7FBE3}" {
+   Position -239.604 5.07 -720.027
+  }
+ }
+}
+$grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ {
+  coords 3815.516 96.186 7490.974
+  angles 0 90 0
+  m_sImageSet "{1228936E5DB30403}UI/Textures/GroupManagement/FlagIcons/GroupFlagsBlufor.imageset"
+  m_sImageSetGlow ""
+  m_sQuadName "combined"
+  m_fWorldSize 125
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 6157.53 56.312 7477.675
+  m_sImageSet "{7CD99D22C7AE8195}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor.imageset"
+  m_sImageSetGlow ""
+  m_sQuadName "combined"
+  m_fWorldSize 135
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+}
+$grp SCR_AIGroup : "{EFE004C812786001}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/P/Group_US_1986_BDU_Brad_RifleSquad_M67_P.et" {
+ blu_11 {
+  components {
+   PS_GroupCallsignAssigner "{6586943569E22744}" {
+    m_iCompanyCallsign 3
+    m_iPlatoonCallsign 1
+    m_iSquadCallsign 1
+   }
+  }
+  coords 3820.65 97.136 7526.035
+  angles 0 -177 0
+ }
+ blu_12 {
+  components {
+   PS_GroupCallsignAssigner "{6586943569E22744}" {
+    m_iCompanyCallsign 3
+    m_iPlatoonCallsign 1
+    m_iSquadCallsign 2
+   }
+  }
+  coords 3822.126 97.567 7542.384
+  angles 0 -177 0
+ }
+ blu_13 {
+  components {
+   PS_GroupCallsignAssigner "{6586943569E22744}" {
+    m_iCompanyCallsign 3
+    m_iPlatoonCallsign 1
+    m_iSquadCallsign 3
+   }
+  }
+  coords 3822.58 98.065 7559.63
+  angles 0 -177 0
+ }
+ blu_cav1 {
+  components {
+   PS_GroupCallsignAssigner "{6586943569E22744}" {
+    m_iCompanyCallsign 8
+    m_iPlatoonCallsign 1
+    m_iSquadCallsign 3
+   }
+  }
+  coords 3822.197 95.093 7461.191
+  angles 0 164 0
+  m_aUnitPrefabSlots {
+   "{FE6B111EB4724CD1}worlds/James/FuckDitchesGetMoney/Characters/Character_US_1986_BDU_Brad_SectCO_P.et"
+   "{7B1C194621AD2553}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Brad_Gunner_P.et"
+   "{84045A64127AC7C8}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Brad_Driver_P.et"
+   "{F231302875C426AC}worlds/James/FuckDitchesGetMoney/Characters/Character_US_1986_BDU_Brad_ScoutLdr_P.et"
+   "{30CEBE79A6DA88A2}worlds/James/FuckDitchesGetMoney/Characters/Character_US_1986_BDU_Scout_P.et"
+  }
+  m_sCustomNameSet "Cav Scout Squad"
+ }
+ blu_cav2 {
+  components {
+   PS_GroupCallsignAssigner "{6586943569E22744}" {
+    m_iCompanyCallsign 8
+    m_iPlatoonCallsign 1
+    m_iSquadCallsign 4
+   }
+  }
+  coords 3818.92 95.815 7480.937
+  angles 0 174 0
+  m_aUnitPrefabSlots {
+   "{C01756C6A3458385}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Brad_CO_P.et"
+   "{7B1C194621AD2553}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Brad_Gunner_P.et"
+   "{84045A64127AC7C8}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/Mech (Woodland)/P/Character_US_1986_BDU_Brad_Driver_P.et"
+   "{F231302875C426AC}worlds/James/FuckDitchesGetMoney/Characters/Character_US_1986_BDU_Brad_ScoutLdr_P.et"
+   "{30CEBE79A6DA88A2}worlds/James/FuckDitchesGetMoney/Characters/Character_US_1986_BDU_Scout_P.et"
+  }
+  m_sCustomNameSet "Cav Scout Squad"
+ }
+}

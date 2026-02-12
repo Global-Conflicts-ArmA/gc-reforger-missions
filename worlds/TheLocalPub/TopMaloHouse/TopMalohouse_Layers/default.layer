@@ -20,7 +20,7 @@ SCR_AIWorld aiworld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
 PerceptionManager PerceptionManager : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
  coords 3879.681 0 3722.359
 }
-PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_TILWMF.et" {
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
  components {
   SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
    m_iStartingHours 5
@@ -37,55 +37,16 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/
  }
  coords 3781.905 0 3511.617
  m_iFreezeTime 240000
+ m_eJIPState Deny
  {
   SCR_FactionManager "64572C260AFB09D1" {
    ID "5ED9088735FF2D8B"
    Factions {
-    SCR_Faction "{645706246C860479}" : "{0BE3E7B63E7C70AC}worlds/TheLocalPub/TopMaloHouse/Configs/Factions/Argentina.conf" {
+    SCR_Faction "{645706246C860479}" : "{0BE3E7B63E7C70AC}worlds/TheLocalPub/BebbleIslandRaid/Configs/Factions/Argentina.conf" {
     }
    }
   }
  }
-}
-PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
- components {
-  TILW_AOLimitComponent "{6217617AC21DEB7B}" {
-   m_killTimer 10
-   m_factionKeys {
-    "GC_ARG"
-   }
-   m_visibility FACTION
-  }
- }
- coords 10023.67 307.377 2609.305
- Points {
-  ShapePoint "{6457654AC3FBAFE0}" {
-   Position -6.651 -26.702 91.44
-  }
-  ShapePoint "{6457654AC058157D}" {
-   Position 30.32 -8.915 -44.517
-  }
-  ShapePoint "{6457654932217C79}" {
-   Position -191.062 -17.167 -102.253
-  }
-  ShapePoint "{6457654930984D06}" {
-   Position -224.604 -32.889 33.822
-  }
- }
- LineColor 0 0 0 0
-}
-TILW_FactionTriggerEntity capzone : "{8C576D46F6579229}Prefabs/Logic/TILW_FactionTrigger.et" {
- coords 9927.656 304.913 2602.998
- m_queryRadius 18
- m_queryPeriod 60
- m_sendStatusMessages 1
- m_locationName "Top Malo"
- m_flagName "CapZone"
- m_eventsOnlyDuringGame 1
- m_stopAfterFirstChange 1
- m_playersOnly 1
- m_ownerFactionKey "UK"
- m_ratioThreshold 0.6
 }
 TILW_MissionFrameworkEntity Framework : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
  coords 3760.915 0 3678.841

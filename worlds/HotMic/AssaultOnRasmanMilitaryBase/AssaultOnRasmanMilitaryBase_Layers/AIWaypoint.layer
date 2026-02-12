@@ -1,32 +1,38 @@
 SCR_EntityWaypoint AIWaypoint_MainAttack : "{1B0E3436C30FA211}Prefabs/AI/Waypoints/AIWaypoint_Attack.et" {
- coords 5856.466 112.707 11431.896
- CompletionRadius 175
+ coords 6049.167 110.779 11619.877
+ CompletionRadius 15
 }
-TILW_PrefabSpawnerEntity Spawner_Runway_Vehicles : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
- coords 5778.271 109.312 11535.465
- m_prefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
- m_conditionFlag "Spawn BTR Runway"
- m_spawnTimings {
-  0
+AIWaypointCycle BTR_Patrol_Cycle : "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et" {
+ coords 5954.856 109.311 11545.224
+ CycleWaypoints {
+  "BTR_Patrol_1"
+  "BTR_Patrol_2"
+  "BTR_Patrol_3"
  }
- m_crewConfig TILW_CrewConfig "{65E2050ED004B1CD}" {
-  m_crewGroups {
-   TILW_CrewGroup "{65E365E3FF7FEC90}" {
-    m_crewStations {
-     TILW_CrewStation "{65E365E3F872F44E}" {
-      m_allowCargo 0
-      m_characters {
-       "{756CF0BB5ACB956E}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_SL.et" "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et" "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
-      }
-     }
-    }
-    m_waypointNames {
-     "DefendWaypoint_Hangers" "DefendWaypoint_Main_Warehouse_Complex" "DefendWaypoint_North_Warehouse" "DefendWaypoint_Oil_Depots"
-    }
-    m_waypointDelay 180000
-   }
-  }
-  m_noTurretDismount 1
+}
+$grp SCR_AIWaypoint : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
+ Fort_A_Move_Waypoint {
+  coords 6462.487 127.356 11818.913
+  CompletionRadius 10
+ }
+ Fort_B_Move_Waypoint {
+  coords 6379.005 180.156 12294.94
+  CompletionRadius 10
+ }
+ AA_Truck_Move_Waypoint {
+  coords 5358.708 110.368 11680.071
+ }
+ Runway_Move_Waypoint {
+  coords 5940.795 109.313 11582.625
+ }
+ BTR_Patrol_1 {
+  coords 5987.533 109.312 11482.344
+ }
+ BTR_Patrol_2 {
+  coords 6239.555 109.312 11867.686
+ }
+ BTR_Patrol_3 {
+  coords 5813.528 109.312 11707.799
  }
 }
 $grp SCR_DefendWaypoint : "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et" {
@@ -45,4 +51,23 @@ $grp SCR_DefendWaypoint : "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Def
   coords 5987.677 108.969 11947.485
   CompletionRadius 50
  }
+ Fort_A_Defend {
+  coords 6462.884 127.846 11818.84
+  CompletionRadius 35
+ }
+ Fort_B_Defend {
+  coords 6380.925 180.234 12299.551
+  CompletionRadius 35
+ }
+ Fort_C_Defend {
+  coords 5673.127 123.898 11709.971
+  CompletionRadius 40
+ }
+ Fort_D_Defend {
+  coords 5390.695 135.875 10783.619
+  CompletionRadius 35
+ }
+}
+SCR_BoardingWaypoint AI_GetOut_Waypoint : "{C40316EE26846CAB}Prefabs/AI/Waypoints/AIWaypoint_GetOut.et" {
+ coords 5643.373 109.314 11476.979
 }

@@ -1,0 +1,263 @@
+PS_ManualMarker bluMarkerBase : "{676B84E0291E12D6}PrefabsEditable/Markers/Group/Marker_GroupFlagsBlufor_Base.et" {
+ coords 4870.249 28.69 11884.591
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ bluAO {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "UK"
+    }
+    m_ignoredVehicles {
+     "{48F288F5BFF10D8B}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_armed.et"
+    }
+   }
+  }
+  coords 4868.753 28.593 11846.228
+  Points {
+   ShapePoint "{66EF056D7C4ED75C}" {
+    Position -808.573 -1749.322 332.992
+   }
+   ShapePoint "{66EF056D7FD9FC38}" {
+    Position 215.801 0 248.059
+   }
+   ShapePoint "{66EF056D44FB41EA}" {
+    Position 662.009 0 -800.657
+   }
+   ShapePoint "{66EF056D48950A24}" {
+    Position -300.307 0 -808.329
+   }
+  }
+ }
+ opAO {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "GC_IRA"
+    }
+   }
+   TILW_CoverMapComponent "{6473480FCAB7760B}" {
+    Enabled 1
+   }
+  }
+  coords 3858.307 0 9349.982
+  Points {
+   ShapePoint "{66EF056D7FD9FC38}" {
+    Position 63.917 0 240.785
+   }
+   ShapePoint "{66FAE2D3031EF441}" {
+    Position 234.545 0 -143.309
+   }
+   ShapePoint "{66FAE2D303B9FA87}" {
+    Position 2046.267 0 -118.625
+   }
+   ShapePoint "{66FAE2D302ACF293}" {
+    Position 3249.75 0 3424.438
+   }
+   ShapePoint "{66FAE2D3056F75CA}" {
+    Position -471.661 0 3258.584
+   }
+  }
+  LineColor 0.0706 0.1922 0.5608 1
+ }
+}
+TILW_FactionTriggerEntity capZone : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 4903.674 28.594 11843.329
+ m_queryRadius 188.3
+ m_captureTime 600
+ m_sendStatusMessages 1
+ m_locationName "RAF Kirknewton"
+ m_displayTo {
+  "UK"
+  "GC_IRA"
+ }
+ m_flagName "CAPPED"
+ m_stopAfterFirstChange 1
+ m_setShapeColor 0.878 0.937 0.82 1
+ m_playersOnly 1
+ m_ownerFactionKey "GC_IRA"
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 4812.665 27.566 11874.453
+ m_missionEvents {
+  TILW_MissionEvent "{66FB09BFD8FEFFEC}" {
+   m_name "Helicopter Destroyed"
+   m_instructions {
+    TILW_SendMessageInstruction "{66FB09BF87B55FE7}" {
+     m_messageTitle "Helicopter Destroyed"
+     m_messageBody "Scottish Separatists have destroyed a helicopter."
+     m_factionKeys {
+      "UK"
+      "GC_IRA"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{66FB09BE76651869}" {
+    m_flagName "HELI1_DESTROYED"
+   }
+  }
+  TILW_MissionEvent "{66FB09BE403C4FCC}" {
+   m_name "Helicopter Destroyed"
+   m_instructions {
+    TILW_SendMessageInstruction "{66FB09BE5DCFBAA1}" {
+     m_messageTitle "Helicopter Destroyed"
+     m_messageBody "Scottish Separatists have destroyed a helicopter."
+     m_factionKeys {
+      "GC_IRA"
+      "UK"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{66FB09BE2CB17F84}" {
+    m_flagName "HELI2_DESTROYED"
+   }
+  }
+  TILW_MissionEvent "{66FB09BEA515C0CC}" {
+   m_name "UK Dead"
+   m_instructions {
+    TILW_SendMessageInstruction "{66FB09BEAFB381A5}" {
+     m_executionDelay 20
+     m_messageTitle "UK Forces Defeated"
+     m_messageBody "UK Forces are defeated presumed KIA."
+     m_factionKeys {
+      "UK"
+      "GC_IRA"
+     }
+    }
+    TILW_EndGameInstruction "{66FB09BD683D318E}" {
+     m_executionDelay 25
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "UK"
+    }
+    TILW_EndGameInstruction "{66FB09BD5836F138}" {
+     m_executionDelay 25
+     m_factionKey "GC_IRA"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66FB09BEB45A6DB1}" {
+    m_flagName "UK_DEAD"
+   }
+  }
+  TILW_MissionEvent "{66FB09BD221F0D86}" {
+   m_name "Separatists Dead"
+   m_instructions {
+    TILW_SendMessageInstruction "{66FB09BD36F468D5}" {
+     m_executionDelay 20
+     m_messageTitle "Separatist Forces Defeated"
+     m_messageBody "Separatists are defeated presumed KIA."
+     m_factionKeys {
+      "UK"
+      "GC_IRA"
+     }
+    }
+    TILW_EndGameInstruction "{66FB09BD06E3368D}" {
+     m_executionDelay 25
+     m_factionKey "UK"
+    }
+    TILW_EndGameInstruction "{66FB09BD0E86FECF}" {
+     m_executionDelay 25
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "GC_IRA"
+    }
+   }
+   m_condition TILW_LiteralTerm "{66FB09BD2BD2DB6C}" {
+    m_flagName "SCT_DEAD"
+   }
+  }
+  TILW_MissionEvent "{66FB09BDE3CF819F}" {
+   m_name "Time Limit Exceeded"
+   m_instructions {
+    TILW_SendMessageInstruction "{66FB09BDF9815CF3}" {
+     m_executionDelay 5405
+     m_messageTitle "Time limit exceeded"
+     m_messageBody "Time limit exceeded, the UK held the base."
+     m_factionKeys {
+      "UK"
+      "GC_IRA"
+     }
+    }
+    TILW_EndGameInstruction "{66FB09BDB18D8138}" {
+     m_executionDelay 5420
+     m_factionKey "UK"
+    }
+    TILW_EndGameInstruction "{66FB09BDBAA95514}" {
+     m_executionDelay 5420
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "GC_IRA"
+    }
+   }
+  }
+  TILW_MissionEvent "{66FB09BCE5D96499}" {
+   m_name "Separatist Win"
+   m_instructions {
+    TILW_SendMessageInstruction "{66FB09BCEF3CC0EA}" {
+     m_executionDelay 20
+     m_messageTitle "Separatists win"
+     m_messageBody "Separatists have control of RAF Kirknewton."
+     m_factionKeys {
+      "UK"
+      "GC_IRA"
+     }
+    }
+    TILW_EndGameInstruction "{66FB09BC894C2E3F}" {
+     m_executionDelay 25
+     m_factionKey "GC_IRA"
+    }
+    TILW_EndGameInstruction "{66FB09BC91AF02E9}" {
+     m_executionDelay 25
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "UK"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{66FB09BCD46F7FE8}" {
+    m_operands {
+     TILW_LiteralTerm "{66FB09BCDD6D9770}" {
+      m_flagName "HELI1_DESTROYED"
+     }
+     TILW_LiteralTerm "{66FB09BCA3175F3B}" {
+      m_flagName "HELI2_DESTROYED"
+     }
+     TILW_LiteralTerm "{66FB09BCA952A967}" {
+      m_flagName "CAPPED"
+     }
+    }
+   }
+  }
+ }
+ m_factionPlayersKilledFlags {
+  TILW_FactionPlayersKilledFlag "{66FB09BECA3EA4C6}" {
+   m_flagName "UK_DEAD"
+   m_factionKey "UK"
+  }
+  TILW_FactionPlayersKilledFlag "{66FB09BED622E47A}" {
+   m_flagName "SCT_DEAD"
+   m_factionKey "GC_IRA"
+   m_casualtyRatio 0.9
+  }
+ }
+}
+$grp SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ bluSetupZone {
+  coords 4793.488 35.975 11748.647
+  scale 10.177
+  m_fWarnRadius 70
+  m_fZoneRadius 80
+  m_iWarningType SINGLE_PLAYER
+ }
+ opSetupZone {
+  components {
+   SCR_EditableDescriptorComponent "{56D8A3C5A31496AC}" {
+    m_Flags 32835
+   }
+  }
+  coords 4316.004 1.122 9522.897
+  scale 2.877
+  m_fWarnRadius 70
+  m_fZoneRadius 80
+  m_iWarningType SINGLE_PLAYER
+ }
+}
+PS_ManualMarker opMarkerBase : "{BC5F78D7A380E856}PrefabsEditable/Markers/Group/Marker_GroupFlagsIndfor_Base.et" {
+ coords 4324.027 11.766 9538.241
+ m_MarkerColor 0 0.112 0.479 1
+}

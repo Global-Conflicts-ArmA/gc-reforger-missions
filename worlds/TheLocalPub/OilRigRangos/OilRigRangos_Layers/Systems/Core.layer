@@ -1,0 +1,107 @@
+$grp GenericEntity : "{584EB34600E9698D}Prefabs/Utils/Interactions/TILW_SetFlagInteraction.et" {
+ BombDetonator {
+  components {
+   ActionsManagerComponent "{61F4C18E835074FF}" {
+    additionalActions {
+     TILW_BaseInteraction "{61F4C18E863E752C}" {
+      ActionTitle "Detonate bomb"
+      m_actionName "Detonate Bomb"
+      m_factionKeys {
+       "ECO"
+      }
+      m_flagName "DropBomb"
+      m_conditionFlag "UnlockBomb"
+     }
+    }
+   }
+  }
+  coords 4859.477 28.177 1721.992
+ }
+ BombDefuser {
+  components {
+   ActionsManagerComponent "{61F4C18E835074FF}" {
+    additionalActions {
+     TILW_BaseInteraction "{61F4C18E863E752C}" {
+      ActionTitle "DEFUSE BOMB "
+      m_actionName "DEFUSE BOMB "
+      m_factionKeys {
+       "UK"
+      }
+      m_flagName "BombDefused"
+      m_conditionFlag "BombDefuseable"
+     }
+    }
+   }
+  }
+  coords 4859.477 28.177 1721.992
+ }
+}
+PolylineShapeEntity AO : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+   m_killTimer 7
+   m_factionKeys {
+    "ECO"
+   }
+   m_visibility NONE
+  }
+ }
+ coords 4941.531 29.773 1802.574
+ Points {
+  ShapePoint "{673CF981AC37BF40}" {
+   Position -138.121 -92.712 -124.456
+  }
+  ShapePoint "{673CF9B5C1417509}" {
+   Position -137.973 -74.857 -38.608
+  }
+  ShapePoint "{673CF9818D14F4AF}" {
+   Position -28.522 -73.98 -38.872
+  }
+  ShapePoint "{673CF9B546BC52DF}" {
+   Position -28.667 -87.748 -124.632
+  }
+ }
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ BombCapture {
+  coords 4857.448 25.771 1721.827
+  m_queryRadius 9
+  m_captureTime 180
+  m_sendStatusMessages 1
+  m_statusMessages {
+   ""
+   "The %1 have been spotted in the %2."
+   "The %1 are no longer defusing the bomb."
+   "The %1 has lost control of %2."
+   "The %1 is losing control of %2."
+   "The %1 is no longer losing control of %2."
+  }
+  m_locationName "bomb site"
+  m_flagName "BombCaptured"
+  m_eventsOnlyDuringGame 0
+  m_stopAfterFirstChange 1
+  m_drawShapeSurface 0
+  m_drawShapeOutline 0
+  m_playersOnly 1
+  m_ignoredFactions {
+   "ECO"
+  }
+  m_ownerFactionKey "UK"
+ }
+ CivChecker {
+  coords 4856.047 36.843 1727.852
+  m_queryRadius 100
+  m_comparisonMode EQUAL_OR_LESS
+  m_flagName "Hostage<"
+  m_stopAfterFirstChange 1
+  m_drawShapeSurface 0
+  m_drawShapeOutline 0
+  m_playersOnly 1
+  m_ignoredFactions {
+   "UK"
+   "ECO"
+  }
+  m_ownerFactionKey "CIV"
+  m_ratioThreshold 0.49
+ }
+}
