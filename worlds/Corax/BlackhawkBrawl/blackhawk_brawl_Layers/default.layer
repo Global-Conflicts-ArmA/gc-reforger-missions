@@ -1,0 +1,278 @@
+SCR_MapEntity MapEntity1 : "{731564B66F91B107}Prefabs/World/Game/MapEntity.et" {
+ coords 3643.332 281.5 8917.655
+ "Map Geometry Data" "{BF5F2D022EA8CB36}Worlds/Bystrany/Bystrany_Map_v02.topo"
+ "Satellite background image" "{10EB7E9261F936BC}UI/Textures/Map/Worlds/Bystrany/Bystrany_Rasterized_Enhanced.edds"
+}
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{68A0299D9810B6E6}" {
+     NavmeshFile "{E08B16AADAB901D8}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Soldier.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{04F808CEFD545B32}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Vehicle.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{6D7CE9C2F346F22E}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_LowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 3638.333 281.487 8919.712
+}
+PerceptionManager PerceptionManager2 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 4005.072 321.248 7303.822
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 6
+   m_iStartingMinutes 30
+   m_bRandomStartingWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{689B1CA005BD63B3}" {
+     m_sWeatherPresetName "Rainy"
+     m_iStartingHour 5
+     m_iStartingMinutes 45
+    }
+   }
+   m_bRandomWeatherChanges 1
+   m_fFogAmount 0.27
+   m_fFogHeightDensity 0.058
+   m_bUseSpecifiedDate 1
+   m_iSetMonth 4
+   m_iSetYear 1987
+  }
+ }
+ m_iFreezeTime 60000
+}
+GenericEntity : "{2CBCB67BBA49972B}Prefabs/Compositions/Misc/CustomEntities/InteractionPoints/AmmoBoxArsenal_Equipment_US_Gadgets.et" {
+ components {
+  SCR_ArsenalComponent "{589F01C9C8D4A475}" {
+   Enabled 0
+  }
+  SCR_ResourceComponent "{5E5ABDF371AE8B21}" {
+   Enabled 0
+  }
+  UniversalInventoryStorageComponent "{58A17A341AB8F069}" {
+   MultiSlots {
+    MultiSlotConfiguration "{68A043183A04AB10}" {
+     SlotTemplate InventoryStorageSlot binos {
+      Prefab "{0CF54B9A85D8E0D4}Prefabs/Items/Equipment/Binoculars/Binoculars_M22/Binoculars_M22.et"
+     }
+     NumSlots 3
+    }
+   }
+  }
+  SCR_ArsenalInventoryStorageManagerComponent "{58A0B19B1E191CC1}" {
+   Enabled 0
+  }
+ }
+ coords 3376.809 220.469 8445.857
+ angles 0 178.348 0
+}
+$grp SCR_EditorRestrictionZoneEntity : "{6144B0BE2EAC6897}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneMedium.et" {
+ {
+  coords 3741.955 214.39 8305.404
+ }
+ {
+  coords 3381.481 220.385 8444.129
+ }
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "US"
+    }
+    m_visibility FACTION
+   }
+  }
+  coords 3511.511 253.661 8317.312
+  Points {
+   ShapePoint "{68A043193E779740}" {
+    Position -272.394 0 -178.773
+   }
+   ShapePoint "{68A043193DD0B9F8}" {
+    Position -568.369 40.297 284.514
+   }
+   ShapePoint "{68A0E85B3035048B}" {
+    Position -584.554 46.413 736.446
+   }
+   ShapePoint "{68A043192339083A}" {
+    Position -373.233 31.181 774.755
+   }
+   ShapePoint "{68A04319225779C9}" {
+    Position 16.2 54.873 750.796
+   }
+   ShapePoint "{68A043195E0558F9}" {
+    Position 311.266 54.646 736.436
+   }
+   ShapePoint "{68A043195EE11FA8}" {
+    Position 569.03 47.548 802.29
+   }
+   ShapePoint "{68A043195C8F11D6}" {
+    Position 699.887 24.959 648.857
+   }
+   ShapePoint "{68A043195B3538A2}" {
+    Position 711.468 21.629 440.896
+   }
+   ShapePoint "{68A043195979421E}" {
+    Position 677.076 -33.71 -88.113
+   }
+   ShapePoint "{68A043195876AA6E}" {
+    Position 312.03 -14.209 -416.639
+   }
+  }
+ }
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "USSR"
+    }
+    m_visibility FACTION
+   }
+  }
+  coords 3679.659 254.447 8797.072
+  Points {
+   ShapePoint "{68A043193E779740}" {
+    Position -127.142 -65.256 -227.669
+   }
+   ShapePoint "{68A043193DD0B9F8}" {
+    Position -230.773 -57.604 5.256
+   }
+   ShapePoint "{68A0431E0F7CD90A}" {
+    Position -316.698 -49.165 23.851
+   }
+   ShapePoint "{68A043192339083A}" {
+    Position -381.354 -42.56 63.772
+   }
+   ShapePoint "{68A04319B3F88125}" {
+    Position -353.409 33.913 282.672
+   }
+   ShapePoint "{68A04319225779C9}" {
+    Position -172.13 38.667 274.383
+   }
+   ShapePoint "{68A043195E0558F9}" {
+    Position 145.937 38.272 260.296
+   }
+   ShapePoint "{68A043195B3538A2}" {
+    Position 403.946 31.713 331.084
+   }
+   ShapePoint "{68A043195979421E}" {
+    Position 422.829 3.845 44.122
+   }
+   ShapePoint "{68A0431E1D94CED2}" {
+    Position 407.495 -5.505 -18.11
+   }
+   ShapePoint "{68A04319C1DD711E}" {
+    Position 360.599 -15.049 -55.946
+   }
+   ShapePoint "{68A0431E118D0287}" {
+    Position 261.333 -15.017 -138.721
+   }
+   ShapePoint "{68A0431E109F14CF}" {
+    Position 277.739 -60.224 -242.297
+   }
+   ShapePoint "{68A04319C0B0A144}" {
+    Position 239.933 -69.611 -269.271
+   }
+   ShapePoint "{68A04319CF7AEB19}" {
+    Position 40.639 -69.699 -258.438
+   }
+  }
+ }
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    Enabled 0
+    m_useFactionColor 0
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+    m_factionKeys {
+     "US"
+     "USSR"
+    }
+   }
+  }
+  coords 3765.074 239.868 8345.397
+  Points {
+   ShapePoint "{68A043193DD0B9F8}" {
+    Position 980.44 -25.021 -708.737
+   }
+   ShapePoint "{68A043192339083A}" {
+    Position -711.293 7.114 -952.994
+   }
+   ShapePoint "{68A04319B3F88125}" {
+    Position -922.427 72.245 697.021
+   }
+   ShapePoint "{68A04319225779C9}" {
+    Position 765.621 48.077 942.583
+   }
+  }
+ }
+}
+TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 3644.344 266.755 8887.777
+ m_queryRadius 15
+ m_skipFirstQuery 1
+ m_captureTime 20
+ m_locationName "Crash Site"
+ m_displayTo {
+  "US"
+  "USSR"
+ }
+ m_flagName "crashsecure"
+ m_playersOnly 1
+ m_ownerFactionKey "US"
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 3631.627 281.199 8934.523
+ m_missionEvents {
+  TILW_MissionEvent "{68A0F3121601E49E}" {
+   m_instructions {
+    TILW_SendMessageInstruction "{68A0F3121FB18E1C}" {
+     m_messageTitle "US Victory"
+     m_messageBody "Crash Site Secured by US forces"
+    }
+   }
+   m_condition TILW_LiteralTerm "{68A0F312149C49B1}" {
+    m_flagName "crashsecure"
+   }
+  }
+  TILW_MissionEvent "{68A0F3120F5A9210}" {
+   m_instructions {
+    TILW_SendMessageInstruction "{68A0F31209D97C40}" {
+     m_messageTitle "VDV Victory"
+     m_messageBody "US forces have taken to many casualties."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68A0F3120B89C8E7}" {
+    m_flagName "bluded"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{68A0F311E9298C54}" {
+   m_flagName "bluded"
+   m_factionKey "US"
+   m_casualtyRatio 0.8
+  }
+ }
+}
+GenericEntity : "{D8E44F4BA05D8C20}Prefabs/Models/props/tem_uh60_crashed.et" {
+ coords 3645.496 265.84 8883.842
+ angles 3.451 98.476 -0.138
+}
