@@ -35,8 +35,11 @@ PS_GameModeCoop PS_GameMode_Lobby_TILWMF2 : "{4CFD54745CD45673}Prefabs/MP/Modes/
      m_iStartingMinutes 15
     }
    }
+   m_bFogOverride 1
+   m_fFogAmount 0.69
+   m_fFogHeightDensity 0.7
    m_bUseSpecifiedDate 1
-   m_iSetDay 21
+   m_iSetDay 26
    m_iSetMonth 3
    m_iSetYear 1983
    m_bOverrideEnvironment 1
@@ -446,29 +449,35 @@ $grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit
   coords 6036.706 51.948 3596.022
   angles 0.895 0 0
   Points {
-   ShapePoint "{66D4DA0395AE4FA9}" {
-    Position -6010.849 55.906 -3578.708
-   }
    ShapePoint "{66D4DA0389CAA5C9}" {
     Position 6755.243 56.331 -3605.855
    }
    ShapePoint "{66D4DA038D21DCB2}" {
     Position 6665.658 -212.022 2591.639
    }
+   ShapePoint "{6884A671F588B07E}" {
+    Position 5201.559 -244.859 3419.381
+   }
+   ShapePoint "{6884A671F4F5DA76}" {
+    Position 3020.2 -117.256 4113.138
+   }
    ShapePoint "{66D4DA03831FFAD1}" {
     Position 571.392 339.748 3251.807
    }
-   ShapePoint "{66D4DA038789E3B6}" {
-    Position -613.309 -94.86 4435.84
+   ShapePoint "{6884A671FA95378B}" {
+    Position -67.076 328.063 2323.266
    }
-   ShapePoint "{66D4DA0387105674}" {
-    Position -2432.092 -186.504 5132.697
+   ShapePoint "{6884A671F9EDCC8A}" {
+    Position -644.253 252.248 1164.011
    }
-   ShapePoint "{66D4DA0386FE36E8}" {
-    Position -4386.547 -215.714 5247.625
+   ShapePoint "{6884A671F92FAAC6}" {
+    Position -913.014 -37.357 -716.68
    }
-   ShapePoint "{66D4DA0384D1D440}" {
-    Position -6075.438 -76.464 4894.624
+   ShapePoint "{6884A671F85AA75C}" {
+    Position 124.298 -101.474 -2651.873
+   }
+   ShapePoint "{6884A671FE2B0EC4}" {
+    Position 788.503 -145.819 -3474.591
    }
   }
  }
@@ -499,6 +508,18 @@ $grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_
   m_stopAfterFirstChange 1
   m_ownerFactionKey "USSR"
   m_ratioThreshold 0.9
+ }
+ Helicopter_Trigger {
+  coords 11455.882 35.691 1386.24
+  m_queryRadius 3000
+  m_locationName "HQ Building"
+  m_flagName "Helicopters"
+  m_stopAfterFirstChange 1
+  m_drawShapeOutline 0
+  m_setShapeColor 0.502 0 0 1
+  m_playersOnly 1
+  m_ownerFactionKey "USSR"
+  m_ratioThreshold 0.001
  }
 }
 TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
@@ -674,12 +695,77 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
     m_flagName "NorthSector"
    }
   }
+  TILW_MissionEvent "{6884D1CCC6B62CEA}" {
+   m_name "Stinger Spawner"
+   m_instructions {
+    TILW_SendMessageInstruction "{6884D1CCFE6FE7DB}" {
+     m_messageTitle "FIM-Stingers have spawned"
+     m_messageBody "You can find the crate on the road right next to spawnpoint, where your HMMWVs were"
+     m_factionKeys {
+      "GC_CAF"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{6884D1CCF8F62F22}" {
+    m_flagName "Helicopters"
+   }
+  }
+  TILW_MissionEvent "{6884D1D7AEDD8B70}" {
+   m_name "Helo 1 Respawned"
+   m_instructions {
+    TILW_SetFlagInstruction "{6884D1D455A5C34F}" {
+     m_flagName "HeloOne"
+    }
+    TILW_SendMessageInstruction "{6884D1D448BBCD23}" {
+     m_messageTitle "1st Mi-8 Respawned"
+     m_factionKeys {
+      "USSR"
+     }
+    }
+   }
+   m_condition TILW_DisjunctionTerm "{6884D1D7A2B2167F}" {
+    m_operands {
+     TILW_LiteralTerm "{6884D1D7A10E1B40}" {
+      m_flagName "Heli1"
+     }
+     TILW_LiteralTerm "{6884D1D7A0304AF2}" {
+      m_flagName "Heli4"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{6884D1D47C2B4B39}" {
+   m_name "Helo 2 Respawned"
+   m_instructions {
+    TILW_SetFlagInstruction "{6884D1D47C2B4B90}" {
+     m_flagName "HeloOne"
+    }
+    TILW_SendMessageInstruction "{6884D1D47C2B4BAC}" {
+     m_messageTitle "2nd (Last) Mi-8 Respawned"
+     m_factionKeys {
+      "USSR"
+     }
+    }
+   }
+   m_condition TILW_DisjunctionTerm "{6884D1D47C2B4BA8}" {
+    m_operands {
+     TILW_LiteralTerm "{6884D1D47C2B4BAA}" {
+      m_flagName "Heli2"
+     }
+     TILW_LiteralTerm "{6884D1D47C2B4BA5}" {
+      m_flagName "Heli3"
+     }
+    }
+   }
+  }
  }
  m_casualtyFlags {
   TILW_FactionPlayersKilledFlag "{6506E4081586428B}" {
    m_flagName "USSR_CAS"
    m_factionKey "USSR"
    m_casualtyRatio 0.85
+  }
+  TILW_FactionPlayersKilledFlag "{68846DD0FE783255}" {
   }
  }
  m_randomFlags {
