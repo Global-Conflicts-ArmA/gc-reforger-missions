@@ -23,14 +23,39 @@ PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/Per
 PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
  components {
   SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
-   m_bRandomStartingDaytime 1
+   m_iStartingHours 2
    m_iRangeHoursStart 0
    m_iRangeHoursEnd 23
-   m_bRandomStartingWeather 1
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{68B4947F4B854004}" {
+     m_sWeatherPresetName "Rainy"
+     m_iStartingHour 1
+     m_iStartingMinutes 57
+    }
+   }
    m_bRandomWeatherChanges 1
+   m_bUseSpecifiedDate 1
+   m_iSetDay 14
   }
  }
  coords 7152.137 150.655 2639.953
+ {
+  SCR_FactionManager "68B4947211B2E10B" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
 }
 PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
  components {
@@ -69,7 +94,7 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
    m_instructions {
     TILW_EndGameInstruction "{66A672350A556F3E}" {
      m_executionDelay 15
-     m_factionKey "RHS_AFRF"
+     m_factionKey "USSR"
     }
    }
    m_condition TILW_LiteralTerm "{66A6723A583E721D}" {
@@ -81,7 +106,7 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
    m_instructions {
     TILW_EndGameInstruction "{66A6723A6EF5708D}" {
      m_executionDelay 15
-     m_factionKey "RHS_USAF"
+     m_factionKey "US"
     }
    }
    m_condition TILW_LiteralTerm "{66A6723A1D7FF615}" {
@@ -106,7 +131,7 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
    m_instructions {
     TILW_EndGameInstruction "{66A84B9CFF78735D}" {
      m_executionDelay 12
-     m_factionKey "RHS_USAF"
+     m_factionKey "US"
     }
    }
    m_condition TILW_LiteralTerm "{66A84B9CC416E8C2}" {
@@ -117,7 +142,7 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
    m_instructions {
     TILW_SendMessageInstruction "{66A84B9EE00FC500}" {
      m_executionDelay 0
-     m_messageTitle "Army Ranger Victory"
+     m_messageTitle "US VICTORY"
      m_messageBody "The intelligence was extracted."
     }
    }
@@ -129,11 +154,11 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
  m_casualtyFlags {
   TILW_FactionPlayersKilledFlag "{66A67235D34E235E}" {
    m_flagName "Opfor Casualties"
-   m_factionKey "RHS_AFRF"
+   m_factionKey "USSR"
   }
   TILW_FactionPlayersKilledFlag "{66A6723560D2B612}" {
    m_flagName "Blufor Casualties"
-   m_factionKey "RHS_USAF"
+   m_factionKey "US"
   }
  }
  m_randomFlags {
@@ -156,7 +181,4 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
    }
   }
  }
-}
-StaticModelEntity : "{E4DD0292A16CEC49}Prefabs/Structures/Military/Fortifications/Trenches/TrenchOld_03/TrenchOld_03_6m_wood_base.et" {
- coords 7015.249 0 5039.868
 }
