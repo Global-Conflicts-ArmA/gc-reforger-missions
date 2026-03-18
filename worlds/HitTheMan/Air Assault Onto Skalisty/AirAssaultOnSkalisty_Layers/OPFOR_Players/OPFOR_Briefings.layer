@@ -175,6 +175,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   "<b>Capabilities:</b>"\
   "Access to FIM92 Stingers, LAWs"\
   "Vehicles include LAVII & HMMWVs"\
+  "Captured ZU-23s"\
   ""\
   "<b>MLCOA:</b>"\
   "Ambush us as we land on the island, before pulling back."\
@@ -203,7 +204,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   m_sTitle "B. Friendly Forces:"
   m_sTextData "<h2>B. Friendly Forces</h2>"\
   "<b>a. Disposition:</b>"\
-  "All VDV Forces (YOU) are located at the airfield as marked on the map"\
+  "All VDV Forces (YOU) are located at the Ugoldar military base as marked on the map"\
   ""\
   "<b>b. Higher Units Mission:</b>"\
   "Company has been tasked with securing the island of Skalisty"\
@@ -238,13 +239,38 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   coords 2583.295 24.201 5434.933
   m_sTitle "II. Mission (Must Read):"
   m_sTextData "<h2>II: Mission</h2>"\
-  "Secure the island of Skalisty, by securing first either West or North enemy HQ, and then secure the main enemy COY HQ at the center."\
+  "(Not a Hard AO Limit for OPFOR/VDV)"\
   ""\
-  "Each PLT HQ secured, gives us 40x more reinforcements at the airfield to be airlifted to the AO. (We start at 30x Respawns)"\
+  "Secure the island of Skalisty, by securing first either West or North enemy HQ, and then afterwards secure the main enemy COY HQ at the center."\
+  ""\
+  "Each PLT HQ secured, gives us 40x more reinforcements at spawn to be airlifted to the AO. (We start at 30x Respawns)"\
+  ""\
+  "<h2>LOAD ORDER</h2>"\
+  "- Zakuska 1"\
+  "-- 341 PLT HQ"\
+  "-- 341 Squad"\
+  ""\
+  "- Zakuska 2"\
+  "-- 342 Squad"\
+  "-- 343 Squad"\
+  ""\
+  "- Zakuska 3"\
+  "-- 344 PLT HQ"\
+  "-- 344 Squad"\
+  ""\
+  "- Zakuska 4"\
+  "-- 345 Squad"\
+  "-- 346 Squad"\
+  ""\
+  "- Company HQ chooses their bird, Zakuskas or Stavoks"\
   ""\
   ""\
   "Read Mission Notes."\
-  "Intent is to secure the exterior HQs before securing the main COY HQ"
+  "Intent is to secure the exterior HQs before securing the main COY HQ"\
+  ""\
+  "<b>Mission Maker Intent:</b>"\
+  "- Mission COs or any leader will NOT order people out solo or by themselves, there must ALWAYS be a buddy team together if sent out. "\
+  "- IF your team/squad gets wiped and/or you are alone, you will at the BEST of your abilities fall back to last known friendly forces and make contact VERBALLY before regrouping / rejoining another team/squad"
   m_aVisibleForFactions {
    "USSR"
   }
@@ -258,10 +284,10 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   "Air assault onto Skalisty and secure the enemy HQs"\
   ""\
   "2x Mi-24s"\
-  "-- 8x Infantry Capacity Per Mi-24"\
+  "-- 8x Infantry Capacity Per Mi-24 (16x Total)"\
   ""\
   "4x Mi-8s"\
-  "-- 16x Infantry Capacity per Mi-8s"\
+  "-- 16x Infantry Capacity per Mi-8s (64x Total)"\
   ""\
   "<b>1. Concept of the Operation:</b>"\
   "Company Commander's Discretion."\
@@ -282,14 +308,27 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   "<b>a. SOP Variations</b>"\
   "Dress: Standard Soviet Uniform"\
   "Equipment: Standard Soviet Loadout"\
-  "Vehicle Loading:"\
-  "- 1st & 2nd Mi-8 can load 1st PLT"\
-  "- 3rd & 4th Mi-8 can load 2nd PLT"\
   ""\
   "<b>b. Logistical Support:</b>"\
-  "Replen Plan: None for 24h."\
+  "Replen Plan: Replen for Helicopters, Ammo in helicopters."\
   "Ammunition: Each man carries his own ammunition."\
   "IPE: Helmets and body armour are to be worn at all times."\
+  ""\
+  "There are TWO helipads"\
+  "1x Helipad with Mi-8s that ONLY Repairs and Refuels"\
+  "Unlimited Repairs/Refuels"\
+  ""\
+  "1x Helipad with Mi-24 that Repairs, Refuels and Rearms"\
+  "Has 2 400 Supplies to be used to rearm the Mi-24s, recommend using Mi-8's Helipad to repair/refuel"\
+  ""\
+  "Supply Cost for each Weapon Ammo;"\
+  "- 12.7x108mm YakB | 100x rnd = 25x Supplies | 375x For Full Rearm"\
+  "- UPK-23 23x115mm | 10x rnd = 6x Supplies | 300x For Full Rearm"\
+  "- S8-KO 80mm Rockets | 1x rnd = 20x Supplies | 800x For Full Rearm"\
+  "- 9M120 ATAKA ATGM | 1x Rocket = 100 Supplies | 400x For Full Rearm "\
+  "- FLARES | 1x Flare = 1x Supplies | 128x For Full Rearm"\
+  ""\
+  "Full Rearm - 1 643 Supplies"\
   ""\
   "<b>c. Medical:</b>"\
   "Location: Company Aid Post is to be setup by platoon medic."\
@@ -304,10 +343,13 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   "- 1470x 12.7x108mm YakB"\
   "- 500x UPK-23"\
   "- 40x 80mm HEDP S-8KO"\
-  "- 4x 9M120 ATGM"\
+  "- 4x 9M120 ATAKA ATGM"\
   ""\
   "4x Mi-8s"\
-  "- 2x PKMs"
+  "- 2x PKMs"\
+  "Mi-8 also carries:"\
+  "- 30x Rnd of RPK Mags"\
+  "- 100x Rnd of AK Mags"
   m_aVisibleForFactions {
    "USSR"
   }
