@@ -1,0 +1,164 @@
+SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
+ coords 11063.872 35.689 1727.228
+}
+PerceptionManager PerceptionManager2 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 11065.002 35.707 1728.653
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 6
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{68E92C5ADF6290E5}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 6
+    }
+   }
+   m_iDay 10
+   m_iMonth 7
+   m_iYear 2021
+  }
+ }
+ coords 11066.802 35.631 1729.494
+ m_iFreezeTime 300000
+ {
+  SCR_FactionManager "68E92C582820A034" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{68E77549DA32BE83}" {
+        m_sCallsign "5"
+       }
+       SCR_CallsignInfo "{68E77549DA708621}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{68E77549DA93CC67}" {
+        m_sCallsign "7"
+       }
+       SCR_CallsignInfo "{68E77549DAFE2C12}" {
+        m_sCallsign "8"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 11062.122 35.717 1727.173
+ m_missionEvents {
+  TILW_MissionEvent "{68E939455A10A74B}" {
+   m_name "General Died"
+   m_instructions {
+    TILW_SendMessageInstruction "{68E939453BAF9FC8}" {
+     m_messageTitle "Mission End"
+     m_messageBody "The general has died. GM discresion to end mission."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68E939450AFAAA48}" {
+    m_flagName "GENERAL_Killed"
+   }
+  }
+  TILW_MissionEvent "{68E939451F64D70F}" {
+   m_name "BLUFOR Secured General"
+   m_instructions {
+    TILW_SendMessageInstruction "{68E93945F5141B84}" {
+     m_messageTitle "Mission End"
+     m_messageBody "BLUFOR has secured the general for extract. GM discresion to end mission."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68E93945EB2F5D23}" {
+    m_flagName "General_Extract_BLUFOR"
+   }
+  }
+  TILW_MissionEvent "{68E93945C097B2EA}" {
+   m_name "BLUFOR Secured General"
+   m_instructions {
+    TILW_SendMessageInstruction "{68E93945C097B272}" {
+     m_messageTitle "Mission End"
+     m_messageBody "REDFOR has secured the general for extract. GM discresion to end mission."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68E93945C097B274}" {
+    m_flagName "General_Extract_REDFOR"
+   }
+  }
+  TILW_MissionEvent "{68E93945DE3B7737}" {
+   m_name "ION Kills Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{68E93945B6B49323}" {
+     m_messageTitle "Mission End"
+     m_messageBody "ION Security Forces have prevented both BLUFOR and REDFOR from securing the General. ION Victory. GM discresion to end."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{68E93945D8BAA3E6}" {
+    m_operands {
+     TILW_LiteralTerm "{68E93945A07E10A9}" {
+      m_flagName "BLUFOR_Killed"
+     }
+     TILW_LiteralTerm "{68E93945AC1731F2}" {
+      m_flagName "REDFOR_Killed"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{68E9394594BD1AFD}" {
+   m_name "BLUFOR Kills Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{68E9394594BD1A61}" {
+     m_messageTitle "Mission End"
+     m_messageBody "BLUFOR have decimated INDFOR and REDFOR. BLUFOR will secure the General in due time. BLUFOR victory. GM discresion to end."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{68E9394594BD1A65}" {
+    m_operands {
+     TILW_LiteralTerm "{68E9394594BD1A6A}" {
+      m_flagName "INDFOR_Killed"
+     }
+     TILW_LiteralTerm "{68E9394594BD1A69}" {
+      m_flagName "REDFOR_Killed"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{68E9394278B78727}" {
+   m_name "REDFOR Kills Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{68E9394278B784B1}" {
+     m_messageTitle "Mission End"
+     m_messageBody "REDFOR have decimated INDFOR and BLUFOR. REDFOR will secure the General in due time. REDFOR victory. GM discresion to end."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{68E9394278B784B4}" {
+    m_operands {
+     TILW_LiteralTerm "{68E9394278B784BA}" {
+      m_flagName "INDFOR_Killed"
+     }
+     TILW_LiteralTerm "{68E9394278B784B9}" {
+      m_flagName "BLUFOR_Killed"
+     }
+    }
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{68E92C5880F22FEF}" {
+   m_flagName "BLUFOR_Killed"
+   m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{68E92C5895425129}" {
+   m_flagName "REDFOR_Killed"
+   m_factionKey "RHS_AFRF"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{68E92C589AE02BFE}" {
+   m_flagName "INDFOR_Killed"
+   m_factionKey "RHS_ION"
+   m_casualtyRatio 0.95
+  }
+ }
+}
