@@ -1,0 +1,849 @@
+SCR_AIWorld : "{0946C019EBADE117}Prefabs/AI/SCR_AIworld_AL_Hadra.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{689F4B36B4F205B7}" {
+     NavmeshFile "{1479CAC4F3B803FC}Map_data/new/Navmesh/Soldier_navmesh1.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{63F07B2817A33101}Map_data/new/Navmesh/BTRlike_navmesh1.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{99B5FDCC8F6AADBB}Map_data/new/Navmesh/LowRes_navmesh1.nmn"
+    }
+   }
+  }
+ }
+ coords 2120.766 17.843 2088.519
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 3061.403 23.438 2932.104
+}
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ coords 3065.374 23.374 2916.688
+ {
+  SCR_FactionManager "66ECA0B4BF64C8D5" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "1"
+       }
+      }
+      m_sCallsignGroupFormat "%2-%3"
+      m_sCallsignCharacterFormat "%2-%3: %4"
+     }
+    }
+   }
+  }
+ }
+}
+TILW_ExtractionTriggerEntity : "{192ABD6B9232E064}Prefabs/Logic/Triggers/TILW_ExtractionTrigger.et" {
+ coords 2968.062 24.083 2389.774
+ m_queryRadius 47.6
+ m_flagName "US_EXTRACT"
+ m_factionKey "RHS_USAF"
+ m_ratioThreshold 0.8
+}
+PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+   m_factionKeys {
+    "RHS_USAF"
+   }
+   m_ignoredVehicles {
+    "{B8D8076535277E61}Prefabs/Vehicles/Helicopters/AH1S/AH1S_Marines_M299.et"
+    "{B67D806064FA55C6}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed_gunship_x14APKWS_sharkNose_m2_m134.et"
+   }
+  }
+  TILW_MapShapeComponent "{6508F54F9B461198}" {
+   Enabled 1
+  }
+ }
+ coords 4026.795 18.159 2084.631
+ Points {
+  ShapePoint "{646D3D6A3BD0EFBE}" {
+   Position -498.891 0.216 -933.771
+  }
+  ShapePoint "{690407A290F8979D}" {
+   Position 656.087 -19.21 -687.182
+  }
+  ShapePoint "{690407A5207F10DF}" {
+   Position 847.789 -18.566 568.206
+  }
+  ShapePoint "{646D3D6A36D181B8}" {
+   Position 744.901 -6.78 1756.493
+  }
+  ShapePoint "{690407A2A678F3B2}" {
+   Position -644.397 55.158 1005.72
+  }
+  ShapePoint "{646D3D6A303F89C9}" {
+   Position -823.551 72.921 480.83
+  }
+  ShapePoint "{646D3D6A33874B4C}" {
+   Position -825.712 9.538 -255.525
+  }
+ }
+}
+TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 4122.756 17.844 2980.198
+ m_queryRadius 185.5
+ m_flagName "EXTRACT_LOST"
+ m_stopAfterFirstChange 1
+ m_ownerFactionKey "RHS_AFRF"
+ {
+  PolylineShapeEntity : "{A0468F86F76FCEE7}Prefabs/Logic/Map/TILW_MapShape.et" {
+   components {
+    TILW_MapShapeComponent "{6508F5526836BC09}" {
+     m_drawArea 0
+     m_drawLine 1
+    }
+   }
+   coords 4122.756 17.844 2980.198
+   Points {
+    ShapePoint "{690726AFE51A6E79}" {
+     Position -4253.764 -19.058 -2850.19
+    }
+    ShapePoint "{690726AFE3EEBC11}" {
+     Position -4275.633 -17.843 -2877.269
+    }
+    ShapePoint "{690726AFE370CACB}" {
+     Position -4294.417 -17.844 -2909.813
+    }
+    ShapePoint "{690726AFE1FBCDA0}" {
+     Position -4303.957 -17.843 -2943.254
+    }
+    ShapePoint "{690726AFFEDBA5CC}" {
+     Position -4308.057 -17.844 -2978.058
+    }
+    ShapePoint "{690726AFFEB5FA2F}" {
+     Position -4304.868 -17.843 -3016.456
+    }
+    ShapePoint "{690726AFFF7208DB}" {
+     Position -4293.859 -17.844 -3050.576
+    }
+    ShapePoint "{690726AFFCCF662F}" {
+     Position -4277.377 -17.845 -3082.019
+    }
+    ShapePoint "{690726AFFC3C0D40}" {
+     Position -4253.492 -17.893 -3110.993
+    }
+    ShapePoint "{690726AFFDAFAA3A}" {
+     Position -4225.299 -21.282 -3132.65
+    }
+    ShapePoint "{690726AFFB3939A1}" {
+     Position -4191.741 -13.834 -3146.56
+    }
+    ShapePoint "{690726AFF8899411}" {
+     Position -4156.869 -17.843 -3159.502
+    }
+    ShapePoint "{690726AFF857C4B5}" {
+     Position -4121.315 -17.845 -3164.951
+    }
+    ShapePoint "{690726AFF9C8E6C1}" {
+     Position -4085.964 -17.845 -3160.854
+    }
+    ShapePoint "{690726AFF9A6645F}" {
+     Position -4052.029 -17.847 -3149.869
+    }
+    ShapePoint "{690726AFF682CC7F}" {
+     Position -4020.946 -17.846 -3133.361
+    }
+    ShapePoint "{690726AFF64C524F}" {
+     Position -3990.386 -17.845 -3108.268
+    }
+    ShapePoint "{690726AFF75E6AB1}" {
+     Position -3972.917 -17.844 -3080.043
+    }
+    ShapePoint "{690726AFF720F5ED}" {
+     Position -3952.89 -17.844 -3047.291
+    }
+    ShapePoint "{690726AFF4EC0F46}" {
+     Position -3941.659 -17.845 -3017.381
+    }
+    ShapePoint "{690726AFF4B89812}" {
+     Position -3942.228 -17.845 -2998.12
+    }
+    ShapePoint "{690726AFF41702ED}" {
+     Position -3941.114 -17.844 -2975.141
+    }
+    ShapePoint "{690726AFF50AC9A4}" {
+     Position -3946.925 -17.844 -2920.079
+    }
+    ShapePoint "{690726AFF2D4F835}" {
+     Position -3961.792 -17.845 -2886.736
+    }
+    ShapePoint "{690726AFF29E74D5}" {
+     Position -3976.766 -17.844 -2864.27
+    }
+    ShapePoint "{690726AFF2693CA8}" {
+     Position -3995.858 -17.845 -2847.06
+    }
+    ShapePoint "{690726AFF37EA227}" {
+     Position -4035.41 -17.844 -2816.537
+    }
+    ShapePoint "{690726AFF0C8397B}" {
+     Position -4066.066 -17.842 -2802.254
+    }
+    ShapePoint "{690726AFF092724E}" {
+     Position -4091.25 -17.843 -2797.27
+    }
+    ShapePoint "{690726AFF060D5A2}" {
+     Position -4118.554 -17.843 -2792.161
+    }
+    ShapePoint "{690726AFF142E247}" {
+     Position -4153.913 -17.844 -2799.264
+    }
+    ShapePoint "{690726AFF10C2B0E}" {
+     Position -4196.404 -17.844 -2809.634
+    }
+    ShapePoint "{690726AC0EE869F1}" {
+     Position -4229.247 -17.843 -2827.211
+    }
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 3074.013 23.375 2924.384
+ m_missionEvents {
+  TILW_MissionEvent "{646D3D6D6A870402}" {
+   m_name "WAVE_1"
+   m_instructions {
+    TILW_SpawnGroupInstruction "{646D3D6D60452BF5}" {
+     m_executionDelay 180
+     m_prefab "{3D56369D21B1D656}Prefabs/Groups/OPFOR/Russia/2025/Group_AFRF_2025_ElementHQ.et"
+     m_locationName "SpawnPos1"
+     m_waypointNames {
+      "AttackWp"
+     }
+    }
+    TILW_SpawnGroupInstruction "{646D3D6D4E7B2B76}" {
+     m_executionDelay 180
+     m_prefab "{8CA48CA1713330DC}Prefabs/Groups/OPFOR/Russia/2025/Group_AFRF_2025_SquadFull.et"
+     m_locationName "SpawnPos3"
+     m_waypointNames {
+      "AttackWp"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{646D3D6D6587FE85}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{646D3D6D6A6D91F8}" {
+   m_name "WAVE_2"
+   m_instructions {
+    TILW_SpawnGroupInstruction "{646D3D6D60452BF5}" {
+     m_executionDelay 420
+     m_prefab "{5BD9D75C1E44BEC1}Prefabs/Groups/OPFOR/Russia/2025/Group_AFRF_2025_TeamAssault.et"
+     m_locationName "SpawnPos1"
+     m_waypointNames {
+      "AttackWp"
+     }
+    }
+    TILW_SpawnGroupInstruction "{646D3D6D3DD0809C}" {
+     m_executionDelay 420
+     m_prefab "{EFD36538A8307CBB}Prefabs/Groups/OPFOR/Russia/2025/Group_AFRF_2025_TeamMG.et"
+     m_locationName "SpawnPos2"
+     m_waypointNames {
+      "AttackWp"
+     }
+    }
+    TILW_SpawnGroupInstruction "{646D3D6D4E7B2B76}" {
+     m_executionDelay 420
+     m_prefab "{8CA48CA1713330DC}Prefabs/Groups/OPFOR/Russia/2025/Group_AFRF_2025_SquadFull.et"
+     m_locationName "SpawnPos3"
+     m_waypointNames {
+      "AttackWp"
+     }
+    }
+    TILW_SpawnVehicleInstruction "{690407A43AB6AA63}" {
+     m_executionDelay 430
+     m_prefab "{C84FF4497D058530}Prefabs/Vehicles/Wheeled/K17/APC_K17_Epoch_HTM1_AIGunner.et"
+     m_locationName "k1"
+     m_crewConfig TILW_CrewConfig "{690407A4596337AD}" {
+      m_crewGroups {
+       TILW_CrewGroup "{690407A456863E17}" {
+        m_crewStations {
+         TILW_CrewStation "{690407A457BD6AFB}" {
+          m_allowTurret 0
+          m_allowCargo 0
+          m_characters {
+           "{449EF50447FEEF28}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_CrewDriver.et"
+          }
+         }
+         TILW_CrewStation "{690407A457288660}" {
+          m_allowPilot 0
+          m_allowCargo 0
+          m_characters {
+           "{A3B552E46F09E685}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_CrewGunner.et"
+           "{31FC723CD8195339}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_CrewCommander.et"
+          }
+         }
+         TILW_CrewStation "{690407A47332F420}" {
+          m_allowPilot 0
+          m_allowTurret 0
+          m_characters {
+           "{8CD36134DDE97AD5}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_SL.et"
+           "{F1CB8DCCB87A464C}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_SR.et"
+           "{71692B65A6740069}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_Sharpshooter.et"
+           "{E15B902BEF6DD8C6}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_AR.et"
+           "{39F3F9EA96E4C69A}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_AT.et"
+           "{E281010D0D2CA0A2}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_AAT.et"
+           "{17BD4010FDD40BAE}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2025/MSV/Loadouts/Character_AFRF_2025_Rifle_2.et"
+          }
+         }
+        }
+        m_waypointNames {
+         "SBF1"
+        }
+       }
+      }
+     }
+    }
+    TILW_SpawnVehicleInstruction "{690407A8BF0DA622}" {
+     m_executionDelay 460.2
+     m_prefab "{C84FF4497D058530}Prefabs/Vehicles/Wheeled/K17/APC_K17_Epoch_HTM1_AIGunner.et"
+     m_locationName "k2"
+     m_crewConfig TILW_CrewConfig "{690407A8BF0DA7A2}" {
+      m_crewGroups {
+       TILW_CrewGroup "{690407A8BF0DA7AD}" {
+        m_crewStations {
+         TILW_CrewStation "{690407A8BF0DA7AC}" {
+          m_allowTurret 0
+          m_allowCargo 0
+          m_characters {
+           "{449EF50447FEEF28}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_CrewDriver.et"
+          }
+         }
+         TILW_CrewStation "{690407A8BF0DA7AE}" {
+          m_allowPilot 0
+          m_allowCargo 0
+          m_characters {
+           "{A3B552E46F09E685}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_CrewGunner.et"
+           "{31FC723CD8195339}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_CrewCommander.et"
+          }
+         }
+         TILW_CrewStation "{690407A8BF0DA7A9}" {
+          m_allowPilot 0
+          m_allowTurret 0
+          m_characters {
+           "{8CD36134DDE97AD5}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_SL.et"
+           "{F1CB8DCCB87A464C}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_SR.et"
+           "{71692B65A6740069}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_Sharpshooter.et"
+           "{E15B902BEF6DD8C6}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_AR.et"
+           "{39F3F9EA96E4C69A}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_AT.et"
+           "{E281010D0D2CA0A2}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_AAT.et"
+           "{17BD4010FDD40BAE}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2025/MSV/Loadouts/Character_AFRF_2025_Rifle_2.et"
+          }
+         }
+        }
+        m_waypointNames {
+         "SBF2"
+        }
+       }
+      }
+     }
+    }
+    TILW_SpawnVehicleInstruction "{690407A8C2A5D439}" {
+     m_executionDelay 489.4
+     m_prefab "{C84FF4497D058530}Prefabs/Vehicles/Wheeled/K17/APC_K17_Epoch_HTM1_AIGunner.et"
+     m_locationName "k3"
+     m_crewConfig TILW_CrewConfig "{690407A8C2A5D442}" {
+      m_crewGroups {
+       TILW_CrewGroup "{690407A8C2A5D44C}" {
+        m_crewStations {
+         TILW_CrewStation "{690407A8C2A5D44F}" {
+          m_allowTurret 0
+          m_allowCargo 0
+          m_characters {
+           "{449EF50447FEEF28}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_CrewDriver.et"
+          }
+         }
+         TILW_CrewStation "{690407A8C2A5D449}" {
+          m_allowPilot 0
+          m_allowCargo 0
+          m_characters {
+           "{A3B552E46F09E685}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_CrewGunner.et"
+           "{31FC723CD8195339}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_CrewCommander.et"
+          }
+         }
+         TILW_CrewStation "{690407A8C2A5D448}" {
+          m_allowPilot 0
+          m_allowTurret 0
+          m_characters {
+           "{8CD36134DDE97AD5}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_SL.et"
+           "{F1CB8DCCB87A464C}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_SR.et"
+           "{71692B65A6740069}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_Sharpshooter.et"
+           "{E15B902BEF6DD8C6}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_AR.et"
+           "{39F3F9EA96E4C69A}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_AT.et"
+           "{E281010D0D2CA0A2}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_AAT.et"
+           "{17BD4010FDD40BAE}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2025/MSV/Loadouts/Character_AFRF_2025_Rifle_2.et"
+          }
+         }
+        }
+        m_waypointNames {
+         "SBF2"
+        }
+       }
+      }
+     }
+    }
+    TILW_SpawnVehicleInstruction "{690407A4A338B49B}" {
+     m_executionDelay 430
+     m_prefab "{C84FF4497D058530}Prefabs/Vehicles/Wheeled/K17/APC_K17_Epoch_HTM1_AIGunner.et"
+     m_locationName "k4"
+     m_crewConfig TILW_CrewConfig "{690407A4A338A541}" {
+      m_crewGroups {
+       TILW_CrewGroup "{690407A4A338A548}" {
+        m_crewStations {
+         TILW_CrewStation "{690407A4A338A6B5}" {
+          m_allowTurret 0
+          m_allowCargo 0
+          m_characters {
+           "{449EF50447FEEF28}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_CrewDriver.et"
+          }
+         }
+         TILW_CrewStation "{690407A4A338A6B7}" {
+          m_allowPilot 0
+          m_allowCargo 0
+          m_characters {
+           "{A3B552E46F09E685}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_CrewGunner.et"
+           "{31FC723CD8195339}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_CrewCommander.et"
+          }
+         }
+         TILW_CrewStation "{690407A4A338A6B6}" {
+          m_allowPilot 0
+          m_allowTurret 0
+          m_characters {
+           "{8CD36134DDE97AD5}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_SL.et"
+           "{F1CB8DCCB87A464C}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_SR.et"
+           "{71692B65A6740069}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_Sharpshooter.et"
+           "{E15B902BEF6DD8C6}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_AR.et"
+           "{39F3F9EA96E4C69A}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_AT.et"
+           "{E281010D0D2CA0A2}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_AAT.et"
+           "{17BD4010FDD40BAE}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2025/MSV/Loadouts/Character_AFRF_2025_Rifle_2.et"
+          }
+         }
+        }
+        m_waypointNames {
+         "AttackWp"
+        }
+       }
+      }
+     }
+    }
+    TILW_SpawnVehicleInstruction "{690407A8BDADC1FF}" {
+     m_executionDelay 456.4
+     m_prefab "{C84FF4497D058530}Prefabs/Vehicles/Wheeled/K17/APC_K17_Epoch_HTM1_AIGunner.et"
+     m_locationName "k5"
+     m_crewConfig TILW_CrewConfig "{690407A8BDADC174}" {
+      m_crewGroups {
+       TILW_CrewGroup "{690407A8BDADC176}" {
+        m_crewStations {
+         TILW_CrewStation "{690407A8BDADC171}" {
+          m_allowTurret 0
+          m_allowCargo 0
+          m_characters {
+           "{449EF50447FEEF28}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_CrewDriver.et"
+          }
+         }
+         TILW_CrewStation "{690407A8BDADC170}" {
+          m_allowPilot 0
+          m_allowCargo 0
+          m_characters {
+           "{A3B552E46F09E685}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_CrewGunner.et"
+           "{31FC723CD8195339}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_CrewCommander.et"
+          }
+         }
+         TILW_CrewStation "{690407A8BDADC173}" {
+          m_allowPilot 0
+          m_allowTurret 0
+          m_characters {
+           "{8CD36134DDE97AD5}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_SL.et"
+           "{F1CB8DCCB87A464C}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_SR.et"
+           "{71692B65A6740069}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_Sharpshooter.et"
+           "{E15B902BEF6DD8C6}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_AR.et"
+           "{39F3F9EA96E4C69A}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_AT.et"
+           "{E281010D0D2CA0A2}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_AAT.et"
+           "{17BD4010FDD40BAE}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2025/MSV/Loadouts/Character_AFRF_2025_Rifle_2.et"
+          }
+         }
+        }
+        m_waypointNames {
+         "AttackWp"
+        }
+       }
+      }
+     }
+    }
+    TILW_SpawnVehicleInstruction "{690407A8C0A282DF}" {
+     m_executionDelay 463.9
+     m_prefab "{C84FF4497D058530}Prefabs/Vehicles/Wheeled/K17/APC_K17_Epoch_HTM1_AIGunner.et"
+     m_locationName "k6"
+     m_crewConfig TILW_CrewConfig "{690407A8C0A28263}" {
+      m_crewGroups {
+       TILW_CrewGroup "{690407A8C0A28262}" {
+        m_crewStations {
+         TILW_CrewStation "{690407A8C0A2826D}" {
+          m_allowTurret 0
+          m_allowCargo 0
+          m_characters {
+           "{449EF50447FEEF28}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_CrewDriver.et"
+          }
+         }
+         TILW_CrewStation "{690407A8C0A2826F}" {
+          m_allowPilot 0
+          m_allowCargo 0
+          m_characters {
+           "{A3B552E46F09E685}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_CrewGunner.et"
+           "{31FC723CD8195339}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_CrewCommander.et"
+          }
+         }
+         TILW_CrewStation "{690407A8C0A2826E}" {
+          m_allowPilot 0
+          m_allowTurret 0
+          m_characters {
+           "{8CD36134DDE97AD5}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_SL.et"
+           "{F1CB8DCCB87A464C}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_SR.et"
+           "{71692B65A6740069}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_Sharpshooter.et"
+           "{E15B902BEF6DD8C6}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_AR.et"
+           "{39F3F9EA96E4C69A}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_AT.et"
+           "{E281010D0D2CA0A2}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_AAT.et"
+           "{17BD4010FDD40BAE}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2025/MSV/Loadouts/Character_AFRF_2025_Rifle_2.et"
+          }
+         }
+        }
+        m_waypointNames {
+         "AttackWp2"
+        }
+       }
+      }
+     }
+    }
+    TILW_SpawnVehicleInstruction "{690407A4BCEE6DD4}" {
+     m_executionDelay 380.8
+     m_prefab "{C84FF4497D058530}Prefabs/Vehicles/Wheeled/K17/APC_K17_Epoch_HTM1_AIGunner.et"
+     m_locationName "k7"
+     m_crewConfig TILW_CrewConfig "{690407A4BCEE6D7A}" {
+      m_crewGroups {
+       TILW_CrewGroup "{690407A4BCEE6D64}" {
+        m_crewStations {
+         TILW_CrewStation "{690407A4BCEE6D67}" {
+          m_allowTurret 0
+          m_allowCargo 0
+          m_characters {
+           "{449EF50447FEEF28}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_CrewDriver.et"
+          }
+         }
+         TILW_CrewStation "{690407A4BCEE6D60}" {
+          m_allowPilot 0
+          m_allowCargo 0
+          m_characters {
+           "{A3B552E46F09E685}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_CrewGunner.et"
+           "{31FC723CD8195339}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_CrewCommander.et"
+          }
+         }
+         TILW_CrewStation "{690407A4BCEE6D63}" {
+          m_allowPilot 0
+          m_allowTurret 0
+          m_characters {
+           "{8CD36134DDE97AD5}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_SL.et"
+           "{F1CB8DCCB87A464C}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_SR.et"
+           "{71692B65A6740069}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_Sharpshooter.et"
+           "{E15B902BEF6DD8C6}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_AR.et"
+           "{39F3F9EA96E4C69A}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_AT.et"
+           "{E281010D0D2CA0A2}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_AAT.et"
+           "{17BD4010FDD40BAE}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2025/MSV/Loadouts/Character_AFRF_2025_Rifle_2.et"
+          }
+         }
+        }
+        m_waypointNames {
+         "AttackWp2"
+        }
+       }
+      }
+     }
+    }
+    TILW_SpawnVehicleInstruction "{690407A8B878A149}" {
+     m_executionDelay 329.2
+     m_prefab "{C84FF4497D058530}Prefabs/Vehicles/Wheeled/K17/APC_K17_Epoch_HTM1_AIGunner.et"
+     m_locationName "k8"
+     m_crewConfig TILW_CrewConfig "{690407A8B878A2C5}" {
+      m_crewGroups {
+       TILW_CrewGroup "{690407A8B878A2C4}" {
+        m_crewStations {
+         TILW_CrewStation "{690407A8B878A2C7}" {
+          m_allowTurret 0
+          m_allowCargo 0
+          m_characters {
+           "{449EF50447FEEF28}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_CrewDriver.et"
+          }
+         }
+         TILW_CrewStation "{690407A8B878A2C1}" {
+          m_allowPilot 0
+          m_allowCargo 0
+          m_characters {
+           "{A3B552E46F09E685}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_CrewGunner.et"
+           "{31FC723CD8195339}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_CrewCommander.et"
+          }
+         }
+         TILW_CrewStation "{690407A8B878A2C0}" {
+          m_allowPilot 0
+          m_allowTurret 0
+          m_characters {
+           "{8CD36134DDE97AD5}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_SL.et"
+           "{F1CB8DCCB87A464C}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_SR.et"
+           "{71692B65A6740069}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_Sharpshooter.et"
+           "{E15B902BEF6DD8C6}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_AR.et"
+           "{39F3F9EA96E4C69A}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_AT.et"
+           "{E281010D0D2CA0A2}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_AAT.et"
+           "{17BD4010FDD40BAE}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2025/MSV/Loadouts/Character_AFRF_2025_Rifle_2.et"
+          }
+         }
+        }
+        m_waypointNames {
+         "AttackWp2"
+        }
+       }
+      }
+     }
+    }
+    TILW_SpawnVehicleInstruction "{690407A8DF64E842}" {
+     m_executionDelay 555.1
+     m_prefab "{C84FF4497D058530}Prefabs/Vehicles/Wheeled/K17/APC_K17_Epoch_HTM1_AIGunner.et"
+     m_locationName "k9"
+     m_crewConfig TILW_CrewConfig "{690407A8DF64E9DF}" {
+      m_crewGroups {
+       TILW_CrewGroup "{690407A8DF64E9D9}" {
+        m_crewStations {
+         TILW_CrewStation "{690407A8DF64E9D8}" {
+          m_allowTurret 0
+          m_allowCargo 0
+          m_characters {
+           "{449EF50447FEEF28}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_CrewDriver.et"
+          }
+         }
+         TILW_CrewStation "{690407A8DF64E9DA}" {
+          m_allowPilot 0
+          m_allowCargo 0
+          m_characters {
+           "{A3B552E46F09E685}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_CrewGunner.et"
+           "{31FC723CD8195339}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_CrewCommander.et"
+          }
+         }
+         TILW_CrewStation "{690407A8DF64E9C5}" {
+          m_allowPilot 0
+          m_allowTurret 0
+          m_characters {
+           "{8CD36134DDE97AD5}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_SL.et"
+           "{F1CB8DCCB87A464C}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_SR.et"
+           "{71692B65A6740069}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_Sharpshooter.et"
+           "{E15B902BEF6DD8C6}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_AR.et"
+           "{39F3F9EA96E4C69A}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_AT.et"
+           "{E281010D0D2CA0A2}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2018/MSV/Syrian Digital/Character_RHS_AFRF_SyrianDigital_AAT.et"
+           "{17BD4010FDD40BAE}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/2025/MSV/Loadouts/Character_AFRF_2025_Rifle_2.et"
+          }
+         }
+        }
+        m_waypointNames {
+         "AttackWp2"
+        }
+       }
+      }
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{646D3D6D6587FE85}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{646D3D6D6A75F2F3}" {
+   m_name "WAVE_3"
+   m_instructions {
+    TILW_SpawnGroupInstruction "{646D3D6D60452BF5}" {
+     m_executionDelay 600
+     m_prefab "{8CA48CA1713330DC}Prefabs/Groups/OPFOR/Russia/2025/Group_AFRF_2025_SquadFull.et"
+     m_locationName "SpawnPos1"
+     m_waypointNames {
+      "AttackWp"
+     }
+    }
+    TILW_SpawnGroupInstruction "{646D3D6D4E7B2B76}" {
+     m_executionDelay 600
+     m_prefab "{5BD9D75C1E44BEC1}Prefabs/Groups/OPFOR/Russia/2025/Group_AFRF_2025_TeamAssault.et"
+     m_locationName "SpawnPos2"
+     m_waypointNames {
+      "AttackWp"
+     }
+    }
+    TILW_SpawnGroupInstruction "{646D3D6D3DD0809C}" {
+     m_executionDelay 600
+     m_prefab "{5BD9D75C1E44BEC1}Prefabs/Groups/OPFOR/Russia/2025/Group_AFRF_2025_TeamAssault.et"
+     m_locationName "SpawnPos3"
+     m_waypointNames {
+      "AttackWp"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{646D3D6D6587FE85}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{646D3D6DEE304B03}" {
+   m_name "WAVE_4"
+   m_instructions {
+    TILW_SpawnGroupInstruction "{646D3D6D60452BF5}" {
+     m_executionDelay 840
+     m_prefab "{EFD36538A8307CBB}Prefabs/Groups/OPFOR/Russia/2025/Group_AFRF_2025_TeamMG.et"
+     m_locationName "SpawnPos1"
+     m_waypointNames {
+      "AttackWp"
+     }
+    }
+    TILW_SpawnGroupInstruction "{646D3D6D4E7B2B76}" {
+     m_executionDelay 840
+     m_prefab "{EFD36538A8307CBB}Prefabs/Groups/OPFOR/Russia/2025/Group_AFRF_2025_TeamMG.et"
+     m_locationName "SpawnPos2"
+     m_waypointNames {
+      "AttackWp"
+     }
+    }
+    TILW_SpawnGroupInstruction "{646D3D6D3DD0809C}" {
+     m_executionDelay 840
+     m_prefab "{8CA48CA1713330DC}Prefabs/Groups/OPFOR/Russia/2025/Group_AFRF_2025_SquadFull.et"
+     m_locationName "SpawnPos3"
+     m_waypointNames {
+      "AttackWp"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{646D3D6D6587FE85}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{646D3D6DCDC1670E}" {
+   m_name "WAVE_5"
+   m_instructions {
+    TILW_SpawnGroupInstruction "{646D3D6D60452BF5}" {
+     m_executionDelay 1080
+     m_prefab "{8CA48CA1713330DC}Prefabs/Groups/OPFOR/Russia/2025/Group_AFRF_2025_SquadFull.et"
+     m_locationName "SpawnPos1"
+     m_waypointNames {
+      "AttackWp"
+     }
+    }
+    TILW_SpawnGroupInstruction "{646D3D6D4E7B2B76}" {
+     m_executionDelay 1080
+     m_prefab "{8CA48CA1713330DC}Prefabs/Groups/OPFOR/Russia/2025/Group_AFRF_2025_SquadFull.et"
+     m_locationName "SpawnPos2"
+     m_waypointNames {
+      "AttackWp"
+     }
+    }
+    TILW_SpawnGroupInstruction "{646D3D6D3DD0809C}" {
+     m_executionDelay 1080
+     m_prefab "{5BD9D75C1E44BEC1}Prefabs/Groups/OPFOR/Russia/2025/Group_AFRF_2025_TeamAssault.et"
+     m_locationName "SpawnPos3"
+     m_waypointNames {
+      "AttackWp"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{646D3D6D6587FE85}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{646D3D6DD60B04E5}" {
+   m_name "DEF_TIME_LIMIT"
+   m_instructions {
+    TILW_SetFlagInstruction "{646D3D6DAC2BFE11}" {
+     m_executionDelay 1800
+     m_flagName "DEF_TIME_LIMIT"
+    }
+    TILW_SendMessageInstruction "{646D3D6DA14EECE4}" {
+     m_executionDelay 1800
+     m_messageTitle "FALL BACK"
+     m_messageBody "Your delay has been successful for long enough. You can now fall back and regroup at the intersection."
+    }
+   }
+   m_condition TILW_LiteralTerm "{646D3D6DD27DBDA8}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{646D3D6D8D526FC8}" {
+   m_name "US_VICTORY"
+   m_instructions {
+    TILW_SendMessageInstruction "{646D3D6C784D4303}" {
+     m_messageTitle "VICTORY"
+     m_messageBody "You delayed the enemy and have regrouped with the rest of the platoon."
+    }
+    TILW_EndGameInstruction "{646D3D6C720A1A3A}" {
+     m_executionDelay 15
+     m_factionKey "RHS_USAF"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{646D3D6D922C1F8D}" {
+    m_operands {
+     TILW_LiteralTerm "{646D3D6D933D9177}" {
+      m_flagName "DEF_TIME_LIMIT"
+     }
+     TILW_LiteralTerm "{646D3D6C6C77B8FC}" {
+      m_flagName "US_EXTRACT"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{646D3D672F3DD1E0}" {
+   m_name "EXTRACT_LOST"
+   m_instructions {
+    TILW_SendMessageInstruction "{646D3D672509C68D}" {
+     m_messageTitle "DEFEAT"
+     m_messageBody "Russian forces have overrun the bus station."
+    }
+    TILW_EndGameInstruction "{646D3D673DEE44CC}" {
+     m_executionDelay 15
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "RHS_USAF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{646D3D672A5C719A}" {
+    m_flagName "EXTRACT_LOST"
+   }
+  }
+  TILW_MissionEvent "{646D3D6739C1FEAC}" {
+   m_name "US_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{646D3D670DE5FBB6}" {
+     m_messageTitle "DEFEAT"
+     m_messageBody "Your element has taken significant casualties. GAMEOVER"
+    }
+    TILW_EndGameInstruction "{646D3D670A328E96}" {
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "RHS_USAF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{646D3D6734465AA9}" {
+    m_flagName "US_KIA"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{646D3D673655E5B6}" {
+   m_flagName "US_KIA"
+   m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.8
+  }
+ }
+}
