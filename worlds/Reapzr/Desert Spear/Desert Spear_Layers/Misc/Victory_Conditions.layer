@@ -1,0 +1,264 @@
+GenericEntity : "{1681E653246EBB7D}Prefabs/Props/Civilian/Computer_E_01/Computer_E_01_base.et" {
+ coords 2571.879 201.717 3786.763
+ angles 0 -154.56 0
+}
+$grp SCR_DestructibleBuildingEntity : "{34C1AEC1879CBB34}Prefabs/Structures/Bulding/Military/fort_artillery_nest_ep1.et" {
+ {
+  coords 2580.618 164.471 3779.074
+  angles 0 -57.628 0
+ }
+ {
+  coords 2583.232 163.63 3802.683
+  angles 0 -132.799 0
+ }
+}
+GenericEntity : "{584EB34600E9698D}Prefabs/Utils/Interactions/TILW_SetFlagInteraction.et" {
+ components {
+  ActionsManagerComponent "{61F4C18E835074FF}" {
+   additionalActions {
+    TILW_BaseInteraction "{61F4C18E863E752C}" {
+     ActionTitle "Confirm Jammer Disconnect"
+     m_actionName "Confirm Jammer is Disconnected"
+     m_factionKeys {
+      "RHS_USAF"
+     }
+     m_flagName "JAMMER"
+    }
+   }
+  }
+ }
+ coords 2571.765 201.981 3786.63
+ angles 0 1.083 0
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ {
+  coords 2568.755 160.275 3785.004
+  m_queryRadius 8
+  m_sendStatusMessages 1
+  m_statusMessages {
+   "Coalition Forces Have Breached the Base of the Radio Tower!"
+   ""
+   ""
+   ""
+   ""
+   ""
+  }
+  m_locationName ""
+  m_displayTo {
+   "RHS_USAF"
+  }
+  m_flagName "RT_REACHED"
+  m_stopAfterFirstChange 1
+  m_playersOnly 1
+  m_ownerFactionKey "RHS_USAF"
+ }
+ {
+  coords 4188.797 17.894 4522.899
+  m_queryRadius 50
+  m_sendStatusMessages 1
+  m_statusMessages {
+   "Delta Has Breached the Base of the Radio Tower!"
+   ""
+   ""
+   ""
+   ""
+   ""
+  }
+  m_locationName ""
+  m_displayTo {
+   "RHS_USAF"
+  }
+  m_flagName "RT_REACHED"
+  m_stopAfterFirstChange 1
+  m_playersOnly 1
+  m_ownerFactionKey "RHS_USAF"
+ }
+ {
+  coords 4466.422 35.007 4523.687
+  m_queryRadius 50
+  m_sendStatusMessages 1
+  m_statusMessages {
+   "Coalition Forces are Breaching the Al Hadra Compound!"
+   ""
+   ""
+   ""
+   ""
+   ""
+  }
+  m_locationName ""
+  m_displayTo {
+   "RHS_USAF"
+   "UK"
+   "GC_MUJ"
+  }
+  m_flagName "BREACH"
+  m_stopAfterFirstChange 1
+  m_playersOnly 1
+  m_ownerFactionKey "RHS_USAF"
+ }
+ {
+  coords 4552.936 17.845 4617.06
+  m_queryRadius 50
+  m_sendStatusMessages 1
+  m_statusMessages {
+   "Coalition Forces are Breaching the Al Hadra Compound!"
+   ""
+   ""
+   ""
+   ""
+   ""
+  }
+  m_locationName ""
+  m_displayTo {
+   "RHS_USAF"
+   "UK"
+   "GC_MUJ"
+  }
+  m_flagName "BREACH"
+  m_stopAfterFirstChange 1
+  m_playersOnly 1
+  m_ownerFactionKey "RHS_USAF"
+ }
+ {
+  coords 4638.008 24.369 4829.427
+  m_queryRadius 50
+  m_sendStatusMessages 1
+  m_statusMessages {
+   "Coalition Forces are Breaching the Al Hadra Compound!"
+   ""
+   ""
+   ""
+   ""
+   ""
+  }
+  m_locationName ""
+  m_displayTo {
+   "RHS_USAF"
+   "UK"
+   "GC_MUJ"
+  }
+  m_flagName "BREACH"
+  m_stopAfterFirstChange 1
+  m_playersOnly 1
+  m_ownerFactionKey "RHS_USAF"
+ }
+ {
+  coords 4392.365 17.844 4786.207
+  m_queryRadius 50
+  m_sendStatusMessages 1
+  m_statusMessages {
+   "Coalition Forces are Breaching the Al Hadra Compound!"
+   ""
+   ""
+   ""
+   ""
+   ""
+  }
+  m_locationName ""
+  m_displayTo {
+   "RHS_USAF"
+   "UK"
+   "GC_MUJ"
+  }
+  m_flagName "BREACH"
+  m_stopAfterFirstChange 1
+  m_playersOnly 1
+  m_ownerFactionKey "RHS_USAF"
+ }
+ {
+  coords 4307.291 17.844 4699.021
+  m_queryRadius 50
+  m_sendStatusMessages 1
+  m_statusMessages {
+   "Coalition Forces are Breaching the Al Hadra Compound!"
+   ""
+   ""
+   ""
+   ""
+   ""
+  }
+  m_locationName ""
+  m_displayTo {
+   "RHS_USAF"
+   "UK"
+   "GC_MUJ"
+  }
+  m_flagName "BREACH"
+  m_stopAfterFirstChange 1
+  m_playersOnly 1
+  m_ownerFactionKey "RHS_USAF"
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 2553.797 162.993 3801.115
+ m_missionEvents {
+  TILW_MissionEvent "{68EB1997260B2F4A}" {
+   m_name "Jammer Disabled"
+   m_instructions {
+    TILW_SendMessageInstruction "{68EB19973608CD05}" {
+     m_executionDelay 10
+     m_messageTitle "Jammer Disabled"
+     m_messageBody "Coalition Forces Have Disabled the Drone Jammer at the Radio Tower!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{68EB198D8362784E}" {
+    m_flagName "JAMMER"
+   }
+  }
+  TILW_MissionEvent "{68EB1996455E7C9A}" {
+   m_name "UK Dead"
+   m_instructions {
+    TILW_SendMessageInstruction "{68EB199657A0A037}" {
+     m_executionDelay 10
+     m_messageTitle "UK Forces Have Been Eliminated"
+     m_messageBody "All UK soliders are KIA. Complete your mission!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{68EB198E4F7231B2}" {
+    m_flagName "UK_DEAD"
+   }
+  }
+  TILW_MissionEvent "{68EB199690FA440A}" {
+   m_name "MUJ DEAD"
+   m_instructions {
+    TILW_SendMessageInstruction "{68EB1996975678C7}" {
+     m_executionDelay 10
+     m_messageTitle "Afghani Forces Have Been Eliminated from Al Hadra Compound"
+     m_messageBody "Coalition Forces - Finish Your Mission!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{68EB198C3CEA090F}" {
+    m_flagName "MUJ_DEAD"
+   }
+  }
+  TILW_MissionEvent "{68EB1996D5E2133F}" {
+   m_name "US DEAD"
+   m_instructions {
+    TILW_SendMessageInstruction "{68EB1996D9CF8041}" {
+     m_executionDelay 10
+     m_messageTitle "INDFOR VICTORY!"
+     m_messageBody "Coalition Forces Have Been Decisively Degraded"
+    }
+   }
+   m_condition TILW_LiteralTerm "{68EB198F90374F39}" {
+    m_flagName "US_DEAD"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{68EB1996321A7D17}" {
+   m_flagName "UK_DEAD"
+   m_factionKey "UK"
+  }
+  TILW_FactionPlayersKilledFlag "{68EB19967F9975C3}" {
+   m_flagName "MUJ_DEAD"
+   m_factionKey "GC_MUJ"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{68EB1996C62EA488}" {
+   m_flagName "US_DEAD"
+   m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.8
+  }
+ }
+}
