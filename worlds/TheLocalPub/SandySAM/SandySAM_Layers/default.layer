@@ -47,6 +47,22 @@ PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_G
  }
  coords 789.421 20.474 5653.896
  m_iFreezeTime 120000
+ {
+  SCR_FactionManager "692F3AED2862069F" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{61500924662B6062}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{69292DC27B56E166}" {
+        m_sCallsign "H"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
 }
 TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
  coords 815.583 21.657 5707.861
@@ -117,6 +133,15 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
       "UK"
      }
     }
+    TILW_SendMessageInstruction "{692F3AE7B961298E}" {
+     m_messageTitle "Reinforcements inbound!"
+     m_messageBody "Roger we're on the way. We've got squads approaching from the south, south-west, and west."\
+     "Holdout, help will be with you shortly."\
+     "Out."
+     m_factionKeys {
+      "GC_IRAQ"
+     }
+    }
    }
    m_condition TILW_MinjunctionTerm "{691D4A1C5ED12F39}" {
     m_operands {
@@ -137,6 +162,24 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
       }
      }
     }
+   }
+  }
+  TILW_MissionEvent "{692F3AE616577B7F}" {
+   m_name "IraqiDeadAdminMsg"
+   m_instructions {
+    TILW_SendMessageInstruction "{692F3AE6022DDFC2}" {
+     m_executionDelay 1
+     m_messageTitle "ADMIN MESSAGE"
+     m_messageBody "Iraqi player forces are largely combat ineffective."\
+     "This does <b>NOT</b> determine the outcome of the mission."\
+     "From this point, if Iraqi AI forces are also largely destroyed, the GM may either:"\
+     "• Call a BLUFOR extraction victory (Major or Minor, based on objectives completed), or"\
+     "• Allow the mission to continue and play out until extraction."
+     m_adminOnly 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{692F3AE6006EEFC1}" {
+    m_flagName "IraqiPlayersDead"
    }
   }
   TILW_MissionEvent "{692100A6591C4963}" {
@@ -291,16 +334,35 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
     }
    }
   }
+  TILW_MissionEvent "{692F3AE286E1D74D}" {
+   m_name "OPFORWin"
+   m_instructions {
+    TILW_SendMessageInstruction "{692F3AE2F0CD0A00}" {
+     m_messageTitle "IRAQI VICTORY!"
+     m_messageBody "We've taken a right beating."\
+     "Those who remain have chosen to flee "
+     m_factionKeys {
+      "UK"
+     }
+    }
+    TILW_SendMessageInstruction "{692F3AE2F6C7BF09}" {
+    }
+   }
+   m_condition TILW_LiteralTerm "{692F3AE2F4E0B1E1}" {
+    m_flagName "UKDead"
+   }
+  }
  }
  m_casualtyFlags {
   TILW_FactionPlayersKilledFlag "{692100A2E8749FB6}" {
    m_flagName "IraqiPlayersDead"
    m_factionKey "GC_IRAQ"
+   m_casualtyRatio 0.9
   }
   TILW_FactionPlayersKilledFlag "{692100A2CA7BD3F6}" {
    m_flagName "UKDead"
    m_factionKey "UK"
-   m_casualtyRatio 0.75
+   m_casualtyRatio 0.8
   }
  }
 }
