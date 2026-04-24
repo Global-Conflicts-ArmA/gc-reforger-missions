@@ -1,0 +1,1275 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 4600.619 17.875 10633.706
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 4599.754 17.912 10636.355
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ components {
+  GC_CommandosManager "{691080D344BD9507}" {
+   m_objectives {
+    GC_CommandosTracker "{691080D3487D1AC4}" {
+     m_name "STM"
+     m_objectiveCompletedMsg ""
+     m_briefingDescription ""
+     m_markerPrefab "{8244C31CF993A0C7}worlds/chllboy/Trifecta/Prefabs/Module_marker.et"
+     m_briefingPrefab ""
+     m_updateDelay 180
+    }
+   }
+  }
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{691C83A674C02713}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 20
+     m_iStartingMinutes 45
+    }
+   }
+   m_iDay 3
+   m_iMonth 8
+   m_iYear 2020
+   m_bUseSpecifiedDate 1
+   m_iSetDay 15
+   m_iSetYear 2025
+  }
+ }
+ coords 4592.964 17.985 10643.017
+ m_iFreezeTime 120000
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 4216.218 17.711 10556.732
+ m_missionEvents {
+  TILW_MissionEvent "{69148820044A47C5}" {
+   m_name "DECRYPTION_KEY_FULL_MARKER"
+   m_instructions {
+    TILW_EditMapItemInstruction "{691488202E630919}" {
+     m_itemNames {
+      "STMMARK"
+     }
+     m_factionVisibility {
+      TILW_FactionVisibility "{69148820EB9475EE}" {
+       m_factionKey "FIA"
+       m_visible 1
+      }
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{69148820FCFA8A88}" {
+    m_flagName "SIGNAL_FULL"
+   }
+  }
+  TILW_MissionEvent "{6914882C747A8CAD}" {
+   m_name "DECRYPTION_KEY_1"
+   m_instructions {
+    TILW_SendMessageInstruction "{69148831898D1C78}" {
+     m_messageTitle "DECRYPTION KEY PART RECOVERED 1/8"
+     m_factionKeys {
+      "FIA"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{691488319592B16D}" {
+    m_flagName "SIGNAL_1"
+   }
+  }
+  TILW_MissionEvent "{691488327913862F}" {
+   m_name "DECRYPTION_KEY_2"
+   m_instructions {
+    TILW_SendMessageInstruction "{6914883279138674}" {
+     m_messageTitle "DECRYPTION KEY PART RECOVERED 2/8"
+     m_factionKeys {
+      "FIA"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{6914883279138670}" {
+    m_flagName "SIGNAL_2"
+   }
+  }
+  TILW_MissionEvent "{691488327E764B68}" {
+   m_name "DECRYPTION_KEY_3"
+   m_instructions {
+    TILW_SendMessageInstruction "{691488327E764AB6}" {
+     m_messageTitle "DECRYPTION KEY PART RECOVERED 3/8"
+     m_factionKeys {
+      "FIA"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{691488327E764AB2}" {
+    m_flagName "SIGNAL_3"
+   }
+  }
+  TILW_MissionEvent "{691488327F558BDE}" {
+   m_name "DECRYPTION_KEY_4"
+   m_instructions {
+    TILW_SendMessageInstruction "{691488327F558B27}" {
+     m_messageTitle "DECRYPTION KEY PART RECOVERED 4/8"
+     m_factionKeys {
+      "FIA"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{691488327F558B23}" {
+    m_flagName "SIGNAL_4"
+   }
+  }
+  TILW_MissionEvent "{691488327C7A52C3}" {
+   m_name "DECRYPTION_KEY_5"
+   m_instructions {
+    TILW_SendMessageInstruction "{691488327C7A5237}" {
+     m_messageTitle "DECRYPTION KEY PART RECOVERED 5/8"
+     m_factionKeys {
+      "FIA"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{691488327C7A5232}" {
+    m_flagName "SIGNAL_5"
+   }
+  }
+  TILW_MissionEvent "{691488327D44985C}" {
+   m_name "DECRYPTION_KEY_6"
+   m_instructions {
+    TILW_SendMessageInstruction "{691488327D449FAA}" {
+     m_messageTitle "DECRYPTION KEY PART RECOVERED 6/8"
+     m_factionKeys {
+      "FIA"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{691488327D449FA6}" {
+    m_flagName "SIGNAL_6"
+   }
+  }
+  TILW_MissionEvent "{6914883272B08C18}" {
+   m_name "DECRYPTION_KEY_7"
+   m_instructions {
+    TILW_SendMessageInstruction "{6914883272B08C66}" {
+     m_messageTitle "DECRYPTION KEY PART RECOVERED 7/8"
+     m_factionKeys {
+      "FIA"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{6914883272B08C7C}" {
+    m_flagName "SIGNAL_7"
+   }
+  }
+  TILW_MissionEvent "{6914883273D8D3BC}" {
+   m_name "DECRYPTION_KEY_FULL"
+   m_instructions {
+    TILW_SendMessageInstruction "{6914883273D8D307}" {
+     m_messageTitle "DECRYPTION KEY ACQUIRED"
+     m_factionKeys {
+      "FIA"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{6914883273D8D303}" {
+    m_flagName "SIGNAL_FULL"
+   }
+  }
+  TILW_MissionEvent "{6914F2FD69F08B8A}" {
+   m_name "STM_HARBOUR_EX"
+   m_instructions {
+    TILW_ReactivateEventsInstruction "{6916B224C523D15F}" {
+     m_executionDelay 0
+     m_eventNames {
+      "STM_NOT_IN_HARBOUR"
+     }
+    }
+    TILW_SpawnPrefabInstruction "{6916B225AB066D8B}" {
+     m_executionDelay 0
+     m_prefab "{24B24161E870CE7B}worlds/chllboy/Trifecta/Prefabs/ION_HARBOUR_EXTRACT.et"
+     m_locationName "HARBOUR_EX"
+     m_setEntityName "ION_HARBOUR_EX"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6916B237E844556D}" {
+    m_flagName "STM_IN_HARBOUR"
+   }
+  }
+  TILW_MissionEvent "{691554C09B28EA2F}" {
+   m_name "STM_NOT_IN_HARBOUR"
+   m_instructions {
+    TILW_ClearFlagInstruction "{6916B2241C6201C1}" {
+     m_executionDelay 0
+     m_flagName "STM_IN_HARBOUR"
+    }
+    TILW_ReactivateEventsInstruction "{6916B225331A59D8}" {
+     m_executionDelay 0
+     m_eventNames {
+      "STM_HARBOUR_EX"
+     }
+    }
+    TILW_DeleteEntitiesInstruction "{6916B226633573E7}" {
+     m_executionDelay 0
+     m_entityNames {
+      "ION_HARBOUR_EX"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{6916B23785E2237F}" {
+    m_invertTerm 1
+    m_flagName "STM_IN_HARBOUR"
+   }
+  }
+  TILW_MissionEvent "{6916B22EAF2F5C86}" {
+   m_name "STM_BEACH_EX"
+   m_instructions {
+    TILW_ReactivateEventsInstruction "{6916B22EAF2F5C74}" {
+     m_executionDelay 0
+     m_eventNames {
+      "STM_NOT_IN_BEACH"
+     }
+    }
+    TILW_SpawnPrefabInstruction "{6916B22EAF2F5C75}" {
+     m_executionDelay 0
+     m_prefab "{9C8ABD5BDB78B4E8}worlds/chllboy/Trifecta/Prefabs/ION_BEACH_EXTRACT.et"
+     m_locationName "BEACH_EX"
+     m_setEntityName "ION_BEACH_EX"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6916B22EAF2F5C70}" {
+    m_flagName "STM_IN_BEACH"
+   }
+  }
+  TILW_MissionEvent "{6916B22EB4F006FC}" {
+   m_name "STM_NOT_IN_BEACH"
+   m_instructions {
+    TILW_ClearFlagInstruction "{6916B22EB4F00653}" {
+     m_executionDelay 0
+     m_flagName "STM_IN_BEACH"
+    }
+    TILW_ReactivateEventsInstruction "{6916B22EB4F0065E}" {
+     m_executionDelay 0
+     m_eventNames {
+      "STM_BEACH_EX"
+     }
+    }
+    TILW_DeleteEntitiesInstruction "{6916B22EB4F00658}" {
+     m_executionDelay 0
+     m_entityNames {
+      "ION_BEACH_EX"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{6916B22EB4F0065A}" {
+    m_invertTerm 1
+    m_flagName "STM_IN_BEACH"
+   }
+  }
+  TILW_MissionEvent "{6918A160FB69080F}" {
+   m_name "STM_KERMOVAN_EX"
+   m_instructions {
+    TILW_ReactivateEventsInstruction "{6918A160FB69E42A}" {
+     m_executionDelay 0
+     m_eventNames {
+      "STM_NOT_IN_KERMOVAN"
+     }
+    }
+    TILW_SpawnPrefabInstruction "{6918A160FB69E434}" {
+     m_executionDelay 0
+     m_prefab "{E0CC1F1AECDAEDB3}worlds/chllboy/Trifecta/Prefabs/AFRF_KERMOVAN_EX.et"
+     m_locationName "KERMOVAN_EX"
+     m_setEntityName "AFRF_KERMOVAN_EX"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6918A160FB69E437}" {
+    m_flagName "STM_IN_KERMOVAN"
+   }
+  }
+  TILW_MissionEvent "{6918A16085F9FA5F}" {
+   m_name "STM_NOT_IN_KERMOVAN"
+   m_instructions {
+    TILW_ClearFlagInstruction "{6918A16085F9FA3A}" {
+     m_executionDelay 0
+     m_flagName "STM_IN_KERMOVAN"
+    }
+    TILW_ReactivateEventsInstruction "{6918A16085F9FBC6}" {
+     m_executionDelay 0
+     m_eventNames {
+      "STM_KERMOVAN_EX"
+     }
+    }
+    TILW_DeleteEntitiesInstruction "{6918A16085F9FBC2}" {
+     m_executionDelay 0
+     m_entityNames {
+      "AFRF_KERMOVAN_EX"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{6918A16085F9FBCC}" {
+    m_invertTerm 1
+    m_flagName "STM_IN_KERMOVAN"
+   }
+  }
+  TILW_MissionEvent "{6918A16B2E555ACF}" {
+   m_name "STM_BOAT_EX"
+   m_instructions {
+    TILW_ReactivateEventsInstruction "{6918A16B2E555A45}" {
+     m_executionDelay 0
+     m_eventNames {
+      "STM_NOT_IN_BOAT"
+     }
+    }
+    TILW_SpawnPrefabInstruction "{6918A16B2E555A47}" {
+     m_executionDelay 0
+     m_prefab "{DFC65F8E60D54E83}worlds/chllboy/Trifecta/Prefabs/AFRF_BOAT_EX.et"
+     m_locationName "BOAT_EX"
+     m_setEntityName "AFRF_BOAT_EX"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6918A16B2E555A41}" {
+    m_flagName "STM_IN_BOAT"
+   }
+  }
+  TILW_MissionEvent "{6918A16B2BD03995}" {
+   m_name "STM_NOT_IN_BOAT"
+   m_instructions {
+    TILW_ClearFlagInstruction "{6918A16B2BD0397F}" {
+     m_executionDelay 0
+     m_flagName "STM_IN_BOAT"
+    }
+    TILW_ReactivateEventsInstruction "{6918A16B2BD03905}" {
+     m_executionDelay 0
+     m_eventNames {
+      "STM_BOAT_EX"
+     }
+    }
+    TILW_DeleteEntitiesInstruction "{6918A16B2BD03906}" {
+     m_executionDelay 0
+     m_entityNames {
+      "AFRF_BOAT_EX"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{6918A16B2BD03900}" {
+    m_invertTerm 1
+    m_flagName "STM_IN_BOAT"
+   }
+  }
+  TILW_MissionEvent "{6918A16DED5F7EE3}" {
+   m_name "STM_MIL_EX"
+   m_instructions {
+    TILW_ReactivateEventsInstruction "{6918A16DED5F7E4C}" {
+     m_executionDelay 0
+     m_eventNames {
+      "STM_NOT_IN_MIL"
+     }
+    }
+    TILW_SpawnPrefabInstruction "{6918A16DED5F7E48}" {
+     m_executionDelay 0
+     m_prefab "{E214CD324D84F76E}worlds/chllboy/Trifecta/Prefabs/FIA_MIL_EX.et"
+     m_locationName "MIL_EX"
+     m_setEntityName "FIA_MIL_EX"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6918A16DED5F7E4A}" {
+    m_flagName "STM_IN_MIL"
+   }
+  }
+  TILW_MissionEvent "{6918A16DE2953525}" {
+   m_name "STM_NOT_IN_MIL"
+   m_instructions {
+    TILW_ClearFlagInstruction "{6918A16DE2953287}" {
+     m_executionDelay 0
+     m_flagName "STM_IN_MIL"
+    }
+    TILW_ReactivateEventsInstruction "{6918A16DE2953283}" {
+     m_executionDelay 0
+     m_eventNames {
+      "STM_MIL_EX"
+     }
+    }
+    TILW_DeleteEntitiesInstruction "{6918A16DE295328C}" {
+     m_executionDelay 0
+     m_entityNames {
+      "FIA_MIL_EX"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{6918A16DE295328E}" {
+    m_invertTerm 1
+    m_flagName "STM_IN_MIL"
+   }
+  }
+  TILW_MissionEvent "{6918A16FD10C6576}" {
+   m_name "POS1"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{6918A16F8375695B}" {
+     m_executionDelay 0
+     m_prefab "{75851785A28EBCA0}worlds/chllboy/Trifecta/Prefabs/STM.et"
+     m_locationName "POSITION1"
+     m_setEntityName "STM"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6918A16FFA12983D}" {
+    m_flagName "POS1"
+   }
+   m_pregameEvent 1
+  }
+  TILW_MissionEvent "{6918A16FE91334DD}" {
+   m_name "POS2"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{6918A171D869C01C}" {
+     m_executionDelay 0
+     m_prefab "{75851785A28EBCA0}worlds/chllboy/Trifecta/Prefabs/STM.et"
+     m_locationName "POSITION2"
+     m_setEntityName "STM"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6918A171D245F1A0}" {
+    m_flagName "POS2"
+   }
+   m_pregameEvent 1
+  }
+  TILW_MissionEvent "{6918A16FE8062403}" {
+   m_name "POS3"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{6918A171FCEC23D8}" {
+     m_executionDelay 0
+     m_prefab "{75851785A28EBCA0}worlds/chllboy/Trifecta/Prefabs/STM.et"
+     m_locationName "POSITION3"
+     m_setEntityName "STM"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6918A171868A26B4}" {
+    m_flagName "POS3"
+   }
+   m_pregameEvent 1
+  }
+  TILW_MissionEvent "{6918A16FEB63DB55}" {
+   m_name "POS4"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{6918A171AC046045}" {
+     m_executionDelay 0
+     m_prefab "{75851785A28EBCA0}worlds/chllboy/Trifecta/Prefabs/STM.et"
+     m_locationName "POSITION4"
+     m_setEntityName "STM"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6918A171A6D88426}" {
+    m_flagName "POS4"
+   }
+   m_pregameEvent 1
+  }
+  TILW_MissionEvent "{6918A16FEA6465B9}" {
+   m_name "POS5"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{6918A171BAA6E740}" {
+     m_executionDelay 0
+     m_prefab "{75851785A28EBCA0}worlds/chllboy/Trifecta/Prefabs/STM.et"
+     m_locationName "POSITION5"
+     m_setEntityName "STM"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6918A170495CE542}" {
+    m_flagName "POS5"
+   }
+   m_pregameEvent 1
+  }
+  TILW_MissionEvent "{6918A144C6030A39}" {
+   m_name "FIA_WIN_CAS"
+   m_instructions {
+    TILW_SendMessageInstruction "{6918A144D653B22F}" {
+     m_messageTitle "FIA VICTORY"
+     m_messageBody "Both ION and PATRIOT forces have taken devastating casualties and cannot continue the operation."
+     m_factionKeys {
+      "RHS_AFRF"
+      "RHS_ION"
+      "FIA"
+     }
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{6918A144A0B508F5}" {
+    m_operands {
+     TILW_LiteralTerm "{6918A144AD608CEF}" {
+      m_flagName "ION_DEAD"
+     }
+     TILW_LiteralTerm "{6918A144AFE8DDCC}" {
+      m_flagName "PATRIOT_DEAD"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{6918A144BC8D9A83}" {
+   m_name "ION_WIN_CAS"
+   m_instructions {
+    TILW_SendMessageInstruction "{6918A144BC8D9A77}" {
+     m_messageTitle "ION VICTORY"
+     m_messageBody "Both FIA and PATRIOT forces have taken devastating casualties and cannot continue the operation."
+     m_factionKeys {
+      "RHS_AFRF"
+      "RHS_ION"
+      "FIA"
+     }
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{6918A144BC8D9A72}" {
+    m_operands {
+     TILW_LiteralTerm "{6918A144BC8D9A73}" {
+      m_flagName "FIA_DEAD"
+     }
+     TILW_LiteralTerm "{6918A144BC8D9A7C}" {
+      m_flagName "PATRIOT_DEAD"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{6918A1475DBF7F9E}" {
+   m_name "PATRIOT_WIN_CAS"
+   m_instructions {
+    TILW_SendMessageInstruction "{6918A1475DBF7F0B}" {
+     m_messageTitle "PATRIOT VICTORY"
+     m_messageBody "Both FIA and ION forces have taken devastating casualties and cannot continue the operation."
+     m_factionKeys {
+      "RHS_AFRF"
+      "RHS_ION"
+      "FIA"
+     }
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{6918A1475DBF7F16}" {
+    m_operands {
+     TILW_LiteralTerm "{6918A1475DBF7F17}" {
+      m_flagName "FIA_DEAD"
+     }
+     TILW_LiteralTerm "{6918A1475DBF7F10}" {
+      m_flagName "ION_DEAD"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{6918A14823454E76}" {
+   m_name "mark1"
+   m_instructions {
+    TILW_EditMapItemInstruction "{6918A148309046B0}" {
+     m_itemNames {
+      "mark1"
+     }
+     m_factionVisibility {
+      TILW_FactionVisibility "{6918A148C301B905}" {
+       m_factionKey "FIA"
+      }
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{6918A148DE864F72}" {
+    m_flagName "PART_1"
+   }
+  }
+  TILW_MissionEvent "{6918A148F82335C0}" {
+   m_name "mark2"
+   m_instructions {
+    TILW_EditMapItemInstruction "{6918A148F82335A0}" {
+     m_itemNames {
+      "mark2"
+     }
+     m_factionVisibility {
+      TILW_FactionVisibility "{6918A148F82335A1}" {
+       m_factionKey "FIA"
+      }
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{6918A148F82335AC}" {
+    m_flagName "PART_2"
+   }
+  }
+  TILW_MissionEvent "{6918A1489E98957A}" {
+   m_name "mark3"
+   m_instructions {
+    TILW_EditMapItemInstruction "{6918A1489E989280}" {
+     m_itemNames {
+      "mark3"
+     }
+     m_factionVisibility {
+      TILW_FactionVisibility "{6918A1489E989282}" {
+       m_factionKey "FIA"
+      }
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{6918A1489E98928E}" {
+    m_flagName "PART_3"
+   }
+  }
+  TILW_MissionEvent "{6918A148B874314E}" {
+   m_name "mark4"
+   m_instructions {
+    TILW_EditMapItemInstruction "{6918A148B874311B}" {
+     m_itemNames {
+      "mark4"
+     }
+     m_factionVisibility {
+      TILW_FactionVisibility "{6918A148B8743124}" {
+       m_factionKey "FIA"
+      }
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{6918A148B8743120}" {
+    m_flagName "PART_4"
+   }
+  }
+  TILW_MissionEvent "{6918A14B69D94208}" {
+   m_name "mark5"
+   m_instructions {
+    TILW_EditMapItemInstruction "{6918A14B69D943FA}" {
+     m_itemNames {
+      "mark5"
+     }
+     m_factionVisibility {
+      TILW_FactionVisibility "{6918A14B69D94384}" {
+       m_factionKey "FIA"
+      }
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{6918A14B69D94380}" {
+    m_flagName "PART_5"
+   }
+  }
+  TILW_MissionEvent "{6918A14B021F6272}" {
+   m_name "mark6"
+   m_instructions {
+    TILW_EditMapItemInstruction "{6918A14B021F63C3}" {
+     m_itemNames {
+      "mark6"
+     }
+     m_factionVisibility {
+      TILW_FactionVisibility "{6918A14B021F63CD}" {
+       m_factionKey "FIA"
+      }
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{6918A14B021F63C8}" {
+    m_flagName "PART_6"
+   }
+  }
+  TILW_MissionEvent "{6918A14B3743B61D}" {
+   m_name "mark7"
+   m_instructions {
+    TILW_EditMapItemInstruction "{6918A14B3743B7F9}" {
+     m_itemNames {
+      "mark7"
+     }
+     m_factionVisibility {
+      TILW_FactionVisibility "{6918A14B3743B784}" {
+       m_factionKey "FIA"
+      }
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{6918A14B3743B787}" {
+    m_flagName "PART_7"
+   }
+  }
+  TILW_MissionEvent "{6918A14BD1855E10}" {
+   m_name "mark8"
+   m_instructions {
+    TILW_EditMapItemInstruction "{6918A14BD1855FEF}" {
+     m_itemNames {
+      "mark8"
+     }
+     m_factionVisibility {
+      TILW_FactionVisibility "{6918A14BD1855FE9}" {
+       m_factionKey "FIA"
+      }
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{6918A14BD1855FF4}" {
+    m_flagName "PART_8"
+   }
+  }
+  TILW_MissionEvent "{691B326440C9E61A}" {
+   m_name "RANDMONA1"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{691B3264511DB556}" {
+     m_executionDelay 0
+     m_prefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
+     m_locationName "R1"
+    }
+   }
+   m_condition TILW_LiteralTerm "{691B326F61964DFA}" {
+    m_flagName "R1"
+   }
+   m_pregameEvent 1
+  }
+  TILW_MissionEvent "{691B326418546A81}" {
+   m_name "RANDMONA2"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{691B32641854592B}" {
+     m_executionDelay 0
+     m_prefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+     m_locationName "R2"
+    }
+   }
+   m_condition TILW_LiteralTerm "{691B326F6FDAD8B8}" {
+    m_flagName "R2"
+   }
+   m_pregameEvent 1
+  }
+  TILW_MissionEvent "{691B326B4C8B9708}" {
+   m_name "RANDMONA3"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{691B326B4C8B94DB}" {
+     m_executionDelay 0
+     m_prefab "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
+     m_locationName "R3"
+    }
+   }
+   m_condition TILW_LiteralTerm "{691B326F6AA75235}" {
+    m_flagName "R3"
+   }
+   m_pregameEvent 1
+  }
+  TILW_MissionEvent "{691B326B1D3A0BCF}" {
+   m_name "RANDMONA4"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{691B326B1D3A0B89}" {
+     m_executionDelay 0
+     m_prefab "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+     m_locationName "R4"
+    }
+   }
+   m_condition TILW_LiteralTerm "{691B326F70EC383F}" {
+    m_flagName "R4"
+   }
+   m_pregameEvent 1
+  }
+  TILW_MissionEvent "{691B326BE42AF401}" {
+   m_name "RANDMONA5"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{691B326BE42AF5D9}" {
+     m_executionDelay 0
+     m_prefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+     m_locationName "R5"
+    }
+   }
+   m_condition TILW_LiteralTerm "{691B326F7F5B38F5}" {
+    m_flagName "R5"
+   }
+   m_pregameEvent 1
+  }
+  TILW_MissionEvent "{691B326BA7AB19E5}" {
+   m_name "RANDMONA6"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{691B326BA7AB19AA}" {
+     m_executionDelay 0
+     m_prefab "{1B0D46B41C50873D}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_Randomized.et"
+     m_locationName "R6"
+    }
+   }
+   m_condition TILW_LiteralTerm "{691B326F0466E6B8}" {
+    m_flagName "R6"
+   }
+   m_pregameEvent 1
+  }
+  TILW_MissionEvent "{691B326A6D057784}" {
+   m_name "RANDMONA7"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{691B326A6D057741}" {
+     m_executionDelay 0
+     m_prefab "{C7CE8044B5E301F5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport_CIV_randomized.et"
+     m_locationName "R7"
+    }
+   }
+   m_condition TILW_LiteralTerm "{691B326F0247AD57}" {
+    m_flagName "R7"
+   }
+   m_pregameEvent 1
+  }
+  TILW_MissionEvent "{691B326A29E6374B}" {
+   m_name "RANDMONA8"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{691B326A29E63728}" {
+     m_executionDelay 0
+     m_prefab "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
+     m_locationName "R8"
+    }
+   }
+   m_condition TILW_LiteralTerm "{691B326F08651B3F}" {
+    m_flagName "R8"
+   }
+   m_pregameEvent 1
+  }
+  TILW_MissionEvent "{691B326AEA7A61A9}" {
+   m_name "RANDMONA9"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{691B326AEA7A6173}" {
+     m_executionDelay 0
+     m_prefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
+     m_locationName "R9"
+    }
+   }
+   m_condition TILW_LiteralTerm "{691B326F174EDCDE}" {
+    m_flagName "R9"
+   }
+   m_pregameEvent 1
+  }
+  TILW_MissionEvent "{691B3269764A3615}" {
+   m_name "RANDMONA10"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{691B3269764A37E4}" {
+     m_executionDelay 0
+     m_prefab "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+     m_locationName "RZ10"
+    }
+   }
+   m_condition TILW_LiteralTerm "{691B326F1DC4AEE0}" {
+    m_flagName "R10"
+   }
+   m_pregameEvent 1
+  }
+  TILW_MissionEvent "{691B3269DA023E2F}" {
+   m_name "RANDMONA11"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{691B3269DA023FF5}" {
+     m_executionDelay 0
+     m_prefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+     m_locationName "RZ11"
+    }
+   }
+   m_condition TILW_LiteralTerm "{691B326F186648C2}" {
+    m_flagName "R11"
+   }
+   m_pregameEvent 1
+  }
+  TILW_MissionEvent "{691B32684C73AFCE}" {
+   m_name "RANDMONA12"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{691B32684C73AFA6}" {
+     m_executionDelay 0
+     m_prefab "{1B0D46B41C50873D}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_Randomized.et"
+     m_locationName "RZ12"
+    }
+   }
+   m_condition TILW_LiteralTerm "{691B326F268FE14F}" {
+    m_flagName "R12"
+   }
+   m_pregameEvent 1
+  }
+  TILW_MissionEvent "{69271368F6B80E25}" {
+   m_name "SETUP_OVER"
+   m_instructions {
+    TILW_SetFlagInstruction "{69271368F36308CD}" {
+     m_executionDelay 120
+     m_flagName "SETUP_OVER"
+    }
+   }
+   m_condition TILW_LiteralTerm "{69271368F11D0671}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{6918A144695E66AF}" {
+   m_flagName "FIA_DEAD"
+   m_factionKey "FIA"
+   m_casualtyRatio 0.95
+  }
+  TILW_FactionPlayersKilledFlag "{6918A144183114C4}" {
+   m_flagName "PATRIOT_DEAD"
+   m_factionKey "RHS_AFRF"
+   m_casualtyRatio 0.95
+  }
+  TILW_FactionPlayersKilledFlag "{6918A1442B5EEFAE}" {
+   m_flagName "ION_DEAD"
+   m_factionKey "RHS_ION"
+   m_casualtyRatio 0.95
+  }
+ }
+ m_metaFlags {
+  TILW_MetaFlag "{6914882C237F040D}" {
+   m_flagName "SIGNAL_1"
+   m_definition TILW_MatchjunctionTerm "{6914882CD707648F}" {
+    m_operands {
+     TILW_LiteralTerm "{6914882CE36079DD}" {
+      m_flagName "PART_1"
+     }
+     TILW_LiteralTerm "{691488314CD524BF}" {
+      m_flagName "PART_2"
+     }
+     TILW_LiteralTerm "{6914883140FFD727}" {
+      m_flagName "PART_3"
+     }
+     TILW_LiteralTerm "{69148831466EEA04}" {
+      m_flagName "PART_4"
+     }
+     TILW_LiteralTerm "{69148831479C1CF9}" {
+      m_flagName "PART_5"
+     }
+     TILW_LiteralTerm "{6914883145317ACC}" {
+      m_flagName "PART_6"
+     }
+     TILW_LiteralTerm "{6914882CF5FDB1F8}" {
+      m_flagName "PART_7"
+     }
+     TILW_LiteralTerm "{69148830B9E33D02}" {
+      m_flagName "PART_8"
+     }
+    }
+   }
+  }
+  TILW_MetaFlag "{691488312C88C19B}" {
+   m_flagName "SIGNAL_2"
+   m_definition TILW_MatchjunctionTerm "{691488312C88C10D}" {
+    m_operands {
+     TILW_LiteralTerm "{691488312C88C109}" {
+      m_flagName "PART_1"
+     }
+     TILW_LiteralTerm "{691488312C88C10B}" {
+      m_flagName "PART_2"
+     }
+     TILW_LiteralTerm "{691488312C88C105}" {
+      m_flagName "PART_3"
+     }
+     TILW_LiteralTerm "{691488312C88C101}" {
+      m_flagName "PART_4"
+     }
+     TILW_LiteralTerm "{691488312C88C100}" {
+      m_flagName "PART_5"
+     }
+     TILW_LiteralTerm "{691488312C88C103}" {
+      m_flagName "PART_6"
+     }
+     TILW_LiteralTerm "{691488312C88C102}" {
+      m_flagName "PART_7"
+     }
+     TILW_LiteralTerm "{691488312C88C11D}" {
+      m_flagName "PART_8"
+     }
+    }
+    m_matchTrue 2
+   }
+  }
+  TILW_MetaFlag "{691488312DE7BFC2}" {
+   m_flagName "SIGNAL_3"
+   m_definition TILW_MatchjunctionTerm "{691488312DE7BF4C}" {
+    m_operands {
+     TILW_LiteralTerm "{691488312DE7BF4F}" {
+      m_flagName "PART_1"
+     }
+     TILW_LiteralTerm "{691488312DE7BF49}" {
+      m_flagName "PART_2"
+     }
+     TILW_LiteralTerm "{691488312DE7BF4B}" {
+      m_flagName "PART_3"
+     }
+     TILW_LiteralTerm "{691488312DE7BF4A}" {
+      m_flagName "PART_4"
+     }
+     TILW_LiteralTerm "{691488312DE7BF45}" {
+      m_flagName "PART_5"
+     }
+     TILW_LiteralTerm "{691488312DE7BF44}" {
+      m_flagName "PART_6"
+     }
+     TILW_LiteralTerm "{691488312DE7BF47}" {
+      m_flagName "PART_7"
+     }
+     TILW_LiteralTerm "{691488312DE7BF46}" {
+      m_flagName "PART_8"
+     }
+    }
+    m_matchTrue 3
+   }
+  }
+  TILW_MetaFlag "{69148831200B7429}" {
+   m_flagName "SIGNAL_4"
+   m_definition TILW_MatchjunctionTerm "{69148831200B77B5}" {
+    m_operands {
+     TILW_LiteralTerm "{69148831200B77B7}" {
+      m_flagName "PART_1"
+     }
+     TILW_LiteralTerm "{69148831200B77B1}" {
+      m_flagName "PART_2"
+     }
+     TILW_LiteralTerm "{69148831200B77B0}" {
+      m_flagName "PART_3"
+     }
+     TILW_LiteralTerm "{69148831200B77B2}" {
+      m_flagName "PART_4"
+     }
+     TILW_LiteralTerm "{69148831200BCDCA}" {
+      m_flagName "PART_5"
+     }
+     TILW_LiteralTerm "{69148831200BCDC4}" {
+      m_flagName "PART_6"
+     }
+     TILW_LiteralTerm "{69148831200BCDC7}" {
+      m_flagName "PART_7"
+     }
+     TILW_LiteralTerm "{69148831200BCDC6}" {
+      m_flagName "PART_8"
+     }
+    }
+    m_matchTrue 4
+   }
+  }
+  TILW_MetaFlag "{691488312172E871}" {
+   m_flagName "SIGNAL_5"
+   m_definition TILW_MatchjunctionTerm "{691488312172E8EA}" {
+    m_operands {
+     TILW_LiteralTerm "{691488312172E8E9}" {
+      m_flagName "PART_1"
+     }
+     TILW_LiteralTerm "{691488312172E8F6}" {
+      m_flagName "PART_2"
+     }
+     TILW_LiteralTerm "{691488312172E8F4}" {
+      m_flagName "PART_3"
+     }
+     TILW_LiteralTerm "{691488312172E8F3}" {
+      m_flagName "PART_4"
+     }
+     TILW_LiteralTerm "{6914883121730641}" {
+      m_flagName "PART_5"
+     }
+     TILW_LiteralTerm "{6914883121730640}" {
+      m_flagName "PART_6"
+     }
+     TILW_LiteralTerm "{6914883121730643}" {
+      m_flagName "PART_7"
+     }
+     TILW_LiteralTerm "{6914883121730642}" {
+      m_flagName "PART_8"
+     }
+    }
+    m_matchTrue 5
+   }
+  }
+  TILW_MetaFlag "{6914883126552904}" {
+   m_flagName "SIGNAL_6"
+   m_definition TILW_MatchjunctionTerm "{69148831265529F5}" {
+    m_operands {
+     TILW_LiteralTerm "{69148831265529F4}" {
+      m_flagName "PART_1"
+     }
+     TILW_LiteralTerm "{69148831265529F2}" {
+      m_flagName "PART_2"
+     }
+     TILW_LiteralTerm "{69148831265529F1}" {
+      m_flagName "PART_3"
+     }
+     TILW_LiteralTerm "{69148831265529FF}" {
+      m_flagName "PART_4"
+     }
+     TILW_LiteralTerm "{69148831265529FE}" {
+      m_flagName "PART_5"
+     }
+     TILW_LiteralTerm "{69148831265529FD}" {
+      m_flagName "PART_6"
+     }
+     TILW_LiteralTerm "{69148831265529FC}" {
+      m_flagName "PART_7"
+     }
+     TILW_LiteralTerm "{69148831265529FB}" {
+      m_flagName "PART_8"
+     }
+    }
+    m_matchTrue 6
+   }
+  }
+  TILW_MetaFlag "{691488312743F4DE}" {
+   m_flagName "SIGNAL_7"
+   m_definition TILW_MatchjunctionTerm "{691488312743F446}" {
+    m_operands {
+     TILW_LiteralTerm "{691488312743F447}" {
+      m_flagName "PART_1"
+     }
+     TILW_LiteralTerm "{691488312743F441}" {
+      m_flagName "PART_2"
+     }
+     TILW_LiteralTerm "{691488312743F442}" {
+      m_flagName "PART_3"
+     }
+     TILW_LiteralTerm "{691488312743F443}" {
+      m_flagName "PART_4"
+     }
+     TILW_LiteralTerm "{691488312743F44C}" {
+      m_flagName "PART_5"
+     }
+     TILW_LiteralTerm "{691488312743F44D}" {
+      m_flagName "PART_6"
+     }
+     TILW_LiteralTerm "{69148831274345CE}" {
+      m_flagName "PART_7"
+     }
+     TILW_LiteralTerm "{69148831274345CD}" {
+      m_flagName "PART_8"
+     }
+    }
+    m_matchTrue 7
+   }
+  }
+  TILW_MetaFlag "{69148831246D0187}" {
+   m_flagName "SIGNAL_FULL"
+   m_definition TILW_ConjunctionTerm "{69148831246D0179}" {
+    m_operands {
+     TILW_LiteralTerm "{69148831246D017A}" {
+      m_flagName "PART_1"
+     }
+     TILW_LiteralTerm "{69148831246D0105}" {
+      m_flagName "PART_2"
+     }
+     TILW_LiteralTerm "{69148831246D0106}" {
+      m_flagName "PART_3"
+     }
+     TILW_LiteralTerm "{69148831246D0100}" {
+      m_flagName "PART_4"
+     }
+     TILW_LiteralTerm "{69148831246D0101}" {
+      m_flagName "PART_5"
+     }
+     TILW_LiteralTerm "{69148831246D0102}" {
+      m_flagName "PART_6"
+     }
+     TILW_LiteralTerm "{69148831246D0103}" {
+      m_flagName "PART_7"
+     }
+     TILW_LiteralTerm "{69148831246D010F}" {
+      m_flagName "PART_8"
+     }
+    }
+   }
+  }
+  TILW_MetaFlag "{6918A16F0BE398AF}" {
+   m_flagName "POS1"
+   m_definition TILW_LiteralTerm "{6918A16F1288E5AA}" {
+    m_flagName "POS1"
+   }
+  }
+  TILW_MetaFlag "{6918A16F28808AA6}" {
+   m_flagName "POS2"
+   m_definition TILW_LiteralTerm "{6918A16F28808A53}" {
+    m_flagName "POS2"
+   }
+  }
+  TILW_MetaFlag "{6918A16F2B682E93}" {
+   m_flagName "POS3"
+   m_definition TILW_LiteralTerm "{6918A16F2B682E4D}" {
+    m_flagName "POS3"
+   }
+  }
+  TILW_MetaFlag "{6918A16F35EBD4F7}" {
+   m_flagName "POS4"
+   m_definition TILW_LiteralTerm "{6918A16F35EBD4AC}" {
+    m_flagName "POS4"
+   }
+  }
+  TILW_MetaFlag "{6918A16F348F27E2}" {
+   m_flagName "POS5"
+   m_definition TILW_LiteralTerm "{6918A16F348F2791}" {
+    m_flagName "POS5"
+   }
+  }
+  TILW_MetaFlag "{691B32680D0D5164}" {
+   m_flagName "R1"
+   m_definition TILW_LiteralTerm "{691B32680B23EC33}" {
+    m_flagName "R1"
+   }
+  }
+  TILW_MetaFlag "{691B32681EDBB59D}" {
+   m_flagName "R2"
+   m_definition TILW_LiteralTerm "{691B32681EDBB549}" {
+    m_flagName "R2"
+   }
+  }
+  TILW_MetaFlag "{691B3268221EC295}" {
+   m_flagName "R3"
+   m_definition TILW_LiteralTerm "{691B3268221EC241}" {
+    m_flagName "R3"
+   }
+  }
+  TILW_MetaFlag "{691B3268371D7621}" {
+   m_flagName "R4"
+   m_definition TILW_LiteralTerm "{691B3268371D77DB}" {
+    m_flagName "R4"
+   }
+  }
+  TILW_MetaFlag "{691B32683B5F763E}" {
+   m_flagName "R5"
+   m_definition TILW_LiteralTerm "{691B32683B5F77F6}" {
+    m_flagName "R5"
+   }
+  }
+  TILW_MetaFlag "{691B3268C91D0D1D}" {
+   m_flagName "R6"
+   m_definition TILW_LiteralTerm "{691B3268C91D0ADC}" {
+    m_flagName "R6"
+   }
+  }
+  TILW_MetaFlag "{691B3268D131CA03}" {
+   m_flagName "R7"
+   m_definition TILW_LiteralTerm "{691B3268D131CBD5}" {
+    m_flagName "R7"
+   }
+  }
+  TILW_MetaFlag "{691B3268D8D211AE}" {
+   m_flagName "R8"
+   m_definition TILW_LiteralTerm "{691B3268D8D2115F}" {
+    m_flagName "R8"
+   }
+  }
+  TILW_MetaFlag "{691B3268E2EE5EFE}" {
+   m_flagName "R9"
+   m_definition TILW_LiteralTerm "{691B3268E2EE5EBF}" {
+    m_flagName "R9"
+   }
+  }
+  TILW_MetaFlag "{691B3268F44AFC2A}" {
+   m_flagName "R10"
+   m_definition TILW_LiteralTerm "{691B3268F44AFDE1}" {
+    m_flagName "R10"
+   }
+  }
+  TILW_MetaFlag "{691B3268FC03AC8C}" {
+   m_flagName "R11"
+   m_definition TILW_LiteralTerm "{691B3268FC03ACBF}" {
+    m_flagName "R11"
+   }
+  }
+  TILW_MetaFlag "{691B326880DFEFCF}" {
+   m_flagName "R12"
+   m_definition TILW_LiteralTerm "{691B326880DFEFFB}" {
+    m_flagName "R12"
+   }
+  }
+ }
+ m_randomFlags {
+  TILW_FlagSampling "{6910802EC1E0C3FD}" {
+   m_flagNames {
+    "POS1"
+    "POS2"
+    "POS3"
+    "POS4"
+    "POS5"
+   }
+  }
+  TILW_FlagSampling "{691B32688B306BEA}" {
+   m_flagNames {
+    "R1"
+    "R2"
+    "R3"
+    "R4"
+    "R5"
+    "R6"
+    "R7"
+    "R8"
+    "R9"
+    "R10"
+    "R11"
+    "R12"
+   }
+   m_k 4
+  }
+ }
+}

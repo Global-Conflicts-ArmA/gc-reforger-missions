@@ -1,0 +1,84 @@
+$grp SCR_TimedWaypoint : "{531EC45063C1F57B}Prefabs/AI/Waypoints/AIWaypoint_Wait.et" {
+ MotorWaitWaypoint1 {
+  coords 3574.329 18.374 1420.305
+  m_fPriorityLevel 2
+  m_TimedWaypointParameters SCR_AITimedWaypointParameters "{60D91039CD461DCD}" {
+   m_holdingTime 120
+  }
+ }
+ MotorWaitWaypoint2 {
+  coords 4256.413 17.842 1570.409
+  m_fPriorityLevel 2
+  m_TimedWaypointParameters SCR_AITimedWaypointParameters "{60D91039CD461DCD}" {
+   m_holdingTime 120
+  }
+ }
+ MotorWaitWaypoint3 {
+  coords 4990.226 17.856 1434.366
+  m_fPriorityLevel 2
+  m_TimedWaypointParameters SCR_AITimedWaypointParameters "{60D91039CD461DCD}" {
+   m_holdingTime 480
+  }
+ }
+ SBF1 {
+  coords 4976.344 30.373 1522.717
+  AIBehaviorTree "{A3755C1F88DED8D6}AI/BehaviorTrees/Waypoints/WP_Move.bt"
+  m_fPriorityLevel 2
+  m_TimedWaypointParameters SCR_AITimedWaypointParameters "{60D91039CD461DCD}" {
+   m_holdingTime 480
+  }
+ }
+ SBF2 {
+  coords 5015.445 35.69 1705.744
+  AIBehaviorTree "{A3755C1F88DED8D6}AI/BehaviorTrees/Waypoints/WP_Move.bt"
+  m_fPriorityLevel 2
+  m_TimedWaypointParameters SCR_AITimedWaypointParameters "{60D91039CD461DCD}" {
+   m_holdingTime 480
+  }
+ }
+ SBF3 {
+  coords 5045.369 32.447 1950.265
+  AIBehaviorTree "{A3755C1F88DED8D6}AI/BehaviorTrees/Waypoints/WP_Move.bt"
+  m_fPriorityLevel 2
+  m_TimedWaypointParameters SCR_AITimedWaypointParameters "{60D91039CD461DCD}" {
+   m_holdingTime 480
+  }
+ }
+}
+$grp SCR_AIWaypoint : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
+ AttackWp {
+  coords 3761.773 18.377 1989.53
+  AIBehaviorTree "{A3755C1F88DED8D6}AI/BehaviorTrees/Waypoints/WP_Move.bt"
+  CompletionRadius 149.5
+ }
+ AttackWp2 {
+  coords 4186.132 17.842 2703.077
+  AIBehaviorTree "{A3755C1F88DED8D6}AI/BehaviorTrees/Waypoints/WP_Move.bt"
+  CompletionRadius 300
+  m_fPriorityLevel 1
+ }
+ MotorWaypoint {
+  coords 4262.838 17.841 803.283
+  AIBehaviorTree "{A3755C1F88DED8D6}AI/BehaviorTrees/Waypoints/WP_Move.bt"
+  CompletionRadius 25
+  m_fPriorityLevel 5
+ }
+}
+$grp SCR_DefendWaypoint : "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et" {
+ FriendlyDefWp {
+  coords 3751.941 18.757 2644.458
+  CompletionRadius 38.4
+ }
+ FriendlyDefWp2 {
+  coords 3934.837 19.246 2696.293
+  CompletionRadius 79.8
+ }
+ FriendlyDefWp3 {
+  coords 4235.841 17.845 2872.813
+  CompletionRadius -146.4
+ }
+}
+SCR_SearchAndDestroyWaypoint MotorWaypoint2 : "{B3E7B8DC2BAB8ACC}Prefabs/AI/Waypoints/AIWaypoint_SearchAndDestroy.et" {
+ coords 3529.361 18.375 1122.366
+ AIBehaviorTree "{A3755C1F88DED8D6}AI/BehaviorTrees/Waypoints/WP_Move.bt"
+}
