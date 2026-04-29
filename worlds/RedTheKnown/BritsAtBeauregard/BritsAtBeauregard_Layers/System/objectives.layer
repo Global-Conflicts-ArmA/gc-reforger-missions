@@ -1,0 +1,112 @@
+TILW_FactionTriggerEntity ObjTownTrigger : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 3135.989 13.198 2742.115
+ m_queryRadius 60
+ m_captureTime 300
+ m_sendStatusMessages 1
+ m_locationName "Central Beauregard"
+ m_displayTo {
+  "UK"
+  "RHS_AFRF"
+ }
+ m_flagName "TownCap"
+ m_setShapeColor 0.561 0.071 0.439 1
+ m_ownerFactionKey "UK"
+ m_ratioThreshold 0.95
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 2911.109 62.199 1921.755
+ m_missionEvents {
+  TILW_MissionEvent "{692970C09AAB1BC9}" {
+   m_name "RUS_Timer_Win"
+   m_instructions {
+    TILW_SendMessageInstruction "{692970C0A61BF50B}" {
+     m_executionDelay 3000
+     m_messageTitle "Russian Victory!"
+     m_messageBody "Russian forces have held central Beauregard for at least 40 minuets."
+    }
+   }
+   m_condition TILW_LiteralTerm "{692970C6088C7266}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{692970C007569AA3}" {
+   m_name "RUS_Casualty_Loss"
+   m_instructions {
+    TILW_SendMessageInstruction "{692970C1CA89ADFE}" {
+     m_messageTitle "British Victory!"
+     m_messageBody "British forces have eliminated enough of the enemy to ensure victory."
+    }
+   }
+   m_condition TILW_LiteralTerm "{692970C1C8DB174B}" {
+    m_flagName "RUS_KIA"
+   }
+  }
+  TILW_MissionEvent "{692970C1842BDC5B}" {
+   m_name "BAF_Casualty_Loss"
+   m_instructions {
+    TILW_SendMessageInstruction "{692970C19C2877F5}" {
+     m_messageTitle "Russian Victory!"
+     m_messageBody "Russian forces have eliminated enough of the enemy to ensure victory."
+    }
+   }
+   m_condition TILW_LiteralTerm "{692970C1923E2FC1}" {
+    m_flagName "BAF_KIA"
+   }
+  }
+  TILW_MissionEvent "{692970C651DB01C4}" {
+   m_name "BAF_SecureTown_Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{692970C409AFD4A8}" {
+     m_messageTitle "British Victory!"
+     m_messageBody "British forces have secured central Beauregard."
+    }
+   }
+   m_condition TILW_LiteralTerm "{692970C5DF0EC84F}" {
+    m_flagName "TownCap"
+   }
+  }
+  TILW_MissionEvent "{692970CA8DD744A9}" {
+   m_name "activateTP"
+   m_instructions {
+    TILW_SetFlagInstruction "{692970CA99EA23D2}" {
+     m_executionDelay 1
+     m_flagName "setupstart"
+    }
+   }
+   m_condition TILW_LiteralTerm "{692970CA95BD07AE}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{693969BB5A463251}" {
+   m_name "endTP"
+   m_instructions {
+    TILW_DeleteEntitiesInstruction "{693969BADE23D7DF}" {
+     m_executionDelay 330
+     m_entityNames {
+      "Tele_Farm"
+      "Tele_Lighthouse"
+      "Tele_Shore"
+      "Tele_Timber_North"
+      "Tele_Timber_South"
+      "Tele_FrontCent"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{693969BB35AACE48}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{692970C1585A4A03}" {
+   m_flagName "RUS_KIA"
+   m_factionKey "RHS_AFRF"
+   m_casualtyRatio 0.95
+  }
+  TILW_FactionPlayersKilledFlag "{692970C17243ED9E}" {
+   m_flagName "BAF_KIA"
+   m_factionKey "UK"
+   m_casualtyRatio 0.95
+  }
+ }
+}
