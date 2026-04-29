@@ -18,11 +18,11 @@ PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_Game
  coords 3052.448 10 3058.805
  m_denyJIPTime 600
  {
-  SCR_FactionManager {
+  SCR_FactionManager "6932853845058274" {
    ID "5ED9088735FF2D8B"
    Factions {
     SCR_Faction "{607AA5C7A94496DA}" {
-     m_aFriendlyFactionsIds +{
+     m_aFriendlyFactionsIds {
       "GC_MUJ"
      }
     }
@@ -30,13 +30,21 @@ PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_Game
   }
  }
 }
+GenericEntity : "{7B656DF11E8B4D50}Prefabs/Structures/Wreck/ikarus_g.et" {
+ components {
+  TILW_NavmeshRegenComponent "{66F71793AE43CC40}" {
+  }
+ }
+ coords 3005.199 7.5 2799.754
+ angles 0 120.723 0
+}
 $grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
  AO_Limit_US {
   components {
    TILW_AOLimitComponent "{6217617AC21DEB7B}" {
     m_killTimer 10
     m_factionKeys {
-     "US"
+     "RHS_USAF"
     }
     m_defaultColor 0 0.034 0.136 1
     m_lineWidth 5
@@ -258,7 +266,7 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
  m_casualtyFlags {
   TILW_FactionPlayersKilledFlag "{684CEBA3821058AB}" {
    m_flagName "Blufor90"
-   m_factionKey "US"
+   m_factionKey "RHS_USAF"
    m_casualtyRatio 0.9
   }
  }
