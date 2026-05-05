@@ -1,0 +1,315 @@
+GenericEntity MainAI_QRF : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
+ components {
+  SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
+   m_sFactionKey "FIA"
+   m_aActivationActions {
+    SCR_ScenarioFrameworkActionQRFDispacher_modified "{694681252671B3DC}" : "{69200CFEA353A91C}scripts/game/Pastah/QRFDispacherAction_modified.conf" {
+     m_sQRFLayerName "QRFSpawnpointsLayer1"
+     m_iThreshold 1
+     m_iNumberOfAvailableQRFWaves -1
+     m_fQRFSpawnDelay 1
+     m_fQRFNextWaveDelay 15
+     m_aGroupList {
+      SCR_QRFGroupConfig_modified "{694681255EAA2B9B}" {
+       m_sGroupPrefab "{B70E6D12A8EC2410}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_transport_covered.et"
+       m_eGroupType MOUNTED_INFANTRY
+       m_fQRFSpawnDelay 30
+      }
+     }
+     m_aWPConfig {
+      SCR_QRFWaypointConfig "{694621DC887C748D}" {
+       m_sWPToSpawn "{FFF9518F73279473}PrefabsEditable/Auto/AI/Waypoints/E_AIWaypoint_Move.et"
+       m_eGroupType AIR
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 4744.183 369.931 6332.16
+ {
+  $grp GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
+   SirensLayer {
+    coords -340.042 38.903 105.232
+    {
+     StaticModelEntity SirenModel : "{48BD7D41CEBA6E0D}Prefabs/Structures/Military/Sirens/SirenMilitary_E_01/SirenMilitary_E_01.et" {
+      components {
+       SCR_DestructionMultiPhaseComponent "{5A5E745B63F5B27D}" {
+        EnableDamage 0
+       }
+      }
+      coords -0.392 0.051 2.997
+     }
+     GenericEntity AirRaidSiren : "{93FC2145F05A1EEE}Prefabs/Systems/Sound/sound_airraidsiren.et" {
+      components {
+       SoundComponent "{5C969C4EA43250A6}" {
+        Filenames {
+         "{20E24672048CB08E}Sounds/Structures/Millitary/Sirens/Structures_Siren_Loud.acp"
+        }
+        "Sound Geometry" 0
+        SoundPoints {
+         SoundPointInfo SirenModel {
+         }
+        }
+       }
+       Bacon_PlaySoundComponent "{5C969C4E98100BF1}" {
+        Enabled 0
+        m_soundEventName "SOUND_SIREN_LP"
+       }
+      }
+      coords 0.424 7.127 3.78
+     }
+    }
+   }
+   CampingSquads {
+    coords -10.191 5.237 26.455
+    {
+     $grp GenericEntity : "{8D43830F02C3F114}Prefabs/Systems/ScenarioFramework/Components/SlotAI.et" {
+      CampingSquad1 {
+       components {
+        SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+         m_sObjectToSpawn "{3E19B428E9137511}Prefabs/Groups/INDFOR/FIA/FIA_Modern/Group_FIAModern_RifleSquad.et"
+         m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{69421E644AAEA082}" {
+          m_aLayerName {
+           "Squad1Defend"
+          }
+         }
+         m_bSpawnAIOnWPPos 1
+        }
+       }
+       coords 2.893 -0.62 -3.886
+       angles 0 103.006 0
+       {
+        GenericEntity Squad1Defend : "{EBD91177954E8236}Prefabs/Systems/ScenarioFramework/Components/SlotWaypoint.et" {
+         components {
+          SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+           m_Waypoint SCR_ScenarioFrameworkWaypointDefend "{69421E6430C288E2}" {
+            m_fCompletionRadius 10
+           }
+          }
+         }
+         coords -3.308 0.807 -6.122
+         angles 0 158.332 0
+        }
+       }
+      }
+      CampingSquad2 {
+       components {
+        SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+         m_sObjectToSpawn "{3E19B428E9137511}Prefabs/Groups/INDFOR/FIA/FIA_Modern/Group_FIAModern_RifleSquad.et"
+         m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{69421E645F0624F0}" {
+          m_aLayerName {
+           "Squad2Defend"
+          }
+         }
+         m_bSpawnAIOnWPPos 1
+        }
+       }
+       coords 3.935 -5.574 -38.254
+       angles 0 98.662 0
+       {
+        GenericEntity Squad2Defend : "{EBD91177954E8236}Prefabs/Systems/ScenarioFramework/Components/SlotWaypoint.et" {
+         components {
+          SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+           m_Waypoint SCR_ScenarioFrameworkWaypointDefend "{69421E6430C288E2}" {
+            m_fCompletionRadius 10
+           }
+          }
+         }
+         coords 4.648 2.342 -12.301
+         angles 0 -98.662 0
+        }
+       }
+      }
+     }
+    }
+   }
+   SentryInvade {
+    coords 7.335 -0.48 -4.273
+    {
+     $grp GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
+      invade_spawn {
+       coords -6.898 0.041 -1.199
+       {
+        $grp GenericEntity : "{EBD91177954E8236}Prefabs/Systems/ScenarioFramework/Components/SlotWaypoint.et" {
+         SlotWaypoint1 {
+          components {
+           SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+            m_Waypoint SCR_ScenarioFrameworkWaypointMove "{693C178C6776A4E2}" {
+            }
+           }
+          }
+          coords 127.962 10.857 21.604
+         }
+         SlotWaypoint2 {
+          components {
+           SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+            m_Waypoint SCR_ScenarioFrameworkWaypointMove "{693C178C6776A4E2}" {
+            }
+           }
+          }
+          coords 13.481 45.015 67.802
+         }
+        }
+       }
+      }
+      scout_spawn {
+       coords -50.377 9.224 12.018
+       {
+        $grp GenericEntity : "{EBD91177954E8236}Prefabs/Systems/ScenarioFramework/Components/SlotWaypoint.et" {
+         CycleScoutSpawn {
+          components {
+           SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+            m_bCanBeGarbageCollected 0
+            m_Waypoint SCR_ScenarioFrameworkWaypointCycle "{693C76E27EC6B028}" {
+             m_fCompletionRadius 0
+            }
+           }
+          }
+          coords 126.016 71.677 51.551
+         }
+         search1 {
+          components {
+           SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+            m_Waypoint SCR_ScenarioFrameworkWaypointSearchAndDestroy "{69421E61995038E3}" {
+             m_fCompletionRadius 45
+             m_fHoldingTime 60
+            }
+           }
+          }
+          coords 114.349 5 50.345
+         }
+         search2 {
+          components {
+           SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+            m_Waypoint SCR_ScenarioFrameworkWaypointSearchAndDestroy "{69421E61995038E3}" {
+             m_fCompletionRadius 45
+             m_fHoldingTime 60
+            }
+           }
+          }
+          coords 114.349 15 50.345
+         }
+         search3 {
+          components {
+           SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+            m_Waypoint SCR_ScenarioFrameworkWaypointSearchAndDestroy "{69421E61995038E3}" {
+             m_fCompletionRadius 45
+             m_fHoldingTime 60
+            }
+           }
+          }
+          coords 114.349 25 50.345
+         }
+         search4 {
+          components {
+           SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+            m_Waypoint SCR_ScenarioFrameworkWaypointSearchAndDestroy "{69421E61995038E3}" {
+             m_fCompletionRadius 45
+             m_fHoldingTime 60
+            }
+           }
+          }
+          coords 114.349 35 50.345
+         }
+        }
+       }
+      }
+     }
+     GenericEntity SentrySlotAI : "{8D43830F02C3F114}Prefabs/Systems/ScenarioFramework/Components/SlotAI.et" {
+      components {
+       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+        m_aActivationActions {
+         SCR_ScenarioFrameworkActionAI "{69421E666CFD011D}" {
+          m_aAIActions {
+           SCR_ScenarioFrameworkAIAddSetting "{69421E66664221BC}" {
+            m_Setting SCR_AIGroupCharactersMovementSpeedSetting "{69421E66616852C4}" {
+             m_eSpeed WALK
+            }
+           }
+          }
+         }
+        }
+        m_sID "SentryAI"
+        m_bUseExistingWorldAsset 1
+        m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{693C17B1891014F4}" {
+         m_aLayerName {
+          "SlotWaypoint1"
+          "SlotWaypoint2"
+          "CycleScoutSpawn"
+         }
+        }
+       }
+      }
+      coords -4.159 -0.012 0.718
+      {
+       SCR_AIGroup SentryAI : "{3E19B428E9137511}Prefabs/Groups/INDFOR/FIA/FIA_Modern/Group_FIAModern_RifleSquad.et" {
+        coords -0.835 0.02 -3.16
+        m_aUnitPrefabSlots {
+         "{BDDF016F45B7851F}Prefabs/Characters/Factions/INDFOR/FIA/FIA_Modern/Character_FIA_Modern_SL.et"
+         "{2697B58B16973BA2}Prefabs/Characters/Factions/INDFOR/FIA/FIA_Modern/Character_FIA_Modern_Rifleman.et"
+        }
+        m_bSpawnImmediately 0
+       }
+      }
+     }
+    }
+   }
+   WPs {
+    coords -804.007 -158.906 1205.938
+    {
+     $grp GenericEntity : "{EBD91177954E8236}Prefabs/Systems/ScenarioFramework/Components/SlotWaypoint.et" {
+      wpGetOut {
+       components {
+        SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+         m_Waypoint SCR_ScenarioFrameworkWaypointGetOut "{6946839328278B56}" {
+          m_fCompletionRadius 30
+         }
+        }
+       }
+       coords 706.151 145.423 -1022.14
+       angles 4.468 134.211 0
+      }
+      wpMove {
+       components {
+        SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+         m_Waypoint SCR_ScenarioFrameworkWaypointMove "{6946839352288BBD}" {
+          m_fCompletionRadius 20
+         }
+        }
+       }
+       coords 712.073 146.361 -1026.11
+       angles 1.768 127.911 0
+      }
+     }
+    }
+   }
+  }
+  GenericEntity QRFSpawnpointsLayer1 : "{63D611AA694A8AE3}Prefabs/Systems/ScenarioFramework/Compositions/QRFSpawnpointsLayer.et" {
+   coords 0 0 0
+   {
+    GenericEntity QRFSpawnpoint1 {
+     ID "6054EE897FB6C21B"
+     components {
+      SCR_ScenarioFrameworkQRFSlotAI "{5A26B3E02AC77BA0}" {
+       m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{694683934013020B}" {
+        m_aLayerName {
+         "wpGetOut"
+         "wpMove"
+        }
+       }
+       m_eAISkill EXPERT
+       m_aSCR_QRFSpawnSafeZone {
+        SCR_QRFSpawnSafeZone "{6496E54ACB2A02D5}" {
+         m_iMinDistanceToClosestObserver 1
+        }
+       }
+      }
+     }
+     coords -675.614 -156.157 1245.34
+     angles -2.705 -92.952 0
+    }
+   }
+  }
+ }
+}
