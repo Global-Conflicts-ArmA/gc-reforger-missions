@@ -10,20 +10,21 @@ PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_G
 PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
  coords 2251.838 171.909 4273.313
  m_sTitle "Description & Notes"
- m_sTextData "USSR Mech COY hunts for BLUFOR Convoy, 1980s scenarios. ATGMs, BMP2s etc. "\
+ m_sTextData "British Infantry PLT try to buy time for BLUFOR forces to escape encriclement as USSR Mech COY try to cut off retreating units. 1980s scenarios. ATGMs, BMP2s etc. "\
  ""\
  "Mission Notes:"\
- "- No End Conditions - GM Discretion"\
- "- Winning Conditions BLUFOR forces atritted more than 90% & OPFOR is able to disrupt convoy route."\
  ""\
- "CONOVY is fictional and not in actual game. "
+ "BLUFOR Winning Conditons: "\
+ "- Attrition of USSR Forces (85% Casualties)"\
+ "- Delay USSR Forces (45 Min Time Limit)"\
+ ""\
+ "OPFOR Winning Conditons:"\
+ "- Attrition of UK Forces (90% Casualties)"\
+ "- Blockading MSR & holding ground for 10 mins. (Note that this condition is dependent on OPFOR destroying the AI Conovy that when the 10 min timer begins - If Convoy is bugged GM to judge.) "\
+ ""
  m_bEmptyFactionVisibility 1
  m_bShowForAnyFaction 1
  m_iOrder 15
-}
-Vehicle _Series_LWB_GPMG_Variant_1 : "{74AFD46A97E09CB1}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_GPMG_Variant_3.et" {
- coords 2279.379 216.279 4014.601
- angles 0 153.973 0
 }
 PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
  components {
@@ -47,7 +48,240 @@ PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" 
   }
  }
 }
-Vehicle _Series_LWB_Transport_Variant_2 : "{FDDB4A5C62272B16}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Transport_Variant_2.et" {
- coords 2281.793 216.869 4007.568
- angles 0 160.577 0
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 2338.729 218.299 3903.527
+ m_missionEvents {
+  TILW_MissionEvent "{694E906FC8591EEC}" {
+   m_name "DELETE CONVOY"
+   m_instructions {
+    TILW_DeleteEntitiesInstruction "{694E906FCECBB0AC}" {
+     m_executionDelay 0
+     m_entityNames {
+      "VEH1"
+      "VEH2"
+      "VEH3"
+      "VEH4"
+      "VEH5"
+     }
+    }
+    TILW_ReactivateEventsInstruction "{694E9062F9129062}" {
+     m_executionDelay 0
+     m_eventNames {
+      "SPAWN CONVOY"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{694E906FF8CD4A65}" {
+    m_flagName "CONVOYREACHED"
+   }
+  }
+  TILW_MissionEvent "{694E905D661BF85E}" {
+   m_name "SPAWN CONVOY"
+   m_instructions {
+    TILW_SpawnVehicleInstruction "{694E9053512565B2}" {
+     m_executionDelay 10
+     m_prefab "{E26B913F55F85ABC}worlds/Blue/Ruckusberg/Prefabs/LAV25/LAV25VIC4.et"
+     m_locationName "LOC1"
+     m_setEntityName "VEH1"
+     m_crewConfig TILW_CrewConfig "{694E9053C00EE060}" {
+      m_crewGroups {
+       TILW_CrewGroup "{694E906D0EAB52E9}" {
+        m_crewStations {
+         TILW_CrewStation "{694E906D0233C702}" {
+         }
+        }
+        m_waypointNames {
+         "MOVE1"
+        }
+       }
+      }
+     }
+    }
+    TILW_SpawnVehicleInstruction "{694F5D46575979D2}" {
+     m_executionDelay 10
+     m_prefab "{D4423ED1249B2948}worlds/Blue/Ruckusberg/Prefabs/M923A1/M923A1_transport_VIC1.et"
+     m_locationName "LOC2"
+     m_setEntityName "VEH2"
+     m_crewConfig TILW_CrewConfig "{694F5D4657597E40}" {
+      m_crewGroups {
+       TILW_CrewGroup "{694F5D4657597EBE}" {
+        m_crewStations {
+         TILW_CrewStation "{694F5D4657597EBF}" {
+         }
+        }
+        m_waypointNames {
+         "MOVE1"
+        }
+       }
+      }
+     }
+    }
+    TILW_SpawnVehicleInstruction "{694F5D4648202D08}" {
+     m_executionDelay 10
+     m_prefab "{B8160A31985FA666}worlds/Blue/Ruckusberg/Prefabs/M923A1/M923A1_transport_VIC2.et"
+     m_locationName "LOC3"
+     m_setEntityName "VEH3"
+     m_crewConfig TILW_CrewConfig "{694F5D4648202DA0}" {
+      m_crewGroups {
+       TILW_CrewGroup "{694F5D4648202D9E}" {
+        m_crewStations {
+         TILW_CrewStation "{694F5D4648202D9F}" {
+         }
+        }
+        m_waypointNames {
+         "MOVE1"
+        }
+       }
+      }
+     }
+    }
+    TILW_SpawnVehicleInstruction "{694E906D917BD577}" {
+     m_executionDelay 10
+     m_prefab "{5D8A46C894BA310D}worlds/Blue/Ruckusberg/Prefabs/M923A1/M923A1_transport_VIC3.et"
+     m_locationName "LOC4"
+     m_setEntityName "VEH4"
+     m_crewConfig TILW_CrewConfig "{694E906D917BCA39}" {
+      m_crewGroups {
+       TILW_CrewGroup "{694E906D917BCA37}" {
+        m_crewStations {
+         TILW_CrewStation "{694E906D917BCA34}" {
+         }
+        }
+        m_waypointNames {
+         "MOVE1"
+        }
+       }
+      }
+     }
+    }
+    TILW_SpawnVehicleInstruction "{694E906D92B0A7DD}" {
+     m_executionDelay 10
+     m_prefab "{07F7DDC6591DCDD7}worlds/Blue/Ruckusberg/Prefabs/LAV25/LAV25VIC5.et"
+     m_locationName "LOC5"
+     m_setEntityName "VEH5"
+     m_crewConfig TILW_CrewConfig "{694E906D92B0A409}" {
+      m_crewGroups {
+       TILW_CrewGroup "{694E906D92B0A407}" {
+        m_crewStations {
+         TILW_CrewStation "{694E906D92B0A405}" {
+         }
+        }
+        m_waypointNames {
+         "MOVE1"
+        }
+       }
+      }
+     }
+    }
+    TILW_ReactivateEventsInstruction "{694E9062EE4B4002}" {
+     m_eventNames {
+      "DELETE CONVOY"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{694E906C8905DCCC}" {
+    m_invertTerm 1
+    m_flagName "CONVOY_INTERCEPTED"
+   }
+  }
+  TILW_MissionEvent "{694F5D48606E87DE}" {
+   m_name "USSR Destroyed - End Condition"
+   m_instructions {
+    TILW_SendMessageInstruction "{694F5D488715FB21}" {
+     m_messageTitle "UK Victory - USSR Attack Repelled"
+     m_messageBody "USSR have more than 85% casualties."
+    }
+   }
+   m_condition TILW_LiteralTerm "{694F5D48A60B9839}" {
+    m_flagName "USSR85"
+   }
+  }
+  TILW_MissionEvent "{694F5D48174A461F}" {
+   m_name "USSR Delayed"
+   m_instructions {
+    TILW_SendMessageInstruction "{694F5D48C63F4483}" {
+     m_executionDelay 2700
+     m_messageTitle "USSR Delayed - BLUFOR Forces Escape Encirclement"
+     m_messageBody "USSR took more than 45 mins!"
+    }
+   }
+  }
+  TILW_MissionEvent "{694F5D481A4CCE4F}" {
+   m_name "UK Destroyed - End Condition"
+   m_instructions {
+    TILW_SendMessageInstruction "{694F5D4940094240}" {
+     m_messageTitle "USSR Victory - UK forces atritted"
+     m_messageBody "UK has suffered more than 90% casualties."
+    }
+   }
+  }
+  TILW_MissionEvent "{694F5D480DFC40BD}" {
+   m_name "ASR Blocked - End Conditon"
+   m_instructions {
+    TILW_SendMessageInstruction "{694F5D49DD1C8533}" {
+     m_messageTitle "USSR Victory"
+     m_messageBody "USSR have successfuly blockaded ASR and held their ground for 10 mins."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{694F5D49C1BEB57D}" {
+    m_operands {
+     TILW_LiteralTerm "{694F5D49C465BD4A}" {
+      m_flagName "CONVOY_INTERCEPTED"
+     }
+     TILW_LiteralTerm "{694F5D49C5C4D94A}" {
+      m_flagName "HELD_GROUND"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{694F5D49E9EA53BC}" {
+   m_name "HELDGROUNDTIMER"
+   m_instructions {
+    TILW_SetFlagInstruction "{694F5D49960973BC}" {
+     m_executionDelay 600
+     m_flagName "HELD_GROUND"
+    }
+   }
+   m_condition TILW_LiteralTerm "{694F5D499E204D64}" {
+    m_flagName "CONVOY_INTERCEPTED"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{694E905ECEF03D6A}" {
+   m_flagName "UK90"
+   m_factionKey "UK"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{694E905EFA8EE235}" {
+   m_flagName "USSR85"
+   m_factionKey "USSR"
+   m_casualtyRatio 0.85
+  }
+ }
+ m_metaFlags {
+  TILW_MetaFlag "{694F5D463DB79607}" {
+   m_flagName "CONVOY_INTERCEPTED"
+   m_definition TILW_MinjunctionTerm "{694F5D46375572D9}" {
+    m_operands {
+     TILW_LiteralTerm "{694F5D462220D844}" {
+      m_flagName "VIC1_DMG"
+     }
+     TILW_LiteralTerm "{694F5D46D2AD5D14}" {
+      m_flagName "VIC2_DMG"
+     }
+     TILW_LiteralTerm "{694F5D46C06A2FB9}" {
+      m_flagName "VIC3_DMG"
+     }
+     TILW_LiteralTerm "{694F5D46C688E308}" {
+      m_flagName "VIC4_DMG"
+     }
+     TILW_LiteralTerm "{694F5D46FBC9E1FD}" {
+      m_flagName "VIC5_DMG"
+     }
+    }
+    m_minTrue 3
+   }
+  }
+ }
 }
