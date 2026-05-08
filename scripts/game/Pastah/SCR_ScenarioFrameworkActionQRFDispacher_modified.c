@@ -1,3 +1,12 @@
+class SCR_QRFCrewWaypointContext
+{
+	AIWaypoint m_wp;
+	SCR_ScenarioFrameworkQRFSlotAI m_spawnSlot;
+	SCR_AIGroup m_crewGroup;
+	IEntity m_vehicleEntity;
+	SCR_AIGroup m_passengerGroup;
+}
+
 [ BaseContainerProps(), SCR_ContainerActionTitle() ] class SCR_ScenarioFrameworkActionQRFDispacher_modified : SCR_ScenarioFrameworkActionBase
 {
 	[Attribute("X_QRF", UIWidgets.Auto, "Name of the QRF layer that contains pool of spawn points")] protected string m_sQRFLayerName;
@@ -39,9 +48,13 @@
 	protected bool m_bWaitingForDelayedSpawn;
 	protected bool m_bWaitingForNextWave;
 	protected vector m_vTargetPosition;
-	protected ref array<ref SCR_QRFVehicleSpawnConfig> m_aVehicleSpawnQueueConfig = {};
+	protected ref array<ref SCR_QRFVehicleSpawnConfig_modified> m_aVehicleSpawnQueueConfig = {};
 	protected ref map<SCR_QRFGroupConfig_modified, float> m_mGroupNextSpawnAt = new map<SCR_QRFGroupConfig_modified, float>();
+	protected ref array<ref SCR_QRFCrewWaypointContext> m_crewWaypointContexts = {};
+	protected ref array<ref SCR_QRFCrewWaypointContext> m_passengerMoveContexts = {};
 
+	private static const ResourceName MOVE_WAYPOINT_PREFAB = "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et";
+	private static const ResourceName WAIT_WAYPOINT_PREFAB = "{531EC45063C1F57B}Prefabs/AI/Waypoints/AIWaypoint_Wait.et";
 	//------------------------------------------------------------------------------------------------
 	//! Will tap into AI groups and monitor their numbers
 	//! Will return true if there was at least one grou00p which we now observe
@@ -330,7 +343,6 @@
 			return;
 		}
 
-		childSlot.m_aWaypoints = selectedSpawnPoint.m_aWaypoints;
 		childSlot.m_eAISkill = selectedSpawnPoint.m_eAISkill;
 		childSlot.SetObjectToSpawn(selectedGroup.GetGroupPrefabName());
 		childSlot.SetEnableRepeatedSpawn(true);
@@ -344,8 +356,6 @@
 		IEntity spawnedEntity = childSlot.GetSpawnedEntity();
 		SCR_AIGroup aiGroup = GetAIGroup(spawnedEntity);
 
-		childSlot.m_aSlotWaypoints = selectedSpawnPoint.m_aSlotWaypoints;
-
 		if (aiGroup)
 		{
 			if (WatchAIGroup(aiGroup))
@@ -357,7 +367,11 @@
 					{
 						AIWaypoint wp = AIWaypoint.Cast(waypointSlot.GetSpawnedEntity());
 						if (!wp)
-							break;
+						{
+							Print("Waypoint entity is invalid for QRF Dispacher", LogLevel.ERROR);
+							continue;
+						}
+						childSlot.m_aSlotWaypoints.Insert(waypointSlot);
 						childSlot.m_aWaypoints.Insert(wp);
 						aiGroup.AddWaypoint(wp);
 					}
@@ -396,7 +410,7 @@
 					if (selectedGroup.GetGroupType() == SCR_EQRFGroupType.MOUNTED_INFANTRY)
 						compartmentTypes.Insert(ECompartmentType.CARGO);
 
-					m_aVehicleSpawnQueueConfig.Insert(new SCR_QRFVehicleSpawnConfig(compartmentManager, selectedGroup.GetGroupType(), m_vTargetPosition, childSlot));
+					m_aVehicleSpawnQueueConfig.Insert(new SCR_QRFVehicleSpawnConfig_modified(compartmentManager, selectedGroup.GetGroupType(), m_vTargetPosition, childSlot, selectedSpawnPoint));
 					compartmentManager.SpawnDefaultOccupants(compartmentTypes);
 				}
 			}
@@ -578,11 +592,16 @@
 		if (!aiGroup)
 			return;
 
-		// Split off crew from original group
-		SCR_AIGroup crewGroup = SplitCrewFromVic(compartmentManager, occupants, aiGroup);
-
 		if (!WatchAIGroup(aiGroup))
 			return;
+
+		// Split off crew from original group
+		SCR_AIGroup crewGroup = SplitCrewFromVic(compartmentManager, occupants, aiGroup);
+		if (!crewGroup)
+		{
+			Print("Failed to split crew from vehicle group for QRF Dispacher", LogLevel.ERROR);
+			return;
+		}
 
 		vector wpPosition;
 		bool once = false;
@@ -590,25 +609,34 @@
 		{
 			if (m_aVehicleSpawnQueueConfig[i].m_VehicleCompartmentMGR != compartmentManager)
 				continue;
+			SCR_ScenarioFrameworkQRFSlotAI selectedSpawnpoint = m_aVehicleSpawnQueueConfig[i].m_parentSlot;
+			SCR_ScenarioFrameworkQRFSlotAI childSlot = m_aVehicleSpawnQueueConfig[i].m_Slot;
 
 			// Add waypoint from spawnpoint onto occupants first
 			if (!once)
 			{
-				SCR_ScenarioFrameworkQRFSlotAI selectedSpawnpoint = m_aVehicleSpawnQueueConfig[i].m_Slot;
 				foreach (SCR_ScenarioFrameworkSlotWaypoint waypointSlot : selectedSpawnpoint.m_aSlotWaypoints)
 				{
 					AIWaypoint waypoint = AIWaypoint.Cast(waypointSlot.GetSpawnedEntity());
 					if (waypoint)
 					{
-						// Create random move waypoints around get-out waypoint if this is the get-out waypoint
 						if (SCR_ScenarioFrameworkWaypointGetOut.Cast(waypointSlot.m_Waypoint))
 						{
 							IEntity vehicleEntity = compartmentManager.GetOwner();
-							AssignCrewPatrolWaypoints(crewGroup, selectedSpawnpoint, vehicleEntity, waypointSlot);
+							SCR_QRFCrewWaypointContext dropCtx;
+							if (crewGroup)
+							{
+								dropCtx = AssignCrewDropoffWaypoints(crewGroup, selectedSpawnpoint, vehicleEntity, waypointSlot);
+								if (dropCtx)
+									dropCtx.m_passengerGroup = aiGroup;
+							}
+							AssignPassengerDropoffWaypoints(aiGroup, selectedSpawnpoint, waypoint, vehicleEntity, crewGroup);
 						}
-						selectedSpawnpoint.m_aWaypoints.Insert(waypoint);
-						aiGroup.AddWaypoint(waypoint);
-						CloneWaypointForGroup_NoSlot(waypoint, crewGroup);
+						else
+						{
+							// childSlot.m_aWaypoints.Insert(waypoint);
+							aiGroup.AddWaypoint(waypoint);
+						}
 					}
 				}
 				once = true;
@@ -630,8 +658,8 @@
 				AIWaypoint aiWP = m_aVehicleSpawnQueueConfig[i].m_Slot.CreateWaypoint(wpPosition, wp.GetWaypointPrefabName());
 				if (aiWP)
 				{
+					// childSlot.m_aWaypoints.Insert(aiWP);
 					aiGroup.AddWaypoint(aiWP);
-					CloneWaypointForGroup_NoSlot(aiWP, crewGroup);
 				}
 			}
 			m_aVehicleSpawnQueueConfig.Remove(i);
@@ -805,26 +833,44 @@
 	//------------------------------------------------------------------------------------------------
 	protected SCR_AIGroup SplitCrewFromVic(SCR_BaseCompartmentManagerComponent compartmentManager, array<IEntity> occupants, SCR_AIGroup aiGroup)
 	{
-		// Collect current crew in vehicle
+		// Identify crew directly from each spawned occupant's compartment slot.
+		// Querying the compartment manager via GetOccupantsOfType can return empty on
+		// heavier maps because physical seating may not be registered yet when this
+		// callback fires.
 		array<IEntity> crewOccupants = {};
-		compartmentManager.GetOccupantsOfType(crewOccupants, ECompartmentType.PILOT);
-		compartmentManager.GetOccupantsOfType(crewOccupants, ECompartmentType.TURRET);
-
-		// Keep only entities from THIS spawn batch
-		for (int i = crewOccupants.Count() - 1; i >= 0; i--)
+		foreach (IEntity occupantEnt : occupants)
 		{
-			if (!occupants.Contains(crewOccupants[i]))
-				crewOccupants.RemoveOrdered(i);
+			ChimeraCharacter ch = ChimeraCharacter.Cast(occupantEnt);
+			if (!ch)
+				continue;
+
+			SCR_CompartmentAccessComponent access = SCR_CompartmentAccessComponent.Cast(ch.GetCompartmentAccessComponent());
+			if (!access)
+				continue;
+
+			BaseCompartmentSlot slot = access.GetCompartment();
+			if (!slot)
+				continue;
+
+			ECompartmentType type = slot.GetType();
+			if (type == ECompartmentType.PILOT || type == ECompartmentType.TURRET)
+				crewOccupants.Insert(occupantEnt);
 		}
 
 		if (crewOccupants.IsEmpty())
+		{
+			Print("No crew occupants found to split from vehicle group for QRF Dispacher, occupants size: " + occupants.Count(), LogLevel.ERROR);
 			return null;
+		}
 
 		// Create AI-only group (not playable/player group)
 		SCR_AIGroup crewGroup = SCR_AIGroup.Cast(
 			GetGame().SpawnEntityPrefab(Resource.Load("{000CD338713F2B5A}Prefabs/AI/Groups/Group_Base.et")));
 		if (!crewGroup)
+		{
+			Print("Failed to spawn crew group for QRF Dispacher", LogLevel.ERROR);
 			return null;
+		}
 
 		// Keep same faction as source group
 		Faction sourceFaction = aiGroup.GetFaction();
@@ -844,106 +890,265 @@
 	}
 
 	//------------------------------------------------------------------------------------------------
-	protected void AssignCrewPatrolWaypoints(
+	protected SCR_QRFCrewWaypointContext AssignCrewDropoffWaypoints(
 		SCR_AIGroup crewGroup,
 		SCR_ScenarioFrameworkQRFSlotAI spawnSlot,
 		IEntity vehicleEntity,
 		SCR_ScenarioFrameworkSlotWaypoint getOutSlot)
 	{
-		static const ResourceName MOVE_WAYPOINT_PREFAB = "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et";
-		static const int PATROL_WAYPOINT_COUNT = 1;
-		static const float WP_COMPLETION_RADIUS = 1.0; // 1 metre
 
-		vector getOutPosition = getOutSlot.GetOwner().GetOrigin();
-		float patrolRadius = getOutSlot.m_Waypoint.GetWaypointCompletionRadius();
-		float stepDist = patrolRadius * 0.9; // each WP is x * radius from the prior one
+		if (!crewGroup || !spawnSlot || !getOutSlot || !getOutSlot.m_Waypoint)
+			return null;
 
-		vector prevPosition = getOutPosition; // chain starts from the get-out point
-		prevPosition[1] = GetGame().GetWorld().GetSurfaceY(prevPosition[0], prevPosition[2]);
-		AIWaypoint first = spawnSlot.CreateWaypoint(prevPosition, MOVE_WAYPOINT_PREFAB);
-		if (first)
+		// Register vehicle so crewGroup's AI knows to DRIVE, not walk to waypoints
+		SCR_AIVehicleUsageComponent vehicleUsageComp = SCR_AIVehicleUsageComponent.FindOnNearestParent(vehicleEntity, vehicleEntity);
+		if (vehicleUsageComp)
+			crewGroup.GetGroupUtilityComponent().AddUsableVehicle(vehicleUsageComp);
+
+		vector center = getOutSlot.GetOwner().GetOrigin();
+		center[1] = GetGame().GetWorld().GetSurfaceY(center[0], center[2]);
+		float WAIT_HOLD_TIME = 5.0;
+
+		float dropoffRadius = getOutSlot.m_Waypoint.GetWaypointCompletionRadius();
+		if (dropoffRadius <= 0.0)
+			dropoffRadius = 5.0;
+
+		// Pick a random spot inside the getOut circle
+		float angle = Math.RandomFloat(0, Math.PI2);
+		float dist = Math.RandomFloat(0, dropoffRadius);
+		vector randomSpot = Vector(
+			center[0] + Math.Cos(angle) * dist,
+			0,
+			center[2] + Math.Sin(angle) * dist);
+		randomSpot[1] = GetGame().GetWorld().GetSurfaceY(randomSpot[0], randomSpot[2]);
+
+		// First Wait waypoint at the random spot
+		AIWaypoint firstWP = spawnSlot.CreateWaypoint(randomSpot, MOVE_WAYPOINT_PREFAB);
+		if (!firstWP)
+			return null;
+		firstWP.SetCompletionRadius(1.0);
+		crewGroup.AddWaypoint(firstWP);
+
+		// When first WP completes, place 2 more in front of the vehicle's live facing
+		SCR_QRFCrewWaypointContext ctx = new SCR_QRFCrewWaypointContext();
+		ctx.m_crewGroup = crewGroup;
+		ctx.m_vehicleEntity = vehicleEntity;
+		ctx.m_spawnSlot = spawnSlot;
+		ctx.m_wp = firstWP;
+		m_crewWaypointContexts.Insert(ctx);
+		crewGroup.GetOnWaypointCompleted().Insert(OnCrewFirstWaypointCompleted);
+		return ctx;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void OnCrewFirstWaypointCompleted(AIWaypoint wp)
+	{
+		for (int i = m_crewWaypointContexts.Count() - 1; i >= 0; i--)
 		{
-			first.SetCompletionRadius(WP_COMPLETION_RADIUS); // tight 1 m radius
-			spawnSlot.m_aWaypoints.Insert(first);
-			crewGroup.AddWaypoint(first);
-		}
-
-		for (int i = 0; i < PATROL_WAYPOINT_COUNT; i++)
-		{
-			float angle = Math.RandomFloat(0, Math.PI2);
-
-			vector wpPosition = Vector(
-				prevPosition[0] + Math.Cos(angle) * stepDist,
-				0,
-				prevPosition[2] + Math.Sin(angle) * stepDist);
-			wpPosition[1] = GetGame().GetWorld().GetSurfaceY(wpPosition[0], wpPosition[2]);
-
-			AIWaypoint waypoint = spawnSlot.CreateWaypoint(wpPosition, MOVE_WAYPOINT_PREFAB);
-			if (!waypoint)
+			SCR_QRFCrewWaypointContext ctx = m_crewWaypointContexts[i];
+			if (ctx.m_wp != wp)
 				continue;
-			waypoint.SetCompletionRadius(WP_COMPLETION_RADIUS); // tight 1 m radius
-			spawnSlot.m_aWaypoints.Insert(waypoint);
-			crewGroup.AddWaypoint(waypoint);
 
-			prevPosition = wpPosition; // next WP chains off this one
+			ctx.m_crewGroup.GetOnWaypointCompleted().Remove(OnCrewFirstWaypointCompleted);
+			m_crewWaypointContexts.Remove(i);
+
+			// Read vehicle's live facing direction at the moment of completion
+			vector forward = Vector(0, 0, 1);
+			if (ctx.m_vehicleEntity)
+			{
+				forward = ctx.m_vehicleEntity.GetWorldTransformAxis(2);
+				forward[1] = 0;
+				float fwdLen = forward.Length();
+				if (fwdLen > 0.001)
+					forward = forward * (1.0 / fwdLen);
+			}
+
+			vector basePos;
+			if (ctx.m_vehicleEntity)
+				basePos = ctx.m_vehicleEntity.GetOrigin();
+			else
+				basePos = wp.GetOrigin();
+
+			// 2nd waypoint: X m ahead; 3rd waypoint: Y m ahead
+			AIWaypoint lastCrewWP;
+			for (int j = 1; j <= 2; j++)
+			{
+				float fwdDist = j * 10.0;
+				vector waitPos = Vector(basePos[0] + forward[0] * fwdDist,
+										0,
+										basePos[2] + forward[2] * fwdDist);
+				waitPos[1] = GetGame().GetWorld().GetSurfaceY(waitPos[0], waitPos[2]);
+
+				AIWaypoint newWp = ctx.m_spawnSlot.CreateWaypoint(waitPos, MOVE_WAYPOINT_PREFAB);
+				if (newWp)
+				{
+					newWp.SetCompletionRadius(1.0);
+					ctx.m_crewGroup.AddWaypoint(newWp);
+					lastCrewWP = newWp;
+				}
+			}
+			break;
 		}
 	}
 
 	//------------------------------------------------------------------------------------------------
-	// Clone waypoint for another group WITHOUT polluting SCR_ScenarioFrameworkQRFSlotAI waypoint storage.
-	// This does NOT call slot.CreateWaypoint(...); it spawns a standalone waypoint entity.
-	protected AIWaypoint CloneWaypointForGroup_NoSlot(
-		AIWaypoint srcWP,
-		SCR_AIGroup dstGroup,
-		vector overridePosition = vector.Zero)
+	protected void OnPassengerMoveWaypointCompleted(AIWaypoint wp)
 	{
-		if (!srcWP || !dstGroup)
-			return null;
-
-		EntityPrefabData prefabData = srcWP.GetPrefabData();
-		if (!prefabData)
-			return null;
-
-		ResourceName wpPrefab = prefabData.GetPrefabName();
-		Resource wpRes = Resource.Load(wpPrefab);
-		if (!wpRes.IsValid())
-			return null;
-
-		vector spawnPos = srcWP.GetOrigin();
-		if (overridePosition != vector.Zero)
-			spawnPos = overridePosition;
-
-		EntitySpawnParams paramsWP = new EntitySpawnParams();
-		paramsWP.TransformMode = ETransformMode.WORLD;
-		paramsWP.Transform[3] = spawnPos;
-
-		AIWaypoint clonedWP = AIWaypoint.Cast(GetGame().SpawnEntityPrefab(wpRes, GetGame().GetWorld(), paramsWP));
-		if (!clonedWP)
-			return null;
-
-		SCR_EntityHelper.SnapToGround(clonedWP, onlyStatic : true);
-
-		// Copy base waypoint properties
-		clonedWP.SetCompletionRadius(srcWP.GetCompletionRadius());
-
-		// Copy SCR waypoint extras (if available)
-		SCR_AIWaypoint srcSCR = SCR_AIWaypoint.Cast(srcWP);
-		SCR_AIWaypoint dstSCR = SCR_AIWaypoint.Cast(clonedWP);
-		if (srcSCR && dstSCR)
+		for (int i = m_passengerMoveContexts.Count() - 1; i >= 0; i--)
 		{
-			dstSCR.SetPriorityLevel(srcSCR.GetPriorityLevel());
+			SCR_QRFCrewWaypointContext ctx = m_passengerMoveContexts[i];
+			if (ctx.m_wp != wp)
+				continue;
+
+			ctx.m_passengerGroup.GetOnWaypointCompleted().Remove(OnPassengerMoveWaypointCompleted);
+			m_passengerMoveContexts.Remove(i);
+
+			if (ctx.m_vehicleEntity)
+				GetGame().GetCallqueue().CallLater(EjectAllRemainingOccupants, 30000, false, ctx.m_vehicleEntity, ctx.m_crewGroup, ctx.m_passengerGroup);
+			break;
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// Force-ejects all remaining occupants (cargo, pilot, turret) still inside the vehicle.
+	// Uses ejectOnTheSpot=true so each soldier teleports to their seat's world position —
+	// distributed around the vehicle, no door queue.
+	protected void MergeCrewIntoPassengers(SCR_AIGroup crewGroup, SCR_AIGroup passengerGroup)
+	{
+		if (!crewGroup || !passengerGroup)
+			return;
+
+		array<AIWaypoint> crewWPs = {};
+		crewGroup.GetWaypoints(crewWPs);
+		foreach (AIWaypoint crewWP : crewWPs)
+			crewGroup.RemoveWaypoint(crewWP);
+
+		array<AIAgent> crewAgents = {};
+		crewGroup.GetAgents(crewAgents);
+		foreach (AIAgent crewAgent : crewAgents)
+		{
+			IEntity crewEnt = crewAgent.GetControlledEntity();
+			if (!crewEnt)
+				continue;
+			crewGroup.RemoveAIEntityFromGroup(crewEnt);
+			passengerGroup.AddAIEntityToGroup(crewEnt);
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void EjectAllRemainingOccupants(IEntity vehicleEntity, SCR_AIGroup crewGroup = null, SCR_AIGroup passengerGroup = null)
+	{
+		if (!vehicleEntity)
+			return;
+
+		SCR_BaseCompartmentManagerComponent compartmentMgr =
+			SCR_BaseCompartmentManagerComponent.Cast(vehicleEntity.FindComponent(SCR_BaseCompartmentManagerComponent));
+		if (!compartmentMgr)
+			return;
+
+		// Engage handbrake so the vehicle doesn't roll while troops disembark
+		Vehicle vehicle = Vehicle.Cast(vehicleEntity);
+		CarControllerComponent carController = CarControllerComponent.Cast(vehicle.GetVehicleController());
+		if (carController)
+		{
+			carController.SetPersistentHandBrake(true);
+			VehicleWheeledSimulation wheelSim = carController.GetWheeledSimulation();
+			if (wheelSim)
+				wheelSim.SetBreak(true, true);
 		}
 
-		// Copy timed waypoint hold time (if this waypoint type supports it)
-		SCR_TimedWaypoint srcTimed = SCR_TimedWaypoint.Cast(srcWP);
-		SCR_TimedWaypoint dstTimed = SCR_TimedWaypoint.Cast(clonedWP);
-		if (srcTimed && dstTimed)
+		array<IEntity> allOccupants = {};
+		compartmentMgr.GetOccupantsOfType(allOccupants, ECompartmentType.CARGO);
+		compartmentMgr.GetOccupantsOfType(allOccupants, ECompartmentType.PILOT);
+		compartmentMgr.GetOccupantsOfType(allOccupants, ECompartmentType.TURRET);
+		if (allOccupants.IsEmpty())
+			return;
+
+		int ejected = 0;
+		foreach (IEntity occupantEnt : allOccupants)
 		{
-			dstTimed.SetHoldingTime(srcTimed.GetHoldingTime());
+			ChimeraCharacter character = ChimeraCharacter.Cast(occupantEnt);
+			if (!character)
+				continue;
+
+			SCR_CompartmentAccessComponent access =
+				SCR_CompartmentAccessComponent.Cast(character.GetCompartmentAccessComponent());
+			if (!access || !access.IsInCompartment())
+				continue;
+
+			BaseCompartmentSlot slot = access.GetCompartment();
+			if (!slot)
+				continue;
+
+			bool ejectedNow;
+			slot.EjectOccupant(true, false, ejectedNow, true);
+			if (ejectedNow)
+				ejected++;
 		}
 
-		// Assign only to destination group
-		dstGroup.AddWaypoint(clonedWP);
-		return clonedWP;
+		if (ejected > 0)
+			Print(string.Format("QRF: Force-ejected %1 stuck occupant(s)", ejected));
+
+		MergeCrewIntoPassengers(crewGroup, passengerGroup);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// Gives the passenger (cargo) group a Move waypoint to the dropoff point, then a GetOutInstant.
+	// Schedules EjectAllRemainingOccupants 30s after the Move WP completes.
+	protected AIWaypoint AssignPassengerDropoffWaypoints(
+		SCR_AIGroup passengerGroup,
+		SCR_ScenarioFrameworkQRFSlotAI spawnSlot,
+		AIWaypoint getOutWaypoint,
+		IEntity vehicleEntity,
+		SCR_AIGroup crewGroup = null)
+	{
+		static const ResourceName MOVE_WAYPOINT_PREFAB = "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et";
+		static const ResourceName GET_OUT_PREFAB = "{C40316EE26846CAB}Prefabs/AI/Waypoints/AIWaypoint_GetOut.et";
+		static const ResourceName GET_OUT_INSTANT_PREFAB = "{E5002E8CD9D1F4AF}Prefabs/AI/Waypoints/AIWaypoint_GetOutInstant.et";
+
+		if (!passengerGroup || !spawnSlot || !getOutWaypoint)
+			return null;
+
+		vector dropoffPos = getOutWaypoint.GetOrigin();
+		dropoffPos[1] = GetGame().GetWorld().GetSurfaceY(dropoffPos[0], dropoffPos[2]);
+
+		float radius = getOutWaypoint.GetCompletionRadius();
+
+		// 1) Move marker so the vehicle drives to the dropoff location
+		AIWaypoint moveWP = spawnSlot.CreateWaypoint(dropoffPos, MOVE_WAYPOINT_PREFAB);
+		if (moveWP)
+		{
+			moveWP.SetCompletionRadius(radius);
+			passengerGroup.AddWaypoint(moveWP);
+
+			// Schedule force-eject 30s after passengers complete this Move WP
+			if (vehicleEntity)
+			{
+				SCR_QRFCrewWaypointContext passMoveCtx = new SCR_QRFCrewWaypointContext();
+				passMoveCtx.m_wp = moveWP;
+				passMoveCtx.m_vehicleEntity = vehicleEntity;
+				passMoveCtx.m_passengerGroup = passengerGroup;
+				passMoveCtx.m_crewGroup = crewGroup;
+				m_passengerMoveContexts.Insert(passMoveCtx);
+				passengerGroup.GetOnWaypointCompleted().Insert(OnPassengerMoveWaypointCompleted);
+			}
+		}
+
+		// 2) GetOutInstant - troops exit immediately without the vehicle re-driving.
+		AIWaypoint getOutInstantWP = spawnSlot.CreateWaypoint(dropoffPos, GET_OUT_INSTANT_PREFAB);
+		if (getOutInstantWP)
+		{
+			getOutInstantWP.SetCompletionRadius(radius);
+
+			SCR_BoardingWaypoint boardingWP = SCR_BoardingWaypoint.Cast(getOutInstantWP);
+			if (boardingWP)
+			{
+				if (!boardingWP.m_BoardingParameters)
+					boardingWP.m_BoardingParameters = new SCR_AIBoardingWaypointParameters();
+				boardingWP.SetAllowance(false, false, true); // driver=NO, gunner=NO, cargo=YES
+			}
+			passengerGroup.AddWaypoint(getOutInstantWP);
+		}
+		return moveWP;
 	}
 }
