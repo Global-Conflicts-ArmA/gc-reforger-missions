@@ -3,23 +3,34 @@ GenericEntity MainAI_QRF : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/
   SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
    m_sFactionKey "FIA"
    m_aActivationActions {
-    SCR_ScenarioFrameworkActionQRFDispacher_modified "{694681252671B3DC}" : "{69200CFEA353A91C}scripts/game/Pastah/QRFDispacherAction_modified.conf" {
+    SCR_ScenarioFrameworkActionQRFDispacher_modified "{69542E8D4D6051AD}" : "{69200CFEA353A91C}scripts/game/Pastah/QRF Dispacher/QRFDispacherAction_modified.conf" {
      m_sQRFLayerName "QRFSpawnpointsLayer1"
      m_iThreshold 1
      m_iNumberOfAvailableQRFWaves -1
      m_fQRFSpawnDelay 1
-     m_fQRFNextWaveDelay 15
      m_aGroupList {
-      SCR_QRFGroupConfig_modified "{694681255EAA2B9B}" {
+      SCR_QRFGroupConfig_modified "{69542E8D6FAE8753}" {
        m_sGroupPrefab "{B70E6D12A8EC2410}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_transport_covered.et"
        m_eGroupType MOUNTED_INFANTRY
+       m_iNumberOfAvailableGroups 2
        m_fQRFSpawnDelay 30
       }
      }
      m_aWPConfig {
       SCR_QRFWaypointConfig "{694621DC887C748D}" {
-       m_sWPToSpawn "{FFF9518F73279473}PrefabsEditable/Auto/AI/Waypoints/E_AIWaypoint_Move.et"
        m_eGroupType AIR
+      }
+      SCR_QRFWaypointConfig "{694621DC887C748A}" {
+      }
+     }
+     m_aActions {
+      SCR_ScenarioFrameworkSetSignal "{69542E8D9606BB78}" {
+       m_iMaxNumberOfActivations 1
+       m_Getter SCR_ScenarioFrameworkGetEntityByName "{69542E8CD52FE9DA}" {
+        m_sEntityName "AirRaidSiren"
+       }
+       m_sSignal "Siren"
+       m_iValue 1
       }
      }
     }
@@ -230,8 +241,7 @@ GenericEntity MainAI_QRF : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/
           }
          }
         }
-        m_sID "SentryAI"
-        m_bUseExistingWorldAsset 1
+        m_sObjectToSpawn "{C5C6AB45FC13E5EF}worlds/Pastah/Hrad Sandwich/Prefabs/Group_FIAModern_Sentry_Pastah.et"
         m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{693C17B1891014F4}" {
          m_aLayerName {
           "SlotWaypoint1"
@@ -242,16 +252,6 @@ GenericEntity MainAI_QRF : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/
        }
       }
       coords -4.159 -0.012 0.718
-      {
-       SCR_AIGroup SentryAI : "{3E19B428E9137511}Prefabs/Groups/INDFOR/FIA/FIA_Modern/Group_FIAModern_RifleSquad.et" {
-        coords -0.835 0.02 -3.16
-        m_aUnitPrefabSlots {
-         "{BDDF016F45B7851F}Prefabs/Characters/Factions/INDFOR/FIA/FIA_Modern/Character_FIA_Modern_SL.et"
-         "{2697B58B16973BA2}Prefabs/Characters/Factions/INDFOR/FIA/FIA_Modern/Character_FIA_Modern_Rifleman.et"
-        }
-        m_bSpawnImmediately 0
-       }
-      }
      }
     }
    }
@@ -297,6 +297,7 @@ GenericEntity MainAI_QRF : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/
          "wpGetOut"
         }
        }
+       m_eAIGroupFormation Column
        m_eAISkill EXPERT
        m_aSCR_QRFSpawnSafeZone {
         SCR_QRFSpawnSafeZone "{6496E54ACB2A02D5}" {

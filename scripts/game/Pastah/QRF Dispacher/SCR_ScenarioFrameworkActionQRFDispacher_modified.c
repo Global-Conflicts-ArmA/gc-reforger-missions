@@ -302,7 +302,10 @@ class SCR_QRFCrewWaypointContext
 		if (m_iNumberOfAvailableQRFWaves > 0)
 			m_iNumberOfAvailableQRFWaves--;
 
-		m_vTargetPosition = vector.Zero;
+		// Do NOT reset m_vTargetPosition here. Groups with a spawn delay are dispatched
+		// via QueueRetryForGroup/CallLater and call SpawnGroup after this function returns.
+		// Resetting to Zero causes those deferred groups to place waypoints at the ocean origin.
+		// The kill-lerp in OnGroupCompositionChanged keeps the position current naturally.
 
 		foreach (SCR_ScenarioFrameworkActionBase actions : m_aActions)
 		{
@@ -392,6 +395,12 @@ class SCR_QRFCrewWaypointContext
 						continue;
 
 					wpPosition[1] = GetGame().GetWorld().GetSurfaceY(wpPosition[0], wpPosition[2]);
+					if (wpPosition[1] < 0)
+					{
+						Print("QRF: Skipping waypoint - target position is over water", LogLevel.WARNING);
+						continue;
+					}
+
 					AIWaypoint aiWP = childSlot.CreateWaypoint(wpPosition, wp.GetWaypointPrefabName());
 					if (aiWP)
 						aiGroup.AddWaypoint(aiWP);
@@ -648,12 +657,23 @@ class SCR_QRFCrewWaypointContext
 					continue;
 
 				if (wp.GetDistanceOffsetToTargetLocation())
+				{
 					wpPosition = SCR_Math3D.MoveTowards(m_aVehicleSpawnQueueConfig[i].m_vTargetPosition, occupant.GetOrigin(), wp.GetDistanceOffsetToTargetLocation());
+				}
 				else
+				{
 					wpPosition = m_aVehicleSpawnQueueConfig[i].m_vTargetPosition;
+				}
 
 				if (float.AlmostEqual(vector.DistanceXZ(wpPosition, occupant.GetOrigin()), 0, 1))
 					continue;
+
+				wpPosition[1] = GetGame().GetWorld().GetSurfaceY(wpPosition[0], wpPosition[2]);
+				if (wpPosition[1] < 0)
+				{
+					Print("QRF: Skipping vehicle occupant waypoint - target position is over water", LogLevel.WARNING);
+					continue;
+				}
 
 				AIWaypoint aiWP = m_aVehicleSpawnQueueConfig[i].m_Slot.CreateWaypoint(wpPosition, wp.GetWaypointPrefabName());
 				if (aiWP)
@@ -662,7 +682,7 @@ class SCR_QRFCrewWaypointContext
 					aiGroup.AddWaypoint(aiWP);
 				}
 			}
-			m_aVehicleSpawnQueueConfig.Remove(i);
+			// m_aVehicleSpawnQueueConfig.Remove(i);
 			break;
 		}
 	}
