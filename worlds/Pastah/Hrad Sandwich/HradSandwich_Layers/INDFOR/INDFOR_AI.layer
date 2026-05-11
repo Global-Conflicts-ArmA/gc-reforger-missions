@@ -10,9 +10,9 @@ GenericEntity MainAI_QRF : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/
      m_fQRFSpawnDelay 1
      m_aGroupList {
       SCR_QRFGroupConfig_modified "{69542E8D6FAE8753}" {
-       m_sGroupPrefab "{B70E6D12A8EC2410}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_transport_covered.et"
+       m_sGroupPrefab "{9676DA48F7CA3E49}worlds/Pastah/Hrad Sandwich/Prefabs/Ural4320_FIA_transport_covered_fiamodern_pastah.et"
        m_eGroupType MOUNTED_INFANTRY
-       m_iNumberOfAvailableGroups 2
+       m_iNumberOfAvailableGroups 3
        m_fQRFSpawnDelay 30
       }
      }
@@ -38,6 +38,9 @@ GenericEntity MainAI_QRF : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/
   }
  }
  coords 4744.183 369.931 6332.16
+ EOnInit ""\
+ "		/* code here */"\
+ "	"
  {
   $grp GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
    SirensLayer {
@@ -75,61 +78,31 @@ GenericEntity MainAI_QRF : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/
    CampingSquads {
     coords -10.191 5.237 26.455
     {
-     $grp GenericEntity : "{8D43830F02C3F114}Prefabs/Systems/ScenarioFramework/Components/SlotAI.et" {
-      CampingSquad1 {
-       components {
-        SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
-         m_sObjectToSpawn "{3E19B428E9137511}Prefabs/Groups/INDFOR/FIA/FIA_Modern/Group_FIAModern_RifleSquad.et"
-         m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{69421E644AAEA082}" {
-          m_aLayerName {
-           "Squad1Defend"
-          }
+     GenericEntity CampingSquad2 : "{8D43830F02C3F114}Prefabs/Systems/ScenarioFramework/Components/SlotAI.et" {
+      components {
+       SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+        m_sObjectToSpawn "{3E19B428E9137511}Prefabs/Groups/INDFOR/FIA/FIA_Modern/Group_FIAModern_RifleSquad.et"
+        m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{69421E645F0624F0}" {
+         m_aLayerName {
+          "Squad2Defend"
          }
-         m_bSpawnAIOnWPPos 1
         }
-       }
-       coords 2.893 -0.62 -3.886
-       angles 0 103.006 0
-       {
-        GenericEntity Squad1Defend : "{EBD91177954E8236}Prefabs/Systems/ScenarioFramework/Components/SlotWaypoint.et" {
-         components {
-          SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
-           m_Waypoint SCR_ScenarioFrameworkWaypointDefend "{69421E6430C288E2}" {
-            m_fCompletionRadius 10
-           }
-          }
-         }
-         coords -3.308 0.807 -6.122
-         angles 0 158.332 0
-        }
+        m_bSpawnAIOnWPPos 1
        }
       }
-      CampingSquad2 {
-       components {
-        SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
-         m_sObjectToSpawn "{3E19B428E9137511}Prefabs/Groups/INDFOR/FIA/FIA_Modern/Group_FIAModern_RifleSquad.et"
-         m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{69421E645F0624F0}" {
-          m_aLayerName {
-           "Squad2Defend"
+      coords 3.935 -5.574 -38.254
+      angles 0 98.662 0
+      {
+       GenericEntity Squad2Defend : "{EBD91177954E8236}Prefabs/Systems/ScenarioFramework/Components/SlotWaypoint.et" {
+        components {
+         SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+          m_Waypoint SCR_ScenarioFrameworkWaypointDefend "{69421E6430C288E2}" {
+           m_fCompletionRadius 10
           }
          }
-         m_bSpawnAIOnWPPos 1
         }
-       }
-       coords 3.935 -5.574 -38.254
-       angles 0 98.662 0
-       {
-        GenericEntity Squad2Defend : "{EBD91177954E8236}Prefabs/Systems/ScenarioFramework/Components/SlotWaypoint.et" {
-         components {
-          SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
-           m_Waypoint SCR_ScenarioFrameworkWaypointDefend "{69421E6430C288E2}" {
-            m_fCompletionRadius 10
-           }
-          }
-         }
-         coords 4.648 2.342 -12.301
-         angles 0 -98.662 0
-        }
+        coords 4.648 2.342 -12.301
+        angles 0 -98.662 0
        }
       }
      }
@@ -258,29 +231,16 @@ GenericEntity MainAI_QRF : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/
    WPs {
     coords -804.007 -158.906 1205.938
     {
-     $grp GenericEntity : "{EBD91177954E8236}Prefabs/Systems/ScenarioFramework/Components/SlotWaypoint.et" {
-      wpGetOut2 {
-       components {
-        SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
-         m_Waypoint SCR_ScenarioFrameworkWaypointGetOut "{6946839328278B56}" {
-          m_fCompletionRadius 5
-         }
+     GenericEntity wpGetOut : "{EBD91177954E8236}Prefabs/Systems/ScenarioFramework/Components/SlotWaypoint.et" {
+      components {
+       SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+        m_Waypoint SCR_ScenarioFrameworkWaypointGetOut "{6946839328278B56}" {
+         m_fCompletionRadius 60
         }
        }
-       coords 110.679 2.305 39.156
-       angles -10.8 -91.867 0
       }
-      wpGetOut {
-       components {
-        SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
-         m_Waypoint SCR_ScenarioFrameworkWaypointGetOut "{6946839328278B56}" {
-          m_fCompletionRadius 60
-         }
-        }
-       }
-       coords 569.819 129.654 -874.036
-       angles 4.468 134.211 0
-      }
+      coords 569.819 129.654 -874.036
+      angles 4.468 134.211 0
      }
     }
    }

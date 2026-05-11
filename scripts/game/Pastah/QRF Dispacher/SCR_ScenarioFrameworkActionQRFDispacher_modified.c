@@ -608,7 +608,9 @@ class SCR_QRFCrewWaypointContext
 		SCR_AIGroup crewGroup = SplitCrewFromVic(compartmentManager, occupants, aiGroup);
 		if (!crewGroup)
 		{
-			Print("Failed to split crew from vehicle group for QRF Dispacher", LogLevel.ERROR);
+			// Compartment slot registration may not be complete yet on heavy maps — retry in 2s
+			Print("QRF Dispacher: Retrying crew split from vehicle group in 2 seconds. Failed to split crew", LogLevel.WARNING);
+			GetGame().GetCallqueue().CallLater(OnFinishedSpawningVehicleOccupants, 2000, false, compartmentManager, occupants, false);
 			return;
 		}
 
