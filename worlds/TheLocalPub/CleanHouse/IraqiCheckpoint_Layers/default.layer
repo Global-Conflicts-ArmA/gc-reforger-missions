@@ -1,0 +1,130 @@
+SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
+ coords 12875.355 0 9622.063
+}
+PerceptionManager PerceptionManager2 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 13034.412 0 9597.108
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 12
+   m_bRandomStartingWeather 1
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{68B15610677B19F4}" {
+     m_iStartingHour 12
+    }
+   }
+   m_bUseSpecifiedDate 1
+   m_iSetDay 14
+   m_iSetMonth 7
+   m_iSetYear 2002
+  }
+ }
+ coords 13294.985 0 9615.088
+ m_iFreezeTime 240000
+ m_eJIPState Deny
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 13376.745 0 9703.868
+ m_missionEvents {
+  TILW_MissionEvent "{68B2F38D19027BBF}" {
+   m_name "SetupTimer"
+   m_instructions {
+    TILW_SetFlagInstruction "{68B2F38D12C79402}" {
+     m_executionDelay 240
+     m_flagName "SetupFinished"
+    }
+    TILW_SendMessageInstruction "{68B2F3804A907139}" {
+     m_executionDelay 240
+     m_messageTitle "Teleports activated"
+     m_messageBody "You can now teleport to the insert locations via the coloured doors"
+     m_factionKeys {
+      "RHS_AFRF"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{68B2F38D10A0E079}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{68B5673FF693ADB8}" {
+   m_name "SEPWIN"
+   m_instructions {
+    TILW_SendMessageInstruction "{68B5673FE8988787}" {
+     m_executionDelay 3
+     m_messageTitle "SEPARATIST VICTORY"
+     m_messageBody "Once again, we have failed to eliminate the separatists holding the apartment block. Too many lives have been lost over this single building."\
+     "We regroup. We return tomorrow."\
+     ""\
+     "Better luck next time."\
+     "Mission will conclude shortly..."
+     m_factionKeys {
+      "RHS_AFRF"
+     }
+    }
+    TILW_SendMessageInstruction "{68B5673FE6645B20}" {
+     m_executionDelay 3
+     m_messageTitle "SEPARATIST VICTORY"
+     m_messageBody "We did it… we managed to hold them off for another day."\
+     "Only to face it all again tomorrow."\
+     ""\
+     "Though we repelled the assault, this building will eventually become our final resting place."\
+     ""\
+     "Good work, troops."\
+     "Mission will conclude shortly..."
+     m_factionKeys {
+      "GC_SEPARATIST"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{68B5673FE42593DD}" {
+    m_flagName "RUDead"
+   }
+  }
+  TILW_MissionEvent "{68B5673E2D2EC0DC}" {
+   m_name "RUWIN"
+   m_instructions {
+    TILW_SendMessageInstruction "{68B5673E2D2EC065}" {
+     m_executionDelay 3
+     m_messageTitle "RUSSIAN FEDERATION VICTORY"
+     m_messageBody "Well done, troops."\
+     ""\
+     "We have eliminated the last of the separatist resistance and successfully secured the city."\
+     ""\
+     "Outstanding work."\
+     "Mission will conclude shortly..."
+     m_factionKeys {
+      "RHS_AFRF"
+     }
+    }
+    TILW_SendMessageInstruction "{68B5673E2D2EC067}" {
+     m_executionDelay 3
+     m_messageTitle "RUSSIAN FEDERATION VICTORY"
+     m_messageBody "We turn to dust and are forgotten by time."\
+     "Once loved, once cherished — now nothing more than food for the worms."\
+     ""\
+     "We may have fallen, but our movement lives on."\
+     "Mission will conclude shortly..."
+     m_factionKeys {
+      "GC_SEPARATIST"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{68B5673E2D2EC079}" {
+    m_flagName "SEPDead"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{68B2F38C80B38866}" {
+   m_flagName "RUDead"
+   m_factionKey "RHS_AFRF"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{68B2F38CE98C4BC7}" {
+   m_flagName "SEPDead"
+   m_factionKey "GC_SEPARATIST"
+  }
+ }
+}

@@ -5,9 +5,90 @@ PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/Per
  coords 7833.956 48.904 1695.617
 }
 PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 13
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6952D4E3C6BBA2C4}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 13
+    }
+   }
+   m_bUseSpecifiedDate 1
+   m_iSetDay 24
+   m_iSetMonth 7
+   m_iSetYear 2013
+  }
+ }
  coords 7746.719 45.505 1553.052
- m_iFreezeTime 150000
+ m_iFreezeTime 120000
+ m_aFactionRespawnCount {
+  PS_FactionRespawnCount "{694F154ABAA6B2E7}" {
+   m_sFactionKey "GC_INSURGENT"
+   m_iCount 14
+   m_iTime 30
+   m_bWaveMode 1
+  }
+ }
+ m_eJIPState Deny
+ {
+  SCR_FactionManager "6952D4F31867C7A5" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{632925D53C7F1148}" {
+     "Identity of soldiers" FactionIdentity "{570EEB96B808B7E1}" {
+      VisualIdentityArray {
+       VisualIdentity "{570EDB8787206B1C}" {
+        Head "{F4016BBC1A1AB199}Prefabs/Characters/Heads/Head_Persian_01.et"
+        Body "{EC56CFD60720D9D9}Prefabs/Characters/Basebody/CharacterBasebody_Tanoan_01.et"
+       }
+       VisualIdentity "{570CE64C784286B5}" {
+        Head "{E2831DCA832A685C}Prefabs/Characters/Heads/Head_Persian_02.et"
+        Body "{EC56CFD60720D9D9}Prefabs/Characters/Basebody/CharacterBasebody_Tanoan_01.et"
+       }
+       VisualIdentity "{570CFDC06CAAD480}" {
+        Head "{071F51338FCFFF37}Prefabs/Characters/Heads/Head_Persian_03.et"
+        Body "{EC56CFD60720D9D9}Prefabs/Characters/Basebody/CharacterBasebody_Tanoan_01.et"
+       }
+       VisualIdentity "{570CFDC05A2BFCE8}" {
+        Head "{68A0EC2B1FAEDC65}Prefabs/Characters/Heads/Head_AfricanHead_01.et"
+        Body "{EC56CFD60720D9D9}Prefabs/Characters/Basebody/CharacterBasebody_Tanoan_01.et"
+       }
+       VisualIdentity "{570CFDC037CCBCD3}" {
+        Head "{04F4D8CBA36A534C}Prefabs/Characters/Heads/Head_AfricanHead_02.et"
+        Body "{EC56CFD60720D9D9}Prefabs/Characters/Basebody/CharacterBasebody_Tanoan_01.et"
+       }
+       VisualIdentity "{570CFDC1C8B17A43}" {
+        Head "{E1689432AF8FC420}Prefabs/Characters/Heads/Head_AfricanHead_03.et"
+        Body "{EC56CFD60720D9D9}Prefabs/Characters/Basebody/CharacterBasebody_Tanoan_01.et"
+       }
+       VisualIdentity "{588508C196393A8F}" {
+        Head "{F8ED1678144C1013}Prefabs/Characters/Heads/Head_AfricanHead_h.et"
+        Body "{EC56CFD60720D9D9}Prefabs/Characters/Basebody/CharacterBasebody_Tanoan_01.et"
+       }
+       VisualIdentity "{588508C1951A8A0F}" {
+        Head "{7A743FD3AA9E0868}Prefabs/Characters/Heads/Head_Barklem.et"
+        Body "{EC56CFD60720D9D9}Prefabs/Characters/Basebody/CharacterBasebody_Tanoan_01.et"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
 }
 TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
  coords 7843.844 47.074 1584.48
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{6952D4EA61231F7A}" {
+   m_flagName "IraqDead"
+   m_factionKey "GC_IRAQ"
+  }
+  TILW_FactionPlayersKilledFlag "{6952D4EA67E536FB}" {
+   m_flagName "InsurgentDead"
+   m_factionKey "GC_INSURGENT"
+   m_casualtyRatio 0.8
+  }
+ }
 }
