@@ -80,6 +80,73 @@ PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_G
 }
 TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
  coords 7843.844 47.074 1584.48
+ m_missionEvents {
+  TILW_MissionEvent "{695AFB8013E1CCC4}" {
+   m_name "IraqiVictory"
+   m_instructions {
+    TILW_SendMessageInstruction "{695AFB807FFA5213}" {
+     m_messageTitle "IRAQI VICTORY"
+     m_messageBody "Good job managing to hold the checkpoint."\
+     "Insurgent forces are withdrawing."\
+     ""\
+     "Mission will end soon..."
+     m_factionKeys {
+      "GC_IRAQ"
+     }
+    }
+    TILW_SendMessageInstruction "{695AFB80B699F60E}" {
+     m_messageTitle "IRAQI VICTORY"
+     m_messageBody "Withdraw withdraw withdraw!"\
+     "We've been beaten back. Iraqi forces have managed to repel our attack. "\
+     ""\
+     "Better luck next time."\
+     "Mission will end soon..."
+     m_factionKeys {
+      "GC_INSURGENT"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{695AFB8007869E0E}" {
+    m_flagName "InsurgentDead"
+   }
+  }
+  TILW_MissionEvent "{695AFB80156531D7}" {
+   m_name "InsurVictory"
+   m_instructions {
+    TILW_SendMessageInstruction "{695AFB80D733581E}" {
+     m_messageTitle "INSURGENT VICTORY"
+     m_messageBody "We've been totally destroyed and the checkpoint overun."\
+     "Insurgent forces now control the highway."\
+     ""\
+     "Better luck next time."\
+     "Mission will end soon..."
+     m_factionKeys {
+      "GC_IRAQ"
+     }
+    }
+    TILW_SendMessageInstruction "{695AFB9F2EA92B0E}" {
+     m_messageTitle "INSURGENT VICTORY"
+     m_messageBody "We've smashed the Iraqi forces. The checkpoint belongs to us now!"\
+     "The highway is open and we have full freedom of movement."\
+     ""\
+     "Mission will end soon..."
+     m_factionKeys {
+      "GC_INSURGENT"
+     }
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{695AFB80FD41D2F8}" {
+    m_operands {
+     TILW_LiteralTerm "{695AFB80F187607A}" {
+      m_flagName "IraqDead"
+     }
+     TILW_LiteralTerm "{695AFB80ED32D4DC}" {
+      m_flagName "CPSecured"
+     }
+    }
+   }
+  }
+ }
  m_casualtyFlags {
   TILW_FactionPlayersKilledFlag "{6952D4EA61231F7A}" {
    m_flagName "IraqDead"
