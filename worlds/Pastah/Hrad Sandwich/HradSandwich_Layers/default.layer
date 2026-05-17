@@ -30,6 +30,7 @@ PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/Per
 PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
  coords 4437.933 409.26 6445.289
  m_iFreezeTime 180000
+ m_bFreezeTimeShootingForbiden 1
  {
   SCR_FactionManager "69553A2F68489459" {
    ID "5ED9088735FF2D8B"
@@ -231,6 +232,35 @@ PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_G
       m_sCallsignCharacterWithRoleFormat "%1 %2 %3: %4"
      }
     }
+   }
+  }
+ }
+}
+$grp GenericEntity {
+ Location1 {
+  coords 4425.163 409.191 6421.106
+ }
+ Location2 {
+  coords 4430.883 409.654 6453.495
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 4431.078 409.469 6439.005
+ m_missionEvents {
+  TILW_MissionEvent "{695930E75C7BCC0B}" {
+   m_name "AISpawn"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{695930E7462EE126}" {
+     m_prefab "{B70E6D12A8EC2410}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_transport_covered.et"
+     m_locationName "Location1"
+    }
+    TILW_SpawnPrefabInstruction "{695930E7C18A45A2}" {
+     m_prefab "{B70E6D12A8EC2410}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_transport_covered.et"
+     m_locationName "Location2"
+    }
+   }
+   m_condition TILW_LiteralTerm "{695930E05BC53AA3}" {
+    m_invertTerm 1
    }
   }
  }
