@@ -1,0 +1,219 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 3144.743 20.788 2622.64
+}
+PS_GameModeCoop gamemode_rl : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{68DD6D0BECD0066B}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 12
+    }
+   }
+  }
+ }
+ m_iFreezeTime 180000
+ m_aFactionRespawnCount {
+  PS_FactionRespawnCount "{68DB2CA837F286A0}" {
+   m_sFactionKey "RHS_AFRF"
+   m_iCount 5
+  }
+ }
+ {
+  SCR_FactionManager "68DD6D1904394706" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "BARSUK"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "GRIZON"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "LASKA"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "NORKA"
+       }
+       SCR_CallsignInfo "{64E2F896E232A50B}" {
+        m_sCallsign "VYDRA"
+       }
+       SCR_CallsignInfo "{64E2F896FFC45153}" {
+        m_sCallsign "KUNITSA"
+       }
+       SCR_CallsignInfo "{64E2F896FFF772BB}" {
+        m_sCallsign "YENOT"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{648D46336748B246}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{648D3C2E4F6005BD}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{648D3C2E5C06EF29}" {
+        m_sCallsign "OREL"
+       }
+       SCR_CallsignInfo "{648D3C2E5DEF1172}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{648D3C2E5DF5B7F3}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{648D3C2E5DD97C6B}" {
+        m_sCallsign "3"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+   }
+  }
+ }
+}
+$grp SCR_EditorRestrictionZoneEntity : "{6144B0BE2EAC6897}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneMedium.et" {
+ {
+  coords 3219.309 23.93 1805.496
+  m_fZoneRadius 70
+  m_fZoneTeleportedRadius 80
+ }
+ {
+  coords 4214.088 15.314 1909.042
+  m_fZoneRadius 70
+  m_fZoneTeleportedRadius 80
+ }
+ {
+  coords 4365.39 20.594 2366.737
+  angles 0 0 -0.895
+  m_fWarnRadius 20
+  m_fZoneRadius 70
+  m_fZoneTeleportedRadius 80
+ }
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ ao_ru {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_killTimer 15
+    m_factionKeys {
+     "RHS_AFRF"
+    }
+    m_lineWidth 5
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+    m_factionKeys {
+     "RHS_AFRF"
+    }
+    m_visibleForEmptyFaction 0
+    m_color 0 0 0 0.5
+   }
+  }
+  coords 3000 21.188 1500
+  Points {
+   ShapePoint "{68A774B9C7795A81}" {
+    Position 0 10 600
+   }
+   ShapePoint "{68A774B8B2AA0B33}" {
+    Position -200 10 1200
+   }
+   ShapePoint "{68A774B9C54567EE}" {
+    Position 0 10 1300
+   }
+   ShapePoint "{68A774B9CC0CF777}" {
+    Position 700 10 1400
+   }
+   ShapePoint "{68A774B9D063FD15}" {
+    Position 800 10 1100
+   }
+   ShapePoint "{68A774B828448E71}" {
+    Position 1000 -1.408 900
+   }
+   ShapePoint "{68A774B82F1D20F2}" {
+    Position 1400 10 900
+   }
+   ShapePoint "{68A774B82D0035FF}" {
+    Position 1400 10 300
+   }
+   ShapePoint "{68A774B8308575A1}" {
+    Position 1000 10 100
+   }
+   ShapePoint "{68A774BDE51D7521}" {
+    Position 300 10 100
+   }
+   ShapePoint "{68A774B8361D6FA2}" {
+    Position -100 10 300
+   }
+   ShapePoint "{68DCF6601E047E9F}" {
+    Position -100 10 500
+   }
+  }
+ }
+ ao_cdf {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_killTimer 15
+    m_factionKeys {
+     "GC_CDF"
+    }
+    m_lineWidth 5
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+    m_factionKeys {
+     "GC_CDF"
+    }
+    m_visibleForEmptyFaction 0
+    m_color 0 0 0 0.5
+   }
+  }
+  coords 3000 20.831 2300
+  Points {
+   ShapePoint "{68A774BE0C542A48}" {
+    Position -100 10 100
+   }
+   ShapePoint "{68DCF662AEB0A638}" {
+    Position 0 10 0
+   }
+   ShapePoint "{68A807812B0BC0BF}" {
+    Position 500 10 0
+   }
+   ShapePoint "{68A774BE0C809126}" {
+    Position 700 10 200
+   }
+   ShapePoint "{68DCF67970A17638}" {
+    Position 700 3.945 600
+   }
+   ShapePoint "{68A774BE17BAC681}" {
+    Position 400 4.263 900
+   }
+   ShapePoint "{68A774BE726B3302}" {
+    Position 100 10 900
+   }
+   ShapePoint "{68A774BE6AF01196}" {
+    Position -600 10 700
+   }
+   ShapePoint "{68DB485015B02118}" {
+    Position -500 10 400
+   }
+   ShapePoint "{68DB48501A3627D8}" {
+    Position -200 10 400
+   }
+  }
+  LineColor 0.3882 0.7765 0 1
+ }
+}
+$grp SCR_EditorRestrictionZoneEntity : "{EF72FA7CD87618D5}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneSmall.et" {
+ {
+  coords 3728.403 18.407 2090.626
+  m_fZoneRadius 30
+ }
+ {
+  coords 3596.258 18.812 1711.693
+  m_fZoneRadius 30
+ }
+}

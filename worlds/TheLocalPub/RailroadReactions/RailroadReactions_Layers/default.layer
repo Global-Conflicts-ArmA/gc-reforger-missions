@@ -40,8 +40,7 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
      m_executionDelay 3
      m_messageTitle "US VICTORY"
      m_messageBody "Well done troops!"\
-     "We've managed to destroy the supplies on the train and also inflict enough damage on the Russians to render them combat ineffective."\
-     "The remaining enemies are routing."\
+     "We've managed to destroy the supplies on the train and also extract out the AO."\
      ""\
      "Mission will end soon..."
      m_factionKeys {
@@ -51,9 +50,8 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
     TILW_SendMessageInstruction "{6872D94EB6B5D01A}" {
      m_executionDelay 3
      m_messageTitle "US VICTORY"
-     m_messageBody "Run for it!"\
-     "The US forces have managed to destroy our supplies on the train and also inflict enough damage to render us combat ineffective."\
-     "Our remaining troops are routing. "\
+     m_messageBody "The pesky Americans!"\
+     "They've destroy our supplies which was critical to the success of our regiments next operation and also managed to flee the AO."\
      ""\
      "Better luck next time."\
      "Mission will end soon..."
@@ -74,7 +72,7 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
       m_flagName "CacheDestroyed"
      }
      TILW_LiteralTerm "{6872D94FE0D16D3E}" {
-      m_flagName "RUNeut"
+      m_flagName "USExtract"
      }
     }
    }
@@ -178,6 +176,21 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
     m_invertTerm 1
    }
   }
+  TILW_MissionEvent "{68B0E4BCDE60ACC0}" {
+   m_name "AdminMessages"
+   m_instructions {
+    TILW_SendMessageInstruction "{68B0E4BCD79BA3CC}" {
+     m_executionDelay 6
+     m_messageTitle "ADMIN MESSAGE"
+     m_messageBody "The cache is now destroyed."\
+     "BLUFOR/US forces should now begin withdrawing north across the northern bridge to the extraction area which is a 2000km radius from US spawn. Nearest point to the zone is North side of the rail bridge."
+     m_adminOnly 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{68B0E4BCD0DB15D6}" {
+    m_flagName "CacheDestroyed"
+   }
+  }
  }
  m_casualtyFlags {
   TILW_FactionPlayersKilledFlag "{6872D9485FE4D057}" {
@@ -189,11 +202,6 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
    m_flagName "RUDead"
    m_factionKey "RHS_AFRF"
    m_casualtyRatio 0.95
-  }
-  TILW_FactionPlayersKilledFlag "{6872D948CEAC4C01}" {
-   m_flagName "RUNeut"
-   m_factionKey "RHS_AFRF"
-   m_casualtyRatio 0.5
   }
  }
 }

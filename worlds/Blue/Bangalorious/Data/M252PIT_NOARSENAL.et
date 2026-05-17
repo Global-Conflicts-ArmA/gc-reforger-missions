@@ -1,0 +1,253 @@
+GenericEntity {
+ ID "68CEBE1CF14BE06A"
+ components {
+  RigidBody "{68CEBE1C4797DAC3}" {
+   ResponseIndex "NoCollision"
+   Geometries {
+    PhysicsBoxGeometry UserAction {
+     LayerPreset "Interaction"
+    }
+   }
+   Static 1
+  }
+  SCR_CampaignBuildingCompositionComponent "{68CEBE1C4797DB4A}" {
+   m_AudioSourceConfigurationSpawn SCR_AudioSourceConfiguration "{68CEBE1C4797DB6A}" {
+    m_sSoundProject "{F76981ECA6DC2674}Sounds/Editor/BaseBuilding/Editor_BaseBuilding.acp"
+    m_sSoundEventName "SOUND_BUILD_MORTAR_POSITION"
+   }
+   m_AudioSourceConfigurationDespawn SCR_AudioSourceConfiguration "{68CEBE1C4797DB52}" {
+    m_sSoundProject "{F76981ECA6DC2674}Sounds/Editor/BaseBuilding/Editor_BaseBuilding.acp"
+    m_sSoundEventName "SOUND_DESTROY_MORTAR_POSITION"
+    m_eFlags 5
+   }
+  }
+  SCR_SlotCompositionComponent "{68CEBE1C4797DB46}" {
+  }
+  ActionsManagerComponent "{68CEBE1C4797DBE0}" {
+   ActionContexts {
+    UserActionContext "{68CEBE1C4797DB95}" {
+     ContextName "Disassembly"
+     Position PointInfo "{68CEBE1C4797DBA3}" {
+      Offset 0 0.5 0
+     }
+     Radius 5
+     "Display UI At Reference Point" 1
+    }
+   }
+   additionalActions {
+    SCR_CampaignBuildingDisassemblyUserAction "{68CEBE1C4797DBE8}" {
+     ParentContextList {
+      "Disassembly"
+     }
+     UIInfo UIInfo "{68CEBE1C4797DBF6}" {
+      Name "#AR-FreeRoamBuilding_Action_Disassembly"
+     }
+     VisibilityRange 10
+     Duration 20
+    }
+   }
+  }
+  RplComponent "{68CEBE1C4797DBD1}" {
+  }
+  Hierarchy "{68CEBE1C4797DBCB}" {
+   Enabled 1
+  }
+ }
+ Flags 0x403 0
+ coords 4384.733 20.169 1712.7
+ angles 0 -124.179 0
+ {
+  GenericEntity {
+   ID "68CEBE1CF14BE06B"
+   components {
+    MeshObject "{68CEBE1C7E7E7A1F}" {
+     Object "{B56A3191B96761B5}Assets/Structures/Military/Camps/Foundation_TentUSSR_01/Foundation_TentUSSR_01.xob"
+     LODFactors {
+      20 5 1 1 1 1 1 1
+     }
+    }
+    RigidBody "{68CEBE1C7E7E7A5D}" {
+     ResponseIndex "Normal"
+     ModelGeometry 1
+     Static 1
+    }
+    SCR_DestructionMultiPhaseComponent "{68CEBE1C7E7E7AFD}" {
+     Enabled 0
+     "Additional hit zones" {
+      SCR_HitZone Default {
+       HZDefault 1
+       "Melee multiplier" 1
+       "Kinetic multiplier" 1
+       "Explosive multiplier" 90
+       "Incendiary multiplier" 1
+      }
+     }
+     m_fForceToDamageScale 350
+     m_eMaterialSoundType BREAK_SANDBAG
+    }
+    RplComponent "{68CEBE1C7E7E7AE7}" {
+     Enabled 0
+    }
+    Hierarchy "{68CEBE1C7E7E7AE0}" {
+    }
+   }
+   Flags 0x403 0
+   coords 0 0.2 0
+   {
+    $grp GenericEntity : "{64A3A595C0A833AC}Prefabs/Props/Military/Sandbags/Sandbag_01_round_plastic.et" {
+     {
+      ID "68CEBE1CF14A5D64"
+      components {
+       Hierarchy "{6186DB2F4EBC234E}" {
+       }
+      }
+      coords -2.32 0.232 2.5
+      angles 0 -45 0
+     }
+     {
+      ID "68CEBE1CF14AD9BF"
+      components {
+       Hierarchy "{6186DB2F4EBC424E}" {
+       }
+      }
+      coords 2 0 2.5
+      angles 0 45 0
+     }
+     {
+      ID "68CEBE1CF14BE064"
+      components {
+       Hierarchy "{6186DB2F4EB38DC3}" {
+       }
+      }
+      coords -2.32 0 2.5
+      angles 0 -45 0
+     }
+     {
+      ID "68CEBE1CF14BE067"
+      components {
+       Hierarchy "{6186DB2F4EB30517}" {
+       }
+      }
+      coords 2 0.232 2.5
+      angles 0 45 0
+     }
+    }
+    Turret : "{8094D99689ABE241}Prefabs/Weapons/Mortars/M252/Mortar_M252.et" {
+     ID "68CEBE1CF14AD9BE"
+     components {
+      SCR_MultiPartDeployableItemComponent "{61C6645A5627B01B}" {
+       Enabled 0
+      }
+      ActionsManagerComponent "{51ACD09C7181BA0B}" {
+       additionalActions {
+        SCR_DeployMultiPartInventoryItemAction "{61C6645A074451C8}" {
+         ParentContextList {
+         }
+        }
+       }
+      }
+     }
+     coords -0.296 0.014 0.5
+     angles 0 2 0
+    }
+    $grp GenericEntity : "{86BA5E5CD528D5BC}Prefabs/Props/Military/Sandbags/Sandbag_01_end_plastic.et" {
+     {
+      ID "68CEBE1CF14929E3"
+      components {
+       Hierarchy "{6186DB2F4EBDC199}" {
+       }
+      }
+      coords -0.963 0 3.237
+      angles 0 -6.91 0
+      scale 0.8
+     }
+     {
+      ID "68CEBE1CF1494F9C"
+      components {
+       Hierarchy "{6186DB2F4EBE62E4}" {
+       }
+      }
+      coords 2.739 0 -0.537
+      angles 0 -86.285 0
+      scale 0.8
+     }
+     {
+      ID "68CEBE1CF1494F9F"
+      components {
+       Hierarchy "{6186DB2F4EBE837A}" {
+       }
+      }
+      coords 0.552 0 3.285
+      angles 0 -174.619 0
+      scale 0.8
+     }
+     {
+      ID "68CEBE1CF14AD040"
+      components {
+       Hierarchy "{6186DB2F4EBDA185}" {
+       }
+      }
+      coords 2.759 0 0.978
+      angles 0 88.081 0
+      scale 0.8
+     }
+     {
+      ID "68CEBE1CF14AD9B8"
+      components {
+       Hierarchy "{6186DB2F4EBD01FC}" {
+       }
+      }
+      coords -3.047 0 -0.306
+      angles 0 -90.588 0
+      scale 0.8
+     }
+     {
+      ID "68CEBE1CF14AD9B9"
+      components {
+       Hierarchy "{6186DB2F4EBCE2F4}" {
+       }
+      }
+      coords -3.006 0 1.196
+      angles 0 95.83 0
+      scale 0.8
+     }
+    }
+    GenericEntity : "{894A1AFDCB71CD0D}Prefabs/Compositions/Misc/CustomEntities/CompositionDecals/CompositionDecal_Dirt_Patch_02.et" {
+     ID "68CEBE1CF1494FA1"
+     coords -0.155 0.083 0.537
+     angles 0 163.319 0
+    }
+    GenericEntity : "{94D05D599B00BB6E}Prefabs/Compositions/Misc/SubCompositions/Sandbag_round_Cluttered_US_02.et" {
+     ID "68CEBE1CF1494FA3"
+     components {
+      Hierarchy "{6186DB2F4EBF3856}" {
+      }
+     }
+     coords 2 0 -2
+     angles 0 135 0
+    }
+    $grp GenericEntity : "{F0DCB55B7FDB746B}Prefabs/Compositions/Misc/CustomEntities/CompositionDecals/CompositionDecal_Dirt_Footprints_02.et" {
+     {
+      ID "68CEBE1CF1494FA4"
+      coords -0.048 0.083 -3.445
+      angles 0 90 0
+     }
+     {
+      ID "68CEBE1CF1494FA7"
+      coords -0.048 0.083 -2.144
+      angles 0 90 0
+     }
+    }
+    GenericEntity : "{F88469B927C43440}Prefabs/Compositions/Misc/SubCompositions/Sandbag_round_Cluttered_US_01.et" {
+     ID "68CEBE1CF1494FA6"
+     components {
+      Hierarchy "{6186DB2F4EB94BF0}" {
+      }
+     }
+     coords -2.32 0 -2
+     angles 0 -135 0
+    }
+   }
+  }
+ }
+}

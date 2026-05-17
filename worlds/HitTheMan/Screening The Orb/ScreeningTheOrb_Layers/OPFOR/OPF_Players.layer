@@ -2,9 +2,10 @@ $grp SCR_AIGroup : "{04FC2603763DCF52}Prefabs/Groups/OPFOR/Russia/1980s/Motorise
  Berkut1 {
   components {
    AIFormationComponent "{507E9DC12F541FE6}" {
-    DefaultFormation "line"
+    Enabled 0
    }
-   PS_GroupCallsignAssigner "{652F5C6E746ACE30}" {
+   PS_GroupCallsignAssigner "{63616C6C7369676E}" {
+    Enabled 1
     m_iPlatoonCallsign 2
     m_iSquadCallsign 0
    }
@@ -16,13 +17,15 @@ $grp SCR_AIGroup : "{04FC2603763DCF52}Prefabs/Groups/OPFOR/Russia/1980s/Motorise
    "{CF063A058ADD156E}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_HeliGunner_P.et"
   }
   m_sCustomNameSet "Mi-24 Hind | Berkut 1"
+  m_bSetPlayable 1
  }
  Berkut2 {
   components {
    AIFormationComponent "{507E9DC12F541FE6}" {
-    DefaultFormation "line"
+    Enabled 0
    }
-   PS_GroupCallsignAssigner "{652F5C6E746ACE30}" {
+   PS_GroupCallsignAssigner "{63616C6C7369676E}" {
+    Enabled 1
     m_iPlatoonCallsign 2
     m_iSquadCallsign 1
    }
@@ -34,233 +37,463 @@ $grp SCR_AIGroup : "{04FC2603763DCF52}Prefabs/Groups/OPFOR/Russia/1980s/Motorise
    "{CF063A058ADD156E}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_HeliGunner_P.et"
   }
   m_sCustomNameSet "Mi-24 Hind | Berkut 2"
+  m_bSetPlayable 1
  }
 }
-$grp Vehicle : "{1C1038CF07EA4B00}Prefabs/Vehicles/Wheeled/BTR70/NVA/BTR70_NVA.et" {
- BTR70_NVA1 {
+$grp Tank : "{1DC01AAACFFA8B63}Prefabs/Vehicles/Tracked/BMP1/BMP1_base.et" {
+ BMP1_base1 {
   components {
-   RHS_GroupMaterialController "{655D33B314E7008B}" {
+   RHS_GroupMaterialController "{68686390A098EBB2}" {
     m_aGroups {
-     RHS_MaterialGroupProperties "{655D33B314E7008F}" {
+     RHS_MaterialGroupProperties "{68686390A1D17A63}" {
       m_iTextureID 2
      }
-     RHS_MaterialGroupProperties "{655D33B314E70091}" {
-      m_iTextureID 2
-     }
-     RHS_MaterialGroupProperties "{655D33B314E70090}" {
+     RHS_MaterialGroupProperties "{68686390A1EBC4E8}" {
       m_iTextureID 3
      }
-     RHS_MaterialGroupProperties "{658746C36E8C5692}" {
+     RHS_MaterialGroupProperties "{68686390A150EE71}" {
       m_iTextureID 1
      }
     }
    }
-   SCR_UniversalInventoryStorageComponent "{59168B38F20DFF74}" {
+   SCR_UniversalInventoryStorageComponent "{5E529ED09B647D03}" {
     MultiSlots {
-     MultiSlotConfiguration "{5A60D38E3CF4827A}" {
-      NumSlots 8
-     }
-     MultiSlotConfiguration "{5A60D38E3C6A4E2F}" {
+     MultiSlotConfiguration "{5E546E7AD86404C2}" {
       NumSlots 6
      }
-     MultiSlotConfiguration "{5A60D38E3C46CBE8}" {
+     MultiSlotConfiguration "{5E546E7AD86404C3}" {
       NumSlots 8
      }
-     MultiSlotConfiguration "{62F4F2818CA898CA}" {
-      NumSlots 12
+     MultiSlotConfiguration "{5E546E7AD86404C4}" {
+      SlotTemplate InventoryStorageSlot ak74ammo : HandGrenades {
+       Prefab "{E039E897BD5A339E}Prefabs/Weapons/Magazines/AK/BC_Magazine_762x39_AK_30rnd_Ball.et"
+      }
+      NumSlots 80
      }
-     MultiSlotConfiguration "{62F4F2818CE23F3F}" {
+     MultiSlotConfiguration "{5E546E7AD86404C5}" {
+      SlotTemplate InventoryStorageSlot SmokeGrenade {
+       Prefab "{50083D7DF1F318CA}Prefabs/Weapons/Magazines/RPK/BC_Magazine_762x39_RPK_40rnd_Last_5Tracer.et"
+      }
+      NumSlots 24
+     }
+     MultiSlotConfiguration "{5E546E7AD86404C6}" {
+      SlotTemplate InventoryStorageSlot AKammunition {
+       Prefab "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et"
+      }
       NumSlots 4
      }
-     MultiSlotConfiguration "{62F4F2818C20CD3C}" {
+     MultiSlotConfiguration "{5E546E7AD86404C7}" {
+      SlotTemplate InventoryStorageSlot UGLammo {
+       Prefab "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et"
+      }
       NumSlots 10
      }
-     MultiSlotConfiguration "{62F4F2818C64C19D}" {
-      SlotTemplate InventoryStorageSlot gp25ammo {
-       Prefab "{B9E3B9B143A43A79}Prefabs/Weapons/Magazines/AKM/Magazine_AK_762x39_AK55_30rnd.et"
-      }
-      NumSlots 12
-     }
-     MultiSlotConfiguration "{62F4F2818DA621D6}" {
-      SlotTemplate InventoryStorageSlot vog25flares {
+     MultiSlotConfiguration "{5E546E7AD864594D}" {
+      SlotTemplate InventoryStorageSlot gp25ammo : RPKammunition {
        Prefab ""
       }
       NumSlots 0
      }
+     MultiSlotConfiguration "{68ED6BBAC68ADAD7}" {
+      SlotTemplate InventoryStorageSlot PKMammunition {
+       Prefab "{722CE6FEC39EE896}Prefabs/Weapons/Launchers/RPG22/Launcher_RPG22.et"
+      }
+      NumSlots 2
+     }
     }
    }
   }
-  coords 3511.381 308.045 2909.062
-  angles -5.443 3.051 1.495
-  m_sAttachmentGroupName "RifleSquad_1"
+  coords 3511.553 308.039 2909.052
+  angles -5.458 3.634 1.439
  }
- BTR70_NVA2 {
+ BMP1_base2 {
   components {
-   RHS_GroupMaterialController "{655D33B314E7008B}" {
+   RHS_GroupMaterialController "{68686390A098EBB2}" {
     m_aGroups {
-     RHS_MaterialGroupProperties "{655D33B314E7008F}" {
+     RHS_MaterialGroupProperties "{68686390A1D17A63}" {
       m_iTextureID 2
      }
-     RHS_MaterialGroupProperties "{655D33B314E70091}" {
-      m_iTextureID 2
-     }
-     RHS_MaterialGroupProperties "{655D33B314E70090}" {
+     RHS_MaterialGroupProperties "{68686390A1EBC4E8}" {
       m_iTextureID 3
      }
-     RHS_MaterialGroupProperties "{658746C36E8C5692}" {
+     RHS_MaterialGroupProperties "{68686390A150EE71}" {
       m_iTextureID 2
      }
     }
    }
-   SCR_UniversalInventoryStorageComponent "{59168B38F20DFF74}" {
+   SCR_UniversalInventoryStorageComponent "{5E529ED09B647D03}" {
     MultiSlots {
-     MultiSlotConfiguration "{5A60D38E3CF4827A}" {
-      NumSlots 8
-     }
-     MultiSlotConfiguration "{5A60D38E3C6A4E2F}" {
+     MultiSlotConfiguration "{5E546E7AD86404C2}" {
       NumSlots 6
      }
-     MultiSlotConfiguration "{5A60D38E3C46CBE8}" {
+     MultiSlotConfiguration "{5E546E7AD86404C3}" {
       NumSlots 8
      }
-     MultiSlotConfiguration "{62F4F2818CA898CA}" {
-      NumSlots 12
+     MultiSlotConfiguration "{5E546E7AD86404C4}" {
+      SlotTemplate InventoryStorageSlot ak74ammo : HandGrenades {
+       Prefab "{E039E897BD5A339E}Prefabs/Weapons/Magazines/AK/BC_Magazine_762x39_AK_30rnd_Ball.et"
+      }
+      NumSlots 80
      }
-     MultiSlotConfiguration "{62F4F2818CE23F3F}" {
+     MultiSlotConfiguration "{5E546E7AD86404C5}" {
+      SlotTemplate InventoryStorageSlot SmokeGrenade {
+       Prefab "{50083D7DF1F318CA}Prefabs/Weapons/Magazines/RPK/BC_Magazine_762x39_RPK_40rnd_Last_5Tracer.et"
+      }
+      NumSlots 24
+     }
+     MultiSlotConfiguration "{5E546E7AD86404C6}" {
+      SlotTemplate InventoryStorageSlot AKammunition {
+       Prefab "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et"
+      }
       NumSlots 4
      }
-     MultiSlotConfiguration "{62F4F2818C20CD3C}" {
+     MultiSlotConfiguration "{5E546E7AD86404C7}" {
+      SlotTemplate InventoryStorageSlot UGLammo {
+       Prefab "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et"
+      }
       NumSlots 10
      }
-     MultiSlotConfiguration "{62F4F2818C64C19D}" {
-      SlotTemplate InventoryStorageSlot gp25ammo {
-       Prefab "{B9E3B9B143A43A79}Prefabs/Weapons/Magazines/AKM/Magazine_AK_762x39_AK55_30rnd.et"
-      }
-      NumSlots 12
-     }
-     MultiSlotConfiguration "{62F4F2818DA621D6}" {
-      SlotTemplate InventoryStorageSlot vog25flares {
+     MultiSlotConfiguration "{5E546E7AD864594D}" {
+      SlotTemplate InventoryStorageSlot gp25ammo : RPKammunition {
        Prefab ""
       }
       NumSlots 0
      }
+     MultiSlotConfiguration "{68ED6BBAC68ADAD7}" {
+      SlotTemplate InventoryStorageSlot PKMammunition {
+       Prefab "{722CE6FEC39EE896}Prefabs/Weapons/Launchers/RPG22/Launcher_RPG22.et"
+      }
+      NumSlots 2
+     }
     }
    }
   }
-  coords 3509.807 310.491 2876.148
-  angles -3.576 1.064 -0.066
-  m_sAttachmentGroupName "RifleSquad_2"
+  coords 3509.425 310.506 2875.882
+  angles -5.458 3.634 1.439
  }
- BTR70_NVA3 {
+ BMP1_base3 {
   components {
-   RHS_GroupMaterialController "{655D33B314E7008B}" {
+   RHS_GroupMaterialController "{68686390A098EBB2}" {
     m_aGroups {
-     RHS_MaterialGroupProperties "{655D33B314E7008F}" {
+     RHS_MaterialGroupProperties "{68686390A1D17A63}" {
       m_iTextureID 2
      }
-     RHS_MaterialGroupProperties "{655D33B314E70091}" {
-      m_iTextureID 2
-     }
-     RHS_MaterialGroupProperties "{655D33B314E70090}" {
+     RHS_MaterialGroupProperties "{68686390A1EBC4E8}" {
       m_iTextureID 3
      }
-     RHS_MaterialGroupProperties "{658746C36E8C5692}" {
+     RHS_MaterialGroupProperties "{68686390A150EE71}" {
       m_iTextureID 3
      }
     }
    }
-   SCR_UniversalInventoryStorageComponent "{59168B38F20DFF74}" {
+   SCR_UniversalInventoryStorageComponent "{5E529ED09B647D03}" {
     MultiSlots {
-     MultiSlotConfiguration "{5A60D38E3CF4827A}" {
-      NumSlots 8
-     }
-     MultiSlotConfiguration "{5A60D38E3C6A4E2F}" {
+     MultiSlotConfiguration "{5E546E7AD86404C2}" {
       NumSlots 6
      }
-     MultiSlotConfiguration "{5A60D38E3C46CBE8}" {
+     MultiSlotConfiguration "{5E546E7AD86404C3}" {
       NumSlots 8
      }
-     MultiSlotConfiguration "{62F4F2818CA898CA}" {
-      NumSlots 12
+     MultiSlotConfiguration "{5E546E7AD86404C4}" {
+      SlotTemplate InventoryStorageSlot ak74ammo : HandGrenades {
+       Prefab "{E039E897BD5A339E}Prefabs/Weapons/Magazines/AK/BC_Magazine_762x39_AK_30rnd_Ball.et"
+      }
+      NumSlots 80
      }
-     MultiSlotConfiguration "{62F4F2818CE23F3F}" {
+     MultiSlotConfiguration "{5E546E7AD86404C5}" {
+      SlotTemplate InventoryStorageSlot SmokeGrenade {
+       Prefab "{50083D7DF1F318CA}Prefabs/Weapons/Magazines/RPK/BC_Magazine_762x39_RPK_40rnd_Last_5Tracer.et"
+      }
+      NumSlots 24
+     }
+     MultiSlotConfiguration "{5E546E7AD86404C6}" {
+      SlotTemplate InventoryStorageSlot AKammunition {
+       Prefab "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et"
+      }
       NumSlots 4
      }
-     MultiSlotConfiguration "{62F4F2818C20CD3C}" {
+     MultiSlotConfiguration "{5E546E7AD86404C7}" {
+      SlotTemplate InventoryStorageSlot UGLammo {
+       Prefab "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et"
+      }
       NumSlots 10
      }
-     MultiSlotConfiguration "{62F4F2818C64C19D}" {
-      SlotTemplate InventoryStorageSlot gp25ammo {
-       Prefab "{B9E3B9B143A43A79}Prefabs/Weapons/Magazines/AKM/Magazine_AK_762x39_AK55_30rnd.et"
-      }
-      NumSlots 12
-     }
-     MultiSlotConfiguration "{62F4F2818DA621D6}" {
-      SlotTemplate InventoryStorageSlot vog25flares {
+     MultiSlotConfiguration "{5E546E7AD864594D}" {
+      SlotTemplate InventoryStorageSlot gp25ammo : RPKammunition {
        Prefab ""
       }
       NumSlots 0
      }
+     MultiSlotConfiguration "{68ED6BBAC68ADAD7}" {
+      SlotTemplate InventoryStorageSlot PKMammunition {
+       Prefab "{722CE6FEC39EE896}Prefabs/Weapons/Launchers/RPG22/Launcher_RPG22.et"
+      }
+      NumSlots 2
+     }
     }
    }
   }
-  coords 3509.408 312.389 2843.768
-  angles -3.576 1.064 -0.066
-  m_sAttachmentGroupName "RifleSquad_3"
+  coords 3509.47 312.409 2843.449
+  angles -5.38 0.783 1.709
  }
- BTR70_NVA4 {
+ BMP1_base4 {
   components {
-   RHS_GroupMaterialController "{655D33B314E7008B}" {
+   RHS_GroupMaterialController "{68686390A098EBB2}" {
     m_aGroups {
-     RHS_MaterialGroupProperties "{655D33B314E7008F}" {
+     RHS_MaterialGroupProperties "{68686390A1D17A63}" {
       m_iTextureID 2
      }
-     RHS_MaterialGroupProperties "{655D33B314E70091}" {
-      m_iTextureID 2
-     }
-     RHS_MaterialGroupProperties "{655D33B314E70090}" {
+     RHS_MaterialGroupProperties "{68686390A1EBC4E8}" {
       m_iTextureID 3
+     }
+     RHS_MaterialGroupProperties "{68686390A150EE71}" {
      }
     }
    }
-   SCR_UniversalInventoryStorageComponent "{59168B38F20DFF74}" {
+   SCR_UniversalInventoryStorageComponent "{5E529ED09B647D03}" {
     MultiSlots {
-     MultiSlotConfiguration "{5A60D38E3CF4827A}" {
-      NumSlots 8
-     }
-     MultiSlotConfiguration "{5A60D38E3C6A4E2F}" {
+     MultiSlotConfiguration "{5E546E7AD86404C2}" {
       NumSlots 6
      }
-     MultiSlotConfiguration "{5A60D38E3C46CBE8}" {
+     MultiSlotConfiguration "{5E546E7AD86404C3}" {
       NumSlots 8
      }
-     MultiSlotConfiguration "{62F4F2818CA898CA}" {
-      NumSlots 12
+     MultiSlotConfiguration "{5E546E7AD86404C4}" {
+      SlotTemplate InventoryStorageSlot ak74ammo : HandGrenades {
+       Prefab "{E039E897BD5A339E}Prefabs/Weapons/Magazines/AK/BC_Magazine_762x39_AK_30rnd_Ball.et"
+      }
+      NumSlots 80
      }
-     MultiSlotConfiguration "{62F4F2818CE23F3F}" {
+     MultiSlotConfiguration "{5E546E7AD86404C5}" {
+      SlotTemplate InventoryStorageSlot SmokeGrenade {
+       Prefab "{50083D7DF1F318CA}Prefabs/Weapons/Magazines/RPK/BC_Magazine_762x39_RPK_40rnd_Last_5Tracer.et"
+      }
+      NumSlots 24
+     }
+     MultiSlotConfiguration "{5E546E7AD86404C6}" {
+      SlotTemplate InventoryStorageSlot AKammunition {
+       Prefab "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et"
+      }
       NumSlots 4
      }
-     MultiSlotConfiguration "{62F4F2818C20CD3C}" {
+     MultiSlotConfiguration "{5E546E7AD86404C7}" {
+      SlotTemplate InventoryStorageSlot UGLammo {
+       Prefab "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et"
+      }
       NumSlots 10
      }
-     MultiSlotConfiguration "{62F4F2818C64C19D}" {
-      SlotTemplate InventoryStorageSlot gp25ammo {
-       Prefab "{B9E3B9B143A43A79}Prefabs/Weapons/Magazines/AKM/Magazine_AK_762x39_AK55_30rnd.et"
-      }
-      NumSlots 12
-     }
-     MultiSlotConfiguration "{62F4F2818DA621D6}" {
-      SlotTemplate InventoryStorageSlot vog25flares {
+     MultiSlotConfiguration "{5E546E7AD864594D}" {
+      SlotTemplate InventoryStorageSlot gp25ammo : RPKammunition {
        Prefab ""
       }
       NumSlots 0
      }
+     MultiSlotConfiguration "{68ED6BBAC68ADAD7}" {
+      SlotTemplate InventoryStorageSlot PKMammunition {
+       Prefab "{722CE6FEC39EE896}Prefabs/Weapons/Launchers/RPG22/Launcher_RPG22.et"
+      }
+      NumSlots 2
+     }
     }
    }
   }
-  coords 3509.302 315.953 2785.503
-  angles -5.355 0.728 -0.068
-  m_sAttachmentGroupName "CoyHQ"
+  coords 3509.442 316.12 2783.386
+  angles -5.458 3.634 1.439
+ }
+ BMP1_base5 {
+  components {
+   RHS_GroupMaterialController "{68686390A098EBB2}" {
+    m_aGroups {
+     RHS_MaterialGroupProperties "{68686390A1D17A63}" {
+      m_iTextureID 2
+     }
+     RHS_MaterialGroupProperties "{68686390A1EBC4E8}" {
+      m_iTextureID 3
+     }
+     RHS_MaterialGroupProperties "{68686390A150EE71}" {
+      m_iTextureID 4
+     }
+    }
+   }
+   SCR_UniversalInventoryStorageComponent "{5E529ED09B647D03}" {
+    MultiSlots {
+     MultiSlotConfiguration "{5E546E7AD86404C2}" {
+      NumSlots 6
+     }
+     MultiSlotConfiguration "{5E546E7AD86404C3}" {
+      NumSlots 8
+     }
+     MultiSlotConfiguration "{5E546E7AD86404C4}" {
+      SlotTemplate InventoryStorageSlot ak74ammo : HandGrenades {
+       Prefab "{E039E897BD5A339E}Prefabs/Weapons/Magazines/AK/BC_Magazine_762x39_AK_30rnd_Ball.et"
+      }
+      NumSlots 80
+     }
+     MultiSlotConfiguration "{5E546E7AD86404C5}" {
+      SlotTemplate InventoryStorageSlot SmokeGrenade {
+       Prefab "{50083D7DF1F318CA}Prefabs/Weapons/Magazines/RPK/BC_Magazine_762x39_RPK_40rnd_Last_5Tracer.et"
+      }
+      NumSlots 24
+     }
+     MultiSlotConfiguration "{5E546E7AD86404C6}" {
+      SlotTemplate InventoryStorageSlot AKammunition {
+       Prefab "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et"
+      }
+      NumSlots 4
+     }
+     MultiSlotConfiguration "{5E546E7AD86404C7}" {
+      SlotTemplate InventoryStorageSlot UGLammo {
+       Prefab "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{5E546E7AD864594D}" {
+      SlotTemplate InventoryStorageSlot gp25ammo : RPKammunition {
+       Prefab ""
+      }
+      NumSlots 0
+     }
+     MultiSlotConfiguration "{68ED6BBAC68ADAD7}" {
+      SlotTemplate InventoryStorageSlot PKMammunition {
+       Prefab "{722CE6FEC39EE896}Prefabs/Weapons/Launchers/RPG22/Launcher_RPG22.et"
+      }
+      NumSlots 2
+     }
+    }
+   }
+  }
+  coords 3508.826 320.716 2732.365
+  angles -5.213 -4.174 2.167
+ }
+ BMP1_base6 {
+  components {
+   RHS_GroupMaterialController "{68686390A098EBB2}" {
+    m_aGroups {
+     RHS_MaterialGroupProperties "{68686390A1D17A63}" {
+      m_iTextureID 2
+     }
+     RHS_MaterialGroupProperties "{68686390A1EBC4E8}" {
+      m_iTextureID 3
+     }
+     RHS_MaterialGroupProperties "{68686390A150EE71}" {
+      m_iTextureID 5
+     }
+    }
+   }
+   SCR_UniversalInventoryStorageComponent "{5E529ED09B647D03}" {
+    MultiSlots {
+     MultiSlotConfiguration "{5E546E7AD86404C2}" {
+      NumSlots 6
+     }
+     MultiSlotConfiguration "{5E546E7AD86404C3}" {
+      NumSlots 8
+     }
+     MultiSlotConfiguration "{5E546E7AD86404C4}" {
+      SlotTemplate InventoryStorageSlot ak74ammo : HandGrenades {
+       Prefab "{E039E897BD5A339E}Prefabs/Weapons/Magazines/AK/BC_Magazine_762x39_AK_30rnd_Ball.et"
+      }
+      NumSlots 80
+     }
+     MultiSlotConfiguration "{5E546E7AD86404C5}" {
+      SlotTemplate InventoryStorageSlot SmokeGrenade {
+       Prefab "{50083D7DF1F318CA}Prefabs/Weapons/Magazines/RPK/BC_Magazine_762x39_RPK_40rnd_Last_5Tracer.et"
+      }
+      NumSlots 24
+     }
+     MultiSlotConfiguration "{5E546E7AD86404C6}" {
+      SlotTemplate InventoryStorageSlot AKammunition {
+       Prefab "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et"
+      }
+      NumSlots 4
+     }
+     MultiSlotConfiguration "{5E546E7AD86404C7}" {
+      SlotTemplate InventoryStorageSlot UGLammo {
+       Prefab "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{5E546E7AD864594D}" {
+      SlotTemplate InventoryStorageSlot gp25ammo : RPKammunition {
+       Prefab ""
+      }
+      NumSlots 0
+     }
+     MultiSlotConfiguration "{68ED6BBAC68ADAD7}" {
+      SlotTemplate InventoryStorageSlot PKMammunition {
+       Prefab "{722CE6FEC39EE896}Prefabs/Weapons/Launchers/RPG22/Launcher_RPG22.et"
+      }
+      NumSlots 2
+     }
+    }
+   }
+  }
+  coords 3514.996 324.141 2685.733
+  angles -4.879 -11.823 2.84
+ }
+ BMP1_base7 {
+  components {
+   RHS_GroupMaterialController "{68686390A098EBB2}" {
+    m_aGroups {
+     RHS_MaterialGroupProperties "{68686390A1D17A63}" {
+      m_iTextureID 2
+     }
+     RHS_MaterialGroupProperties "{68686390A1EBC4E8}" {
+      m_iTextureID 3
+     }
+     RHS_MaterialGroupProperties "{68686390A150EE71}" {
+      m_iTextureID 6
+     }
+    }
+   }
+   SCR_UniversalInventoryStorageComponent "{5E529ED09B647D03}" {
+    MultiSlots {
+     MultiSlotConfiguration "{5E546E7AD86404C2}" {
+      NumSlots 6
+     }
+     MultiSlotConfiguration "{5E546E7AD86404C3}" {
+      NumSlots 8
+     }
+     MultiSlotConfiguration "{5E546E7AD86404C4}" {
+      SlotTemplate InventoryStorageSlot ak74ammo : HandGrenades {
+       Prefab "{E039E897BD5A339E}Prefabs/Weapons/Magazines/AK/BC_Magazine_762x39_AK_30rnd_Ball.et"
+      }
+      NumSlots 80
+     }
+     MultiSlotConfiguration "{5E546E7AD86404C5}" {
+      SlotTemplate InventoryStorageSlot SmokeGrenade {
+       Prefab "{50083D7DF1F318CA}Prefabs/Weapons/Magazines/RPK/BC_Magazine_762x39_RPK_40rnd_Last_5Tracer.et"
+      }
+      NumSlots 24
+     }
+     MultiSlotConfiguration "{5E546E7AD86404C6}" {
+      SlotTemplate InventoryStorageSlot AKammunition {
+       Prefab "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et"
+      }
+      NumSlots 4
+     }
+     MultiSlotConfiguration "{5E546E7AD86404C7}" {
+      SlotTemplate InventoryStorageSlot UGLammo {
+       Prefab "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{5E546E7AD864594D}" {
+      SlotTemplate InventoryStorageSlot gp25ammo : RPKammunition {
+       Prefab ""
+      }
+      NumSlots 0
+     }
+     MultiSlotConfiguration "{68ED6BBAC68ADAD7}" {
+      SlotTemplate InventoryStorageSlot PKMammunition {
+       Prefab "{722CE6FEC39EE896}Prefabs/Weapons/Launchers/RPG22/Launcher_RPG22.et"
+      }
+      NumSlots 2
+     }
+    }
+   }
+  }
+  coords 3526.625 326.621 2646.146
+  angles -4.152 -24.3 3.826
  }
 }
 Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
@@ -302,9 +535,10 @@ Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/U
 SCR_AIGroup CoyHQ : "{45A6BA13BD48E0D3}Prefabs/Groups/OPFOR/Russia/1980s/Motorised Rifles (BTR-Early)/P/Group_USSR_MSV80_MotRifleCoyHQ_P.et" {
  components {
   AIFormationComponent "{507E9DC12F541FE6}" {
-   DefaultFormation "line"
+   Enabled 0
   }
-  PS_GroupCallsignAssigner "{65136701CA021D8F}" {
+  PS_GroupCallsignAssigner "{63616C6C7369676E}" {
+   Enabled 1
    m_iPlatoonCallsign 2
   }
  }
@@ -314,7 +548,6 @@ SCR_AIGroup CoyHQ : "{45A6BA13BD48E0D3}Prefabs/Groups/OPFOR/Russia/1980s/Motoris
  m_aUnitPrefabSlots {
   "{DB3CB8C4B9FE5219}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_CompanyCommander_P.et"
   "{C503AFF96F792C9F}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_CompanySergeantMajor_P.et"
-  "{69E1927251152E5D}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Radioman_P.et"
   "{8263A33EFE862797}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_FAC_P.et"
   "{2DF30A80B14F510E}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Medic_P.et"
   "{2DF30A80B14F510E}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Medic_P.et"
@@ -322,188 +555,7 @@ SCR_AIGroup CoyHQ : "{45A6BA13BD48E0D3}Prefabs/Groups/OPFOR/Russia/1980s/Motoris
   "{9766DC8C4E69A883}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_CrewDriver_P.et"
  }
  m_sCustomNameSet "Company Headquarters"
-}
-$grp Vehicle : "{4BFB3CA9E83385D2}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_base.et" {
- Ural_1 {
-  components {
-   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
-    FuelNodes {
-     SCR_FuelNode "{5622A70CD4036C5A}" {
-      m_fInitialFuelTankState 300
-     }
-    }
-   }
-   SCR_UniversalInventoryStorageComponent "{5916C58171230A92}" {
-    MultiSlots {
-     MultiSlotConfiguration "{5A60D38EDB3709A9}" {
-      NumSlots 8
-     }
-     MultiSlotConfiguration "{5E86A8C920185949}" {
-      SlotTemplate InventoryStorageSlot Ammo {
-       Prefab "{B9E3B9B143A43A79}Prefabs/Weapons/Magazines/AKM/Magazine_AK_762x39_AK55_30rnd.et"
-      }
-      NumSlots 24
-     }
-     MultiSlotConfiguration "{5EB0D397ACA7A684}" {
-      SlotTemplate InventoryStorageSlot Ammo {
-       Prefab "{B9E3B9B143A43A79}Prefabs/Weapons/Magazines/AKM/Magazine_AK_762x39_AK55_30rnd.et"
-      }
-      NumSlots 12
-     }
-     MultiSlotConfiguration "{655288DB0C096719}" {
-      SlotTemplate InventoryStorageSlot Bandages {
-       Prefab "{0D9A5DCF89AE7AA9}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01.et"
-      }
-      NumSlots 8
-     }
-     MultiSlotConfiguration "{655288DB7DFF6321}" {
-      SlotTemplate InventoryStorageSlot Ammo {
-       Prefab "{B9E3B9B143A43A79}Prefabs/Weapons/Magazines/AKM/Magazine_AK_762x39_AK55_30rnd.et"
-      }
-      NumSlots 12
-     }
-     MultiSlotConfiguration "{655288DB501F57C2}" {
-      SlotTemplate InventoryStorageSlot Ammo {
-       Prefab "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et"
-      }
-      NumSlots 8
-     }
-     MultiSlotConfiguration "{655288DB4B258519}" {
-      SlotTemplate InventoryStorageSlot Ammo {
-       Prefab "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et"
-      }
-      NumSlots 10
-     }
-    }
-   }
-  }
-  coords 3509.169 320.531 2732.796
-  angles 0 -3.091 0
-  m_eVehicleType TRUCK
-  m_sAttachmentGroupName "RifleSquad_5"
- }
- Ural_2 {
-  components {
-   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
-    FuelNodes {
-     SCR_FuelNode "{5622A70CD4036C5A}" {
-      m_fInitialFuelTankState 300
-     }
-    }
-   }
-   SCR_UniversalInventoryStorageComponent "{5916C58171230A92}" {
-    MultiSlots {
-     MultiSlotConfiguration "{5A60D38EDB3709A9}" {
-      NumSlots 8
-     }
-     MultiSlotConfiguration "{5E86A8C920185949}" {
-      SlotTemplate InventoryStorageSlot Ammo {
-       Prefab "{B9E3B9B143A43A79}Prefabs/Weapons/Magazines/AKM/Magazine_AK_762x39_AK55_30rnd.et"
-      }
-      NumSlots 24
-     }
-     MultiSlotConfiguration "{5EB0D397ACA7A684}" {
-      SlotTemplate InventoryStorageSlot Ammo {
-       Prefab "{B9E3B9B143A43A79}Prefabs/Weapons/Magazines/AKM/Magazine_AK_762x39_AK55_30rnd.et"
-      }
-      NumSlots 12
-     }
-     MultiSlotConfiguration "{655288DB0C096719}" {
-      SlotTemplate InventoryStorageSlot Bandages {
-       Prefab "{0D9A5DCF89AE7AA9}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01.et"
-      }
-      NumSlots 8
-     }
-     MultiSlotConfiguration "{655288DB7DFF6321}" {
-      SlotTemplate InventoryStorageSlot Ammo {
-       Prefab "{B9E3B9B143A43A79}Prefabs/Weapons/Magazines/AKM/Magazine_AK_762x39_AK55_30rnd.et"
-      }
-      NumSlots 12
-     }
-     MultiSlotConfiguration "{655288DB501F57C2}" {
-      SlotTemplate InventoryStorageSlot Ammo {
-       Prefab "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et"
-      }
-      NumSlots 8
-     }
-     MultiSlotConfiguration "{655288DB4B258519}" {
-      SlotTemplate InventoryStorageSlot Ammo {
-       Prefab "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et"
-      }
-      NumSlots 10
-     }
-    }
-   }
-  }
-  coords 3515.244 324.524 2686.199
-  angles 0 -11.724 0
-  m_eVehicleType TRUCK
-  m_sAttachmentGroupName "RifleSquad_6"
- }
- Ural_3 {
-  components {
-   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
-    FuelNodes {
-     SCR_FuelNode "{5622A70CD4036C5A}" {
-      m_fInitialFuelTankState 300
-     }
-    }
-   }
-   SCR_UniversalInventoryStorageComponent "{5916C58171230A92}" {
-    MultiSlots {
-     MultiSlotConfiguration "{5A60D38EDB3709A9}" {
-      NumSlots 8
-     }
-     MultiSlotConfiguration "{5E86A8C920185949}" {
-      SlotTemplate InventoryStorageSlot Ammo {
-       Prefab "{B9E3B9B143A43A79}Prefabs/Weapons/Magazines/AKM/Magazine_AK_762x39_AK55_30rnd.et"
-      }
-      NumSlots 24
-     }
-     MultiSlotConfiguration "{5EB0D397ACA7A684}" {
-      SlotTemplate InventoryStorageSlot Ammo {
-       Prefab "{B9E3B9B143A43A79}Prefabs/Weapons/Magazines/AKM/Magazine_AK_762x39_AK55_30rnd.et"
-      }
-      NumSlots 12
-     }
-     MultiSlotConfiguration "{655288DB0C096719}" {
-      SlotTemplate InventoryStorageSlot Bandages {
-       Prefab "{0D9A5DCF89AE7AA9}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01.et"
-      }
-      NumSlots 8
-     }
-     MultiSlotConfiguration "{655288DB7DFF6321}" {
-      SlotTemplate InventoryStorageSlot Ammo {
-       Prefab "{B9E3B9B143A43A79}Prefabs/Weapons/Magazines/AKM/Magazine_AK_762x39_AK55_30rnd.et"
-      }
-      NumSlots 12
-     }
-     MultiSlotConfiguration "{655288DB501F57C2}" {
-      SlotTemplate InventoryStorageSlot Ammo {
-       Prefab "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et"
-      }
-      NumSlots 8
-     }
-     MultiSlotConfiguration "{655288DB4B258519}" {
-      SlotTemplate InventoryStorageSlot Ammo {
-       Prefab "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et"
-      }
-      NumSlots 10
-     }
-     MultiSlotConfiguration "{655AC40FEE0FDB99}" {
-      SlotTemplate InventoryStorageSlot Ammo {
-       Prefab "{80E75A71C29190DB}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_USSR_01.et"
-      }
-      NumSlots 6
-     }
-    }
-   }
-  }
-  coords 3526.313 326.18 2646.97
-  angles 0 -26.912 0
-  m_eVehicleType TRUCK
-  m_sAttachmentGroupName "RifleSquad_7"
- }
+ m_bSetPlayable 1
 }
 $grp GenericEntity : "{525C793E1943EA05}Prefabs/Compositions/Slotted/SlotFlatLarge/Helipad_L_USSR_01.et" {
  {
@@ -551,9 +603,10 @@ $grp SCR_AIGroup : "{7544247CE7FBC839}Prefabs/Groups/OPFOR/Russia/1980s/Motorise
  RifleSquad_1 {
   components {
    AIFormationComponent "{507E9DC12F541FE6}" {
-    DefaultFormation "line"
+    Enabled 0
    }
-   PS_GroupCallsignAssigner "{652F5C6E746ACE30}" {
+   PS_GroupCallsignAssigner "{63616C6C7369676E}" {
+    Enabled 1
     m_iPlatoonCallsign 2
    }
   }
@@ -572,13 +625,15 @@ $grp SCR_AIGroup : "{7544247CE7FBC839}Prefabs/Groups/OPFOR/Russia/1980s/Motorise
    "{9766DC8C4E69A883}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_CrewDriver_P.et"
   }
   m_sCustomNameSet "1st Squad"
+  m_bSetPlayable 1
  }
  RifleSquad_2 {
   components {
    AIFormationComponent "{507E9DC12F541FE6}" {
-    DefaultFormation "line"
+    Enabled 0
    }
-   PS_GroupCallsignAssigner "{652F5C6E746ACE30}" {
+   PS_GroupCallsignAssigner "{63616C6C7369676E}" {
+    Enabled 1
     m_iPlatoonCallsign 2
     m_iSquadCallsign 3
    }
@@ -597,13 +652,15 @@ $grp SCR_AIGroup : "{7544247CE7FBC839}Prefabs/Groups/OPFOR/Russia/1980s/Motorise
    "{46122282EBE905E0}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_CrewGunner_P.et"
    "{9766DC8C4E69A883}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_CrewDriver_P.et"
   }
+  m_bSetPlayable 1
  }
  RifleSquad_3 {
   components {
    AIFormationComponent "{507E9DC12F541FE6}" {
-    DefaultFormation "line"
+    Enabled 0
    }
-   PS_GroupCallsignAssigner "{652F5C6E746ACE30}" {
+   PS_GroupCallsignAssigner "{63616C6C7369676E}" {
+    Enabled 1
     m_iPlatoonCallsign 2
     m_iSquadCallsign 4
    }
@@ -623,13 +680,15 @@ $grp SCR_AIGroup : "{7544247CE7FBC839}Prefabs/Groups/OPFOR/Russia/1980s/Motorise
    "{9766DC8C4E69A883}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_CrewDriver_P.et"
   }
   m_sCustomNameSet "3rd Squad"
+  m_bSetPlayable 1
  }
  RifleSquad_5 {
   components {
    AIFormationComponent "{507E9DC12F541FE6}" {
-    DefaultFormation "line"
+    Enabled 0
    }
-   PS_GroupCallsignAssigner "{652F5C6E746ACE30}" {
+   PS_GroupCallsignAssigner "{63616C6C7369676E}" {
+    Enabled 1
     m_iPlatoonCallsign 2
     m_iSquadCallsign 6
    }
@@ -645,18 +704,19 @@ $grp SCR_AIGroup : "{7544247CE7FBC839}Prefabs/Groups/OPFOR/Russia/1980s/Motorise
    "{EB1EF55EF3062BE0}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_MachineGunner_P.et"
    "{EB89C2702E85B0BA}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_DeputySquadLeader_P.et"
    "{90DC37DA0D0120B4}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Rifleman_P.et"
-   "{90DC37DA0D0120B4}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Rifleman_P.et"
-   "{90DC37DA0D0120B4}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Rifleman_P.et"
-   "{90DC37DA0D0120B4}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Rifleman_P.et"
+   "{46122282EBE905E0}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_CrewGunner_P.et"
+   "{9766DC8C4E69A883}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_CrewDriver_P.et"
   }
   m_sCustomNameSet "4th Squad"
+  m_bSetPlayable 1
  }
  RifleSquad_6 {
   components {
    AIFormationComponent "{507E9DC12F541FE6}" {
-    DefaultFormation "line"
+    Enabled 0
    }
-   PS_GroupCallsignAssigner "{652F5C6E746ACE30}" {
+   PS_GroupCallsignAssigner "{63616C6C7369676E}" {
+    Enabled 1
     m_iPlatoonCallsign 2
     m_iSquadCallsign 7
    }
@@ -665,25 +725,26 @@ $grp SCR_AIGroup : "{7544247CE7FBC839}Prefabs/Groups/OPFOR/Russia/1980s/Motorise
   angles -0.711 78.547 -3.505
   m_faction "GC_NVA"
   m_aUnitPrefabSlots {
-   "{5DB24CC9BAA2001B}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_SL_P.et"
+   "{BCC39EBCD14FD378}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_SL_P_NoRadio.et"
    "{EB1EF55EF3062BE0}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_MachineGunner_P.et"
    "{A69B880DB3917BE5}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_AT1_P.et"
    "{F873A14E0C1CF5EA}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_AT2_P.et"
    "{EB1EF55EF3062BE0}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_MachineGunner_P.et"
    "{EB89C2702E85B0BA}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_DeputySquadLeader_P.et"
    "{90DC37DA0D0120B4}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Rifleman_P.et"
-   "{90DC37DA0D0120B4}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Rifleman_P.et"
-   "{90DC37DA0D0120B4}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Rifleman_P.et"
-   "{90DC37DA0D0120B4}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Rifleman_P.et"
+   "{46122282EBE905E0}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_CrewGunner_P.et"
+   "{9766DC8C4E69A883}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_CrewDriver_P.et"
   }
   m_sCustomNameSet "5th Squad"
+  m_bSetPlayable 1
  }
  RifleSquad_7 {
   components {
    AIFormationComponent "{507E9DC12F541FE6}" {
-    DefaultFormation "line"
+    Enabled 0
    }
-   PS_GroupCallsignAssigner "{652F5C6E746ACE30}" {
+   PS_GroupCallsignAssigner "{63616C6C7369676E}" {
+    Enabled 1
     m_iPlatoonCallsign 2
     m_iSquadCallsign 8
    }
@@ -692,236 +753,18 @@ $grp SCR_AIGroup : "{7544247CE7FBC839}Prefabs/Groups/OPFOR/Russia/1980s/Motorise
   angles 0.055 -117.352 3.997
   m_faction "GC_NVA"
   m_aUnitPrefabSlots {
-   "{5DB24CC9BAA2001B}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_SL_P.et"
+   "{BCC39EBCD14FD378}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_SL_P_NoRadio.et"
    "{EB1EF55EF3062BE0}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_MachineGunner_P.et"
    "{A69B880DB3917BE5}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_AT1_P.et"
    "{F873A14E0C1CF5EA}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_AT2_P.et"
    "{EB1EF55EF3062BE0}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_MachineGunner_P.et"
    "{EB89C2702E85B0BA}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_DeputySquadLeader_P.et"
    "{90DC37DA0D0120B4}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Rifleman_P.et"
-   "{90DC37DA0D0120B4}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Rifleman_P.et"
-   "{90DC37DA0D0120B4}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Rifleman_P.et"
-   "{90DC37DA0D0120B4}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Rifleman_P.et"
+   "{46122282EBE905E0}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_CrewGunner_P.et"
+   "{9766DC8C4E69A883}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_CrewDriver_P.et"
   }
   m_sCustomNameSet "6th Squad"
- }
-}
-$grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
- UAZ452_Spawner_7 {
-  coords 3531.094 324.947 2682.421
-  angles 2.459 -101.827 4.129
-  m_prefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
-  m_spawnTimings {
-   600
-  }
- }
- UAZ452_Spawner_8 {
-  coords 3530.279 324.789 2686.264
-  angles 2.459 -101.827 4.129
-  m_prefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
-  m_spawnTimings {
-   600
-  }
- }
- UAZ452_Spawner_9 {
-  coords 3529.409 324.637 2689.86
-  angles 2.459 -101.827 4.129
-  m_prefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
-  m_spawnTimings {
-   600
-  }
- }
- UAZ452_Spawner_6 {
-  coords 3531.868 325.178 2678.109
-  angles 2.459 -101.827 4.129
-  m_prefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
-  m_spawnTimings {
-   600
-  }
- }
- UAZ452_Spawner_1 {
-  coords 3536.155 326.104 2658.333
-  angles 2.459 -101.827 4.129
-  m_prefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
-  m_spawnTimings {
-   600
-  }
- }
- UAZ452_Spawner_2 {
-  coords 3535.341 325.928 2662.178
-  angles 2.459 -101.827 4.129
-  m_prefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
-  m_spawnTimings {
-   600
-  }
- }
- UAZ452_Spawner_5 {
-  coords 3532.843 325.376 2674.01
-  angles 2.459 -101.827 4.129
-  m_prefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
-  m_spawnTimings {
-   600
-  }
- }
- UAZ452_Spawner_3 {
-  coords 3534.42 325.779 2666.017
-  angles 2.459 -101.827 4.129
-  m_prefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
-  m_spawnTimings {
-   600
-  }
- }
- UAZ452_Spawner_4 {
-  coords 3533.658 325.594 2670.167
-  angles 2.459 -101.827 4.129
-  m_prefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
-  m_spawnTimings {
-   600
-  }
- }
- UAZ452_Spawner_10 {
-  coords 3522.473 318.99 2758.387
-  angles 1.583 -88.958 3.404
-  m_prefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
-  m_spawnTimings {
-   600
-  }
- }
- UAZ452_Spawner_11 {
-  coords 3522.931 318.144 2783.009
-  angles 1.583 -88.958 3.404
-  m_prefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
-  m_spawnTimings {
-   600
-  }
- }
- UAZ452_Spawner_12 {
-  coords 3522.996 318.036 2786.938
-  angles 1.583 -88.958 3.404
-  m_prefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
-  m_spawnTimings {
-   600
-  }
- }
- UAZ452_Spawner_13 {
-  coords 3522.687 318.633 2770.484
-  angles 1.583 -88.958 3.404
-  m_prefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
-  m_spawnTimings {
-   600
-  }
- }
- UAZ452_Spawner_14 {
-  coords 3522.502 318.763 2766.267
-  angles 1.583 -88.958 3.404
-  m_prefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
-  m_spawnTimings {
-   600
-  }
- }
- UAZ452_Spawner_15 {
-  coords 3522.753 318.464 2774.415
-  angles 1.583 -88.958 3.404
-  m_prefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
-  m_spawnTimings {
-   600
-  }
- }
- UAZ452_Spawner_16 {
-  coords 3522.953 317.929 2790.64
-  angles 1.583 -88.958 3.404
-  m_prefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
-  m_spawnTimings {
-   600
-  }
- }
- UAZ452_Spawner_17 {
-  coords 3522.72 318.318 2778.63
-  angles 1.583 -88.958 3.404
-  m_prefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
-  m_spawnTimings {
-   600
-  }
- }
- UAZ452_Spawner_18 {
-  coords 3522.54 318.863 2762.318
-  angles 1.583 -88.958 3.404
-  m_prefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
-  m_spawnTimings {
-   600
-  }
- }
- UAZ452_Spawner_19 {
-  coords 3526.365 314.163 2854.317
-  angles -5.542 -89.383 3.418
-  m_prefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
-  m_spawnTimings {
-   600
-  }
- }
- UAZ452_Spawner_20 {
-  coords 3526.592 313.636 2870.345
-  angles -5.542 -89.383 3.418
-  m_prefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
-  m_spawnTimings {
-   600
-  }
- }
- UAZ452_Spawner_21 {
-  coords 3526.739 313.089 2886.57
-  angles -5.542 -89.383 3.418
-  m_prefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
-  m_spawnTimings {
-   600
-  }
- }
- UAZ452_Spawner_22 {
-  coords 3526.795 313.21 2882.87
-  angles -5.542 -89.383 3.418
-  m_prefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
-  m_spawnTimings {
-   600
-  }
- }
- UAZ452_Spawner_23 {
-  coords 3526.546 313.476 2874.56
-  angles -5.542 -89.383 3.418
-  m_prefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
-  m_spawnTimings {
-   600
-  }
- }
- UAZ452_Spawner_24 {
-  coords 3526.419 314.036 2858.248
-  angles -5.542 -89.383 3.418
-  m_prefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
-  m_spawnTimings {
-   600
-  }
- }
- UAZ452_Spawner_25 {
-  coords 3526.365 313.921 2862.197
-  angles -5.542 -89.383 3.418
-  m_prefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
-  m_spawnTimings {
-   600
-  }
- }
- UAZ452_Spawner_26 {
-  coords 3526.534 313.805 2866.414
-  angles -5.542 -89.383 3.418
-  m_prefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
-  m_spawnTimings {
-   600
-  }
- }
- UAZ452_Spawner_27 {
-  coords 3526.745 313.319 2878.94
-  angles -5.542 -89.383 3.418
-  m_prefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
-  m_spawnTimings {
-   600
-  }
+  m_bSetPlayable 1
  }
 }
 $grp Vehicle : "{7FF511EDC4034D9F}Prefabs/Vehicles/Helicopters/Mi24/Mi24V_armed_S5.et" {
@@ -940,9 +783,10 @@ $grp SCR_AIGroup : "{8D35DA8B89880FAF}Prefabs/Groups/OPFOR/Russia/1980s/Motorise
  MotorPLT_1 {
   components {
    AIFormationComponent "{507E9DC12F541FE6}" {
-    DefaultFormation "line"
+    Enabled 0
    }
-   PS_GroupCallsignAssigner "{65136701CA021D8F}" {
+   PS_GroupCallsignAssigner "{63616C6C7369676E}" {
+    Enabled 1
     m_iPlatoonCallsign 2
     m_iSquadCallsign 1
    }
@@ -953,18 +797,17 @@ $grp SCR_AIGroup : "{8D35DA8B89880FAF}Prefabs/Groups/OPFOR/Russia/1980s/Motorise
   m_aUnitPrefabSlots {
    "{69EF6951898BD00B}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_PlatoonLeader_P.et"
    "{E768556E051B2813}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_DeputyPlatoonLeader_P.et"
-   "{69E1927251152E5D}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Radioman_P.et"
-   "{EB1EF55EF3062BE0}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_MachineGunner_P.et"
-   "{2DF30A80B14F510E}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Medic_P.et"
   }
   m_sCustomNameSet "1st Platoon HQ"
+  m_bSetPlayable 1
  }
  MotorPLT_2 {
   components {
    AIFormationComponent "{507E9DC12F541FE6}" {
-    DefaultFormation "line"
+    Enabled 0
    }
-   PS_GroupCallsignAssigner "{65136701CA021D8F}" {
+   PS_GroupCallsignAssigner "{63616C6C7369676E}" {
+    Enabled 1
     m_iPlatoonCallsign 2
     m_iSquadCallsign 5
    }
@@ -975,10 +818,8 @@ $grp SCR_AIGroup : "{8D35DA8B89880FAF}Prefabs/Groups/OPFOR/Russia/1980s/Motorise
   m_aUnitPrefabSlots {
    "{69EF6951898BD00B}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_PlatoonLeader_P.et"
    "{E768556E051B2813}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_DeputyPlatoonLeader_P.et"
-   "{69E1927251152E5D}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Radioman_P.et"
-   "{EB1EF55EF3062BE0}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_MachineGunner_P.et"
-   "{2DF30A80B14F510E}Prefabs/Characters/Factions/OPFOR/GC_NVA/P/Character_GC_NVA_Medic_P.et"
   }
   m_sCustomNameSet "2nd Platoon HQ"
+  m_bSetPlayable 1
  }
 }

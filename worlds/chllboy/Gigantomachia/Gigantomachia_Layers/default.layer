@@ -1,0 +1,190 @@
+SCR_AIWorld : "{0CB65E4CC0AFBCC0}Prefabs/SCR_AIWorld_Kunar.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{66AB6351F8DE57F6}" {
+     NavmeshFile "{935C52C1479660D1}NavMesh/Kunar_LowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 1773.026 207.632 803.377
+ {
+  CommentEntity {
+   ID "66AB635128D9B497"
+   coords -31.783 2.608 -27.059
+  }
+ }
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 1765.724 193.948 1354.034
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{68C572006C171835}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 12
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 4
+   m_iMonth 5
+   m_iYear 2020
+   m_bUseSpecifiedDate 1
+   m_iSetDay 4
+   m_iSetMonth 5
+   m_iSetYear 2020
+  }
+ }
+ coords 1760.176 211.085 812.519
+ m_iFreezeTime 300000
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ {
+  components {
+   TILW_CoverMapComponent "{6473480FCAB7760B}" {
+    Enabled 1
+   }
+  }
+  coords 1700.451 227.861 796.059
+  Points {
+   ShapePoint "{68C6AE27106A7EB7}" {
+    Position -24.852 0 2.953
+   }
+   ShapePoint "{68C6AE271DED6FA2}" {
+    Position 3.504 0 -29.111
+   }
+   ShapePoint "{68C6AE27222FDAEB}" {
+    Position 139.359 -52.907 -100.204
+   }
+   ShapePoint "{68C6AE27C010086D}" {
+    Position 273.713 -35.861 -119.638
+   }
+   ShapePoint "{68C6AE27E99E6163}" {
+    Position 369.643 -28.568 -31.566
+   }
+   ShapePoint "{68C6AE27820145C3}" {
+    Position 461.245 -49.343 249.843
+   }
+   ShapePoint "{68C6AE27B60BA81B}" {
+    Position 643.431 -58.343 500.144
+   }
+   ShapePoint "{68C6AE2656980428}" {
+    Position 699.763 -108.17 702.558
+   }
+   ShapePoint "{68C6AE266D8B3B24}" {
+    Position 720.035 -105.178 912.451
+   }
+   ShapePoint "{68C6AE26018D165C}" {
+    Position 638.308 -64.346 1004.752
+   }
+   ShapePoint "{68C6AE26E417FF69}" {
+    Position 485.219 -73.455 899.55
+   }
+   ShapePoint "{68C6AE26F73AD741}" {
+    Position 191.501 0 734.181
+   }
+   ShapePoint "{68C6AE26F891A30E}" {
+    Position 68.318 40.103 707.577
+   }
+   ShapePoint "{68C6AE269F314A68}" {
+    Position -105.874 0 569.575
+   }
+   ShapePoint "{68C6AE26B61C32F8}" {
+    Position -172.478 -13.741 362.531
+   }
+   ShapePoint "{68C6AE254EC543A0}" {
+    Position -142.419 -15.554 79.368
+   }
+  }
+ }
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "RHS_USAF"
+    }
+    m_visibility FACTION
+    m_defaultColor 0 0.125 0.5 1
+   }
+  }
+  coords 1626.467 240.085 703.519
+  Points {
+   ShapePoint "{68C8AD9AFFE11FBA}" {
+    Position 58.688 -0.031 87.654
+   }
+   ShapePoint "{68C8AD9A80626BA6}" {
+    Position 134.12 -38.062 37.591
+   }
+   ShapePoint "{68C8AD9D6CE65FA1}" {
+    Position 198.526 -64.12 33.697
+   }
+   ShapePoint "{68C8AD9A94F317FF}" {
+    Position 236.528 -63.815 116.319
+   }
+   ShapePoint "{68C8AD9AA76ACA87}" {
+    Position 203.331 -51.165 208.685
+   }
+   ShapePoint "{68C8AD9AB969D355}" {
+    Position 178.688 -47.061 219.648
+   }
+   ShapePoint "{68C8AD9D48A7E85A}" {
+    Position 61.517 -36.607 184.306
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 1696.437 229.447 793.963
+ m_missionEvents {
+  TILW_MissionEvent "{68C6AE2228995172}" {
+   m_name "US FORCES HAVE LOST CONTROL"
+   m_instructions {
+    TILW_SendMessageInstruction "{68C6AE22DC194FED}" {
+     m_executionDelay 10
+     m_messageTitle "US FORCES HAVE LOST CONTROL"
+     m_messageBody "OP Dallas has been captured by the Insurgent forces"
+    }
+   }
+   m_condition TILW_LiteralTerm "{68C6AE21563161EE}" {
+    m_flagName "US_PLAYERS_KILLED"
+   }
+  }
+  TILW_MissionEvent "{68C6AE2167442ED9}" {
+   m_name "INSURGENT FORCES ARE RETREATING"
+   m_instructions {
+    TILW_SendMessageInstruction "{68C6AE21736420EA}" {
+     m_executionDelay 10
+     m_messageTitle "INSURGENT FORCES ARE RETREATING"
+     m_messageBody "The Insurgents have taken unacceptable casulties and are now retreating"
+    }
+   }
+   m_condition TILW_LiteralTerm "{68C6AE2130178D17}" {
+    m_flagName "INS_PLAYERS_KILLED"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{68C6AE2389BAB3F0}" {
+   m_flagName "US_PLAYERS_KILLED"
+   m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{68C6AE23AE6C235C}" {
+   m_flagName "INS_PLAYERS_KILLED"
+   m_factionKey "GC_INSURGENT"
+   m_casualtyRatio 0.8
+  }
+ }
+}
+$grp SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ {
+  coords 1777.115 210.284 825.814
+ }
+ {
+  coords 2290.96 118.668 1526.422
+ }
+}

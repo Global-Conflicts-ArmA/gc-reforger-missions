@@ -1,0 +1,133 @@
+SCR_AIWorld : "{0CB65E4CC0AFBCC0}Prefabs/SCR_AIWorld_Kunar.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{66AB6351F8DE57F6}" {
+     NavmeshFile "{935C52C1479660D1}NavMesh/Kunar_LowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 2709.24 100.646 1954.681
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 2715.733 100.782 1959.945
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 5
+   m_iStartingMinutes 15
+   m_bFogOverride 1
+   m_fFogAmount 0.481
+   m_fFogHeightDensity 0.519
+  }
+ }
+ coords 2708.845 102.72 1956.893
+ m_iFreezeTime 90000
+ {
+  SCR_FactionManager {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 3301.475 310.118 413.789
+ m_missionEvents {
+  TILW_MissionEvent "{68A976A167D838FE}" {
+   m_instructions {
+    TILW_SendMessageInstruction "{68A976A08363B531}" {
+     m_executionDelay 30
+     m_messageTitle "US KIA"
+     m_messageBody "Blufor has taken 90 percent casualties"
+     m_adminOnly 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{68A976A1617F97AE}" {
+    m_flagName "US"
+   }
+  }
+  TILW_MissionEvent "{68A976A04FBE2BF7}" {
+   m_instructions {
+    TILW_SendMessageInstruction "{68A976A08363B531}" {
+     m_executionDelay 30
+     m_messageTitle "Insurgent KIA"
+     m_messageBody "Opfor has taken 90 percent casualties"
+     m_adminOnly 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{68A976A1617F97AE}" {
+    m_flagName "Insurgent"
+   }
+  }
+  TILW_MissionEvent "{68A976A0185D86C7}" {
+   m_instructions {
+    TILW_SendMessageInstruction "{68A976A0136A383F}" {
+     m_executionDelay 3600
+     m_messageTitle "Time Limit Reached"
+     m_messageBody "Opfor failed to eliminate Blufor in time limit"
+     m_adminOnly 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{68A976A010619379}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{68AE1D83481169F3}" {
+   m_instructions {
+    TILW_SendMessageInstruction "{68AE1D836480B5D4}" {
+     m_messageTitle "COP Korengal has fell"
+     m_messageBody "Insurgent forces have taken the COP"
+     m_factionKeys {
+      "GC_INSURGENT"
+      "RHS_USAF"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{68AE1D83424C23C5}" {
+    m_flagName "INS_CAP"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{68A976BDD8BF0CC3}" {
+   m_flagName "US"
+   m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{68A976A3A2F32FF6}" {
+   m_flagName "Insurgent"
+   m_factionKey "GC_INSURGENT"
+   m_casualtyRatio 0.9
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ components {
+  SCR_EditableDescriptorComponent "{56D8A3C5A31496AC}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{56D8A3C5A31496A4}" {
+   }
+  }
+ }
+ coords 3322.937 310.292 408.231
+}

@@ -123,7 +123,7 @@ class GC_R_AttackDefend: GC_R_BaseScenario
 		attackerFlag.SetKey(attackerKey);
 		attackerFlag.SetCasualtyRatio(0.95);
 		
-		array<ref TILW_FactionPlayersKilledFlag> flags = {defenderFlag, attackerFlag};
+		array<ref TILW_BaseCasualtyFlag> flags = {defenderFlag, attackerFlag};
 		
 		//Instructions
 		TILW_EndGameInstruction defenderInstruction = TILW_EndGameInstruction();
@@ -200,7 +200,7 @@ class GC_R_AttackDefend: GC_R_BaseScenario
 		events.Insert(objectiveEvent);
 		
 		framework.SetMissionEvents(events);
-		framework.SetPlayersKilledFlags(flags);
+		framework.SetCasualtyFlags(flags);
 	}
 	
 	void SetupAO()

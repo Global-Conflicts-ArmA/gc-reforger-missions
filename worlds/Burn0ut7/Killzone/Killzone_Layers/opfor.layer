@@ -1,0 +1,241 @@
+Vehicle Ural4320_command1 : "{1BABF6B33DA0AEB6}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_command.et" {
+ components {
+  SCR_VehicleDamageManagerComponent "{141326E9FD94FE40}" {
+   "Additional hit zones" {
+    SCR_FlammableHitZone Hull {
+     "Explosive multiplier" 10
+    }
+   }
+  }
+  TILW_Flag_EntityDamage "{68A0E7451E15E651}" {
+   m_flagName "truck"
+  }
+ }
+ coords 12128.087 2.156 10493.951
+ angles 0 -97.364 0
+ m_sAttachmentGroupName "opfor_hq"
+}
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ {
+  coords 11946.502 7.887 10532.642
+  m_sTitle "IV. Mission"
+  m_sTextData "Defend Kamensk and the Command truck until reinforcements arrive."
+  m_aVisibleForFactions {
+   "GC_SEPARATIST"
+  }
+  m_iOrder 4
+ }
+ {
+  coords 11946.502 7.887 10532.642
+  m_sTitle "II. Friendly Forces"
+  m_sTextData "Platoon minus of Separatists"\
+  ""\
+  "Wearing mixed camo and standard Eastern weaponry."\
+  ""\
+  "1x Drone(In crate at spawn)"\
+  "2x HMG Gaz"\
+  "1x Command Truck"
+  m_aVisibleForFactions {
+   "GC_SEPARATIST"
+  }
+  m_iOrder 2
+ }
+ {
+  coords 11946.502 7.887 10532.642
+  m_sTitle "I. Situation"
+  m_sTextData "Separatists have strongholded Kamensk. Defend Kamensk along with the command truck until reinforcements arrive. "\
+  ""\
+  "If the command truck is destroy we will be unable to comuniate with the reinforcements."
+  m_aVisibleForFactions {
+   "GC_SEPARATIST"
+  }
+  m_iOrder 1
+ }
+ {
+  coords 11946.502 7.887 10532.642
+  m_sTitle "III. Enemy Forces"
+  m_sTextData "US Air wearing woodland and multi cam with standard nato weaponry."
+  m_aVisibleForFactions {
+   "GC_SEPARATIST"
+  }
+  m_iOrder 3
+ }
+}
+SCR_AIGroup opfor_hq : "{4ED44E08226F3FB3}Prefabs/Groups/OPFOR/GC_SEPARATIST/2020/P/Group_SEP_PHQ_P.et" {
+ components {
+  AIFormationComponent "{507E9DC12F541FE6}" {
+   DefaultFormation "Column"
+  }
+  PS_GroupCallsignAssigner "{63616C6C7369676E}" {
+   Enabled 1
+  }
+ }
+ coords 12133.329 2.156 10482.169
+ angles 0 -47.744 0
+}
+GenericEntity : "{5C9A089F424D8001}Prefabs/Props/Military/AmmoBoxes/US/EquipmentBoxWooden_Weapon_01_US.et" {
+ components {
+  SCR_SoundDataComponent "{5C53391603B5CF41}" {
+   Enabled 1
+  }
+  SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+   Enabled 1
+   MultiSlots {
+    MultiSlotConfiguration "{68A0E743348D33B4}" {
+     SlotTemplate InventoryStorageSlot slot {
+      Prefab "{77CA4803A4A2B8E3}Prefabs/Drones/FPVBase/FPVRPG.et"
+     }
+     NumSlots 1
+    }
+    MultiSlotConfiguration "{68A12505FA1514DD}" {
+     SlotTemplate InventoryStorageSlot slot {
+      Prefab "{8951045BFE8BC8E4}Prefabs/Characters/HeadGear/FPV_Goggles.et"
+     }
+     NumSlots 1
+    }
+    MultiSlotConfiguration "{68A12505F96A9FC8}" {
+     SlotTemplate InventoryStorageSlot slot {
+      Prefab "{E2434ED1318D8476}Prefabs/Characters/Items/DroneController.et"
+     }
+     NumSlots 1
+    }
+    MultiSlotConfiguration "{68A1336978C0B336}" {
+     SlotTemplate InventoryStorageSlot flare {
+      Prefab "{EC9BDA3D9DDD8795}Prefabs/Weapons/Flares/FlareStarParachute_M127A1_white.et"
+     }
+     NumSlots 50
+    }
+   }
+  }
+  ActionsManagerComponent "{5476B36C403D4CC0}" {
+   Enabled 1
+  }
+  RplComponent "{5476B36C54387F41}" {
+   Enabled 1
+  }
+ }
+ coords 12130.963 2.156 10482.794
+ angles 0 131.785 0
+}
+$grp Vehicle : "{7A16FB788DAD3992}Prefabs/Vehicles/Wheeled/TIGR/KORD/GAZ_TIGR_v2_KORD_Green.et" {
+ GAZ_TIGR_v2_KORD_Green1 {
+  components {
+   SCR_UniversalInventoryStorageComponent "{62B233ED7C26143C}" {
+    MultiSlots {
+     MultiSlotConfiguration "{62B43BCF2B1B8028}" {
+      SlotTemplate InventoryStorageSlot Medikit {
+       Prefab "{E5E9C5897CF47F44}Prefabs/Weapons/Magazines/Box_762x54_PK_100rnd_4Ball_1Tracer.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{68A1336A01323714}" {
+      SlotTemplate InventoryStorageSlot ff {
+       Prefab "{9CCB46C6EE632C1A}Prefabs/Weapons/Magazines/Magazine_762x54_SVD_10rnd_Sniper.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{68A1336A1C23F110}" {
+      SlotTemplate InventoryStorageSlot ff {
+       Prefab "{5821E7F8FA5B099C}Prefabs/Weapons/Magazines/6l23_plum/Magazine_545x39_plum_AK_30rnd_7N22_Last_5Tracer.et"
+      }
+      NumSlots 20
+     }
+    }
+   }
+  }
+  coords 12122.289 2.156 10478.291
+  angles 0 -5.975 0
+  m_sAttachmentGroupName "opfor_hq"
+ }
+ GAZ_TIGR_v2_KORD_Green3 {
+  components {
+   SCR_UniversalInventoryStorageComponent "{62B233ED7C26143C}" {
+    MultiSlots {
+     MultiSlotConfiguration "{62B43BCF2B1B8028}" {
+      SlotTemplate InventoryStorageSlot Medikit {
+       Prefab "{E5E9C5897CF47F44}Prefabs/Weapons/Magazines/Box_762x54_PK_100rnd_4Ball_1Tracer.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{68A1336A01323714}" {
+      SlotTemplate InventoryStorageSlot ff {
+       Prefab "{9CCB46C6EE632C1A}Prefabs/Weapons/Magazines/Magazine_762x54_SVD_10rnd_Sniper.et"
+      }
+      NumSlots 10
+     }
+     MultiSlotConfiguration "{68A1336A1C23F110}" {
+      SlotTemplate InventoryStorageSlot ff {
+       Prefab "{5821E7F8FA5B099C}Prefabs/Weapons/Magazines/6l23_plum/Magazine_545x39_plum_AK_30rnd_7N22_Last_5Tracer.et"
+      }
+      NumSlots 20
+     }
+    }
+   }
+  }
+  coords 12115.562 2.156 10482.912
+  angles 0 -5.975 0
+  m_sAttachmentGroupName "opfor_hq"
+ }
+}
+PS_ManuaMarkerRender : "{88D799C5DED9EC70}PrefabsEditable/Markers/EditableMarkerRender.et" {
+ coords 12359.743 221.261 10699.184
+ angles 0 90 0
+ m_sQuadName "point-of-interest"
+ m_fWorldSize 250
+ m_aVisibleForFactions {
+  "GC_SEPARATIST"
+ }
+ m_aHideOnGameModeStates {
+  GAME
+ }
+ {
+  GenericEntity {
+   ID "5F36D427DE745527"
+   angles -44.059 180 0
+   {
+    SCR_CameraBase "68A125051E6A2393" {
+     ID "5F36D427B0D92373"
+     coords -0.858 -8.427 85.801
+    }
+   }
+  }
+ }
+}
+$grp SCR_AIGroup : "{95EAEE22FCB498F2}Prefabs/Groups/OPFOR/GC_SEPARATIST/2020/P/Group_SEP_RifleSquad_P.et" {
+ {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "Column"
+   }
+   PS_GroupCallsignAssigner "{63616C6C7369676E}" {
+    Enabled 1
+    m_iSquadCallsign 2
+   }
+  }
+  coords 12138.148 2.406 10465.152
+  angles 0 -47.965 0
+ }
+ {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "Column"
+   }
+   PS_GroupCallsignAssigner "{63616C6C7369676E}" {
+    Enabled 1
+    m_iSquadCallsign 1
+   }
+  }
+  coords 12131.299 2.406 10479.874
+  angles 0 -46.106 0
+ }
+}
+PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ coords 12107.668 2.157 10503.987
+ angles 0 0 0
+ m_sImageSet "{7CD99D22C7AE8195}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor.imageset"
+ m_sImageSetGlow "{B9356E7B2E974DCD}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor-outline.imageset"
+ m_sQuadName "undefined"
+ m_fWorldSize 100
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}

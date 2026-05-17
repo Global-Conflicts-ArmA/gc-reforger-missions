@@ -1,0 +1,219 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 3222.435 0 7468.674
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 3207.122 0 7468.583
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bRandomStartingDaytime 1
+   m_bRandomStartingWeather 1
+   m_bUseSpecifiedDate 1
+   m_iSetDay 7
+   m_iSetYear 2025
+  }
+ }
+ coords 3229.645 0 7475.63
+ m_iFreezeTime 180000
+ m_fPrepMultiplier 1000
+ m_fGameMultiplier 1000
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ {
+  components {
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+   }
+  }
+  coords 2367.699 104.971 5969.514
+  Points {
+   ShapePoint "{6903035A2176E529}" {
+    Position 777.648 0 37.557
+   }
+   ShapePoint "{6903035A22F37F2A}" {
+    Position 528.317 0 51.071
+   }
+   ShapePoint "{6903035A3FB5870B}" {
+    Position 280.834 0 294.07
+   }
+   ShapePoint "{6903035A393A06F4}" {
+    Position 164.411 0 562.265
+   }
+   ShapePoint "{6903035A35B3D23E}" {
+    Position 223.419 0 940.238
+   }
+   ShapePoint "{6903035A30E414FA}" {
+    Position 444.147 0 1035.345
+   }
+   ShapePoint "{6903035A0F3F52BD}" {
+    Position 639.152 0 1248.57
+   }
+   ShapePoint "{6903035A088F2FB8}" {
+    Position 1277.03 0 1400.7
+   }
+   ShapePoint "{6903035A0A0A4D15}" {
+    Position 1335.504 0 1168.547
+   }
+   ShapePoint "{6903035A06580369}" {
+    Position 1609.719 0 922.287
+   }
+   ShapePoint "{6903035A00C721EC}" {
+    Position 2112.916 0 896.277
+   }
+   ShapePoint "{6903035A001C77FA}" {
+    Position 2149.168 0 668.661
+   }
+   ShapePoint "{6903035A1C588F26}" {
+    Position 1668.034 0 642.574
+   }
+   ShapePoint "{6903035A1D8A96E9}" {
+    Position 1641.32 0 574.169
+   }
+  }
+ }
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "GC_CAF"
+    }
+   }
+  }
+  coords 2534.409 90.872 5924.536
+  Points {
+   ShapePoint "{6903035AF7AABDFB}" {
+    Position 363.511 0 95.524
+   }
+   ShapePoint "{6903035AF18373B3}" {
+    Position 114.926 0 337.751
+   }
+   ShapePoint "{6903035AF328791F}" {
+    Position -2.042 0 607.694
+   }
+   ShapePoint "{6903035ACF66135C}" {
+    Position 56.16 0 984.891
+   }
+   ShapePoint "{6903035AC9758CAF}" {
+    Position 277.158 0 1080.624
+   }
+   ShapePoint "{6903035AD96BDC4A}" {
+    Position 470.673 0 1293.375
+   }
+   ShapePoint "{6903035AD440405C}" {
+    Position 672.992 0 1047.009
+   }
+   ShapePoint "{6903035AD5A5F4BC}" {
+    Position 645.789 0 850.236
+   }
+   ShapePoint "{6903035AD65F9A2C}" {
+    Position 720.647 0 526.39
+   }
+   ShapePoint "{6903035AD1C9B8C2}" {
+    Position 830.785 0 416.881
+   }
+   ShapePoint "{6903035AD101177E}" {
+    Position 872.928 0 241.443
+   }
+   ShapePoint "{6903035AADD911BD}" {
+    Position 611.107 0 81.119
+   }
+  }
+ }
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ {
+  coords 2906.205 76.86 6625.312
+  m_queryRadius 17.5
+  m_sendStatusMessages 1
+  m_locationName "OBJ Ares"
+  m_flagName "OBJ_A"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "RHS_AFRF"
+ }
+ {
+  coords 2816.768 87.75 6300.987
+  m_queryRadius 20
+  m_sendStatusMessages 1
+  m_locationName "OBJ Zeus"
+  m_flagName "OBJ_Z"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "RHS_AFRF"
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 3243.475 0 7482.05
+ m_missionEvents {
+  TILW_MissionEvent "{6903035AA25309C2}" {
+   m_name "CAF_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{6903035ABE1D7F59}" {
+     m_messageTitle "AFRF VICTORY"
+     m_messageBody "Canadian forces have taken significant casualties."
+    }
+   }
+   m_condition TILW_LiteralTerm "{6903035AB7D151FB}" {
+    m_flagName "CAF_KIA"
+   }
+  }
+  TILW_MissionEvent "{6903035AB3903BB8}" {
+   m_name "RU_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{6903035ABE1D7F59}" {
+     m_messageTitle "CAF VICTORY"
+     m_messageBody "Russian forces have taken significant casualties."
+    }
+   }
+   m_condition TILW_LiteralTerm "{6903035AB7D151FB}" {
+    m_flagName "RU_KIA"
+   }
+  }
+  TILW_MissionEvent "{6903035A80C27FFD}" {
+   m_name "RU_CAP"
+   m_instructions {
+    TILW_SendMessageInstruction "{6903035ABE1D7F59}" {
+     m_messageTitle "AFRF VICTORY"
+     m_messageBody "Objectives Ares and Zeus have been secured by Russian forces."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{6903035A98C8119B}" {
+    m_operands {
+     TILW_LiteralTerm "{6903035A99406596}" {
+      m_flagName "OBJ_A"
+     }
+     TILW_LiteralTerm "{6903035A94ED730E}" {
+      m_flagName "OBJ_Z"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{69030359660CAB5E}" {
+   m_name "TIME_LIMIT"
+   m_instructions {
+    TILW_SendMessageInstruction "{690303597A821910}" {
+     m_executionDelay 3725
+     m_messageTitle "CAF VICTORY"
+     m_messageBody "Time limit reached."
+    }
+   }
+   m_condition TILW_LiteralTerm "{690303596210F469}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{6903035B97322DD1}" {
+   m_flagName "CAF_KIA"
+   m_factionKey "GC_CAF"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{6903035A6D63D441}" {
+   m_flagName "RU_KIA"
+   m_factionKey "RHS_AFRF"
+   m_casualtyRatio 0.9
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 4328.038 140.405 6756.312
+}

@@ -1,0 +1,343 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{68E965978599A34C}" {
+     NavmeshFile "{E08B16AADAB901D8}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Soldier.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{04F808CEFD545B32}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Vehicle.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{6D7CE9C2F346F22E}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_LowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 5522.718 240.659 9643.097
+ Formations {
+  AIFormationDefinition "{56ACE3951AA8D3EB}" {
+   Offsets +{
+    0 0 -33
+    0 0 -36
+   }
+  }
+ }
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 5530.846 240.686 9646.711
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{68EB00C71212EA8F}" {
+     m_sWeatherPresetName "Cloudy"
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 3
+   m_iMonth 7
+   m_iYear 2009
+  }
+ }
+ coords 5527.23 240.657 9645.58
+ m_iFreezeTime 60000
+ m_fPrepDuration 60
+ m_fPrepMultiplier 10
+ {
+  SCR_FactionManager "68EA964E77377B3A" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792CE18FB44}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792CE02ECFA}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{55CCB792CE2A44BD}" {
+        m_sCallsign "4"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{68E965827D34EBF0}" {
+        m_sCallsign "4"
+       }
+      }
+      m_sCallsignGroupFormat "%2-%3"
+      m_sCallsignCharacterFormat "%2-%3: %4"
+     }
+    }
+   }
+  }
+ }
+}
+$grp TILW_ExtractionTriggerEntity : "{192ABD6B9232E064}Prefabs/Logic/Triggers/TILW_ExtractionTrigger.et" {
+ {
+  coords 4834.454 244.011 11284.484
+  m_queryRadius 90
+  m_flagName "AFRF_EXTRACT"
+  m_factionKey "RHS_AFRF"
+  m_ratioThreshold 0.8
+ }
+ {
+  coords 5461.558 244.093 9803.691
+  m_queryRadius 90
+  m_flagName "US_EXTRACT"
+  m_factionKey "RHS_USAF"
+  m_ratioThreshold 0.8
+ }
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ {
+  components {
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+   }
+  }
+  coords 5518.817 240.835 9644.471
+  Points {
+   ShapePoint "{68E96591FB5255B2}" {
+    Position -172.695 0 37.355
+   }
+   ShapePoint "{68E96591F43CD0FF}" {
+    Position 189.635 0 239.729
+   }
+   ShapePoint "{68E96591F00E4ED6}" {
+    Position -61.932 0 1739.832
+   }
+   ShapePoint "{68E96591F266B51A}" {
+    Position -619.658 0 1700.729
+   }
+   ShapePoint "{68E96591CF896063}" {
+    Position -794.351 0 1628.222
+   }
+   ShapePoint "{68E96591C9B4A819}" {
+    Position -1133.973 0 1331.404
+   }
+   ShapePoint "{68E96591C1A19680}" {
+    Position -1005.1 0 1160.675
+   }
+   ShapePoint "{68E96591C26A86E9}" {
+    Position -1081.581 0 1097.014
+   }
+   ShapePoint "{68E96591C36787B7}" {
+    Position -1035.433 0 969.687
+   }
+   ShapePoint "{68E96591D9425D5C}" {
+    Position -948.527 0 885.44
+   }
+   ShapePoint "{68E96591DA7BC1AC}" {
+    Position -870.592 0 852.877
+   }
+   ShapePoint "{68E96591D4FABBDF}" {
+    Position -808.616 0 800.495
+   }
+   ShapePoint "{68E96591A6FFA662}" {
+    Position -788.016 0 713.845
+   }
+   ShapePoint "{68E96591A63475B8}" {
+    Position -716.219 0 712.577
+   }
+   ShapePoint "{68E96591A0675D66}" {
+    Position -704.824 0 592.798
+   }
+   ShapePoint "{68E96591BCA1815D}" {
+    Position -694.357 0 514.112
+   }
+  }
+ }
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "RHS_AFRF"
+    }
+   }
+  }
+  coords 5518.214 240.611 9628.309
+  Points {
+   ShapePoint "{68E9659E5408A858}" {
+    Position -715.781 0 728.626
+   }
+   ShapePoint "{68E9659E5634370A}" {
+    Position -787.646 0 729.87
+   }
+   ShapePoint "{68E9659E51412F24}" {
+    Position -808.213 0 816.615
+   }
+   ShapePoint "{68E9659E5373C4A1}" {
+    Position -870.249 0 868.838
+   }
+   ShapePoint "{68E9659E2D48F0CB}" {
+    Position -948.099 0 901.472
+   }
+   ShapePoint "{68E9659E2F624812}" {
+    Position -1035.101 0 985.635
+   }
+   ShapePoint "{68E9659E29176DB6}" {
+    Position -1081.505 0 1113.152
+   }
+   ShapePoint "{68E9659E2B708BF3}" {
+    Position -1004.9 0 1176.929
+   }
+   ShapePoint "{68E9659E2526A88D}" {
+    Position -1133.624 0 1347.553
+   }
+   ShapePoint "{68E9659E21A93F6D}" {
+    Position -794.063 0 1644.65
+   }
+   ShapePoint "{68E9659E3CBF105C}" {
+    Position -619.038 0 1717.091
+   }
+   ShapePoint "{68E9659E332677B8}" {
+    Position -60.818 0 1757.063
+   }
+   ShapePoint "{68E9659E0E59D81E}" {
+    Position -3.648 0 1423.778
+   }
+   ShapePoint "{68E9659E0FD9C31A}" {
+    Position -120.285 0 1434.13
+   }
+   ShapePoint "{68E9659E090FEDA2}" {
+    Position -297.837 0 1304.405
+   }
+   ShapePoint "{68E9659E1EC73D6F}" {
+    Position -655.68 0 850.728
+   }
+   ShapePoint "{68E9659E1FD60283}" {
+    Position -657.774 -1.769 774.718
+   }
+  }
+ }
+}
+TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 4777.033 243.538 10931.53
+ m_queryRadius 60
+ m_locationName "the compound"
+ m_flagName "OBJ"
+ m_ownerFactionKey "RHS_USAF"
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 5523.657 240.679 9646.221
+ m_missionEvents {
+  TILW_MissionEvent "{68E9658767ED0F1C}" {
+   m_name "US_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{68E965877E598380}" {
+     m_messageTitle "AFRF MAJOR VICTORY"
+     m_messageBody "US forces have sustained significant casualties."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68E965876272342A}" {
+    m_flagName "US_KIA"
+   }
+  }
+  TILW_MissionEvent "{68E965874239D173}" {
+   m_name "AFRF_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{68E965877E598380}" {
+     m_messageTitle "US MAJOR VICTORY"
+     m_messageBody "Russian forces have sustained significant casualties."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68E965876272342A}" {
+    m_flagName "AFRF_KIA"
+   }
+  }
+  TILW_MissionEvent "{68E965875085EB3F}" {
+   m_name "US_EXTRACT"
+   m_instructions {
+    TILW_SendMessageInstruction "{68E9658729681E2E}" {
+     m_messageTitle "AFRF MINOR VICTORY"
+     m_messageBody "Surviving US forces have withdrawn from the AO."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68E9658732E964CB}" {
+    m_flagName "US_EXTRACT"
+   }
+  }
+  TILW_MissionEvent "{68E965870D370B0B}" {
+   m_name "AFRF_EXTRACT"
+   m_instructions {
+    TILW_SendMessageInstruction "{68E965870436B510}" {
+     m_messageTitle "US MINOR VICTORY"
+     m_messageBody "Russian forces have withdrawn from the AO."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68E9658709E1BBFB}" {
+    m_flagName "AFRF_EXTRACT"
+   }
+  }
+  TILW_MissionEvent "{68E9658718BFCE82}" {
+   m_name "OBJ"
+   m_instructions {
+    TILW_SendMessageInstruction "{68E96587ECFA8472}" {
+     m_messageTitle "US VICTORY"
+     m_messageBody "US forces have secured the compound. Surviving Russian forces should attempt to recapture or withdraw from the AO."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68E96587156DCFD1}" {
+    m_flagName "OBJ"
+   }
+  }
+  TILW_MissionEvent "{68E96587DF78B7E1}" {
+   m_name "TIME_LIMIT"
+   m_instructions {
+    TILW_SendMessageInstruction "{68E96587D5B3B396}" {
+     m_executionDelay 3665
+     m_messageTitle "AFRF MAJOR VICTORY"
+     m_messageBody "Time limit reached."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68E96587DBDA55C8}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{68E96586BAF30C08}" {
+   m_flagName "US_KIA"
+   m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.8
+  }
+  TILW_FactionPlayersKilledFlag "{68E965868FD717C7}" {
+   m_flagName "AFRF_KIA"
+   m_factionKey "RHS_AFRF"
+   m_casualtyRatio 0.8
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 5447.35 231.537 10157.518
+}
+SCR_EditorRestrictionZoneEntity : "{EF72FA7CD87618D5}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneSmall.et" {
+ coords 5470.493 243.783 9785.842
+}

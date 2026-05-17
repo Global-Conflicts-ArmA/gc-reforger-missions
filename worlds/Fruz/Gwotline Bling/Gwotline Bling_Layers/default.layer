@@ -1,0 +1,142 @@
+SCR_AIWorld : "{0CB65E4CC0AFBCC0}Prefabs/SCR_AIWorld_Kunar.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{66AB6351F8DE57F6}" {
+     NavmeshFile "{935C52C1479660D1}NavMesh/Kunar_LowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 2806.995 10 3163.747
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 2809.147 10 3160.869
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{68D00C9F8776E586}" {
+     m_iStartingHour 1
+     m_iStartingMinutes 5
+    }
+   }
+  }
+ }
+ coords 2812.845 10 3152.494
+ m_iFreezeTime 300000
+ {
+  SCR_FactionManager "68B69A197F9273F8" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CD021D5C}" {
+        m_sCallsign "Charger"
+       }
+       SCR_CallsignInfo "{55CCB792CCD598D3}" {
+        m_sCallsign "Spear"
+       }
+       SCR_CallsignInfo "{55CCB792CC9C7AD6}" {
+        m_sCallsign "Lima"
+       }
+       SCR_CallsignInfo "{55CCB792CCB4D441}" {
+        m_sCallsign "Star"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "1'"
+       }
+       SCR_CallsignInfo "{55CCB792CE18FB44}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{55CCB792CE02ECFA}" {
+        m_sCallsign "4'"
+       }
+       SCR_CallsignInfo "{55CCB792CE2A44BD}" {
+        m_sCallsign "5'"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{68B69A19FAB7F5A3}" {
+        m_sCallsign "4"
+       }
+       SCR_CallsignInfo "{68B69A19F57CF286}" {
+        m_sCallsign "5"
+       }
+      }
+      m_sCallsignGroupFormat "%1 %2%3"
+      m_sCallsignCharacterFormat "%1 %2%3: %4"
+     }
+    }
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 2997.891 10 3039.702
+ m_missionEvents {
+  TILW_MissionEvent "{68B37CDE5F297009}" {
+   m_name "US Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{68B37CDFD86729C0}" {
+     m_messageTitle "US Victory"
+     m_messageBody "90 Percent of the insurgent forces have been killed."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68B37CDE549E68A0}" {
+    m_flagName "US"
+   }
+  }
+  TILW_MissionEvent "{68B37CDF96D16A36}" {
+   m_name "Insurgent Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{68B37CDFBE325557}" {
+     m_messageTitle "Insurgent Victory"
+     m_messageBody "90 Percent of the American Forces have been eliminated."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68B37CDFBCE52628}" {
+    m_flagName "MUJ"
+   }
+  }
+  TILW_MissionEvent "{68B37C9E0BB288FC}" {
+   m_name "Time"
+   m_instructions {
+    TILW_SendMessageInstruction "{68B37C9FC1C4EF1B}" {
+     m_executionDelay 3900
+     m_messageTitle "Time Limit"
+     m_messageBody "60 Minutes have passed."
+    }
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{68B37CDE1DC48AD3}" {
+   m_flagName "US"
+   m_factionKey "GC_MUJ"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{68B37CDE2723EF4F}" {
+   m_flagName "MUJ"
+   m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.9
+  }
+ }
+}

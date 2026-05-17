@@ -1,0 +1,192 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{68E0A8EE4C070372}" {
+     NavmeshFile "{E08B16AADAB901D8}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Soldier.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{04F808CEFD545B32}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Vehicle.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{6D7CE9C2F346F22E}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_LowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 6119.592 226.545 6244.882
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 6080.361 226.109 6237.84
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 17
+   m_iStartingMinutes 15
+   m_bDateOverride 1
+   m_iDay 12
+   m_iMonth 2
+   m_iYear 2027
+  }
+ }
+ coords 6109.12 236.625 6229.905
+ m_iFreezeTime 300
+ m_safeStartTime 300
+ m_fPrepDuration 999
+ m_fPrepMultiplier 999
+ m_fGameMultiplier 999
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ {
+  components {
+   TILW_CoverMapComponent "{6473480FCAB7760B}" {
+    Enabled 1
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+   }
+  }
+  coords 6527.223 247.18 6264.982
+  Points {
+   ShapePoint "{68E0A8FF698374A3}" {
+    Position 450.477 33.887 -386.441
+   }
+   ShapePoint "{68E0A8FF6DBAB046}" {
+    Position -319.104 0 -320.073
+   }
+   ShapePoint "{68E0A8FF63FC2433}" {
+    Position -357.132 0 502.226
+   }
+   ShapePoint "{68E0A8FF6044B9C7}" {
+    Position 212.469 0 721.16
+   }
+   ShapePoint "{68E0A8FF67ACD809}" {
+    Position 612.495 0 480.685
+   }
+  }
+ }
+ AOLIMITOPFOR {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "GC_SEPARATIST"
+    }
+    m_defaultColor 0.502 0 0 1
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+    m_drawArea 0
+    m_color 0.502 0 0 1
+    m_drawLine 1
+    m_lineColor 0.561 0.071 0.071 1
+   }
+  }
+  coords 6429.962 204.265 6549.247
+  Points {
+   ShapePoint "{68FADE147169424F}" {
+    Position -126.203 0 -245.172
+   }
+   ShapePoint "{68FADE147670ECAF}" {
+    Position -263.644 0 221.646
+   }
+   ShapePoint "{68FADE1474FA5362}" {
+    Position 311.58 0 437.591
+   }
+   ShapePoint "{68FADE146F0B8791}" {
+    Position 715.142 0 193.913
+   }
+   ShapePoint "{68FADE14666811AA}" {
+    Position 685.328 0 -175.126
+   }
+   ShapePoint "{68FADE159ABF70C4}" {
+    Position -119.86 0 -361.994
+   }
+  }
+ }
+}
+TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 6545.184 201.903 6516.98
+ m_queryRadius 100
+ m_captureTime 300
+ m_locationName "POWER PLANT"
+ m_flagName "OBJ_A_TAKEN"
+ m_stopAfterFirstChange 1
+ m_ownerFactionKey "UK"
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 6493.227 203.866 6528.95
+ m_missionEvents {
+  TILW_MissionEvent "{68E0D24C4A48B0C9}" {
+   m_name "UK KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{68E0D24C7F47573B}" {
+     m_executionDelay 20
+     m_messageTitle "UK - HEAVY CASUALTIES"
+     m_messageBody "UK has been defeated due to heavy casualties"
+    }
+   }
+   m_condition TILW_LiteralTerm "{68E0D24F8450BC03}" {
+    m_flagName "UK_PLAYERS_KILLED"
+   }
+  }
+  TILW_MissionEvent "{68E0D24FD6E41585}" {
+   m_name "SEP KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{68E0D24FCD71AD6C}" {
+     m_executionDelay 20
+     m_messageTitle "SEP - DESTROYED"
+     m_messageBody "Separatist forces have been destroyed outright."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68E0D24FF52E69CA}" {
+    m_flagName "SEP_PLAYERS_KILLED"
+   }
+  }
+  TILW_MissionEvent "{68E0D24EA1371F95}" {
+   m_name "TIME_OVER"
+   m_instructions {
+    TILW_SendMessageInstruction "{68E0D24ED5C6C656}" {
+     m_executionDelay 3600
+     m_messageTitle "TIME - DRAW"
+     m_messageBody "Time ran out, draw."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68E0D24EF7E05466}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{68E0D24E3FD984DD}" {
+   m_name "OBJECTIVE SECURE"
+   m_instructions {
+    TILW_SendMessageInstruction "{68E0D24E52889F3F}" {
+     m_executionDelay 30
+     m_messageTitle "BLUFOR VICTORY - POWER PLANT SECURE"
+     m_messageBody "Power plant was secured by british forces"
+    }
+   }
+   m_condition TILW_LiteralTerm "{68E0D24E350327E5}" {
+    m_flagName "OBJ_A_TAKEN"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{68E0D24C0F171E79}" {
+   m_flagName "UK_PLAYERS_KILLED"
+   m_factionKey "UK"
+   m_casualtyRatio 0.75
+  }
+  TILW_FactionPlayersKilledFlag "{68E0D24C22AC64F5}" {
+   m_flagName "SEP_PLAYERS_KILLED"
+   m_factionKey "GC_SEPARATIST"
+  }
+ }
+}

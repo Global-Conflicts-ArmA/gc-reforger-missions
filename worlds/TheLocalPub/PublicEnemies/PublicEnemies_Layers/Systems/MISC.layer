@@ -1,0 +1,203 @@
+TILW_ExtractionTriggerEntity FedExtract : "{192ABD6B9232E064}Prefabs/Logic/Triggers/TILW_ExtractionTrigger.et" {
+ coords 2768.091 54.638 1005.655
+ m_queryRadius 200
+ m_comparisonMode EQUAL_OR_LESS
+ m_flagName "FederalExtract"
+ m_drawShapeSurface 0
+ m_drawShapeOutline 0
+ m_factionKey "GC_Federal"
+ m_ratioThreshold 0.66
+}
+GenericEntity TelephoneInteract1 : "{584EB34600E9698D}Prefabs/Utils/Interactions/TILW_SetFlagInteraction.et" {
+ components {
+  ActionsManagerComponent "{61F4C18E835074FF}" {
+   additionalActions {
+    TILW_BaseInteraction "{61F4C18E863E752C}" {
+     VisibilityRange -3.1
+     Duration 5
+     m_actionName "Spread the word! (END MISSION)"
+     m_flagName "EndMission"
+     m_conditionFlag "MeetingCompleted"
+    }
+   }
+  }
+ }
+ coords 2779.871 61.771 1024.401
+}
+TILW_PresenceTriggerEntity MeetingTrigger : "{826E6F2246328952}Prefabs/Logic/Triggers/TILW_PresenceTrigger.et" {
+ coords 2774.278 60.981 1021.933
+ m_queryRadius 15
+ m_captureTime 1350
+ m_sendStatusMessages 1
+ m_statusMessages {
+  "MEETING COMPLETED! Quickly get to the telephone on the ground floor in the brown lodge and spread the word!"
+  "The meeting has begun inside the lodge. (Bosses don't leave)"
+  ""
+  ""
+  ""
+  "The meeting has been interupted. A mob boss has left the building."
+  ""
+ }
+ m_displayTo {
+  "GC_Mobster"
+ }
+ m_flagName "MeetingCompleted"
+ m_stopAfterFirstChange 1
+ m_entityNames {
+  "BrownMobBoss"
+  "GreyMobBoss"
+ }
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ BigAO {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "GC_Federal"
+     "GC_Mobster"
+    }
+    m_useFactionColor 0
+    m_lineWidth 5
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+   }
+  }
+  coords 1832.647 1030.805 867.578
+  Points {
+   ShapePoint "{68AB32EE4FEF5993}" {
+    Position 116.051 -974.536 -858.364
+   }
+   ShapePoint "{68AB32EEB8BBB611}" {
+    Position 2172.383 -940.902 -863.843
+   }
+   ShapePoint "{68AB32EEAB952106}" {
+    Position 2478.666 -949.21 -406.082
+   }
+   ShapePoint "{68AB32EEAB0F1965}" {
+    Position 2682.83 -959.126 10.466
+   }
+   ShapePoint "{68AB32EEA8A1929B}" {
+    Position 2887.808 -963.458 476.982
+   }
+   ShapePoint "{68AB32EEA086822B}" {
+    Position 2314.784 -972.696 897.395
+   }
+   ShapePoint "{68AB32EEA6EF4FB9}" {
+    Position 1673.197 -973.455 1305.938
+   }
+   ShapePoint "{68AB32EEA617CCA1}" {
+    Position 1271.883 -973.122 1495.836
+   }
+   ShapePoint "{68AB32EEA791AD12}" {
+    Position 801.557 -970.127 1507.047
+   }
+   ShapePoint "{68AB32EEA4E5AC79}" {
+    Position 69.751 -968.365 486.361
+   }
+   ShapePoint "{68AB32EEA5C0CC19}" {
+    Position -745.466 -969.68 -866.249
+   }
+  }
+ }
+ SmallAO {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "GC_Mobster"
+    }
+    m_visibility FACTION
+   }
+  }
+  coords 3659.222 93.317 218.487
+  Points {
+   ShapePoint "{68AB32F1628CF05F}" {
+    Position -950.048 -43.014 690.706
+   }
+   ShapePoint "{68AB32F16496A219}" {
+    Position -883.191 -33.425 682.987
+   }
+   ShapePoint "{68AB32F164419098}" {
+    Position -876.035 -32.52 694.561
+   }
+   ShapePoint "{68ACB30F737D5430}" {
+    Position -873.243 -32.971 705.578
+   }
+   ShapePoint "{68ACB30F719F0F52}" {
+    Position -864.116 -32.481 720.695
+   }
+   ShapePoint "{68ACB30F71764FA3}" {
+    Position -851.312 -33.344 736.989
+   }
+   ShapePoint "{68AB32F16564FCD5}" {
+    Position -842.82 -30.52 747.219
+   }
+   ShapePoint "{68ACB30F6BD77960}" {
+    Position -825.062 -31.365 765.013
+   }
+   ShapePoint "{68ACB30F688116E2}" {
+    Position -823.388 -30.785 773.004
+   }
+   ShapePoint "{68ACB30F69E8C2FC}" {
+    Position -812.664 -30.793 785.972
+   }
+   ShapePoint "{68AB32F15B9FD903}" {
+    Position -816.648 -32.313 794.084
+   }
+   ShapePoint "{68AB32F15E7E9C66}" {
+    Position -829.66 -31.226 804.625
+   }
+   ShapePoint "{68AB32F15482DA36}" {
+    Position -833.29 -31.201 801.612
+   }
+   ShapePoint "{68AB32F14A3CB2B8}" {
+    Position -845.156 -31.393 802.844
+   }
+   ShapePoint "{68AB32F1480F3B46}" {
+    Position -858.957 -32.084 815.256
+   }
+   ShapePoint "{68ACB30F52385E1D}" {
+    Position -872.9 -32.499 828.896
+   }
+   ShapePoint "{68ACB30F56499FE1}" {
+    Position -890.059 -38.263 847.608
+   }
+   ShapePoint "{68AB32F14327D3BB}" {
+    Position -899.966 -43.467 858.58
+   }
+   ShapePoint "{68AB32F1401D15E2}" {
+    Position -925.078 -37.723 887.51
+   }
+   ShapePoint "{68AB32F144DF9CD9}" {
+    Position -959.844 -33.553 886.646
+   }
+   ShapePoint "{68AB32F145109065}" {
+    Position -981.54 -33.11 867.383
+   }
+   ShapePoint "{68ACB30F3681C34F}" {
+    Position -993.517 -40.75 847.014
+   }
+   ShapePoint "{68AB32F1BB421AE7}" {
+    Position -1008.001 -36.687 828.289
+   }
+   ShapePoint "{68ACB30F22B304C3}" {
+    Position -1023.089 -36.74 811.403
+   }
+   ShapePoint "{68AB32F1BEA730CF}" {
+    Position -1027.48 -37.391 802.937
+   }
+   ShapePoint "{68ACB30F0DAA2572}" {
+    Position -1024.363 -44.143 750.609
+   }
+   ShapePoint "{68ACB30F02BEEFCC}" {
+    Position -1010.078 -46.495 719.813
+   }
+   ShapePoint "{68ACB30F020C922D}" {
+    Position -977.163 -47.26 699.486
+   }
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity BluforSetup : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 860.465 65.058 369.418
+}

@@ -103,27 +103,49 @@ $grp TILW_PresenceTriggerEntity : "{826E6F2246328952}Prefabs/Logic/Triggers/TILW
   m_ratioThreshold 0.33
  }
 }
-TILW_FactionTriggerEntity IndofrCutoffTrigger : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
- coords 3116.067 89.155 10021.863
- m_queryRadius 600
- m_sendStatusMessages 1
- m_statusMessages {
-  "The Soviets have reached Nagara and cut off our reinforcements!"
-  ""
-  ""
-  ""
-  ""
-  ""
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ IndofrCutoffTrigger {
+  coords 3116.067 89.155 10021.863
+  m_queryRadius 600
+  m_sendStatusMessages 1
+  m_statusMessages {
+   "The Soviets have reached Nagara and cut off our reinforcements!"
+   ""
+   ""
+   ""
+   ""
+   ""
+  }
+  m_locationName ""
+  m_displayTo {
+   "GC_MUJ"
+  }
+  m_flagName "IndforCutoff"
+  m_stopAfterFirstChange 1
+  m_playersOnly 1
+  m_ignoredFactions {
+   "GC_MUJ"
+  }
+  m_ownerFactionKey "USSR"
  }
- m_locationName ""
- m_displayTo {
-  "GC_MUJ"
+ CivAITrigger {
+  coords 3116.067 89.155 10021.863
+  m_queryRadius 900
+  m_statusMessages {
+   ""
+   ""
+   ""
+   ""
+   ""
+   ""
+  }
+  m_locationName ""
+  m_flagName "AITrigger"
+  m_stopAfterFirstChange 1
+  m_playersOnly 1
+  m_ignoredFactions {
+   "GC_MUJ"
+  }
+  m_ownerFactionKey "USSR"
  }
- m_flagName "IndforCutoff"
- m_stopAfterFirstChange 1
- m_playersOnly 1
- m_ignoredFactions {
-  "GC_MUJ"
- }
- m_ownerFactionKey "USSR"
 }

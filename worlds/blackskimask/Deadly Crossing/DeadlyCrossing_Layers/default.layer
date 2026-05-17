@@ -1,0 +1,164 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 2648.079 2.243 722.864
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 2627.296 2.385 691.31
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 13
+   m_bDateOverride 1
+   m_iDay 2
+   m_iMonth 3
+   m_iYear 2027
+   m_bOverrideEnvironment 1
+   m_fFogDensity 0.2
+  }
+ }
+ coords 1498.91 13.458 1902.886
+ m_iFreezeTime 600
+ m_safeStartTime 600
+ m_fPrepDuration 999
+ m_fPrepMultiplier 999
+ m_fGameMultiplier 999
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ {
+  components {
+   TILW_CoverMapComponent "{6473480FCAB7760B}" {
+    Enabled 1
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+   }
+  }
+  coords 1925.803 2.659 2845.274
+  angles 0 -111.968 0
+  Points {
+   ShapePoint "{68E0A8FF698374A3}" {
+    Position 900.388 -62.38 -387.956
+   }
+   ShapePoint "{68E0A8FF6DBAB046}" {
+    Position -733.24 0 -344.662
+   }
+   ShapePoint "{68E0A8FF63FC2433}" {
+    Position -582.085 0 639.534
+   }
+   ShapePoint "{68E0A8FF6044B9C7}" {
+    Position 252.82 0 788.284
+   }
+   ShapePoint "{68E0A8FF67ACD809}" {
+    Position 1130 0 460.618
+   }
+  }
+ }
+ BLUFOR_AO {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "UK"
+    }
+    m_defaultColor 0 0.125 0.502 1
+    m_useFactionColor 0
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    m_lineColor 0 0.125 0.502 1
+   }
+  }
+  coords 2137.25 -49.865 2770.501
+  Points {
+   ShapePoint "{68E2A6E5B83FE57E}" {
+    Position 17.027 -16.609 -540.578
+   }
+   ShapePoint "{68E2A6E5B79B716A}" {
+    Position -805.233 103.268 1020.102
+   }
+   ShapePoint "{68E2A6E5B4668B61}" {
+    Position -176.236 -0.441 1057.93
+   }
+   ShapePoint "{68E2A6E5A8118A04}" {
+    Position 366.931 1.907 -477.403
+   }
+  }
+ }
+}
+TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 2293.726 22.951 2928.895
+ m_queryRadius 450
+ m_captureTime 300
+ m_locationName "CROSSING"
+ m_flagName "OBJ_A_TAKEN"
+ m_stopAfterFirstChange 1
+ m_ownerFactionKey "GC_SEPARATIST"
+ m_ratioThreshold 0.9
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 1893.239 12.822 783.792
+ m_missionEvents {
+  TILW_MissionEvent "{68E0D24C4A48B0C9}" {
+   m_name "UK KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{68E0D24C7F47573B}" {
+     m_executionDelay 20
+     m_messageTitle "UK - HEAVY CASUALTIES"
+     m_messageBody "UK has been defeated due to heavy casualties"
+    }
+   }
+   m_condition TILW_LiteralTerm "{68E0D24F8450BC03}" {
+    m_flagName "UK_PLAYERS_KILLED"
+   }
+  }
+  TILW_MissionEvent "{68E0D24FD6E41585}" {
+   m_name "SEP KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{68E0D24FCD71AD6C}" {
+     m_executionDelay 20
+     m_messageTitle "SEP - DESTROYED"
+     m_messageBody "Separatist forces have been destroyed outright."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68E0D24FF52E69CA}" {
+    m_flagName "SEP_PLAYERS_KILLED"
+   }
+  }
+  TILW_MissionEvent "{68E0D24EA1371F95}" {
+   m_name "TIME_OVER"
+   m_instructions {
+    TILW_SendMessageInstruction "{68E0D24ED5C6C656}" {
+     m_executionDelay 3600
+     m_messageTitle "TIME - UK VICTORY"
+     m_messageBody "Time ran out, British forces have delayed the separatists and have won."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68E0D24EF7E05466}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{68E0D24E3FD984DD}" {
+   m_name "OBJECTIVE SECURE"
+   m_instructions {
+    TILW_SendMessageInstruction "{68E0D24E52889F3F}" {
+     m_executionDelay 30
+     m_messageTitle "OPFOR VICTORY - RIVER CROSSING SECURE"
+     m_messageBody "River crossing was seized and secure by separatists"
+    }
+   }
+   m_condition TILW_LiteralTerm "{68E0D24E350327E5}" {
+    m_flagName "OBJ_A_TAKEN"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{68E0D24C0F171E79}" {
+   m_flagName "UK_PLAYERS_KILLED"
+   m_factionKey "UK"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{68E0D24C22AC64F5}" {
+   m_flagName "SEP_PLAYERS_KILLED"
+   m_factionKey "GC_SEPARATIST"
+   m_casualtyRatio 0.8
+  }
+ }
+}

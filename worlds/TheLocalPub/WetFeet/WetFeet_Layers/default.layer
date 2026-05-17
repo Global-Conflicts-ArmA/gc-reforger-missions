@@ -1,0 +1,149 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 474.303 79.392 4928.163
+}
+PerceptionManager PerceptionManager2 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 331.275 83.25 4984.218
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{68F7561F8BFE4833}" {
+     m_sWeatherPresetName "Rainy"
+    }
+   }
+   m_bRandomWeatherChanges 1
+   m_bUseSpecifiedDate 1
+   m_iSetDay 23
+   m_iSetMonth 7
+   m_iSetYear 2021
+  }
+ }
+ coords 395.79 66.44 5017.333
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 328.261 75.41 5001.439
+ m_missionEvents {
+  TILW_MissionEvent "{68FD145EA85F46AA}" {
+   m_name "HamletSecuredWin"
+   m_instructions {
+    TILW_SendMessageInstruction "{68FD145E8074EC80}" {
+     m_messageTitle "BRITISH VICTORY"
+     m_messageBody "Well done chaps!"\
+     "We've managed to dislodge the Separatist cell from the hamlet and once again open up the supply route into the Ruha region."\
+     ""\
+     "Good job."\
+     "Mission will end soon.."
+     m_factionKeys {
+      "UK"
+     }
+    }
+    TILW_SendMessageInstruction "{68FD145EC9D26956}" {
+     m_messageTitle "BRITISH VICTORY"
+     m_messageBody "Oh no we've lost control of the hamlet!"\
+     "British forces have managed to dislodge us from the hamlet and have once again opened up the supply route into Ruha."\
+     ""\
+     "Better luck next time."\
+     "Mission will end soon.."
+     m_factionKeys {
+      "GC_SEPARATIST"
+     }
+    }
+    TILW_DeactivateEventsInstruction "{68FD145F150BF1DB}" {
+     m_eventNames {
+      "SepDead"
+      "BritDead"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{68FD145E918D43DC}" {
+    m_flagName "AreaCaptured"
+   }
+  }
+  TILW_MissionEvent "{68FD145F5F4CE710}" {
+   m_name "SepDead"
+   m_instructions {
+    TILW_SendMessageInstruction "{68FD145F5F4CE4B7}" {
+     m_messageTitle "BRITISH VICTORY"
+     m_messageBody "Well done chaps!"\
+     "We've destroy the Separatist cell and thus managed to also secure the hamlet in the process."\
+     ""\
+     "Good job."\
+     "Mission will end soon.."
+     m_factionKeys {
+      "UK"
+     }
+    }
+    TILW_SendMessageInstruction "{68FD145F5F4CE489}" {
+     m_messageTitle "BRITISH VICTORY"
+     m_messageBody "We've been decimated!"\
+     "British forces have destroyed our cell. Hopefully our names will live on with the cause."\
+     ""\
+     "Better luck next time."\
+     "Mission will end soon.."
+     m_factionKeys {
+      "GC_SEPARATIST"
+     }
+    }
+    TILW_DeactivateEventsInstruction "{68FD145F5F4CE488}" {
+     m_eventNames {
+      "HamletSecuredWin"
+      "BritDead"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{68FD145F5F4CE48D}" {
+    m_flagName "SepDead"
+   }
+  }
+  TILW_MissionEvent "{68FD145FF13F00E1}" {
+   m_name "BritDead"
+   m_instructions {
+    TILW_SendMessageInstruction "{68FD145FF13F00B1}" {
+     m_messageTitle "SEPARATIST VICTORY"
+     m_messageBody "This is tragic. So many deaths..."\
+     "Our platoon has been made combat infeffective and the order to withdraw has been given."\
+     ""\
+     "Better luck next time."\
+     "Mission will end soon.."
+     m_factionKeys {
+      "UK"
+     }
+    }
+    TILW_SendMessageInstruction "{68FD145FF13F00B3}" {
+     m_messageTitle "SEPARATIST VICTORY"
+     m_messageBody "Well done everyone, we smashed them!"\
+     "British forces have withdrawn after becoming combat ineffective."\
+     ""\
+     "Very good job."\
+     "Mission will end soon.."
+     m_factionKeys {
+      "GC_SEPARATIST"
+     }
+    }
+    TILW_DeactivateEventsInstruction "{68FD145FF13F00B2}" {
+     m_eventNames {
+      "HamletSecuredWin"
+      "SepDead"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{68FD145FF13F00B7}" {
+    m_flagName "BritDead"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{68FD145E51DD59DD}" {
+   m_flagName "BritDead"
+   m_factionKey "UK"
+   m_casualtyRatio 0.8
+  }
+  TILW_FactionPlayersKilledFlag "{68FD145E567ADC09}" {
+   m_flagName "SepDead"
+   m_factionKey "GC_SEPARATIST"
+   m_casualtyRatio 0.9
+  }
+ }
+}

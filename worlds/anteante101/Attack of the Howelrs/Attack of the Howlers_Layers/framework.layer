@@ -1,0 +1,108 @@
+TILW_MissionFrameworkEntity framework : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 3354.182 17.839 5762.667
+ m_missionEvents {
+  TILW_MissionEvent "{68E71EA645793116}" {
+   m_name "insurgents dead"
+   m_instructions {
+    TILW_SendMessageInstruction "{68E71EA64CF53C0B}" {
+     m_messageTitle "The Howlers insurgents are dead!!!"
+     m_messageBody "US and Russian troops are going home."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68E71EA65007603F}" {
+    m_flagName "howl_dead"
+   }
+  }
+  TILW_MissionEvent "{68E71EA674A2F9F0}" {
+   m_name "reminder"
+   m_instructions {
+    TILW_SendMessageInstruction "{68E71EA6A0060426}" {
+     m_executionDelay 2100
+     m_messageTitle "10 mins left"
+    }
+   }
+   m_condition TILW_LiteralTerm "{68E71EA59F254E78}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{68E71EA500BFE96D}" {
+   m_name "RUS DEAD"
+   m_instructions {
+    TILW_SendMessageInstruction "{68E8FBCEC7C8A984}" {
+     m_messageTitle "THE RUSSIANS ARE DEAD"
+     m_messageBody "Russian squad has been rendered combat ineffactive"
+    }
+   }
+   m_condition TILW_LiteralTerm "{68E8FBCE68C46B2D}" {
+    m_flagName "op4_dead"
+   }
+  }
+  TILW_MissionEvent "{68E8FBCE3F057E57}" {
+   m_name "US DEAD"
+   m_instructions {
+    TILW_SendMessageInstruction "{68E8FBCEF7DAB271}" {
+     m_executionDelay 6
+     m_messageTitle "THE AMERICANS ARE DEAD"
+     m_messageBody "The American squad is combat ineffective."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68E8FBCEEE54D1BE}" {
+    m_flagName "b4_dead"
+   }
+  }
+  TILW_MissionEvent "{68E71EA50FC1CBE7}" {
+   m_name "RUSA SURVIVED"
+   m_instructions {
+    TILW_SendMessageInstruction "{68E71EA53F2F3447}" {
+     m_executionDelay 2700
+     m_messageTitle "The insurgents failed"
+     m_messageBody "The Russian Ground Forces and the US Army are close the Howler insurgents have failed."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68E71EA53A8C5076}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{68E8FBD12FC7C2C5}" {
+   m_name "Maj Ins victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{68E8FBD13B647EE3}" {
+     m_executionDelay 7
+     m_messageTitle "THE AMERICANS AND RUSSIANS ARE DEAD."
+     m_messageBody "THE WORLD NOW KNOWS THE STRENGHT OF THE HOWLER REBELS"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{68E8FBD13FEEA211}" {
+    m_operands {
+     TILW_LiteralTerm "{68E8FBD1442EA116}" {
+      m_flagName "op4_dead"
+     }
+     TILW_LiteralTerm "{68E8FBD15090CB7E}" {
+      m_flagName "b4_dead"
+     }
+    }
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{68E71EA7FAC15100}" {
+   m_flagName "howl_dead"
+   m_factionKey "GC_INSURGENT"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{68E8FBCE04391C0A}" {
+   m_flagName "b4_dead"
+   m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{68E8FBCE035C90CB}" {
+   m_flagName "op4_dead"
+   m_factionKey "RHS_AFRF"
+   m_casualtyRatio 0.9
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 2019.093 36.221 4983.753
+ angles 0 -145.472 0
+}

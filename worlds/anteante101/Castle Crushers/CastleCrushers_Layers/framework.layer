@@ -1,0 +1,137 @@
+SCR_EditorRestrictionZoneEntity : "{6144B0BE2EAC6897}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneMedium.et" {
+ coords 5871.914 258.455 5835.414
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "GC_IRA"
+    }
+    m_defaultColor 0.054 0 1 1
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    m_drawLine 1
+   }
+  }
+  coords 4789.492 396.976 6362.468
+  Points {
+   ShapePoint "{68F118D5F4F1B5B5}" {
+    Position -34.128 0 -47.316
+   }
+   ShapePoint "{68F118D5F5833298}" {
+    Position -52.212 0 64.375
+   }
+   ShapePoint "{68F118D5F76C0BF2}" {
+    Position 78.998 0 88.559
+   }
+   ShapePoint "{68F118D5FAE8443D}" {
+    Position 149.48 0 -95.091
+   }
+   ShapePoint "{68F118D5FBDA1698}" {
+    Position 104.951 0 -109.877
+   }
+   ShapePoint "{68F118D5FB217B11}" {
+    Position 63.687 0 -36.308
+   }
+  }
+ }
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "UK"
+    }
+    m_defaultColor 0.02 1 0 1
+   }
+   TILW_CoverMapComponent "{6473480FCAB7760B}" {
+    Enabled 1
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    m_color 0.05 0 1 0.75
+    m_drawLine 1
+    m_lineColor 0.016 0 0.98 1
+   }
+  }
+  coords 6060.602 272.422 5884.369
+  Points {
+   ShapePoint "{68F118D41DFF2E72}" {
+    Position 103.712 0 -81.633
+   }
+   ShapePoint "{68F118D4252C93EA}" {
+    Position 71.74 0 918.736
+   }
+   ShapePoint "{68F118D4314C7C3C}" {
+    Position -1699.545 0 1018.137
+   }
+   ShapePoint "{68F118D43777DFC2}" {
+    Position -1696.34 0 -23.08
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 5785.759 258.851 5879.513
+ m_missionEvents {
+  TILW_MissionEvent "{68F118DFF9F0004E}" {
+   m_name "ira dead"
+   m_instructions {
+    TILW_SendMessageInstruction "{68F118D9E4939FAB}" {
+     m_messageTitle "IRA DEAD"
+     m_messageBody "BRITISH VICTORY"
+    }
+   }
+   m_condition TILW_LiteralTerm "{68F118D9E731537D}" {
+    m_flagName "ira_dead"
+   }
+  }
+  TILW_MissionEvent "{68F118D9D4E6D1B7}" {
+   m_name "uk dead"
+   m_instructions {
+    TILW_SendMessageInstruction "{68F118C3B9829A6F}" {
+     m_messageTitle "British Forces are dead"
+     m_messageBody "The IRA win!!!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{68F118D9E82838CF}" {
+    m_flagName "uk_dead"
+   }
+  }
+  TILW_MissionEvent "{68F118C3CFBFC80E}" {
+   m_name "IRA victory"
+   m_instructions {
+    TILW_EndGameInstruction "{68F118C3D382D744}" {
+     m_executionDelay 2400
+     m_factionKey "GC_IRA"
+    }
+   }
+   m_condition TILW_LiteralTerm "{68F118C3F2773FB5}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{68F301CA900E93D4}" {
+   m_name "Reminder"
+   m_instructions {
+    TILW_SendMessageInstruction "{68F301CA983B8D4A}" {
+     m_executionDelay 1800
+     m_messageTitle "10 minutes left!!!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{68F301CA9A673C78}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{68F118DFFA28EAA2}" {
+   m_flagName "uk_dead"
+   m_factionKey "UK"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{68F118DFFDC907FB}" {
+   m_flagName "ira_dead"
+   m_factionKey "GC_IRA"
+   m_casualtyRatio 0.9
+  }
+ }
+}

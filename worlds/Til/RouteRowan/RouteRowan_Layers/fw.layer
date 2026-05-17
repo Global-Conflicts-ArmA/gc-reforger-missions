@@ -38,7 +38,7 @@ TILW_MissionFrameworkEntity fw : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFrame
     TILW_EditRespawnTicketsInstruction "{66DB544E52812E5E}" {
      m_factionKey "GC_SEPARATIST"
      m_operation ADD
-     m_amount 5
+     m_amount 4
     }
    }
    m_condition TILW_LiteralTerm "{66DB544E48B8DDE7}" {
@@ -86,8 +86,21 @@ TILW_MissionFrameworkEntity fw : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFrame
      m_messageBody "The LAR platoon completed its mission and arrived at Le Rocher."
     }
    }
-   m_condition TILW_LiteralTerm "{66DC174865AFA5F4}" {
-    m_flagName "us_extr"
+   m_condition TILW_ConjunctionTerm "{6954D4C18B44744C}" {
+    m_operands {
+     TILW_LiteralTerm "{6954D4C1895A6399}" {
+      m_flagName "us_extr"
+     }
+     TILW_LiteralTerm "{6954D4C18E5478FB}" {
+      m_flagName "obj1"
+     }
+     TILW_LiteralTerm "{6954D4C18F796455}" {
+      m_flagName "obj2"
+     }
+     TILW_LiteralTerm "{6954D4C18C7A9D46}" {
+      m_flagName "obj3"
+     }
+    }
    }
   }
   TILW_MissionEvent "{66DC174FA4129E70}" {
@@ -107,6 +120,107 @@ TILW_MissionFrameworkEntity fw : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFrame
    m_flagName "us_cas"
    m_factionKey "US"
    m_casualtyRatio 0.8
+  }
+ }
+}
+$grp PolylineShapeEntity : "{A0468F86F76FCEE7}Prefabs/Logic/Map/TILW_MapShape.et" {
+ area_obj1 {
+  components {
+   TILW_MapShapeComponent "{6508F5526836BC09}" {
+    m_factionKeys {
+     "US"
+    }
+    m_visibleForEmptyFaction 0
+    m_color 1 0 0 0.1
+   }
+  }
+  coords 10000 129.411 10200
+  Points {
+   ShapePoint "{6954D4C78F1886DB}" {
+    Position 0 0 0
+   }
+   ShapePoint "{6954D4C78C66958D}" {
+    Position 0 0 100
+   }
+   ShapePoint "{6954D4C78C39082B}" {
+    Position 200 0 100
+   }
+   ShapePoint "{6954D4C78CA5EBFD}" {
+    Position 200 0 0
+   }
+  }
+  {
+   TILW_FactionTriggerEntity trig_obj1 : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+    m_flagName "obj1"
+    m_stopAfterFirstChange 1
+    m_ownerFactionKey "US"
+   }
+  }
+ }
+ area_obj2 {
+  components {
+   TILW_MapShapeComponent "{6508F5526836BC09}" {
+    m_factionKeys {
+     "US"
+    }
+    m_visibleForEmptyFaction 0
+    m_color 1 0 0 0.1
+   }
+  }
+  coords 10600 129.411 10300
+  Points {
+   ShapePoint "{6954D4C78F1886DB}" {
+    Position 0 0 0
+   }
+   ShapePoint "{6954D4C78C66958D}" {
+    Position 0 0 100
+   }
+   ShapePoint "{6954D4C78C39082B}" {
+    Position 100 0 100
+   }
+   ShapePoint "{6954D4C78CA5EBFD}" {
+    Position 100 0 0
+   }
+  }
+  {
+   TILW_FactionTriggerEntity trig_obj2 : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+    m_flagName "obj2"
+    m_stopAfterFirstChange 1
+    m_ownerFactionKey "US"
+   }
+  }
+ }
+ area_obj3 {
+  components {
+   TILW_MapShapeComponent "{6508F5526836BC09}" {
+    m_factionKeys {
+     "US"
+    }
+    m_visibleForEmptyFaction 0
+    m_color 1 0 0 0.1
+   }
+  }
+  coords 11300 81.344 10400
+  Points {
+   ShapePoint "{6954D4C78F1886DB}" {
+    Position 0 0 0
+   }
+   ShapePoint "{6954D4C78C66958D}" {
+    Position 0 0 100
+   }
+   ShapePoint "{6954D4C78C39082B}" {
+    Position 100 0 100
+   }
+   ShapePoint "{6954D4C78CA5EBFD}" {
+    Position 100 0 0
+   }
+  }
+  {
+   TILW_FactionTriggerEntity trig_obj3 : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+    m_flagName "obj3"
+    m_stopAfterFirstChange 1
+    m_ownerFactionKey "US"
+   }
   }
  }
 }

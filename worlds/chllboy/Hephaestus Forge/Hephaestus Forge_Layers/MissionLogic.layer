@@ -1,0 +1,144 @@
+GenericEntity : "{584EB34600E9698D}Prefabs/Utils/Interactions/TILW_SetFlagInteraction.et" {
+ components {
+  ActionsManagerComponent "{61F4C18E835074FF}" {
+   additionalActions {
+    TILW_BaseInteraction "{61F4C18E863E752C}" {
+     m_actionName "DOWNLOAD CONTENTS"
+     m_factionKeys {
+      "RHS_USAF"
+     }
+     m_flagName "INTEL_LOCATED"
+    }
+   }
+  }
+ }
+ coords 3352.516 319.987 516.982
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 3362.225 314.802 518.378
+ m_missionEvents {
+  TILW_MissionEvent "{68D8984840131595}" {
+   m_name "Destruction of drone caches"
+   m_instructions {
+    TILW_SendMessageInstruction "{68D89848C4A185B2}" {
+     m_messageTitle "DRONE CACHES HAVE BEEN DESTROYED"
+     m_messageBody "Insurgents' drone caches have been destroyed."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68D89848EF2395A5}" {
+    m_flagName "DRONE_CACHES_DESTROYED"
+   }
+  }
+  TILW_MissionEvent "{68D9711A1FAEE1E2}" {
+   m_name "Destruction of ammo caches"
+   m_instructions {
+    TILW_SendMessageInstruction "{68D9711A2D4AB59A}" {
+     m_messageTitle "AMMO CACHES HAVE BEEN DESTROYED"
+     m_messageBody "Insurgents' amunition caches have been destroyed."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68D9711E539F7D71}" {
+    m_flagName "AMMO_CACHES_DESTROYED"
+   }
+  }
+  TILW_MissionEvent "{68D9711853A9B08B}" {
+   m_name "Location of intel"
+   m_instructions {
+    TILW_SendMessageInstruction "{68D9711862F2E1D8}" {
+     m_messageTitle "INTELIGENCE HAS BEEN LOCATED"
+     m_messageBody "Information on the shipping routes of drone parts has been found."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68D971185AA92C3D}" {
+    m_flagName "INTEL_LOCATED"
+   }
+  }
+  TILW_MissionEvent "{68D9711F9C08A19F}" {
+   m_name "Rangers killed"
+   m_instructions {
+    TILW_SendMessageInstruction "{68D9711FA115EFFF}" {
+     m_messageTitle "THE RANGERS ARE RETREATING DUE TO UNACCEPTABLE CASUALTIES"
+     m_messageBody "The Insurgents have eliminated the attacking Ranger forces."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68D9711E72133CB8}" {
+    m_flagName "BLUFOR_KILLED"
+   }
+  }
+  TILW_MissionEvent "{68D9711EF5A7C841}" {
+   m_name "Insurgents killed"
+   m_instructions {
+    TILW_SendMessageInstruction "{68D9711EFC7DEC1D}" {
+     m_messageTitle "THE INSURGENT CELL HAS BEEN ELIMINATED"
+     m_messageBody "The Insurgent cell has taken devastating losses."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68E8C33635883242}" {
+    m_flagName "OPFOR_KILLED"
+   }
+  }
+  TILW_MissionEvent "{68E966CD7F9ECD98}" {
+   m_name "Blufor victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{68E966CD01F7B7CD}" {
+     m_executionDelay 15
+     m_messageTitle "BLUFOR VICTORY"
+     m_messageBody "The Rangers have completed all of their objectives."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{68E966CD2FCF8760}" {
+    m_operands {
+     TILW_LiteralTerm "{68E966CD283335D7}" {
+      m_flagName "DRONE_CACHES_DESTROYED"
+     }
+     TILW_LiteralTerm "{68E966CD39D164A0}" {
+      m_flagName "AMMO_CACHES_DESTROYED"
+     }
+     TILW_LiteralTerm "{68E966CDC19D5822}" {
+      m_flagName "INTEL_LOCATED"
+     }
+    }
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{68D9711FD4E8E228}" {
+   m_flagName "BLUFOR_KILLED"
+   m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.85
+  }
+  TILW_FactionPlayersKilledFlag "{68D9711EC87D514F}" {
+   m_flagName "OPFOR_KILLED"
+   m_factionKey "GC_INSURGENT"
+   m_casualtyRatio 0.95
+  }
+ }
+ m_metaFlags {
+  TILW_MetaFlag "{68D8984FBE8B7986}" {
+   m_flagName "DRONE_CACHES_DESTROYED"
+   m_definition TILW_ConjunctionTerm "{68D8984856F7B4E7}" {
+    m_operands {
+     TILW_LiteralTerm "{68D89848647210FC}" {
+      m_flagName "DRONE_CACHE_DESTROYED_1"
+     }
+     TILW_LiteralTerm "{68D898481E20A44B}" {
+      m_flagName "DRONE_CACHE_DESTROYED_2"
+     }
+    }
+   }
+  }
+  TILW_MetaFlag "{68D9711A6D4449CE}" {
+   m_flagName "AMMO_CACHES_DESTROYED"
+   m_definition TILW_ConjunctionTerm "{68D9711A7215EBBB}" {
+    m_operands {
+     TILW_LiteralTerm "{68D9711A7849E271}" {
+      m_flagName "AMMO_CACHE_DESTROYED1"
+     }
+     TILW_LiteralTerm "{68D9711A0AA8EC21}" {
+      m_flagName "AMMO_CACHE_DESTROYED2"
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,107 @@
+PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_CoverMapComponent "{6473480FCAB7760B}" {
+   Enabled 1
+   m_ratioWidth 1.153
+  }
+ }
+ coords 6000 230 9000
+ Points {
+  ShapePoint "{68F6926D984235B6}" {
+   Position 200 0 -100
+  }
+  ShapePoint "{68F6926C5D295946}" {
+   Position -1300 31.154 -100
+  }
+  ShapePoint "{68F6926CC76E049D}" {
+   Position -1300 0 1200
+  }
+  ShapePoint "{68F6926CD2994B0B}" {
+   Position 200 0 1200
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 4991.969 264.258 9653.906
+ m_missionEvents {
+  TILW_MissionEvent "{68F69250B7B371F8}" {
+   m_name "CACHE1 DESTROYED"
+   m_instructions {
+    TILW_SendMessageInstruction "{68F6925F416EFCDD}" {
+     m_messageTitle "FIA CACHE DESTROYED"
+     m_messageBody "Ammunition cache used by the FIA has been destroyed."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68F6925F667754CD}" {
+    m_flagName "CACHE1_DESTROYED"
+   }
+  }
+  TILW_MissionEvent "{68F6925FC7F0FF78}" {
+   m_name "CACHE2 DESTROYED"
+   m_instructions {
+    TILW_SendMessageInstruction "{68F6925FC7F0EBBB}" {
+     m_messageTitle "FIA CACHE DESTROYED"
+     m_messageBody "Ammunition cache used by the FIA has been destroyed."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68F6925FC7F0EB40}" {
+    m_flagName "CACHE2_DESTROYED"
+   }
+  }
+  TILW_MissionEvent "{68F6925D1978EB3D}" {
+   m_name "CACHES DESTROYED"
+   m_instructions {
+    TILW_SendMessageInstruction "{68F6925D1978E884}" {
+     m_messageTitle "ALL FIA CACHES DESTROYED"
+     m_messageBody "All ammunition caches used by the FIA have been destroyed and they can no longer continue their operations in the region."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{68F6925D1978E887}" {
+    m_operands {
+     TILW_LiteralTerm "{68F6925D289924D5}" {
+      m_flagName "CACHE1_DESTROYED"
+     }
+     TILW_LiteralTerm "{68F6925D375D3B40}" {
+      m_flagName "CACHE2_DESTROYED"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{68F6925EC1D013BF}" {
+   m_name "AFRF KILLED"
+   m_instructions {
+    TILW_SendMessageInstruction "{68F6925EC1D0130F}" {
+     m_messageTitle "AFRF HAVE TAKEN SIGNIFICANT CASUALTIES"
+     m_messageBody "Members of the tactical detachment are retreating due to unacceptable casualties."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68F6925EC1D01315}" {
+    m_flagName "AFRF_KILLED"
+   }
+  }
+  TILW_MissionEvent "{68F6925D402F6C88}" {
+   m_name "FIA KILLED"
+   m_instructions {
+    TILW_SendMessageInstruction "{68F6925D402F6C66}" {
+     m_messageTitle "FIA CELL HAS BEEN DESTROYED"
+     m_messageBody "The FIA cell has lost most of it's members and can no longer continue their operations in the region."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68F6925D402F6C61}" {
+    m_flagName "FIA_KILLED"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{68F6925FE479BAC4}" {
+   m_flagName "AFRF_KILLED"
+   m_factionKey "RHS_AFRF"
+   m_casualtyRatio 0.85
+  }
+  TILW_FactionPlayersKilledFlag "{68F6925E19FFEBEC}" {
+   m_flagName "FIA_KILLED"
+   m_factionKey "FIA"
+   m_casualtyRatio 0.95
+  }
+ }
+}

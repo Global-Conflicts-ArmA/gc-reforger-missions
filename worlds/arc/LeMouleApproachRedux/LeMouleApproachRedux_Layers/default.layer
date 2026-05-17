@@ -1,0 +1,222 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 2063.956 0 4208.313
+ Formations {
+  AIFormationDefinition "{56ACE3951AA8D3EB}" {
+   Offsets +{
+    0 0 -33
+    0 0 -36
+   }
+  }
+ }
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 2023.998 0 4243.141
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bRandomStartingDaytimeRange 1
+   m_iRangeHoursStart 6
+   m_iRangeHoursEnd 19
+   m_bRandomStartingWeather 1
+   m_bUseSpecifiedDate 1
+   m_iSetDay 14
+   m_iSetMonth 7
+   m_iSetYear 2004
+  }
+ }
+ coords 1994.614 0 4269.892
+ m_iFreezeTime 120000
+}
+SCR_EditorRestrictionZoneEntity : "{6144B0BE2EAC6897}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneMedium.et" {
+ coords 3960.704 108.971 4904.452
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ {
+  components {
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+   }
+  }
+  coords 4113.101 88.173 4808.521
+  Points {
+   ShapePoint "{6906E94B49F62519}" {
+    Position 6.213 0 102.148
+   }
+   ShapePoint "{6906E94B4A15B32B}" {
+    Position -97.23 0 -119.975
+   }
+   ShapePoint "{6906E94B4429FA8D}" {
+    Position -415.872 0 -215.126
+   }
+   ShapePoint "{6906E94B411A5D90}" {
+    Position -1132.792 0 -8.165
+   }
+   ShapePoint "{6906E94B5CD6A8D0}" {
+    Position -1254.26 0 347.869
+   }
+   ShapePoint "{6906E94B58F03472}" {
+    Position -1272.12 0 649.894
+   }
+   ShapePoint "{6906E94B584D6BAD}" {
+    Position -1100.679 -12.391 831.603
+   }
+   ShapePoint "{6906E94B5B8968B7}" {
+    Position -649.51 54.76 704.419
+   }
+   ShapePoint "{6906E94B534676B8}" {
+    Position -510.772 0 614.596
+   }
+  }
+ }
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "RHS_AFRF"
+    }
+   }
+  }
+  coords 2796.876 109.366 5434.078
+  Points {
+   ShapePoint "{6906E94B0C040CB0}" {
+    Position 61.624 0 -276.403
+   }
+   ShapePoint "{6906E94B0E100D86}" {
+    Position 44.764 0 24.037
+   }
+   ShapePoint "{6906E94B09F91F7B}" {
+    Position 214.597 0 203.114
+   }
+   ShapePoint "{6906E94B0493191A}" {
+    Position 666.59 0 82.281
+   }
+   ShapePoint "{6906E94B051D8E69}" {
+    Position 804.558 0 -10.449
+   }
+   ShapePoint "{6906E94B00EF43C4}" {
+    Position 719.009 0 -176.918
+   }
+   ShapePoint "{6906E94B18B68551}" {
+    Position 636.624 0 -215.118
+   }
+   ShapePoint "{6906E94B19AAF888}" {
+    Position 583.123 0 -373.272
+   }
+   ShapePoint "{6906E94BED8E7A8B}" {
+    Position 498.284 0 -499.114
+   }
+   ShapePoint "{6906E94BEE914940}" {
+    Position 526.177 0 -590.901
+   }
+   ShapePoint "{6906E94BEFBF80C1}" {
+    Position 472.431 0 -665.045
+   }
+   ShapePoint "{6906E94BE8C221D7}" {
+    Position 455.578 0 -709.491
+   }
+   ShapePoint "{6906E94BE9BB0A55}" {
+    Position 185.091 0 -632.915
+   }
+  }
+ }
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ {
+  coords 3074.011 117.44 5211.633
+  m_queryRadius 60
+  m_captureTime 60
+  m_sendStatusMessages 1
+  m_locationName "Obj. Hermes"
+  m_flagName "OBJ_H"
+  m_stopAfterFirstChange 1
+  m_ownerFactionKey "US"
+ }
+ {
+  coords 3075.089 118.922 5209.797
+  m_queryRadius 110
+  m_flagName "AI_REINF"
+  m_stopAfterFirstChange 1
+  m_ignoredFactions {
+   "RHS_AFRF"
+  }
+  m_ownerFactionKey "US"
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 1974.761 0 4284.973
+ m_missionEvents {
+  TILW_MissionEvent "{6906E94958CF3E81}" {
+   m_name "US_CAP"
+   m_instructions {
+    TILW_SendMessageInstruction "{6906E9492765588F}" {
+     m_messageTitle "US VICTORY"
+     m_messageBody "Obj. Hermes has been secured by US forces."
+    }
+   }
+   m_condition TILW_LiteralTerm "{6906E949247EB968}" {
+    m_flagName "OBJ_H"
+   }
+  }
+  TILW_MissionEvent "{6906E94938D4410A}" {
+   m_name "US_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{6906E94934805ADB}" {
+     m_messageTitle "AFRF VICTORY"
+     m_messageBody "American forces have taken significant casualties."
+    }
+   }
+   m_condition TILW_LiteralTerm "{6906E9493BD1300F}" {
+   }
+  }
+  TILW_MissionEvent "{6906E9490DAC62D9}" {
+   m_name "TIME_LIMIT"
+   m_instructions {
+    TILW_SendMessageInstruction "{6906E9490A31FBBC}" {
+     m_executionDelay 2825
+     m_messageTitle "AFRF VICTORY"
+     m_messageBody "Time limit reached. Russian reinforcements are inbound, prompting a US withdrawal."
+    }
+   }
+   m_condition TILW_LiteralTerm "{6906E94908228635}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{6906E945409620BC}" {
+   m_name "AI_REINF"
+   m_instructions {
+    TILW_AssignWaypointsInstruction "{6906E9455F17B392}" {
+     m_groupName "AIGRP1"
+     m_waypointNames {
+      "SAWMILLWP"
+     }
+     m_clearExisting 1
+    }
+    TILW_AssignWaypointsInstruction "{6906E9450DF32FEE}" {
+     m_groupName "AIGRP2"
+     m_waypointNames {
+      "SAWMILLWP"
+     }
+     m_clearExisting 1
+    }
+    TILW_AssignWaypointsInstruction "{6906E94508452C60}" {
+     m_groupName "AIGRP3"
+     m_waypointNames {
+      "SAWMILLWP"
+     }
+     m_clearExisting 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{6906E9455CAC796B}" {
+    m_flagName "AI_REINF"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{6906E94860B819BA}" {
+   m_flagName "US_KIA"
+   m_factionKey "US"
+   m_casualtyRatio 0.9
+  }
+ }
+}

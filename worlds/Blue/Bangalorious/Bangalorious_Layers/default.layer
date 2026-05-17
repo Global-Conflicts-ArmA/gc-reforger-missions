@@ -1,0 +1,174 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 2683.505 10.4 2430.262
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 2684.946 10.627 2432.832
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{68CEBE1895EB9850}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 2
+     m_iStartingMinutes 40
+    }
+   }
+   m_bAllowHeaderSettings 1
+   m_bWindOverride 1
+   m_fWindSpeed 2
+   m_fWindDirection 1
+  }
+ }
+ coords 2683.617 10.536 2431.538
+ m_iFreezeTime 240000
+ m_fPrepMultiplier 0.5
+ m_fGameMultiplier 200
+ {
+  SCR_FactionManager "68D2BB15B5538B05" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{68D0CC331D036189}" {
+        m_sCallsign "9"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ {
+  coords 3301.509 15.336 918.495
+  Points {
+   ShapePoint "{68B8637EA6E23F43}" {
+    Position -120.922 0 28.724
+   }
+   ShapePoint "{68B8637F5F307190}" {
+    Position 190.6 0 70.734
+   }
+   ShapePoint "{68B8637C4BB36C27}" {
+    Position 1122.682 0 245.28
+   }
+   ShapePoint "{68B8637F555322C4}" {
+    Position 1296.439 0 530.002
+   }
+   ShapePoint "{68B8637F4800094F}" {
+    Position 1295.231 0 1142.795
+   }
+   ShapePoint "{68C8EDBEACB78609}" {
+    Position 997.43 0 1149.523
+   }
+   ShapePoint "{68C8EDA70807F034}" {
+    Position 597.264 0 837.39
+   }
+   ShapePoint "{68C8EDA709F69A2B}" {
+    Position -22.089 0 785.815
+   }
+   ShapePoint "{68C8EDA70F977B6F}" {
+    Position -181.681 0 706.303
+   }
+   ShapePoint "{68B8637FBE296139}" {
+    Position -278.873 0 398.623
+   }
+  }
+ }
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    Enabled 0
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+   }
+  }
+  coords 3200 14.906 921.561
+  Points {
+   ShapePoint "{694AF8C4820FC82B}" {
+    Position -52.251 0 -81.92
+   }
+   ShapePoint "{694AF8C484E7E302}" {
+    Position -148.426 0 2664.334
+   }
+   ShapePoint "{694AF8C4871572F0}" {
+    Position 1405.132 0 2632.586
+   }
+   ShapePoint "{694AF8C4BBAAF0E0}" {
+    Position 1399.166 -0 -32.41
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 4293.651 14.454 1409.645
+ m_missionEvents {
+  TILW_MissionEvent "{68D6E21812D4BA8B}" {
+   m_name "USSR Victory"
+   m_instructions {
+    TILW_EndGameInstruction "{68D6E218CB635EB6}" {
+     m_executionDelay 120
+     m_factionKey "USSR"
+    }
+    TILW_SendMessageInstruction "{68D6E218C21AB318}" {
+     m_messageTitle "USSR Victory"
+     m_messageBody "Torske hill reamains in our hands! USSR has inflicted more than 90% cassualities on US."
+     m_factionKeys {
+      "USSR"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{68D6E2188280767B}" {
+    m_flagName "US90"
+   }
+  }
+  TILW_MissionEvent "{68D6E218B9DD7F60}" {
+   m_name "US Victory"
+   m_instructions {
+    TILW_EndGameInstruction "{68D6E218B9DD7FDE}" {
+     m_executionDelay 120
+     m_factionKey "USSR"
+    }
+    TILW_SendMessageInstruction "{68D6E218B9DD7FD8}" {
+     m_messageTitle "US Victory"
+     m_messageBody "Torske has been siezed! US has inflicted more than 95% cassualities on USSR."
+     m_factionKeys {
+      "US"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{68D6E218B9DD7FD6}" {
+    m_flagName "USSR95"
+   }
+  }
+  TILW_MissionEvent "{68D6E21C0809FA51}" {
+   m_name "Time Limit"
+   m_instructions {
+    TILW_SendMessageInstruction "{68D6E21C06635D3E}" {
+     m_executionDelay 4800
+     m_messageTitle "Time Limit Reached - USSR Victory"
+     m_messageBody "US was unable to conduct their breach in time."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68E1511E6DF7834E}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{68D6E2181708E1EA}" {
+   m_flagName "US90"
+   m_factionKey "US"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{68D6E218081F5799}" {
+   m_flagName "USSR95"
+   m_factionKey "USSR"
+   m_casualtyRatio 0.95
+  }
+ }
+}

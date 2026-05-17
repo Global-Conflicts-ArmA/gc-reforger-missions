@@ -1,0 +1,202 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 5588.98 0 8741.006
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 5586.236 0 8729.669
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bRandomStartingDaytimeRange 1
+   m_iRangeHoursStart 6
+   m_iRangeHoursEnd 18
+   m_bRandomStartingWeather 1
+  }
+ }
+ coords 5597.715 0 8731.453
+ m_iFreezeTime 120000
+}
+PolylineShapeEntity {
+ coords 4487.158 20.808 10494.218
+ Points {
+  ShapePoint "{6908A08ADF82D924}" {
+   Position 55.821 0 -60.093
+  }
+  ShapePoint "{6908A08AD88511B9}" {
+   Position 72.012 0 -67.795
+  }
+  ShapePoint "{6908A08AD9708117}" {
+   Position 92.144 0 -62.01
+  }
+  ShapePoint "{6908A08ADAE93566}" {
+   Position 92.441 0 -51.354
+  }
+  ShapePoint "{6908A08AD4B43A9C}" {
+   Position 97.391 0 -50.343
+  }
+  ShapePoint "{6908A08AD6CF5AD3}" {
+   Position 92.23 0 -7.316
+  }
+  ShapePoint "{6908A08AD77B7399}" {
+   Position 87.16 0 44.904
+  }
+  ShapePoint "{6908A08AD00AC2FE}" {
+   Position 86.087 0 53.202
+  }
+  ShapePoint "{6908A08AD12E66BA}" {
+   Position 95.201 0 68.066
+  }
+  ShapePoint "{6908A08AD265F81E}" {
+   Position 92.56 0 85.292
+  }
+  ShapePoint "{6908A08AACCB84AD}" {
+   Position 19.808 0 75.222
+  }
+  ShapePoint "{6908A08AAED84724}" {
+   Position 33.721 0 -27.67
+  }
+ }
+ IsClosed 1
+ {
+  TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+   coords 65.267 -4.758 7.885
+   m_queryRadius 50
+   m_locationName "Obj. Hera"
+   m_flagName "OBJ_H"
+   m_ownerFactionKey "US"
+  }
+ }
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ {
+  components {
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+   }
+  }
+  coords 5757.701 0 8811.837
+  Points {
+   ShapePoint "{6908A089AAE23B4F}" {
+    Position -379.417 0 103.969
+   }
+   ShapePoint "{6908A089ABFDFBED}" {
+    Position -858.22 0 54.426
+   }
+   ShapePoint "{6908A089AB03AC37}" {
+    Position -1383.814 0 429.024
+   }
+   ShapePoint "{6908A089A572CFCD}" {
+    Position -1645.295 0 922.15
+   }
+   ShapePoint "{6908A089BCB4A2BE}" {
+    Position -1538.225 0 1580.701
+   }
+   ShapePoint "{6908A089BAAE21AB}" {
+    Position -1501.864 0 1794.038
+   }
+   ShapePoint "{6908A089BBA268C9}" {
+    Position -1177.209 0 1847.1
+   }
+   ShapePoint "{6908A0898ACAB097}" {
+    Position -1179.847 0 1943.183
+   }
+   ShapePoint "{6908A0898A562938}" {
+    Position -1081.256 0 1953.183
+   }
+   ShapePoint "{6908A0898B0CD0DF}" {
+    Position -956.463 0 1931.894
+   }
+   ShapePoint "{6908A0898665FACA}" {
+    Position -382.592 0 1805.729
+   }
+   ShapePoint "{6908A089860BC73F}" {
+    Position -207.393 0 1594.961
+   }
+  }
+ }
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "RHS_AFRF"
+    }
+   }
+  }
+  coords 5885.414 0 9173.43
+  Points {
+   ShapePoint "{6908A08A6F26CB50}" {
+    Position -1629.516 0 1433.597
+   }
+   ShapePoint "{6908A08A697F78C2}" {
+    Position -1305.977 0 1485.36
+   }
+   ShapePoint "{6908A08A64A18DD6}" {
+    Position -1307.119 0 1579.671
+   }
+   ShapePoint "{6908A08A66DCFBD5}" {
+    Position -1212.212 0 1592.506
+   }
+   ShapePoint "{6908A08A67410A79}" {
+    Position -511.446 0 1445.449
+   }
+   ShapePoint "{6908A08A6222F18C}" {
+    Position -334.713 0 1232.845
+   }
+   ShapePoint "{6908A08A7DC86C34}" {
+    Position -833.323 0 675.895
+   }
+   ShapePoint "{6908A08A74CCAAC3}" {
+    Position -1774.106 0 560.729
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 5587.123 0 8722.435
+ m_missionEvents {
+  TILW_MissionEvent "{6908A08524695BD3}" {
+   m_name "US_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{6908A08530F1A25B}" {
+     m_messageTitle "AFRF VICTORY"
+     m_messageBody "American forces have taken significant casualties."
+    }
+   }
+   m_condition TILW_LiteralTerm "{6908A085301D4FD4}" {
+    m_flagName "US_KIA"
+   }
+  }
+  TILW_MissionEvent "{6908A085272D7750}" {
+   m_name "OBJ_H"
+   m_instructions {
+    TILW_SendMessageInstruction "{6908A0851AFDA92D}" {
+     m_messageTitle "US VICTORY"
+     m_messageBody "Obj. Hera has been secured by American forces."
+    }
+   }
+   m_condition TILW_LiteralTerm "{6908A0851F284FCB}" {
+    m_flagName "OBJ_H"
+   }
+  }
+  TILW_MissionEvent "{6908A08523BF3198}" {
+   m_name "TIME_LIMIT"
+   m_instructions {
+    TILW_SendMessageInstruction "{6908A08538AB47AE}" {
+     m_executionDelay 3725
+     m_messageTitle "AFRF VICTORY"
+     m_messageBody "Time limit reached."
+    }
+   }
+   m_condition TILW_LiteralTerm "{6908A0853E5FD2A6}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{6908A08AE6019D56}" {
+   m_flagName "US_KIA"
+   m_factionKey "US"
+   m_casualtyRatio 0.8
+  }
+ }
+}

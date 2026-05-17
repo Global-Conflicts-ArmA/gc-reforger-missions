@@ -1,0 +1,270 @@
+$grp PolylineShapeEntity {
+ area_extr {
+  components {
+   TILW_MapShapeComponent "{68DB4851D3431A4F}" {
+    m_factionKeys {
+     "GC_CDF"
+    }
+    m_visibleForEmptyFaction 0
+    m_color 0.251 0.502 0 0.2
+    m_drawLine 1
+    m_lineColor 0.251 0.502 0 1
+   }
+  }
+  coords 2700 10 3000
+  Points {
+   ShapePoint "{68D926362EC3CB8A}" {
+    Position 0 10 0
+   }
+   ShapePoint "{68D926362EC3BDBC}" {
+    Position 400 15 100
+   }
+   ShapePoint "{68D9263637ECE557}" {
+    Position 400 10 200
+   }
+   ShapePoint "{68DB48507BF09595}" {
+    Position -300 10 -3.467
+   }
+   ShapePoint "{68DB4850797A8BA8}" {
+    Position -200 10 -300
+   }
+   ShapePoint "{68DB485079E766A7}" {
+    Position -100 10 -300
+   }
+  }
+  IsClosed 1
+  {
+   TILW_ExtractionTriggerEntity cdf_extr : "{192ABD6B9232E064}Prefabs/Logic/Triggers/TILW_ExtractionTrigger.et" {
+    coords 0 0 0
+    m_flagName "cdf_extr"
+    m_stopAfterFirstChange 1
+    m_factionKey "GC_CDF"
+    m_ratioThreshold 0.8
+   }
+  }
+ }
+ area_obj {
+  components {
+   TILW_MapShapeComponent "{68DCF6673E098BD2}" {
+    m_color 0.251 0.502 0 0.2
+    m_drawLine 1
+    m_lineWidth 3
+   }
+  }
+  coords 3300 21.561 2500
+  Points {
+   ShapePoint "{68DCF664C6289993}" {
+    Position 0 0 0
+   }
+   ShapePoint "{68DCF664C628A37E}" {
+    Position 100 0 0
+   }
+   ShapePoint "{68DCF664DB3CD3E3}" {
+    Position 100 0 200
+   }
+   ShapePoint "{68DCF664DC74C6A2}" {
+    Position 0 0 200
+   }
+  }
+  IsClosed 1
+  LineColor 0.251 0.502 0 1
+  {
+   TILW_FactionTriggerEntity ru_cap : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+    coords 43.62 1.095 104.18
+    m_queryRadius 100
+    m_captureTime 30
+    m_flagName "ru_cap"
+    m_stopAfterFirstChange 1
+    m_drawShapeSurface 0
+    m_ownerFactionKey "RHS_AFRF"
+    m_ratioThreshold 0.8
+   }
+  }
+ }
+}
+$grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
+ spawner_motorbike1 {
+  coords 4206.458 15.142 1910.018
+  angles 0 -20.644 0
+  m_prefab "{F22B338BFAC1FD68}Prefabs/Vehicles/Wheeled/Motorbike/motorbike.et"
+  m_spawnTimings {
+   600
+  }
+ }
+ spawner_motorbike2 {
+  coords 4208.009 15.142 1910.011
+  angles 0 -20.644 0
+  m_prefab "{F22B338BFAC1FD68}Prefabs/Vehicles/Wheeled/Motorbike/motorbike.et"
+  m_spawnTimings {
+   900
+  }
+ }
+ spawner_motorbike3 {
+  coords 4209.598 15.142 1909.87
+  angles 0 -20.644 0
+  m_prefab "{F22B338BFAC1FD68}Prefabs/Vehicles/Wheeled/Motorbike/motorbike.et"
+  m_spawnTimings {
+   1200
+  }
+ }
+ spawner_motorbike4 {
+  coords 3214.334 17.853 1847.591
+  angles 0 28.412 0
+  m_prefab "{F22B338BFAC1FD68}Prefabs/Vehicles/Wheeled/Motorbike/motorbike.et"
+  m_spawnTimings {
+   600
+  }
+ }
+ spawner_motorbike5 {
+  coords 3215.345 17.852 1846.415
+  angles 0 28.412 0
+  m_prefab "{F22B338BFAC1FD68}Prefabs/Vehicles/Wheeled/Motorbike/motorbike.et"
+  m_spawnTimings {
+   900
+  }
+ }
+ spawner_motorbike6 {
+  coords 3216.28 17.85 1845.122
+  angles 0 28.412 0
+  m_prefab "{F22B338BFAC1FD68}Prefabs/Vehicles/Wheeled/Motorbike/motorbike.et"
+  m_spawnTimings {
+   1200
+  }
+ }
+ spawner_motorbike7 {
+  coords 3598.456 18.765 1711.056
+  angles 0 28.412 0
+  m_prefab "{F22B338BFAC1FD68}Prefabs/Vehicles/Wheeled/Motorbike/motorbike.et"
+  m_spawnTimings {
+   600
+  }
+ }
+ spawner_motorbike8 {
+  coords 3600.625 18.76 1712.371
+  angles 0 28.412 0
+  m_prefab "{F22B338BFAC1FD68}Prefabs/Vehicles/Wheeled/Motorbike/motorbike.et"
+  m_spawnTimings {
+   900
+  }
+ }
+}
+TILW_MissionFrameworkEntity fw : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 3105.978 21.343 2434.783
+ m_missionEvents {
+  TILW_MissionEvent "{68A774B3B364303F}" {
+   m_name "Mission Start"
+   m_instructions {
+    TILW_SetFlagInstruction "{68A774B386FA22C0}" {
+     m_executionDelay 1800
+     m_flagName "ru_delayed"
+    }
+    TILW_SendMessageInstruction "{68A774B3EF541364}" {
+     m_executionDelay 1800
+     m_messageTitle "DELAY COMPLETE"
+     m_messageBody "The Russians have been delayed for long enough, withdraw to area BELA immediately."
+     m_factionKeys {
+      "GC_CDF"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{68A774B3B4F8918A}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{68A774BFAA3059D2}" {
+   m_name "RU CAS"
+   m_instructions {
+    TILW_SendMessageInstruction "{68DB2CAAA4CE8340}" {
+     m_messageTitle "CDF VICTORY"
+     m_messageBody "The Russians sustained severe casualties, forcing them to withdraw."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{68DB2CAAAD7727B8}" {
+    m_operands {
+     TILW_LiteralTerm "{68DB2CAAB2EDCA73}" {
+      m_flagName "ru_cas"
+     }
+     TILW_LiteralTerm "{68DB2CAAB301FA19}" {
+      m_invertTerm 1
+      m_flagName "cdf_cas"
+     }
+     TILW_LiteralTerm "{68DB2CAAB99672EC}" {
+      m_invertTerm 1
+      m_flagName "ru_cap"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{68D92636A3C5E455}" {
+   m_name "EXTRACTED"
+   m_instructions {
+    TILW_SendMessageInstruction "{68D92636C0F0B11C}" {
+     m_messageTitle "CDF VICTORY"
+     m_messageBody "The CDF covering force successfully withdrew after delaying the Russians for long enough."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{68D92636855610EF}" {
+    m_operands {
+     TILW_LiteralTerm "{68D926368AB5DEAD}" {
+      m_flagName "ru_delayed"
+     }
+     TILW_LiteralTerm "{68D926368B9FB4FD}" {
+      m_flagName "cdf_extr"
+     }
+     TILW_LiteralTerm "{68D9263688B909A9}" {
+      m_invertTerm 1
+      m_flagName "cdf_cas"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{68A774BFAAF03142}" {
+   m_name "CDF CAS"
+   m_instructions {
+    TILW_SendMessageInstruction "{68DB2CADEF84C05D}" {
+     m_messageTitle "RUSSIAN VICTORY"
+     m_messageBody "The CDF covering force suffered severe casualties."
+    }
+   }
+   m_condition TILW_LiteralTerm "{68DB2CAFC99B9D52}" {
+    m_flagName "cdf_cas"
+   }
+  }
+  TILW_MissionEvent "{68A774BFAAA91B15}" {
+   m_name "RU CAP"
+   m_instructions {
+    TILW_SendMessageInstruction "{68DB2CAA17A9FE85}" {
+     m_messageTitle "RUSSIAN VICTORY"
+     m_messageBody "The Russians managed to capture the CDF position in time, disrupting the withdrawal."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{68DB2CAA3543551F}" {
+    m_operands {
+     TILW_ConjunctionTerm "{68DB2CAA39D1E548}" {
+      m_operands {
+       TILW_LiteralTerm "{68DB2CAA0A3AAE1C}" {
+        m_invertTerm 1
+        m_flagName "ru_delayed"
+       }
+       TILW_LiteralTerm "{68DB2CAA0B107EF8}" {
+        m_flagName "ru_cap"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{68A80786E5B6849D}" {
+   m_flagName "ru_cas"
+   m_factionKey "RHS_AFRF"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{68AB6E1CF8D92733}" {
+   m_flagName "cdf_cas"
+   m_factionKey "GC_CDF"
+   m_casualtyRatio 0.7
+  }
+ }
+}

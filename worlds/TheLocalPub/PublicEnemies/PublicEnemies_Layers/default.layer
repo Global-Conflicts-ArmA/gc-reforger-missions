@@ -1,0 +1,344 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 2449.879 54.698 567.766
+}
+PerceptionManager PerceptionManager2 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 2449.438 53.039 572.537
+ SunDirectLightElevCurve {
+  SCR_Faction "{68A73D13C0414D66}" {
+  }
+ }
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 4
+   m_iStartingMinutes 45
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{68AD304EAC9D6DCB}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 4
+     m_iStartingMinutes 45
+    }
+   }
+   m_bUseSpecifiedDate 1
+   m_iSetDay 22
+   m_iSetMonth 7
+   m_iSetYear 1945
+  }
+ }
+ coords 2449.227 50.082 596.014
+ m_iFreezeTime 60000
+ {
+  SCR_FactionManager "68A7693736871E23" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{68A76936E1E3F9CC}" : "{934A933E262AAE53}worlds/TheLocalPub/PublicEnemies/Configs/Factions/GC_Federal.conf" {
+     UIInfo SCR_FactionUIInfo "{528C961236B7DCD3}" {
+     }
+    }
+    SCR_Faction "{68A9349EF459F058}" : "{CAACDEAAF4508D82}worlds/TheLocalPub/PublicEnemies/Configs/Factions/GC_Mobsters.conf" {
+    }
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 2446.021 51.354 573.464
+ m_missionEvents {
+  TILW_MissionEvent "{68AF515575CA74DA}" {
+   m_name "SetupCompleted"
+   m_instructions {
+    TILW_SetFlagInstruction "{68AF515050AA2887}" {
+     m_executionDelay 60
+     m_flagName "SetupComplete"
+    }
+   }
+   m_condition TILW_LiteralTerm "{68AF515064C0E49C}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{68B0E48F75D84AFD}" {
+   m_name "DeadBossMessage"
+   m_instructions {
+    TILW_SendMessageInstruction "{68B0E48FB8AA7442}" {
+     m_executionDelay 1
+     m_messageTitle "THE BOSSES ARE DEAD"
+     m_messageBody "How could this happen!? How did they know we were here!?"\
+     "All those years of hard work... gone."\
+     ""\
+     "Don't let those pigs flee! KILL them before they can get away."
+     m_factionKeys {
+      "GC_Mobster"
+     }
+    }
+    TILW_SendMessageInstruction "{68B0E48FB94C726B}" {
+     m_executionDelay 1
+     m_messageTitle "THE BOSSES ARE DEAD"
+     m_messageBody "Go go go! Get out of here quickly!"\
+     "Everyone flee in any direction, we'll all meet at the RV tomorrow."\
+     ""\
+     "(A victory prompt will appear when enough officers have fled atleast 200m radius from the compound)"
+     m_factionKeys {
+      "GC_Federal"
+     }
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{68B0E48F41ACFF43}" {
+    m_operands {
+     TILW_LiteralTerm "{68B091DD952925BD}" {
+      m_flagName "BrownBossDead"
+     }
+     TILW_LiteralTerm "{68B091DD8E8C6942}" {
+      m_flagName "GreyBossDead"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{68B0E49EBD6D5FA5}" {
+   m_name "DeadBossFlag"
+   m_instructions {
+    TILW_SetFlagInstruction "{68B0E49EACE42FAE}" {
+     m_executionDelay 3
+     m_flagName "BossesDead"
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{68B0E49EBD6D5F2C}" {
+    m_operands {
+     TILW_LiteralTerm "{68B0E49EBD6D5F2E}" {
+      m_flagName "BrownBossDead"
+     }
+     TILW_LiteralTerm "{68B0E49EBD6D5F21}" {
+      m_flagName "GreyBossDead"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{68AF5152266C6286}" {
+   m_name "OpforMajorWin"
+   m_instructions {
+    TILW_SendMessageInstruction "{68AF515226614A4C}" {
+     m_executionDelay 1
+     m_messageTitle "MOBSTER VICTORY - Federal agents destroyed"
+     m_messageBody "Well done chaps!"\
+     "This is a day for the criminal history books. This day of peace shall always be remembered."\
+     ""\
+     "Not only did we negotiated peace and spread the word to the rest of our mobs, but also slaughtered a whole corrupt group of pigs."\
+     "The cease fire is now in affect."\
+     ""\
+     "Mission will end soon... "
+     m_factionKeys {
+      "GC_Mobster"
+     }
+    }
+    TILW_SendMessageInstruction "{68AF515226614A45}" {
+     m_executionDelay 1
+     m_messageTitle "MOBSTER VICTORY - Federal agents destroyed"
+     m_messageBody "THIS IS THE ATTORNEY GENERAL!"\
+     ""\
+     "I just heard on the news that those two warring mobs have just made peace tonight... while under assault from a contingent of FBI officers."\
+     "Why was this not cleared? Why did I not hear of this?"\
+     "You'll all be speaking to me first thing tomorrow morning.... or what's left of you anyways."\
+     ""\
+     "Mission will end soon..."
+     m_factionKeys {
+      "GC_Federal"
+     }
+    }
+    TILW_DeactivateEventsInstruction "{68AF515D4C35F38A}" {
+     m_executionDelay 0.01
+     m_eventNames {
+      "OpforRegularWin"
+      "PyrrhicEnd"
+     }
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{68B0E48DCDF3AF4B}" {
+    m_operands {
+     TILW_LiteralTerm "{68B0E48DC322A601}" {
+      m_flagName "FederalDead"
+     }
+     TILW_LiteralTerm "{68B0E48C3F380311}" {
+      m_invertTerm 1
+      m_flagName "BrownBossDead"
+     }
+     TILW_LiteralTerm "{68B0E48C2364C0AF}" {
+      m_invertTerm 1
+      m_flagName "GreyBossDead"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{68AF5150DA486505}" {
+   m_name "OpforRegularWin"
+   m_instructions {
+    TILW_SendMessageInstruction "{68AF5150CC4128F8}" {
+     m_executionDelay 1
+     m_messageTitle "MOBSTER VICTORY - Peace negotiated"
+     m_messageBody "Well done chaps!"\
+     "This is a day for the criminal history books. This day of peace shall always be remembered."\
+     ""\
+     "We've negotiated peace and spread the word to the rest of our mobs."\
+     "The cease fire is now in affect."\
+     ""\
+     "Mission will end soon... "
+     m_factionKeys {
+      "GC_Mobster"
+     }
+    }
+    TILW_SendMessageInstruction "{68AF51515A54C7F2}" {
+     m_executionDelay 1
+     m_messageTitle "MOBSTER VICTORY - Peace negotiated"
+     m_messageBody "THIS IS THE ATTORNEY GENERAL!"\
+     ""\
+     "I just heard on the news that those two warring mobs have just made peace tonight... while under assault from a contingent of FBI officers."\
+     "Why was this not cleared? Why did I not hear of this?"\
+     "You'll all be speaking to me first thing tomorrow morning!"\
+     ""\
+     "Mission will end soon..."
+     m_factionKeys {
+      "GC_Federal"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{68AF5150DF720500}" {
+    m_flagName "EndMission"
+   }
+  }
+  TILW_MissionEvent "{68B0E48C445695E5}" {
+   m_name "PyrrhicEnd"
+   m_instructions {
+    TILW_SendMessageInstruction "{68B0E48C4456957F}" {
+     m_executionDelay 1
+     m_messageTitle "MOBSTER PYRRHIC DEFEAT | FEDERAL PYRRHIC VICTORY"
+     m_messageBody "These are bleak times."\
+     "We were ambushed by a contingent of corrupt federal officers while attempting to negotiate peace and end this mob war."\
+     "Tragically, our bosses were hit and did not survive — though we made sure those dirty feds paid the price."\
+     "Mission will conclude shortly…"
+     m_factionKeys {
+      "GC_Mobster"
+     }
+    }
+    TILW_SendMessageInstruction "{68B0E48C44569570}" {
+     m_executionDelay 1
+     m_messageTitle "MOBSTER PYRRHIC DEFEAT | FEDERAL PYRRHIC VICTORY"
+     m_messageBody "We’ve taken a heavy beating."\
+     "While we succeeded in eliminating both mob bosses, we lost so many men in the process that any gains from our corrupt dealings will be difficult to recover. Rebuilding our position will take years."\
+     "We may have just shot ourselves in the foot."\
+     "Mission will conclude shortly…"
+     m_factionKeys {
+      "GC_Federal"
+     }
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{68B0E48C44569575}" {
+    m_operands {
+     TILW_LiteralTerm "{68B0E48C44569577}" {
+      m_flagName "FederalDead"
+     }
+     TILW_LiteralTerm "{68B0E48C44569576}" {
+      m_flagName "BrownBossDead"
+     }
+     TILW_LiteralTerm "{68B0E48C44569549}" {
+      m_flagName "GreyBossDead"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{68AF515DB172975F}" {
+   m_name "BluforMajorWin"
+   m_instructions {
+    TILW_SendMessageInstruction "{68AF515DF3AF8814}" {
+     m_executionDelay 1
+     m_messageTitle "FEDERAL VICTORY - Mobsters destroyed"
+     m_messageBody "Amazing work, gentlemen."\
+     "We’ve not only stopped the peace negotiations and protected our interests, but we’ve also rid the underworld of those so-called “mobsters” seeking peace."\
+     ""\
+     "Well done."\
+     ""\
+     "Mission will conclude shortly..."
+     m_factionKeys {
+      "GC_Federal"
+     }
+    }
+    TILW_SendMessageInstruction "{68AF515EB510B09D}" {
+     m_executionDelay 1
+     m_messageTitle "FEDERAL VICTORY - Mobsters destroyed"
+     m_messageBody "Today is a tragedy."\
+     "We spent years working toward this moment, only for it to be undone by corrupt federal agents. Many men died trying to build something better for everyone."\
+     "May God rest their souls."\
+     ""\
+     "Mission will conclude shortly..."\
+     ""\
+     ""
+     m_factionKeys {
+      "GC_Mobster"
+     }
+    }
+    TILW_DeactivateEventsInstruction "{68B0E49E14E8D4E3}" {
+     m_executionDelay 0.1
+     m_eventNames {
+      "DeadBossFlag"
+      "DeadBossMessage"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{68AF515DAF1BC848}" {
+    m_flagName "MobsterDead"
+   }
+  }
+  TILW_MissionEvent "{68B091DDA4D7C08F}" {
+   m_name "BluforRegularWin"
+   m_instructions {
+    TILW_SendMessageInstruction "{68B091DDA4D7C01A}" {
+     m_executionDelay 1
+     m_messageTitle "FEDERAL VICTORY - Mobsters decapitated"
+     m_messageBody "Great work, gentlemen!"\
+     "Our decapitation strike has killed the mob bosses and stopped peace negotiations. We've protected our interests."\
+     ""\
+     "Well done."\
+     ""\
+     "Mission will conclude shortly..."
+     m_factionKeys {
+      "GC_Federal"
+     }
+    }
+    TILW_SendMessageInstruction "{68B091DDA4D7C01F}" {
+     m_executionDelay 1
+     m_messageTitle "FEDERAL VICTORY - Mobsters decapitated"
+     m_messageBody "Today is a tragedy."\
+     "We spent years working toward this moment, only for it to be undone by corrupt federal agents who managed to also flee. Our great leaders shall be remembered."\
+     "May God rest their souls."\
+     ""\
+     "Mission will conclude shortly..."\
+     ""\
+     ""
+     m_factionKeys {
+      "GC_Mobster"
+     }
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{68B091DD963018B3}" {
+    m_operands {
+     TILW_LiteralTerm "{68B091DD8E8C6942}" {
+      m_flagName "BossesDead"
+     }
+     TILW_LiteralTerm "{68B0E489DE365D62}" {
+      m_flagName "FederalExtract"
+     }
+    }
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{68B0E486ABAF4666}" {
+   m_flagName "FederalDead"
+   m_factionKey "GC_Federal"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{68B0E486AC05CF0A}" {
+   m_flagName "MobsterDead"
+   m_factionKey "GC_Mobster"
+  }
+ }
+}

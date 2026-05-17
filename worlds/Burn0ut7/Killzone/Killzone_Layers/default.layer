@@ -1,0 +1,212 @@
+SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
+ coords 12123.938 2.156 10482.129
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_bRandomStartingDaytimeRange 1
+   m_iRangeHoursStart 5
+   m_iRangeHoursEnd 20
+   m_bRandomStartingWeather 1
+  }
+ }
+ coords 12147.209 2.155 10513.394
+ {
+  SCR_FactionManager "68A0E740DE1A7DCE" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CD021D5C}" {
+        m_sCallsign "A"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{55CCB792CE18FB44}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792CE02ECFA}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792CE2A44BD}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{68A0E75EC04395D0}" {
+        m_sCallsign "4"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{68A0E75E923170F1}" {
+        m_sCallsign "4"
+       }
+       SCR_CallsignInfo "{68A0E75E95870D05}" {
+        m_sCallsign "5"
+       }
+      }
+      m_sCallsignGroupFormat "%1 %2'%3"
+      m_sCallsignCharacterWithRoleFormat "%1 %2 %3: %4"
+     }
+    }
+   }
+  }
+ }
+}
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ {
+  coords -1834.271 60.464 9400.482
+  m_sTitle "Overview"
+  m_sTextData "US Air assault attacks urban hell."
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 10
+ }
+ {
+  coords -1824.341 60.464 9351.123
+  m_sTitle "Mission Notes"
+  m_sTextData "End conditions:"\
+  ""\
+  "Command Truck Destroyed: US Victory"\
+  "60% SEP casualties: US Victory"\
+  ""\
+  "90% US casualties: SEP Victory"\
+  "70 minute time limit: SEP Victory"
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 15
+ }
+}
+PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+   m_factionKeys {
+    "GC_SEPARATIST"
+   }
+  }
+ }
+ coords 12002.509 2.304 10704.546
+ Points {
+  ShapePoint "{68A0E753C1B1C2E9}" {
+   Position -459.862 60.397 -308.959
+  }
+  ShapePoint "{68A0E753C5337457}" {
+   Position -319.348 -33.186 -702.127
+  }
+  ShapePoint "{68A0E753CBA00F52}" {
+   Position 764 0 -738.179
+  }
+  ShapePoint "{68A0E753EC4E47FA}" {
+   Position 764 -162.429 514.914
+  }
+  ShapePoint "{68A0E753D119BCAE}" {
+   Position -406.078 -88.009 520.994
+  }
+  ShapePoint "{68A0E753D503FDB1}" {
+   Position -441.952 55.139 156.714
+  }
+  ShapePoint "{68A0E753D5EDBFFF}" {
+   Position -532.136 100.939 22.904
+  }
+  ShapePoint "{68A0E753D4A1053F}" {
+   Position -446.677 76.066 -84.311
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 12077.784 2.159 10498.543
+ m_missionEvents {
+  TILW_MissionEvent "{68A0E75F8728F701}" {
+   m_name "opfor_cas"
+   m_instructions {
+    TILW_SendMessageInstruction "{68A10E58822B16E9}" {
+     m_messageTitle "Blufor victory"
+     m_messageBody "Opfor causality limit reached"
+     m_adminOnly 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{68A0E75F8BE21873}" {
+    m_flagName "opfor_cas"
+   }
+  }
+  TILW_MissionEvent "{68A0E74564B26889}" {
+   m_name "blufor_cas"
+   m_instructions {
+    TILW_SendMessageInstruction "{68A10E5869A881EA}" {
+     m_messageTitle "Opfor victory"
+     m_messageBody "Blufor causality limit reached"
+     m_adminOnly 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{68A0E75F8BE21873}" {
+    m_flagName "blufor_cas"
+   }
+  }
+  TILW_MissionEvent "{68A0E7452960DE0C}" {
+   m_name "truck"
+   m_instructions {
+    TILW_SendMessageInstruction "{68A10E582C10FA13}" {
+     m_messageTitle "Blufor victory"
+     m_messageBody "Truck destroyed"
+     m_adminOnly 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{68A0E745387DF62B}" {
+    m_flagName "truck"
+   }
+  }
+  TILW_MissionEvent "{68A10E588B3C1D43}" {
+   m_name "time"
+   m_instructions {
+    TILW_SendMessageInstruction "{68A10E589F0E55A7}" {
+     m_executionDelay 4200
+     m_messageTitle "Opfor victory"
+     m_messageBody "Time limit reached"
+     m_adminOnly 1
+    }
+   }
+   m_condition TILW_LiteralTerm "{68A10E589B21BF42}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{68A10E58C2F613C5}" {
+   m_name "time2"
+   m_instructions {
+    TILW_SendMessageInstruction "{68A10E589F0E55A7}" {
+     m_executionDelay 2400
+     m_messageTitle "Time almost reached"
+     m_messageBody "30 minutes remain"
+    }
+   }
+   m_condition TILW_LiteralTerm "{68A10E589B21BF42}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{68A0E75F49ED8477}" {
+   m_flagName "opfor_cas"
+   m_factionKey "GC_SEPARATIST"
+   m_casualtyRatio 0.6
+  }
+  TILW_FactionPlayersKilledFlag "{68A0E75F5E849C24}" {
+   m_flagName "blufor_cas"
+   m_factionKey "RHS_USAF"
+   m_casualtyRatio 0.9
+  }
+ }
+}
