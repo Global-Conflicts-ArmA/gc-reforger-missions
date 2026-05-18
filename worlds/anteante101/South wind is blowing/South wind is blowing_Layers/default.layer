@@ -1,0 +1,105 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 6317.298 159.593 6454.232
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 6352.26 151.704 6338.837
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ coords 6355.929 152.949 6348.105
+ m_iFreezeTime 180000
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 7627.868 168.556 4218.604
+ m_missionEvents {
+  TILW_MissionEvent "{692D2DEAD345098C}" {
+   m_instructions {
+    TILW_SendMessageInstruction "{692D2DEAD7D18AD4}" {
+     m_messageTitle "THE PATRIOTS ARE IN CONTROL!!!"
+     m_messageBody "FIA has control of the US base and their equipment!"\
+     ""\
+     "FIA won!!!"\
+     ""
+    }
+   }
+   m_condition TILW_LiteralTerm "{692D2DEAD864D892}" {
+    m_flagName "CAPTURED"
+   }
+  }
+  TILW_MissionEvent "{6931271D5CEE259A}" {
+   m_name "fia_dead"
+   m_instructions {
+    TILW_SendMessageInstruction "{6931271D654356FE}" {
+     m_messageTitle "FIA have taken heavy casualties!!!"
+     m_messageBody "Their moral has broken and are falling back."\
+     ""\
+     "US won!!!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6931271D67914F7B}" {
+    m_flagName "FIA_DEAD"
+   }
+  }
+  TILW_MissionEvent "{6931271D5EF609E8}" {
+   m_name "us dead"
+   m_instructions {
+    TILW_SendMessageInstruction "{6931271DA17C2E51}" {
+     m_messageTitle "US forces are eliminated!!! "
+     m_messageBody "The FIA has control of the base!"\
+     ""\
+     "FIA won!!!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6931271DA27F4F75}" {
+    m_flagName "US_DEAD"
+   }
+  }
+  TILW_MissionEvent "{6931271D5E6B98C4}" {
+   m_name "reminder"
+   m_instructions {
+    TILW_SendMessageInstruction "{6931271DF60C1857}" {
+     m_executionDelay 1800
+     m_messageTitle "10 min left!!!"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6931271DF2497F49}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{6931271D5E2F1AFB}" {
+   m_name "US won time limit"
+   m_instructions {
+    TILW_EndGameInstruction "{6931271E163CB3A5}" {
+     m_executionDelay 2400
+     m_factionKey "US"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6931271E18E65C6E}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{692D2DE8A6C61D39}" {
+   m_flagName "FIA_DEAD"
+   m_factionKey "FIA"
+   m_casualtyRatio 0.8
+  }
+  TILW_FactionPlayersKilledFlag "{692D2DE8B10B56FA}" {
+   m_flagName "US_DEAD"
+   m_factionKey "US"
+   m_casualtyRatio 0.9
+  }
+ }
+ m_randomFlags {
+  TILW_FlagSampling "{692623098672B34B}" {
+   m_flagNames {
+    "Enfield0"
+    "Enfield1"
+    "Enfield2"
+   }
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 7007.521 115.415 5951.764
+}
