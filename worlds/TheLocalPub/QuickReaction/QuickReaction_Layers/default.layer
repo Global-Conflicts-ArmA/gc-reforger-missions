@@ -181,4 +181,85 @@ PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_G
 }
 TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
  coords 83.156 70.319 3085.267
+ m_missionEvents {
+  TILW_MissionEvent "{69691D60ABD96BFE}" {
+   m_name "USMajorVictory"
+   m_instructions {
+    TILW_SetFlagInstruction "{69691D6E584FFC91}" {
+     m_executionDelay 0.15
+     m_flagName "3HVTExtracted"
+    }
+    TILW_ClearFlagInstruction "{69691D6E96060D27}" {
+     m_executionDelay 0.14
+     m_flagName "2HVTExtracted"
+    }
+   }
+   m_condition TILW_MatchjunctionTerm "{69691D612833B4A9}" {
+    m_operands {
+     TILW_ConjunctionTerm "{69691D612C2C212B}" {
+      m_operands {
+       TILW_LiteralTerm "{69691D6121D55CE6}" {
+        m_flagName "HVT1Alive"
+       }
+       TILW_LiteralTerm "{69691D61266222BA}" {
+        m_flagName "HVT2Alive"
+       }
+       TILW_LiteralTerm "{69691D6124B967EE}" {
+        m_flagName "HVT3Alive"
+       }
+      }
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{69691D6172812821}" {
+   m_name "USRegularVictory"
+   m_instructions {
+    TILW_SetFlagInstruction "{69691D6E6E19451D}" {
+     m_executionDelay 0.13
+     m_flagName "2HVTExtracted"
+    }
+    TILW_ClearFlagInstruction "{69691D6E9B4A6CCE}" {
+     m_executionDelay 0.11
+     m_flagName "1HVTExtracted"
+    }
+   }
+   m_condition TILW_MatchjunctionTerm "{69691D61B660A3D0}" {
+    m_operands {
+     TILW_LiteralTerm "{69691D61AE94BC85}" {
+      m_flagName "HVT1Alive"
+     }
+     TILW_LiteralTerm "{69691D6190F083E9}" {
+      m_flagName "HVT2Alive"
+     }
+     TILW_LiteralTerm "{69691D619199B001}" {
+      m_flagName "HVT3Alive"
+     }
+    }
+    m_matchTrue 2
+   }
+  }
+  TILW_MissionEvent "{69691D61D463E3A9}" {
+   m_name "USMinorVictory"
+   m_instructions {
+    TILW_SetFlagInstruction "{69691D6E01C33D0F}" {
+     m_executionDelay 0.1
+     m_flagName "1HVTExtracted"
+    }
+   }
+   m_condition TILW_MatchjunctionTerm "{69691D61D463E366}" {
+    m_operands {
+     TILW_LiteralTerm "{69691D61D463E379}" {
+      m_flagName "HVT1Alive"
+     }
+     TILW_LiteralTerm "{69691D61D463E37B}" {
+      m_flagName "HVT2Alive"
+     }
+     TILW_LiteralTerm "{69691D61D463E37A}" {
+      m_flagName "HVT3Alive"
+     }
+    }
+   }
+  }
+ }
 }
