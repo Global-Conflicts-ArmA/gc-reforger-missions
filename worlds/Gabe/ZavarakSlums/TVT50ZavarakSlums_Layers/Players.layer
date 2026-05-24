@@ -1,3 +1,13 @@
+$grp Vehicle : "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et" {
+ UAZ469_PKM2 {
+  coords 10702.538 167.617 11112.438
+  angles 2.023 37.492 -3.1
+ }
+ UAZ469_PKM1 {
+  coords 10705.597 167.769 11110.117
+  angles 0.985 37.495 -1.751
+ }
+}
 $grp SCR_AIGroup : "{2F2E162C9B835EFB}Prefabs/Groups/OPFOR/GC_INSURGENT/Afghan Insurgents/P/GC_INS_Afghan_Squad_P.et" {
  Cell1i {
   components {
@@ -88,21 +98,29 @@ SCR_AIGroup Cell0HQi : "{3D708B262E8A46A3}Prefabs/Groups/OPFOR/GC_INSURGENT/Afgh
   "{2173938E49F232BB}worlds/Gabe/Prefabs/Opfor/GC_INSURGENT/AfghanInsurgents_Gabe_P/Character_GC_INS_Afghan_Sniper_Gabe_P.et"
  }
 }
-$grp SCR_AIGroup : "{C0D5DEC11F09B60D}Prefabs/Groups/BLUFOR/US/Army/2003/Infantry (Desert)/P/Group_US_Army_2003_D_RifleSqua_P.et" {
- Squad2 {
-  components {
-   PS_GroupCallsignAssigner "{63616C6C7369676E}" {
-    Enabled 1
-    m_iCompanyCallsign 1
-    m_iPlatoonCallsign 1
-    m_iSquadCallsign 2
-   }
+SCR_AIGroup Bravo16i : "{50405007E4967EEE}Prefabs/Groups/BLUFOR/US/Army/2020/Infantry/P/Group_USA_2020_RiflePHQ_P.et" {
+ components {
+  PS_GroupCallsignAssigner "{63616C6C7369676E}" {
+   Enabled 1
+   m_iCompanyCallsign 1
+   m_iPlatoonCallsign 1
   }
-  coords 10199.242 173.366 10653.372
-  angles -3.65 34.978 1.255
-  m_sCustomNameSet "2nd Squad"
  }
- Squad1 {
+ coords 10211.897 173.452 10658.981
+ angles -1.028 34.943 -3.487
+ m_aUnitPrefabSlots {
+  "{2AF6F8A3E734A785}worlds/Gabe/Prefabs/Blufor/US Army/Character_RHS_USA_PL_Gabe_P.et"
+  "{F1C0720CA8811359}worlds/Gabe/Prefabs/Blufor/US Army/Character_RHS_USA_Medic_Gabe_P.et"
+  "{14D0ED9368506C56}worlds/Gabe/Prefabs/Blufor/US Army/Character_RHS_USA_PSG_Gabe_P.et"
+  "{3C0CC3983F7D8FF0}worlds/Gabe/Prefabs/Blufor/US Army/Character_RHS_USA_MG_Gabe_P.et"
+  "{D81CB273BF73558B}worlds/Gabe/Prefabs/Blufor/US Army/Character_RHS_USA_AMG_Gabe_P.et"
+  "{4AE3849C53524844}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Army Infantry/P/Character_RHS_USA_Rifleman_DMR_P.et"
+  "{4AE3849C53524844}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Army Infantry/P/Character_RHS_USA_Rifleman_DMR_P.et"
+ }
+ m_sCustomNameSet "Bravo 1'6 Platoon HQ"
+}
+$grp SCR_AIGroup : "{6E4EF673050EC9D3}Prefabs/Groups/BLUFOR/US/Army/2020/Infantry/P/Group_USA_2020_RifleSquad_P.et" {
+ Bravo_11i {
   components {
    PS_GroupCallsignAssigner "{63616C6C7369676E}" {
     Enabled 1
@@ -111,29 +129,43 @@ $grp SCR_AIGroup : "{C0D5DEC11F09B60D}Prefabs/Groups/BLUFOR/US/Army/2003/Infantr
     m_iSquadCallsign 1
    }
   }
-  coords 10209.781 172.987 10668.123
-  angles -0.405 34.847 -3.394
-  m_sCustomNameSet "1st Squad"
- }
-}
-SCR_AIGroup PltHQ : "{DE58221F44A01B5A}Prefabs/Groups/BLUFOR/US/Army/2003/Infantry (Desert)/P/Group_US_Army_2003_D_PlatoonHQ_P.et" {
- components {
-  PS_GroupCallsignAssigner "{63616C6C7369676E}" {
-   Enabled 1
-   m_iCompanyCallsign 1
-   m_iPlatoonCallsign 1
+  coords 10228.293 172.147 10687.479
+  angles -3.047 35.004 -1.093
+  m_aUnitPrefabSlots {
+   "{D52CA5F767C037C3}worlds/Gabe/Prefabs/Blufor/US Army/Character_RHS_USA_SL_Gabe_P.et"
+   "{FC8E9520D736BC6F}worlds/Gabe/Prefabs/Blufor/US Army/Character_RHS_USA_TL_Gabe_P.et"
+   "{7EA1D92DA3093111}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Army Infantry/P/Character_RHS_USA_AR_P.et"
+   "{9DA45C446DF41834}worlds/Gabe/Prefabs/Blufor/US Army/Character_RHS_USA_GL_Gabe_P.et"
+   "{A8C8EF080CD187C9}worlds/Gabe/Prefabs/Blufor/US Army/Character_RHS_USA_LAT_Gabe_P.et"
+   "{FC8E9520D736BC6F}worlds/Gabe/Prefabs/Blufor/US Army/Character_RHS_USA_TL_Gabe_P.et"
+   "{7EA1D92DA3093111}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Army Infantry/P/Character_RHS_USA_AR_P.et"
+   "{9DA45C446DF41834}worlds/Gabe/Prefabs/Blufor/US Army/Character_RHS_USA_GL_Gabe_P.et"
+   "{A8C8EF080CD187C9}worlds/Gabe/Prefabs/Blufor/US Army/Character_RHS_USA_LAT_Gabe_P.et"
   }
+  m_sCustomNameSet "Bravo 1'1"
  }
- coords 10189.275 174.381 10639.848
- angles -2.583 34.964 -0.766
- m_aUnitPrefabSlots {
-  "{2B2CFD2CF1755B59}Prefabs/Characters/Factions/BLUFOR/US_Army/2003/Infantry (Desert)/P/Character_US_2003_D_PL_P.et"
-  "{2956CC1AB81903E2}Prefabs/Characters/Factions/BLUFOR/US_Army/2003/Infantry (Desert)/P/Character_US_2003_D_PSG_P.et"
-  "{828AC5FC3F83F791}Prefabs/Characters/Factions/BLUFOR/US_Army/2003/Infantry (Desert)/P/Character_US_2003_D_Medic_P.et"
-  "{3DD6C617293C732C}Prefabs/Characters/Factions/BLUFOR/US_Army/2003/Infantry (Desert)/P/Character_US_2003_D_MG_P.et"
-  "{058B7571AF6D8CD9}Prefabs/Characters/Factions/BLUFOR/US_Army/2003/Infantry (Desert)/P/Character_US_2003_D_MGAsst_P.et"
-  "{509F5EC299B45746}Prefabs/Characters/Factions/BLUFOR/US_Army/2003/Infantry (Desert)/P/Character_US_2003_D_CarlG_P.et"
-  "{C21F17D393E10CDE}Prefabs/Characters/Factions/BLUFOR/US_Army/2003/Infantry (Desert)/P/Character_US_2003_D_CarlGAsst_P.et"
+ Bravo_12i {
+  components {
+   PS_GroupCallsignAssigner "{63616C6C7369676E}" {
+    Enabled 1
+    m_iCompanyCallsign 1
+    m_iPlatoonCallsign 1
+    m_iSquadCallsign 2
+   }
+  }
+  coords 10220.794 172.852 10673.563
+  angles -1.862 35.017 -1.304
+  m_aUnitPrefabSlots {
+   "{D52CA5F767C037C3}worlds/Gabe/Prefabs/Blufor/US Army/Character_RHS_USA_SL_Gabe_P.et"
+   "{FC8E9520D736BC6F}worlds/Gabe/Prefabs/Blufor/US Army/Character_RHS_USA_TL_Gabe_P.et"
+   "{7EA1D92DA3093111}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Army Infantry/P/Character_RHS_USA_AR_P.et"
+   "{9DA45C446DF41834}worlds/Gabe/Prefabs/Blufor/US Army/Character_RHS_USA_GL_Gabe_P.et"
+   "{A8C8EF080CD187C9}worlds/Gabe/Prefabs/Blufor/US Army/Character_RHS_USA_LAT_Gabe_P.et"
+   "{FC8E9520D736BC6F}worlds/Gabe/Prefabs/Blufor/US Army/Character_RHS_USA_TL_Gabe_P.et"
+   "{7EA1D92DA3093111}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Army Infantry/P/Character_RHS_USA_AR_P.et"
+   "{9DA45C446DF41834}worlds/Gabe/Prefabs/Blufor/US Army/Character_RHS_USA_GL_Gabe_P.et"
+   "{A8C8EF080CD187C9}worlds/Gabe/Prefabs/Blufor/US Army/Character_RHS_USA_LAT_Gabe_P.et"
+  }
+  m_sCustomNameSet "Bravo 1'2"
  }
- m_sCustomNameSet "Platoon HQ"
 }
