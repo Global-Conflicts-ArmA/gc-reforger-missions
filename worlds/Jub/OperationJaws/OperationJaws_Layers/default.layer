@@ -55,7 +55,9 @@ PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_G
  m_aFactionRespawnCount {
   PS_FactionRespawnCount "{6931676F4332C17C}" {
    m_sFactionKey "GC_INSURGENT"
-   m_iCount 30
+   m_iCount 40
+   m_iTime 60
+   m_bWaveMode 1
    m_sPosition "RU_Marker2"
   }
  }
@@ -127,8 +129,14 @@ PolylineShapeEntity ao : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.e
  }
  coords 4023.016 159.073 8590.328
  Points {
+  ShapePoint "{69555DB57CEE2AD1}" {
+   Position 100.393 -4.766 1599.47
+  }
   ShapePoint "{68D111CCB1258226}" {
-   Position 582.43 -12.398 1041.564
+   Position -599.424 -9.753 1453.954
+  }
+  ShapePoint "{69555DB578A74938}" {
+   Position -1345.27 -7.357 1462.725
   }
   ShapePoint "{68C8235F85DAEA83}" {
    Position -1363.812 -7.217 779.839
@@ -136,56 +144,20 @@ PolylineShapeEntity ao : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.e
   ShapePoint "{69316760D984EEB1}" {
    Position -1354.921 -14.434 26.105
   }
-  ShapePoint "{69316760D6C66B5B}" {
-   Position -884.122 -12.048 36.295
+  ShapePoint "{69555DB58B2676D6}" {
+   Position -1154.709 -15.163 33.726
   }
-  ShapePoint "{69316760D6BE743D}" {
-   Position -807.113 -18.698 -106.674
+  ShapePoint "{69555DB552D297A1}" {
+   Position 636.391 -11.557 686.286
   }
-  ShapePoint "{69316760D77C3D66}" {
-   Position -698.464 -17.422 -425.437
-  }
-  ShapePoint "{69316760D0371A6E}" {
-   Position -36.437 -19.652 -359.706
-  }
-  ShapePoint "{69316760D1614C5C}" {
-   Position 198.824 -18.464 -469.933
-  }
-  ShapePoint "{69316760EEB68300}" {
-   Position 468.258 -16.884 -571.167
-  }
-  ShapePoint "{69316760EC7036D5}" {
-   Position 1221.689 -28.646 -565.646
-  }
-  ShapePoint "{69316760E7E921BC}" {
-   Position 1589.856 -26.011 -687.665
-  }
-  ShapePoint "{69316760E71E3D5B}" {
-   Position 1887.548 -35.71 -954.124
-  }
-  ShapePoint "{69316760E4FD0866}" {
-   Position 1915.94 -14.975 -476.2
-  }
-  ShapePoint "{69316760E4732BD3}" {
-   Position 1897.865 -12.989 -193.598
-  }
-  ShapePoint "{69316760E5CFF451}" {
-   Position 1734.919 -18.186 -29.246
-  }
-  ShapePoint "{69316760E3CFC33F}" {
-   Position 3511.099 -12.619 526.751
-  }
-  ShapePoint "{69316760E324C4ED}" {
-   Position 3172.716 -0.988 943.159
+  ShapePoint "{69555DB0E25708DB}" {
+   Position 1128.1 -9.962 995.706
   }
   ShapePoint "{69316760E02EECA6}" {
-   Position 1630.429 0.712 730.782
-  }
-  ShapePoint "{69316760FF0F5AA8}" {
-   Position 1385.73 5.77 1007.823
+   Position 1096.112 -4.83 1206.996
   }
   ShapePoint "{69316760FCF88769}" {
-   Position 1125.581 -9.841 1021.872
+   Position 1076.11 -5.939 1529.647
   }
  }
 }
@@ -204,20 +176,8 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
     m_flagName "US_KIA"
    }
   }
-  TILW_MissionEvent "{65DAD44B0C1F6ABB}" {
-   m_name "RU_CAP"
-   m_instructions {
-    TILW_SendMessageInstruction "{65DAD44B0B639BE4}" {
-     m_messageTitle "Deraz Captured"
-     m_messageBody "US forces have taken control"
-    }
-   }
-   m_condition TILW_LiteralTerm "{65DAD44B0F043436}" {
-    m_flagName "RU_CAP"
-   }
-  }
   TILW_MissionEvent "{68C8235A821E8668}" {
-   m_name "RU_CAP_2"
+   m_name "RU_CAP_1"
    m_instructions {
     TILW_SendMessageInstruction "{68C8235A821E87ED}" {
      m_messageTitle "Rangrezan Secured"
@@ -225,7 +185,7 @@ TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramewor
     }
    }
    m_condition TILW_LiteralTerm "{68C8235A821E87E9}" {
-    m_flagName "RU_CAP_2"
+    m_flagName "RU_CAP_1"
    }
   }
   TILW_MissionEvent "{65DAD44B18B1FFCF}" {
