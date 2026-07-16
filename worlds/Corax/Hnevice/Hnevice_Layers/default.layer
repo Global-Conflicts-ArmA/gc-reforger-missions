@@ -1,0 +1,166 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{69642287B1B42983}" {
+     NavmeshFile "{E08B16AADAB901D8}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Soldier.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{04F808CEFD545B32}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Vehicle.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{6D7CE9C2F346F22E}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_LowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 5969.771 300.245 5367.422
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 5972.932 300.013 5371.426
+}
+PS_GameModeCoop PS_GameMode_Lobby_GC1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 6
+   m_iStartingMinutes 30
+   m_bRandomStartingDaytime 1
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{689B1CA005BD63B3}" {
+     m_sWeatherPresetName "Rainy"
+     m_iStartingHour 5
+     m_iStartingMinutes 45
+    }
+   }
+   m_bUseSpecifiedDate 1
+   m_iSetMonth 4
+   m_iSetYear 1987
+  }
+ }
+ coords 2161.418 14.603 -3370.065
+ m_iFreezeTime 120000
+}
+$grp PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    m_factionKeys {
+     "US"
+    }
+    m_visibility FACTION
+   }
+  }
+  coords 5672.93 268.264 4947.246
+  Points {
+   ShapePoint "{68A043193E779740}" {
+    Position -348.35 72.541 273.068
+   }
+   ShapePoint "{68A043192339083A}" {
+    Position -389.982 18.438 766.146
+   }
+   ShapePoint "{68A04319225779C9}" {
+    Position -172.394 -2.394 1126.827
+   }
+   ShapePoint "{68A043195E0558F9}" {
+    Position 392.097 -33.563 1173.175
+   }
+   ShapePoint "{68A043195EE11FA8}" {
+    Position 770.556 -32.882 1147.165
+   }
+   ShapePoint "{68A043195C8F11D6}" {
+    Position 673.938 43.593 417.739
+   }
+   ShapePoint "{68A043195979421E}" {
+    Position 234.787 60.42 68.756
+   }
+   ShapePoint "{68A043195876AA6E}" {
+    Position -49.776 57.143 142.031
+   }
+  }
+ }
+ {
+  components {
+   TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+    Enabled 0
+    m_useFactionColor 0
+   }
+   TILW_MapShapeComponent "{6508F54F9B461198}" {
+    Enabled 1
+    m_factionKeys {
+     "US"
+     "USSR"
+    }
+   }
+  }
+  coords 5926.492 254.471 4975.332
+  Points {
+   ShapePoint "{68A043193DD0B9F8}" {
+    Position 826.75 39.619 -173.745
+   }
+   ShapePoint "{68A043192339083A}" {
+    Position -783.815 68.241 -97.137
+   }
+   ShapePoint "{68A04319B3F88125}" {
+    Position -933.128 72.181 1214.685
+   }
+   ShapePoint "{68A04319225779C9}" {
+    Position 1168.898 -73.609 1670.24
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 5966.189 300.5 5361.787
+ m_missionEvents {
+  TILW_MissionEvent "{69711B8A71378BB5}" {
+   m_instructions {
+    TILW_SendMessageInstruction "{69711B8A98E620FA}" {
+     m_messageTitle "Donovian Victory "
+     m_messageBody "San seriffe force have been made combat inefective"
+    }
+   }
+   m_condition TILW_LiteralTerm "{69711B8A9D590428}" {
+    m_flagName "san"
+   }
+  }
+  TILW_MissionEvent "{69711B8AA61A5976}" {
+   m_instructions {
+    TILW_SendMessageInstruction "{69711B8AA61A5A59}" {
+     m_messageTitle "San seriffe Victory "
+     m_messageBody "Donovian force have been made combat inefective"
+    }
+   }
+   m_condition TILW_LiteralTerm "{69711B8AA61A5A55}" {
+    m_flagName "don"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{69711B8A40F0E4A3}" {
+   m_flagName "san"
+   m_factionKey "San_Serriffe"
+   m_casualtyRatio 0.8
+  }
+  TILW_FactionPlayersKilledFlag "{69711B8A6EE9750D}" {
+   m_flagName "don"
+   m_factionKey "GC_DON"
+   m_casualtyRatio 0.8
+  }
+ }
+}
+PS_ManualMarker : "{BA3177FCACC39F3A}PrefabsEditable/Markers/Icons/Marker_Objective_Base.et" {
+ coords 5805.917 280.49 5515.091
+ angles 0 0 0
+ m_MarkerColor 0.502 0 0 1
+ m_sQuadName "point-special-2"
+ m_sDescription "Crash Site"
+}
