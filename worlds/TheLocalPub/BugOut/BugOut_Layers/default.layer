@@ -1,0 +1,154 @@
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 1489.201 336.759 280.833
+}
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 6
+   m_iStartingMinutes 2
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{62F56305E6873A67}" {
+     m_sWeatherPresetName "Rainy"
+     m_iStartingHour 6
+     m_iStartingMinutes 2
+    }
+   }
+   m_bUseSpecifiedDate 1
+   m_iSetDay 18
+   m_iSetMonth 4
+   m_iSetYear 1982
+  }
+ }
+ coords 1264.068 112.672 -271.852
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 1236.587 106.908 -242.125
+ m_missionEvents {
+  TILW_MissionEvent "{6A1084BAF67BE7E1}" {
+   m_name "Effects_Flares"
+   m_instructions {
+    TILW_SpawnPrefabInstruction "{6A1084BADBA8CCF5}" {
+     m_executionDelay 10
+     m_prefab "{1432F82C0F89C0BF}Prefabs/Weapons/Ammo/FlareEffect_40mm_Schermuly_Orange.et"
+     m_locationName "Effect_Redflare"
+     m_setEntityName "RedFlare"
+    }
+    TILW_DeleteEntitiesInstruction "{6A1084BACF42C093}" {
+     m_executionDelay 70
+     m_entityNames {
+      "RedFlare"
+     }
+    }
+    TILW_SpawnPrefabInstruction "{6A1084B936E407F6}" {
+     m_executionDelay 80
+     m_prefab "{1432F82C0F89C0BF}Prefabs/Weapons/Ammo/FlareEffect_40mm_Schermuly_Orange.et"
+     m_locationName "Effect_Redflare"
+     m_setEntityName "RedFlare"
+    }
+    TILW_DeleteEntitiesInstruction "{6A1084B91791269A}" {
+     m_executionDelay 140
+     m_entityNames {
+      "RedFlare"
+     }
+    }
+    TILW_SpawnPrefabInstruction "{6A1084B90493AFE8}" {
+     m_executionDelay 150
+     m_prefab "{1432F82C0F89C0BF}Prefabs/Weapons/Ammo/FlareEffect_40mm_Schermuly_Orange.et"
+     m_locationName "Effect_Redflare"
+     m_setEntityName "RedFlare"
+    }
+    TILW_DeleteEntitiesInstruction "{6A1084B97E4671F5}" {
+     m_executionDelay 210
+     m_entityNames {
+      "RedFlare"
+     }
+    }
+    TILW_SpawnPrefabInstruction "{6A1084B9692417AF}" {
+     m_executionDelay 220
+     m_prefab "{1432F82C0F89C0BF}Prefabs/Weapons/Ammo/FlareEffect_40mm_Schermuly_Orange.et"
+     m_locationName "Effect_Redflare"
+     m_setEntityName "RedFlare"
+    }
+    TILW_DeleteEntitiesInstruction "{6A1084B961680F4D}" {
+     m_executionDelay 280
+     m_entityNames {
+      "RedFlare"
+     }
+    }
+    TILW_SpawnPrefabInstruction "{6A1084B9590A1970}" {
+     m_executionDelay 290
+     m_prefab "{1432F82C0F89C0BF}Prefabs/Weapons/Ammo/FlareEffect_40mm_Schermuly_Orange.et"
+     m_locationName "Effect_Redflare"
+     m_setEntityName "RedFlare"
+    }
+    TILW_DeleteEntitiesInstruction "{6A1084B9505A474B}" {
+     m_executionDelay 350
+     m_entityNames {
+      "RedFlare"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{6A1084BAE98482C6}" {
+    m_invertTerm 1
+    m_flagName "HarbourFlares"
+   }
+  }
+  TILW_MissionEvent "{6A1084BF4B614456}" {
+   m_name "Effects_DisableFlareEvent"
+   m_instructions {
+    TILW_DeleteEntitiesInstruction "{6A1084BFB28FECF7}" {
+     m_entityNames {
+      "RedFlare"
+     }
+    }
+    TILW_DeactivateEventsInstruction "{6A1084BFA539E08C}" {
+     m_executionDelay 0.001
+     m_eventNames {
+      "Effects_Flares"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{6A1084BF40D8939B}" {
+    m_flagName "UK_left"
+   }
+  }
+  TILW_MissionEvent "{6A10849F81B1E7E1}" {
+   m_name "EC_UKLose"
+   m_instructions {
+    TILW_SendMessageInstruction "{6A10849FE4357537}" {
+     m_messageTitle "BRITISH DEFEAT"
+     m_messageBody "Our platoon has been almost completely destroyed. The RV is no longer viable; abandon the extraction route and break into the woods while we still can."\
+     ""\
+     "Better luck next time."\
+     "Mission will conclude shortly..."
+    }
+   }
+   m_condition TILW_LiteralTerm "{6A10849FE83B3D85}" {
+    m_flagName "UKDead"
+   }
+  }
+  TILW_MissionEvent "{6A10849C99CDE157}" {
+   m_name "EC_UKWin"
+   m_instructions {
+    TILW_SendMessageInstruction "{6A10849C99CDE6FD}" {
+     m_messageTitle "BRITISH VICTORY"
+     m_messageBody "Our platoon has successfully reached the RV with enough personnel to withdraw. Mount up and get out of the area before the enemy can close in."\
+     ""\
+     "Good job lads."\
+     "Mission will conclude shortly..."
+    }
+   }
+   m_condition TILW_LiteralTerm "{6A10849C99CDE6FE}" {
+    m_flagName "UK_Extracted"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{6A1084A6DA566EAB}" {
+   m_flagName "UKDead"
+   m_factionKey "UK"
+   m_casualtyRatio 0.8
+  }
+ }
+}
