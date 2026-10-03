@@ -1,0 +1,114 @@
+$grp GenericEntity : "{3282CF3ABA80168A}PrefabsEditable/SupportStationSystems/E_SupportStationSystem_Repair_Medium.et" {
+ {
+  components {
+   SCR_RepairSupportStationComponent "{5E1CF31185E317FE}" {
+    m_eMaxHealDone HEAL_MAX_HEALABLE_HEALTH_REACHED_FIELD
+   }
+  }
+  coords 5904.276 59.7 4195.105
+ }
+ {
+  components {
+   SCR_RepairSupportStationComponent "{5E1CF31185E317FE}" {
+    m_eMaxHealDone HEAL_MAX_HEALABLE_HEALTH_REACHED_FIELD
+   }
+  }
+  coords 6022.978 59.7 4122.77
+ }
+ {
+  components {
+   SCR_RepairSupportStationComponent "{5E1CF31185E317FE}" {
+    m_eMaxHealDone HEAL_MAX_HEALABLE_HEALTH_REACHED_FIELD
+   }
+  }
+  coords 5965.703 59.7 4158.492
+ }
+}
+$grp GenericEntity : "{584EB34600E9698D}Prefabs/Utils/Interactions/TILW_SetFlagInteraction.et" {
+ RemoveTeamsButton {
+  components {
+   ActionsManagerComponent "{61F4C18E835074FF}" {
+    additionalActions {
+     TILW_BaseInteraction "{61F4C18E863E752C}" {
+      ActionTitle "Delete Blue"
+      Duration 5
+      m_actionName "REF ONLY! - Disqualify Blue Boosters"
+      m_factionKeys {
+       "CIV"
+      }
+      m_flagName "DisqualifyBlue"
+     }
+     TILW_BaseInteraction "{6A293B34817611B1}" {
+      ParentContextList {
+       "Interact_A"
+      }
+      ActionTitle "Delete Red"
+      Duration 5
+      "Sort Priority" 1
+      m_actionName "REF ONLY - Disqualify Red Racers"
+      m_factionKeys {
+       "CIV"
+      }
+      m_flagName "DisqualifyRed"
+     }
+     TILW_BaseInteraction "{6A293B34861AB11A}" {
+      ParentContextList {
+       "Interact_A"
+      }
+      ActionTitle "Delete Green"
+      Duration 5
+      "Sort Priority" 2
+      m_actionName "REF ONLY! - Disqualify Green Gasers"
+      m_factionKeys {
+       "CIV"
+      }
+      m_flagName "DisqualifyGreen"
+     }
+    }
+   }
+  }
+  coords 6053.499 69.634 4299.187
+  angles 0 34.199 0
+ }
+ EffectsButton {
+  components {
+   ActionsManagerComponent "{61F4C18E835074FF}" {
+    additionalActions {
+     TILW_BaseInteraction "{61F4C18E863E752C}" {
+      ActionTitle "Fireworks"
+      Duration 5
+      m_actionName "Launch fireworks (30 seconds)"
+      m_factionKeys {
+       "CIV"
+      }
+      m_singleUse 0
+      m_flagName "FireworkRunning"
+      m_conditionFlag "FireworksOn"
+     }
+    }
+   }
+  }
+  coords 6052.681 69.634 4299.767
+  angles 0 34.199 0
+ }
+ BarrelButton {
+  components {
+   ActionsManagerComponent "{61F4C18E835074FF}" {
+    additionalActions {
+     TILW_BaseInteraction "{61F4C18E863E752C}" {
+      ActionTitle "SpawnExplosiveBarrels"
+      Duration 5
+      m_actionName "Spawn EXPLOSIVE BARRELS"
+      m_factionKeys {
+       "CIV"
+      }
+      m_flagName "SpawnBarrels"
+      m_conditionFlag "BarrelsUnlocked"
+     }
+    }
+   }
+  }
+  coords 6053.095 69.634 4299.486
+  angles 0 34.199 0
+ }
+}
