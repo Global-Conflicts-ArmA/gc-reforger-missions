@@ -22,345 +22,44 @@ Vehicle Ural4320_repair1 : "{A5647958579A4149}Prefabs/Vehicles/Wheeled/Ural4320/
    }
    m_fDustTopSpeed 60
   }
+  SCR_VehicleDustPerWheel "{5476BC43E4910F64}" {
+   m_aWheels +{
+    4
+    5
+   }
+   m_fDustTopSpeed 60
+  }
  }
  coords 6031.424 59.5 4119.679
  angles 0 -148.197 0
 }
-$grp Vehicle : "{E5BD67C54D08FA9E}worlds/TheLocalPub/TrackMania/Prefabs/Vehicles/Wheeled/S105/S105_rally_wcs_Red_Pub.et" {
- S105_rally_wcs_Red_Pub2 {
+$grp Vehicle : "{ADD8517C3F01EABA}worlds/TheLocalPub/TrackMania/Prefabs/Vehicles/Wheeled/S105/S105_rally_Red_Pub.et" {
+ S105_rally_Red_Pub1 {
   components {
-   SCR_VehicleSoundComponent "{55C2E66AD4EF2CA6}" {
-    Filenames +{
-    }
-   }
    MeshObject "{51DAA09FEFBFC0E7}" {
     Materials {
-     MaterialAssignClass "{6A2CD97CDF7558BD}" {
+     MaterialAssignClass "{6A8683FEC974CD5E}" {
       SourceMaterial "S105Body_mat"
-      AssignedMaterial "{CE542B48DE498FDC}worlds/FSM/Assets/Weapons/Ammo/Tracers/Data/FSM_Tracer_Emit_Color_Red.emat"
-     }
-    }
-   }
-   SCR_BaseLockComponent "{54D6FBC0EA806FE5}" {
-    m_lockPilot 1
-    m_lockTurret 1
-    m_lockCargo 1
-    m_factionLock +{
-    }
-   }
-   SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
-    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
-     Name "#WCS-Vehicle_Skoda105_Name"
-     m_Image "{98F04D1DE6E3693F}UI/Textures/EditorPreviews/Vehicles/Wheeled/S105/S105_rally_WCS.edds"
-    }
-   }
-   SCR_UniversalInventoryStorageComponent "{607097C4DCC32AFC}" {
-    MultiSlots {
-     MultiSlotConfiguration "{6072948F3F668390}" {
-      NumSlots 0
-     }
-    }
-   }
-   VehicleWheeledSimulation "{731B26FCA2F19855}" {
-    Simulation Wheeled "{4D8B26DEA5F25978}" {
-     Engine Engine Engine {
-      MaxPower 130
-      MaxTorque 170
-      RpmMaxPower 7800
-      RpmMaxTorque 5800
-      Friction 38
-      RpmRedline 8800
-      RpmMax 9200
-     }
-     Gearbox Gearbox Gearbox {
-      Forward +{
-      }
-     }
-     Axles {
-      Axle "{4D8B26DF957A8E1C}" {
-       Tyre Tyre "{4D8B26DFFD85E58F}" : "{4DFB0E9E44774715}Prefabs/Vehicles/Wheeled/S105/Configs/WCS_Armament_VehicleSimulationTire_S105_Rally.conf" {
-       }
-      }
-      Axle "{4D8B26DF8CF2F3D8}" {
-       Differential Differential Diff_02 {
-        Ratio 3.7
-       }
-       Tyre Tyre "{4D8B26DF33F76974}" : "{4DFB0E9E44774715}Prefabs/Vehicles/Wheeled/S105/Configs/WCS_Armament_VehicleSimulationTire_S105_Rally.conf" {
-       }
-      }
-     }
-     Pacejka Pacejka "{54D561D473F27BA1}" : "{AC7030263BDC86EE}Prefabs/Vehicles/Wheeled/S105/Configs/WCS_Armament_PacejkaTire_S105_Rally.conf" {
-     }
-    }
-   }
-   BaseVehicleNodeComponent "{20FB66C5B2237133}" {
-    components {
-     SCR_CarControllerComponent "{20FB66C5BC92275B}" {
-      ThrottleCurve +{
-      }
-      ReverseCurve +{
-      }
-      ClutchUncoupleRpm 3000
-      ClutchCoupleRpm 4000
-      UpShiftRpm 3800
-      DownShiftRpm 3000
-     }
-    }
-   }
-   SlotManagerComponent "{55BCE45E438E4CFF}" {
-    Slots {
-     EntitySlotInfo Spoiler {
-      Offset 0 0.9166 -1.9009
-      Angles 5.9474 0 0
-      Prefab "{6623E07C2E1FE8F3}Prefabs/Vehicles/Wheeled/S105/VehParts/S105_spoiler.et"
-      DisablePhysicsInteraction 1
-     }
-    }
-   }
-   ActionsManagerComponent "{C97BE5489221AE18}" {
-    additionalActions {
-     WCS_Armament_EjectAction "{6A2CD97A00291F14}" {
-      ParentContextList +{
-      }
-      UIInfo UIInfo "{6A2CD97A00291F17}" {
-       Name "Eject Seato Cuz - "
-      }
-      "Sort Priority" 100
-      m_bIsToggle 0
-      m_sActionStateOn ""
-      m_sActionStateOff ""
-      m_bInteriorOnly 1
-      m_sTriggerSoundEvent "VEHICLE_EJECTO_SEATO_TRIGGER"
-      m_iCompartmentSlot 1
-     }
-     WCS_Armament_EjectAction "{6A2CD97A00291CE9}" {
-      ParentContextList +{
-      }
-      UIInfo UIInfo "{6A2CD97A00291CE8}" {
-       Name "Eject Seato Cuz - "
-      }
-      "Sort Priority" 101
-      m_bIsToggle 0
-      m_sActionStateOn ""
-      m_sActionStateOff ""
-      m_bInteriorOnly 1
-      m_sTriggerSoundEvent "VEHICLE_EJECTO_SEATO_TRIGGER"
-      m_iCompartmentSlot 2
-     }
-     WCS_Armament_EjectAction "{6A2CD97A00291CEB}" {
-      ParentContextList +{
-      }
-      UIInfo UIInfo "{6A2CD97A00291CEA}" {
-       Name "Eject Seato Cuz - "
-      }
-      "Sort Priority" 102
-      m_bIsToggle 0
-      m_sActionStateOn ""
-      m_sActionStateOff ""
-      m_bInteriorOnly 1
-      m_sTriggerSoundEvent "VEHICLE_EJECTO_SEATO_TRIGGER"
-      m_iCompartmentSlot 3
-     }
-     WCS_Armament_EjectAllAction "{6A2CD97A00291CED}" {
-      ParentContextList +{
-      }
-      UIInfo UIInfo "{6A2CD97A00291CEC}" {
-       Name "Eject Seato Cuz -"
-      }
-      "Sort Priority" 103
-      m_bIsToggle 0
-      m_sActionStateOn ""
-      m_sActionStateOff ""
-      m_bInteriorOnly 1
-      m_sTriggerSoundEvent "VEHICLE_EJECTO_SEATO_TRIGGER"
-     }
-     WCS_Armament_EjectAllExplosiveAction "{6A2CD97A00291CEF}" {
-      ParentContextList +{
-      }
-      UIInfo UIInfo "{6A2CD97A00291CEE}" {
-       Name "Explosive Eject Seato -"
-      }
-      "Sort Priority" 104
-      m_bIsToggle 0
-      m_sActionStateOn ""
-      m_sActionStateOff ""
-      m_bInteriorOnly 1
-      m_sTriggerSoundEvent "VEHICLE_EJECTO_SEATO_TRIGGER"
-      m_iExplosionDelayMs 4000
-      m_bIncludeDriver 1
+      AssignedMaterial "{77FD5EE007711B63}Assets/Vehicles/Wheeled/S105/Data/S105Body_mat_red.emat"
      }
     }
    }
   }
-  coords 6028.875 59.7 4123.412
-  angles 0 -148.165 0
+  coords 6019.508 59.7 4116.535
+  angles 0 123.107 0
  }
- S105_rally_wcs_Red_Pub1 {
+ S105_rally_Red_Pub2 {
   components {
-   SCR_VehicleSoundComponent "{55C2E66AD4EF2CA6}" {
-    Filenames +{
-    }
-   }
    MeshObject "{51DAA09FEFBFC0E7}" {
     Materials {
-     MaterialAssignClass "{6A2CD97CDF7558BD}" {
+     MaterialAssignClass "{6A8683FEC974CD5E}" {
       SourceMaterial "S105Body_mat"
-      AssignedMaterial "{CE542B48DE498FDC}worlds/FSM/Assets/Weapons/Ammo/Tracers/Data/FSM_Tracer_Emit_Color_Red.emat"
-     }
-    }
-   }
-   SCR_BaseLockComponent "{54D6FBC0EA806FE5}" {
-    m_lockPilot 1
-    m_lockTurret 1
-    m_lockCargo 1
-    m_factionLock +{
-    }
-   }
-   SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
-    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
-     Name "#WCS-Vehicle_Skoda105_Name"
-     m_Image "{98F04D1DE6E3693F}UI/Textures/EditorPreviews/Vehicles/Wheeled/S105/S105_rally_WCS.edds"
-    }
-   }
-   SCR_UniversalInventoryStorageComponent "{607097C4DCC32AFC}" {
-    MultiSlots {
-     MultiSlotConfiguration "{6072948F3F668390}" {
-      NumSlots 0
-     }
-    }
-   }
-   VehicleWheeledSimulation "{731B26FCA2F19855}" {
-    Simulation Wheeled "{4D8B26DEA5F25978}" {
-     Engine Engine Engine {
-      MaxPower 130
-      MaxTorque 170
-      RpmMaxPower 7800
-      RpmMaxTorque 5800
-      Friction 38
-      RpmRedline 8800
-      RpmMax 9200
-     }
-     Gearbox Gearbox Gearbox {
-      Forward +{
-      }
-     }
-     Axles {
-      Axle "{4D8B26DF957A8E1C}" {
-       Tyre Tyre "{4D8B26DFFD85E58F}" : "{4DFB0E9E44774715}Prefabs/Vehicles/Wheeled/S105/Configs/WCS_Armament_VehicleSimulationTire_S105_Rally.conf" {
-       }
-      }
-      Axle "{4D8B26DF8CF2F3D8}" {
-       Differential Differential Diff_02 {
-        Ratio 3.7
-       }
-       Tyre Tyre "{4D8B26DF33F76974}" : "{4DFB0E9E44774715}Prefabs/Vehicles/Wheeled/S105/Configs/WCS_Armament_VehicleSimulationTire_S105_Rally.conf" {
-       }
-      }
-     }
-     Pacejka Pacejka "{54D561D473F27BA1}" : "{AC7030263BDC86EE}Prefabs/Vehicles/Wheeled/S105/Configs/WCS_Armament_PacejkaTire_S105_Rally.conf" {
-     }
-    }
-   }
-   BaseVehicleNodeComponent "{20FB66C5B2237133}" {
-    components {
-     SCR_CarControllerComponent "{20FB66C5BC92275B}" {
-      ThrottleCurve +{
-      }
-      ReverseCurve +{
-      }
-      ClutchUncoupleRpm 3000
-      ClutchCoupleRpm 4000
-      UpShiftRpm 3800
-      DownShiftRpm 3000
-     }
-    }
-   }
-   SlotManagerComponent "{55BCE45E438E4CFF}" {
-    Slots {
-     EntitySlotInfo Spoiler {
-      Offset 0 0.9166 -1.9009
-      Angles 5.9474 0 0
-      Prefab "{6623E07C2E1FE8F3}Prefabs/Vehicles/Wheeled/S105/VehParts/S105_spoiler.et"
-      DisablePhysicsInteraction 1
-     }
-    }
-   }
-   ActionsManagerComponent "{C97BE5489221AE18}" {
-    additionalActions {
-     WCS_Armament_EjectAction "{6A2CD97A00291F14}" {
-      ParentContextList +{
-      }
-      UIInfo UIInfo "{6A2CD97A00291F17}" {
-       Name "Eject Seato Cuz - "
-      }
-      "Sort Priority" 100
-      m_bIsToggle 0
-      m_sActionStateOn ""
-      m_sActionStateOff ""
-      m_bInteriorOnly 1
-      m_sTriggerSoundEvent "VEHICLE_EJECTO_SEATO_TRIGGER"
-      m_iCompartmentSlot 1
-     }
-     WCS_Armament_EjectAction "{6A2CD97A00291CE9}" {
-      ParentContextList +{
-      }
-      UIInfo UIInfo "{6A2CD97A00291CE8}" {
-       Name "Eject Seato Cuz - "
-      }
-      "Sort Priority" 101
-      m_bIsToggle 0
-      m_sActionStateOn ""
-      m_sActionStateOff ""
-      m_bInteriorOnly 1
-      m_sTriggerSoundEvent "VEHICLE_EJECTO_SEATO_TRIGGER"
-      m_iCompartmentSlot 2
-     }
-     WCS_Armament_EjectAction "{6A2CD97A00291CEB}" {
-      ParentContextList +{
-      }
-      UIInfo UIInfo "{6A2CD97A00291CEA}" {
-       Name "Eject Seato Cuz - "
-      }
-      "Sort Priority" 102
-      m_bIsToggle 0
-      m_sActionStateOn ""
-      m_sActionStateOff ""
-      m_bInteriorOnly 1
-      m_sTriggerSoundEvent "VEHICLE_EJECTO_SEATO_TRIGGER"
-      m_iCompartmentSlot 3
-     }
-     WCS_Armament_EjectAllAction "{6A2CD97A00291CED}" {
-      ParentContextList +{
-      }
-      UIInfo UIInfo "{6A2CD97A00291CEC}" {
-       Name "Eject Seato Cuz -"
-      }
-      "Sort Priority" 103
-      m_bIsToggle 0
-      m_sActionStateOn ""
-      m_sActionStateOff ""
-      m_bInteriorOnly 1
-      m_sTriggerSoundEvent "VEHICLE_EJECTO_SEATO_TRIGGER"
-     }
-     WCS_Armament_EjectAllExplosiveAction "{6A2CD97A00291CEF}" {
-      ParentContextList +{
-      }
-      UIInfo UIInfo "{6A2CD97A00291CEE}" {
-       Name "Explosive Eject Seato -"
-      }
-      "Sort Priority" 104
-      m_bIsToggle 0
-      m_sActionStateOn ""
-      m_sActionStateOff ""
-      m_bInteriorOnly 1
-      m_sTriggerSoundEvent "VEHICLE_EJECTO_SEATO_TRIGGER"
-      m_iExplosionDelayMs 4000
-      m_bIncludeDriver 1
+      AssignedMaterial "{77FD5EE007711B63}Assets/Vehicles/Wheeled/S105/Data/S105Body_mat_red.emat"
      }
     }
    }
   }
-  coords 6018.333 59.7 4112.894
-  angles 0 122.62 0
+  coords 6028.592 59.7 4122.211
+  angles 0 -146.893 0
  }
 }
