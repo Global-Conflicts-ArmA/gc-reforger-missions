@@ -1,0 +1,241 @@
+SCR_AIWorld : "{3DE6090FC602E566}Prefabs/AI/SCR_AIWorld_Takistan.et" {
+ coords 8966.602 291.922 5365.137
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 7848.668 507.977 5451.742
+}
+PS_GameModeCoop PS_GameMode_Lobby_TILWMF1 : "{4CFD54745CD45673}Prefabs/MP/Modes/PS_GameMode_Lobby_GC.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{5EE3229927D4D2F5}" {
+   m_iStartingHours 17
+   m_bRandomStartingDaytime 1
+   m_bRandomStartingDaytimeRange 1
+   m_iRangeHoursStart 11
+   m_iRangeHoursEnd 18
+   m_bDateOverride 1
+   m_iDay 3
+   m_iMonth 5
+   m_iYear 2009
+  }
+ }
+ coords 7858.976 502.084 5489.346
+ m_aFactionRespawnCount {
+  PS_FactionRespawnCount "{6A7A2864B58798FB}" {
+   m_sFactionKey "US"
+   m_iCount 20
+   m_iTime 60
+   m_bWaveMode 1
+  }
+ }
+ {
+  SCR_FactionManager "66ECA0B4BF64C8D5" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_aFriendlyFactionsIds {
+      "UK"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "1"
+       }
+      }
+      m_sCallsignGroupFormat "%2-%3"
+      m_sCallsignCharacterFormat "%2-%3: %4"
+     }
+    }
+    SCR_Faction "{61500924662B6062}" {
+     m_aFriendlyFactionsIds {
+      "RHS_USAF"
+     }
+    }
+   }
+  }
+ }
+}
+PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_AOLimitComponent "{6217617AC21DEB7B}" {
+   m_factionKeys {
+    "RHS_USAF"
+   }
+   m_ignoredVehicles {
+    "{397971C2026D588F}Prefabs/Vehicles/Helicopters/AH64D/AH64D_AGM114L_X2.et"
+   }
+  }
+  TILW_MapShapeComponent "{6508F54F9B461198}" {
+   Enabled 1
+  }
+ }
+ coords 1486.834 326.087 6234.361
+ Points {
+  ShapePoint "{6A531970B79EC0AD}" {
+   Position -6.572 -63.672 -432.022
+  }
+  ShapePoint "{6A6906DA1683AD57}" {
+   Position 55.686 -40.883 -360.544
+  }
+  ShapePoint "{6A6906DA17FFD8C8}" {
+   Position 85.339 -10.956 -309.109
+  }
+  ShapePoint "{6A6906DA17789663}" {
+   Position 70.107 40.718 -12.27
+  }
+  ShapePoint "{6A6906DA149ED750}" {
+   Position 60.659 128.785 376.405
+  }
+  ShapePoint "{6A6906DA120D05F9}" {
+   Position 84.894 143.1 548.367
+  }
+  ShapePoint "{6A6906DA10F24DA0}" {
+   Position 200.639 179.404 636.182
+  }
+  ShapePoint "{6A6906DA1001C615}" {
+   Position 529.953 30.7 1149.39
+  }
+  ShapePoint "{6A6906DA114B8D44}" {
+   Position 899.395 -41.348 1668.343
+  }
+  ShapePoint "{6A6906DA2F017B63}" {
+   Position 512.355 63.429 1819.965
+  }
+  ShapePoint "{6A6906DA2C6352C5}" {
+   Position 118.673 98.38 1790.975
+  }
+  ShapePoint "{6A6906DA2D9ABD48}" {
+   Position -278.709 143.688 1385.749
+  }
+  ShapePoint "{6A6906DA2A0B8D81}" {
+   Position -467.125 176.783 1045.733
+  }
+  ShapePoint "{6A6906DA2B967334}" {
+   Position -504.892 145.501 719.306
+  }
+  ShapePoint "{6A6906DA28A6923F}" {
+   Position -357.356 174.628 540.64
+  }
+  ShapePoint "{6A6906DA280AD39A}" {
+   Position -261.24 160.111 448.494
+  }
+  ShapePoint "{6A6906DA264D1690}" {
+   Position -144.655 110.505 229.65
+  }
+  ShapePoint "{6A6906DA2761C856}" {
+   Position -107.657 8.919 -70.757
+  }
+  ShapePoint "{6A6906DAD08830EC}" {
+   Position -43.17 -49.939 -329.366
+  }
+  ShapePoint "{6A6906DAD1A7970F}" {
+   Position -73.453 -54.53 -337.154
+  }
+  ShapePoint "{6A6906DA2468E99A}" {
+   Position -101.697 -54.539 -371.719
+  }
+ }
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ trig1 {
+  coords 1388.586 428.36 6786.043
+  m_queryRadius 46.8
+  m_flagName "trig1"
+  m_drawShapeSurface 0
+  m_drawShapeOutline 0
+  m_ownerFactionKey "US"
+  m_ratioThreshold 0.01
+ }
+ trig2 {
+  coords 2035.174 303.99 7688.88
+  m_queryRadius 200
+  m_flagName "trig2"
+  m_drawShapeSurface 0
+  m_drawShapeOutline 0
+  m_ownerFactionKey "US"
+  m_ratioThreshold 0.1
+ }
+ trig3 {
+  coords 2035.174 303.99 7688.88
+  m_queryRadius 200
+  m_sendStatusMessages 1
+  m_locationName "Mulladost"
+  m_displayTo {
+   "US"
+  }
+  m_flagName "trig3"
+  m_ownerFactionKey "US"
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 7861.167 502.487 5478.077
+ m_missionEvents {
+  TILW_MissionEvent "{646D3D6DD60B04E5}" {
+   m_name "DEF_TIME_LIMIT"
+   m_instructions {
+    TILW_SetFlagInstruction "{646D3D6DAC2BFE11}" {
+     m_executionDelay 4800
+     m_flagName "DEF_TIME_LIMIT"
+    }
+    TILW_SendMessageInstruction "{646D3D6DA14EECE4}" {
+     m_executionDelay 1800
+     m_messageTitle "MISSION Failed"
+     m_messageBody "You have reached the time limit."\
+     "MISSION FAILED"
+    }
+   }
+   m_condition TILW_LiteralTerm "{646D3D6DD27DBDA8}" {
+    m_invertTerm 1
+   }
+  }
+  TILW_MissionEvent "{646D3D6739C1FEAC}" {
+   m_name "US_KIA"
+   m_instructions {
+    TILW_SendMessageInstruction "{646D3D670DE5FBB6}" {
+     m_messageTitle "DEFEAT"
+     m_messageBody "Your element has taken significant casualties. GAMEOVER"
+    }
+    TILW_EndGameInstruction "{646D3D670A328E96}" {
+     m_gameOverType EDITOR_FACTION_DEFEAT
+     m_factionKey "RHS_USAF"
+    }
+   }
+   m_condition TILW_LiteralTerm "{646D3D6734465AA9}" {
+    m_flagName "US_KIA"
+   }
+  }
+  TILW_MissionEvent "{6A6C1AF0B14A7997}" {
+   m_instructions {
+    TILW_SendMessageInstruction "{6A6C1AF0C9D6BA12}" {
+     m_messageTitle "INCOMING XMISSION"
+     m_messageBody "A'6 THIS IS A2'2, WE HAVE PROOVED THE ROUTE UP TO THE AMBUSH.... BREAK.... TKA HAVE SET AP MINES BEFORE THE AT MINES MARKED ON MAP. TROOPS IN CONTACT, REQUESTING SUPPORT, OVER."\
+     ""\
+     ""\
+     "A 1'6 this is A '6 Actual, proceed with your mission and support A2'2, out."
+    }
+   }
+   m_condition TILW_LiteralTerm "{6A6C1AF0C74E4DC3}" {
+    m_flagName "trig1"
+   }
+  }
+  TILW_MissionEvent "{6A7A1C425F40E4BA}" {
+   m_instructions {
+    TILW_SendMessageInstruction "{6A7A1C425BED29FE}" {
+     m_messageTitle "Mission victory"
+     m_messageBody "Mulladost is clear of TKA; Mission complete!"\
+     ""\
+     "GMs may end now or fight out any final contacts"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6A7A1C4259A02FBD}" {
+    m_flagName "trig3"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{646D3D673655E5B6}" {
+   m_flagName "US_KIA"
+   m_factionKey "US"
+   m_casualtyRatio 0.8
+  }
+ }
+}
