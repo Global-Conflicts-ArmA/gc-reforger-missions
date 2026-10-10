@@ -1,0 +1,74 @@
+GenericEntity : "{4CE75078634299BB}Prefabs/Destructible/RedBarrel/BarrelFuel_01_closed_edited.et" {
+ ID "5284D2E19944E947"
+ components {
+  MeshObject "{5872F0EB7FA40561}" {
+   Materials {
+    MaterialAssignClass "{60DAFB6AF1504334}" {
+     SourceMaterial "Barrel_01"
+     AssignedMaterial "{E5FC64A4BAE7AED7}Assets/Weapons/Attachments/Optics/1p63/data/Optic_1p63_lensglass_contrast.emat"
+    }
+    MaterialAssignClass "{6A8683F007E5C862}" {
+     SourceMaterial "Material_#1"
+     AssignedMaterial "{01BF863BDE8FB805}Prefabs/Destructible/RedBarrel/GMFX_RedBarrel_MLOD.emat"
+    }
+   }
+  }
+  RigidBody "{5872F0EB7DFB5A9D}" {
+   Enabled 0
+   ResponseIndex "HugeDestructible"
+  }
+  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+   Enabled 0
+   m_fBaseHealth 90
+   m_DestroySpawnObjects {
+    SCR_DebrisSpawnable "{6A8683F3CFFD35F9}" {
+     m_vOffsetPosition 0.328 0 0.352
+     m_vOffsetRotation 0 -21 0
+     m_ModelPrefabs {
+      "{1BEB85B677E19308}Prefabs/Destructible/RedBarrel/GMFX_RedBarrel_dst.et"
+     }
+     m_fMaxDamageToSpeedMultiplier 1
+     m_fRandomVelocityLinear 3
+     m_fRandomVelocityAngular 3
+     m_eMaterialSoundType METAL_HEAVY
+    }
+    SCR_PrefabSpawnable "{6A8683F3CFFD35FD}" {
+     m_vOffsetPosition 0 0.25 0
+     m_Prefabs {
+      "{243D7ACBE016597C}Prefabs/Systems/Explosions/BombWarhead_Grenade_HE.et" "{CEA673B994EDAD16}Prefabs/Destructible/RedBarrel/GMFX_RedBarrel_Effect.et"
+     }
+    }
+   }
+   m_bDeleteAfterFinalPhase 1
+  }
+  SCR_EditableEntityComponent "{6A8683F3CFFD35FE}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{6A8683F3CFFD35F0}" {
+    Name "Destructible Barrel"
+    Description "Test"
+    Icon "{3E3FB434FBFA4872}UI/Textures/Editor/EditableEntities/Objectives/EditableEntity_Objective_Attack.edds"
+    m_Image "{BBE576869433C475}UI/Textures/EditorPreviews/Auto/Props/Industrial/E_BarrelFuel_01_closed.edds"
+    m_aAuthoredLabels {
+     ENTITYTYPE_FX CONTENT_MODDED
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{6A8683F3CFFD35F4}" {
+      m_BudgetType SYSTEMS
+      m_Value 1
+     }
+    }
+   }
+  }
+  SCR_PreviewEntityComponent "{6A8683F3CFFD35F6}" {
+   m_aEntries {
+    SCR_BasePreviewEntry "{6A8683F3CFFD35CB}" {
+     m_Mesh "{CE7255186E4F6BDC}Assets/Props/Industrial/BarrelFuel_01/BarrelFuel_01_closed.xob"
+     m_Shape MESH
+    }
+   }
+  }
+  RplComponent "{5624A88DC2D9928D}" {
+   Enabled 1
+  }
+ }
+ coords 1.301 3.414 0.852
+}
