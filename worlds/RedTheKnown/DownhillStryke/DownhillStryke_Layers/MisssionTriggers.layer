@@ -1,0 +1,137 @@
+$grp TILW_ExtractionTriggerEntity : "{192ABD6B9232E064}Prefabs/Logic/Triggers/TILW_ExtractionTrigger.et" {
+ SEPExtractTrig {
+  coords 2400.29 178.84 7077.015
+  m_queryRadius 75
+  m_captureTime 20
+  m_sendStatusMessages 1
+  m_statusMessages {
+   "The %1 has retreated."
+   "The %1 is retreating."
+  }
+  m_locationName "Extract"
+  m_displayTo {
+   "GC_SEPARATIST"
+  }
+  m_flagName "SEPExtractFlag"
+  m_factionKey "GC_SEPARATIST"
+  m_ratioThreshold 0.7
+ }
+ USExtractTrig {
+  coords 4515.541 410.094 5526.742
+  m_queryRadius 75
+  m_captureTime 20
+  m_sendStatusMessages 1
+  m_statusMessages {
+   "The %1 has retreated."
+   "The %1 is retreating."
+  }
+  m_locationName "Extract"
+  m_displayTo {
+   "US"
+  }
+  m_flagName "USExtractFlag"
+  m_factionKey "US"
+  m_ratioThreshold 0.7
+ }
+}
+TILW_FactionTriggerEntity HamertinCapZone : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 3270.704 271.41 6848.849
+ m_queryRadius 150
+ m_captureTime 90
+ m_displayTo {
+  "US"
+  "GC_SEPARATIST"
+ }
+ m_flagName "HamerCapFlag"
+ m_ownerFactionKey "US"
+ m_ratioThreshold 0.9
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 3865.317 350.57 6518.674
+ m_missionEvents {
+  TILW_MissionEvent "{6A9F560732A74D07}" {
+   m_name "USExtracted"
+   m_instructions {
+    TILW_SendMessageInstruction "{6A9F560533F090D3}" {
+     m_messageTitle "US Extraction"
+     m_messageBody "At least 70% of remaining US forces have gone to their extraction zone."
+    }
+   }
+   m_condition TILW_LiteralTerm "{6A9F56053047ABEB}" {
+    m_flagName "USExtractFlag"
+   }
+  }
+  TILW_MissionEvent "{6A9F560732F81475}" {
+   m_name "SEPExtracted"
+   m_instructions {
+    TILW_SendMessageInstruction "{6A9F560AF4CCB861}" {
+     m_messageTitle "Seperatist Extraction"
+     m_messageBody "At least 70% of remaining Seperatist forces have gone to their extraction zone."
+    }
+   }
+   m_condition TILW_LiteralTerm "{6A9F560A9CB92059}" {
+    m_flagName "SEPExtractFlag"
+   }
+  }
+  TILW_MissionEvent "{6A9F5604C6C5BBF3}" {
+   m_name "SEPDelayVictory"
+   m_instructions {
+    TILW_SendMessageInstruction "{6A9F56058CAF23C0}" {
+     m_messageTitle "Seperatist Victory!"
+     m_messageBody "Seperatist forces has managed to delay the US assault on Hamertin for at least 50 minuets, achieving their primary objective."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{6A9F5605BB8A421D}" {
+    m_operands {
+     TILW_LiteralTerm "{6A9F5605B990682A}" {
+      m_flagName "TimeLimitFlag"
+     }
+     TILW_LiteralTerm "{6A9F5605BEFE7933}" {
+      m_invertTerm 1
+      m_flagName "HamerCapFlag"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{6A9F5604D3286B5C}" {
+   m_name "USCaptureVictory"
+   m_instructions {
+    TILW_SendMessageInstruction "{6A9F56042C1A64CD}" {
+     m_messageTitle "US Victory!"
+     m_messageBody "Assaulting US forces have captured Hamertin, achieving their primary objective"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6A9F5605D4D4D61B}" {
+    m_flagName "HamerCapFlag"
+   }
+  }
+  TILW_MissionEvent "{6A9F5604A286DA3E}" {
+   m_name "USCasualtyLoss"
+   m_instructions {
+    TILW_SendMessageInstruction "{6A9F5604B6D0C050}" {
+     m_messageTitle "US Defeat!"
+     m_messageBody "Assaulting US forces have taken at least 80% casualties, and can no longer achieve their objective."
+    }
+   }
+   m_condition TILW_LiteralTerm "{6A9F56041E45111C}" {
+    m_flagName "USDeadFlag"
+   }
+  }
+  TILW_MissionEvent "{6A9F56058342FF13}" {
+   m_name "TimeLimit"
+   m_instructions {
+    TILW_SetFlagInstruction "{6A9F56059EA3BD6F}" {
+     m_executionDelay 3180
+     m_flagName "TimeLimitFlag"
+    }
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{6A9F5607005CACBC}" {
+   m_flagName "USDeadFlag"
+   m_factionKey "US"
+   m_casualtyRatio 0.8
+  }
+ }
+}
