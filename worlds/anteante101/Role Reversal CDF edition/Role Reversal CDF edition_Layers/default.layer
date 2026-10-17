@@ -1,0 +1,122 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 3210.528 63.848 3378.459
+}
+PerceptionManager PerceptionManager2 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 3209.78 65.685 3382.048
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ coords 3158.031 67.363 3364.572
+}
+TILW_MissionFrameworkEntity framwork : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 3206.961 72.501 3430.305
+ m_missionEvents {
+  TILW_MissionEvent "{688D62C2DE04F31F}" {
+   m_name "HVT Killed OP4"
+   m_instructions {
+    TILW_SendMessageInstruction "{688D62C2F5D75D94}" {
+     m_executionDelay 1
+     m_messageTitle "HVT DEAD"
+     m_messageBody "HVT is kiled. Make the CDF pay!!!"
+     m_factionKeys {
+      "RHS_AFRF"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{688D62C40D81E79D}" {
+    m_flagName "HVT_DEAD"
+   }
+  }
+  TILW_MissionEvent "{688D62D8E43E4029}" {
+   m_name "HVT KILLED US"
+   m_instructions {
+    TILW_SendMessageInstruction "{688D62D8EAF5CC32}" {
+     m_executionDelay 1
+     m_messageTitle "HVT DEAD"
+     m_messageBody "HVT IS DEAD. Good job. Fall back and extract."
+     m_factionKeys {
+      "GC_CDF"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{688D62D8EC433583}" {
+    m_flagName "HVT_DEAD"
+   }
+  }
+  TILW_MissionEvent "{688D62DA105155F9}" {
+   m_name "us killed"
+   m_instructions {
+    TILW_SendMessageInstruction "{688D62DA1B0183AF}" {
+     m_executionDelay 1
+     m_messageTitle "US KILLED"
+     m_messageBody "The CDF are combat ineffective"
+     m_factionKeys {
+      "RHS_AFRF"
+      "GC_CDF"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{688D62DA9FD76D5B}" {
+    m_flagName "B4_KILLED"
+   }
+  }
+  TILW_MissionEvent "{688D62DAABA93AA6}" {
+   m_name "OP4"
+   m_instructions {
+    TILW_SendMessageInstruction "{688D62DAAFAE2D34}" {
+     m_executionDelay 1
+     m_messageTitle "THE ARFR KILLED"
+     m_messageBody "The ARFR are combat ineffective."
+     m_factionKeys {
+      "GC_CDF"
+      "RHS_AFRF"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{688D62DAB1DCDB67}" {
+    m_flagName "OP4_KILLED"
+   }
+  }
+  TILW_MissionEvent "{68B84C9240AB4451}" {
+   m_name "hvt extracted"
+   m_instructions {
+    TILW_SendMessageInstruction "{68B84C9248804CBE}" {
+     m_messageTitle "HVT EXTRACTED"
+     m_messageBody "THE ARFR WON"
+    }
+   }
+   m_condition TILW_LiteralTerm "{68B84C92492F7A3D}" {
+    m_flagName "EXTRACT"
+   }
+  }
+  TILW_MissionEvent "{68CD501F8C8A4829}" {
+   m_instructions {
+    TILW_DeleteEntitiesInstruction "{68CD501F91A01FAB}" {
+     m_executionDelay 1
+     m_entityNames {
+      "civao"
+     }
+    }
+   }
+   m_condition TILW_LiteralTerm "{68CD501C40879598}" {
+    m_flagName "delet_ao"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{688D62DBB8D3BE73}" {
+   m_flagName "B4_KILLED"
+   m_factionKey "US"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{688D62DBD4F99F18}" {
+   m_flagName "OP4_KILLED"
+   m_factionKey "RHS_AFRF"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{689733C9FFE6FADD}" {
+   m_flagName "HVT_DEAD"
+   m_factionKey "CIV"
+   m_casualtyRatio 1
+  }
+ }
+}
