@@ -1,0 +1,116 @@
+TILW_ExtractionTriggerEntity tr_app3 : "{192ABD6B9232E064}Prefabs/Logic/Triggers/TILW_ExtractionTrigger.et" {
+ coords 4925.582 294.469 9456.141
+ m_queryRadius 125
+ m_flagName "app3"
+ m_stopAfterFirstChange 1
+ m_drawShapeSurface 0
+ m_factionKey "UK"
+ m_ratioThreshold 0.01
+}
+$grp TILW_FactionTriggerEntity : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ tr_obj3 {
+  coords 4925.051 294.469 9453.271
+  m_queryRadius 50
+  m_flagName "obj3"
+  m_stopAfterFirstChange 1
+  m_drawShapeSurface 0
+  m_ownerFactionKey "UK"
+  m_ratioThreshold 0.9
+  {
+   PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+    coords 0 0 0
+    angles 0 0 0
+    m_sImageSetGlow ""
+    m_MarkerColor 0 0 0 0.75
+    m_fWorldSize 150
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+  }
+ }
+ tr_obj2 {
+  coords 4978.07 280.687 9587.853
+  m_queryRadius 30
+  m_flagName "obj2"
+  m_stopAfterFirstChange 1
+  m_drawShapeSurface 0
+  m_ownerFactionKey "UK"
+  m_ratioThreshold 0.9
+  {
+   PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+    coords 0 0 0
+    angles 0 0 0
+    m_sImageSetGlow ""
+    m_MarkerColor 0 0 0 0.75
+    m_fWorldSize 90
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+  }
+ }
+ tr_obj1 {
+  coords 5097.718 249.119 9758.509
+  m_queryRadius 50
+  m_flagName "obj1"
+  m_stopAfterFirstChange 1
+  m_drawShapeSurface 0
+  m_ownerFactionKey "UK"
+  m_ratioThreshold 0.9
+  {
+   PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+    coords 0 0 0
+    angles 0 0 0
+    m_sImageSetGlow ""
+    m_MarkerColor 0 0 0 0.75
+    m_fWorldSize 150
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity fw : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ m_missionEvents {
+  TILW_MissionEvent "{6AC36EB2F61D3DDE}" {
+   m_name "UK Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{6AC36EB2EC6DDDE9}" {
+     m_messageTitle "UK Victory"
+     m_messageBody "All strongpoints were taken."
+    }
+   }
+   m_condition TILW_ConjunctionTerm "{6AC36EB2FB2BDFDF}" {
+    m_operands {
+     TILW_LiteralTerm "{6AC36EB2FE32EA33}" {
+      m_flagName "obj1"
+     }
+     TILW_LiteralTerm "{6AC36EB2FF05F91D}" {
+      m_flagName "obj2"
+     }
+     TILW_LiteralTerm "{6AC36EB2E06E8BEB}" {
+      m_flagName "obj3"
+     }
+    }
+   }
+  }
+  TILW_MissionEvent "{6AC36EB2F7CA7CA2}" {
+   m_name "USSR Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{6AC36EB2CF6F0E01}" {
+     m_messageTitle "USSR Victory"
+     m_messageBody "The attacking force was destroyed."
+    }
+   }
+   m_condition TILW_LiteralTerm "{6AC36EB2DF8AA663}" {
+    m_flagName "uk_cas"
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{6AC36EB2C5FC16F2}" {
+   m_flagName "uk_cas"
+   m_factionKey "UK"
+   m_casualtyRatio 0.9
+  }
+ }
+}
