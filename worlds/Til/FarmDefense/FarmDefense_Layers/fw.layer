@@ -1,0 +1,108 @@
+$grp TILW_PrefabSpawnerEntity : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
+ sp_gr_a {
+  coords 4845.708 253.087 8815.942
+  angles 0 -30.762 0
+  m_prefab "{4EC758419C5D1266}Prefabs/Groups/BLUFOR/US/Army/1981/101st Airborne/Group_US_Army_1982_AirAsltFireTeam.et"
+  m_spawnTimings {
+   180
+   600
+   1200
+  }
+  m_waypointNames {
+   "wp_move_a1"
+   "wp_move_a2"
+   "wp_move_a3"
+   "wp_move_obj"
+  }
+ }
+ sp_gr_b {
+  coords 4864.036 253.219 8831.549
+  angles 0 -30.762 0
+  m_prefab "{4EC758419C5D1266}Prefabs/Groups/BLUFOR/US/Army/1981/101st Airborne/Group_US_Army_1982_AirAsltFireTeam.et"
+  m_spawnTimings {
+   280
+   700
+   1300
+  }
+  m_waypointNames {
+   "wp_move_b1"
+   "wp_move_b2"
+   "wp_move_b3"
+   "wp_move_obj"
+  }
+ }
+ sp_gr_c {
+  coords 4989.613 249.644 8839.927
+  angles 0 -30.762 0
+  m_prefab "{4EC758419C5D1266}Prefabs/Groups/BLUFOR/US/Army/1981/101st Airborne/Group_US_Army_1982_AirAsltFireTeam.et"
+  m_spawnTimings {
+   180
+   500
+   1400
+  }
+  m_waypointNames {
+   "wp_move_c1"
+   "wp_move_c2"
+   "wp_move_c3"
+   "wp_move_obj"
+  }
+ }
+}
+TILW_FactionTriggerEntity tr_obj : "{8C576D46F6579229}Prefabs/Logic/Triggers/TILW_FactionTrigger.et" {
+ coords 4685 273.684 9496.697
+ m_queryRadius 27.5
+ m_captureTime 60
+ m_sendStatusMessages 1
+ m_locationName "the command post"
+ m_flagName "obj"
+ m_stopAfterFirstChange 1
+ m_drawShapeSurface 0
+ m_ownerFactionKey "US"
+ {
+  $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+   {
+    coords 0 0 0
+    m_sImageSetGlow ""
+    m_MarkerColor 0.502 0 0 1
+    m_fWorldSize 82.5
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   {
+    coords 0 0 -5
+    m_sImageSet "{83B695FF662AC163}imagesets/Soviet_Tactical_Graphics.imageset"
+    m_sImageSetGlow ""
+    m_MarkerColor 0.502 0 0 1
+    m_sQuadName "plt_hq"
+    m_fWorldSize 70
+    m_aVisibleForFactions {
+     "USSR"
+    }
+   }
+  }
+ }
+}
+TILW_MissionFrameworkEntity fw : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 4695.569 259.337 9308.768
+ m_missionEvents {
+  TILW_MissionEvent "{6AC53214B94F5973}" {
+   m_name "US Victory"
+   m_condition TILW_LiteralTerm "{6AC53214BEFCB246}" {
+    m_flagName "obj"
+   }
+  }
+  TILW_MissionEvent "{6AC53214A14063DF}" {
+   m_name "USSR Victory"
+   m_instructions {
+    TILW_SendMessageInstruction "{6AC532149B345CAD}" {
+     m_executionDelay 1800
+     m_messageTitle "Soviet Victory"
+     m_messageBody "Soviet forces resisted the attack for an extended duration, US forces are retreating."
+    }
+   }
+   m_condition TILW_LiteralTerm "{6AC53214944978AE}" {
+    m_invertTerm 1
+   }
+  }
+ }
+}
