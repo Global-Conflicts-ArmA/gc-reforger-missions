@@ -1,0 +1,73 @@
+$grp SCR_AIGroup : "{4A6E8E54916F2A29}worlds/anteante101/Prefabs/group/FIA Rebel/Group_FIA_REBEL_squad_AA101.et" {
+ {
+  coords 7069.682 118.955 6031.547
+  m_aStaticWaypoints {
+   "defend"
+  }
+ }
+ {
+  coords 7088.875 119.049 6024.555
+  m_aStaticWaypoints {
+   "defend"
+  }
+ }
+ {
+  coords 7080.54 119.509 6041.328
+  angles 0 -97.289 0
+  m_aStaticWaypoints {
+   "defend"
+  }
+ }
+ {
+  coords 7106.555 118.968 6083.636
+  m_aStaticWaypoints {
+   "defend"
+  }
+ }
+ {
+  coords 7058.731 116.092 5946.926
+  angles 0 -136.069 0
+  m_aStaticWaypoints {
+   "defend"
+  }
+ }
+}
+TILW_PrefabSpawnerEntity modern_fia : "{7F10372CF1CA1175}Prefabs/Utils/TILW_PrefabSpawner.et" {
+ coords 7006.385 115.235 5970.803
+ angles 0 -89.954 0
+ m_prefab "{3E19B428E9137511}Prefabs/Groups/INDFOR/FIA/FIA_Modern/Group_FIAModern_RifleSquad.et"
+ m_conditionFlag "r3"
+ m_spawnTimings {
+  0.1
+ }
+ m_waypointNames {
+  "defend"
+ }
+}
+SCR_DefendWaypoint defend : "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et" {
+ coords 7068.688 118.675 6024.404
+ CompletionRadius 108.2
+}
+Vehicle BTR70_FIA1 : "{B47110AA1A806556}Prefabs/Vehicles/Wheeled/BTR70/BTR70_FIA.et" {
+ components {
+  TILW_VehicleCrewComponent "{6ADB54D73D3AAD22}" {
+   m_crewConfig TILW_CrewConfig "{6ADB54D46B4A79D1}" {
+    m_crewGroups {
+     TILW_CrewGroup "{6ADB54D46CB19FB1}" {
+      m_crewStations {
+       TILW_CrewStation "{6ADB54D46D3A387C}" {
+        m_allowCargo 0
+       }
+      }
+     }
+    }
+    m_noTurretDismount 1
+   }
+   m_pregameSpawn 1
+   m_noTurretDismount 1
+   m_idleGroup 1
+  }
+ }
+ coords 7085.404 119.206 6029.479
+ angles 0 35.245 0
+}

@@ -1,0 +1,152 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 6350.896 3866.924 2508.01
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 6449.882 237.669 6342.529
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ coords 5930.54 150.54 6292.653
+}
+PolylineShapeEntity : "{85222A2744768C81}Prefabs/Logic/AOLimit/TILW_AOLimit.et" {
+ components {
+  TILW_CoverMapComponent "{6473480FCAB7760B}" {
+   Enabled 1
+  }
+ }
+ coords 6350.317 85.746 5598.68
+ Points {
+  ShapePoint "{6ADC5349D5BB353C}" {
+   Position -438.22 0 394.458
+  }
+  ShapePoint "{6ADC5349D68341A5}" {
+   Position 239.916 0 -608.982
+  }
+  ShapePoint "{6ADC5349D93950F0}" {
+   Position 607.125 0 -980.01
+  }
+  ShapePoint "{6ADC5349DC08E94F}" {
+   Position 1665.754 0 -24.9
+  }
+  ShapePoint "{6ADC5349DF26219E}" {
+   Position 697.627 0 1496.149
+  }
+  ShapePoint "{6ADC5349E36B81DB}" {
+   Position -558.616 0 566.366
+  }
+ }
+}
+TILW_MissionFrameworkEntity : "{8F846D0FD5D6EA51}Prefabs/MP/TILW_MissionFramework.et" {
+ coords 6984.605 100.292 5743.732
+ m_missionEvents {
+  TILW_MissionEvent "{6ADC535C4FC2FFA5}" {
+   m_name "OP4 V"
+   m_instructions {
+    TILW_SendMessageInstruction "{6ADC535C5263E2CD}" {
+     m_messageTitle "Opfor wins!!!"
+     m_messageBody "Opfor extracted with the weapons truck"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6ADC535C5AD96DB9}" {
+    m_flagName "RED_V"
+   }
+  }
+  TILW_MissionEvent "{6ADC53533F533D2E}" {
+   m_name "B4 V"
+   m_instructions {
+    TILW_SendMessageInstruction "{6ADC535345E750B4}" {
+     m_messageTitle "Freddom fighter have escaped with the weapons!"
+     m_messageBody "Blufor extracted with the weapons truck"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6ADC53534830DAD5}" {
+    m_flagName "BLU_V"
+   }
+  }
+  TILW_MissionEvent "{6ADC53515C3FEB95}" {
+   m_name "B4 DEAD"
+   m_instructions {
+    TILW_SendMessageInstruction "{6ADC535166E5E7AC}" {
+     m_messageTitle "Freedom fighters are dead."
+     m_messageBody "They have become combat ineffective"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6ADC5357364D8CE1}" {
+    m_flagName "blufor_dead"
+   }
+  }
+  TILW_MissionEvent "{6ADC53515D9F92A5}" {
+   m_name "OP4 DEAD"
+   m_instructions {
+    TILW_SendMessageInstruction "{6ADC53572B147529}" {
+     m_messageTitle "Russians are dead."
+     m_messageBody "They have become combat ineffective"
+    }
+   }
+   m_condition TILW_LiteralTerm "{6ADC535773D9A1BD}" {
+    m_flagName "opfor_dead"
+   }
+  }
+  TILW_MissionEvent "{6ADC53515ED7424D}" {
+   m_name "IND4 V"
+   m_instructions {
+    TILW_SendMessageInstruction "{6ADC5356F598A1FB}" {
+     m_executionDelay 2100
+     m_messageTitle "FIA victorious!!!"
+     m_messageBody "The island will continue to suffer "
+    }
+   }
+   m_condition TILW_LiteralTerm "{6ADC5357769F1ACC}" {
+    m_invertTerm 1
+   }
+  }
+ }
+ m_casualtyFlags {
+  TILW_FactionPlayersKilledFlag "{6ADB54CCADAC160D}" {
+   m_flagName "blufor_dead"
+   m_factionKey "US"
+   m_casualtyRatio 0.9
+  }
+  TILW_FactionPlayersKilledFlag "{6ADB54CCAE7ABA8D}" {
+   m_flagName "opfor_dead"
+   m_factionKey "RHS_AFRF"
+   m_casualtyRatio 0.9
+  }
+ }
+ m_metaFlags {
+  TILW_MetaFlag "{6ADC535317822CFC}" {
+   m_flagName "BLU_V"
+   m_definition TILW_ConjunctionTerm "{6ADC53531D20C0D7}" {
+    m_operands {
+     TILW_LiteralTerm "{6ADC535320E29F99}" {
+      m_flagName "B4_TRUCK"
+     }
+     TILW_LiteralTerm "{6ADC535324C28E8B}" {
+      m_flagName "truck_b"
+     }
+    }
+   }
+  }
+  TILW_MetaFlag "{6ADC5353B94FE6B6}" {
+   m_flagName "RED_V"
+   m_definition TILW_ConjunctionTerm "{6ADC5353B94FE52D}" {
+    m_operands {
+     TILW_LiteralTerm "{6ADC5353B94FE520}" {
+      m_flagName "O4_TRUCK"
+     }
+     TILW_LiteralTerm "{6ADC5353B94FE523}" {
+      m_flagName "truck_r"
+     }
+    }
+   }
+  }
+ }
+ m_randomFlags {
+  TILW_FlagSampling "{6ADC5358E2F69EA1}" {
+   m_flagNames {
+    "r1"
+    "r2"
+    "r3"
+   }
+  }
+ }
+}
