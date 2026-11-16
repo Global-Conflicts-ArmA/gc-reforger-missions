@@ -1,0 +1,98 @@
+GC_LobbyGameMode GC_LobbyGameMode : "{A79C4E0A43DEB821}Prefabs/MP/Modes/GC_LobbyGameMode.et" {
+ components {
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents {
+    GC_Event "{6AE1688CB4F3711F}" {
+     m_sName "End Mission"
+     m_aConditions {
+      GC_TimerCondition "{6AE1688C9D6E1321}" {
+       m_sTimerName "end"
+       m_fSeconds 10
+      }
+     }
+     m_aActions {
+      GC_EndMissionAction "{6AE1688C869978DB}" {
+       m_iResult "Faction victory"
+       m_aWinningFactions {
+        "GC_CDF"
+       }
+       m_sMessage "CDF Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{6AE1688C4ABC4A2F}" {
+     }
+    }
+   }
+   m_aBriefings {
+    GC_Briefing "{6AE1688C35C78DDB}" {
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ {
+  SCR_AIWorld GC_MissionAIWorld : "{CFDC9C151CAB3F8D}Prefabs/AI/SCR_AIWorld_BelleauWood.et" {
+   coords 0 0 0
+  }
+  PerceptionManager {
+   ID "A79C4E0A43DEB826"
+   Flags 0x200003 0
+  }
+ }
+}
+SCR_AIGroup : "{0C678D09E8727B08}Prefabs/Groups/BLUFOR/CDF/Airborne_Modern/Group_CDF_Modern_AirborneWeaponSquad.et" {
+ coords 2984.533 116.807 6946.604
+ m_bPlayable 1
+ m_sGC_ManualCallsign "MANUAL CALLSIGN"
+}
+GC_AOLimitEntity : "{8F470B543A20D944}Prefabs/Logic/Mission/AOLimit.et" {
+ components {
+  GC_MapShapeComponent "{8F470B543A20D964}" {
+   m_bEnabled 1
+   m_bAutoFrameMap 1
+   m_LineColor 0.2 0.5 1 0
+   m_bInvertFill 1
+   m_FillColor 0 0 0 0.973
+  }
+ }
+ coords 3027.644 118.012 6990.377
+ Points {
+  ShapePoint "{6AE1688E7E0667CD}" {
+   Position 1124.676 0 139.891
+  }
+  ShapePoint "{6AE1688E7E8029DA}" {
+   Position -65.156 0 403.334
+  }
+  ShapePoint "{6AE1688E7160AB6D}" {
+   Position -224.642 0 -244.466
+  }
+  ShapePoint "{6AE1688E733C5BAA}" {
+   Position 1016.715 0 -681.046
+  }
+ }
+}
+GenericEntity : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sQuadName "point-of-interest"
+   m_bWorldScale 1
+   m_fSize 100
+   m_Color 0.071 0.192 0.561 1
+   m_sDescription "Blufor Spawn"
+   m_bAlignTextWithMarkerRotation 1
+   m_aFactionKeys {
+    "GC_CDF"
+   }
+  }
+ }
+ coords 2993.11 115.587 6963.825
+ angles 0 -87.076 0
+}
+SCR_AIGroup : "{B892D8E2D17153B7}Prefabs/Groups/BLUFOR/CDF/Airborne_Modern/Group_CDF_Modern_AirborneRifleSquad.et" {
+ coords 2992.067 115.498 6964.589
+ m_bPlayable 1
+}
+SCR_AIGroup : "{DAAD25BD19479F0A}Prefabs/Groups/BLUFOR/CDF/Airborne_Modern/Group_CDF_Modern_AirborneCHQ.et" {
+ coords 3004.991 114.64 6984.906
+ m_bPlayable 1
+}
