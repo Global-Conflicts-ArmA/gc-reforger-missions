@@ -9,6 +9,29 @@ GC_LobbyGameMode GC_RaceMode : "{574505FFEAC812FA}worlds/Perfk/RaceDayKunar/Race
   GC_LobbyManager "{6A137A39106A4973}" {
    m_bSlotsStartLocked 0
    m_aMissionEvents {
+    GC_Event "{4D8B149FC85A5CC6}" {
+     m_sName "Clear course gates"
+     m_aActions {
+      GC_DeleteEntitiesAction "{0BF2FD897CAECC1D}" {
+       m_Radius GC_RadiusDeletion "{9358830BC49A5F43}" {
+        m_sCenter "GC_RaceMetalGate"
+        m_fRadius 10
+        m_aWhitelist {
+         "{1718E28BE8D121A9}Prefabs/Structures/BuildingParts/Doors/DoorSet_MetalGate_04_Big.et"
+        }
+       }
+      }
+      GC_DeleteEntitiesAction "{62FF8C0C41CDD0C8}" {
+       m_Radius GC_RadiusDeletion "{802755577B822F57}" {
+        m_sCenter "GC_RaceBarGate"
+        m_fRadius 10
+        m_aWhitelist {
+         "{07F043DD6AACCD0B}Prefabs/Structures/Infrastructure/Barriers/BarGate_01/BarGate_01.et"
+        }
+       }
+      }
+     }
+    }
     GC_Event "{6664B56611AE97FF}" {
      m_sName "RemoveFence"
      m_aConditions {
