@@ -1,0 +1,156 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 6022.944 59.5 4140.025
+}
+GC_LobbyGameMode GC_RaceMode : "{BBC6DCC0A00078FC}worlds/Perfk/RaceDayRuha/RaceDayRuha_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 7
+   m_iStartingMinutes 30
+  }
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_bSlotsStartLocked 0
+   m_aMissionEvents {
+    GC_Event "{94D8334100000001}" {
+     m_sName "Clear finish line roadblock"
+     m_aActions {
+      GC_DeleteEntitiesAction "{94D8334100000002}" {
+       m_Radius GC_RadiusDeletion "{94D8334100000003}" {
+        m_sCenter "GC_RaceRoadblockCenter"
+        m_fRadius 10
+        m_aWhitelist {
+         "{64C9C1D1C2C1B38D}Prefabs/Props/Infrastructure/Roadblocks/RoadBlock_01.et"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{6664B56611AE97FF}" {
+     m_sName "RemoveFence"
+     m_aConditions {
+      GC_TimerCondition "{D944E3DF2B010001}" {
+       m_fSeconds 60
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{6664B566E4C323FE}" {
+       m_aEntities {
+         "fence_1"
+         "fence_2"
+         "fence_3"
+         "fence_4"
+         "fence_5"
+         "fence_6"
+         "fence_7"
+         "fence_8"
+         "fence_9"
+         "fence_10"
+         "fence_11"
+         "fence_12"
+         "fence_13"
+         "fence_14"
+         "fence_15"
+         "fence_16"
+         "fence_17"
+         "fence_18"
+         "fence_19"
+         "fence_20"
+         "fence_21"
+         "fence_22"
+         "fence_23"
+         "fence_24"
+         "fence_25"
+         "fence_26"
+         "fence_27"
+         "fence_28"
+         "fence_29"
+         "fence_30"
+         "fence_31"
+         "fence_32"
+         "fence_33"
+         "fence_34"
+         "fence_35"
+         "fence_36"
+         "fence_37"
+         "fence_38"
+         "fence_39"
+         "fence_40"
+         "fence_41"
+         "fence_42"
+         "fence_43"
+         "fence_44"
+         "GC_RaceStartingZone"
+       }
+      }
+      GC_MessageAction "{6664B56722D6CC5F}" {
+       m_sTitle "RACE RACE RACE"
+       m_sMessage "RACE RACE RACE"
+      }
+     }
+    }
+    GC_Event "{6664B56D36864AEF}" {
+     m_sName "First racer finished"
+     m_aConditions {
+      GC_AreaCondition "{6664B56D0E1FFB87}" {
+       m_sArea "GC_RaceFinish"
+       m_Targets GC_CharacterAreaTargets "{D944E3DF2B010002}" {
+        m_aFactions {
+         "CIV"
+        }
+       }
+       m_Requirement GC_LivingProportion "{D944E3DF2B010003}" {
+        m_fRequiredProportion 0.01
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6664B56D0A29E963}" {
+       m_sTitle "WINNER"
+       m_sMessage "The first player is across the finish line!"
+      }
+     }
+    }
+    GC_Event "{D944E3DF2B010004}" {
+     m_sName "Finish reminder"
+     m_aConditions {
+      GC_MissionEventCondition "{D944E3DF2B010005}" {
+       m_sEventName "First racer finished"
+      }
+     }
+     m_Advanced GC_EventOptions "{D944E3DF2B010006}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_MessageAction "{6664B56DA651136B}" {
+       m_sTitle "GM's decision"
+       m_sMessage "GM's, please give the other slowpokes a few minutes to try and finish before selecting the next mission."
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 5513.636 58.224 4518.457
+ m_eJipMode DISABLED
+}
+GC_RadiusAreaEntity GC_RaceFinish : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 7689.284 74.265 6514.434
+ m_fRadius 25
+}
+$grp GenericEntity : "{0831D4051CEB3EC1}Prefabs/Props/Airport/JetBlastDeflector_01/JetBlastDeflector_E_01.et" {
+ {
+  coords 7719.703 79.539 6508.509
+  angles 17.828 110.152 0
+ }
+ {
+  coords 7718.207 79.539 6504.432
+  angles 17.828 110.152 0
+ }
+ {
+  coords 7716.692 79.539 6500.301
+  angles 17.828 110.152 0
+ }
+}
+SCR_EditorRestrictionZoneEntity GC_RaceStartingZone : "{EF72FA7CD87618D5}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneSmall.et" {
+ coords 6075.257 60.022 4258.184
+ m_iWarningType SINGLE_PLAYER
+}
