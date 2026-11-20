@@ -1,0 +1,190 @@
+SCR_AIWorld : "{33A5B976E41B0A4C}Prefabs/AI/SCR_AIWorld_BadOrb_GC.et" {
+}
+GC_LobbyGameMode GC_MigratedMission : "{B13E9FF2D63F2E8E}worlds/Elite/PonderingThyOrb/PonderingThyOrb_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 12
+   m_iStartingMinutes 8
+   m_bRandomStartingWeather 1
+   m_iDay 6
+   m_iMonth 6
+   m_iYear 1985
+  }
+  GC_PeakFactionPopulationComponent "{5599D76C953DF9D3}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 180
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{513168FA79DED62D}" {
+     m_sName "Time_Limit (5410s)"
+     m_Advanced GC_EventOptions "{408BEC488DC60A6D}" {
+      m_fDelay 5410
+     }
+     m_aActions {
+      GC_EndMissionAction "{685B9D793D4BE821}" {
+       m_iResult 3
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_CAF"
+       }
+      }
+     }
+    }
+    GC_Event "{9DBA15CF4B1C8CE9}" {
+     m_sName "Time_Limit (4800s)"
+     m_Advanced GC_EventOptions "{991F4C18A3873DBE}" {
+      m_fDelay 4800
+     }
+     m_aActions {
+      GC_MessageAction "{95B03258310AEEBA}" {
+       m_sTitle "Time Limit"
+       m_sMessage "10 minutes left until mission ends."
+      }
+     }
+    }
+    GC_Event "{44B76D3ABE565CB7}" {
+     m_sName "Time_Limit (5400s)"
+     m_Advanced GC_EventOptions "{3705586C68A3C8DA}" {
+      m_fDelay 5400
+     }
+     m_aActions {
+      GC_MessageAction "{EFE9F673F18D4EA7}" {
+       m_sTitle "Time Limit"
+       m_sMessage "Time limit reached, mission ending."
+      }
+     }
+    }
+    GC_Event "{5DD266BDA50B6B7C}" {
+     m_sName "Blufor_Victory"
+     m_aConditions {
+      GC_CustomScriptCondition "{72B2536AA359591E}" {
+       m_Script GC_PeakFactionPopulationCheck "{40322A84942722AE}" {
+        m_sFaction "USSR"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{595E393F899A097D}" {
+       m_sMessage "Blufor_Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{604A1AED9DD01907}" {
+     m_sName "Blufor_Victory (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F13C19925DEFCF0E}" {
+       m_sEventName "Blufor_Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{9EB108C4AFEFB57B}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{87F45596F8AF6856}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{ADDEB077387C4495}" {
+     m_sName "Blufor_Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9F43EE76EDF6656B}" {
+       m_sEventName "Blufor_Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{291A6FA323650387}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{BE9B7E887534A075}" {
+       m_sTitle "BLUFOR Victory"
+       m_sMessage "US has won."
+      }
+     }
+    }
+    GC_Event "{F4FDE92B28E023FF}" {
+     m_sName "Opfor_Victory"
+     m_aConditions {
+      GC_CustomScriptCondition "{06AA606DA6BA0CFC}" {
+       m_Script GC_PeakFactionPopulationCheck "{F977DD4F251A2FAC}" {
+        m_sFaction "US"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{294B51FBC7B730D9}" {
+       m_sMessage "Opfor_Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E2F13FD940EC2A70}" {
+     m_sName "Opfor_Victory (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{474D6C5B7BE09E4A}" {
+       m_sEventName "Opfor_Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{7A171682A714584F}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{FFF11F72E37E8A9E}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "USSR"
+       }
+      }
+     }
+    }
+    GC_Event "{22AA06E291B27255}" {
+     m_sName "Opfor_Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{40E0DBC04F6847D9}" {
+       m_sEventName "Opfor_Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{758DF28B25DCA553}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{0C25A6917182AF4D}" {
+       m_sTitle "OPFOR Victory"
+       m_sMessage "USSR has won."
+      }
+     }
+    }
+    GC_Event "{C9C773891A9C3CBB}" {
+     m_sName "Setup_Timer (180s)"
+     m_Advanced GC_EventOptions "{756049354D52FE9E}" {
+      m_fDelay 180
+     }
+     m_aActions {
+      GC_MessageAction "{4B598D8C9D9C754E}" {
+       m_sTitle "Setup Timer"
+       m_sMessage "Setup has ended."
+      }
+      GC_DeleteEntitiesAction "{B3D831DFF2CDB493}" {
+       m_aEntities {
+        "Blufor_Setup"
+        "Opfor_Setup"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 3603.666 351.735 1618.708
+}
