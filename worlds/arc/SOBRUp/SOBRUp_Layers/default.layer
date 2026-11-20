@@ -1,0 +1,328 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 1173.709 20.656 2617.681
+}
+GC_LobbyGameMode GC_MigratedMission : "{A1AC706477479D2A}worlds/arc/SOBRUp/SOBRUp_GC_Settings.et" {
+ components {
+  GC_PeakFactionPopulationComponent "{C3539EA431C93508}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{A1144E460B1E61BC}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 300
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{C5DA9F5B7EF231DF}" {
+     m_sName "OBJ1MARKED"
+    }
+    GC_MissionFlag "{A202B8984E66ECA7}" {
+     m_sName "OBJ2MARKED"
+    }
+    GC_MissionFlag "{F31928FF1E0C44D6}" {
+     m_sName "OBJ3MARKED"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{ACA705DCD8870464}" {
+     m_sName "RU_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{501873815E557FF7}" {
+       m_Script GC_PeakFactionPopulationCheck "{DE4FF78495CFE5FE}" {
+        m_sFaction "RHS_AFRF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E7BD50556946BE44}" {
+       m_sMessage "RU_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9579CBCB1A3A0C18}" {
+     m_sName "RU_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7AA1E82AE7C78E56}" {
+       m_sEventName "RU_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{59DE73E5E11F8921}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{595E3071A425DA53}" {
+       m_sTitle "SEPARATIST VICTORY"
+       m_sMessage "The SOBR unit has been eliminated."
+      }
+     }
+    }
+    GC_Event "{FDF830EAD49D9EE4}" {
+     m_sName "RU_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A84F8F4041E1BA98}" {
+       m_sEventName "RU_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{A881B764F171F917}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{8D38588381595074}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_SEPARATIST"
+       }
+      }
+     }
+    }
+    GC_Event "{D11699525171F300}" {
+     m_sName "RU_VICTORY"
+     m_aConditions {
+      GC_ConditionGroup "{FDA4762661FE56BD}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{20FB6028F50C825A}" {
+         m_sFlagName "OBJ1MARKED"
+        }
+        GC_MissionFlagCondition "{ECC0E69CE5575DBD}" {
+         m_sFlagName "OBJ2MARKED"
+        }
+        GC_MissionFlagCondition "{BF9B4C0F80B1C9D0}" {
+         m_sFlagName "OBJ3MARKED"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3F0AC6F605412290}" {
+       m_sMessage "RU_VICTORY"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0BC8CB123CF2B7E6}" {
+     m_sName "RU_VICTORY (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7D3E823867FC208E}" {
+       m_sEventName "RU_VICTORY"
+      }
+     }
+     m_Advanced GC_EventOptions "{1B58E8D265204EDC}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{EDA1C3B90E9BFC42}" {
+       m_sTitle "SOBR VICTORY"
+       m_sMessage "All weapons caches have been located and marked."
+      }
+     }
+    }
+    GC_Event "{37D8A5FB5395ECFC}" {
+     m_sName "RU_VICTORY (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{EB00D8D6E451D5A6}" {
+       m_sEventName "RU_VICTORY"
+      }
+     }
+     m_Advanced GC_EventOptions "{0EFFB79025E58EF9}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{A3714CA782529F37}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{FC249FF73DB364EB}" {
+     m_sName "TIME_LIMIT (2705s)"
+     m_Advanced GC_EventOptions "{0C6DD5570133A34E}" {
+      m_fDelay 2705
+     }
+     m_aActions {
+      GC_MessageAction "{8CFE7B6E0450ABFA}" {
+       m_sTitle "SEPARATIST VICTORY"
+       m_sMessage "Time limit reached - the separatists are escaping with the caches."
+      }
+     }
+    }
+    GC_Event "{EE80B9C5F80313E8}" {
+     m_sName "TIME_LIMIT (2715s)"
+     m_Advanced GC_EventOptions "{4A968629DBC21975}" {
+      m_fDelay 2715
+     }
+     m_aActions {
+      GC_EndMissionAction "{F95396B6E870C141}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_SEPARATIST"
+       }
+      }
+     }
+    }
+    GC_Event "{02EDD5F5EBBC7531}" {
+     m_sName "OBJ1MARKED"
+     m_aConditions {
+      GC_MissionFlagCondition "{31BBB12A7E7BF68C}" {
+       m_sFlagName "OBJ1MARKED"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B4EF258B8E8A149C}" {
+       m_sMessage "OBJ1MARKED"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7D80762695F92122}" {
+     m_sName "OBJ1MARKED (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{93F060A960BF5F51}" {
+       m_sEventName "OBJ1MARKED"
+      }
+     }
+     m_Advanced GC_EventOptions "{4EED8188108D87C3}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{A518DC2815512084}" {
+       m_sTitle "CACHE RECOVERED"
+       m_sMessage "SOBR has marked a cache at the eastern safehouse as evidence for recovery."
+      }
+     }
+    }
+    GC_Event "{9E145B54B8A52923}" {
+     m_sName "OBJ2MARKED"
+     m_aConditions {
+      GC_MissionFlagCondition "{2155F536F222022B}" {
+       m_sFlagName "OBJ2MARKED"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E644BA563BB794CD}" {
+       m_sMessage "OBJ2MARKED"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{45319EEA94777F48}" {
+     m_sName "OBJ2MARKED (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{EF463AD9E2B646A2}" {
+       m_sEventName "OBJ2MARKED"
+      }
+     }
+     m_Advanced GC_EventOptions "{917C4421CB380856}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{DBBEA815CA49CB78}" {
+       m_sTitle "CACHE RECOVERED"
+       m_sMessage "SOBR has marked a cache at the northern safehouse as evidence for recovery."
+      }
+     }
+    }
+    GC_Event "{4EAAB20D510B5834}" {
+     m_sName "OBJ3MARKED"
+     m_aConditions {
+      GC_MissionFlagCondition "{05672B176A4F3436}" {
+       m_sFlagName "OBJ3MARKED"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3767C80A6242FC5E}" {
+       m_sMessage "OBJ3MARKED"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{229939680F1D53E1}" {
+     m_sName "OBJ3MARKED (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D41859C8B3B27C9E}" {
+       m_sEventName "OBJ3MARKED"
+      }
+     }
+     m_Advanced GC_EventOptions "{B45F259E874DB228}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{BC75F97AE0C7416A}" {
+       m_sTitle "CACHE RECOVERED"
+       m_sMessage "SOBR has marked a cache at the southern safehouse as evidence for recovery."
+      }
+     }
+    }
+    GC_Event "{7D5F7EEB19D38CD1}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{8C9E193EB56F130C}" {
+       m_fSeconds 300
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{9C437C8A9A4D7508}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+        "GC_MigrationStartingZone2"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 1164.498 20.656 2621.533
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{5977478D568C0922}" {
+        m_sCallsign "2"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{5977478D568C092E}" {
+        m_sCallsign "0"
+       }
+       SCR_CallsignInfo "{5977478D568C092D}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{5977478D568D935E}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{5977478D568D935F}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{62F0A951F82F1DF6}" {
+        m_sCallsign "4"
+       }
+      }
+      m_sCallsignGroupFormat "%1%2%3"
+      m_sCallsignCharacterFormat "%1%2%3: %4"
+      m_sCallsignCharacterWithRoleFormat "%1%2%3: %4"
+     }
+    }
+   }
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 1511.419 20.209 2583.107
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone2 : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 474.815 15.319 2725.236
+ m_fWarnRadius 470
+ m_fZoneRadius 500
+ m_fZoneTeleportedRadius 50
+}

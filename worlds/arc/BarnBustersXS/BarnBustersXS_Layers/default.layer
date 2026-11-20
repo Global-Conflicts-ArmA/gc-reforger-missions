@@ -1,0 +1,253 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F9E52831}" {
+     NavmeshFile "{AD5F99CD7C59D5E0}worlds/GameMaster/Navmeshes/GM_Eden.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F3B4EE8A}" {
+     NavmeshFile "{C35ECF3276824654}worlds/GameMaster/Navmeshes/GM_Eden_vehicles.nmn"
+    }
+   }
+  }
+ }
+ coords 2928.345 0 7935.59
+}
+GC_LobbyGameMode GC_MigratedMission : "{A629090F4EA49A16}worlds/arc/BarnBustersXS/BarnBustersXS_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{646121C634D28884}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 0
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{8946B50EBF597885}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{584295AD24C5128C}" {
+     m_sName "US_CAP_1"
+    }
+    GC_MissionFlag "{E51E9D8DD0B5C683}" {
+     m_sName "US_CAP_2"
+    }
+    GC_MissionFlag "{C16FD89DCC3383F9}" {
+     m_sName "US_CAP_3"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{EFF4C8DB59E13736}" {
+     m_sName "US_CAP"
+     m_aConditions {
+      GC_ConditionGroup "{50E3F9B9D6F75261}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{3C16E613CE9EC5AA}" {
+         m_sFlagName "US_CAP_1"
+        }
+        GC_MissionFlagCondition "{CF9A0BC5D587B32C}" {
+         m_sFlagName "US_CAP_2"
+        }
+        GC_MissionFlagCondition "{BF9083D9AE261DF4}" {
+         m_sFlagName "US_CAP_3"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{ACE490D2DEA07161}" {
+       m_sMessage "US_CAP"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{850DCE7C6398AF92}" {
+     m_sName "US_CAP (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{25EDE2145B429486}" {
+       m_sEventName "US_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{4BB6DA4CCBF6B119}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{BEBA23A4C35BF021}" {
+       m_sTitle "VICTORY"
+       m_sMessage "All caches have been secured by American forces."
+      }
+     }
+    }
+    GC_Event "{FED763EA5426E6B9}" {
+     m_sName "US_CAP (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A1C8546FBBC541B4}" {
+       m_sEventName "US_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{2D657AD978C23D8E}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{E9860F8E43A83BAE}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+    GC_Event "{23727F73AEA01B45}" {
+     m_sName "US_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{52B2FEC6BD15E021}" {
+       m_Script GC_PeakFactionPopulationCheck "{3A74BDF791D1E99C}" {
+        m_sFaction "RHS_USAF"
+        m_fRatio 0.85
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{437B09BF32CB2126}" {
+       m_sMessage "US_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D2EB6F5D8E1B1312}" {
+     m_sName "US_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BCD2045E4D34F9A4}" {
+       m_sEventName "US_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{311FEBA518561BF8}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{13C7590E64FCF97D}" {
+       m_sTitle "DEFEAT"
+       m_sMessage "US forces have taken significant casualties."
+      }
+     }
+    }
+    GC_Event "{5A89DCBBECE2695E}" {
+     m_sName "US_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2DE406F997E82ADB}" {
+       m_sEventName "US_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{8C6E685E2DF98F51}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{0CC4856BD79E35A3}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+    GC_Event "{29BCD3BF1582DD30}" {
+     m_sName "TIME_LIMIT (4805s)"
+     m_Advanced GC_EventOptions "{05A153005117BB71}" {
+      m_fDelay 4805
+     }
+     m_aActions {
+      GC_MessageAction "{2DDC634A7048FB0E}" {
+       m_sTitle "DEFEAT"
+       m_sMessage "Time limit reached."
+      }
+     }
+    }
+    GC_Event "{D28411ADCE9A0F3A}" {
+     m_sName "TIME_LIMIT (4815s)"
+     m_Advanced GC_EventOptions "{25C353BBD5DAF299}" {
+      m_fDelay 4815
+     }
+     m_aActions {
+      GC_EndMissionAction "{3263027BF6515C2B}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 2863.351 0 7933.696
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792CE18FB44}" {
+        m_sCallsign "Super"
+       }
+       SCR_CallsignInfo "{55CCB792CE02ECFA}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{55CCB792CE2A44BD}" {
+        m_sCallsign "4"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{6468B72058332A74}" {
+        m_sCallsign "4"
+       }
+      }
+      m_sCallsignGroupFormat "%2-%3"
+      m_sCallsignCharacterFormat "%2-%3: %4"
+     }
+    }
+    SCR_Faction "{62EB308733CA83DD}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "0"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "2"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
