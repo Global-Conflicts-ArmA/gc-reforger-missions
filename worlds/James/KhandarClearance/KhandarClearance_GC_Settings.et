@@ -2,6 +2,32 @@ GC_LobbyGameMode : "{A79C4E0A43DEB821}Prefabs/MP/Modes/GC_LobbyGameMode.et" {
  ID "9623BCD3A228F596"
  components {
   GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{719E791649C815F6}" {
+     m_sName "Time Limit (event 6, 3900s)"
+     m_Advanced GC_EventOptions "{896048690BC70D46}" {
+      m_fDelay 3900
+     }
+     m_aActions {
+      GC_MessageAction "{6990C1DE4F3DBB1C}" {
+       m_sTitle "Time Limit Reached"
+       m_sMessage "320 this is HQ. You have taken too long. Reorg and await relief from the 3rd company. HQ out."
+      }
+     }
+    }
+    GC_Event "{E130395E59578422}" {
+     m_sName "Artillery (event 7, 300s)"
+     m_Advanced GC_EventOptions "{8D07778C357FD969}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_MessageAction "{0A7A65892B9C49C1}" {
+       m_sTitle "Fire Mission"
+       m_sMessage "320 this is HQ. Battery beginning fire mission now. Wait for its completion and then begin your attack. HQ out."
+      }
+     }
+    }
+   }
    m_aBriefings {
     GC_Briefing "{4DCEACEEDD255898}" {
      m_iOrder 0
