@@ -1,0 +1,327 @@
+SCR_AIWorld : "{3D0FE80570D5BFCC}Prefabs/AI/SCR_AIWorld_Anizay.et" {
+ coords 2463.086 133.613 6078.746
+}
+GC_LobbyGameMode GC_MigratedMission : "{E8F720C121556EA6}worlds/arc/CrashParty/CrashParty_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{645F563F61E16619}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 12
+     m_iStartingMinutes 30
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{1F1C15ED27865711}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{B2504CEBDB1862ED}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 300
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{861A99D4C145A143}" {
+     m_sName "US_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{FAC5586DB6378CF2}" {
+       m_Script GC_PeakFactionPopulationCheck "{7E82970823E0C48A}" {
+        m_sFaction "US"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7961D46C30859C3B}" {
+       m_sMessage "US_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F0B9172BA3A2BAB4}" {
+     m_sName "US_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9365111D2AE09785}" {
+       m_sEventName "US_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{E39EF275A3280DA5}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{D1BA40EEB928A216}" {
+       m_sTitle "INSURGENT VICTORY"
+       m_sMessage "US forces have taken significant casualties."
+      }
+     }
+    }
+    GC_Event "{5212A47C7E7EA0BD}" {
+     m_sName "US_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5D023CD276DD332D}" {
+       m_sEventName "US_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{EE67C900ABDBD24B}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{D75E1F35038C49B0}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_INSURGENT"
+       }
+      }
+     }
+    }
+    GC_Event "{CC0A909EA9B6B90A}" {
+     m_sName "INS_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{CECB9CAFB6F2B8C2}" {
+       m_Script GC_PeakFactionPopulationCheck "{E333770E30B072C0}" {
+        m_sFaction "GC_INSURGENT"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{33D10F3E5F51CE36}" {
+       m_sMessage "INS_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{83997F7E85148B51}" {
+     m_sName "INS_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6F55863585A6902E}" {
+       m_sEventName "INS_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{4A60C75985B216FC}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{4AECB3686E1A3951}" {
+       m_sTitle "US VICTORY"
+       m_sMessage "Insurgent forces are retreating after taking significant casualties."
+      }
+     }
+    }
+    GC_Event "{83B296D4C8BC6586}" {
+     m_sName "INS_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D61C19964EFA7892}" {
+       m_sEventName "INS_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{F0B42F4DC434E250}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{4ECDDD70D71C594F}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{99E80340F567ABBC}" {
+     m_sName "INS_CAP"
+     m_aConditions {
+      GC_AreaCondition "{A1CC7D3B7030C67D}" {
+       m_sArea "GC_MigrationArea_INS_CAP"
+       m_Targets GC_CharacterAreaTargets "{0D0433C3669E5A8B}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_INSURGENT"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{750D32AEE4E9D4A7}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{19D9090A66FBEF53}" {
+        m_fSeconds 180
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+        m_Messages GC_CaptureMessages "{600C94F4734B4C58}" {
+         m_sLocation "the crash site"
+         m_sCaptured "The %1 has taken control of %2."
+         m_sCapturing "The %1 is taking control of %2."
+         m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+         m_sLost "The %1 has lost control of %2."
+         m_sLosing "The %1 is losing control of %2."
+         m_sLossInterrupted "The %1 is no longer losing control of %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{903109E7225B7614}" {
+       m_sMessage "INS_CAP"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CBBD1DC632F7AD28}" {
+     m_sName "INS_CAP (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{82DD76C7229EBA88}" {
+       m_sEventName "INS_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{48EEE8D6ECDF1DC3}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{B279F13F44E977DD}" {
+       m_sTitle "INSURGENT VICTORY"
+       m_sMessage "Insurgents have secured the crash site."
+      }
+     }
+    }
+    GC_Event "{C59F38FF4AF4C96F}" {
+     m_sName "INS_CAP (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{37FA0742D89651A1}" {
+       m_sEventName "INS_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{EF6361C9946ABF1F}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{5D6E01C36F216175}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_INSURGENT"
+       }
+      }
+     }
+    }
+    GC_Event "{59FFF2D911FAD98F}" {
+     m_sName "TIME_LIMIT (3005s)"
+     m_Advanced GC_EventOptions "{1A6CE8E8106D5A41}" {
+      m_fDelay 3005
+     }
+     m_aActions {
+      GC_MessageAction "{2C8DB19C64A5C1ED}" {
+       m_sTitle "US VICTORY"
+       m_sMessage "The extraction convoy has arrived."
+      }
+     }
+    }
+    GC_Event "{7E558732224B58C4}" {
+     m_sName "TIME_LIMIT (3015s)"
+     m_Advanced GC_EventOptions "{D9FEF97E800957BE}" {
+      m_fDelay 3015
+     }
+     m_aActions {
+      GC_EndMissionAction "{49B03DD3579248DA}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{735C908D69A113EF}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{200EC453D20BB3E6}" {
+       m_fSeconds 300
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{0F74DD2C51AE9F72}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 2449.28 132.631 6078.188
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "1"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+      }
+      m_sCallsignGroupFormat "%2-%3"
+      m_sCallsignCharacterFormat "%2-%3: %4"
+      m_sCallsignCharacterWithRoleFormat "%2-%3: %4"
+     }
+    }
+    SCR_Faction "{632925D53C7F1148}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{58B2B630FDD64B65}" {
+        m_sCallsign "Scimitar"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+        m_sCallsign "4"
+       }
+       SCR_CallsignInfo "{645F563B0D54240A}" {
+        m_sCallsign "5"
+       }
+      }
+      m_sCallsignGroupFormat "%2 %3"
+      m_sCallsignCharacterFormat "%2 %3: %4"
+      m_sCallsignCharacterWithRoleFormat "%2 %3: %4"
+     }
+    }
+   }
+  }
+ }
+}
+GC_RadiusAreaEntity GC_MigrationArea_INS_CAP : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 3522.875 133.094 6199.116
+ m_fRadius 25
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 3878.802 136.744 6935.797
+ m_fWarnRadius 100
+ m_fZoneRadius 115
+ m_fZoneTeleportedRadius 125
+}
