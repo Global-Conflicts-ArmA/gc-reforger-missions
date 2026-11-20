@@ -1,0 +1,128 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{69642287B1B42983}" {
+     NavmeshFile "{E08B16AADAB901D8}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Soldier.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{04F808CEFD545B32}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Vehicle.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{6D7CE9C2F346F22E}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_LowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 5969.771 300.245 5367.422
+}
+SCR_MapEntity MapEntity1 : "{731564B66F91B107}Prefabs/World/Game/MapEntity.et" {
+ "Map Geometry Data" "{0C931F860C09AC4C}Worlds/Bystrany/Bystrany.topo"
+ "Satellite background image" "{10EB7E9261F936BC}UI/Textures/Map/Worlds/Bystrany/Bystrany_Rasterized_Enhanced.edds"
+}
+GC_LobbyGameMode GC_HneviceMode : "{ECFF1965DFAC691F}worlds/Corax/Hnevice/Hnevice_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 6
+   m_iStartingMinutes 30
+   m_bRandomStartingDaytime 1
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{689B1CA005BD63B3}" {
+     m_sWeatherPresetName "Rainy"
+     m_iStartingHour 5
+     m_iStartingMinutes 45
+    }
+   }
+   m_bUseSpecifiedDate 1
+   m_iSetMonth 4
+   m_iSetYear 1987
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 120
+  }
+  GC_PeakFactionPopulationComponent "{0CE7295EFC7D7A34}" {
+  }
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{1FC1EAB804C83B78}" {
+     m_sName "San_Serriffe reached casualty threshold"
+     m_aConditions {
+      GC_CustomScriptCondition "{32F86615FEFC5277}" {
+       m_Script GC_PeakFactionPopulationCheck "{748EC790BA9DF053}" {
+        m_sFaction "San_Serriffe"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D153574647649042}" {
+       m_sMessage "San_Serriffe reached casualty threshold"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{504D028553E75355}" {
+     m_sName "San_Serriffe reached casualty threshold notification"
+     m_aConditions {
+      GC_MissionEventCondition "{E055271079B0FCD1}" {
+       m_sEventName "San_Serriffe reached casualty threshold"
+      }
+     }
+     m_Advanced GC_EventOptions "{9E45DE32EE6E99A8}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{C786B2401728A466}" {
+       m_sTitle "Donovian Victory "
+       m_sMessage "San seriffe force have been made combat inefective"
+      }
+     }
+    }
+    GC_Event "{689BE195CA618C13}" {
+     m_sName "GC_DON reached casualty threshold"
+     m_aConditions {
+      GC_CustomScriptCondition "{AFE42B5B5CF9C69B}" {
+       m_Script GC_PeakFactionPopulationCheck "{603A855355A8B27F}" {
+        m_sFaction "GC_DON"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{400217C4F915D3B4}" {
+       m_sMessage "GC_DON reached casualty threshold"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FA92F6B9DED6F741}" {
+     m_sName "GC_DON reached casualty threshold notification"
+     m_aConditions {
+      GC_MissionEventCondition "{9E4F1EE9F15B8B0A}" {
+       m_sEventName "GC_DON reached casualty threshold"
+      }
+     }
+     m_Advanced GC_EventOptions "{9E4F0F05F1615AFA}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{F3945B712FA2476C}" {
+       m_sTitle "San seriffe Victory "
+       m_sMessage "Donovian force have been made combat inefective"
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 2161.418 14.603 -3370.065
+}
