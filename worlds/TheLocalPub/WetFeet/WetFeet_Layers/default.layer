@@ -1,0 +1,258 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 474.303 79.392 4928.163
+}
+PerceptionManager PerceptionManager2 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 331.275 83.25 4984.218
+}
+SCR_MapEntity MapEntity1 : "{731564B66F91B107}Prefabs/World/Game/MapEntity.et" {
+ coords 395.79 66.44 5017.333
+}
+GC_LobbyGameMode GC_WetFeetMode : "{00E80DA72F30DAC5}worlds/TheLocalPub/WetFeet/WetFeet_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{68F7561F8BFE4833}" {
+     m_sWeatherPresetName "Rainy"
+    }
+   }
+   m_bRandomWeatherChanges 1
+   m_bUseSpecifiedDate 1
+   m_iSetDay 23
+   m_iSetMonth 7
+   m_iSetYear 2021
+  }
+  GC_PeakFactionPopulationComponent "{1212A81920E5BAE8}" {
+  }
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{CEC9A379615A8501}" {
+     m_sName "HamletSecuredWin"
+     m_aConditions {
+      GC_AreaCondition "{F53B8A1A1A802D4B}" {
+       m_sArea "CAPZone"
+       m_Targets GC_CharacterAreaTargets "{9C964E7F4706DFBC}" {
+        m_aFactions {
+         "UK"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{56A5E7239B3AAB00}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{5811050B0D6659EB}" {
+        m_fSeconds 360
+        m_iInterruption 3
+        m_Messages GC_CaptureMessages "{062DD07D26279FAA}" {
+         m_sLocation ""
+         m_sCaptured "British forces have secured the hamlet"
+         m_sCapturing "British forces have entered the hamlet"
+         m_sCaptureInterrupted "British forces have been dislodged from the hamlet"
+         m_sLost ""
+         m_sLosing ""
+         m_sLossInterrupted ""
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{796C2651A9DF1649}" {
+       m_sMessage "HamletSecuredWin"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B0A7EE935CC26E51}" {
+     m_sName "HamletSecuredWin announcement (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{658667A368BE5F5E}" {
+       m_sEventName "HamletSecuredWin"
+      }
+     }
+     m_Advanced GC_EventOptions "{198FD03690BCE347}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{3371C610E4FB0347}" {
+       m_sTitle "BRITISH VICTORY"
+       m_sMessage "Well done chaps!"\
+       "We've managed to dislodge the Separatist cell from the hamlet and once again open up the supply route into the Ruha region."\
+       ""\
+       "Good job."\
+       "Mission will end soon.."
+       m_aFactions {
+        "UK"
+       }
+      }
+      GC_MessageAction "{CD9382B9C0C134AE}" {
+       m_sTitle "BRITISH VICTORY"
+       m_sMessage "Oh no we've lost control of the hamlet!"\
+       "British forces have managed to dislodge us from the hamlet and have once again opened up the supply route into Ruha."\
+       ""\
+       "Better luck next time."\
+       "Mission will end soon.."
+       m_aFactions {
+        "GC_SEPARATIST"
+       }
+      }
+      GC_EventControlAction "{C3BD5F705DA1439C}" {
+       m_sEventName "SepDead"
+       m_iOperation 1
+      }
+      GC_EventControlAction "{3F88D8A0E2FFBF5E}" {
+       m_sEventName "BritDead"
+       m_iOperation 1
+      }
+     }
+    }
+    GC_Event "{6B762E7A1E2F0614}" {
+     m_sName "SepDead"
+     m_aConditions {
+      GC_CustomScriptCondition "{4A290DF19E6E1D3D}" {
+       m_Script GC_PeakFactionPopulationCheck "{01DBF25457DCFB7D}" {
+        m_sFaction "GC_SEPARATIST"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{BD2A5AE1024AE065}" {
+       m_sMessage "SepDead"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C72B76252B92B617}" {
+     m_sName "SepDead announcement (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{ABAFA8E2F95D5A19}" {
+       m_sEventName "SepDead"
+      }
+     }
+     m_Advanced GC_EventOptions "{9E5B9EA174A5FBE7}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{A960C4A855703A8E}" {
+       m_sTitle "BRITISH VICTORY"
+       m_sMessage "Well done chaps!"\
+       "We've destroy the Separatist cell and thus managed to also secure the hamlet in the process."\
+       ""\
+       "Good job."\
+       "Mission will end soon.."
+       m_aFactions {
+        "UK"
+       }
+      }
+      GC_MessageAction "{1E7B2CF76860B239}" {
+       m_sTitle "BRITISH VICTORY"
+       m_sMessage "We've been decimated!"\
+       "British forces have destroyed our cell. Hopefully our names will live on with the cause."\
+       ""\
+       "Better luck next time."\
+       "Mission will end soon.."
+       m_aFactions {
+        "GC_SEPARATIST"
+       }
+      }
+      GC_EventControlAction "{4680C3B274072803}" {
+       m_sEventName "HamletSecuredWin"
+       m_iOperation 1
+      }
+      GC_EventControlAction "{E3E3A86C8C02FDA8}" {
+       m_sEventName "BritDead"
+       m_iOperation 1
+      }
+     }
+    }
+    GC_Event "{1C29EAE997AE275C}" {
+     m_sName "BritDead"
+     m_aConditions {
+      GC_CustomScriptCondition "{51BED12FE9D05DA4}" {
+       m_Script GC_PeakFactionPopulationCheck "{FDA1B3D00DF4C27C}" {
+        m_sFaction "UK"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3AE1CEB5B906BC88}" {
+       m_sMessage "BritDead"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F985CB7648933D1F}" {
+     m_sName "BritDead announcement (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{0D4026D16E1ED0E1}" {
+       m_sEventName "BritDead"
+      }
+     }
+     m_Advanced GC_EventOptions "{6DBC7BA812E077BB}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{F29C81770896F2D6}" {
+       m_sTitle "SEPARATIST VICTORY"
+       m_sMessage "This is tragic. So many deaths..."\
+       "Our platoon has been made combat infeffective and the order to withdraw has been given."\
+       ""\
+       "Better luck next time."\
+       "Mission will end soon.."
+       m_aFactions {
+        "UK"
+       }
+      }
+      GC_MessageAction "{D21FDB452DE3A4A3}" {
+       m_sTitle "SEPARATIST VICTORY"
+       m_sMessage "Well done everyone, we smashed them!"\
+       "British forces have withdrawn after becoming combat ineffective."\
+       ""\
+       "Very good job."\
+       "Mission will end soon.."
+       m_aFactions {
+        "GC_SEPARATIST"
+       }
+      }
+      GC_EventControlAction "{103127384603046F}" {
+       m_sEventName "HamletSecuredWin"
+       m_iOperation 1
+      }
+      GC_EventControlAction "{9EF66B3E777D476C}" {
+       m_sEventName "SepDead"
+       m_iOperation 1
+      }
+     }
+    }
+    GC_Event "{7E4B9DB50FDA8E5D}" {
+     m_sName "Clear WetFeet fortification trees"
+     m_aActions {
+      GC_DeleteEntitiesAction "{C33ECEDF1DD3B0A2}" {
+       m_Radius GC_RadiusDeletion "{E7BF824DAB19E658}" {
+        m_sCenter "GC_WetFeetTree1"
+        m_fRadius 1
+        m_aWhitelist {
+         "{306B11841F13B7BC}Prefabs/Vegetation/Tree/t_picea_abies/t_picea_abies_1s.et"
+        }
+       }
+      }
+      GC_DeleteEntitiesAction "{DF0A83CD1FF62950}" {
+       m_Radius GC_RadiusDeletion "{292E7A6F274604AE}" {
+        m_sCenter "GC_WetFeetTree2"
+        m_fRadius 2
+        m_aWhitelist {
+         "{5C594649DBDD5EAE}Prefabs/Vegetation/Tree/t_betula_pendula/t_betula_pendula_2s.et"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 395.79 66.44 5017.333
+}
+GC_RadiusAreaEntity CAPZone : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 6219.688 54.094 8123.287
+ m_fRadius 93.2
+}
