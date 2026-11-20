@@ -28,6 +28,8 @@ GC_LobbyGameMode GC_BreachMode : "{74DF4D776799CA80}worlds/Corax/Breach and clea
   GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
    m_iAuthoredCountdownSeconds 60
   }
+  GC_PeakFactionPopulationComponent "{1BB163DABD832951}" {
+  }
   GC_LobbyManager "{6A137A39106A4973}" {
    m_aMissionEvents + {
     GC_Event "{7532B22DF9A18354}" {
@@ -42,6 +44,41 @@ GC_LobbyGameMode GC_BreachMode : "{74DF4D776799CA80}worlds/Corax/Breach and clea
        m_aEntities {
         "GC_BreachStartingZone"
        }
+      }
+     }
+    }
+    GC_Event "{88D0362956545A7B}" {
+     m_sName "RHS_AFRF reached casualty threshold"
+     m_aConditions {
+      GC_CustomScriptCondition "{8A29AB170B9BC1EF}" {
+       m_Script GC_PeakFactionPopulationCheck "{DE1A48118765BB61}" {
+        m_sFaction "RHS_AFRF"
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8DB85BBFA4E7FC49}" {
+       m_sMessage "RHS_AFRF reached casualty threshold"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CC390D5585356B1B}" {
+     m_sName "RHS_AFRF reached casualty threshold notification"
+     m_aConditions {
+      GC_MissionEventCondition "{094F571C2CF28DDF}" {
+       m_sEventName "RHS_AFRF reached casualty threshold"
+      }
+     }
+     m_Advanced GC_EventOptions "{554900EE9362C90F}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_MessageAction "{95E299FBBB15C832}" {
+       m_sTitle "MISSION END"
+       m_sMessage "End conditions have been met:"\
+       "U.S. Armed Forces victory."
       }
      }
     }
