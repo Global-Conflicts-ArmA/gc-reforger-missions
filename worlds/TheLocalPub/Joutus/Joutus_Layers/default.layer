@@ -1,0 +1,132 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 4244.106 58.186 2455.459
+}
+GC_LobbyGameMode GC_MigratedMission : "{DD8174BFFFE27AC1}worlds/TheLocalPub/Joutus/Joutus_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6A3CCABE7D07FF67}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 13
+     m_iStartingMinutes 35
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 28
+   m_iMonth 5
+   m_iYear 2025
+  }
+  GC_PeakFactionPopulationComponent "{F02158A2360330ED}" {
+  }
+  GC_LivingAndDeadAIComponent "{DCF4CEDD80E88FC8}" {
+   m_sFaction "FIA"
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{EDA4E612C3954C71}" {
+     m_sName "FIAWin"
+     m_aConditions {
+      GC_CustomScriptCondition "{EA90E3BCAEACB0C3}" {
+       m_Script GC_PeakFactionPopulationCheck "{6AF50914AFE43A7F}" {
+        m_sFaction "GC_CAF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{AB331335C54079D9}" {
+       m_sMessage "FIAWin"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B66286E90C80784A}" {
+     m_sName "FIAWin (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BA8A800BFB360B30}" {
+       m_sEventName "FIAWin"
+      }
+     }
+     m_Advanced GC_EventOptions "{0B1555215C695C57}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{8EA674DAE2104F4D}" {
+       m_sTitle "FIA VICTORY"
+       m_sMessage "FIA forces have managed to repel the Canadian assault."\
+       "Maybe they can break out and live another day."\
+       ""\
+       "Well done."\
+       "Mission will conclude shortly..."
+      }
+     }
+    }
+    GC_Event "{8FAC1B59B9B93750}" {
+     m_sName "CAFWin"
+     m_aConditions {
+      GC_ConditionGroup "{3813B315375DD12C}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{824DD6389E147666}" {
+         m_sArea "Trigger_Cap"
+         m_Targets GC_CharacterAreaTargets "{43922BED7A122E43}" {
+          m_iWho 2
+          m_aFactions {
+           "GC_CAF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{81D204022FE5A13D}" {
+          m_fRequiredShare 0.1
+          m_aIgnoredFactions {
+           "FIA"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{2B27EC116822C5EA}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_CustomScriptCondition "{7034E951549CE6CD}" {
+         m_Script GC_LivingAndDeadAICheck "{F9C659BD8B7920AF}" {
+          m_fRatio 0.93
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6D3ED762472B20E4}" {
+       m_sMessage "CAFWin"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{31C737F9AB2307A7}" {
+     m_sName "CAFWin (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8AC4F09D725D0328}" {
+       m_sEventName "CAFWin"
+      }
+     }
+     m_Advanced GC_EventOptions "{E069BD1B5D879B93}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{FA28344E79D0F52D}" {
+       m_sTitle "CAF VICTORY"
+       m_sMessage "CAF forces have managed sweep and clear the area of Joutkallio, destroying the FIA cell."\
+       ""\
+       "Well done."\
+       "Mission will conclude shortly..."
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 4211.768 58.847 2319.652
+}
