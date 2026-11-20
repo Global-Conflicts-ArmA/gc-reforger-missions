@@ -1,0 +1,133 @@
+SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
+ coords 7663.464 279.531 7479.584
+}
+GC_LobbyGameMode GC_MigratedMission : "{3C6AB1C4B3FA672E}worlds/TheLocalPub/WeHateStairsExpress/WeHateStairsExpress_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 7
+   m_iStartingMinutes 15
+   m_bRandomStartingWeather 1
+   m_bRandomWeatherChanges 1
+   m_bDateOverride 1
+   m_iDay 14
+   m_iMonth 10
+   m_iYear 2018
+  }
+  GC_PeakFactionPopulationComponent "{D88DD722B002DA31}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{27C4CBEED679F09C}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 10
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{13B6DA0AE7756332}" {
+     m_sName "RU Victory"
+     m_aConditions {
+      GC_CustomScriptCondition "{3BE33F86A5C7A9D3}" {
+       m_Script GC_PeakFactionPopulationCheck "{B193389270D2F687}" {
+        m_sFaction "FIA"
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{11C88D75DAE1624C}" {
+       m_sMessage "RU Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A99B4762A6F70855}" {
+     m_sName "RU Victory (2.5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{FEDA4D8C0C9D517E}" {
+       m_sEventName "RU Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{7B03A636C2CA53AA}" {
+      m_fDelay 2.5
+     }
+     m_aActions {
+      GC_MessageAction "{1909D4C78C0179E3}" {
+       m_sTitle "RUSSIAN VICTORY"
+       m_sMessage "SOBR forces have managed to retake the coal refinery by destroying the whole FIA cell. "\
+       ""\
+       "Very good job."\
+       "Mission will conclude shortly.."
+      }
+     }
+    }
+    GC_Event "{2F320ABA4F016A5D}" {
+     m_sName "FIA Victory"
+     m_aConditions {
+      GC_CustomScriptCondition "{45286DBCCE68E55B}" {
+       m_Script GC_PeakFactionPopulationCheck "{6BB50EDDB2C55B82}" {
+        m_sFaction "RHS_AFRF"
+        m_fRatio 0.85
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{334076E93CD36BC7}" {
+       m_sMessage "FIA Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{594840C5A26FCE05}" {
+     m_sName "FIA Victory (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{FA9542A1537BA3FB}" {
+       m_sEventName "FIA Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{DBCA72CFC361CEA4}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_MessageAction "{A35A7AEDD5E0105C}" {
+       m_sTitle "COAL MINER VICTORY"
+       m_sMessage "The miners have inflicted enough casualties to forces Russian SOBR forces to withdraw. This will give them time to breakout and escape the refinery."\
+       ""\
+       "Very good job."\
+       "Mission will conclude shortly.."
+      }
+     }
+    }
+    GC_Event "{943A000C1D580240}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{8770A534CA3FD552}" {
+       m_fSeconds 10
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{7A9FDE12C099A018}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+        "GC_MigrationStartingZone2"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 7669.062 278.286 7484.072
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D132400B}" {
+     UIInfo SCR_FactionUIInfo "{5570936866E0AD08}" {
+      Name "Angry Miners"
+      m_sNameUpper "ANGRY MINERS"
+     }
+    }
+   }
+  }
+ }
+}
