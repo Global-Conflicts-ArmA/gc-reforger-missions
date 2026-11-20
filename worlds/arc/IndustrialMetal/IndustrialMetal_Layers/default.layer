@@ -1,0 +1,191 @@
+SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
+ coords 7759.032 0 4013.224
+}
+PerceptionManager PerceptionManager2 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 7800.26 0 4023.763
+}
+SCR_MapEntity MapEntity1 : "{731564B66F91B107}Prefabs/World/Game/MapEntity.et" {
+ coords 7778.027 0 3997.521
+}
+GC_LobbyGameMode GC_IndustrialMode : "{0BC06F5ED4A3CAB4}worlds/arc/IndustrialMetal/IndustrialMetal_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66E3761341CE331C}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 16
+     m_iStartingMinutes 30
+    }
+   }
+   m_bDateOverride 1
+   m_iMonth 8
+   m_iYear 2025
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{F77BD4200E1FC635}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 180
+  }
+  GC_PeakFactionPopulationComponent "{D619706DC7856552}" {
+  }
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{598F71DD7251525F}" {
+     m_sName "TIME_LIMIT (2885s)"
+     m_Advanced GC_EventOptions "{AD936B431375CFDC}" {
+      m_fDelay 2885
+     }
+     m_aActions {
+      GC_MessageAction "{CEA6E75B7162F4F5}" {
+       m_sTitle "CDF VICTORY"
+       m_sMessage "Time limit reached."
+      }
+     }
+    }
+    GC_Event "{34D40779D40B6574}" {
+     m_sName "TIME_LIMIT (2895s)"
+     m_Advanced GC_EventOptions "{6C02B2BBFF4C3903}" {
+      m_fDelay 2895
+     }
+     m_aActions {
+      GC_EndMissionAction "{23541FA66AB6BBFA}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_CDF"
+       }
+      }
+     }
+    }
+    GC_Event "{A7B557651A1C041D}" {
+     m_sName "RU_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{6D048010151073F4}" {
+       m_Script GC_PeakFactionPopulationCheck "{50A60AFDF22172FC}" {
+        m_sFaction "RHS_AFRF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{59C1AABF092A4C68}" {
+       m_sMessage "RU_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{EDEBB300B2449DAA}" {
+     m_sName "RU_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2B465D94BE6AB8A2}" {
+       m_sEventName "RU_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{F4243AA8D50D6C3A}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{C2B3309F0A6E3810}" {
+       m_sTitle "CDF VICTORY"
+       m_sMessage "Russian forces have taken significant casualties."
+      }
+     }
+    }
+    GC_Event "{5E709D477D82C43F}" {
+     m_sName "RU_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A42960E5A8F4DBEB}" {
+       m_sEventName "RU_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{C8AA0AD95DB89EA5}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{41B6B336B922A61F}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_CDF"
+       }
+      }
+     }
+    }
+    GC_Event "{FBBBCADA205D6F72}" {
+     m_sName "CDF_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{3FB18CCBDB8F5D36}" {
+       m_Script GC_PeakFactionPopulationCheck "{C1C7C68684770967}" {
+        m_sFaction "GC_CDF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{66DF49E1954415E4}" {
+       m_sMessage "CDF_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8C1385FB7DE54AF7}" {
+     m_sName "CDF_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5FA0B9A7DA1A6869}" {
+       m_sEventName "CDF_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{891E3F490C89F48F}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{ACD8AB3756F9AD82}" {
+       m_sTitle "AFRF VICTORY"
+       m_sMessage "The CDF has taken significant casualties."
+      }
+     }
+    }
+    GC_Event "{19CC440B834686BA}" {
+     m_sName "CDF_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{43416088ED4D5744}" {
+       m_sEventName "CDF_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{2E93AB9D422CF681}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{4C6A3D2821C1B421}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{B6C5D51195B06F23}" {
+     m_sName "Release Industrial Metal staging zone"
+     m_aConditions {
+      GC_TimerCondition "{D6A74C54112817E3}" {
+       m_fSeconds 180
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{E012F0491FE69517}" {
+       m_aEntities {
+        "GC_IndustrialStartingZone"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 7778.027 0 3997.521
+}
+SCR_EditorRestrictionZoneEntity GC_IndustrialStartingZone : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 6631.145 25.154 3905.466
+}
