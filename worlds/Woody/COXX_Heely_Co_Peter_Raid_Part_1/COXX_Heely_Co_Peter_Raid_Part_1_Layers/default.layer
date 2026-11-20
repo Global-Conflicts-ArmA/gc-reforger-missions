@@ -1,0 +1,153 @@
+SCR_AIWorld : "{E2A016456BBC697D}Prefabs/SCR_AIWorld_Kunar.et" {
+}
+GC_LobbyGameMode GC_MigratedMission : "{32C4D44288C7382D}worlds/Woody/COXX_Heely_Co_Peter_Raid_Part_1/COXX_Heely_Co_Peter_Raid_Part_1_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{65FB7A76D0EAB887}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 15
+    }
+    SCR_TimeAndWeatherState "{65FB7A76D2451D60}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 0
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{82CE13B651750E43}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{ABBC98C2352D389C}" {
+     m_sName "US W"
+     m_aConditions {
+      GC_ConditionGroup "{65FFB1BE21A1FFAF}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{35C07DC276ADC94C}" {
+         m_sArea "GC_MigrationArea_obj1"
+         m_Targets GC_CharacterAreaTargets "{C450E4DD67CA1026}" {
+          m_iWho 2
+          m_aFactions {
+           "RHS_USAF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{CBBC2AA4A1092FD9}" {
+          m_fRequiredShare 0.9
+         }
+         m_Capture GC_AreaCaptureOptions "{131D8A905BBD6569}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{404966F31E5A7A09}" {
+           m_sLocation "an objective"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{6F8BE171D0952DB7}" {
+         m_sArea "GC_MigrationArea_obj2"
+         m_Targets GC_CharacterAreaTargets "{1D228C12EE2C87C8}" {
+          m_iWho 2
+          m_aFactions {
+           "RHS_USAF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{299D53A4EF66148C}" {
+          m_fRequiredShare 0.9
+         }
+         m_Capture GC_AreaCaptureOptions "{F258F69973D4E023}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_Messages GC_CaptureMessages "{434BD660496D3597}" {
+           m_sLocation "an objective"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5D4C7B65942CD62F}" {
+       m_sMessage "US W"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9BA675DFFD36D4DE}" {
+     m_sName "US W (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DA243E4130DA834D}" {
+       m_sEventName "US W"
+      }
+     }
+     m_Advanced GC_EventOptions "{14131B7A234C1D6A}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_EndMissionAction "{A4334493133770ED}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+    GC_Event "{A6203B23A46A2EBD}" {
+     m_sName "US L"
+     m_aConditions {
+      GC_CustomScriptCondition "{91FADCCB6928090C}" {
+       m_Script GC_PeakFactionPopulationCheck "{AAAE67B47146B0E9}" {
+        m_sFaction "RHS_USAF"
+        m_fRatio 0.75
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C0D062AF54CFEC09}" {
+       m_sMessage "US L"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{460ACB0C515C4A60}" {
+     m_sName "US L (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{928DF93ABA2D6C86}" {
+       m_sEventName "US L"
+      }
+     }
+     m_Advanced GC_EventOptions "{17E69C0518E732C5}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_EndMissionAction "{9E30DD189D4411C9}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 3227.809 342.328 1503.73
+}
