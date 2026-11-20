@@ -1,0 +1,309 @@
+GC_LobbyGameMode GC_ForeignExchangeStudentsMode : "{CB4B576680BAC65D}worlds/arc/ForeignExchangeStudents/ForeignExchangeStudents_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{64470AF5257ACCE9}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 17
+     m_iStartingMinutes 45
+    }
+   }
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{F77BD4200E1FC635}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 180
+  }
+  GC_PeakFactionPopulationComponent "{FB63CAE88BC950A7}" {
+  }
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{FA8C4BBBE5E3F5EF}" {
+     m_sName "UK_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{AD352FF8C7B38126}" {
+       m_Script GC_PeakFactionPopulationCheck "{F307C2ED62D9198D}" {
+        m_sFaction "UK"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8706B44848D0CD44}" {
+       m_sMessage "UK_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B0428C9E2863D72B}" {
+     m_sName "UK_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7B4705AA147DB2D2}" {
+       m_sEventName "UK_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{0C6E2791C5D441AF}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{4331B48C16F4ABA1}" {
+       m_sTitle "AMERICAN VICTORY"
+       m_sMessage "British forces defending the compound have been eliminated."
+      }
+     }
+    }
+    GC_Event "{3E58FC9DB12538F8}" {
+     m_sName "UK_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{06FB6B34197B221F}" {
+       m_sEventName "UK_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{A0CB071B57C9B534}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{2EFA19AF311B0A7D}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{AEA1239B431C7B56}" {
+     m_sName "US_CAP"
+     m_aConditions {
+      GC_AreaCondition "{E180914B1D2F7BA7}" {
+       m_sArea "GC_ArcCapture"
+       m_Targets GC_CharacterAreaTargets "{F0606346B8079F1A}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{93A5765C799E09FE}" {
+        m_fRequiredShare 0.75
+       }
+       m_Capture GC_AreaCaptureOptions "{0B3B3EDD7AC81A3E}" {
+        m_fSeconds 120
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+        m_Messages GC_CaptureMessages "{218F04D9677B0D17}" {
+         m_sLocation "the location"
+         m_sCaptured "The %1 has taken control of %2."
+         m_sCapturing "The %1 is taking control of %2."
+         m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+         m_sLost "The %1 has lost control of %2."
+         m_sLosing "The %1 is losing control of %2."
+         m_sLossInterrupted "The %1 is no longer losing control of %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A7C6BD846C9086D5}" {
+       m_sMessage "US_CAP"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{59FA6B3FD95516C9}" {
+     m_sName "US_CAP (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{29713ABC3328048A}" {
+       m_sEventName "US_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{05B495EECB00861E}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{C7B22A9CE08D1114}" {
+       m_sTitle "AMERICAN VICTORY"
+       m_sMessage "The compound has been seized by American forces."
+      }
+     }
+    }
+    GC_Event "{0104FAAFCE6D0D9B}" {
+     m_sName "US_CAP (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4811A6B634D63C14}" {
+       m_sEventName "US_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{64815FDBE1110BE2}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{2261910B0B7A571E}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{201A5FA769BDE1B0}" {
+     m_sName "US_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{20BF7753BC342F9E}" {
+       m_Script GC_PeakFactionPopulationCheck "{1CCE65A3FD305178}" {
+        m_sFaction "US"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C27F9380BDA9F1E3}" {
+       m_sMessage "US_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D5906E4D21719E3D}" {
+     m_sName "US_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{493A6A3C6695CA4A}" {
+       m_sEventName "US_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{B5AB4BFB01F6A06B}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{5E8AF5B123765457}" {
+       m_sTitle "BRITISH VICTORY"
+       m_sMessage "American forces have been eliminated."
+      }
+     }
+    }
+    GC_Event "{FB66EC58F42045E7}" {
+     m_sName "US_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{234C34D8C3A0C93B}" {
+       m_sEventName "US_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{40FB12CCD76C184B}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{D20BCA3E8C3FB31D}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{2B0E7E6D763574D6}" {
+     m_sName "TIME_LIMIT (1985s)"
+     m_Advanced GC_EventOptions "{66BA72C72869C2C3}" {
+      m_fDelay 1985
+     }
+     m_aActions {
+      GC_MessageAction "{AC5F0E6A32E69EF0}" {
+       m_sTitle "BRITISH VICTORY"
+       m_sMessage "Time limit reached."
+      }
+     }
+    }
+    GC_Event "{A4DDB673AA0205E6}" {
+     m_sName "TIME_LIMIT (1995s)"
+     m_Advanced GC_EventOptions "{0CB18A78FB92420F}" {
+      m_fDelay 1995
+     }
+     m_aActions {
+      GC_EndMissionAction "{258FE131D606EDD6}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{D1DEEA6BBCB2F03A}" {
+     m_sName "Release staging zone"
+     m_aConditions {
+      GC_TimerCondition "{10BD8D5AE770A116}" {
+       m_fSeconds 180
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{FBEE5B094CC1E22F}" {
+       m_aEntities {
+        "GC_ArcStartingZone"
+        "GC_ArcStartingZone2"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 1160.369 104.169 855.545
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "1"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{64470AF0D1BD8E4B}" {
+        m_sCallsign "4"
+       }
+      }
+      m_sCallsignGroupFormat "%2-%3"
+      m_sCallsignCharacterFormat "%2-%3: %4"
+      m_sCallsignCharacterWithRoleFormat "%2-%3: %4"
+     }
+    }
+    SCR_Faction "{61500924662B6062}" {
+     FactionColor 0.561 0.071 0.071 1
+     m_OutlineFactionColor 0.07 0.012 0.012 1
+     m_NotificationFactionColor 0.561 0.071 0.071 1
+     m_NotificationTextFactionColor 0.561 0.071 0.071 1
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity GC_ArcStartingZone : "{6144B0BE2EAC6897}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneMedium.et" {
+ coords 1742.752 126.383 227.428
+}
+SCR_EditorRestrictionZoneEntity GC_ArcStartingZone2 : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 1089.997 107.693 694.579
+ m_fWarnRadius 280
+ m_fZoneRadius 300
+ m_fZoneTeleportedRadius 320
+}
+GC_RadiusAreaEntity GC_ArcCapture : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 1085.602 106.629 698.088
+ m_fRadius 28
+}
