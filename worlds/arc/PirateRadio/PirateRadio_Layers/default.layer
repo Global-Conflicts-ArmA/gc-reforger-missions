@@ -1,0 +1,290 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 7071.97 96.656 1329.173
+}
+GC_LobbyGameMode GC_MigratedMission : "{1A0E2A11D502F94F}worlds/arc/PirateRadio/PirateRadio_GC_Settings.et" {
+ components {
+  GC_PeakFactionPopulationComponent "{B9A73F955692E9EB}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{593875A38DAD548F}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 180
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{402D75EE18091E74}" {
+     m_sName "ASSIGN_WAYPOINTS (5s)"
+     m_Advanced GC_EventOptions "{16B9F7337BDD48D5}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_AssignWaypointsAction "{236D6F9AB8265BC7}" {
+       m_sGroupName "OBJ1SQD1"
+       m_aWaypoints {
+        "OBJ1SQD1WP"
+       }
+      }
+      GC_AssignWaypointsAction "{E1BC33D516C9B127}" {
+       m_sGroupName "OBJ1SQD2"
+       m_aWaypoints {
+        "OBJ1SQD2WP"
+       }
+      }
+      GC_AssignWaypointsAction "{D4F85A50746F5643}" {
+       m_sGroupName "OBJ1PHQ"
+       m_aWaypoints {
+        "OBJ1PHQWP"
+       }
+      }
+      GC_AssignWaypointsAction "{939D8EC71D0E4A08}" {
+       m_sGroupName "OBJ1EXTRA"
+       m_aWaypoints {
+        "OBJ1EXTRAWP"
+       }
+      }
+      GC_AssignWaypointsAction "{214F6B3B7B31665D}" {
+       m_sGroupName "OBJ2SQD1"
+       m_aWaypoints {
+        "OBJ2SQD1WP"
+       }
+      }
+      GC_AssignWaypointsAction "{62DB7716AC82B95E}" {
+       m_sGroupName "OBJ2SQD2"
+       m_aWaypoints {
+        "OBJ2SQD2WP"
+       }
+      }
+      GC_AssignWaypointsAction "{B18B1BA07E4E4D6F}" {
+       m_sGroupName "OBJ2PHQ"
+       m_aWaypoints {
+        "OBJ2PHQWP"
+       }
+      }
+     }
+    }
+    GC_Event "{926A40DD120C5C9B}" {
+     m_sName "CDF_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{45965EDBA3DA95F8}" {
+       m_Script GC_PeakFactionPopulationCheck "{6B5D028881380777}" {
+        m_sFaction "GC_CDF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5669C67F72FA6B5B}" {
+       m_sMessage "CDF_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{420AF8F9D74737C7}" {
+     m_sName "CDF_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BC3A678D2657FCB9}" {
+       m_sEventName "CDF_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{91A22C1965D29F2B}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{8A3899700D064985}" {
+       m_sTitle "AFRF/SEPARATIST VICTORY"
+       m_sMessage "The CDF have taken significant casualties."
+      }
+     }
+    }
+    GC_Event "{1FACFC5AD344F0C7}" {
+     m_sName "CDF_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7C7B63F79DCE48C0}" {
+       m_sEventName "CDF_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{2800AAD5130FFBFF}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{44320B13B810BA3E}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{A52F752FED5E95E0}" {
+     m_sName "TIME_LIMIT (2885s)"
+     m_Advanced GC_EventOptions "{C7C3330C7240F332}" {
+      m_fDelay 2885
+     }
+     m_aActions {
+      GC_MessageAction "{CA5FD2D3B75D9527}" {
+       m_sTitle "AFRF/SEPARATIST VICTORY"
+       m_sMessage "Time limit reached."
+      }
+     }
+    }
+    GC_Event "{1B16D96849570427}" {
+     m_sName "TIME_LIMIT (2895s)"
+     m_Advanced GC_EventOptions "{7C9A349E8EE36C34}" {
+      m_fDelay 2895
+     }
+     m_aActions {
+      GC_EndMissionAction "{D610669905A3E543}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{C90A6A91F63299D0}" {
+     m_sName "CDF_CAP"
+     m_aConditions {
+      GC_ConditionGroup "{202A03C1776033E8}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{31A78BF517541814}" {
+         m_sArea "GC_MigrationArea_OBJ_1_CAP"
+         m_Targets GC_CharacterAreaTargets "{268914168EFBEB2B}" {
+          m_iWho 2
+          m_aFactions {
+           "GC_CDF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{33B369A22AAE62D2}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{3A6BF0A30382B6AD}" {
+          m_fSeconds 60
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{4B99DAE2924B5C47}" {
+         m_sArea "GC_MigrationArea_OBJ_2_CAP"
+         m_Targets GC_CharacterAreaTargets "{3C3F97DCBD43B9E0}" {
+          m_iWho 2
+          m_aFactions {
+           "GC_CDF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{9E4DA58785D35760}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{C8474A11715E967E}" {
+          m_fSeconds 60
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E40DF8F772C30DDE}" {
+       m_sMessage "CDF_CAP"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D1D376E9B8CBAFCF}" {
+     m_sName "CDF_CAP (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{96FAE733F3CA1243}" {
+       m_sEventName "CDF_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{D6A01755516C5707}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{73692D11BC3FE7C0}" {
+       m_sTitle "CDF VICTORY"
+       m_sMessage "The safehouse and radio tower have been secured by the CDF."
+      }
+     }
+    }
+    GC_Event "{785013293048EEE3}" {
+     m_sName "CDF_CAP (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{00CF6B3A1A438045}" {
+       m_sEventName "CDF_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{9105B5A93367184F}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{977478CBE5A799AD}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_CDF"
+       }
+      }
+     }
+    }
+    GC_Event "{06B3B9F665964E41}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{5872F2908EDA8E83}" {
+       m_fSeconds 180
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{3F521CFB736036F8}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+        "GC_MigrationStartingZone2"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 7086.471 96.7 1329.428
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_aFriendlyFactionsIds {
+      "GC_SEPARATIST"
+     }
+    }
+    SCR_Faction "{62EB308733CA83DD}" {
+     m_aFriendlyFactionsIds {
+      "RHS_AFRF"
+     }
+    }
+   }
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{6144B0BE2EAC6897}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneMedium.et" {
+ coords 2692.503 59.851 4248.62
+}
+GC_RadiusAreaEntity GC_MigrationArea_OBJ_1_CAP : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 1329.77 72.335 4912.095
+ m_fRadius 10
+}
+GC_RadiusAreaEntity GC_MigrationArea_OBJ_2_CAP : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 1000.34 69.169 4996.113
+ m_fRadius 15
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone2 : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 1264.334 67.838 4902.631
+ m_fWarnRadius 350
+ m_fZoneRadius 400
+ m_fZoneTeleportedRadius 420
+}
