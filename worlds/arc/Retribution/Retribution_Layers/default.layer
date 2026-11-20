@@ -1,0 +1,443 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 6530.428 96.656 1345.978
+}
+GC_LobbyGameMode GC_MigratedMission : "{F1A8DFEB8471709E}worlds/arc/Retribution/Retribution_GC_Settings.et" {
+ components {
+  GC_PeakFactionPopulationComponent "{B598773F20AB7A74}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{FD5496EE1B63BE70}" {
+     m_sName "VICTORY"
+     m_aConditions {
+      GC_ConditionGroup "{2B5EF9CF11E12728}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{800833C375053CDA}" {
+         m_sArea "GC_MigrationArea_OBJ_1_CAP"
+         m_Targets GC_CharacterAreaTargets "{8BA91E2CD4D21A96}" {
+          m_iWho 2
+          m_aFactions {
+           "RHS_AFRF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{06BCDEA75F326F57}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{6CAD376862FAE12D}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{662884FB7A481B3F}" {
+           m_sLocation "the ambush site"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{6E40BCF05C4FC748}" {
+         m_sArea "GC_MigrationArea_OBJ_2_CAP"
+         m_Targets GC_CharacterAreaTargets "{D291CBEF292E3088}" {
+          m_iWho 2
+          m_aFactions {
+           "RHS_AFRF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{8CBE239F1F8EFE04}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{DB6EA2E0A5135218}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{2632285D4B5A74F0}" {
+           m_sLocation "the southern safehouse"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{FAC017E55B662708}" {
+         m_sArea "GC_MigrationArea_OBJ_3_CAP"
+         m_Targets GC_CharacterAreaTargets "{846095CCEC8D9B85}" {
+          m_iWho 2
+          m_aFactions {
+           "RHS_AFRF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{067F5927CFAAB394}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{CFB0DD1FCA6E7CA2}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{FE39F50848AE192B}" {
+           m_sLocation "the central safehouse"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{542C7E9EDB514F02}" {
+         m_sArea "GC_MigrationArea_OBJ_4_CAP"
+         m_Targets GC_CharacterAreaTargets "{62BD3A8D8125D3CA}" {
+          m_iWho 2
+          m_aFactions {
+           "RHS_AFRF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{EF1CE99720874873}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{75062C896A58798B}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{A8CDEE91E71C2DDB}" {
+           m_sLocation "the northern safehouse"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{10329BADCB091491}" {
+       m_sMessage "VICTORY"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BB0F66F1F5702850}" {
+     m_sName "VICTORY (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CDE1ED519E6656D8}" {
+       m_sEventName "VICTORY"
+      }
+     }
+     m_Advanced GC_EventOptions "{2D152A3DC24B0F9C}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{AD5FB8AF1D094914}" {
+       m_sTitle "VICTORY"
+       m_sMessage "All objectives have been secured."
+      }
+     }
+    }
+    GC_Event "{47B4520253ADD9B0}" {
+     m_sName "VICTORY (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8463158E1749261D}" {
+       m_sEventName "VICTORY"
+      }
+     }
+     m_Advanced GC_EventOptions "{7E28A23F3E0FCCD0}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{2363B5287B8BCED7}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{A3184A86A74B82C7}" {
+     m_sName "DEFEAT_1"
+     m_aConditions {
+      GC_CustomScriptCondition "{F59DEA603CAF36A4}" {
+       m_Script GC_PeakFactionPopulationCheck "{A4E51E86F958F007}" {
+        m_sFaction "RHS_AFRF"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2D0C5BA185EC9374}" {
+       m_sMessage "DEFEAT_1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{314FC28A96685F6A}" {
+     m_sName "DEFEAT_1 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A2555C33C84C84FE}" {
+       m_sEventName "DEFEAT_1"
+      }
+     }
+     m_Advanced GC_EventOptions "{29E6363CFBDA5F8D}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{A2CB743B26FBBAA8}" {
+       m_sTitle "DEFEAT"
+       m_sMessage "Russian forces have taken significant casualties."
+      }
+     }
+    }
+    GC_Event "{2FE7B99A182B3953}" {
+     m_sName "DEFEAT_1 (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3224B99235A7D865}" {
+       m_sEventName "DEFEAT_1"
+      }
+     }
+     m_Advanced GC_EventOptions "{A1AB9F0511FC1F29}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{AAF5F6BD7264E26B}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{F1FFDF6868683E45}" {
+     m_sName "DEFEAT_2 (4505s)"
+     m_Advanced GC_EventOptions "{AFE316F9281C2BE3}" {
+      m_fDelay 4505
+     }
+     m_aActions {
+      GC_MessageAction "{A0742CAF7F308148}" {
+       m_sTitle "DEFEAT"
+       m_sMessage "Time limit reached. Surviving Chechen fighters have scattered with stolen equipment."
+      }
+     }
+    }
+    GC_Event "{78C54054A34FCFEF}" {
+     m_sName "DEFEAT_2 (4515s)"
+     m_Advanced GC_EventOptions "{4A7D140BF773DF96}" {
+      m_fDelay 4515
+     }
+     m_aActions {
+      GC_EndMissionAction "{A1E2B8E071EF37F3}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{BCDCE4A728C45F32}" {
+     m_sName "ASSIGN_WAYPOINTS (5s)"
+     m_Advanced GC_EventOptions "{7EA036737C63343D}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_AssignWaypointsAction "{27634B291E8793B1}" {
+       m_sGroupName "CONVOYDEF1"
+       m_aWaypoints {
+        "CONVOYDEF1WP"
+       }
+      }
+      GC_AssignWaypointsAction "{2F2176151ACD4385}" {
+       m_sGroupName "CONVOYDEF2"
+       m_aWaypoints {
+        "CONVOYDEF2WP"
+       }
+      }
+      GC_AssignWaypointsAction "{5AEBCDE8C941CBF7}" {
+       m_sGroupName "CONVOYDEF3"
+       m_aWaypoints {
+        "CONVOYDEF3WP"
+       }
+      }
+      GC_AssignWaypointsAction "{EB06D711B7FC5681}" {
+       m_sGroupName "PATROL1"
+       m_aWaypoints {
+        "PATROL1WP"
+       }
+      }
+      GC_AssignWaypointsAction "{8472940979C1F770}" {
+       m_sGroupName "PATROL2"
+       m_aWaypoints {
+        "PATROL2WP"
+       }
+      }
+      GC_AssignWaypointsAction "{F8F53B823C1462D0}" {
+       m_sGroupName "PATROL3"
+       m_aWaypoints {
+        "PATROL3WP"
+       }
+      }
+      GC_AssignWaypointsAction "{188D73FA90EDB1E7}" {
+       m_sGroupName "PATROL4"
+       m_aWaypoints {
+        "PATROL4WP"
+       }
+      }
+      GC_AssignWaypointsAction "{F68BD5E18802E760}" {
+       m_sGroupName "PATROL5"
+       m_aWaypoints {
+        "PATROL5WP"
+       }
+      }
+      GC_AssignWaypointsAction "{92010089324EB049}" {
+       m_sGroupName "PATROL6"
+       m_aWaypoints {
+        "PATROL6WP"
+       }
+      }
+      GC_AssignWaypointsAction "{EB02F68C4FC60023}" {
+       m_sGroupName "SAFEHOUSE1HQ"
+       m_aWaypoints {
+        "SAFEHOUSE1HQWP"
+       }
+      }
+      GC_AssignWaypointsAction "{0C56B572718537DD}" {
+       m_sGroupName "SAFEHOUSE1SQD1"
+       m_aWaypoints {
+        "SAFEHOUSE1SQD1WP"
+       }
+      }
+      GC_AssignWaypointsAction "{5165C0F8998956BF}" {
+       m_sGroupName "SAFEHOUSE1SQD2"
+       m_aWaypoints {
+        "SAFEHOUSE1SQD2WP"
+       }
+      }
+      GC_AssignWaypointsAction "{29D69849B1198E46}" {
+       m_sGroupName "SAFEHOUSE1SQD3"
+       m_aWaypoints {
+        "SAFEHOUSE1SQD3WP"
+       }
+      }
+      GC_AssignWaypointsAction "{67AB0AF48371051A}" {
+       m_sGroupName "SAFEHOUSE1SQD4"
+       m_aWaypoints {
+        "SAFEHOUSE1SQD4WP"
+       }
+      }
+      GC_AssignWaypointsAction "{734BBC8F71DBA619}" {
+       m_sGroupName "SAFEHOUSE2HQ"
+       m_aWaypoints {
+        "SAFEHOUSE2HQWP"
+       }
+      }
+      GC_AssignWaypointsAction "{C8884087D46ABCD0}" {
+       m_sGroupName "SAFEHOUSE2SQD1"
+       m_aWaypoints {
+        "SAFEHOUSE2SQD1WP"
+       }
+      }
+      GC_AssignWaypointsAction "{264FC69A255FF7C2}" {
+       m_sGroupName "SAFEHOUSE2SQD2"
+       m_aWaypoints {
+        "SAFEHOUSE2SQD2WP"
+       }
+      }
+      GC_AssignWaypointsAction "{F738BD6E7F7BA8C3}" {
+       m_sGroupName "SAFEHOUSE2SQD3"
+       m_aWaypoints {
+        "SAFEHOUSE2SQD3WP"
+       }
+      }
+      GC_AssignWaypointsAction "{B3D66E77FA4EB7D0}" {
+       m_sGroupName "SAFEHOUSE3HQ"
+       m_aWaypoints {
+        "SAFEHOUSE3HQWP"
+       }
+      }
+      GC_AssignWaypointsAction "{8441C83A076025BD}" {
+       m_sGroupName "SAFEHOUSE3SQD1"
+       m_aWaypoints {
+        "SAFEHOUSE3SQD1WP"
+       }
+      }
+      GC_AssignWaypointsAction "{04F4A1759A035022}" {
+       m_sGroupName "SAFEHOUSE3SQD2"
+       m_aWaypoints {
+        "SAFEHOUSE3SQD2WP"
+       }
+      }
+      GC_AssignWaypointsAction "{D0B4E7704AEC8DF5}" {
+       m_sGroupName "SAFEHOUSE3SQD3"
+       m_aWaypoints {
+        "SAFEHOUSE3SQD3WP"
+       }
+      }
+      GC_AssignWaypointsAction "{55227B50F3657C44}" {
+       m_sGroupName "SAFEHOUSE3SQD4"
+       m_aWaypoints {
+        "SAFEHOUSE3SQD4WP"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 6540.076 96.656 1347.778
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792829053B0}" {
+        m_sCallsign "Crusader"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{6676D2E48DD5636E}" {
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{6676D2E48EFDE73E}" {
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GC_RadiusAreaEntity GC_MigrationArea_OBJ_1_CAP : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 7014.67 62.649 5177.569
+ m_fRadius 60
+}
+GC_RadiusAreaEntity GC_MigrationArea_OBJ_2_CAP : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 7200.384 66.993 4829.647
+ m_fRadius 30
+}
+GC_RadiusAreaEntity GC_MigrationArea_OBJ_3_CAP : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 7279.72 71.496 5053.14
+ m_fRadius 30
+}
+GC_RadiusAreaEntity GC_MigrationArea_OBJ_4_CAP : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 7274.105 69.951 5345.581
+ m_fRadius 50
+}
