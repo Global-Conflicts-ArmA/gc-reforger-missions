@@ -1,0 +1,212 @@
+SCR_AIWorld : "{E2A016456BBC697D}Prefabs/SCR_AIWorld_Kunar.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{66AB6351F8DE57F6}" {
+     NavmeshFile "{935C52C1479660D1}NavMesh/Kunar_LowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 2709.24 100.646 1954.681
+}
+GC_LobbyGameMode GC_MigratedMission : "{52B6904FA6338BB8}worlds/Fruz/Korengal Vacation/Korengal Vacation_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 5
+   m_iStartingMinutes 15
+   m_bFogOverride 1
+   m_fFogAmount 0.481
+   m_fFogHeightDensity 0.519
+  }
+  GC_PeakFactionPopulationComponent "{71B88EB2BB693807}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{6B8FF61E0DA92A16}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 90
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{1BB8670CE7DE1EC7}" {
+     m_sName "Outcome 68A976A167D838FE"
+     m_aConditions {
+      GC_CustomScriptCondition "{D53EF7DE3D108071}" {
+       m_Script GC_PeakFactionPopulationCheck "{CFDAD680617A0009}" {
+        m_sFaction "RHS_USAF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F5C2AA672E26F4FF}" {
+       m_sMessage "Outcome 68A976A167D838FE"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5FCF44DCF9739409}" {
+     m_sName "Outcome 68A976A167D838FE (30s)"
+     m_aConditions {
+      GC_MissionEventCondition "{49F7E5FA41624CF5}" {
+       m_sEventName "Outcome 68A976A167D838FE"
+      }
+     }
+     m_Advanced GC_EventOptions "{6F2208E434DD8612}" {
+      m_fDelay 30
+     }
+     m_aActions {
+      GC_MessageAction "{411292F3E05210AD}" {
+       m_sTitle "US KIA"
+       m_sMessage "Blufor has taken 90 percent casualties"
+       m_iDelivery 1
+      }
+     }
+    }
+    GC_Event "{756A235717A7CE01}" {
+     m_sName "Outcome 68A976A04FBE2BF7"
+     m_aConditions {
+      GC_CustomScriptCondition "{D52A422669AA0238}" {
+       m_Script GC_PeakFactionPopulationCheck "{BBBE5834B613DBB3}" {
+        m_sFaction "GC_INSURGENT"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{64FF3DF864D282C9}" {
+       m_sMessage "Outcome 68A976A04FBE2BF7"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B377EAA1B23F5AC5}" {
+     m_sName "Outcome 68A976A04FBE2BF7 (30s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F761005DCCF1956A}" {
+       m_sEventName "Outcome 68A976A04FBE2BF7"
+      }
+     }
+     m_Advanced GC_EventOptions "{1C1BC98AD88F5E95}" {
+      m_fDelay 30
+     }
+     m_aActions {
+      GC_MessageAction "{5AB439DC8F70659A}" {
+       m_sTitle "Insurgent KIA"
+       m_sMessage "Opfor has taken 90 percent casualties"
+       m_iDelivery 1
+      }
+     }
+    }
+    GC_Event "{F48C259E0FB7FBAA}" {
+     m_sName "Outcome 68AE1D83481169F3"
+     m_aConditions {
+      GC_AreaCondition "{8E7F40D4FC809A8C}" {
+       m_sArea "GC_MigrationArea_INS_CAP"
+       m_Targets GC_CharacterAreaTargets "{2B038C2F142C0442}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_INSURGENT"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{7D7D3774D2A6B454}" {
+        m_fRequiredShare 0.75
+       }
+       m_Capture GC_AreaCaptureOptions "{E36F87AFBE802872}" {
+        m_fSeconds 180
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_Messages GC_CaptureMessages "{2353AA459470F034}" {
+         m_sLocation "the COP"
+         m_sCaptured "The %1 has taken control of %2."
+         m_sCapturing "The %1 is taking control of %2."
+         m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+         m_sLost "The %1 has lost control of %2."
+         m_sLosing "The %1 is losing control of %2."
+         m_sLossInterrupted "The %1 is no longer losing control of %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5C1BE3CDDD6E7E7F}" {
+       m_sMessage "Outcome 68AE1D83481169F3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{92F9E8E9D3C29373}" {
+     m_sName "Outcome 68AE1D83481169F3 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{225F863C810D2F61}" {
+       m_sEventName "Outcome 68AE1D83481169F3"
+      }
+     }
+     m_Advanced GC_EventOptions "{6203AE4A5C3D61FA}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{751338ACDCDE5B15}" {
+       m_sTitle "COP Korengal has fell"
+       m_sMessage "Insurgent forces have taken the COP"
+       m_aFactions {
+        "GC_INSURGENT" "RHS_USAF"
+       }
+      }
+     }
+    }
+    GC_Event "{903F6DA71385A504}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{DA437B8B682F08BC}" {
+       m_fSeconds 90
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{1CDC6CAE519D9822}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 2708.845 102.72 1956.893
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ components {
+  SCR_EditableDescriptorComponent "{56D8A3C5A31496AC}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{56D8A3C5A31496A4}" {
+   }
+  }
+ }
+ coords 3322.937 310.292 408.231
+}
