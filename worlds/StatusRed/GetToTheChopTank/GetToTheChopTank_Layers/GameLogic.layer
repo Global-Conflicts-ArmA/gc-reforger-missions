@@ -1,0 +1,369 @@
+GC_LobbyGameMode GC_MigratedMission : "{819CC30023BA938D}worlds/StatusRed/GetToTheChopTank/GetToTheChopTank_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 12
+  }
+  GC_PeakFactionPopulationComponent "{34F66B82DE7E1C1A}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{45778F22936242A8}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{23DFC52E2E1E4E10}" {
+     m_sName "BLUFOR_WIN_CAP"
+     m_aConditions {
+      GC_AreaCondition "{1EF2926FA9B7768E}" {
+       m_sArea "GC_MigrationArea_FLAG_BLUFOR_CAPTURED"
+       m_Targets GC_CharacterAreaTargets "{E9807FF522C79EBD}" {
+        m_aFactions {
+         "UK"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{6799CCFD4E677A5F}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{9425CA04401A52C1}" {
+        m_fSeconds 300
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_Messages GC_CaptureMessages "{4A9B00870F8AF2DC}" {
+         m_sLocation "the abandoned vehicle"
+         m_sCaptured "The %1 has taken control of %2."
+         m_sCapturing "The %1 is taking control of %2."
+         m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+         m_sLost "The %1 has lost control of %2."
+         m_sLosing "The %1 is losing control of %2."
+         m_sLossInterrupted "The %1 is no longer losing control of %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FA4D9DEF9D477634}" {
+       m_sMessage "BLUFOR_WIN_CAP"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{63EEC4867EA3E67F}" {
+     m_sName "BLUFOR_WIN_CAP (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{990B31696D350F4F}" {
+       m_sEventName "BLUFOR_WIN_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{D795BA3488C9F828}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{2F7E0CDC252F4AF2}" {
+       m_sTitle "UK has seized the vehicle!"
+       m_sMessage "UK has seized the vehicle!"
+      }
+     }
+    }
+    GC_Event "{24FD7BA382D20E09}" {
+     m_sName "BLUFOR_WIN_CAP (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3663971307DEF4A6}" {
+       m_sEventName "BLUFOR_WIN_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{1E930019D25AFF96}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_EndMissionAction "{262167C2765EE275}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{178908E546683B57}" {
+     m_sName "OPFOR_WIN_CAP"
+     m_aConditions {
+      GC_AreaCondition "{4AB0C3F89BC761A2}" {
+       m_sArea "GC_MigrationArea_FLAG_OPFOR_CAPTURED"
+       m_Targets GC_CharacterAreaTargets "{281C431B4517F657}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{E1506795F144FB8B}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{2D85A00414989617}" {
+        m_fSeconds 300
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_Messages GC_CaptureMessages "{5C556CBD94EB04D5}" {
+         m_sLocation "the abandoned vehicle"
+         m_sCaptured "The %1 has taken control of %2."
+         m_sCapturing "The %1 is taking control of %2."
+         m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+         m_sLost "The %1 has lost control of %2."
+         m_sLosing "The %1 is losing control of %2."
+         m_sLossInterrupted "The %1 is no longer losing control of %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6EC330EC7A174D55}" {
+       m_sMessage "OPFOR_WIN_CAP"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8B84D826374B207C}" {
+     m_sName "OPFOR_WIN_CAP (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A3A051278A7A3052}" {
+       m_sEventName "OPFOR_WIN_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{2220B754A8D58F75}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{01FA6CCDBFC0C2B3}" {
+       m_sTitle "USSR has seized the vehicle!"
+       m_sMessage "USSR has seized the vehicle!"
+      }
+     }
+    }
+    GC_Event "{BFCEE8CDA395CEFC}" {
+     m_sName "OPFOR_WIN_CAP (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5A12F91BEB6843FA}" {
+       m_sEventName "OPFOR_WIN_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{79AC9A6D50400B14}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_EndMissionAction "{DDBF01DE1CA87975}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "USSR"
+       }
+      }
+     }
+    }
+    GC_Event "{3EC7C2F78CC37FDB}" {
+     m_sName "BLUFOR_WIN_OPFOR_DEAD"
+     m_aConditions {
+      GC_CustomScriptCondition "{D7FFD1B51B1CD758}" {
+       m_Script GC_PeakFactionPopulationCheck "{BB919D8CF43A29F8}" {
+        m_sFaction "USSR"
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7227D180559C1A90}" {
+       m_sMessage "BLUFOR_WIN_OPFOR_DEAD"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8C09538C1B0AAF18}" {
+     m_sName "BLUFOR_WIN_OPFOR_DEAD (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E7F5C8FA6948F394}" {
+       m_sEventName "BLUFOR_WIN_OPFOR_DEAD"
+      }
+     }
+     m_Advanced GC_EventOptions "{00542AF436980965}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{CF2DB874554415C9}" {
+       m_sTitle "USSR are KIA!"
+       m_sMessage "USSR are KIA!"
+      }
+     }
+    }
+    GC_Event "{AEACD12120B60475}" {
+     m_sName "BLUFOR_WIN_OPFOR_DEAD (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B69BAC05AA3D09E5}" {
+       m_sEventName "BLUFOR_WIN_OPFOR_DEAD"
+      }
+     }
+     m_Advanced GC_EventOptions "{BD06DB6AA038611E}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_EndMissionAction "{668942A0C1987BEF}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{DC4D95219C60A629}" {
+     m_sName "OPFOR_WIN_BLUFOR_DEAD"
+     m_aConditions {
+      GC_CustomScriptCondition "{613AFE8971561450}" {
+       m_Script GC_PeakFactionPopulationCheck "{D7E27F88548E817D}" {
+        m_sFaction "UK"
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{698781BB6A8D8628}" {
+       m_sMessage "OPFOR_WIN_BLUFOR_DEAD"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C7A90959D65E8A77}" {
+     m_sName "OPFOR_WIN_BLUFOR_DEAD (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F3A182C235B6AEF2}" {
+       m_sEventName "OPFOR_WIN_BLUFOR_DEAD"
+      }
+     }
+     m_Advanced GC_EventOptions "{5F777E759B8975C3}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{E5D383B6EF81EBC6}" {
+       m_sTitle "UK are KIA!"
+       m_sMessage "UK are KIA!"
+      }
+     }
+    }
+    GC_Event "{E0DB040305669AFA}" {
+     m_sName "OPFOR_WIN_BLUFOR_DEAD (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{83AED670BC4F8D93}" {
+       m_sEventName "OPFOR_WIN_BLUFOR_DEAD"
+      }
+     }
+     m_Advanced GC_EventOptions "{FB355A5F6D37422F}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_EndMissionAction "{9C70320365F0A839}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "USSR"
+       }
+      }
+     }
+    }
+    GC_Event "{5BAAC60BFFCDC1BB}" {
+     m_sName "TIME_LIMIT (1800s)"
+     m_Advanced GC_EventOptions "{B5D5E6E1E9BF3145}" {
+      m_fDelay 1800
+     }
+     m_aActions {
+      GC_MessageAction "{BBBF7B428816FAA5}" {
+       m_sTitle "Time limit reached!"
+       m_sMessage "Time limit reached!"
+      }
+     }
+    }
+    GC_Event "{C3543DD63BBAB787}" {
+     m_sName "TIME_LIMIT (1820s)"
+     m_Advanced GC_EventOptions "{AA473A68DFC8A045}" {
+      m_fDelay 1820
+     }
+     m_aActions {
+      GC_MessageAction "{4030EE47C2F9AA94}" {
+       m_iDelivery 2
+       m_sMessage "Neutral result reached."
+      }
+     }
+    }
+    GC_Event "{5C925855929299CB}" {
+     m_sName "Release staging zones"
+     m_aActions {
+      GC_DeleteEntitiesAction "{E073019749348C18}" {
+       m_aEntities {
+        "BluforSetupZone"
+        "OpforSetupZone"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 6379.586 159.257 6453.858
+}
+GenericEntity : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{7CD99D22C7AE8195}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "infantry"
+   m_Color 0.855 0.031 0.028 1
+   m_fSize 95
+   m_bWorldScale 1
+   m_sDescription ""
+  }
+ }
+ coords 5389.688 86.644 6432.526
+ angleY 0
+}
+GenericEntity : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{1228936E5DB30403}UI/Textures/GroupManagement/FlagIcons/GroupFlagsBlufor.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "infantry"
+   m_Color 0.016 0.552 0.905 1
+   m_fSize 95
+   m_bWorldScale 1
+   m_sDescription ""
+  }
+ }
+ coords 6166.311 83.274 5737.359
+ angleY 0
+}
+GC_RadiusAreaEntity GC_MigrationArea_FLAG_BLUFOR_CAPTURED : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 5915.989 148.468 6331.972
+ m_fRadius 30
+}
+GC_RadiusAreaEntity GC_MigrationArea_FLAG_OPFOR_CAPTURED : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 5917.214 148.461 6332.738
+ m_fRadius 30
+}
+SCR_EditorRestrictionZoneEntity BluforSetupZone : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 6179.738 97.044 5716.532
+}
+SCR_EditorRestrictionZoneEntity OpforSetupZone : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 5391.213 87.447 6407.583
+}
+GenericEntity MarkerOBJ : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet "{67B3A6DC2D712B52}UI/Textures/Icons/icons_mapMarkersUI-glow.imageset"
+   m_sQuadName "circle-2"
+   m_Color 1 0 0.376 1
+   m_fSize 50
+   m_bWorldScale 1
+   m_sDescription "Abandoned Vehicle"
+   m_aFactionKeys {
+    "UK" "USSR"
+   }
+   m_bRestrictToListedFactions 1
+  }
+ }
+ coords 5917.734 148.146 6338.56
+ angleY 0
+}
