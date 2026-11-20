@@ -1,0 +1,177 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 7634.63 0 6424.927
+}
+GC_LobbyGameMode GC_MigratedMission : "{B498EBEAAA0C9DC0}worlds/arc/ProvinsApproachRedux/ProvinsApproachRedux_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bRandomStartingDaytimeRange 1
+   m_iRangeHoursStart 5
+   m_iRangeMinutesStart 30
+   m_iRangeHoursEnd 19
+   m_bRandomStartingWeather 1
+   m_bDateOverride 1
+   m_iDay 25
+   m_iMonth 7
+   m_iYear 2008
+  }
+  GC_PeakFactionPopulationComponent "{F5BAEB4B7FA32A2C}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{0F5A6BF3EFC82CF8}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 180
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{162C5318F2387490}" {
+     m_sName "US_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{066EA2558F162A53}" {
+       m_Script GC_PeakFactionPopulationCheck "{8C0384A7E3BAFE32}" {
+        m_sFaction "RHS_USAF"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{10342DE93E5E7A49}" {
+       m_sMessage "US_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8F03335777E3D924}" {
+     m_sName "US_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{AFCCEE0D6F65DA01}" {
+       m_sEventName "US_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{2B006646E152FA7C}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{AD9BE564D6A3DE36}" {
+       m_sTitle "AFRF VICTORY"
+       m_sMessage "US forces have taken significant casualties."
+      }
+     }
+    }
+    GC_Event "{2386EB43148280DA}" {
+     m_sName "OBJ_A"
+     m_aConditions {
+      GC_AreaCondition "{5F0EE356F32D3474}" {
+       m_sArea "GC_MigrationArea_OBJ_A"
+       m_Targets GC_CharacterAreaTargets "{CEC658E6138F1E0C}" {
+        m_iWho 2
+        m_aFactions {
+         "RHS_USAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{3746C0C2BF952598}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{45F14B355E5D9A0C}" {
+        m_fSeconds 120
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+        m_Messages GC_CaptureMessages "{DCC2AE656B8F1695}" {
+         m_sLocation "Obj. Apollo"
+         m_sCaptured "The %1 has taken control of %2."
+         m_sCapturing "The %1 is taking control of %2."
+         m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+         m_sLost "The %1 has lost control of %2."
+         m_sLosing "The %1 is losing control of %2."
+         m_sLossInterrupted "The %1 is no longer losing control of %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{620F710CA3A62EC3}" {
+       m_sMessage "OBJ_A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F1B72C53CFDCD770}" {
+     m_sName "OBJ_A (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{72365393B6620126}" {
+       m_sEventName "OBJ_A"
+      }
+     }
+     m_Advanced GC_EventOptions "{2A9C0D0C9D138F42}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{E620F1D177146EB4}" {
+       m_sTitle "US VICTORY"
+       m_sMessage "US forces have secured Obj. Apollo."
+      }
+     }
+    }
+    GC_Event "{B9B94D0B215E7480}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{2C8A48DFA2EEDE1E}" {
+       m_fSeconds 180
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{C31084DB91DF46CC}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 7642.042 0 6430.14
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "1"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{69032BE75E995B1C}" {
+        m_sCallsign "4"
+       }
+      }
+      m_sCallsignGroupFormat "%2-%3"
+      m_sCallsignCharacterFormat "%2-%3: %4"
+     }
+    }
+   }
+  }
+ }
+}
+GC_RadiusAreaEntity GC_MigrationArea_OBJ_A : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 6116.835 84.353 5764.093
+ m_fRadius 40
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 7547.566 151.108 4588.144
+}
