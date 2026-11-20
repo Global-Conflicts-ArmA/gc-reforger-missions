@@ -1,0 +1,163 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 5.288 -1.404 17.375
+}
+GC_LobbyGameMode GC_MigratedMission : "{B8DC79C49DE77E72}worlds/Til/TrenchAssault/TrenchAssault_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bRandomStartingWeather 1
+  }
+  GC_PeakFactionPopulationComponent "{F2A8FC884490CD72}" {
+  }
+  GC_LivingAndDeadAIComponent "{15088326E0BB5735}" {
+   m_sFaction "RHS_AFRF"
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{094531E4DE63E203}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 90
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{E84FB38DDB0BFDD2}" {
+     m_sName "RU Victory"
+     m_aConditions {
+      GC_CustomScriptCondition "{366226E6AE772537}" {
+       m_Script GC_PeakFactionPopulationCheck "{A9FFF13A5DE69B26}" {
+        m_sFaction "GC_CDF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6B9B4D7F4512404A}" {
+       m_sMessage "RU Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{EF3B89FBF56274FC}" {
+     m_sName "RU Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{449911864125AE4A}" {
+       m_sEventName "RU Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{122C9C354019A59B}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{E406D5646868B2DB}" {
+       m_sTitle "RU VICTORY"
+       m_sMessage "The CDF suffered significant casualties."
+      }
+     }
+    }
+    GC_Event "{BD1E938BB6E35BD5}" {
+     m_sName "RU Victory (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6868A88FAB693D17}" {
+       m_sEventName "RU Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{77701DBEFDEBDF74}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{BF24C77101931CDB}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{4025953E8F346B9C}" {
+     m_sName "CDF Victory"
+     m_aConditions {
+      GC_ConditionGroup "{ABAEA20E462E9F5D}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_CustomScriptCondition "{9B2B57970470C30D}" {
+         m_Script GC_LivingAndDeadAICheck "{461AC00091868F9C}" {
+          m_fRatio 1
+         }
+        }
+        GC_CustomScriptCondition "{D35EAD947670D8E8}" {
+         m_Script GC_PeakFactionPopulationCheck "{69A157D30CE9772F}" {
+          m_sFaction "RHS_AFRF"
+          m_fRatio 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{13DD2627569847A4}" {
+       m_sMessage "CDF Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0912A0ED9FB8BDA1}" {
+     m_sName "CDF Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4668697F4A7681C2}" {
+       m_sEventName "CDF Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{F15893279D968DC5}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{B96907B7583F3322}" {
+       m_sTitle "CDF VICTORY"
+       m_sMessage "The CDF seized the Russian position."
+      }
+     }
+    }
+    GC_Event "{1E4006A6003AD3FA}" {
+     m_sName "CDF Victory (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F68C54416B79798C}" {
+       m_sEventName "CDF Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{F0154A3C54CD0D7B}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{18CC2BC6858706A6}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_CDF"
+       }
+      }
+     }
+    }
+    GC_Event "{7AA9A109980474CA}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{E2B7451F13250B36}" {
+       m_fSeconds 90
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{9BDCE7EE9F48E615}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 0 0 0
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{6144B0BE2EAC6897}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneMedium.et" {
+ coords 2106.842 13.746 3246.023
+ m_fZoneRadius 45
+}
