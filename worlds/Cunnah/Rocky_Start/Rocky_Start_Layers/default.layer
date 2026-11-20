@@ -1,0 +1,290 @@
+SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A2995A7E8BC2}" {
+     NavmeshFile "{D8EF7131FB31AF97}worlds/GameMaster/Navmeshes/GM_Arland.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A299509CF377}" {
+     NavmeshFile "{A0AEEB1E7EF474FA}worlds/GameMaster/Navmeshes/GM_Arland_vehicles.nmn"
+    }
+   }
+  }
+ }
+}
+GC_LobbyGameMode GC_MigratedMission : "{D2E97D9442207B2B}worlds/Cunnah/Rocky_Start/Rocky_Start_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{64E8DECA95D5C7C5}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 5
+     m_iStartingMinutes 15
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{022785358EEF733D}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{1925582DA1F99F6C}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 300
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{11CFC642F33C73E0}" {
+     m_sName "Church captured"
+     m_aConditions {
+      GC_AreaCondition "{04216D59F62BF7CC}" {
+       m_sArea "GC_MigrationArea_OBJ_TAKEN"
+       m_Targets GC_CharacterAreaTargets "{3CAFA7A645B41F01}" {
+        m_iWho 2
+        m_aFactions {
+         "UK"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{7E818CE2372EB2FB}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{1955B25D846E90C1}" {
+        m_fSeconds 300
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DA7EEF75E6881D57}" {
+       m_sMessage "Church captured"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9F513BD259D2CCD7}" {
+     m_sName "Church captured (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{449EA47BC83F4A8A}" {
+       m_sEventName "Church captured"
+      }
+     }
+     m_Advanced GC_EventOptions "{184B1425B7D4AD7E}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_EndMissionAction "{13C270B2C87C3D6C}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{83AE0AABE4003E27}" {
+     m_sName "Church captured (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{721300FE5558A22B}" {
+       m_sEventName "Church captured"
+      }
+     }
+     m_Advanced GC_EventOptions "{645D53BBB17184C8}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_MessageAction "{C7B68B71EE394D43}" {
+       m_sTitle "British Victory"
+       m_sMessage "British Forces have captured the church!"
+      }
+     }
+    }
+    GC_Event "{6623899CBDD53AF3}" {
+     m_sName "UK dead"
+     m_aConditions {
+      GC_CustomScriptCondition "{836A30781C0BFEDE}" {
+       m_Script GC_PeakFactionPopulationCheck "{A41EB296EF1A7AA2}" {
+        m_sFaction "UK"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7FFD63747B51074A}" {
+       m_sMessage "UK dead"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{094DADE9625F8D70}" {
+     m_sName "UK dead (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C475D3D2E64F9E42}" {
+       m_sEventName "UK dead"
+      }
+     }
+     m_Advanced GC_EventOptions "{577B9A4E04664125}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_EndMissionAction "{9BFE051C0506E1E2}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "USSR"
+       }
+      }
+     }
+    }
+    GC_Event "{19F7B3A17625CF2A}" {
+     m_sName "UK dead (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D150AC743E5D7D30}" {
+       m_sEventName "UK dead"
+      }
+     }
+     m_Advanced GC_EventOptions "{67B22A5D2A01BD81}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_MessageAction "{227011AA902775D4}" {
+       m_sTitle "Russian Victory"
+       m_sMessage "British forces have been destroyed!"
+      }
+     }
+    }
+    GC_Event "{69661898113B5EAB}" {
+     m_sName "USSR dead"
+     m_aConditions {
+      GC_CustomScriptCondition "{2CEB69A84AFF8291}" {
+       m_Script GC_PeakFactionPopulationCheck "{DBDA68647502E490}" {
+        m_sFaction "USSR"
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{22365CFF4294732F}" {
+       m_sMessage "USSR dead"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F6F8B48FB8C37210}" {
+     m_sName "USSR dead (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E38B158CD9BF4C5D}" {
+       m_sEventName "USSR dead"
+      }
+     }
+     m_Advanced GC_EventOptions "{430981BF93F43E49}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_EndMissionAction "{06C6C8E81CC7BECD}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{41D0A79F56A1B671}" {
+     m_sName "USSR dead (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{786508AEC57301A0}" {
+       m_sEventName "USSR dead"
+      }
+     }
+     m_Advanced GC_EventOptions "{F567B1713CC7BA1F}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_MessageAction "{AF23A8D220D45530}" {
+       m_sTitle "British Victory"
+       m_sMessage "Russian forces have been destroyed!"
+      }
+     }
+    }
+    GC_Event "{1FAF7EFF77903484}" {
+     m_sName "Time Limit (7210s)"
+     m_Advanced GC_EventOptions "{E0B3C9D48CE6C969}" {
+      m_fDelay 7210
+     }
+     m_aActions {
+      GC_EndMissionAction "{0374A2758F79C7F4}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "USSR"
+       }
+      }
+     }
+    }
+    GC_Event "{37CF88981BAF8B81}" {
+     m_sName "Time Limit (7200s)"
+     m_Advanced GC_EventOptions "{CC6E025CFA68BDAA}" {
+      m_fDelay 7200
+     }
+     m_aActions {
+      GC_MessageAction "{B50805B32F38968B}" {
+       m_sTitle "Russian Victory"
+       m_sMessage "Russians have successfully held the objective!"
+      }
+     }
+    }
+    GC_Event "{F476EE40C0818FB5}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{44B6A220D5D615DA}" {
+       m_fSeconds 300
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{F99C21D80F62809A}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{61500924662B6062}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "Sunray"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "A"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "B"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "C"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GC_RadiusAreaEntity GC_MigrationArea_OBJ_TAKEN : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 3074.295 74.713 1582.646
+ m_fRadius 18.6
+}
