@@ -30,6 +30,9 @@ GC_LobbyGameMode GC_BreachMode : "{74DF4D776799CA80}worlds/Corax/Breach and clea
   }
   GC_PeakFactionPopulationComponent "{1BB163DABD832951}" {
   }
+  GC_LivingAndDeadAIComponent "{AC2E0D0979D35354}" {
+   m_sFaction "RHS_USAF"
+  }
   GC_LobbyManager "{6A137A39106A4973}" {
    m_aMissionEvents + {
     GC_Event "{7532B22DF9A18354}" {
@@ -79,6 +82,40 @@ GC_LobbyGameMode GC_BreachMode : "{74DF4D776799CA80}worlds/Corax/Breach and clea
        m_sTitle "MISSION END"
        m_sMessage "End conditions have been met:"\
        "U.S. Armed Forces victory."
+      }
+     }
+    }
+    GC_Event "{C513F201799B02E8}" {
+     m_sName "RHS_USAF reached AI casualty threshold"
+     m_aConditions {
+      GC_CustomScriptCondition "{0554A6E14866BD00}" {
+       m_Script GC_LivingAndDeadAICheck "{86A5BD84C14DA82D}" {
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{136823C5ED4B0EEF}" {
+       m_sMessage "RHS_USAF reached AI casualty threshold"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{24537D478A2A2EB6}" {
+     m_sName "RHS_USAF reached AI casualty threshold notification"
+     m_aConditions {
+      GC_MissionEventCondition "{83A07A049D79A0E4}" {
+       m_sEventName "RHS_USAF reached AI casualty threshold"
+      }
+     }
+     m_Advanced GC_EventOptions "{1C3D2AC85357712D}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_MessageAction "{85A42F3FE82EBD01}" {
+       m_sTitle "MISSION END"
+       m_sMessage "End conditions have been met:"\
+       "Armed Forces of the Russian Federation victory."
       }
      }
     }
