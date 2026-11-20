@@ -1,0 +1,487 @@
+GC_LobbyGameMode GC_BugOutMode : "{B17511109435DD5E}worlds/TheLocalPub/BugOut/BugOut_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 6
+   m_iStartingMinutes 2
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{62F56305E6873A67}" {
+     m_sWeatherPresetName "Rainy"
+     m_iStartingHour 6
+     m_iStartingMinutes 2
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 18
+   m_iMonth 4
+   m_iYear 1982
+  }
+  GC_PeakFactionPopulationComponent "{6D83A937EFBB1A4F}" {
+  }
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{529D518F3308AF48}" {
+     m_sName "UK_Extracted"
+     m_aConditions {
+      GC_AreaCondition "{46C7B7AA8F53318E}" {
+       m_sArea "Trigger_Extraction"
+       m_Targets GC_CharacterAreaTargets "{D1D5D92A8A75C292}" {
+        m_aFactions {
+         "UK"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{1BC8C29283981A8F}" {
+        m_fRequiredShare 0.75
+        m_bWholeMission 1
+       }
+       m_Capture GC_AreaCaptureOptions "{D65313980772F450}" {
+        m_fSeconds 5
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A2D4716CD43024B9}" {
+       m_iDelivery 2
+       m_sMessage "UK_Extracted"
+      }
+     }
+    }
+    GC_Event "{49FB8FA80EFE1073}" {
+     m_sName "UKArrived"
+     m_aConditions {
+      GC_AreaCondition "{38FED2B790F83FD3}" {
+       m_sArea "Trigger_QRF"
+       m_Targets GC_CharacterAreaTargets "{D77439235D5CDF30}" {
+        m_aFactions {
+         "UK"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{C4F487E9B8216BF4}" {
+        m_fRequiredShare 0.1
+        m_bWholeMission 1
+       }
+       m_Capture GC_AreaCaptureOptions "{85580CCF5F686DA0}" {
+        m_fSeconds 0.1
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{996C045EF91E43D0}" {
+       m_iDelivery 2
+       m_sMessage "UKArrived"
+      }
+     }
+    }
+    GC_Event "{CC7CDE92A8046C70}" {
+     m_sName "UK_left"
+     m_aConditions {
+      GC_AreaCondition "{6796F0E7F995B764}" {
+       m_sArea "Trigger_UKLeft1"
+       m_Targets GC_CharacterAreaTargets "{09B2581A371F1090}" {
+        m_aFactions {
+         "UK"
+        }
+        m_iWho 2
+       }
+       m_Requirement GC_LocalFactionShare "{98FF317E5F4371D9}" {
+        m_fRequiredShare 0.001
+        m_aIgnoredFactions {
+         "GC_ARG"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D5E3D1BC6EAF8FFC}" {
+       m_iDelivery 2
+       m_sMessage "UK_left"
+      }
+     }
+    }
+    GC_Event "{D4FAE6846569A5E0}" {
+     m_sName "UK_left2"
+     m_aConditions {
+      GC_AreaCondition "{9791B4741A2E9CC6}" {
+       m_sArea "Trigger_UKLeft2"
+       m_Targets GC_CharacterAreaTargets "{1716681492C6AA7B}" {
+        m_aFactions {
+         "UK"
+        }
+        m_iWho 2
+       }
+       m_Requirement GC_LocalFactionShare "{9B4AB9E1A96DA74F}" {
+        m_fRequiredShare 0.001
+        m_aIgnoredFactions {
+         "GC_ARG"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4CE7CF679B0B5BFE}" {
+       m_iDelivery 2
+       m_sMessage "UK_left2"
+      }
+     }
+    }
+    GC_Event "{391F4CC6108EAB3F}" {
+     m_sName "OPFOR_RIFLE2"
+     m_Advanced GC_EventOptions "{29DAFED2B6C68CC3}" {
+      m_fDelay 180
+     }
+     m_aActions {
+      GC_SpawnAction "{C449D1C1BC5C28E2}" {
+       m_Spawn GC_AIGroupSpawn "{CB42F88972B8676D}" {
+        m_sPrefab "{D8344706E15AF07A}Prefabs/Groups/OPFOR/GC_ARG/1980_Regulars/Group_ARG_RifleSquad.et"
+        m_sLocation "OPFOR_RIFLE2_Spawn"
+        m_aWaypoints {
+         "WP_FLW2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{D1166E3F13EB86BC}" {
+     m_sName "OPFOR_RIFLE3"
+     m_Advanced GC_EventOptions "{82605BBD8EA9E94E}" {
+      m_fDelay 180
+     }
+     m_aActions {
+      GC_SpawnAction "{0B3391D285A4E84F}" {
+       m_Spawn GC_AIGroupSpawn "{F3EE3BFCA7765D76}" {
+        m_sPrefab "{D8344706E15AF07A}Prefabs/Groups/OPFOR/GC_ARG/1980_Regulars/Group_ARG_RifleSquad.et"
+        m_sLocation "OPFOR_RIFLE3_Spawn"
+        m_aWaypoints {
+         "WP_FLW1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{2AAEC12EDEE9DC4F}" {
+     m_sName "OPFOR_RIFLE4"
+     m_aConditions {
+      GC_MissionEventCondition "{24A87C5112FADD0B}" {
+       m_sEventName "UK_left"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{F46CA20689E0884E}" {
+       m_Spawn GC_AIGroupSpawn "{6B482F85F886B5AB}" {
+        m_sPrefab "{D8344706E15AF07A}Prefabs/Groups/OPFOR/GC_ARG/1980_Regulars/Group_ARG_RifleSquad.et"
+        m_sLocation "OPFOR_RIFLE4_Spawn"
+        m_sEntityName "OPFOR_RIFLE4"
+        m_aWaypoints {
+         "WP_SD1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{95A2F45FB7FA0C17}" {
+     m_sName "OPFOR_RIFLE5"
+     m_aConditions {
+      GC_MissionEventCondition "{1B58DF285B328B80}" {
+       m_sEventName "UK_left"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{386A5A87E1221395}" {
+       m_Spawn GC_AIGroupSpawn "{392D3019AF7AAF09}" {
+        m_sPrefab "{D8344706E15AF07A}Prefabs/Groups/OPFOR/GC_ARG/1980_Regulars/Group_ARG_RifleSquad.et"
+        m_sLocation "OPFOR_RIFLE5_Spawn"
+        m_sEntityName "OPFOR_RIFLE5"
+        m_aWaypoints {
+         "WP_SD2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E6196CEFDAD84AA9}" {
+     m_sName "OPFOR_RIFLE6"
+     m_aConditions {
+      GC_MissionEventCondition "{B98D891FCFD43100}" {
+       m_sEventName "UK_left"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{C8A9131A9E2D019A}" {
+       m_Spawn GC_AIGroupSpawn "{80F3048EB99D844F}" {
+        m_sPrefab "{D8344706E15AF07A}Prefabs/Groups/OPFOR/GC_ARG/1980_Regulars/Group_ARG_RifleSquad.et"
+        m_sLocation "OPFOR_RIFLE6_Spawn"
+        m_sEntityName "OPFOR_RIFLE6"
+        m_aWaypoints {
+         "WP_SD3"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F4D4A39A6682BAB7}" {
+     m_sName "OPFOR_RIFLE7"
+     m_aConditions {
+      GC_MissionEventCondition "{8DAC88139529B55F}" {
+       m_sEventName "UK_left2"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{63829F308128369B}" {
+       m_Spawn GC_AIGroupSpawn "{14B7276C5357F74D}" {
+        m_sPrefab "{D8344706E15AF07A}Prefabs/Groups/OPFOR/GC_ARG/1980_Regulars/Group_ARG_RifleSquad.et"
+        m_sLocation "OPFOR_RIFLE7_Spawn"
+        m_sEntityName "OPFOR_RIFLE7"
+        m_aWaypoints {
+         "WP_SD4"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E8F6CDCA2D89445F}" {
+     m_sName "OPFOR_RIFLE8"
+     m_aConditions {
+      GC_MissionEventCondition "{10ADF7A775CBC3F5}" {
+       m_sEventName "UKArrived"
+      }
+     }
+     m_Advanced GC_EventOptions "{595B884ACE85D6DE}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{8D9C9F76EF8A2755}" {
+       m_Spawn GC_AIGroupSpawn "{24578E0BEB83EE79}" {
+        m_sPrefab "{D8344706E15AF07A}Prefabs/Groups/OPFOR/GC_ARG/1980_Regulars/Group_ARG_RifleSquad.et"
+        m_sLocation "OPFOR_RIFLE8_Spawn"
+        m_aWaypoints {
+         "WP_M4" "WP_ATK2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B8D21E91FCED8985}" {
+     m_sName "OPFOR_RIFLE9"
+     m_aConditions {
+      GC_MissionEventCondition "{E3CEF24C68A03494}" {
+       m_sEventName "UKArrived"
+      }
+     }
+     m_Advanced GC_EventOptions "{C27EFCDE248A800C}" {
+      m_fDelay 180
+     }
+     m_aActions {
+      GC_SpawnAction "{5817B51E9D005F70}" {
+       m_Spawn GC_AIGroupSpawn "{7C94ED9D1BBC2C55}" {
+        m_sPrefab "{D8344706E15AF07A}Prefabs/Groups/OPFOR/GC_ARG/1980_Regulars/Group_ARG_RifleSquad.et"
+        m_sLocation "OPFOR_RIFLE9_Spawn"
+        m_aWaypoints {
+         "WP_M5" "WP_ATK2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{DC32B0F7E382619F}" {
+     m_sName "Effects_Flares (10s)"
+     m_Advanced GC_EventOptions "{2F48CB5A93AF6BA6}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{FCADCFCF6A5E7544}" {
+       m_Spawn GC_PrefabSpawn "{12F181D572598AF1}" {
+        m_sPrefab "{1432F82C0F89C0BF}Prefabs/Weapons/Ammo/FlareEffect_40mm_Schermuly_Orange.et"
+        m_sLocation "Effect_Redflare"
+        m_sEntityName "RedFlare"
+       }
+      }
+     }
+    }
+    GC_Event "{EAF1833EF4188BC7}" {
+     m_sName "Effects_Flares (70s)"
+     m_Advanced GC_EventOptions "{DD50B5F8267F9240}" {
+      m_fDelay 70
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{10961BD8261CCD55}" {
+       m_aEntities {
+        "RedFlare"
+       }
+      }
+     }
+    }
+    GC_Event "{CD18F3D1874788B8}" {
+     m_sName "Effects_Flares (80s)"
+     m_Advanced GC_EventOptions "{17B3D1C46FF6A5B7}" {
+      m_fDelay 80
+     }
+     m_aActions {
+      GC_SpawnAction "{B9A8CB524A65C003}" {
+       m_Spawn GC_PrefabSpawn "{E79275601D06BA4D}" {
+        m_sPrefab "{1432F82C0F89C0BF}Prefabs/Weapons/Ammo/FlareEffect_40mm_Schermuly_Orange.et"
+        m_sLocation "Effect_Redflare"
+        m_sEntityName "RedFlare"
+       }
+      }
+     }
+    }
+    GC_Event "{DC8377C80AC23D51}" {
+     m_sName "Effects_Flares (140s)"
+     m_Advanced GC_EventOptions "{A3EEBCF0A6940495}" {
+      m_fDelay 140
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{14555CBBDD0B5CCC}" {
+       m_aEntities {
+        "RedFlare"
+       }
+      }
+     }
+    }
+    GC_Event "{CF1B05ABF60DA7CB}" {
+     m_sName "Effects_Flares (150s)"
+     m_Advanced GC_EventOptions "{D79DE70D4EDDB9CA}" {
+      m_fDelay 150
+     }
+     m_aActions {
+      GC_SpawnAction "{4F391068A81B6FAF}" {
+       m_Spawn GC_PrefabSpawn "{5AAE9B03903AB0B3}" {
+        m_sPrefab "{1432F82C0F89C0BF}Prefabs/Weapons/Ammo/FlareEffect_40mm_Schermuly_Orange.et"
+        m_sLocation "Effect_Redflare"
+        m_sEntityName "RedFlare"
+       }
+      }
+     }
+    }
+    GC_Event "{E3F1FEC3E310AD03}" {
+     m_sName "Effects_Flares (210s)"
+     m_Advanced GC_EventOptions "{DCC83B6A5F7E34CF}" {
+      m_fDelay 210
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{16B869808329D09B}" {
+       m_aEntities {
+        "RedFlare"
+       }
+      }
+     }
+    }
+    GC_Event "{67CAF2B0953E2692}" {
+     m_sName "Effects_Flares (220s)"
+     m_Advanced GC_EventOptions "{8D298AF27A2C271E}" {
+      m_fDelay 220
+     }
+     m_aActions {
+      GC_SpawnAction "{4A5C88B51949ECB8}" {
+       m_Spawn GC_PrefabSpawn "{4ACB9A8B952BBFE6}" {
+        m_sPrefab "{1432F82C0F89C0BF}Prefabs/Weapons/Ammo/FlareEffect_40mm_Schermuly_Orange.et"
+        m_sLocation "Effect_Redflare"
+        m_sEntityName "RedFlare"
+       }
+      }
+     }
+    }
+    GC_Event "{734B599954BB758E}" {
+     m_sName "Effects_Flares (280s)"
+     m_Advanced GC_EventOptions "{073732ABE86AE410}" {
+      m_fDelay 280
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{F6D82C770AFA9649}" {
+       m_aEntities {
+        "RedFlare"
+       }
+      }
+     }
+    }
+    GC_Event "{3315A6432E8D32ED}" {
+     m_sName "Effects_Flares (290s)"
+     m_Advanced GC_EventOptions "{E0201417C4A4E21B}" {
+      m_fDelay 290
+     }
+     m_aActions {
+      GC_SpawnAction "{3C19C6C971614E12}" {
+       m_Spawn GC_PrefabSpawn "{ADA3F3060029BEBD}" {
+        m_sPrefab "{1432F82C0F89C0BF}Prefabs/Weapons/Ammo/FlareEffect_40mm_Schermuly_Orange.et"
+        m_sLocation "Effect_Redflare"
+        m_sEntityName "RedFlare"
+       }
+      }
+     }
+    }
+    GC_Event "{59FE4439099FECC9}" {
+     m_sName "Effects_Flares (350s)"
+     m_Advanced GC_EventOptions "{D3EF22713AE24669}" {
+      m_fDelay 350
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{724144827940995E}" {
+       m_aEntities {
+        "RedFlare"
+       }
+      }
+     }
+    }
+    GC_Event "{A7541CFF01F99D03}" {
+     m_sName "EC_UKLose"
+     m_aConditions {
+      GC_CustomScriptCondition "{667ED8E15E206735}" {
+       m_Script GC_PeakFactionPopulationCheck "{303E6187BA17C2C7}" {
+        m_sFaction "UK"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1F47F8618D8C31E1}" {
+       m_sTitle "BRITISH DEFEAT"
+       m_sMessage "Our platoon has been almost completely destroyed. The RV is no longer viable; abandon the extraction route and break into the woods while we still can."\
+       ""\
+       "Better luck next time."\
+       "Mission will conclude shortly..."
+      }
+     }
+    }
+    GC_Event "{3BC36604B2FC3A26}" {
+     m_sName "EC_UKWin"
+     m_aConditions {
+      GC_MissionEventCondition "{84E173342A1EE5CA}" {
+       m_sEventName "UK_Extracted"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{59A72F5615E6B05C}" {
+       m_sTitle "BRITISH VICTORY"
+       m_sMessage "Our platoon has successfully reached the RV with enough personnel to withdraw. Mount up and get out of the area before the enemy can close in."\
+       ""\
+       "Good job lads."\
+       "Mission will conclude shortly..."
+      }
+     }
+    }
+    GC_Event "{6E14D60C558F5CEC}" {
+     m_sName "Effects_RemoveFlare"
+     m_aConditions {
+      GC_MissionEventCondition "{36E1E46F5179B6EC}" {
+       m_sEventName "UK_left"
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{252ACBD8E87F162E}" {
+       m_aEntities {
+        "RedFlare"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 1264.068 112.672 -271.852
+}

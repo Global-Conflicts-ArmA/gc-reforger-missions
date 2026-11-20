@@ -1,0 +1,312 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 2845.705 6.125 736.015
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 2673.322 3.137 683.477
+}
+SCR_MapEntity MapEntity1 : "{731564B66F91B107}Prefabs/World/Game/MapEntity.et" {
+ coords 2665.687 2.748 648.22
+}
+GC_LobbyGameMode GC_FightingRetreatMode : "{88E299BED11562EC}worlds/arc/FightingRetreat/FightingRetreat_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bRandomStartingDaytime 1
+   m_bRandomStartingWeather 1
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{F77BD4200E1FC635}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 120
+  }
+  GC_PeakFactionPopulationComponent "{4528A61335974C53}" {
+  }
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{16668B12CA719D7B}" {
+     m_sName "US_EXTRACT"
+     m_aConditions {
+      GC_AreaCondition "{5C49074CB50901CD}" {
+       m_sArea "GC_ArcCapture"
+       m_Targets GC_CharacterAreaTargets "{4499110CDCEC7096}" {
+        m_aFactions {
+         "RHS_USAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{153F563ADFA9A128}" {
+        m_fRequiredShare 0.9
+        m_bWholeMission 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7C29E97D6EB4597F}" {
+       m_sMessage "US_EXTRACT"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8C8282E90138D4C5}" {
+     m_sName "US_EXTRACT (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{046BEC3B075AC485}" {
+       m_sEventName "US_EXTRACT"
+      }
+     }
+     m_Advanced GC_EventOptions "{530A857DA2746DC1}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{971DC4BE3673B907}" {
+       m_sTitle "US VICTORY"
+       m_sMessage "American forces have reached the extraction point."
+      }
+     }
+    }
+    GC_Event "{E30310739AA01788}" {
+     m_sName "US_EXTRACT (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9D0E71CC3138275E}" {
+       m_sEventName "US_EXTRACT"
+      }
+     }
+     m_Advanced GC_EventOptions "{4D833B5BA9EDB059}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{B2A1828D83658DEA}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+    GC_Event "{E7D323078A2B000C}" {
+     m_sName "RU_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{71D8A433A8FB5E27}" {
+       m_Script GC_PeakFactionPopulationCheck "{46742D1BC6F36142}" {
+        m_sFaction "RHS_AFRF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B2E1683AB7F7E954}" {
+       m_sMessage "RU_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E64919B962AF5789}" {
+     m_sName "RU_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{60EDA8008C61D893}" {
+       m_sEventName "RU_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{512E051F1EA851C7}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{2BEE66B039E1F153}" {
+       m_sTitle "US VICTORY"
+       m_sMessage "Russian forces have taken significant casualties, allowing for safe extraction."
+      }
+     }
+    }
+    GC_Event "{5ED9C4C51BA890DB}" {
+     m_sName "RU_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{47E0F809E449667E}" {
+       m_sEventName "RU_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{3C65776C3B1F005B}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{D8FFE2576BCF41A1}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+    GC_Event "{E6694DA002FF47E5}" {
+     m_sName "US_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{7B8ACA8342CBCA68}" {
+       m_Script GC_PeakFactionPopulationCheck "{807F9821C2459149}" {
+        m_sFaction "RHS_USAF"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D7ED8A25A4BC5614}" {
+       m_sMessage "US_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E04A794AE97C51E1}" {
+     m_sName "US_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E31F2D36ABCAA304}" {
+       m_sEventName "US_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{96D8E49F77D84100}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{16E538C3C94338DD}" {
+       m_sTitle "RUSSIAN VICTORY"
+       m_sMessage "American forces have taken significant casualties and can no longer safely extract."
+      }
+     }
+    }
+    GC_Event "{8325FEA77B2E3375}" {
+     m_sName "US_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4B9927BAEDF90713}" {
+       m_sEventName "US_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{2A7901656DCB833F}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{B60E118169B74E24}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{ED160F90CBE93FC7}" {
+     m_sName "TIME_LIMIT (5525s)"
+     m_Advanced GC_EventOptions "{DDBC8BECB1FD141D}" {
+      m_fDelay 5525
+     }
+     m_aActions {
+      GC_MessageAction "{14284DE818513EC8}" {
+       m_sTitle "RUSSIAN VICTORY"
+       m_sMessage "American forces have been delayed and extraction is no longer possible."
+      }
+     }
+    }
+    GC_Event "{49114E408E1A979A}" {
+     m_sName "TIME_LIMIT (5535s)"
+     m_Advanced GC_EventOptions "{E07118828168E0D8}" {
+      m_fDelay 5535
+     }
+     m_aActions {
+      GC_EndMissionAction "{539B2752D5B58AAF}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{52D2174D202BF9B4}" {
+     m_sName "Release staging zone"
+     m_aConditions {
+      GC_TimerCondition "{5F4599AA3CDCB357}" {
+       m_fSeconds 120
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{C021CC1B9A39358C}" {
+       m_aEntities {
+        "GC_ArcStartingZone"
+        "GC_ArcStartingZone2"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 2665.687 2.748 648.22
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{5977478D568C0922}" {
+        m_sCallsign "1"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{5977478D568C092E}" {
+        m_sCallsign "0"
+       }
+       SCR_CallsignInfo "{5977478D568C092D}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{5977478D568D935E}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{5977478D568D935F}" {
+        m_sCallsign "3"
+       }
+      }
+      m_sCallsignGroupFormat "%1%2%3"
+      m_sCallsignCharacterFormat "%1%2%3: %4"
+      m_sCallsignCharacterWithRoleFormat "%1%2%3: %4"
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "1"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{646F7202399C63C0}" {
+        m_sCallsign "4"
+       }
+      }
+      m_sCallsignGroupFormat "%2-%3"
+      m_sCallsignCharacterFormat "%2-%3: %4"
+      m_sCallsignCharacterWithRoleFormat "%2-%3: %4"
+     }
+    }
+   }
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity GC_ArcStartingZone : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 172.945 18.123 985.176
+}
+SCR_EditorRestrictionZoneEntity GC_ArcStartingZone2 : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 2135.251 4.536 630.397
+}
+GC_RadiusAreaEntity GC_ArcCapture : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 702.329 15.4 2150.596
+ m_fRadius 50
+}
