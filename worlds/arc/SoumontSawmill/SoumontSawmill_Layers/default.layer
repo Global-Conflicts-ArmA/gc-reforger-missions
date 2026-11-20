@@ -1,0 +1,268 @@
+SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
+ coords 6016.315 419.453 6347.044
+}
+PerceptionManager PerceptionManager2 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 6008.819 420.185 6369.589
+}
+SCR_MapEntity MapEntity1 : "{731564B66F91B107}Prefabs/World/Game/MapEntity.et" {
+ coords 6003.665 420.787 6372.926
+}
+GC_LobbyGameMode GC_SoumontSawmillMode : "{C2E3024E8C30F14E}worlds/arc/SoumontSawmill/SoumontSawmill_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66E56C9F7424A193}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingMinutes 30
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 4
+   m_iMonth 9
+   m_iYear 1995
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{F77BD4200E1FC635}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 180
+  }
+  GC_PeakFactionPopulationComponent "{609966695D037D75}" {
+  }
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{0B9BB25AF0ED4F25}" {
+     m_sName "TIME_LIMIT (2885s)"
+     m_Advanced GC_EventOptions "{C4F0BD9FC90B0E83}" {
+      m_fDelay 2885
+     }
+     m_aActions {
+      GC_MessageAction "{87BE8CB428AA3D3B}" {
+       m_sTitle "CHECHEN VICTORY"
+       m_sMessage "Time limit reached."
+      }
+     }
+    }
+    GC_Event "{8F09A569C3D5EF1E}" {
+     m_sName "TIME_LIMIT (2895s)"
+     m_Advanced GC_EventOptions "{0FCA2B161A7E93E3}" {
+      m_fDelay 2895
+     }
+     m_aActions {
+      GC_EndMissionAction "{D80C12992C284C56}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_SEPARATIST"
+       }
+      }
+     }
+    }
+    GC_Event "{4C6535D85DD78977}" {
+     m_sName "RU_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{8C465EB755F6225B}" {
+       m_Script GC_PeakFactionPopulationCheck "{326B6FD0A24BD7D2}" {
+        m_sFaction "RHS_AFRF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{CF70E85813279C5B}" {
+       m_sMessage "RU_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C2D42B2E5DE2C580}" {
+     m_sName "RU_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5F48C3BB986F828A}" {
+       m_sEventName "RU_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{9AF27B9E72D34C97}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{F6732FE4F45DEB4C}" {
+       m_sTitle "CHECHEN VICTORY"
+       m_sMessage "Russian forces have taken significant casualties."
+      }
+     }
+    }
+    GC_Event "{3A74835E0A304B74}" {
+     m_sName "RU_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1CDE4AD68E51996E}" {
+       m_sEventName "RU_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{A6F442F2F5DDEE59}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{D22A077D123D0AFF}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_SEPARATIST"
+       }
+      }
+     }
+    }
+    GC_Event "{FEF64687F278884F}" {
+     m_sName "SEP_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{EB69C4E83C38FC68}" {
+       m_Script GC_PeakFactionPopulationCheck "{25647E882AF4F882}" {
+        m_sFaction "GC_SEPARATIST"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F3DEBF9CDB7B6E2B}" {
+       m_sMessage "SEP_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B859EBF989E66761}" {
+     m_sName "SEP_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{57FE10C881E2AD6F}" {
+       m_sEventName "SEP_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{CDE452EE5220A64F}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{86B643A79493D03F}" {
+       m_sTitle "RUSSIAN VICTORY"
+       m_sMessage "Chechen forces have taken significant casualties."
+      }
+     }
+    }
+    GC_Event "{69C72A615949F625}" {
+     m_sName "SEP_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4D79B6570EE6FE3B}" {
+       m_sEventName "SEP_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{0400001535F7A7C3}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{53A1A8C76ACDA904}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{065AF97B2420F131}" {
+     m_sName "RU_CAP"
+     m_aConditions {
+      GC_AreaCondition "{12D02932F44A2B06}" {
+       m_sArea "GC_ArcCapture"
+       m_Targets GC_CharacterAreaTargets "{6841C6807FD14D5A}" {
+        m_aFactions {
+         "RHS_AFRF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{4F1B4BDE79A0DDF3}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{5D3C62AEA06136E3}" {
+        m_fSeconds 120
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+        m_Messages GC_CaptureMessages "{EE4E071717E5BA86}" {
+         m_sLocation "the sawmill"
+         m_sCaptured "The %1 has taken control of %2."
+         m_sCapturing "The %1 is taking control of %2."
+         m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+         m_sLost "The %1 has lost control of %2."
+         m_sLosing "The %1 is losing control of %2."
+         m_sLossInterrupted "The %1 is no longer losing control of %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2CD9C69A871C0349}" {
+       m_sMessage "RU_CAP"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5EBE49801D1B1847}" {
+     m_sName "RU_CAP (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5FB3C4A2E694D809}" {
+       m_sEventName "RU_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{2D7BF5635370685A}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{AE78CB7826A8C1C8}" {
+       m_sTitle "RUSSIAN VICTORY"
+       m_sMessage "The sawmill has been seized by Russian forces."
+      }
+     }
+    }
+    GC_Event "{99A10F823701ABDD}" {
+     m_sName "RU_CAP (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{721B709D6094AFB1}" {
+       m_sEventName "RU_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{4D5E710BBD522377}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{575B70EEA067CDD3}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{C1BA47D467CD2736}" {
+     m_sName "Release staging zone"
+     m_aConditions {
+      GC_TimerCondition "{10426EDFB6CCD5A8}" {
+       m_fSeconds 180
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{9329E41BCFEB7D72}" {
+       m_aEntities {
+        "GC_ArcStartingZone"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 6003.665 420.787 6372.926
+}
+SCR_EditorRestrictionZoneEntity GC_ArcStartingZone : "{6144B0BE2EAC6897}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneMedium.et" {
+ coords 4291.027 409.207 5814.913
+}
+GC_RadiusAreaEntity GC_ArcCapture : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 5351.424 403.156 5306.196
+ m_fRadius 30
+}

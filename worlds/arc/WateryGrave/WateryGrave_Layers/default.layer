@@ -1,0 +1,305 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 2081.667 6.438 1968.527
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 2084.703 6.445 1963.53
+}
+SCR_MapEntity MapEntity1 : "{731564B66F91B107}Prefabs/World/Game/MapEntity.et" {
+ coords 2079.721 6.438 1963.339
+}
+GC_LobbyGameMode GC_WateryGraveMode : "{A94926249BEA6E60}worlds/arc/WateryGrave/WateryGrave_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{62DD71B832E40138}" {
+     m_sWeatherPresetName "Rainy"
+     m_iStartingHour 10
+    }
+   }
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{F77BD4200E1FC635}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 300
+  }
+  GC_PeakFactionPopulationComponent "{AD84E4A706B1C5B1}" {
+  }
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{6EB33AA3E51DCBCB}" {
+     m_sName "RU_CAP"
+     m_aConditions {
+      GC_AreaCondition "{6CAF0EAC8F6EAFCD}" {
+       m_sArea "GC_ArcCapture"
+       m_Targets GC_CharacterAreaTargets "{52EC1BF938CA595E}" {
+        m_aFactions {
+         "RHS_AFRF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{B3BED74279BCB57A}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{1164D128E46E33CE}" {
+        m_fSeconds 300
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+        m_Messages GC_CaptureMessages "{5246237ABEC66FB5}" {
+         m_sLocation "the CDF command post"
+         m_sCaptured "The %1 has taken control of %2."
+         m_sCapturing "The %1 is taking control of %2."
+         m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+         m_sLost "The %1 has lost control of %2."
+         m_sLosing "The %1 is losing control of %2."
+         m_sLossInterrupted "The %1 is no longer losing control of %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B28B370134D1EBFD}" {
+       m_sMessage "RU_CAP"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{264A3AA8D8A26E75}" {
+     m_sName "RU_CAP (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{628BAB87B16D9BF7}" {
+       m_sEventName "RU_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{91FCD6CA65C89E77}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{13390850872FD46A}" {
+       m_sTitle "AFRF VICTORY"
+       m_sMessage "Russian forces have taken control of the CDF command post."
+      }
+     }
+    }
+    GC_Event "{561D8E27AC297370}" {
+     m_sName "RU_CAP (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2F5372B4503F1380}" {
+       m_sEventName "RU_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{35DD034A1D5F2DA1}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{99B436111F5D0BFF}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{566D230B3A3F7B7E}" {
+     m_sName "CDF_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{501FADA07C2B9558}" {
+       m_Script GC_PeakFactionPopulationCheck "{E16DC68D426F12FE}" {
+        m_sFaction "GC_CDF"
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{124CFB807638F023}" {
+       m_sMessage "CDF_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{425F3962DDEF142D}" {
+     m_sName "CDF_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D5D5A68D82C04117}" {
+       m_sEventName "CDF_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{261A1A829ED78BD9}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{F584A0BA8CF2FFD4}" {
+       m_sTitle "AFRF VICTORY"
+       m_sMessage "CDF forces have been wiped out."
+      }
+     }
+    }
+    GC_Event "{5FEF503F7E0D89BA}" {
+     m_sName "CDF_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4E59245ED05EEA34}" {
+       m_sEventName "CDF_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{FE4285171243BE18}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{8F691ABE98C256D1}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{005D5CB9902D855C}" {
+     m_sName "RU_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{0DF9EB4DBFC8AA2F}" {
+       m_Script GC_PeakFactionPopulationCheck "{0ADC45E173D38864}" {
+        m_sFaction "RHS_AFRF"
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E566E703975AA399}" {
+       m_sMessage "RU_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AE9B503E5E429933}" {
+     m_sName "RU_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{34AF98A945F53BB4}" {
+       m_sEventName "RU_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{BFEBB97D39FEF7EE}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{79249742D0937FA0}" {
+       m_sTitle "CDF VICTORY"
+       m_sMessage "Russian forces have been wiped out."
+      }
+     }
+    }
+    GC_Event "{A54FF1310BEAF7EC}" {
+     m_sName "RU_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3C3B1161EF10D58B}" {
+       m_sEventName "RU_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{547FF26B654F9978}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{8BC9CACADBD1872A}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_CDF"
+       }
+      }
+     }
+    }
+    GC_Event "{E8FB351A2A95AA50}" {
+     m_sName "TIME_LIMIT (3005s)"
+     m_Advanced GC_EventOptions "{0F93223D9CB8D964}" {
+      m_fDelay 3005
+     }
+     m_aActions {
+      GC_MessageAction "{14CD2949DB83DAC1}" {
+       m_sTitle "CDF VICTORY"
+       m_sMessage "Time limit reached. CDF reinforcements are inbound."
+      }
+     }
+    }
+    GC_Event "{7912BE8DA1558E0F}" {
+     m_sName "TIME_LIMIT (3015s)"
+     m_Advanced GC_EventOptions "{87614A009F4E0DB5}" {
+      m_fDelay 3015
+     }
+     m_aActions {
+      GC_EndMissionAction "{19F04FD774A9B3B8}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_CDF"
+       }
+      }
+     }
+    }
+    GC_Event "{057689E5ED6A6BC0}" {
+     m_sName "Release staging zone"
+     m_aConditions {
+      GC_TimerCondition "{64DFC2F8FDA80409}" {
+       m_fSeconds 300
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{17C81209E4876888}" {
+       m_aEntities {
+        "GC_ArcStartingZone"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 2079.721 6.438 1963.339
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{5977478D568C0922}" {
+        m_sCallsign "2"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{5977478D568C092A}" {
+        m_sCallsign "3"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{5977478D568C092E}" {
+        m_sCallsign "0"
+       }
+       SCR_CallsignInfo "{5977478D568C092D}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{5977478D568D935E}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{5977478D568D935F}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{64E30A2D51F0B029}" {
+        m_sCallsign "4"
+       }
+      }
+      m_sCallsignGroupFormat "%1%2%3"
+      m_sCallsignCharacterFormat "%1%2%3: %4"
+      m_sCallsignCharacterWithRoleFormat "%1%2%3: %4"
+     }
+    }
+   }
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity GC_ArcStartingZone : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 3324.765 20.381 2234.92
+}
+GC_RadiusAreaEntity GC_ArcCapture : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 1926.035 7.004 1989.731
+ m_fRadius 15
+}
