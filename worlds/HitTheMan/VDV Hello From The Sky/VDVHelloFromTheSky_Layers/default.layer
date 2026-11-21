@@ -1,0 +1,1996 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{6706A9B2A8A8B265}" {
+     NavmeshFile "{E08B16AADAB901D8}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Soldier.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{04F808CEFD545B32}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Vehicle.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{6D7CE9C2F346F22E}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_LowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 5923.219 241.213 6066.784
+}
+GC_LobbyGameMode GC_MigratedMission : "{29D69C3C87F06A6E}worlds/HitTheMan/VDV Hello From The Sky/VDVHelloFromTheSky_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 13
+   m_iStartingMinutes 30
+   m_fDayTimeAcceleration 0.1
+   m_fNightTimeAcceleration 0.1
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{650415CBAFAE6875}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 13
+     m_iStartingMinutes 30
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 25
+   m_iMonth 6
+   m_iYear 1983
+  }
+  GC_MissionEnvironmentComponent "{39B3A800BAA3A8E4}" {
+   m_fFogAmount 0.69
+   m_fFogHeightDensity 0.7
+   m_fRainIntensity 0
+   m_fWindSpeed 5
+  }
+  GC_PeakFactionPopulationComponent "{78263E3B41165A42}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{634B64063F234CB6}" {
+     m_sName "CAF Victory Casualties"
+     m_aConditions {
+      GC_CustomScriptCondition "{C139F02B8CED03FA}" {
+       m_Script GC_PeakFactionPopulationCheck "{BAF2F4E4C3720DFC}" {
+        m_sFaction "USSR"
+        m_fRatio 0.85
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{788A469E34F9069F}" {
+       m_sMessage "CAF Victory Casualties"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5A687B62D3E43F24}" {
+     m_sName "CAF Victory Casualties (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9BF7BBD2B406005B}" {
+       m_sEventName "CAF Victory Casualties"
+      }
+     }
+     m_Advanced GC_EventOptions "{0360FF42900B7382}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{170A29F9DDE65CA3}" {
+       m_sTitle "Canadian Armed Forces Victory"
+       m_sMessage "USSR Sustained too many casualties.. GM Discretion when to end the mission"
+      }
+     }
+    }
+    GC_Event "{7FE5586B6590D24E}" {
+     m_sName "USSR OBJ Victory"
+     m_aConditions {
+      GC_GameModeStateCondition "{53824DF5F41CC756}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{D013414367307111}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_AreaCondition "{601F6FCBC70BFB6A}" {
+         m_sArea "GC_MigrationArea_Hangers"
+         m_Targets GC_CharacterAreaTargets "{5BF6CA84D2A76B6C}" {
+          m_iWho 2
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{D34A9F35678B67C0}" {
+          m_fRequiredShare 0.9
+         }
+         m_Capture GC_AreaCaptureOptions "{BDCD7528FF8345D6}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{683DA81C641EB193}" {
+         m_sArea "GC_MigrationArea_MilitaryBase"
+         m_Targets GC_CharacterAreaTargets "{231E014F923DC584}" {
+          m_iWho 2
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{CDAA7185D0513562}" {
+          m_fRequiredShare 0.9
+         }
+         m_Capture GC_AreaCaptureOptions "{5B142A3F03A7F9D3}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_GameModeStateCondition "{790C05E046B20E4A}" {
+         m_eGameModeState GAME
+         m_bRequireOtherState 1
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{005D8153F8F6F543}" {
+       m_sMessage "USSR OBJ Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{278B87829EBB2870}" {
+     m_sName "USSR OBJ Victory (15s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{FBBC8B6343892340}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{7079A68D55945960}" {
+       m_sEventName "USSR OBJ Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{7B753EFACECAEDCB}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_MessageAction "{938C0C9732A7C7A1}" {
+       m_sTitle "Soviet VDV Victory"
+       m_sMessage "VDV has managed to secure a foothold on the airfield... "\
+       "GM Discretion when to end the mission"
+      }
+     }
+    }
+    GC_Event "{F9DC4FEF15539CE6}" {
+     m_sName "Hanger Message"
+     m_aConditions {
+      GC_AreaCondition "{BD8B89BE3CF4452B}" {
+       m_sArea "GC_MigrationArea_Hangers"
+       m_Targets GC_CharacterAreaTargets "{67C7B2ABDDC5D452}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{57247558CDB3AFB6}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{21033E249FB6D887}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3B345D32A0AB2F23}" {
+       m_sMessage "Hanger Message"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9896D32860DAC00E}" {
+     m_sName "Hanger Message (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C87FE77BB1E9C0C8}" {
+       m_sEventName "Hanger Message"
+      }
+     }
+     m_Advanced GC_EventOptions "{596CF18905549274}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_MessageAction "{D359E551E69C024E}" {
+       m_sTitle "Hangers Secured."
+       m_sMessage ""
+       m_aFactions {
+        "USSR"
+       }
+      }
+     }
+    }
+    GC_Event "{68B25838D30BAF17}" {
+     m_sName "Hanger Message (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{AA727A495B395926}" {
+       m_sEventName "Hanger Message"
+      }
+     }
+     m_Advanced GC_EventOptions "{15BEB08DDC74BB3F}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_MessageAction "{0ED28F2C6EFDA34F}" {
+       m_sTitle "Hangers Secured By VDV"
+       m_sMessage ""
+       m_aFactions {
+        "GC_CAF"
+       }
+      }
+     }
+    }
+    GC_Event "{7C9148FB63890B2C}" {
+     m_sName "Military Base Message"
+     m_aConditions {
+      GC_AreaCondition "{FA915BB02E319D11}" {
+       m_sArea "GC_MigrationArea_MilitaryBase"
+       m_Targets GC_CharacterAreaTargets "{40DD73A32B2D8C09}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{A582B6754CCA63A2}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{44D002EAB5944876}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{42EBE925D0CFDAE3}" {
+       m_sMessage "Military Base Message"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BC28FDDC97E35157}" {
+     m_sName "Military Base Message (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D9992A733E35CAFC}" {
+       m_sEventName "Military Base Message"
+      }
+     }
+     m_Advanced GC_EventOptions "{9F2FD3304777EA0D}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_MessageAction "{684DED1A8DBECFE4}" {
+       m_sTitle "Military Base Secured."
+       m_sMessage ""
+       m_aFactions {
+        "USSR"
+       }
+      }
+     }
+    }
+    GC_Event "{C2609974873E022E}" {
+     m_sName "Military Base Message (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8344BCC220D18DD2}" {
+       m_sEventName "Military Base Message"
+      }
+     }
+     m_Advanced GC_EventOptions "{8247862BCA886AAC}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_MessageAction "{2401915E2E9F35CA}" {
+       m_sTitle "Military Base Secured By VDV"
+       m_sMessage ""
+       m_aFactions {
+        "GC_CAF"
+       }
+      }
+     }
+    }
+    GC_Event "{757847F7777AC500}" {
+     m_sName "Industrial Message (10s)"
+     m_Advanced GC_EventOptions "{17DE1631F8C76C77}" {
+      m_fDelay 10
+      m_bDisabled 1
+     }
+     m_aActions {
+      GC_MessageAction "{3EECCA8F6057C5E2}" {
+       m_sTitle "Industrial Secured."
+       m_sMessage ""
+       m_aFactions {
+        "USSR"
+       }
+      }
+     }
+    }
+    GC_Event "{4F9385606D195DD7}" {
+     m_sName "Industrial Message (60s)"
+     m_Advanced GC_EventOptions "{67374D2F776494BE}" {
+      m_fDelay 60
+      m_bDisabled 1
+     }
+     m_aActions {
+      GC_MessageAction "{FC34ABA5A0979DD6}" {
+       m_sTitle "Industrial Secured By VDV"
+       m_sMessage ""
+       m_aFactions {
+        "GC_CAF"
+       }
+      }
+     }
+    }
+    GC_Event "{582B30E38EF3D1CD}" {
+     m_sName "GC_MigratedSpawn_C86EFBD3C2F792B1"
+     m_aConditions {
+      GC_AreaCondition "{6CDBBD8FFBA8917C}" {
+       m_sArea "AI_Spawn_North_Trigger_1"
+       m_Targets GC_CharacterAreaTargets "{6E1C2DDBB30757A2}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{2F68A87C985ADB16}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{FAC9A5E76422E7AF}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A84ABEAC6D93AAE3}" {
+       m_sMessage "GC_MigratedSpawn_C86EFBD3C2F792B1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{226EE4F002410722}" {
+     m_sName "GC_MigratedSpawn_C86EFBD3C2F792B1 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{07BA76D93FEEE054}" {
+       m_sEventName "GC_MigratedSpawn_C86EFBD3C2F792B1"
+      }
+     }
+     m_Advanced GC_EventOptions "{DCC6ED2CE26BA63D}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{D2728A7D89CC1DB8}" {
+       m_Spawn GC_AIGroupSpawn "{C207581445828088}" {
+        m_sLocation "North_AI_Spawn_1"
+        m_sPrefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+        m_aWaypoints {
+         "North_Def_WPMain_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{19C1A459F24E3626}" {
+     m_sName "GC_MigratedSpawn_025DB0F67CD60110"
+     m_aConditions {
+      GC_AreaCondition "{15E0916008FBC25A}" {
+       m_sArea "AI_Spawn_North_Trigger_1"
+       m_Targets GC_CharacterAreaTargets "{15D12CDB3994A6F3}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{95E9729132EBDDB4}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{91D1FA53441FD36F}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{EDCD05927F90E764}" {
+       m_sMessage "GC_MigratedSpawn_025DB0F67CD60110"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2E5384F929CCF815}" {
+     m_sName "GC_MigratedSpawn_025DB0F67CD60110 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7735603DA6DDB1F5}" {
+       m_sEventName "GC_MigratedSpawn_025DB0F67CD60110"
+      }
+     }
+     m_Advanced GC_EventOptions "{4F6C3D0EB3F46A58}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{007F8DD134313984}" {
+       m_Spawn GC_AIGroupSpawn "{2497C992FAA8EB03}" {
+        m_sLocation "North_AI_Spawn_2"
+        m_sPrefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+        m_aWaypoints {
+         "North_Def_WPMain_2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{D0CF37C5ACA2DCCB}" {
+     m_sName "GC_MigratedSpawn_D3A0D531978F7825"
+     m_aConditions {
+      GC_AreaCondition "{C4C5E58CDF287C30}" {
+       m_sArea "AI_Spawn_North_Trigger_1"
+       m_Targets GC_CharacterAreaTargets "{28543BE4881FA19F}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{50B204F7C8649DF5}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{E255028FD1F7B539}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{93E731705EC48817}" {
+       m_sMessage "GC_MigratedSpawn_D3A0D531978F7825"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{05AAD4C2A6548E6E}" {
+     m_sName "GC_MigratedSpawn_D3A0D531978F7825 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A16E50F0E895C990}" {
+       m_sEventName "GC_MigratedSpawn_D3A0D531978F7825"
+      }
+     }
+     m_Advanced GC_EventOptions "{D65B34CD52F834C2}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{1D80E95E6AB38B49}" {
+       m_Spawn GC_AIGroupSpawn "{61729AEE6AC99D97}" {
+        m_sLocation "North_AI_Spawn_3"
+        m_sPrefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+        m_aWaypoints {
+         "North_Def_WPMain_3"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3C6E4D938ACA133B}" {
+     m_sName "GC_MigratedSpawn_0225E94CB203DEF3"
+     m_aConditions {
+      GC_AreaCondition "{5A6989301CC36EAD}" {
+       m_sArea "AI_Spawn_North_Trigger_1"
+       m_Targets GC_CharacterAreaTargets "{5D9263356FFC0F0E}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{8F386EFD3B0AE8F4}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{0748C89766CF41AD}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9FF277B238385B23}" {
+       m_sMessage "GC_MigratedSpawn_0225E94CB203DEF3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{55EC7D0002FF291B}" {
+     m_sName "GC_MigratedSpawn_0225E94CB203DEF3 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{0015C2FA4394B659}" {
+       m_sEventName "GC_MigratedSpawn_0225E94CB203DEF3"
+      }
+     }
+     m_Advanced GC_EventOptions "{CCAFE8D5A25546C8}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{00D402631199609A}" {
+       m_Spawn GC_AIGroupSpawn "{AACC24B3AB58D316}" {
+        m_sLocation "North_AI_Spawn_4"
+        m_sPrefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+        m_aWaypoints {
+         "North_Def_WPMain_4"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{33E5FE356C727005}" {
+     m_sName "GC_MigratedSpawn_6A3B56E869A8C701"
+     m_aConditions {
+      GC_AreaCondition "{66924FB6BB92227E}" {
+       m_sArea "AI_Spawn_North_Trigger_1"
+       m_Targets GC_CharacterAreaTargets "{615F97205FE51FC6}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{7822DF5F79C8F46C}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{B6ED2A63CE6202DA}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{ACA86747AA771AB1}" {
+       m_sMessage "GC_MigratedSpawn_6A3B56E869A8C701"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9F0144752D7A21D1}" {
+     m_sName "GC_MigratedSpawn_6A3B56E869A8C701 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CF87A38F127EF68A}" {
+       m_sEventName "GC_MigratedSpawn_6A3B56E869A8C701"
+      }
+     }
+     m_Advanced GC_EventOptions "{67C2382988B9609F}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{98EAAF4CF5C476D1}" {
+       m_Spawn GC_AIGroupSpawn "{2C7CAE0DD2B302DF}" {
+        m_sLocation "North_AI_Spawn_5"
+        m_sPrefab "{B9D5F5FD9CAC3B80}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_Weap_Detach_2.et"
+        m_aWaypoints {
+         "North_Def_WPMain_5"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{0081977D80FA61C0}" {
+     m_sName "GC_MigratedSpawn_A6C309F910C22F65"
+     m_aConditions {
+      GC_AreaCondition "{68AC043389CFDBE5}" {
+       m_sArea "AI_Spawn_North_Trigger_1"
+       m_Targets GC_CharacterAreaTargets "{D73D4D4977A6D089}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{E9B6737168A88D0E}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{C7C2ABB752872D39}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{16C0A643FB7F8A1B}" {
+       m_sMessage "GC_MigratedSpawn_A6C309F910C22F65"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B776382485A8E483}" {
+     m_sName "GC_MigratedSpawn_A6C309F910C22F65 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{64CFB219F9E614D9}" {
+       m_sEventName "GC_MigratedSpawn_A6C309F910C22F65"
+      }
+     }
+     m_Advanced GC_EventOptions "{7C000A3AE99D64C8}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{89D3968D9740F580}" {
+       m_Spawn GC_AIGroupSpawn "{48D4EE69E47F3679}" {
+        m_sLocation "North_AI_Spawn_6"
+        m_sPrefab "{B9D5F5FD9CAC3B80}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_Weap_Detach_2.et"
+        m_aWaypoints {
+         "North_Def_WPMain_6"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F30404847B803E76}" {
+     m_sName "GC_MigratedSpawn_3B1A85E8F04EA2EF"
+     m_aConditions {
+      GC_AreaCondition "{0C72BED91D8880A1}" {
+       m_sArea "AI_Spawn_North_Trigger_1"
+       m_Targets GC_CharacterAreaTargets "{F15B52B31EDD44B1}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{50EFCDBBBE75CD0A}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{41A507E77D0A26E5}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{341FB5833CAD3178}" {
+       m_sMessage "GC_MigratedSpawn_3B1A85E8F04EA2EF"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{4B764EC601F59155}" {
+     m_sName "GC_MigratedSpawn_3B1A85E8F04EA2EF (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8F7F6094596AEDE2}" {
+       m_sEventName "GC_MigratedSpawn_3B1A85E8F04EA2EF"
+      }
+     }
+     m_Advanced GC_EventOptions "{89DFBF690F88A866}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{9EE2D15717CCAB53}" {
+       m_Spawn GC_AIGroupSpawn "{41165DD03C05D8DF}" {
+        m_sLocation "North_AI_Spawn_7"
+        m_sPrefab "{B9D5F5FD9CAC3B80}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_Weap_Detach_2.et"
+        m_aWaypoints {
+         "North_Def_WPMain_7"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{98E4F48068C74694}" {
+     m_sName "GC_MigratedSpawn_7B0B4FF4A158ADE2"
+     m_aConditions {
+      GC_AreaCondition "{14DF36509EBF1EE6}" {
+       m_sArea "AI_Spawn_North_Trigger_1"
+       m_Targets GC_CharacterAreaTargets "{B755D0F33D4F9929}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{5F84967B056BA192}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{0D96BA949DB6DE1C}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{13A8E96C0B20B94F}" {
+       m_sMessage "GC_MigratedSpawn_7B0B4FF4A158ADE2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2B37F8E1C27B72ED}" {
+     m_sName "GC_MigratedSpawn_7B0B4FF4A158ADE2 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8719E2EF51225500}" {
+       m_sEventName "GC_MigratedSpawn_7B0B4FF4A158ADE2"
+      }
+     }
+     m_Advanced GC_EventOptions "{657CC293EB0A8794}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{700A671874F57C05}" {
+       m_Spawn GC_AIGroupSpawn "{A47CC66E4B322EDE}" {
+        m_sLocation "North_AI_Spawn_8"
+        m_sPrefab "{B9D5F5FD9CAC3B80}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_Weap_Detach_2.et"
+        m_aWaypoints {
+         "North_Def_WPMain_8"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{258C0E5BC0206B9B}" {
+     m_sName "GC_MigratedSpawn_4C7E9880127A293C"
+     m_aConditions {
+      GC_AreaCondition "{FE681F05CCFF9AD9}" {
+       m_sArea "AI_Spawn_North_Trigger_1"
+       m_Targets GC_CharacterAreaTargets "{2670FE6270D5D113}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{4A1CAF9C2E5CDC82}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{4B44E20B7DC2AC13}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4CC053987AE415CE}" {
+       m_sMessage "GC_MigratedSpawn_4C7E9880127A293C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C9213A313491DCE3}" {
+     m_sName "GC_MigratedSpawn_4C7E9880127A293C (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4812910176DACED0}" {
+       m_sEventName "GC_MigratedSpawn_4C7E9880127A293C"
+      }
+     }
+     m_Advanced GC_EventOptions "{46A15BFEC4A9090F}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{9E81C32B8EB24BE5}" {
+       m_Spawn GC_AIGroupSpawn "{F62A5783D7C57595}" {
+        m_sLocation "North_AI_Spawn_9"
+        m_sPrefab "{B9D5F5FD9CAC3B80}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_Weap_Detach_2.et"
+        m_aWaypoints {
+         "North_Def_WPMain_9"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B104753EFE98CB4F}" {
+     m_sName "GC_MigratedSpawn_8E5E2B89E11DDA9F"
+     m_aConditions {
+      GC_AreaCondition "{F64BD03229538C30}" {
+       m_sArea "AI_Spawn_North_Trigger_LAV"
+       m_Targets GC_CharacterAreaTargets "{CE5185DC413CD9DA}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{090FE51F4F281DB0}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{C43820764516986D}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{05CF045E71BE66ED}" {
+       m_sMessage "GC_MigratedSpawn_8E5E2B89E11DDA9F"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{02879FED53D09B3B}" {
+     m_sName "GC_MigratedSpawn_8E5E2B89E11DDA9F (8s)"
+     m_aConditions {
+      GC_MissionEventCondition "{965FA1BFD848A5CD}" {
+       m_sEventName "GC_MigratedSpawn_8E5E2B89E11DDA9F"
+      }
+     }
+     m_Advanced GC_EventOptions "{E777D9B74AC7E0A2}" {
+      m_fDelay 8
+     }
+     m_aActions {
+      GC_SpawnAction "{602F657F7C6D3880}" {
+       m_Spawn GC_CrewedVehicleSpawn "{7ED61B1237586F10}" {
+        m_sLocation "LAV25_Spawn_North_1"
+        m_sPrefab "{3312ADBF53A16DD8}Prefabs/Vehicles/Wheeled/LAV25/LAV25_RHS.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{CCE431AC35EB473A}" {
+          m_aStations {
+           GC_SpawnCrewStation "{4397D2162689F06C}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{D75570BC69E802A7}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_Vehicle_Commander_1_AI.et"
+             "{661FC333B3EE3AF3}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_Vehicle_Gunner_1_AI.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "North_WP_LAV_1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{8053B01AA8CFDF3B}" {
+     m_sName "GC_MigratedSpawn_EE02D6970166B159"
+     m_aConditions {
+      GC_AreaCondition "{E2B9895EC081CC67}" {
+       m_sArea "AI_Spawn_North_Trigger_LAV"
+       m_Targets GC_CharacterAreaTargets "{1618FB60F60E842B}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{66DF4EE33C6831C8}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{0216658026558DF9}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{11F9232443ECA28E}" {
+       m_sMessage "GC_MigratedSpawn_EE02D6970166B159"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{10B4BC4405885049}" {
+     m_sName "GC_MigratedSpawn_EE02D6970166B159 (8s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C0EA2C867D808772}" {
+       m_sEventName "GC_MigratedSpawn_EE02D6970166B159"
+      }
+     }
+     m_Advanced GC_EventOptions "{24C3423F3F8F0EAF}" {
+      m_fDelay 8
+     }
+     m_aActions {
+      GC_SpawnAction "{1DB6D022273E6E7B}" {
+       m_Spawn GC_CrewedVehicleSpawn "{EC87BC8407D6DE83}" {
+        m_sLocation "LAV25_Spawn_North_2"
+        m_sPrefab "{3312ADBF53A16DD8}Prefabs/Vehicles/Wheeled/LAV25/LAV25_RHS.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{72B26597A40BB700}" {
+          m_aStations {
+           GC_SpawnCrewStation "{025470CBFB95EA7C}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{D75570BC69E802A7}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_Vehicle_Commander_1_AI.et"
+             "{661FC333B3EE3AF3}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_Vehicle_Gunner_1_AI.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "North_WP_LAV_2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F089AAD2DA9E4FD3}" {
+     m_sName "GC_MigratedSpawn_19656B60091096E2"
+     m_aConditions {
+      GC_AreaCondition "{43AC22B554B88A8F}" {
+       m_sArea "AI_Spawn_North_Trigger_1"
+       m_Targets GC_CharacterAreaTargets "{5D012FDA1E7EA5A4}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{99A4D363B8EE28EB}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{57D22E7C7F20F281}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DA74076788C2C325}" {
+       m_sMessage "GC_MigratedSpawn_19656B60091096E2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1135E849F799E03B}" {
+     m_sName "GC_MigratedSpawn_19656B60091096E2 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{35F4F4DA7AEBEBFE}" {
+       m_sEventName "GC_MigratedSpawn_19656B60091096E2"
+      }
+     }
+     m_Advanced GC_EventOptions "{AD9BED69F8E07B88}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{60687BB9A4B6ABBE}" {
+       m_Spawn GC_AIGroupSpawn "{38844AAF8C91B67E}" {
+        m_sLocation "North_AI_Spawn_10"
+        m_sPrefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+        m_aWaypoints {
+         "North_Def_WPMain_10"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B13CFC5F92D305D2}" {
+     m_sName "GC_MigratedSpawn_E9D83F4C61EB20B5"
+     m_aConditions {
+      GC_AreaCondition "{CFCD6CF34E079D88}" {
+       m_sArea "AI_Spawn_North_Trigger_1"
+       m_Targets GC_CharacterAreaTargets "{93D7870889550654}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{9EE7C4AB8F118CB4}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{CF0F7A962BE6FC35}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{98A6CF41CCEE17DA}" {
+       m_sMessage "GC_MigratedSpawn_E9D83F4C61EB20B5"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7B15DDCDDF6B20F7}" {
+     m_sName "GC_MigratedSpawn_E9D83F4C61EB20B5 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1691DC6CDD9A5FAA}" {
+       m_sEventName "GC_MigratedSpawn_E9D83F4C61EB20B5"
+      }
+     }
+     m_Advanced GC_EventOptions "{3A4478E85F4A9987}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{822488DA274E0002}" {
+       m_Spawn GC_AIGroupSpawn "{FFF5566AE677954C}" {
+        m_sLocation "North_AI_Spawn_11"
+        m_sPrefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+        m_aWaypoints {
+         "North_Def_WPMain_11"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3A1109C61B32A526}" {
+     m_sName "GC_MigratedSpawn_FFBE1D7B354C56B1"
+     m_aConditions {
+      GC_AreaCondition "{B5EA67302DF23FB0}" {
+       m_sArea "AI_Spawn_North_Trigger_1"
+       m_Targets GC_CharacterAreaTargets "{68A2B29281956DD2}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{FB50A71541E89E72}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{45417E741B396C75}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E1DA29EB9AE63584}" {
+       m_sMessage "GC_MigratedSpawn_FFBE1D7B354C56B1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{82810E9F785997BE}" {
+     m_sName "GC_MigratedSpawn_FFBE1D7B354C56B1 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F44D64D008D700E4}" {
+       m_sEventName "GC_MigratedSpawn_FFBE1D7B354C56B1"
+      }
+     }
+     m_Advanced GC_EventOptions "{59D44C3A2A7B63F6}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{2DA68C05D78BD9CD}" {
+       m_Spawn GC_AIGroupSpawn "{E385E4124B33420F}" {
+        m_sLocation "North_AI_Spawn_12"
+        m_sPrefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+        m_aWaypoints {
+         "North_Def_WPMain_12"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{34AC21293370EB43}" {
+     m_sName "GC_MigratedSpawn_D0061939DE4F0C95"
+     m_aConditions {
+      GC_AreaCondition "{3357A4731F12E4CF}" {
+       m_sArea "AI_Spawn_North_Trigger_1"
+       m_Targets GC_CharacterAreaTargets "{FDB79DD693FDD5E8}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{F7C33F8774465522}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{9B4B1049FE0C3FF5}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{58727984B0795375}" {
+       m_sMessage "GC_MigratedSpawn_D0061939DE4F0C95"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D6249620C18753FD}" {
+     m_sName "GC_MigratedSpawn_D0061939DE4F0C95 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{625A945507A7D574}" {
+       m_sEventName "GC_MigratedSpawn_D0061939DE4F0C95"
+      }
+     }
+     m_Advanced GC_EventOptions "{A0D1B22C12285D77}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{4321BD2880E074DA}" {
+       m_Spawn GC_AIGroupSpawn "{4CB495CF426CB6E7}" {
+        m_sLocation "North_AI_Spawn_13"
+        m_sPrefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+        m_aWaypoints {
+         "North_Def_WPMain_13"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3E702B102B688016}" {
+     m_sName "GC_MigratedSpawn_1D94D460A3AD4BC5"
+     m_aConditions {
+      GC_AreaCondition "{E20A7FF5E899CFE0}" {
+       m_sArea "AI_Spawn_North_Trigger_LAV"
+       m_Targets GC_CharacterAreaTargets "{9DAA0F6F4991FB2A}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{AFF772525B488B12}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{47E7528B3F9B7B37}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4983780440804BE7}" {
+       m_sMessage "GC_MigratedSpawn_1D94D460A3AD4BC5"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{78873E21DFCCA9CE}" {
+     m_sName "GC_MigratedSpawn_1D94D460A3AD4BC5 (8s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9BF08863AC376348}" {
+       m_sEventName "GC_MigratedSpawn_1D94D460A3AD4BC5"
+      }
+     }
+     m_Advanced GC_EventOptions "{C7184BEACD79E43C}" {
+      m_fDelay 8
+     }
+     m_aActions {
+      GC_SpawnAction "{58A04CC98B3D8467}" {
+       m_Spawn GC_CrewedVehicleSpawn "{51BEF35326FEF6E5}" {
+        m_sLocation "LAV25_Spawn_South_1"
+        m_sPrefab "{3312ADBF53A16DD8}Prefabs/Vehicles/Wheeled/LAV25/LAV25_RHS.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{2A291D920058A02C}" {
+          m_aStations {
+           GC_SpawnCrewStation "{A1CAA532C5B81C38}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{D75570BC69E802A7}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_Vehicle_Commander_1_AI.et"
+             "{661FC333B3EE3AF3}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_Vehicle_Gunner_1_AI.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "South_WP_LAV_1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{22D77F78F788D940}" {
+     m_sName "GC_MigratedSpawn_BBE9DD1FEBCB01BC"
+     m_aConditions {
+      GC_AreaCondition "{C7FAA3F4F33E3EAC}" {
+       m_sArea "AI_Spawn_North_Trigger_LAV"
+       m_Targets GC_CharacterAreaTargets "{9E44737B4B25585E}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{7FF4518963F4C620}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{1C44F5CA1CE0DBE5}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3704754BD1EA0C69}" {
+       m_sMessage "GC_MigratedSpawn_BBE9DD1FEBCB01BC"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{564927CB64A01B26}" {
+     m_sName "GC_MigratedSpawn_BBE9DD1FEBCB01BC (8s)"
+     m_aConditions {
+      GC_MissionEventCondition "{399A6D43F47857D6}" {
+       m_sEventName "GC_MigratedSpawn_BBE9DD1FEBCB01BC"
+      }
+     }
+     m_Advanced GC_EventOptions "{1CDCAEA3AE26BE00}" {
+      m_fDelay 8
+     }
+     m_aActions {
+      GC_SpawnAction "{878EC3C29A858C3F}" {
+       m_Spawn GC_CrewedVehicleSpawn "{1DA4A843318512ED}" {
+        m_sLocation "LAV25_Spawn_South_2"
+        m_sPrefab "{3312ADBF53A16DD8}Prefabs/Vehicles/Wheeled/LAV25/LAV25_RHS.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{E1FBA766F34B60B5}" {
+          m_aStations {
+           GC_SpawnCrewStation "{B9F785300EA314F1}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{D75570BC69E802A7}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_Vehicle_Commander_1_AI.et"
+             "{661FC333B3EE3AF3}Prefabs/Characters/Factions/BLUFOR/GC_Canada/1993 Canadian Army/Character_1993_CAF_Vehicle_Gunner_1_AI.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "South_WP_LAV_2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4C6B6EEFEFD4910B}" {
+     m_sName "GC_MigratedSpawn_34022287D4F2B7E2"
+     m_aConditions {
+      GC_AreaCondition "{94961CFBF718E572}" {
+       m_sArea "AI_Spawn_North_Trigger_2"
+       m_Targets GC_CharacterAreaTargets "{6DDC06CC1A9A23AA}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{B61400BE68735552}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{41BE701FD3D3A8B2}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{69AC7ED9EDF3E8BA}" {
+       m_sMessage "GC_MigratedSpawn_34022287D4F2B7E2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5CDB0CD582BFBA73}" {
+     m_sName "GC_MigratedSpawn_34022287D4F2B7E2 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DA4EEDC85E40B633}" {
+       m_sEventName "GC_MigratedSpawn_34022287D4F2B7E2"
+      }
+     }
+     m_Advanced GC_EventOptions "{F54A04E4E06F80ED}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{0FA2C2EA63D7FF2E}" {
+       m_Spawn GC_AIGroupSpawn "{01C594F7B8073980}" {
+        m_sLocation "South_AI_Spawn_1"
+        m_sPrefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+        m_aWaypoints {
+         "South_Def_WPMain_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{674B1460FE7CB720}" {
+     m_sName "GC_MigratedSpawn_DCD18B812781315B"
+     m_aConditions {
+      GC_AreaCondition "{9AE065886D903DC8}" {
+       m_sArea "AI_Spawn_North_Trigger_2"
+       m_Targets GC_CharacterAreaTargets "{01CB308529062AF8}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{E923683C052D697F}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{BECD39829B9D73E3}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9E4FBC263782A7F8}" {
+       m_sMessage "GC_MigratedSpawn_DCD18B812781315B"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0B85AD8B2D322676}" {
+     m_sName "GC_MigratedSpawn_DCD18B812781315B (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{0767B6E564A30C67}" {
+       m_sEventName "GC_MigratedSpawn_DCD18B812781315B"
+      }
+     }
+     m_Advanced GC_EventOptions "{BF302AC5CB5DDA7B}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{3A531DE6DBA1ABA1}" {
+       m_Spawn GC_AIGroupSpawn "{EF7E54FFACD0B965}" {
+        m_sLocation "South_AI_Spawn_2"
+        m_sPrefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+        m_aWaypoints {
+         "South_Def_WPMain_2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{0A7296936FD3B659}" {
+     m_sName "GC_MigratedSpawn_67E082B0280F32AF"
+     m_aConditions {
+      GC_AreaCondition "{B28863A8B512C661}" {
+       m_sArea "AI_Spawn_North_Trigger_2"
+       m_Targets GC_CharacterAreaTargets "{B25F348035343EEE}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{9403143886246D69}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{B02A0CB717E06A29}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{00529776B5994241}" {
+       m_sMessage "GC_MigratedSpawn_67E082B0280F32AF"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{350AA77DD7F85F27}" {
+     m_sName "GC_MigratedSpawn_67E082B0280F32AF (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4FF8816AB6D4516E}" {
+       m_sEventName "GC_MigratedSpawn_67E082B0280F32AF"
+      }
+     }
+     m_Advanced GC_EventOptions "{D429B13411D9BF30}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{5922271BBC68D616}" {
+       m_Spawn GC_AIGroupSpawn "{B1E90C7787EDCE42}" {
+        m_sLocation "South_AI_Spawn_3"
+        m_sPrefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+        m_aWaypoints {
+         "South_Def_WPMain_3"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{D8AF0C372FB8189E}" {
+     m_sName "GC_MigratedSpawn_5F348072E4E9054A"
+     m_aConditions {
+      GC_AreaCondition "{5527837580A15023}" {
+       m_sArea "AI_Spawn_North_Trigger_2"
+       m_Targets GC_CharacterAreaTargets "{0E7FC96751EB9DA8}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{5D44E34BF11209E2}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{AFE1935922664A1A}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{BE9D3FFD503255FC}" {
+       m_sMessage "GC_MigratedSpawn_5F348072E4E9054A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8356196BB7DB493F}" {
+     m_sName "GC_MigratedSpawn_5F348072E4E9054A (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{27861AA127CCDF3A}" {
+       m_sEventName "GC_MigratedSpawn_5F348072E4E9054A"
+      }
+     }
+     m_Advanced GC_EventOptions "{E4B2F3DB3FBDB7AC}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{E8F3C34FDBA441B9}" {
+       m_Spawn GC_AIGroupSpawn "{8A0B5F461B34F774}" {
+        m_sLocation "South_AI_Spawn_4"
+        m_sPrefab "{B9D5F5FD9CAC3B80}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_Weap_Detach_2.et"
+        m_aWaypoints {
+         "South_Def_WPMain_4"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{D8212D9679E701FE}" {
+     m_sName "GC_MigratedSpawn_08CE0AA701CC4796"
+     m_aConditions {
+      GC_AreaCondition "{4EFC296AAA732CF9}" {
+       m_sArea "AI_Spawn_North_Trigger_2"
+       m_Targets GC_CharacterAreaTargets "{03FE6F4B2AA79388}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{5D0433478A52AA59}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{166E705FA42CAFEC}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5B6D81E63CD62757}" {
+       m_sMessage "GC_MigratedSpawn_08CE0AA701CC4796"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AB159E15F6BD8CE1}" {
+     m_sName "GC_MigratedSpawn_08CE0AA701CC4796 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{219512F4E75DA30F}" {
+       m_sEventName "GC_MigratedSpawn_08CE0AA701CC4796"
+      }
+     }
+     m_Advanced GC_EventOptions "{934C1EE01797C6FE}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{DE4F48E3802E342B}" {
+       m_Spawn GC_AIGroupSpawn "{5CDEB0D75F730862}" {
+        m_sLocation "South_AI_Spawn_5"
+        m_sPrefab "{B9D5F5FD9CAC3B80}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_Weap_Detach_2.et"
+        m_aWaypoints {
+         "South_Def_WPMain_5"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{56501C625B8B39DC}" {
+     m_sName "GC_MigratedSpawn_F1DF1C976EEB5314"
+     m_aConditions {
+      GC_AreaCondition "{B14326E5BCC9367F}" {
+       m_sArea "AI_Spawn_North_Trigger_2"
+       m_Targets GC_CharacterAreaTargets "{1B5E04F9EE9E0705}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{9C0C588DF80E9642}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{344B0CD42BEE526E}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{50D63B60491B651C}" {
+       m_sMessage "GC_MigratedSpawn_F1DF1C976EEB5314"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1A1E4223FD04873C}" {
+     m_sName "GC_MigratedSpawn_F1DF1C976EEB5314 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{600B26140347DC45}" {
+       m_sEventName "GC_MigratedSpawn_F1DF1C976EEB5314"
+      }
+     }
+     m_Advanced GC_EventOptions "{FB03296D18826DF7}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{A1B64BE9143A8F7B}" {
+       m_Spawn GC_AIGroupSpawn "{9D6559A0728615B4}" {
+        m_sLocation "South_AI_Spawn_6"
+        m_sPrefab "{B9D5F5FD9CAC3B80}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_Weap_Detach_2.et"
+        m_aWaypoints {
+         "South_Def_WPMain_6"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{754F1DF163ED15E0}" {
+     m_sName "GC_MigratedSpawn_072EE7149D2F4B56"
+     m_aConditions {
+      GC_AreaCondition "{1D6CB060DBDB1537}" {
+       m_sArea "AI_Spawn_North_Trigger_2"
+       m_Targets GC_CharacterAreaTargets "{F92E25257BB9020E}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{234AFDBB25C397F7}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{8775005BBC8C1F27}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B251DE0280593E22}" {
+       m_sMessage "GC_MigratedSpawn_072EE7149D2F4B56"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C1C090BE9E16D5A3}" {
+     m_sName "GC_MigratedSpawn_072EE7149D2F4B56 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{AB2510FD2A019845}" {
+       m_sEventName "GC_MigratedSpawn_072EE7149D2F4B56"
+      }
+     }
+     m_Advanced GC_EventOptions "{D478CFED553C7F5C}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{6C851F6B137681B4}" {
+       m_Spawn GC_AIGroupSpawn "{90D79DCC5E5EF3C2}" {
+        m_sLocation "South_AI_Spawn_7"
+        m_sPrefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+        m_aWaypoints {
+         "South_Def_WPMain_7"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{ACC034FFDC3FF3C2}" {
+     m_sName "GC_MigratedSpawn_8773DD1E5FE31A3D"
+     m_aConditions {
+      GC_AreaCondition "{CC856DB4B54CAA42}" {
+       m_sArea "AI_Spawn_North_Trigger_2"
+       m_Targets GC_CharacterAreaTargets "{4B4E67050AEDB5A1}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{3829B6F5CD598B7F}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{EE7775AC18490331}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6F6F26300B85E2AF}" {
+       m_sMessage "GC_MigratedSpawn_8773DD1E5FE31A3D"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{04E91E5D96AB3BEC}" {
+     m_sName "GC_MigratedSpawn_8773DD1E5FE31A3D (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4833B672592D48BD}" {
+       m_sEventName "GC_MigratedSpawn_8773DD1E5FE31A3D"
+      }
+     }
+     m_Advanced GC_EventOptions "{29819F2333418AC6}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{C22576B5A0803C44}" {
+       m_Spawn GC_AIGroupSpawn "{923B833B560A6EFC}" {
+        m_sLocation "South_AI_Spawn_10"
+        m_sPrefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+       }
+      }
+     }
+    }
+    GC_Event "{E5B446626C7129BC}" {
+     m_sName "GC_MigratedSpawn_1550D65B04B38F63"
+     m_aConditions {
+      GC_AreaCondition "{76AF06E53B76C872}" {
+       m_sArea "AI_Spawn_North_Trigger_2"
+       m_Targets GC_CharacterAreaTargets "{549217E2F9871B66}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{5C473806BADE25FA}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{BB901A4E5E534830}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DCE14CDFFFF318B8}" {
+       m_sMessage "GC_MigratedSpawn_1550D65B04B38F63"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D96976331F19B846}" {
+     m_sName "GC_MigratedSpawn_1550D65B04B38F63 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DC8DDA173620C4F4}" {
+       m_sEventName "GC_MigratedSpawn_1550D65B04B38F63"
+      }
+     }
+     m_Advanced GC_EventOptions "{683C39BC31E23D40}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{5836D241571E4A5E}" {
+       m_Spawn GC_AIGroupSpawn "{4047E778922CA476}" {
+        m_sLocation "South_AI_Spawn_8"
+        m_sPrefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+        m_aWaypoints {
+         "South_Def_WPMain_8"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{CC243AE5706904A1}" {
+     m_sName "GC_MigratedSpawn_B53B017B37D33CB7"
+     m_aConditions {
+      GC_AreaCondition "{9DD8CED4F9ADA7E5}" {
+       m_sArea "AI_Spawn_North_Trigger_2"
+       m_Targets GC_CharacterAreaTargets "{5D0BFDED5CA69677}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{BCAAC7B2EFC6855A}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{BBC9DF6C6BB297C6}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F879C20788E66A92}" {
+       m_sMessage "GC_MigratedSpawn_B53B017B37D33CB7"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0DAE662763B3AACA}" {
+     m_sName "GC_MigratedSpawn_B53B017B37D33CB7 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{464052CB02FE170F}" {
+       m_sEventName "GC_MigratedSpawn_B53B017B37D33CB7"
+      }
+     }
+     m_Advanced GC_EventOptions "{8096566DC57842FC}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{48E4DCFEC2893433}" {
+       m_Spawn GC_AIGroupSpawn "{65831EF2091C7FBC}" {
+        m_sLocation "South_AI_Spawn_9"
+        m_sPrefab "{4CBA83E57E261C26}Prefabs/Groups/BLUFOR/GC_CAF/1993 Canadian Army/Group_CAF_1993_AI_RifleAT_Sect.et"
+        m_aWaypoints {
+         "South_Def_WPMain_9"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 7756.999 312.503 8163.458
+ {
+  RadioManagerEntity {
+   ID "A79C4E0A43DEB824"
+   coords -0.193 0.002 -0.206
+  }
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   coords 0 0 0
+   Factions + {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "7"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{64E2F896A8C154A9}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{669E264C31B8F43B}" {
+        m_sCallsign "4"
+       }
+      }
+     }
+    }
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
+      Name "VDV Forces"
+      Icon "{B522FE456D7F091A}worlds/HitTheMan/Screening The Orb/330px-Flag_of_the_Soviet_Air_Force.svg.edds"
+     }
+     m_iOrder 1
+     m_sFactionFlag "{B522FE456D7F091A}worlds/HitTheMan/Screening The Orb/330px-Flag_of_the_Soviet_Air_Force.svg.edds"
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB79282FF010C}" {
+       }
+       SCR_CallsignInfo "{55CCB792829053B0}" {
+       }
+       SCR_CallsignInfo "{55CCB79282A19687}" {
+       }
+       SCR_CallsignInfo "{55CCB7928223BB00}" {
+       }
+       SCR_CallsignInfo "{64E2F896C9EDF867}" {
+        m_sCallsign ""
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB79284A2F6C9}" {
+       }
+       SCR_CallsignInfo "{64E2F896D3989F52}" {
+       }
+       SCR_CallsignInfo "{64E2F896D40CE24D}" {
+        m_sCallsign ""
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1 (HQ)"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+       }
+       SCR_CallsignInfo "{64E2F896E232A50B}" {
+       }
+       SCR_CallsignInfo "{64E2F896FFC45153}" {
+        m_sCallsign "4 (HQ)"
+       }
+       SCR_CallsignInfo "{64E2F896F0699D6A}" {
+        m_sCallsign "7 (HQ)"
+       }
+       SCR_CallsignInfo "{64E2F896F08C1FC2}" {
+       }
+       SCR_CallsignInfo "{64E2F8970C5291B4}" {
+       }
+       SCR_CallsignInfo "{6508F6387DF69F1D}" {
+       }
+       SCR_CallsignInfo "{673EB8A79489A719}" {
+        m_sCallsign "Mi-24 | STAVOK 1"
+       }
+       SCR_CallsignInfo "{673EB8A79552BFED}" {
+        m_sCallsign "Mi-24 | STAVOK 2"
+       }
+       SCR_CallsignInfo "{673EB8A79746E37B}" {
+        m_sCallsign "Mi-8 | ZAKUSKA 1"
+       }
+       SCR_CallsignInfo "{673EB8A790AC4FE4}" {
+        m_sCallsign "Mi-8 | ZAKUSKA 2"
+       }
+       SCR_CallsignInfo "{66C7204F957B73C0}" {
+        m_sCallsign "Mi-8 | ZAKUSKA 3"
+       }
+      }
+      m_sCallsignCharacterFormat "%1%2%3%4"
+      m_sCallsignCharacterWithRoleFormat "%1%2%3 %4"
+     }
+    }
+    SCR_Faction "{64AA098AEA5B1498}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{64AA098204A61453}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{64AA098204A6145D}" {
+        m_sCallsign "9"
+       }
+       SCR_CallsignInfo "{64AA098204A61443}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{64AA098204A61441}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{64AA098204A61446}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{650AE15C940BA34B}" {
+        m_sCallsign "4"
+       }
+       SCR_CallsignInfo "{650AE15C8B7A1EC2}" {
+        m_sCallsign "5"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "Sunray"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "Alpha"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "Bravo"
+       }
+       SCR_CallsignInfo "{61677618371B4C91}" {
+        m_sCallsign "Charlie"
+       }
+       SCR_CallsignInfo "{65055DBDAC6F7853}" {
+        m_sCallsign "Whiskey"
+       }
+       SCR_CallsignInfo "{65055DB6CE3F5934}" {
+        m_sCallsign "Echo"
+       }
+       SCR_CallsignInfo "{650AE1494DA67E1D}" {
+        m_sCallsign "Foxtrot"
+       }
+      }
+     }
+     m_iFactionRadioFrequency 50000
+    }
+    SCR_Faction "{652F615735715119}" {
+    }
+   }
+  }
+  ScriptedChatEntity {
+   ID "A79C4E0A43DEB825"
+   coords -0.852 0.085 -0.28
+  }
+  ItemPreviewManagerEntity : "{9F18C476AB860F3B}Prefabs/World/Game/ItemPreviewManager.et" {
+   ID "5ED9088735FF2DD5"
+   coords -0.371 -3.712 0.108
+  }
+  SCR_EditorSettingsEntity {
+   ID "61B4E967E6C20362"
+   coords 0 0 0
+   m_bIsUnlimitedEditorLegal 1
+   m_EditorManagerPrefab "{1197E0F8B1D64714}Prefabs/Editor/GC_EditorManagerNoPhoto.et"
+  }
+ }
+}
+GC_RadiusAreaEntity GC_MigrationArea_MilitaryBase : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 3962.854 280.428 9373.377
+ m_fRadius 200
+}
+GC_RadiusAreaEntity GC_MigrationArea_Hangers : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 3331.752 294.377 9975.644
+ m_fRadius 280
+}
+GenericEntity Obj_Marker11 : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "objective-marker"
+   m_Color 0.561 0.071 0.071 1
+   m_fSize 40
+   m_bWorldScale 1
+   m_sDescription "Bysovice Military Base"
+   m_iZOrder 0
+   m_iHoverZOrder -1
+  }
+ }
+ coords 4010.412 279.505 9338.734
+ angles 0 90 0
+}
+GenericEntity Obj_Marker13 : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "objective-marker"
+   m_Color 0.561 0.071 0.071 1
+   m_fSize 40
+   m_bWorldScale 1
+   m_sDescription "Bysovice Hangers"
+   m_iZOrder 0
+   m_iHoverZOrder -1
+  }
+ }
+ coords 3341.93 284.665 9932.504
+ angles 0 90 0
+}
