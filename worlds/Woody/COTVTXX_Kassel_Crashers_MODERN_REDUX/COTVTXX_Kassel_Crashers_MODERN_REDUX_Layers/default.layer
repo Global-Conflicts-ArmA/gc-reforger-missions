@@ -1,0 +1,523 @@
+SCR_AIWorld : "{33A5B976E41B0A4C}Prefabs/AI/SCR_AIWorld_BadOrb_GC.et" {
+}
+GC_LobbyGameMode GC_MigratedMission : "{304FF37BC59F48FA}worlds/Woody/COTVTXX_Kassel_Crashers_MODERN_REDUX/COTVTXX_Kassel_Crashers_MODERN_REDUX_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bRandomStartingDaytime 1
+   m_bRandomStartingWeather 1
+   m_bDateOverride 1
+   m_iDay 20
+   m_iMonth 6
+   m_iYear 1987
+  }
+  GC_PeakFactionPopulationComponent "{8989018A5AEB2EC5}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{1B5A4473C0157BA8}" {
+     m_sName "USSR L"
+     m_aConditions {
+      GC_CustomScriptCondition "{40D2531B49F218C9}" {
+       m_Script GC_PeakFactionPopulationCheck "{460A05BF03A6F4ED}" {
+        m_sFaction "RHS_AFRF"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E4E0BEA213923917}" {
+       m_sMessage "USSR L"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{81538AF3EF252990}" {
+     m_sName "USSR L (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{01CF0669D49B8BE7}" {
+       m_sEventName "USSR L"
+      }
+     }
+     m_Advanced GC_EventOptions "{9F82371D17506DB9}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{FCDB75AD30B8E603}" {
+       m_sTitle "USSR Failiure!"
+       m_sMessage "Soviet forces have sustained 80% casualties!"
+      }
+     }
+    }
+    GC_Event "{BF149A2EBCCF9452}" {
+     m_sName "USSR W"
+     m_aConditions {
+      GC_ConditionGroup "{931E1F8C2330A1B7}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{E5EAEBA31CA5FC93}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_AreaCondition "{D453C197C5F770A4}" {
+           m_sArea "GC_MigrationArea_obj1"
+           m_Targets GC_CharacterAreaTargets "{2FA8903BE5E4EC8A}" {
+            m_iWho 2
+            m_aFactions {
+             "RHS_AFRF"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{C406E57F8A927FBD}" {
+            m_fRequiredShare 0.9
+           }
+           m_Capture GC_AreaCaptureOptions "{1972F5214C8CB3EF}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+            m_Messages GC_CaptureMessages "{A2B3D0FC5E8A2AEC}" {
+             m_sLocation "the Southern Platoon"
+             m_sCaptured "The %1 has seized the position of %2."
+             m_sCapturing "The %1 is taking control of %2."
+             m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+             m_sLost "The %1 has lost control of %2."
+             m_sLosing "The %1 is losing control of %2."
+             m_sLossInterrupted "The %1 is no longer losing control of %2."
+            }
+           }
+          }
+          GC_AreaCondition "{42FC5EBEC892CB48}" {
+           m_sArea "GC_MigrationArea_obj2"
+           m_Targets GC_CharacterAreaTargets "{813DC780D2DB6E90}" {
+            m_iWho 2
+            m_aFactions {
+             "RHS_AFRF"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{74A28CE3020D82CC}" {
+            m_fRequiredShare 0.9
+           }
+           m_Capture GC_AreaCaptureOptions "{0011FD6AA586570D}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+            m_Messages GC_CaptureMessages "{255D06A4CC90EEB7}" {
+             m_sLocation "the Northern Platoon"
+             m_sCaptured "The %1 has seized the position of %2."
+             m_sCapturing "The %1 is taking control of %2."
+             m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+             m_sLost "The %1 has lost control of %2."
+             m_sLosing "The %1 is losing control of %2."
+             m_sLossInterrupted "The %1 is no longer losing control of %2."
+            }
+           }
+          }
+          GC_AreaCondition "{27245D168308ABC7}" {
+           m_sArea "GC_MigrationArea_obj3"
+           m_Targets GC_CharacterAreaTargets "{CAEA80300C066A6B}" {
+            m_iWho 2
+            m_aFactions {
+             "RHS_AFRF"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{4EF6995ECD9AE95E}" {
+            m_fRequiredShare 0.9
+           }
+           m_Capture GC_AreaCaptureOptions "{64E60AA1027A9232}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+            m_Messages GC_CaptureMessages "{C0CCFA5895B48E1F}" {
+             m_sLocation "Kassel"
+             m_sCaptured "The %1 has taken control of %2."
+             m_sCapturing "The %1 is taking control of %2."
+             m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+             m_sLost "The %1 has lost control of %2."
+             m_sLosing "The %1 is losing control of %2."
+             m_sLossInterrupted "The %1 is no longer losing control of %2."
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FF1A20CD76A5108C}" {
+       m_sMessage "USSR W"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3817F69474C89B1D}" {
+     m_sName "USSR W (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B20EC50E7818FE66}" {
+       m_sEventName "USSR W"
+      }
+     }
+     m_Advanced GC_EventOptions "{6E87DD6F59B0A3B0}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{5E6B013C9713E704}" {
+       m_sTitle "USSR Victory!"
+       m_sMessage "All three objectives complete."
+      }
+     }
+    }
+    GC_Event "{1CCF4A79D5395994}" {
+     m_sName "GC_MigratedSpawn_E8528341D87863C6"
+     m_aConditions {
+      GC_AreaCondition "{10201F3EA8F207AA}" {
+       m_sArea "GC_MigrationArea_obj1"
+       m_Targets GC_CharacterAreaTargets "{2470B67F6B1F5F98}" {
+        m_iWho 2
+        m_aFactions {
+         "RHS_AFRF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{A5F0B3CFD366C8C1}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{401D6F6B095E55BE}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6872F01B175D7B0D}" {
+       m_sMessage "GC_MigratedSpawn_E8528341D87863C6"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{134D0864D453567F}" {
+     m_sName "GC_MigratedSpawn_E8528341D87863C6 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{00F5B9479DD913AB}" {
+       m_sEventName "GC_MigratedSpawn_E8528341D87863C6"
+      }
+     }
+     m_Advanced GC_EventOptions "{66FA30FBB1F447E1}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{A4828CD797A04AA7}" {
+       m_Spawn GC_CrewedVehicleSpawn "{5435F97FBFF89A14}" {
+        m_sLocation "GC_Spawner_E8528341D87863C6"
+        m_sPrefab "{BAF198F845DF6BBD}Prefabs/Vehicles/Wheeled/JLTV/OGPK/M134/JLTV_OGPK_M134_Woodland.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{B068950AD0ED89A3}" {
+          m_aStations {
+           GC_SpawnCrewStation "{66D464DE5CF9B30F}" {
+            m_aCharacters {
+             "{0CC00AB28C9AF0C7}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Rangers/Character_RHS_RANGER_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{BAE6B6115F74E4E2}" {
+            m_aCharacters {
+             "{0CC00AB28C9AF0C7}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Rangers/Character_RHS_RANGER_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{FBC059015AD66954}" {
+            m_aCharacters {
+             "{0CC00AB28C9AF0C7}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Rangers/Character_RHS_RANGER_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{6775ED3B572CBE61}" {
+            m_aCharacters {
+             "{0CC00AB28C9AF0C7}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Rangers/Character_RHS_RANGER_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{70CB5BE6AFBA859C}" {
+            m_aCharacters {
+             "{0CC00AB28C9AF0C7}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Rangers/Character_RHS_RANGER_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "m1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{FAC43C324867091D}" {
+     m_sName "GC_MigratedSpawn_E8528341D87863C6 (21s)"
+     m_aConditions {
+      GC_MissionEventCondition "{17DFD631130CD611}" {
+       m_sEventName "GC_MigratedSpawn_E8528341D87863C6"
+      }
+     }
+     m_Advanced GC_EventOptions "{5D9EF8FC02FEDF1E}" {
+      m_fDelay 21
+     }
+     m_aActions {
+      GC_SpawnAction "{134D0864D453567F}" {
+       m_Spawn GC_CrewedVehicleSpawn "{5C23D86567630296}" {
+        m_sLocation "GC_Spawner_E8528341D87863C6"
+        m_sPrefab "{BAF198F845DF6BBD}Prefabs/Vehicles/Wheeled/JLTV/OGPK/M134/JLTV_OGPK_M134_Woodland.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{BD2BE001663BCE8C}" {
+          m_aStations {
+           GC_SpawnCrewStation "{3192CD17B3380A5F}" {
+            m_aCharacters {
+             "{0CC00AB28C9AF0C7}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Rangers/Character_RHS_RANGER_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{9A031A9B73596051}" {
+            m_aCharacters {
+             "{0CC00AB28C9AF0C7}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Rangers/Character_RHS_RANGER_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{C9B421639734BBB9}" {
+            m_aCharacters {
+             "{0CC00AB28C9AF0C7}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Rangers/Character_RHS_RANGER_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{7D04FD7937F3E3CA}" {
+            m_aCharacters {
+             "{0CC00AB28C9AF0C7}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Rangers/Character_RHS_RANGER_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{9DE9BE13EC345F91}" {
+            m_aCharacters {
+             "{0CC00AB28C9AF0C7}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Rangers/Character_RHS_RANGER_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "m1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{1E2183BD141F9D1C}" {
+     m_sName "GC_MigratedSpawn_FB21E8B3DA732444"
+     m_aConditions {
+      GC_AreaCondition "{0D4FE90A9A53FB70}" {
+       m_sArea "GC_MigrationArea_obj2"
+       m_Targets GC_CharacterAreaTargets "{499EED858B35D650}" {
+        m_iWho 2
+        m_aFactions {
+         "RHS_AFRF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{CCF185257BD214FC}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{838065E2E265FC90}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B993D1106B3BA2C6}" {
+       m_sMessage "GC_MigratedSpawn_FB21E8B3DA732444"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2380B976195AC7FC}" {
+     m_sName "GC_MigratedSpawn_FB21E8B3DA732444 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{39EB0953B0563939}" {
+       m_sEventName "GC_MigratedSpawn_FB21E8B3DA732444"
+      }
+     }
+     m_Advanced GC_EventOptions "{E993B60AC6F99482}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{6971C06AD5D2DE0B}" {
+       m_Spawn GC_CrewedVehicleSpawn "{12997A23A695F9C2}" {
+        m_sLocation "GC_Spawner_FB21E8B3DA732444"
+        m_sPrefab "{BAF198F845DF6BBD}Prefabs/Vehicles/Wheeled/JLTV/OGPK/M134/JLTV_OGPK_M134_Woodland.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{12ADF22C816F5F47}" {
+          m_aStations {
+           GC_SpawnCrewStation "{C99F09118A2A1E20}" {
+            m_aCharacters {
+             "{347E9938C230FA45}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Rangers/Character_RHS_RANGER_GL.et"
+            }
+           }
+           GC_SpawnCrewStation "{EF0EECA98D0829B4}" {
+            m_aCharacters {
+             "{070A630AA65C66CA}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Rangers/Character_RHS_RANGER_LAT.et"
+            }
+           }
+           GC_SpawnCrewStation "{97B70B7B5DD48104}" {
+            m_aCharacters {
+             "{0CC00AB28C9AF0C7}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Rangers/Character_RHS_RANGER_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{90C54F95496BF035}" {
+            m_aCharacters {
+             "{0CC00AB28C9AF0C7}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Rangers/Character_RHS_RANGER_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{1E02A7F45529D305}" {
+            m_aCharacters {
+             "{0CC00AB28C9AF0C7}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Rangers/Character_RHS_RANGER_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "m2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{91D60FD45C48F5B8}" {
+     m_sName "GC_MigratedSpawn_FB21E8B3DA732444 (21s)"
+     m_aConditions {
+      GC_MissionEventCondition "{625DC965F665CD05}" {
+       m_sEventName "GC_MigratedSpawn_FB21E8B3DA732444"
+      }
+     }
+     m_Advanced GC_EventOptions "{4C7BEC66DF6AE11B}" {
+      m_fDelay 21
+     }
+     m_aActions {
+      GC_SpawnAction "{2380B976195AC7FC}" {
+       m_Spawn GC_CrewedVehicleSpawn "{78DE1893B6015518}" {
+        m_sLocation "GC_Spawner_FB21E8B3DA732444"
+        m_sPrefab "{BAF198F845DF6BBD}Prefabs/Vehicles/Wheeled/JLTV/OGPK/M134/JLTV_OGPK_M134_Woodland.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{BE2576E55C0EEBA4}" {
+          m_aStations {
+           GC_SpawnCrewStation "{3523754D40CF2F69}" {
+            m_aCharacters {
+             "{347E9938C230FA45}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Rangers/Character_RHS_RANGER_GL.et"
+            }
+           }
+           GC_SpawnCrewStation "{7BECABE9EF7F1C7F}" {
+            m_aCharacters {
+             "{070A630AA65C66CA}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Rangers/Character_RHS_RANGER_LAT.et"
+            }
+           }
+           GC_SpawnCrewStation "{9E0B7BB4422F1F43}" {
+            m_aCharacters {
+             "{0CC00AB28C9AF0C7}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Rangers/Character_RHS_RANGER_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{851A45C272376C8C}" {
+            m_aCharacters {
+             "{0CC00AB28C9AF0C7}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Rangers/Character_RHS_RANGER_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{0AFDDC46F0135149}" {
+            m_aCharacters {
+             "{0CC00AB28C9AF0C7}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/2020/Rangers/Character_RHS_RANGER_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "m2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 853.736 172.766 577.033
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CD021D5C}" {
+        m_sCallsign "Foxbat"
+       }
+       SCR_CallsignInfo "{55CCB792CCD598D3}" {
+        m_sCallsign "Foxbat"
+       }
+       SCR_CallsignInfo "{55CCB792CC9C7AD6}" {
+        m_sCallsign "Foxbat"
+       }
+       SCR_CallsignInfo "{55CCB792CCB4D441}" {
+        m_sCallsign "Foxbat"
+       }
+       SCR_CallsignInfo "{55CCB792CC5F08F3}" {
+        m_sCallsign "Foxbat"
+       }
+       SCR_CallsignInfo "{55CCB792CC49B7DB}" {
+        m_sCallsign "Foxbat"
+       }
+       SCR_CallsignInfo "{55CCB792CC711A37}" {
+        m_sCallsign "Foxbat"
+       }
+       SCR_CallsignInfo "{55CCB792CC33211C}" {
+        m_sCallsign "Foxbat"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "4"
+       }
+       SCR_CallsignInfo "{55CCB792CE18FB44}" {
+        m_sCallsign "4"
+       }
+       SCR_CallsignInfo "{55CCB792CE02ECFA}" {
+        m_sCallsign "4"
+       }
+       SCR_CallsignInfo "{55CCB792CE2A44BD}" {
+        m_sCallsign "4"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "0"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+      }
+      m_sCallsignGroupFormat "%1 %2'%3"
+     }
+    }
+   }
+  }
+ }
+}
