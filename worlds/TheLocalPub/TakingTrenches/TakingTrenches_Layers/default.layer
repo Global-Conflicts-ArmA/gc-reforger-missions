@@ -1,0 +1,497 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 457.361 17.947 2374.471
+}
+GC_LobbyGameMode GC_MigratedMission : "{2A340F213D1A8F8E}worlds/TheLocalPub/TakingTrenches/TakingTrenches_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 6
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6A32FA34C1428DD0}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 6
+    }
+   }
+   m_bRandomWeatherChanges 1
+   m_bDateOverride 1
+   m_iDay 1
+   m_iMonth 8
+   m_iYear 2022
+  }
+  GC_PeakFactionPopulationComponent "{ABCCB0B2B6FF2484}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{F68ADEE88A4BA4EF}" {
+     m_sName "CDFWin"
+     m_aConditions {
+      GC_AreaCondition "{506C88E193B14527}" {
+       m_sArea "Trigger_Cap"
+       m_Targets GC_CharacterAreaTargets "{6E1C66D7F8E505C9}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CDF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{5A59F347BFB6681D}" {
+        m_fRequiredShare 0.666
+       }
+       m_Capture GC_AreaCaptureOptions "{28B88F26F82E0418}" {
+        m_fSeconds 60
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1D04AA409BFF6FEC}" {
+       m_sMessage "CDFWin"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F569E1548772E057}" {
+     m_sName "CDFWin (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{162DA3DCF325889D}" {
+       m_sEventName "CDFWin"
+      }
+     }
+     m_Advanced GC_EventOptions "{046A22ECDE2980CD}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{3531BBAF25D5A79A}" {
+       m_sTitle "CDF VICTORY"
+       m_sMessage "Chernarus special forces have successfully occupied and secured the  HQ, dislodging Russian forces from the area and opening the river."\
+       ""\
+       "Well done Chernarus forces."\
+       "Mission will conclude shortly..."
+      }
+      GC_EventControlAction "{30C63B38AF368B3E}" {
+       m_sEventName "RUWIN"
+       m_iOperation 1
+      }
+     }
+    }
+    GC_Event "{783CF1C3AC0B8D98}" {
+     m_sName "RUWIN"
+     m_aConditions {
+      GC_CustomScriptCondition "{BDAA74177FCAB7F8}" {
+       m_Script GC_PeakFactionPopulationCheck "{23B7AC69AF5BF1F1}" {
+        m_sFaction "GC_CDF"
+        m_fRatio 0.85
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D653279716C964A4}" {
+       m_sMessage "RUWIN"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AD8B4F39564477C3}" {
+     m_sName "RUWIN (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{965BF5AA692B0E6D}" {
+       m_sEventName "RUWIN"
+      }
+     }
+     m_Advanced GC_EventOptions "{066EB37F9953A5B3}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{59B1E280205CDE4C}" {
+       m_sTitle "RU VICTORY"
+       m_sMessage "The Chernarussian forces have been destroyed. That should teach them a lesson before they think about trying to take our positions again!"\
+       ""\
+       "Well done, Russian forces."\
+       "Mission will conclude shortly..."
+      }
+      GC_EventControlAction "{3D5888B67C6F7037}" {
+       m_sEventName "CDFWin"
+       m_iOperation 1
+      }
+     }
+    }
+    GC_Event "{120E623FF263F2D6}" {
+     m_sName "QRF"
+     m_aConditions {
+      GC_AreaCondition "{BDBD14DD303D49CC}" {
+       m_sArea "QRFTrigger"
+       m_Targets GC_CharacterAreaTargets "{9FC59443BDFD3ABA}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CDF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{35CABDC8B9325993}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{BBF6135E68779C2B}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{41004A751B63F8E6}" {
+       m_sMessage "QRF"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{62E4D0421AD3DBC2}" {
+     m_sName "QRF (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{193595484EC197D2}" {
+       m_sEventName "QRF"
+      }
+     }
+     m_Advanced GC_EventOptions "{9E4C8FC241EA8077}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{895B64DCB8D5E67A}" {
+       m_sTitle "QRF inbound"
+       m_sMessage "A Russian motor rifle platoon are approaching from the west. Expect them to arrive shortly."
+      }
+     }
+    }
+    GC_Event "{CE310CA53D394AA1}" {
+     m_sName "GC_MigratedSpawn_EF35A0727F6B617F"
+     m_aConditions {
+      GC_AreaCondition "{586A21DC01D228F0}" {
+       m_sArea "QRFTrigger"
+       m_Targets GC_CharacterAreaTargets "{EF6B714D42A8DE04}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CDF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{89706AA9A2633D05}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{DA32D5B2CE90B513}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DEE82B600EB87A15}" {
+       m_sMessage "GC_MigratedSpawn_EF35A0727F6B617F"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{53074DCF95DD5B40}" {
+     m_sName "GC_MigratedSpawn_EF35A0727F6B617F (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E7B640C7CA9668F5}" {
+       m_sEventName "GC_MigratedSpawn_EF35A0727F6B617F"
+      }
+     }
+     m_Advanced GC_EventOptions "{658AC18D2CF18593}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{A7376D91F320D7BD}" {
+       m_Spawn GC_AIGroupSpawn "{DE69678468EF7163}" {
+        m_sLocation "QRF_Rifle1"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "WP_M4"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{873B155839021C7C}" {
+     m_sName "GC_MigratedSpawn_CB325BE1D2A1F2C7"
+     m_aConditions {
+      GC_AreaCondition "{E9B2E82A4E3AE717}" {
+       m_sArea "QRFTrigger"
+       m_Targets GC_CharacterAreaTargets "{470C0AD5D90D4545}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CDF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{629E727A9F172F79}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{57E9C870E83A5A3E}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8DB4791703F352DA}" {
+       m_sMessage "GC_MigratedSpawn_CB325BE1D2A1F2C7"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E9381294CD03C0CB}" {
+     m_sName "GC_MigratedSpawn_CB325BE1D2A1F2C7 (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{182BC4F0DCAE79DC}" {
+       m_sEventName "GC_MigratedSpawn_CB325BE1D2A1F2C7"
+      }
+     }
+     m_Advanced GC_EventOptions "{D2519F7639C0EBA6}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{33013F1DC16A0BF9}" {
+       m_Spawn GC_CrewedVehicleSpawn "{77B608C02ADC4CB8}" {
+        m_sLocation "BTR_1"
+        m_sPrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{566D13135051EBA1}" {
+          m_aStations {
+           GC_SpawnCrewStation "{31BD2C6EE74935EA}" {
+            m_bGunners 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{0848BAB1B94FCBBA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_Crew.et"
+            }
+           }
+           GC_SpawnCrewStation "{C4219066C79041FA}" {
+            m_bDriver 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{918062BE34F7C4D7}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_CC.et"
+             "{0848BAB1B94FCBBA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_Crew.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "WP_M1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{5945EEB281C72D41}" {
+     m_sName "GC_MigratedSpawn_B58F6F94CC381A95"
+     m_aConditions {
+      GC_AreaCondition "{75694F116B42CEB5}" {
+       m_sArea "QRFTrigger"
+       m_Targets GC_CharacterAreaTargets "{0858AEFED0A34A09}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CDF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{21C282FD29BE3E97}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{E9E235C227070862}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FCE9A00B971DE89E}" {
+       m_sMessage "GC_MigratedSpawn_B58F6F94CC381A95"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{82A46DEE329908F2}" {
+     m_sName "GC_MigratedSpawn_B58F6F94CC381A95 (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{45EB699E357F58D7}" {
+       m_sEventName "GC_MigratedSpawn_B58F6F94CC381A95"
+      }
+     }
+     m_Advanced GC_EventOptions "{D491260814FD134C}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{E640971D4ACC872C}" {
+       m_Spawn GC_CrewedVehicleSpawn "{EFFDDD63EA615A27}" {
+        m_sLocation "BTR_2"
+        m_sPrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{DFB27AA5779A8D74}" {
+          m_aStations {
+           GC_SpawnCrewStation "{2144B8FCC508B20D}" {
+            m_bGunners 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{0848BAB1B94FCBBA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_Crew.et"
+            }
+           }
+           GC_SpawnCrewStation "{4062E3CE5FBE7865}" {
+            m_bDriver 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{918062BE34F7C4D7}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_CC.et"
+             "{0848BAB1B94FCBBA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_Crew.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "WP_M2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{151C3B17FD5A3076}" {
+     m_sName "GC_MigratedSpawn_9BB15E3CB7F17D97"
+     m_aConditions {
+      GC_AreaCondition "{110F0814B0BA4D29}" {
+       m_sArea "QRFTrigger"
+       m_Targets GC_CharacterAreaTargets "{417294B123F7AB87}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CDF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{AEADACE537FE7762}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{F121271C8F8FDF93}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5B1F141DC2E2EAE4}" {
+       m_sMessage "GC_MigratedSpawn_9BB15E3CB7F17D97"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0193556EFC2776E5}" {
+     m_sName "GC_MigratedSpawn_9BB15E3CB7F17D97 (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{AF8F67BE779B7B9C}" {
+       m_sEventName "GC_MigratedSpawn_9BB15E3CB7F17D97"
+      }
+     }
+     m_Advanced GC_EventOptions "{012498BD150B23F9}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{7F81362A69360235}" {
+       m_Spawn GC_CrewedVehicleSpawn "{C88459BACB0A5CE7}" {
+        m_sLocation "BTR_3"
+        m_sPrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{95C738291DF5C938}" {
+          m_aStations {
+           GC_SpawnCrewStation "{CCAF6524FF119940}" {
+            m_bGunners 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{0848BAB1B94FCBBA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_Crew.et"
+            }
+           }
+           GC_SpawnCrewStation "{147625DA10352E01}" {
+            m_bDriver 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{918062BE34F7C4D7}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_CC.et"
+             "{0848BAB1B94FCBBA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_Crew.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "WP_M3"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E7366627101A4C57}" {
+     m_sName "GC_MigratedSpawn_7544B54E75BC7B7D"
+     m_aConditions {
+      GC_AreaCondition "{8BE2DA9070709947}" {
+       m_sArea "QRFTrigger"
+       m_Targets GC_CharacterAreaTargets "{0749D5D7C0C2A244}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CDF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{EC7B0678A3DB2CF0}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{E60A40D74F5EDC41}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F0C763A6D4E5572F}" {
+       m_sMessage "GC_MigratedSpawn_7544B54E75BC7B7D"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F03F3CE0E87DB224}" {
+     m_sName "GC_MigratedSpawn_7544B54E75BC7B7D (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{917EC572C5BC82B8}" {
+       m_sEventName "GC_MigratedSpawn_7544B54E75BC7B7D"
+      }
+     }
+     m_Advanced GC_EventOptions "{204F6B15E249C872}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{AD0C76874F928E26}" {
+       m_Spawn GC_AIGroupSpawn "{8B4B6224246F4321}" {
+        m_sLocation "QRF_Rifle2"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "WP_M5"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 461.276 17.861 2370.359
+}
