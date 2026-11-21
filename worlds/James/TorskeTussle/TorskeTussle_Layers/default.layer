@@ -1,0 +1,182 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 3883.007 15.223 615.885
+}
+GC_LobbyGameMode GC_MigratedMission : "{4A901A0833D2D521}worlds/James/TorskeTussle/TorskeTussle_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{686A25D818FA9BA9}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 9
+     m_iStartingMinutes 30
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{6963B0E232777C06}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{14088A2A80241783}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 300
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{DE559E78B06178B8}" {
+     m_sName "USSR ded"
+     m_aConditions {
+      GC_CustomScriptCondition "{9A9A8D8EA325AEC8}" {
+       m_Script GC_PeakFactionPopulationCheck "{B1DDE1B05CAD5C9B}" {
+        m_sFaction "USSR"
+        m_fRatio 0.85
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2A1F8F049D06A81F}" {
+       m_sMessage "USSR ded"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A030410260ECEE20}" {
+     m_sName "USSR ded (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D04F1037352517B8}" {
+       m_sEventName "USSR ded"
+      }
+     }
+     m_Advanced GC_EventOptions "{BA8223BAC94B5459}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_MessageAction "{B9BE883C463B510B}" {
+       m_sTitle "USSR Combat Ineffective "
+       m_sMessage "USSR took too many casualties"
+      }
+     }
+    }
+    GC_Event "{03F4BEE616BC40BB}" {
+     m_sName "US ded"
+     m_aConditions {
+      GC_CustomScriptCondition "{07FAB41351E75B44}" {
+       m_Script GC_PeakFactionPopulationCheck "{248ECD0F2D5F02D3}" {
+        m_sFaction "US"
+        m_fRatio 0.85
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9501AD44D25170F5}" {
+       m_sMessage "US ded"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{69DD89714E08B609}" {
+     m_sName "US ded (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CF44B0FFDE168587}" {
+       m_sEventName "US ded"
+      }
+     }
+     m_Advanced GC_EventOptions "{0BC481170219F637}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_MessageAction "{0ED0F8AC5857C7C7}" {
+       m_sTitle "US Combat Ineffective "
+       m_sMessage "US took too many casualties"
+      }
+     }
+    }
+    GC_Event "{1A3E02769A8796F7}" {
+     m_sName "OBJ Cap"
+     m_aConditions {
+      GC_AreaCondition "{BF7A447E0CE66F49}" {
+       m_sArea "GC_MigrationArea_objcap"
+       m_Targets GC_CharacterAreaTargets "{5C322DAF28A3CC21}" {
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{362CC3EE8BE86020}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{4B595382076E36B1}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{84737183B47DD17D}" {
+       m_sMessage "OBJ Cap"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FFF99DDCFF2E2D96}" {
+     m_sName "OBJ Cap (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{477BF630E0AF828A}" {
+       m_sEventName "OBJ Cap"
+      }
+     }
+     m_Advanced GC_EventOptions "{5B79ED29BFABAFB5}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_MessageAction "{113DDCB23E6E386A}" {
+       m_sTitle "OBJ Secured"
+       m_sMessage "US forces have taken the OBJ"
+      }
+     }
+    }
+    GC_Event "{A5BB54E9144A6A17}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{86D2A5443A50679D}" {
+       m_fSeconds 300
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{ADE66060D6AA6325}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 3475.72 3.5 686.128
+}
+GC_RadiusAreaEntity GC_MigrationArea_objcap : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 2870.541 7.231 846.44
+ m_fRadius 125
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 3878.827 27.495 433.953
+ angles 0 -2 0
+}
+GenericEntity : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "circle-2"
+   m_Color 0 0 0 0.866
+   m_fSize 380
+   m_bWorldScale 1
+   m_sDescription ""
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+  }
+ }
+ coords 2870.541 7.231 846.44
+ angles 0 0 0
+}
