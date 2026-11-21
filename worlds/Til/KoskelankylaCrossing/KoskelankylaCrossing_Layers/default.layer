@@ -1,0 +1,136 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+}
+GC_LobbyGameMode GC_MigratedMission : "{928AB516ECE712CE}worlds/Til/KoskelankylaCrossing/KoskelankylaCrossing_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{664C1E9BC000B313}" {
+     m_sWeatherPresetName "Clear"
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{9598D0186B61F337}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{0E609412E2AFE427}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 240
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{CCF9C2A9EBBCA936}" {
+     m_sName "Major UK Victory"
+     m_aConditions {
+      GC_CustomScriptCondition "{168BDA79382C5954}" {
+       m_Script GC_PeakFactionPopulationCheck "{E1ADC13BAF556F50}" {
+        m_sFaction "GC_NVA"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6B52964300179112}" {
+       m_sMessage "Major UK Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BB749D049444E967}" {
+     m_sName "Major UK Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BC3CB98253D2F496}" {
+       m_sEventName "Major UK Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{6212698B1D1B67F8}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{7094B0549A246D70}" {
+       m_sTitle "MAJOR UK VICTORY"
+       m_sMessage "Defending British forces inflicted heavy casualties upon the NVA platoon."
+      }
+     }
+    }
+    GC_Event "{BCEB309F264B1340}" {
+     m_sName "NVA Victory"
+     m_aConditions {
+      GC_AreaCondition "{4FE38D3DB0C42F95}" {
+       m_sArea "cap"
+       m_Targets GC_CharacterAreaTargets "{35E2270C3104730F}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{D803B5AB6916D5C1}" {
+        m_fRequiredShare 0.8
+       }
+       m_Capture GC_AreaCaptureOptions "{ECA5F132A77FD607}" {
+        m_fSeconds 120
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_Messages GC_CaptureMessages "{8BCFBC918B579176}" {
+         m_sLocation "the bridge"
+         m_sCaptured "The %1 has taken control of %2."
+         m_sCapturing "The %1 is taking control of %2."
+         m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+         m_sLost "The %1 has lost control of %2."
+         m_sLosing "The %1 is losing control of %2."
+         m_sLossInterrupted "The %1 is no longer losing control of %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2AC70872F85DE8DF}" {
+       m_sMessage "NVA Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E75F2A8BD3D9B880}" {
+     m_sName "NVA Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7B9D97E3436D5896}" {
+       m_sEventName "NVA Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{AA9764A669B9C1C0}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{822DCCC95E43E766}" {
+       m_sTitle "NVA VICTORY"
+       m_sMessage "The NVA took control of the bridge."
+      }
+     }
+    }
+    GC_Event "{2BFC2629757A99FB}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{A0B5225CD20400D7}" {
+       m_fSeconds 240
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{999357F9D9D9CB51}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 0 0 0
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 2880.591 62.695 480.056
+ m_fWarnRadius 200
+ m_fZoneRadius 225
+ m_fZoneTeleportedRadius 250
+}
