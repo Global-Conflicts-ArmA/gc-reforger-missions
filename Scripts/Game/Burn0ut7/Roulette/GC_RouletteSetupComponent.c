@@ -302,7 +302,11 @@ class GC_RouletteSetupComponent : GC_LobbySetupGateComponent
 		m_iRemainingRolls--;
 		m_iSeed = seed;
 		if (m_iSeed == 0)
-			m_iSeed = Math.RandomInt(1, int.MAX);
+		{
+			m_iSeed = System.GetUnixTime() ^ (System.GetTickCount() << 16) ^ Math.RandomInt(1, 1073741824);
+			if (m_iSeed == 0)
+				m_iSeed = 1;
+		}
 		m_Roll = new GC_RouletteRoll(m_iSeed);
 		m_iScenarioIndex = m_Roll.PickScenario(m_Catalogue, m_iForcedScenario);
 		m_Scenario = m_Catalogue.m_aScenarios[m_iScenarioIndex];
