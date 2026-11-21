@@ -1,0 +1,187 @@
+SCR_AIWorld : "{3DE6090FC602E566}Prefabs/AI/SCR_AIWorld_Takistan.et" {
+ coords 10531.805 284.227 6467.235
+}
+GC_LobbyGameMode GC_MigratedMission : "{CD101C16EFBC233B}worlds/Blue/TheBearWentOvertheMountain2/TheBearWentOvertheMountain2_GC_Settings.et" {
+ components {
+  GC_PeakFactionPopulationComponent "{B8D0069934AD96F6}" {
+  }
+  GC_LivingAndDeadAIComponent "{6504C3483FBAB6D7}" {
+   m_sFaction "GC_INSURGENT"
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{0B026B7C793B151F}" {
+     m_sName "Soviet Victory"
+     m_aConditions {
+      GC_ConditionGroup "{25EFAFC5806445B2}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_CustomScriptCondition "{ED6C850F08D7A76E}" {
+         m_Script GC_LivingAndDeadAICheck "{E6C5E58242B5AD5F}" {
+          m_fRatio 0.8
+         }
+        }
+        GC_CustomScriptCondition "{44B6745DD6EE4AAE}" {
+         m_Script GC_PeakFactionPopulationCheck "{D241B2226AB39157}" {
+          m_sFaction "GC_INSURGENT"
+          m_fRatio 0.9
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8956FDEDECE3C548}" {
+       m_sMessage "Soviet Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BF142EA9C9BB29CD}" {
+     m_sName "Soviet Victory (120s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DEAB26AD353A7F95}" {
+       m_sEventName "Soviet Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{36D827CF80BC1F76}" {
+      m_fDelay 120
+     }
+     m_aActions {
+      GC_EndMissionAction "{97ED995451339723}" {
+       m_iResult 1
+       m_aWinningFactions {
+        "USSR"
+       }
+      }
+     }
+    }
+    GC_Event "{CD808AEE071D1A96}" {
+     m_sName "Soviet Victory (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BC62EF517090B4B3}" {
+       m_sEventName "Soviet Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{F4181D6548A630C5}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_MessageAction "{111EE360394F436D}" {
+       m_sTitle "Soviet Victory"
+       m_sMessage "Mission will end in 2 mins"
+      }
+     }
+    }
+    GC_Event "{7F5135F6C4801882}" {
+     m_sName "Mujahedeen Victory"
+     m_aConditions {
+      GC_CustomScriptCondition "{EBAB53BE1D639D91}" {
+       m_Script GC_PeakFactionPopulationCheck "{1AA4C004E2642694}" {
+        m_sFaction "USSR"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{AE37ECA697D560B7}" {
+       m_sMessage "Mujahedeen Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6F1B03177C8ABAC6}" {
+     m_sName "Mujahedeen Victory (120s)"
+     m_aConditions {
+      GC_MissionEventCondition "{17CA75BA29353199}" {
+       m_sEventName "Mujahedeen Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{1DF9BB1F7EC5BFB6}" {
+      m_fDelay 120
+     }
+     m_aActions {
+      GC_EndMissionAction "{D2DD6ECE7845C7BA}" {
+       m_iResult 1
+       m_aWinningFactions {
+        "GC_INSURGENT"
+       }
+      }
+     }
+    }
+    GC_Event "{CC9AFDF22DEE88E4}" {
+     m_sName "Mujahedeen Victory (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D63E87CAFF4E75D9}" {
+       m_sEventName "Mujahedeen Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{9FC2E5CB22AE1CF2}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_MessageAction "{E2055265F9CA9BAE}" {
+       m_sTitle "Mujahedeen Victory"
+       m_sMessage "Mission will end in 2 mins"
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 10535.541 284.378 6466.786
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{6554D06FF96531CE}" {
+        m_sCallsign "146th Helicopter Detachment"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{6554D06FC4794124}" {
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{64E2F896F0699D6A}" {
+        m_sCallsign " "
+       }
+      }
+     }
+    }
+    SCR_Faction "{65549047B5DC5886}" {
+     FactionKey "MEI"
+     FactionColor 0.44 0.11 0 1
+     m_iOrder 2001
+     m_OutlineFactionColor 0.082 0.012 0.001 1
+     m_NotificationFactionColor 0.44 0.131 0 1
+     m_NotificationTextFactionColor 0.296 0.075 0 1
+     m_bIsPlayable 0
+     m_bShowInWelcomeScreenIfNonPlayable 0
+     m_sFactionFlag "{5E4DDEE56C6D4D16}Images/GC_MUJ_icon.edds"
+     m_FactionFlagMaterial "{362AC46447DBE58B}Assets/Props/Fabric/Flags/Data/Flag_1_2_Red.emat"
+     m_FactionLabel FACTION_FIA
+     m_sFactionRadioEncryptionKey "hotBaath"
+     m_iFactionRadioFrequency 52000
+     m_aEntityCatalogs {
+      SCR_EntityCatalogMultiList "{6328D378FF9975A4}" {
+      }
+      SCR_EntityCatalogMultiList "{6328D378FF9A4C7A}" {
+      }
+      SCR_EntityCatalogMultiList "{6328D378FF9A6ED3}" {
+      }
+     }
+     m_sGroupFlagsImageSet "{7CD99D22C7AE8195}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor.imageset"
+     m_sGroupFlagsImageSetOutlines "{B9356E7B2E974DCD}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor-outline.imageset"
+     m_aFlagNames {
+      "infantry" "amphibious" "anti-air" "anti-air-artilery" "anti-armor-motorized" "antiarmor" "armored" "artillery" "combined" "helicopter" "helicopter-attack" "infantry-air" "machinegun" "maintenance" "medical" "mortar" "motorized" "motorized-infantry" "recon" "recon-motorized" "signal" "sniper" "supply-motorized" "undefined"
+     }
+    }
+   }
+  }
+ }
+}
