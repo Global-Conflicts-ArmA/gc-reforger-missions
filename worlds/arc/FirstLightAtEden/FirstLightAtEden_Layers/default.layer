@@ -1,0 +1,542 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F9E52831}" {
+     NavmeshFile "{AD5F99CD7C59D5E0}worlds/GameMaster/Navmeshes/GM_Eden.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F3B4EE8A}" {
+     NavmeshFile "{C35ECF3276824654}worlds/GameMaster/Navmeshes/GM_Eden_vehicles.nmn"
+    }
+   }
+  }
+ }
+ coords 11798.749 0 11716.075
+}
+GC_LobbyGameMode GC_MigratedMission : "{0B54E7597C863BB6}worlds/arc/FirstLightAtEden/FirstLightAtEden_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{62E4D14A0E49F100}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 5
+     m_iStartingMinutes 30
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{B040C1B7FFA35AD3}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{8866E595F8853D31}" {
+     m_sName "OBJ1VIC1DESTROYED"
+     m_aConditions {
+      GC_EntityDamageCondition "{E7852D2027314A76}" {
+       m_sEntityName "OBJ1VIC"
+      }
+     }
+    }
+    GC_MissionFlag "{D6C968E53AEF0C97}" {
+     m_sName "OBJ2VIC1DESTROYED"
+    }
+    GC_MissionFlag "{AEAD4FB9193B61FD}" {
+     m_sName "OBJ2VIC2DESTROYED"
+    }
+    GC_MissionFlag "{5EA7A5858902E4A4}" {
+     m_sName "OBJ2VIC3DESTROYED"
+    }
+    GC_MissionFlag "{EC8430F5976E5B8D}" {
+     m_sName "OBJ3VIC1DESTROYED"
+    }
+    GC_MissionFlag "{C7024AE10548BEA0}" {
+     m_sName "OBJ3VIC2DESTROYED"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{7197F9C5025EEF93}" {
+     m_sName "UK_OBJ1"
+     m_aConditions {
+      GC_AreaCondition "{6188ACD1C29D0548}" {
+       m_sArea "GC_MigrationArea_UK_OBJ1"
+       m_Targets GC_CharacterAreaTargets "{F546DF882F940287}" {
+        m_iWho 2
+        m_aFactions {
+         "UK"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{9E71EDDC49132732}" {
+        m_fRequiredShare 0.05
+       }
+       m_Capture GC_AreaCaptureOptions "{05788633CA5AF56D}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{396E9ADE4CCB7970}" {
+       m_sMessage "UK_OBJ1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0689E72EED1DB84A}" {
+     m_sName "UK_OBJ1 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{04A1F71DE005A754}" {
+       m_sEventName "UK_OBJ1"
+      }
+     }
+     m_Advanced GC_EventOptions "{E509EFCFFA65D925}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{993105B702451B3A}" {
+       m_Spawn GC_CrewedVehicleSpawn "{DA37AF8793358479}" {
+        m_sLocation "QRF1SPAWN"
+        m_sPrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{494EE589D93A4CAB}" {
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "QRF1ATTACK"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{25DF5BEA1A26A383}" {
+       m_Spawn GC_AIGroupSpawn "{051FB0396C2D7773}" {
+        m_sLocation "QRF1SPAWN2"
+        m_sPrefab "{97D45056CFC22FF2}Prefabs/Groups/OPFOR/KLMK/Group_USSR_RifleSquad_KLMK.et"
+        m_aWaypoints {
+         "QRF1ATTACK"
+        }
+       }
+      }
+      GC_SpawnAction "{580F377ACA8C46D7}" {
+       m_Spawn GC_AIGroupSpawn "{2C8DA9FA99C34F86}" {
+        m_sLocation "QRF1SPAWN3"
+        m_sPrefab "{97D45056CFC22FF2}Prefabs/Groups/OPFOR/KLMK/Group_USSR_RifleSquad_KLMK.et"
+        m_aWaypoints {
+         "QRF1ATTACK"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{1DD337278272D442}" {
+     m_sName "UK_OBJ3"
+     m_aConditions {
+      GC_AreaCondition "{DF1D859FC1545FFF}" {
+       m_sArea "GC_MigrationArea_UK_OBJ3"
+       m_Targets GC_CharacterAreaTargets "{357D03551CC3D279}" {
+        m_iWho 2
+        m_aFactions {
+         "UK"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{A29138C37E9B108B}" {
+        m_fRequiredShare 0.05
+       }
+       m_Capture GC_AreaCaptureOptions "{376AFDC23286B563}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DA5CDB5FF409D9E9}" {
+       m_sMessage "UK_OBJ3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5760CDB7A4CA2C14}" {
+     m_sName "UK_OBJ3 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{35AA069AC204E864}" {
+       m_sEventName "UK_OBJ3"
+      }
+     }
+     m_Advanced GC_EventOptions "{01F08F841F4C7BD7}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{85DCE309DB68790F}" {
+       m_Spawn GC_CrewedVehicleSpawn "{1B297C250723E556}" {
+        m_sLocation "QRF2SPAWN"
+        m_sPrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{83FBF5F686F4DC86}" {
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "QRF2ATTACK"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{6D65F1DC88CD02FE}" {
+       m_Spawn GC_AIGroupSpawn "{498E2E7C03415B18}" {
+        m_sLocation "QRF2SPAWN2"
+        m_sPrefab "{97D45056CFC22FF2}Prefabs/Groups/OPFOR/KLMK/Group_USSR_RifleSquad_KLMK.et"
+        m_aWaypoints {
+         "QRF2ATTACK"
+        }
+       }
+      }
+      GC_SpawnAction "{8ECF5845A268D8AE}" {
+       m_Spawn GC_AIGroupSpawn "{57763C5FC5BFB790}" {
+        m_sLocation "QRF2SPAWN3"
+        m_sPrefab "{97D45056CFC22FF2}Prefabs/Groups/OPFOR/KLMK/Group_USSR_RifleSquad_KLMK.et"
+        m_aWaypoints {
+         "QRF2ATTACK"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{D85BF5A2EB3ECEAA}" {
+     m_sName "UK_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{81292D24FA08772F}" {
+       m_Script GC_PeakFactionPopulationCheck "{EF9A1AC0670D09F4}" {
+        m_sFaction "UK"
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E3D0B07850319D42}" {
+       m_sMessage "UK_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B5BD96F9A1F7D6B8}" {
+     m_sName "UK_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{FCBDB88727B11590}" {
+       m_sEventName "UK_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{295208AEE00CEC05}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{E7329CB662151D75}" {
+       m_sTitle "DEFEAT"
+       m_sMessage "All SAS forces have been eliminated."
+      }
+     }
+    }
+    GC_Event "{7C1EACD8B172EFC2}" {
+     m_sName "UK_KIA (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A99681264EEDD108}" {
+       m_sEventName "UK_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{265FE5280E82B072}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_EndMissionAction "{78A6B248D301A965}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "USSR"
+       }
+      }
+     }
+    }
+    GC_Event "{2307E937AC80D5A4}" {
+     m_sName "UK_VICTORY"
+     m_aConditions {
+      GC_GameModeStateCondition "{600BAE5A88FF85C8}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{E1410D9E065F8CBE}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{7F5BF482C49DBDA6}" {
+         m_sFlagName "OBJ1VIC1DESTROYED"
+        }
+        GC_MissionFlagCondition "{19392C39408BD6BE}" {
+         m_sFlagName "OBJ2VIC1DESTROYED"
+        }
+        GC_MissionFlagCondition "{9A99EF2D56FCDF5D}" {
+         m_sFlagName "OBJ2VIC2DESTROYED"
+        }
+        GC_MissionFlagCondition "{1AC69AC241791A12}" {
+         m_sFlagName "OBJ2VIC3DESTROYED"
+        }
+        GC_MissionFlagCondition "{5AC0A63B62FC6961}" {
+         m_sFlagName "OBJ3VIC1DESTROYED"
+        }
+        GC_MissionFlagCondition "{0EA70267D6432C50}" {
+         m_sFlagName "OBJ3VIC2DESTROYED"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{BD0F419695AE4C13}" {
+       m_sMessage "UK_VICTORY"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{535C10512BE095F8}" {
+     m_sName "UK_VICTORY (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{C7EBE598A9810380}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{80B250575CC81B5F}" {
+       m_sEventName "UK_VICTORY"
+      }
+     }
+     m_Advanced GC_EventOptions "{CA20ABF02A6D0D09}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{17FCDF22DE2C1576}" {
+       m_sTitle "VICTORY"
+       m_sMessage "All objectives have been destroyed."
+      }
+     }
+    }
+    GC_Event "{26A10DB004199669}" {
+     m_sName "UK_VICTORY (20s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{5D802DAED0C54CD8}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{87A2460D3AB3417B}" {
+       m_sEventName "UK_VICTORY"
+      }
+     }
+     m_Advanced GC_EventOptions "{49C207C4881F2422}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_EndMissionAction "{00A032D9A81BD9F7}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{4B9D7CAA58B423BE}" {
+     m_sName "TIME_LIMIT (5405s)"
+     m_Advanced GC_EventOptions "{44DA1CD6BCC946EC}" {
+      m_fDelay 5405
+     }
+     m_aActions {
+      GC_MessageAction "{D5F7DCE8ED9867D6}" {
+       m_sTitle "DEFEAT"
+       m_sMessage "Time limit reached."
+      }
+     }
+    }
+    GC_Event "{3F70BE9AC214CB7B}" {
+     m_sName "TIME_LIMIT (5420s)"
+     m_Advanced GC_EventOptions "{D8EF8FDDE10092E0}" {
+      m_fDelay 5420
+     }
+     m_aActions {
+      GC_EndMissionAction "{ED48251B864FD142}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "USSR"
+       }
+      }
+     }
+    }
+    GC_Event "{F39F9E452C360616}" {
+     m_sName "ASSIGN_WAYPOINTS (5s)"
+     m_Advanced GC_EventOptions "{0DE1FF148B3C233E}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_AssignWaypointsAction "{60FE16FD7DD4622F}" {
+       m_sGroupName "OBJ1SQD3"
+       m_aWaypoints {
+        "OBJ1PATROL1WP1"
+        "OBJ1PATROL1WP2"
+        "OBJ1PATROL1WP3"
+        "OBJ1PATROL1WP4"
+        "OBJ1PATROL1CYCLE"
+       }
+      }
+      GC_AssignWaypointsAction "{DE3902FBF098D2F0}" {
+       m_sGroupName "OBJ1SQD4"
+       m_aWaypoints {
+        "OBJ1PATROL2WP1"
+        "OBJ1PATROL2WP1"
+        "OBJ1PATROL2WP1"
+        "OBJ1PATROL2WP1"
+        "OBJ1PATROL2CYCLE"
+       }
+      }
+      GC_AssignWaypointsAction "{3D9A5C53CBBD288D}" {
+       m_sGroupName "OBJ2SQD1"
+       m_aWaypoints {
+        "OBJ2PATROL1WP1"
+        "OBJ2PATROL1WP2"
+        "OBJ2PATROL1WP3"
+        "OBJ2PATROL1WP4"
+        "OBJ2PATROL1CYCLE"
+       }
+      }
+      GC_AssignWaypointsAction "{F6AE7BB39AC728F9}" {
+       m_sGroupName "OBJ2SQD2"
+       m_aWaypoints {
+        "OBJ2PATROL2WP1"
+        "OBJ2PATROL2WP2"
+        "OBJ2PATROL2WP3"
+        "OBJ2PATROL2WP4"
+        "OBJ2PATROL2CYCLE"
+       }
+      }
+      GC_AssignWaypointsAction "{3372FA47332C4479}" {
+       m_sGroupName "OBJ3SQD1"
+       m_aWaypoints {
+        "OBJ3PATROL1WP1"
+        "OBJ3PATROL1WP2"
+        "OBJ3PATROL1WP3"
+        "OBJ3PATROL1WP4"
+        "OBJ3PATROL1CYCLE"
+       }
+      }
+      GC_AssignWaypointsAction "{40CCCF5EB3AB3793}" {
+       m_sGroupName "OBJ3SQD2"
+       m_aWaypoints {
+        "OBJ3PATROL2WP1"
+        "OBJ3PATROL2WP2"
+        "OBJ3PATROL2WP3"
+        "OBJ3PATROL2WP4"
+        "OBJ3PATROL2CYCLE"
+       }
+      }
+     }
+    }
+   }
+   m_aAuthoredRespawns {
+    GC_AuthoredFactionRespawn "{FEC6C22363EAA431}" {
+     m_sFaction "UK"
+     m_iTickets 5
+     m_iIntervalMs 0
+    }
+   }
+  }
+ }
+ coords 11777.352 0 11649.996
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_iOrder 1
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CD021D5C}" {
+        m_sCallsign "Longbow"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "6"
+       }
+      }
+      m_sCallsignGroupFormat "%1-%2%3"
+      m_sCallsignCharacterFormat "%1-%2%3: %4"
+      m_sCallsignCharacterWithRoleFormat "%1-%2%3: %4"
+     }
+    }
+    SCR_Faction "{61500924662B6062}" {
+     m_iOrder 0
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CCD598D3}" {
+       }
+       SCR_CallsignInfo "{55CCB792CC9C7AD6}" {
+        m_sCallsign "Longbow-"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE02ECFA}" {
+       }
+       SCR_CallsignInfo "{55CCB792CE2A44BD}" {
+        m_sCallsign "6"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+       }
+       SCR_CallsignInfo "{62E6C1B918E898C6}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{65371177AECDA3B3}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{65371177B9B5E302}" {
+        m_sCallsign "3"
+       }
+      }
+     }
+     m_iFactionRadioFrequency 45000
+    }
+   }
+  }
+ }
+}
+$grp GenericEntity {
+ QRF1SPAWN {
+  coords 4670.115 20.687 10736.415
+  angleY 105.845
+ }
+ QRF1SPAWN2 {
+  coords 5632.546 37.534 10537.243
+  angleY 105.845
+ }
+ QRF1SPAWN3 {
+  coords 5023.229 22.701 9672.911
+  angleY 105.845
+ }
+ QRF2SPAWN {
+  coords 7130.458 59.819 7081.847
+  angleY 105.845
+ }
+ QRF2SPAWN2 {
+  coords 7327.496 15.041 7439.009
+  angleY 105.845
+ }
+ QRF2SPAWN3 {
+  coords 7049.608 62.669 7567.246
+  angleY 105.845
+ }
+}
+GC_RadiusAreaEntity GC_MigrationArea_UK_OBJ1 : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 5823.769 4.592 9722.262
+ m_fRadius 100
+}
+GC_RadiusAreaEntity GC_MigrationArea_UK_OBJ3 : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 7680.18 13.095 8142.181
+ m_fRadius 100
+}

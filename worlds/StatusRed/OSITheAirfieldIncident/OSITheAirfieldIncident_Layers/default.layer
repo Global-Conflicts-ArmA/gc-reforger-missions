@@ -1,0 +1,656 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 4465.625 0 11501.08
+}
+GC_LobbyGameMode GC_MigratedMission : "{BB339E86A6EFF715}worlds/StatusRed/OSITheAirfieldIncident/OSITheAirfieldIncident_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 18
+   m_bFogOverride 1
+   m_fFogAmount 0.118
+   m_fFogHeightDensity 0.194
+   m_bDateOverride 1
+   m_iDay 28
+   m_iMonth 9
+   m_iYear 2014
+  }
+  GC_MissionEnvironmentComponent "{DDD6F66AF8148E98}" {
+   m_bOverrideTimeZone 1
+   m_fTimeZoneOffset 0
+   m_fDSTOffsetHours 1
+   m_bDSTEnabled 1
+   m_bOverrideAtmosphere 0
+  }
+  GC_PeakFactionPopulationComponent "{1B9B9A0C2EFA6D88}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{9BCAC327ED484F28}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 300.000000
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{A90E4DFDA79BB3C5}" {
+     m_sName "HELI1_DESTROYED"
+    }
+    GC_MissionFlag "{24228E62CD86532A}" {
+     m_sName "HELI2_DESTROYED"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{4CFA5D6FE5A57771}" {
+     m_sName "Helicopter Destroyed"
+     m_aConditions {
+      GC_GameModeStateCondition "{9152BEC946FB31A8}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{EDB1437A1A0C3748}" {
+       m_sFlagName "HELI1_DESTROYED"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{65693BE5ADE95CBC}" {
+       m_sMessage "Helicopter Destroyed"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7B141B2304E871E9}" {
+     m_sName "Helicopter Destroyed (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{3A8CDF8676722C47}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{11BE6644B73EDA57}" {
+       m_sEventName "Helicopter Destroyed"
+      }
+     }
+     m_Advanced GC_EventOptions "{44E216DCD07E2B0F}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{B43BDDF8C087791D}" {
+       m_sTitle "Helicopter Destroyed"
+       m_sMessage "Scottish Separatists have destroyed a helicopter."
+       m_aFactions {
+        "UK" "GC_IRA"
+       }
+      }
+     }
+    }
+    GC_Event "{23B47557BE0F0ADB}" {
+     m_sName "Helicopter Destroyed [66FB09BE403C4FCC]"
+     m_aConditions {
+      GC_GameModeStateCondition "{81E71F09E957CE02}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{5780D437DDE8026E}" {
+       m_sFlagName "HELI2_DESTROYED"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E42C5FFA79FFDBBB}" {
+       m_sMessage "Helicopter Destroyed"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9F94C25BEDF96098}" {
+     m_sName "Helicopter Destroyed [66FB09BE403C4FCC] (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{A09D3168B672566E}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{5B679DCD66EA8E45}" {
+       m_sEventName "Helicopter Destroyed [66FB09BE403C4FCC]"
+      }
+     }
+     m_Advanced GC_EventOptions "{BF61209378058E60}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{6317EC6A8F3222B8}" {
+       m_sTitle "Helicopter Destroyed"
+       m_sMessage "Scottish Separatists have destroyed a helicopter."
+       m_aFactions {
+        "GC_IRA" "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{7BF759ED72FF83B9}" {
+     m_sName "UK Dead"
+     m_aConditions {
+      GC_CustomScriptCondition "{1BC64D27E5263E7F}" {
+       m_Script GC_PeakFactionPopulationCheck "{EDF8234D8DE36054}" {
+        m_sFaction "UK"
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6242B3CC7F9E3E14}" {
+       m_sMessage "UK Dead"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{657A65437ECF530C}" {
+     m_sName "UK Dead (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1A557AEAFFF60B95}" {
+       m_sEventName "UK Dead"
+      }
+     }
+     m_Advanced GC_EventOptions "{197029B75645658E}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_MessageAction "{454B5B2C3AED8111}" {
+       m_sTitle "UK Forces Defeated"
+       m_sMessage "UK Forces are defeated presumed KIA."
+       m_aFactions {
+        "UK" "GC_IRA"
+       }
+      }
+     }
+    }
+    GC_Event "{2513E3BD6966BC19}" {
+     m_sName "UK Dead (25s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7DB88D1E9C1CDE60}" {
+       m_sEventName "UK Dead"
+      }
+     }
+     m_Advanced GC_EventOptions "{A377EA47BF2D10AF}" {
+      m_fDelay 25
+     }
+     m_aActions {
+      GC_EndMissionAction "{48A52524F8766C02}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+      GC_EndMissionAction "{E7123798998EE534}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_IRA"
+       }
+      }
+     }
+    }
+    GC_Event "{404C451C12FF5556}" {
+     m_sName "Separatists Dead"
+     m_aConditions {
+      GC_CustomScriptCondition "{1850D39502F0C131}" {
+       m_Script GC_PeakFactionPopulationCheck "{E1760FE2585D2324}" {
+        m_sFaction "GC_IRA"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1AA4FA1670A16E30}" {
+       m_sMessage "Separatists Dead"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{077852B5344533A3}" {
+     m_sName "Separatists Dead (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2735F525B03AA8C9}" {
+       m_sEventName "Separatists Dead"
+      }
+     }
+     m_Advanced GC_EventOptions "{798133B8AACE3FA0}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_MessageAction "{71A9C1DD5D302B31}" {
+       m_sTitle "Separatist Forces Defeated"
+       m_sMessage "Separatists are defeated presumed KIA."
+       m_aFactions {
+        "UK" "GC_IRA"
+       }
+      }
+     }
+    }
+    GC_Event "{15BAF36051ECF4BC}" {
+     m_sName "Separatists Dead (25s)"
+     m_aConditions {
+      GC_MissionEventCondition "{74CFA442DF8F7024}" {
+       m_sEventName "Separatists Dead"
+      }
+     }
+     m_Advanced GC_EventOptions "{DBDFA82DBF6FA8DC}" {
+      m_fDelay 25
+     }
+     m_aActions {
+      GC_EndMissionAction "{6AD9B409887B5739}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+      GC_EndMissionAction "{1BE1F94B7C38FEE8}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_IRA"
+       }
+      }
+     }
+    }
+    GC_Event "{28BE26425503049F}" {
+     m_sName "Time Limit Exceeded (5405s)"
+     m_Advanced GC_EventOptions "{E9B2FD7991C3BE9B}" {
+      m_fDelay 5405
+      m_bDisabled 1
+     }
+     m_aActions {
+      GC_MessageAction "{1DA23CA58FB17654}" {
+       m_sTitle "Time limit exceeded"
+       m_sMessage "Time limit exceeded, the UK held the base."
+       m_aFactions {
+        "UK" "GC_IRA"
+       }
+      }
+     }
+    }
+    GC_Event "{9EDF797C2176A3E9}" {
+     m_sName "Time Limit Exceeded (5420s)"
+     m_Advanced GC_EventOptions "{2E82949C323A442E}" {
+      m_fDelay 5420
+      m_bDisabled 1
+     }
+     m_aActions {
+      GC_EndMissionAction "{D716508CAF70F7D3}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+      GC_EndMissionAction "{E79B8BE49FB24055}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_IRA"
+       }
+      }
+     }
+    }
+    GC_Event "{0BA3BD9B98509AEE}" {
+     m_sName "Separatist Win"
+     m_aConditions {
+      GC_GameModeStateCondition "{3CC4083A73DC90A7}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{0CA904068517C812}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{A8E0BD0EA5072C9D}" {
+         m_sFlagName "HELI1_DESTROYED"
+        }
+        GC_MissionFlagCondition "{126C572841DCB817}" {
+         m_sFlagName "HELI2_DESTROYED"
+        }
+        GC_AreaCondition "{A1522239A0FD5384}" {
+         m_sArea "capZone"
+         m_Targets GC_CharacterAreaTargets "{881C5DA4ECE974F2}" {
+          m_aFactions {
+           "GC_IRA"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{9643883CB4DDB4E6}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{072FA3748ACBC18F}" {
+          m_fSeconds 600
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{E82EFCCB1064DB4B}" {
+           m_sLocation "RAF Kirknewton"
+           m_aFactions {
+            "UK" "GC_IRA"
+           }
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E301CD56B7234681}" {
+       m_sMessage "Separatist Win"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7DA72E27C70D4A55}" {
+     m_sName "Separatist Win (20s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{B34F9F38CB464F81}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{87E4BD0FF8C14773}" {
+       m_sEventName "Separatist Win"
+      }
+     }
+     m_Advanced GC_EventOptions "{9C753CDBAF30CD11}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_MessageAction "{31B65342CA459B75}" {
+       m_sTitle "Separatists win"
+       m_sMessage "Separatists have control of RAF Kirknewton."
+       m_aFactions {
+        "UK" "GC_IRA"
+       }
+      }
+     }
+    }
+    GC_Event "{242AF221D31BCC1B}" {
+     m_sName "Separatist Win (25s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{FFA4D45A68E42EFD}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{6C8FA19EA8113007}" {
+       m_sEventName "Separatist Win"
+      }
+     }
+     m_Advanced GC_EventOptions "{81C4CFE9471291CA}" {
+      m_fDelay 25
+     }
+     m_aActions {
+      GC_EndMissionAction "{1D43399E3641C36F}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_IRA"
+       }
+      }
+      GC_EndMissionAction "{9A4C48815009B7E9}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{F525B7BEBEA35BDA}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{C2FCFF024439C8ED}" {
+       m_fSeconds 300.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{6CB900DDC1D5DCF5}" {
+       m_aEntities {
+        "bluSetupZone"
+        "opSetupZone"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 4391.978 0 11449.721
+ m_aDisabledResourceTypes {
+  SUPPLIES
+ }
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{61500924662B6062}" {
+     m_aEntityCatalogs {
+      SCR_EntityCatalogMultiList "{5C68A0EEB3F124F9}" {
+       m_aMultiLists {
+        SCR_EntityCatalogMultiListEntry "{62DD3B2896AEA994}" {
+         m_aEntities {
+          SCR_EntityCatalogInventoryItem "{615009250F2FAA56}" {
+           m_aEntityDataList {
+            SCR_ArsenalItem "{615009250F2FAA55}" {
+             m_eItemMode AMMUNITION
+            }
+           }
+          }
+         }
+        }
+        SCR_EntityCatalogMultiListEntry "{6676DAB944E2B29C}" {
+         m_aEntities {
+          SCR_EntityCatalogInventoryItem "{6676DAB91C58C013}" {
+           m_aEntityDataList {
+            SCR_ArsenalItem "{61ECC6DC8DB987BC}" {
+             m_eItemMode WEAPON
+            }
+           }
+          }
+          SCR_EntityCatalogInventoryItem "{6676DAB9189A362D}" {
+           m_aEntityDataList {
+            SCR_ArsenalItem "{6556A2FFDA3E5050}" {
+             m_eItemMode WEAPON
+            }
+           }
+          }
+          SCR_EntityCatalogInventoryItem "{6676DAB930BAC2DF}" {
+           m_aEntityDataList {
+            SCR_ArsenalItem "{6556A2FFC51E27EA}" {
+             m_eItemMode WEAPON
+            }
+           }
+          }
+          SCR_EntityCatalogInventoryItem "{6676DAB933D30C39}" {
+           m_aEntityDataList {
+            SCR_ArsenalItem "{6556A2FFC43882D0}" {
+             m_eItemMode WEAPON
+            }
+           }
+          }
+          SCR_EntityCatalogInventoryItem "{6676DAB932835DDC}" {
+           m_aEntityDataList {
+            SCR_ArsenalItem "{6556A2FFD34470B0}" {
+             m_eItemMode WEAPON
+            }
+           }
+          }
+          SCR_EntityCatalogInventoryItem "{6676DAB9177AE10C}" {
+           m_aEntityDataList {
+            SCR_ArsenalItem "{6556B93806ADFA2E}" {
+             m_eItemMode PYLON
+            }
+           }
+          }
+         }
+        }
+        SCR_EntityCatalogMultiListEntry "{670F081491B50690}" {
+         m_sIdentifier "Extra"
+         m_aEntities {
+          SCR_EntityCatalogInventoryItem "{670F081499F0D871}" {
+           m_sEntityPrefab "{64C6B8E8931FB36D}Prefabs/Props/Military/Sandbags/Sandbag_01_empty_burlap.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{670F081774DDA60D}" {
+             m_eItemType EQUIPMENT
+             m_eItemMode SUPPORT_STATION
+            }
+           }
+          }
+          SCR_EntityCatalogInventoryItem "{673B6860E317450B}" {
+           m_sEntityPrefab "{E67E7932C86FBB96}Prefabs/Items/Medicine/FieldDressing_UK_01.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{673B6860175CC2A2}" {
+             m_eItemType EQUIPMENT
+             m_eItemMode SUPPORT_STATION
+            }
+           }
+          }
+          SCR_EntityCatalogInventoryItem "{673B68615F734C1B}" {
+           m_sEntityPrefab "{57A7222BCD92A59E}Prefabs/Items/Medicine/SalineBag_01/SalineBag_UK_01.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{673B68615090D7BB}" {
+             m_eItemType EQUIPMENT
+             m_eItemMode SUPPORT_STATION
+            }
+           }
+          }
+          SCR_EntityCatalogInventoryItem "{673B6861403E6239}" {
+           m_sEntityPrefab "{0D9A5DCF89AE7AA9}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{673B68616DFEF92B}" {
+             m_eItemType EQUIPMENT
+             m_eItemMode SUPPORT_STATION
+            }
+           }
+          }
+          SCR_EntityCatalogInventoryItem "{673B686167E7290C}" {
+           m_sEntityPrefab "{5B2FD067D70C1E8F}Prefabs/Items/Medicine/EpinephrineInjection/ACE_Medical_EpinephrineInjection.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{673B686E9BED0E99}" {
+             m_eItemType EQUIPMENT
+             m_eItemMode SUPPORT_STATION
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    SCR_Faction "{633D460D559977CA}" {
+     FactionKey "GC_IRA"
+     FactionColor 0 0.1119 0.4793 1
+     UIInfo SCR_FactionUIInfo "{633D46001FC1655D}" {
+      Name "Scottish Separatists"
+      Description "Scottish Separatists"
+      Icon "{66579DB0674F9954}Missions/StatusRed/scotland-flag.edds"
+      m_sNameUpper "SCOTTISH SEPARATISTS"
+     }
+     "Radio encryption key" "scotlandForever"
+     m_OutlineFactionColor 0 0.112 0.479 1
+     m_NotificationFactionColor 0 0.112 0.479 1
+     m_NotificationTextFactionColor 0 0.112 0.479 1
+     m_bIsPlayable 1
+     m_sFactionFlag "{66579DB0674F9954}Missions/StatusRed/scotland-flag.edds"
+     m_FactionFlagMaterial "{DB52C2D4463AA0A0}Assets/Props/Fabric/Flags/Data/Flag_2_3_Blue.emat"
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{58B2B630FDD64B73}" {
+        m_sCallsign "Scottish Separatists"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "0"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+        m_sCallsign "4"
+       }
+       SCR_CallsignInfo "{66FB09A2032E2195}" {
+        m_sCallsign "5"
+       }
+       SCR_CallsignInfo "{66FB09A204A278B0}" {
+        m_sCallsign "6"
+       }
+      }
+      m_sCallsignGroupFormat "%1 %2'%3"
+      m_sCallsignCharacterFormat "%1 %2%3%4"
+      m_sCallsignCharacterWithRoleFormat "%1 %2'%3 %4"
+     }
+     m_aEntityCatalogs {
+      SCR_EntityCatalogMultiList "{633D46001FC16533}" {
+       m_eEntityCatalogType ITEM
+       m_aMultiLists {
+        SCR_EntityCatalogMultiListEntry "{66FB09B7E74DF380}" {
+         m_sIdentifier "Extra"
+         m_aEntities {
+          SCR_EntityCatalogInventoryItem "{66FB09B7CC1826D9}" {
+           m_sEntityPrefab "{57A7222BCD92A59E}Prefabs/Items/Medicine/SalineBag_01/SalineBag_UK_01.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{66FB09B7DE3AB51F}" {
+             m_eItemType HEAL
+             m_eItemMode CONSUMABLE
+             m_iSupplyCost 1
+            }
+           }
+          }
+          SCR_EntityCatalogInventoryItem "{66FB09B6E35F5168}" {
+           m_sEntityPrefab "{632CAEF08C102091}Prefabs/Items/Medicine/Splint_01/GC_Splint_01_Base.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{66FB09B6FE97E811}" {
+             m_eItemType HEAL
+             m_iSupplyCost 1
+            }
+           }
+          }
+          SCR_EntityCatalogInventoryItem "{66FB09B4650D7F98}" {
+           m_sEntityPrefab "{E67E7932C86FBB96}Prefabs/Items/Medicine/FieldDressing_UK_01.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{66FB09B46F003FF0}" {
+             m_eItemType HEAL
+             m_eItemMode CONSUMABLE
+             m_iSupplyCost 2
+            }
+           }
+          }
+         }
+        }
+        SCR_EntityCatalogMultiListEntry "{66FB09B6B1FB563D}" {
+         m_sIdentifier "Weapons"
+         m_aEntities {
+          SCR_EntityCatalogInventoryItem "{66FB09B6B65CC446}" {
+           m_sEntityPrefab "{1353C6EAD1DCFE43}Prefabs/Weapons/Handguns/M9/Handgun_M9.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{66FB09B6977446AE}" {
+             m_eItemType PISTOL
+             m_eItemMode WEAPON
+             m_iSupplyCost 5
+            }
+           }
+          }
+          SCR_EntityCatalogInventoryItem "{66FB09B56B3889FB}" {
+           m_sEntityPrefab "{9C05543A503DB80E}Prefabs/Weapons/Magazines/Magazine_9x19_M9_15rnd_Ball.et"
+           m_aEntityDataList {
+            SCR_ArsenalItem "{66FB09B54460E79D}" {
+             m_eItemType PISTOL
+             m_eItemMode AMMUNITION
+             m_iSupplyCost 2
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
