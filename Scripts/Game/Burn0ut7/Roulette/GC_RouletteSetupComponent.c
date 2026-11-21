@@ -34,6 +34,14 @@ class GC_RouletteSetupComponent : GC_LobbySetupGateComponent
 	protected int m_iScenarioIndex;
 	protected int m_iSeed;
 	protected bool m_bPublished;
+	protected ref GC_RouletteChatCommands m_Chat;
+	protected int m_iChatAttempts;
+	protected int m_iForcedScenario = -1;
+	protected ref array<int> m_aForcedTeams = {};
+	protected int m_iPublishedScenarioIndex = -1;
+	protected int m_iPublishedSeed;
+	protected int m_iRequester;
+	protected string m_sRequesterIdentity;
 	protected GC_RadiusAreaEntity m_CaptureArea;
 	protected ref array<ref GC_EventDefinition> m_aMatchEvents;
 
@@ -56,7 +64,14 @@ class GC_RouletteSetupComponent : GC_LobbySetupGateComponent
 	override void OnWorldPostProcess(World world)
 	{
 		super.OnWorldPostProcess(world);
-		if (!Replication.IsServer() || SCR_Global.IsEditMode() || GC_LobbyGameMode.GetGameMode() != GetOwner())
+		if (SCR_Global.IsEditMode() || GC_LobbyGameMode.GetGameMode() != GetOwner())
+			return;
+		if (RplSession.Mode() != RplMode.Dedicated)
+		{
+			m_Chat = new GC_RouletteChatCommands();
+			AttachChat();
+		}
+		if (!Replication.IsServer())
 			return;
 
 		m_Manager = GC_LobbyManager.GetManager();
@@ -72,6 +87,199 @@ class GC_RouletteSetupComponent : GC_LobbySetupGateComponent
 		if (m_iStartupSeed != 0)
 			m_iRemainingRolls = 1;
 		BeginRoll(m_iStartupSeed);
+	}
+
+	static GC_RouletteSetupComponent GetActive()
+	{
+		GC_LobbyGameMode mode = GC_LobbyGameMode.GetGameMode();
+		if (!mode)
+			return null;
+		return GC_RouletteSetupComponent.Cast(mode.FindComponent(GC_RouletteSetupComponent));
+	}
+
+	protected void AttachChat()
+	{
+		if (GetActive() != this || !m_Chat || m_iChatAttempts++ >= 20)
+			return;
+		if (!m_Chat.Attach())
+			GetGame().GetCallqueue().CallLater(AttachChat, 250, false);
+	}
+
+	string RunCommand(int requester, string command, string input)
+	{
+		if (!Replication.IsServer() || GetActive() != this || !m_Manager || GC_LobbyManager.GetManager() != m_Manager)
+			return "Roulette is unavailable.";
+
+		input.TrimInPlace();
+		bool mutating = command == "reroll" || command == "players"
+			|| (!input.IsEmpty() && (command == "scenario" || command == "teams"));
+		if (requester <= 0 || !GetGame().GetPlayerManager().IsPlayerConnected(requester))
+		{
+			if (mutating)
+				GC_AdminActionLogger.Log(requester, "roulette-" + command, "setup", "rejected-unresolved-requester");
+			return "Roulette is unavailable.";
+		}
+		if (command == "seed")
+		{
+			if (!m_bPublished)
+				return "No Roulette seed has been published.";
+			return string.Format("Roulette seed: %1", m_iPublishedSeed);
+		}
+		if (command == "scenario" && input.IsEmpty())
+			return ListChoices(false);
+		if (command == "teams" && input.IsEmpty())
+			return ListChoices(true);
+		if (command != "reroll" && command != "players" && command != "scenario" && command != "teams")
+			return "Unknown Roulette command.";
+
+		string action = "roulette-" + command;
+		if (!m_Manager.AuthorizeAdminAction(requester, action, "setup"))
+			return "Log in as an administrator to change Roulette setup.";
+		if (m_Roll || !m_Placement || !m_Placement.CanReplace())
+		{
+			GC_AdminActionLogger.Log(requester, action, "setup", "rejected-roster-unavailable");
+			return "Roulette can change during setup when no generated roles have been claimed.";
+		}
+
+		string result = ApplyCommand(requester, command, input);
+		if (result.IsEmpty())
+		{
+			GC_AdminActionLogger.Log(requester, action, "setup", "rejected-invalid-arguments");
+			return "Invalid arguments. Use /scenario <index>, /teams <defender> <attacker>, /players <target greater than 10> or /reroll [seed].";
+		}
+
+		string outcome = "succeeded";
+		if (command == "reroll")
+			outcome = "queued";
+		GC_AdminActionLogger.Log(requester, action, "setup", outcome);
+		return result;
+	}
+
+	protected string ApplyCommand(int requester, string command, string input)
+	{
+		int value;
+		if (command == "teams")
+		{
+			int scenarioIndex = m_iForcedScenario;
+			if (scenarioIndex < 0)
+				scenarioIndex = m_iPublishedScenarioIndex;
+			if (!m_Catalogue || !m_Catalogue.m_aScenarios.IsIndexValid(scenarioIndex))
+				return "";
+			array<string> arguments = {};
+			input.Split(" ", arguments, true);
+			int second;
+			if (arguments.Count() != 2 || !ParseInt(arguments[0], value) || !ParseInt(arguments[1], second)
+				|| !m_Catalogue.m_aScenarios[scenarioIndex].m_teamsList
+				|| !m_Catalogue.m_aScenarios[scenarioIndex].m_teamsList.IsIndexValid(value)
+				|| !m_Catalogue.m_aScenarios[scenarioIndex].m_teamsList.IsIndexValid(second))
+				return "";
+			m_aForcedTeams = {value, second};
+			return string.Format("Teams for the next roll: %1 %2", value, second);
+		}
+
+		if (!input.IsEmpty() && !ParseInt(input, value))
+			return "";
+		switch (command)
+		{
+			case "players":
+				if (value <= 10)
+					return "";
+				m_iPlayerTarget = value;
+				return string.Format("Player target for the next roll: %1", value);
+			case "scenario":
+				if (input.IsEmpty() || !m_Catalogue || !m_Catalogue.m_aScenarios.IsIndexValid(value))
+					return "";
+				m_iForcedScenario = value;
+				return string.Format("Scenario for the next roll: %1", m_Catalogue.m_aScenarios[value].m_scenarioName);
+			case "reroll":
+				m_sRequesterIdentity = SCR_PlayerIdentityUtils.GetPlayerIdentityId(requester);
+				if (m_sRequesterIdentity.IsEmpty())
+					return "";
+				m_iRequester = requester;
+				m_iRemainingRolls = MAX_ROLLS;
+				if (value != 0)
+					m_iRemainingRolls = 1;
+				BeginRoll(value);
+				return "Roulette reroll queued.";
+		}
+		return "";
+	}
+
+	protected string ListChoices(bool teams)
+	{
+		if (!m_Catalogue || !m_Catalogue.m_aScenarios)
+			return "The Roulette catalogue is unavailable.";
+		array<string> choices = {};
+		if (teams)
+		{
+			if (!m_Catalogue.m_aScenarios.IsIndexValid(m_iPublishedScenarioIndex))
+				return "No Roulette scenario has been published.";
+			foreach (int index, GC_RouletteTeam team : m_Catalogue.m_aScenarios[m_iPublishedScenarioIndex].m_teamsList)
+				choices.Insert(string.Format("%1: %2", index, team.m_name));
+		}
+		else
+		{
+			foreach (int index, GC_RouletteScenario scenario : m_Catalogue.m_aScenarios)
+				choices.Insert(string.Format("%1: %2", index, scenario.m_scenarioName));
+		}
+		string list;
+		foreach (string choice : choices)
+		{
+			if (!list.IsEmpty())
+				list += " | ";
+			list += choice;
+		}
+		return list;
+	}
+
+	protected static bool ParseInt(string input, out int result)
+	{
+		result = 0;
+		if (input.IsEmpty() || input.Length() > 11)
+			return false;
+		bool negative = input.StartsWith("-");
+		int start = 0;
+		if (negative || input.StartsWith("+"))
+			start = 1;
+		if (start == input.Length())
+			return false;
+
+		for (int index = start; index < input.Length(); index++)
+		{
+			int digit = "0123456789".IndexOf(input.Substring(index, 1));
+			if (digit < 0)
+				return false;
+			if (result < (int.MIN + digit) / 10)
+				return false;
+			result = result * 10 - digit;
+		}
+		if (!negative)
+		{
+			if (result == int.MIN)
+				return false;
+			result = -result;
+		}
+		return true;
+	}
+
+	protected bool ValidateRerollRequester()
+	{
+		if (!m_iRequester)
+			return true;
+		if (!m_Manager.AuthorizeAdminAction(m_iRequester, "roulette-reroll", "pending"))
+			return false;
+		if (m_sRequesterIdentity == SCR_PlayerIdentityUtils.GetPlayerIdentityId(m_iRequester))
+			return true;
+		GC_AdminActionLogger.Log(m_iRequester, "roulette-reroll", "pending", "rejected-requester-changed");
+		return false;
+	}
+
+	protected void FinishReroll(string outcome)
+	{
+		if (m_iRequester)
+			GC_AdminActionLogger.Log(m_iRequester, "roulette-reroll", string.Format("seed=%1", m_iSeed), outcome);
+		m_iRequester = 0;
+		m_sRequesterIdentity = "";
 	}
 
 	protected bool ReadMapConfig()
@@ -96,7 +304,7 @@ class GC_RouletteSetupComponent : GC_LobbySetupGateComponent
 		if (m_iSeed == 0)
 			m_iSeed = Math.RandomInt(1, int.MAX);
 		m_Roll = new GC_RouletteRoll(m_iSeed);
-		m_iScenarioIndex = m_Roll.PickScenario(m_Catalogue);
+		m_iScenarioIndex = m_Roll.PickScenario(m_Catalogue, m_iForcedScenario);
 		m_Scenario = m_Catalogue.m_aScenarios[m_iScenarioIndex];
 		m_Terrain = new GC_RouletteTerrain(GetOwner().GetWorld(), GetGame().GetWorldEntity(), m_Scenario);
 		m_iObjectiveAttempts = 0;
@@ -108,8 +316,9 @@ class GC_RouletteSetupComponent : GC_LobbySetupGateComponent
 
 	protected void AdvanceRoll()
 	{
-		if (!m_Roll || !m_Placement || !m_Placement.CanReplace())
+		if (!m_Roll || !m_Placement || !m_Placement.CanReplace() || !ValidateRerollRequester())
 		{
+			FinishReroll("cancelled");
 			ClearRoll();
 			return;
 		}
@@ -162,7 +371,7 @@ class GC_RouletteSetupComponent : GC_LobbySetupGateComponent
 	{
 		bool water = m_Terrain.CrossesWater(attacker, objective, m_Scenario.m_maxWaterArea);
 		int defenderTeam, attackerTeam;
-		if (!m_Roll.PickTeams(m_Scenario, water, null, defenderTeam, attackerTeam))
+		if (!m_Roll.PickTeams(m_Scenario, water, m_aForcedTeams, defenderTeam, attackerTeam))
 		{
 			FailRoll("no opposing teams");
 			return;
@@ -206,6 +415,9 @@ class GC_RouletteSetupComponent : GC_LobbySetupGateComponent
 		}
 		m_aMatchEvents = events;
 		m_bPublished = true;
+		m_iPublishedScenarioIndex = m_iScenarioIndex;
+		m_iPublishedSeed = m_iSeed;
+		FinishReroll("succeeded");
 		PrintFormat("GC Roulette | roster ready | seed=%1 scenario=%2 defenderSlots=%3 attackerSlots=%4",
 			m_iSeed, m_Scenario.m_scenarioName, plan.m_iDefenderSlots, plan.m_iAttackerSlots);
 		ClearRoll();
@@ -276,6 +488,8 @@ class GC_RouletteSetupComponent : GC_LobbySetupGateComponent
 		ClearRoll();
 		if (m_iRemainingRolls > 0 && m_Placement.CanReplace())
 			BeginRoll(0);
+		else
+			FinishReroll("no-valid-roll");
 	}
 
 	protected void ClearRoll()
@@ -296,18 +510,30 @@ class GC_RouletteSetupComponent : GC_LobbySetupGateComponent
 	override void OnGameEnd()
 	{
 		StopGeneration();
+		DetachChat();
 		super.OnGameEnd();
 	}
 
 	protected void StopGeneration()
 	{
+		if (m_Roll)
+			FinishReroll("cancelled");
 		if (GetGame())
 			GetGame().GetCallqueue().Remove(AdvanceRoll);
 		ClearRoll();
 	}
 
+	protected void DetachChat()
+	{
+		if (GetGame())
+			GetGame().GetCallqueue().Remove(AttachChat);
+		if (m_Chat)
+			m_Chat.Detach();
+	}
+
 	void ~GC_RouletteSetupComponent()
 	{
 		StopGeneration();
+		DetachChat();
 	}
 }
