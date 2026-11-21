@@ -1,0 +1,540 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ components {
+  AIBirdManagerComponent "{5CC2D99CC5111D80}" {
+   Enabled 0
+  }
+ }
+ coords 3362.913 55.414 4405.263
+}
+GC_LobbyGameMode GC_MigratedMission : "{C82165440D25BC62}worlds/Reapzr/Deadlock/Deadlock_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 13
+   m_bRandomStartingDaytimeRange 1
+   m_iRangeHoursStart 5
+   m_iRangeHoursEnd 20
+   m_bRandomStartingWeather 1
+   m_bRandomWeatherChanges 1
+   m_bDateOverride 1
+   m_iDay 1
+   m_iMonth 8
+   m_iYear 2016
+  }
+  GC_PeakFactionPopulationComponent "{64BA791A1D66EF65}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{2D86535E0CB4638A}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 120.000000
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{139DCF2537A49ECD}" {
+     m_sName "GC_MigrationCapture_cap_sep"
+     m_aConditions {
+      GC_AreaCondition "{719C69D9A9D8737B}" {
+       m_sArea "cap_sep"
+       m_Targets GC_CharacterAreaTargets "{4828A619A4EE4902}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_SEPARATIST"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{69D53567A6694648}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{0194D15C7628ED2D}" {
+        m_fSeconds 300
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+        m_Messages GC_CaptureMessages "{B4143FED36426D0F}" {
+         m_sLocation "the reinforced building"
+         m_aFactions {
+          "UK" "GC_SEPARATIST"
+         }
+         m_sCaptured "The %1 has taken control of %2."
+         m_sCapturing "The %1 is taking control of %2."
+         m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+         m_sLost "The %1 has lost control of %2."
+         m_sLosing "The %1 is losing control of %2."
+         m_sLossInterrupted "The %1 is no longer losing control of %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B7144FA5336197EF}" {
+       m_sMessage "GC_MigrationCapture_cap_sep"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D326F70F40F0B383}" {
+     m_sName "GC_MigrationCapture_cap_uk"
+     m_aConditions {
+      GC_AreaCondition "{6AD6EAF0595DFBC6}" {
+       m_sArea "cap_uk"
+       m_Targets GC_CharacterAreaTargets "{12D849F95D35AC2C}" {
+        m_iWho 2
+        m_aFactions {
+         "UK"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{5C6170B50869D023}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{5C35E2EDA5DD00D3}" {
+        m_fSeconds 300
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+        m_Messages GC_CaptureMessages "{22E173B36D13678A}" {
+         m_sLocation "the reinforced building"
+         m_aFactions {
+          "UK" "GC_SEPARATIST"
+         }
+         m_sCaptured "The %1 has taken control of %2."
+         m_sCapturing "The %1 is taking control of %2."
+         m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+         m_sLost "The %1 has lost control of %2."
+         m_sLosing "The %1 is losing control of %2."
+         m_sLossInterrupted "The %1 is no longer losing control of %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{EFDEE6DDD35FD6A5}" {
+       m_sMessage "GC_MigrationCapture_cap_uk"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D2D96DD0C56CCF0F}" {
+     m_sName "CAP UK"
+     m_aConditions {
+      GC_ConditionGroup "{B1433BF24D5B1D6A}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionEventCondition "{1F720507D6B99050}" {
+         m_sEventName "GC_MigrationCapture_cap_uk"
+        }
+        GC_MissionEventCondition "{02E26DD3773B7C21}" {
+         m_sEventName "GC_MigrationCapture_cap_sep"
+         m_bRequireFalse 1
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F4B1239D1C38532C}" {
+       m_sMessage "CAP UK"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{56DCB187C1B2A4DA}" {
+     m_sName "CAP UK (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{74CB71A146981364}" {
+       m_sEventName "CAP UK"
+      }
+     }
+     m_Advanced GC_EventOptions "{B917B601427985E3}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{310C54DAFA821748}" {
+       m_sTitle "BUILDING CAPTURED"
+       m_sMessage "The building was captured by the SAS."
+      }
+     }
+    }
+    GC_Event "{02B5AC460F9750DB}" {
+     m_sName "CAP UK (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D0CD2C3AFEFB0958}" {
+       m_sEventName "CAP UK"
+      }
+     }
+     m_Advanced GC_EventOptions "{D34CE399ECDFD84E}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{175878D762A8D2A5}" {
+       m_aEntities {
+        "cap_sep"
+        "cap_uk"
+       }
+      }
+     }
+    }
+    GC_Event "{DB20C7DADA0419B8}" {
+     m_sName "CAP SEP"
+     m_aConditions {
+      GC_ConditionGroup "{4570ECC994F38562}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionEventCondition "{4BB7680502586F1F}" {
+         m_sEventName "GC_MigrationCapture_cap_uk"
+         m_bRequireFalse 1
+        }
+        GC_MissionEventCondition "{1C4AD1AA2E1AEE24}" {
+         m_sEventName "GC_MigrationCapture_cap_sep"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E7D6DF17FA8330EF}" {
+       m_sMessage "CAP SEP"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7918DD2FCC8FA2FE}" {
+     m_sName "CAP SEP (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7402159007772768}" {
+       m_sEventName "CAP SEP"
+      }
+     }
+     m_Advanced GC_EventOptions "{98FE6B25A121D210}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{37B3B45ED517B0BC}" {
+       m_sTitle "BUILDING CAPTURED"
+       m_sMessage "The building was captured by the SAS."
+      }
+     }
+    }
+    GC_Event "{261F265D50A1274A}" {
+     m_sName "CAP SEP (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A2A2B177306A5E77}" {
+       m_sEventName "CAP SEP"
+      }
+     }
+     m_Advanced GC_EventOptions "{BACED93C97139FDF}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{DCEDEC25B35AD008}" {
+       m_aEntities {
+        "cap_sep"
+        "cap_uk"
+       }
+      }
+     }
+    }
+    GC_Event "{24ED1BA3B97E80FA}" {
+     m_sName "EXTR SEP"
+     m_aConditions {
+      GC_AreaCondition "{4CD15731233AF903}" {
+       m_sArea "GC_MigrationArea_extr_sep"
+       m_Targets GC_CharacterAreaTargets "{DB8DE5D16C0FCEDD}" {
+        m_aFactions {
+         "GC_SEPARATIST"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{0C2889F97AFD97F4}" {
+        m_fRequiredShare 0.8
+        m_bWholeMission 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{24A0AEC10F41B6DD}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_Messages GC_CaptureMessages "{1463D07D8BE135A1}" {
+         m_sLocation "the SSO Base"
+         m_sCaptured "The %1 has extracted to %2."
+         m_sCapturing "The %1 is extracting to %2."
+         m_sCaptureInterrupted "The %1 is no longer extracting to %2."
+         m_sLost "The %1 has stopped extraction to %2."
+         m_sLosing "The %1 is stopping extraction to %2."
+         m_sLossInterrupted "The %1 is no longer stopping extraction to %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1D82DB55287478C5}" {
+       m_sMessage "EXTR SEP"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AB994C9A8C2F4573}" {
+     m_sName "EXTR SEP (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CFE990BD758E88DF}" {
+       m_sEventName "EXTR SEP"
+      }
+     }
+     m_Advanced GC_EventOptions "{17CF7F338AD81C0C}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{C6CF0A799FE06A4D}" {
+       m_sTitle "SEP EXTRACTION COMPLETE"
+       m_sMessage "Surviving separatists were extracted successfully."
+      }
+     }
+    }
+    GC_Event "{3ADB8AFA9E5CAFDE}" {
+     m_sName "EXTR UK"
+     m_aConditions {
+      GC_AreaCondition "{91FFDE7556DD9513}" {
+       m_sArea "GC_MigrationArea_extr_uk"
+       m_Targets GC_CharacterAreaTargets "{4C61D076F076C23E}" {
+        m_aFactions {
+         "UK"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{DB90018458A39EF4}" {
+        m_fRequiredShare 0.8
+        m_bWholeMission 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{DA863BB99B226670}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_Messages GC_CaptureMessages "{7ACE4C35797A08D4}" {
+         m_sLocation "the Ranger Base"
+         m_sCaptured "The %1 has extracted to %2."
+         m_sCapturing "The %1 is extracting to %2."
+         m_sCaptureInterrupted "The %1 is no longer extracting to %2."
+         m_sLost "The %1 has stopped extraction to %2."
+         m_sLosing "The %1 is stopping extraction to %2."
+         m_sLossInterrupted "The %1 is no longer stopping extraction to %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DD27227FA13AF060}" {
+       m_sMessage "EXTR UK"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6A4B70566F3B0054}" {
+     m_sName "EXTR UK (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{91A42F3B22F574B9}" {
+       m_sEventName "EXTR UK"
+      }
+     }
+     m_Advanced GC_EventOptions "{9AB3672E869F3AF2}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{8D29FF4A099DC7CB}" {
+       m_sTitle "UK EXTRACTION COMPLETE"
+       m_sMessage "Surviving SAS forces were extracted successfully."
+      }
+     }
+    }
+    GC_Event "{AC65F41FF60D079C}" {
+     m_sName "CAS RU"
+     m_aConditions {
+      GC_CustomScriptCondition "{93869C578D9584B5}" {
+       m_Script GC_PeakFactionPopulationCheck "{E63970EC5019E44F}" {
+        m_sFaction "GC_SEPARATIST"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D847B9A61CA92B21}" {
+       m_sMessage "CAS RU"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{295FF3823E174862}" {
+     m_sName "CAS RU (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{75815DD7A36E3319}" {
+       m_sEventName "CAS RU"
+      }
+     }
+     m_Advanced GC_EventOptions "{59C6FD8D13DC3776}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{C919FC4FDA36FDC3}" {
+       m_sTitle "RU DEFEAT"
+       m_sMessage "Separatists took severe casualties before they could be extracted."
+      }
+     }
+    }
+    GC_Event "{1C221A4235C7E563}" {
+     m_sName "CAS UK"
+     m_aConditions {
+      GC_CustomScriptCondition "{57931A6432DF9A73}" {
+       m_Script GC_PeakFactionPopulationCheck "{0410FBFF5B0BDF6D}" {
+        m_sFaction "UK"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F94509D988A02194}" {
+       m_sMessage "CAS UK"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A991F6B29548F9B2}" {
+     m_sName "CAS UK (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{895942F79EFB5A0C}" {
+       m_sEventName "CAS UK"
+      }
+     }
+     m_Advanced GC_EventOptions "{7CD7D2437C141185}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{A3D050E194305888}" {
+       m_sTitle "UK DEFEAT"
+       m_sMessage "UK forces took severe casualties before they could be extracted."
+      }
+     }
+    }
+    GC_Event "{AB2E66BC8D10A916}" {
+     m_sName "CAS US"
+     m_aConditions {
+      GC_CustomScriptCondition "{5F2FDB31FD93DDF0}" {
+       m_Script GC_PeakFactionPopulationCheck "{3A9F7CC43C743625}" {
+        m_sFaction "RHS_USAF"
+        m_fRatio 0.75
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{96BA5BB013C3C97B}" {
+       m_sMessage "CAS US"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{36B510E75B765496}" {
+     m_sName "CAS US (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3A887E0CDE730437}" {
+       m_sEventName "CAS US"
+      }
+     }
+     m_Advanced GC_EventOptions "{1BAED8A33E8A845B}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{D6F6833B4AA30975}" {
+       m_sTitle "US DEFEAT"
+       m_sMessage "US forces took severe casualties."
+      }
+     }
+    }
+    GC_Event "{BE2BD2FFBC3B1923}" {
+     m_sName "CAS RU [665A0CBE69D53C5A]"
+     m_aConditions {
+      GC_CustomScriptCondition "{FECDF34E368CBA03}" {
+       m_Script GC_PeakFactionPopulationCheck "{53B51215B598D1D3}" {
+        m_sFaction "RHS_AFRF"
+        m_fRatio 0.75
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{AF6878346DDDA79A}" {
+       m_sMessage "CAS RU"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A781264CDF01199D}" {
+     m_sName "CAS RU [665A0CBE69D53C5A] (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{208C40CA6F02F361}" {
+       m_sEventName "CAS RU [665A0CBE69D53C5A]"
+      }
+     }
+     m_Advanced GC_EventOptions "{A8CC4D50B3B27FFC}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{EBF04F36D88B0BAC}" {
+       m_sTitle "RU DEFEAT"
+       m_sMessage "Russian forces took severe casualties."
+      }
+     }
+    }
+    GC_Event "{5E6AE34C6E4DB253}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{CD2CCA31FD0FA5DE}" {
+       m_fSeconds 120.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{D31315FE21B7E312}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+        "GC_MigrationStartingZone2"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 3389.793 55.138 4410.87
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_aFriendlyFactionsIds {
+      "GC_SEPARATIST" "USSR"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_bIsAssignedRandomly 0
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_aFriendlyFactionsIds + {
+      "UK"
+     }
+    }
+    SCR_Faction "{61500924662B6062}" {
+     m_aFriendlyFactionsIds + {
+      "RHS_USAF"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_bIsAssignedRandomly 0
+     }
+    }
+    SCR_Faction "{62EB308733CA83DD}" {
+     m_aFriendlyFactionsIds {
+      "RHS_AFRF"
+     }
+    }
+   }
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{EF72FA7CD87618D5}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneSmall.et" {
+ coords 6596.926 96.344 1550.538
+ m_fZoneRadius 25
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone2 : "{EF72FA7CD87618D5}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneSmall.et" {
+ coords 6811.977 96.523 1610.187
+ m_fZoneRadius 25
+}
