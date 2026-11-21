@@ -1,0 +1,198 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 2063.956 0 4208.313
+ Formations {
+  AIFormationDefinition "{56ACE3951AA8D3EB}" {
+   Offsets +{
+    0 0 -33
+    0 0 -36
+   }
+  }
+ }
+}
+GC_LobbyGameMode GC_MigratedMission : "{C01CCA991DC4BFCA}worlds/arc/LeMouleApproachRedux/LeMouleApproachRedux_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bRandomStartingDaytimeRange 1
+   m_iRangeHoursStart 6
+   m_iRangeHoursEnd 19
+   m_bRandomStartingWeather 1
+   m_bDateOverride 1
+   m_iDay 14
+   m_iMonth 7
+   m_iYear 2004
+  }
+  GC_PeakFactionPopulationComponent "{255ABE8B989DF2AF}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{667F5B8A4F8F5A25}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 120
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{292364165676E9E7}" {
+     m_sName "US_CAP"
+     m_aConditions {
+      GC_AreaCondition "{7E377417840517BE}" {
+       m_sArea "GC_MigrationArea_OBJ_H"
+       m_Targets GC_CharacterAreaTargets "{360106980EB96E28}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{FF591BAAAC09155B}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{27959E2C08549F78}" {
+        m_fSeconds 60
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+        m_Messages GC_CaptureMessages "{5DE64CE219F708F2}" {
+         m_sLocation "Obj. Hermes"
+         m_sCaptured "The %1 has taken control of %2."
+         m_sCapturing "The %1 is taking control of %2."
+         m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+         m_sLost "The %1 has lost control of %2."
+         m_sLosing "The %1 is losing control of %2."
+         m_sLossInterrupted "The %1 is no longer losing control of %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{20B9BBE2CE2F6C61}" {
+       m_sMessage "US_CAP"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AC72101A7C2A2AD4}" {
+     m_sName "US_CAP (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E9AE096EBF5E9CA3}" {
+       m_sEventName "US_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{42E9BEEC0FF98C06}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{BB6450D1DD089296}" {
+       m_sTitle "US VICTORY"
+       m_sMessage "Obj. Hermes has been secured by US forces."
+      }
+     }
+    }
+    GC_Event "{6276B19C1F5C2C23}" {
+     m_sName "US_KIA (5s)"
+     m_Advanced GC_EventOptions "{352FBF9C5B0545C3}" {
+      m_fDelay 5
+      m_bDisabled 1
+     }
+     m_aActions {
+      GC_MessageAction "{7D1B6E150155A739}" {
+       m_sTitle "AFRF VICTORY"
+       m_sMessage "American forces have taken significant casualties."
+      }
+     }
+    }
+    GC_Event "{44A99ED225685D9F}" {
+     m_sName "AI_REINF"
+     m_aConditions {
+      GC_AreaCondition "{81E155018D3BF384}" {
+       m_sArea "GC_MigrationArea_AI_REINF"
+       m_Targets GC_CharacterAreaTargets "{626B3A0CE1E1C49B}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{CD38A0B6A3ED5590}" {
+        m_fRequiredShare 1
+        m_aIgnoredFactions {
+         "RHS_AFRF"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{4E584ED5C6DF124E}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FEB5F42FDDF852C9}" {
+       m_sMessage "AI_REINF"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5EA4C6EF4CB0E51E}" {
+     m_sName "AI_REINF (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6CB921F76EA043E7}" {
+       m_sEventName "AI_REINF"
+      }
+     }
+     m_Advanced GC_EventOptions "{952FA0FD02ADB192}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_AssignWaypointsAction "{198345A8E0C36ECA}" {
+       m_sGroupName "AIGRP1"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "SAWMILLWP"
+       }
+      }
+      GC_AssignWaypointsAction "{09CC27AB5C70EE13}" {
+       m_sGroupName "AIGRP2"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "SAWMILLWP"
+       }
+      }
+      GC_AssignWaypointsAction "{B9FBBED9006D70B5}" {
+       m_sGroupName "AIGRP3"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "SAWMILLWP"
+       }
+      }
+     }
+    }
+    GC_Event "{B76D075DB1C01B02}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{BA8424DB435E782E}" {
+       m_fSeconds 120
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{23FB531A9BB83E7E}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 1994.614 0 4269.892
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{6144B0BE2EAC6897}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneMedium.et" {
+ coords 3960.704 108.971 4904.452
+}
+GC_RadiusAreaEntity GC_MigrationArea_OBJ_H : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 3074.011 117.44 5211.633
+ m_fRadius 60
+}
+GC_RadiusAreaEntity GC_MigrationArea_AI_REINF : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 3075.089 118.922 5209.797
+ m_fRadius 110
+}
