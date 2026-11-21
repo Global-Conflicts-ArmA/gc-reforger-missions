@@ -1,0 +1,618 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 2739.022 58.551 1470.356
+}
+GC_LobbyGameMode GC_MigratedMission : "{2A07B15D6186C081}worlds/Blue/Opportunity Knocks/OpportunityKnocks_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingMinutes 30
+   m_bDateOverride 1
+   m_iDay 31
+   m_iMonth 12
+   m_iYear 2014
+  }
+  GC_MissionEnvironmentComponent "{DF2DAE6FAC216FFD}" {
+   m_fFogAmount 1
+   m_fFogHeightDensity 0
+   m_fRainIntensity 1
+   m_fWindSpeed 3
+  }
+  GC_PeakFactionPopulationComponent "{3A91FB7844C6A15D}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{A3F67ED1F8970383}" {
+     m_sName "VIC1"
+    }
+    GC_MissionFlag "{719486252F1E8E02}" {
+     m_sName "VIC2"
+    }
+    GC_MissionFlag "{26248765D3E5A925}" {
+     m_sName "VIC3"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{9041CFD8EC63455F}" {
+     m_sName "Release QRF"
+     m_aConditions {
+      GC_GameModeStateCondition "{0AAF87B2A8D85645}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionCount "{A1A0A2AC2B861F4B}" {
+       m_iComparison 0
+       m_iRequiredCount 0
+       m_aConditions {
+        GC_AreaCondition "{D9B06F10F25FA3CB}" {
+         m_sArea "GC_MigrationArea_BLUFORCROSS2"
+         m_Targets GC_CharacterAreaTargets "{4E02EDFC4F2F8C8E}" {
+          m_aFactions {
+           "RHS_USAF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{D081F11FBF51A38D}" {
+          m_fRequiredShare 0.1
+          m_aIgnoredFactions {
+           "RHS_AFRF"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{2B2AFD619B0BA625}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+        GC_AreaCondition "{3B2D3780E3A3AD14}" {
+         m_sArea "GC_MigrationArea_BLUFORCROSS1"
+         m_Targets GC_CharacterAreaTargets "{538ACB52F60DFBB0}" {
+          m_aFactions {
+           "RHS_USAF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{D76F3E206E890DAF}" {
+          m_fRequiredShare 0.1
+          m_aIgnoredFactions {
+           "RHS_AFRF"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{FB4D57A0DB372712}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{23BE2B66335EF8DA}" {
+       m_sMessage "Release QRF"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A60EDC6B184E880F}" {
+     m_sName "Release QRF (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{2397757688AC538C}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{29798A8027033F17}" {
+       m_sEventName "Release QRF"
+      }
+     }
+     m_Advanced GC_EventOptions "{8F787AFAF0DB9EEA}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{761D965BA4DAE0F8}" {
+       m_aEntities {
+        "QRFRestrict"
+       }
+      }
+     }
+    }
+    GC_Event "{5BB4404F3CAB2901}" {
+     m_sName "Release QRF (1s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{99DD17090FFF7C0E}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{B17E8AB2289F7C0C}" {
+       m_sEventName "Release QRF"
+      }
+     }
+     m_Advanced GC_EventOptions "{9013E1E265FDA4F1}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{08159A60FB491E2A}" {
+       m_sTitle "ANNA 331 RELEASED"
+       m_sMessage ""
+       m_aFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+    GC_Event "{1ED6E392A4AD7BF9}" {
+     m_sName "Total US Victory"
+     m_aConditions {
+      GC_CustomScriptCondition "{80935AC265FDCDA4}" {
+       m_Script GC_PeakFactionPopulationCheck "{C593DD9CB5A3D467}" {
+        m_sFaction "RHS_AFRF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3EDF10A0CA34F346}" {
+       m_sMessage "Total US Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{EAF4D7DD7444CF70}" {
+     m_sName "Total US Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8364AFC384D61A80}" {
+       m_sEventName "Total US Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{5BA3878B27348557}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{31F43B1B17504490}" {
+       m_sTitle "Total US Victory"
+       m_sMessage "RU Forces Destroyed"
+      }
+     }
+    }
+    GC_Event "{EF23E18F0194B843}" {
+     m_sName "Decisive US Victory"
+     m_aConditions {
+      GC_GameModeStateCondition "{73ABF3FEA0DE5CC0}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{4315C01F3ACB29FA}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionCount "{7671DA0B5AB58CE7}" {
+         m_iComparison 1
+         m_iRequiredCount 1
+         m_aConditions {
+          GC_MissionFlagCondition "{FD72F3CECF51756C}" {
+           m_sFlagName "VIC1"
+          }
+          GC_MissionFlagCondition "{AC97D67AC92E43CB}" {
+           m_sFlagName "VIC2"
+          }
+          GC_MissionFlagCondition "{A8DB01ACA17365F0}" {
+           m_sFlagName "VIC3"
+          }
+         }
+        }
+        GC_CustomScriptCondition "{BB19EFFA92402774}" {
+         m_Script GC_PeakFactionPopulationCheck "{9EC3A009A1B968B8}" {
+          m_sFaction "RHS_USAF"
+          m_bInvert 1
+          m_fRatio 0.61
+         }
+        }
+        GC_AreaCondition "{039E24CC02D68E8D}" {
+         m_sArea "GC_MigrationArea_BLUFOR_EXTRACTED"
+         m_Targets GC_CharacterAreaTargets "{EA8D58F2CD27E571}" {
+          m_aFactions {
+           "RHS_USAF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{73750CB8AA4910D4}" {
+          m_fRequiredShare 0.6
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{174C21EE37C5D9CF}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7FA8B4D9F1EE6667}" {
+       m_sMessage "Decisive US Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C83B29B12A444873}" {
+     m_sName "Decisive US Victory (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{7031EC9C163BC1AF}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{DAA4605D5A5C035A}" {
+       m_sEventName "Decisive US Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{EE4DD94291BF8F46}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{6CD335618DAF7887}" {
+       m_sTitle "Decisive US Victory"
+       m_sMessage "3 RU artillery pieces neutralized, mission success"
+      }
+     }
+    }
+    GC_Event "{5747499A79C6089D}" {
+     m_sName "Strategic US Victory"
+     m_aConditions {
+      GC_GameModeStateCondition "{12A78DE63C872D0B}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{F9D1414464ECD0D5}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionCount "{007808BD91A07801}" {
+         m_iComparison 1
+         m_iRequiredCount 1
+         m_aConditions {
+          GC_MissionFlagCondition "{F7AC3F1FEE66E11C}" {
+           m_sFlagName "VIC1"
+          }
+          GC_MissionFlagCondition "{38F0006269C562CA}" {
+           m_sFlagName "VIC2"
+          }
+          GC_MissionFlagCondition "{7CBCC3DB34FD65AB}" {
+           m_sFlagName "VIC3"
+          }
+         }
+        }
+        GC_AreaCondition "{D1BF09F79A189C17}" {
+         m_sArea "GC_MigrationArea_BLUFOR_EXTRACTED"
+         m_Targets GC_CharacterAreaTargets "{AD5F941D0C1B9B95}" {
+          m_aFactions {
+           "RHS_USAF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{D824BEB8A01511C8}" {
+          m_fRequiredShare 0.6
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{E576DADE7C0C14DE}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+        GC_CustomScriptCondition "{0B5E31F44A16DD25}" {
+         m_Script GC_PeakFactionPopulationCheck "{4E9F79CE238999DE}" {
+          m_sFaction "RHS_USAF"
+          m_fRatio 0.61
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7E6B838BE3571717}" {
+       m_sMessage "Strategic US Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{45B17F3CFAB3C9FB}" {
+     m_sName "Strategic US Victory (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{E577F98B6EB98AD3}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{284AB66F6BBF47F8}" {
+       m_sEventName "Strategic US Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{604031E1189B6622}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{668EFE3FD5DD10B4}" {
+       m_sTitle "Medium US Victory"
+       m_sMessage "3 RU artillery pieces neutralized, mission success"
+      }
+     }
+    }
+    GC_Event "{0AEC7384981EB737}" {
+     m_sName "Strategic US Victory 2"
+     m_aConditions {
+      GC_GameModeStateCondition "{AABC4CE5C01692CE}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{91566F07F01669A7}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionCount "{2B9599C891CACD0B}" {
+         m_iComparison 1
+         m_iRequiredCount 2
+         m_aConditions {
+          GC_MissionFlagCondition "{DF53C3138753CE46}" {
+           m_sFlagName "VIC1"
+          }
+          GC_MissionFlagCondition "{BFD32FBAB88B5D14}" {
+           m_sFlagName "VIC2"
+          }
+          GC_MissionFlagCondition "{E5CE667163205D74}" {
+           m_sFlagName "VIC3"
+          }
+         }
+        }
+        GC_AreaCondition "{9017F4A97689F4E0}" {
+         m_sArea "GC_MigrationArea_BLUFOR_EXTRACTED"
+         m_Targets GC_CharacterAreaTargets "{F4CBC19C2AC84A17}" {
+          m_aFactions {
+           "RHS_USAF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{83645EC22E451454}" {
+          m_fRequiredShare 0.6
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{1ABBD82DD853F001}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9167017D54534D9B}" {
+       m_sMessage "Strategic US Victory 2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2500FD93B00CBBBC}" {
+     m_sName "Strategic US Victory 2 (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{74313091BE9B85BD}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{93A2E91283774EED}" {
+       m_sEventName "Strategic US Victory 2"
+      }
+     }
+     m_Advanced GC_EventOptions "{7BF0BD4B2827D094}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{F972F9A114646D5E}" {
+       m_sTitle "Medium US Victory"
+       m_sMessage "2 RU artillery pieces neutralized, mission success"
+      }
+     }
+    }
+    GC_Event "{EC8662C30C096901}" {
+     m_sName "Minor US Victory"
+     m_aConditions {
+      GC_GameModeStateCondition "{57E3407962BFB56D}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{1AAB2381233D48A6}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionCount "{3FCD26038FBBCAB4}" {
+         m_iComparison 1
+         m_iRequiredCount 3
+         m_aConditions {
+          GC_MissionFlagCondition "{9D5D44D8E85EA768}" {
+           m_sFlagName "VIC1"
+          }
+          GC_MissionFlagCondition "{58F975FA8B810727}" {
+           m_sFlagName "VIC2"
+          }
+          GC_MissionFlagCondition "{8C71ECFE16C0284A}" {
+           m_sFlagName "VIC3"
+          }
+         }
+        }
+        GC_AreaCondition "{8A14850CCE995A5B}" {
+         m_sArea "GC_MigrationArea_BLUFOR_EXTRACTED"
+         m_Targets GC_CharacterAreaTargets "{6CE27C567D65145D}" {
+          m_aFactions {
+           "RHS_USAF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{C736B16969A92186}" {
+          m_fRequiredShare 0.6
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{F49D2448FD233823}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F2402427649A7FAF}" {
+       m_sMessage "Minor US Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{DF75BDF63CD9AF22}" {
+     m_sName "Minor US Victory (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{8BC317646FBB26C0}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{D19AD8F9AB0EA24F}" {
+       m_sEventName "Minor US Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{7593EBC20540A249}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{12FEC5CCA15813F6}" {
+       m_sTitle "Minor US Victory"
+       m_sMessage "1 RU artillery pieces neutralized, mission success"
+      }
+     }
+    }
+    GC_Event "{B5E0B7B98174D0C4}" {
+     m_sName "RU Victory"
+     m_aConditions {
+      GC_CustomScriptCondition "{6DDB9698F11C45CC}" {
+       m_Script GC_PeakFactionPopulationCheck "{3660F33CA3BEBDE1}" {
+        m_sFaction "RHS_USAF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8851600871D04F38}" {
+       m_sMessage "RU Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{31CDA185B3DE660D}" {
+     m_sName "RU Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{34A13D8A90D943F6}" {
+       m_sEventName "RU Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{AF689037067103FA}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{732095B8D2805305}" {
+       m_sTitle "RU Major Victory"
+       m_sMessage "OPPROTUNITY NOT SIEZED!"
+      }
+     }
+    }
+    GC_Event "{158CD72B9AEEC418}" {
+     m_sName "DRAW"
+     m_aConditions {
+      GC_ConditionGroup "{C793DD3E74748CAE}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_CustomScriptCondition "{7616A397E454DAD7}" {
+         m_Script GC_PeakFactionPopulationCheck "{AE37223A9759DEC0}" {
+          m_sFaction "RHS_AFRF"
+          m_fRatio 0.85
+         }
+        }
+        GC_CustomScriptCondition "{0972D11888C0885A}" {
+         m_Script GC_PeakFactionPopulationCheck "{EDF5C295F2CC42BE}" {
+          m_sFaction "RHS_USAF"
+          m_fRatio 0.85
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{54E79583AF457882}" {
+       m_sMessage "DRAW"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FBCF8022D58CA510}" {
+     m_sName "DRAW (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{514E5E28034C0081}" {
+       m_sEventName "DRAW"
+      }
+     }
+     m_Advanced GC_EventOptions "{4312D3733C3A8148}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{C0CD132BDACE9F6C}" {
+       m_sTitle "Draw"
+       m_sMessage "Both sides atritted."
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 2731.626 58.578 1475.883
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792829053B0}" {
+        m_sCallsign "ROMAN"
+       }
+       SCR_CallsignInfo "{55CCB79282A19687}" {
+        m_sCallsign "ANNA"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB79284BA6D27}" {
+        m_sCallsign "35"
+       }
+       SCR_CallsignInfo "{55CCB79284A2F6C9}" {
+        m_sCallsign "33"
+       }
+      }
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{668F5D7DC27DBBAB}" {
+        m_sCallsign "4"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GC_RadiusAreaEntity GC_MigrationArea_BLUFOR_EXTRACTED : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 3153.008 67.906 913.991
+ angleX -7.097
+ angleY -0.446
+ angleZ 3.604
+ m_fRadius 50
+}
+GC_RadiusAreaEntity GC_MigrationArea_BLUFORCROSS2 : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 2661.553 57.637 1742.39
+ m_fRadius 500
+}
+GC_RadiusAreaEntity GC_MigrationArea_BLUFORCROSS1 : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 2356.643 77.8 1330.063
+ m_fRadius 500
+}
