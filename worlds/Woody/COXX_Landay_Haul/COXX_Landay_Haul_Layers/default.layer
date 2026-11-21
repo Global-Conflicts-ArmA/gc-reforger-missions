@@ -1,0 +1,718 @@
+SCR_AIWorld : "{3DE6090FC602E566}Prefabs/AI/SCR_AIWorld_Takistan.et" {
+ coords 12038.746 200.98 10647.697
+}
+GC_LobbyGameMode GC_MigratedMission : "{F74EFCB1D388EEE1}worlds/Woody/COXX_Landay_Haul/COXX_Landay_Haul_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{655E043AA934CB58}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 16
+     m_iStartingMinutes 30
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 8
+   m_iMonth 5
+   m_iYear 2009
+  }
+  GC_PeakFactionPopulationComponent "{08E5EEF772A876CC}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{72D1AE658ECEEE00}" {
+     m_sName "TKA L"
+     m_aConditions {
+      GC_CustomScriptCondition "{04094AEE5E8B1FBB}" {
+       m_Script GC_PeakFactionPopulationCheck "{6ED00A53CE09986D}" {
+        m_sFaction "GC_TKA"
+        m_fRatio 0.75
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4EA207A20D17EC44}" {
+       m_sMessage "TKA L"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9B2A6A900E62C136}" {
+     m_sName "TKA L (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{724D7972636D326F}" {
+       m_sEventName "TKA L"
+      }
+     }
+     m_Advanced GC_EventOptions "{592B82897B07850E}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{186F9C823222FAAE}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_TKA"
+       }
+      }
+     }
+    }
+    GC_Event "{A5D6DD52401D09B0}" {
+     m_sName "TKA L (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C420D7994F5365ED}" {
+       m_sEventName "TKA L"
+      }
+     }
+     m_Advanced GC_EventOptions "{4B33579AD0505116}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{0FB927ACA4447E1E}" {
+       m_sTitle "Mission Failed!"
+       m_sMessage "Too many casualties taken!"
+      }
+     }
+    }
+    GC_Event "{E601788B83E4C643}" {
+     m_sName "TKA W"
+     m_aConditions {
+      GC_ConditionGroup "{C292371FF908C003}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{758CBEE195833C25}" {
+         m_sArea "GC_MigrationArea_obj1"
+         m_Targets GC_CharacterAreaTargets "{3AB2ADFB4A251B84}" {
+          m_iWho 2
+          m_aFactions {
+           "GC_TKA"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{E5FB2BBAE57D7A34}" {
+          m_fRequiredShare 0.9
+         }
+         m_Capture GC_AreaCaptureOptions "{401596B4833D742E}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{B3FDB41FB494A308}" {
+         m_sArea "GC_MigrationArea_obj2"
+         m_Targets GC_CharacterAreaTargets "{2BAA93587B9472C5}" {
+          m_iWho 2
+          m_aFactions {
+           "GC_TKA"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{4982BAFB04230D0C}" {
+          m_fRequiredShare 0.9
+         }
+         m_Capture GC_AreaCaptureOptions "{5E5A614E15790FB7}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{879C34B940719256}" {
+         m_sArea "GC_MigrationArea_obj3"
+         m_Targets GC_CharacterAreaTargets "{DC1BBC2FE0B2245E}" {
+          m_iWho 2
+          m_aFactions {
+           "GC_TKA"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{67EA665C593AB663}" {
+          m_fRequiredShare 0.9
+         }
+         m_Capture GC_AreaCaptureOptions "{0A2A5CA8968BFA1F}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{51BCC0E81A99369F}" {
+         m_sArea "GC_MigrationArea_obj4"
+         m_Targets GC_CharacterAreaTargets "{24DCFD71173D44CA}" {
+          m_iWho 2
+          m_aFactions {
+           "GC_TKA"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{F537403EA6092E5F}" {
+          m_fRequiredShare 0.9
+         }
+         m_Capture GC_AreaCaptureOptions "{5897CA7EFC7F4418}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DF62D6C85DC7A448}" {
+       m_sMessage "TKA W"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{4ECA3B2806298357}" {
+     m_sName "TKA W (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{337AF24B6A548845}" {
+       m_sEventName "TKA W"
+      }
+     }
+     m_Advanced GC_EventOptions "{EB5696504174A4E9}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{DD875CB068DEFF0F}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_TKA"
+       }
+      }
+     }
+    }
+    GC_Event "{0B8EE9447B1AD704}" {
+     m_sName "TKA W (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{71630908BC992CB1}" {
+       m_sEventName "TKA W"
+      }
+     }
+     m_Advanced GC_EventOptions "{3F72CAC81BA1BEFF}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{7A6BD8169DCE2A8C}" {
+       m_sTitle "Mission Accomplished!"
+       m_sMessage "Chak Chak and Ahmaday have been seized!"
+      }
+     }
+    }
+    GC_Event "{3A8E7C670AABB1C0}" {
+     m_sName "GC_MigratedSpawn_42A945BA79B50907"
+     m_aConditions {
+      GC_AreaCondition "{D3B63D083AB373A8}" {
+       m_sArea "GC_MigrationArea_obj1"
+       m_Targets GC_CharacterAreaTargets "{9A029EE5B2D97CAA}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{14984B4AD8B18094}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{1B1D074020ECD1B0}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4DBFD961EEB214FC}" {
+       m_sMessage "GC_MigratedSpawn_42A945BA79B50907"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C226E3255EBB711A}" {
+     m_sName "GC_MigratedSpawn_42A945BA79B50907 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{119107445B22D9C8}" {
+       m_sEventName "GC_MigratedSpawn_42A945BA79B50907"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{C226E3255EBB711A}" {
+       m_Spawn GC_CrewedVehicleSpawn "{046E135141FBF54E}" {
+        m_sLocation "GC_Spawner_42A945BA79B50907"
+        m_sPrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{5DEC3F65BB730381}" {
+          m_aStations {
+           GC_SpawnCrewStation "{810BFA0339F5682E}" {
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{1400710845635A54}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Machinegunner.et"
+             "{AC48642EC0048861}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman_RPO.et"
+            }
+           }
+           GC_SpawnCrewStation "{FBAE0B2B695DF06D}" {
+            m_bDriver 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{656C3D2563E79F50}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Sapper.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "m1"
+           "m2"
+           "m3"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{51B0135D22A36557}" {
+     m_sName "GC_MigratedSpawn_42A945BA79B50907 (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1AB197A74537C733}" {
+       m_sEventName "GC_MigratedSpawn_42A945BA79B50907"
+      }
+     }
+     m_Advanced GC_EventOptions "{EE6C724BB4481AD2}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{E95E5C71D5553001}" {
+       m_Spawn GC_CrewedVehicleSpawn "{43F3C795AE9DA62F}" {
+        m_sLocation "GC_Spawner_42A945BA79B50907"
+        m_sPrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{99DE1BEFE4E3D735}" {
+          m_aStations {
+           GC_SpawnCrewStation "{77EE4D0BBABAC07C}" {
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{1400710845635A54}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Machinegunner.et"
+             "{AC48642EC0048861}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman_RPO.et"
+            }
+           }
+           GC_SpawnCrewStation "{4406F58C9C337186}" {
+            m_bDriver 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{656C3D2563E79F50}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Sapper.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "m1"
+           "m2"
+           "m3"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C5B70D42BE2C0EC9}" {
+     m_sName "GC_MigratedSpawn_F92429207EE5D9AE"
+     m_aConditions {
+      GC_AreaCondition "{F3D9CAF0A8D6CEEA}" {
+       m_sArea "GC_MigrationArea_obj3"
+       m_Targets GC_CharacterAreaTargets "{070382301CCC2B5D}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{C6427517DA40CAC0}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{941BD1AADA833185}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{619283B4E786348A}" {
+       m_sMessage "GC_MigratedSpawn_F92429207EE5D9AE"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1C5BE922DD1D87FD}" {
+     m_sName "GC_MigratedSpawn_F92429207EE5D9AE (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2164BCC3AB1B2A29}" {
+       m_sEventName "GC_MigratedSpawn_F92429207EE5D9AE"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{1C5BE922DD1D87FD}" {
+       m_Spawn GC_CrewedVehicleSpawn "{4589A152D589ABA5}" {
+        m_sLocation "GC_Spawner_F92429207EE5D9AE"
+        m_sPrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{0F27C528AEAFDCE1}" {
+          m_aStations {
+           GC_SpawnCrewStation "{2FE9D91B986D8E4C}" {
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{1400710845635A54}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Machinegunner.et"
+             "{AC48642EC0048861}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman_RPO.et"
+            }
+           }
+           GC_SpawnCrewStation "{AFC3F918AEBF7548}" {
+            m_bDriver 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{656C3D2563E79F50}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Sapper.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "m4"
+           "m5"
+           "m6"
+           "m3"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C58A9D9015AA0A1B}" {
+     m_sName "GC_MigratedSpawn_F92429207EE5D9AE (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2314B5796F11F2B0}" {
+       m_sEventName "GC_MigratedSpawn_F92429207EE5D9AE"
+      }
+     }
+     m_Advanced GC_EventOptions "{40A04D9848F793B5}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{B4A3B436E30698BE}" {
+       m_Spawn GC_CrewedVehicleSpawn "{23E55D7E429F7F73}" {
+        m_sLocation "GC_Spawner_F92429207EE5D9AE"
+        m_sPrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{7AF2E9213ACB71C9}" {
+          m_aStations {
+           GC_SpawnCrewStation "{DAAF18CC5B57386B}" {
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{1400710845635A54}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Machinegunner.et"
+             "{AC48642EC0048861}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman_RPO.et"
+            }
+           }
+           GC_SpawnCrewStation "{9BD18DADD2150DEA}" {
+            m_bDriver 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{656C3D2563E79F50}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Sapper.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "m4"
+           "m5"
+           "m6"
+           "m3"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{CBDC21D35835EE8B}" {
+     m_sName "GC_MigratedSpawn_4FA139CB526AB102"
+     m_aConditions {
+      GC_AreaCondition "{1FA635957A39AFA7}" {
+       m_sArea "GC_MigrationArea_obj2"
+       m_Targets GC_CharacterAreaTargets "{92DB462B8B90D5F4}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{2E8E922601A08461}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{14BEA2A80C9008B5}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B6C715F3983C3314}" {
+       m_sMessage "GC_MigratedSpawn_4FA139CB526AB102"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F8F6DE297329442F}" {
+     m_sName "GC_MigratedSpawn_4FA139CB526AB102 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{83A464EF4901A359}" {
+       m_sEventName "GC_MigratedSpawn_4FA139CB526AB102"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{F8F6DE297329442F}" {
+       m_Spawn GC_CrewedVehicleSpawn "{AA583C3CCB5BC6E1}" {
+        m_sLocation "GC_Spawner_4FA139CB526AB102"
+        m_sPrefab "{254289B9C09904AB}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{AE45290B0CD1601F}" {
+          m_aStations {
+           GC_SpawnCrewStation "{AACD2B3E120C4DD6}" {
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{1400710845635A54}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Machinegunner.et"
+             "{AC48642EC0048861}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman_RPO.et"
+            }
+           }
+           GC_SpawnCrewStation "{9F82EBAC830F8D8A}" {
+            m_bDriver 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{656C3D2563E79F50}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Sapper.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "m3"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{6E3C5883EB25B8DF}" {
+     m_sName "GC_MigratedSpawn_4FA139CB526AB102 (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{ABE910160E2F1690}" {
+       m_sEventName "GC_MigratedSpawn_4FA139CB526AB102"
+      }
+     }
+     m_Advanced GC_EventOptions "{5FF08CFCF4E1190E}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{DD5B6FFF5949D804}" {
+       m_Spawn GC_CrewedVehicleSpawn "{AA65905AC8F334A0}" {
+        m_sLocation "GC_Spawner_4FA139CB526AB102"
+        m_sPrefab "{254289B9C09904AB}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{358C357E4FFA5C7C}" {
+          m_aStations {
+           GC_SpawnCrewStation "{189AA8917046D325}" {
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{1400710845635A54}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Machinegunner.et"
+             "{AC48642EC0048861}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman_RPO.et"
+            }
+           }
+           GC_SpawnCrewStation "{9DD401661D4F3FD0}" {
+            m_bDriver 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{656C3D2563E79F50}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Sapper.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "m3"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E9F0E9F696BE3D74}" {
+     m_sName "GC_MigratedSpawn_D6719E53F6BAE31C"
+     m_aConditions {
+      GC_AreaCondition "{7B9F02FB2FA3920E}" {
+       m_sArea "GC_MigrationArea_obj3"
+       m_Targets GC_CharacterAreaTargets "{5A7429642DFE8AE9}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{3ADCF46E093A6B8E}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{D1B22D128CC0F5A9}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{397AFA9FAF61CBA8}" {
+       m_sMessage "GC_MigratedSpawn_D6719E53F6BAE31C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2FB52DA4FE6824A7}" {
+     m_sName "GC_MigratedSpawn_D6719E53F6BAE31C (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DC60350233E113BD}" {
+       m_sEventName "GC_MigratedSpawn_D6719E53F6BAE31C"
+      }
+     }
+     m_Advanced GC_EventOptions "{86D2A7B04919763B}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{551353A7063E6890}" {
+       m_Spawn GC_AIGroupSpawn "{9631E4639D3B6BD7}" {
+        m_sLocation "GC_Spawner_D6719E53F6BAE31C"
+        m_sPrefab "{AD6A6865CC0F4D68}Prefabs/Groups/OPFOR/GC_INSURGENT/Afghan Insurgents/GC_INS_Afghan_Squad.et"
+        m_aWaypoints {
+         "m3"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{2873D3F778F68E95}" {
+     m_sName "GC_MigratedSpawn_D6719E53F6BAE31C (110s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9C3707F4D5C7050B}" {
+       m_sEventName "GC_MigratedSpawn_D6719E53F6BAE31C"
+      }
+     }
+     m_Advanced GC_EventOptions "{97DEC14182F7AFAB}" {
+      m_fDelay 110
+     }
+     m_aActions {
+      GC_SpawnAction "{8047355C8742E42F}" {
+       m_Spawn GC_AIGroupSpawn "{37082C56817D1FC0}" {
+        m_sLocation "GC_Spawner_D6719E53F6BAE31C"
+        m_sPrefab "{AD6A6865CC0F4D68}Prefabs/Groups/OPFOR/GC_INSURGENT/Afghan Insurgents/GC_INS_Afghan_Squad.et"
+        m_aWaypoints {
+         "m3"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3E2B2197677C9DEF}" {
+     m_sName "GC_MigratedSpawn_182F0C925C5B38F9"
+     m_aConditions {
+      GC_AreaCondition "{C155DF403079C7A4}" {
+       m_sArea "GC_MigrationArea_obj3"
+       m_Targets GC_CharacterAreaTargets "{D412AA5BDF74CBBC}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{5FCD0FF06C2AACB1}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{4A8A97D72213FD8B}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{67F316E80854F5F6}" {
+       m_sMessage "GC_MigratedSpawn_182F0C925C5B38F9"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{044EB83A4E14D58C}" {
+     m_sName "GC_MigratedSpawn_182F0C925C5B38F9 (12s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3CC6410E812E4E7B}" {
+       m_sEventName "GC_MigratedSpawn_182F0C925C5B38F9"
+      }
+     }
+     m_Advanced GC_EventOptions "{0EE380F8B4A90805}" {
+      m_fDelay 12
+     }
+     m_aActions {
+      GC_SpawnAction "{1B80934B2199A59A}" {
+       m_Spawn GC_AIGroupSpawn "{A298436DB6787BCA}" {
+        m_sLocation "GC_Spawner_182F0C925C5B38F9"
+        m_sPrefab "{AD6A6865CC0F4D68}Prefabs/Groups/OPFOR/GC_INSURGENT/Afghan Insurgents/GC_INS_Afghan_Squad.et"
+        m_aWaypoints {
+         "m3"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E2FE84D54752CA5C}" {
+     m_sName "GC_MigratedSpawn_182F0C925C5B38F9 (32s)"
+     m_aConditions {
+      GC_MissionEventCondition "{611CA352EE02A54B}" {
+       m_sEventName "GC_MigratedSpawn_182F0C925C5B38F9"
+      }
+     }
+     m_Advanced GC_EventOptions "{27409A27C0C4BF3E}" {
+      m_fDelay 32
+     }
+     m_aActions {
+      GC_SpawnAction "{92A0F5B68815D2FC}" {
+       m_Spawn GC_AIGroupSpawn "{D55A086BDC362BF8}" {
+        m_sLocation "GC_Spawner_182F0C925C5B38F9"
+        m_sPrefab "{AD6A6865CC0F4D68}Prefabs/Groups/OPFOR/GC_INSURGENT/Afghan Insurgents/GC_INS_Afghan_Squad.et"
+        m_aWaypoints {
+         "m3"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 12057.65 201.044 10682.774
+}
