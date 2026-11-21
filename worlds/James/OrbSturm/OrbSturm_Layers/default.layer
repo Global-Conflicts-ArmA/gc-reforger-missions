@@ -1,0 +1,890 @@
+SCR_AIWorld : "{33A5B976E41B0A4C}Prefabs/AI/SCR_AIWorld_BadOrb_GC.et" {
+}
+GC_LobbyGameMode GC_MigratedMission : "{0E675FAE5C5D747F}worlds/James/OrbSturm/OrbSturm_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6596298794DA4BF6}" {
+     m_sWeatherPresetName "Rainy"
+     m_iStartingHour 9
+     m_iStartingMinutes 30
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 20
+   m_iMonth 6
+   m_iYear 1985
+  }
+  GC_PeakFactionPopulationComponent "{FFCBDBC3C529DB83}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{E4CD2C2C8F8BC8A1}" {
+     m_sName "Mortar Barrage 1"
+     m_aConditions {
+      GC_AreaCondition "{B9225790EB5F2AD5}" {
+       m_sArea "GC_MigrationArea_mortar1"
+       m_Targets GC_CharacterAreaTargets "{F8768807B6144C13}" {
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{9941112AC27B8FC6}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{519E0A69F5896E01}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1CE632A80903BC18}" {
+       m_sMessage "Mortar Barrage 1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A75F7FF2027C5027}" {
+     m_sName "Mortar Barrage 1 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{EE5EE252C24C4DB7}" {
+       m_sEventName "Mortar Barrage 1"
+      }
+     }
+     m_Advanced GC_EventOptions "{665EC9C9E0A13ED5}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{D305F6F3D2BAE0F7}" {
+       m_sTitle "BN HQ"
+       m_sMessage "Counter battery radar detects incomng IDF."
+      }
+     }
+    }
+    GC_Event "{3ADB1CBFD9D1D5AF}" {
+     m_sName "Mortar Barrage 2"
+     m_aConditions {
+      GC_AreaCondition "{285690C5D8BD75FD}" {
+       m_sArea "GC_MigrationArea_mortar2"
+       m_Targets GC_CharacterAreaTargets "{DAABB9BA673F0CEF}" {
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{3503DCE486CCB88C}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{BEB202E1678F002D}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D5021FFF7C20CFE2}" {
+       m_sMessage "Mortar Barrage 2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7446E76F7A4DC2FB}" {
+     m_sName "Mortar Barrage 2 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{FAFD8FE399A569EE}" {
+       m_sEventName "Mortar Barrage 2"
+      }
+     }
+     m_Advanced GC_EventOptions "{969FBDC8B51945F8}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{3565BABB434A0A8C}" {
+       m_sTitle "BN HQ"
+       m_sMessage "Counter battery radar detects incomng IDF."
+      }
+     }
+    }
+    GC_Event "{126E9D9DE8885E49}" {
+     m_sName "Mortar Barrage 3"
+     m_aConditions {
+      GC_AreaCondition "{6F24D96D7495B5E9}" {
+       m_sArea "GC_MigrationArea_mortar3"
+       m_Targets GC_CharacterAreaTargets "{BAAF9C980B854863}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{6A2BEE4DF8E7B615}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{E6181212BE910294}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{49D7BA60F569B939}" {
+       m_sMessage "Mortar Barrage 3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{90ED154906AC039B}" {
+     m_sName "Mortar Barrage 3 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{507728ABBE0B75A9}" {
+       m_sEventName "Mortar Barrage 3"
+      }
+     }
+     m_Advanced GC_EventOptions "{9FB079CC9839ACD9}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{DDFE69AFA1CE9A42}" {
+       m_sTitle "BN HQ"
+       m_sMessage "Counter battery radar detects incomng IDF."
+      }
+     }
+    }
+    GC_Event "{CC0D0A32B7CB8A05}" {
+     m_sName "Mortar Barrage 4"
+     m_aConditions {
+      GC_AreaCondition "{C77618ADE6B6295D}" {
+       m_sArea "GC_MigrationArea_mortar4"
+       m_Targets GC_CharacterAreaTargets "{B7D6A32D0DAEDEDD}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{69034329ED87009A}" {
+        m_fRequiredShare 0.75
+       }
+       m_Capture GC_AreaCaptureOptions "{20864A5D66557163}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{320D382213885086}" {
+       m_sMessage "Mortar Barrage 4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{20630410E8EADF26}" {
+     m_sName "Mortar Barrage 4 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{649C0D3D1D4B9603}" {
+       m_sEventName "Mortar Barrage 4"
+      }
+     }
+     m_Advanced GC_EventOptions "{FED9A43A6AF3D99C}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{83964C4CCF10FE15}" {
+       m_sTitle "BN HQ"
+       m_sMessage "Counter battery radar detects incomng IDF."
+      }
+     }
+    }
+    GC_Event "{F6DF34DC3825CE1C}" {
+     m_sName "OBJ Captured"
+     m_aConditions {
+      GC_AreaCondition "{8C2B60D45CB249BE}" {
+       m_sArea "GC_MigrationArea_OBJ_TAKEN"
+       m_Targets GC_CharacterAreaTargets "{BCC95BA1F5BEC1C7}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{DB3CE266F78F5E01}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{5BCD7F36AF27A317}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{97F431675813F703}" {
+       m_sMessage "OBJ Captured"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D965D27B4682A0D3}" {
+     m_sName "OBJ Captured (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A60B9BB1747AB1F7}" {
+       m_sEventName "OBJ Captured"
+      }
+     }
+     m_Advanced GC_EventOptions "{ACA3FAFE0BB97138}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{BAD6729851C834BD}" {
+       m_sTitle "BN HQ"
+       m_sMessage "Good job securing the water treatment plant!"\
+       "Now set up your line facing east and await relief."
+      }
+     }
+    }
+    GC_Event "{EE884A0853C42746}" {
+     m_sName "Players Killed"
+     m_aConditions {
+      GC_CustomScriptCondition "{002A0864DB47A661}" {
+       m_Script GC_PeakFactionPopulationCheck "{9C86D81CA0C48226}" {
+        m_sFaction "GC_NVA"
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B450DDA670692E53}" {
+       m_sMessage "Players Killed"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{286FFF4A5E072CC9}" {
+     m_sName "Players Killed (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D5D70DD618420FFC}" {
+       m_sEventName "Players Killed"
+      }
+     }
+     m_Advanced GC_EventOptions "{4ABD9DD8B711F934}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_EndMissionAction "{F4B50A6EE20878B1}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_NVA"
+       }
+      }
+     }
+    }
+    GC_Event "{CB92AD83EC504D9A}" {
+     m_sName "Time Limit (5400s)"
+     m_Advanced GC_EventOptions "{CFAE65B47CD7A9EE}" {
+      m_fDelay 5400
+     }
+     m_aActions {
+      GC_EndMissionAction "{DE0C58EB6813E901}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_NVA"
+       }
+      }
+     }
+    }
+    GC_Event "{DC7E6FE0DA4F2C5C}" {
+     m_sName "Time Limit (4500s)"
+     m_Advanced GC_EventOptions "{C5AEF339AC0CA69E}" {
+      m_fDelay 4500
+     }
+     m_aActions {
+      GC_MessageAction "{44653A0A0127E8C8}" {
+       m_sTitle "Time Limit Approaching"
+       m_sMessage "You have 15 minutes to capture the OBJ."
+      }
+     }
+    }
+    GC_Event "{07EE18EC2D2F09AF}" {
+     m_sName "GC_MigratedSpawn_A55147600AD2B021"
+     m_aConditions {
+      GC_AreaCondition "{6BA0C2EA3BC9CC06}" {
+       m_sArea "GC_MigrationArea_mortar1"
+       m_Targets GC_CharacterAreaTargets "{AFAA89933839ED06}" {
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{582895C051DC7C17}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{D14D0193FDBF32DB}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{307EE14644BB19D5}" {
+       m_sMessage "GC_MigratedSpawn_A55147600AD2B021"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5FB81A93787C09FD}" {
+     m_sName "GC_MigratedSpawn_A55147600AD2B021 (90s)"
+     m_aConditions {
+      GC_MissionEventCondition "{FBC5585789551E13}" {
+       m_sEventName "GC_MigratedSpawn_A55147600AD2B021"
+      }
+     }
+     m_Advanced GC_EventOptions "{E36DF62677F520ED}" {
+      m_fDelay 90
+     }
+     m_aActions {
+      GC_SpawnAction "{22DC3BA1D34942B6}" {
+       m_Spawn GC_PrefabSpawn "{1AFC8A99F97E47BE}" {
+        m_sLocation "GC_Spawner_A55147600AD2B021"
+        m_sPrefab "{56B8A9C84A5FA622}worlds/James/OrbSturm/EffectModule_Zoned_MortarBarrage_Larger.et"
+       }
+      }
+     }
+    }
+    GC_Event "{975EB656BD471746}" {
+     m_sName "GC_MigratedSpawn_7B48F9E906325BD2"
+     m_aConditions {
+      GC_AreaCondition "{31CE3D96F7E3F516}" {
+       m_sArea "GC_MigrationArea_mortar2"
+       m_Targets GC_CharacterAreaTargets "{8D91CAB086FD1D43}" {
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{05023BC197ECBF5D}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{00604D7489F72290}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C5A9CFC354BBC186}" {
+       m_sMessage "GC_MigratedSpawn_7B48F9E906325BD2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5EA8AA22A425182C}" {
+     m_sName "GC_MigratedSpawn_7B48F9E906325BD2 (90s)"
+     m_aConditions {
+      GC_MissionEventCondition "{32CB7940C19A7656}" {
+       m_sEventName "GC_MigratedSpawn_7B48F9E906325BD2"
+      }
+     }
+     m_Advanced GC_EventOptions "{87AAC4BA75D4E7BF}" {
+      m_fDelay 90
+     }
+     m_aActions {
+      GC_SpawnAction "{D4394BFF28B25BE9}" {
+       m_Spawn GC_PrefabSpawn "{521EE6658F6EEA53}" {
+        m_sLocation "GC_Spawner_7B48F9E906325BD2"
+        m_sPrefab "{56B8A9C84A5FA622}worlds/James/OrbSturm/EffectModule_Zoned_MortarBarrage_Larger.et"
+       }
+      }
+     }
+    }
+    GC_Event "{980A0C44462901A5}" {
+     m_sName "GC_MigratedSpawn_0324A7027A034E6E"
+     m_aConditions {
+      GC_AreaCondition "{92F5865B435DF7CD}" {
+       m_sArea "GC_MigrationArea_mortar4"
+       m_Targets GC_CharacterAreaTargets "{4590049F5D8FDB30}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{5D5ABE8007ECD34F}" {
+        m_fRequiredShare 0.75
+       }
+       m_Capture GC_AreaCaptureOptions "{977221B47B69CCDA}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F27447EA07189D9D}" {
+       m_sMessage "GC_MigratedSpawn_0324A7027A034E6E"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C55009C390106D6C}" {
+     m_sName "GC_MigratedSpawn_0324A7027A034E6E (90s)"
+     m_aConditions {
+      GC_MissionEventCondition "{23230F619F9DB373}" {
+       m_sEventName "GC_MigratedSpawn_0324A7027A034E6E"
+      }
+     }
+     m_Advanced GC_EventOptions "{C135B10791E5FD09}" {
+      m_fDelay 90
+     }
+     m_aActions {
+      GC_SpawnAction "{690E938AD98340B5}" {
+       m_Spawn GC_PrefabSpawn "{040FFA3F73CEB11C}" {
+        m_sLocation "GC_Spawner_0324A7027A034E6E"
+        m_sPrefab "{56B8A9C84A5FA622}worlds/James/OrbSturm/EffectModule_Zoned_MortarBarrage_Larger.et"
+       }
+      }
+     }
+    }
+    GC_Event "{6B799E5E1C90BD7C}" {
+     m_sName "GC_MigratedSpawn_BCE56D296BA745AF"
+     m_aConditions {
+      GC_AreaCondition "{5C132E1CCE2E7958}" {
+       m_sArea "GC_MigrationArea_mortar3"
+       m_Targets GC_CharacterAreaTargets "{59353E7C1F907AC7}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{46B5085C32C6D2A8}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{E3E24CA3E980EF01}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{44AC983B64E745AE}" {
+       m_sMessage "GC_MigratedSpawn_BCE56D296BA745AF"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{91BCF2598FEAE344}" {
+     m_sName "GC_MigratedSpawn_BCE56D296BA745AF (90s)"
+     m_aConditions {
+      GC_MissionEventCondition "{144CEEAA9CB54706}" {
+       m_sEventName "GC_MigratedSpawn_BCE56D296BA745AF"
+      }
+     }
+     m_Advanced GC_EventOptions "{A5DA969D5936581A}" {
+      m_fDelay 90
+     }
+     m_aActions {
+      GC_SpawnAction "{AB8EDC4AAA67938E}" {
+       m_Spawn GC_PrefabSpawn "{E7FABB8501CB7E49}" {
+        m_sLocation "GC_Spawner_BCE56D296BA745AF"
+        m_sPrefab "{56B8A9C84A5FA622}worlds/James/OrbSturm/EffectModule_Zoned_MortarBarrage_Larger.et"
+       }
+      }
+     }
+    }
+    GC_Event "{BE03894A387B1DC6}" {
+     m_sName "GC_MigratedSpawn_46E32B7DF34BB78F"
+     m_aConditions {
+      GC_AreaCondition "{44973A2681C42A41}" {
+       m_sArea "GC_MigrationArea_mortar4"
+       m_Targets GC_CharacterAreaTargets "{2B1B2482F2EDFEB7}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{3BEB08D00965F783}" {
+        m_fRequiredShare 0.75
+       }
+       m_Capture GC_AreaCaptureOptions "{0B3031E9CFAD4331}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1E6E602A1D806E55}" {
+       m_sMessage "GC_MigratedSpawn_46E32B7DF34BB78F"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{167A4625C1B55547}" {
+     m_sName "GC_MigratedSpawn_46E32B7DF34BB78F (90s)"
+     m_aConditions {
+      GC_MissionEventCondition "{227337A56E6F6D6A}" {
+       m_sEventName "GC_MigratedSpawn_46E32B7DF34BB78F"
+      }
+     }
+     m_Advanced GC_EventOptions "{2AEB2D52C08DB7CA}" {
+      m_fDelay 90
+     }
+     m_aActions {
+      GC_SpawnAction "{E8D8F8AF24295A8E}" {
+       m_Spawn GC_PrefabSpawn "{EE06B8CDF3F22F40}" {
+        m_sLocation "GC_Spawner_46E32B7DF34BB78F"
+        m_sPrefab "{56B8A9C84A5FA622}worlds/James/OrbSturm/EffectModule_Zoned_MortarBarrage_Larger.et"
+       }
+      }
+     }
+    }
+    GC_Event "{242BC36CB11B1856}" {
+     m_sName "GC_MigratedSpawn_4EA39467024501C1 (0s)"
+     m_aActions {
+      GC_SpawnAction "{242BC36CB11B1856}" {
+       m_Spawn GC_AIGroupSpawn "{5A2A6C6BAF8C5C12}" {
+        m_sLocation "GC_Spawner_4EA39467024501C1"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_aWaypoints {
+         "defwater3"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E6C99735019296CD}" {
+     m_sName "GC_MigratedSpawn_010DD6168B9312DD (0s)"
+     m_aActions {
+      GC_SpawnAction "{E6C99735019296CD}" {
+       m_Spawn GC_AIGroupSpawn "{63ABE63A9A948AA0}" {
+        m_sLocation "GC_Spawner_010DD6168B9312DD"
+        m_sPrefab "{AEF98599B6C95420}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M67_AI.et"
+        m_aWaypoints {
+         "defwater2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{D7ECA4D1C8BE9C1D}" {
+     m_sName "GC_MigratedSpawn_862EF373E4A9511F (0s)"
+     m_aActions {
+      GC_SpawnAction "{D7ECA4D1C8BE9C1D}" {
+       m_Spawn GC_AIGroupSpawn "{373E1F5A40E962B8}" {
+        m_sLocation "GC_Spawner_862EF373E4A9511F"
+        m_sPrefab "{AEF98599B6C95420}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M67_AI.et"
+        m_aWaypoints {
+         "defwater4"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{88BA6C5ECB0C6709}" {
+     m_sName "GC_MigratedSpawn_651584E16D28D5F9 (0s)"
+     m_aActions {
+      GC_SpawnAction "{88BA6C5ECB0C6709}" {
+       m_Spawn GC_AIGroupSpawn "{6E1DE341EC632023}" {
+        m_sLocation "GC_Spawner_651584E16D28D5F9"
+        m_sPrefab "{4440E1746F2FDEAB}Prefabs/Groups/BLUFOR/US/Army/1986/Lt Inf (Woodland)/Group_US_1986_BDU_RifleSquad_M249_AI.et"
+        m_aWaypoints {
+         "defwater"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{5063BFAF8104B4E6}" {
+     m_sName "GC_MigratedSpawn_6018DC7555005137 (0s)"
+     m_aActions {
+      GC_SpawnAction "{5063BFAF8104B4E6}" {
+       m_Spawn GC_AIGroupSpawn "{B3D74E6F2BA5C86B}" {
+        m_sLocation "GC_Spawner_6018DC7555005137"
+        m_sPrefab "{7E53E193D3894D0A}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_PLT_HQ_AI.et"
+        m_aWaypoints {
+         "defsouth2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{736C5AE3D3E1C6D3}" {
+     m_sName "GC_MigratedSpawn_B6FD61F12B170C93 (0s)"
+     m_aActions {
+      GC_SpawnAction "{736C5AE3D3E1C6D3}" {
+       m_Spawn GC_AIGroupSpawn "{A542CB99F061FA99}" {
+        m_sLocation "GC_Spawner_B6FD61F12B170C93"
+        m_sPrefab "{AEF98599B6C95420}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M67_AI.et"
+        m_aWaypoints {
+         "defsouth4"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9CF476D850B4B51E}" {
+     m_sName "GC_MigratedSpawn_CEF825E9A2E5E5FE (0s)"
+     m_aActions {
+      GC_SpawnAction "{9CF476D850B4B51E}" {
+       m_Spawn GC_AIGroupSpawn "{8EC7873DCBA802E2}" {
+        m_sLocation "GC_Spawner_CEF825E9A2E5E5FE"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_aWaypoints {
+         "defsouth6"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A03D14DC803DD652}" {
+     m_sName "GC_MigratedSpawn_49A51E15E1BE0BEA (0s)"
+     m_aActions {
+      GC_SpawnAction "{A03D14DC803DD652}" {
+       m_Spawn GC_AIGroupSpawn "{B8A1E10A0DFFD255}" {
+        m_sLocation "GC_Spawner_49A51E15E1BE0BEA"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_aWaypoints {
+         "defsouth"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F9D797C907EA2B93}" {
+     m_sName "GC_MigratedSpawn_3AD3B9DD32D41615 (0s)"
+     m_aActions {
+      GC_SpawnAction "{F9D797C907EA2B93}" {
+       m_Spawn GC_AIGroupSpawn "{9DD0FB090F32A58A}" {
+        m_sLocation "GC_Spawner_3AD3B9DD32D41615"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_aWaypoints {
+         "defnorth5"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{ECC8D03AC9B2DB76}" {
+     m_sName "GC_MigratedSpawn_A9E33A2612D08A01 (0s)"
+     m_aActions {
+      GC_SpawnAction "{ECC8D03AC9B2DB76}" {
+       m_Spawn GC_AIGroupSpawn "{4CE69995D71ED56C}" {
+        m_sLocation "GC_Spawner_A9E33A2612D08A01"
+        m_sPrefab "{4440E1746F2FDEAB}Prefabs/Groups/BLUFOR/US/Army/1986/Lt Inf (Woodland)/Group_US_1986_BDU_RifleSquad_M249_AI.et"
+        m_aWaypoints {
+         "defnorth"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{AD25D1155C4EFCC2}" {
+     m_sName "GC_MigratedSpawn_4F6DE9D338975020 (0s)"
+     m_aActions {
+      GC_SpawnAction "{AD25D1155C4EFCC2}" {
+       m_Spawn GC_AIGroupSpawn "{96AAFB541E8DCEB8}" {
+        m_sLocation "GC_Spawner_4F6DE9D338975020"
+        m_sPrefab "{AEF98599B6C95420}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M67_AI.et"
+        m_aWaypoints {
+         "defnorth2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{6886219C32D38983}" {
+     m_sName "GC_MigratedSpawn_6FD754FC9EC0C715 (0s)"
+     m_aActions {
+      GC_SpawnAction "{6886219C32D38983}" {
+       m_Spawn GC_AIGroupSpawn "{03A7A8F14B8A2C06}" {
+        m_sLocation "GC_Spawner_6FD754FC9EC0C715"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_aWaypoints {
+         "defnorth3"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E0011FD830F97390}" {
+     m_sName "GC_MigratedSpawn_AEBCDC3C46668869 (0s)"
+     m_aActions {
+      GC_SpawnAction "{E0011FD830F97390}" {
+       m_Spawn GC_AIGroupSpawn "{18DE9AC6ADB2EC09}" {
+        m_sLocation "GC_Spawner_AEBCDC3C46668869"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_aWaypoints {
+         "ptrl1"
+         "ptrl2"
+         "ptrl3"
+         "ptrl4"
+         "ptrlcycle"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C609C86B3AD1E409}" {
+     m_sName "GC_MigratedSpawn_549737865826EFBE (0s)"
+     m_aActions {
+      GC_SpawnAction "{C609C86B3AD1E409}" {
+       m_Spawn GC_AIGroupSpawn "{05D9AE88E39B8C08}" {
+        m_sLocation "GC_Spawner_549737865826EFBE"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_aWaypoints {
+         "OP1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{27CBB17C6E8CB654}" {
+     m_sName "GC_MigratedSpawn_4FB7C68AF61D8B65 (0s)"
+     m_aActions {
+      GC_SpawnAction "{27CBB17C6E8CB654}" {
+       m_Spawn GC_AIGroupSpawn "{2E36597B12B4BBA9}" {
+        m_sLocation "GC_Spawner_4FB7C68AF61D8B65"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_aWaypoints {
+         "OP2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{69D74FE35D392457}" {
+     m_sName "GC_MigratedSpawn_180E48B16B31A604 (0s)"
+     m_aActions {
+      GC_SpawnAction "{69D74FE35D392457}" {
+       m_Spawn GC_AIGroupSpawn "{EDA56A79FF86D7BF}" {
+        m_sLocation "GC_Spawner_180E48B16B31A604"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_aWaypoints {
+         "defnorth4"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{FC8140B6FF669DD6}" {
+     m_sName "GC_MigratedSpawn_1B496A3C2A395368 (0s)"
+     m_aActions {
+      GC_SpawnAction "{FC8140B6FF669DD6}" {
+       m_Spawn GC_AIGroupSpawn "{D8951F8F205A16F4}" {
+        m_sLocation "GC_Spawner_1B496A3C2A395368"
+        m_sPrefab "{4440E1746F2FDEAB}Prefabs/Groups/BLUFOR/US/Army/1986/Lt Inf (Woodland)/Group_US_1986_BDU_RifleSquad_M249_AI.et"
+        m_aWaypoints {
+         "defsouth3"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{698FF62A4FC4FDD6}" {
+     m_sName "GC_MigratedSpawn_AD606758BB0CFE70 (0s)"
+     m_aActions {
+      GC_SpawnAction "{698FF62A4FC4FDD6}" {
+       m_Spawn GC_AIGroupSpawn "{5FA7A336A38532FA}" {
+        m_sLocation "GC_Spawner_AD606758BB0CFE70"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_aWaypoints {
+         "defwater5"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{DF31E4CB785EC36F}" {
+     m_sName "GC_MigratedSpawn_E9873595107502E0 (0s)"
+     m_aActions {
+      GC_SpawnAction "{DF31E4CB785EC36F}" {
+       m_Spawn GC_AIGroupSpawn "{A18973C9D4B6C23B}" {
+        m_sLocation "GC_Spawner_E9873595107502E0"
+        m_sPrefab "{AEF98599B6C95420}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M67_AI.et"
+        m_aWaypoints {
+         "defwater6"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{D0B8A408CF0B5050}" {
+     m_sName "GC_MigratedSpawn_F286EF1E4DD7818E (0s)"
+     m_aActions {
+      GC_SpawnAction "{D0B8A408CF0B5050}" {
+       m_Spawn GC_AIGroupSpawn "{1F4F04DD2B372362}" {
+        m_sLocation "GC_Spawner_F286EF1E4DD7818E"
+        m_sPrefab "{7E53E193D3894D0A}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_PLT_HQ_AI.et"
+        m_aWaypoints {
+         "defwater7"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A5255BF0CCFF8283}" {
+     m_sName "GC_MigratedSpawn_EE979DE4BDEA2CFF (0s)"
+     m_aActions {
+      GC_SpawnAction "{A5255BF0CCFF8283}" {
+       m_Spawn GC_AIGroupSpawn "{DF06E1894ABBADF4}" {
+        m_sLocation "GC_Spawner_EE979DE4BDEA2CFF"
+        m_sPrefab "{7E53E193D3894D0A}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_PLT_HQ_AI.et"
+        m_aWaypoints {
+         "defnorth6"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{66A29B193FD7BAA2}" {
+     m_sName "GC_MigratedSpawn_04551AEFB15ED67D (0s)"
+     m_aActions {
+      GC_SpawnAction "{66A29B193FD7BAA2}" {
+       m_Spawn GC_AIGroupSpawn "{1337577723AB2026}" {
+        m_sLocation "GC_Spawner_04551AEFB15ED67D"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_aWaypoints {
+         "defsouth2"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 1205.963 141.353 4282.429
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{652F615735715119}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792829053B0}" {
+        m_sCallsign "24"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GC_RadiusAreaEntity GC_MigrationArea_OBJ_TAKEN : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 3386.608 156.563 4403.62
+ m_fRadius 115
+}
