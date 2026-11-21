@@ -1,0 +1,170 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 2648.079 2.243 722.864
+}
+GC_LobbyGameMode GC_MigratedMission : "{331FAC46F9006E3E}worlds/blackskimask/Deadly Crossing/DeadlyCrossing_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 13
+   m_bDateOverride 1
+   m_iDay 2
+   m_iMonth 3
+   m_iYear 2027
+  }
+  GC_MissionEnvironmentComponent "{3A296FCFEE0B124F}" {
+   m_fFogAmount 0.2
+   m_fFogHeightDensity 1
+   m_fRainIntensity 1
+   m_fWindSpeed 1
+  }
+  SCR_CampaignBuildingManagerComponent "{60EC2158F48C679A}" {
+   m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
+   m_BudgetType CAMPAIGN
+   m_iCompositionRefundPercentage 100
+   m_OutlineManager GC_ConstructionOutlineManager "{60EC2158E10CB829}" : "{96A8B496A076F1C0}scripts/Game/Building/CampaignBuildingCompositionOutline.conf" {
+    m_fPreparationSeconds 999
+    m_fPreparationMultiplier 999
+    m_fMatchMultiplier 999
+   }
+   m_sPrefabsToBuildResource "{D2527D9AA5B4A33E}Configs/Editor/PlaceableEntities/Compositions/Compositions_FreeRoamBuilding.conf"
+  }
+  GC_PeakFactionPopulationComponent "{E6E510E089FB0733}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{B50DECB96E1B77D3}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{DC7281C36C45B0E9}" {
+     m_sName "UK KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{61E1CE06B90E31AE}" {
+       m_Script GC_PeakFactionPopulationCheck "{D3AFB027E9E20D83}" {
+        m_sFaction "UK"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8D584C719709ACE9}" {
+       m_sMessage "UK KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5E28C435BC47F327}" {
+     m_sName "UK KIA (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{365EB2C66073B650}" {
+       m_sEventName "UK KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{053009CD1574622C}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_MessageAction "{03EB8766EA293B6C}" {
+       m_sTitle "UK - HEAVY CASUALTIES"
+       m_sMessage "UK has been defeated due to heavy casualties"
+      }
+     }
+    }
+    GC_Event "{BC76729B5BB37DF2}" {
+     m_sName "SEP KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{9A214D4D9DF0DFFA}" {
+       m_Script GC_PeakFactionPopulationCheck "{730F479803DA9EBE}" {
+        m_sFaction "GC_SEPARATIST"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{43ADBACDA5431A3B}" {
+       m_sMessage "SEP KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F18B74E0709D1C1F}" {
+     m_sName "SEP KIA (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{30BB5C809870EF85}" {
+       m_sEventName "SEP KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{677B23D0D488E7C4}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_MessageAction "{5B420A9E2D70DE52}" {
+       m_sTitle "SEP - DESTROYED"
+       m_sMessage "Separatist forces have been destroyed outright."
+      }
+     }
+    }
+    GC_Event "{5E5AF5E988FEB8B4}" {
+     m_sName "OBJECTIVE SECURE"
+     m_aConditions {
+      GC_AreaCondition "{FD79FF3E8E74594B}" {
+       m_sArea "GC_MigrationArea_OBJ_A_TAKEN"
+       m_Targets GC_CharacterAreaTargets "{87862F6BF58D26D2}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_SEPARATIST"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{326F2CF541C29C50}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{0646B23BDAEDF4B8}" {
+        m_fSeconds 300
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2C61622E03A683AE}" {
+       m_sMessage "OBJECTIVE SECURE"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0CF666DA62BB7C5C}" {
+     m_sName "OBJECTIVE SECURE (30s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7567C2F0087F3D69}" {
+       m_sEventName "OBJECTIVE SECURE"
+      }
+     }
+     m_Advanced GC_EventOptions "{0C09A0D4C1BF5ED5}" {
+      m_fDelay 30
+     }
+     m_aActions {
+      GC_MessageAction "{096D1F50A45250AD}" {
+       m_sTitle "OPFOR VICTORY - RIVER CROSSING SECURE"
+       m_sMessage "River crossing was seized and secure by separatists"
+      }
+     }
+    }
+    GC_Event "{18DAE27DDF9EF744}" {
+     m_sName "Release staging zones"
+     m_aActions {
+      GC_DeleteEntitiesAction "{79C7552749FF2119}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+        "GC_MigrationStartingZone2"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 1498.91 13.458 1902.886
+}
+GC_RadiusAreaEntity GC_MigrationArea_OBJ_A_TAKEN : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 2293.726 22.951 2928.895
+ m_fRadius 450
+}

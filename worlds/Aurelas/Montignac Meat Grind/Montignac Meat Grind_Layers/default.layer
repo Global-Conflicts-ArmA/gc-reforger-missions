@@ -1,0 +1,344 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+}
+GC_LobbyGameMode GC_MigratedMission : "{37F79412E8352CF6}worlds/Aurelas/Montignac Meat Grind/Montignac Meat Grind_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 9
+   m_iStartingMinutes 30
+   m_bRandomStartingWeather 1
+   m_bRandomWeatherChanges 1
+  }
+  GC_PeakFactionPopulationComponent "{A640BC789D8ADB41}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{2BDA2D91A9168D6F}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 180
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{7643F2A0DBE5F3A7}" {
+     m_sName "UK Major Victory"
+     m_aConditions {
+      GC_ConditionGroup "{82606E521DE6C640}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{89F1653EE47A93BE}" {
+         m_sArea "Central_Montignac_Cap_UK"
+         m_Targets GC_CharacterAreaTargets "{8C4BDA6B934C86FC}" {
+          m_iWho 2
+          m_aFactions {
+           "UK"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{2DA4589417112D2B}" {
+          m_fRequiredShare 0.8
+         }
+         m_Capture GC_AreaCaptureOptions "{CFA8E4B1036DA7B4}" {
+          m_fSeconds 300
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_Messages GC_CaptureMessages "{F18F3202733BA196}" {
+           m_sLocation "City Center of Montignac"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_CustomScriptCondition "{EC7E09BD855A1C2E}" {
+         m_Script GC_PeakFactionPopulationCheck "{449F30167E0D24FC}" {
+          m_sFaction "UK"
+          m_bInvert 1
+          m_fRatio 0.3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D79F45D4B4F1EECB}" {
+       m_sMessage "UK Major Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FD67B39FBB0796DF}" {
+     m_sName "UK Major Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{FE97483E30C9DE0B}" {
+       m_sEventName "UK Major Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{22B194333DD4F84E}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{24271A38B259DC3D}" {
+       m_sTitle "UK Major Victory"
+       m_sMessage "British troops have held the City Center of Montignac for 5 minutes with low casualties!"
+      }
+     }
+    }
+    GC_Event "{7BB79EF3F61065A4}" {
+     m_sName "UK Minor Victory"
+     m_aConditions {
+      GC_ConditionGroup "{6F584E3EF48E9C64}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{5B5315CD7E135BAA}" {
+         m_sArea "Central_Montignac_Cap_UK"
+         m_Targets GC_CharacterAreaTargets "{C9B1000BB003C424}" {
+          m_iWho 2
+          m_aFactions {
+           "UK"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{2BF3D9064852FA78}" {
+          m_fRequiredShare 0.8
+         }
+         m_Capture GC_AreaCaptureOptions "{D997A0F80D7C5F45}" {
+          m_fSeconds 300
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+        GC_CustomScriptCondition "{28EF7AE53BA4A7EB}" {
+         m_Script GC_PeakFactionPopulationCheck "{55C4B970315D5964}" {
+          m_sFaction "UK"
+          m_fRatio 0.3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{58D78E4B296C2BAC}" {
+       m_sMessage "UK Minor Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E9C4D54FAA0FF248}" {
+     m_sName "UK Minor Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5F8FFF080E714205}" {
+       m_sEventName "UK Minor Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{76B13F8619C29E3E}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{092FE9845921A666}" {
+       m_sTitle "UK Minor Victory"
+       m_sMessage "British troops have held the City Center of Montignac for 5 minutes with high casualties!"
+      }
+     }
+    }
+    GC_Event "{91745E65F7C87E41}" {
+     m_sName "US Major Victory"
+     m_aConditions {
+      GC_ConditionGroup "{E69EA145421AADEA}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{04BB94F0979CCB94}" {
+         m_sArea "Central_Montignac_Cap_US"
+         m_Targets GC_CharacterAreaTargets "{3E7FF6FBBBAD3D59}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{41C14CFC87DB19B1}" {
+          m_fRequiredShare 0.8
+         }
+         m_Capture GC_AreaCaptureOptions "{6BCB8ABD97EE717B}" {
+          m_fSeconds 300
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_Messages GC_CaptureMessages "{23767BCAA199746D}" {
+           m_sLocation "City Center of Montignac"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_CustomScriptCondition "{A9E99C433725174C}" {
+         m_Script GC_PeakFactionPopulationCheck "{38BBA487D6F98810}" {
+          m_sFaction "US"
+          m_bInvert 1
+          m_fRatio 0.3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{965DB3C88A1038DE}" {
+       m_sMessage "US Major Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{60DA22C951858C57}" {
+     m_sName "US Major Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D293A399D0F6D9A1}" {
+       m_sEventName "US Major Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{698CA5A5B49D6B79}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{BEDFF7049319CDAD}" {
+       m_sTitle "US Major Victory"
+       m_sMessage "American troops have held the City Center of Montignac for 5 minutes with low casualties!"
+      }
+     }
+    }
+    GC_Event "{69B7B8D643237507}" {
+     m_sName "US Minor Victory"
+     m_aConditions {
+      GC_ConditionGroup "{CEA2743A5C09CCB5}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{5754353CE8278DE9}" {
+         m_sArea "Central_Montignac_Cap_US"
+         m_Targets GC_CharacterAreaTargets "{6C6CADB1A7BC85F8}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{2090B2F2B5FDC56A}" {
+          m_fRequiredShare 0.8
+         }
+         m_Capture GC_AreaCaptureOptions "{A49DD62FC8B06AC2}" {
+          m_fSeconds 300
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+        GC_CustomScriptCondition "{927F318F7F6B0668}" {
+         m_Script GC_PeakFactionPopulationCheck "{76B4C7FB4AA6818B}" {
+          m_sFaction "US"
+          m_fRatio 0.3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{40F06EF46C0AE377}" {
+       m_sMessage "US Minor Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B45265A041B1ED39}" {
+     m_sName "US Minor Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B87A5BB9CAB886B5}" {
+       m_sEventName "US Minor Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{7215B22E356C8C27}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{900DF8DB591A1F0D}" {
+       m_sTitle "US Minor Victory"
+       m_sMessage "American troops have held the City Center of Montignac for 5 minutes with high casualties!"
+      }
+     }
+    }
+    GC_Event "{F2B2ECC700BA8B4A}" {
+     m_sName "Draw"
+     m_aConditions {
+      GC_ConditionGroup "{4620FCC15275287A}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_CustomScriptCondition "{5D5D488AD3175122}" {
+         m_Script GC_PeakFactionPopulationCheck "{B94B68693190BFC6}" {
+          m_sFaction "UK"
+          m_fRatio 0.7
+         }
+        }
+        GC_CustomScriptCondition "{6CCDBFAB14339876}" {
+         m_Script GC_PeakFactionPopulationCheck "{6C19A70792546C54}" {
+          m_sFaction "US"
+          m_fRatio 0.7
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{BA037EE0035F541C}" {
+       m_sMessage "Draw"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CD8FB5C4D3374CCB}" {
+     m_sName "Draw (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6FD2592237048678}" {
+       m_sEventName "Draw"
+      }
+     }
+     m_Advanced GC_EventOptions "{522E321A972933E8}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{E4F8A897FC1B4CA4}" {
+       m_sTitle "Draw"
+       m_sMessage "Both teams have sustained heavy casualties without holding the City Center of Montignac."\
+       ""
+      }
+     }
+    }
+    GC_Event "{FA4765508C365E55}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{1A30E0C93EF8AB20}" {
+       m_fSeconds 180
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{51A9083817202885}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+        "GC_MigrationStartingZone2"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 10915.243 24.876 11706.942
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+    }
+    SCR_Faction "{61500924662B6062}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+   }
+  }
+ }
+}
