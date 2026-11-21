@@ -1,0 +1,269 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 3210.528 63.848 3378.459
+}
+GC_LobbyGameMode GC_MigratedMission : "{F8FE203F1AE77D6F}worlds/anteante101/Role Reversal CDF edition/Role Reversal CDF edition_GC_Settings.et" {
+ components {
+  GC_PeakFactionPopulationComponent "{55C8BD21C0A56ED5}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{79D75BED5AAC24E0}" {
+     m_sName "HVT Killed OP4"
+     m_aConditions {
+      GC_CustomScriptCondition "{482D78E3D486898E}" {
+       m_Script GC_PeakFactionPopulationCheck "{119473D7B6A6FC80}" {
+        m_sFaction "CIV"
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0B2D1CDE9AC901EC}" {
+       m_sMessage "HVT Killed OP4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1D413865E50F39DE}" {
+     m_sName "HVT Killed OP4 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2DD243F13003D408}" {
+       m_sEventName "HVT Killed OP4"
+      }
+     }
+     m_Advanced GC_EventOptions "{9D8F20D45D093133}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{6CA6CAAC98428DB8}" {
+       m_sTitle "HVT DEAD"
+       m_sMessage "The HVT has been killed. Chase down the CDF before they can extract."
+       m_aFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{CDD7489E84BAEF70}" {
+     m_sName "HVT KILLED CDF"
+     m_aConditions {
+      GC_CustomScriptCondition "{2FCC617A76982ECF}" {
+       m_Script GC_PeakFactionPopulationCheck "{5EFCE0F3646858E6}" {
+        m_sFaction "CIV"
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{AB0FE4AF031973CC}" {
+       m_sMessage "HVT KILLED CDF"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D0F1A466735F7D96}" {
+     m_sName "HVT KILLED CDF (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{558ADD878C90BC33}" {
+       m_sEventName "HVT KILLED CDF"
+      }
+     }
+     m_Advanced GC_EventOptions "{79B9AEF875F77AD1}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{5D23BC04D2768F47}" {
+       m_sTitle "HVT DEAD"
+       m_sMessage "HVT IS DEAD. Good job. Fall back and extract."
+       m_aFactions {
+        "GC_CDF"
+       }
+      }
+     }
+    }
+    GC_Event "{294263D18C1CA2DA}" {
+     m_sName "CDFDead"
+     m_aConditions {
+      GC_CustomScriptCondition "{DB4C750067196CB0}" {
+       m_Script GC_PeakFactionPopulationCheck "{A901EF16C4B952C3}" {
+        m_sFaction "GC_CDF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8231222E049DEAC8}" {
+       m_sMessage "CDFDead"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{ADAFC2ADA4B43F15}" {
+     m_sName "CDFDead (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{96E055D452250F10}" {
+       m_sEventName "CDFDead"
+      }
+     }
+     m_Advanced GC_EventOptions "{71DA5FAE6464D732}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_MessageAction "{A63D6FDC40B8B8E3}" {
+       m_sTitle "RUSSIAN VICTORY!"
+       m_sMessage "The CDF have become combat ineffective."\
+       ""\
+       "Good job Russia."\
+       "Mission will end shortly.."
+       m_aFactions {
+        "RHS_AFRF" "GC_CDF"
+       }
+      }
+     }
+    }
+    GC_Event "{471A3B781DB9FBDC}" {
+     m_sName "OP4"
+     m_aConditions {
+      GC_CustomScriptCondition "{39D2EB1B2ACE2621}" {
+       m_Script GC_PeakFactionPopulationCheck "{FED3F2CC07E39E85}" {
+        m_sFaction "RHS_AFRF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C0DB8F631C0168CB}" {
+       m_sMessage "OP4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3452E9F0760B6286}" {
+     m_sName "OP4 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{21B85027C420D08D}" {
+       m_sEventName "OP4"
+      }
+     }
+     m_Advanced GC_EventOptions "{6E25069DDADC7210}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_MessageAction "{5EDFF60B9E738378}" {
+       m_sTitle "CDF VICTROY"
+       m_sMessage "The Russian have become combat ineffective."\
+       ""\
+       "Good job."\
+       "Mission will end shortly..."
+       m_aFactions {
+        "GC_CDF" "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{2E37D1BD1253B8AA}" {
+     m_sName "hvt extracted"
+     m_aConditions {
+      GC_AreaCondition "{29755CEF8A1DA971}" {
+       m_sArea "EXTRACT_TRIGGER"
+       m_Targets GC_CharacterAreaTargets "{08983ED4823DD417}" {
+        m_aFactions {
+         "CIV"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{F977B7A450B644A6}" {
+        m_fRequiredShare 0.1
+        m_aIgnoredFactions {
+         "US" "GC_INSURGENT"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{CC1ACAE6A711CED0}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0F437091571B4AFC}" {
+       m_sMessage "hvt extracted"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{67E68B1B6AC48B51}" {
+     m_sName "hvt extracted (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C936E2C56E532F08}" {
+       m_sEventName "hvt extracted"
+      }
+     }
+     m_Advanced GC_EventOptions "{BF27A566586EFAFF}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_MessageAction "{6C31CD703D04FCB2}" {
+       m_sTitle "RUSSIAN VICTORY!"
+       m_sMessage "Russian forces (AFRF) have managed to extract the HVT and have won."\
+       ""\
+       "Good job."\
+       "Mission will end shortly..."
+      }
+     }
+    }
+    GC_Event "{D6E492D2E4635F42}" {
+     m_sName "DeleteAOlimit"
+     m_aConditions {
+      GC_AreaCondition "{B0A6886CDDF6466B}" {
+       m_sArea "delet_ao"
+       m_Targets GC_CharacterAreaTargets "{9853AD0E27008A9C}" {
+        m_aFactions {
+         "RHS_AFRF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{4DE629F8AF2864A4}" {
+        m_fRequiredShare 1
+        m_aIgnoredFactions {
+         "GC_CDF" "CIV"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{2AC7BA3F4F815C8D}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2A711A1ABDD4F1C1}" {
+       m_sMessage "DeleteAOlimit"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{76830F0B191D2F78}" {
+     m_sName "DeleteAOlimit (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{57A1803B68B77DB5}" {
+       m_sEventName "DeleteAOlimit"
+      }
+     }
+     m_Advanced GC_EventOptions "{CE356944B5040B43}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{E6C0FA87648B24AD}" {
+       m_aEntities {
+        "civao"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 3158.031 67.363 3364.572
+}
