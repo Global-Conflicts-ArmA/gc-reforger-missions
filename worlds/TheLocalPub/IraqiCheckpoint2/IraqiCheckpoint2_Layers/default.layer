@@ -1,0 +1,193 @@
+SCR_AIWorld : "{0946C019EBADE117}Prefabs/AI/SCR_AIworld_AL_Hadra.et" {
+ coords 7789.718 42.905 1636.956
+}
+GC_LobbyGameMode GC_MigratedMission : "{D2F3843046B2D60E}worlds/TheLocalPub/IraqiCheckpoint2/IraqiCheckpoint2_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 13
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6952D4E3C6BBA2C4}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 13
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 24
+   m_iMonth 7
+   m_iYear 2013
+  }
+  GC_PeakFactionPopulationComponent "{13852F465BC75E9D}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{BD41AA5560A8CD01}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 60
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{DF49F1CE2D0A597D}" {
+     m_sName "IraqiVictory"
+     m_aConditions {
+      GC_CustomScriptCondition "{F36D5198869DBD3E}" {
+       m_Script GC_PeakFactionPopulationCheck "{58886A9F6A505DE2}" {
+        m_sFaction "GC_INSURGENT"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D99B90BF4720DF55}" {
+       m_sMessage "IraqiVictory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{20781E9CAA0355A9}" {
+     m_sName "IraqiVictory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{972E44B518589024}" {
+       m_sEventName "IraqiVictory"
+      }
+     }
+     m_Advanced GC_EventOptions "{F763C734D7493328}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{95ADC458E1D3A826}" {
+       m_sTitle "IRAQI VICTORY"
+       m_sMessage "Good job managing to hold the checkpoint."\
+       "Insurgent forces are withdrawing."\
+       ""\
+       "Mission will end soon..."
+       m_aFactions {
+        "GC_IRAQ"
+       }
+      }
+      GC_MessageAction "{D327A14A747E2E48}" {
+       m_sTitle "IRAQI VICTORY"
+       m_sMessage "Withdraw withdraw withdraw!"\
+       "We've been beaten back. Iraqi forces have managed to repel our attack. "\
+       ""\
+       "Better luck next time."\
+       "Mission will end soon..."
+       m_aFactions {
+        "GC_INSURGENT"
+       }
+      }
+     }
+    }
+    GC_Event "{3C6965C3CB602A2A}" {
+     m_sName "InsurVictory"
+     m_aConditions {
+      GC_ConditionGroup "{DF80349BF7EFCABA}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_CustomScriptCondition "{B498C4423FFAB191}" {
+         m_Script GC_PeakFactionPopulationCheck "{D9D5C684FF0B504A}" {
+          m_sFaction "GC_IRAQ"
+          m_fRatio 1
+         }
+        }
+        GC_AreaCondition "{710C53C783066103}" {
+         m_sArea "OccupyTrigger2"
+         m_Targets GC_CharacterAreaTargets "{554CD6CFFDF0C4BA}" {
+          m_aFactions {
+           "GC_INSURGENT"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{99E55D0A047D18EF}" {
+          m_fRequiredShare 0.1
+          m_aIgnoredFactions {
+           "GC_IRAQ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{A6AB4586328586A0}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8167A6827C7D79CA}" {
+       m_sMessage "InsurVictory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6E3792A4447D3D46}" {
+     m_sName "InsurVictory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A146C1CC8CC3AEB9}" {
+       m_sEventName "InsurVictory"
+      }
+     }
+     m_Advanced GC_EventOptions "{F78CA7F5CC970E9E}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{99C72F7EDDFF620E}" {
+       m_sTitle "INSURGENT VICTORY"
+       m_sMessage "We've been totally destroyed and the checkpoint overun."\
+       "Insurgent forces now control the highway."\
+       ""\
+       "Better luck next time."\
+       "Mission will end soon..."
+       m_aFactions {
+        "GC_IRAQ"
+       }
+      }
+      GC_MessageAction "{7BBA062F81046412}" {
+       m_sTitle "INSURGENT VICTORY"
+       m_sMessage "We've smashed the Iraqi forces. The checkpoint belongs to us now!"\
+       "The highway is open and we have full freedom of movement."\
+       ""\
+       "Mission will end soon..."
+       m_aFactions {
+        "GC_INSURGENT"
+       }
+      }
+     }
+    }
+    GC_Event "{E571028A5159C819}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{023E5E36EB627903}" {
+       m_fSeconds 60
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{47F59893C88C71FB}" {
+       m_aEntities {
+        "INDFORSetup"
+       }
+      }
+     }
+    }
+   }
+   m_aAuthoredRespawns {
+    GC_AuthoredFactionRespawn "{125E8AA24771D918}" {
+     m_sFaction "GC_INSURGENT"
+     m_iTickets 14
+     m_iIntervalMs 5000
+    }
+   }
+  }
+ }
+ coords 7746.719 45.505 1553.052
+ m_eJipMode MANUAL
+ m_iJipOpenSeconds 300
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{632925D53C7F1148}" {
+    }
+   }
+  }
+ }
+}
