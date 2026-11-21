@@ -1,0 +1,1591 @@
+SCR_AIWorld : "{3D0FE80570D5BFCC}Prefabs/AI/SCR_AIWorld_Anizay.et" {
+ coords 4748.636 134.464 5301.61
+}
+GC_LobbyGameMode GC_MigratedMission : "{F2BC6ECAC7BAFE22}worlds/arc/SunnyWAC/SunnyWAC_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6460DE55E28983FF}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 2
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{1FC06E8F0F179D2D}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{F0195709AE5189FD}" {
+     m_sName "BCivs"
+    }
+    GC_MissionFlag "{092783A8FF3494DE}" {
+     m_sName "BOccupied"
+    }
+    GC_MissionFlag "{B81F6E1192BF2885}" {
+     m_sName "CCivs"
+    }
+    GC_MissionFlag "{B3495AB1FA97E362}" {
+     m_sName "COccupied"
+    }
+    GC_MissionFlag "{13EE6B13A440568C}" {
+     m_sName "DCivs"
+    }
+    GC_MissionFlag "{DFFEC5E79A4274E0}" {
+     m_sName "DOccupied"
+    }
+    GC_MissionFlag "{528B9184C4F1C391}" {
+     m_sName "ECivs"
+    }
+    GC_MissionFlag "{531F5805D711B184}" {
+     m_sName "EOccupied"
+    }
+    GC_MissionFlag "{0C45E9FC8EA738E7}" {
+     m_sName "FOccupied"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{7C76365EDD9D0DEF}" {
+     m_sName "GC_MigrationStartupSampling"
+     m_aConditions {
+      GC_ConditionGroup "{28458AA838F22C77}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{1B268F11CCAC2681}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{690F60CA339914B0}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{FD5665A8D1BACD31}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_FlagSamplingAction "{1B268F11CCAC2681}" {
+       m_iDrawCount 3
+       m_aFlags {
+        "BOccupied"
+        "COccupied"
+        "DOccupied"
+        "EOccupied"
+        "FOccupied"
+       }
+      }
+      GC_FlagSamplingAction "{E663DE3C76D24871}" {
+       m_iDrawCount 3
+       m_bWithReplacement 1
+       m_aFlags {
+        "BCivs"
+        "CCivs"
+        "DCivs"
+        "ECivs"
+       }
+      }
+     }
+    }
+    GC_Event "{1B247FF3DB78265F}" {
+     m_sName "BOccupied"
+     m_aConditions {
+      GC_GameModeStateCondition "{6F0A9A159EB43111}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{65B1626196EF3F0C}" {
+       m_sFlagName "BOccupied"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{108EA6A84F175B08}" {
+       m_sMessage "BOccupied"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F1BD3F9F00421336}" {
+     m_sName "BOccupied (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{716D7EC129C178F7}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{A0C8D0FA33499BB9}" {
+       m_sEventName "BOccupied"
+      }
+     }
+     m_Advanced GC_EventOptions "{49557083B3B156C2}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{953CFF5360055BC0}" {
+       m_Spawn GC_AIGroupSpawn "{D4F4DB7D27FD4C20}" {
+        m_sLocation "B"
+        m_sPrefab "{8534EA309F37063C}Prefabs/Groups/OPFOR/GC_INSURGENT/GC_INSURGENT_RifleSquad.et"
+        m_aWaypoints {
+         "BDefWp"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{1B3DF923DB05D073}" {
+     m_sName "COccupied"
+     m_aConditions {
+      GC_GameModeStateCondition "{D325FA6FD41F203A}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{EDC65C1C36BACA2A}" {
+       m_sFlagName "COccupied"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{26F95934E3428C03}" {
+       m_sMessage "COccupied"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D7E1E1D8E276C5A0}" {
+     m_sName "COccupied (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{375E63D82D41E9AC}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{756F7CFD9BDAA482}" {
+       m_sEventName "COccupied"
+      }
+     }
+     m_Advanced GC_EventOptions "{6F4CB0727EE9B4EF}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{E2F8A95E1EE1DD2E}" {
+       m_Spawn GC_AIGroupSpawn "{3931FF1C12D40570}" {
+        m_sLocation "C"
+        m_sPrefab "{8534EA309F37063C}Prefabs/Groups/OPFOR/GC_INSURGENT/GC_INSURGENT_RifleSquad.et"
+        m_aWaypoints {
+         "CDefWp"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{ECB6177FF4F96815}" {
+     m_sName "DOccupied"
+     m_aConditions {
+      GC_GameModeStateCondition "{D46CCDB0B5B84B26}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{B6460B11C8A11685}" {
+       m_sFlagName "DOccupied"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1DFF5C38BC43DCBC}" {
+       m_sMessage "DOccupied"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1723F26E5AF09964}" {
+     m_sName "DOccupied (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{C2CA1100F3FA3308}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{12D975AFAFA5AFB6}" {
+       m_sEventName "DOccupied"
+      }
+     }
+     m_Advanced GC_EventOptions "{86D2A02B2BAC4348}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{4D679DE0D00553D3}" {
+       m_Spawn GC_AIGroupSpawn "{5A68659F475AB1A1}" {
+        m_sLocation "D"
+        m_sPrefab "{8534EA309F37063C}Prefabs/Groups/OPFOR/GC_INSURGENT/GC_INSURGENT_RifleSquad.et"
+        m_aWaypoints {
+         "DDefWp"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3F3BDEE7BDA17E15}" {
+     m_sName "EOccupied"
+     m_aConditions {
+      GC_GameModeStateCondition "{8B035158F7E7FECA}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{995158FE35CDC3C5}" {
+       m_sFlagName "EOccupied"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D25F628A790980F3}" {
+       m_sMessage "EOccupied"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{13142EA7F62CA1B4}" {
+     m_sName "EOccupied (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{83A711CDB890DA18}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{B55BB735E959C466}" {
+       m_sEventName "EOccupied"
+      }
+     }
+     m_Advanced GC_EventOptions "{E417E30E6CB33B13}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{777D745D0E90CBB4}" {
+       m_Spawn GC_AIGroupSpawn "{736C028B0D4446C4}" {
+        m_sLocation "E"
+        m_sPrefab "{8534EA309F37063C}Prefabs/Groups/OPFOR/GC_INSURGENT/GC_INSURGENT_RifleSquad.et"
+        m_aWaypoints {
+         "EDefWp"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{257C32278828F0C0}" {
+     m_sName "FOccupied"
+     m_aConditions {
+      GC_GameModeStateCondition "{F777AD3FE590DFF3}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{D84644842C36F1A2}" {
+       m_sFlagName "FOccupied"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{60EA7A6EDC35782C}" {
+       m_sMessage "FOccupied"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0E1D1C5EE182D421}" {
+     m_sName "FOccupied (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{CE9C6E9DAA82B6BD}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{DE67E52CDFCB1B28}" {
+       m_sEventName "FOccupied"
+      }
+     }
+     m_Advanced GC_EventOptions "{651B59121B3C36B4}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{C0EEF3A3FBC7B160}" {
+       m_Spawn GC_AIGroupSpawn "{C1493AF6133AD6D2}" {
+        m_sLocation "F"
+        m_sPrefab "{8534EA309F37063C}Prefabs/Groups/OPFOR/GC_INSURGENT/GC_INSURGENT_RifleSquad.et"
+        m_aWaypoints {
+         "FDefWp"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{945EE7A4AC706038}" {
+     m_sName "BCivs"
+     m_aConditions {
+      GC_GameModeStateCondition "{2179995701770875}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{412AF6E5A54A1D4C}" {
+       m_sFlagName "BCivs"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7EF425ADB8CAE032}" {
+       m_sMessage "BCivs"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{91E413743E5427DF}" {
+     m_sName "BCivs (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{55043E63A8357B22}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{95C3486A5F04A3C8}" {
+       m_sEventName "BCivs"
+      }
+     }
+     m_Advanced GC_EventOptions "{6723384B99F76409}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{83AAC23481F12CA8}" {
+       m_Spawn GC_AIGroupSpawn "{D8EF82761F6F399D}" {
+        m_sLocation "B"
+        m_sPrefab "{CE41AF625D05D0F1}worlds/arc/SunnyWAC/Prefabs/Group_CIV.et"
+        m_aWaypoints {
+         "BDefWp"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B51C3FF6F93C2547}" {
+     m_sName "CCivs"
+     m_aConditions {
+      GC_GameModeStateCondition "{56AACA909E14780B}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{4E6B913C7F200A2A}" {
+       m_sFlagName "CCivs"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0E75535D79B7BCCD}" {
+       m_sMessage "CCivs"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8297A728144DDEC9}" {
+     m_sName "CCivs (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{1122F46EE0B36734}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{8C454A26CD6FA0A2}" {
+       m_sEventName "CCivs"
+      }
+     }
+     m_Advanced GC_EventOptions "{50545DDA19E3DD03}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{325C3426F0B3B0A8}" {
+       m_Spawn GC_AIGroupSpawn "{2220C6C8D18591D5}" {
+        m_sLocation "C"
+        m_sPrefab "{CE41AF625D05D0F1}worlds/arc/SunnyWAC/Prefabs/Group_CIV.et"
+        m_aWaypoints {
+         "CDefWp"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{2C5126DA2090514F}" {
+     m_sName "DCivs"
+     m_aConditions {
+      GC_GameModeStateCondition "{DEDB08F1F9B55595}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{6B5C22768AAD147D}" {
+       m_sFlagName "DCivs"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2D37B6CDB8EEC3A3}" {
+       m_sMessage "DCivs"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8D722A06255365CB}" {
+     m_sName "DCivs (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{BE5C0D68382BEE3C}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{7CC21E7FE9A9BF55}" {
+       m_sEventName "DCivs"
+      }
+     }
+     m_Advanced GC_EventOptions "{0DA659CD7C0B5266}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{E06C819F39DB6459}" {
+       m_Spawn GC_AIGroupSpawn "{4ADA054A89584F7F}" {
+        m_sLocation "D"
+        m_sPrefab "{CE41AF625D05D0F1}worlds/arc/SunnyWAC/Prefabs/Group_CIV.et"
+        m_aWaypoints {
+         "DDefWp"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{6470A8584172B25A}" {
+     m_sName "ECivs"
+     m_aConditions {
+      GC_GameModeStateCondition "{D1BEC22AD6E15562}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{66C28395A8E40F4A}" {
+       m_sFlagName "ECivs"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{37509C1449DEBAEB}" {
+       m_sMessage "ECivs"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5B0FFFE1A48D9E9F}" {
+     m_sName "ECivs (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{1B784F7020BB5DEB}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{A920C66BAF67C256}" {
+       m_sEventName "ECivs"
+      }
+     }
+     m_Advanced GC_EventOptions "{DA4EDF2452E9ABD4}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{2C38EA446F23E021}" {
+       m_Spawn GC_AIGroupSpawn "{870FBC131D808683}" {
+        m_sLocation "E"
+        m_sPrefab "{CE41AF625D05D0F1}worlds/arc/SunnyWAC/Prefabs/Group_CIV.et"
+        m_aWaypoints {
+         "EDefWp"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C0AF90E3D771113E}" {
+     m_sName "4_CAP"
+     m_aConditions {
+      GC_GameModeStateCondition "{2CFA5011285B38C5}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionCount "{0C7064E4600F83F8}" {
+       m_iComparison 0
+       m_iRequiredCount 3
+       m_aConditions {
+        GC_AreaCondition "{99ED85BFBEFAFF92}" {
+         m_sArea "A"
+         m_Targets GC_CharacterAreaTargets "{089EC178DB74982F}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{E43F6D668BCB877F}" {
+          m_fRequiredShare 1
+          m_aIgnoredFactions {
+           "CIV"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{9CB4F0BE5AE5A4CB}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{FC3D67CB64696B51}" {
+           m_sLocation "a patrol objective"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{AB823E4B9DADE8F5}" {
+         m_sArea "B"
+         m_Targets GC_CharacterAreaTargets "{E8E3EAC0284A7F07}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{8BD9F19FFAFC3FA7}" {
+          m_fRequiredShare 1
+          m_aIgnoredFactions {
+           "CIV"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{771DD1394905F592}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{A57169B501CD2C1E}" {
+           m_sLocation "a patrol objective"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{C6BBD2DB294F0F8D}" {
+         m_sArea "C"
+         m_Targets GC_CharacterAreaTargets "{E179E49B051EB3CB}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{B9E2325A0F6A2748}" {
+          m_fRequiredShare 1
+          m_aIgnoredFactions {
+           "CIV"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{C7DE37F1EAE71E2A}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{6DB94C1BABAA4237}" {
+           m_sLocation "a patrol objective"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{E04318837DE44E68}" {
+         m_sArea "D"
+         m_Targets GC_CharacterAreaTargets "{3292204D423C2625}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{FC8D9D692DA50948}" {
+          m_fRequiredShare 1
+          m_aIgnoredFactions {
+           "CIV"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{BC12EDC4DE5BE122}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{6628A1BC760BAED6}" {
+           m_sLocation "a patrol objective"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{626D3299A94AC8CD}" {
+         m_sArea "E"
+         m_Targets GC_CharacterAreaTargets "{9590E63543187A8D}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{3CAB311A7E149150}" {
+          m_fRequiredShare 1
+          m_aIgnoredFactions {
+           "CIV"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{59D547ED13E73DCC}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{F56BFC29E7543FF6}" {
+           m_sLocation "a patrol objective"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{63562120237E3847}" {
+         m_sArea "F"
+         m_Targets GC_CharacterAreaTargets "{B8224DF2D982725F}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{C1BC53EA29D899A5}" {
+          m_fRequiredShare 1
+          m_aIgnoredFactions {
+           "CIV"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{12C075838E3E248F}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{0BB4FD80CD5AE7D4}" {
+           m_sLocation "a patrol objective"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D896C3D9FF862A0E}" {
+       m_sMessage "4_CAP"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D2E06E12C262E96A}" {
+     m_sName "4_CAP (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{272B2579D8607219}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{51F229EC0C1A8804}" {
+       m_sEventName "4_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{13841737661C6849}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{D84B5E0B449D898F}" {
+       m_Spawn GC_CrewedVehicleSpawn "{E50A716B763EB91E}" {
+        m_sLocation "EQRFSpawn"
+        m_sPrefab "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{CC6A58D2CEA49792}" {
+          m_bPassengers 0
+          m_aCharacters {
+           "{4CD55831FEBBBF0E}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Character_GC_INSURGENT_Rifleman.et"
+           "{CCE33C7096BA30F3}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Character_GC_INSURGENT_Medic.et"
+          }
+          m_bShareIdleGunnerGroup 1
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "EQRFWp"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{EC92FA121F0C3F79}" {
+       m_Spawn GC_CrewedVehicleSpawn "{7E416ACC284B8742}" {
+        m_sLocation "WQRFSpawn"
+        m_sPrefab "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{E0A110C670F5CACB}" {
+          m_bPassengers 0
+          m_aCharacters {
+           "{4CD55831FEBBBF0E}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Character_GC_INSURGENT_Rifleman.et"
+           "{CCE33C7096BA30F3}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Character_GC_INSURGENT_Medic.et"
+          }
+          m_bShareIdleGunnerGroup 1
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "WQRFWp"
+          }
+         }
+        }
+       }
+      }
+      GC_MessageAction "{C3934E534DF9ADC1}" {
+       m_sTitle "4 OBJECTIVES CLEARED"
+       m_sMessage "Returning to base will now warrant a minor victory."
+      }
+     }
+    }
+    GC_Event "{365E64B79D7ADBCA}" {
+     m_sName "6_CAP"
+     m_aConditions {
+      GC_GameModeStateCondition "{BEF1BC2203FFF91E}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionCount "{57B9154BEC47A86B}" {
+       m_iComparison 0
+       m_iRequiredCount 5
+       m_aConditions {
+        GC_AreaCondition "{270ABC38E24B2EFF}" {
+         m_sArea "A"
+         m_Targets GC_CharacterAreaTargets "{1BF75A3F0BA92293}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{4A7F5839065D0EB5}" {
+          m_fRequiredShare 1
+          m_aIgnoredFactions {
+           "CIV"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{2047BC4B6DC7157D}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{56CDF7AC67A2B67F}" {
+         m_sArea "B"
+         m_Targets GC_CharacterAreaTargets "{6611DB89023AD741}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{C6FDA80E440B246F}" {
+          m_fRequiredShare 1
+          m_aIgnoredFactions {
+           "CIV"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{E5EEE65FA6D2FFD6}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{B2974987C167F471}" {
+         m_sArea "C"
+         m_Targets GC_CharacterAreaTargets "{09B5F1407AB8E559}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{DDFA0E9D60F2DCD2}" {
+          m_fRequiredShare 1
+          m_aIgnoredFactions {
+           "CIV"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{1E9BC8D225A97CFA}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{DE064DEB58479E27}" {
+         m_sArea "D"
+         m_Targets GC_CharacterAreaTargets "{16836ECA6345073C}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{629BA64DE10BCCAE}" {
+          m_fRequiredShare 1
+          m_aIgnoredFactions {
+           "CIV"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{C602FE1E82FF8C06}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{1008E34BB1BF669E}" {
+         m_sArea "E"
+         m_Targets GC_CharacterAreaTargets "{629FFFDEA7FC05DD}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{6E63FA3837178E4B}" {
+          m_fRequiredShare 1
+          m_aIgnoredFactions {
+           "CIV"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{601D8B6B4DE7D58B}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{C283D87C8B58A104}" {
+         m_sArea "F"
+         m_Targets GC_CharacterAreaTargets "{3D3099DBAC90C25C}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{62B7B873628E4517}" {
+          m_fRequiredShare 1
+          m_aIgnoredFactions {
+           "CIV"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{241295919DBFE86D}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B4C0632E2791ADF2}" {
+       m_sMessage "6_CAP"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{26DD437B867A4296}" {
+     m_sName "6_CAP (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{988111DE22D529CC}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{B45F6DB2AD78C939}" {
+       m_sEventName "6_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{EAD06F13A05F724B}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{59CCFAA82A649AF5}" {
+       m_Spawn GC_AIGroupSpawn "{5FBD3C48CCD4E487}" {
+        m_sLocation "EQRFSpawn"
+        m_sPrefab "{8534EA309F37063C}Prefabs/Groups/OPFOR/GC_INSURGENT/GC_INSURGENT_RifleSquad.et"
+        m_aWaypoints {
+         "EQRFWp"
+        }
+       }
+      }
+      GC_SpawnAction "{738DA17353BB7020}" {
+       m_Spawn GC_AIGroupSpawn "{27812555AD274C7C}" {
+        m_sLocation "WQRFSpawn"
+        m_sPrefab "{8534EA309F37063C}Prefabs/Groups/OPFOR/GC_INSURGENT/GC_INSURGENT_RifleSquad.et"
+        m_aWaypoints {
+         "WQRFWp"
+        }
+       }
+      }
+      GC_MessageAction "{E47389CB715EA6B9}" {
+       m_sTitle "6 OBJECTIVES CLEARED"
+       m_sMessage "Returning to base will now warrant a major victory."
+      }
+     }
+    }
+    GC_Event "{ED2700D47E1AB05B}" {
+     m_sName "US_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{2EFE42B397C51737}" {
+       m_Script GC_PeakFactionPopulationCheck "{7781B5627EB670F5}" {
+        m_sFaction "US"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{91251783DA19DD5A}" {
+       m_sMessage "US_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2CB6CAE8BB76B936}" {
+     m_sName "US_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E10DA5B222574BD8}" {
+       m_sEventName "US_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{DCFD97B2DF41CA70}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{43793BD0838AFDBF}" {
+       m_sTitle "DEFEAT"
+       m_sMessage "US forces have taken significant casualties."
+      }
+     }
+    }
+    GC_Event "{77EFD63BDC667ABC}" {
+     m_sName "US_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E73B8EB9B5809C84}" {
+       m_sEventName "US_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{57875DAA4647BD6C}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{B1B3C8509F7D7A43}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{BEDA92A744C53A23}" {
+     m_sName "TIME_LIMIT (7205s)"
+     m_Advanced GC_EventOptions "{62CC7A5E49343BC3}" {
+      m_fDelay 7205
+     }
+     m_aActions {
+      GC_MessageAction "{D381973F79BC28FF}" {
+       m_sTitle "DEFEAT"
+       m_sMessage "Time limit reached."
+      }
+     }
+    }
+    GC_Event "{1E20DA7D5B42F912}" {
+     m_sName "TIME_LIMIT (7215s)"
+     m_Advanced GC_EventOptions "{8F9D91108E8E9147}" {
+      m_fDelay 7215
+     }
+     m_aActions {
+      GC_EndMissionAction "{79C25D20AE52DC59}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{DAD6B4135EB62501}" {
+     m_sName "MINOR_VICTORY"
+     m_aConditions {
+      GC_GameModeStateCondition "{CE16C83663160F7E}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{CAD42D813A76AB8E}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionCount "{423310556CD3DB0A}" {
+         m_iComparison 0
+         m_iRequiredCount 3
+         m_aConditions {
+          GC_AreaCondition "{32252F44CD9DCBAC}" {
+           m_sArea "A"
+           m_Targets GC_CharacterAreaTargets "{3E401EE3388CFAE7}" {
+            m_iWho 2
+            m_aFactions {
+             "US"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{3B47815DFE37ED3A}" {
+            m_fRequiredShare 1
+            m_aIgnoredFactions {
+             "CIV"
+            }
+           }
+           m_Capture GC_AreaCaptureOptions "{1C7D26BD4DCB3141}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_AreaCondition "{5C63B00A09FEBE4B}" {
+           m_sArea "B"
+           m_Targets GC_CharacterAreaTargets "{BE71B83207F052E9}" {
+            m_iWho 2
+            m_aFactions {
+             "US"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{3750B3BF4F1E986E}" {
+            m_fRequiredShare 1
+            m_aIgnoredFactions {
+             "CIV"
+            }
+           }
+           m_Capture GC_AreaCaptureOptions "{7B6DEAA878D47AC1}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_AreaCondition "{C0497379C0C670D0}" {
+           m_sArea "C"
+           m_Targets GC_CharacterAreaTargets "{A363FA6E9FCB53F3}" {
+            m_iWho 2
+            m_aFactions {
+             "US"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{108D7E38A9DB1513}" {
+            m_fRequiredShare 1
+            m_aIgnoredFactions {
+             "CIV"
+            }
+           }
+           m_Capture GC_AreaCaptureOptions "{9DCCF1C06BEBEF9E}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_AreaCondition "{04399E84B21ADE54}" {
+           m_sArea "D"
+           m_Targets GC_CharacterAreaTargets "{9E6D4303162D423A}" {
+            m_iWho 2
+            m_aFactions {
+             "US"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{D72866DFA2047771}" {
+            m_fRequiredShare 1
+            m_aIgnoredFactions {
+             "CIV"
+            }
+           }
+           m_Capture GC_AreaCaptureOptions "{F1759C0FFF258DB4}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_AreaCondition "{899D84DF3792057E}" {
+           m_sArea "E"
+           m_Targets GC_CharacterAreaTargets "{D5852510A38AC2C5}" {
+            m_iWho 2
+            m_aFactions {
+             "US"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{F3B9A63962474195}" {
+            m_fRequiredShare 1
+            m_aIgnoredFactions {
+             "CIV"
+            }
+           }
+           m_Capture GC_AreaCaptureOptions "{BF1849DD81F8E950}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_AreaCondition "{193F40C900E991CA}" {
+           m_sArea "F"
+           m_Targets GC_CharacterAreaTargets "{047E8F17063D016E}" {
+            m_iWho 2
+            m_aFactions {
+             "US"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{4551C514115CD626}" {
+            m_fRequiredShare 1
+            m_aIgnoredFactions {
+             "CIV"
+            }
+           }
+           m_Capture GC_AreaCaptureOptions "{D44E7781F1D821B8}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+         }
+        }
+        GC_ConditionCount "{98FF48AFACB12810}" {
+         m_iComparison 1
+         m_iRequiredCount 6
+         m_aConditions {
+          GC_AreaCondition "{FF9C63C264E538BD}" {
+           m_sArea "A"
+           m_Targets GC_CharacterAreaTargets "{83A17306C006333C}" {
+            m_iWho 2
+            m_aFactions {
+             "US"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{46687054B4F51568}" {
+            m_fRequiredShare 1
+            m_aIgnoredFactions {
+             "CIV"
+            }
+           }
+           m_Capture GC_AreaCaptureOptions "{3E7BFC5D01BB78A3}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_AreaCondition "{EEA163DEF85E8CB3}" {
+           m_sArea "B"
+           m_Targets GC_CharacterAreaTargets "{BB948A2AB8E38DBD}" {
+            m_iWho 2
+            m_aFactions {
+             "US"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{4B659CDF39981C9F}" {
+            m_fRequiredShare 1
+            m_aIgnoredFactions {
+             "CIV"
+            }
+           }
+           m_Capture GC_AreaCaptureOptions "{37159323B890B998}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_AreaCondition "{9FD59444E9A27E6B}" {
+           m_sArea "C"
+           m_Targets GC_CharacterAreaTargets "{B14E4FB6F3F40A9F}" {
+            m_iWho 2
+            m_aFactions {
+             "US"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{A94597BFB43F518E}" {
+            m_fRequiredShare 1
+            m_aIgnoredFactions {
+             "CIV"
+            }
+           }
+           m_Capture GC_AreaCaptureOptions "{170EDDADF769255F}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_AreaCondition "{B3A8E2487228766D}" {
+           m_sArea "D"
+           m_Targets GC_CharacterAreaTargets "{1C276136ABE65723}" {
+            m_iWho 2
+            m_aFactions {
+             "US"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{4F5A07B39835F59B}" {
+            m_fRequiredShare 1
+            m_aIgnoredFactions {
+             "CIV"
+            }
+           }
+           m_Capture GC_AreaCaptureOptions "{4F1B43E82D00E56E}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_AreaCondition "{906D4F5D42A87763}" {
+           m_sArea "E"
+           m_Targets GC_CharacterAreaTargets "{6240AB17F734BFFC}" {
+            m_iWho 2
+            m_aFactions {
+             "US"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{0182F62FD4E21C69}" {
+            m_fRequiredShare 1
+            m_aIgnoredFactions {
+             "CIV"
+            }
+           }
+           m_Capture GC_AreaCaptureOptions "{3CBAD2833F10839C}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_AreaCondition "{B3BF3A863AACD809}" {
+           m_sArea "F"
+           m_Targets GC_CharacterAreaTargets "{04EF3753E8DCBE03}" {
+            m_iWho 2
+            m_aFactions {
+             "US"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{02A1FDA314F641F3}" {
+            m_fRequiredShare 1
+            m_aIgnoredFactions {
+             "CIV"
+            }
+           }
+           m_Capture GC_AreaCaptureOptions "{37620E23968A754C}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+         }
+        }
+        GC_AreaCondition "{4B644F58FF3BD4E6}" {
+         m_sArea "GC_MigrationArea_US_EXTRACT"
+         m_Targets GC_CharacterAreaTargets "{F1DE41724A755058}" {
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{287A475931667E58}" {
+          m_fRequiredShare 0.75
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{40A48A3824FA723B}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{26B800081DE6F35B}" {
+       m_sMessage "MINOR_VICTORY"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6F4FA7590678D252}" {
+     m_sName "MINOR_VICTORY (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{6B3E6B2AA8BFE3B0}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{74D9C8810B2B5366}" {
+       m_sEventName "MINOR_VICTORY"
+      }
+     }
+     m_Advanced GC_EventOptions "{206B37EDA54C8DDC}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{F3F3A7DE7C0F3542}" {
+       m_sTitle "US MINOR VICTORY"
+       m_sMessage "4 Objectives were patrolled and US forces have returned to base."
+      }
+     }
+    }
+    GC_Event "{5E1FFB140DA5519A}" {
+     m_sName "MINOR_VICTORY (15s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{4BB355D40EE11871}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{6FF377DD12B3AB12}" {
+       m_sEventName "MINOR_VICTORY"
+      }
+     }
+     m_Advanced GC_EventOptions "{AE4B2AE16031726E}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{9E6EB20069CE6266}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{4E8A694BC8E1F766}" {
+     m_sName "MAJOR_VICTORY"
+     m_aConditions {
+      GC_GameModeStateCondition "{18899B3F98AB559B}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{E0995ACA0E093BE8}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionCount "{F4FAF677FBACE989}" {
+         m_iComparison 0
+         m_iRequiredCount 5
+         m_aConditions {
+          GC_AreaCondition "{E6134C0682B7E95A}" {
+           m_sArea "A"
+           m_Targets GC_CharacterAreaTargets "{6D49A8B2DA94426F}" {
+            m_iWho 2
+            m_aFactions {
+             "US"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{6BD497526510AAE3}" {
+            m_fRequiredShare 1
+            m_aIgnoredFactions {
+             "CIV"
+            }
+           }
+           m_Capture GC_AreaCaptureOptions "{E6B4BCE67AD7A09F}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_AreaCondition "{6C3556A443F9E67A}" {
+           m_sArea "B"
+           m_Targets GC_CharacterAreaTargets "{072D840FE3BE64A8}" {
+            m_iWho 2
+            m_aFactions {
+             "US"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{9FC800DEBFF35F28}" {
+            m_fRequiredShare 1
+            m_aIgnoredFactions {
+             "CIV"
+            }
+           }
+           m_Capture GC_AreaCaptureOptions "{A4154B27BF293987}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_AreaCondition "{7524C0EA1C8214C5}" {
+           m_sArea "C"
+           m_Targets GC_CharacterAreaTargets "{FB30D8C766A3D3B1}" {
+            m_iWho 2
+            m_aFactions {
+             "US"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{E4C33CC70B41BE1C}" {
+            m_fRequiredShare 1
+            m_aIgnoredFactions {
+             "CIV"
+            }
+           }
+           m_Capture GC_AreaCaptureOptions "{5E6BD347615FE0D7}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_AreaCondition "{4BE5444626A28DFF}" {
+           m_sArea "D"
+           m_Targets GC_CharacterAreaTargets "{540D19D5D660A008}" {
+            m_iWho 2
+            m_aFactions {
+             "US"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{0FD9FD4B7C2124ED}" {
+            m_fRequiredShare 1
+            m_aIgnoredFactions {
+             "CIV"
+            }
+           }
+           m_Capture GC_AreaCaptureOptions "{16FB6AD1C3674F1C}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_AreaCondition "{3BC53B6D5C8D69D9}" {
+           m_sArea "E"
+           m_Targets GC_CharacterAreaTargets "{200EA4BF6403807F}" {
+            m_iWho 2
+            m_aFactions {
+             "US"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{D46F2A30EC4F2FEC}" {
+            m_fRequiredShare 1
+            m_aIgnoredFactions {
+             "CIV"
+            }
+           }
+           m_Capture GC_AreaCaptureOptions "{A247643732AD9F5A}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_AreaCondition "{A21741D0C5268DD6}" {
+           m_sArea "F"
+           m_Targets GC_CharacterAreaTargets "{90F6C9D2C909B3B2}" {
+            m_iWho 2
+            m_aFactions {
+             "US"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{DFF4854D9C09DE3F}" {
+            m_fRequiredShare 1
+            m_aIgnoredFactions {
+             "CIV"
+            }
+           }
+           m_Capture GC_AreaCaptureOptions "{53AA0A9E85C3A80A}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+         }
+        }
+        GC_AreaCondition "{E45E184C65CD06B5}" {
+         m_sArea "GC_MigrationArea_US_EXTRACT"
+         m_Targets GC_CharacterAreaTargets "{E9AAB28B9130100B}" {
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{1CA72E9839FAE2C1}" {
+          m_fRequiredShare 0.75
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{1140A426774E2EDA}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9DED985A0374DC32}" {
+       m_sMessage "MAJOR_VICTORY"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A89AE7BD34772325}" {
+     m_sName "MAJOR_VICTORY (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{F21A0E69D6EFE9AD}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{292DF5142CFEF7E6}" {
+       m_sEventName "MAJOR_VICTORY"
+      }
+     }
+     m_Advanced GC_EventOptions "{0080A44CF711A82C}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{35DE112CEAFFFF79}" {
+       m_sTitle "US MAJOR VICTORY"
+       m_sMessage "6 Objectives were patrolled and US forces have returned to base."
+      }
+     }
+    }
+    GC_Event "{1FF00D95154662DD}" {
+     m_sName "MAJOR_VICTORY (15s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{30AA2B3D03CD6824}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{0661E4CD4BCB0CBB}" {
+       m_sEventName "MAJOR_VICTORY"
+      }
+     }
+     m_Advanced GC_EventOptions "{2A99283C84D51388}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{91F8431AB7957EEA}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 4755.452 134.387 5305.612
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "1"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+      }
+      m_sCallsignGroupFormat "%2-%3"
+      m_sCallsignCharacterFormat "%2-%3: %4"
+      m_sCallsignCharacterWithRoleFormat "%2-%3: %4"
+     }
+    }
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "GC_INSURGENT"
+     }
+    }
+   }
+  }
+ }
+}
