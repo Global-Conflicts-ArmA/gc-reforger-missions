@@ -1,0 +1,397 @@
+GC_LobbyGameMode GC_MigratedMission : "{AB530096F452CA5B}worlds/TheLocalPub/LongmoorLashings/LongmoorLashings_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 5
+   m_iStartingMinutes 30
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{62F56305E6873A67}" {
+     m_sWeatherPresetName "Rainy"
+     m_iStartingHour 5
+     m_iStartingMinutes 30
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{BF1AC5BFD61BB246}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{484255CDB49C5668}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 300
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{6BAC0858B5F66AFA}" {
+     m_sName "AmmoDestroyed"
+    }
+   }
+   m_aMissionEvents + {
+    GC_RandomEventGroup "{8DEB7057F380F141}" {
+     m_sName "GC_MigrationStartupSelection"
+     m_iPickCount 1
+     m_aConditions {
+      GC_ConditionGroup "{940DD34E05C395F7}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{3F4C6084842E77D7}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{8EBC3AAB001257C0}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{8B95F9810B2A0B76}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aEvents {
+      GC_Event "{AD197CCCC9A8D50C}" {
+       m_sName "GC_MigrationChoice_SpawnBox1"
+       m_aActions {
+        GC_MessageAction "{530EB0F259A625DB}" {
+         m_sMessage "GC_MigrationChoice_SpawnBox1"
+         m_iDelivery 2
+        }
+       }
+      }
+      GC_Event "{1627705128C63453}" {
+       m_sName "GC_MigrationChoice_SpawnBox2"
+       m_aActions {
+        GC_MessageAction "{774260BC4741A7D9}" {
+         m_sMessage "GC_MigrationChoice_SpawnBox2"
+         m_iDelivery 2
+        }
+       }
+      }
+      GC_Event "{B7BF816B19DBD573}" {
+       m_sName "GC_MigrationChoice_SpawnBox3"
+       m_aActions {
+        GC_MessageAction "{C645C73415786A27}" {
+         m_sMessage "GC_MigrationChoice_SpawnBox3"
+         m_iDelivery 2
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{DCCB2E78BF7E0BC2}" {
+     m_sName "SpawnBox1 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5689F8569F3C3027}" {
+       m_sEventName "GC_MigrationChoice_SpawnBox1"
+      }
+     }
+     m_Advanced GC_EventOptions "{C7DAFA14A2C851FD}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{731851973C87DD5F}" {
+       m_Spawn GC_PrefabSpawn "{F1D812AC5429A46D}" {
+        m_sLocation "ObjLoc1"
+        m_sPrefab "{8452D16D2363BF8A}worlds/TheLocalPub/LongmoorLashings/PrefabsEditable/Auto/Props/Military/AmmoBoxes/EquipmentBoxStack/E_EquipmentBoxStack_USSR_01_V2_covered_LongmoorLashings.et"
+       }
+      }
+      GC_MapMarkerVisibilityAction "{86CD4DD0998E3336}" {
+       m_aMarkers {
+        "AmmoBoxLocBlufor1"
+       }
+       m_bVisibleWithoutFaction 0
+       m_aFactions {
+        GC_MarkerFactionVisibility "{68FB9CACE91F94EE}" {
+         m_sFaction "UK"
+         m_bVisible 1
+        }
+       }
+      }
+      GC_MapMarkerVisibilityAction "{E43E832298A4E7E9}" {
+       m_aMarkers {
+        "AmmoBoxLocOpfor1"
+       }
+       m_bVisibleWithoutFaction 0
+       m_aFactions {
+        GC_MarkerFactionVisibility "{BC59E5D1EACB69B7}" {
+         m_sFaction "GC_SEPARATIST"
+         m_bVisible 1
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{67631B3D1C02C458}" {
+     m_sName "SpawnBox2 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CCB79025A4D2D8E5}" {
+       m_sEventName "GC_MigrationChoice_SpawnBox2"
+      }
+     }
+     m_Advanced GC_EventOptions "{40637AA924DF407E}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{18DE689CF2349286}" {
+       m_Spawn GC_PrefabSpawn "{44556C2738C86D7F}" {
+        m_sLocation "ObjLoc2"
+        m_sPrefab "{8452D16D2363BF8A}worlds/TheLocalPub/LongmoorLashings/PrefabsEditable/Auto/Props/Military/AmmoBoxes/EquipmentBoxStack/E_EquipmentBoxStack_USSR_01_V2_covered_LongmoorLashings.et"
+       }
+      }
+      GC_MapMarkerVisibilityAction "{9842E98639FE4CE6}" {
+       m_aMarkers {
+        "AmmoBoxLocBlufor2"
+       }
+       m_bVisibleWithoutFaction 0
+       m_aFactions {
+        GC_MarkerFactionVisibility "{F5050B39D5986E60}" {
+         m_sFaction "UK"
+         m_bVisible 1
+        }
+       }
+      }
+      GC_MapMarkerVisibilityAction "{933F79EC9D5A1C61}" {
+       m_aMarkers {
+        "AmmoBoxLocOpfor2"
+       }
+       m_bVisibleWithoutFaction 0
+       m_aFactions {
+        GC_MarkerFactionVisibility "{C362B72DED0BDD79}" {
+         m_sFaction "GC_SEPARATIST"
+         m_bVisible 1
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{D659C60B8ECA73CB}" {
+     m_sName "SpawnBox3 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{AEBC44538CA54E05}" {
+       m_sEventName "GC_MigrationChoice_SpawnBox3"
+      }
+     }
+     m_Advanced GC_EventOptions "{69B36DA9DF2AB273}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{A30C7A6FCE74DDEB}" {
+       m_Spawn GC_PrefabSpawn "{E844B6777FE1593C}" {
+        m_sLocation "ObjLoc3"
+        m_sPrefab "{8452D16D2363BF8A}worlds/TheLocalPub/LongmoorLashings/PrefabsEditable/Auto/Props/Military/AmmoBoxes/EquipmentBoxStack/E_EquipmentBoxStack_USSR_01_V2_covered_LongmoorLashings.et"
+       }
+      }
+      GC_MapMarkerVisibilityAction "{DCF0C5FE84C1B1E6}" {
+       m_aMarkers {
+        "AmmoBoxLocBlufor3"
+       }
+       m_bVisibleWithoutFaction 0
+       m_aFactions {
+        GC_MarkerFactionVisibility "{8C1605769D19D02A}" {
+         m_sFaction "UK"
+         m_bVisible 1
+        }
+       }
+      }
+      GC_MapMarkerVisibilityAction "{B26DFA6504E9DFF9}" {
+       m_aMarkers {
+        "AmmoBoxLocOpfor3"
+       }
+       m_bVisibleWithoutFaction 0
+       m_aFactions {
+        GC_MarkerFactionVisibility "{434F157FDC6464AC}" {
+         m_sFaction "GC_SEPARATIST"
+         m_bVisible 1
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F8B7EA75CB8E4C99}" {
+     m_sName "DeleteAmmoBoxes (300s)"
+     m_Advanced GC_EventOptions "{4C17779C7CB41133}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{4B6D72F62598526C}" {
+       m_aEntities {
+        "OpforAmmoBox"
+        "BluforAmmoBox"
+       }
+      }
+     }
+    }
+    GC_Event "{D85065B0F4A4F4BA}" {
+     m_sName "UKWin_OPFORDead"
+     m_aConditions {
+      GC_CustomScriptCondition "{95249038025277E4}" {
+       m_Script GC_PeakFactionPopulationCheck "{C79D1FA8C34FFD4F}" {
+        m_sFaction "GC_SEPARATIST"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{733F6300947B7C51}" {
+       m_sMessage "UKWin_OPFORDead"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{15A180F1E97BF905}" {
+     m_sName "UKWin_OPFORDead (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A9DA549BE8CF80AF}" {
+       m_sEventName "UKWin_OPFORDead"
+      }
+     }
+     m_Advanced GC_EventOptions "{880ED0ABA4CFCEB6}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_MessageAction "{EE1F5CF33B359E35}" {
+       m_sTitle "UK VICTORY!"
+       m_sMessage "British forces have managed to eliminate the Insurgent cell and thus also destroy their cache."\
+       ""\
+       "Well done lads!"\
+       "Mission will end shortly..."
+      }
+     }
+    }
+    GC_Event "{22ED4B45761BFA8D}" {
+     m_sName "UKWin_CacheDead"
+     m_aConditions {
+      GC_GameModeStateCondition "{35FB3B887A5AF5DE}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{BEE4401F861F4425}" {
+       m_sFlagName "AmmoDestroyed"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{627038E8B4B28D60}" {
+       m_sMessage "UKWin_CacheDead"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E578D8A612B07A82}" {
+     m_sName "UKWin_CacheDead (3s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{1902A3D8775CDC6D}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{6B5FF49303A1B302}" {
+       m_sEventName "UKWin_CacheDead"
+      }
+     }
+     m_Advanced GC_EventOptions "{A2498FAF62BAF896}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_MessageAction "{5B69DB5861ED1825}" {
+       m_sTitle "UK VICTORY!"
+       m_sMessage "British forces have managed to destroy the Insurgent's supply cache and have begun to withdraw from the area."\
+       ""\
+       "Well done lads!"\
+       "Mission will end shortly..."
+      }
+     }
+    }
+    GC_Event "{5F001688EE074F5A}" {
+     m_sName "EndMissionREDWIN"
+     m_aConditions {
+      GC_CustomScriptCondition "{1496CDC5284CBBC8}" {
+       m_Script GC_PeakFactionPopulationCheck "{B0E4DA77C324C2DC}" {
+        m_sFaction "UK"
+        m_fRatio 0.85
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D5FE543ABBE4EF3F}" {
+       m_sMessage "EndMissionREDWIN"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A8D1B92688906676}" {
+     m_sName "EndMissionREDWIN (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DA8AD7178D05CFF2}" {
+       m_sEventName "EndMissionREDWIN"
+      }
+     }
+     m_Advanced GC_EventOptions "{1C6D9E1258254164}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_MessageAction "{8B45F4FCE71BBEAC}" {
+       m_sTitle "SAPA VICTORY!"
+       m_sMessage "British forces have been smashed by the SAPA cell."\
+       "The last few have turned around and are beginning to withdraw."\
+       "RUN THEM DOWN!"\
+       ""\
+       "Mission will end shortly..."
+      }
+     }
+    }
+    GC_Event "{741873A9DC8E717C}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{6679E44165EFAC31}" {
+       m_fSeconds 300
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{2141057407F65FBC}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 1378.628 112.672 582.441
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{62EB308733CA83DD}" {
+     UIInfo SCR_FactionUIInfo "{62EB259E4C94C2BD}" {
+      Name "Sapa"
+      m_sNameUpper "SAPA"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{69F4BC0249EC5365}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{69F4BC0249339C7C}" {
+        m_sCallsign "7"
+       }
+       SCR_CallsignInfo "{69F4BC0249596A7B}" {
+        m_sCallsign "8"
+       }
+       SCR_CallsignInfo "{69F4BC024E9CAB80}" {
+        m_sCallsign "9"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp GenericEntity {
+ ObjLoc1 {
+  coords 869.038 103.921 902.607
+  angles 0 38.975 0
+ }
+ ObjLoc2 {
+  coords 860.959 107.229 821.398
+ }
+ ObjLoc3 {
+  coords 788.216 109.293 754.384
+ }
+}
