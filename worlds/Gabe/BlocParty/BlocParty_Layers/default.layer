@@ -1,0 +1,466 @@
+SCR_AIWorld SCR_AIworld : "{0946C019EBADE117}Prefabs/AI/SCR_AIworld_AL_Hadra.et" {
+ coords 4439.659 17.844 4026.377
+}
+GC_LobbyGameMode GC_MigratedMission : "{7B0F196472EB52DF}worlds/Gabe/BlocParty/BlocParty_GC_Settings.et" {
+ components {
+  SCR_InitWeatherComponent "{61B68227C35BFE9A}" {
+   m_initialWeatherDurationMin 5
+   m_initialWeatherDurationMax 6
+  }
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 10
+   m_bWindOverride 1
+   m_fFogAmount 0.8
+   m_fFogHeightDensity 0.86
+   m_bDateOverride 1
+   m_iDay 26
+   m_iMonth 10
+   m_iYear 2015
+  }
+  GC_PeakFactionPopulationComponent "{15F3EAD19BEB96D2}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{A878D897EA11FD13}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 420.000000
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{8A6819C22ED35758}" {
+     m_sName "CasualtyAFRF"
+     m_aConditions {
+      GC_CustomScriptCondition "{E976DE0461C41F16}" {
+       m_Script GC_PeakFactionPopulationCheck "{156445B0ED88D97A}" {
+        m_sFaction "RHS_AFRF"
+        m_fRatio 0.85
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E4C7E69DB17D1E0B}" {
+       m_sMessage "CasualtyAFRF"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{058E93857B909313}" {
+     m_sName "CasualtyAFRF (2.5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BE1C39D570DCD0C2}" {
+       m_sEventName "CasualtyAFRF"
+      }
+     }
+     m_Advanced GC_EventOptions "{9797BC292AEEF375}" {
+      m_fDelay 2.5
+     }
+     m_aActions {
+      GC_MessageAction "{16ABA41834DCC6E4}" {
+       m_sTitle "Rebel Major Victory"
+       m_sMessage "AFRF is combat ineffective."
+      }
+     }
+    }
+    GC_Event "{1A51EDD9449A9FED}" {
+     m_sName "CasualtyINSURGENT"
+     m_aConditions {
+      GC_CustomScriptCondition "{71F7EED7E2F79345}" {
+       m_Script GC_PeakFactionPopulationCheck "{1BAB950FF9AFB051}" {
+        m_sFaction "GC_INSURGENT"
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{10206081F25376EC}" {
+       m_sMessage "CasualtyINSURGENT"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A98F05D736CC3035}" {
+     m_sName "CasualtyINSURGENT (2.5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8E938F525228CE77}" {
+       m_sEventName "CasualtyINSURGENT"
+      }
+     }
+     m_Advanced GC_EventOptions "{9EE08B33A89D15B2}" {
+      m_fDelay 2.5
+     }
+     m_aActions {
+      GC_MessageAction "{CD974E0ACE9E2C0D}" {
+       m_sTitle "AFRF Victory"
+       m_sMessage "Rebels are combat ineffective."
+      }
+     }
+    }
+    GC_Event "{39F725178F2A9F1D}" {
+     m_sName "AFRFSouthSideObj"
+     m_aConditions {
+      GC_AreaCondition "{92DD2ED6F4E2680E}" {
+       m_sArea "SouthSideCapZone"
+       m_Targets GC_CharacterAreaTargets "{F9E2D29C6EC60FA0}" {
+        m_aFactions {
+         "RHS_AFRF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{13646989F26B5AF7}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{9D774757091E5A31}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C15AB04CE9219CBC}" {
+       m_sMessage "AFRFSouthSideObj"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{4758F4E9B53BCEBD}" {
+     m_sName "AFRFSouthSideObj (2.5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{51B28563906733AF}" {
+       m_sEventName "AFRFSouthSideObj"
+      }
+     }
+     m_Advanced GC_EventOptions "{2FA6195107198A82}" {
+      m_fDelay 2.5
+     }
+     m_aActions {
+      GC_MessageAction "{7F1B0CD87E918267}" {
+       m_sTitle "AFRF has taken an objective"
+       m_sMessage "They have taken control of South Side."
+      }
+     }
+    }
+    GC_Event "{7E13F799C72C3537}" {
+     m_sName "AFRFNorthSideObj"
+     m_aConditions {
+      GC_AreaCondition "{2BDD9F8A6582106B}" {
+       m_sArea "NorthSideCapZone"
+       m_Targets GC_CharacterAreaTargets "{B7148E050E42334A}" {
+        m_aFactions {
+         "RHS_AFRF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{AE88F0B674A5C4DB}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{AF413CB60DE27F3C}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5AB33BE39F64FF6C}" {
+       m_sMessage "AFRFNorthSideObj"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BDF478088BFB8474}" {
+     m_sName "AFRFNorthSideObj (2.5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7FC17818C1BD6A9B}" {
+       m_sEventName "AFRFNorthSideObj"
+      }
+     }
+     m_Advanced GC_EventOptions "{F95ACD75734B8D2D}" {
+      m_fDelay 2.5
+     }
+     m_aActions {
+      GC_MessageAction "{495D230EC8D8417C}" {
+       m_sTitle "AFRF has taken an objective"
+       m_sMessage "They have taken control of North Side."
+      }
+     }
+    }
+    GC_Event "{5F59FB973A3FD8BA}" {
+     m_sName "BothObj"
+     m_aConditions {
+      GC_ConditionGroup "{6A41179CFAC686D3}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{F2BA5BE4F5B26051}" {
+         m_sArea "NorthSideCapZone"
+         m_Targets GC_CharacterAreaTargets "{BFE9EF1E741A8605}" {
+          m_aFactions {
+           "RHS_AFRF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{28A6C0C4DA6C8A30}" {
+          m_fRequiredShare 0.9
+         }
+         m_Capture GC_AreaCaptureOptions "{2A398C62650A0032}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{DDF71A7F4430AC30}" {
+         m_sArea "SouthSideCapZone"
+         m_Targets GC_CharacterAreaTargets "{96315A3748A9E106}" {
+          m_aFactions {
+           "RHS_AFRF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{D07DEC586C6FA0C5}" {
+          m_fRequiredShare 0.9
+         }
+         m_Capture GC_AreaCaptureOptions "{258F10B1703D50B6}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E1EE26C9B0350A0C}" {
+       m_sMessage "BothObj"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7E1DA0EDF37CCB2F}" {
+     m_sName "BothObj (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DEEE2264AE3806DE}" {
+       m_sEventName "BothObj"
+      }
+     }
+     m_Advanced GC_EventOptions "{61083E3419145FAC}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{9B395E5EE8E4F4CA}" {
+       m_sTitle "AFRF Victory"
+       m_sMessage "They have taken control of both objectives."
+      }
+     }
+    }
+    GC_Event "{0D7934D06CB6A32B}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{222FC9333E23A512}" {
+       m_fSeconds 420.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{C4EB501BFCC64D34}" {
+       m_aEntities {
+        "RestrictionZone"
+       }
+      }
+     }
+    }
+   }
+   m_iSlotReservationTimeoutSeconds 180
+   m_iMatchSlotReservationTimeoutSeconds -1
+  }
+ }
+ coords 4559.402 17.844 4026.316
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     FactionKey "RHS_USAF"
+     m_iOrder 1
+     m_FactionLabel FACTION_RHS_USAF
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CCD598D3}" {
+        m_sCallsign "Bravo"
+       }
+      }
+     }
+    }
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB79282FF010C}" {
+       }
+       SCR_CallsignInfo "{55CCB792821E9332}" {
+        m_sCallsign "Burya"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB7928490AEEE}" {
+        m_sCallsign ""
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{68D7458946B9215F}" {
+        m_sCallsign " 1"
+       }
+       SCR_CallsignInfo "{68D74589454505A3}" {
+        m_sCallsign " 2"
+       }
+      }
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     FactionKey "US"
+     m_FactionLabel FACTION_US
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CD021D5C}" {
+        m_sCallsign "Bravo"
+       }
+       SCR_CallsignInfo "{55CCB792CCD598D3}" {
+        m_sCallsign ""
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792CE18FB44}" {
+        m_sCallsign ""
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{685E078F2F05FC93}" {
+        m_sCallsign "4"
+       }
+       SCR_CallsignInfo "{68B374BFAE0C9234}" {
+        m_sCallsign "Hurricane 1'"
+       }
+       SCR_CallsignInfo "{68B56D4EB2847E41}" {
+        m_sCallsign "Hurricane 2'"
+       }
+      }
+      m_sCallsignGroupFormat "%1 %2'%3"
+      m_sCallsignCharacterFormat "%1 %2'%3: %4"
+     }
+    }
+    SCR_Faction "{632925D53C7F1148}" {
+     m_iOrder 2
+     m_bShowInWelcomeScreenIfNonPlayable 1
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_bIsAssignedRandomly 0
+      m_aCompanyNames {
+       SCR_CallsignInfo "{58B2B630FDD64B73}" {
+        m_sCallsign "Central Command"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B7A}" {
+        m_sCallsign ""
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{58B2B630FDD64B65}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B6B}" {
+        m_sCallsign "Group 1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B69}" {
+        m_sCallsign "Group 2"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "HQ"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "Cell 1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "Cell 2"
+       }
+       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+        m_sCallsign "Cell 3"
+       }
+       SCR_CallsignInfo "{68D2482B2CD01E2C}" {
+        m_sCallsign "Cell 4"
+       }
+       SCR_CallsignInfo "{68D2482B2CA083DE}" {
+       }
+      }
+      m_sCallsignGroupFormat "%1 %2 %3"
+      m_sCallsignCharacterFormat "%1 %2 %3 %4"
+      m_sCallsignCharacterWithRoleFormat "%1 %2 %3 %4"
+     }
+     m_iFactionRadioFrequency 42000
+    }
+   }
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity RestrictionZone : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 4228.163 17.845 2963.036
+ angles 0 30.24 0
+ {
+  GenericEntity {
+   ID "59D673B36B893D84"
+   coords 0 -0.001 0
+  }
+ }
+}
+GenericEntity SpawnMarkINSURGENT : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{BAB1676E2BF56624}Images/GC_IS_icon.edds"
+   m_sHighlightImageSet ""
+   m_sQuadName ""
+   m_Color 1 1 1 1
+   m_fSize 45
+   m_bWorldScale 1
+   m_sDescription "Rebels"
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+  }
+ }
+ coords 4091.48 17.846 4644.583
+ angles 0 90 0
+}
+GenericEntity SpawnMarkAFRF : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{7CD99D22C7AE8195}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor.imageset"
+   m_sHighlightImageSet "{B9356E7B2E974DCD}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor-outline.imageset"
+   m_sQuadName "combined"
+   m_Color 0.623 0.022 0.022 1
+   m_fSize 155
+   m_bWorldScale 1
+   m_sDescription "AFRF"
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+  }
+ }
+ coords 4228.883 18.229 2973.327
+ angleY 90
+}
