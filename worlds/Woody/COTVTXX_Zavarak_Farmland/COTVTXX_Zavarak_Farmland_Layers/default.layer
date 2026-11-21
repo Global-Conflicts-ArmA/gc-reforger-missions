@@ -1,0 +1,237 @@
+SCR_AIWorld : "{3DE6090FC602E566}Prefabs/AI/SCR_AIWorld_Takistan.et" {
+ coords 10124.98 194.677 11248.821
+}
+GC_LobbyGameMode GC_MigratedMission : "{1D6C68E76635A2C2}worlds/Woody/COTVTXX_Zavarak_Farmland/COTVTXX_Zavarak_Farmland_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{655B3E2BD795B251}" {
+     m_sWeatherPresetName "Clear"
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 1
+   m_iMonth 8
+   m_iYear 1989
+  }
+  GC_PeakFactionPopulationComponent "{44EB776E4A03F458}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{6A0DA475DD4D1D93}" {
+     m_sName "Mujahideen W"
+     m_aConditions {
+      GC_CustomScriptCondition "{FB4AB36198AEA2B7}" {
+       m_Script GC_PeakFactionPopulationCheck "{3EB3862A5AA31D87}" {
+        m_sFaction "USSR"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{05541AA087A82F69}" {
+       m_sMessage "Mujahideen W"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{710D0B100E8D35B8}" {
+     m_sName "Mujahideen W (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8CB49E170588FD8E}" {
+       m_sEventName "Mujahideen W"
+      }
+     }
+     m_Advanced GC_EventOptions "{E617E7A3C785DEF1}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{2BE1AC7C90EE694C}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_INSURGENT"
+       }
+      }
+     }
+    }
+    GC_Event "{50F7888349820C1D}" {
+     m_sName "Soviet W1"
+     m_aConditions {
+      GC_CustomScriptCondition "{1CFB0A5B0E26159C}" {
+       m_Script GC_PeakFactionPopulationCheck "{9EC12668ECF660BA}" {
+        m_sFaction "GC_INSURGENT"
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3200860AD575AC77}" {
+       m_sMessage "Soviet W1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{91497D0FCBB6BF46}" {
+     m_sName "Soviet W1 (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2E698E98EAE000B7}" {
+       m_sEventName "Soviet W1"
+      }
+     }
+     m_Advanced GC_EventOptions "{6945219F345CB5CD}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{1334C65F502BF218}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "USSR"
+       }
+      }
+     }
+    }
+    GC_Event "{B70E6EC2986B912F}" {
+     m_sName "Soviet W2"
+     m_aConditions {
+      GC_ConditionGroup "{08D89BC8D64799B2}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{18872D2CB41DDE9C}" {
+         m_sArea "GC_MigrationArea_obj1"
+         m_Targets GC_CharacterAreaTargets "{11DB557FCEA93F52}" {
+          m_iWho 2
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{FA004BAEB37C7647}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{52C83E859764F480}" {
+          m_fSeconds 60
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{C49EC0CD197CA0C0}" {
+           m_sLocation "an objective"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{730CC78E7AF7F83F}" {
+         m_sArea "GC_MigrationArea_obj2"
+         m_Targets GC_CharacterAreaTargets "{4F4DD52DCDFC275D}" {
+          m_iWho 2
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{DC20A320C47A5BB0}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{B0D287ABA3181B2F}" {
+          m_fSeconds 60
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{F7B34B87B20B3D40}" {
+           m_sLocation "an objective"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{9E5CB7836F1EED30}" {
+         m_sArea "GC_MigrationArea_obj3"
+         m_Targets GC_CharacterAreaTargets "{EADFF237E235F2F4}" {
+          m_iWho 2
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{93AA90D948ED39B8}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{204A8B1C5C51D809}" {
+          m_fSeconds 60
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{AE591061413F0E35}" {
+           m_sLocation "an objective"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{12C5D42C6A9727CF}" {
+       m_sMessage "Soviet W2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{52BDC5D934BE5BFE}" {
+     m_sName "Soviet W2 (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F93DB5B542458AA5}" {
+       m_sEventName "Soviet W2"
+      }
+     }
+     m_Advanced GC_EventOptions "{499A3F28237F51BE}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{D4A8B3038330C963}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "USSR"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 10170.384 179.014 11285.114
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
+      Name "180 МСП"
+      m_sNameUpper "180 МСП"
+     }
+    }
+    SCR_Faction "{632925D53C7F1148}" {
+     UIInfo SCR_FactionUIInfo "{6328D378FF9975BC}" {
+      Name "Mujahideen"
+      m_sNameUpper "Mujahideen"
+     }
+    }
+   }
+  }
+ }
+}
