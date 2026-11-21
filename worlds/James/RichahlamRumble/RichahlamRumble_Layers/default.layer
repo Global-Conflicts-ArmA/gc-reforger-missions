@@ -1,0 +1,195 @@
+SCR_AIWorld : "{E2A016456BBC697D}Prefabs/SCR_AIWorld_Kunar.et" {
+ coords 638.799 38.5 3264.071
+}
+GC_LobbyGameMode GC_MigratedMission : "{EB91C4804EBC6121}worlds/James/RichahlamRumble/RichahlamRumble_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{659CD7CB43935178}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 14
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 12
+   m_iMonth 7
+   m_iYear 1986
+  }
+  GC_PeakFactionPopulationComponent "{84C816E92F7ABCFB}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{E5C6262443BB5166}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 300
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{76B2EEBD4A92FE66}" {
+     m_sName "Insurgents Killed"
+     m_aConditions {
+      GC_CustomScriptCondition "{DB6D131E14173195}" {
+       m_Script GC_PeakFactionPopulationCheck "{FC035F4636CD7032}" {
+        m_sFaction "GC_MUJ"
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DADA7F088676BE6D}" {
+       m_sMessage "Insurgents Killed"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7194391C5B0C4134}" {
+     m_sName "Insurgents Killed (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{08DCA457C753252E}" {
+       m_sEventName "Insurgents Killed"
+      }
+     }
+     m_Advanced GC_EventOptions "{FDAC09DC94AFCAB7}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_EndMissionAction "{483B9B90D3F44CB5}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "USSR"
+       }
+      }
+     }
+    }
+    GC_Event "{2C3DDE0D65F4E0EC}" {
+     m_sName "USSR Killed"
+     m_aConditions {
+      GC_CustomScriptCondition "{090F900F02E5BE04}" {
+       m_Script GC_PeakFactionPopulationCheck "{766B699ABD1DB9A5}" {
+        m_sFaction "USSR"
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{80283FF890BF00AE}" {
+       m_sMessage "USSR Killed"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{27AF3FB7C910F99C}" {
+     m_sName "USSR Killed (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E14C5A5CF1EB1D77}" {
+       m_sEventName "USSR Killed"
+      }
+     }
+     m_Advanced GC_EventOptions "{983876DDD5F7A3D0}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_EndMissionAction "{2152DC27D71871EF}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_MUJ"
+       }
+      }
+     }
+    }
+    GC_Event "{FA9769BE86F05ADD}" {
+     m_sName "Time Limit (3600s)"
+     m_Advanced GC_EventOptions "{B65990016955014A}" {
+      m_fDelay 3600
+     }
+     m_aActions {
+      GC_EndMissionAction "{FB39C58C6FF79DED}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_MUJ"
+       }
+      }
+     }
+    }
+    GC_Event "{B3EAFE6DC8B0E5C6}" {
+     m_sName "Time Limit (3000s)"
+     m_Advanced GC_EventOptions "{F76B29FDA6021772}" {
+      m_fDelay 3000
+     }
+     m_aActions {
+      GC_MessageAction "{CEC0DD1BCF55B8FA}" {
+       m_sTitle "Time Limit Approaching"
+       m_sMessage "You have 10 minutes left."
+      }
+     }
+    }
+    GC_Event "{865EA0383685BCE8}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{5D73E03660FB9761}" {
+       m_fSeconds 300
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{C9EFEFC3B30DFCDC}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 666.024 70.528 2784.788
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB79282A19687}" {
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB79284A2F6C9}" {
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{6508F6387DF69F1D}" {
+        m_sCallsign " Bronegruppa"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GC_StartupCleanupEntity {
+ coords 276.738 40 3173.126
+ m_fRadius 60
+}
+GC_StartupCleanupEntity {
+ coords 364.131 43.262 3223.153
+ m_fRadius 12
+}
+GC_StartupCleanupEntity {
+ coords 364.068 41.017 3187.082
+ m_fRadius 8
+}
+GC_StartupCleanupEntity {
+ coords 957.704 192.633 2848.168
+ m_fRadius 60
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 916.134 128.279 2376.064
+ m_fWarnRadius 85
+ m_fZoneRadius 115
+ m_fZoneTeleportedRadius 125
+}
