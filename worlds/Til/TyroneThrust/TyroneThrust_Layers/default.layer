@@ -1,0 +1,347 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{608EC499033CCBE4}" {
+     NavmeshFile "{AD5F99CD7C59D5E0}worlds/GameMaster/Navmeshes/GM_Eden.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F3B4EE8A}" {
+     NavmeshFile "{C35ECF3276824654}worlds/GameMaster/Navmeshes/GM_Eden_vehicles.nmn"
+    }
+   }
+  }
+ }
+}
+GC_LobbyGameMode GC_MigratedMission : "{FE544FC0F654FB36}worlds/Til/TyroneThrust/TyroneThrust_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 14
+   m_iStartingMinutes 30
+  }
+  GC_PeakFactionPopulationComponent "{35D1E717E36EAC5B}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{6A69BB1327182DD1}" {
+     m_sName "Time Limit (2100s)"
+     m_Advanced GC_EventOptions "{117FCABB478028D3}" {
+      m_fDelay 2100
+     }
+     m_aActions {
+      GC_MessageAction "{C08A2DD029F87AEA}" {
+       m_sTitle "10 minutes left!"
+       m_sMessage "You must take the village within 10 minutes."
+      }
+     }
+    }
+    GC_Event "{EDD5DEA0DCA11D7F}" {
+     m_sName "Time Limit (2700s)"
+     m_Advanced GC_EventOptions "{AD2B17F411B65527}" {
+      m_fDelay 2700
+     }
+     m_aActions {
+      GC_MessageAction "{8FAF3444D2A6FAD7}" {
+       m_sTitle "RU Defeat"
+       m_sMessage "The Russians were not able to take Tyrone in time."
+      }
+     }
+    }
+    GC_Event "{0045F13CFCD8EC39}" {
+     m_sName "Time Limit (2720s)"
+     m_Advanced GC_EventOptions "{8F3C05B9CD4D90DB}" {
+      m_fDelay 2720
+     }
+     m_aActions {
+      GC_EndMissionAction "{4335223D069C5769}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{622B5CFEBBB52668}" {
+     m_sName "Victory"
+     m_aConditions {
+      GC_AreaCondition "{42C73E682C80B2A6}" {
+       m_sArea "GC_MigrationArea_TYRONE_TAKEN"
+       m_Targets GC_CharacterAreaTargets "{45510CFCB92F7928}" {
+        m_iWho 2
+        m_aFactions {
+         "RHS_AFRF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{5598B83A00FA2EED}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{5C552903A8A5C221}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{28453AC1759930D0}" {
+       m_sMessage "Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{67AA494107EA34AA}" {
+     m_sName "Victory (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BB29B9B095BC68FC}" {
+       m_sEventName "Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{536EE43EF1BD4FA1}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_MessageAction "{864FD1818E3B6205}" {
+       m_sTitle "RU Victory"
+       m_sMessage "The Russians took the village of Tyrone!"
+      }
+     }
+    }
+    GC_Event "{0AA47E0616943EC8}" {
+     m_sName "Victory (25s)"
+     m_aConditions {
+      GC_MissionEventCondition "{860C2C41516A77F0}" {
+       m_sEventName "Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{1EAD9C79F2C3AA61}" {
+      m_fDelay 25
+     }
+     m_aActions {
+      GC_EndMissionAction "{276935DF59E5483F}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{4785759BFCE6C13B}" {
+     m_sName "Defeat"
+     m_aConditions {
+      GC_CustomScriptCondition "{3DAAEADAC295C728}" {
+       m_Script GC_PeakFactionPopulationCheck "{378FC81132EF3319}" {
+        m_sFaction "RHS_AFRF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A2D798FB729607A7}" {
+       m_sMessage "Defeat"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{875865D8CDCAB278}" {
+     m_sName "Defeat (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{37C9DD118E1B8D0F}" {
+       m_sEventName "Defeat"
+      }
+     }
+     m_Advanced GC_EventOptions "{0C4F08A4E27B51CC}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{E4CD1F6FBFD77E42}" {
+       m_sTitle "RU Defeat"
+       m_sMessage "All Russians died during the assault!"
+      }
+     }
+    }
+    GC_Event "{4A5DD40B5F46D516}" {
+     m_sName "Defeat (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{315E447D1686117F}" {
+       m_sEventName "Defeat"
+      }
+     }
+     m_Advanced GC_EventOptions "{703CB9F15AD24AB4}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_EndMissionAction "{E09F6FDAAA80B917}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{3B3A6D1F5C58D2FB}" {
+     m_sName "Spawn QRF"
+     m_aConditions {
+      GC_AreaCondition "{D5ED6BECB839ECD8}" {
+       m_sArea "GC_MigrationArea_TAKING_TYRONE"
+       m_Targets GC_CharacterAreaTargets "{355296A58367F3DA}" {
+        m_iWho 2
+        m_aFactions {
+         "RHS_AFRF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{9674039F99935555}" {
+        m_fRequiredShare 0.1
+       }
+       m_Capture GC_AreaCaptureOptions "{178BFC8FF9974EBE}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B3EDBD06724601EA}" {
+       m_sMessage "Spawn QRF"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{70E62B1946575732}" {
+     m_sName "Spawn QRF (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2511C7DBC6D1A72B}" {
+       m_sEventName "Spawn QRF"
+      }
+     }
+     m_Advanced GC_EventOptions "{AE0D8C6FAF5216A2}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{3F30581B3B777989}" {
+       m_Spawn GC_CrewedVehicleSpawn "{9329075402509CB0}" {
+        m_sLocation "QRFSpawn"
+        m_sPrefab "{B47110AA1A806556}Prefabs/Vehicles/Wheeled/BTR70/BTR70_FIA.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{DA036E7053B6EFB3}" {
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "WP9_QRF"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{8A1E087BB1676934}" {
+     m_sName "GC_MigratedSpawn_30B61DB677C02C1A"
+     m_aConditions {
+      GC_AreaCondition "{CD762B389895CB56}" {
+       m_sArea "GC_MigrationArea_TAKING_TYRONE"
+       m_Targets GC_CharacterAreaTargets "{A4BF30E71FE077BA}" {
+        m_iWho 2
+        m_aFactions {
+         "RHS_AFRF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{A1F7CF78F6C4692A}" {
+        m_fRequiredShare 0.1
+       }
+       m_Capture GC_AreaCaptureOptions "{F770035AC99945A2}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E8785CFEC2C27C7D}" {
+       m_sMessage "GC_MigratedSpawn_30B61DB677C02C1A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1B6883542704316F}" {
+     m_sName "GC_MigratedSpawn_30B61DB677C02C1A (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E72AE7D188867573}" {
+       m_sEventName "GC_MigratedSpawn_30B61DB677C02C1A"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{1B6883542704316F}" {
+       m_Spawn GC_CrewedVehicleSpawn "{ED16713FB19D2DD5}" {
+        m_sLocation "GC_Spawner_30B61DB677C02C1A"
+        m_sPrefab "{B47110AA1A806556}Prefabs/Vehicles/Wheeled/BTR70/BTR70_FIA.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{3C6910FD4A32A756}" {
+          m_aStations {
+           GC_SpawnCrewStation "{2464B03144415C19}" {
+            m_aCharacters {
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 10
+          m_aWaypoints {
+           "WP9_QRF"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{5977478D568C092E}" {
+        m_sCallsign "134 HQ"
+       }
+       SCR_CallsignInfo "{5977478D568C092D}" {
+        m_sCallsign "134"
+       }
+       SCR_CallsignInfo "{5977478D568D935E}" {
+        m_sCallsign "135"
+       }
+       SCR_CallsignInfo "{5977478D568D935F}" {
+        m_sCallsign "136"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3-%4"
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity GC_Spawner_30B61DB677C02C1A {
+ coords 4492.133 14.644 9509.175
+ angleY 180
+}
+GC_RadiusAreaEntity GC_MigrationArea_TYRONE_TAKEN : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 4948.142 37.146 9078.465
+ m_fRadius 120
+}
+GC_RadiusAreaEntity GC_MigrationArea_TAKING_TYRONE : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 4948.142 37.146 9078.465
+ m_fRadius 75
+}
