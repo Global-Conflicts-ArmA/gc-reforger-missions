@@ -1,0 +1,665 @@
+SCR_AIWorld : "{33A5B976E41B0A4C}Prefabs/AI/SCR_AIWorld_BadOrb_GC.et" {
+}
+GC_LobbyGameMode GC_MigratedMission : "{8F49BD263D830161}worlds/Til/GreenScreen/GreenScreen_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{65951B574883320A}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 5
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{0DE88CA03DBA9F66}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{7022B35C36C02028}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 360.000000
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{8241737F18D9B2D5}" {
+     m_sName "GC_MigrationCapture_extr_high"
+     m_aConditions {
+      GC_AreaCondition "{D6C045F582DFCD4E}" {
+       m_sArea "MapShape_ExfilArea"
+       m_Targets GC_NamedAreaTargets "{4A0F7A4EC7F55514}" {
+        m_aNames {
+         "BRDM2_NVA0" "BRDM2_NVA1" "BRDM2_NVA2" "BRDM2_NVA3" "BRDM2_NVA4" "BRDM2_NVA5" "BRDM2_NVA6" "BRDM2_NVA7"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{3DBDFD6E56582EC7}" {
+        m_fRequiredProportion 0.62
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{FAC5CDC09426DA1D}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4897D97C24987E1C}" {
+       m_sMessage "GC_MigrationCapture_extr_high"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{068BED5C13CF69A5}" {
+     m_sName "GC_MigrationCapture_extr_low"
+     m_aConditions {
+      GC_AreaCondition "{074CEC13C71AE14E}" {
+       m_sArea "MapShape_ExfilArea"
+       m_Targets GC_NamedAreaTargets "{3C61E790859D686D}" {
+        m_aNames {
+         "BRDM2_NVA0" "BRDM2_NVA1" "BRDM2_NVA2" "BRDM2_NVA3" "BRDM2_NVA4" "BRDM2_NVA5" "BRDM2_NVA6" "BRDM2_NVA7"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{22A137103F38613E}" {
+        m_fRequiredProportion 0.37
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{2C6AFAFBF875C656}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F86D0B87AA9201F5}" {
+       m_sMessage "GC_MigrationCapture_extr_low"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6C709474B5265D38}" {
+     m_sName "US Major"
+     m_aConditions {
+      GC_ConditionGroup "{9AE37CBE22B11559}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_CustomScriptCondition "{F3F10316E6B75F67}" {
+         m_Script GC_PeakFactionPopulationCheck "{FA8E226517697CEE}" {
+          m_sFaction "GC_NVA"
+          m_fRatio 0.7
+         }
+        }
+        GC_ConditionGroup "{4EA553FA40A35B2F}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_AreaCondition "{0E0E4660CD18216A}" {
+           m_sArea "MapShape_ExfilArea"
+           m_Targets GC_CharacterAreaTargets "{EB78FAA676B44F14}" {
+            m_aFactions {
+             "GC_NVA"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{F69BEB2B199D9DAF}" {
+            m_fRequiredShare 0.95
+            m_bWholeMission 1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{27817973F8FF075C}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_MissionEventCondition "{BE5441C003184B5A}" {
+           m_sEventName "GC_MigrationCapture_extr_low"
+           m_bRequireFalse 1
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{743B22D469BF4231}" {
+       m_sMessage "US Major"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E050F6F6122E258A}" {
+     m_sName "US Major (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6E77C359E421B988}" {
+       m_sEventName "US Major"
+      }
+     }
+     m_Advanced GC_EventOptions "{04BCFB1159C9E177}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{667079F419E29606}" {
+       m_sTitle "MAJOR US VICTORY"
+       m_sMessage "The NVA company suffered extreme casualties."
+      }
+     }
+    }
+    GC_Event "{0CD251D8CD0723A0}" {
+     m_sName "US Major (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2D83EF3FE9AC0DBD}" {
+       m_sEventName "US Major"
+      }
+     }
+     m_Advanced GC_EventOptions "{87D6AC18572885C1}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{49284200CF783621}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{2A7F3E1D7C10D105}" {
+     m_sName "US Minor (2700s)"
+     m_Advanced GC_EventOptions "{9BF7F74ECC8F1603}" {
+      m_fDelay 2700
+     }
+     m_aActions {
+      GC_MessageAction "{ED436961A8902341}" {
+       m_sTitle "MINOR US VICTORY"
+       m_sMessage "Reinforcements arrive, forcing the remaining NVA troops to withdraw."
+      }
+     }
+    }
+    GC_Event "{424CD9BE0981DB9E}" {
+     m_sName "US Minor (2730s)"
+     m_Advanced GC_EventOptions "{2CF56430EE7EB6AE}" {
+      m_fDelay 2730
+     }
+     m_aActions {
+      GC_EndMissionAction "{55596341DCF5B76B}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{FD4765CC7FA84270}" {
+     m_sName "NVA Major"
+     m_aConditions {
+      GC_ConditionGroup "{D3A28D132A9D96FB}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionEventCondition "{F4D161544E29F3C6}" {
+         m_sEventName "GC_MigrationCapture_extr_high"
+        }
+        GC_AreaCondition "{56F04D750ED18248}" {
+         m_sArea "MapShape_ExfilArea"
+         m_Targets GC_CharacterAreaTargets "{B920D178BB07BA8A}" {
+          m_aFactions {
+           "GC_NVA"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{77592555F85CB32A}" {
+          m_fRequiredShare 0.95
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{349B127E6DD37968}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6953E50B1BD7CCF3}" {
+       m_sMessage "NVA Major"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9AB3592C0B3E0795}" {
+     m_sName "NVA Major (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B893422BFC98BF5F}" {
+       m_sEventName "NVA Major"
+      }
+     }
+     m_Advanced GC_EventOptions "{E51B4340B98CCD50}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{4E24595CE034088E}" {
+       m_sTitle "MAJOR NVA VICTORY"
+       m_sMessage "The NVA reconnaissance company completed its movement without suffering high losses."
+      }
+     }
+    }
+    GC_Event "{EA4287E2614CD239}" {
+     m_sName "NVA Major (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{42BA953C8254CFDA}" {
+       m_sEventName "NVA Major"
+      }
+     }
+     m_Advanced GC_EventOptions "{9F522D5DDCD16B75}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{8B6DC3F7F3930B91}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_NVA"
+       }
+      }
+     }
+    }
+    GC_Event "{BB246C3E0A5CB904}" {
+     m_sName "NVA Minor"
+     m_aConditions {
+      GC_ConditionGroup "{0C9ECA68FAF206CE}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionEventCondition "{2AF3D5BD9B275957}" {
+         m_sEventName "GC_MigrationCapture_extr_low"
+        }
+        GC_MissionEventCondition "{1C2B7BD5CEED3C1B}" {
+         m_sEventName "GC_MigrationCapture_extr_high"
+         m_bRequireFalse 1
+        }
+        GC_AreaCondition "{1AB6CE0641E3EDDA}" {
+         m_sArea "MapShape_ExfilArea"
+         m_Targets GC_CharacterAreaTargets "{7A29EDF8A73BE013}" {
+          m_aFactions {
+           "GC_NVA"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{4E881389413E8D67}" {
+          m_fRequiredShare 0.95
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{8A34AB969C926186}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{90EB6D284F68E5D8}" {
+       m_sMessage "NVA Minor"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E31BA723935B8E48}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{F4B4A587A971D389}" {
+       m_fSeconds 360.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{9E64FE55E3BB9258}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     UIInfo SCR_FactionUIInfo "{528C961236B7DCD3}" {
+      Name "USMC"
+      m_sNameUpper "USMC"
+     }
+    }
+   }
+  }
+ }
+}
+PolylineShapeEntity : "{8F470B543A20D963}Prefabs/Logic/Mission/MapShape.et" {
+ components {
+  GC_MapShapeComponent "{8F470B543A20D962}" {
+   m_LineColor 0 0 0 0
+   m_bFillEnabled 1
+   m_FillColor 0 0 0 0.75
+   m_bInvertFill 1
+  }
+ }
+ coords 400 224.15 400
+ Points {
+  ShapePoint "{658AB022DE80A4A7}" {
+   Position 0 0 0
+  }
+  ShapePoint "{658AB02337B576C2}" {
+   Position 4200 0 0
+  }
+  ShapePoint "{658AB023047FF687}" {
+   Position 4200 0 1200
+  }
+  ShapePoint "{658AB02322548290}" {
+   Position 0 0 1200
+  }
+ }
+}
+GC_AOLimitEntity AOLimit_NVA : "{8F470B543A20D944}Prefabs/Logic/Mission/AOLimit.et" {
+ components {
+  GC_BoundaryWallComponent "{6A4D831C2E5079C1}" {
+   m_bEnabled 0
+  }
+  GC_MapShapeComponent "{8F470B543A20D964}" {
+   m_bEnabled 1
+   m_bFillEnabled 0
+   m_LineColor 0 0 0 1
+   m_fLineWidth 3
+   m_aFactionKeys {
+    "GC_NVA"
+   }
+   m_bFactionColor 1
+  }
+ }
+ m_eBehavior SOFT_KILL
+ m_fGraceSeconds 30
+ m_aFactionKeys {
+  "GC_NVA"
+ }
+ coords 400 224.15 400
+ Points {
+  ShapePoint "{658AB022DE80A4A7}" {
+   Position 0 0 0
+  }
+  ShapePoint "{658AB02337B576C2}" {
+   Position 4200 0 0
+  }
+  ShapePoint "{658AB023047FF687}" {
+   Position 4200 0 1200
+  }
+  ShapePoint "{658AB02322548290}" {
+   Position 0 0 1200
+  }
+ }
+ {
+  GenericEntity marker_screen_us : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+   components {
+    GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+     m_sImageSetOrImage "{1228936E5DB30403}UI/Textures/GroupManagement/FlagIcons/GroupFlagsBlufor.imageset"
+     m_sHighlightImageSet ""
+     m_sQuadName "recon-motorized"
+     m_Color 0.016 0.552 0.905 1
+     m_fSize 142.5
+     m_bWorldScale 1
+     m_sDescription ""
+     m_iZOrder 0
+     m_iHoverZOrder 10000
+     m_aFactionKeys {
+      "US"
+     }
+     m_bRestrictToListedFactions 1
+    }
+   }
+   coords 2600 0 600
+   angles 0 90 0
+   {
+    PolylineShapeEntity Shape_Screen : "{8F470B543A20D963}Prefabs/Logic/Mission/MapShape.et" {
+     components {
+      GC_MapShapeComponent "{8F470B543A20D962}" {
+       m_LineColor 0.016 0.552 0.905 1
+       m_bFillEnabled 0
+       m_FillColor 0 0 0 0.75
+       m_bInvertFill 0
+       m_fLineWidth 15
+       m_bWorldLineWidth 1
+       m_aFactionKeys {
+        "US"
+       }
+       m_bVisibleWithoutFaction 1
+      }
+     }
+     coords 0 0 -100
+     angles 0 -90 0
+     Points {
+      ShapePoint "{6594F732C609EACB}" {
+       Position 0 0 500
+      }
+      ShapePoint "{6594F73509CB611D}" {
+       Position 0 0 200
+      }
+      ShapePoint "{6594F735107E6510}" {
+       Position 100 0 300
+      }
+      ShapePoint "{6594F7351B8E5179}" {
+       Position 100 0 100
+      }
+     }
+     IsClosed 0
+     LineColor 1 0 0 1
+     {
+      PolylineShapeEntity : "{8F470B543A20D963}Prefabs/Logic/Mission/MapShape.et" {
+       components {
+        GC_MapShapeComponent "{8F470B543A20D962}" {
+         m_LineColor 0 0 0 0
+         m_bFillEnabled 1
+         m_FillColor 0.016 0.552 0.905 1
+         m_bInvertFill 0
+         m_aFactionKeys {
+          "US"
+         }
+         m_bVisibleWithoutFaction 1
+        }
+       }
+       coords 0 0 500
+       Points {
+        ShapePoint "{6594F735CFBF1589}" {
+         Position -30 0 0
+        }
+        ShapePoint "{6594F735CCD60AE9}" {
+         Position 30 0 0
+        }
+        ShapePoint "{6594F735CD2EC18C}" {
+         Position 0 0 40
+        }
+       }
+       LineColor 1 0 0 1
+      }
+     }
+    }
+    PolylineShapeEntity Shape_Screen2 : "{8F470B543A20D963}Prefabs/Logic/Mission/MapShape.et" {
+     components {
+      GC_MapShapeComponent "{8F470B543A20D962}" {
+       m_LineColor 0.016 0.552 0.905 1
+       m_bFillEnabled 0
+       m_FillColor 0 0 0 0.75
+       m_bInvertFill 0
+       m_fLineWidth 15
+       m_bWorldLineWidth 1
+       m_aFactionKeys {
+        "US"
+       }
+       m_bVisibleWithoutFaction 1
+      }
+     }
+     coords 0 0 -100
+     angles 0 -90 0
+     Points {
+      ShapePoint "{6594F732C609EACB}" {
+       Position 0 0 -500
+      }
+      ShapePoint "{6594F73509CB611D}" {
+       Position 0 0 -200
+      }
+      ShapePoint "{6594F735107E6510}" {
+       Position 100 0 -300
+      }
+      ShapePoint "{6594F7351B8E5179}" {
+       Position 100 0 -100
+      }
+     }
+     IsClosed 0
+     LineColor 1 0 0 1
+     {
+      PolylineShapeEntity : "{8F470B543A20D963}Prefabs/Logic/Mission/MapShape.et" {
+       components {
+        GC_MapShapeComponent "{8F470B543A20D962}" {
+         m_LineColor 0 0 0 0
+         m_bFillEnabled 1
+         m_FillColor 0.016 0.552 0.905 1
+         m_bInvertFill 0
+         m_aFactionKeys {
+          "US"
+         }
+         m_bVisibleWithoutFaction 1
+        }
+       }
+       coords 0 0 -500
+       Points {
+        ShapePoint "{6594F735CFBF1589}" {
+         Position -30 0 0
+        }
+        ShapePoint "{6594F735CCD60AE9}" {
+         Position 30 0 0
+        }
+        ShapePoint "{6594F735CD2EC18C}" {
+         Position 0 0 -40
+        }
+       }
+       LineColor 1 0 0 1
+      }
+     }
+    }
+    GenericEntity : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+     components {
+      GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+       m_sImageSetOrImage "{17F77EFE27CABC03}UI/Imagesets/MilitarySymbol/AMP.imageset"
+       m_sHighlightImageSet ""
+       m_sQuadName "3"
+       m_Color 0 0 0 1
+       m_fSize 67.5
+       m_bWorldScale 1
+       m_sDescription ""
+       m_iZOrder 0
+       m_iHoverZOrder 10000
+       m_aFactionKeys {
+        "US"
+       }
+       m_bRestrictToListedFactions 1
+      }
+     }
+     coords -54 0 0
+     angles 0 0 0
+    }
+   }
+  }
+  GC_AOLimitEntity AOLimit_US : "{8F470B543A20D944}Prefabs/Logic/Mission/AOLimit.et" {
+   components {
+    GC_BoundaryWallComponent "{6A4D831C2E5079C1}" {
+     m_bEnabled 0
+    }
+    GC_MapShapeComponent "{8F470B543A20D964}" {
+     m_bEnabled 1
+     m_bFillEnabled 0
+     m_LineColor 0 0 0 1
+     m_fLineWidth 3
+     m_aFactionKeys {
+      "US"
+     }
+     m_bFactionColor 1
+    }
+   }
+   m_eBehavior SOFT_KILL
+   m_fGraceSeconds 30
+   m_aFactionKeys {
+    "US"
+   }
+   coords 1200 0 0
+   Points {
+    ShapePoint "{658AB022DE80A4A7}" {
+     Position 0 0 0
+    }
+    ShapePoint "{658AB02337B576C2}" {
+     Position 1800 0 0
+    }
+    ShapePoint "{658AB023047FF687}" {
+     Position 1800 0 1200
+    }
+    ShapePoint "{658AB02322548290}" {
+     Position 0 0 1200
+    }
+   }
+  }
+  PolylineShapeEntity MapShape_ExfilArea : "{8F470B543A20D963}Prefabs/Logic/Mission/MapShape.et" {
+   components {
+    GC_MapShapeComponent "{8F470B543A20D962}" {
+     m_LineColor 0.071 0.561 0.192 0.575
+     m_bFillEnabled 0
+     m_FillColor 0 0 0 0.75
+     m_bInvertFill 0
+     m_fLineWidth 8
+     m_bWorldLineWidth 1
+     m_aFactionKeys {
+      "GC_NVA"
+     }
+     m_bVisibleWithoutFaction 0
+    }
+   }
+   Points {
+    ShapePoint "{659370A624FFC05C}" {
+     Position 200 0 200
+    }
+    ShapePoint "{659370A62BFCDB0C}" {
+     Position 200 0 1000
+    }
+    ShapePoint "{659370A62F6FB5E5}" {
+     Position 1000 0 1000
+    }
+    ShapePoint "{659370A631C9C7EF}" {
+     Position 1000 0 200
+    }
+   }
+   LineColor 1 0 0 1
+   {
+    GenericEntity Trigger_ExtrPlayers {
+     coords 0 0 0
+    }
+    GenericEntity Trigger_ExtrHigh {
+     coords 0 0 0
+    }
+    GenericEntity Trigger_ExtrLow {
+     coords 0 0 0
+    }
+   }
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 4212.352 397.142 1014.834
+}
