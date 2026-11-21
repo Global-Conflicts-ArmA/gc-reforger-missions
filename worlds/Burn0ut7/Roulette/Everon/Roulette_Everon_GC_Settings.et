@@ -1,0 +1,63 @@
+GC_LobbyGameMode : "{A79C4E0A43DEB821}Prefabs/MP/Modes/GC_LobbyGameMode.et" {
+ ID "2EBDEF7712AE44EC"
+ components {
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_sFormationSource "{A6A16AFECB6003EC}worlds/Burn0ut7/Roulette/Prefabs/GC_R_SCR_AIWorld.et"
+   m_aBriefings {
+    GC_Briefing "{6B3F0E15FDC174D0}" {
+     m_iOrder 31
+     m_sTitle "Roulette"
+     m_sContent "Commands:"\
+     "/seed - Returns the current seed"\
+     ""\
+     "Admin Commands"\
+     "/reroll - Rerolls random mission"\
+     "/reroll (int seed) - Rerolls the mission with the seed"\
+     "/reroll 15415"\
+     ""\
+     "/scenario - Returns index list of all scenarios"\
+     "/scenario (int index) - Forces all new scenarios to be index"\
+     "/scenario 2"\
+     ""\
+     "/teams - Returns index list of teams for CURRENT scenario"\
+     "/teams (array int indexes) - Forces teams for all new scenarios to these indexes"\
+     "/teams 2 3"\
+     ""\
+     "/players (int) - Sets the player count target for next reroll. Default is 100"\
+     "/players 128"
+    }
+   }
+  }
+  GC_RouletteSetupComponent "{BA79D046F806B861}" {
+   m_sMapConfig "{FCE8689037CA709F}worlds/Burn0ut7/Roulette/Everon/Roulette_Everon_Roulette.conf"
+  }
+  GC_PeakFactionPopulationComponent "{23F08B5352973D55}" {
+  }
+ }
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions {
+    SCR_Faction "{61500924662B6062}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{648D46336748B246}" {
+     m_aFriendlyFactionsIds {
+      "CIV"
+     }
+    }
+    SCR_Faction "{64AA098AEA5B1498}" {
+     m_aFriendlyFactionsIds {
+      "CIV"
+     }
+    }
+    SCR_Faction "{652F615735715119}" {
+     m_aFriendlyFactionsIds {
+      "CIV"
+     }
+    }
+   }
+  }
+ }
+}
