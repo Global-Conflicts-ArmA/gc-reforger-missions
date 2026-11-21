@@ -3,16 +3,6 @@ GC_LobbyGameMode : "{A79C4E0A43DEB821}Prefabs/MP/Modes/GC_LobbyGameMode.et" {
  components {
   GC_LobbyManager "{6A137A39106A4973}" {
    m_aMissionEvents + {
-    GC_Event "{6782C86B58CA2D78}" {
-     m_sName "Initialize faction respawn tickets"
-     m_aActions {
-      GC_RespawnTicketsAction "{79C4C5E36999F223}" {
-       m_sFaction "UK"
-       m_iOperation 0
-       m_iAmount 20
-      }
-     }
-    }
     GC_Event "{1B55F30F0F883B32}" {
      m_sName "Timer (event 10, 3600s)"
      m_Advanced GC_EventOptions "{6DF97DB08A79FB11}" {
@@ -23,6 +13,186 @@ GC_LobbyGameMode : "{A79C4E0A43DEB821}Prefabs/MP/Modes/GC_LobbyGameMode.et" {
        m_sTitle "OPFOR LOSE"
        m_sMessage "OPFOR has failed to deliver in time."
       }
+     }
+    }
+   }
+   m_aBriefings {
+    GC_Briefing "{3079A565A02193E7}" {
+     m_iOrder 0
+     m_sTitle "SITUATION"
+     m_sContent "Russian forces have been forced to transport cargo along ROUTE IVAN."\
+     ""\
+     "We are tasked with engaging and destroying this convoy."\
+     ""\
+     "Russian convoy is expected to be escorted by a platoon of infantry and BRDMs."\
+     ""\
+     "ROUTE IVAN is narrow and winding with choke points between steep cliffs and the sea (see AMBUSH POINTS)."
+     m_aFactionKeys {
+      "UK"
+     }
+    }
+    GC_Briefing "{65919BFD5D2E078A}" {
+     m_iOrder 1
+     m_sTitle "TvT 50 Coastal Capers V2"
+     m_sContent "Russian forces conduct route clearance while escorting important cargo along ROUTE IVAN. British forces are attempting to ambush the convoy."\
+     ""\
+     "OPFOR: 	"\
+     "At least half of the drivers squad must be slotted."\
+     ""\
+     "BLUFOR: 	"\
+     "READ THE TELEPORT INSTRUCTIONS!"\
+     "20 respawn tickets."\
+     ""\
+     "60 min timer."\
+     "	"\
+     "RATIO: 4:1"
+     m_eAudience 1
+    }
+    GC_Briefing "{88397315F452C938}" {
+     m_iOrder 2
+     m_sTitle "SITUATION"
+     m_sContent "Due to the current situation at the front we need to transport supplies along ROUTE IVAN."\
+     ""\
+     "The enemy has attacked multiple convoys before this so we expect an attack upon this convoy."\
+     ""\
+     "Our platoon must conduct route clearance along ROUTE IVAN and protect supply trucks to the FOB."\
+     ""\
+     "The enemy are British Paras airdropped behind out lines in order to disrupt operations. They have access to light arms, AT and AT mines."\
+     ""\
+     "ROUTE IVAN is winding with many choke points that can be exploited by the enemy we must conduct this movement with care."
+     m_aFactionKeys {
+      "USSR"
+     }
+    }
+    GC_Briefing "{8AD5AD886B11D725}" {
+     m_iOrder 3
+     m_sTitle "MISSION"
+     m_sContent "1 Platoon will destroy enemy convoy on ROUTE IVAN."
+     m_aFactionKeys {
+      "UK"
+     }
+    }
+    GC_Briefing "{3897AD6B9FC11462}" {
+     m_iOrder 4
+     m_sTitle "MISSION"
+     m_sContent "Our platoon will conduct route clearance along ROUTE IVAN while escorting important supplies within the hour."
+     m_aFactionKeys {
+      "USSR"
+     }
+    }
+    GC_Briefing "{272A8E55D9166B35}" {
+     m_iOrder 5
+     m_sTitle "EXECUTION (ALL PLEASE READ)"
+     m_sContent "Execution as per CO's brief."\
+     ""\
+     "NOTE: You will be able to hit multiple ambush points using the teleporters plan accordingly."\
+     ""\
+     "Roads can be blocked using found vehicles and AT mines in fact is recommended."\
+     ""\
+     "YOU HAVE AT MINES USE THEM!"\
+     ""\
+     "PLEASE DO NOT ABUSE TELEPORTERS TO GAIN ADVANTAGE DURING PLAY!"
+     m_aFactionKeys {
+      "UK"
+     }
+    }
+    GC_Briefing "{6D259AACE11D7E90}" {
+     m_iOrder 6
+     m_sTitle "EXECUSION (PLEASE READ)"
+     m_sContent "Execution per CO's brief."\
+     ""\
+     "NOTE: The enemy has access to AT mines along a route that can be easily blocked by AT mines. There is no timelimit execution is expected to be slow and methodical."\
+     ""\
+     "Mines can be cleared by demo charges (found in ammo transport covered URALs)."\
+     ""\
+     "Vehicle wrecks can be moved out of the way using vehicles it can be glitchy but testing has shown it to be safe. If the road is completely blocked and nothing can be done GM maybe requested."
+     m_aFactionKeys {
+      "USSR"
+     }
+    }
+    GC_Briefing "{8191362705C5854B}" {
+     m_iOrder 7
+     m_sTitle "AMBUSH LOCATIONS"
+     m_sContent "We have identified 3 possible ambush locations at each location is a cache of AT mines. At ambush location 3 there are also LAWs."\
+     ""\
+     "AMBUSH POSITION 1 : GRID (080 013)"\
+     "This position is ideal as it a tight section of road that passes steep cliffs and the sea. Ideal for AT mines and being blocked with aquired vehicles."\
+     ""\
+     "AMBUSH POSITON 2: GRID (088 007)"\
+     "At this position the road is between retaining walls and steep wooded slopes. We have arranged for barricades to be placed across the road to slow enemy movement."\
+     ""\
+     "AMBUSH POSITION 3: GRID (093 002)"\
+     "This is similar to AMBUSH POSITION 2 however there is a rock slide that will aid in slowing the convoy, the slopes are shallower and it is not far from the enemy base further down the road."\
+     ""\
+     "THESE ARE SUGGESTED LOCATIONS AND ARE TO BE USED AT CO'S DISCRETION."\
+     ""
+     m_aFactionKeys {
+      "UK"
+     }
+    }
+    GC_Briefing "{E1D9704CE3355AB1}" {
+     m_iOrder 8
+     m_sTitle "SUSTAINMENT"
+     m_sContent "We are a platoon+ with attached drivers armed with light arms."\
+     ""\
+     "2x BRDM"\
+     "3x Troop Transport URAL (uncovered)"\
+     "1x Unarmed UAZ"\
+     "1x Armed UAZ"\
+     "2x Fuel Transport URAL (tanker)"\
+     "3x Ammo Transport URAL (covered)."\
+     ""\
+     "5x Demo charges in each Ammo Transport."
+     m_aFactionKeys {
+      "USSR"
+     }
+    }
+    GC_Briefing "{0BF53580CFCE4226}" {
+     m_iOrder 9
+     m_sTitle "TELEPORTERS (ALL PLEASE READ)"
+     m_sContent "Each ambush point has a teleporter from spawn to it's location. Every teleport except AMBUSH POSITION 3 will be disabled once the convoy comes into range."\
+     ""\
+     "Each ambush point has a return to spawn teleport that can be used if the convoy bypasses an ambush point."\
+     ""\
+     "IMPORTANT! AMPUSH POSITION 3 has no return teleport you teleport there you will not be able to return except when you die."\
+     ""\
+     "DO NOT ABUSE THE TELEPORTERS."
+     m_aFactionKeys {
+      "UK"
+     }
+    }
+    GC_Briefing "{BE5AFF0B270B5767}" {
+     m_iOrder 10
+     m_sTitle "COMSIG"
+     m_sContent "Platoon Net: 42.0 MHz"\
+     ""\
+     "HQ and BRDMs have access to long ranges."
+     m_aFactionKeys {
+      "USSR"
+     }
+    }
+    GC_Briefing "{0E14FF284F178A67}" {
+     m_iOrder 11
+     m_sTitle "COMSIG"
+     m_sContent "BLUFOR has no radios."
+     m_aFactionKeys {
+      "UK"
+     }
+    }
+    GC_Briefing "{2BE7DE57D9A7035F}" {
+     m_iOrder 12
+     m_sTitle "WIN CONDITIONS"
+     m_sContent "BLUFOR wins when all cargo transports (x5) are destroyed. Cargo transports are the covered URALs (x3) and the tanker URALs (x2)"\
+     ""\
+     "OR"\
+     ""\
+     "Timer runs out after 60 mins."\
+     ""\
+     "OPFOR wins when all surviving cargo transports arrive at the base."\
+     ""\
+     "BLUFOR has a 5 min setup timer."
+     m_aFactionKeys {
+      "UK" "USSR"
      }
     }
    }
