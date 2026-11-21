@@ -1,0 +1,125 @@
+SCR_AIWorld : "{3D0FE80570D5BFCC}Prefabs/AI/SCR_AIWorld_Anizay.et" {
+ coords 4288.327 168.13 2545.978
+}
+GC_LobbyGameMode GC_MigratedMission : "{D48F42AB4DE4DD07}worlds/Sasha20k_pro/Assault of Thirty Palms/Assault of Thirty Palms_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 6
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6A14DE476234C802}" {
+     m_sWeatherPresetName "clear"
+     m_iStartingHour 5
+     m_iStartingMinutes 41
+    }
+   }
+   m_fWindSpeed 9.333
+   m_fWindDirection 0.543
+   m_iYear 2025
+  }
+  GC_PeakFactionPopulationComponent "{0356CF0952DE529F}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{262D84E24DA94ED9}" {
+     m_sName "US Players Killed"
+     m_aConditions {
+      GC_CustomScriptCondition "{591E17680FEEB450}" {
+       m_Script GC_PeakFactionPopulationCheck "{BEFD41186EF729A3}" {
+        m_sFaction "RHS_USAF"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F9F3631204FC7705}" {
+       m_sMessage "US Players Killed"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0568EC2849AC9844}" {
+     m_sName "US Players Killed (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{43FBD2947C4F0FAC}" {
+       m_sEventName "US Players Killed"
+      }
+     }
+     m_Advanced GC_EventOptions "{CD95AD9087CDBFB4}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{CB178CE76B27597B}" {
+       m_sTitle "95% of Players Are Dead, Defeat!"
+       m_sMessage "80% of US players have died and or are combat ineffective, insurgents manage to hold their position, its a US defeat!"
+      }
+     }
+    }
+    GC_Event "{D360964EF8FFC904}" {
+     m_sName "FOB Captured"
+     m_aConditions {
+      GC_AreaCondition "{2B8B0052A5DA805A}" {
+       m_sArea "GC_MigrationArea_9222389F5FD6ADC3"
+       m_Targets GC_CharacterAreaTargets "{B672E8573EACD1BF}" {
+        m_iWho 2
+        m_aFactions {
+         "RHS_USAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{D9261035679103FD}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{394CBF1893D54903}" {
+        m_fSeconds 120
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{209457DF6D841D04}" {
+       m_sMessage "FOB Captured"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{133392D3447E53E1}" {
+     m_sName "FOB Captured (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3C06DBAD644B7FDA}" {
+       m_sEventName "FOB Captured"
+      }
+     }
+     m_Advanced GC_EventOptions "{9E371AF992944C09}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{7238EB6E4C3492D5}" {
+       m_sTitle "FOB taken"
+       m_sMessage "The FOB Of thirty palms has been taken by the US forces, mission succsessful"
+       m_aFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 4291.807 166.876 2554.338
+}
+GC_RadiusAreaEntity GC_MigrationArea_9222389F5FD6ADC3 : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 5172.888 208.353 1810.986
+ m_fRadius 150
+}
+$grp Vehicle : "{BC799DFC61A080D0}Prefabs/Vehicles/Wheeled/M998/M1151/M2HB/GC_M1151_armed_M2HB_MDO_OGPK+Cover_tan.et" {
+ GC_M1151_armed_M2HB_MDO_OGPK_Cover_tan2 {
+  coords 4137.249 167.528 2629.947
+  angles 0 177.533 0
+ }
+ GC_M1151_armed_M2HB_MDO_OGPK_Cover_tan3 {
+  coords 4143.278 167.269 2626.116
+  angles 0 177.533 0
+ }
+}
