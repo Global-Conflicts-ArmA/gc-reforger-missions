@@ -1,0 +1,188 @@
+SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
+ coords 12123.938 2.156 10482.129
+}
+GC_LobbyGameMode GC_MigratedMission : "{ED991DBCE2E6E00F}worlds/Burn0ut7/Killzone/Killzone_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bRandomStartingDaytimeRange 1
+   m_iRangeHoursStart 5
+   m_iRangeHoursEnd 20
+   m_bRandomStartingWeather 1
+  }
+  GC_PeakFactionPopulationComponent "{179701DAFD010D0F}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{47CCF874A88E6B0C}" {
+     m_sName "truck"
+     m_aConditions {
+      GC_EntityDamageCondition "{F2794C7ADFE24395}" {
+       m_sEntityName "Ural4320_command1"
+      }
+     }
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{4704B0AE41F34546}" {
+     m_sName "opfor_cas"
+     m_aConditions {
+      GC_CustomScriptCondition "{00E3894C16FA3B9E}" {
+       m_Script GC_PeakFactionPopulationCheck "{A06973E66CE9BC32}" {
+        m_sFaction "GC_SEPARATIST"
+        m_fRatio 0.6
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{787CFBA5E20B96A8}" {
+       m_sMessage "opfor_cas"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F42F050AA4422D44}" {
+     m_sName "opfor_cas (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F22EFE455C22CC3C}" {
+       m_sEventName "opfor_cas"
+      }
+     }
+     m_Advanced GC_EventOptions "{0171CFD213CA8A35}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{D283431AFDD17AF9}" {
+       m_sTitle "Blufor victory"
+       m_sMessage "Opfor causality limit reached"
+       m_iDelivery 1
+      }
+     }
+    }
+    GC_Event "{4C1D1408E8D32F73}" {
+     m_sName "blufor_cas"
+     m_aConditions {
+      GC_CustomScriptCondition "{A46D35B2C4040D35}" {
+       m_Script GC_PeakFactionPopulationCheck "{1E5AE526B14E3847}" {
+        m_sFaction "RHS_USAF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1B0E3B34E0842776}" {
+       m_sMessage "blufor_cas"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{512C9D807633025B}" {
+     m_sName "blufor_cas (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{942BAA7ED510AE47}" {
+       m_sEventName "blufor_cas"
+      }
+     }
+     m_Advanced GC_EventOptions "{21894ACF6F4E6716}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{E74B79794618D7C0}" {
+       m_sTitle "Opfor victory"
+       m_sMessage "Blufor causality limit reached"
+       m_iDelivery 1
+      }
+     }
+    }
+    GC_Event "{CE3C9DD2A4EB825E}" {
+     m_sName "truck"
+     m_aConditions {
+      GC_MissionFlagCondition "{D901DDDE24D142AB}" {
+       m_sFlagName "truck"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{090C1A7D9221EE03}" {
+       m_sMessage "truck"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6C5005B10A276963}" {
+     m_sName "truck (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F0C5A6B4E7F1ED0D}" {
+       m_sEventName "truck"
+      }
+     }
+     m_Advanced GC_EventOptions "{F429665819544133}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{0E72DAEF26538D41}" {
+       m_sTitle "Blufor victory"
+       m_sMessage "Truck destroyed"
+       m_iDelivery 1
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 12147.209 2.155 10513.394
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CD021D5C}" {
+        m_sCallsign "A"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{55CCB792CE18FB44}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792CE02ECFA}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792CE2A44BD}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{68A0E75EC04395D0}" {
+        m_sCallsign "4"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{68A0E75E923170F1}" {
+        m_sCallsign "4"
+       }
+       SCR_CallsignInfo "{68A0E75E95870D05}" {
+        m_sCallsign "5"
+       }
+      }
+      m_sCallsignGroupFormat "%1 %2'%3"
+      m_sCallsignCharacterWithRoleFormat "%1 %2 %3: %4"
+     }
+    }
+   }
+  }
+ }
+}
