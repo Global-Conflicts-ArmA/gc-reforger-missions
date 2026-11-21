@@ -1,0 +1,496 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 6190.352 56.531 6961.771
+}
+GC_LobbyGameMode GC_MigratedMission : "{78AF1F3513C72EBB}worlds/HitTheMan/Fate of 2nd Platoon/FateOf2ndPlatoon_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 4
+   m_iStartingMinutes 52
+   m_fDayTimeAcceleration 0.1
+   m_fNightTimeAcceleration 0.1
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{650415CBAFAE6875}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 4
+     m_iStartingMinutes 52
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 21
+   m_iMonth 7
+   m_iYear 1983
+  }
+  GC_PeakFactionPopulationComponent "{6547105DD080347E}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{C881E8FE59036925}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 300.000000
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{75BB59CE153EC4CF}" {
+     m_sName "US Victory Casualties"
+     m_aConditions {
+      GC_CustomScriptCondition "{AD1EA6AC7A15F605}" {
+       m_Script GC_PeakFactionPopulationCheck "{8F15DDE7528BB80A}" {
+        m_sFaction "GC_NVA"
+        m_fRatio 0.85
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B4BBADD87FAA9F58}" {
+       m_sMessage "US Victory Casualties"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6379792B4F50A0EA}" {
+     m_sName "US Victory Casualties (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2859BB5D7380A392}" {
+       m_sEventName "US Victory Casualties"
+      }
+     }
+     m_Advanced GC_EventOptions "{494BC0218109E5A3}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{E682CBA81AA070A7}" {
+       m_sTitle "United States Army Victory"
+       m_sMessage "NVA Sustained too many casualties.. GM Discretion when to end the mission"
+      }
+     }
+    }
+    GC_Event "{ECFA313516CAD44B}" {
+     m_sName "NVA Victory Casualties"
+     m_aConditions {
+      GC_CustomScriptCondition "{586E4E77775B4C2C}" {
+       m_Script GC_PeakFactionPopulationCheck "{62D85A65DB27D757}" {
+        m_sFaction "US"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E21319F44E6B0BB9}" {
+       m_sMessage "NVA Victory Casualties"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CF3B9AF7F9017389}" {
+     m_sName "NVA Victory Casualties (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F5C4172210A7B57E}" {
+       m_sEventName "NVA Victory Casualties"
+      }
+     }
+     m_Advanced GC_EventOptions "{AB1A258D6F278DE2}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{F2304C2C35BBA7B1}" {
+       m_sTitle "East German Army Victory"
+       m_sMessage "US Sustained too many casualties.. GM Discretion when to end the mission"
+      }
+     }
+    }
+    GC_Event "{8865500F81F09B3E}" {
+     m_sName "Time Limit (1800s)"
+     m_Advanced GC_EventOptions "{FA0EDF3C4B2377C0}" {
+      m_fDelay 1800
+     }
+     m_aActions {
+      GC_MessageAction "{DD158773A5F04028}" {
+       m_sTitle "Time Limit"
+       m_sMessage "The Mission will end in 45 minutes"
+      }
+     }
+    }
+    GC_Event "{39284FC86B183762}" {
+     m_sName "Time Limit (3000s)"
+     m_Advanced GC_EventOptions "{6FE8956AFD676C7A}" {
+      m_fDelay 3000
+     }
+     m_aActions {
+      GC_MessageAction "{EFC386510EAF33E7}" {
+       m_sTitle "Time Limit"
+       m_sMessage "The Mission will end in 20 minutes"
+      }
+     }
+    }
+    GC_Event "{08093BBFB3BE5631}" {
+     m_sName "Time Limit (3600s)"
+     m_Advanced GC_EventOptions "{C1366439AFF2F62D}" {
+      m_fDelay 3600
+     }
+     m_aActions {
+      GC_MessageAction "{4337D0B461F411D2}" {
+       m_sTitle "Time Limit"
+       m_sMessage "The Mission will end in 10 minutes"
+      }
+     }
+    }
+    GC_Event "{B03B960724E1F897}" {
+     m_sName "Time Limit (4200s)"
+     m_Advanced GC_EventOptions "{C0B2D80137930321}" {
+      m_fDelay 4200
+     }
+     m_aActions {
+      GC_MessageAction "{2FD8AB733DCCBF90}" {
+       m_sTitle "US Army Victory"
+       m_sMessage "US held the town long enough forcing the NVA to fall back... GM Discretion when to end the mission"
+      }
+     }
+    }
+    GC_Event "{7BFF4E73A59C8EC7}" {
+     m_sName "Time Limit (4210s)"
+     m_Advanced GC_EventOptions "{399FAD10C225F3A3}" {
+      m_fDelay 4210
+     }
+     m_aActions {
+      GC_EndMissionAction "{00B2D9977C3BB44B}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{DE8014A18545F732}" {
+     m_sName "NVA OBJ Victory"
+     m_aConditions {
+      GC_ConditionGroup "{436C9BFE7AD8BE67}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{E5B46CDD780605E0}" {
+         m_sArea "Sector1_Trigger"
+         m_Targets GC_CharacterAreaTargets "{10AD98FB6C40EBF2}" {
+          m_iWho 2
+          m_aFactions {
+           "GC_NVA"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{27D5BEBE984FAE7C}" {
+          m_fRequiredShare 0.9
+         }
+         m_Capture GC_AreaCaptureOptions "{F6203E062782F3D2}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D855764978FEA5AE}" {
+       m_sMessage "NVA OBJ Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{15981BCC605AB95A}" {
+     m_sName "NVA OBJ Victory (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5763F918675580EA}" {
+       m_sEventName "NVA OBJ Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{0220B81284AAA372}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_MessageAction "{BF1A27ADA1830509}" {
+       m_sTitle "East German Army Victory"
+       m_sMessage "NVA has managed to secure the HQ Building... "\
+       "GM Discretion when to end the mission"
+      }
+     }
+    }
+    GC_Event "{B3BFEEA70F5DC7FF}" {
+     m_sName "GC_MigratedSpawn_347152CCE2F8ADCF (295s)"
+     m_Advanced GC_EventOptions "{2F7CF0B043D73928}" {
+      m_fDelay 295
+     }
+     m_aActions {
+      GC_SpawnAction "{AF7ABB5EC407B947}" {
+       m_Spawn GC_PrefabSpawn "{58572DC26C3F3FE9}" {
+        m_sLocation "Cas_test1"
+        m_sPrefab "{1DDF7187608968F2}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Large.et"
+       }
+      }
+     }
+    }
+    GC_Event "{52391B190FD54C72}" {
+     m_sName "GC_MigratedSpawn_DA9A82F6BAA3C881 (310s)"
+     m_Advanced GC_EventOptions "{25030E0E1FF9E5EC}" {
+      m_fDelay 310
+     }
+     m_aActions {
+      GC_SpawnAction "{04E959BDD5220009}" {
+       m_Spawn GC_PrefabSpawn "{6602F573B7E07B99}" {
+        m_sLocation "Cas_test4"
+        m_sPrefab "{1DDF7187608968F2}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Large.et"
+       }
+      }
+     }
+    }
+    GC_Event "{0DFAFE64BD1C58D6}" {
+     m_sName "GC_MigratedSpawn_58F3EAFC7F3FE021 (320s)"
+     m_Advanced GC_EventOptions "{137833727C1C91B2}" {
+      m_fDelay 320
+     }
+     m_aActions {
+      GC_SpawnAction "{1693E38AD17610D6}" {
+       m_Spawn GC_PrefabSpawn "{B0212261E8DDBFD5}" {
+        m_sLocation "Cas_test6"
+        m_sPrefab "{1DDF7187608968F2}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Large.et"
+       }
+      }
+     }
+    }
+    GC_Event "{93535ABF8D9C809A}" {
+     m_sName "GC_MigratedSpawn_AEB481FE4CB73A9F (300s)"
+     m_Advanced GC_EventOptions "{733FF573EDC60900}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{21707D002520E27E}" {
+       m_Spawn GC_PrefabSpawn "{0EE920169563351B}" {
+        m_sLocation "Cas_test2"
+        m_sPrefab "{1DDF7187608968F2}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Large.et"
+       }
+      }
+     }
+    }
+    GC_Event "{985F3614846DCEE4}" {
+     m_sName "GC_MigratedSpawn_99F6239869CD855A (315s)"
+     m_Advanced GC_EventOptions "{2DF5C0C21914E415}" {
+      m_fDelay 315
+     }
+     m_aActions {
+      GC_SpawnAction "{A7BDD067480347C4}" {
+       m_Spawn GC_PrefabSpawn "{BAD83BEE55D2A1AE}" {
+        m_sLocation "Cas_test5"
+        m_sPrefab "{1DDF7187608968F2}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Large.et"
+       }
+      }
+     }
+    }
+    GC_Event "{C4F53566AE787997}" {
+     m_sName "GC_MigratedSpawn_DA91CC8FC4342BA4 (305s)"
+     m_Advanced GC_EventOptions "{92BBD8EAF70684DA}" {
+      m_fDelay 305
+     }
+     m_aActions {
+      GC_SpawnAction "{926FCC08858671C1}" {
+       m_Spawn GC_PrefabSpawn "{6BED7B530EFE00E2}" {
+        m_sLocation "Cas_test3"
+        m_sPrefab "{1DDF7187608968F2}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Large.et"
+       }
+      }
+     }
+    }
+    GC_Event "{34CAC5742F4E6E2A}" {
+     m_sName "GC_MigratedSpawn_7A5AA1AB9C7A818B (325s)"
+     m_Advanced GC_EventOptions "{8C6DAEE32B2388BB}" {
+      m_fDelay 325
+     }
+     m_aActions {
+      GC_SpawnAction "{20BB0C22A04B1DDC}" {
+       m_Spawn GC_PrefabSpawn "{82A37C7FFECDC7AD}" {
+        m_sLocation "Cas_test7"
+        m_sPrefab "{1DDF7187608968F2}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Large.et"
+       }
+      }
+     }
+    }
+    GC_Event "{3D7350DFE239310A}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{7B5E80E0FBB81DFF}" {
+       m_fSeconds 300.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{D6372006BB184A08}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 3697.287 353.796 1652.506
+ {
+  RadioManagerEntity {
+   ID "A79C4E0A43DEB824"
+   coords -26.889 23.04 -2.478
+  }
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   coords 0 0 0
+   Factions + {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "7"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{64E2F896A8C154A9}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{669E264C31B8F43B}" {
+        m_sCallsign "4"
+       }
+      }
+     }
+    }
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
+      Name "Soviet Air Force"
+      Icon "{B522FE456D7F091A}worlds/HitTheMan/Screening The Orb/330px-Flag_of_the_Soviet_Air_Force.svg.edds"
+     }
+     m_iOrder 1
+     m_sFactionFlag "{B522FE456D7F091A}worlds/HitTheMan/Screening The Orb/330px-Flag_of_the_Soviet_Air_Force.svg.edds"
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB79282FF010C}" {
+       }
+       SCR_CallsignInfo "{55CCB792829053B0}" {
+        m_sCallsign "Berkut"
+       }
+       SCR_CallsignInfo "{55CCB79282A19687}" {
+        m_sCallsign "2"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB79284A2F6C9}" {
+        m_sCallsign " "
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{64E2F896E232A50B}" {
+        m_sCallsign "5"
+       }
+       SCR_CallsignInfo "{64E2F896FFC45153}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{64E2F896E5466F70}" {
+        m_sCallsign "4v"
+       }
+      }
+     }
+    }
+    SCR_Faction "{64AA098AEA5B1498}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{64AA098204A61453}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{64AA098204A6145D}" {
+        m_sCallsign "9"
+       }
+       SCR_CallsignInfo "{64AA098204A61443}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{64AA098204A61441}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{64AA098204A61446}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{650AE15C940BA34B}" {
+        m_sCallsign "4"
+       }
+       SCR_CallsignInfo "{650AE15C8B7A1EC2}" {
+        m_sCallsign "5"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "Sunray"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "Alpha"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "Bravo"
+       }
+       SCR_CallsignInfo "{61677618371B4C91}" {
+        m_sCallsign "Charlie"
+       }
+       SCR_CallsignInfo "{65055DBDAC6F7853}" {
+        m_sCallsign "Whiskey"
+       }
+       SCR_CallsignInfo "{65055DB6CE3F5934}" {
+        m_sCallsign "Echo"
+       }
+       SCR_CallsignInfo "{650AE1494DA67E1D}" {
+        m_sCallsign "Foxtrot"
+       }
+      }
+     }
+     m_iFactionRadioFrequency 50000
+    }
+    SCR_Faction "{652F615735715119}" {
+    }
+   }
+  }
+  ScriptedChatEntity {
+   ID "A79C4E0A43DEB825"
+   coords -318.966 137.025 1.838
+  }
+  ItemPreviewManagerEntity : "{9F18C476AB860F3B}Prefabs/World/Game/ItemPreviewManager.et" {
+   ID "5ED9088735FF2DD5"
+   coords -12.245 -3.267 -7.529
+  }
+  SCR_EditorSettingsEntity {
+   ID "61B4E967E6C20362"
+   coords 0 0 0
+   m_bIsUnlimitedEditorLegal 1
+  }
+ }
+}
+GC_RadiusAreaEntity Sector1_Trigger : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 6084.171 75.201 6877.929
+ m_fRadius 20
+}
+GenericEntity Obj_Mark_1 : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "objective-marker"
+   m_Color 0.624 0.157 0.157 1
+   m_fSize 60
+   m_bWorldScale 1
+   m_sDescription "US PLT HQ"
+   m_iZOrder 1
+   m_iHoverZOrder -1
+  }
+ }
+ coords 6084.289 67.03 6878.053
+ angles 0 90 0
+}
