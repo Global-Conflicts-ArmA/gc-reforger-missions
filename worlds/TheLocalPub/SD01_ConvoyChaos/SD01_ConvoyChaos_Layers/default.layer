@@ -1,0 +1,1065 @@
+SCR_AIWorld : "{3DE6090FC602E566}Prefabs/AI/SCR_AIWorld_Takistan.et" {
+ coords 140.348 574.294 6616.438
+}
+GC_LobbyGameMode GC_MigratedMission : "{CEDC7F941F8521B4}worlds/TheLocalPub/SD01_ConvoyChaos/SD01_ConvoyChaos_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 15
+   m_iStartingMinutes 30
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6848B13057EB4FC9}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 15
+     m_iStartingMinutes 30
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 4
+   m_iMonth 4
+   m_iYear 1982
+  }
+  GC_PeakFactionPopulationComponent "{FE5AFAD9FD56143A}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{D22E18AF46C23856}" {
+     m_sName "MajWin"
+    }
+    GC_MissionFlag "{5C5C35B2A18D174F}" {
+     m_sName "MinWin"
+    }
+    GC_MissionFlag "{4D04715E23810074}" {
+     m_sName "RegWin"
+    }
+    GC_MissionFlag "{2C6C54DDE06D665B}" {
+     m_sName "SetMajWin"
+    }
+    GC_MissionFlag "{0DDE56A060F170E4}" {
+     m_sName "SetMinWin"
+    }
+    GC_MissionFlag "{3CE1B4B4D8E69762}" {
+     m_sName "SetRegWin"
+    }
+    GC_MissionFlag "{9A4708CE6672E012}" {
+     m_sName "T1Dead"
+    }
+    GC_MissionFlag "{759E7A4D5D3AE1C8}" {
+     m_sName "T2Dead"
+    }
+    GC_MissionFlag "{54141160D79EDF5F}" {
+     m_sName "T3Dead"
+     m_aConditions {
+      GC_EntityDamageCondition "{86D6ED9C91354446}" {
+       m_sEntityName "Truck3"
+      }
+     }
+    }
+    GC_MissionFlag "{65B2CC8C71FA4926}" {
+     m_sName "T4Dead"
+    }
+    GC_MissionFlag "{611D97960E9AD514}" {
+     m_sName "T5Dead"
+    }
+    GC_MissionFlag "{EBCC0743CA4EF060}" {
+     m_sName "T6Dead"
+     m_aConditions {
+      GC_EntityDamageCondition "{EED80E35501DA69F}" {
+       m_sEntityName "Truck6"
+      }
+     }
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{7E37AC80B27E56C9}" {
+     m_sName "IndforSetTicket0"
+     m_aConditions {
+      GC_AreaCondition "{0FFF8438C67F438A}" {
+       m_sArea "IndofrCutoffTrigger"
+       m_Targets GC_CharacterAreaTargets "{FB84B6FDD3C4E18F}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{4A84F3C45AE61108}" {
+        m_fRequiredShare 1
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{7A45139E979D6C89}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+        m_Messages GC_CaptureMessages "{EA87BF6EB121BF25}" {
+         m_sLocation ""
+         m_aFactions {
+          "GC_MUJ"
+         }
+         m_sCaptured "The Soviets have reached Nagara and cut off our reinforcements!"
+         m_sCapturing ""
+         m_sCaptureInterrupted ""
+         m_sLost ""
+         m_sLosing ""
+         m_sLossInterrupted ""
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DDFD7A87669498C8}" {
+       m_sMessage "IndforSetTicket0"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{06598CF53AFB1771}" {
+     m_sName "IndforSetTicket0 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DC4B96C7563238F7}" {
+       m_sEventName "IndforSetTicket0"
+      }
+     }
+     m_Advanced GC_EventOptions "{AD7205165E6B6A3C}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_RespawnTicketsAction "{637C824EBB33997F}" {
+       m_sFaction "GC_MUJ"
+       m_iOperation 0
+       m_iAmount 0
+      }
+      GC_DeleteEntitiesAction "{ED631C39FCAC9C41}" {
+       m_aEntities {
+        "IndforSpawn"
+       }
+      }
+     }
+    }
+    GC_Event "{4C38E78261C35940}" {
+     m_sName "IndforVictory"
+     m_aConditions {
+      GC_CustomScriptCondition "{710250F59FABDC5B}" {
+       m_Script GC_PeakFactionPopulationCheck "{81CF661C0CA89878}" {
+        m_sFaction "USSR"
+        m_fRatio 0.75
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7C80C947DA281501}" {
+       m_sMessage "IndforVictory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{138A4131C8FDDBD9}" {
+     m_sName "IndforVictory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C9A0020625515B58}" {
+       m_sEventName "IndforVictory"
+      }
+     }
+     m_Advanced GC_EventOptions "{2B72EADCF6070BCD}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{150C7A97701C607A}" {
+       m_sTitle "MUJAHIDEEN VICTORY"
+       m_sMessage "Mujahideen forces have managed to inflict enough damage on the Soviet convoy that they've effectively been made combat ineffective and thus neutralized."\
+       ""\
+       "Well done Indfor!"\
+       "Mission will end soon..."
+      }
+     }
+    }
+    GC_Event "{592172FCE1159824}" {
+     m_sName "OpforMajVicCon"
+     m_aConditions {
+      GC_ConditionGroup "{3494A00DCE1F6F98}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{1C66E318060D406D}" {
+         m_sArea "ExitTrigger6Truck"
+         m_Targets GC_NamedAreaTargets "{D3776F4D8459EEEA}" {
+          m_aNames {
+           "Truck1" "Truck2" "Truck3" "Truck4" "Truck5" "Truck6"
+          }
+          m_bCountMissingAsOutside 1
+          m_bExcludeDestroyed 1
+         }
+         m_Requirement GC_LivingProportion "{C0B1D235FE71D44C}" {
+          m_fRequiredProportion 0.99
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{C1D4764EB0769E5D}" {
+          m_fSeconds 1
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{A3D0F48AE8FF330C}" {
+         m_sArea "GC_MigrationArea_Opfor35"
+         m_Targets GC_CharacterAreaTargets "{360E5BB251979C42}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{CE8DA33573E7D7F8}" {
+          m_fRequiredShare 0.35
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{E8F5D80A753B7E0E}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{694928FD1CD6856A}" {
+       m_sMessage "OpforMajVicCon"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2E72032FD3FD98FE}" {
+     m_sName "OpforMajVicCon (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5FF4CE9EBB5F563E}" {
+       m_sEventName "OpforMajVicCon"
+      }
+     }
+     m_Advanced GC_EventOptions "{34C0F8A943DBC76C}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_FlagAction "{E7A8F90213EAFA42}" {
+       m_sFlagName "SetMajWin"
+       m_iOperation 1
+       m_iAmount 1
+      }
+      GC_FlagAction "{1D1336EDEEC1128A}" {
+       m_sFlagName "SetRegWin"
+       m_iOperation 4
+      }
+     }
+    }
+    GC_Event "{1AAB3E103E56492D}" {
+     m_sName "OpforMajWin"
+     m_aConditions {
+      GC_MissionFlagCondition "{3FDD586C09D23C74}" {
+       m_sFlagName "MajWin"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D85A5CFFB0E762E4}" {
+       m_sMessage "OpforMajWin"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7DB55917039BF169}" {
+     m_sName "OpforMajWin (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{581CE4936054FFF9}" {
+       m_sEventName "OpforMajWin"
+      }
+     }
+     m_Advanced GC_EventOptions "{48623DCA8DAD9664}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{58BA555934C4A0CD}" {
+       m_sTitle "USSR MAJOR VICTORY"
+       m_sMessage "Amazing work troops!"\
+       "We've managed to reach the finish point with all 6x Ural trucks and atleast 40% of our company remaining alive."\
+       ""\
+       "Well done Opfor."\
+       "Mission will end soon..."
+       m_aFactions {
+        "USSR"
+       }
+      }
+      GC_MessageAction "{BCC02F7ADE0F239F}" {
+       m_sTitle "USSR MAJOR VICTORY"
+       m_sMessage "The Soviets have reached their end point and exfilled from the region."\
+       "They've sustained minimum casualties and got away with all of their supplies!"\
+       ""\
+       "The boss won't be happy about this... Someone will be losing their hands tonight. "\
+       "Mission will end soon..."
+       m_aFactions {
+        "GC_MUJ"
+       }
+      }
+     }
+    }
+    GC_Event "{982C0D6E57E659EA}" {
+     m_sName "OpforRegVicCon"
+     m_aConditions {
+      GC_ConditionGroup "{7EF5E0540CE28C03}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{331324C078154265}" {
+         m_sArea "ExitTrigger4Truck"
+         m_Targets GC_NamedAreaTargets "{F26F8CF99DB14107}" {
+          m_aNames {
+           "Truck1" "Truck2" "Truck3" "Truck4" "Truck5" "Truck6"
+          }
+          m_bCountMissingAsOutside 1
+          m_bExcludeDestroyed 1
+         }
+         m_Requirement GC_LivingProportion "{E652C1E03E8E5D2A}" {
+          m_fRequiredProportion 0.66
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{C559AC7D35FC3564}" {
+          m_fSeconds 1
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{3EFE49D00E208C4E}" {
+         m_sArea "GC_MigrationArea_Opfor35"
+         m_Targets GC_CharacterAreaTargets "{6B4618DA891CD9B4}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{ECC2CD4F7C9D5357}" {
+          m_fRequiredShare 0.35
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{FDF3B9D4524D66AE}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{910E981049DCA0CD}" {
+       m_sMessage "OpforRegVicCon"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{4222379F74350260}" {
+     m_sName "OpforRegVicCon (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A0E78CE285293157}" {
+       m_sEventName "OpforRegVicCon"
+      }
+     }
+     m_Advanced GC_EventOptions "{C52E0EBC36B72DF3}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_FlagAction "{248A8F8C1C63926F}" {
+       m_sFlagName "SetRegWin"
+       m_iOperation 1
+       m_iAmount 1
+      }
+      GC_FlagAction "{9A2A351020C74C3D}" {
+       m_sFlagName "SetMinWin"
+       m_iOperation 4
+      }
+     }
+    }
+    GC_Event "{0F3C00C4646A89B3}" {
+     m_sName "OpforRegWin"
+     m_aConditions {
+      GC_MissionFlagCondition "{B0E9CF32A35099F6}" {
+       m_sFlagName "RegWin"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B71186D49306E5A8}" {
+       m_sMessage "OpforRegWin"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{670762087164890B}" {
+     m_sName "OpforRegWin (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{79CB60D738BA67B6}" {
+       m_sEventName "OpforRegWin"
+      }
+     }
+     m_Advanced GC_EventOptions "{B2AC01751C2CBEFA}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{A0CDB5126EB82252}" {
+       m_sTitle "USSR REGULAR VICTORY"
+       m_sMessage "Well done everybody."\
+       "We've managed to reach the finish point with all 4x Ural trucks and atleast 40% of our company remaining alive."\
+       ""\
+       "Well done Opfor."\
+       "Mission will end soon..."
+       m_aFactions {
+        "USSR"
+       }
+      }
+      GC_MessageAction "{54EAC48759A1C1B2}" {
+       m_sTitle "USSR REGULAR VICTORY"
+       m_sMessage "Soviet forces have reached their end point and exfilled out of the region."\
+       "They've managed to sustain a number of casualties but got away with over half of their supplies."\
+       ""\
+       "Better luck next time brothers."\
+       "Mission will end soon..."
+       m_aFactions {
+        "GC_MUJ"
+       }
+      }
+     }
+    }
+    GC_Event "{0D33F1E8DD0CCA3A}" {
+     m_sName "OpforMinVicCon"
+     m_aConditions {
+      GC_ConditionGroup "{BFE3A4AF47B0293F}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{7B14DC9DCA73255D}" {
+         m_sArea "ExitTrigger2Truck"
+         m_Targets GC_NamedAreaTargets "{F6911701BC448BA7}" {
+          m_aNames {
+           "Truck1" "Truck2" "Truck3" "Truck4" "Truck5" "Truck6"
+          }
+          m_bCountMissingAsOutside 1
+          m_bExcludeDestroyed 1
+         }
+         m_Requirement GC_LivingProportion "{317E3B93745E25B5}" {
+          m_fRequiredProportion 0.33
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{F29F2044D9A5C642}" {
+          m_fSeconds 1
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{0B750B6807E44C40}" {
+         m_sArea "GC_MigrationArea_Opfor35"
+         m_Targets GC_CharacterAreaTargets "{D94B1F7B26DC7839}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{10B08F85B723233F}" {
+          m_fRequiredShare 0.35
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{CF402EE44F0CDAA9}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4C86E46CBFFBFA7F}" {
+       m_sMessage "OpforMinVicCon"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3E6A4F6DC8EF37B7}" {
+     m_sName "OpforMinVicCon (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{345968A08E2B70F0}" {
+       m_sEventName "OpforMinVicCon"
+      }
+     }
+     m_Advanced GC_EventOptions "{3DF4602880A13FAC}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_FlagAction "{5E6B1CBDCBD759BA}" {
+       m_sFlagName "SetMinWin"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{F5F8A71F93D5FBA8}" {
+     m_sName "OpforMinWin"
+     m_aConditions {
+      GC_MissionFlagCondition "{8F6F0DA1F56F8A55}" {
+       m_sFlagName "MinWin"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F324DD2017A1C8ED}" {
+       m_sMessage "OpforMinWin"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A8BE3DA8CB0B0810}" {
+     m_sName "OpforMinWin (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7655E1EBA594D2E9}" {
+       m_sEventName "OpforMinWin"
+      }
+     }
+     m_Advanced GC_EventOptions "{3492F08D59BA2DD1}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{B5F1518320599C2B}" {
+       m_sTitle "USSR MINOR VICTORY"
+       m_sMessage "Good work troops!"\
+       "We've managed to reach the finish point with 2x Ural trucks and atleast 40% of our company remaining alive."\
+       ""\
+       "Well done Opfor."\
+       "Mission will end soon..."
+       m_aFactions {
+        "USSR"
+       }
+      }
+      GC_MessageAction "{55734D08B6B33A1D}" {
+       m_sTitle "USSR MINOR VICTORY"
+       m_sMessage "The Soviets managed to reach their end point and exfill from the region."\
+       "They've sustained casualties and we've destoryed at least more then half of their supplies."\
+       ""\
+       "Good effort brothers, we'll wipe them out next time!"\
+       "Mission will end soon..."
+       m_aFactions {
+        "GC_MUJ"
+       }
+      }
+     }
+    }
+    GC_Event "{D829E7D3B001C37B}" {
+     m_sName "OpforPyrricVic"
+     m_aConditions {
+      GC_GameModeStateCondition "{2A667DD5466E1051}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{A35E684486C1C2B7}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionCount "{913F19EE3B2AD6C8}" {
+         m_iComparison 0
+         m_iRequiredCount 4
+         m_aConditions {
+          GC_MissionFlagCondition "{19A33CD3E8423FE7}" {
+           m_sFlagName "T1Dead"
+          }
+          GC_MissionFlagCondition "{D411D3C372D87DFB}" {
+           m_sFlagName "T2Dead"
+          }
+          GC_MissionFlagCondition "{687D16BB1C2B4E35}" {
+           m_sFlagName "T3Dead"
+          }
+          GC_MissionFlagCondition "{9976FB2F8BACA57D}" {
+           m_sFlagName "T4Dead"
+          }
+          GC_MissionFlagCondition "{1091ACCB8F65A63E}" {
+           m_sFlagName "T5Dead"
+          }
+          GC_MissionFlagCondition "{820EC2CFBB4BD21E}" {
+           m_sFlagName "T6Dead"
+          }
+         }
+        }
+        GC_AreaCondition "{ACB409DF007A7DFC}" {
+         m_sArea "GC_MigrationArea_Opfor35"
+         m_Targets GC_CharacterAreaTargets "{309FA87196F72C43}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{7A975E0BC7B99FF2}" {
+          m_fRequiredShare 0.35
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{B32B5FF7A78E5860}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E6073C9E6EB3CB28}" {
+       m_sMessage "OpforPyrricVic"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CD0CBBB4A1A44B47}" {
+     m_sName "OpforPyrricVic (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{516FBB57A975063E}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{6F2871087EDB1676}" {
+       m_sEventName "OpforPyrricVic"
+      }
+     }
+     m_Advanced GC_EventOptions "{F6A019C15DE5F321}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{E2EFC13C4557B2A4}" {
+       m_sTitle "USSR PYRRHIC VICTORY"
+       m_sMessage "Yikes... We just about made it to the finish point."\
+       "We've lost all our Urals that contained the supplies for our company and took alot of casualties."\
+       ""\
+       "Good effort troops."\
+       "Mission will end soon..."
+       m_aFactions {
+        "USSR"
+       }
+      }
+      GC_MessageAction "{01A1448808B187A6}" {
+       m_sTitle "USSR PYRRHIC VICTORY"
+       m_sMessage "The Soviets managed to reach their end point and exfill from the region, but sustained large casualties and lots all of their supplies."\
+       ""\
+       "Very good effort brothers, we'll wipe them out next time!"\
+       "Mission will end soon..."
+       m_aFactions {
+        "GC_MUJ"
+       }
+      }
+     }
+    }
+    GC_Event "{C23A3F84450C7E77}" {
+     m_sName "AITrigger"
+     m_aConditions {
+      GC_AreaCondition "{00D21D728CC12397}" {
+       m_sArea "CivAITrigger"
+       m_Targets GC_CharacterAreaTargets "{220B71335208B42D}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{7047D8437BBA6267}" {
+        m_fRequiredShare 1
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{2EEE67258FB9D196}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6D931C049FF9FC29}" {
+       m_sMessage "AITrigger"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2C03664A18675566}" {
+     m_sName "AITrigger (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B36250ACD63065AA}" {
+       m_sEventName "AITrigger"
+      }
+     }
+     m_Advanced GC_EventOptions "{1948DC8BB776C36F}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{A6F27C2F08D2B390}" {
+       m_aEntities {
+        "GOSCiv1"
+        "GOSCiv2"
+        "MULCiv1"
+        "MULCiv2"
+        "MULCiv3"
+       }
+      }
+     }
+    }
+    GC_Event "{369CCC66AEDC7E64}" {
+     m_sName "GC_MigratedSpawn_22B6B0F2AC3CDDBA"
+     m_aConditions {
+      GC_AreaCondition "{B59B524683CA9CC6}" {
+       m_sArea "CivAITrigger"
+       m_Targets GC_CharacterAreaTargets "{C34ECEA5CB5B297C}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{BF5E3D5117344B1B}" {
+        m_fRequiredShare 1
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{8381242DDB56FBF2}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9FF35A740B88C2FF}" {
+       m_sMessage "GC_MigratedSpawn_22B6B0F2AC3CDDBA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{956610DB8393BFB1}" {
+     m_sName "GC_MigratedSpawn_22B6B0F2AC3CDDBA (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5741B2C4A491A1B8}" {
+       m_sEventName "GC_MigratedSpawn_22B6B0F2AC3CDDBA"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{956610DB8393BFB1}" {
+       m_Spawn GC_AIGroupSpawn "{E2CEBCA983FA054D}" {
+        m_sLocation "NAGCiv1"
+        m_sPrefab "{1CF6B0C1063800E0}Prefabs/Groups/CIV/Afghan/Group_CIV_Afghan.et"
+        m_aWaypoints {
+         "Loiter4"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{5AA0745A8DF0FB5E}" {
+     m_sName "GC_MigratedSpawn_2EC598D3D2CC7856"
+     m_aConditions {
+      GC_AreaCondition "{35D72BEDC80BD4C1}" {
+       m_sArea "CivAITrigger"
+       m_Targets GC_CharacterAreaTargets "{69BEF7353EDEF69F}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{CC3A835259F330DD}" {
+        m_fRequiredShare 1
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{1049F19DC7518EFC}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{10B3B0663222EC54}" {
+       m_sMessage "GC_MigratedSpawn_2EC598D3D2CC7856"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C2301BDB507E5635}" {
+     m_sName "GC_MigratedSpawn_2EC598D3D2CC7856 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B8FBEDDE86F2088D}" {
+       m_sEventName "GC_MigratedSpawn_2EC598D3D2CC7856"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{C2301BDB507E5635}" {
+       m_Spawn GC_AIGroupSpawn "{536298A69DD608E2}" {
+        m_sLocation "NAGCiv2"
+        m_sPrefab "{1CF6B0C1063800E0}Prefabs/Groups/CIV/Afghan/Group_CIV_Afghan.et"
+        m_aWaypoints {
+         "Loiter4"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{926D0C82E64AF1B7}" {
+     m_sName "GC_MigratedSpawn_AAB99795D10197E9"
+     m_aConditions {
+      GC_AreaCondition "{58F25C18BEFCAA70}" {
+       m_sArea "CivAITrigger"
+       m_Targets GC_CharacterAreaTargets "{6A02B5AA48A6BBF5}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{DC051C7DA9F41729}" {
+        m_fRequiredShare 1
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{16A33BCEC36184AB}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{68835C107E1BD5D3}" {
+       m_sMessage "GC_MigratedSpawn_AAB99795D10197E9"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3282C711E9A79D33}" {
+     m_sName "GC_MigratedSpawn_AAB99795D10197E9 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{74D7A84273AC1C8B}" {
+       m_sEventName "GC_MigratedSpawn_AAB99795D10197E9"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{3282C711E9A79D33}" {
+       m_Spawn GC_AIGroupSpawn "{1ECF1BD02CAB640A}" {
+        m_sLocation "NAGCiv3"
+        m_sPrefab "{1CF6B0C1063800E0}Prefabs/Groups/CIV/Afghan/Group_CIV_Afghan.et"
+        m_aWaypoints {
+         "Loiter4"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{416FAED35E0C345A}" {
+     m_sName "GC_MigratedSpawn_45F6EBFB95FB4892"
+     m_aConditions {
+      GC_AreaCondition "{C6921F9B691F8B89}" {
+       m_sArea "CivAITrigger"
+       m_Targets GC_CharacterAreaTargets "{BA445F9034CE233D}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{E3A7E3ED80BED800}" {
+        m_fRequiredShare 1
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{65CBBD88A6B4D992}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F31CDD4CCF65FB4A}" {
+       m_sMessage "GC_MigratedSpawn_45F6EBFB95FB4892"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F6E6141F59286EFC}" {
+     m_sName "GC_MigratedSpawn_45F6EBFB95FB4892 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2A05C0BEF2BFEE7B}" {
+       m_sEventName "GC_MigratedSpawn_45F6EBFB95FB4892"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{F6E6141F59286EFC}" {
+       m_Spawn GC_AIGroupSpawn "{B356D35188FE65C1}" {
+        m_sLocation "NURCiv1"
+        m_sPrefab "{1CF6B0C1063800E0}Prefabs/Groups/CIV/Afghan/Group_CIV_Afghan.et"
+        m_aWaypoints {
+         "Loiter5"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{D8AC6E33E965BEB9}" {
+     m_sName "GC_MigratedSpawn_3A92FC3D8A78A216"
+     m_aConditions {
+      GC_AreaCondition "{833B46929AD10B9B}" {
+       m_sArea "CivAITrigger"
+       m_Targets GC_CharacterAreaTargets "{59A764DF094CCEC9}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{98A995727B2A3D61}" {
+        m_fRequiredShare 1
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{66BCE0B6E3D1DD88}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7F5F77AC7DCA9AC4}" {
+       m_sMessage "GC_MigratedSpawn_3A92FC3D8A78A216"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{05C5EA999230DBD0}" {
+     m_sName "GC_MigratedSpawn_3A92FC3D8A78A216 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{FD1ED8ED29949CEB}" {
+       m_sEventName "GC_MigratedSpawn_3A92FC3D8A78A216"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{05C5EA999230DBD0}" {
+       m_Spawn GC_AIGroupSpawn "{4DB9E9B996405A26}" {
+        m_sLocation "NURCiv2"
+        m_sPrefab "{1CF6B0C1063800E0}Prefabs/Groups/CIV/Afghan/Group_CIV_Afghan.et"
+        m_aWaypoints {
+         "Loiter5"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{29651A4F7C8B3E8B}" {
+     m_sName "GC_MigratedSpawn_729444526F793A76"
+     m_aConditions {
+      GC_AreaCondition "{7CCF7D9140A8142C}" {
+       m_sArea "CivAITrigger"
+       m_Targets GC_CharacterAreaTargets "{A5D9349501ABEDAC}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{C42CEA7CE5947AEA}" {
+        m_fRequiredShare 1
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{752BE9EADDED404B}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{BEEA963480872D91}" {
+       m_sMessage "GC_MigratedSpawn_729444526F793A76"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{37F5DCD2ECEC7F73}" {
+     m_sName "GC_MigratedSpawn_729444526F793A76 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{06EA9D9202F54700}" {
+       m_sEventName "GC_MigratedSpawn_729444526F793A76"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{37F5DCD2ECEC7F73}" {
+       m_Spawn GC_AIGroupSpawn "{9A7CB43AAF48C10A}" {
+        m_sLocation "NURCiv3"
+        m_sPrefab "{1CF6B0C1063800E0}Prefabs/Groups/CIV/Afghan/Group_CIV_Afghan.et"
+        m_aWaypoints {
+         "Loiter5"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{AAB54CBA12B99E25}" {
+     m_sName "GC_MigratedSpawn_74E314C7B0845AB1"
+     m_aConditions {
+      GC_AreaCondition "{2B19451AE10B3BDA}" {
+       m_sArea "CivAITrigger"
+       m_Targets GC_CharacterAreaTargets "{98D3C8C66F00FBB5}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{BD66CADE07871F67}" {
+        m_fRequiredShare 1
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{91F7EF8391CE6CC8}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4E4B8FC7594E5599}" {
+       m_sMessage "GC_MigratedSpawn_74E314C7B0845AB1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D21E3868B0763D97}" {
+     m_sName "GC_MigratedSpawn_74E314C7B0845AB1 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{54C43198473FF3BA}" {
+       m_sEventName "GC_MigratedSpawn_74E314C7B0845AB1"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{D21E3868B0763D97}" {
+       m_Spawn GC_AIGroupSpawn "{2D8A9EE12587657B}" {
+        m_sLocation "NURCiv4"
+        m_sPrefab "{1CF6B0C1063800E0}Prefabs/Groups/CIV/Afghan/Group_CIV_Afghan.et"
+        m_aWaypoints {
+         "Loiter5"
+        }
+       }
+      }
+     }
+    }
+   }
+   m_aAuthoredRespawns {
+    GC_AuthoredFactionRespawn "{844563DF37A3F3C2}" {
+     m_sFaction "GC_MUJ"
+     m_iTickets 6
+     m_iIntervalMs 10
+    }
+   }
+  }
+ }
+ coords 203.581 588.453 6602.052
+}
