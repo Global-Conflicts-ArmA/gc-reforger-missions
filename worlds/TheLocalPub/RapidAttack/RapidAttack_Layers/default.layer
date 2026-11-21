@@ -1,0 +1,206 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 3167.829 33.9 197.529
+}
+GC_LobbyGameMode GC_MigratedMission : "{579ED043E5200D09}worlds/TheLocalPub/RapidAttack/RapidAttack_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 13
+   m_iStartingMinutes 35
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6A3D10494912C78D}" {
+     m_sWeatherPresetName "Rainy"
+     m_iStartingHour 13
+     m_iStartingMinutes 35
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 8
+   m_iMonth 12
+   m_iYear 2023
+  }
+  GC_PeakFactionPopulationComponent "{D42E26C00D9B6E6B}" {
+  }
+  GC_LivingAndDeadAIComponent "{F51B3C9F0A8BF7A4}" {
+   m_sFaction "FIA"
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{13051BF6E698EA67}" {
+     m_sName "FIAWin"
+     m_aConditions {
+      GC_CustomScriptCondition "{6F66AF2789563719}" {
+       m_Script GC_PeakFactionPopulationCheck "{4C59994674134891}" {
+        m_sFaction "GC_CAF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{CC08D06F4AADCFAB}" {
+       m_sMessage "FIAWin"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1DBEC111D240CA1E}" {
+     m_sName "FIAWin (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6E1D9C0B313F1DE1}" {
+       m_sEventName "FIAWin"
+      }
+     }
+     m_Advanced GC_EventOptions "{7572E850E204AD79}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{60634913CE883835}" {
+       m_sTitle "FIA VICTORY"
+       m_sMessage "The flanking FIA platoon that occupied the barnyard has successfully repelled the assault and neutralised the Canadian forces."\
+       ""\
+       "This is a bad day."\
+       "Mission will conclude shortly..."
+      }
+     }
+    }
+    GC_Event "{685B722ED42FA70D}" {
+     m_sName "CAFWin"
+     m_aConditions {
+      GC_ConditionGroup "{4E1C809031F1E37A}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_CustomScriptCondition "{7BB8147CF319F031}" {
+         m_Script GC_LivingAndDeadAICheck "{97FB61CAF3C7CDDC}" {
+          m_fRatio 0.4
+         }
+        }
+        GC_AreaCondition "{674AC4757F26D0AF}" {
+         m_sArea "Trigger_Cap1"
+         m_Targets GC_CharacterAreaTargets "{47AF93E7546431EB}" {
+          m_aFactions {
+           "GC_CAF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{97BC970CB5ECD62C}" {
+          m_fRequiredShare 0.1
+          m_aIgnoredFactions {
+           "FIA"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{B960C73B7C697430}" {
+          m_fSeconds 5
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{0E4BBDCB610C6350}" {
+         m_sArea "Trigger_Cap2"
+         m_Targets GC_CharacterAreaTargets "{D4E30B90F0226FF1}" {
+          m_aFactions {
+           "GC_CAF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{7C3037622ECEB702}" {
+          m_fRequiredShare 0.1
+          m_aIgnoredFactions {
+           "FIA"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{8BD0DF451EED133E}" {
+          m_fSeconds 5
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F7674084B85CA1D0}" {
+       m_sMessage "CAFWin"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5146076FCE0EDBA2}" {
+     m_sName "CAFWin (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{03F8651E012E9A94}" {
+       m_sEventName "CAFWin"
+      }
+     }
+     m_Advanced GC_EventOptions "{4A456440DAE9ADB4}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{00F6DA507DE60B2E}" {
+       m_sTitle "CAF VICTORY"
+       m_sMessage "The hasty attack worked! We've inflicted enough damage to force the FIA cell to retreat in a hurry."\
+       ""\
+       "Great job."\
+       "Mission will conclude shortly..."
+      }
+     }
+    }
+    GC_Event "{13881E88E0740EA9}" {
+     m_sName "GC_MigratedSpawn_115393A9687F2A9A (1500s)"
+     m_Advanced GC_EventOptions "{C60F82C180FB21D4}" {
+      m_fDelay 1500
+     }
+     m_aActions {
+      GC_SpawnAction "{37BA838122F4C00D}" {
+       m_Spawn GC_AIGroupSpawn "{CC498B8DB784DBE9}" {
+        m_sLocation "FIA_Spawner1"
+        m_sPrefab "{3E19B428E9137511}Prefabs/Groups/INDFOR/FIA/FIA_Modern/Group_FIAModern_RifleSquad.et"
+        m_aWaypoints {
+         "WP_M1"
+         "WP_SD1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F4E7A266C0E88926}" {
+     m_sName "GC_MigratedSpawn_5C277A4EDF5EE579 (1500s)"
+     m_Advanced GC_EventOptions "{DAB555A321CDA6D8}" {
+      m_fDelay 1500
+     }
+     m_aActions {
+      GC_SpawnAction "{7D17D9D1F6AD4B0D}" {
+       m_Spawn GC_AIGroupSpawn "{F9DC4BC6C4ED0F92}" {
+        m_sLocation "FIA_Spawner2"
+        m_sPrefab "{3E19B428E9137511}Prefabs/Groups/INDFOR/FIA/FIA_Modern/Group_FIAModern_RifleSquad.et"
+        m_aWaypoints {
+         "WP_M2"
+         "WP_SD2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{D096E15763FEA53E}" {
+     m_sName "GC_MigratedSpawn_DD35DEB497FE93F1 (1500s)"
+     m_Advanced GC_EventOptions "{0F555519ADB34EE1}" {
+      m_fDelay 1500
+     }
+     m_aActions {
+      GC_SpawnAction "{68E2F74899FF6002}" {
+       m_Spawn GC_AIGroupSpawn "{10EDAB91B3209439}" {
+        m_sLocation "FIA_Spawner3"
+        m_sPrefab "{3E19B428E9137511}Prefabs/Groups/INDFOR/FIA/FIA_Modern/Group_FIAModern_RifleSquad.et"
+        m_aWaypoints {
+         "WP_M3"
+         "WP_SD2"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 3293.666 55.423 279.63
+}
