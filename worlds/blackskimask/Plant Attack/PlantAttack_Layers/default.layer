@@ -1,0 +1,188 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{68E0A8EE4C070372}" {
+     NavmeshFile "{E08B16AADAB901D8}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Soldier.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{04F808CEFD545B32}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Vehicle.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{6D7CE9C2F346F22E}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_LowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 6119.592 226.545 6244.882
+}
+GC_LobbyGameMode GC_MigratedMission : "{6AFE01A16C5E6451}worlds/blackskimask/Plant Attack/PlantAttack_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 17
+   m_iStartingMinutes 15
+   m_bDateOverride 1
+   m_iDay 12
+   m_iMonth 2
+   m_iYear 2027
+  }
+  SCR_CampaignBuildingManagerComponent "{60EC2158F48C679A}" {
+   m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
+   m_BudgetType CAMPAIGN
+   m_iCompositionRefundPercentage 100
+   m_OutlineManager GC_ConstructionOutlineManager "{60EC2158E10CB829}" : "{96A8B496A076F1C0}scripts/Game/Building/CampaignBuildingCompositionOutline.conf" {
+    m_fPreparationSeconds 999
+    m_fPreparationMultiplier 999
+    m_fMatchMultiplier 999
+   }
+   m_sPrefabsToBuildResource "{D2527D9AA5B4A33E}Configs/Editor/PlaceableEntities/Compositions/Compositions_FreeRoamBuilding.conf"
+  }
+  GC_PeakFactionPopulationComponent "{34D6DDE27E2A8FF6}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{DE9D97A0BC4131FF}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{CB7A583E04FE2DBA}" {
+     m_sName "UK KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{50E7FA95E48EC77E}" {
+       m_Script GC_PeakFactionPopulationCheck "{58390E37129819E3}" {
+        m_sFaction "UK"
+        m_fRatio 0.75
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{81208F0221C8E902}" {
+       m_sMessage "UK KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FDAC9F7E24D7840D}" {
+     m_sName "UK KIA (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{92B93A84E7399BA9}" {
+       m_sEventName "UK KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{29CB9D912CC1D5BC}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_MessageAction "{C79906181425A281}" {
+       m_sTitle "UK - HEAVY CASUALTIES"
+       m_sMessage "UK has been defeated due to heavy casualties"
+      }
+     }
+    }
+    GC_Event "{4434B311FF7ED22A}" {
+     m_sName "SEP KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{0BAC279541464212}" {
+       m_Script GC_PeakFactionPopulationCheck "{D6AFF5B3E19E83BF}" {
+        m_sFaction "GC_SEPARATIST"
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{23B9F39997CA579B}" {
+       m_sMessage "SEP KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{54A8FF154AD476EB}" {
+     m_sName "SEP KIA (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{642D1D7B8863F6D7}" {
+       m_sEventName "SEP KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{867B1A7B981D6A3C}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_MessageAction "{5C9CA2C0C737C531}" {
+       m_sTitle "SEP - DESTROYED"
+       m_sMessage "Separatist forces have been destroyed outright."
+      }
+     }
+    }
+    GC_Event "{9572AA6E48B828A9}" {
+     m_sName "OBJECTIVE SECURE"
+     m_aConditions {
+      GC_AreaCondition "{889D610A0963F82A}" {
+       m_sArea "GC_MigrationArea_OBJ_A_TAKEN"
+       m_Targets GC_CharacterAreaTargets "{1F7B040083CF505D}" {
+        m_iWho 2
+        m_aFactions {
+         "UK"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{FA470679B63D1228}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{D18DDCBBD55CDEBB}" {
+        m_fSeconds 300
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{733E31DE7E0A4E8B}" {
+       m_sMessage "OBJECTIVE SECURE"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E24897DC3B8FEC01}" {
+     m_sName "OBJECTIVE SECURE (30s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9E326D1969EF0DDC}" {
+       m_sEventName "OBJECTIVE SECURE"
+      }
+     }
+     m_Advanced GC_EventOptions "{18FC89F6FC34E389}" {
+      m_fDelay 30
+     }
+     m_aActions {
+      GC_MessageAction "{44436D39BF6C4515}" {
+       m_sTitle "BLUFOR VICTORY - POWER PLANT SECURE"
+       m_sMessage "Power plant was secured by british forces"
+      }
+     }
+    }
+    GC_Event "{D62525CB363C4725}" {
+     m_sName "Release staging zones"
+     m_aActions {
+      GC_DeleteEntitiesAction "{39FA00F54458B3CA}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+        "GC_MigrationStartingZone2"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 6109.12 236.625 6229.905
+}
+GC_RadiusAreaEntity GC_MigrationArea_OBJ_A_TAKEN : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 6545.184 201.903 6516.98
+ m_fRadius 100
+}

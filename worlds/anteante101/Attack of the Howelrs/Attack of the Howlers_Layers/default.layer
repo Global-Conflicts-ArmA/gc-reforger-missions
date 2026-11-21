@@ -1,0 +1,182 @@
+SCR_AIWorld : "{0946C019EBADE117}Prefabs/AI/SCR_AIworld_AL_Hadra.et" {
+ coords 4185.208 35.114 4872.543
+}
+GC_LobbyGameMode GC_MigratedMission : "{5B500CB530F218E6}worlds/anteante101/Attack of the Howelrs/Attack of the Howlers_GC_Settings.et" {
+ components {
+  GC_PeakFactionPopulationComponent "{979377FD970552DE}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{32A38F37DBE014C7}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 180
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{1A88355903F2FCE5}" {
+     m_sName "insurgents dead"
+     m_aConditions {
+      GC_CustomScriptCondition "{F04AC42EDB3DC10F}" {
+       m_Script GC_PeakFactionPopulationCheck "{0E29CC8EDBF3B96B}" {
+        m_sFaction "GC_INSURGENT"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6415C625092AB472}" {
+       m_sMessage "insurgents dead"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C191F83A0E4E84BC}" {
+     m_sName "insurgents dead (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{58C8B30C794D6E29}" {
+       m_sEventName "insurgents dead"
+      }
+     }
+     m_Advanced GC_EventOptions "{F6DCAECE66627B39}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{22620378EA7F9FF6}" {
+       m_sTitle "The Howlers insurgents are dead!!!"
+       m_sMessage "US and Russian troops are going home."
+      }
+     }
+    }
+    GC_Event "{9B183818462EC9A4}" {
+     m_sName "RUS DEAD"
+     m_aConditions {
+      GC_CustomScriptCondition "{7D43E16A8203509A}" {
+       m_Script GC_PeakFactionPopulationCheck "{607352FDB651A117}" {
+        m_sFaction "RHS_AFRF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{01D4A0B77B32341A}" {
+       m_sMessage "RUS DEAD"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F74A9057D87E1168}" {
+     m_sName "RUS DEAD (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CE423A9490E3D1B4}" {
+       m_sEventName "RUS DEAD"
+      }
+     }
+     m_Advanced GC_EventOptions "{E3A076AEA0E27A38}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{BA5E924F1F762C6C}" {
+       m_sTitle "THE RUSSIANS ARE DEAD"
+       m_sMessage "Russian squad has been rendered combat ineffactive"
+      }
+     }
+    }
+    GC_Event "{FB0BE2822A0108F6}" {
+     m_sName "US DEAD"
+     m_aConditions {
+      GC_CustomScriptCondition "{CADCBBD0EE7B901D}" {
+       m_Script GC_PeakFactionPopulationCheck "{4FC8DC5A7DD15AD3}" {
+        m_sFaction "RHS_USAF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A687E9AEC75AEC85}" {
+       m_sMessage "US DEAD"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{75FF44DB8FA618CD}" {
+     m_sName "US DEAD (6s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DD9C881A3FA74848}" {
+       m_sEventName "US DEAD"
+      }
+     }
+     m_Advanced GC_EventOptions "{870254721E86AE36}" {
+      m_fDelay 6
+     }
+     m_aActions {
+      GC_MessageAction "{D6FD78249ACCFC4C}" {
+       m_sTitle "THE AMERICANS ARE DEAD"
+       m_sMessage "The American squad is combat ineffective."
+      }
+     }
+    }
+    GC_Event "{8241135CCF5C6DA9}" {
+     m_sName "Maj Ins victory"
+     m_aConditions {
+      GC_ConditionGroup "{405EA37E65C253D3}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_CustomScriptCondition "{9CBCB7E209ED4578}" {
+         m_Script GC_PeakFactionPopulationCheck "{68A30CACD50FC2E5}" {
+          m_sFaction "RHS_AFRF"
+          m_fRatio 0.9
+         }
+        }
+        GC_CustomScriptCondition "{60C80BC2366D0BB2}" {
+         m_Script GC_PeakFactionPopulationCheck "{9B008E8CCC295DBC}" {
+          m_sFaction "RHS_USAF"
+          m_fRatio 0.9
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{53A0CAC1F3D45FEE}" {
+       m_sMessage "Maj Ins victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{105EA94A50683E51}" {
+     m_sName "Maj Ins victory (7s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8B38D29D66F73E24}" {
+       m_sEventName "Maj Ins victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{9CA24F6C5F90B640}" {
+      m_fDelay 7
+     }
+     m_aActions {
+      GC_MessageAction "{59855EE9FA2737D6}" {
+       m_sTitle "THE AMERICANS AND RUSSIANS ARE DEAD."
+       m_sMessage "THE WORLD NOW KNOWS THE STRENGHT OF THE HOWLER REBELS"
+      }
+     }
+    }
+    GC_Event "{532A35C5D9F09F99}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{5B6141510B418D90}" {
+       m_fSeconds 180
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{4B8A8906D2220136}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 4300.229 35.544 4832.235
+}
