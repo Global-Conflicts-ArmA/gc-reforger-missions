@@ -1,0 +1,407 @@
+SCR_AIWorld : "{E2A016456BBC697D}Prefabs/SCR_AIWorld_Kunar.et" {
+ coords 690.737 47.637 3112.802
+}
+GC_LobbyGameMode GC_MigratedMission : "{6A9663E8038DB882}worlds/Gabe/GuerrillasByDay/GuerrillasByDay_GC_Settings.et" {
+ components {
+  SCR_InitWeatherComponent "{61B68227C35BFE9A}" {
+   m_initialWeatherDurationMin 5
+   m_initialWeatherDurationMax 6
+  }
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 12
+   m_bWindOverride 1
+   m_fWindSpeed 8
+   m_fWindDirection 0.67
+   m_fFogAmount 0.8
+   m_fFogHeightDensity 0.86
+   m_bDateOverride 1
+   m_iDay 29
+   m_iMonth 11
+   m_iYear 2003
+  }
+  GC_PeakFactionPopulationComponent "{2667C4AFA29552EE}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{BFC85B614506E550}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 300
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{F42C48D53FEDA9FA}" {
+     m_sName "Blufor Victory by Objectives"
+     m_aConditions {
+      GC_GameModeStateCondition "{C163D15AC32E30D3}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionCount "{861D20DF060BE859}" {
+       m_iComparison 0
+       m_iRequiredCount 2
+       m_aConditions {
+        GC_AreaCondition "{C523A4703AA4A236}" {
+         m_sArea "CapZoneRichahlam"
+         m_Targets GC_CharacterAreaTargets "{A8DEE22307E6587B}" {
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{F251CAD2E1296950}" {
+          m_fRequiredShare 0.9
+          m_aIgnoredFactions {
+           "CIV"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{9FB2B6868E9E2297}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{09BD1D60CC757FC6}" {
+           m_sLocation "Richahlam"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{B6EBA607CF381D47}" {
+         m_sArea "CapZoneGasStation"
+         m_Targets GC_CharacterAreaTargets "{0E66A1DF439755DA}" {
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{0F2C23DDCEFED22C}" {
+          m_fRequiredShare 0.9
+          m_aIgnoredFactions {
+           "CIV"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{73715AF19F5F0DDE}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{EDD40AAFE50FA6D6}" {
+           m_sLocation "Gas Station"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{1CD942E08584FE09}" {
+         m_sArea "CapZoneKhandarProper"
+         m_Targets GC_CharacterAreaTargets "{A3AA97B95788497C}" {
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{246A1387AB65406B}" {
+          m_fRequiredShare 0.9
+          m_aIgnoredFactions {
+           "CIV"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{B52EB21C6BB386B4}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{34134220D7E972C7}" {
+           m_sLocation "Khandar Proper"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{9CF36D74765A9D5D}" {
+         m_sArea "CapZoneKhandarFarm"
+         m_Targets GC_CharacterAreaTargets "{7710F99933D01610}" {
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{496B0C75C17C958C}" {
+          m_fRequiredShare 0.9
+          m_aIgnoredFactions {
+           "CIV"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{F280EB0C083F7FAF}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{F726579E420BF401}" {
+           m_sLocation "Khandar Farm"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2495A458A88A15A5}" {
+       m_sMessage "Blufor Victory by Objectives"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C4F259031362B4CE}" {
+     m_sName "Blufor Victory by Objectives (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{04F4D9277EE24C83}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{AA72CB2572AE424E}" {
+       m_sEventName "Blufor Victory by Objectives"
+      }
+     }
+     m_Advanced GC_EventOptions "{1C517956FBD6E101}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{FCE293DFB1DF5798}" {
+       m_sTitle "US Victory"
+       m_sMessage "They have successfully patrolled 3 objectives."
+      }
+     }
+    }
+    GC_Event "{F08B1BDA6C3B0B5B}" {
+     m_sName "Blufor Victory by Kills"
+     m_aConditions {
+      GC_CustomScriptCondition "{51FF239F26F957E1}" {
+       m_Script GC_PeakFactionPopulationCheck "{9C43904ED5B0C0C9}" {
+        m_sFaction "GC_INSURGENT"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{30B2621F9B2414CA}" {
+       m_sMessage "Blufor Victory by Kills"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A8F2BC3192E4FC5D}" {
+     m_sName "Blufor Victory by Kills (2.5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6FB487F188856643}" {
+       m_sEventName "Blufor Victory by Kills"
+      }
+     }
+     m_Advanced GC_EventOptions "{B914CB55A94EA1FF}" {
+      m_fDelay 2.5
+     }
+     m_aActions {
+      GC_MessageAction "{34525CBFF0A50893}" {
+       m_sTitle "US Victory"
+       m_sMessage "Insurgents have been eliminated!"
+      }
+     }
+    }
+    GC_Event "{31C462835D574A5B}" {
+     m_sName "Opfor Victory by Kills"
+     m_aConditions {
+      GC_CustomScriptCondition "{5AEF992BCEC55F33}" {
+       m_Script GC_PeakFactionPopulationCheck "{5315A529AF899A56}" {
+        m_sFaction "US"
+        m_fRatio 0.65
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9031A9BC7AF7502C}" {
+       m_sMessage "Opfor Victory by Kills"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CF5045E7D615F576}" {
+     m_sName "Opfor Victory by Kills (2.5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E419DCE6D6670015}" {
+       m_sEventName "Opfor Victory by Kills"
+      }
+     }
+     m_Advanced GC_EventOptions "{6C911A7B75B60C0A}" {
+      m_fDelay 2.5
+     }
+     m_aActions {
+      GC_MessageAction "{92DB3233AAEFED61}" {
+       m_sTitle "Insurgent Victory"
+       m_sMessage "US (BLUFOR) has taken too many casualties!"
+      }
+     }
+    }
+    GC_Event "{0C462EEEBEA7087B}" {
+     m_sName "CIV Deaths"
+     m_aConditions {
+      GC_CustomScriptCondition "{2D2072ADF5D32655}" {
+       m_Script GC_PeakFactionPopulationCheck "{659A67078BA439F2}" {
+        m_sFaction "CIV"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{828908AEC69A31D1}" {
+       m_sMessage "CIV Deaths"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E5C2BB6FA5C071F5}" {
+     m_sName "CIV Deaths (2.5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B4696174605D56B2}" {
+       m_sEventName "CIV Deaths"
+      }
+     }
+     m_Advanced GC_EventOptions "{F52E4EC26522ED56}" {
+      m_fDelay 2.5
+     }
+     m_aActions {
+      GC_MessageAction "{DA43CCD1BE816F15}" {
+       m_sTitle "Too many civilians have perished"
+       m_sMessage "Way to win those hearts and minds, gents... US ARMY TACTICAL FAILURE!"
+      }
+     }
+    }
+    GC_Event "{EBDBA25CA3905F02}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{F4162D0D6AD739AD}" {
+       m_fSeconds 300
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{53078F039888C7E3}" {
+       m_aEntities {
+        "RestrictZone_Blufor"
+       }
+      }
+     }
+    }
+   }
+   m_iSlotReservationTimeoutSeconds 180
+   m_iMatchSlotReservationTimeoutSeconds -1
+  }
+ }
+ coords 600.144 126.739 3414.728
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     FactionKey "RHS_USAF"
+     m_iOrder 1
+     m_FactionLabel FACTION_RHS_USAF
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CCD598D3}" {
+        m_sCallsign "Bravo"
+       }
+      }
+     }
+    }
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     FactionKey "US"
+     m_FactionLabel FACTION_US
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CD021D5C}" {
+        m_sCallsign "Bravo"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "1"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{685E078F2F05FC93}" {
+        m_sCallsign "4"
+       }
+      }
+      m_sCallsignGroupFormat "%1 %2'%3"
+      m_sCallsignCharacterFormat "%1 %2'%3: %4"
+     }
+    }
+    SCR_Faction "{632925D53C7F1148}" {
+     m_iOrder 2
+     m_bShowInWelcomeScreenIfNonPlayable 1
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_bIsAssignedRandomly 0
+      m_aCompanyNames {
+       SCR_CallsignInfo "{58B2B630FDD64B73}" {
+        m_sCallsign "Pech"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{58B2B630FDD64B65}" {
+        m_sCallsign "Cell"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "HQ"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+        m_sCallsign "4"
+       }
+      }
+      m_sCallsignGroupFormat "%1 %2 %3"
+      m_sCallsignCharacterFormat "%1 %2 %3 %4"
+      m_sCallsignCharacterWithRoleFormat "%1 %2 %3 %4"
+     }
+     m_iFactionRadioFrequency 42000
+    }
+   }
+  }
+ }
+}
