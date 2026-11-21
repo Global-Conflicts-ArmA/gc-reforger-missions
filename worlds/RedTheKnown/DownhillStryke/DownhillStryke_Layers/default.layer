@@ -1,0 +1,322 @@
+SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
+ coords 3984.053 376.22 6416.717
+}
+GC_LobbyGameMode GC_MigratedMission : "{028E7EB40A6E6A0E}worlds/RedTheKnown/DownhillStryke/DownhillStryke_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 11
+   m_iRangeHoursStart 10
+   m_iRangeHoursEnd 18
+   m_bDateOverride 1
+   m_iDay 15
+   m_iMonth 10
+   m_iYear 2005
+  }
+  GC_PeakFactionPopulationComponent "{E0A975DA61B478A7}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{D1503344CEF895EB}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_fAuthoredCountdownSeconds 0.18
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{C4A73BCB52B70D7F}" {
+     m_sName "TimeLimitFlag"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{12289107CAF35B55}" {
+     m_sName "USExtracted"
+     m_aConditions {
+      GC_AreaCondition "{20E3832816DD12B6}" {
+       m_sArea "GC_MigrationArea_USExtractFlag"
+       m_Targets GC_CharacterAreaTargets "{3D7015553A54A393}" {
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{BA56FA055DD28FE7}" {
+        m_fRequiredShare 0.7
+        m_bWholeMission 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{8BDC133E198A8675}" {
+        m_fSeconds 5
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_Messages GC_CaptureMessages "{BF72D46D1BAF596B}" {
+         m_sLocation "Extract"
+         m_aFactions {
+          "US"
+         }
+         m_sCaptured "The %1 has retreated."
+         m_sCapturing "The %1 is retreating."
+         m_sCaptureInterrupted ""
+         m_sLost ""
+         m_sLosing ""
+         m_sLossInterrupted ""
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{656EA75B465B1CCA}" {
+       m_sMessage "USExtracted"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7552E18A44489C79}" {
+     m_sName "USExtracted (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{21439AD96D288F0E}" {
+       m_sEventName "USExtracted"
+      }
+     }
+     m_Advanced GC_EventOptions "{6823AED33E6C7D33}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{4E8AE151841158B5}" {
+       m_sTitle "US Extraction"
+       m_sMessage "At least 70% of remaining US forces have gone to their extraction zone."
+      }
+     }
+    }
+    GC_Event "{A79DC7F9AD734DF4}" {
+     m_sName "SEPExtracted"
+     m_aConditions {
+      GC_AreaCondition "{EB17ED222A4669AC}" {
+       m_sArea "GC_MigrationArea_SEPExtractFlag"
+       m_Targets GC_CharacterAreaTargets "{027AE1EDD2C42A5A}" {
+        m_aFactions {
+         "GC_SEPARATIST"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{2F777526C4EB09C5}" {
+        m_fRequiredShare 0.7
+        m_bWholeMission 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{F73C0C912B09A579}" {
+        m_fSeconds 5
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_Messages GC_CaptureMessages "{954D3F7BED25C233}" {
+         m_sLocation "Extract"
+         m_aFactions {
+          "GC_SEPARATIST"
+         }
+         m_sCaptured "The %1 has retreated."
+         m_sCapturing "The %1 is retreating."
+         m_sCaptureInterrupted ""
+         m_sLost ""
+         m_sLosing ""
+         m_sLossInterrupted ""
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{EB74B0A6503EABF9}" {
+       m_sMessage "SEPExtracted"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{367CBC780C51006F}" {
+     m_sName "SEPExtracted (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{881337D286F6A220}" {
+       m_sEventName "SEPExtracted"
+      }
+     }
+     m_Advanced GC_EventOptions "{AEFD5DA9B12CFC16}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{73E77A49D28C653F}" {
+       m_sTitle "Seperatist Extraction"
+       m_sMessage "At least 70% of remaining Seperatist forces have gone to their extraction zone."
+      }
+     }
+    }
+    GC_Event "{326DEFD894275D8E}" {
+     m_sName "SEPDelayVictory"
+     m_aConditions {
+      GC_GameModeStateCondition "{4C82C1F64BFEA098}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{E2B8A4C330345532}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{3AF480BD84034C89}" {
+         m_sFlagName "TimeLimitFlag"
+        }
+        GC_ConditionGroup "{E72F7EC2B2136CD7}" {
+         m_iMatch 2
+         m_aConditions {
+          GC_AreaCondition "{1BABCAC0A2739C7B}" {
+           m_sArea "HamertinCapZone"
+           m_Targets GC_CharacterAreaTargets "{150FCF838A2F3F4E}" {
+            m_iWho 2
+            m_aFactions {
+             "US"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{F7A434E124CDDE5B}" {
+            m_fRequiredShare 0.9
+           }
+           m_Capture GC_AreaCaptureOptions "{F54A6F040B26154F}" {
+            m_fSeconds 90
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DAE09CA6D373B003}" {
+       m_sMessage "SEPDelayVictory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7D81BF9CA1457CD8}" {
+     m_sName "SEPDelayVictory (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{A412931C4CE8D198}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{EE77E854912B5F0F}" {
+       m_sEventName "SEPDelayVictory"
+      }
+     }
+     m_Advanced GC_EventOptions "{FAE65FA36FCE0150}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{47020CFD97DF32A1}" {
+       m_sTitle "Seperatist Victory!"
+       m_sMessage "Seperatist forces has managed to delay the US assault on Hamertin for at least 50 minuets, achieving their primary objective."
+      }
+     }
+    }
+    GC_Event "{4EA6F97B1881E3C7}" {
+     m_sName "USCaptureVictory"
+     m_aConditions {
+      GC_AreaCondition "{14FB300BB231D2E2}" {
+       m_sArea "HamertinCapZone"
+       m_Targets GC_CharacterAreaTargets "{8B6227A5EBA2F448}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{0E9A0692A0A00FB2}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{52DCB7C78980E0CF}" {
+        m_fSeconds 90
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FE6694771FE48A7C}" {
+       m_sMessage "USCaptureVictory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8AD8958F9C7F45DB}" {
+     m_sName "USCaptureVictory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C4A98F70F496660E}" {
+       m_sEventName "USCaptureVictory"
+      }
+     }
+     m_Advanced GC_EventOptions "{E3DF8521548F8064}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{7918DB18D49FCE0B}" {
+       m_sTitle "US Victory!"
+       m_sMessage "Assaulting US forces have captured Hamertin, achieving their primary objective"
+      }
+     }
+    }
+    GC_Event "{EA2AEDB9D11DE5C5}" {
+     m_sName "USCasualtyLoss"
+     m_aConditions {
+      GC_CustomScriptCondition "{65A340FBCA2036BF}" {
+       m_Script GC_PeakFactionPopulationCheck "{7D4564CF8C13391A}" {
+        m_sFaction "US"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{EF08EDC39210EFE8}" {
+       m_sMessage "USCasualtyLoss"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2EA3FCCB11B30B60}" {
+     m_sName "USCasualtyLoss (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2525279BA4CD1E06}" {
+       m_sEventName "USCasualtyLoss"
+      }
+     }
+     m_Advanced GC_EventOptions "{8C3EFC82F76DECB8}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{1B22D38B0077FF64}" {
+       m_sTitle "US Defeat!"
+       m_sMessage "Assaulting US forces have taken at least 80% casualties, and can no longer achieve their objective."
+      }
+     }
+    }
+    GC_Event "{F261BF13775E5914}" {
+     m_sName "TimeLimit (3180s)"
+     m_Advanced GC_EventOptions "{E6C04BA8433647CF}" {
+      m_fDelay 3180
+      m_bDisabled 1
+     }
+     m_aActions {
+      GC_FlagAction "{9023E79083B3F06B}" {
+       m_sFlagName "TimeLimitFlag"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{F32BBBFA6AB9E5DB}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{388849BEE590C73F}" {
+       m_fSeconds 0.18
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{1BAC6D48786EF20F}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 3988.514 377.102 6413.123
+}
