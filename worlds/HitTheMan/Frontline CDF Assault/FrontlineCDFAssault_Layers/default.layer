@@ -1,0 +1,437 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 2758.863 11.932 2454.95
+}
+GC_LobbyGameMode GC_MigratedMission : "{E088E5D4BAD9940C}worlds/HitTheMan/Frontline CDF Assault/FrontlineCDFAssault_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 16
+   m_iStartingMinutes 45
+   m_fDayTimeAcceleration 0.1
+   m_fNightTimeAcceleration 0.1
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{650415CBAFAE6875}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 16
+     m_iStartingMinutes 45
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 21
+   m_iMonth 7
+   m_iYear 1983
+  }
+  GC_PeakFactionPopulationComponent "{222AFF3BC3A9661C}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{CA9B6947F68C206F}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 300
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{8FCBEE7A119708F5}" {
+     m_sName "SEP Victory Casualties"
+     m_aConditions {
+      GC_CustomScriptCondition "{6F7FBE68FFA9F9F2}" {
+       m_Script GC_PeakFactionPopulationCheck "{0A7D517735D3676D}" {
+        m_sFaction "GC_CDF"
+        m_fRatio 0.85
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{443AA65183BCDCAC}" {
+       m_sMessage "SEP Victory Casualties"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7BA6C5E15132BB5F}" {
+     m_sName "SEP Victory Casualties (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{96C28C5720C80875}" {
+       m_sEventName "SEP Victory Casualties"
+      }
+     }
+     m_Advanced GC_EventOptions "{50C1F0A5DBB74ABB}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{C31E61B88C79C25A}" {
+       m_sTitle "Seperatists Victory"
+       m_sMessage "CDF Sustained too many casualties.. GM Discretion when to end the mission"
+      }
+     }
+    }
+    GC_Event "{D41162013FBA2382}" {
+     m_sName "CDF Victory Casualties"
+     m_aConditions {
+      GC_CustomScriptCondition "{4E3980AFEF89E6F6}" {
+       m_Script GC_PeakFactionPopulationCheck "{3BED8182ACDD002C}" {
+        m_sFaction "GC_SEPARATIST"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1A59B630C0707FBC}" {
+       m_sMessage "CDF Victory Casualties"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3051EFE0B9462E30}" {
+     m_sName "CDF Victory Casualties (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{ED15A65AE55120BF}" {
+       m_sEventName "CDF Victory Casualties"
+      }
+     }
+     m_Advanced GC_EventOptions "{69CD57C0CF1CD7CF}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{61A2DC2C4F4F9244}" {
+       m_sTitle "Chernarussian Victory"
+       m_sMessage "Seperatists Sustained too many casualties.. GM Discretion when to end the mission"
+      }
+     }
+    }
+    GC_Event "{74D22290097DFE0A}" {
+     m_sName "CDF OBJ Victory"
+     m_aConditions {
+      GC_AreaCondition "{692BC24FC2C720F9}" {
+       m_sArea "Trigger_Compound"
+       m_Targets GC_CharacterAreaTargets "{1156980653577471}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CDF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{A998B15BA85660DA}" {
+        m_fRequiredShare 0.95
+       }
+       m_Capture GC_AreaCaptureOptions "{D5F5FD88AD72AEA4}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F93DD8F3103C1DE5}" {
+       m_sMessage "CDF OBJ Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F55B65CB8FDD8D9E}" {
+     m_sName "CDF OBJ Victory (8s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F0EC5A695ED7297B}" {
+       m_sEventName "CDF OBJ Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{B9474115E5EA3F31}" {
+      m_fDelay 8
+     }
+     m_aActions {
+      GC_MessageAction "{98C8C79FB68718EB}" {
+       m_sTitle "Chernarussian Defence Force Victory"
+       m_sMessage "CDF has managed to secure the Compound..."\
+       "GM Discretion when to end the mission"
+      }
+     }
+    }
+    GC_Event "{61A1C0158CBA4AE8}" {
+     m_sName "GC_MigratedSpawn_8B7603F748A58201 (300s)"
+     m_Advanced GC_EventOptions "{D53A66DF06F653F2}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{3656F1E7D997F1AE}" {
+       m_Spawn GC_PrefabSpawn "{E01E122C0B3D4F2F}" {
+        m_sLocation "Cas_test1"
+        m_sPrefab "{1DDF7187608968F2}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Large.et"
+       }
+      }
+     }
+    }
+    GC_Event "{AD1CEDAC7125F085}" {
+     m_sName "GC_MigratedSpawn_5B811AF8E07F8366 (290s)"
+     m_Advanced GC_EventOptions "{261FCDA294651E0D}" {
+      m_fDelay 290
+     }
+     m_aActions {
+      GC_SpawnAction "{6872EB155D603438}" {
+       m_Spawn GC_PrefabSpawn "{D5937CCB67EE594C}" {
+        m_sLocation "Cas_test2"
+        m_sPrefab "{1DDF7187608968F2}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Large.et"
+       }
+      }
+     }
+    }
+    GC_Event "{1E58E236EE9D270F}" {
+     m_sName "GC_MigratedSpawn_FEBD20A6989A98A9 (290s)"
+     m_Advanced GC_EventOptions "{C978689A111444C3}" {
+      m_fDelay 290
+     }
+     m_aActions {
+      GC_SpawnAction "{EB4ADD2AA0DB6F64}" {
+       m_Spawn GC_PrefabSpawn "{BD7B574C9DEE6164}" {
+        m_sLocation "Cas_test3"
+        m_sPrefab "{1DDF7187608968F2}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Large.et"
+       }
+      }
+     }
+    }
+    GC_Event "{BB3A5AA84D377341}" {
+     m_sName "GC_MigratedSpawn_982A15F6B32E53D2 (300s)"
+     m_Advanced GC_EventOptions "{15985CC0A2A8E1FC}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{9C22D520D940BAF8}" {
+       m_Spawn GC_PrefabSpawn "{0F129CC431C1FA57}" {
+        m_sLocation "Cas_test4"
+        m_sPrefab "{1DDF7187608968F2}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Large.et"
+       }
+      }
+     }
+    }
+    GC_Event "{52AFE85A1CED78B9}" {
+     m_sName "GC_MigratedSpawn_8F93660B2106328B (300s)"
+     m_Advanced GC_EventOptions "{3F791435DD516B0F}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{279BE6102C59158E}" {
+       m_Spawn GC_PrefabSpawn "{856108FAAA7E8289}" {
+        m_sLocation "Cas_test5"
+        m_sPrefab "{1DDF7187608968F2}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Large.et"
+       }
+      }
+     }
+    }
+    GC_Event "{2547223346712A75}" {
+     m_sName "GC_MigratedSpawn_BDFDC894DBA459DD"
+     m_aConditions {
+      GC_AreaCondition "{3A82A111FEE15126}" {
+       m_sArea "Trigger_Compound"
+       m_Targets GC_CharacterAreaTargets "{FD6E1CE924F1E909}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CDF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{8C69F0341E650893}" {
+        m_fRequiredShare 0.95
+       }
+       m_Capture GC_AreaCaptureOptions "{E80FF1807F556A8C}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{951B1A603BF97785}" {
+       m_sMessage "GC_MigratedSpawn_BDFDC894DBA459DD"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{EA19BEB4EADFA085}" {
+     m_sName "GC_MigratedSpawn_BDFDC894DBA459DD (310s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D7895FCB0158B7E8}" {
+       m_sEventName "GC_MigratedSpawn_BDFDC894DBA459DD"
+      }
+     }
+     m_Advanced GC_EventOptions "{A3F9CAB4C6263643}" {
+      m_fDelay 310
+     }
+     m_aActions {
+      GC_SpawnAction "{288298D0F1D1F97A}" {
+       m_Spawn GC_PrefabSpawn "{4C9BDF178C05717E}" {
+        m_sLocation "Cas_test6"
+        m_sPrefab "{1DDF7187608968F2}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Large.et"
+       }
+      }
+     }
+    }
+    GC_Event "{7B468DE95D96CB26}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{68E091D5E2971850}" {
+       m_fSeconds 300
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{C8A1C745C715C32D}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 3697.287 353.796 1652.506
+ {
+  RadioManagerEntity {
+   ID "A79C4E0A43DEB824"
+   coords -26.889 23.04 -2.478
+  }
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   coords 0 0 0
+   Factions + {
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
+      Name "Soviet Air Force"
+      Icon "{B522FE456D7F091A}worlds/HitTheMan/Screening The Orb/330px-Flag_of_the_Soviet_Air_Force.svg.edds"
+     }
+     m_iOrder 1
+     m_sFactionFlag "{B522FE456D7F091A}worlds/HitTheMan/Screening The Orb/330px-Flag_of_the_Soviet_Air_Force.svg.edds"
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB79282FF010C}" {
+       }
+       SCR_CallsignInfo "{55CCB792829053B0}" {
+        m_sCallsign "Berkut"
+       }
+       SCR_CallsignInfo "{55CCB79282A19687}" {
+        m_sCallsign "2"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB79284A2F6C9}" {
+        m_sCallsign " "
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{64E2F896E232A50B}" {
+        m_sCallsign "5"
+       }
+       SCR_CallsignInfo "{64E2F896FFC45153}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{64E2F896E5466F70}" {
+        m_sCallsign "4v"
+       }
+      }
+     }
+    }
+    SCR_Faction "{648D46336748B246}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{648D3C2E4F6005BD}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{688E3EDD190EA91F}" {
+        m_sCallsign "5"
+       }
+      }
+     }
+    }
+    SCR_Faction "{64AA098AEA5B1498}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{64AA098204A61453}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{64AA098204A6145D}" {
+        m_sCallsign "9"
+       }
+       SCR_CallsignInfo "{64AA098204A61443}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{64AA098204A61441}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{64AA098204A61446}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{650AE15C940BA34B}" {
+        m_sCallsign "4"
+       }
+       SCR_CallsignInfo "{650AE15C8B7A1EC2}" {
+        m_sCallsign "5"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "Sunray"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "Alpha"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "Bravo"
+       }
+       SCR_CallsignInfo "{61677618371B4C91}" {
+        m_sCallsign "Charlie"
+       }
+       SCR_CallsignInfo "{65055DBDAC6F7853}" {
+        m_sCallsign "Whiskey"
+       }
+       SCR_CallsignInfo "{65055DB6CE3F5934}" {
+        m_sCallsign "Echo"
+       }
+       SCR_CallsignInfo "{650AE1494DA67E1D}" {
+        m_sCallsign "Foxtrot"
+       }
+      }
+     }
+     m_iFactionRadioFrequency 50000
+    }
+    SCR_Faction "{652F615735715119}" {
+    }
+   }
+  }
+  ScriptedChatEntity {
+   ID "A79C4E0A43DEB825"
+   coords -318.966 137.025 1.838
+  }
+  ItemPreviewManagerEntity : "{9F18C476AB860F3B}Prefabs/World/Game/ItemPreviewManager.et" {
+   ID "5ED9088735FF2DD5"
+   coords -12.245 -3.267 -7.529
+  }
+  SCR_EditorSettingsEntity {
+   ID "61B4E967E6C20362"
+   coords 0 0 0
+   m_bIsUnlimitedEditorLegal 1
+  }
+ }
+}
+GC_RadiusAreaEntity Trigger_Compound : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 1492.514 19.805 1448.588
+ angles 0 0 0.895
+ m_fRadius 75
+}
+GenericEntity Obj_Mark_1 : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "objective-marker"
+   m_Color 0.624 0.157 0.157 1
+   m_fSize 80
+   m_bWorldScale 1
+   m_sDescription "Compound"
+   m_iZOrder 0
+   m_iHoverZOrder -1
+  }
+ }
+ coords 1489.45 19.91 1451.313
+ angles 0 90 0
+}
