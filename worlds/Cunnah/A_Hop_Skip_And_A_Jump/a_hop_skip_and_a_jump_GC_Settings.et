@@ -3,21 +3,6 @@ GC_LobbyGameMode : "{A79C4E0A43DEB821}Prefabs/MP/Modes/GC_LobbyGameMode.et" {
  components {
   GC_LobbyManager "{6A137A39106A4973}" {
    m_aMissionEvents + {
-    GC_Event "{69637BD9DA06C278}" {
-     m_sName "Initialize faction respawn tickets"
-     m_aActions {
-      GC_RespawnTicketsAction "{BFC846C0808F8D34}" {
-       m_sFaction "USSR"
-       m_iOperation 0
-       m_iAmount 3
-      }
-      GC_RespawnTicketsAction "{3B0FD01B538FED49}" {
-       m_sFaction "UK"
-       m_iOperation 0
-       m_iAmount 10
-      }
-     }
-    }
     GC_Event "{06564FC1AE63EBB6}" {
      m_sName "UK Held Regina (event 3, 3300s)"
      m_Advanced GC_EventOptions "{3C7B11641A6BA03F}" {
@@ -40,6 +25,167 @@ GC_LobbyGameMode : "{A79C4E0A43DEB821}Prefabs/MP/Modes/GC_LobbyGameMode.et" {
        m_sTitle "15 minutes left!"
        m_sMessage "Hurry up!"
       }
+     }
+    }
+   }
+   m_aBriefings {
+    GC_Briefing "{2DFDF836C9B0E110}" {
+     m_iOrder 0
+     m_sTitle "SITUATION"
+     m_sContent "SITUATION ENEMY:"\
+     ""\
+     "A russian mechanised platoon supported by a T72 tank platoon. The infantry are being transported in BTR-70s and armed with light arms, PKMs, light AT, and AKs."\
+     ""\
+     "They are attempting to break through our lines and have caught us by surprised. Their goal is to take and hold REGINA."\
+     ""\
+     "SITUATION FRIENDLY:"\
+     ""\
+     "We are a light infantry platoon positioned at our makeshift staging area (GRID 103 003). We have limited air transport via helicopter (ROBIN 24)."\
+     ""\
+     "A couple of prepared TOW static positions have been setup ahead of our arrival, ammunition is however limited."\
+     ""\
+     "The western slopes of WESTERN HEIGHTS has been heavily mined in anticaption of this attack and should be considered impassable by vehicles."\
+     ""\
+     "SITUATION TERRAIN:"\
+     ""\
+     "REGINA is situated along a rocky coast. The weather is currently heavy fog limiting visability in the low groud."\
+     ""
+     m_aFactionKeys {
+      "UK"
+     }
+    }
+    GC_Briefing "{00C606C43DEA381E}" {
+     m_iOrder 1
+     m_sTitle "COMSIG"
+     m_sContent "Platoon Net - 48.0MHz"\
+     "Air Net (ROBIN 24) - 39.0MHz"
+     m_eAudience 3
+    }
+    GC_Briefing "{F715C28BDBE08B53}" {
+     m_iOrder 2
+     m_sTitle "TVT 35 - 67 A Hop Skip and a Jump"
+     m_sContent "UK air mobile forces attempt to hold russian forces at REGINA."\
+     ""\
+     "55 mins (including setup timer)."\
+     ""\
+     "Please read notes in regards to vehicles."
+     m_eAudience 1
+    }
+    GC_Briefing "{74FDF5DB9A8216CD}" {
+     m_iOrder 3
+     m_sTitle "SITUATION"
+     m_sContent "SITUATION ENEMY:"\
+     ""\
+     "A british light infantry platoon is attempting to hold REGINA. They are armed with light arms, AT, and TOW launchers. "\
+     ""\
+     "The western slopes of WESTERN HEIGHTS have been heavily mined with anti tank mines and is to be treated as impassable by vehicles."\
+     ""\
+     "They are expected to establish ambush positions ahead of our route to REGINA. They are however currently being air lifted into position so will take some time to establish these positions fully."\
+     ""\
+     "SITUATION FRIENDLY:"\
+     ""\
+     "We are 1x mechanised infantry armed with light arms, AT, PKMs, and BTR-70s. We are supported by 1x T72."\
+     ""\
+     "SITUATION TERRAIN:"\
+     ""\
+     "REGINA is situated along a rocky coast. The weather is currently heavy fog and visability is limited in the low ground."
+     m_aFactionKeys {
+      "USSR"
+     }
+    }
+    GC_Briefing "{02E4F735023C4079}" {
+     m_iOrder 4
+     m_sTitle "MISSION"
+     m_sContent "1 Platoon will hold REGINA for 45 minutes (not including setup time)."
+     m_aFactionKeys {
+      "UK"
+     }
+    }
+    GC_Briefing "{F6352521D41E535F}" {
+     m_iOrder 5
+     m_sTitle "MISSION"
+     m_sContent "We are to take and hold REGINA no later than 45 minuets after departure."
+     m_aFactionKeys {
+      "USSR"
+     }
+    }
+    GC_Briefing "{A7DA71CD6A213692}" {
+     m_iOrder 6
+     m_sTitle "EXECUTION (PLEASE READ)"
+     m_sContent "As per COs brief."\
+     ""\
+     "NOTE: There is only 1 transport helicopter (read sustainment notes). This is intentional to simulate a hasty deployment. There is a 10 minute setup timer, transport time from spawn to REGINA is ~2 minutes. "\
+     ""\
+     "PLAN ACCORDINGLY."
+     m_aFactionKeys {
+      "UK"
+     }
+    }
+    GC_Briefing "{986366C73599B17A}" {
+     m_iOrder 7
+     m_sTitle "EXECUTION"
+     m_sContent "As per COs brief."
+     m_aFactionKeys {
+      "USSR"
+     }
+    }
+    GC_Briefing "{3FBD18A1EA309AA1}" {
+     m_iOrder 8
+     m_sTitle "SUSTAINMENT"
+     m_sContent "1x Static Tow position. South of REGINA has 3 missiles (located in crate)."\
+     ""\
+     "1x UH1H Transport Helicopter."\
+     ""\
+     "1x Replacement Helicopter (NOTE: to be used if the pilot crashes and respawns)."
+     m_aFactionKeys {
+      "UK"
+     }
+    }
+    GC_Briefing "{AAC6F4CE9FCBDD4C}" {
+     m_iOrder 9
+     m_sTitle "SUSTAINMENT (PLEASE READ)"
+     m_sContent "3x BTR-70s"\
+     "1x T72"\
+     ""\
+     "1x BRDM (This is a consolation prize for the first 3 who die and respawn not to be manned initially)."
+     m_aFactionKeys {
+      "USSR"
+     }
+    }
+    GC_Briefing "{B146590D104B62FF}" {
+     m_iOrder 10
+     m_sTitle "COMSIG"
+     m_sContent "Platoon Net - 42.0Mhz"
+     m_aFactionKeys {
+      "USSR"
+     }
+    }
+    GC_Briefing "{55A14DA56944D443}" {
+     m_iOrder 11
+     m_sTitle "TOW NOTES (PLEASE READ)"
+     m_sContent "The tow can be rearmed but in order to do so you need to have a replacement tube and it NEEDS TO BE EQUIPED in order to get the reload interaction prompt. This is similar to how mortars work."\
+     ""\
+     "Also note that the TOW takes a second to launch after the trigger has been pressed so be patient. :)"
+     m_aFactionKeys {
+      "UK"
+     }
+    }
+    GC_Briefing "{8794D45A741DFE58}" {
+     m_iOrder 12
+     m_sTitle "NOTES and WIN CONDITIONS"
+     m_sContent "10 minute setup timer."\
+     ""\
+     "BLUFOR wins if OPFOR suffer 90% casulties or they hold REGINA for 45 minutes (not including setup timer)."\
+     ""\
+     "OPFOR wins if BLUFOR suffer 100% casulties or they hold RERINA uncontested for 5 minutes."\
+     ""\
+     "RESPAWNS:"\
+     "OPFOR x3"\
+     "BLUFOR x10"\
+     ""\
+     "NOTE BLUFOR helicopter can leave AO (to avoid embarrasment) HOWEVER it is unarmed and OPFOR is allowed to shoot at it if it flies over their spawn."
+     m_aFactionKeys {
+      "UK" "USSR"
      }
     }
    }

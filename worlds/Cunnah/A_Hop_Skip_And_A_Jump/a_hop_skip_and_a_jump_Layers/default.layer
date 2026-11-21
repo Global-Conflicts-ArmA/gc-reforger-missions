@@ -1,0 +1,201 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 10376.799 33.755 360.228
+}
+GC_LobbyGameMode GC_MigratedMission : "{F8C8954ADF166A78}worlds/Cunnah/A_Hop_Skip_And_A_Jump/a_hop_skip_and_a_jump_GC_Settings.et" {
+ components {
+  SCR_InitWeatherComponent "{61B68227C35BFE9A}" {
+   m_sInitialStartingWeatherId "Heavy Wet Fog"
+   m_iSetWeatherConstant 1
+  }
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{669C6E21848314D4}" {
+     m_sWeatherPresetName "Overcast"
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{C663A58644F4688D}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{3F21F1BF78231CCF}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 600.000000
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{A3B9CFC5BA5396A4}" {
+     m_sName "USSR Captured Regina"
+     m_aConditions {
+      GC_AreaCondition "{358442787A3B855C}" {
+       m_sArea "GC_MigrationArea_regina_captured"
+       m_Targets GC_CharacterAreaTargets "{6F22C7FEDBA61077}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{028DA30497FF426A}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{A829DE94205A3EE4}" {
+        m_fSeconds 300
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F5C64B389FF52A9B}" {
+       m_sMessage "USSR Captured Regina"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{EC5E43843F0958F9}" {
+     m_sName "USSR Captured Regina (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{741BA6BBAE90D6D7}" {
+       m_sEventName "USSR Captured Regina"
+      }
+     }
+     m_Advanced GC_EventOptions "{617E988D2E0F0999}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{6A96BE2A4EA78C4C}" {
+       m_sTitle "USSR Victory!"
+       m_sMessage "USSR has captured Regina."
+      }
+     }
+    }
+    GC_Event "{22C28B0560114283}" {
+     m_sName "USSR Destroyed"
+     m_aConditions {
+      GC_CustomScriptCondition "{A722F089592E6C4A}" {
+       m_Script GC_PeakFactionPopulationCheck "{8AFCA9D42B11A43E}" {
+        m_sFaction "USSR"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DD00D8F198F466E0}" {
+       m_sMessage "USSR Destroyed"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3C1C1AFD18863F82}" {
+     m_sName "USSR Destroyed (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7F311B3E7CF2A944}" {
+       m_sEventName "USSR Destroyed"
+      }
+     }
+     m_Advanced GC_EventOptions "{51086862DC4885E8}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{B0E9D2830A16CFA0}" {
+       m_sTitle "UK Victory!"
+       m_sMessage "UK forces have repelled the enemy."
+      }
+     }
+    }
+    GC_Event "{7BEA40B9DD6C0779}" {
+     m_sName "UK Destroyed"
+     m_aConditions {
+      GC_CustomScriptCondition "{F22BC8F86320E1CD}" {
+       m_Script GC_PeakFactionPopulationCheck "{A1F4ABA4F3CC162B}" {
+        m_sFaction "UK"
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{52B655A9EED40453}" {
+       m_sMessage "UK Destroyed"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2E0D2DB558CC40A9}" {
+     m_sName "UK Destroyed (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{09674DB495BA1787}" {
+       m_sEventName "UK Destroyed"
+      }
+     }
+     m_Advanced GC_EventOptions "{843610D52E4FEA21}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{D64F5AE3F7EBE93A}" {
+       m_sTitle "USSR Victory!"
+       m_sMessage "USSR have destroyed UK forces."
+      }
+     }
+    }
+    GC_Event "{1CD7A4A11B72AA65}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{ADC01F4397C50BCD}" {
+       m_fSeconds 600.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{D6C82F95AD5D4CAF}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+   m_aAuthoredRespawns {
+    GC_AuthoredFactionRespawn "{05F0BB0520B69C9A}" {
+     m_sFaction "USSR"
+     m_iTickets 3
+     m_iIntervalMs 0
+    }
+    GC_AuthoredFactionRespawn "{5B6B17F3639160DE}" {
+     m_sFaction "UK"
+     m_iTickets 10
+     m_iIntervalMs 0
+    }
+   }
+  }
+ }
+ coords 10379.097 33.977 361.378
+ {
+  RadioManagerEntity {
+   ID "A79C4E0A43DEB824"
+   coords -26.889 38.133 -2.478
+  }
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   coords 0 -0.003 0
+   Factions + {
+    SCR_Faction "{61500924662B6062}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CD021D5C}" {
+        m_sCallsign "Robin 24"
+       }
+      }
+     }
+    }
+   }
+  }
+  ItemPreviewManagerEntity : "{9F18C476AB860F3B}Prefabs/World/Game/ItemPreviewManager.et" {
+   ID "5ED9088735FF2DD5"
+   coords -12.245 -1.252 -7.529
+  }
+  SCR_EditorSettingsEntity {
+   ID "61B4E967E6C20362"
+   coords 0 -0.003 0
+   m_bIsUnlimitedEditorLegal 1
+  }
+ }
+}
