@@ -1,0 +1,349 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F9E52831}" {
+     NavmeshFile "{AD5F99CD7C59D5E0}worlds/GameMaster/Navmeshes/GM_Eden.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F3B4EE8A}" {
+     NavmeshFile "{C35ECF3276824654}worlds/GameMaster/Navmeshes/GM_Eden_vehicles.nmn"
+    }
+   }
+  }
+ }
+}
+GC_LobbyGameMode GC_MigratedMission : "{B739D8A0DCF52C9B}worlds/Til/PerelleBayPeril/PerelleBayPeril_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6262DB89721E4618}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 6
+     m_iStartingMinutes 30
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{9E700C960E62EE3C}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{42B5E7938327F72C}" {
+     m_sName "LeaderKilled"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{0B5636FD48048E3E}" {
+     m_sName "Leader Killed"
+     m_aConditions {
+      GC_GameModeStateCondition "{C5597DD27D19CA77}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{5D65CA693E0488D9}" {
+       m_sFlagName "LeaderKilled"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{18BF6BD7A2F5C001}" {
+       m_sMessage "Leader Killed"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D7EA5C751365EA89}" {
+     m_sName "Leader Killed (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{E4A381FAC86DF944}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{FF1B91AA9080E42B}" {
+       m_sEventName "Leader Killed"
+      }
+     }
+     m_Advanced GC_EventOptions "{11D0A1890321B573}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{4D065C25D2AE11EB}" {
+       m_sTitle "FIA Commander Killed!"
+       m_sMessage "The leader of the FIA cell was killed."
+      }
+     }
+    }
+    GC_Event "{99F47FF75BC54FF5}" {
+     m_sName "Crates Destroyed"
+     m_aConditions {
+      GC_AreaCondition "{8FBF559FEF43EACF}" {
+       m_sArea "GC_MigrationArea_CratesDestroyed"
+       m_Targets GC_NamedAreaTargets "{BE7F5C823C5935EC}" {
+        m_aNames {
+         "cr1" "cr2" "cr3" "cr4" "cr5"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{FDFAD8ACA674A1AF}" {
+        m_fRequiredProportion 0
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{C20F2726FE4FE6E3}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{38710D1182387804}" {
+       m_sMessage "Crates Destroyed"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8CFE48A5F8476733}" {
+     m_sName "Crates Destroyed (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E1958C9C2006C5AC}" {
+       m_sEventName "Crates Destroyed"
+      }
+     }
+     m_Advanced GC_EventOptions "{DC3639ECA1D55BB3}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{55277429994F3095}" {
+       m_sTitle "Crates Destroyed"
+       m_sMessage "The anti-aircraft weapons were destroyed."
+      }
+     }
+    }
+    GC_Event "{322FABD41AE84D57}" {
+     m_sName "USSR Victory"
+     m_aConditions {
+      GC_GameModeStateCondition "{ED69CFB103CF5510}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{8D2FFD7278ABBE2B}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{04844411879A8950}" {
+         m_sFlagName "LeaderKilled"
+        }
+        GC_AreaCondition "{D8CC9A5D87AD359C}" {
+         m_sArea "GC_MigrationArea_CratesDestroyed"
+         m_Targets GC_NamedAreaTargets "{8211C54F6B68C2A3}" {
+          m_aNames {
+           "cr1" "cr2" "cr3" "cr4" "cr5"
+          }
+          m_bCountMissingAsOutside 1
+          m_bExcludeDestroyed 1
+         }
+         m_Requirement GC_LivingProportion "{C668687D9B284DA7}" {
+          m_fRequiredProportion 0
+          m_bWholeNumberQuotient 1
+          m_bAtMost 1
+         }
+         m_Capture GC_AreaCaptureOptions "{A5642DCBE8C095E2}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+        GC_AreaCondition "{F25287646D2F7F3A}" {
+         m_sArea "GC_MigrationArea_NotNearCaches"
+         m_Targets GC_CharacterAreaTargets "{0B1D1F895CD12810}" {
+          m_iWho 2
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{FD174A5EBDEF06D6}" {
+          m_fRequiredShare 0
+          m_bAtMost 1
+         }
+         m_Capture GC_AreaCaptureOptions "{FEFB5F886AD801C3}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+        GC_AreaCondition "{99D55DA850DF6FFC}" {
+         m_sArea "GC_MigrationArea_NearCoast"
+         m_Targets GC_CharacterAreaTargets "{13F42E1B7303B6C9}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{907F965730F83EF6}" {
+          m_fRequiredShare 0.75
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{3592279797B61D24}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5773EC67859F2366}" {
+       m_sMessage "USSR Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{DAB9729F9BD6D817}" {
+     m_sName "USSR Victory (20s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{5A5D9203A495EA47}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{7CD112070448709E}" {
+       m_sEventName "USSR Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{01B0FC7C56EEF648}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_EndMissionAction "{D47F776E3E7E1019}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "USSR"
+       }
+      }
+     }
+    }
+    GC_Event "{066973253618F85F}" {
+     m_sName "Players Killed"
+     m_aConditions {
+      GC_CustomScriptCondition "{EDE5FC0705DBBFFF}" {
+       m_Script GC_PeakFactionPopulationCheck "{D625B3D6A21E7DA4}" {
+        m_sFaction "USSR"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0D38B94522D9ED22}" {
+       m_sMessage "Players Killed"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{03632D0891BBA82F}" {
+     m_sName "Players Killed (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2712A6B7F03DD52D}" {
+       m_sEventName "Players Killed"
+      }
+     }
+     m_Advanced GC_EventOptions "{AB91A1CBBD14872F}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{E4D6822E69A0A249}" {
+       m_sTitle "Soviet Defeat"
+       m_sMessage "All Spetsnaz were killed."
+      }
+     }
+    }
+    GC_Event "{F24681830B9C8F7B}" {
+     m_sName "Players Killed (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9F823A33D136B8A8}" {
+       m_sEventName "Players Killed"
+      }
+     }
+     m_Advanced GC_EventOptions "{B6A0C86AA411178F}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{992C890B936BA2C0}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "USSR"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "214 HQ"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "214"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "215"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "216"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3 %4"
+      m_sCallsignCharacterWithRoleFormat "%3 %4"
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{7CD99D22C7AE8195}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "infantry"
+   m_Color 0.855 0.031 0.028 1
+   m_fSize 70
+   m_bWorldScale 1
+   m_sDescription "Your location"
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+  }
+ }
+ coords 9077.506 27.536 5212.67
+ angleY 90
+}
+GenericEntity : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "circle"
+   m_Color 0 0 0 1
+   m_fSize 120
+   m_bWorldScale 1
+   m_sDescription "Extraction Point"
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+  }
+ }
+ coords 9708.81 1.905 5460.175
+ angleY 90
+}
