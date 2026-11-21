@@ -1,0 +1,306 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 2010.978 6.346 2804.216
+}
+GC_LobbyGameMode GC_MigratedMission : "{2B23D6F94C6F21FB}worlds/Delfer/Morning_Routine/Morning_Routine_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 1
+   m_iStartingMinutes 40
+   m_fDayTimeAcceleration 0.8
+  }
+  GC_PeakFactionPopulationComponent "{6E0CD7BF2161A9B9}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{0ECCA9ED1D0163E7}" {
+     m_sName "west_pos_taken"
+     m_aConditions {
+      GC_AreaCondition "{39D4DC03013A2D78}" {
+       m_sArea "west"
+       m_Targets GC_CharacterAreaTargets "{2B2E88BC8A64108A}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{5706757BF5437AD4}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{C76E9E3AB634196D}" {
+        m_fSeconds 120
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{73327A3BDF78FFB6}" {
+       m_sMessage "west_pos_taken"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A549C50C78AF8FA7}" {
+     m_sName "west_pos_taken (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{95A1931C4B382068}" {
+       m_sEventName "west_pos_taken"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1DBAAA27DD73A79A}" {
+       m_sTitle "Western Gun Position Secured by Soviets"
+       m_sMessage ""
+      }
+     }
+    }
+    GC_Event "{B0BB93C66504C158}" {
+     m_sName "east_pos_taken"
+     m_aConditions {
+      GC_AreaCondition "{A2923CD492727218}" {
+       m_sArea "east"
+       m_Targets GC_CharacterAreaTargets "{E2C2F4B1E41867D2}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{9B717E1167B7C555}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{122B88059EA5C5F1}" {
+        m_fSeconds 120
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C05BF091CC685363}" {
+       m_sMessage "east_pos_taken"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{456389E756AED615}" {
+     m_sName "east_pos_taken (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3AEE624D955DA99B}" {
+       m_sEventName "east_pos_taken"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{156207DF80F24150}" {
+       m_sTitle "Eastern Gun Position Secured by Soviets"
+       m_sMessage ""
+      }
+     }
+    }
+    GC_Event "{7D6599B067E5CE75}" {
+     m_sName "town_taken"
+     m_aConditions {
+      GC_AreaCondition "{C6D936FD18A7DE89}" {
+       m_sArea "town"
+       m_Targets GC_CharacterAreaTargets "{8DAEDA3C2C5B3EA6}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{C1C6A839342F0416}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{759B51220949AB96}" {
+        m_fSeconds 300
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{EC7502336653BBFF}" {
+       m_sMessage "town_taken"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3D15FCEFB5AE240B}" {
+     m_sName "town_taken (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A7A9D3CE72BDDB5F}" {
+       m_sEventName "town_taken"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{62924170F62CAD5F}" {
+       m_sTitle "Town Objective Secured by Soviets"
+       m_sMessage ""
+      }
+     }
+    }
+    GC_Event "{7EC53E809CB70C49}" {
+     m_sName "ussr_kia"
+     m_aConditions {
+      GC_CustomScriptCondition "{F9D2B4501789732D}" {
+       m_Script GC_PeakFactionPopulationCheck "{68AEEFA10551BCD2}" {
+        m_sFaction "USSR"
+        m_fRatio 0.7
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DF0F3A68F8DBDCA7}" {
+       m_sMessage "ussr_kia"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B75EAF685890395B}" {
+     m_sName "ussr_kia (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B7FB8F9D32991A1A}" {
+       m_sEventName "ussr_kia"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4727C05E747F1756}" {
+       m_sTitle "Blufor Victory"
+       m_sMessage "USSR has taken 70% casualties"
+      }
+     }
+    }
+    GC_Event "{824CAFA3E291AEAE}" {
+     m_sName "uk_kia"
+     m_aConditions {
+      GC_CustomScriptCondition "{AE0826185EDBF0D3}" {
+       m_Script GC_PeakFactionPopulationCheck "{7CD16F5C2B433F5C}" {
+        m_sFaction "UK"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5E6698DCC815D078}" {
+       m_sMessage "uk_kia"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8FB1481238470754}" {
+     m_sName "uk_kia (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3633DAA012F5C9A4}" {
+       m_sEventName "uk_kia"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{94E9770F6DDF131B}" {
+       m_sTitle "OPFOR Victory"
+       m_sMessage "Blufor has taken 90% casualties"
+      }
+     }
+    }
+    GC_Event "{6B16F394D2FB0302}" {
+     m_sName "opfor_obj_victory"
+     m_aConditions {
+      GC_ConditionGroup "{3472B0BAE593944F}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{91FBA21DBBE01E05}" {
+         m_sArea "east"
+         m_Targets GC_CharacterAreaTargets "{605B9EF5BBA09BB0}" {
+          m_iWho 2
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{E486843BCF0CA321}" {
+          m_fRequiredShare 0.9
+         }
+         m_Capture GC_AreaCaptureOptions "{7B9912A1886B2FD4}" {
+          m_fSeconds 120
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{A9702AA95E71C8A3}" {
+         m_sArea "west"
+         m_Targets GC_CharacterAreaTargets "{E2764302987A3A6A}" {
+          m_iWho 2
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{A41AFDB884E330BC}" {
+          m_fRequiredShare 0.9
+         }
+         m_Capture GC_AreaCaptureOptions "{962EE458192BDD23}" {
+          m_fSeconds 120
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{605829693B182CF6}" {
+         m_sArea "town"
+         m_Targets GC_CharacterAreaTargets "{5A03E5429DC78A78}" {
+          m_iWho 2
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{8F75D4C2D5A528FB}" {
+          m_fRequiredShare 0.9
+         }
+         m_Capture GC_AreaCaptureOptions "{CFA3DD7AD5848630}" {
+          m_fSeconds 300
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6BC496427D01775F}" {
+       m_sMessage "opfor_obj_victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C2BA047C02D01489}" {
+     m_sName "opfor_obj_victory (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{01D037EC4E0A10D9}" {
+       m_sEventName "opfor_obj_victory"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FB0BF202CDC7C5C3}" {
+       m_sTitle "OPFOR Victory"
+       m_sMessage "OPFOR has secured all 3 objectives."
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 2006.52 6.215 2804.748
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D3C2E623}" {
+    }
+    SCR_Faction "{61500924662B6062}" {
+    }
+   }
+  }
+ }
+}
