@@ -1,0 +1,282 @@
+SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
+ coords 2368.602 0 4907.127
+}
+GC_LobbyGameMode GC_MigratedMission : "{904F47CCA7E7E929}worlds/arc/EasternEnvelopment/EasternEnvelopment_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bRandomStartingDaytime 1
+   m_bRandomStartingDaytimeRange 1
+   m_iRangeHoursStart 7
+   m_iRangeHoursEnd 18
+   m_bRandomStartingWeather 1
+   m_bDateOverride 1
+   m_iDay 1
+   m_iMonth 8
+   m_iYear 2025
+  }
+  GC_PeakFactionPopulationComponent "{029FF544E792724E}" {
+  }
+  GC_LivingAndDeadAIComponent "{1DA0541B74672F73}" {
+   m_sFaction "GC_SEPARATIST"
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{0B7CF3C71AA3D9DC}" {
+     m_sName "ASSIGN_WP (5s)"
+     m_Advanced GC_EventOptions "{7CE5158838AFD2E3}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_AssignWaypointsAction "{6A3A5E5EF3918187}" {
+       m_sGroupName "S1HQ"
+       m_aWaypoints {
+        "S1HQW"
+       }
+      }
+      GC_AssignWaypointsAction "{7471BA0214B268F1}" {
+       m_sGroupName "S1SQD1"
+       m_aWaypoints {
+        "S1SQD1W"
+       }
+      }
+      GC_AssignWaypointsAction "{20DF99F1FEE00531}" {
+       m_sGroupName "S1SQD2"
+       m_aWaypoints {
+        "S1SQD2W"
+       }
+      }
+      GC_AssignWaypointsAction "{65F6D9958B49F045}" {
+       m_sGroupName "S1SQD3"
+       m_aWaypoints {
+        "S1SQD3W"
+       }
+      }
+      GC_AssignWaypointsAction "{F8F9CDAFB6AE6D61}" {
+       m_sGroupName "S2HQ"
+       m_aWaypoints {
+        "S2HQW"
+       }
+      }
+      GC_AssignWaypointsAction "{80633E31BE1080A7}" {
+       m_sGroupName "S2SQD1"
+       m_aWaypoints {
+        "S2SQD1W"
+       }
+      }
+      GC_AssignWaypointsAction "{6F639D28FE7D279E}" {
+       m_sGroupName "S2SQD2"
+       m_aWaypoints {
+        "S2SQD2W"
+       }
+      }
+      GC_AssignWaypointsAction "{9A002CAD9C192342}" {
+       m_sGroupName "S2SQD3"
+       m_aWaypoints {
+        "S2SQD3W"
+       }
+      }
+      GC_AssignWaypointsAction "{D1C635E84F83E352}" {
+       m_sGroupName "S3HQ"
+       m_aWaypoints {
+        "S3HQW"
+       }
+      }
+      GC_AssignWaypointsAction "{EFD0F80F73A9696A}" {
+       m_sGroupName "S3SQD1"
+       m_aWaypoints {
+        "S3SQD1W"
+       }
+      }
+      GC_AssignWaypointsAction "{521E84E29C7D0D81}" {
+       m_sGroupName "S3SQD2"
+       m_aWaypoints {
+        "S3SQD2W"
+       }
+      }
+      GC_AssignWaypointsAction "{15AC9B5248AD6A5D}" {
+       m_sGroupName "S3SQD3"
+       m_aWaypoints {
+        "S3SQD3W"
+       }
+      }
+      GC_AssignWaypointsAction "{9AA9FB77A88968C8}" {
+       m_sGroupName "S4HQ"
+       m_aWaypoints {
+        "S4HQW"
+       }
+      }
+     }
+    }
+    GC_Event "{09F90B50AE701672}" {
+     m_sName "TIME_LIMIT (4505s)"
+     m_Advanced GC_EventOptions "{F1EA1871E0C448E5}" {
+      m_fDelay 4505
+     }
+     m_aActions {
+      GC_MessageAction "{EE63225B36D67835}" {
+       m_sTitle "DEFEAT"
+       m_sMessage "Time limit reached."
+      }
+     }
+    }
+    GC_Event "{9CFB12282F4E674F}" {
+     m_sName "TIME_LIMIT (4515s)"
+     m_Advanced GC_EventOptions "{4033E59A896933DE}" {
+      m_fDelay 4515
+     }
+     m_aActions {
+      GC_EndMissionAction "{B9A5B3AD86C0C03F}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{31634A940FE98175}" {
+     m_sName "RU_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{B3D3ED0A46E1AAD5}" {
+       m_Script GC_PeakFactionPopulationCheck "{3F6D0387AD269FE0}" {
+        m_sFaction "RHS_AFRF"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E6F88A6989981672}" {
+       m_sMessage "RU_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{16A4201259B5A5DF}" {
+     m_sName "RU_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{ACF60A316F4C43FE}" {
+       m_sEventName "RU_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{CAD9B4D2B5239377}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{9323654673393524}" {
+       m_sTitle "DEFEAT"
+       m_sMessage "Russian forces have taken significant casualties."
+      }
+     }
+    }
+    GC_Event "{FB7FFA836BE53428}" {
+     m_sName "RU_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{73222E8BBA54B72C}" {
+       m_sEventName "RU_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{DB39F8E9E4322860}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{A5D0AA1E9618E0ED}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{9E1B61DC33939F8B}" {
+     m_sName "SEP_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{525485F2EE33FD1E}" {
+       m_Script GC_LivingAndDeadAICheck "{F7FCDD97F81ACD5E}" {
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B1ABE6A98BCEE5FE}" {
+       m_sMessage "SEP_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{41CC3CE5E2827E1A}" {
+     m_sName "SEP_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5E70049AB138AA09}" {
+       m_sEventName "SEP_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{CDF9B6335278005F}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{CB52E9B22D57531F}" {
+       m_sTitle "VICTORY"
+       m_sMessage "Separatist forces occupying AO Mars have taken significant casualties."
+      }
+     }
+    }
+    GC_Event "{B42EEAFFD6010868}" {
+     m_sName "SEP_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{956DFC41D2F6BFC0}" {
+       m_sEventName "SEP_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{EA4AFC56C0114667}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{B94661E3D4DC36C9}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 2360.578 0 4912.484
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792829053B0}" {
+        m_sCallsign "Paladin-"
+       }
+       SCR_CallsignInfo "{55CCB79282A19687}" {
+        m_sCallsign "Crusader-"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{47B7E8CA1935BB28}PrefabsEditable/SupportStationSystems/E_SupportStationSystem_Fuel.et" {
+ components {
+  SCR_FuelSupportStationComponent "{5E1CF311DF6C3CBE}" {
+   m_fRange 550
+  }
+  SCR_RepairSupportStationComponent "{66E33A43FF0BBBB3}" {
+   m_eSupportStationPriority HIGH
+   m_fRange 550
+   m_iSupplyCostDamageHealed 0
+   m_iSuppliesPerDoTHealed 0
+  }
+ }
+ coords 2755.659 24.218 5092.565
+}
