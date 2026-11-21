@@ -1,0 +1,3502 @@
+SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F9E52831}" {
+     NavmeshFile "{ACBE49C3E71A9E65}worlds/GameMaster/Navmeshes/GM_Cain.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F3B4EE8A}" {
+     NavmeshFile "{27D8B11BF4E78009}worlds/GameMaster/Navmeshes/GM_Cain_vehicles.nmn"
+    }
+   }
+  }
+ }
+ coords 10353.959 29.487 1724.855
+}
+GC_LobbyGameMode GC_MigratedMission : "{1D2BD11FA4C7098F}worlds/HitTheMan/Urdarnik Assault/UrdarnikAssault_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 17
+   m_iStartingMinutes 43
+   m_fDayTimeAcceleration 0.1
+   m_fNightTimeAcceleration 0.1
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{650415CBAFAE6875}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 17
+     m_iStartingMinutes 43
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 26
+   m_iMonth 2
+   m_iYear 1983
+  }
+  GC_PeakFactionPopulationComponent "{B1044E2B68FB1FCC}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{E33D16D61213ECAA}" {
+     m_sName "MotorPoolSecured"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{C673E5015E9A9528}" {
+     m_sName "CAF Defeat Casualties"
+     m_aConditions {
+      GC_CustomScriptCondition "{973714B920093D25}" {
+       m_Script GC_PeakFactionPopulationCheck "{4618CA29C52F7222}" {
+        m_sFaction "GC_CAF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9B4253431A4BDD94}" {
+       m_sMessage "CAF Defeat Casualties"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F5F8026ADCA68525}" {
+     m_sName "CAF Defeat Casualties (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{05D4DE9E854AB784}" {
+       m_sEventName "CAF Defeat Casualties"
+      }
+     }
+     m_Advanced GC_EventOptions "{EE440BB8D3B62E48}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{E5349BA91E57BE67}" {
+       m_sTitle "Canadian Armed Forces Defeat"
+       m_sMessage "CAF Sustained too many casualties.. GM Discretion when to end the mission"
+      }
+     }
+    }
+    GC_Event "{ED320A8D8C70744B}" {
+     m_sName "CAF Victory"
+     m_aConditions {
+      GC_ConditionGroup "{D533C25D2FDEB75D}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{5EEE16B979EF6320}" {
+         m_sFlagName "MotorPoolSecured"
+        }
+        GC_AreaCondition "{742411F4CE24F216}" {
+         m_sArea "OBJ_MainBuilding"
+         m_Targets GC_CharacterAreaTargets "{4CF67ED10D83DD54}" {
+          m_iWho 2
+          m_aFactions {
+           "GC_CAF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{49F77DBE61614DCA}" {
+          m_fRequiredShare 0.9
+         }
+         m_Capture GC_AreaCaptureOptions "{9266B2171AA0DD46}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FB081A4A6EEB8920}" {
+       m_sMessage "CAF Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{26DACA973561C591}" {
+     m_sName "CAF Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2494BF69E8BCF107}" {
+       m_sEventName "CAF Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{D227A8C012CC7B4B}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{1244E80F594CC683}" {
+       m_sTitle "Canadian Armed Forces Victory"
+       m_sMessage "Canadians have secured the fortified apartment and the Motor Pool.."\
+       "GM Discretion when to end the mission"\
+       ""\
+       "Note, AI will keep spawning so best find a new mission now GMs."
+      }
+     }
+    }
+    GC_Event "{429F8BD22324394F}" {
+     m_sName "Motor Pool Secured"
+     m_aConditions {
+      GC_ConditionGroup "{0E948A731AB6594F}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_AreaCondition "{590DD1314C22E544}" {
+         m_sArea "OBJ_Sector1_MotorPool"
+         m_Targets GC_CharacterAreaTargets "{FCE72B39259D3A05}" {
+          m_iWho 2
+          m_aFactions {
+           "GC_CAF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{CFE70BA3D74684DA}" {
+          m_fRequiredShare 0.9
+         }
+         m_Capture GC_AreaCaptureOptions "{694F3F297C5340B8}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3B35EA0D56AE84D1}" {
+       m_sMessage "Motor Pool Secured"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9696DE0EA4B533D0}" {
+     m_sName "Motor Pool Secured (8s)"
+     m_aConditions {
+      GC_MissionEventCondition "{85783128A9966AFB}" {
+       m_sEventName "Motor Pool Secured"
+      }
+     }
+     m_Advanced GC_EventOptions "{2353BC3796C85738}" {
+      m_fDelay 8
+     }
+     m_aActions {
+      GC_MessageAction "{FB9E4470D5D500EF}" {
+       m_sTitle "Motorpool Secured.. Reinforcements inbound"
+       m_sMessage "Canadians have secured the Motorpool, reinforcements to replace our losses are inbound via trucks."
+      }
+     }
+    }
+    GC_Event "{B69EB16E2B8DCD8E}" {
+     m_sName "Motor Pool Secured (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{89E14715752021F2}" {
+       m_sEventName "Motor Pool Secured"
+      }
+     }
+     m_Advanced GC_EventOptions "{E1A0F7D6D5E68362}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_FlagAction "{E06050E86718700C}" {
+       m_sFlagName "MotorPoolSecured"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{51019A5E19A2AC01}" {
+     m_sName "Respawn Event"
+     m_aConditions {
+      GC_MissionFlagCondition "{1EF6EFFFF045062C}" {
+       m_sFlagName "MotorPoolSecured"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5345FC3F2DCA3DBA}" {
+       m_sMessage "Respawn Event"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A7893A5176984454}" {
+     m_sName "Respawn Event (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2F8AE82981575014}" {
+       m_sEventName "Respawn Event"
+      }
+     }
+     m_Advanced GC_EventOptions "{0D279CDF9364956F}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_RespawnTicketsAction "{42BEC9C46BDD9047}" {
+       m_sFaction "GC_CAF"
+       m_iOperation 0
+       m_iAmount 200
+       m_bRetryCasualties 1
+      }
+     }
+    }
+    GC_Event "{FA99D808CB63A9E3}" {
+     m_sName "Respawn Event (45s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7BC8458B59CFBD42}" {
+       m_sEventName "Respawn Event"
+      }
+     }
+     m_Advanced GC_EventOptions "{646CA4E9562CF170}" {
+      m_fDelay 45
+     }
+     m_aActions {
+      GC_RespawnTicketsAction "{AAABB3058CC959E2}" {
+       m_sFaction "GC_CAF"
+       m_iOperation 0
+       m_iAmount 10
+       m_bRetryCasualties 1
+      }
+     }
+    }
+    GC_Event "{D8E1374122D02239}" {
+     m_sName "GC_MigratedSpawn_4A57DDEBF708C33E (1s)"
+     m_Advanced GC_EventOptions "{E4722D5AEE22C07C}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{688FC3440EE34F78}" {
+       m_Spawn GC_AIGroupSpawn "{6888DFFD1E490F42}" {
+        m_sLocation "AI_Spawn_Sector1_1"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "Def_WPSector1_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4354FC9176408689}" {
+     m_sName "GC_MigratedSpawn_55E09EC0784481D0 (1s)"
+     m_Advanced GC_EventOptions "{543C8FBFC3EAC3D4}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{653ACE6F47F09F3F}" {
+       m_Spawn GC_AIGroupSpawn "{4C4A72DA25859A05}" {
+        m_sLocation "AI_Spawn_Sector1_5"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "Def_WPSector1_5"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{CB498F8E16999938}" {
+     m_sName "GC_MigratedSpawn_9831759E206D34BE (1s)"
+     m_Advanced GC_EventOptions "{5C93296FA1E266D8}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{52936551245C5457}" {
+       m_Spawn GC_AIGroupSpawn "{4C6F3DD82E8CC88D}" {
+        m_sLocation "AI_Spawn_Sector1_6"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "Def_WPSector1_6"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A638B6D0BAEA964A}" {
+     m_sName "GC_MigratedSpawn_0EA5E02F7D4010ED (1s)"
+     m_Advanced GC_EventOptions "{AA44F3EFDD58E016}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{B98FEEF6474E10D9}" {
+       m_Spawn GC_AIGroupSpawn "{9033FD81B755A7A3}" {
+        m_sLocation "AI_Spawn_Sector1_4"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "Def_WPSector1_4"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{5AB27C3D4595B14C}" {
+     m_sName "GC_MigratedSpawn_8F6BF85964279DBF (1s)"
+     m_Advanced GC_EventOptions "{EB04894D0267F8A0}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{F98C1F5E3E7474E1}" {
+       m_Spawn GC_AIGroupSpawn "{A4C4CB4440EE48A0}" {
+        m_sLocation "AI_Spawn_Sector1_2"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "Def_WPSector1_2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3FEC93AD95BDB9C0}" {
+     m_sName "GC_MigratedSpawn_F0650B34EE02DE53 (1s)"
+     m_Advanced GC_EventOptions "{FBDF18CF63374E5C}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{90DB63421DF36B94}" {
+       m_Spawn GC_AIGroupSpawn "{896D840F4774DC91}" {
+        m_sLocation "AI_Spawn_Sector1_3"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "Def_WPSector1_3"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{CE7D2AC40FB0EEA1}" {
+     m_sName "GC_MigratedSpawn_4D4304B9A8839DC8 (1s)"
+     m_Advanced GC_EventOptions "{A4F8BFA940BA1E07}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{78297F6BC6438EE6}" {
+       m_Spawn GC_AIGroupSpawn "{8DC5A04075C8E636}" {
+        m_sLocation "AI_Spawn_Sector1_7"
+        m_sPrefab "{8D35DA8B89880FAF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_MotRiflePHQ.et"
+        m_aWaypoints {
+         "Def_WPSector1_7"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9B35E1AB59996825}" {
+     m_sName "GC_MigratedSpawn_5B851B139F1D3B78 (1s)"
+     m_Advanced GC_EventOptions "{9043A0A1E8124226}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{B78F3D286264EDDF}" {
+       m_Spawn GC_AIGroupSpawn "{3A95F912703920A1}" {
+        m_sLocation "AI_Spawn_Sector1_8"
+        m_sPrefab "{8D35DA8B89880FAF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_MotRiflePHQ.et"
+        m_aWaypoints {
+         "Def_WPSector1_8"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B6B258B7E59D1DDA}" {
+     m_sName "GC_MigratedSpawn_A1BE671E582B457F (1s)"
+     m_Advanced GC_EventOptions "{4FEA5386A8CDB7A9}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{B2E5921277B19B9C}" {
+       m_Spawn GC_AIGroupSpawn "{34C9B3AC624BBE2D}" {
+        m_sLocation "AI_Spawn_Sector1_9"
+        m_sPrefab "{8D35DA8B89880FAF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_MotRiflePHQ.et"
+        m_aWaypoints {
+         "Def_WPSector1_9"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{2A32D9C15EBF8FDB}" {
+     m_sName "GC_MigratedSpawn_B5F7D5E0C0AFEC3B (1s)"
+     m_Advanced GC_EventOptions "{8C26F51505D47A43}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{40F197DC5332C172}" {
+       m_Spawn GC_AIGroupSpawn "{79280AF3D1799556}" {
+        m_sLocation "AI_Spawn_Sector1_10"
+        m_sPrefab "{8D35DA8B89880FAF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_MotRiflePHQ.et"
+        m_aWaypoints {
+         "Def_WPSector1_10"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{2CF46A98B3D64562}" {
+     m_sName "GC_MigratedSpawn_A062C827F23C3615 (1s)"
+     m_Advanced GC_EventOptions "{27019E2A8E19E41F}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{C0F1826211DB1896}" {
+       m_Spawn GC_AIGroupSpawn "{F2173BA1368394FF}" {
+        m_sLocation "AI_Spawn_Sector1_11"
+        m_sPrefab "{8D35DA8B89880FAF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_MotRiflePHQ.et"
+        m_aWaypoints {
+         "Def_WPSector1_11"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{DB9835B3FD1DC65B}" {
+     m_sName "GC_MigratedSpawn_92CA0D20642A3140 (1s)"
+     m_Advanced GC_EventOptions "{21BCB17928310DE5}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{3928DCE61CB0D4D7}" {
+       m_Spawn GC_AIGroupSpawn "{9E37092BAA6E27EE}" {
+        m_sLocation "AI_Spawn_Sector1_12"
+        m_sPrefab "{8D35DA8B89880FAF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_MotRiflePHQ.et"
+        m_aWaypoints {
+         "Def_WPSector1_12"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{266BE57BE8825B80}" {
+     m_sName "GC_MigratedSpawn_F7272C397925BF45 (1s)"
+     m_Advanced GC_EventOptions "{B4C578B3AFAF539A}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{DE0F89CE8C249125}" {
+       m_Spawn GC_AIGroupSpawn "{A3140100BCA28B4D}" {
+        m_sLocation "AI_Spawn_Sector1_13"
+        m_sPrefab "{8D35DA8B89880FAF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_MotRiflePHQ.et"
+        m_aWaypoints {
+         "Def_WPSector1_13"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9C2D648B511C85E8}" {
+     m_sName "GC_MigratedSpawn_D03974CFA44B028B"
+     m_aConditions {
+      GC_AreaCondition "{221374D29D97620D}" {
+       m_sArea "AISpawn_Sector1_Triger_1"
+       m_Targets GC_CharacterAreaTargets "{5ED83C389AB1B2F5}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{329348F6F9364AC4}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{099966B98B1C41F3}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D2857D8557D2BD4A}" {
+       m_sMessage "GC_MigratedSpawn_D03974CFA44B028B"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5BDFB734DFC0FAF7}" {
+     m_sName "GC_MigratedSpawn_D03974CFA44B028B (30s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9176792FC508ADFC}" {
+       m_sEventName "GC_MigratedSpawn_D03974CFA44B028B"
+      }
+     }
+     m_Advanced GC_EventOptions "{21EBA2A256BF5BA5}" {
+      m_fDelay 30
+     }
+     m_aActions {
+      GC_SpawnAction "{36EBA621052C83AB}" {
+       m_Spawn GC_CrewedVehicleSpawn "{6EFBA5834E6A738B}" {
+        m_sLocation "BRDM_Spawn_Sector1"
+        m_sPrefab "{254289B9C09904AB}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{BE9A0D1788664C4F}" {
+          m_aStations {
+           GC_SpawnCrewStation "{A668D855539A4C32}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Move_WPSector1_1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C2A083F6228F8D67}" {
+     m_sName "GC_MigratedSpawn_61707495BAC8E983"
+     m_aConditions {
+      GC_AreaCondition "{2B8C8F79C752734F}" {
+       m_sArea "AISpawn_Sector1_Triger_2"
+       m_Targets GC_CharacterAreaTargets "{B3AA1809B586C883}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{59D31DA467FDB37A}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{60380E90D9056F30}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{54A220610694B550}" {
+       m_sMessage "GC_MigratedSpawn_61707495BAC8E983"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C40F752355A08712}" {
+     m_sName "GC_MigratedSpawn_61707495BAC8E983 (30s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B80DB5F97F70CC8B}" {
+       m_sEventName "GC_MigratedSpawn_61707495BAC8E983"
+      }
+     }
+     m_Advanced GC_EventOptions "{9652B69589929E8B}" {
+      m_fDelay 30
+     }
+     m_aActions {
+      GC_SpawnAction "{C1075A36403709AC}" {
+       m_Spawn GC_CrewedVehicleSpawn "{B4971935000AF5B8}" {
+        m_sLocation "T72_Spawn_Sector1"
+        m_sPrefab "{4355537BD75ED98A}worlds/HitTheMan/Prefabs/Vehicles/T72A_Green_AI.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{5CCE7EA31F20EAC0}" {
+          m_aStations {
+           GC_SpawnCrewStation "{E3ACF708B0ADE758}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Move_WPSector1_2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{1DE765C996032106}" {
+     m_sName "GC_MigratedSpawn_A93C69DFCEDFE820 (1s)"
+     m_Advanced GC_EventOptions "{3EA9592D53382ACE}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{64E159FDC5C15C31}" {
+       m_Spawn GC_AIGroupSpawn "{5B9260657DF7B333}" {
+        m_sLocation "AI_Spawn_Sector1_14"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "Def_WPSector1_14"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E04F93EBA41FE3B5}" {
+     m_sName "GC_MigratedSpawn_69B8FFACDAA1123D (1s)"
+     m_Advanced GC_EventOptions "{A46DBC73293EE961}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{88B948359D088013}" {
+       m_Spawn GC_CrewedVehicleSpawn "{0CA8C4259F659009}" {
+        m_sLocation "BMP_Spawn_Sector1"
+        m_sPrefab "{84A2CD45010EC22E}worlds/HitTheMan/Prefabs/Vehicles/BMP1_base_HTM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{42354067503A2CEA}" {
+          m_aStations {
+           GC_SpawnCrewStation "{08276B4B95B2D5E0}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             ""
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{D6B860F7B9F0EA90}" {
+     m_sName "GC_MigratedSpawn_3A9AA809178084A0 (1s)"
+     m_Advanced GC_EventOptions "{AB910419E4447EB0}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{DBE677F86EF7118E}" {
+       m_Spawn GC_CrewedVehicleSpawn "{B4672CE41281CC95}" {
+        m_sLocation "ZSUUral_Spawn_Sector2"
+        m_sPrefab "{FD109F3702AAB392}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{796E9CB5E4774DF5}" {
+          m_aStations {
+           GC_SpawnCrewStation "{C33C974CA0B6C4AD}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             ""
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{5EC23CAE14E31C77}" {
+     m_sName "GC_MigratedSpawn_A2AB0E4C2E68A09D (1s)"
+     m_Advanced GC_EventOptions "{FD9E446B32963DCE}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{6C2F1BC5FB32B588}" {
+       m_Spawn GC_AIGroupSpawn "{2BC5083B57A04156}" {
+        m_sLocation "AI_Spawn_Sector1_15"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "Def_WPSector1_15"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{2722D2CEB0543A1B}" {
+     m_sName "GC_MigratedSpawn_C036FE3D202BEF6B (1s)"
+     m_Advanced GC_EventOptions "{78DFC557F1201309}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{5CC7445994744C9B}" {
+       m_Spawn GC_AIGroupSpawn "{F9AF31DE8FA3FD5D}" {
+        m_sLocation "AI_Spawn_Sector1_16"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "Def_WPSector1_16"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C92108ACAA70B1F6}" {
+     m_sName "GC_MigratedSpawn_C04F439C929EB8B3 (1s)"
+     m_Advanced GC_EventOptions "{DF2E37677226D004}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{A0BC2E8F0E4D6119}" {
+       m_Spawn GC_AIGroupSpawn "{FA585396DCD9D774}" {
+        m_sLocation "AI_Spawn_Sector1_17"
+        m_sPrefab "{8D35DA8B89880FAF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_MotRiflePHQ.et"
+        m_aWaypoints {
+         "Def_WPSector1_17"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{77A9FD154C75056C}" {
+     m_sName "GC_MigratedSpawn_D905E31420C46323 (1s)"
+     m_Advanced GC_EventOptions "{62C20136A18F7618}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{A518F8E6AC9FCCE2}" {
+       m_Spawn GC_AIGroupSpawn "{08F2EC4A749DB460}" {
+        m_sLocation "AI_Spawn_Sector1_19"
+        m_sPrefab "{8D35DA8B89880FAF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_MotRiflePHQ.et"
+        m_aWaypoints {
+         "Def_WPSector1_19"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{74322D5BAC0BFC24}" {
+     m_sName "GC_MigratedSpawn_7F0C0CA0572F634B (1s)"
+     m_Advanced GC_EventOptions "{F45F6B9250F5F5E6}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{6CB656B0C37D526E}" {
+       m_Spawn GC_AIGroupSpawn "{A9747C00EF497B5F}" {
+        m_sLocation "AI_Spawn_Sector1_18"
+        m_sPrefab "{8D35DA8B89880FAF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_MotRiflePHQ.et"
+        m_aWaypoints {
+         "Def_WPSector1_18"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{07FF70B9F896A21B}" {
+     m_sName "GC_MigratedSpawn_E11A84360ED58E37 (1s)"
+     m_Advanced GC_EventOptions "{CABA7A90624E7077}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{2C163270F782EAC7}" {
+       m_Spawn GC_AIGroupSpawn "{AF1460CF3F756E92}" {
+        m_sLocation "AI_Spawn_Sector1_20"
+        m_sPrefab "{8D35DA8B89880FAF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_MotRiflePHQ.et"
+        m_aWaypoints {
+         "Def_WPSector1_20"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{97723927B49A9DA9}" {
+     m_sName "GC_MigratedSpawn_E18EB9A85D975909 (1s)"
+     m_Advanced GC_EventOptions "{4588A2C046B3DB0F}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{4E26FC84968CDC1A}" {
+       m_Spawn GC_AIGroupSpawn "{CFBE756EEEB63F2A}" {
+        m_sLocation "AI_Spawn_Sector1_21"
+        m_sPrefab "{8D35DA8B89880FAF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_MotRiflePHQ.et"
+        m_aWaypoints {
+         "Def_WPSector1_21"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{5169EBB2BB82F9C9}" {
+     m_sName "GC_MigratedSpawn_001BD4871DAE6B0F (1s)"
+     m_Advanced GC_EventOptions "{8606985118AC07EE}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{CF301D8EBA47A20D}" {
+       m_Spawn GC_AIGroupSpawn "{219C21A51A9D9B75}" {
+        m_sLocation "AI_Spawn_Sector1_22"
+        m_sPrefab "{8D35DA8B89880FAF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_MotRiflePHQ.et"
+        m_aWaypoints {
+         "Def_WPSector1_22"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{1A37D1BFCEB56500}" {
+     m_sName "GC_MigratedSpawn_54FA1A4333A3142E"
+     m_aConditions {
+      GC_AreaCondition "{6517C028AA74BB42}" {
+       m_sArea "AISpawn_Sector1_Triger_2"
+       m_Targets GC_CharacterAreaTargets "{806054F5D4AEB54F}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{1E5BE23119448F75}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{0A9CFFCE7E39F50F}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7A0D60A93A765A85}" {
+       m_sMessage "GC_MigratedSpawn_54FA1A4333A3142E"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{58859B817C4E3D50}" {
+     m_sName "GC_MigratedSpawn_54FA1A4333A3142E (30s)"
+     m_aConditions {
+      GC_MissionEventCondition "{01FB3E4BD11B0F92}" {
+       m_sEventName "GC_MigratedSpawn_54FA1A4333A3142E"
+      }
+     }
+     m_Advanced GC_EventOptions "{FE5838973F53BFF3}" {
+      m_fDelay 30
+     }
+     m_aActions {
+      GC_SpawnAction "{A12B1BD4D9050DD5}" {
+       m_Spawn GC_CrewedVehicleSpawn "{FCD037D3DD500D23}" {
+        m_sLocation "T72_Spawn_Sector2"
+        m_sPrefab "{4355537BD75ED98A}worlds/HitTheMan/Prefabs/Vehicles/T72A_Green_AI.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{EBEBD15848B19166}" {
+          m_aStations {
+           GC_SpawnCrewStation "{D79FC356C7A27506}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Move_WPSector1_2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E0FC1376363BE7A5}" {
+     m_sName "GC_MigratedSpawn_113A9F1F7DAEE2AC"
+     m_aConditions {
+      GC_AreaCondition "{3F174A680A9177D4}" {
+       m_sArea "AISpawn_Sector1_Triger_1"
+       m_Targets GC_CharacterAreaTargets "{3A306876BE6B383C}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{E76060F98FC3D591}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{7505FEEA60A318F5}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2D3A21C335536D3C}" {
+       m_sMessage "GC_MigratedSpawn_113A9F1F7DAEE2AC"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6C0D8FF5B6C4841C}" {
+     m_sName "GC_MigratedSpawn_113A9F1F7DAEE2AC (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D5D48492EBF7385E}" {
+       m_sEventName "GC_MigratedSpawn_113A9F1F7DAEE2AC"
+      }
+     }
+     m_Advanced GC_EventOptions "{16033638EFFF6C6E}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{75C3DD09B200BE47}" {
+       m_Spawn GC_CrewedVehicleSpawn "{17A83A3F5B4E5478}" {
+        m_sLocation "BRDM_Spawn_Wave_3"
+        m_sPrefab "{84A2CD45010EC22E}worlds/HitTheMan/Prefabs/Vehicles/BMP1_base_HTM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{E598F6F0D6AF6AA9}" {
+          m_aStations {
+           GC_SpawnCrewStation "{C81C11C8B5AC0F28}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Move_WPSector1_2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{43C7119FD69A3991}" {
+     m_sName "GC_MigratedSpawn_A36D02C258FAE2EB (1s)"
+     m_Advanced GC_EventOptions "{8A807BC0F0A00E76}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{DC90AB43E6605E34}" {
+       m_Spawn GC_AIGroupSpawn "{5B87E5C47EF961F0}" {
+        m_sLocation "AI_Spawn_Sector1_23"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "Def_WPSector1_23"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E655335844C0F389}" {
+     m_sName "GC_MigratedSpawn_1CF2C1FE6930A711 (1s)"
+     m_Advanced GC_EventOptions "{6191CF04B75BF882}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{5C927EA644749186}" {
+       m_Spawn GC_AIGroupSpawn "{267DE1102E77C0BF}" {
+        m_sLocation "AI_Spawn_Sector1_24"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "Def_WPSector1_24"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3E7A04EEDA1CA263}" {
+     m_sName "GC_MigratedSpawn_346CAC104778491C (1s)"
+     m_Advanced GC_EventOptions "{6BF7B80807FAD126}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{767BD5A97DE89284}" {
+       m_Spawn GC_AIGroupSpawn "{C3238222BF46B23A}" {
+        m_sLocation "AI_Spawn_Sector1_25"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "Def_WPSector1_25"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{7D7D25EEACCBB6A2}" {
+     m_sName "GC_MigratedSpawn_FCCE0777A00F9390 (1s)"
+     m_Advanced GC_EventOptions "{5EFBA72BE944F177}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{CA48D45B734C8204}" {
+       m_Spawn GC_AIGroupSpawn "{4B18D4B4A356AB27}" {
+        m_sLocation "AI_Spawn_Sector1_26"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "Def_WPSector1_26"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{7FF442BC6F54FCB9}" {
+     m_sName "GC_MigratedSpawn_D24F3A40E9DB3A77 (1s)"
+     m_Advanced GC_EventOptions "{61A483709D89BE0C}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{443418ED9D249AD1}" {
+       m_Spawn GC_AIGroupSpawn "{48A2E1F78D7E7402}" {
+        m_sLocation "AI_Spawn_Sector1_27"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "Def_WPSector1_27"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{8E757778EDE4A94F}" {
+     m_sName "GC_MigratedSpawn_36D7DA41BE511D48 (1s)"
+     m_Advanced GC_EventOptions "{019C32784BA37192}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{94D2438FE1F7B954}" {
+       m_Spawn GC_AIGroupSpawn "{74575FC8DC665E0C}" {
+        m_sLocation "AI_Spawn_Sector1_28"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "Def_WPSector1_28"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C04801F0DD371A5C}" {
+     m_sName "GC_MigratedSpawn_420315F391B74029 (1s)"
+     m_Advanced GC_EventOptions "{273EE5B2868B3D06}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{C0AC97C5ECE0C52D}" {
+       m_Spawn GC_AIGroupSpawn "{4FDFC1CE5A1D2F4C}" {
+        m_sLocation "AI_Spawn_Sector1_29"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "Def_WPSector1_29"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B5DE4EB094A6FB02}" {
+     m_sName "GC_MigratedSpawn_99F0A0E0D0791292"
+     m_aConditions {
+      GC_AreaCondition "{D6F556515AB5842B}" {
+       m_sArea "AISpawn_Sector2_Triger_1"
+       m_Targets GC_CharacterAreaTargets "{5B9745480A70FF74}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{C1E891FDC5D2D458}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{9CD7D2984BD9570E}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{217D571674290316}" {
+       m_sMessage "GC_MigratedSpawn_99F0A0E0D0791292"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AC0D362A57719F2B}" {
+     m_sName "GC_MigratedSpawn_99F0A0E0D0791292 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B16B18BC7F534680}" {
+       m_sEventName "GC_MigratedSpawn_99F0A0E0D0791292"
+      }
+     }
+     m_Advanced GC_EventOptions "{348C29CC9CC6F7EE}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{AF42A965ABA734D0}" {
+       m_Spawn GC_AIGroupSpawn "{7C3863C8DEFDEA72}" {
+        m_sLocation "AI_Spawn_Sector2_1"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+       }
+      }
+     }
+    }
+    GC_Event "{334F83BC0C942ED7}" {
+     m_sName "GC_MigratedSpawn_FD0F2F9B9429CA56"
+     m_aConditions {
+      GC_AreaCondition "{46C8755C7CE277DB}" {
+       m_sArea "AISpawn_Sector2_Triger_1"
+       m_Targets GC_CharacterAreaTargets "{0CF3BE87B30DE0E8}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{740BD8BC29CF4D21}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{BD58ADDD7579FC72}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9B6F10791820F1D7}" {
+       m_sMessage "GC_MigratedSpawn_FD0F2F9B9429CA56"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{DB3242DFB4A18421}" {
+     m_sName "GC_MigratedSpawn_FD0F2F9B9429CA56 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B59B648F33AC168E}" {
+       m_sEventName "GC_MigratedSpawn_FD0F2F9B9429CA56"
+      }
+     }
+     m_Advanced GC_EventOptions "{5CFDBF665417D0CB}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{4B4EF908E02F1AD8}" {
+       m_Spawn GC_AIGroupSpawn "{7137B3102A1E9683}" {
+        m_sLocation "AI_Spawn_Sector2_2"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+       }
+      }
+     }
+    }
+    GC_Event "{04BBBCDE1A11DB13}" {
+     m_sName "GC_MigratedSpawn_01B713F3FEBEB684"
+     m_aConditions {
+      GC_AreaCondition "{4C2FECE9C8A4DC3A}" {
+       m_sArea "AISpawn_Sector2_Triger_1"
+       m_Targets GC_CharacterAreaTargets "{B212A22157882727}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{A04DCB8F6E40E185}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{86CD0ECA0DC8EDBF}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8B226A76BDEA0E4B}" {
+       m_sMessage "GC_MigratedSpawn_01B713F3FEBEB684"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{47FC88EADC809551}" {
+     m_sName "GC_MigratedSpawn_01B713F3FEBEB684 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{06212B3E4E9C19A1}" {
+       m_sEventName "GC_MigratedSpawn_01B713F3FEBEB684"
+      }
+     }
+     m_Advanced GC_EventOptions "{FD03F2D9DC9F07BF}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{64C9441A8E5A5390}" {
+       m_Spawn GC_AIGroupSpawn "{EE427127EA036AB9}" {
+        m_sLocation "AI_Spawn_Sector2_3"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+       }
+      }
+     }
+    }
+    GC_Event "{36515CC0F1BB3BD8}" {
+     m_sName "GC_MigratedSpawn_7A1E9B4E30132257"
+     m_aConditions {
+      GC_AreaCondition "{ABF65D0061AD3115}" {
+       m_sArea "AISpawn_Sector2_Triger_1"
+       m_Targets GC_CharacterAreaTargets "{7C4D9BF25EEBA975}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{44BA561F9F03E1F1}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{8FA03D9CD7F04C4A}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E79614D42A224B29}" {
+       m_sMessage "GC_MigratedSpawn_7A1E9B4E30132257"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0407BE4A36456A39}" {
+     m_sName "GC_MigratedSpawn_7A1E9B4E30132257 (7s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A437EEA83A67385E}" {
+       m_sEventName "GC_MigratedSpawn_7A1E9B4E30132257"
+      }
+     }
+     m_Advanced GC_EventOptions "{87761FCA34B0C784}" {
+      m_fDelay 7
+     }
+     m_aActions {
+      GC_SpawnAction "{B23CBCD412A4B794}" {
+       m_Spawn GC_AIGroupSpawn "{028F11E6FDF7F0BB}" {
+        m_sLocation "AI_Spawn_Sector2_4"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+       }
+      }
+     }
+    }
+    GC_Event "{10AAD2C7CE2B002D}" {
+     m_sName "GC_MigratedSpawn_569679D227087A37"
+     m_aConditions {
+      GC_AreaCondition "{4D8B781E7ABA6B74}" {
+       m_sArea "AISpawn_Sector2_Triger_1"
+       m_Targets GC_CharacterAreaTargets "{8180ADAF41F14EBB}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{8495F1A61F545E6A}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{98B8FE3286F2C711}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5143CE6A7B7863AF}" {
+       m_sMessage "GC_MigratedSpawn_569679D227087A37"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8FFED2F2CFEEB57D}" {
+     m_sName "GC_MigratedSpawn_569679D227087A37 (9s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2B551C4D1C0609D0}" {
+       m_sEventName "GC_MigratedSpawn_569679D227087A37"
+      }
+     }
+     m_Advanced GC_EventOptions "{438C02C439DCE7DC}" {
+      m_fDelay 9
+     }
+     m_aActions {
+      GC_SpawnAction "{20B13C7B793FF2B3}" {
+       m_Spawn GC_AIGroupSpawn "{8905E28D4E114817}" {
+        m_sLocation "AI_Spawn_Sector2_5"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+       }
+      }
+     }
+    }
+    GC_Event "{8EC40EEFA21BC91D}" {
+     m_sName "GC_MigratedSpawn_1D2AF67856AD123A"
+     m_aConditions {
+      GC_AreaCondition "{01CFBAE339056C8D}" {
+       m_sArea "AISpawn_Sector2_Triger_1"
+       m_Targets GC_CharacterAreaTargets "{D030EC4284FBB326}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{E69C0763B93D14FC}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{3057557EE64A94CB}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{297F00EBAB93AE6B}" {
+       m_sMessage "GC_MigratedSpawn_1D2AF67856AD123A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8E9D48EBC8A4318C}" {
+     m_sName "GC_MigratedSpawn_1D2AF67856AD123A (11s)"
+     m_aConditions {
+      GC_MissionEventCondition "{65A5740B3FD686B5}" {
+       m_sEventName "GC_MigratedSpawn_1D2AF67856AD123A"
+      }
+     }
+     m_Advanced GC_EventOptions "{5E2C96DEB472F512}" {
+      m_fDelay 11
+     }
+     m_aActions {
+      GC_SpawnAction "{DC0D4619EDA63402}" {
+       m_Spawn GC_AIGroupSpawn "{C42B90A87969980C}" {
+        m_sLocation "AI_Spawn_Sector2_6"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+       }
+      }
+     }
+    }
+    GC_Event "{1181E983C6257414}" {
+     m_sName "GC_MigratedSpawn_7A8B2C8513A60449"
+     m_aConditions {
+      GC_AreaCondition "{C06F83A41DEE2C28}" {
+       m_sArea "AISpawn_Sector2_Triger_1"
+       m_Targets GC_CharacterAreaTargets "{DDD809B033C2F27A}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{3A3846F62E4F7393}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{0915DB082F17E3BD}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4BE458017F2E0E14}" {
+       m_sMessage "GC_MigratedSpawn_7A8B2C8513A60449"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{79012239CD1A0096}" {
+     m_sName "GC_MigratedSpawn_7A8B2C8513A60449 (13s)"
+     m_aConditions {
+      GC_MissionEventCondition "{97859E5DB2C95640}" {
+       m_sEventName "GC_MigratedSpawn_7A8B2C8513A60449"
+      }
+     }
+     m_Advanced GC_EventOptions "{35C44C90B4197D14}" {
+      m_fDelay 13
+     }
+     m_aActions {
+      GC_SpawnAction "{2DBBA1045FB55BB7}" {
+       m_Spawn GC_AIGroupSpawn "{340F569EEE8BCDF3}" {
+        m_sLocation "AI_Spawn_Sector2_7"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+       }
+      }
+     }
+    }
+    GC_Event "{6A692A9BD85D3150}" {
+     m_sName "GC_MigratedSpawn_7AC8CF717BF632E9"
+     m_aConditions {
+      GC_AreaCondition "{C05A8BD3D8ECA334}" {
+       m_sArea "AISpawn_Sector2_Triger_1"
+       m_Targets GC_CharacterAreaTargets "{4C704F710526A695}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{32C365F05A9D2620}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{39C2CA570B2CA18A}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{CE6326F7B443E3A3}" {
+       m_sMessage "GC_MigratedSpawn_7AC8CF717BF632E9"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FC15F7FD2B45D45D}" {
+     m_sName "GC_MigratedSpawn_7AC8CF717BF632E9 (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{25FF430B8F4CA19D}" {
+       m_sEventName "GC_MigratedSpawn_7AC8CF717BF632E9"
+      }
+     }
+     m_Advanced GC_EventOptions "{BAD48A875E398E40}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_SpawnAction "{9F49ADC7DFDBC7DE}" {
+       m_Spawn GC_AIGroupSpawn "{1619F7F1B7D192B7}" {
+        m_sLocation "AI_Spawn_Sector2_8"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+       }
+      }
+     }
+    }
+    GC_Event "{6F736CDD12D54CA9}" {
+     m_sName "GC_MigratedSpawn_EF977222CA78129C"
+     m_aConditions {
+      GC_AreaCondition "{F02E678EF7368E99}" {
+       m_sArea "AISpawn_Sector2_Triger_1"
+       m_Targets GC_CharacterAreaTargets "{773706D07041C24A}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{E377BEC04C1E9257}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{99DE608333310CB6}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D1A0E3DA9FCE8E81}" {
+       m_sMessage "GC_MigratedSpawn_EF977222CA78129C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CC474C005064BEB5}" {
+     m_sName "GC_MigratedSpawn_EF977222CA78129C (17s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7AE7A3B328B45FD3}" {
+       m_sEventName "GC_MigratedSpawn_EF977222CA78129C"
+      }
+     }
+     m_Advanced GC_EventOptions "{B52DDA53A6643733}" {
+      m_fDelay 17
+     }
+     m_aActions {
+      GC_SpawnAction "{1CFDD0FDC4518F95}" {
+       m_Spawn GC_AIGroupSpawn "{162B2C125720D8AE}" {
+        m_sLocation "AI_Spawn_Sector2_9"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+       }
+      }
+     }
+    }
+    GC_Event "{32879ED87FE9DF0C}" {
+     m_sName "GC_MigratedSpawn_49744600AB1FC807"
+     m_aConditions {
+      GC_AreaCondition "{2BF8F90057520990}" {
+       m_sArea "AISpawn_Sector2_Triger_1"
+       m_Targets GC_CharacterAreaTargets "{4FA832A462784D92}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{A1FA5FE31D2070F4}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{B5E83EFEF22F75FE}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C9661A1B9D31C635}" {
+       m_sMessage "GC_MigratedSpawn_49744600AB1FC807"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{03BD90565F26914A}" {
+     m_sName "GC_MigratedSpawn_49744600AB1FC807 (17s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A550237778AAFCD0}" {
+       m_sEventName "GC_MigratedSpawn_49744600AB1FC807"
+      }
+     }
+     m_Advanced GC_EventOptions "{C398F619CD7A5087}" {
+      m_fDelay 17
+     }
+     m_aActions {
+      GC_SpawnAction "{EA5AD7DE81ED68CD}" {
+       m_Spawn GC_AIGroupSpawn "{D969079FAF65E139}" {
+        m_sLocation "AI_Spawn_Sector2_10"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+       }
+      }
+     }
+    }
+    GC_Event "{9B2D0969F13E0D82}" {
+     m_sName "GC_MigratedSpawn_732DF3079929F093"
+     m_aConditions {
+      GC_AreaCondition "{1ADC13B27B32B0E4}" {
+       m_sArea "AISpawn_Sector2_Triger_1"
+       m_Targets GC_CharacterAreaTargets "{534C5E686DE423AE}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{F9650FB050756515}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{107E1C5A0012892B}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A376FFEDF9373CC1}" {
+       m_sMessage "GC_MigratedSpawn_732DF3079929F093"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{25CD25D142D8F3D3}" {
+     m_sName "GC_MigratedSpawn_732DF3079929F093 (17s)"
+     m_aConditions {
+      GC_MissionEventCondition "{282CE1943806DF7A}" {
+       m_sEventName "GC_MigratedSpawn_732DF3079929F093"
+      }
+     }
+     m_Advanced GC_EventOptions "{4B98D642629BED6C}" {
+      m_fDelay 17
+     }
+     m_aActions {
+      GC_SpawnAction "{BA74A976D342E165}" {
+       m_Spawn GC_AIGroupSpawn "{DCA35E4A4A719CF2}" {
+        m_sLocation "AI_Spawn_Sector2_11"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+       }
+      }
+     }
+    }
+    GC_Event "{E3016CDF3EFC617F}" {
+     m_sName "GC_MigratedSpawn_3DE370765BCC3FEB"
+     m_aConditions {
+      GC_AreaCondition "{7AD7DF75301FCB56}" {
+       m_sArea "AISpawn_Sector2_Triger_1"
+       m_Targets GC_CharacterAreaTargets "{7E1099A07E75C20D}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{7DF0E8CD9CE00BA0}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{8614AAB0FF5C599F}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{437110C407F5D2C8}" {
+       m_sMessage "GC_MigratedSpawn_3DE370765BCC3FEB"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D097F22ABB897AF5}" {
+     m_sName "GC_MigratedSpawn_3DE370765BCC3FEB (17s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2E88DC1110491DB6}" {
+       m_sEventName "GC_MigratedSpawn_3DE370765BCC3FEB"
+      }
+     }
+     m_Advanced GC_EventOptions "{968C25FCDDD66B1B}" {
+      m_fDelay 17
+     }
+     m_aActions {
+      GC_SpawnAction "{FF0F42AECC49B409}" {
+       m_Spawn GC_AIGroupSpawn "{1F3E87970086812A}" {
+        m_sLocation "AI_Spawn_Sector2_12"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+       }
+      }
+     }
+    }
+    GC_Event "{55F44E31D5570BFA}" {
+     m_sName "GC_MigratedSpawn_E35F5E6F8EFA489B"
+     m_aConditions {
+      GC_AreaCondition "{EA4F7749158171F1}" {
+       m_sArea "AISpawn_Sector2_Triger_1"
+       m_Targets GC_CharacterAreaTargets "{39F74978355630C3}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{0FD84FB7DAB218C9}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{A18D96014657ACE8}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3A96F3217518E415}" {
+       m_sMessage "GC_MigratedSpawn_E35F5E6F8EFA489B"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{385E5FCD5D6CFF27}" {
+     m_sName "GC_MigratedSpawn_E35F5E6F8EFA489B (17s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F63E0C821B2DBEA3}" {
+       m_sEventName "GC_MigratedSpawn_E35F5E6F8EFA489B"
+      }
+     }
+     m_Advanced GC_EventOptions "{52A7B398E004D2C2}" {
+      m_fDelay 17
+     }
+     m_aActions {
+      GC_SpawnAction "{D709DF1A4D09CF97}" {
+       m_Spawn GC_AIGroupSpawn "{F3001CA636D65562}" {
+        m_sLocation "AI_Spawn_Sector2_13"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+       }
+      }
+     }
+    }
+    GC_Event "{F0501165FDFE5537}" {
+     m_sName "GC_MigratedSpawn_B15C730A513309FC"
+     m_aConditions {
+      GC_AreaCondition "{300FD8AD71CCAD4F}" {
+       m_sArea "AISpawn_Sector2_Triger_1"
+       m_Targets GC_CharacterAreaTargets "{3E00035EC42C0E6E}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{2F68BED6D1341E8E}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{307623F3D2F6FF16}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D1B55654C402D57E}" {
+       m_sMessage "GC_MigratedSpawn_B15C730A513309FC"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{02EADFC097D1D3E1}" {
+     m_sName "GC_MigratedSpawn_B15C730A513309FC (17s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CB9C08BAFBAD58D8}" {
+       m_sEventName "GC_MigratedSpawn_B15C730A513309FC"
+      }
+     }
+     m_Advanced GC_EventOptions "{7AB9E7CBB565F102}" {
+      m_fDelay 17
+     }
+     m_aActions {
+      GC_SpawnAction "{40600343DDB667DA}" {
+       m_Spawn GC_AIGroupSpawn "{B374444603E2DF8C}" {
+        m_sLocation "AI_Spawn_Sector2_14"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+       }
+      }
+     }
+    }
+    GC_Event "{8A9430CF2D2F053D}" {
+     m_sName "GC_MigratedSpawn_248FC2FED6727203"
+     m_aConditions {
+      GC_AreaCondition "{C70B916132198F65}" {
+       m_sArea "AI_Waves_Trigger"
+       m_Targets GC_CharacterAreaTargets "{E2CC47C703C1A9D9}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{1A76F9317E188D8F}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{9E60E6DB2127C39E}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B28504DA69E17CF2}" {
+       m_sMessage "GC_MigratedSpawn_248FC2FED6727203"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{4F78F3FC3190E47F}" {
+     m_sName "GC_MigratedSpawn_248FC2FED6727203 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BF8D9976E7F73037}" {
+       m_sEventName "GC_MigratedSpawn_248FC2FED6727203"
+      }
+     }
+     m_Advanced GC_EventOptions "{6A43D134B2DFD286}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{3AF1DC861978E589}" {
+       m_Spawn GC_AIGroupSpawn "{C69DAD53E250259C}" {
+        m_sLocation "AI_Spawn_Wave_1"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{93E2E77963919BB2}" {
+     m_sName "GC_MigratedSpawn_248FC2FED6727203 (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{EA52C3C7F8965ABA}" {
+       m_sEventName "GC_MigratedSpawn_248FC2FED6727203"
+      }
+     }
+     m_Advanced GC_EventOptions "{7C997661FCE92F5E}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{B492D44971349216}" {
+       m_Spawn GC_AIGroupSpawn "{AD1A0A8B97798B79}" {
+        m_sLocation "AI_Spawn_Wave_1"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{0A691B805F88262D}" {
+     m_sName "GC_MigratedSpawn_248FC2FED6727203 (120s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F1FD3457CE41C548}" {
+       m_sEventName "GC_MigratedSpawn_248FC2FED6727203"
+      }
+     }
+     m_Advanced GC_EventOptions "{972B34C2996F2319}" {
+      m_fDelay 120
+     }
+     m_aActions {
+      GC_SpawnAction "{E6A55324C89D01B4}" {
+       m_Spawn GC_AIGroupSpawn "{D5521C6B529D2BB4}" {
+        m_sLocation "AI_Spawn_Wave_1"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{2185BF610DBD1497}" {
+     m_sName "GC_MigratedSpawn_248FC2FED6727203 (180s)"
+     m_aConditions {
+      GC_MissionEventCondition "{EAA6AB9EDB7DA127}" {
+       m_sEventName "GC_MigratedSpawn_248FC2FED6727203"
+      }
+     }
+     m_Advanced GC_EventOptions "{7961A8E22FF8A2E5}" {
+      m_fDelay 180
+     }
+     m_aActions {
+      GC_SpawnAction "{FB8B1D37AB366BC0}" {
+       m_Spawn GC_AIGroupSpawn "{48FCC3B46676BF7B}" {
+        m_sLocation "AI_Spawn_Wave_1"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{EA10C71912472295}" {
+     m_sName "GC_MigratedSpawn_248FC2FED6727203 (240s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A1034CFEA1410E62}" {
+       m_sEventName "GC_MigratedSpawn_248FC2FED6727203"
+      }
+     }
+     m_Advanced GC_EventOptions "{1AC242DA7EB229F0}" {
+      m_fDelay 240
+     }
+     m_aActions {
+      GC_SpawnAction "{07B820468FC70B1B}" {
+       m_Spawn GC_AIGroupSpawn "{EC66E55D3AEC74FA}" {
+        m_sLocation "AI_Spawn_Wave_1"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{8BCA223A3D7B83C4}" {
+     m_sName "GC_MigratedSpawn_248FC2FED6727203 (300s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DBF96D949B7CFBC8}" {
+       m_sEventName "GC_MigratedSpawn_248FC2FED6727203"
+      }
+     }
+     m_Advanced GC_EventOptions "{A98C17E7F3D0C035}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{0F9FDF992B4ECCEE}" {
+       m_Spawn GC_AIGroupSpawn "{DF294CD150D35202}" {
+        m_sLocation "AI_Spawn_Wave_1"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{54554B34158B3944}" {
+     m_sName "GC_MigratedSpawn_248FC2FED6727203 (360s)"
+     m_aConditions {
+      GC_MissionEventCondition "{FBA32D158A0CF858}" {
+       m_sEventName "GC_MigratedSpawn_248FC2FED6727203"
+      }
+     }
+     m_Advanced GC_EventOptions "{78C10679B8CB0898}" {
+      m_fDelay 360
+     }
+     m_aActions {
+      GC_SpawnAction "{B61DD153BFD85397}" {
+       m_Spawn GC_AIGroupSpawn "{F03B157365527E9D}" {
+        m_sLocation "AI_Spawn_Wave_1"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{BF224CC3736C4168}" {
+     m_sName "GC_MigratedSpawn_248FC2FED6727203 (420s)"
+     m_aConditions {
+      GC_MissionEventCondition "{0E466C01F8D919F4}" {
+       m_sEventName "GC_MigratedSpawn_248FC2FED6727203"
+      }
+     }
+     m_Advanced GC_EventOptions "{D36F59FE9230057D}" {
+      m_fDelay 420
+     }
+     m_aActions {
+      GC_SpawnAction "{9063855755EAB652}" {
+       m_Spawn GC_AIGroupSpawn "{B78A3A83D23D86BA}" {
+        m_sLocation "AI_Spawn_Wave_1"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B49C4644EAE3572D}" {
+     m_sName "GC_MigratedSpawn_248FC2FED6727203 (480s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1CB2C67B1BAA89AC}" {
+       m_sEventName "GC_MigratedSpawn_248FC2FED6727203"
+      }
+     }
+     m_Advanced GC_EventOptions "{87273EF3FA30CE44}" {
+      m_fDelay 480
+     }
+     m_aActions {
+      GC_SpawnAction "{014CC370A1356D8B}" {
+       m_Spawn GC_AIGroupSpawn "{0EE9E91086A0D21F}" {
+        m_sLocation "AI_Spawn_Wave_1"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C4130447EE478D55}" {
+     m_sName "GC_MigratedSpawn_248FC2FED6727203 (540s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BCD6BECE1FF2CD46}" {
+       m_sEventName "GC_MigratedSpawn_248FC2FED6727203"
+      }
+     }
+     m_Advanced GC_EventOptions "{9AA0C3CD641626D9}" {
+      m_fDelay 540
+     }
+     m_aActions {
+      GC_SpawnAction "{3B52481FCCC054DB}" {
+       m_Spawn GC_AIGroupSpawn "{4AEE0202BDF2C239}" {
+        m_sLocation "AI_Spawn_Wave_1"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A5A0FABD6D1091EA}" {
+     m_sName "GC_MigratedSpawn_248FC2FED6727203 (600s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1519BEDE2BE159B5}" {
+       m_sEventName "GC_MigratedSpawn_248FC2FED6727203"
+      }
+     }
+     m_Advanced GC_EventOptions "{B09A0002B0186099}" {
+      m_fDelay 600
+     }
+     m_aActions {
+      GC_SpawnAction "{4F78F3FC3190E47F}" {
+       m_Spawn GC_AIGroupSpawn "{BA3AA158AC03A17D}" {
+        m_sLocation "AI_Spawn_Wave_1"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A5F98B625EEA64FC}" {
+     m_sName "GC_MigratedSpawn_95BFD9304EEA2D23"
+     m_aConditions {
+      GC_AreaCondition "{06894B8640D71C43}" {
+       m_sArea "AI_Waves_Trigger"
+       m_Targets GC_CharacterAreaTargets "{C339FBAD69841B4E}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{55AA08D82757A2C7}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{D92BA821BF7A7F8D}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{634C964CCC60E1E7}" {
+       m_sMessage "GC_MigratedSpawn_95BFD9304EEA2D23"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C8B6140EE93FBB17}" {
+     m_sName "GC_MigratedSpawn_95BFD9304EEA2D23 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{608753F9B8F49E36}" {
+       m_sEventName "GC_MigratedSpawn_95BFD9304EEA2D23"
+      }
+     }
+     m_Advanced GC_EventOptions "{3EF9CB7A023E64BB}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{81B3C542057C05CC}" {
+       m_Spawn GC_AIGroupSpawn "{7FDA3D0DDF33D80C}" {
+        m_sLocation "AI_Spawn_Wave_3"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{BD89AE9B5DF1784D}" {
+     m_sName "GC_MigratedSpawn_95BFD9304EEA2D23 (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C40CF3820EAA8E91}" {
+       m_sEventName "GC_MigratedSpawn_95BFD9304EEA2D23"
+      }
+     }
+     m_Advanced GC_EventOptions "{5960D3EB26631581}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{7A5FF34786846FD9}" {
+       m_Spawn GC_AIGroupSpawn "{6C02B26CF6572FD5}" {
+        m_sLocation "AI_Spawn_Wave_3"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{64A4C8D2086A83B4}" {
+     m_sName "GC_MigratedSpawn_95BFD9304EEA2D23 (120s)"
+     m_aConditions {
+      GC_MissionEventCondition "{34470FD214E25793}" {
+       m_sEventName "GC_MigratedSpawn_95BFD9304EEA2D23"
+      }
+     }
+     m_Advanced GC_EventOptions "{9428F1E20EC50419}" {
+      m_fDelay 120
+     }
+     m_aActions {
+      GC_SpawnAction "{3E1D1C93477DAF6F}" {
+       m_Spawn GC_AIGroupSpawn "{266A937ACE32A03D}" {
+        m_sLocation "AI_Spawn_Wave_3"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{15A0F7451B957BC7}" {
+     m_sName "GC_MigratedSpawn_95BFD9304EEA2D23 (180s)"
+     m_aConditions {
+      GC_MissionEventCondition "{EFA2DDA6C7FB7CA7}" {
+       m_sEventName "GC_MigratedSpawn_95BFD9304EEA2D23"
+      }
+     }
+     m_Advanced GC_EventOptions "{BCB2BD4940B2D9AC}" {
+      m_fDelay 180
+     }
+     m_aActions {
+      GC_SpawnAction "{15C0484F2FE92127}" {
+       m_Spawn GC_AIGroupSpawn "{71D42B0224B471D9}" {
+        m_sLocation "AI_Spawn_Wave_3"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B83E0F59C48DF453}" {
+     m_sName "GC_MigratedSpawn_95BFD9304EEA2D23 (240s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8E8012D3E471C815}" {
+       m_sEventName "GC_MigratedSpawn_95BFD9304EEA2D23"
+      }
+     }
+     m_Advanced GC_EventOptions "{BB268F83F0CC2A01}" {
+      m_fDelay 240
+     }
+     m_aActions {
+      GC_SpawnAction "{DFF8EA301B8A086B}" {
+       m_Spawn GC_AIGroupSpawn "{6132BB4873496295}" {
+        m_sLocation "AI_Spawn_Wave_3"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E0E615B84D635D22}" {
+     m_sName "GC_MigratedSpawn_95BFD9304EEA2D23 (300s)"
+     m_aConditions {
+      GC_MissionEventCondition "{923CAD4CF8BE9519}" {
+       m_sEventName "GC_MigratedSpawn_95BFD9304EEA2D23"
+      }
+     }
+     m_Advanced GC_EventOptions "{7359A67C9CD4B468}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{91F9215D66C6FA56}" {
+       m_Spawn GC_AIGroupSpawn "{4D29B22621941345}" {
+        m_sLocation "AI_Spawn_Wave_3"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F92BB7C7C341A3D3}" {
+     m_sName "GC_MigratedSpawn_95BFD9304EEA2D23 (360s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5FABA0A03977FFE5}" {
+       m_sEventName "GC_MigratedSpawn_95BFD9304EEA2D23"
+      }
+     }
+     m_Advanced GC_EventOptions "{8822BF55B65F46CB}" {
+      m_fDelay 360
+     }
+     m_aActions {
+      GC_SpawnAction "{4D5CDAD4D07C490C}" {
+       m_Spawn GC_AIGroupSpawn "{5E33666902C5DB57}" {
+        m_sLocation "AI_Spawn_Wave_3"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{7AA6B30C979A1F2D}" {
+     m_sName "GC_MigratedSpawn_95BFD9304EEA2D23 (420s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1F63A702ED859243}" {
+       m_sEventName "GC_MigratedSpawn_95BFD9304EEA2D23"
+      }
+     }
+     m_Advanced GC_EventOptions "{A53877F0C60A0020}" {
+      m_fDelay 420
+     }
+     m_aActions {
+      GC_SpawnAction "{5B7865A2E500992D}" {
+       m_Spawn GC_AIGroupSpawn "{3DAAC80E9EF8DBCB}" {
+        m_sLocation "AI_Spawn_Wave_3"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{0893D112867F8C3E}" {
+     m_sName "GC_MigratedSpawn_95BFD9304EEA2D23 (480s)"
+     m_aConditions {
+      GC_MissionEventCondition "{86E0555BC9F402AB}" {
+       m_sEventName "GC_MigratedSpawn_95BFD9304EEA2D23"
+      }
+     }
+     m_Advanced GC_EventOptions "{F70A42C4C2094DAE}" {
+      m_fDelay 480
+     }
+     m_aActions {
+      GC_SpawnAction "{F38A246066395D9B}" {
+       m_Spawn GC_AIGroupSpawn "{8E62E1E3830836BE}" {
+        m_sLocation "AI_Spawn_Wave_3"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{DEB98EF8C49210E1}" {
+     m_sName "GC_MigratedSpawn_95BFD9304EEA2D23 (540s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3BB2AC402DA1CAFE}" {
+       m_sEventName "GC_MigratedSpawn_95BFD9304EEA2D23"
+      }
+     }
+     m_Advanced GC_EventOptions "{A46376953180C397}" {
+      m_fDelay 540
+     }
+     m_aActions {
+      GC_SpawnAction "{378AD5A91F72B6CD}" {
+       m_Spawn GC_AIGroupSpawn "{DE56C2CBA9FB9BE8}" {
+        m_sLocation "AI_Spawn_Wave_3"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{290950FFBEFD661A}" {
+     m_sName "GC_MigratedSpawn_95BFD9304EEA2D23 (600s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5F36AE45622D4CD2}" {
+       m_sEventName "GC_MigratedSpawn_95BFD9304EEA2D23"
+      }
+     }
+     m_Advanced GC_EventOptions "{B375B557B5E7E057}" {
+      m_fDelay 600
+     }
+     m_aActions {
+      GC_SpawnAction "{C8B6140EE93FBB17}" {
+       m_Spawn GC_AIGroupSpawn "{97168DF663183636}" {
+        m_sLocation "AI_Spawn_Wave_3"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{D7DDDA66135511A6}" {
+     m_sName "GC_MigratedSpawn_786FEE7ACC3858B8"
+     m_aConditions {
+      GC_AreaCondition "{082077DC46319C53}" {
+       m_sArea "AI_Waves_Trigger"
+       m_Targets GC_CharacterAreaTargets "{B3505DFEA764643B}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{044C266388853D30}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{66BCAFF66440C12F}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{EA33E4593CB736FE}" {
+       m_sMessage "GC_MigratedSpawn_786FEE7ACC3858B8"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{64F2719B2EC2200C}" {
+     m_sName "GC_MigratedSpawn_786FEE7ACC3858B8 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4B6D659F0401D1F3}" {
+       m_sEventName "GC_MigratedSpawn_786FEE7ACC3858B8"
+      }
+     }
+     m_Advanced GC_EventOptions "{22F77338E24A2D0A}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{FF04AEBB64D9771D}" {
+       m_Spawn GC_AIGroupSpawn "{5D1F599BF50F611B}" {
+        m_sLocation "AI_Spawn_Wave_2"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{2A4D2F01C46D45DB}" {
+     m_sName "GC_MigratedSpawn_786FEE7ACC3858B8 (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7CAAD0527B739818}" {
+       m_sEventName "GC_MigratedSpawn_786FEE7ACC3858B8"
+      }
+     }
+     m_Advanced GC_EventOptions "{67FEE5DE5077BB0F}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{CE3A9D15BAD218ED}" {
+       m_Spawn GC_AIGroupSpawn "{680DCAFD0D871684}" {
+        m_sLocation "AI_Spawn_Wave_2"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{0F828127C05DA297}" {
+     m_sName "GC_MigratedSpawn_786FEE7ACC3858B8 (120s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8E49BD4FCDBAA2FE}" {
+       m_sEventName "GC_MigratedSpawn_786FEE7ACC3858B8"
+      }
+     }
+     m_Advanced GC_EventOptions "{5D903918BDD23E80}" {
+      m_fDelay 120
+     }
+     m_aActions {
+      GC_SpawnAction "{969190D0BA164F43}" {
+       m_Spawn GC_AIGroupSpawn "{8E02AE545F553EB6}" {
+        m_sLocation "AI_Spawn_Wave_2"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A75809A84717A32C}" {
+     m_sName "GC_MigratedSpawn_786FEE7ACC3858B8 (180s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DC9BF8BBD289D3CE}" {
+       m_sEventName "GC_MigratedSpawn_786FEE7ACC3858B8"
+      }
+     }
+     m_Advanced GC_EventOptions "{A5D5C2FA19C6C45B}" {
+      m_fDelay 180
+     }
+     m_aActions {
+      GC_SpawnAction "{C263C6C023254D32}" {
+       m_Spawn GC_AIGroupSpawn "{461CAF8254D6E3BC}" {
+        m_sLocation "AI_Spawn_Wave_2"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4ED0614E34CD83EF}" {
+     m_sName "GC_MigratedSpawn_786FEE7ACC3858B8 (240s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C8E59FDC39844A8C}" {
+       m_sEventName "GC_MigratedSpawn_786FEE7ACC3858B8"
+      }
+     }
+     m_Advanced GC_EventOptions "{3A7E4611B9DB64FD}" {
+      m_fDelay 240
+     }
+     m_aActions {
+      GC_SpawnAction "{95422844730A277E}" {
+       m_Spawn GC_AIGroupSpawn "{3828F1287960FBEF}" {
+        m_sLocation "AI_Spawn_Wave_2"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A097AB6227DDD89A}" {
+     m_sName "GC_MigratedSpawn_786FEE7ACC3858B8 (300s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BB73AFBFF7268D45}" {
+       m_sEventName "GC_MigratedSpawn_786FEE7ACC3858B8"
+      }
+     }
+     m_Advanced GC_EventOptions "{22074656FB862E6C}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{A584AA0F8B37F452}" {
+       m_Spawn GC_AIGroupSpawn "{CCED91271FBA38DD}" {
+        m_sLocation "AI_Spawn_Wave_2"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B314ADB20D30BBE3}" {
+     m_sName "GC_MigratedSpawn_786FEE7ACC3858B8 (360s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B7694265C1C34B89}" {
+       m_sEventName "GC_MigratedSpawn_786FEE7ACC3858B8"
+      }
+     }
+     m_Advanced GC_EventOptions "{4E5D70993659DA8D}" {
+      m_fDelay 360
+     }
+     m_aActions {
+      GC_SpawnAction "{9D11318E260B27C5}" {
+       m_Spawn GC_AIGroupSpawn "{8BF89092F98FD70F}" {
+        m_sLocation "AI_Spawn_Wave_2"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{45DDE9D584877937}" {
+     m_sName "GC_MigratedSpawn_786FEE7ACC3858B8 (420s)"
+     m_aConditions {
+      GC_MissionEventCondition "{62FBCFF564F88CE9}" {
+       m_sEventName "GC_MigratedSpawn_786FEE7ACC3858B8"
+      }
+     }
+     m_Advanced GC_EventOptions "{36349E1E9EE021EC}" {
+      m_fDelay 420
+     }
+     m_aActions {
+      GC_SpawnAction "{B9313A87A22BC74C}" {
+       m_Spawn GC_AIGroupSpawn "{EEED33AB3E5C6CF7}" {
+        m_sLocation "AI_Spawn_Wave_2"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9BF64ABA9E4E3EF3}" {
+     m_sName "GC_MigratedSpawn_786FEE7ACC3858B8 (480s)"
+     m_aConditions {
+      GC_MissionEventCondition "{0FC62F508DFD0914}" {
+       m_sEventName "GC_MigratedSpawn_786FEE7ACC3858B8"
+      }
+     }
+     m_Advanced GC_EventOptions "{358599A15DB1D9D1}" {
+      m_fDelay 480
+     }
+     m_aActions {
+      GC_SpawnAction "{05F12B21009E292E}" {
+       m_Spawn GC_AIGroupSpawn "{5DFAD704145E7CE1}" {
+        m_sLocation "AI_Spawn_Wave_2"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{7584A21FDFDAA2D1}" {
+     m_sName "GC_MigratedSpawn_786FEE7ACC3858B8 (540s)"
+     m_aConditions {
+      GC_MissionEventCondition "{05214D3A1B6280FA}" {
+       m_sEventName "GC_MigratedSpawn_786FEE7ACC3858B8"
+      }
+     }
+     m_Advanced GC_EventOptions "{3159404855732A06}" {
+      m_fDelay 540
+     }
+     m_aActions {
+      GC_SpawnAction "{69A7A8290EBF24E9}" {
+       m_Spawn GC_AIGroupSpawn "{6ED876670ED37655}" {
+        m_sLocation "AI_Spawn_Wave_2"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{6FE6F246C311EA3E}" {
+     m_sName "GC_MigratedSpawn_786FEE7ACC3858B8 (600s)"
+     m_aConditions {
+      GC_MissionEventCondition "{0F5DFED475A338F4}" {
+       m_sEventName "GC_MigratedSpawn_786FEE7ACC3858B8"
+      }
+     }
+     m_Advanced GC_EventOptions "{6722AF06CB18A4BD}" {
+      m_fDelay 600
+     }
+     m_aActions {
+      GC_SpawnAction "{64F2719B2EC2200C}" {
+       m_Spawn GC_AIGroupSpawn "{C1BB4E49F779D4A2}" {
+        m_sLocation "AI_Spawn_Wave_2"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_aWaypoints {
+         "AI_SnD_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{88E4095D8A3B05A6}" {
+     m_sName "GC_MigratedSpawn_6260E03246C5F63C"
+     m_aConditions {
+      GC_AreaCondition "{30128C3843E6B50B}" {
+       m_sArea "AI_Waves_Trigger"
+       m_Targets GC_CharacterAreaTargets "{E97E12FC2C0F877D}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{F72F4F1AFF27E3DA}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{975399DCF7814861}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3EC6892C39C3015C}" {
+       m_sMessage "GC_MigratedSpawn_6260E03246C5F63C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{21E89B6AC1D4177E}" {
+     m_sName "GC_MigratedSpawn_6260E03246C5F63C (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3E36F2DD3F8D5CC5}" {
+       m_sEventName "GC_MigratedSpawn_6260E03246C5F63C"
+      }
+     }
+     m_Advanced GC_EventOptions "{F6A3D62159315D3A}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{51A68F6055A8FF01}" {
+       m_Spawn GC_CrewedVehicleSpawn "{70F1B3D966C8488E}" {
+        m_sLocation "BRDM_Spawn_Wave_1"
+        m_sPrefab "{84A2CD45010EC22E}worlds/HitTheMan/Prefabs/Vehicles/BMP1_base_HTM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{E3ADE9B20FD83ED6}" {
+          m_aStations {
+           GC_SpawnCrewStation "{07839FADA01F5A6C}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Move_WP_Wave_1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9A091E7CDF77EFD2}" {
+     m_sName "GC_MigratedSpawn_6260E03246C5F63C (120s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C441FADC94409530}" {
+       m_sEventName "GC_MigratedSpawn_6260E03246C5F63C"
+      }
+     }
+     m_Advanced GC_EventOptions "{C7C31C969B927A32}" {
+      m_fDelay 120
+     }
+     m_aActions {
+      GC_SpawnAction "{6B949A5FD91EF33C}" {
+       m_Spawn GC_CrewedVehicleSpawn "{DC3F5FFBD4172E44}" {
+        m_sLocation "BRDM_Spawn_Wave_1"
+        m_sPrefab "{84A2CD45010EC22E}worlds/HitTheMan/Prefabs/Vehicles/BMP1_base_HTM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{AC1DA96962252E2E}" {
+          m_aStations {
+           GC_SpawnCrewStation "{D207C7523BF8573A}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Move_WP_Wave_1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{EB4016523C50A0AE}" {
+     m_sName "GC_MigratedSpawn_6260E03246C5F63C (360s)"
+     m_aConditions {
+      GC_MissionEventCondition "{69AE9F3CE371B01F}" {
+       m_sEventName "GC_MigratedSpawn_6260E03246C5F63C"
+      }
+     }
+     m_Advanced GC_EventOptions "{4DF1383BE83FEEB9}" {
+      m_fDelay 360
+     }
+     m_aActions {
+      GC_SpawnAction "{F5BE533CFF03F011}" {
+       m_Spawn GC_CrewedVehicleSpawn "{EA007814F2BDDD4C}" {
+        m_sLocation "BRDM_Spawn_Wave_1"
+        m_sPrefab "{84A2CD45010EC22E}worlds/HitTheMan/Prefabs/Vehicles/BMP1_base_HTM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{55366922A001FD9B}" {
+          m_aStations {
+           GC_SpawnCrewStation "{BA7267D6F55CBEA4}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Move_WP_Wave_1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9851F44776F7CD0A}" {
+     m_sName "GC_MigratedSpawn_4F7D0F163CDA2616"
+     m_aConditions {
+      GC_AreaCondition "{4BFE9E6FDC372FD9}" {
+       m_sArea "AI_Waves_Trigger"
+       m_Targets GC_CharacterAreaTargets "{713F9957D5223113}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{10AE6267893854E0}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{BF4A5906A9DD9065}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FB2B8DDAD51585E3}" {
+       m_sMessage "GC_MigratedSpawn_4F7D0F163CDA2616"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AA3C26BA2AA1A7EF}" {
+     m_sName "GC_MigratedSpawn_4F7D0F163CDA2616 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2F88DB7BC8989906}" {
+       m_sEventName "GC_MigratedSpawn_4F7D0F163CDA2616"
+      }
+     }
+     m_Advanced GC_EventOptions "{9B73114AA85103C9}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{511246AF622A3161}" {
+       m_Spawn GC_CrewedVehicleSpawn "{3412776C80EE2C9A}" {
+        m_sLocation "BRDM_Spawn_Wave_2"
+        m_sPrefab "{84A2CD45010EC22E}worlds/HitTheMan/Prefabs/Vehicles/BMP1_base_HTM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{F35E03F3A57697D8}" {
+          m_aStations {
+           GC_SpawnCrewStation "{DC20A460E66BEE6B}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Move_WP_Wave_2"
+           "Move_WP_Wave_3"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{5702531961A74574}" {
+     m_sName "GC_MigratedSpawn_4F7D0F163CDA2616 (240s)"
+     m_aConditions {
+      GC_MissionEventCondition "{257C46DBB42F496C}" {
+       m_sEventName "GC_MigratedSpawn_4F7D0F163CDA2616"
+      }
+     }
+     m_Advanced GC_EventOptions "{96C6534847B4A4F7}" {
+      m_fDelay 240
+     }
+     m_aActions {
+      GC_SpawnAction "{F8C963AE6B85EF61}" {
+       m_Spawn GC_CrewedVehicleSpawn "{D99AEA097D53379B}" {
+        m_sLocation "BRDM_Spawn_Wave_2"
+        m_sPrefab "{84A2CD45010EC22E}worlds/HitTheMan/Prefabs/Vehicles/BMP1_base_HTM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{D05BF37502C970A9}" {
+          m_aStations {
+           GC_SpawnCrewStation "{ABB85BD152192904}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Move_WP_Wave_2"
+           "Move_WP_Wave_3"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{D1D48A2CC8E3A70C}" {
+     m_sName "GC_MigratedSpawn_4F7D0F163CDA2616 (480s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5A3B309AE3B3D9CB}" {
+       m_sEventName "GC_MigratedSpawn_4F7D0F163CDA2616"
+      }
+     }
+     m_Advanced GC_EventOptions "{78AE4D5F34E581C6}" {
+      m_fDelay 480
+     }
+     m_aActions {
+      GC_SpawnAction "{85D860257A1870EC}" {
+       m_Spawn GC_CrewedVehicleSpawn "{10999D9226C30828}" {
+        m_sLocation "BRDM_Spawn_Wave_2"
+        m_sPrefab "{84A2CD45010EC22E}worlds/HitTheMan/Prefabs/Vehicles/BMP1_base_HTM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{825A36DCFDF4DC22}" {
+          m_aStations {
+           GC_SpawnCrewStation "{FD2F3D55A9F4CBA6}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Move_WP_Wave_2"
+           "Move_WP_Wave_3"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{7C7E544AC4471B42}" {
+     m_sName "GC_MigratedSpawn_81D5144425F9266A"
+     m_aConditions {
+      GC_AreaCondition "{A959475160E92CCF}" {
+       m_sArea "OBJ_Sector1_MotorPool"
+       m_Targets GC_CharacterAreaTargets "{7E676087A1239F0A}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{05BED9FDE8DE6E45}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{DF8F09E62D0EFB6B}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{27A74DB287348750}" {
+       m_sMessage "GC_MigratedSpawn_81D5144425F9266A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{205BA3ADDE7F7695}" {
+     m_sName "GC_MigratedSpawn_81D5144425F9266A (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{121D7E51ECBC71D8}" {
+       m_sEventName "GC_MigratedSpawn_81D5144425F9266A"
+      }
+     }
+     m_Advanced GC_EventOptions "{D56920C54AC18FE6}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{4899422678F3BB97}" {
+       m_Spawn GC_PrefabSpawn "{8FE10F03D8ECB608}" {
+        m_sLocation "TruckSpawner_1"
+        m_sPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+       }
+      }
+     }
+    }
+    GC_Event "{21D5A7F0ACB22130}" {
+     m_sName "GC_MigratedSpawn_730856C5F617B4BF"
+     m_aConditions {
+      GC_AreaCondition "{490B291401540FF2}" {
+       m_sArea "OBJ_Sector1_MotorPool"
+       m_Targets GC_CharacterAreaTargets "{69D7EC4856055C3C}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{921AF674E06FDFC2}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{47E20AD3378C65E0}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{01FC847DDCBAC893}" {
+       m_sMessage "GC_MigratedSpawn_730856C5F617B4BF"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A683436283BB1378}" {
+     m_sName "GC_MigratedSpawn_730856C5F617B4BF (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4B3DB3E33957A6CC}" {
+       m_sEventName "GC_MigratedSpawn_730856C5F617B4BF"
+      }
+     }
+     m_Advanced GC_EventOptions "{F904F4825CC21EA9}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{EBAF6C99570EB98A}" {
+       m_Spawn GC_PrefabSpawn "{74E4D4FC17CAB9FB}" {
+        m_sLocation "TruckSpawner_2"
+        m_sPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+       }
+      }
+     }
+    }
+    GC_Event "{DFDAC36D74407D49}" {
+     m_sName "GC_MigratedSpawn_3D9BD4BCDA912C92"
+     m_aConditions {
+      GC_AreaCondition "{20E05995C36917C2}" {
+       m_sArea "OBJ_Sector1_MotorPool"
+       m_Targets GC_CharacterAreaTargets "{158D31535C88C81B}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{4D44803EBA4B8EBB}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{5673C337ACF8FA03}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D459FC2C41ED7905}" {
+       m_sMessage "GC_MigratedSpawn_3D9BD4BCDA912C92"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8DBF3BE884E685D2}" {
+     m_sName "GC_MigratedSpawn_3D9BD4BCDA912C92 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8610912512E50C53}" {
+       m_sEventName "GC_MigratedSpawn_3D9BD4BCDA912C92"
+      }
+     }
+     m_Advanced GC_EventOptions "{C21C3C8B61BD6E4F}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{3CE3EA8D5E2F7C84}" {
+       m_Spawn GC_PrefabSpawn "{3432DDBD35ABA56C}" {
+        m_sLocation "TruckSpawner_3"
+        m_sPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+       }
+      }
+     }
+    }
+    GC_Event "{E481A066D60AEE39}" {
+     m_sName "GC_MigratedSpawn_2760E59694DAB97A"
+     m_aConditions {
+      GC_AreaCondition "{155AF5FE86A7E207}" {
+       m_sArea "OBJ_Sector1_MotorPool"
+       m_Targets GC_CharacterAreaTargets "{F435CF1BE986E98B}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{24278ABB2B24F9FD}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{C337A0B2E2647738}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{46A0B53A732AF6B8}" {
+       m_sMessage "GC_MigratedSpawn_2760E59694DAB97A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5D63DFE0D2B22F1C}" {
+     m_sName "GC_MigratedSpawn_2760E59694DAB97A (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E8559AA8F32E81B2}" {
+       m_sEventName "GC_MigratedSpawn_2760E59694DAB97A"
+      }
+     }
+     m_Advanced GC_EventOptions "{EAA10AD954C12059}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{BD49C51B1F2B6CAC}" {
+       m_Spawn GC_PrefabSpawn "{45997FFE5B5F490A}" {
+        m_sLocation "TruckSpawner_4"
+        m_sPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+       }
+      }
+     }
+    }
+    GC_Event "{9C33A9C8062DED85}" {
+     m_sName "GC_MigratedSpawn_45812D275895726E"
+     m_aConditions {
+      GC_AreaCondition "{00A7B25BCA4B99AF}" {
+       m_sArea "OBJ_Sector1_MotorPool"
+       m_Targets GC_CharacterAreaTargets "{55A798229AE8C14B}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{79284AB93DA093EE}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{0919493247839DF0}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{270BA2988E15652D}" {
+       m_sMessage "GC_MigratedSpawn_45812D275895726E"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{ED796CCFBA00172E}" {
+     m_sName "GC_MigratedSpawn_45812D275895726E (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6BC0D17DC32F2A34}" {
+       m_sEventName "GC_MigratedSpawn_45812D275895726E"
+      }
+     }
+     m_Advanced GC_EventOptions "{55F720AAA6908A99}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{842B2162FA4191FC}" {
+       m_Spawn GC_PrefabSpawn "{A665D1E4152FE846}" {
+        m_sLocation "TruckSpawner_5"
+        m_sPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+       }
+      }
+     }
+    }
+    GC_Event "{D6F7E31CFA9308A9}" {
+     m_sName "GC_MigratedSpawn_E70B34173F3BE1B7"
+     m_aConditions {
+      GC_AreaCondition "{C4243325CD12AF37}" {
+       m_sArea "OBJ_Sector1_MotorPool"
+       m_Targets GC_CharacterAreaTargets "{44159B3EA893BD41}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{F31F122CD26BDA61}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{7A2BF49C33214100}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{04149462ECEF1F84}" {
+       m_sMessage "GC_MigratedSpawn_E70B34173F3BE1B7"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{18CF6E669ACD69A2}" {
+     m_sName "GC_MigratedSpawn_E70B34173F3BE1B7 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B4D956D9E4873015}" {
+       m_sEventName "GC_MigratedSpawn_E70B34173F3BE1B7"
+      }
+     }
+     m_Advanced GC_EventOptions "{22E1236A1C2D7E8B}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{A600435E208368FC}" {
+       m_Spawn GC_PrefabSpawn "{CC2F8CFA16DF977C}" {
+        m_sLocation "TruckSpawner_6"
+        m_sPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+       }
+      }
+     }
+    }
+    GC_Event "{9E7C282CE3CACD4B}" {
+     m_sName "GC_MigratedSpawn_1E4221A5D1B43A8A"
+     m_aConditions {
+      GC_AreaCondition "{70C84E09F5BF51E0}" {
+       m_sArea "OBJ_Sector1_MotorPool"
+       m_Targets GC_CharacterAreaTargets "{9022D34978EF5EF1}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{16E2426E4FD5E70D}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{878B2A883B0832D0}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DBADA8A718F88B95}" {
+       m_sMessage "GC_MigratedSpawn_1E4221A5D1B43A8A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5B43F59B0639B870}" {
+     m_sName "GC_MigratedSpawn_1E4221A5D1B43A8A (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D17C90167FDA3E1F}" {
+       m_sEventName "GC_MigratedSpawn_1E4221A5D1B43A8A"
+      }
+     }
+     m_Advanced GC_EventOptions "{94F866793B7C392E}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{AC6BA3097F63680A}" {
+       m_Spawn GC_PrefabSpawn "{877D79C0CCA69F72}" {
+        m_sLocation "TruckSpawner_7"
+        m_sPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+       }
+      }
+     }
+    }
+    GC_Event "{2E31BE1E4C4B211A}" {
+     m_sName "GC_MigratedSpawn_435EB455C53A8564"
+     m_aConditions {
+      GC_AreaCondition "{4BE0829FC69D4A4D}" {
+       m_sArea "OBJ_Sector1_MotorPool"
+       m_Targets GC_CharacterAreaTargets "{862DED86A56DFA6E}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{3BF0FCA97286D582}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{5CFF215545FED5FF}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{AE9B1A123C4D9B7D}" {
+       m_sMessage "GC_MigratedSpawn_435EB455C53A8564"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6A1A5405C7FB454D}" {
+     m_sName "GC_MigratedSpawn_435EB455C53A8564 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F73C3106860FFDF5}" {
+       m_sEventName "GC_MigratedSpawn_435EB455C53A8564"
+      }
+     }
+     m_Advanced GC_EventOptions "{BDF21AA76212AAA3}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{2CF1C8FE5FDAA996}" {
+       m_Spawn GC_PrefabSpawn "{C6BC0C376E114A1F}" {
+        m_sLocation "TruckSpawner_9"
+        m_sPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+       }
+      }
+     }
+    }
+    GC_Event "{3A365CB61AE24610}" {
+     m_sName "GC_MigratedSpawn_883ADC073F05016B"
+     m_aConditions {
+      GC_AreaCondition "{AFDC6CA501D42719}" {
+       m_sArea "OBJ_Sector1_MotorPool"
+       m_Targets GC_CharacterAreaTargets "{8B77BB0466C534A1}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_CAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{19E9B8F19E501E64}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{72AC4BF46A34B6F0}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2E283CCAB5A75B51}" {
+       m_sMessage "GC_MigratedSpawn_883ADC073F05016B"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FE5BF85BB7D56F96}" {
+     m_sName "GC_MigratedSpawn_883ADC073F05016B (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5A79E468B634DFCF}" {
+       m_sEventName "GC_MigratedSpawn_883ADC073F05016B"
+      }
+     }
+     m_Advanced GC_EventOptions "{31DA6AED1A5F119F}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{1D25A3862039D2C5}" {
+       m_Spawn GC_PrefabSpawn "{9A68BC57B1AF1F55}" {
+        m_sLocation "TruckSpawner_8"
+        m_sPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+       }
+      }
+     }
+    }
+   }
+   m_aAuthoredRespawns {
+    GC_AuthoredFactionRespawn "{E9772DF6861A1325}" {
+     m_sFaction "GC_CAF"
+     m_iTickets 0
+     m_iIntervalMs 0
+     m_bAllowDynamicTickets 1
+    }
+   }
+  }
+ }
+ coords 7756.999 312.503 8163.458
+ {
+  RadioManagerEntity {
+   ID "A79C4E0A43DEB824"
+   coords -0.193 0.002 -0.206
+  }
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   coords 0 0 0
+   Factions + {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "7"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{64E2F896A8C154A9}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{669E264C31B8F43B}" {
+        m_sCallsign "4"
+       }
+      }
+     }
+    }
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
+      Name "VDV Forces"
+      Icon "{B522FE456D7F091A}worlds/HitTheMan/Screening The Orb/330px-Flag_of_the_Soviet_Air_Force.svg.edds"
+     }
+     m_iOrder 1
+     m_sFactionFlag "{B522FE456D7F091A}worlds/HitTheMan/Screening The Orb/330px-Flag_of_the_Soviet_Air_Force.svg.edds"
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB79282FF010C}" {
+       }
+       SCR_CallsignInfo "{55CCB792829053B0}" {
+       }
+       SCR_CallsignInfo "{55CCB79282A19687}" {
+       }
+       SCR_CallsignInfo "{55CCB7928223BB00}" {
+       }
+       SCR_CallsignInfo "{64E2F896C9EDF867}" {
+        m_sCallsign ""
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB79284A2F6C9}" {
+       }
+       SCR_CallsignInfo "{64E2F896D3989F52}" {
+       }
+       SCR_CallsignInfo "{64E2F896D40CE24D}" {
+        m_sCallsign ""
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+       }
+       SCR_CallsignInfo "{64E2F896E232A50B}" {
+       }
+       SCR_CallsignInfo "{64E2F896FFC45153}" {
+       }
+       SCR_CallsignInfo "{64E2F896F0699D6A}" {
+        m_sCallsign "Mi-24 | STAVOK 1"
+       }
+       SCR_CallsignInfo "{64E2F896F08C1FC2}" {
+        m_sCallsign "Mi-24 | STAVOK 2"
+       }
+       SCR_CallsignInfo "{64E2F8970C5291B4}" {
+        m_sCallsign "Mi-8 | ZAKUSKA 1"
+       }
+       SCR_CallsignInfo "{6508F6387DF69F1D}" {
+        m_sCallsign "Mi-8 | ZAKUSKA 2"
+       }
+       SCR_CallsignInfo "{66C7204F957B73C0}" {
+        m_sCallsign "Mi-8 | ZAKUSKA 3"
+       }
+       SCR_CallsignInfo "{66C7204F8A9C3546}" {
+        m_sCallsign "Mi-8 | ZAKUSKA 4"
+       }
+      }
+      m_sCallsignCharacterFormat "%1%2%3%4"
+      m_sCallsignCharacterWithRoleFormat "%1%2%3 %4"
+     }
+    }
+    SCR_Faction "{64AA098AEA5B1498}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{64AA098204A61453}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{64AA098204A6145D}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{64AA098204A61443}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{64AA098204A61441}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{64AA098204A61446}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{650AE15C940BA34B}" {
+        m_sCallsign "4"
+       }
+       SCR_CallsignInfo "{650AE15C8B7A1EC2}" {
+        m_sCallsign "5"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+       }
+       SCR_CallsignInfo "{61677618371B4C91}" {
+       }
+       SCR_CallsignInfo "{65055DBDAC6F7853}" {
+        m_sCallsign "Echo"
+       }
+       SCR_CallsignInfo "{65055DB6CE3F5934}" {
+        m_sCallsign "Foxtrot"
+       }
+       SCR_CallsignInfo "{650AE1494DA67E1D}" {
+       }
+      }
+     }
+     m_iFactionRadioFrequency 50000
+    }
+    SCR_Faction "{652F615735715119}" {
+    }
+   }
+  }
+  ScriptedChatEntity {
+   ID "A79C4E0A43DEB825"
+   coords -0.852 0.085 -0.28
+  }
+  ItemPreviewManagerEntity : "{9F18C476AB860F3B}Prefabs/World/Game/ItemPreviewManager.et" {
+   ID "5ED9088735FF2DD5"
+   coords -0.371 -3.712 0.108
+  }
+  SCR_EditorSettingsEntity {
+   ID "61B4E967E6C20362"
+   coords 0 0 0
+   m_bIsUnlimitedEditorLegal 1
+   m_EditorManagerPrefab "{1197E0F8B1D64714}Prefabs/Editor/GC_EditorManagerNoPhoto.et"
+  }
+ }
+}
+GC_RadiusAreaEntity OBJ_Sector1_MotorPool : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 5386.942 65.387 3402.257
+ m_fRadius 90
+}
+GC_RadiusAreaEntity OBJ_MainBuilding : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 4409.76 54.841 3476.908
+ m_fRadius 20
+}
+GenericEntity Obj_Mark_1 : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "objective-marker"
+   m_Color 0.502 0 0 1
+   m_fSize 120
+   m_bWorldScale 1
+   m_sDescription "Motor Pool"
+   m_iZOrder 0
+   m_iHoverZOrder -1
+   m_aFactionKeys {
+    "GC_CAF"
+   }
+   m_bRestrictToListedFactions 1
+  }
+ }
+ coords 5382.463 73.835 3388.203
+ angles 0 90 3.576
+}
+GenericEntity Obj_Mark_2 : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "objective-marker"
+   m_Color 0.502 0 0 1
+   m_fSize 120
+   m_bWorldScale 1
+   m_sDescription "Fortified 3 Story Building"
+   m_iZOrder 0
+   m_iHoverZOrder -1
+   m_aFactionKeys {
+    "GC_CAF"
+   }
+   m_bRestrictToListedFactions 1
+  }
+ }
+ coords 4407.706 55.312 3478.529
+ angles 0 90 3.576
+}
