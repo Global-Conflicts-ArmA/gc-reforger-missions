@@ -1,0 +1,906 @@
+SCR_AIWorld : "{A289632C1F505A78}Prefabs/AI/SCR_AIWorld_SnakeIsland_May.et" {
+}
+GC_LobbyGameMode GC_MigratedMission : "{C653BE7FB04A5747}worlds/Til/OwlsPrey/OwlsPrey_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{67031E019CD9FE6C}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 7
+     m_iStartingMinutes 30
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 8
+   m_iMonth 5
+   m_iYear 2022
+  }
+  GC_PeakFactionPopulationComponent "{2FA83B208E5B1B2D}" {
+  }
+  GC_LivingAndDeadAIComponent "{A75756C4E8AA0AD0}" {
+   m_sFaction "RHS_AFRF"
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{C0FED4A5A9081003}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 120.000000
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{8624D57B39A87ABC}" {
+     m_sName "c3"
+    }
+    GC_MissionFlag "{D15348E0AD79CBEE}" {
+     m_sName "c4"
+    }
+    GC_MissionFlag "{20F28B67512C8C5F}" {
+     m_sName "c5"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{64A43F143342BB1E}" {
+     m_sName "GC_MigrationStartupSampling"
+     m_aConditions {
+      GC_ConditionGroup "{D28A61A94B27F26A}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{1844A1F03A0EEF52}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{44EB3130E87A6B37}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{D3B6F9BC07F5D72A}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_FlagSamplingAction "{1844A1F03A0EEF52}" {
+       m_iDrawCount 2
+       m_aFlags {
+        "c3"
+        "c4"
+        "c5"
+       }
+      }
+     }
+    }
+    GC_Event "{DBC513B24487CB9F}" {
+     m_sName "CDF Major Victory"
+     m_aConditions {
+      GC_GameModeStateCondition "{8FE59B6E24AACE89}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{A587C2744BA49498}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{5D9DAEEBF71096C2}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_AreaCondition "{C5F6C3DF9486E292}" {
+           m_sArea "obj1"
+           m_Targets GC_CharacterAreaTargets "{333ADC457873B5C8}" {
+            m_iWho 2
+            m_aFactions {
+             "RHS_AFRF"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{EB523FAAFB24F358}" {
+            m_fRequiredShare 0
+            m_bAtMost 1
+           }
+           m_Capture GC_AreaCaptureOptions "{C8CFB61164CEC2DA}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_Messages GC_CaptureMessages "{A1FE4BA749F02E9C}" {
+             m_sLocation "the central building group"
+             m_sCaptured "The %1 has taken control of %2."
+             m_sCapturing "The %1 is taking control of %2."
+             m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+             m_sLost "The %1 has lost control of %2."
+             m_sLosing "The %1 is losing control of %2."
+             m_sLossInterrupted "The %1 is no longer losing control of %2."
+            }
+           }
+          }
+          GC_AreaCondition "{F016A7926FEE7A92}" {
+           m_sArea "obj2"
+           m_Targets GC_CharacterAreaTargets "{C9371602E706D469}" {
+            m_iWho 2
+            m_aFactions {
+             "RHS_AFRF"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{DCE8DA90D9494731}" {
+            m_fRequiredShare 0
+            m_bAtMost 1
+           }
+           m_Capture GC_AreaCaptureOptions "{C05D4DE9D761C5E8}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_Messages GC_CaptureMessages "{82D1200CA90E5B57}" {
+             m_sLocation "the north-eastern settlement"
+             m_sCaptured "The %1 has taken control of %2."
+             m_sCapturing "The %1 is taking control of %2."
+             m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+             m_sLost "The %1 has lost control of %2."
+             m_sLosing "The %1 is losing control of %2."
+             m_sLossInterrupted "The %1 is no longer losing control of %2."
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C852C508B251881D}" {
+       m_sMessage "CDF Major Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AF28E67E55E0ED8F}" {
+     m_sName "CDF Major Victory (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{E40C02FFC30A5DC1}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{580AAA02F30C364E}" {
+       m_sEventName "CDF Major Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{D5B6AE13D75FF964}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{DD4484D31AAA4CF2}" {
+       m_sTitle "CDF MAJOR VICTORY"
+       m_sMessage "The CDF set the conditions for a major victory by gaining control of both building groups, forcing remaining stragglers to surrender."
+      }
+     }
+    }
+    GC_Event "{9B79FA1E2E85881A}" {
+     m_sName "CDF Major Victory (20s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{0CB0EAC382788E90}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{05251A3F6B8F2061}" {
+       m_sEventName "CDF Major Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{B6502E0095AE30DF}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_EndMissionAction "{E731E6A283C7D154}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_CDF"
+       }
+      }
+     }
+    }
+    GC_Event "{9CC3136D54854563}" {
+     m_sName "CDF Minor Victory"
+     m_aConditions {
+      GC_GameModeStateCondition "{1CD7E5FADA317C67}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{6D88F3FBF3B208D5}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{73A063051F1BD62C}" {
+         m_sArea "GC_MigrationArea_CDF_EXTRACT"
+         m_Targets GC_CharacterAreaTargets "{D802F7A267B3FFDE}" {
+          m_aFactions {
+           "GC_CDF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{ACE623E29224500B}" {
+          m_fRequiredShare 0
+          m_bWholeMission 1
+          m_bAtMost 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{7F943A7924F6AB9E}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+        GC_ConditionGroup "{25D23959712F0387}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_CustomScriptCondition "{129A5512E3AF4DF6}" {
+           m_Script GC_PeakFactionPopulationCheck "{F250EB385AC1B026}" {
+            m_sFaction "RHS_AFRF"
+            m_fRatio 0.6
+           }
+          }
+          GC_CustomScriptCondition "{9E781A034850CB37}" {
+           m_Script GC_LivingAndDeadAICheck "{BB877603687CADB0}" {
+            m_fRatio 0.6
+           }
+          }
+         }
+        }
+        GC_ConditionGroup "{2B620A382D9DBC7D}" {
+         m_iMatch 3
+         m_aConditions {
+          GC_AreaCondition "{9A49D52166A5DBBF}" {
+           m_sArea "obj1"
+           m_Targets GC_CharacterAreaTargets "{54471CDC0516AE80}" {
+            m_iWho 2
+            m_aFactions {
+             "RHS_AFRF"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{F97AFF3BD6F92775}" {
+            m_fRequiredShare 0
+            m_bAtMost 1
+           }
+           m_Capture GC_AreaCaptureOptions "{A97EC5FFAB8AF66F}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+           }
+          }
+          GC_AreaCondition "{28A3A636673E0954}" {
+           m_sArea "obj2"
+           m_Targets GC_CharacterAreaTargets "{BFB1D481ACB90BE7}" {
+            m_iWho 2
+            m_aFactions {
+             "RHS_AFRF"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{0C165F3D0B004631}" {
+            m_fRequiredShare 0
+            m_bAtMost 1
+           }
+           m_Capture GC_AreaCaptureOptions "{8C5A07604FB87A56}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E7C0A3B2F4604ED5}" {
+       m_sMessage "CDF Minor Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{4F52076DB94ECE66}" {
+     m_sName "CDF Minor Victory (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{92F5613734412587}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{CDB846227947F895}" {
+       m_sEventName "CDF Minor Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{A534C3F4B54C799C}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{0441B816BA03AB42}" {
+       m_sTitle "CDF MINOR VICTORY"
+       m_sMessage "The CDF extracted after killing a large amount of occupiers."
+      }
+     }
+    }
+    GC_Event "{D7E2D6B920A0DD9D}" {
+     m_sName "CDF Minor Victory (20s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{C48569EE5682DCC7}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{06741672535DCFD9}" {
+       m_sEventName "CDF Minor Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{DA155BD77DCF2274}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_EndMissionAction "{5802EAF1D7C04C2B}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_CDF"
+       }
+      }
+     }
+    }
+    GC_Event "{E98F22494426045C}" {
+     m_sName "CDF Minor Defeat"
+     m_aConditions {
+      GC_GameModeStateCondition "{3F41C1D93F32AC04}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{4BE12FAF62E5585F}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{2EE0116ECA8FEFA7}" {
+         m_sArea "GC_MigrationArea_CDF_EXTRACT"
+         m_Targets GC_CharacterAreaTargets "{482962082D0EA4D9}" {
+          m_aFactions {
+           "GC_CDF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{DA51DB3FEECA7DF3}" {
+          m_fRequiredShare 0
+          m_bWholeMission 1
+          m_bAtMost 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{3FD444927CA68145}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+        GC_ConditionGroup "{676796F4A430DACB}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_CustomScriptCondition "{CD9F617069DD2453}" {
+           m_Script GC_PeakFactionPopulationCheck "{85FA01065C1240A1}" {
+            m_sFaction "RHS_AFRF"
+            m_fRatio 0.6
+           }
+          }
+          GC_CustomScriptCondition "{9D4CAC8C619FC04C}" {
+           m_Script GC_LivingAndDeadAICheck "{96F8DF90C8AE554D}" {
+            m_fRatio 0.6
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{10E59F972A9483E2}" {
+       m_sMessage "CDF Minor Defeat"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A3B600EB42EF60C2}" {
+     m_sName "CDF Minor Defeat (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{B03AAF060016C8AB}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{3FE6CFAFE76815ED}" {
+       m_sEventName "CDF Minor Defeat"
+      }
+     }
+     m_Advanced GC_EventOptions "{9BCB20285056555E}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{2AAEE1820277BC87}" {
+       m_sTitle "CDF MINOR DEFEAT"
+       m_sMessage "After sustaining significant casualties, remaining CDF withdrew from the island."
+      }
+     }
+    }
+    GC_Event "{505C35455845B327}" {
+     m_sName "CDF Minor Defeat (20s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{B634C903AAA52D5B}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{6B8FA6C74324A4D5}" {
+       m_sEventName "CDF Minor Defeat"
+      }
+     }
+     m_Advanced GC_EventOptions "{BC5070A3E2774A60}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_EndMissionAction "{303DD9DEA6B929B8}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{5044680EA4AD50C0}" {
+     m_sName "CDF Major Defeat"
+     m_aConditions {
+      GC_CustomScriptCondition "{837AC8F18D5A35D3}" {
+       m_Script GC_PeakFactionPopulationCheck "{D4953AA0F5BCB668}" {
+        m_sFaction "GC_CDF"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{958A452AD225BEF7}" {
+       m_sMessage "CDF Major Defeat"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A4D5F7AA3676E0E2}" {
+     m_sName "CDF Major Defeat (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5C70352DBDBC31FF}" {
+       m_sEventName "CDF Major Defeat"
+      }
+     }
+     m_Advanced GC_EventOptions "{8BEAC7BC5C2B81FA}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{18150DFAAE8AA710}" {
+       m_sTitle "CDF MAJOR DEFEAT"
+       m_sMessage "The CDF took severe casualties."
+      }
+     }
+    }
+    GC_Event "{FE540C0035729D70}" {
+     m_sName "CDF Major Defeat (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{0B59529D6C143AC8}" {
+       m_sEventName "CDF Major Defeat"
+      }
+     }
+     m_Advanced GC_EventOptions "{407AEF23547CEAE3}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_EndMissionAction "{F2750BDB36B55248}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{BF62D32A7BF3FE90}" {
+     m_sName "CDF Casualty Warning"
+     m_aConditions {
+      GC_GameModeStateCondition "{6071F3F65FB24039}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{080AE79E3D5BE08C}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_CustomScriptCondition "{22FAAAD0667B2994}" {
+         m_Script GC_PeakFactionPopulationCheck "{C1EC891E012DB213}" {
+          m_sFaction "GC_CDF"
+          m_fRatio 0.5
+         }
+        }
+        GC_CustomScriptCondition "{E716E70D34A38A62}" {
+         m_Script GC_PeakFactionPopulationCheck "{1FFDEFCC1E3BF80B}" {
+          m_sFaction "GC_CDF"
+          m_bInvert 1
+          m_fRatio 0.8
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{31E6C27F12DFB817}" {
+       m_sMessage "CDF Casualty Warning"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BA204CD71B42EA86}" {
+     m_sName "CDF Casualty Warning (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{513CFE8A9D567B3F}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{FD50C0D2E7EDF440}" {
+       m_sEventName "CDF Casualty Warning"
+      }
+     }
+     m_Advanced GC_EventOptions "{1A91D59650F2654A}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{4FE5064308E40EB9}" {
+       m_sTitle "CASUALTIES WARNING"
+       m_sMessage "You have suffered a medium amount of casualties, consider withdrawing to avoid a major defeat."
+       m_aFactions {
+        "GC_CDF"
+       }
+      }
+     }
+    }
+    GC_Event "{F33D58A494EE42B5}" {
+     m_sName "CDF Minor Info"
+     m_aConditions {
+      GC_GameModeStateCondition "{A81995B68D88256C}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{590E2802FA24B454}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_CustomScriptCondition "{7097F1DBCB58533A}" {
+         m_Script GC_PeakFactionPopulationCheck "{3059AB75FDBE4166}" {
+          m_sFaction "RHS_AFRF"
+          m_fRatio 0.6
+         }
+        }
+        GC_CustomScriptCondition "{6A2BF4610B82F35E}" {
+         m_Script GC_LivingAndDeadAICheck "{0124B988C3ECE357}" {
+          m_fRatio 0.6
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{03754FE31C23B0AD}" {
+       m_sMessage "CDF Minor Info"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{331FA129BFA771EF}" {
+     m_sName "CDF Minor Info (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{E590CDBE47215D21}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{9B56E821C96AA58E}" {
+       m_sEventName "CDF Minor Info"
+      }
+     }
+     m_Advanced GC_EventOptions "{8D4380DF0DB984CE}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{4BC4F320ED31944C}" {
+       m_sTitle "MISSION INFO"
+       m_sMessage "You have killed a large amount of Russians, extracting now will result in a minor victory."
+       m_aFactions {
+        "GC_CDF"
+       }
+      }
+     }
+    }
+    GC_Event "{3BAF33AEAE062DBB}" {
+     m_sName "Delete Crate 3"
+     m_aConditions {
+      GC_GameModeStateCondition "{15C0F25865B3A86C}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{3D8CCF9B27951215}" {
+       m_sFlagName "c3"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9B8C4E0FA36D1228}" {
+       m_sMessage "Delete Crate 3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8470E4D669CE3329}" {
+     m_sName "Delete Crate 3 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{67E85681C815F3EB}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{C9412180082FD5BD}" {
+       m_sEventName "Delete Crate 3"
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{5FC6CC17F93E650C}" {
+       m_aEntities {
+        "crate3"
+       }
+      }
+     }
+    }
+    GC_Event "{DD1A07B8416DC412}" {
+     m_sName "Delete Crate 4"
+     m_aConditions {
+      GC_GameModeStateCondition "{2746F3091F9B4A1F}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{3BD3D440783F9543}" {
+       m_sFlagName "c4"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C865919E4A4045AC}" {
+       m_sMessage "Delete Crate 4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CC01957ADF9D07D8}" {
+     m_sName "Delete Crate 4 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{0A2CD52F45501FB0}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{E78DA12472426B82}" {
+       m_sEventName "Delete Crate 4"
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{2DBABF987FB9F413}" {
+       m_aEntities {
+        "crate4"
+       }
+      }
+     }
+    }
+    GC_Event "{26320E9688697648}" {
+     m_sName "Delete Crate 5"
+     m_aConditions {
+      GC_GameModeStateCondition "{3D80D95A5B439330}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{B34DD5AC0ABC4DD0}" {
+       m_sFlagName "c5"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{121EA46952FEBCBB}" {
+       m_sMessage "Delete Crate 5"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B849DA92D81D6D34}" {
+     m_sName "Delete Crate 5 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{3B44B6121D7734A9}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{D69CC26EE85DEC87}" {
+       m_sEventName "Delete Crate 5"
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{F08AD3538BEF0760}" {
+       m_aEntities {
+        "crate5"
+       }
+      }
+     }
+    }
+    GC_Event "{6C93F9B3BFFE94C5}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{88EF401D9B137E88}" {
+       m_fSeconds 120.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{F86CA0387CE57E09}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{648D46336748B246}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{648D3C2E4F6005BD}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{648D3C2E5DD97C6B}" {
+        m_sCallsign "Neptune"
+       }
+       SCR_CallsignInfo "{66D9144DF60A7F57}" {
+        m_sCallsign "Salacia"
+       }
+       SCR_CallsignInfo "{66D9144DF51EC0E5}" {
+        m_sCallsign "Venilia"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+   }
+  }
+ }
+}
+GC_RadiusAreaEntity GC_MigrationArea_CDF_EXTRACT : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 368 0 368
+ m_fRadius 750
+}
+GC_RadiusAreaEntity obj2 : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 607.078 9.972 574.806
+ m_fRadius 50
+ {
+  GenericEntity : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+   components {
+    GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+     m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+     m_sHighlightImageSet ""
+     m_sQuadName "circle-2"
+     m_Color 0 0 0 0.5
+     m_fSize 150
+     m_bWorldScale 1
+     m_sDescription ""
+     m_iZOrder 0
+     m_iHoverZOrder -1
+     m_bHideWithoutFaction 1
+    }
+   }
+   coords 0 0 0
+   angles 0 0 0
+  }
+ }
+}
+GC_RadiusAreaEntity obj1 : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 308.71 40.48 378.647
+ m_fRadius 50
+ {
+  GenericEntity : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+   components {
+    GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+     m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+     m_sHighlightImageSet ""
+     m_sQuadName "circle-2"
+     m_Color 0 0 0 0.5
+     m_fSize 150
+     m_bWorldScale 1
+     m_sDescription ""
+     m_iZOrder 0
+     m_iHoverZOrder -1
+     m_bHideWithoutFaction 1
+    }
+   }
+   coords 0 0 0
+   angles 0 0 0
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 383.584 0 3748.769
+ m_fWarnRadius 75
+ m_fZoneRadius 150
+ m_fZoneTeleportedRadius 175
+}
+GenericEntity picmarker : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{A4E12732DEAC2453}worlds/Til/OwlsPrey/data/si.edds"
+   m_sHighlightImageSet ""
+   m_sQuadName "circle-2"
+   m_Color 1 1 1 1
+   m_fSize 200
+   m_bWorldScale 1
+   m_sDescription ""
+   m_iZOrder 0
+   m_iHoverZOrder -1
+  }
+ }
+ coords 100 0 61.25
+ angleY 90
+}
+GenericEntity poi_helipad : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "point-of-interest"
+   m_Color 0 0 0 0.5
+   m_fSize 10
+   m_bWorldScale 1
+   m_sDescription "Helipad"
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+   m_bHideWithoutFaction 1
+  }
+ }
+ coords 179.882 26.99 483.621
+ angleY 90
+}
+GenericEntity poi_windmill : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "point-of-interest"
+   m_Color 0 0 0 0.5
+   m_fSize 10
+   m_bWorldScale 1
+   m_sDescription "Windmill"
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+   m_bHideWithoutFaction 1
+  }
+ }
+ coords 260.232 68.005 173.981
+ angleY 90
+}
+GenericEntity poi_shelter : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "point-of-interest"
+   m_Color 0 0 0 0.5
+   m_fSize 10
+   m_bWorldScale 1
+   m_sDescription "Underground Shelter"
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+   m_bHideWithoutFaction 1
+  }
+ }
+ coords 458.611 24.66 257.137
+ angles 0 90 0
+}
+GenericEntity poi_zu : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "point-of-interest"
+   m_Color 0 0 0 0.5
+   m_fSize 10
+   m_bWorldScale 1
+   m_sDescription "ZU-23-2"
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+   m_aFactionKeys {
+    "RHS_AFRF"
+   }
+  }
+ }
+ coords 590.77 9.91 554.782
+ angles 0 90 0
+}
+GenericEntity poi_aaa : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "mark-exclamation"
+   m_Color 1 0.902 0 0.075
+   m_fSize 50
+   m_bWorldScale 1
+   m_sDescription "AAA threat"
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+   m_aFactionKeys {
+    "GC_CDF"
+   }
+  }
+ }
+ coords 650 24.66 350
+ angles 0 90 0
+}
