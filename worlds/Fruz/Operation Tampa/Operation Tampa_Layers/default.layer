@@ -1,0 +1,229 @@
+SCR_AIWorld : "{3DE6090FC602E566}Prefabs/AI/SCR_AIWorld_Takistan.et" {
+ coords 5916.66 109.313 11380.693
+}
+GC_LobbyGameMode GC_MigratedMission : "{8BDF5CCD32D36878}worlds/Fruz/Operation Tampa/Operation Tampa_GC_Settings.et" {
+ components {
+  GC_PeakFactionPopulationComponent "{2896AC3356C01AF8}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{1DA621419D09FC52}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 300
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{F7A39E615806D26A}" {
+     m_sName "Town 1 Civ Disappearing"
+     m_aConditions {
+      GC_AreaCondition "{E8251E62DB50FCC7}" {
+       m_sArea "GC_MigrationArea_Loiter1Flag"
+       m_Targets GC_CharacterAreaTargets "{624D3BA261970C22}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{D0BEE394580CC343}" {
+        m_fRequiredShare 0
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{6378FBBA4C2039D4}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6C19A8023C8C7D65}" {
+       m_sMessage "Town 1 Civ Disappearing"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{52A683E69212545A}" {
+     m_sName "Town 1 Civ Disappearing (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5DBE6191570650D9}" {
+       m_sEventName "Town 1 Civ Disappearing"
+      }
+     }
+     m_Advanced GC_EventOptions "{A74B71D30D5146A2}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{031EE785B75BE21A}" {
+       m_aEntities {
+        "rasman_group1"
+        "rasman_group2"
+       }
+      }
+     }
+    }
+    GC_Event "{2551C83261F16013}" {
+     m_sName "Town 2 Civ Disappearing"
+     m_aConditions {
+      GC_AreaCondition "{A4C0520D07E1FBE3}" {
+       m_sArea "GC_MigrationArea_Loiter3Flag"
+       m_Targets GC_CharacterAreaTargets "{BA5897952F9D0AF8}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_INSURGENT"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{CD65DFAC275D6F6E}" {
+        m_fRequiredShare 0
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{7DE19F04029E9B3E}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{927AF293599C39B5}" {
+       m_sMessage "Town 2 Civ Disappearing"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3EEA59AC3A1C0C5D}" {
+     m_sName "Town 2 Civ Disappearing (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F8605084658816AD}" {
+       m_sEventName "Town 2 Civ Disappearing"
+      }
+     }
+     m_Advanced GC_EventOptions "{7FC40CF16E059C08}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{7637EE6CB6ADDB69}" {
+       m_aEntities {
+        "rasman2_group2"
+       }
+      }
+     }
+    }
+    GC_Event "{9CF216F2A9B49A09}" {
+     m_sName "OPFOR Victory"
+     m_aConditions {
+      GC_CustomScriptCondition "{6FA2D86AB571939F}" {
+       m_Script GC_PeakFactionPopulationCheck "{76C0F390C3F96102}" {
+        m_sFaction "US"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7B1ADBEAC95F7D81}" {
+       m_sMessage "OPFOR Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{18AE2BC61AB3D446}" {
+     m_sName "OPFOR Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A1E64BC7B6BFB22C}" {
+       m_sEventName "OPFOR Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{9A26A839E8E5C6F9}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{0FD0D3062A74431B}" {
+       m_sTitle "OPFOR Victory"
+       m_sMessage "90% of US Forces have been killed in action."
+      }
+     }
+    }
+    GC_Event "{BFDDD352F36567ED}" {
+     m_sName "Blufor Victory"
+     m_aConditions {
+      GC_CustomScriptCondition "{C4DBEF2387E63753}" {
+       m_Script GC_PeakFactionPopulationCheck "{79DB12E9DDD2F522}" {
+        m_sFaction "GC_INSURGENT"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{25F47781E8A7496A}" {
+       m_sMessage "Blufor Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3A7A60FEC1AFDCCE}" {
+     m_sName "Blufor Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D7FF3A41E16A3AE8}" {
+       m_sEventName "Blufor Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{2BBFB46CE4E5BAAE}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{A162B577EC9E9ADF}" {
+       m_sTitle "BLUFOR Victory"
+       m_sMessage "90% of Insurgent forces have been killed in action."
+      }
+     }
+    }
+    GC_Event "{AE405C65F45F111D}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{4EA174CD480E91AA}" {
+       m_fSeconds 300
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{154B2B52FF281A5B}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 5935.771 109.313 11404.763
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "Kilo"
+       }
+      }
+      m_sCallsignGroupFormat "%2'%3"
+      m_sCallsignCharacterFormat "%2 %3: %4"
+      m_sCallsignCharacterWithRoleFormat " %2 %3: %4"
+     }
+    }
+    SCR_Faction "{632925D53C7F1148}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{58B2B630FDD64B65}" {
+        m_sCallsign "Sabir"
+       }
+      }
+      m_sCallsignGroupFormat "%2%3"
+      m_sCallsignCharacterFormat "%2%3%4"
+      m_sCallsignCharacterWithRoleFormat "%2%3 %4"
+     }
+    }
+   }
+  }
+ }
+}
