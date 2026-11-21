@@ -1,0 +1,3805 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 1044.353 15.094 2970.349
+}
+GC_LobbyGameMode GC_MigratedMission : "{5B2D7E69D827CCF7}worlds/HitTheMan/Bradley Leads The Way/BradleyLeadsTheWay_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 2
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{650415CBAFAE6875}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 2
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 21
+   m_iMonth 7
+   m_iYear 1983
+  }
+  GC_MissionEnvironmentComponent "{00923139620628C9}" {
+   m_fFogAmount 0.3
+   m_fFogHeightDensity 0.7
+   m_fRainIntensity 0
+   m_fWindSpeed 6
+  }
+  GC_PeakFactionPopulationComponent "{BCB30B2AF186CB1E}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{6502F55677EF7B08}" {
+     m_sName "Counter_AI"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{414F7B0CAE31826E}" {
+     m_sName "NVA Victory Casualties"
+     m_aConditions {
+      GC_CustomScriptCondition "{302FBD3B6A3F3681}" {
+       m_Script GC_PeakFactionPopulationCheck "{EF6FA4674DC42B88}" {
+        m_sFaction "US"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5A0014FD40C43D57}" {
+       m_sMessage "NVA Victory Casualties"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{04098133E6CBB941}" {
+     m_sName "NVA Victory Casualties (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BE785B1E7D50746C}" {
+       m_sEventName "NVA Victory Casualties"
+      }
+     }
+     m_Advanced GC_EventOptions "{8A285A599955BDA3}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{79B8C8D6A9F860A2}" {
+       m_sTitle "East German Victory"
+       m_sMessage "US Sustained too many casualties.. GM Discretion when to end the mission"
+      }
+     }
+    }
+    GC_Event "{73D9043AA9409CA3}" {
+     m_sName "Time Limit (2700s)"
+     m_Advanced GC_EventOptions "{364ADE9C112C49ED}" {
+      m_fDelay 2700
+     }
+     m_aActions {
+      GC_MessageAction "{35EBA08CCD70CC2C}" {
+       m_sTitle "Time Limit"
+       m_sMessage "The Mission will end in 45 minutes"
+      }
+     }
+    }
+    GC_Event "{5DFC2D36196582B8}" {
+     m_sName "Time Limit (4200s)"
+     m_Advanced GC_EventOptions "{0854408BAA674BEB}" {
+      m_fDelay 4200
+     }
+     m_aActions {
+      GC_MessageAction "{696D2AA7A31644DC}" {
+       m_sTitle "Time Limit"
+       m_sMessage "The Mission will end in 20 minutes"
+      }
+     }
+    }
+    GC_Event "{02DF3441A7CC36B0}" {
+     m_sName "Time Limit (4800s)"
+     m_Advanced GC_EventOptions "{E34CEFF4C7EA00F5}" {
+      m_fDelay 4800
+     }
+     m_aActions {
+      GC_MessageAction "{AEBF4844E43C97AB}" {
+       m_sTitle "Time Limit"
+       m_sMessage "The Mission will end in 10 minutes"
+      }
+     }
+    }
+    GC_Event "{804A4EB53253FB5B}" {
+     m_sName "Time Limit (5400s)"
+     m_Advanced GC_EventOptions "{0047A5DF5E8DFC60}" {
+      m_fDelay 5400
+     }
+     m_aActions {
+      GC_MessageAction "{EDB5C3DEC8E075A3}" {
+       m_sTitle "East German Army Victory"
+       m_sMessage "NVA held the town long enough forcing the US to fall back... GM Discretion when to end the mission"
+      }
+     }
+    }
+    GC_Event "{3AB2598605B33493}" {
+     m_sName "Time Limit (5410s)"
+     m_Advanced GC_EventOptions "{E4C5449171F67A48}" {
+      m_fDelay 5410
+     }
+     m_aActions {
+      GC_EndMissionAction "{D9BED51C0B93A938}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_NVA"
+       }
+      }
+     }
+    }
+    GC_Event "{C8F78DA04FABC092}" {
+     m_sName "US Victory & Defence"
+     m_aConditions {
+      GC_ConditionGroup "{930B6B0F7F3FEB3E}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{B08B3EC76F4E7B29}" {
+         m_sArea "Trigger_East_Bridge"
+         m_Targets GC_CharacterAreaTargets "{09F45794DD50F9BB}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{065A3D5C9CDD94FB}" {
+          m_fRequiredShare 0.9
+         }
+         m_Capture GC_AreaCaptureOptions "{0D3C6403C5C649FD}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{88C067897AD048A1}" {
+           m_sLocation "the Eastern Bridge"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{F8C589CED86F7DB0}" {
+         m_sArea "Trigger_West_Bridge"
+         m_Targets GC_CharacterAreaTargets "{45C2A1C8C33114C6}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{C46B0AB6420A45F1}" {
+          m_fRequiredShare 0.9
+         }
+         m_Capture GC_AreaCaptureOptions "{6C878EF9740A3728}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{4CFFFAA10BA0781A}" {
+           m_sLocation "the Western Bridge"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{5A912BB4B3CADE59}" {
+         m_sArea "Trigger_Farmstead"
+         m_Targets GC_CharacterAreaTargets "{41E6955E125A2E4B}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{0ED38AF2473CEB19}" {
+          m_fRequiredShare 0.9
+         }
+         m_Capture GC_AreaCaptureOptions "{EA64187DFA9470F1}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{313F13601F9DF8A8}" {
+           m_sLocation "the Farmstead"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{8FC93DA9E99CA57F}" {
+         m_sArea "Trigger_Northern_Sector"
+         m_Targets GC_CharacterAreaTargets "{078962C99EC423DC}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{BA4BA5014522BF94}" {
+          m_fRequiredShare 0.9
+         }
+         m_Capture GC_AreaCaptureOptions "{9318F7F54F9717E4}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{B2147C8FCC33C451}" {
+           m_sLocation "the Northern Sector"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{B36E9FFF964219EF}" {
+         m_sArea "Trigger_Southern_Sector"
+         m_Targets GC_CharacterAreaTargets "{BEE568D30B984B34}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{8BB2F463FC33D01E}" {
+          m_fRequiredShare 0.9
+         }
+         m_Capture GC_AreaCaptureOptions "{FBBEBFA42BF3A597}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{2298A8B10C7EA11E}" {
+           m_sLocation "the Southern Sector"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{19A98DF654B798C2}" {
+       m_sMessage "US Victory & Defence"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B1309195F544B977}" {
+     m_sName "US Victory & Defence (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{AFA8E13C2B65F841}" {
+       m_sEventName "US Victory & Defence"
+      }
+     }
+     m_Advanced GC_EventOptions "{8F383C7B05B28078}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_MessageAction "{CC29941678808FF3}" {
+       m_sTitle "Battalion Radio Report:"
+       m_sMessage "US Forces has secured their objectives.. The East Germans are reacting with QRFs moving rapidly to push the encroaching americans... Objective: Defend for 15min"
+      }
+     }
+    }
+    GC_Event "{871A6EAEC88EFCC9}" {
+     m_sName "US Victory & Defence (900s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2964757C41849A86}" {
+       m_sEventName "US Victory & Defence"
+      }
+     }
+     m_Advanced GC_EventOptions "{9AAA08F81B1FFF86}" {
+      m_fDelay 900
+     }
+     m_aActions {
+      GC_MessageAction "{2F4C02343A805194}" {
+       m_sTitle "United States Army Victory"
+       m_sMessage "US Forces has managed to secure their objectives and survived.."\
+       "GM Discretion when to end the mission"
+      }
+     }
+    }
+    GC_Event "{00A2E75E9C6DC3A8}" {
+     m_sName "US Victory & Defence (22s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CE2BAB75AB58DFD0}" {
+       m_sEventName "US Victory & Defence"
+      }
+     }
+     m_Advanced GC_EventOptions "{18EB75D49E3F6DAC}" {
+      m_fDelay 22
+     }
+     m_aActions {
+      GC_FlagAction "{FE3530CCA4ED5EA0}" {
+       m_sFlagName "Counter_AI"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{F27170F8849501BA}" {
+     m_sName "Forward Units Fallback"
+     m_aConditions {
+      GC_ConditionGroup "{8EEFDC6AA8DB4F02}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{0970B4FB9171503E}" {
+         m_sFlagName "Counter_AI"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{EA5BB8B1BE466FD7}" {
+       m_sMessage "Forward Units Fallback"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{861FD20F90D37E53}" {
+     m_sName "Forward Units Fallback (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C4F037B44C95D043}" {
+       m_sEventName "Forward Units Fallback"
+      }
+     }
+     m_Advanced GC_EventOptions "{1B1260E0A552E920}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_AssignWaypointsAction "{95C35EC9942043F8}" {
+       m_sGroupName "NVA_AI_1"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "wp_counter_attack_2"
+       }
+      }
+      GC_AssignWaypointsAction "{E8E89F118750DD7E}" {
+       m_sGroupName "NVA_AI_2"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "wp_counter_attack_2"
+       }
+      }
+      GC_AssignWaypointsAction "{34B26B0E101A8BA0}" {
+       m_sGroupName "NVA_AI_3"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "wp_counter_attack_2"
+       }
+      }
+      GC_AssignWaypointsAction "{A069F158FF98ADA0}" {
+       m_sGroupName "NVA_AI_4"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "wp_counter_attack_2"
+       }
+      }
+      GC_AssignWaypointsAction "{86D23AC72D5185DE}" {
+       m_sGroupName "NVA_AI_5"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "wp_counter_attack_2"
+       }
+      }
+      GC_AssignWaypointsAction "{40EAB20E191DC1C7}" {
+       m_sGroupName "NVA_AI_6"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "wp_counter_attack_2"
+       }
+      }
+      GC_AssignWaypointsAction "{BE0BF7BFC322BFA1}" {
+       m_sGroupName "NVA_AI_7"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "wp_counter_attack_2"
+       }
+      }
+      GC_AssignWaypointsAction "{4782A69C6C9BCB7C}" {
+       m_sGroupName "NVA_AI_8"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "wp_counter_attack_2"
+       }
+      }
+      GC_AssignWaypointsAction "{1448476EB4D2807B}" {
+       m_sGroupName "NVA_AI_9"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "wp_counter_attack_2"
+       }
+      }
+      GC_AssignWaypointsAction "{29A93F3330DCDD82}" {
+       m_sGroupName "NVA_AI_10"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "wp_counter_attack_2"
+       }
+      }
+      GC_AssignWaypointsAction "{A40DEB5875A32AA9}" {
+       m_sGroupName "NVA_AI_11"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "wp_counter_attack_2"
+       }
+      }
+      GC_AssignWaypointsAction "{AF52FD4E9E04D026}" {
+       m_sGroupName "NVA_AI_12"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "wp_counter_attack_2"
+       }
+      }
+      GC_AssignWaypointsAction "{B916A95D0FD49AD2}" {
+       m_sGroupName "NVA_AI_13"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "wp_counter_attack_2"
+       }
+      }
+      GC_AssignWaypointsAction "{C934081DFA9FCC1E}" {
+       m_sGroupName "NVA_AI_14"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "wp_counter_attack_2"
+       }
+      }
+      GC_AssignWaypointsAction "{6E66C83CC406BA56}" {
+       m_sGroupName "NVA_AI_15"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "wp_counter_attack_2"
+       }
+      }
+      GC_AssignWaypointsAction "{9744BFE549C89254}" {
+       m_sGroupName "NVA_AI_16"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "wp_counter_attack_2"
+       }
+      }
+      GC_AssignWaypointsAction "{B48B50235DE187DA}" {
+       m_sGroupName "T72_NVA2"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "wp_counter_attack_2"
+       }
+      }
+     }
+    }
+    GC_Event "{494DF02AC32119BB}" {
+     m_sName "Forward Units Fallback (8s)"
+     m_aConditions {
+      GC_MissionEventCondition "{31B25BE3F1198211}" {
+       m_sEventName "Forward Units Fallback"
+      }
+     }
+     m_Advanced GC_EventOptions "{EDA2D4B4B9A015C4}" {
+      m_fDelay 8
+     }
+     m_aActions {
+      GC_MessageAction "{EA3144A99C99C284}" {
+       m_sTitle "Battalion Radio Report:"
+       m_sMessage "East German Forces are reacting to the situation, QRF have been spotted moving in from the West & South, T-72, BMP-1Ps and Infantry units have been visually identified by Recon elements.. Their Air Force are also scrambling, Our own are providing air cover."
+      }
+     }
+    }
+    GC_Event "{3144458E27CEFE99}" {
+     m_sName "Forward Units Fallback (480s)"
+     m_aConditions {
+      GC_MissionEventCondition "{30D36FF8566AAC19}" {
+       m_sEventName "Forward Units Fallback"
+      }
+     }
+     m_Advanced GC_EventOptions "{B0672EC83A7EDCE3}" {
+      m_fDelay 480
+     }
+     m_aActions {
+      GC_MessageAction "{54A95EC78FB644C9}" {
+       m_sTitle "Battalion Radio Report:"
+       m_sMessage "We got F/A-18 inbound with strike packages to aid in the defense, East German Airforce has pulled back after we scrambled our jets to win the local air war."
+      }
+     }
+    }
+    GC_Event "{89E11A37BDB00413}" {
+     m_sName "GC_MigratedSpawn_2C97787002F048D9"
+     m_aConditions {
+      GC_GameModeStateCondition "{0E09B89546DCAA41}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{7BEE736D02B08EDD}" {
+       m_sFlagName "Counter_AI"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0865B1FEF39334B4}" {
+       m_sMessage "GC_MigratedSpawn_2C97787002F048D9"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{34971F906C19BBF0}" {
+     m_sName "GC_MigratedSpawn_2C97787002F048D9 (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E84FA50EFC92B6FE}" {
+       m_sEventName "GC_MigratedSpawn_2C97787002F048D9"
+      }
+     }
+     m_Advanced GC_EventOptions "{085DD616446A3D2B}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{D7AA864B4FEA1BC5}" {
+       m_Spawn GC_CrewedVehicleSpawn "{656E91684A14DAE9}" {
+        m_sLocation "T72A_Counter_Spawn_2"
+        m_sPrefab "{83FC98FFD5D48825}Prefabs/Vehicles/Tracked/T-72A/T72A_NVA.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{404A611D7DB1817F}" {
+          m_aStations {
+           GC_SpawnCrewStation "{1B941ADDD88EBE68}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{72BF67D118BC5930}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewDriver.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "wp_counter_attack_1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{DFA475AC53EB19DA}" {
+     m_sName "GC_MigratedSpawn_2C97787002F048D9 (200s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A3CF110FA0CC3277}" {
+       m_sEventName "GC_MigratedSpawn_2C97787002F048D9"
+      }
+     }
+     m_Advanced GC_EventOptions "{347CAA2AC176C2D5}" {
+      m_fDelay 200
+     }
+     m_aActions {
+      GC_SpawnAction "{CC72C1A3F7E5220D}" {
+       m_Spawn GC_CrewedVehicleSpawn "{9C1E0E635E809486}" {
+        m_sLocation "T72A_Counter_Spawn_2"
+        m_sPrefab "{83FC98FFD5D48825}Prefabs/Vehicles/Tracked/T-72A/T72A_NVA.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{0A1F101203D76694}" {
+          m_aStations {
+           GC_SpawnCrewStation "{3AB3C1B86A4B003C}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{72BF67D118BC5930}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewDriver.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "wp_counter_attack_1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C2AB7129F8DD6C2A}" {
+     m_sName "GC_MigratedSpawn_2C97787002F048D9 (400s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A8047FECF4BCF4BC}" {
+       m_sEventName "GC_MigratedSpawn_2C97787002F048D9"
+      }
+     }
+     m_Advanced GC_EventOptions "{27BE5D5DECEB29B0}" {
+      m_fDelay 400
+     }
+     m_aActions {
+      GC_SpawnAction "{38C97F6A29215C29}" {
+       m_Spawn GC_CrewedVehicleSpawn "{39186FBBD25D61D4}" {
+        m_sLocation "T72A_Counter_Spawn_2"
+        m_sPrefab "{83FC98FFD5D48825}Prefabs/Vehicles/Tracked/T-72A/T72A_NVA.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{2306B6F473C8B671}" {
+          m_aStations {
+           GC_SpawnCrewStation "{F4C7C539F7154373}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{72BF67D118BC5930}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewDriver.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "wp_counter_attack_1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F663930769882079}" {
+     m_sName "GC_MigratedSpawn_2C97787002F048D9 (600s)"
+     m_aConditions {
+      GC_MissionEventCondition "{50EB31FBEDC6A61F}" {
+       m_sEventName "GC_MigratedSpawn_2C97787002F048D9"
+      }
+     }
+     m_Advanced GC_EventOptions "{E49A66FDDB52545F}" {
+      m_fDelay 600
+     }
+     m_aActions {
+      GC_SpawnAction "{0EAEBE5C29BDD0B8}" {
+       m_Spawn GC_CrewedVehicleSpawn "{BF45840C94295A0E}" {
+        m_sLocation "T72A_Counter_Spawn_2"
+        m_sPrefab "{83FC98FFD5D48825}Prefabs/Vehicles/Tracked/T-72A/T72A_NVA.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{DD61ED88C63FDC32}" {
+          m_aStations {
+           GC_SpawnCrewStation "{7B06F1BDD298DBA4}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{72BF67D118BC5930}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewDriver.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "wp_counter_attack_1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{FD8090F07FB8196E}" {
+     m_sName "GC_MigratedSpawn_2831E2F3357851B8"
+     m_aConditions {
+      GC_GameModeStateCondition "{B545A0A9525A65BA}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{4638D7E0C31CFE65}" {
+       m_sFlagName "Counter_AI"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F5EB188D299512F0}" {
+       m_sMessage "GC_MigratedSpawn_2831E2F3357851B8"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{64B49AA8C6409E47}" {
+     m_sName "GC_MigratedSpawn_2831E2F3357851B8 (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4F5828F53E0EA699}" {
+       m_sEventName "GC_MigratedSpawn_2831E2F3357851B8"
+      }
+     }
+     m_Advanced GC_EventOptions "{D85A625806348A08}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{3A5D459EBDF8676D}" {
+       m_Spawn GC_CrewedVehicleSpawn "{D6FD00C9786B242B}" {
+        m_sLocation "T72A_Counter_Spawn_1"
+        m_sPrefab "{83FC98FFD5D48825}Prefabs/Vehicles/Tracked/T-72A/T72A_NVA.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{DCC54ADB15B2E76D}" {
+          m_aStations {
+           GC_SpawnCrewStation "{A597E83AAE4EEFAD}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{72BF67D118BC5930}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewDriver.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "wp_counter_attack_2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{8EC1CD09BA22E221}" {
+     m_sName "GC_MigratedSpawn_2831E2F3357851B8 (200s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E1C4A3C395D9FFF8}" {
+       m_sEventName "GC_MigratedSpawn_2831E2F3357851B8"
+      }
+     }
+     m_Advanced GC_EventOptions "{1843537B0F9DC969}" {
+      m_fDelay 200
+     }
+     m_aActions {
+      GC_SpawnAction "{DB721F3234AA2903}" {
+       m_Spawn GC_CrewedVehicleSpawn "{72E55CFB035D0CA0}" {
+        m_sLocation "T72A_Counter_Spawn_1"
+        m_sPrefab "{83FC98FFD5D48825}Prefabs/Vehicles/Tracked/T-72A/T72A_NVA.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{D55302E4B05DBADA}" {
+          m_aStations {
+           GC_SpawnCrewStation "{1B6B42BB69861F34}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{72BF67D118BC5930}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewDriver.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "wp_counter_attack_2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F0FF2F7401ACE832}" {
+     m_sName "GC_MigratedSpawn_2831E2F3357851B8 (400s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D95B29DB9E77D689}" {
+       m_sEventName "GC_MigratedSpawn_2831E2F3357851B8"
+      }
+     }
+     m_Advanced GC_EventOptions "{EBDB457B50621538}" {
+      m_fDelay 400
+     }
+     m_aActions {
+      GC_SpawnAction "{34791F30527666FE}" {
+       m_Spawn GC_CrewedVehicleSpawn "{16D5946F000F7D7A}" {
+        m_sLocation "T72A_Counter_Spawn_1"
+        m_sPrefab "{83FC98FFD5D48825}Prefabs/Vehicles/Tracked/T-72A/T72A_NVA.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{42FB999B691D984C}" {
+          m_aStations {
+           GC_SpawnCrewStation "{FCF6129CBAFA1A9C}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{72BF67D118BC5930}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewDriver.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "wp_counter_attack_2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{8D9753E5840BA114}" {
+     m_sName "GC_MigratedSpawn_2831E2F3357851B8 (600s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CD3B5858A3462FA5}" {
+       m_sEventName "GC_MigratedSpawn_2831E2F3357851B8"
+      }
+     }
+     m_Advanced GC_EventOptions "{BE78A4A6F0BB4BF6}" {
+      m_fDelay 600
+     }
+     m_aActions {
+      GC_SpawnAction "{777698B0F3BFE664}" {
+       m_Spawn GC_CrewedVehicleSpawn "{0EB32D85F8E1092D}" {
+        m_sLocation "T72A_Counter_Spawn_1"
+        m_sPrefab "{83FC98FFD5D48825}Prefabs/Vehicles/Tracked/T-72A/T72A_NVA.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{950B5F637AF593CB}" {
+          m_aStations {
+           GC_SpawnCrewStation "{CAF9F1121C7A95CB}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{72BF67D118BC5930}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewDriver.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "wp_counter_attack_2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3649D942F7E885A8}" {
+     m_sName "GC_MigratedSpawn_C534D634664F1D36"
+     m_aConditions {
+      GC_GameModeStateCondition "{4212D19E961FDEAD}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{3550C419856C6B2E}" {
+       m_sFlagName "Counter_AI"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9FC304036D55C641}" {
+       m_sMessage "GC_MigratedSpawn_C534D634664F1D36"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7CDD97E9C9F7E322}" {
+     m_sName "GC_MigratedSpawn_C534D634664F1D36 (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B9756BC7223EBA85}" {
+       m_sEventName "GC_MigratedSpawn_C534D634664F1D36"
+      }
+     }
+     m_Advanced GC_EventOptions "{BDEB6A8E85EFCE3E}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{B7568797C9DB246C}" {
+       m_Spawn GC_CrewedVehicleSpawn "{294E8C9B2CC4EFB1}" {
+        m_sLocation "BMP1P_Counter_Spawn_1"
+        m_sPrefab "{3868E03D9A4AF186}Prefabs/Vehicles/Tracked/BMP1/BMP1P_Base.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{CAEBE12CCAAFA5BB}" {
+          m_aStations {
+           GC_SpawnCrewStation "{C33C42F3ECFADA96}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{72BF67D118BC5930}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewDriver.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "wp_counter_attack_1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9F9E1901957D8087}" {
+     m_sName "GC_MigratedSpawn_C534D634664F1D36 (350s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4AA32C8185644DBE}" {
+       m_sEventName "GC_MigratedSpawn_C534D634664F1D36"
+      }
+     }
+     m_Advanced GC_EventOptions "{4169C68BD20AAA16}" {
+      m_fDelay 350
+     }
+     m_aActions {
+      GC_SpawnAction "{FF73C0ECAAABC051}" {
+       m_Spawn GC_CrewedVehicleSpawn "{0AA8F315F9581874}" {
+        m_sLocation "BMP1P_Counter_Spawn_1"
+        m_sPrefab "{3868E03D9A4AF186}Prefabs/Vehicles/Tracked/BMP1/BMP1P_Base.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{D96215AC56585E74}" {
+          m_aStations {
+           GC_SpawnCrewStation "{3E5C1C1C98EEEB00}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{72BF67D118BC5930}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewDriver.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "wp_counter_attack_1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{BF55CB1C358A7AA0}" {
+     m_sName "GC_MigratedSpawn_C534D634664F1D36 (500s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4749CD99C09B263F}" {
+       m_sEventName "GC_MigratedSpawn_C534D634664F1D36"
+      }
+     }
+     m_Advanced GC_EventOptions "{585747D23663FE9E}" {
+      m_fDelay 500
+     }
+     m_aActions {
+      GC_SpawnAction "{F4F3ED3CE021EAC1}" {
+       m_Spawn GC_CrewedVehicleSpawn "{2E2C133C2EF4499B}" {
+        m_sLocation "BMP1P_Counter_Spawn_1"
+        m_sPrefab "{3868E03D9A4AF186}Prefabs/Vehicles/Tracked/BMP1/BMP1P_Base.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{3441C87CB9C7B340}" {
+          m_aStations {
+           GC_SpawnCrewStation "{EC806466E429B23F}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{72BF67D118BC5930}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewDriver.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "wp_counter_attack_1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{29447668AAA65C3B}" {
+     m_sName "GC_MigratedSpawn_3EEF1EE236BA51B5"
+     m_aConditions {
+      GC_GameModeStateCondition "{362C3700B3E531EC}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{4B89AA84E4A69DB7}" {
+       m_sFlagName "Counter_AI"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{648404F255A243C9}" {
+       m_sMessage "GC_MigratedSpawn_3EEF1EE236BA51B5"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{05EDEE9846EF3F15}" {
+     m_sName "GC_MigratedSpawn_3EEF1EE236BA51B5 (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F72013448B7ED194}" {
+       m_sEventName "GC_MigratedSpawn_3EEF1EE236BA51B5"
+      }
+     }
+     m_Advanced GC_EventOptions "{37625B20DCE2023D}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{10FC31676FE02DE1}" {
+       m_Spawn GC_CrewedVehicleSpawn "{14212CE00FB35CBD}" {
+        m_sLocation "BMP1P_Counter_Spawn_2"
+        m_sPrefab "{3868E03D9A4AF186}Prefabs/Vehicles/Tracked/BMP1/BMP1P_Base.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{AD2651644FBE745F}" {
+          m_aStations {
+           GC_SpawnCrewStation "{50D3BC66C72A3DAF}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{72BF67D118BC5930}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewDriver.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "wp_counter_attack_1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{712BD76C3473B90F}" {
+     m_sName "GC_MigratedSpawn_3EEF1EE236BA51B5 (350s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4BD761823FF2B458}" {
+       m_sEventName "GC_MigratedSpawn_3EEF1EE236BA51B5"
+      }
+     }
+     m_Advanced GC_EventOptions "{D84E1652CA368EAF}" {
+      m_fDelay 350
+     }
+     m_aActions {
+      GC_SpawnAction "{1ECEB7ACC4F3E66A}" {
+       m_Spawn GC_CrewedVehicleSpawn "{0ED4368CF9BB49B3}" {
+        m_sLocation "BMP1P_Counter_Spawn_2"
+        m_sPrefab "{3868E03D9A4AF186}Prefabs/Vehicles/Tracked/BMP1/BMP1P_Base.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{716C03B809A0B8B5}" {
+          m_aStations {
+           GC_SpawnCrewStation "{361C0DC3A58BF5CC}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{72BF67D118BC5930}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewDriver.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "wp_counter_attack_1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{FB9A52AD252BD376}" {
+     m_sName "GC_MigratedSpawn_3EEF1EE236BA51B5 (500s)"
+     m_aConditions {
+      GC_MissionEventCondition "{AB9CAFA3298041E4}" {
+       m_sEventName "GC_MigratedSpawn_3EEF1EE236BA51B5"
+      }
+     }
+     m_Advanced GC_EventOptions "{6A29DE8D449AEADF}" {
+      m_fDelay 500
+     }
+     m_aActions {
+      GC_SpawnAction "{A9DEFC0C6830E1F4}" {
+       m_Spawn GC_CrewedVehicleSpawn "{F415C16761D07C3D}" {
+        m_sLocation "BMP1P_Counter_Spawn_2"
+        m_sPrefab "{3868E03D9A4AF186}Prefabs/Vehicles/Tracked/BMP1/BMP1P_Base.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{FE4C49FCA2A1A3FC}" {
+          m_aStations {
+           GC_SpawnCrewStation "{AD38A36D4BB4BBBC}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{72BF67D118BC5930}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewDriver.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+             "{9594C031304B509D}Prefabs/Characters/Factions/OPFOR/GC_NVA/Character_GC_NVA_CrewGunner.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "wp_counter_attack_1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{480BB02407E41801}" {
+     m_sName "GC_MigratedSpawn_19B8A4645090A938"
+     m_aConditions {
+      GC_GameModeStateCondition "{9E1BD23795DB07D6}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{A5CAAA765C547588}" {
+       m_sFlagName "Counter_AI"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F79A7336717AB00B}" {
+       m_sMessage "GC_MigratedSpawn_19B8A4645090A938"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F599DF46995F22BB}" {
+     m_sName "GC_MigratedSpawn_19B8A4645090A938 (80s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3C5F2917EC7ED9E2}" {
+       m_sEventName "GC_MigratedSpawn_19B8A4645090A938"
+      }
+     }
+     m_Advanced GC_EventOptions "{D9876E874545DFE8}" {
+      m_fDelay 80
+     }
+     m_aActions {
+      GC_SpawnAction "{9833C6AE1A6EDC3B}" {
+       m_Spawn GC_AIGroupSpawn "{CC2AA0C27E42DDFC}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_1"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A7282BF03EC70655}" {
+     m_sName "GC_MigratedSpawn_19B8A4645090A938 (160s)"
+     m_aConditions {
+      GC_MissionEventCondition "{69B636C460419ABC}" {
+       m_sEventName "GC_MigratedSpawn_19B8A4645090A938"
+      }
+     }
+     m_Advanced GC_EventOptions "{E574FBAE262B75F9}" {
+      m_fDelay 160
+     }
+     m_aActions {
+      GC_SpawnAction "{1B49A31931994932}" {
+       m_Spawn GC_AIGroupSpawn "{0AC9916F6D881D8C}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_1"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{0515BDDAEED2503E}" {
+     m_sName "GC_MigratedSpawn_19B8A4645090A938 (240s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C6D7C273552C9418}" {
+       m_sEventName "GC_MigratedSpawn_19B8A4645090A938"
+      }
+     }
+     m_Advanced GC_EventOptions "{9355BCAF43ED3963}" {
+      m_fDelay 240
+     }
+     m_aActions {
+      GC_SpawnAction "{F50DE761925805FF}" {
+       m_Spawn GC_AIGroupSpawn "{7656E0CFB679C308}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_1"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9F2D651CD2C6BF30}" {
+     m_sName "GC_MigratedSpawn_19B8A4645090A938 (400s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BEACDC13B3CDB25F}" {
+       m_sEventName "GC_MigratedSpawn_19B8A4645090A938"
+      }
+     }
+     m_Advanced GC_EventOptions "{6CFF39A127D55799}" {
+      m_fDelay 400
+     }
+     m_aActions {
+      GC_SpawnAction "{FD4EC507DF77CEBB}" {
+       m_Spawn GC_AIGroupSpawn "{B85C13901D228F0F}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_1"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{DCEC558D6F32D92D}" {
+     m_sName "GC_MigratedSpawn_19B8A4645090A938 (500s)"
+     m_aConditions {
+      GC_MissionEventCondition "{43FFEA1C52B78E5F}" {
+       m_sEventName "GC_MigratedSpawn_19B8A4645090A938"
+      }
+     }
+     m_Advanced GC_EventOptions "{390D441234EFA8E2}" {
+      m_fDelay 500
+     }
+     m_aActions {
+      GC_SpawnAction "{2F480029A7F8DCFA}" {
+       m_Spawn GC_AIGroupSpawn "{A05E92A781752E05}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_1"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{90D1BD20E8F3B451}" {
+     m_sName "GC_MigratedSpawn_19B8A4645090A938 (600s)"
+     m_aConditions {
+      GC_MissionEventCondition "{EF6B029A41D0628E}" {
+       m_sEventName "GC_MigratedSpawn_19B8A4645090A938"
+      }
+     }
+     m_Advanced GC_EventOptions "{92D7E6AD6B051D99}" {
+      m_fDelay 600
+     }
+     m_aActions {
+      GC_SpawnAction "{2AD1ADA02642CBDD}" {
+       m_Spawn GC_AIGroupSpawn "{95FB41E36576E76E}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_1"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F8C2423E44A13B8C}" {
+     m_sName "GC_MigratedSpawn_19B8A4645090A938 (700s)"
+     m_aConditions {
+      GC_MissionEventCondition "{552E3C7C550D2048}" {
+       m_sEventName "GC_MigratedSpawn_19B8A4645090A938"
+      }
+     }
+     m_Advanced GC_EventOptions "{D8ABCB531F02D41C}" {
+      m_fDelay 700
+     }
+     m_aActions {
+      GC_SpawnAction "{393E9A5898D4DAD6}" {
+       m_Spawn GC_AIGroupSpawn "{79625AB9CDFB70C7}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_1"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{7041E8B78ABBEF05}" {
+     m_sName "GC_MigratedSpawn_D2B6598EFBEA8E7D"
+     m_aConditions {
+      GC_GameModeStateCondition "{2E02AB2B4E7255AC}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{6DCB1BF671A99EBA}" {
+       m_sFlagName "Counter_AI"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{11054BB4407B2828}" {
+       m_sMessage "GC_MigratedSpawn_D2B6598EFBEA8E7D"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AF4C8CC780C903C9}" {
+     m_sName "GC_MigratedSpawn_D2B6598EFBEA8E7D (80s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1596C8F4CBC539F0}" {
+       m_sEventName "GC_MigratedSpawn_D2B6598EFBEA8E7D"
+      }
+     }
+     m_Advanced GC_EventOptions "{2D33BDA4AAD7BAC5}" {
+      m_fDelay 80
+     }
+     m_aActions {
+      GC_SpawnAction "{63AB0A05753208FD}" {
+       m_Spawn GC_AIGroupSpawn "{34AD460FEA3B0759}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_2"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{14A5D46481B451C4}" {
+     m_sName "GC_MigratedSpawn_D2B6598EFBEA8E7D (160s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DEF4B8C95996C874}" {
+       m_sEventName "GC_MigratedSpawn_D2B6598EFBEA8E7D"
+      }
+     }
+     m_Advanced GC_EventOptions "{0CF4FDF40B243DDD}" {
+      m_fDelay 160
+     }
+     m_aActions {
+      GC_SpawnAction "{C2E46F442F8F303D}" {
+       m_Spawn GC_AIGroupSpawn "{B7DDB632E03788F5}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_2"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B46EFFD34A5D7919}" {
+     m_sName "GC_MigratedSpawn_D2B6598EFBEA8E7D (240s)"
+     m_aConditions {
+      GC_MissionEventCondition "{872D526C210CC983}" {
+       m_sEventName "GC_MigratedSpawn_D2B6598EFBEA8E7D"
+      }
+     }
+     m_Advanced GC_EventOptions "{2BF86C3409BC576C}" {
+      m_fDelay 240
+     }
+     m_aActions {
+      GC_SpawnAction "{3B564C145C75E938}" {
+       m_Spawn GC_AIGroupSpawn "{DB55C720AD78C396}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_2"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{79BCC6269A6C7273}" {
+     m_sName "GC_MigratedSpawn_D2B6598EFBEA8E7D (400s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E0B7BF4BC156D26D}" {
+       m_sEventName "GC_MigratedSpawn_D2B6598EFBEA8E7D"
+      }
+     }
+     m_Advanced GC_EventOptions "{5B29772C81EB084F}" {
+      m_fDelay 400
+     }
+     m_aActions {
+      GC_SpawnAction "{2B3A375AE8E86BFE}" {
+       m_Spawn GC_AIGroupSpawn "{7F06E363201C17B7}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_2"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{7FCB4DF8FEB539D9}" {
+     m_sName "GC_MigratedSpawn_D2B6598EFBEA8E7D (500s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D0F4034C5D8DEE00}" {
+       m_sEventName "GC_MigratedSpawn_D2B6598EFBEA8E7D"
+      }
+     }
+     m_Advanced GC_EventOptions "{B498343CD4F2E3C4}" {
+      m_fDelay 500
+     }
+     m_aActions {
+      GC_SpawnAction "{87163FB2A7408F7C}" {
+       m_Spawn GC_AIGroupSpawn "{96FA1867CF100444}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_2"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{7E7E86BE79AD47B4}" {
+     m_sName "GC_MigratedSpawn_D2B6598EFBEA8E7D (600s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5E2E7A41EF8DC02D}" {
+       m_sEventName "GC_MigratedSpawn_D2B6598EFBEA8E7D"
+      }
+     }
+     m_Advanced GC_EventOptions "{B59C87B835727EF8}" {
+      m_fDelay 600
+     }
+     m_aActions {
+      GC_SpawnAction "{2C1853B7D120598E}" {
+       m_Spawn GC_AIGroupSpawn "{6BF5F4FD51A4E9F3}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_2"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{1EAA3C2DC61DECA3}" {
+     m_sName "GC_MigratedSpawn_D2B6598EFBEA8E7D (700s)"
+     m_aConditions {
+      GC_MissionEventCondition "{942E1264EDB40DAC}" {
+       m_sEventName "GC_MigratedSpawn_D2B6598EFBEA8E7D"
+      }
+     }
+     m_Advanced GC_EventOptions "{7BA88E6D58212F6D}" {
+      m_fDelay 700
+     }
+     m_aActions {
+      GC_SpawnAction "{FDF8E3AEE4124633}" {
+       m_Spawn GC_AIGroupSpawn "{B9109B78CBC29865}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_2"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{2E596F813EA2C21B}" {
+     m_sName "GC_MigratedSpawn_4C95D97BDFD73D61"
+     m_aConditions {
+      GC_GameModeStateCondition "{4962011857D36DE8}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{99D22A210D112514}" {
+       m_sFlagName "Counter_AI"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B744685EDC9E6395}" {
+       m_sMessage "GC_MigratedSpawn_4C95D97BDFD73D61"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F7729A1CE9CF8C4D}" {
+     m_sName "GC_MigratedSpawn_4C95D97BDFD73D61 (80s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CB43C52E5BD4F97C}" {
+       m_sEventName "GC_MigratedSpawn_4C95D97BDFD73D61"
+      }
+     }
+     m_Advanced GC_EventOptions "{DB98EE7E4308BD1A}" {
+      m_fDelay 80
+     }
+     m_aActions {
+      GC_SpawnAction "{1D3D56E8DA0A6FEA}" {
+       m_Spawn GC_AIGroupSpawn "{5EFFBAC799AF325D}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_3"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F1E2CF26BCCBB10A}" {
+     m_sName "GC_MigratedSpawn_4C95D97BDFD73D61 (160s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6DF6E85B9687441A}" {
+       m_sEventName "GC_MigratedSpawn_4C95D97BDFD73D61"
+      }
+     }
+     m_Advanced GC_EventOptions "{6AB3DBC4CDB5FC9B}" {
+      m_fDelay 160
+     }
+     m_aActions {
+      GC_SpawnAction "{63B6A67054A8FBB4}" {
+       m_Spawn GC_AIGroupSpawn "{9DD56D368E7B4822}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_3"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A5AC3ED656BB0F80}" {
+     m_sName "GC_MigratedSpawn_4C95D97BDFD73D61 (240s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7F6AFB8F3B5634A7}" {
+       m_sEventName "GC_MigratedSpawn_4C95D97BDFD73D61"
+      }
+     }
+     m_Advanced GC_EventOptions "{6B043B8B7B529911}" {
+      m_fDelay 240
+     }
+     m_aActions {
+      GC_SpawnAction "{818EDF4B4F31A8AE}" {
+       m_Spawn GC_AIGroupSpawn "{A822C417B4CA67EF}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_3"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{923B9B99ABCFFD71}" {
+     m_sName "GC_MigratedSpawn_4C95D97BDFD73D61 (400s)"
+     m_aConditions {
+      GC_MissionEventCondition "{75C334FCBFCEB22A}" {
+       m_sEventName "GC_MigratedSpawn_4C95D97BDFD73D61"
+      }
+     }
+     m_Advanced GC_EventOptions "{307D81E934D8354E}" {
+      m_fDelay 400
+     }
+     m_aActions {
+      GC_SpawnAction "{72C5E2029618E12E}" {
+       m_Spawn GC_AIGroupSpawn "{8C78B70759A0521F}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_3"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9F85670356A996BA}" {
+     m_sName "GC_MigratedSpawn_4C95D97BDFD73D61 (500s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7F64A0C2D50C2E97}" {
+       m_sEventName "GC_MigratedSpawn_4C95D97BDFD73D61"
+      }
+     }
+     m_Advanced GC_EventOptions "{56A5F3DDF1B74E79}" {
+      m_fDelay 500
+     }
+     m_aActions {
+      GC_SpawnAction "{1CE65388E24D271A}" {
+       m_Spawn GC_AIGroupSpawn "{8C0D07956D6E9282}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_3"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{12165FBCBE4EDC3F}" {
+     m_sName "GC_MigratedSpawn_4C95D97BDFD73D61 (600s)"
+     m_aConditions {
+      GC_MissionEventCondition "{58B2A4F5AE6C3066}" {
+       m_sEventName "GC_MigratedSpawn_4C95D97BDFD73D61"
+      }
+     }
+     m_Advanced GC_EventOptions "{DD22D38F62299798}" {
+      m_fDelay 600
+     }
+     m_aActions {
+      GC_SpawnAction "{7B888F0F2FBACD37}" {
+       m_Spawn GC_AIGroupSpawn "{95F46415DDF97077}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_3"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{7B45324B36134F92}" {
+     m_sName "GC_MigratedSpawn_4C95D97BDFD73D61 (700s)"
+     m_aConditions {
+      GC_MissionEventCondition "{EE3F12EA6B9E4C12}" {
+       m_sEventName "GC_MigratedSpawn_4C95D97BDFD73D61"
+      }
+     }
+     m_Advanced GC_EventOptions "{AD697D75E9939331}" {
+      m_fDelay 700
+     }
+     m_aActions {
+      GC_SpawnAction "{B56AAD149275C27E}" {
+       m_Spawn GC_AIGroupSpawn "{17C158AD67F36D95}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_3"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{85FF0BF43D2E0FF5}" {
+     m_sName "GC_MigratedSpawn_9C7B3C9B62E69795"
+     m_aConditions {
+      GC_GameModeStateCondition "{B53266AF69B69DE3}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{EEBF9233783C9D52}" {
+       m_sFlagName "Counter_AI"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E61664A381D3C36B}" {
+       m_sMessage "GC_MigratedSpawn_9C7B3C9B62E69795"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1837D4FC34B2F8E7}" {
+     m_sName "GC_MigratedSpawn_9C7B3C9B62E69795 (80s)"
+     m_aConditions {
+      GC_MissionEventCondition "{433CDC133D575327}" {
+       m_sEventName "GC_MigratedSpawn_9C7B3C9B62E69795"
+      }
+     }
+     m_Advanced GC_EventOptions "{F154C611AD44E85D}" {
+      m_fDelay 80
+     }
+     m_aActions {
+      GC_SpawnAction "{68F0325B9865CA5C}" {
+       m_Spawn GC_AIGroupSpawn "{300DC65494D22FC0}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_4"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B31771C4B3E0A8A9}" {
+     m_sName "GC_MigratedSpawn_9C7B3C9B62E69795 (160s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B248F0DD5CA4E1B2}" {
+       m_sEventName "GC_MigratedSpawn_9C7B3C9B62E69795"
+      }
+     }
+     m_Advanced GC_EventOptions "{04F54958B572902C}" {
+      m_fDelay 160
+     }
+     m_aActions {
+      GC_SpawnAction "{17C10FDAF009E962}" {
+       m_Spawn GC_AIGroupSpawn "{D0C8F3E790A2F95E}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_4"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{0779F561512505A7}" {
+     m_sName "GC_MigratedSpawn_9C7B3C9B62E69795 (240s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1F1458F0586FD273}" {
+       m_sEventName "GC_MigratedSpawn_9C7B3C9B62E69795"
+      }
+     }
+     m_Advanced GC_EventOptions "{82C98EDC04FD0EB7}" {
+      m_fDelay 240
+     }
+     m_aActions {
+      GC_SpawnAction "{D457B60FD02B33BB}" {
+       m_Spawn GC_AIGroupSpawn "{77B9253AA57B4264}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_4"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B72BBABEB0601630}" {
+     m_sName "GC_MigratedSpawn_9C7B3C9B62E69795 (400s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A262206E8ED8CB20}" {
+       m_sEventName "GC_MigratedSpawn_9C7B3C9B62E69795"
+      }
+     }
+     m_Advanced GC_EventOptions "{2591EA7D05D2DE08}" {
+      m_fDelay 400
+     }
+     m_aActions {
+      GC_SpawnAction "{39D4312D17FD0E2B}" {
+       m_Spawn GC_AIGroupSpawn "{47CDF98E99EB2EAB}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_4"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{064A29C5DBF871AF}" {
+     m_sName "GC_MigratedSpawn_9C7B3C9B62E69795 (500s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C207D6E846B51A3B}" {
+       m_sEventName "GC_MigratedSpawn_9C7B3C9B62E69795"
+      }
+     }
+     m_Advanced GC_EventOptions "{7FE93C91485E0D68}" {
+      m_fDelay 500
+     }
+     m_aActions {
+      GC_SpawnAction "{BA3C81361E31F66D}" {
+       m_Spawn GC_AIGroupSpawn "{29E6B30F947537A8}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_4"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4F230C3F2E55CD5E}" {
+     m_sName "GC_MigratedSpawn_9C7B3C9B62E69795 (600s)"
+     m_aConditions {
+      GC_MissionEventCondition "{410BCC565A3D4EE7}" {
+       m_sEventName "GC_MigratedSpawn_9C7B3C9B62E69795"
+      }
+     }
+     m_Advanced GC_EventOptions "{D830361DAF796326}" {
+      m_fDelay 600
+     }
+     m_aActions {
+      GC_SpawnAction "{4748B1F97524CA8D}" {
+       m_Spawn GC_AIGroupSpawn "{7648C3DE1612322E}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_4"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F469C85F5DB2CABB}" {
+     m_sName "GC_MigratedSpawn_9C7B3C9B62E69795 (700s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F4CAF75BD52E01E6}" {
+       m_sEventName "GC_MigratedSpawn_9C7B3C9B62E69795"
+      }
+     }
+     m_Advanced GC_EventOptions "{63F73ACCF0A0FD3A}" {
+      m_fDelay 700
+     }
+     m_aActions {
+      GC_SpawnAction "{3DBF42F5B136DB80}" {
+       m_Spawn GC_AIGroupSpawn "{148F569FB662F07D}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_4"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{7FCDD786BDE7359F}" {
+     m_sName "GC_MigratedSpawn_0FD25490740BA25C"
+     m_aConditions {
+      GC_GameModeStateCondition "{D358CF03589B99E7}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{93C1122005FF9EB1}" {
+       m_sFlagName "Counter_AI"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9C9B7D12CD2708F3}" {
+       m_sMessage "GC_MigratedSpawn_0FD25490740BA25C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1CCCDA97D9125FF1}" {
+     m_sName "GC_MigratedSpawn_0FD25490740BA25C (80s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E212136E1A8E77B7}" {
+       m_sEventName "GC_MigratedSpawn_0FD25490740BA25C"
+      }
+     }
+     m_Advanced GC_EventOptions "{99CDBCD6E882F4E9}" {
+      m_fDelay 80
+     }
+     m_aActions {
+      GC_SpawnAction "{9B5FD22A2F709646}" {
+       m_Spawn GC_AIGroupSpawn "{693E0190A70FDA92}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_5"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9381EC843C257D57}" {
+     m_sName "GC_MigratedSpawn_0FD25490740BA25C (160s)"
+     m_aConditions {
+      GC_MissionEventCondition "{0DE7C4343C5744AF}" {
+       m_sEventName "GC_MigratedSpawn_0FD25490740BA25C"
+      }
+     }
+     m_Advanced GC_EventOptions "{A4F0B0870817EECA}" {
+      m_fDelay 160
+     }
+     m_aActions {
+      GC_SpawnAction "{8BBC7C663EC6CE06}" {
+       m_Spawn GC_AIGroupSpawn "{17D10BD34EC578E0}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_5"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{789F9EE36D6279BF}" {
+     m_sName "GC_MigratedSpawn_0FD25490740BA25C (240s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BF5671E9E4F6FB9A}" {
+       m_sEventName "GC_MigratedSpawn_0FD25490740BA25C"
+      }
+     }
+     m_Advanced GC_EventOptions "{E2A1BFB140928428}" {
+      m_fDelay 240
+     }
+     m_aActions {
+      GC_SpawnAction "{B60AF3B7209758C0}" {
+       m_Spawn GC_AIGroupSpawn "{626FD5D0F12A9182}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_5"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B51D4E1CEA77F380}" {
+     m_sName "GC_MigratedSpawn_0FD25490740BA25C (400s)"
+     m_aConditions {
+      GC_MissionEventCondition "{67B62779E1CC98A9}" {
+       m_sEventName "GC_MigratedSpawn_0FD25490740BA25C"
+      }
+     }
+     m_Advanced GC_EventOptions "{E30F8B3F328C602C}" {
+      m_fDelay 400
+     }
+     m_aActions {
+      GC_SpawnAction "{056539E05CFAF772}" {
+       m_Spawn GC_AIGroupSpawn "{9329558BB6CC83DD}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_5"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{68F8B04588AC1DA0}" {
+     m_sName "GC_MigratedSpawn_0FD25490740BA25C (500s)"
+     m_aConditions {
+      GC_MissionEventCondition "{51608B13942E9739}" {
+       m_sEventName "GC_MigratedSpawn_0FD25490740BA25C"
+      }
+     }
+     m_Advanced GC_EventOptions "{9F07BEBF5F23A70C}" {
+      m_fDelay 500
+     }
+     m_aActions {
+      GC_SpawnAction "{86097BECFA735D4F}" {
+       m_Spawn GC_AIGroupSpawn "{ABD5D7C78E7FEC4B}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_5"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{CF80AA15F78BC9CD}" {
+     m_sName "GC_MigratedSpawn_0FD25490740BA25C (600s)"
+     m_aConditions {
+      GC_MissionEventCondition "{25E4BD0DF08CD8B8}" {
+       m_sEventName "GC_MigratedSpawn_0FD25490740BA25C"
+      }
+     }
+     m_Advanced GC_EventOptions "{EB418228C16E89A3}" {
+      m_fDelay 600
+     }
+     m_aActions {
+      GC_SpawnAction "{4048DB5B06033CC5}" {
+       m_Spawn GC_AIGroupSpawn "{38C36266BAF1F622}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_5"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A0417E0BAEC9BC09}" {
+     m_sName "GC_MigratedSpawn_0FD25490740BA25C (700s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CD6436DED211D170}" {
+       m_sEventName "GC_MigratedSpawn_0FD25490740BA25C"
+      }
+     }
+     m_Advanced GC_EventOptions "{9963B93EBCF4AF45}" {
+      m_fDelay 700
+     }
+     m_aActions {
+      GC_SpawnAction "{25EE4F0302710E2B}" {
+       m_Spawn GC_AIGroupSpawn "{FA67BD0ABEEFD2E9}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_5"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{38B054519187D0FF}" {
+     m_sName "GC_MigratedSpawn_93258E2A45B532C9"
+     m_aConditions {
+      GC_GameModeStateCondition "{49BD8A4D95C31B8D}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{65349F1B09ACE1E0}" {
+       m_sFlagName "Counter_AI"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{AEEFCED992A21121}" {
+       m_sMessage "GC_MigratedSpawn_93258E2A45B532C9"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{28C3F4694B7F6314}" {
+     m_sName "GC_MigratedSpawn_93258E2A45B532C9 (80s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C1627477A1A59BB2}" {
+       m_sEventName "GC_MigratedSpawn_93258E2A45B532C9"
+      }
+     }
+     m_Advanced GC_EventOptions "{B9B8CBA5BFD4B074}" {
+      m_fDelay 80
+     }
+     m_aActions {
+      GC_SpawnAction "{329A7B2727A51DFB}" {
+       m_Spawn GC_AIGroupSpawn "{426D8631C71FFF0F}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_6"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B1C587BFEFA1D18C}" {
+     m_sName "GC_MigratedSpawn_93258E2A45B532C9 (160s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5F0F9EF104BD3C7E}" {
+       m_sEventName "GC_MigratedSpawn_93258E2A45B532C9"
+      }
+     }
+     m_Advanced GC_EventOptions "{C782828EDE1485F0}" {
+      m_fDelay 160
+     }
+     m_aActions {
+      GC_SpawnAction "{EEFEDED8164D473B}" {
+       m_Spawn GC_AIGroupSpawn "{90E1843F5FE394C3}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_6"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{21FA1DD2CB512C83}" {
+     m_sName "GC_MigratedSpawn_93258E2A45B532C9 (240s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7FC1637ADFB072DE}" {
+       m_sEventName "GC_MigratedSpawn_93258E2A45B532C9"
+      }
+     }
+     m_Advanced GC_EventOptions "{4A255AFDD00BB272}" {
+      m_fDelay 240
+     }
+     m_aActions {
+      GC_SpawnAction "{C4EAD68E9668F2CF}" {
+       m_Spawn GC_AIGroupSpawn "{4E3EEB67AC68E686}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_6"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F673E1BB22E73276}" {
+     m_sName "GC_MigratedSpawn_93258E2A45B532C9 (400s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8E9B54DBF5448423}" {
+       m_sEventName "GC_MigratedSpawn_93258E2A45B532C9"
+      }
+     }
+     m_Advanced GC_EventOptions "{23E8E884044D71F0}" {
+      m_fDelay 400
+     }
+     m_aActions {
+      GC_SpawnAction "{304496960285C5BF}" {
+       m_Spawn GC_AIGroupSpawn "{81D089B2593E25AA}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_6"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{7B05549074FF544B}" {
+     m_sName "GC_MigratedSpawn_93258E2A45B532C9 (500s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6E82C2BA2CE7F378}" {
+       m_sEventName "GC_MigratedSpawn_93258E2A45B532C9"
+      }
+     }
+     m_Advanced GC_EventOptions "{2B98E5277E21912B}" {
+      m_fDelay 500
+     }
+     m_aActions {
+      GC_SpawnAction "{D8B903821CC8F306}" {
+       m_Spawn GC_AIGroupSpawn "{E388D2E83F326BBB}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_6"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{6F98B0FE04766D37}" {
+     m_sName "GC_MigratedSpawn_93258E2A45B532C9 (600s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C0CEC7798421B4D4}" {
+       m_sEventName "GC_MigratedSpawn_93258E2A45B532C9"
+      }
+     }
+     m_Advanced GC_EventOptions "{113CC4A78157B412}" {
+      m_fDelay 600
+     }
+     m_aActions {
+      GC_SpawnAction "{FE433CC47980DBD3}" {
+       m_Spawn GC_AIGroupSpawn "{EA05CE4120E023FB}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_6"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F455C3EC1524C97A}" {
+     m_sName "GC_MigratedSpawn_93258E2A45B532C9 (700s)"
+     m_aConditions {
+      GC_MissionEventCondition "{89325FADBFD297D4}" {
+       m_sEventName "GC_MigratedSpawn_93258E2A45B532C9"
+      }
+     }
+     m_Advanced GC_EventOptions "{48D01CB351DF2A77}" {
+      m_fDelay 700
+     }
+     m_aActions {
+      GC_SpawnAction "{5399829576658635}" {
+       m_Spawn GC_AIGroupSpawn "{9162D8328E072387}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_6"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{44963A42CFCA8312}" {
+     m_sName "GC_MigratedSpawn_DF5720A39E826BF4"
+     m_aConditions {
+      GC_GameModeStateCondition "{90AEA1B912488363}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{6AFB4E0D1785F3D5}" {
+       m_sFlagName "Counter_AI"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9373929A6D37994B}" {
+       m_sMessage "GC_MigratedSpawn_DF5720A39E826BF4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1AF43A810C2C0ED7}" {
+     m_sName "GC_MigratedSpawn_DF5720A39E826BF4 (80s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4C84BB1A44E103A4}" {
+       m_sEventName "GC_MigratedSpawn_DF5720A39E826BF4"
+      }
+     }
+     m_Advanced GC_EventOptions "{F2567E747987C355}" {
+      m_fDelay 80
+     }
+     m_aActions {
+      GC_SpawnAction "{0F196C2F1D57F2D5}" {
+       m_Spawn GC_AIGroupSpawn "{B28213782FB6B427}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_7"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{6FA5851E63A83564}" {
+     m_sName "GC_MigratedSpawn_DF5720A39E826BF4 (160s)"
+     m_aConditions {
+      GC_MissionEventCondition "{56478B93EC1D9742}" {
+       m_sEventName "GC_MigratedSpawn_DF5720A39E826BF4"
+      }
+     }
+     m_Advanced GC_EventOptions "{372205382BF6E360}" {
+      m_fDelay 160
+     }
+     m_aActions {
+      GC_SpawnAction "{57C3A3EB2AC378DF}" {
+       m_Spawn GC_AIGroupSpawn "{8B92BCE884363698}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_7"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A1D3CB7F4B46BC2F}" {
+     m_sName "GC_MigratedSpawn_DF5720A39E826BF4 (240s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BE94C6827D6B0E2B}" {
+       m_sEventName "GC_MigratedSpawn_DF5720A39E826BF4"
+      }
+     }
+     m_Advanced GC_EventOptions "{50C264028CEEE3F0}" {
+      m_fDelay 240
+     }
+     m_aActions {
+      GC_SpawnAction "{7CBDB4117B740C9A}" {
+       m_Spawn GC_AIGroupSpawn "{A21E441292FCA9E0}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_7"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{63A52CE7B6459D46}" {
+     m_sName "GC_MigratedSpawn_DF5720A39E826BF4 (400s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5807DB4C576EE57D}" {
+       m_sEventName "GC_MigratedSpawn_DF5720A39E826BF4"
+      }
+     }
+     m_Advanced GC_EventOptions "{8B4A564351C8D213}" {
+      m_fDelay 400
+     }
+     m_aActions {
+      GC_SpawnAction "{D6C4A434800DBF34}" {
+       m_Spawn GC_AIGroupSpawn "{832693A37B07BB70}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_7"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E56E594823E5A5C6}" {
+     m_sName "GC_MigratedSpawn_DF5720A39E826BF4 (500s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B94F9BC2FFE93B51}" {
+       m_sEventName "GC_MigratedSpawn_DF5720A39E826BF4"
+      }
+     }
+     m_Advanced GC_EventOptions "{E935617D854D2D99}" {
+      m_fDelay 500
+     }
+     m_aActions {
+      GC_SpawnAction "{37C1A665015B1EC2}" {
+       m_Spawn GC_AIGroupSpawn "{B2E12FE9EE4A0ED7}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_7"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{65F565DDD83D7C1E}" {
+     m_sName "GC_MigratedSpawn_DF5720A39E826BF4 (600s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5519A928513584F9}" {
+       m_sEventName "GC_MigratedSpawn_DF5720A39E826BF4"
+      }
+     }
+     m_Advanced GC_EventOptions "{AFD3002246EA2AC7}" {
+      m_fDelay 600
+     }
+     m_aActions {
+      GC_SpawnAction "{428D08CE77194977}" {
+       m_Spawn GC_AIGroupSpawn "{FB4EB3CDA0FBCA6D}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_7"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4787947592E1E2A6}" {
+     m_sName "GC_MigratedSpawn_DF5720A39E826BF4 (700s)"
+     m_aConditions {
+      GC_MissionEventCondition "{850B328D8EEE6200}" {
+       m_sEventName "GC_MigratedSpawn_DF5720A39E826BF4"
+      }
+     }
+     m_Advanced GC_EventOptions "{483C3B226FE0C13C}" {
+      m_fDelay 700
+     }
+     m_aActions {
+      GC_SpawnAction "{40E62CF6DC17E222}" {
+       m_Spawn GC_AIGroupSpawn "{7B100E38D81F302F}" {
+        m_sLocation "Inf_Counter_Attack_Spawner_7"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "wp_counter_attack_2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{EA3C3A52EF000782}" {
+     m_sName "GC_MigratedSpawn_ED7D86C597DFE110"
+     m_aConditions {
+      GC_AreaCondition "{3FBF1B47C21A2445}" {
+       m_sArea "Town_Area_Trigger"
+       m_Targets GC_CharacterAreaTargets "{CC4127F4E3B47BA0}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{7C8A4BA0AAE68DB7}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{F645DC5E0B600DB0}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E60D43F12FF85BD2}" {
+       m_sMessage "GC_MigratedSpawn_ED7D86C597DFE110"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{70554462437C8E86}" {
+     m_sName "GC_MigratedSpawn_ED7D86C597DFE110 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E9DE7328C7899666}" {
+       m_sEventName "GC_MigratedSpawn_ED7D86C597DFE110"
+      }
+     }
+     m_Advanced GC_EventOptions "{1CC1ED453F7E15D6}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{FEF02CB6C3D1B606}" {
+       m_Spawn GC_AIGroupSpawn "{F146EA71BDDA8F45}" {
+        m_sLocation "NVA_Town_Def_Spawner_1"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "def_spawn_wp_NVA_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{6C322D94781DCBCD}" {
+     m_sName "GC_MigratedSpawn_C6A31B9D81BA5019"
+     m_aConditions {
+      GC_AreaCondition "{4F6FE3D850FE7AFE}" {
+       m_sArea "Town_Area_Trigger"
+       m_Targets GC_CharacterAreaTargets "{240261443AFA3CF7}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{6641C77E72BF8ABF}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{8890A34759D0E0B7}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B5C467DD9C3B4FBC}" {
+       m_sMessage "GC_MigratedSpawn_C6A31B9D81BA5019"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{43055A47941EC149}" {
+     m_sName "GC_MigratedSpawn_C6A31B9D81BA5019 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9A23E5CDBD1047D2}" {
+       m_sEventName "GC_MigratedSpawn_C6A31B9D81BA5019"
+      }
+     }
+     m_Advanced GC_EventOptions "{6A3F373F9CBF0491}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{94F3B748617894F7}" {
+       m_Spawn GC_AIGroupSpawn "{08796558D5845B81}" {
+        m_sLocation "NVA_Town_Def_Spawner_2"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "def_spawn_wp_NVA_2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E6BFDE53E46478F9}" {
+     m_sName "GC_MigratedSpawn_356CF3CF7F303B85"
+     m_aConditions {
+      GC_AreaCondition "{5097A0798515125E}" {
+       m_sArea "Town_Area_Trigger"
+       m_Targets GC_CharacterAreaTargets "{FD33BE52DAC1BAD9}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{4B1E98827E6B99C6}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{D80D3E28F21A931E}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5476CDBB34EC539E}" {
+       m_sMessage "GC_MigratedSpawn_356CF3CF7F303B85"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E7AD0F83FDBE1C7D}" {
+     m_sName "GC_MigratedSpawn_356CF3CF7F303B85 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{173580F13C5CE234}" {
+       m_sEventName "GC_MigratedSpawn_356CF3CF7F303B85"
+      }
+     }
+     m_Advanced GC_EventOptions "{2806AA9AD3CB2322}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{D266EF30FA58FF3B}" {
+       m_Spawn GC_AIGroupSpawn "{C7E29822F9B69E35}" {
+        m_sLocation "NVA_Town_Def_Spawner_3"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "def_spawn_wp_NVA_3"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{DD6901EFDED44075}" {
+     m_sName "GC_MigratedSpawn_47018BD399EB1A6C"
+     m_aConditions {
+      GC_AreaCondition "{DBF9DAA291334059}" {
+       m_sArea "Town_Area_Trigger"
+       m_Targets GC_CharacterAreaTargets "{A410207375C07335}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{A1CF6612AEC671AF}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{4053354438C9506A}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1A3D48B53BBFFCDF}" {
+       m_sMessage "GC_MigratedSpawn_47018BD399EB1A6C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F6B602A5E10A1EBA}" {
+     m_sName "GC_MigratedSpawn_47018BD399EB1A6C (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2266BE12113C4551}" {
+       m_sEventName "GC_MigratedSpawn_47018BD399EB1A6C"
+      }
+     }
+     m_Advanced GC_EventOptions "{4479DDB47A82F665}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{8861A2F04A3CE4EE}" {
+       m_Spawn GC_AIGroupSpawn "{37CC259EF0EAA8EB}" {
+        m_sLocation "NVA_Town_Def_Spawner_4"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "def_spawn_wp_NVA_4"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{AA196469B4986958}" {
+     m_sName "GC_MigratedSpawn_BC752B5079444A4E"
+     m_aConditions {
+      GC_AreaCondition "{3E294739F354869A}" {
+       m_sArea "Town_Area_Trigger"
+       m_Targets GC_CharacterAreaTargets "{92ED5F1EE6EF6D32}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{417E461C3EB929BD}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{52525844F6E2A9F2}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E7AC0498B925FE30}" {
+       m_sMessage "GC_MigratedSpawn_BC752B5079444A4E"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5158878226A63465}" {
+     m_sName "GC_MigratedSpawn_BC752B5079444A4E (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F2B028BD5E2FD079}" {
+       m_sEventName "GC_MigratedSpawn_BC752B5079444A4E"
+      }
+     }
+     m_Advanced GC_EventOptions "{F9E5722792E865CC}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{5A0960282E0D4368}" {
+       m_Spawn GC_AIGroupSpawn "{0BA54C9011E7FDF3}" {
+        m_sLocation "NVA_Town_Def_Spawner_5"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "def_spawn_wp_NVA_5"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{AC46FAE79CF707B4}" {
+     m_sName "GC_MigratedSpawn_5D871116A3B93F90"
+     m_aConditions {
+      GC_AreaCondition "{17CE612A98593066}" {
+       m_sArea "Town_Area_Trigger"
+       m_Targets GC_CharacterAreaTargets "{9259ECAB0B6E8CB4}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{B2E5E58485AF19F5}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{65F9DBE2828DA765}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{AFB3F0B9E2473699}" {
+       m_sMessage "GC_MigratedSpawn_5D871116A3B93F90"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{03E522106DE57332}" {
+     m_sName "GC_MigratedSpawn_5D871116A3B93F90 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{52DB0C7DB71F800D}" {
+       m_sEventName "GC_MigratedSpawn_5D871116A3B93F90"
+      }
+     }
+     m_Advanced GC_EventOptions "{25CB6CAA0ED1F347}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{EB9235D8EDD77E52}" {
+       m_Spawn GC_AIGroupSpawn "{42BD08FE4E285DE7}" {
+        m_sLocation "NVA_Town_Def_Spawner_6"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "def_spawn_wp_NVA_6"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{952FECE2D9D4F6E3}" {
+     m_sName "GC_MigratedSpawn_DABE923FE078E7C9"
+     m_aConditions {
+      GC_AreaCondition "{E247B420A5EACAE7}" {
+       m_sArea "Town_Area_Trigger"
+       m_Targets GC_CharacterAreaTargets "{FEBCF5157F61130A}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{1D5B8F111AD97B5A}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{B83928D2A9CC02E3}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{AEE7350E85379462}" {
+       m_sMessage "GC_MigratedSpawn_DABE923FE078E7C9"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BC35281A6A641D8B}" {
+     m_sName "GC_MigratedSpawn_DABE923FE078E7C9 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{390DCD12F0018067}" {
+       m_sEventName "GC_MigratedSpawn_DABE923FE078E7C9"
+      }
+     }
+     m_Advanced GC_EventOptions "{DDD6685BC2796B84}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{526A0ECE3C050D6F}" {
+       m_Spawn GC_AIGroupSpawn "{888DBA4B31273502}" {
+        m_sLocation "NVA_Town_Def_Spawner_7"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "def_spawn_wp_NVA_7"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{CCBFE94D6A191735}" {
+     m_sName "GC_MigratedSpawn_DBDC9A5F0933C03D"
+     m_aConditions {
+      GC_AreaCondition "{741BD30B9E8812BF}" {
+       m_sArea "Town_Area_Trigger"
+       m_Targets GC_CharacterAreaTargets "{B33744EEB2EB4EE7}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{DD62D89D39512414}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{7190CAAA7622F936}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7B29CA7772A93CFF}" {
+       m_sMessage "GC_MigratedSpawn_DBDC9A5F0933C03D"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E290D2332236C397}" {
+     m_sName "GC_MigratedSpawn_DBDC9A5F0933C03D (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{FCD7B6AD2B39A1EE}" {
+       m_sEventName "GC_MigratedSpawn_DBDC9A5F0933C03D"
+      }
+     }
+     m_Advanced GC_EventOptions "{04E7970D756CE1B6}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{53727715434D81C3}" {
+       m_Spawn GC_AIGroupSpawn "{D071E9B3CBEC86A7}" {
+        m_sLocation "NVA_Town_Def_Spawner_8"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "def_spawn_wp_NVA_8"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{2337AFC238D95372}" {
+     m_sName "GC_MigratedSpawn_88CAEB4D9878555A"
+     m_aConditions {
+      GC_AreaCondition "{17B892D5719933BC}" {
+       m_sArea "Town_Area_Trigger"
+       m_Targets GC_CharacterAreaTargets "{DBA59F9E494BF40E}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{78A85BB0A7F85569}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{3BFB96FD201EFC43}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{14C0B4C74AA29E85}" {
+       m_sMessage "GC_MigratedSpawn_88CAEB4D9878555A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8884610804A921BB}" {
+     m_sName "GC_MigratedSpawn_88CAEB4D9878555A (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B4714E22A5799E3C}" {
+       m_sEventName "GC_MigratedSpawn_88CAEB4D9878555A"
+      }
+     }
+     m_Advanced GC_EventOptions "{61A9998483A8522A}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{C4EA04124EB58458}" {
+       m_Spawn GC_AIGroupSpawn "{76E54F79FFC74D6C}" {
+        m_sLocation "NVA_Town_Def_Spawner_9"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "def_spawn_wp_NVA_9"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{46576773F8739DEB}" {
+     m_sName "GC_MigratedSpawn_DC451C75000B3006"
+     m_aConditions {
+      GC_AreaCondition "{97C3512EF07BFAF4}" {
+       m_sArea "Town_Area_Trigger"
+       m_Targets GC_CharacterAreaTargets "{EF1DE8117F080EFC}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{086DE3C988FCD60E}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{A4614893853C63DE}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F691B70479853AA0}" {
+       m_sMessage "GC_MigratedSpawn_DC451C75000B3006"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{49A26295AF899634}" {
+     m_sName "GC_MigratedSpawn_DC451C75000B3006 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E2F4D7F0E31D6029}" {
+       m_sEventName "GC_MigratedSpawn_DC451C75000B3006"
+      }
+     }
+     m_Advanced GC_EventOptions "{5D46737AB2EF462A}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{4B7630D42E622588}" {
+       m_Spawn GC_AIGroupSpawn "{A4AC35FA053E1DA2}" {
+        m_sLocation "NVA_Town_Def_Spawner_10"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "def_spawn_wp_NVA_10"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3D6B42CF1A612807}" {
+     m_sName "GC_MigratedSpawn_70BEF733C73B0560"
+     m_aConditions {
+      GC_AreaCondition "{0E253025E24F0183}" {
+       m_sArea "Town_Area_Trigger2"
+       m_Targets GC_CharacterAreaTargets "{0435BBC1A9CFDF58}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{510BC26BF9560107}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{D4229B7D794EF8A7}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5B478113314DF5CF}" {
+       m_sMessage "GC_MigratedSpawn_70BEF733C73B0560"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D04BACDD2E26B6B1}" {
+     m_sName "GC_MigratedSpawn_70BEF733C73B0560 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A410E76DFC0F351D}" {
+       m_sEventName "GC_MigratedSpawn_70BEF733C73B0560"
+      }
+     }
+     m_Advanced GC_EventOptions "{A5C54D3700DDE226}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{2E89AE0FD9130BC4}" {
+       m_Spawn GC_AIGroupSpawn "{65A61299CD0939A4}" {
+        m_sLocation "NVA_Town_Def_Spawner_11"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "def_spawn_wp_NVA_11"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{70E1C0004AD9C212}" {
+     m_sName "GC_MigratedSpawn_ED2BEA95115E08E6"
+     m_aConditions {
+      GC_AreaCondition "{F5A3E5ADF4EAEA45}" {
+       m_sArea "Town_Area_Trigger2"
+       m_Targets GC_CharacterAreaTargets "{D1B88FC09186EE8A}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{984F59E17C64549D}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{06294B131FA98AA6}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8DBE16E8B2614B96}" {
+       m_sMessage "GC_MigratedSpawn_ED2BEA95115E08E6"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2DFFF3A36FE1A18E}" {
+     m_sName "GC_MigratedSpawn_ED2BEA95115E08E6 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9C07B2110337DF3A}" {
+       m_sEventName "GC_MigratedSpawn_ED2BEA95115E08E6"
+      }
+     }
+     m_Advanced GC_EventOptions "{E24388E05B6FF791}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{5509E0DA47045BE2}" {
+       m_Spawn GC_AIGroupSpawn "{A08E754E2799A99F}" {
+        m_sLocation "NVA_Town_Def_Spawner_12"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "def_spawn_wp_NVA_12"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{551213D5FB2A5CC1}" {
+     m_sName "GC_MigratedSpawn_A28B5A698D148291"
+     m_aConditions {
+      GC_AreaCondition "{1599241D767AD5C5}" {
+       m_sArea "Town_Area_Trigger2"
+       m_Targets GC_CharacterAreaTargets "{32FD20E80F8B0F4E}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{F8F4D877891BFDDA}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{018D686678EA04CE}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FA566023757A9A3C}" {
+       m_sMessage "GC_MigratedSpawn_A28B5A698D148291"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{71FFE6C7C3EC310D}" {
+     m_sName "GC_MigratedSpawn_A28B5A698D148291 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{AE46EE32BF5F6879}" {
+       m_sEventName "GC_MigratedSpawn_A28B5A698D148291"
+      }
+     }
+     m_Advanced GC_EventOptions "{5E20554F2B521BF5}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{6FCFAC1894EB6982}" {
+       m_Spawn GC_AIGroupSpawn "{6B2C3C1872E4409F}" {
+        m_sLocation "NVA_Town_Def_Spawner_13"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "def_spawn_wp_NVA_13"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{5902BF4035664242}" {
+     m_sName "GC_MigratedSpawn_5A02DB98A9386D4A"
+     m_aConditions {
+      GC_AreaCondition "{97277E79EFB0B51F}" {
+       m_sArea "Town_Area_Trigger2"
+       m_Targets GC_CharacterAreaTargets "{13937B4A019406F6}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{65B2DB76F7673E6B}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{2A46E946CCA029EF}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F60727A056D19CC4}" {
+       m_sMessage "GC_MigratedSpawn_5A02DB98A9386D4A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1CFA9F2DAFC08F7A}" {
+     m_sName "GC_MigratedSpawn_5A02DB98A9386D4A (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5C6FFAAB041EB1E7}" {
+       m_sEventName "GC_MigratedSpawn_5A02DB98A9386D4A"
+      }
+     }
+     m_Advanced GC_EventOptions "{A77DEDBC8642CA33}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{A568176A22C9B386}" {
+       m_Spawn GC_AIGroupSpawn "{AB73E089495A0EBA}" {
+        m_sLocation "NVA_Town_Def_Spawner_14"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "def_spawn_wp_NVA_14"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{5E4B4CDC9DA569B0}" {
+     m_sName "GC_MigratedSpawn_39CF945C28699CCC"
+     m_aConditions {
+      GC_AreaCondition "{D1DCEDA5BEB5ABEA}" {
+       m_sArea "Town_Area_Trigger2"
+       m_Targets GC_CharacterAreaTargets "{E6830B1D3AB0DCA6}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{16A5EC447300F32A}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{B7029978E7D4A19B}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{31892D665426F072}" {
+       m_sMessage "GC_MigratedSpawn_39CF945C28699CCC"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{23707260DE8EC462}" {
+     m_sName "GC_MigratedSpawn_39CF945C28699CCC (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D3935DF31D650E84}" {
+       m_sEventName "GC_MigratedSpawn_39CF945C28699CCC"
+      }
+     }
+     m_Advanced GC_EventOptions "{E2D0C0A2F60B502E}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{A5CFBC1748F5A9F2}" {
+       m_Spawn GC_AIGroupSpawn "{CEFE744F4B07A440}" {
+        m_sLocation "NVA_Town_Def_Spawner_15"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "def_spawn_wp_NVA_15"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C851C663F0399643}" {
+     m_sName "GC_MigratedSpawn_C83B352B36A859ED"
+     m_aConditions {
+      GC_AreaCondition "{0E29D223498F6717}" {
+       m_sArea "Town_Area_Trigger2"
+       m_Targets GC_CharacterAreaTargets "{5A156AB9140CB147}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{C88F9B1AB21C325E}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{A356B2959192E6AE}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7DEA42F34785E100}" {
+       m_sMessage "GC_MigratedSpawn_C83B352B36A859ED"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{07B95350F99461DA}" {
+     m_sName "GC_MigratedSpawn_C83B352B36A859ED (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E777001D348A7A88}" {
+       m_sEventName "GC_MigratedSpawn_C83B352B36A859ED"
+      }
+     }
+     m_Advanced GC_EventOptions "{5991036A371E0BBC}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{7E8BB72A01C553E1}" {
+       m_Spawn GC_AIGroupSpawn "{6D74CD58E3FB1F38}" {
+        m_sLocation "NVA_Town_Def_Spawner_16"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+        m_aWaypoints {
+         "def_spawn_wp_NVA_16"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{6D59E6BC726BCF3E}" {
+     m_sName "GC_MigratedSpawn_59DB105E5B55F8E1"
+     m_aConditions {
+      GC_GameModeStateCondition "{0D8D4D3A928A157B}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{10FCE328A4E63A0A}" {
+       m_sFlagName "Counter_AI"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F5EDD600DA20BFFB}" {
+       m_sMessage "GC_MigratedSpawn_59DB105E5B55F8E1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A154E1D015750F73}" {
+     m_sName "GC_MigratedSpawn_59DB105E5B55F8E1 (514s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2AE8F380DC64C0CF}" {
+       m_sEventName "GC_MigratedSpawn_59DB105E5B55F8E1"
+      }
+     }
+     m_Advanced GC_EventOptions "{615D13FDB488F8ED}" {
+      m_fDelay 514
+     }
+     m_aActions {
+      GC_SpawnAction "{1D5C45950E8C0CBD}" {
+       m_Spawn GC_PrefabSpawn "{EBD93134BD8561AE}" {
+        m_sLocation "AirStrike_Bomb_1"
+        m_sPrefab "{30263B4F1FB2A0F2}Prefabs/Systems/Artillery/ArtilleryWrapper_WTF.et"
+       }
+      }
+     }
+    }
+    GC_Event "{6EB7C18E893558B6}" {
+     m_sName "GC_MigratedSpawn_F7B4E403B0DC083F"
+     m_aConditions {
+      GC_GameModeStateCondition "{94B4B117906614FC}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{863BA03EF844D7AB}" {
+       m_sFlagName "Counter_AI"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4343E16CE36DACDC}" {
+       m_sMessage "GC_MigratedSpawn_F7B4E403B0DC083F"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{06BD01B4A92950FB}" {
+     m_sName "GC_MigratedSpawn_F7B4E403B0DC083F (500s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E0D1298F71F1EA14}" {
+       m_sEventName "GC_MigratedSpawn_F7B4E403B0DC083F"
+      }
+     }
+     m_Advanced GC_EventOptions "{C7B8DA5A917AAFE8}" {
+      m_fDelay 500
+     }
+     m_aActions {
+      GC_SpawnAction "{B726362D332B5CD3}" {
+       m_Spawn GC_PrefabSpawn "{6740D886FECC99BA}" {
+        m_sLocation "AirStrike_Jet_1"
+        m_sPrefab "{EDD3E14E481BDA62}Prefabs/Vehicles/Airplanes/FA18A/FA18A_GBU_CAS.et"
+       }
+      }
+     }
+    }
+    GC_Event "{57A0F9E231BB2857}" {
+     m_sName "GC_MigratedSpawn_A524AFBB9A411F7B"
+     m_aConditions {
+      GC_GameModeStateCondition "{906F29D1608CBDEC}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{4AC492B89D6D989A}" {
+       m_sFlagName "Counter_AI"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{69EBE83B95499352}" {
+       m_sMessage "GC_MigratedSpawn_A524AFBB9A411F7B"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CC75F092642597F3}" {
+     m_sName "GC_MigratedSpawn_A524AFBB9A411F7B (501s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4264D111B6E6FFF1}" {
+       m_sEventName "GC_MigratedSpawn_A524AFBB9A411F7B"
+      }
+     }
+     m_Advanced GC_EventOptions "{B94A2B91AFC77B40}" {
+      m_fDelay 501
+     }
+     m_aActions {
+      GC_SpawnAction "{FA421188636CF581}" {
+       m_Spawn GC_PrefabSpawn "{DE2F0BC288F6F72E}" {
+        m_sLocation "AirStrike_Jet_2"
+        m_sPrefab "{EDD3E14E481BDA62}Prefabs/Vehicles/Airplanes/FA18A/FA18A_GBU_CAS.et"
+       }
+      }
+     }
+    }
+    GC_Event "{6ABCC8CB152CFA5E}" {
+     m_sName "GC_MigratedSpawn_FAC6C73234652E95"
+     m_aConditions {
+      GC_GameModeStateCondition "{4DB659081202F0BC}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{1212D24BE4B239DD}" {
+       m_sFlagName "Counter_AI"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7BD6D2391EB3C5FE}" {
+       m_sMessage "GC_MigratedSpawn_FAC6C73234652E95"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E1ADD6D694D7022B}" {
+     m_sName "GC_MigratedSpawn_FAC6C73234652E95 (515s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D9DCB3172841F953}" {
+       m_sEventName "GC_MigratedSpawn_FAC6C73234652E95"
+      }
+     }
+     m_Advanced GC_EventOptions "{7E227ACCB915DDB2}" {
+      m_fDelay 515
+     }
+     m_aActions {
+      GC_SpawnAction "{6C41BFAC63455632}" {
+       m_Spawn GC_PrefabSpawn "{0EBB6345ACD9E58C}" {
+        m_sLocation "AirStrike_Bomb_2"
+        m_sPrefab "{30263B4F1FB2A0F2}Prefabs/Systems/Artillery/ArtilleryWrapper_WTF.et"
+       }
+      }
+     }
+    }
+    GC_Event "{8E0CE208549CD544}" {
+     m_sName "GC_MigratedSpawn_5DAD711F5C004042"
+     m_aConditions {
+      GC_GameModeStateCondition "{9A3D7601CC33A18D}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{E658565973BC4730}" {
+       m_sFlagName "Counter_AI"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{730AE7C07B3704E2}" {
+       m_sMessage "GC_MigratedSpawn_5DAD711F5C004042"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0833783E955368FC}" {
+     m_sName "GC_MigratedSpawn_5DAD711F5C004042 (502s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DC05320F7D266D91}" {
+       m_sEventName "GC_MigratedSpawn_5DAD711F5C004042"
+      }
+     }
+     m_Advanced GC_EventOptions "{4F62B362CC0A9B3E}" {
+      m_fDelay 502
+     }
+     m_aActions {
+      GC_SpawnAction "{AD3886AFC4AD7FFE}" {
+       m_Spawn GC_PrefabSpawn "{30EBA74BB0DD90EB}" {
+        m_sLocation "AirStrike_Jet_3"
+        m_sPrefab "{EDD3E14E481BDA62}Prefabs/Vehicles/Airplanes/FA18A/FA18A_GBU_CAS.et"
+       }
+      }
+     }
+    }
+    GC_Event "{2E72C49A6B304E3C}" {
+     m_sName "GC_MigratedSpawn_5B486D3097430D74"
+     m_aConditions {
+      GC_GameModeStateCondition "{76CE57416DDAED71}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{5A396DB6A1A5D411}" {
+       m_sFlagName "Counter_AI"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5D33A2EA1F277B9D}" {
+       m_sMessage "GC_MigratedSpawn_5B486D3097430D74"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{DAFA86C5B0960432}" {
+     m_sName "GC_MigratedSpawn_5B486D3097430D74 (516s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6707CBD565A49EAD}" {
+       m_sEventName "GC_MigratedSpawn_5B486D3097430D74"
+      }
+     }
+     m_Advanced GC_EventOptions "{25C5016BDFFE71BC}" {
+      m_fDelay 516
+     }
+     m_aActions {
+      GC_SpawnAction "{3A1648E39ECF2AA1}" {
+       m_Spawn GC_PrefabSpawn "{9B50064D707C221C}" {
+        m_sLocation "AirStrike_Bomb_3"
+        m_sPrefab "{30263B4F1FB2A0F2}Prefabs/Systems/Artillery/ArtilleryWrapper_WTF.et"
+       }
+      }
+     }
+    }
+    GC_Event "{775D83AF4F39936A}" {
+     m_sName "GC_MigratedSpawn_5CC7C7AD3D95FF68"
+     m_aConditions {
+      GC_GameModeStateCondition "{511F634769DC4125}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{618CEB2E60084543}" {
+       m_sFlagName "Counter_AI"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FD2EAA2B27E250C5}" {
+       m_sMessage "GC_MigratedSpawn_5CC7C7AD3D95FF68"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{33A0AF99AB297313}" {
+     m_sName "GC_MigratedSpawn_5CC7C7AD3D95FF68 (503s)"
+     m_aConditions {
+      GC_MissionEventCondition "{61552E5472703970}" {
+       m_sEventName "GC_MigratedSpawn_5CC7C7AD3D95FF68"
+      }
+     }
+     m_Advanced GC_EventOptions "{AEBCB2FD7F4F87DC}" {
+      m_fDelay 503
+     }
+     m_aActions {
+      GC_SpawnAction "{C94FA66C79BD8CDD}" {
+       m_Spawn GC_PrefabSpawn "{4B47224302040640}" {
+        m_sLocation "AirStrike_Jet_4"
+        m_sPrefab "{EDD3E14E481BDA62}Prefabs/Vehicles/Airplanes/FA18A/FA18A_GBU_CAS.et"
+       }
+      }
+     }
+    }
+    GC_Event "{B1B2C4AF5A162164}" {
+     m_sName "GC_MigratedSpawn_8EB0FA33D5BE3212"
+     m_aConditions {
+      GC_GameModeStateCondition "{C11EFDDF44628424}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{2B05ABE29F722CDA}" {
+       m_sFlagName "Counter_AI"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{83E5CF0134CE3773}" {
+       m_sMessage "GC_MigratedSpawn_8EB0FA33D5BE3212"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{DE6B1CD6A365C3AA}" {
+     m_sName "GC_MigratedSpawn_8EB0FA33D5BE3212 (517s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B934D88E311CDD92}" {
+       m_sEventName "GC_MigratedSpawn_8EB0FA33D5BE3212"
+      }
+     }
+     m_Advanced GC_EventOptions "{07E5727412800A6C}" {
+      m_fDelay 517
+     }
+     m_aActions {
+      GC_SpawnAction "{BEFE50CA24777ADB}" {
+       m_Spawn GC_PrefabSpawn "{A96DDE794F067DDC}" {
+        m_sLocation "AirStrike_Bomb_4"
+        m_sPrefab "{30263B4F1FB2A0F2}Prefabs/Systems/Artillery/ArtilleryWrapper_WTF.et"
+       }
+      }
+     }
+    }
+    GC_Event "{2766F6D91933C14C}" {
+     m_sName "GC_MigratedSpawn_ADBE4E5853531DD2"
+     m_aConditions {
+      GC_GameModeStateCondition "{04A1D72E1150C7C9}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{4653A2A47B79E9C6}" {
+       m_sFlagName "Counter_AI"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DF0CE3CA2DD3E081}" {
+       m_sMessage "GC_MigratedSpawn_ADBE4E5853531DD2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C11574979CACFB47}" {
+     m_sName "GC_MigratedSpawn_ADBE4E5853531DD2 (504s)"
+     m_aConditions {
+      GC_MissionEventCondition "{64980AC0DC5DEF28}" {
+       m_sEventName "GC_MigratedSpawn_ADBE4E5853531DD2"
+      }
+     }
+     m_Advanced GC_EventOptions "{AA7A0A84F1A802A3}" {
+      m_fDelay 504
+     }
+     m_aActions {
+      GC_SpawnAction "{BFE4F7AE35B61361}" {
+       m_Spawn GC_PrefabSpawn "{F2C9651DD6E96C43}" {
+        m_sLocation "AirStrike_Jet_5"
+        m_sPrefab "{EDD3E14E481BDA62}Prefabs/Vehicles/Airplanes/FA18A/FA18A_GBU_CAS.et"
+       }
+      }
+     }
+    }
+    GC_Event "{E2DF83C6F98A8DA5}" {
+     m_sName "GC_MigratedSpawn_B2A1BB9F9A575DDE"
+     m_aConditions {
+      GC_GameModeStateCondition "{9016C1DD1AB1F4A7}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{FF113B1192470CCC}" {
+       m_sFlagName "Counter_AI"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6AAF84C5EDDE73C2}" {
+       m_sMessage "GC_MigratedSpawn_B2A1BB9F9A575DDE"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5DE53C44FDCC09D5}" {
+     m_sName "GC_MigratedSpawn_B2A1BB9F9A575DDE (518s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A983D8259ED3BEE4}" {
+       m_sEventName "GC_MigratedSpawn_B2A1BB9F9A575DDE"
+      }
+     }
+     m_Advanced GC_EventOptions "{2C776000AF2AB0D4}" {
+      m_fDelay 518
+     }
+     m_aActions {
+      GC_SpawnAction "{34E80E81784662F4}" {
+       m_Spawn GC_PrefabSpawn "{4A0A92794057AD93}" {
+        m_sLocation "AirStrike_Bomb_5"
+        m_sPrefab "{30263B4F1FB2A0F2}Prefabs/Systems/Artillery/ArtilleryWrapper_WTF.et"
+       }
+      }
+     }
+    }
+    GC_Event "{C5CC6357CA7F61FB}" {
+     m_sName "GC_MigratedSpawn_5B6A044D042D5EB4"
+     m_aConditions {
+      GC_GameModeStateCondition "{EC1395D4D80005A8}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{FE9FBE512ECC8549}" {
+       m_sFlagName "Counter_AI"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4D2D7704629F6584}" {
+       m_sMessage "GC_MigratedSpawn_5B6A044D042D5EB4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5A1E9AC2D00EF80A}" {
+     m_sName "GC_MigratedSpawn_5B6A044D042D5EB4 (40s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6EDB3E9719E5C1DA}" {
+       m_sEventName "GC_MigratedSpawn_5B6A044D042D5EB4"
+      }
+     }
+     m_Advanced GC_EventOptions "{D1780CE9B2DD0457}" {
+      m_fDelay 40
+     }
+     m_aActions {
+      GC_SpawnAction "{C81A8C257E22E2AA}" {
+       m_Spawn GC_PrefabSpawn "{56743E49B2A9B044}" {
+        m_sLocation "NVA_Flyby_1"
+        m_sPrefab "{FDD01BF3CEAB37E3}Prefabs/Vehicles/Airplanes/SU57/SU57_Flyby.et"
+       }
+      }
+     }
+    }
+    GC_Event "{B59210B7B61057F7}" {
+     m_sName "GC_MigratedSpawn_4E5E91741EBFF986"
+     m_aConditions {
+      GC_GameModeStateCondition "{918D82F1E5949A7E}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{E1DD0200D3FBDC8A}" {
+       m_sFlagName "Counter_AI"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1E81D9D7204DCC71}" {
+       m_sMessage "GC_MigratedSpawn_4E5E91741EBFF986"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{DFA0195C934B59CB}" {
+     m_sName "GC_MigratedSpawn_4E5E91741EBFF986 (41s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F1337A6900FAF107}" {
+       m_sEventName "GC_MigratedSpawn_4E5E91741EBFF986"
+      }
+     }
+     m_Advanced GC_EventOptions "{F369432E039C04D6}" {
+      m_fDelay 41
+     }
+     m_aActions {
+      GC_SpawnAction "{C7ACC5DE57EB259D}" {
+       m_Spawn GC_PrefabSpawn "{BBBF4E7171EC5705}" {
+        m_sLocation "NVA_Flyby_2"
+        m_sPrefab "{FDD01BF3CEAB37E3}Prefabs/Vehicles/Airplanes/SU57/SU57_Flyby.et"
+       }
+      }
+     }
+    }
+    GC_Event "{48E122D5E43061DB}" {
+     m_sName "GC_MigratedSpawn_E39115689E6942E3"
+     m_aConditions {
+      GC_GameModeStateCondition "{C7DA8A6B10F31E0F}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{8E5DF2D27811FAAB}" {
+       m_sFlagName "Counter_AI"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B0D9A8AA69B62F22}" {
+       m_sMessage "GC_MigratedSpawn_E39115689E6942E3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{4FA9531F1C4E3145}" {
+     m_sName "GC_MigratedSpawn_E39115689E6942E3 (340s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C6C561A40C7963DC}" {
+       m_sEventName "GC_MigratedSpawn_E39115689E6942E3"
+      }
+     }
+     m_Advanced GC_EventOptions "{CB3ECD4347D0532B}" {
+      m_fDelay 340
+     }
+     m_aActions {
+      GC_SpawnAction "{3BC4C2949E169833}" {
+       m_Spawn GC_PrefabSpawn "{A8143C9DCE9868A3}" {
+        m_sLocation "US_Flyby_3"
+        m_sPrefab "{EAD777F4CDA11F16}Prefabs/Vehicles/Airplanes/F22/F22_Flyby.et"
+       }
+      }
+     }
+    }
+    GC_Event "{030D2E18324346B7}" {
+     m_sName "GC_MigratedSpawn_4327C029CFD6989F"
+     m_aConditions {
+      GC_GameModeStateCondition "{CD27DF08E9236458}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{8C6B4CEC094A23BC}" {
+       m_sFlagName "Counter_AI"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D87994F33BA1C458}" {
+       m_sMessage "GC_MigratedSpawn_4327C029CFD6989F"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7678A9249DEC1970}" {
+     m_sName "GC_MigratedSpawn_4327C029CFD6989F (340s)"
+     m_aConditions {
+      GC_MissionEventCondition "{81BC99F3A2F65D4A}" {
+       m_sEventName "GC_MigratedSpawn_4327C029CFD6989F"
+      }
+     }
+     m_Advanced GC_EventOptions "{0DF8B7B5EA59DCCC}" {
+      m_fDelay 340
+     }
+     m_aActions {
+      GC_SpawnAction "{82B3A78FC3A03154}" {
+       m_Spawn GC_PrefabSpawn "{DF6F71868326992F}" {
+        m_sLocation "US_Flyby_2"
+        m_sPrefab "{EAD777F4CDA11F16}Prefabs/Vehicles/Airplanes/F22/F22_Flyby.et"
+       }
+      }
+     }
+    }
+    GC_Event "{ED1D72AF3C600D28}" {
+     m_sName "GC_MigratedSpawn_FC1904D9D0EF24DC"
+     m_aConditions {
+      GC_GameModeStateCondition "{D90720C75E3B64D7}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{DB032AEB50F809AC}" {
+       m_sFlagName "Counter_AI"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{EE60252D5DB1AB19}" {
+       m_sMessage "GC_MigratedSpawn_FC1904D9D0EF24DC"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{639CD20359B66621}" {
+     m_sName "GC_MigratedSpawn_FC1904D9D0EF24DC (340s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A15510D1325243C0}" {
+       m_sEventName "GC_MigratedSpawn_FC1904D9D0EF24DC"
+      }
+     }
+     m_Advanced GC_EventOptions "{3FAB657949C8C2D2}" {
+      m_fDelay 340
+     }
+     m_aActions {
+      GC_SpawnAction "{A07C49677670CE24}" {
+       m_Spawn GC_PrefabSpawn "{AF4A315EFFD5D44A}" {
+        m_sLocation "US_Flyby_4"
+        m_sPrefab "{EAD777F4CDA11F16}Prefabs/Vehicles/Airplanes/F22/F22_Flyby.et"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 3697.287 353.796 1652.506
+ {
+  RadioManagerEntity {
+   ID "A79C4E0A43DEB824"
+   coords -26.889 23.04 -2.478
+  }
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   coords 0 0 0
+   Factions + {
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
+      Name "Soviet Air Force"
+      Icon "{B522FE456D7F091A}worlds/HitTheMan/Screening The Orb/330px-Flag_of_the_Soviet_Air_Force.svg.edds"
+     }
+     m_iOrder 1
+     m_sFactionFlag "{B522FE456D7F091A}worlds/HitTheMan/Screening The Orb/330px-Flag_of_the_Soviet_Air_Force.svg.edds"
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB79282FF010C}" {
+       }
+       SCR_CallsignInfo "{55CCB792829053B0}" {
+        m_sCallsign "Berkut"
+       }
+       SCR_CallsignInfo "{55CCB79282A19687}" {
+        m_sCallsign "2"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB79284A2F6C9}" {
+        m_sCallsign " "
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{64E2F896E232A50B}" {
+        m_sCallsign "5"
+       }
+       SCR_CallsignInfo "{64E2F896FFC45153}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{64E2F896E5466F70}" {
+        m_sCallsign "4v"
+       }
+      }
+     }
+    }
+    SCR_Faction "{64AA098AEA5B1498}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{64AA098204A61453}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{64AA098204A6145D}" {
+        m_sCallsign "9"
+       }
+       SCR_CallsignInfo "{64AA098204A61443}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{64AA098204A61441}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{64AA098204A61446}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{650AE15C940BA34B}" {
+        m_sCallsign "4"
+       }
+       SCR_CallsignInfo "{650AE15C8B7A1EC2}" {
+        m_sCallsign "5"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "Sunray"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "Alpha"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "Bravo"
+       }
+       SCR_CallsignInfo "{61677618371B4C91}" {
+        m_sCallsign "Charlie"
+       }
+       SCR_CallsignInfo "{65055DBDAC6F7853}" {
+        m_sCallsign "Whiskey"
+       }
+       SCR_CallsignInfo "{65055DB6CE3F5934}" {
+        m_sCallsign "Echo"
+       }
+       SCR_CallsignInfo "{650AE1494DA67E1D}" {
+        m_sCallsign "Foxtrot"
+       }
+      }
+     }
+     m_iFactionRadioFrequency 50000
+    }
+    SCR_Faction "{652F615735715119}" {
+    }
+   }
+  }
+  ScriptedChatEntity {
+   ID "A79C4E0A43DEB825"
+   coords -318.966 137.025 1.838
+  }
+  ItemPreviewManagerEntity : "{9F18C476AB860F3B}Prefabs/World/Game/ItemPreviewManager.et" {
+   ID "5ED9088735FF2DD5"
+   coords -12.245 -3.267 -7.529
+  }
+  SCR_EditorSettingsEntity {
+   ID "61B4E967E6C20362"
+   coords 0 0 0
+   m_bIsUnlimitedEditorLegal 1
+  }
+ }
+}
+GC_RadiusAreaEntity Trigger_East_Bridge : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 1172.418 7.356 3232.105
+ m_fRadius 70
+}
+GC_RadiusAreaEntity Trigger_West_Bridge : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 583.281 12.873 3145.985
+ m_fRadius 70
+}
+GC_RadiusAreaEntity Trigger_Farmstead : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 784.586 20.561 2719.888
+ m_fRadius 125
+}
+GC_RadiusAreaEntity Trigger_Northern_Sector : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 1204.653 14.886 2987.288
+ m_fRadius 150
+}
+GC_RadiusAreaEntity Trigger_Southern_Sector : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 1269.764 16.405 2804.789
+ m_fRadius 150
+}
