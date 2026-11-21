@@ -1,0 +1,927 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 3507.342 60.438 5709.875
+}
+GC_LobbyGameMode GC_MigratedMission : "{20EEA1DEBC58A202}worlds/TheLocalPub/RailroadReactions/RailroadReactions_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 7
+   m_iStartingMinutes 45
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{68671A3DB4372874}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 7
+     m_iStartingMinutes 45
+    }
+   }
+   m_bRandomWeatherChanges 1
+   m_bDateOverride 1
+   m_iDay 22
+   m_iMonth 7
+   m_iYear 2001
+  }
+  GC_PeakFactionPopulationComponent "{226DEECC26370AB0}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{A55E067B9AEBBB3F}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 360.000000
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{3FBBBF75424EFF90}" {
+     m_sName "CacheDestroyed"
+     m_aConditions {
+      GC_EntityDamageCondition "{2F28C07972F3B877}" {
+       m_sEntityName "AmmoCache"
+      }
+     }
+    }
+    GC_MissionFlag "{2E737AF0DEA6C600}" {
+     m_sName "SpawnQRF"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{DF0346B1270A55FF}" {
+     m_sName "USCacheVictory"
+     m_aConditions {
+      GC_ConditionGroup "{01B8528BE852261E}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{23841CDE116BC4A4}" {
+         m_sFlagName "CacheDestroyed"
+        }
+        GC_AreaCondition "{BB9C49549D1C069D}" {
+         m_sArea "GC_MigrationArea_USExtract"
+         m_Targets GC_CharacterAreaTargets "{C6FF4309E9588948}" {
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{DFD40765AB915478}" {
+          m_fRequiredShare 0.66
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{94C974CF75311D9D}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4EC3492106284589}" {
+       m_sMessage "USCacheVictory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2061E95B4CF7AE24}" {
+     m_sName "USCacheVictory (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3928C769FE7D9A19}" {
+       m_sEventName "USCacheVictory"
+      }
+     }
+     m_Advanced GC_EventOptions "{D487ABB195A0BEF8}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_MessageAction "{5FEF8179759C3513}" {
+       m_sTitle "US VICTORY"
+       m_sMessage "Well done troops!"\
+       "We've managed to destroy the supplies on the train and also extract out the AO."\
+       ""\
+       "Mission will end soon..."
+       m_aFactions {
+        "US"
+       }
+      }
+      GC_MessageAction "{8E870CAE47B245E8}" {
+       m_sTitle "US VICTORY"
+       m_sMessage "The pesky Americans!"\
+       "They've destroy our supplies which was critical to the success of our regiments next operation and also managed to flee the AO."\
+       ""\
+       "Better luck next time."\
+       "Mission will end soon..."
+       m_aFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{F682A16C6C5DEF13}" {
+     m_sName "USCacheVictory (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2C601A8E8ED476E2}" {
+       m_sEventName "USCacheVictory"
+      }
+     }
+     m_Advanced GC_EventOptions "{01A94862337034F2}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_EventControlAction "{E9D21DF44F1867E5}" {
+       m_sEventName "RUVictory"
+       m_iOperation 1
+      }
+     }
+    }
+    GC_Event "{60D34214B02C1571}" {
+     m_sName "USKillVictory"
+     m_aConditions {
+      GC_CustomScriptCondition "{7A61664466E23C22}" {
+       m_Script GC_PeakFactionPopulationCheck "{E3E25434543649A2}" {
+        m_sFaction "RHS_AFRF"
+        m_fRatio 0.95
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D3FF24A14D86DF54}" {
+       m_sMessage "USKillVictory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E2D1199360FCDB3C}" {
+     m_sName "USKillVictory (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{546ED1C2A4720D20}" {
+       m_sEventName "USKillVictory"
+      }
+     }
+     m_Advanced GC_EventOptions "{CEAEA35270E3913A}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_MessageAction "{08F5C4243103ACC6}" {
+       m_sTitle "US VICTORY"
+       m_sMessage "We've been decimated those pesky Russians!"\
+       "Smashing their defence, we've destroyed Ivan and sent him packing in a box."\
+       ""\
+       "Today is a glorious day."\
+       "Mission will end soon..."
+       m_aFactions {
+        "US"
+       }
+      }
+      GC_MessageAction "{C1ECBCC5E4467195}" {
+       m_sTitle "US VICTORY"
+       m_sMessage "We've been decimated!"\
+       "US forces have managed to smash our defence and complete destroy our troop."\
+       ""\
+       "Today is a sad day."\
+       "Mission will end soon..."
+       m_aFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{4AA164D6D5D04270}" {
+     m_sName "USKillVictory (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{395140922809C852}" {
+       m_sEventName "USKillVictory"
+      }
+     }
+     m_Advanced GC_EventOptions "{DBCE128E63F05E3D}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_EventControlAction "{D67E204990B29E1B}" {
+       m_sEventName "RUVictory"
+       m_iOperation 1
+      }
+     }
+    }
+    GC_Event "{48971623252FE66B}" {
+     m_sName "RUVictory"
+     m_aConditions {
+      GC_CustomScriptCondition "{C48B3B4A516CF80C}" {
+       m_Script GC_PeakFactionPopulationCheck "{E077E1FBB31834A6}" {
+        m_sFaction "US"
+        m_fRatio 0.75
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9E87EDA3C1409F18}" {
+       m_sMessage "RUVictory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{145BE7FC5B313A28}" {
+     m_sName "RUVictory (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DA8CFC11DC006851}" {
+       m_sEventName "RUVictory"
+      }
+     }
+     m_Advanced GC_EventOptions "{76101C4653565CAF}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_MessageAction "{A9991328388A0897}" {
+       m_sTitle "RU VICTORY"
+       m_sMessage "Christ on a bike!"\
+       "We've taken a real beating. Withdraw from the AO before we lose the anyone else!"\
+       ""\
+       "Better luck next time."\
+       "Mission will end soon..."
+       m_aFactions {
+        "US"
+       }
+      }
+      GC_MessageAction "{040379B0F9D5CA2F}" {
+       m_sTitle "RU VICTORY"
+       m_sMessage "Well done troops!"\
+       "We've managed to hold off for long enough to deal some good damage to US forces."\
+       "It appears they are withdrawing from the AO."\
+       ""\
+       "Very good job comrades."\
+       "Mission will end soon..."
+       m_aFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{62FACC755F850B42}" {
+     m_sName "RUVictory (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{026834C5114AFE21}" {
+       m_sEventName "RUVictory"
+      }
+     }
+     m_Advanced GC_EventOptions "{37CB18670213AA6E}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_EventControlAction "{946ECFF03DDC6C1C}" {
+       m_sEventName "USCacheVictory"
+       m_iOperation 1
+      }
+      GC_EventControlAction "{D1BDB32060D2A3DA}" {
+       m_sEventName "USKillVictory"
+       m_iOperation 1
+      }
+     }
+    }
+    GC_Event "{DE9E3922C65D2E62}" {
+     m_sName "QRFFlag (1800s)"
+     m_Advanced GC_EventOptions "{4183B626C4C6526B}" {
+      m_fDelay 1800
+     }
+     m_aActions {
+      GC_FlagAction "{DE96223A2BD400C9}" {
+       m_sFlagName "SpawnQRF"
+       m_iOperation 1
+       m_iAmount 1
+      }
+      GC_MessageAction "{68550D8BB6F5BC9C}" {
+       m_sTitle "Reinforcement are close!"
+       m_sMessage "We're approximately 5-10mins away."\
+       "See you soon."
+       m_aFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{49785F739E32C634}" {
+     m_sName "AdminMessages"
+     m_aConditions {
+      GC_MissionFlagCondition "{226B28B60A5BBEA6}" {
+       m_sFlagName "CacheDestroyed"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8BB4F02EC3865FC3}" {
+       m_sMessage "AdminMessages"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3849D3EC037255F3}" {
+     m_sName "AdminMessages (6s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1B77283988270024}" {
+       m_sEventName "AdminMessages"
+      }
+     }
+     m_Advanced GC_EventOptions "{330B46B7683B2655}" {
+      m_fDelay 6
+     }
+     m_aActions {
+      GC_MessageAction "{153382CFFF94F598}" {
+       m_sTitle "ADMIN MESSAGE"
+       m_sMessage "The cache is now destroyed."\
+       "BLUFOR/US forces should now begin withdrawing north across the northern bridge to the extraction area which is a 2000km radius from US spawn. Nearest point to the zone is North side of the rail bridge."
+       m_iDelivery 1
+      }
+     }
+    }
+    GC_Event "{AF3DB3E0684E4A35}" {
+     m_sName "GC_MigratedSpawn_880B75FD0E77A22F"
+     m_aConditions {
+      GC_GameModeStateCondition "{6A57453F6CFCFCCE}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{BD641F5147DD0974}" {
+       m_sFlagName "SpawnQRF"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9FD1A547580647D3}" {
+       m_sMessage "GC_MigratedSpawn_880B75FD0E77A22F"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AFDD7076A504F87E}" {
+     m_sName "GC_MigratedSpawn_880B75FD0E77A22F (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E6BCAC320C398056}" {
+       m_sEventName "GC_MigratedSpawn_880B75FD0E77A22F"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{AFDD7076A504F87E}" {
+       m_Spawn GC_CrewedVehicleSpawn "{49DF7253B76CD265}" {
+        m_sLocation "BRDM1"
+        m_sPrefab "{254289B9C09904AB}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{AF73400AD7000CAD}" {
+          m_aStations {
+           GC_SpawnCrewStation "{5B05C556E1B7224A}" {
+            m_aCharacters {
+             "{2B97973CD921E6AC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_AFRF_MSV_Flora_Crew.et"
+            }
+           }
+           GC_SpawnCrewStation "{8A888EDBB038B8C7}" {
+            m_aCharacters {
+             "{2B97973CD921E6AC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_AFRF_MSV_Flora_Crew.et"
+            }
+           }
+           GC_SpawnCrewStation "{CCDE85846E872B4D}" {
+            m_aCharacters {
+             "{2B97973CD921E6AC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_AFRF_MSV_Flora_Crew.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "FM1"
+           "M1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F00F10A31E867743}" {
+     m_sName "GC_MigratedSpawn_0AB23D734CDED47D"
+     m_aConditions {
+      GC_GameModeStateCondition "{F3C920D6EB9D1DCE}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{83C31A1DECA55CC2}" {
+       m_sFlagName "SpawnQRF"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{CA0B4E880B349D72}" {
+       m_sMessage "GC_MigratedSpawn_0AB23D734CDED47D"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8F1D02617C772DDD}" {
+     m_sName "GC_MigratedSpawn_0AB23D734CDED47D (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8303D6DC299A5461}" {
+       m_sEventName "GC_MigratedSpawn_0AB23D734CDED47D"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{8F1D02617C772DDD}" {
+       m_Spawn GC_CrewedVehicleSpawn "{B5FFE34A6215511A}" {
+        m_sLocation "BRDM2"
+        m_sPrefab "{254289B9C09904AB}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{D6F1B1D1D4C3A105}" {
+          m_aStations {
+           GC_SpawnCrewStation "{C763B1A2AA35BB77}" {
+            m_aCharacters {
+             "{2B97973CD921E6AC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_AFRF_MSV_Flora_Crew.et"
+            }
+           }
+           GC_SpawnCrewStation "{52D8431039F09F3E}" {
+            m_aCharacters {
+             "{2B97973CD921E6AC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_AFRF_MSV_Flora_Crew.et"
+            }
+           }
+           GC_SpawnCrewStation "{BAFD2CCDFD8F68AD}" {
+            m_aCharacters {
+             "{2B97973CD921E6AC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_AFRF_MSV_Flora_Crew.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "FM3"
+           "M2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E286CE6FFB6EBF45}" {
+     m_sName "GC_MigratedSpawn_DAF7B4F713C2655E"
+     m_aConditions {
+      GC_GameModeStateCondition "{46B655491FAE3EE7}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{22B62280542E19EF}" {
+       m_sFlagName "SpawnQRF"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0826C81EFA4239F7}" {
+       m_sMessage "GC_MigratedSpawn_DAF7B4F713C2655E"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FD3E016C43A6E575}" {
+     m_sName "GC_MigratedSpawn_DAF7B4F713C2655E (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F6943173871D309E}" {
+       m_sEventName "GC_MigratedSpawn_DAF7B4F713C2655E"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{FD3E016C43A6E575}" {
+       m_Spawn GC_CrewedVehicleSpawn "{2BEF7D6B01616EAD}" {
+        m_sLocation "BRDM3"
+        m_sPrefab "{254289B9C09904AB}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{B6A91E1EB8BF23A9}" {
+          m_aStations {
+           GC_SpawnCrewStation "{B50FFFDA2E37D287}" {
+            m_aCharacters {
+             "{2B97973CD921E6AC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_AFRF_MSV_Flora_Crew.et"
+            }
+           }
+           GC_SpawnCrewStation "{0133C64E45CC4E13}" {
+            m_aCharacters {
+             "{2B97973CD921E6AC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_AFRF_MSV_Flora_Crew.et"
+            }
+           }
+           GC_SpawnCrewStation "{6B5FD6BEE117865B}" {
+            m_aCharacters {
+             "{2B97973CD921E6AC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_AFRF_MSV_Flora_Crew.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "FM3"
+           "M3"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{68BAF39158FE67D5}" {
+     m_sName "GC_MigratedSpawn_E7A3F8A21EB82506"
+     m_aConditions {
+      GC_GameModeStateCondition "{02BB9ECEEE3100DB}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{555BBBAA415DC537}" {
+       m_sFlagName "SpawnQRF"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C0ABA26C58D25D7D}" {
+       m_sMessage "GC_MigratedSpawn_E7A3F8A21EB82506"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1241979F00D6AF63}" {
+     m_sName "GC_MigratedSpawn_E7A3F8A21EB82506 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B34A2F96F4617868}" {
+       m_sEventName "GC_MigratedSpawn_E7A3F8A21EB82506"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{1241979F00D6AF63}" {
+       m_Spawn GC_AIGroupSpawn "{4AE203A010CB2FA0}" {
+        m_sLocation "SQD1"
+        m_sPrefab "{D326327B255E9831}worlds/TheLocalPub/RailroadReactions/Prefabs/AI/Groups/MSV_Flora_RifleSquad.et"
+        m_aWaypoints {
+         "FM4"
+         "M5"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{024B8923DA373AB2}" {
+     m_sName "GC_MigratedSpawn_CFB8516AB9810C26"
+     m_aConditions {
+      GC_GameModeStateCondition "{B490BAB07573CF2C}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{03A9695FE76E5BFF}" {
+       m_sFlagName "SpawnQRF"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{37A11E9647457CA2}" {
+       m_sMessage "GC_MigratedSpawn_CFB8516AB9810C26"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A1DF67718A3B0B90}" {
+     m_sName "GC_MigratedSpawn_CFB8516AB9810C26 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4DBFE540B7CA6319}" {
+       m_sEventName "GC_MigratedSpawn_CFB8516AB9810C26"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{A1DF67718A3B0B90}" {
+       m_Spawn GC_AIGroupSpawn "{A8D43B622CE87676}" {
+        m_sLocation "SQD2"
+        m_sPrefab "{D326327B255E9831}worlds/TheLocalPub/RailroadReactions/Prefabs/AI/Groups/MSV_Flora_RifleSquad.et"
+        m_aWaypoints {
+         "FM5"
+         "M6"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{15F4E3AEA695B916}" {
+     m_sName "GC_MigratedSpawn_806FA50D8ACEE0AF"
+     m_aConditions {
+      GC_GameModeStateCondition "{CF656BBF991B9D50}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{D181FC55E3344B2D}" {
+       m_sFlagName "SpawnQRF"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{85EE1122518F7CEA}" {
+       m_sMessage "GC_MigratedSpawn_806FA50D8ACEE0AF"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{68E07D056D959893}" {
+     m_sName "GC_MigratedSpawn_806FA50D8ACEE0AF (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3E3C9D019DB0AF12}" {
+       m_sEventName "GC_MigratedSpawn_806FA50D8ACEE0AF"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{68E07D056D959893}" {
+       m_Spawn GC_AIGroupSpawn "{0F2980CE26A70E98}" {
+        m_sLocation "SQD3"
+        m_sPrefab "{D326327B255E9831}worlds/TheLocalPub/RailroadReactions/Prefabs/AI/Groups/MSV_Flora_RifleSquad.et"
+        m_aWaypoints {
+         "FM5"
+         "M6"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{02B5D701D2BADE78}" {
+     m_sName "GC_MigratedSpawn_F11B693D2C416B4B"
+     m_aConditions {
+      GC_GameModeStateCondition "{D450C740BE15A235}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{AC3DE1851E4338D3}" {
+       m_sFlagName "SpawnQRF"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{00D865A3345223AB}" {
+       m_sMessage "GC_MigratedSpawn_F11B693D2C416B4B"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{4AAC723C762E213F}" {
+     m_sName "GC_MigratedSpawn_F11B693D2C416B4B (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{FC96C2BF0E8B1114}" {
+       m_sEventName "GC_MigratedSpawn_F11B693D2C416B4B"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{4AAC723C762E213F}" {
+       m_Spawn GC_AIGroupSpawn "{2B3F9723AA5B6AA0}" {
+        m_sLocation "SQD4"
+        m_sPrefab "{D326327B255E9831}worlds/TheLocalPub/RailroadReactions/Prefabs/AI/Groups/MSV_Flora_RifleSquad.et"
+        m_aWaypoints {
+         "FM4"
+         "M5"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{95B9C9C3E0143D5D}" {
+     m_sName "GC_MigratedSpawn_DA61EAA8736B51B2"
+     m_aConditions {
+      GC_GameModeStateCondition "{07B2BB5D667B1011}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{7F7BC72A100651AE}" {
+       m_sFlagName "SpawnQRF"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{685D9FFC70F7CB1F}" {
+       m_sMessage "GC_MigratedSpawn_DA61EAA8736B51B2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{28911ECF677B58AF}" {
+     m_sName "GC_MigratedSpawn_DA61EAA8736B51B2 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B3020996026047C8}" {
+       m_sEventName "GC_MigratedSpawn_DA61EAA8736B51B2"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{28911ECF677B58AF}" {
+       m_Spawn GC_AIGroupSpawn "{5F81406635A5273B}" {
+        m_sLocation "SQD5"
+        m_sPrefab "{D326327B255E9831}worlds/TheLocalPub/RailroadReactions/Prefabs/AI/Groups/MSV_Flora_RifleSquad.et"
+        m_aWaypoints {
+         "FM6"
+         "M4"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{51DC5AF93E5AF88A}" {
+     m_sName "GC_MigratedSpawn_69057D00ACB68F13"
+     m_aConditions {
+      GC_GameModeStateCondition "{529257AF4C8E7B22}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{3E96930D2E9B5C95}" {
+       m_sFlagName "SpawnQRF"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E47F7327D9AB8B4F}" {
+       m_sMessage "GC_MigratedSpawn_69057D00ACB68F13"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{06F34A056CBE15C8}" {
+     m_sName "GC_MigratedSpawn_69057D00ACB68F13 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9A5863101D509EF5}" {
+       m_sEventName "GC_MigratedSpawn_69057D00ACB68F13"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{06F34A056CBE15C8}" {
+       m_Spawn GC_AIGroupSpawn "{8BA51E06BDA09701}" {
+        m_sLocation "SQD6"
+        m_sPrefab "{D326327B255E9831}worlds/TheLocalPub/RailroadReactions/Prefabs/AI/Groups/MSV_Flora_RifleSquad.et"
+        m_aWaypoints {
+         "FM6"
+         "M4"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{8BB9F59B193B9B65}" {
+     m_sName "GC_MigratedSpawn_4BE3459ED1092FE0"
+     m_aConditions {
+      GC_GameModeStateCondition "{39AD8E014CE2287A}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{5B6C8FAA24ABD7CA}" {
+       m_sFlagName "SpawnQRF"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FA4FAE571F7227B8}" {
+       m_sMessage "GC_MigratedSpawn_4BE3459ED1092FE0"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F996BF5BB22C00AE}" {
+     m_sName "GC_MigratedSpawn_4BE3459ED1092FE0 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{87F6498507635059}" {
+       m_sEventName "GC_MigratedSpawn_4BE3459ED1092FE0"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{F996BF5BB22C00AE}" {
+       m_Spawn GC_AIGroupSpawn "{755D9FB7382F1CA1}" {
+        m_sLocation "SQD7"
+        m_sPrefab "{D326327B255E9831}worlds/TheLocalPub/RailroadReactions/Prefabs/AI/Groups/MSV_Flora_RifleSquad.et"
+        m_aWaypoints {
+         "FM6"
+         "M4"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{6608071E4D1407FE}" {
+     m_sName "GC_MigratedSpawn_CC0A9442A7A8EAA2"
+     m_aConditions {
+      GC_GameModeStateCondition "{33208D757D32EBF9}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{C4A644CDCD12198A}" {
+       m_sFlagName "SpawnQRF"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8EAC27A6A7EDAFA8}" {
+       m_sMessage "GC_MigratedSpawn_CC0A9442A7A8EAA2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F457AA7F970DAC18}" {
+     m_sName "GC_MigratedSpawn_CC0A9442A7A8EAA2 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DD45035255DDF21F}" {
+       m_sEventName "GC_MigratedSpawn_CC0A9442A7A8EAA2"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{F457AA7F970DAC18}" {
+       m_Spawn GC_AIGroupSpawn "{EC0C5BF9CC76BF8B}" {
+        m_sLocation "SQD8"
+        m_sPrefab "{D326327B255E9831}worlds/TheLocalPub/RailroadReactions/Prefabs/AI/Groups/MSV_Flora_RifleSquad.et"
+        m_aWaypoints {
+         "FM4"
+         "M5"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{6B2653B8F71115BA}" {
+     m_sName "GC_MigratedSpawn_7F045BA4310F90A5"
+     m_aConditions {
+      GC_GameModeStateCondition "{B41C917392E0D19F}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{8ECA03C65502327E}" {
+       m_sFlagName "SpawnQRF"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{788030BF5DD2B468}" {
+       m_sMessage "GC_MigratedSpawn_7F045BA4310F90A5"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2526B6E7BF4C7715}" {
+     m_sName "GC_MigratedSpawn_7F045BA4310F90A5 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{79C156823F41577D}" {
+       m_sEventName "GC_MigratedSpawn_7F045BA4310F90A5"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{2526B6E7BF4C7715}" {
+       m_Spawn GC_AIGroupSpawn "{B6E1E5B81FC552B7}" {
+        m_sLocation "SQD9"
+        m_sPrefab "{D326327B255E9831}worlds/TheLocalPub/RailroadReactions/Prefabs/AI/Groups/MSV_Flora_RifleSquad.et"
+        m_aWaypoints {
+         "FM5"
+         "M6"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4DB10AD3C7F4F095}" {
+     m_sName "GC_MigratedSpawn_6022493A562DE554"
+     m_aConditions {
+      GC_GameModeStateCondition "{E0930B84B841A2D4}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{4427ED45910021B4}" {
+       m_sFlagName "SpawnQRF"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{813220E7543E8BD8}" {
+       m_sMessage "GC_MigratedSpawn_6022493A562DE554"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3D63FE08B8DF2A1E}" {
+     m_sName "GC_MigratedSpawn_6022493A562DE554 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{FB3872476B424C64}" {
+       m_sEventName "GC_MigratedSpawn_6022493A562DE554"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{3D63FE08B8DF2A1E}" {
+       m_Spawn GC_CrewedVehicleSpawn "{EFCF170C07A2B40C}" {
+        m_sLocation "BRDM4"
+        m_sPrefab "{254289B9C09904AB}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{BFAF024C8791274B}" {
+          m_aStations {
+           GC_SpawnCrewStation "{A3086F883554C1BD}" {
+            m_aCharacters {
+             "{2B97973CD921E6AC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_AFRF_MSV_Flora_Crew.et"
+            }
+           }
+           GC_SpawnCrewStation "{EE5FC814215E1853}" {
+            m_aCharacters {
+             "{2B97973CD921E6AC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_AFRF_MSV_Flora_Crew.et"
+            }
+           }
+           GC_SpawnCrewStation "{938E730721D939CE}" {
+            m_aCharacters {
+             "{2B97973CD921E6AC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_AFRF_MSV_Flora_Crew.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "FM1"
+           "M1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{1C605F7EFB45B7B5}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{C8EFFA5F9C3A875A}" {
+       m_fSeconds 360.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{A09467279F86C2A3}" {
+       m_aEntities {
+        "SetupZone"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 3513.955 60.376 5711.768
+}
