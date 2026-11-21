@@ -270,4 +270,34 @@ class GC_RouletteMap
 
 	[Attribute("", UIWidgets.Object)]
 	ref array<ref GC_RouletteScenarioOverride> m_aOverrides;
+
+	GC_RouletteCatalogue LoadCatalogue()
+	{
+		if (m_sCatalogue == string.Empty)
+			return null;
+		Resource resource = Resource.Load(m_sCatalogue);
+		if (!resource || !resource.IsValid())
+			return null;
+		BaseContainer config = resource.GetResource().ToBaseContainer();
+		if (!config)
+			return null;
+		return GC_RouletteCatalogue.Cast(BaseContainerTools.CreateInstanceFromContainer(config));
+	}
+
+	int GetMinimumAOSize(GC_RouletteCatalogue catalogue, int index)
+	{
+		if (!catalogue || !catalogue.m_aScenarios || !catalogue.m_aScenarios.IsIndexValid(index)
+			|| !catalogue.m_aScenarios[index])
+			return -1;
+
+		if (m_aOverrides)
+		{
+			foreach (GC_RouletteScenarioOverride entry : m_aOverrides)
+			{
+				if (entry && entry.m_iScenarioIndex == index && entry.m_minAOSize > 0)
+					return entry.m_minAOSize;
+			}
+		}
+		return catalogue.m_aScenarios[index].m_minAOSize;
+	}
 }
