@@ -1,0 +1,457 @@
+SCR_AIWorld : "{33A5B976E41B0A4C}Prefabs/AI/SCR_AIWorld_BadOrb_GC.et" {
+}
+GC_LobbyGameMode GC_MigratedMission : "{D7A888B77962BE09}worlds/Woody/COTVTXX_Kassel_Crashers/COTVTXX_Kassel_Crashers_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bRandomStartingDaytime 1
+   m_bRandomStartingWeather 1
+   m_bDateOverride 1
+   m_iDay 20
+   m_iMonth 6
+   m_iYear 1987
+  }
+  GC_PeakFactionPopulationComponent "{799366D41212C342}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{8D270132D68ACE68}" {
+     m_sName "USSR L"
+     m_aConditions {
+      GC_CustomScriptCondition "{F8C82C7B34BB947B}" {
+       m_Script GC_PeakFactionPopulationCheck "{FB9DF8FC53E717A0}" {
+        m_sFaction "USSR"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{198B214B6BE05285}" {
+       m_sMessage "USSR L"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B2071EE7391D4D27}" {
+     m_sName "USSR L (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C3FBAEBDBF5CBC63}" {
+       m_sEventName "USSR L"
+      }
+     }
+     m_Advanced GC_EventOptions "{7C6074F9213AA334}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{47CD535EF4FFF11A}" {
+       m_sTitle "USSR Failiure!"
+       m_sMessage "Soviet forces have sustained 80% casualties!"
+      }
+     }
+    }
+    GC_Event "{B39EC0A9AA082C01}" {
+     m_sName "USSR W"
+     m_aConditions {
+      GC_ConditionGroup "{DE972EF76536BFFB}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{3B488D40727A6862}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_AreaCondition "{0E617B546A15EA19}" {
+           m_sArea "GC_MigrationArea_obj1"
+           m_Targets GC_CharacterAreaTargets "{B074DDDC09825E16}" {
+            m_iWho 2
+            m_aFactions {
+             "USSR"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{E3CDE30C1D82451B}" {
+            m_fRequiredShare 0.9
+           }
+           m_Capture GC_AreaCaptureOptions "{1CD5814EED1826D7}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+            m_Messages GC_CaptureMessages "{6B81846BA9A2071B}" {
+             m_sLocation "the Southern Platoon"
+             m_sCaptured "The %1 has seized the position of %2."
+             m_sCapturing "The %1 is taking control of %2."
+             m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+             m_sLost "The %1 has lost control of %2."
+             m_sLosing "The %1 is losing control of %2."
+             m_sLossInterrupted "The %1 is no longer losing control of %2."
+            }
+           }
+          }
+          GC_AreaCondition "{DCC413697F85528E}" {
+           m_sArea "GC_MigrationArea_obj2"
+           m_Targets GC_CharacterAreaTargets "{4EAC845BCA7181D4}" {
+            m_iWho 2
+            m_aFactions {
+             "USSR"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{86B7EA920461EF29}" {
+            m_fRequiredShare 0.9
+           }
+           m_Capture GC_AreaCaptureOptions "{2BF0733858A67560}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+            m_Messages GC_CaptureMessages "{88AEFE632874D133}" {
+             m_sLocation "the Northern Platoon"
+             m_sCaptured "The %1 has seized the position of %2."
+             m_sCapturing "The %1 is taking control of %2."
+             m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+             m_sLost "The %1 has lost control of %2."
+             m_sLosing "The %1 is losing control of %2."
+             m_sLossInterrupted "The %1 is no longer losing control of %2."
+            }
+           }
+          }
+          GC_AreaCondition "{DA859962B99E5C4D}" {
+           m_sArea "GC_MigrationArea_obj3"
+           m_Targets GC_CharacterAreaTargets "{45BEAA0BFF45B8FD}" {
+            m_iWho 2
+            m_aFactions {
+             "USSR"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{63B4954847615153}" {
+            m_fRequiredShare 0.9
+           }
+           m_Capture GC_AreaCaptureOptions "{CA989BA15BAF9355}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+            m_Messages GC_CaptureMessages "{F14BB560D4ED176A}" {
+             m_sLocation "Kassel"
+             m_sCaptured "The %1 has taken control of %2."
+             m_sCapturing "The %1 is taking control of %2."
+             m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+             m_sLost "The %1 has lost control of %2."
+             m_sLosing "The %1 is losing control of %2."
+             m_sLossInterrupted "The %1 is no longer losing control of %2."
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{09D1B3034C466927}" {
+       m_sMessage "USSR W"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{854A27218E5668B5}" {
+     m_sName "USSR W (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{28BFA653C4F953EC}" {
+       m_sEventName "USSR W"
+      }
+     }
+     m_Advanced GC_EventOptions "{D97059E86D298CCC}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{89831A6808154E20}" {
+       m_sTitle "USSR Victory!"
+       m_sMessage "All three objectives complete."
+      }
+     }
+    }
+    GC_Event "{5F16EF147F005C4B}" {
+     m_sName "GC_MigratedSpawn_30AE0D144F91EC75"
+     m_aConditions {
+      GC_AreaCondition "{6E5ED1357A7AF118}" {
+       m_sArea "GC_MigrationArea_obj1"
+       m_Targets GC_CharacterAreaTargets "{326867E05085BF0D}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{4C21FA072EA2FA88}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{05C21F7280BB67D1}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F002EBFFBDE2590E}" {
+       m_sMessage "GC_MigratedSpawn_30AE0D144F91EC75"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{568EC02D6806A620}" {
+     m_sName "GC_MigratedSpawn_30AE0D144F91EC75 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{368652F59621CB7D}" {
+       m_sEventName "GC_MigratedSpawn_30AE0D144F91EC75"
+      }
+     }
+     m_Advanced GC_EventOptions "{F4E8B88D303EA9E1}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{B0D89F7CD5DCD437}" {
+       m_Spawn GC_CrewedVehicleSpawn "{3DD82B221B4ED465}" {
+        m_sLocation "GC_Spawner_30AE0D144F91EC75"
+        m_sPrefab "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MERDC.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{C1FD26F7D9087526}" {
+          m_aStations {
+           GC_SpawnCrewStation "{3C2039D7AC9E3F25}" {
+            m_aCharacters {
+             "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{D51423CEA000445B}" {
+            m_aCharacters {
+             "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{6319318186A59264}" {
+            m_aCharacters {
+             "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{226514DDAAF9F350}" {
+            m_aCharacters {
+             "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{E80FB59952B7B52E}" {
+            m_aCharacters {
+             "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "m1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{5EBA0F9C377CCC0D}" {
+     m_sName "GC_MigratedSpawn_30AE0D144F91EC75 (21s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3C155D2B6F4EFAE1}" {
+       m_sEventName "GC_MigratedSpawn_30AE0D144F91EC75"
+      }
+     }
+     m_Advanced GC_EventOptions "{E16F7DA43566E25C}" {
+      m_fDelay 21
+     }
+     m_aActions {
+      GC_SpawnAction "{568EC02D6806A620}" {
+       m_Spawn GC_CrewedVehicleSpawn "{45DB96CD5712B555}" {
+        m_sLocation "GC_Spawner_30AE0D144F91EC75"
+        m_sPrefab "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MERDC.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{34B7F147B07300EB}" {
+          m_aStations {
+           GC_SpawnCrewStation "{35EE7E158AB1FE52}" {
+            m_aCharacters {
+             "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{354F850F9C3EABB8}" {
+            m_aCharacters {
+             "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{B86F6D704DF3B594}" {
+            m_aCharacters {
+             "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{554862A5D679FA09}" {
+            m_aCharacters {
+             "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{2589D7030D190CEA}" {
+            m_aCharacters {
+             "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "m1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{8F16A317C998A55A}" {
+     m_sName "GC_MigratedSpawn_F25FDB5B0FB1B7B0"
+     m_aConditions {
+      GC_AreaCondition "{2A9B5627ADAB8CE2}" {
+       m_sArea "GC_MigrationArea_obj2"
+       m_Targets GC_CharacterAreaTargets "{2210FF4A418DBBCF}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{6A1B55E26AC9CB8E}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{6775635935826EF4}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{975F694D747231CC}" {
+       m_sMessage "GC_MigratedSpawn_F25FDB5B0FB1B7B0"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B6D6F700098138B0}" {
+     m_sName "GC_MigratedSpawn_F25FDB5B0FB1B7B0 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{AA4DE1D629C0F280}" {
+       m_sEventName "GC_MigratedSpawn_F25FDB5B0FB1B7B0"
+      }
+     }
+     m_Advanced GC_EventOptions "{6AB032F2098FD33F}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{A104E05BE8B279E6}" {
+       m_Spawn GC_CrewedVehicleSpawn "{ED2CDF2D9AD0DE92}" {
+        m_sLocation "GC_Spawner_F25FDB5B0FB1B7B0"
+        m_sPrefab "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MERDC.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{FF807FA78A7EAEF9}" {
+          m_aStations {
+           GC_SpawnCrewStation "{7D863028902DDBA8}" {
+            m_aCharacters {
+             "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{E8B12172BA4250D9}" {
+            m_aCharacters {
+             "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{20125F4E9C1C273C}" {
+            m_aCharacters {
+             "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{7DD93121F44163A6}" {
+            m_aCharacters {
+             "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{6086FAB1CFE11180}" {
+            m_aCharacters {
+             "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "m2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F3607367DD8C7BBD}" {
+     m_sName "GC_MigratedSpawn_F25FDB5B0FB1B7B0 (21s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B4D08F018321E1E4}" {
+       m_sEventName "GC_MigratedSpawn_F25FDB5B0FB1B7B0"
+      }
+     }
+     m_Advanced GC_EventOptions "{2BF30E452D2495BF}" {
+      m_fDelay 21
+     }
+     m_aActions {
+      GC_SpawnAction "{B6D6F700098138B0}" {
+       m_Spawn GC_CrewedVehicleSpawn "{CEEF91903C37541C}" {
+        m_sLocation "GC_Spawner_F25FDB5B0FB1B7B0"
+        m_sPrefab "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MERDC.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{76EEC5504149FD92}" {
+          m_aStations {
+           GC_SpawnCrewStation "{913234FA9E533BCC}" {
+            m_aCharacters {
+             "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{A5BC7D8AAF351E09}" {
+            m_aCharacters {
+             "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{A9B338FBFE6ABA1B}" {
+            m_aCharacters {
+             "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{D3A5C9F130C48FA6}" {
+            m_aCharacters {
+             "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{39AB9C1623B1B42B}" {
+            m_aCharacters {
+             "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "m2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 853.736 172.766 577.033
+}

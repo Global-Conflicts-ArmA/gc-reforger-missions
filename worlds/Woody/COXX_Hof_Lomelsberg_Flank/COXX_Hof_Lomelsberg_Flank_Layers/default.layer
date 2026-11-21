@@ -1,0 +1,363 @@
+SCR_AIWorld : "{33A5B976E41B0A4C}Prefabs/AI/SCR_AIWorld_BadOrb_GC.et" {
+}
+GC_LobbyGameMode GC_MigratedMission : "{51C15A17D089AB61}worlds/Woody/COXX_Hof_Lomelsberg_Flank/COXX_Hof_Lomelsberg_Flank_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bRandomStartingDaytime 1
+   m_bRandomStartingWeather 1
+   m_bDateOverride 1
+   m_iDay 12
+   m_iMonth 7
+   m_iYear 1987
+  }
+  GC_PeakFactionPopulationComponent "{DD50175F7DC7735C}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{A51E2A551F7BB3CD}" {
+     m_sName "L"
+     m_aConditions {
+      GC_CustomScriptCondition "{BED16360E6141EB2}" {
+       m_Script GC_PeakFactionPopulationCheck "{67CCE54938B65117}" {
+        m_sFaction "USSR"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{84A3443E7C992866}" {
+       m_sMessage "L"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F2DB10B9328FEB6F}" {
+     m_sName "L (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2504426F58CFCE40}" {
+       m_sEventName "L"
+      }
+     }
+     m_Advanced GC_EventOptions "{8F3E8678AC29C480}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{9875B17433349A3D}" {
+       m_sTitle "Mission Failiure"
+       m_sMessage "Soviet forces have sustained 80% casualties!"
+      }
+     }
+    }
+    GC_Event "{E0D925F1B5429F0E}" {
+     m_sName "W"
+     m_aConditions {
+      GC_ConditionGroup "{B5D9C5D52CC4FA67}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{E34E943A5EA05CFD}" {
+         m_sArea "GC_MigrationArea_obj1"
+         m_Targets GC_CharacterAreaTargets "{9E1651CE0AC96EFD}" {
+          m_iWho 2
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{7BD543B95F1611B0}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{5AF6F8737AC301DE}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{78241DA8400632D3}" {
+           m_sLocation "the highway overpass"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{967CF6987533B17B}" {
+         m_sArea "GC_MigrationArea_obj2"
+         m_Targets GC_CharacterAreaTargets "{42CF54550678466F}" {
+          m_iWho 2
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{73ED6D8487422ACD}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{C1933AE3F88D4B5C}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{2343C41D144794D0}" {
+           m_sLocation "Schaltstation 34J"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{1ADA3693B8A0A163}" {
+         m_sArea "GC_MigrationArea_obj3"
+         m_Targets GC_CharacterAreaTargets "{6A3936F4C4C5D390}" {
+          m_iWho 2
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{BFDA4D648CCFCD10}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{99BF5C0DE51B0A62}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{8E59618657B01BB8}" {
+           m_sLocation "Hof Lomelsberg North"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{BFE4464FA9F48930}" {
+         m_sArea "GC_MigrationArea_obj4"
+         m_Targets GC_CharacterAreaTargets "{D854BCF97F98FF9A}" {
+          m_iWho 2
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{18AB968103A87B82}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{8B9FEB04D239EA73}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{0EB1F384FB654D71}" {
+           m_sLocation "Hof Lomelsberg South"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E857086FD294BC39}" {
+       m_sMessage "W"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{DCCF5F0435E9DE1C}" {
+     m_sName "W (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F98B3D357945F69E}" {
+       m_sEventName "W"
+      }
+     }
+     m_Advanced GC_EventOptions "{3F1D57982B2EC9B5}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_MessageAction "{6361BA43CD13601A}" {
+       m_sTitle "USSR Victory!"
+       m_sMessage "All three objectives have been taken!"
+      }
+     }
+    }
+    GC_Event "{C94DFB812FE7E5F7}" {
+     m_sName "GC_MigratedSpawn_B56D2E9C72DCB23A"
+     m_aConditions {
+      GC_AreaCondition "{3D77AC863A8547FC}" {
+       m_sArea "GC_MigrationArea_obj2"
+       m_Targets GC_CharacterAreaTargets "{C3C3B554B9E4C56D}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{CDA295A3BFFC535E}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{D5388B9989612630}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{35F7D830984BA80A}" {
+       m_sMessage "GC_MigratedSpawn_B56D2E9C72DCB23A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F01988706BB3CBD2}" {
+     m_sName "GC_MigratedSpawn_B56D2E9C72DCB23A (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{855CA13E3F62B202}" {
+       m_sEventName "GC_MigratedSpawn_B56D2E9C72DCB23A"
+      }
+     }
+     m_Advanced GC_EventOptions "{ACC32479BBF2CD51}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{ABE56C2F07B555EE}" {
+       m_Spawn GC_AIGroupSpawn "{F4F06E5367A0CACF}" {
+        m_sLocation "GC_Spawner_B56D2E9C72DCB23A"
+        m_sPrefab "{DDF3799FA1387848}Prefabs/Groups/BLUFOR/Group_US_RifleSquad.et"
+        m_aWaypoints {
+         "m1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3B1485E770D78351}" {
+     m_sName "GC_MigratedSpawn_B56D2E9C72DCB23A (31s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E0A369F9CFAEC5A2}" {
+       m_sEventName "GC_MigratedSpawn_B56D2E9C72DCB23A"
+      }
+     }
+     m_Advanced GC_EventOptions "{20A23EE1E13C22B6}" {
+      m_fDelay 31
+     }
+     m_aActions {
+      GC_SpawnAction "{F01988706BB3CBD2}" {
+       m_Spawn GC_AIGroupSpawn "{089C6DA62E409746}" {
+        m_sLocation "GC_Spawner_B56D2E9C72DCB23A"
+        m_sPrefab "{DDF3799FA1387848}Prefabs/Groups/BLUFOR/Group_US_RifleSquad.et"
+        m_aWaypoints {
+         "m1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{31F40D61A89223A1}" {
+     m_sName "GC_MigratedSpawn_07D27AE81EB32D5C"
+     m_aConditions {
+      GC_AreaCondition "{48DED6651DC2B4BC}" {
+       m_sArea "GC_MigrationArea_obj3"
+       m_Targets GC_CharacterAreaTargets "{90BD264E5960DD28}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{8706201A7023291D}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{3899EF0F022AA424}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C6E07C6B43A6B386}" {
+       m_sMessage "GC_MigratedSpawn_07D27AE81EB32D5C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BEC21DA1D75E5423}" {
+     m_sName "GC_MigratedSpawn_07D27AE81EB32D5C (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6FA2CB03D1FEDF76}" {
+       m_sEventName "GC_MigratedSpawn_07D27AE81EB32D5C"
+      }
+     }
+     m_Advanced GC_EventOptions "{78F1C0AC2C6FE70C}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{BAAD37C6B0A993C2}" {
+       m_Spawn GC_AIGroupSpawn "{9FE7372E8AAC6DAC}" {
+        m_sLocation "GC_Spawner_07D27AE81EB32D5C"
+        m_sPrefab "{DDF3799FA1387848}Prefabs/Groups/BLUFOR/Group_US_RifleSquad.et"
+        m_aWaypoints {
+         "m2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{6357E22C7ECE46E6}" {
+     m_sName "GC_MigratedSpawn_07D27AE81EB32D5C (31s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8D277A124B55CB68}" {
+       m_sEventName "GC_MigratedSpawn_07D27AE81EB32D5C"
+      }
+     }
+     m_Advanced GC_EventOptions "{927834B665127971}" {
+      m_fDelay 31
+     }
+     m_aActions {
+      GC_SpawnAction "{BEC21DA1D75E5423}" {
+       m_Spawn GC_AIGroupSpawn "{9B84B47A015D71E1}" {
+        m_sLocation "GC_Spawner_07D27AE81EB32D5C"
+        m_sPrefab "{DDF3799FA1387848}Prefabs/Groups/BLUFOR/Group_US_RifleSquad.et"
+        m_aWaypoints {
+         "m2"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 1431.786 140.355 4335.55
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_bIsPlayable 1
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{65088932CEF4B786}" {
+        m_sCallsign "0"
+       }
+       SCR_CallsignInfo "{64E2F896E5466F70}" {
+        m_sCallsign "-"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
