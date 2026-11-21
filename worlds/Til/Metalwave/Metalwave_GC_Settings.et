@@ -2,16 +2,120 @@ GC_LobbyGameMode : "{A79C4E0A43DEB821}Prefabs/MP/Modes/GC_LobbyGameMode.et" {
  ID "B376164A1D8D7356"
  components {
   GC_LobbyManager "{6A137A39106A4973}" {
-   m_aMissionEvents + {
-    GC_Event "{59170DBFDAEBF6BE}" {
-     m_sName "Initialize faction respawn tickets"
-     m_aActions {
-      GC_RespawnTicketsAction "{9355CB8A97A2A659}" {
-       m_sFaction "GC_CDF"
-       m_iOperation 0
-       m_iAmount 5
-      }
+   m_aBriefings {
+    GC_Briefing "{423E7C6B78260D94}" {
+     m_iOrder 0
+     m_sTitle "Metalwave"
+     m_sContent "Russian mechanized assault on CDF held power plant"
+     m_eAudience 1
+    }
+    GC_Briefing "{8EE3288440E2F387}" {
+     m_iOrder 1
+     m_sTitle "Situation"
+     m_sContent "A. Enemy Forces"\
+     ""\
+     "A Russian motor rifle platoon (mounted in K-17s, with attached T-14) has been spotted near 028 040, preparing to assault the power plant."\
+     ""\
+     "Previously, another Russian squad established a firing position at 023 038."\
+     "It is expected that the enemy has a mortar available as fire support."\
+     ""\
+     "B. Friendly Forces"\
+     ""\
+     "One platoon of CDF, currently located at 018 036, tasked with blocking the road towards the power plant."\
+     ""\
+     "There are extensive trench networks to the east of the power plant, both south and north of the approaching road."\
+     ""\
+     "The third squad will remain at the power plant, with the exception of its vehicle which is in a fighting position 200m north. Another platoon has prepared positions to the south, but will not leave its positions."\
+     ""\
+     "Reinforcements have been requested - one squad will arrive after 15 minutes, a second one after 25 minutes. A QRF of decisive size will only arrive after 45 minutes."
+     m_aFactionKeys {
+      "GC_CDF"
      }
+    }
+    GC_Briefing "{7F166EAD05CEC2C0}" {
+     m_iOrder 2
+     m_sTitle "Situation"
+     m_sContent "A. Enemy Forces"\
+     ""\
+     "One platoon of CDF, defending the power plant to the west (018 036)."\
+     "Mostly infantry, possibly with lightly armored vehicle support, like a BTR or armed HMMWV."\
+     "Another CDF platoon is located to their south, but unlikely to leave their positions. It is possible there will be a small QRF, but a decisive response is not expected within 45 minutes."\
+     "The power plant area is protected by a significant trench network, extending up to 200m east."\
+     ""\
+     ""\
+     "B. Friendly Forces"\
+     ""\
+     "One K-17 based motor rifle platoon with an attached T-14 tank and 2B14 mortar, currrently located at 029 040."\
+     ""\
+     "Another squad previously established a firing position at 023 038."
+     m_aFactionKeys {
+      "RHS_AFRF"
+     }
+    }
+    GC_Briefing "{53AE4B186AA21301}" {
+     m_iOrder 3
+     m_sTitle "Mission"
+     m_sContent "Mission"\
+     ""\
+     "Defend against the Russian assault, or delay until reinforcements arrive at T+45m."\
+     "The enemy cannot be allowed to take control of the power plant area."\
+     ""\
+     ""\
+     "Service / Support"\
+     ""\
+     "Resupply: There is additional ammunition in the trenches"\
+     "Vehicle Support: One BTR-70 and one armed HMMWV"\
+     ""\
+     ""\
+     "Command / Signal"\
+     ""\
+     "0 - Platoon HQ"\
+     "1 - 1st Squad"\
+     "2 - 2nd Squad"
+     m_aFactionKeys {
+      "GC_CDF"
+     }
+    }
+    GC_Briefing "{B3168F2170898044}" {
+     m_iOrder 4
+     m_sTitle "Mission"
+     m_sContent "Mission"\
+     ""\
+     "Seize the power plant from the CDF, no later than T+45m."\
+     ""\
+     ""\
+     "Service / Support"\
+     ""\
+     "Resupply: Vehicle inventories"\
+     "Vehicle Support: 3x K-17 IFV, 1x T-14 Tank"\
+     "Fire Support: 1x 2B14 Mortar"\
+     "Mortar shells: 3000 supplies - 50 per HE, 10 per Smoke, 5 per Illumination"\
+     ""\
+     ""\
+     "Command / Signal"\
+     ""\
+     "HQ / 21 HQ - Platoon HQ"\
+     "21 - 1st Squad"\
+     "22 - 2nd Squad"\
+     "23 - 3rd Squad"\
+     "41 - Tank"\
+     "51 - Mortar"
+     m_aFactionKeys {
+      "RHS_AFRF"
+     }
+    }
+    GC_Briefing "{C6764E42D04813EE}" {
+     m_iOrder 5
+     m_sTitle "Notes"
+     m_sContent "The forest in the south has two small ravines, which are not crossable by vehicles."\
+     ""\
+     "Setup Timer: 4 minutes"\
+     "CDF have 5 respawns"\
+     ""\
+     "End Conditions:"\
+     "- AFRF Victory: AFRF has taken the power plant (2m capture timer)"\
+     "- CDF Victory: AFRF has suffered 90% casualties, or the 45m time limit is reached"
+     m_eAudience 2
     }
    }
   }

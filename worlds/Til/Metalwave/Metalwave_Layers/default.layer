@@ -1,0 +1,407 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 1870.689 9.622 3541.135
+}
+GC_LobbyGameMode GC_MigratedMission : "{D97A4002735D5AD9}worlds/Til/Metalwave/Metalwave_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{63022237BF4C2272}" {
+     m_sWeatherPresetName "Rainy"
+     m_iStartingHour 10
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{996BC81DE16D5077}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{B4694C8F3CC4C6E5}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 240.000000
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{314F849781F3EF1F}" {
+     m_sName "AFRF Victory"
+     m_aConditions {
+      GC_AreaCondition "{A36267758F6BCCB5}" {
+       m_sArea "GC_MigrationArea_obj"
+       m_Targets GC_CharacterAreaTargets "{556241310E3C675C}" {
+        m_iWho 2
+        m_aFactions {
+         "RHS_AFRF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{606733436D927181}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{F1668BBD01D8E315}" {
+        m_fSeconds 120
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_Messages GC_CaptureMessages "{07A3238EFDE41CE7}" {
+         m_sLocation "the power plant"
+         m_sCaptured "The %1 has taken control of %2."
+         m_sCapturing "The %1 is taking control of %2."
+         m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+         m_sLost "The %1 has lost control of %2."
+         m_sLosing "The %1 is losing control of %2."
+         m_sLossInterrupted "The %1 is no longer losing control of %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{EC2328F62DDC68F8}" {
+       m_sMessage "AFRF Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BFCF558D831C2686}" {
+     m_sName "AFRF Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3A364C05A8C128F9}" {
+       m_sEventName "AFRF Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{9BF8305C4FC02267}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{50C9B10DB6ACBFEF}" {
+       m_sTitle "Russian Victory"
+       m_sMessage "The Russians seized the power plant, making the Chernarussian positions untenable."
+      }
+     }
+    }
+    GC_Event "{98336617C910B695}" {
+     m_sName "AFRF Victory (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E680E11DF3A5B84D}" {
+       m_sEventName "AFRF Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{BD693C9C1907754D}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_EndMissionAction "{27F31E7F4B0AB8FC}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{B8923EE4CE38B8D6}" {
+     m_sName "CDF Victory"
+     m_aConditions {
+      GC_CustomScriptCondition "{13CAA7717871467D}" {
+       m_Script GC_PeakFactionPopulationCheck "{E8BE9120A12DFACE}" {
+        m_sFaction "RHS_AFRF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E6C3D3F29B96C1D1}" {
+       m_sMessage "CDF Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{61AA227CA06A9ADD}" {
+     m_sName "CDF Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D4FB2DE6F8C6593F}" {
+       m_sEventName "CDF Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{E02EF0A892D0E254}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{11459B531EA5DEB3}" {
+       m_sTitle "CDF Victory"
+       m_sMessage "The Russians are retreating due to high casualties."
+      }
+     }
+    }
+    GC_Event "{1CE5CC07C7C590DE}" {
+     m_sName "CDF Victory (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A7CCF24B8E4BBC7A}" {
+       m_sEventName "CDF Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{5AB336AF5937E7F0}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_EndMissionAction "{723572DDC4DCD4EB}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_CDF"
+       }
+      }
+     }
+    }
+    GC_Event "{F10180479518A9D5}" {
+     m_sName "Time Limit (2400s)"
+     m_Advanced GC_EventOptions "{B00DDEE3C3FA03F8}" {
+      m_fDelay 2400
+     }
+     m_aActions {
+      GC_MessageAction "{5F9877DFF5A8129D}" {
+       m_sTitle "CDF reinforcements arriving soon"
+       m_sMessage "The mission will end in 5 minutes."
+      }
+     }
+    }
+    GC_Event "{37DB84BEB808425F}" {
+     m_sName "Time Limit (2705s)"
+     m_Advanced GC_EventOptions "{310CCB5137DE7C26}" {
+      m_fDelay 2705
+     }
+     m_aActions {
+      GC_MessageAction "{7958F27981B140A6}" {
+       m_sTitle "CDF Victory"
+       m_sMessage "The CDF held out long enough for a decisive amount of reinforcements to arrive."
+      }
+     }
+    }
+    GC_Event "{CC9316A2ACA93A02}" {
+     m_sName "Time Limit (2720s)"
+     m_Advanced GC_EventOptions "{A91EBDECA69660C0}" {
+      m_fDelay 2720
+     }
+     m_aActions {
+      GC_EndMissionAction "{9456C8B9158E488B}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_CDF"
+       }
+      }
+     }
+    }
+    GC_Event "{A7C7940F71F8D1B4}" {
+     m_sName "GC_MigratedSpawn_3431DA987BA1D6EA (1515s)"
+     m_Advanced GC_EventOptions "{51DE35F16860BC6A}" {
+      m_fDelay 1515
+     }
+     m_aActions {
+      GC_SpawnAction "{0BC2BF6A522090BA}" {
+       m_Spawn GC_CrewedVehicleSpawn "{0C9A0E7F865CF152}" {
+        m_sLocation "spawner_qrf2"
+        m_sPrefab "{FCEC036D7F903A66}Prefabs/Vehicles/Wheeled/BTR70/CDF/BTR70_CDF.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{13195E54B06FE267}" {
+          m_aStations {
+           GC_SpawnCrewStation "{A19217DFBE2C73E0}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{7AFB5290811A6B99}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Modern_Mech/Character_CDF_Modern_Crew.et"
+             "{7AFB5290811A6B99}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Modern_Mech/Character_CDF_Modern_Crew.et"
+             "{7AFB5290811A6B99}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Modern_Mech/Character_CDF_Modern_Crew.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "wp_qrf_2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4B2B7894E305DE9D}" {
+     m_sName "GC_MigratedSpawn_4B2BB25199FDB9A3 (1500s)"
+     m_Advanced GC_EventOptions "{EFF2743EBBBDBD4A}" {
+      m_fDelay 1500
+     }
+     m_aActions {
+      GC_SpawnAction "{CE69367ED3E6FF30}" {
+       m_Spawn GC_AIGroupSpawn "{CA902A45679338B0}" {
+        m_sLocation "spawner_qrf1"
+        m_sPrefab "{F005DCAB1810AAE2}Prefabs/Groups/BLUFOR/CDF/Mech_Modern/Group_CDF_Modern_MechSquadNoCrew_1.et"
+        m_aWaypoints {
+         "wp_qrf_1"
+         "wp_def_8"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C0056B66E36FA28B}" {
+     m_sName "GC_MigratedSpawn_E513EAFB987E1C74 (900s)"
+     m_Advanced GC_EventOptions "{205D09AAC34C4F50}" {
+      m_fDelay 900
+     }
+     m_aActions {
+      GC_SpawnAction "{3DEB993390DEE538}" {
+       m_Spawn GC_AIGroupSpawn "{7B7F6B65153F23F7}" {
+        m_sLocation "spawner_qrf3"
+        m_sPrefab "{9C51E84BA4D425CC}Prefabs/Groups/BLUFOR/CDF/Mech_Modern/Group_CDF_Modern_MechSquadNoCrew_2.et"
+        m_aWaypoints {
+         "wp_qrf_3"
+         "wp_qrf_4"
+         "wp_def_9"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4AD8E0E44D53BA9F}" {
+     m_sName "GC_MigratedSpawn_C66AA1584ABDBF4F (915s)"
+     m_Advanced GC_EventOptions "{AEA5C61591A0C5D0}" {
+      m_fDelay 915
+     }
+     m_aActions {
+      GC_SpawnAction "{7A7E1BD9F9A87F8B}" {
+       m_Spawn GC_CrewedVehicleSpawn "{D8C08FB7615B4709}" {
+        m_sLocation "spawner_qrf4"
+        m_sPrefab "{FCEC036D7F903A66}Prefabs/Vehicles/Wheeled/BTR70/CDF/BTR70_CDF.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{C90E123C71BFD881}" {
+          m_aStations {
+           GC_SpawnCrewStation "{789AABC87AA8987A}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{7AFB5290811A6B99}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Modern_Mech/Character_CDF_Modern_Crew.et"
+             "{7AFB5290811A6B99}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Modern_Mech/Character_CDF_Modern_Crew.et"
+             "{7AFB5290811A6B99}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Modern_Mech/Character_CDF_Modern_Crew.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 10
+          m_aWaypoints {
+           "wp_qrf_6"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{331D3D28DBED9F29}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{FA2F28F4B276476A}" {
+       m_fSeconds 240.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{92CD2991783AB65A}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+   m_aAuthoredRespawns {
+    GC_AuthoredFactionRespawn "{8186862E64218727}" {
+     m_sFaction "GC_CDF"
+     m_iTickets 5
+     m_iIntervalMs 0
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{5977478D568C092E}" {
+        m_sCallsign "221 HQ"
+       }
+       SCR_CallsignInfo "{5977478D568C092D}" {
+        m_sCallsign "221"
+       }
+       SCR_CallsignInfo "{5977478D568D935E}" {
+        m_sCallsign "222"
+       }
+       SCR_CallsignInfo "{5977478D568D935F}" {
+        m_sCallsign "223"
+       }
+       SCR_CallsignInfo "{64E30A2D51F0B029}" {
+        m_sCallsign "241"
+       }
+       SCR_CallsignInfo "{64E30A2D52199F03}" {
+        m_sCallsign "251"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3%4"
+     }
+    }
+    SCR_Faction "{5E5106B25048F22B}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5E5106B0E940AF39}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "0"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3: %4"
+      m_sCallsignCharacterWithRoleFormat "%3: %4"
+     }
+    }
+   }
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{6144B0BE2EAC6897}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneMedium.et" {
+ coords 2955.802 27.353 4085.601
+ m_fWarnRadius 45
+ m_fZoneRadius 70
+ m_fZoneTeleportedRadius 80
+}
+GenericEntity spawner_qrf2 {
+ coords 1565.704 4.472 3471.999
+ angleX 8.72
+ angleY 47.884
+ angleZ 1.69
+}
+GenericEntity spawner_qrf1 {
+ coords 1534.884 8.332 3554.717
+ angleX 8.72
+ angleY 47.884
+ angleZ 1.69
+}
+GenericEntity spawner_qrf3 {
+ coords 1706.433 3.387 3351.018
+ angleX 8.72
+ angleY 47.884
+ angleZ 1.69
+}
+GenericEntity spawner_qrf4 {
+ coords 1659.892 1.657 3305.658
+ angleY 47.993
+}
+GC_RadiusAreaEntity GC_MigrationArea_obj : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 1804.127 9.721 3701.177
+ m_fRadius 60
+}
