@@ -1,0 +1,3123 @@
+SCR_AIWorld : "{3DE6090FC602E566}Prefabs/AI/SCR_AIWorld_Takistan.et" {
+ coords 4512.356 102.48 11792.341
+}
+GC_LobbyGameMode GC_MigratedMission : "{BC5162A0CBB868B5}worlds/HitTheMan/Anti Insurgency Patrol/AntiInsurgencyPatrol_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 4
+   m_iStartingMinutes 50
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{650415CBAFAE6875}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 4
+     m_iStartingMinutes 50
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 21
+   m_iMonth 7
+   m_iYear 1983
+  }
+  GC_MissionEnvironmentComponent "{56ACD1F81A135881}" {
+   m_fFogAmount 0.2
+   m_fFogHeightDensity 0.2
+   m_fRainIntensity 0
+   m_fWindSpeed 6
+  }
+  GC_PeakFactionPopulationComponent "{E9F94D1B28443C19}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{29C241D433514BD5}" {
+     m_sName "Insurgent/US Victory Casualties"
+     m_aConditions {
+      GC_CustomScriptCondition "{C5FD7D974224D7FC}" {
+       m_Script GC_PeakFactionPopulationCheck "{179793632D550A6C}" {
+        m_sFaction "GC_TKA"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{516F8CEBCBBB72EE}" {
+       m_sMessage "Insurgent/US Victory Casualties"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C6CC92336A5ABCBE}" {
+     m_sName "Insurgent/US Victory Casualties (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DC5175F691A5BCE1}" {
+       m_sEventName "Insurgent/US Victory Casualties"
+      }
+     }
+     m_Advanced GC_EventOptions "{D65752628A06EB7E}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{5B987FEBC321F111}" {
+       m_sTitle "Insurgent / US  Victory"
+       m_sMessage "Takistan Army Sustained too many casualties.. GM Discretion when to end the mission"
+      }
+     }
+    }
+    GC_Event "{3BC3A62BF77F9EEA}" {
+     m_sName "Time Limit (1800s)"
+     m_Advanced GC_EventOptions "{CF74AB93ECB90725}" {
+      m_fDelay 1800
+     }
+     m_aActions {
+      GC_MessageAction "{84A0B85FD6B87ABB}" {
+       m_sTitle "Time Limit"
+       m_sMessage "The Mission will end in 30 minutes"
+      }
+     }
+    }
+    GC_Event "{CC1066B6CD4D113A}" {
+     m_sName "Time Limit (2400s)"
+     m_Advanced GC_EventOptions "{BA354A997E9ABF74}" {
+      m_fDelay 2400
+     }
+     m_aActions {
+      GC_MessageAction "{4709FC0E0100A828}" {
+       m_sTitle "Time Limit"
+       m_sMessage "The Mission will end in 20 minutes"
+      }
+     }
+    }
+    GC_Event "{6D6800375647D732}" {
+     m_sName "Time Limit (3000s)"
+     m_Advanced GC_EventOptions "{1825597776AA810A}" {
+      m_fDelay 3000
+     }
+     m_aActions {
+      GC_MessageAction "{BE918628602A7E10}" {
+       m_sTitle "Time Limit"
+       m_sMessage "The Mission will end in 10 minutes"
+      }
+     }
+    }
+    GC_Event "{1E02006A3C5C2489}" {
+     m_sName "Time Limit (3600s)"
+     m_Advanced GC_EventOptions "{2CC41065D843DD83}" {
+      m_fDelay 3600
+     }
+     m_aActions {
+      GC_MessageAction "{D4ED8F791A269D59}" {
+       m_sTitle "Insurgent / US Victory"
+       m_sMessage "Insurgents managed to hold off the Takistans.. with the help of the US.. GM Discretion when to end the mission"
+      }
+     }
+    }
+    GC_Event "{C12BD072E098B444}" {
+     m_sName "Time Limit (5410s)"
+     m_Advanced GC_EventOptions "{9A214BF96A1D4CA5}" {
+      m_fDelay 5410
+     }
+     m_aActions {
+      GC_EndMissionAction "{F3FC352EFC845602}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{07A612F7E3C45F01}" {
+     m_sName "US Invasion"
+     m_aConditions {
+      GC_AreaCondition "{2F063DD68CDC644B}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{4EC211A84DD54922}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{B15853815070EC98}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{9B4C72A5C65D8D37}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{85C15F8738C82822}" {
+       m_sMessage "US Invasion"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{4CC50C351A2ECDB1}" {
+     m_sName "US Invasion (22s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E5357A43243B8789}" {
+       m_sEventName "US Invasion"
+      }
+     }
+     m_Advanced GC_EventOptions "{8165D56BBAEA22D6}" {
+      m_fDelay 22
+     }
+     m_aActions {
+      GC_MessageAction "{4BA57263E1996A15}" {
+       m_sTitle "Battalion Radio Report:"
+       m_sMessage "The US has invaded Takistan, mechanized forces are crossing the border with the aid of their airforce.. Report says there's a Mechanized Company inbound on your location.. Fall back to Nagara and aid in its defence"
+      }
+     }
+    }
+    GC_Event "{E3084D1DB2CE0B56}" {
+     m_sName "US Invasion (900s)"
+     m_aConditions {
+      GC_MissionEventCondition "{679C4A087CCFB4D4}" {
+       m_sEventName "US Invasion"
+      }
+     }
+     m_Advanced GC_EventOptions "{9D859E871756C16E}" {
+      m_fDelay 900
+     }
+     m_aActions {
+      GC_MessageAction "{06CD58BE75A271FE}" {
+       m_sTitle "Takistan has \"Won\""
+       m_sMessage "You survived for 15min or fell back, Takistan Pyrrhic Victory.. GM Discretion when to end the mission"
+      }
+     }
+    }
+    GC_Event "{B75F7C03BDF0E5B3}" {
+     m_sName "GC_MigratedSpawn_B8004198DD9F9A67"
+     m_aConditions {
+      GC_AreaCondition "{97D09DEEA2500405}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{D15F7C0415B54733}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{45CB49EDBEA53C8D}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{58B5986B07263257}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C22AA7DE959F30F5}" {
+       m_sMessage "GC_MigratedSpawn_B8004198DD9F9A67"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E5F3EAE3F05CBDC8}" {
+     m_sName "GC_MigratedSpawn_B8004198DD9F9A67 (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D04917721F0B279F}" {
+       m_sEventName "GC_MigratedSpawn_B8004198DD9F9A67"
+      }
+     }
+     m_Advanced GC_EventOptions "{DA1CE54942DCF20B}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_SpawnAction "{0088810C54A1ABD3}" {
+       m_Spawn GC_CrewedVehicleSpawn "{67E6D1FE1F7D3765}" {
+        m_sLocation "BTR_Defender_2"
+        m_sPrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{AA0B2A14BD8C2A44}" {
+          m_aStations {
+           GC_SpawnCrewStation "{BC0DC50C99F14028}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{63DCA5C445717DA8}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/P/Character_GC_TKA_Vic_GUNR_P.et"
+             "{71FB3985EBCE5161}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/P/Character_GC_TKA_Vic_DRVR_P.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "AI_Def4"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{CF6E593C174A3899}" {
+     m_sName "GC_MigratedSpawn_58B42D858F9F4A95"
+     m_aConditions {
+      GC_AreaCondition "{3066712E9D471F6D}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{FC518EE81403FD76}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{9D110B3415E75730}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{57F69A49EAAEF4EE}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7F9C4B66CD8D3826}" {
+       m_sMessage "GC_MigratedSpawn_58B42D858F9F4A95"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C499691C6F4AB1E0}" {
+     m_sName "GC_MigratedSpawn_58B42D858F9F4A95 (30s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DA0FD09F83462EB7}" {
+       m_sEventName "GC_MigratedSpawn_58B42D858F9F4A95"
+      }
+     }
+     m_Advanced GC_EventOptions "{C48EAE58927F4CB0}" {
+      m_fDelay 30
+     }
+     m_aActions {
+      GC_SpawnAction "{C383DCDC5B92FF19}" {
+       m_Spawn GC_PrefabSpawn "{EEADB4996A8C09F0}" {
+        m_sLocation "Cas_test6"
+        m_sPrefab "{30263B4F1FB2A0F2}Prefabs/Systems/Artillery/ArtilleryWrapper_WTF.et"
+       }
+      }
+     }
+    }
+    GC_Event "{C68F8BE462BF0AEE}" {
+     m_sName "GC_MigratedSpawn_63D8403137271A18"
+     m_aConditions {
+      GC_AreaCondition "{392946AEE4D3E319}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{381F7F8266C19E4C}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{B36F03D686AB0107}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{2E8C64D20D4C2EDD}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E7F9EE50301CDF42}" {
+       m_sMessage "GC_MigratedSpawn_63D8403137271A18"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A7D6AB03FF405932}" {
+     m_sName "GC_MigratedSpawn_63D8403137271A18 (29s)"
+     m_aConditions {
+      GC_MissionEventCondition "{96701CE76312A62C}" {
+       m_sEventName "GC_MigratedSpawn_63D8403137271A18"
+      }
+     }
+     m_Advanced GC_EventOptions "{E94EE0B0B1602C6F}" {
+      m_fDelay 29
+     }
+     m_aActions {
+      GC_SpawnAction "{1D51E21BB3F4A863}" {
+       m_Spawn GC_PrefabSpawn "{4DA12D75839F07F0}" {
+        m_sLocation "Cas_test5"
+        m_sPrefab "{30263B4F1FB2A0F2}Prefabs/Systems/Artillery/ArtilleryWrapper_WTF.et"
+       }
+      }
+     }
+    }
+    GC_Event "{D0EDFF1F2117249D}" {
+     m_sName "GC_MigratedSpawn_BA3BB3B1CA13D4FB"
+     m_aConditions {
+      GC_AreaCondition "{E9E226E49226205E}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{8124D72DF068AB8D}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{1E18CEDA775E5CE2}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{7FC5C428263EF743}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{60006F3B803F57B4}" {
+       m_sMessage "GC_MigratedSpawn_BA3BB3B1CA13D4FB"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{63444E39C5B16C38}" {
+     m_sName "GC_MigratedSpawn_BA3BB3B1CA13D4FB (31s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2E3CB4E4786A4E33}" {
+       m_sEventName "GC_MigratedSpawn_BA3BB3B1CA13D4FB"
+      }
+     }
+     m_Advanced GC_EventOptions "{8DEF9D25713181C8}" {
+      m_fDelay 31
+     }
+     m_aActions {
+      GC_SpawnAction "{907B3725D605F120}" {
+       m_Spawn GC_PrefabSpawn "{E43FC09D99EDF7F3}" {
+        m_sLocation "Cas_test7"
+        m_sPrefab "{30263B4F1FB2A0F2}Prefabs/Systems/Artillery/ArtilleryWrapper_WTF.et"
+       }
+      }
+     }
+    }
+    GC_Event "{71B554B13CBB913B}" {
+     m_sName "GC_MigratedSpawn_13985C9E23131414"
+     m_aConditions {
+      GC_AreaCondition "{6D7E6A6394C56F2B}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{548419E1FABE8850}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{763E3DD2B89892E5}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{66EBE8DF4CC098CE}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{42CDE6541087A2B1}" {
+       m_sMessage "GC_MigratedSpawn_13985C9E23131414"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AD64C8738C793146}" {
+     m_sName "GC_MigratedSpawn_13985C9E23131414 (32s)"
+     m_aConditions {
+      GC_MissionEventCondition "{57872D4D449697BC}" {
+       m_sEventName "GC_MigratedSpawn_13985C9E23131414"
+      }
+     }
+     m_Advanced GC_EventOptions "{430035024A6B8BE8}" {
+      m_fDelay 32
+     }
+     m_aActions {
+      GC_SpawnAction "{3DB948DD160A4DE2}" {
+       m_Spawn GC_PrefabSpawn "{CDC4E29C4A7D2AB8}" {
+        m_sLocation "Cas_test8"
+        m_sPrefab "{30263B4F1FB2A0F2}Prefabs/Systems/Artillery/ArtilleryWrapper_WTF.et"
+       }
+      }
+     }
+    }
+    GC_Event "{51D2989A491F120F}" {
+     m_sName "GC_MigratedSpawn_0A3A976A8264C3D5"
+     m_aConditions {
+      GC_AreaCondition "{5262CEFBF3539486}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{BE91875FCA4D37AE}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{76D8B2DDFA5B77AB}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{FF8198D619C6AF64}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D18BD8AF4314A7B5}" {
+       m_sMessage "GC_MigratedSpawn_0A3A976A8264C3D5"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9D64B25A4F185EFF}" {
+     m_sName "GC_MigratedSpawn_0A3A976A8264C3D5 (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2D955E9545E7883A}" {
+       m_sEventName "GC_MigratedSpawn_0A3A976A8264C3D5"
+      }
+     }
+     m_Advanced GC_EventOptions "{4EA45068516D2BE7}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_SpawnAction "{FA8D1C700C6BE317}" {
+       m_Spawn GC_PrefabSpawn "{3D245CF29B574CEB}" {
+        m_sLocation "Cas_test"
+        m_sPrefab "{EDD3E14E481BDA62}Prefabs/Vehicles/Airplanes/FA18A/FA18A_GBU_CAS.et"
+       }
+      }
+     }
+    }
+    GC_Event "{5BD0FF8205310161}" {
+     m_sName "GC_MigratedSpawn_7AA6E4B44BD05A07"
+     m_aConditions {
+      GC_AreaCondition "{FDA3B1CA10167B4B}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{461C69FA4901D97A}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{A17B51C6E6F5AF7B}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{78EEEA06B4284F91}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{AA61A8FC370A5ACE}" {
+       m_sMessage "GC_MigratedSpawn_7AA6E4B44BD05A07"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1C6DC93672E839DF}" {
+     m_sName "GC_MigratedSpawn_7AA6E4B44BD05A07 (16s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BAC339C42B9BA589}" {
+       m_sEventName "GC_MigratedSpawn_7AA6E4B44BD05A07"
+      }
+     }
+     m_Advanced GC_EventOptions "{BF9D0D3892896B36}" {
+      m_fDelay 16
+     }
+     m_aActions {
+      GC_SpawnAction "{D91D1006789266CA}" {
+       m_Spawn GC_PrefabSpawn "{1C36BB30E74FF549}" {
+        m_sLocation "Cas_test2"
+        m_sPrefab "{EDD3E14E481BDA62}Prefabs/Vehicles/Airplanes/FA18A/FA18A_GBU_CAS.et"
+       }
+      }
+     }
+    }
+    GC_Event "{064454BDD8A05F48}" {
+     m_sName "GC_MigratedSpawn_33F23C844AFDEB0C"
+     m_aConditions {
+      GC_AreaCondition "{594A1F4074A6333C}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{80FC84BCF3B88E56}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{F8EF32FC04CF7672}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{0268D44C9CAEA466}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D106E9A0ED156B3F}" {
+       m_sMessage "GC_MigratedSpawn_33F23C844AFDEB0C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2A47DF78C5DE9CAF}" {
+     m_sName "GC_MigratedSpawn_33F23C844AFDEB0C (18s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3BD57D9650018D28}" {
+       m_sEventName "GC_MigratedSpawn_33F23C844AFDEB0C"
+      }
+     }
+     m_Advanced GC_EventOptions "{A765B214662E659B}" {
+      m_fDelay 18
+     }
+     m_aActions {
+      GC_SpawnAction "{1667854469B5ECE8}" {
+       m_Spawn GC_PrefabSpawn "{E6D16DAD42CA1D8C}" {
+        m_sLocation "Cas_test4"
+        m_sPrefab "{EDD3E14E481BDA62}Prefabs/Vehicles/Airplanes/FA18A/FA18A_GBU_CAS.et"
+       }
+      }
+     }
+    }
+    GC_Event "{57915D4F9A954D80}" {
+     m_sName "GC_MigratedSpawn_208B8DF7553822C0"
+     m_aConditions {
+      GC_AreaCondition "{C1174BB9FF6538E6}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{0EEF093DA1EC7DBC}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{843A0833813E6400}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{0B9DDB6A9263BDB7}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0267FFC3C0EF116A}" {
+       m_sMessage "GC_MigratedSpawn_208B8DF7553822C0"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{266D7071552628BB}" {
+     m_sName "GC_MigratedSpawn_208B8DF7553822C0 (17s)"
+     m_aConditions {
+      GC_MissionEventCondition "{648C6EF23E62E0B8}" {
+       m_sEventName "GC_MigratedSpawn_208B8DF7553822C0"
+      }
+     }
+     m_Advanced GC_EventOptions "{F785AE18413E30CD}" {
+      m_fDelay 17
+     }
+     m_aActions {
+      GC_SpawnAction "{DA4C5A88A13F4A94}" {
+       m_Spawn GC_PrefabSpawn "{C08D4765B58CFD83}" {
+        m_sLocation "Cas_test3"
+        m_sPrefab "{EDD3E14E481BDA62}Prefabs/Vehicles/Airplanes/FA18A/FA18A_GBU_CAS.et"
+       }
+      }
+     }
+    }
+    GC_Event "{67FFC87CE04CDD9B}" {
+     m_sName "GC_MigratedSpawn_B6CCC8B8673E4DED"
+     m_aConditions {
+      GC_AreaCondition "{0D5AFA6AB2F44439}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{8AF547A99EBC6E21}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{FDAF5976C872EA2E}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{C2C05F08A51542EA}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2C4710813EA86750}" {
+       m_sMessage "GC_MigratedSpawn_B6CCC8B8673E4DED"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A5E1E3A94BE55408}" {
+     m_sName "GC_MigratedSpawn_B6CCC8B8673E4DED (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{96BC4248D1E4D31D}" {
+       m_sEventName "GC_MigratedSpawn_B6CCC8B8673E4DED"
+      }
+     }
+     m_Advanced GC_EventOptions "{06FA52AFCC3C6B0C}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{4E017F79E280B076}" {
+       m_Spawn GC_PrefabSpawn "{68690D035D2AC03D}" {
+        m_sLocation "Jet_Flyby_1"
+        m_sPrefab "{EAD777F4CDA11F16}Prefabs/Vehicles/Airplanes/F22/F22_Flyby.et"
+       }
+      }
+     }
+    }
+    GC_Event "{9B109C5930F37B2C}" {
+     m_sName "GC_MigratedSpawn_6089992C15F47D08"
+     m_aConditions {
+      GC_AreaCondition "{4E717D34EA74057D}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{55F46D667F50CD65}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{E14EE00B6D4C3519}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{4C05F17F8A70D686}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7FCFFE36D51F1867}" {
+       m_sMessage "GC_MigratedSpawn_6089992C15F47D08"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{DBABEDF189CFD31E}" {
+     m_sName "GC_MigratedSpawn_6089992C15F47D08 (11s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C561B9779928A35E}" {
+       m_sEventName "GC_MigratedSpawn_6089992C15F47D08"
+      }
+     }
+     m_Advanced GC_EventOptions "{6C2B25753FCBF996}" {
+      m_fDelay 11
+     }
+     m_aActions {
+      GC_SpawnAction "{CE9669FAEEA57E5A}" {
+       m_Spawn GC_PrefabSpawn "{A2DC1D71665A1EFF}" {
+        m_sLocation "Jet_Flyby_2"
+        m_sPrefab "{EAD777F4CDA11F16}Prefabs/Vehicles/Airplanes/F22/F22_Flyby.et"
+       }
+      }
+     }
+    }
+    GC_Event "{5086939D21247A2D}" {
+     m_sName "GC_MigratedSpawn_DD97DD870E624D94"
+     m_aConditions {
+      GC_AreaCondition "{EF35D8ED50B611E5}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{0BAE6A65B7978E73}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{8E76352AA5B7E16B}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{7905E38D35F6CB1B}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B367191C65822437}" {
+       m_sMessage "GC_MigratedSpawn_DD97DD870E624D94"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F6BD90B0E852F22B}" {
+     m_sName "GC_MigratedSpawn_DD97DD870E624D94 (11s)"
+     m_aConditions {
+      GC_MissionEventCondition "{600FC11C555E06EB}" {
+       m_sEventName "GC_MigratedSpawn_DD97DD870E624D94"
+      }
+     }
+     m_Advanced GC_EventOptions "{F8C3AAF0985CAA12}" {
+      m_fDelay 11
+     }
+     m_aActions {
+      GC_SpawnAction "{341124A98A2966B9}" {
+       m_Spawn GC_PrefabSpawn "{447CAADECF9134B3}" {
+        m_sLocation "Jet_Flyby_3"
+        m_sPrefab "{EAD777F4CDA11F16}Prefabs/Vehicles/Airplanes/F22/F22_Flyby.et"
+       }
+      }
+     }
+    }
+    GC_Event "{C12BC8ED127CC839}" {
+     m_sName "GC_MigratedSpawn_3517A1C6AEC020C9"
+     m_aConditions {
+      GC_AreaCondition "{2855306516049B39}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{D30D4550BCC91B07}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{AF18138D856FE456}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{A76BEB6D9F906ABF}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{18E0B6CE35B78F0A}" {
+       m_sMessage "GC_MigratedSpawn_3517A1C6AEC020C9"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{53B76A7E7945DAD9}" {
+     m_sName "GC_MigratedSpawn_3517A1C6AEC020C9 (19s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D6EEF02B94F4E9F9}" {
+       m_sEventName "GC_MigratedSpawn_3517A1C6AEC020C9"
+      }
+     }
+     m_Advanced GC_EventOptions "{20A6EF4CD6FEBE78}" {
+      m_fDelay 19
+     }
+     m_aActions {
+      GC_SpawnAction "{1E7E88747722DA3F}" {
+       m_Spawn GC_PrefabSpawn "{0236F883042AF49F}" {
+        m_sLocation "Cas_test9"
+        m_sPrefab "{EDD3E14E481BDA62}Prefabs/Vehicles/Airplanes/FA18A/FA18A_GBU_CAS.et"
+       }
+      }
+     }
+    }
+    GC_Event "{1BB6EC72C2C3F5AA}" {
+     m_sName "GC_MigratedSpawn_8D8223671D7002BE"
+     m_aConditions {
+      GC_AreaCondition "{72FF55967345DC95}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{DE718EE845FDB3E2}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{CCD0D337FCAD6145}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{7A3D23E267BE590E}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F2C1C411015BB8F8}" {
+       m_sMessage "GC_MigratedSpawn_8D8223671D7002BE"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CD9871890F6A4AC0}" {
+     m_sName "GC_MigratedSpawn_8D8223671D7002BE (33s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8512BF23896C2C83}" {
+       m_sEventName "GC_MigratedSpawn_8D8223671D7002BE"
+      }
+     }
+     m_Advanced GC_EventOptions "{A916FCE470C04D76}" {
+      m_fDelay 33
+     }
+     m_aActions {
+      GC_SpawnAction "{ACCAABDE6B006E60}" {
+       m_Spawn GC_PrefabSpawn "{FF56876BA0FBB698}" {
+        m_sLocation "Cas_test10"
+        m_sPrefab "{30263B4F1FB2A0F2}Prefabs/Systems/Artillery/ArtilleryWrapper_WTF.et"
+       }
+      }
+     }
+    }
+    GC_Event "{B270B9DC94C4BC0E}" {
+     m_sName "GC_MigratedSpawn_987B086CBDAE3A5E"
+     m_aConditions {
+      GC_AreaCondition "{5DB7576C973EDF8B}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{49F32EABEF4D117B}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{AD12FE0AD8FCCA02}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{F6DD56429C8BB7B5}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DFC0142DDBA5C39E}" {
+       m_sMessage "GC_MigratedSpawn_987B086CBDAE3A5E"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{891065F47FEB294A}" {
+     m_sName "GC_MigratedSpawn_987B086CBDAE3A5E (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3AA869215193213B}" {
+       m_sEventName "GC_MigratedSpawn_987B086CBDAE3A5E"
+      }
+     }
+     m_Advanced GC_EventOptions "{98686495EDABDE8B}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_SpawnAction "{B880ACE4A94D9702}" {
+       m_Spawn GC_PrefabSpawn "{DEBA3C9E0BD5C231}" {
+        m_sLocation "Cas_test11"
+        m_sPrefab "{EDD3E14E481BDA62}Prefabs/Vehicles/Airplanes/FA18A/FA18A_GBU_CAS.et"
+       }
+      }
+     }
+    }
+    GC_Event "{D0E8BB96C446002F}" {
+     m_sName "GC_MigratedSpawn_FD873B59DF30F6D2"
+     m_aConditions {
+      GC_AreaCondition "{8FF4BF35A6EBE7B8}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{A4377A2786ABE285}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{A6C4013EBAEB4E3E}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{5DB9A9691CEEDC59}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4160CCC8E2C239AC}" {
+       m_sMessage "GC_MigratedSpawn_FD873B59DF30F6D2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AA3E1DD84AD298E9}" {
+     m_sName "GC_MigratedSpawn_FD873B59DF30F6D2 (34s)"
+     m_aConditions {
+      GC_MissionEventCondition "{39650B919038928C}" {
+       m_sEventName "GC_MigratedSpawn_FD873B59DF30F6D2"
+      }
+     }
+     m_Advanced GC_EventOptions "{A37FCF5E8C66B3E5}" {
+      m_fDelay 34
+     }
+     m_aActions {
+      GC_SpawnAction "{964BC8DFA01C882E}" {
+       m_Spawn GC_PrefabSpawn "{AC1C14F78E1D6DE4}" {
+        m_sLocation "Cas_test12"
+        m_sPrefab "{30263B4F1FB2A0F2}Prefabs/Systems/Artillery/ArtilleryWrapper_WTF.et"
+       }
+      }
+     }
+    }
+    GC_Event "{3C8E614E55484183}" {
+     m_sName "GC_MigratedSpawn_4C030AC8F3A3FA9B"
+     m_aConditions {
+      GC_AreaCondition "{AE6ED5CF0C57DEA3}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{A3621036D481E0A4}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{F7501D583C02AC00}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{5519D83E3E38A424}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4BFF7B9A733567FC}" {
+       m_sMessage "GC_MigratedSpawn_4C030AC8F3A3FA9B"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{13322E5225D50E65}" {
+     m_sName "GC_MigratedSpawn_4C030AC8F3A3FA9B (14s)"
+     m_aConditions {
+      GC_MissionEventCondition "{AA2E5AA279435F23}" {
+       m_sEventName "GC_MigratedSpawn_4C030AC8F3A3FA9B"
+      }
+     }
+     m_Advanced GC_EventOptions "{345305F1B65278DD}" {
+      m_fDelay 14
+     }
+     m_aActions {
+      GC_SpawnAction "{A2C956C27EAC820B}" {
+       m_Spawn GC_PrefabSpawn "{51251C28B9AF6403}" {
+        m_sLocation "Cas_test13"
+        m_sPrefab "{EDD3E14E481BDA62}Prefabs/Vehicles/Airplanes/FA18A/FA18A_GBU_CAS.et"
+       }
+      }
+     }
+    }
+    GC_Event "{C355E78643BBA89D}" {
+     m_sName "GC_MigratedSpawn_41DE48957BBDEABE"
+     m_aConditions {
+      GC_AreaCondition "{35037BBB370526E2}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{4D5CE2421706A5C7}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{041B435974A12264}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{2FF2FFDEFF4C7823}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DCFFCA1408AD4FF6}" {
+       m_sMessage "GC_MigratedSpawn_41DE48957BBDEABE"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9272FEBC308AFEA4}" {
+     m_sName "GC_MigratedSpawn_41DE48957BBDEABE (28s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B73C6679611FC295}" {
+       m_sEventName "GC_MigratedSpawn_41DE48957BBDEABE"
+      }
+     }
+     m_Advanced GC_EventOptions "{817B077A569FFD3A}" {
+      m_fDelay 28
+     }
+     m_aActions {
+      GC_SpawnAction "{EC20BA81895E7252}" {
+       m_Spawn GC_PrefabSpawn "{7D0D4DAA3E117E6E}" {
+        m_sLocation "Cas_test14"
+        m_sPrefab "{30263B4F1FB2A0F2}Prefabs/Systems/Artillery/ArtilleryWrapper_WTF.et"
+       }
+      }
+     }
+    }
+    GC_Event "{5519EACCB5BEC5C1}" {
+     m_sName "GC_MigratedSpawn_1D70A1328021EFAC"
+     m_aConditions {
+      GC_AreaCondition "{2DBB8A3FC38668C0}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{D836F359C164C48D}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{EC4D201E332C0325}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{E8A2667B944D2C6A}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4869B7ED535ABE68}" {
+       m_sMessage "GC_MigratedSpawn_1D70A1328021EFAC"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{35900A7601658754}" {
+     m_sName "GC_MigratedSpawn_1D70A1328021EFAC (40s)"
+     m_aConditions {
+      GC_MissionEventCondition "{80FF7A696327EF6A}" {
+       m_sEventName "GC_MigratedSpawn_1D70A1328021EFAC"
+      }
+     }
+     m_Advanced GC_EventOptions "{6CE8D128C960FEB6}" {
+      m_fDelay 40
+     }
+     m_aActions {
+      GC_SpawnAction "{20471DF116A39EA2}" {
+       m_Spawn GC_CrewedVehicleSpawn "{769871822056E066}" {
+        m_sLocation "M2A3_Counter_Spawn_12_1"
+        m_sPrefab "{72018C87FBDC9F8C}Prefabs/Vehicles/Tracked/M2A2/M2A2_Desert.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{8C1F327235E5CDD1}" {
+          m_aStations {
+           GC_SpawnCrewStation "{3EA33920E1A8A593}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Suppress_1"
+           "Suppress_2"
+           "Suppress_3"
+           "Suppress_4"
+           "Suppress_5"
+           "Suppress_6"
+           "Suppress_7"
+           "Suppress_8"
+           "Suppress_9"
+           "Suppress_10"
+           "Suppress_11"
+           "Suppress_12"
+           "Suppress_13"
+           "Cycle_2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{833DF88F38409600}" {
+     m_sName "GC_MigratedSpawn_674F4D0355C95141"
+     m_aConditions {
+      GC_AreaCondition "{ADB386BFA97FA22E}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{7FB236D22BE1B6CA}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{98B854DBC4E5EC74}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{C3EA19F3FBDA3C34}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{00481EDEC84A3118}" {
+       m_sMessage "GC_MigratedSpawn_674F4D0355C95141"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B56ADC1AD19978F8}" {
+     m_sName "GC_MigratedSpawn_674F4D0355C95141 (40s)"
+     m_aConditions {
+      GC_MissionEventCondition "{AA820D7F1D99B976}" {
+       m_sEventName "GC_MigratedSpawn_674F4D0355C95141"
+      }
+     }
+     m_Advanced GC_EventOptions "{EDA2BF488147C3EF}" {
+      m_fDelay 40
+     }
+     m_aActions {
+      GC_SpawnAction "{C9CFB6506344F6F3}" {
+       m_Spawn GC_CrewedVehicleSpawn "{97542D88F594C072}" {
+        m_sLocation "M2A3_Counter_Spawn_11_1"
+        m_sPrefab "{72018C87FBDC9F8C}Prefabs/Vehicles/Tracked/M2A2/M2A2_Desert.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{708B903475A1324C}" {
+          m_aStations {
+           GC_SpawnCrewStation "{B4F667346331530D}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Suppress_1"
+           "Suppress_2"
+           "Suppress_3"
+           "Suppress_4"
+           "Suppress_5"
+           "Suppress_6"
+           "Suppress_7"
+           "Suppress_8"
+           "Suppress_9"
+           "Suppress_10"
+           "Suppress_11"
+           "Suppress_12"
+           "Suppress_13"
+           "Cycle_2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F8E5C5951DC4F99E}" {
+     m_sName "GC_MigratedSpawn_537F727EF597E5FE"
+     m_aConditions {
+      GC_AreaCondition "{077B096FB9742B7D}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{778C7C5E2FCF3422}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{9A450CB91B792AE0}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{28A4C43F570FE184}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3BE41619EEEE9E22}" {
+       m_sMessage "GC_MigratedSpawn_537F727EF597E5FE"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{709B6525A27A2BDF}" {
+     m_sName "GC_MigratedSpawn_537F727EF597E5FE (40s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DF92DBD127502E4A}" {
+       m_sEventName "GC_MigratedSpawn_537F727EF597E5FE"
+      }
+     }
+     m_Advanced GC_EventOptions "{5E0AE9FA7FD6506D}" {
+      m_fDelay 40
+     }
+     m_aActions {
+      GC_SpawnAction "{93DCD44EE3913CF4}" {
+       m_Spawn GC_CrewedVehicleSpawn "{04BD49795739047D}" {
+        m_sLocation "M2A3_Counter_Spawn_11_2"
+        m_sPrefab "{72018C87FBDC9F8C}Prefabs/Vehicles/Tracked/M2A2/M2A2_Desert.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{50446D405B4CF311}" {
+          m_aStations {
+           GC_SpawnCrewStation "{C4F31E31E0F2E46C}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Suppress_1"
+           "Suppress_2"
+           "Suppress_3"
+           "Suppress_4"
+           "Suppress_5"
+           "Suppress_6"
+           "Suppress_7"
+           "Suppress_8"
+           "Suppress_9"
+           "Suppress_10"
+           "Suppress_11"
+           "Suppress_12"
+           "Suppress_13"
+           "Cycle_2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{0C6B30507E6B5434}" {
+     m_sName "GC_MigratedSpawn_DB4957A7EF3AB032"
+     m_aConditions {
+      GC_AreaCondition "{A0A902F08F80274B}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{DA51AE61BB1877D9}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{8F715E454D927F1A}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{8DBB20AFFFB5A885}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9A832D3FD43B9A23}" {
+       m_sMessage "GC_MigratedSpawn_DB4957A7EF3AB032"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{39FEE9A4F2BDD841}" {
+     m_sName "GC_MigratedSpawn_DB4957A7EF3AB032 (40s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C88BD421B46E10B5}" {
+       m_sEventName "GC_MigratedSpawn_DB4957A7EF3AB032"
+      }
+     }
+     m_Advanced GC_EventOptions "{B9EC269736140923}" {
+      m_fDelay 40
+     }
+     m_aActions {
+      GC_SpawnAction "{4B0110723A9A1332}" {
+       m_Spawn GC_CrewedVehicleSpawn "{7BAFBBA05D6D6807}" {
+        m_sLocation "M2A3_Counter_Spawn_12_2"
+        m_sPrefab "{72018C87FBDC9F8C}Prefabs/Vehicles/Tracked/M2A2/M2A2_Desert.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{86F315C8EAC3D1DD}" {
+          m_aStations {
+           GC_SpawnCrewStation "{73A8CBF0AB2961A4}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Suppress_1"
+           "Suppress_2"
+           "Suppress_3"
+           "Suppress_4"
+           "Suppress_5"
+           "Suppress_6"
+           "Suppress_7"
+           "Suppress_8"
+           "Suppress_9"
+           "Suppress_10"
+           "Suppress_11"
+           "Suppress_12"
+           "Suppress_13"
+           "Cycle_2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{104105877C8DE0D5}" {
+     m_sName "GC_MigratedSpawn_0E8CCFFB71905434"
+     m_aConditions {
+      GC_AreaCondition "{36D0D78326CD03D9}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{3D4598ECE2771CF0}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{47EE9CF9C93485B1}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{B8A2020001AE86F2}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D7CF6093EFD32B44}" {
+       m_sMessage "GC_MigratedSpawn_0E8CCFFB71905434"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{059D13F7F9A652B9}" {
+     m_sName "GC_MigratedSpawn_0E8CCFFB71905434 (35s)"
+     m_aConditions {
+      GC_MissionEventCondition "{ABF8932CCA959F3F}" {
+       m_sEventName "GC_MigratedSpawn_0E8CCFFB71905434"
+      }
+     }
+     m_Advanced GC_EventOptions "{8F8983509BE4CCC8}" {
+      m_fDelay 35
+     }
+     m_aActions {
+      GC_SpawnAction "{6B35431234A72060}" {
+       m_Spawn GC_AIGroupSpawn "{74B35FA9B3C694F8}" {
+        m_sLocation "Infantry_Assault_1"
+        m_sPrefab "{91766A63132EE378}Prefabs/Groups/BLUFOR/US/Deprecated/Army_1985_Rifles_Desert/Group_US_Army_1985_Desert_RifleSquad.et"
+        m_aWaypoints {
+         "Counter_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3F489C6ECDD0C070}" {
+     m_sName "GC_MigratedSpawn_0E8CCFFB71905434 (40s)"
+     m_aConditions {
+      GC_MissionEventCondition "{ECE4411009FA5EB3}" {
+       m_sEventName "GC_MigratedSpawn_0E8CCFFB71905434"
+      }
+     }
+     m_Advanced GC_EventOptions "{B6D9828E86320349}" {
+      m_fDelay 40
+     }
+     m_aActions {
+      GC_SpawnAction "{493A869D820F3DAF}" {
+       m_Spawn GC_AIGroupSpawn "{BD5313FD5BD0F907}" {
+        m_sLocation "Infantry_Assault_1"
+        m_sPrefab "{91766A63132EE378}Prefabs/Groups/BLUFOR/US/Deprecated/Army_1985_Rifles_Desert/Group_US_Army_1985_Desert_RifleSquad.et"
+        m_aWaypoints {
+         "Counter_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{5BF4176A31139325}" {
+     m_sName "GC_MigratedSpawn_0E8CCFFB71905434 (80s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4AF3FAB5BA883780}" {
+       m_sEventName "GC_MigratedSpawn_0E8CCFFB71905434"
+      }
+     }
+     m_Advanced GC_EventOptions "{FEA363CA45DBF893}" {
+      m_fDelay 80
+     }
+     m_aActions {
+      GC_SpawnAction "{C96619CB2D32B85C}" {
+       m_Spawn GC_AIGroupSpawn "{9CF9AC5B765A0699}" {
+        m_sLocation "Infantry_Assault_1"
+        m_sPrefab "{91766A63132EE378}Prefabs/Groups/BLUFOR/US/Deprecated/Army_1985_Rifles_Desert/Group_US_Army_1985_Desert_RifleSquad.et"
+        m_aWaypoints {
+         "Counter_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{AA6184AE84A8A6E7}" {
+     m_sName "GC_MigratedSpawn_B3D5CDF6476E6177"
+     m_aConditions {
+      GC_AreaCondition "{FFEF82979D34E162}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{38E4899185125DED}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{A2BB3C3BE8F06794}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{C13EEDBB60229F7C}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9654B5D73AF5904B}" {
+       m_sMessage "GC_MigratedSpawn_B3D5CDF6476E6177"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D56C37E7DCA42B12}" {
+     m_sName "GC_MigratedSpawn_B3D5CDF6476E6177 (35s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5E2D4A5EA7051A51}" {
+       m_sEventName "GC_MigratedSpawn_B3D5CDF6476E6177"
+      }
+     }
+     m_Advanced GC_EventOptions "{5F520F37CFF7BBD1}" {
+      m_fDelay 35
+     }
+     m_aActions {
+      GC_SpawnAction "{A9E183A8F41633C7}" {
+       m_Spawn GC_AIGroupSpawn "{FC055D8E1FDE92FC}" {
+        m_sLocation "Infantry_Def_2"
+        m_sPrefab "{5E24277419088E09}Prefabs/Groups/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Group_GC_TKA_RifleSquad.et"
+        m_aWaypoints {
+         "AI_Def"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3D81CAC031819575}" {
+     m_sName "GC_MigratedSpawn_20033C3BAFBE31DD"
+     m_aConditions {
+      GC_AreaCondition "{AE8FD6210C5304BB}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{90879EFF963B1FFD}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{73D70DB6284CB8CE}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{36E535E2A2F32951}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{906DDFCD29E1B881}" {
+       m_sMessage "GC_MigratedSpawn_20033C3BAFBE31DD"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{111C5C85957CF818}" {
+     m_sName "GC_MigratedSpawn_20033C3BAFBE31DD (35s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E209F6CB92047F2C}" {
+       m_sEventName "GC_MigratedSpawn_20033C3BAFBE31DD"
+      }
+     }
+     m_Advanced GC_EventOptions "{BCA25E69C8098480}" {
+      m_fDelay 35
+     }
+     m_aActions {
+      GC_SpawnAction "{DCC52B35011EE6E5}" {
+       m_Spawn GC_AIGroupSpawn "{70BEFE1DE7561717}" {
+        m_sLocation "Infantry_Def_3"
+        m_sPrefab "{5E24277419088E09}Prefabs/Groups/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Group_GC_TKA_RifleSquad.et"
+        m_aWaypoints {
+         "AI_Def2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{2BD17FA3AA76CD5F}" {
+     m_sName "GC_MigratedSpawn_DC9BC6EC99718363"
+     m_aConditions {
+      GC_AreaCondition "{F30A2BA32DAE0261}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{0B0D2ABAEA5A0C42}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{4A6C5A15128AAA51}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{F24B9A336D25E49E}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FC7C4A3591532813}" {
+       m_sMessage "GC_MigratedSpawn_DC9BC6EC99718363"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CFD38C5F304C9D7F}" {
+     m_sName "GC_MigratedSpawn_DC9BC6EC99718363 (35s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1226F24351BD8F68}" {
+       m_sEventName "GC_MigratedSpawn_DC9BC6EC99718363"
+      }
+     }
+     m_Advanced GC_EventOptions "{998ADA5E9AD28520}" {
+      m_fDelay 35
+     }
+     m_aActions {
+      GC_SpawnAction "{8BA90223157B7C00}" {
+       m_Spawn GC_AIGroupSpawn "{BDDFA4794F5F2909}" {
+        m_sLocation "Infantry_Assault_2"
+        m_sPrefab "{91766A63132EE378}Prefabs/Groups/BLUFOR/US/Deprecated/Army_1985_Rifles_Desert/Group_US_Army_1985_Desert_RifleSquad.et"
+        m_aWaypoints {
+         "Counter_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{929C1187C6A40383}" {
+     m_sName "GC_MigratedSpawn_DC9BC6EC99718363 (40s)"
+     m_aConditions {
+      GC_MissionEventCondition "{55686A61D66F17D3}" {
+       m_sEventName "GC_MigratedSpawn_DC9BC6EC99718363"
+      }
+     }
+     m_Advanced GC_EventOptions "{C487050426147A49}" {
+      m_fDelay 40
+     }
+     m_aActions {
+      GC_SpawnAction "{33103C674CCAE4B7}" {
+       m_Spawn GC_AIGroupSpawn "{27F7E14FB30440B6}" {
+        m_sLocation "Infantry_Assault_2"
+        m_sPrefab "{91766A63132EE378}Prefabs/Groups/BLUFOR/US/Deprecated/Army_1985_Rifles_Desert/Group_US_Army_1985_Desert_RifleSquad.et"
+        m_aWaypoints {
+         "Counter_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{1C7C0D8A82D73B22}" {
+     m_sName "GC_MigratedSpawn_DC9BC6EC99718363 (80s)"
+     m_aConditions {
+      GC_MissionEventCondition "{088E87F3446258E0}" {
+       m_sEventName "GC_MigratedSpawn_DC9BC6EC99718363"
+      }
+     }
+     m_Advanced GC_EventOptions "{4962710E5F3F574C}" {
+      m_fDelay 80
+     }
+     m_aActions {
+      GC_SpawnAction "{8279EA9DCD1EDD8D}" {
+       m_Spawn GC_AIGroupSpawn "{4DCEC93151EE078F}" {
+        m_sLocation "Infantry_Assault_2"
+        m_sPrefab "{91766A63132EE378}Prefabs/Groups/BLUFOR/US/Deprecated/Army_1985_Rifles_Desert/Group_US_Army_1985_Desert_RifleSquad.et"
+        m_aWaypoints {
+         "Counter_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{6A835928653ADAEB}" {
+     m_sName "GC_MigratedSpawn_22E9D4BE9E5A98CF"
+     m_aConditions {
+      GC_AreaCondition "{073F69873D998DF1}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{31B52EC7B2180BD7}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{C03A87E710E4445F}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{928A8291FCF35D47}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{BBFC70CC4D40BC21}" {
+       m_sMessage "GC_MigratedSpawn_22E9D4BE9E5A98CF"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8C39246666ABB99A}" {
+     m_sName "GC_MigratedSpawn_22E9D4BE9E5A98CF (35s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5F8525D755565494}" {
+       m_sEventName "GC_MigratedSpawn_22E9D4BE9E5A98CF"
+      }
+     }
+     m_Advanced GC_EventOptions "{4CB64F4CD0766CED}" {
+      m_fDelay 35
+     }
+     m_aActions {
+      GC_SpawnAction "{2BAF17A33F1DEE14}" {
+       m_Spawn GC_AIGroupSpawn "{4F87E55CD484C7A6}" {
+        m_sLocation "Infantry_Assault_3"
+        m_sPrefab "{91766A63132EE378}Prefabs/Groups/BLUFOR/US/Deprecated/Army_1985_Rifles_Desert/Group_US_Army_1985_Desert_RifleSquad.et"
+        m_aWaypoints {
+         "Counter_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E5AFA9F9D233F700}" {
+     m_sName "GC_MigratedSpawn_22E9D4BE9E5A98CF (40s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9D5B6C4FBE6FCE98}" {
+       m_sEventName "GC_MigratedSpawn_22E9D4BE9E5A98CF"
+      }
+     }
+     m_Advanced GC_EventOptions "{1E0D38F049A4AB8B}" {
+      m_fDelay 40
+     }
+     m_aActions {
+      GC_SpawnAction "{3BE92782929A021F}" {
+       m_Spawn GC_AIGroupSpawn "{9F0B9D90078BA74F}" {
+        m_sLocation "Infantry_Assault_3"
+        m_sPrefab "{91766A63132EE378}Prefabs/Groups/BLUFOR/US/Deprecated/Army_1985_Rifles_Desert/Group_US_Army_1985_Desert_RifleSquad.et"
+        m_aWaypoints {
+         "Counter_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{ED2A80F668B78EFD}" {
+     m_sName "GC_MigratedSpawn_22E9D4BE9E5A98CF (80s)"
+     m_aConditions {
+      GC_MissionEventCondition "{FBF124DAEB3A2252}" {
+       m_sEventName "GC_MigratedSpawn_22E9D4BE9E5A98CF"
+      }
+     }
+     m_Advanced GC_EventOptions "{799363E9882BC985}" {
+      m_fDelay 80
+     }
+     m_aActions {
+      GC_SpawnAction "{F6C08029DA992302}" {
+       m_Spawn GC_AIGroupSpawn "{AAADDAD48AA173A6}" {
+        m_sLocation "Infantry_Assault_3"
+        m_sPrefab "{91766A63132EE378}Prefabs/Groups/BLUFOR/US/Deprecated/Army_1985_Rifles_Desert/Group_US_Army_1985_Desert_RifleSquad.et"
+        m_aWaypoints {
+         "Counter_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{13E55ECB82BB3B05}" {
+     m_sName "GC_MigratedSpawn_D6FCAFF6170C7AE0"
+     m_aConditions {
+      GC_AreaCondition "{0E7C94A81FFF87C3}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{3F4F1F15ABDBAE73}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{20C537BB944A0DF8}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{E572A69524004E5F}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{20ECDA59D3AB64C5}" {
+       m_sMessage "GC_MigratedSpawn_D6FCAFF6170C7AE0"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{02F63DB0E3C4BD7A}" {
+     m_sName "GC_MigratedSpawn_D6FCAFF6170C7AE0 (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{051962FC76421699}" {
+       m_sEventName "GC_MigratedSpawn_D6FCAFF6170C7AE0"
+      }
+     }
+     m_Advanced GC_EventOptions "{37914E1240701A81}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_SpawnAction "{F9BC4ECFAE91DBCC}" {
+       m_Spawn GC_CrewedVehicleSpawn "{DC67F881DB7464D2}" {
+        m_sLocation "BTR_Defender_1"
+        m_sPrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{3A64CB459E6A0DA8}" {
+          m_aStations {
+           GC_SpawnCrewStation "{341AB41013CA8AA8}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{63DCA5C445717DA8}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/P/Character_GC_TKA_Vic_GUNR_P.et"
+             "{71FB3985EBCE5161}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/P/Character_GC_TKA_Vic_DRVR_P.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "AI_Def4"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{2163B2BCFC85563B}" {
+     m_sName "GC_MigratedSpawn_6766DBE2745E83AF"
+     m_aConditions {
+      GC_AreaCondition "{2E0B1B8654CABFAD}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{8EED80766ED98860}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{665E63755E89E6C0}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{6FC43392852B4512}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4355B2B617413AD2}" {
+       m_sMessage "GC_MigratedSpawn_6766DBE2745E83AF"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2018333051852868}" {
+     m_sName "GC_MigratedSpawn_6766DBE2745E83AF (40s)"
+     m_aConditions {
+      GC_MissionEventCondition "{95D9620676E37585}" {
+       m_sEventName "GC_MigratedSpawn_6766DBE2745E83AF"
+      }
+     }
+     m_Advanced GC_EventOptions "{3460B0F99611E1CB}" {
+      m_fDelay 40
+     }
+     m_aActions {
+      GC_SpawnAction "{12DD99F2F3DCE121}" {
+       m_Spawn GC_CrewedVehicleSpawn "{A620F33D6208C1AD}" {
+        m_sLocation "M2A3_Counter_Spawn_12_3"
+        m_sPrefab "{72018C87FBDC9F8C}Prefabs/Vehicles/Tracked/M2A2/M2A2_Desert.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{1DB5E88BCE7E06A2}" {
+          m_aStations {
+           GC_SpawnCrewStation "{2E496CC213FD31E7}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Suppress_1"
+           "Suppress_2"
+           "Suppress_3"
+           "Suppress_4"
+           "Suppress_5"
+           "Suppress_6"
+           "Suppress_7"
+           "Suppress_8"
+           "Suppress_9"
+           "Suppress_10"
+           "Suppress_11"
+           "Suppress_12"
+           "Suppress_13"
+           "Cycle_2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4EBFCC91F476C32E}" {
+     m_sName "GC_MigratedSpawn_0522F64EC6F7784F"
+     m_aConditions {
+      GC_AreaCondition "{3BEE1B3D89E9AA95}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{E756F096E1B1C187}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{0D03AFBEF3560B5F}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{23A337A58E085BE1}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2E67D15382BDB721}" {
+       m_sMessage "GC_MigratedSpawn_0522F64EC6F7784F"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D74DE8D4FB444C56}" {
+     m_sName "GC_MigratedSpawn_0522F64EC6F7784F (40s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C3289BE625990728}" {
+       m_sEventName "GC_MigratedSpawn_0522F64EC6F7784F"
+      }
+     }
+     m_Advanced GC_EventOptions "{3089B5334E70E6B8}" {
+      m_fDelay 40
+     }
+     m_aActions {
+      GC_SpawnAction "{150D75D6F8D53588}" {
+       m_Spawn GC_CrewedVehicleSpawn "{1EEBE7AF4A650DF1}" {
+        m_sLocation "M2A3_Counter_Spawn_11_3"
+        m_sPrefab "{72018C87FBDC9F8C}Prefabs/Vehicles/Tracked/M2A2/M2A2_Desert.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{DFF0748F2EAE605E}" {
+          m_aStations {
+           GC_SpawnCrewStation "{27AD2BE12B733439}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Suppress_1"
+           "Suppress_2"
+           "Suppress_3"
+           "Suppress_4"
+           "Suppress_5"
+           "Suppress_6"
+           "Suppress_7"
+           "Suppress_8"
+           "Suppress_9"
+           "Suppress_10"
+           "Suppress_11"
+           "Suppress_12"
+           "Suppress_13"
+           "Cycle_2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{AB6451EB01E5BD99}" {
+     m_sName "GC_MigratedSpawn_933337118A4E74A0"
+     m_aConditions {
+      GC_AreaCondition "{299538615BC63B48}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{990AF31290DBD7A1}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{24D37A41F7CB84F8}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{8D3AF7A0D21AAA82}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8156EC14A943A046}" {
+       m_sMessage "GC_MigratedSpawn_933337118A4E74A0"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CA69F0EDE2196C3F}" {
+     m_sName "GC_MigratedSpawn_933337118A4E74A0 (40s)"
+     m_aConditions {
+      GC_MissionEventCondition "{02509D6D312EED66}" {
+       m_sEventName "GC_MigratedSpawn_933337118A4E74A0"
+      }
+     }
+     m_Advanced GC_EventOptions "{F83C8F9403451F39}" {
+      m_fDelay 40
+     }
+     m_aActions {
+      GC_SpawnAction "{52346C0CA10D60FA}" {
+       m_Spawn GC_CrewedVehicleSpawn "{42CD490A350A480B}" {
+        m_sLocation "M2A3_Counter_Spawn_11_4"
+        m_sPrefab "{72018C87FBDC9F8C}Prefabs/Vehicles/Tracked/M2A2/M2A2_Desert.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{DF9582087684F1C4}" {
+          m_aStations {
+           GC_SpawnCrewStation "{F6D9D598C6169986}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Suppress_1"
+           "Suppress_2"
+           "Suppress_3"
+           "Suppress_4"
+           "Suppress_5"
+           "Suppress_6"
+           "Suppress_7"
+           "Suppress_8"
+           "Suppress_9"
+           "Suppress_10"
+           "Suppress_11"
+           "Suppress_12"
+           "Suppress_13"
+           "Cycle_2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{0C7956EB1AB4BAB3}" {
+     m_sName "GC_MigratedSpawn_3233BD88AF2E3FCA"
+     m_aConditions {
+      GC_AreaCondition "{45AC342EE3C1BEAB}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{7CBA511EA57768AB}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{5B363818A0BE23E3}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{6F9CFFB7B280464C}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E9CA71C8577FD796}" {
+       m_sMessage "GC_MigratedSpawn_3233BD88AF2E3FCA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D0F1A497F9AC7DD3}" {
+     m_sName "GC_MigratedSpawn_3233BD88AF2E3FCA (40s)"
+     m_aConditions {
+      GC_MissionEventCondition "{05E85BA41D4B825A}" {
+       m_sEventName "GC_MigratedSpawn_3233BD88AF2E3FCA"
+      }
+     }
+     m_Advanced GC_EventOptions "{F52E7B5DB839EE0D}" {
+      m_fDelay 40
+     }
+     m_aActions {
+      GC_SpawnAction "{182706D587EFA96A}" {
+       m_Spawn GC_CrewedVehicleSpawn "{A05EDB8755D28696}" {
+        m_sLocation "M2A3_Counter_Spawn_12_4"
+        m_sPrefab "{72018C87FBDC9F8C}Prefabs/Vehicles/Tracked/M2A2/M2A2_Desert.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{2500117212D7BBEF}" {
+          m_aStations {
+           GC_SpawnCrewStation "{7A9F939CAA696D47}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Suppress_1"
+           "Suppress_2"
+           "Suppress_3"
+           "Suppress_4"
+           "Suppress_5"
+           "Suppress_6"
+           "Suppress_7"
+           "Suppress_8"
+           "Suppress_9"
+           "Suppress_10"
+           "Suppress_11"
+           "Suppress_12"
+           "Suppress_13"
+           "Cycle_2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E228199EF7201E96}" {
+     m_sName "GC_MigratedSpawn_0D744D10D8D802AF"
+     m_aConditions {
+      GC_AreaCondition "{048609A952AA4BDC}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{D17E99168449358C}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{CEC700A18FCE2B00}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{E019E309F4BB44ED}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3BE429757A314DB3}" {
+       m_sMessage "GC_MigratedSpawn_0D744D10D8D802AF"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B774CA488B289C0C}" {
+     m_sName "GC_MigratedSpawn_0D744D10D8D802AF (41s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3537E0ECDF6A6E71}" {
+       m_sEventName "GC_MigratedSpawn_0D744D10D8D802AF"
+      }
+     }
+     m_Advanced GC_EventOptions "{3238523E4101DF75}" {
+      m_fDelay 41
+     }
+     m_aActions {
+      GC_SpawnAction "{1B463C68C58A5D59}" {
+       m_Spawn GC_CrewedVehicleSpawn "{58470A2A5C196AF5}" {
+        m_sLocation "M2A3_Counter_Spawn_22_2"
+        m_sPrefab "{72018C87FBDC9F8C}Prefabs/Vehicles/Tracked/M2A2/M2A2_Desert.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{BD721DFABB003437}" {
+          m_aStations {
+           GC_SpawnCrewStation "{64EABA6C4E00FB2A}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Counter_Move_22_2"
+           "Counter_Wait_22"
+           "Counter_Move_22_6"
+           "Counter_Move_22_8"
+           "Counter_Move_22_4"
+          }
+         }
+         GC_SpawnCrewGroup "{7F58BA89A31EB2FE}" {
+          m_aStations {
+           GC_SpawnCrewStation "{9261EF37772DECEF}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{30400AE6344E837D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_SL.et"
+             "{5DC8FBF906CA2170}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_AR.et"
+             "{3B5A16962E03A0E5}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_LAT.et"
+             "{3787F0B752C839C0}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_TL.et"
+             "{5DC8FBF906CA2170}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_AR.et"
+             "{501D85D8F17D4846}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_GL.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Counter_Getout_22"
+           "Counter_SD_22"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{95B08C4DA43EA5B2}" {
+     m_sName "GC_MigratedSpawn_D0FB7D43453DDCA3"
+     m_aConditions {
+      GC_AreaCondition "{C25D8E55DB453DAF}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{DB8E7B5216896CA9}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{45514A926180A697}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{6CF933022FAE9C0B}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{CDC854745C1310C8}" {
+       m_sMessage "GC_MigratedSpawn_D0FB7D43453DDCA3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0DDAB7CA30FAD9C6}" {
+     m_sName "GC_MigratedSpawn_D0FB7D43453DDCA3 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9C7E319E5DDE975D}" {
+       m_sEventName "GC_MigratedSpawn_D0FB7D43453DDCA3"
+      }
+     }
+     m_Advanced GC_EventOptions "{85DA71B876A1FFB2}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{AAB1CB778B0177EE}" {
+       m_Spawn GC_CrewedVehicleSpawn "{409676B4DC50EB5D}" {
+        m_sLocation "M2A3_Counter_Spawn_21_1"
+        m_sPrefab "{72018C87FBDC9F8C}Prefabs/Vehicles/Tracked/M2A2/M2A2_Desert.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{8A4377BFA3197CF8}" {
+          m_aStations {
+           GC_SpawnCrewStation "{BF252A6B9D08D7D1}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Counter_Move_21_1"
+           "Counter_Wait_21"
+           "Counter_Move_21_6"
+           "Counter_Move_21_7"
+           "Counter_Move_21_3"
+          }
+         }
+         GC_SpawnCrewGroup "{604F5F2DB8B6B416}" {
+          m_aStations {
+           GC_SpawnCrewStation "{40355E4BC983580E}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{30400AE6344E837D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_SL.et"
+             "{5DC8FBF906CA2170}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_AR.et"
+             "{3B5A16962E03A0E5}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_LAT.et"
+             "{3787F0B752C839C0}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_TL.et"
+             "{5DC8FBF906CA2170}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_AR.et"
+             "{501D85D8F17D4846}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_GL.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Counter_Getout_21"
+           "Counter_SD_21"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{8ECB8BC5AA94AF54}" {
+     m_sName "GC_MigratedSpawn_AA0AD9E3064C8510"
+     m_aConditions {
+      GC_AreaCondition "{28E66DD7399C7B77}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{B321F867ADCE865E}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{E2C9F679A74330F4}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{58239F214AA61F77}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4AD1581E250FA986}" {
+       m_sMessage "GC_MigratedSpawn_AA0AD9E3064C8510"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{18CF7C83CB05A2D6}" {
+     m_sName "GC_MigratedSpawn_AA0AD9E3064C8510 (21s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7E29D54A33C8CDFE}" {
+       m_sEventName "GC_MigratedSpawn_AA0AD9E3064C8510"
+      }
+     }
+     m_Advanced GC_EventOptions "{4B1E5823FA1C03A2}" {
+      m_fDelay 21
+     }
+     m_aActions {
+      GC_SpawnAction "{0346B882FBCCF87D}" {
+       m_Spawn GC_CrewedVehicleSpawn "{030AC6D9DF7359F0}" {
+        m_sLocation "M2A3_Counter_Spawn_21_2"
+        m_sPrefab "{72018C87FBDC9F8C}Prefabs/Vehicles/Tracked/M2A2/M2A2_Desert.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{4EEE1B438E3A04B8}" {
+          m_aStations {
+           GC_SpawnCrewStation "{D97EDE90309A8275}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Counter_Move_21_2"
+           "Counter_Wait_21"
+           "Counter_Move_21_5"
+           "Counter_Move_21_8"
+           "Counter_Move_21_4"
+          }
+         }
+         GC_SpawnCrewGroup "{871E685E79BC9B6A}" {
+          m_aStations {
+           GC_SpawnCrewStation "{DC6BE6E4477DB404}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{30400AE6344E837D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_SL.et"
+             "{5DC8FBF906CA2170}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_AR.et"
+             "{3B5A16962E03A0E5}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_LAT.et"
+             "{3787F0B752C839C0}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_TL.et"
+             "{5DC8FBF906CA2170}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_AR.et"
+             "{501D85D8F17D4846}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_GL.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Counter_Getout_21"
+           "Counter_SD_21"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4F019880507BB02D}" {
+     m_sName "GC_MigratedSpawn_6720A528C5B92C9E"
+     m_aConditions {
+      GC_AreaCondition "{FBF1FA6F316D1E1F}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{6AF28FEE7871311E}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{91E0D17DDE131993}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{78A0231A31168F8D}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D14342C339AC1F61}" {
+       m_sMessage "GC_MigratedSpawn_6720A528C5B92C9E"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{411B1E7EDC15AD3B}" {
+     m_sName "GC_MigratedSpawn_6720A528C5B92C9E (31s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4B8B53D36163EACA}" {
+       m_sEventName "GC_MigratedSpawn_6720A528C5B92C9E"
+      }
+     }
+     m_Advanced GC_EventOptions "{7A3803CBE3CFD359}" {
+      m_fDelay 31
+     }
+     m_aActions {
+      GC_SpawnAction "{CC2A0812BAD21967}" {
+       m_Spawn GC_CrewedVehicleSpawn "{AC0DD0BB7541A8A6}" {
+        m_sLocation "M2A3_Counter_Spawn_22_1"
+        m_sPrefab "{72018C87FBDC9F8C}Prefabs/Vehicles/Tracked/M2A2/M2A2_Desert.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{3AA491276436FCC5}" {
+          m_aStations {
+           GC_SpawnCrewStation "{EA8EFA88891D3FD7}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Counter_Move_22_1"
+           "Counter_Wait_22"
+           "Counter_Move_22_5"
+           "Counter_Move_21_7"
+           "Counter_Move_22_3"
+          }
+         }
+         GC_SpawnCrewGroup "{FCFFB85AB7C26DC4}" {
+          m_aStations {
+           GC_SpawnCrewStation "{C936FCF7653F51FE}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{30400AE6344E837D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_SL.et"
+             "{5DC8FBF906CA2170}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_AR.et"
+             "{3B5A16962E03A0E5}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_LAT.et"
+             "{3787F0B752C839C0}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_TL.et"
+             "{5DC8FBF906CA2170}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_AR.et"
+             "{501D85D8F17D4846}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_GL.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Counter_Getout_22"
+           "Counter_SD_22"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A2F37064D2D9FC76}" {
+     m_sName "GC_MigratedSpawn_313FD2D80FB95066"
+     m_aConditions {
+      GC_AreaCondition "{5146AA0BEF9D2C5C}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{2467F0EEC692872B}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{CFA17E23C533242B}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{2769742C801BD4DD}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1A7AC974913A24C0}" {
+       m_sMessage "GC_MigratedSpawn_313FD2D80FB95066"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{879FF75F1283A396}" {
+     m_sName "GC_MigratedSpawn_313FD2D80FB95066 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1F65D2DD5FD47E6F}" {
+       m_sEventName "GC_MigratedSpawn_313FD2D80FB95066"
+      }
+     }
+     m_Advanced GC_EventOptions "{112828342D2E3F3D}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{52E4F74CFDE1C969}" {
+       m_Spawn GC_CrewedVehicleSpawn "{BF065B9B38194FB2}" {
+        m_sLocation "M2A3_Counter_Spawn_31_1"
+        m_sPrefab "{72018C87FBDC9F8C}Prefabs/Vehicles/Tracked/M2A2/M2A2_Desert.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{FDCB433E24CED4C4}" {
+          m_aStations {
+           GC_SpawnCrewStation "{AE5C84C1D3CA145A}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Counter_Move_31_1"
+           "Counter_Wait_31"
+           "Counter_Move_31_4"
+           "Counter_Move_31_6"
+           "Counter_SD_31"
+          }
+         }
+         GC_SpawnCrewGroup "{A54D7FD48A9EF3E4}" {
+          m_aStations {
+           GC_SpawnCrewStation "{779C76737B04D0DD}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{30400AE6344E837D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_SL.et"
+             "{5DC8FBF906CA2170}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_AR.et"
+             "{3B5A16962E03A0E5}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_LAT.et"
+             "{3787F0B752C839C0}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_TL.et"
+             "{5DC8FBF906CA2170}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_AR.et"
+             "{501D85D8F17D4846}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_GL.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Counter_Getout_31"
+           "Counter_SD_31"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E51226B06B123B34}" {
+     m_sName "GC_MigratedSpawn_0B3AB03EBA158F6F"
+     m_aConditions {
+      GC_AreaCondition "{27A01393D1FAF8F2}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{2ACA3462BA4686BF}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{A9556E6882F5189F}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{E7045290B92CA32C}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0E37684EE13C8CB3}" {
+       m_sMessage "GC_MigratedSpawn_0B3AB03EBA158F6F"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0C5E807214C4A478}" {
+     m_sName "GC_MigratedSpawn_0B3AB03EBA158F6F (31s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D3E2C5FCD2AE6E09}" {
+       m_sEventName "GC_MigratedSpawn_0B3AB03EBA158F6F"
+      }
+     }
+     m_Advanced GC_EventOptions "{34D35C5E0A5115EA}" {
+      m_fDelay 31
+     }
+     m_aActions {
+      GC_SpawnAction "{9F0CDFFE30F814A2}" {
+       m_Spawn GC_CrewedVehicleSpawn "{74C19623B302081C}" {
+        m_sLocation "M2A3_Counter_Spawn_32_1"
+        m_sPrefab "{72018C87FBDC9F8C}Prefabs/Vehicles/Tracked/M2A2/M2A2_Desert.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{721F9704F94D15A1}" {
+          m_aStations {
+           GC_SpawnCrewStation "{522A2EC8D20EC4E4}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Counter_Move_32_1"
+           "Counter_Wait_32"
+           "Counter_Move_32_3"
+           "Counter_Move_32_5"
+           "Counter_Move_323"
+           "Counter_SD_32"
+          }
+         }
+         GC_SpawnCrewGroup "{17AD7F78B7F798DB}" {
+          m_aStations {
+           GC_SpawnCrewStation "{28125CFF8F3624E3}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{30400AE6344E837D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_SL.et"
+             "{5DC8FBF906CA2170}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_AR.et"
+             "{3B5A16962E03A0E5}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_LAT.et"
+             "{3787F0B752C839C0}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_TL.et"
+             "{5DC8FBF906CA2170}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_AR.et"
+             "{501D85D8F17D4846}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_GL.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Counter_Getout_32"
+           "Counter_SD_32"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{8396836A20BF9D45}" {
+     m_sName "GC_MigratedSpawn_74928751ECB0A984"
+     m_aConditions {
+      GC_AreaCondition "{2AA7444A26918A77}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{D93C80AE6624EDAE}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{2E0BE6CC429C61B1}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{D7765D5A31001C54}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7CC8571E35DA2E32}" {
+       m_sMessage "GC_MigratedSpawn_74928751ECB0A984"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CAF614E9CA06886F}" {
+     m_sName "GC_MigratedSpawn_74928751ECB0A984 (41s)"
+     m_aConditions {
+      GC_MissionEventCondition "{19FBDA06FAC1ACB3}" {
+       m_sEventName "GC_MigratedSpawn_74928751ECB0A984"
+      }
+     }
+     m_Advanced GC_EventOptions "{83C4153994D10FD5}" {
+      m_fDelay 41
+     }
+     m_aActions {
+      GC_SpawnAction "{EB350BD14AD5030E}" {
+       m_Spawn GC_CrewedVehicleSpawn "{BADA21120FC23BE0}" {
+        m_sLocation "M2A3_Counter_Spawn_32_2"
+        m_sPrefab "{72018C87FBDC9F8C}Prefabs/Vehicles/Tracked/M2A2/M2A2_Desert.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{41B1349BFF006A7E}" {
+          m_aStations {
+           GC_SpawnCrewStation "{E27817B16E14F8C1}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Counter_Move_32_2"
+           "Counter_Wait_32"
+           "Counter_Move_32_4"
+           "Counter_Move_32_6"
+           "Counter_Move_322"
+           "Counter_SD_32"
+          }
+         }
+         GC_SpawnCrewGroup "{E1A1FD2653756520}" {
+          m_aStations {
+           GC_SpawnCrewStation "{A69E422EE68701D5}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{30400AE6344E837D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_SL.et"
+             "{5DC8FBF906CA2170}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_AR.et"
+             "{3B5A16962E03A0E5}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_LAT.et"
+             "{3787F0B752C839C0}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_TL.et"
+             "{5DC8FBF906CA2170}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_AR.et"
+             "{501D85D8F17D4846}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_GL.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Counter_Getout_32"
+           "Counter_SD_32"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{5215B7794552F8A4}" {
+     m_sName "GC_MigratedSpawn_A78FB6FF70A153B2"
+     m_aConditions {
+      GC_AreaCondition "{B3153325C3DC00EA}" {
+       m_sArea "GC_MigrationArea_Compound"
+       m_Targets GC_CharacterAreaTargets "{82C5B5B795C6B4C1}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_TKA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{52A6C564D15112D3}" {
+        m_fRequiredShare 0.3
+        m_aIgnoredFactions {
+         "US"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{FE20555B57839F21}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{54126855DCFD3DDC}" {
+       m_sMessage "GC_MigratedSpawn_A78FB6FF70A153B2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2289D66F8CC72C8E}" {
+     m_sName "GC_MigratedSpawn_A78FB6FF70A153B2 (21s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CFFF8ABC7C0FD0EC}" {
+       m_sEventName "GC_MigratedSpawn_A78FB6FF70A153B2"
+      }
+     }
+     m_Advanced GC_EventOptions "{5EAA0ED37C8EAF3B}" {
+      m_fDelay 21
+     }
+     m_aActions {
+      GC_SpawnAction "{58CE677CBD2A2655}" {
+       m_Spawn GC_CrewedVehicleSpawn "{14F3252DAACFEDB0}" {
+        m_sLocation "M2A3_Counter_Spawn_31_2"
+        m_sPrefab "{72018C87FBDC9F8C}Prefabs/Vehicles/Tracked/M2A2/M2A2_Desert.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{A2D806CBAD4D526F}" {
+          m_aStations {
+           GC_SpawnCrewStation "{21FF005A76A8D616}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+             "{DAE6916CDAC4F33D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Counter_Move_31_2"
+           "Counter_Wait_31"
+           "Counter_Move_31_3"
+           "Counter_Move_31_5"
+           "Counter_SD_31"
+          }
+         }
+         GC_SpawnCrewGroup "{B599933214F2E14B}" {
+          m_aStations {
+           GC_SpawnCrewStation "{8C9FD78968285860}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{30400AE6344E837D}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_SL.et"
+             "{5DC8FBF906CA2170}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_AR.et"
+             "{3B5A16962E03A0E5}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_LAT.et"
+             "{3787F0B752C839C0}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_TL.et"
+             "{5DC8FBF906CA2170}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_AR.et"
+             "{501D85D8F17D4846}Prefabs/Characters/Factions/BLUFOR/US_Army/Deprecated/Desert (DBDU) Deprecated/Character_US_DBDU_GL.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Counter_Getout_31"
+           "Counter_SD_31"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 4512.437 102.467 11792.496
+ {
+  RadioManagerEntity {
+   ID "A79C4E0A43DEB824"
+   coords -26.889 23.04 -2.478
+  }
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   coords 0 0 0
+   Factions + {
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
+      Name "Soviet Air Force"
+      Icon "{B522FE456D7F091A}worlds/HitTheMan/Screening The Orb/330px-Flag_of_the_Soviet_Air_Force.svg.edds"
+     }
+     m_iOrder 1
+     m_sFactionFlag "{B522FE456D7F091A}worlds/HitTheMan/Screening The Orb/330px-Flag_of_the_Soviet_Air_Force.svg.edds"
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB79282FF010C}" {
+       }
+       SCR_CallsignInfo "{55CCB792829053B0}" {
+        m_sCallsign "Berkut"
+       }
+       SCR_CallsignInfo "{55CCB79282A19687}" {
+        m_sCallsign "2"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB79284A2F6C9}" {
+        m_sCallsign " "
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{64E2F896E232A50B}" {
+        m_sCallsign "5"
+       }
+       SCR_CallsignInfo "{64E2F896FFC45153}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{64E2F896E5466F70}" {
+        m_sCallsign "4v"
+       }
+      }
+     }
+    }
+    SCR_Faction "{64AA098AEA5B1498}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{64AA098204A61453}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{64AA098204A6145D}" {
+        m_sCallsign "9"
+       }
+       SCR_CallsignInfo "{64AA098204A61443}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{64AA098204A61441}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{64AA098204A61446}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{650AE15C940BA34B}" {
+        m_sCallsign "4"
+       }
+       SCR_CallsignInfo "{650AE15C8B7A1EC2}" {
+        m_sCallsign "5"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "Sunray"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "Alpha"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "Bravo"
+       }
+       SCR_CallsignInfo "{61677618371B4C91}" {
+        m_sCallsign "Charlie"
+       }
+       SCR_CallsignInfo "{65055DBDAC6F7853}" {
+        m_sCallsign "Whiskey"
+       }
+       SCR_CallsignInfo "{65055DB6CE3F5934}" {
+        m_sCallsign "Echo"
+       }
+       SCR_CallsignInfo "{650AE1494DA67E1D}" {
+        m_sCallsign "Foxtrot"
+       }
+      }
+     }
+     m_iFactionRadioFrequency 50000
+    }
+    SCR_Faction "{652F615735715119}" {
+    }
+   }
+  }
+  ScriptedChatEntity {
+   ID "A79C4E0A43DEB825"
+   coords -318.966 137.025 1.838
+  }
+  ItemPreviewManagerEntity : "{9F18C476AB860F3B}Prefabs/World/Game/ItemPreviewManager.et" {
+   ID "5ED9088735FF2DD5"
+   coords -12.245 -3.267 -7.529
+  }
+  SCR_EditorSettingsEntity {
+   ID "61B4E967E6C20362"
+   coords 0 0 0
+   m_bIsUnlimitedEditorLegal 1
+  }
+ }
+}
+GC_RadiusAreaEntity GC_MigrationArea_Compound : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 4098.165 65.183 10726.068
+ m_fRadius 170
+}
