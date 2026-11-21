@@ -1,0 +1,324 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{6A9D0C4693AF34DA}" {
+     NavmeshFile "{E08B16AADAB901D8}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Soldier.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{04F808CEFD545B32}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Vehicle.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{6D7CE9C2F346F22E}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_LowRes.nmn"
+    }
+   }
+  }
+ }
+}
+GC_LobbyGameMode GC_MigratedMission : "{CE37030169F50D8F}worlds/Til/DieselPower/DieselPower_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 17
+   m_bRandomStartingWeather 1
+  }
+  GC_PeakFactionPopulationComponent "{CB531D5FAF2E757B}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{E1F110F98BF75F7E}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 90.000000
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{480E6F1198BE6723}" {
+     m_sName "exploded"
+    }
+    GC_MissionFlag "{FA2DF31635E77173}" {
+     m_sName "shutdown"
+    }
+    GC_MissionFlag "{98A48EF6D74DC606}" {
+     m_sName "try_explosion"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{62CE5626C36537CB}" {
+     m_sName "Mission Start (1200s)"
+     m_Advanced GC_EventOptions "{CC59BC44F7AECF24}" {
+      m_fDelay 1200
+     }
+     m_aActions {
+      GC_FlagAction "{23B72E60A6F5C5E8}" {
+       m_sFlagName "try_explosion"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{EE4D14BF6EF934A7}" {
+     m_sName "Major SOBR Victory"
+     m_aConditions {
+      GC_ConditionGroup "{3F09A7557D59A65E}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_CustomScriptCondition "{27C8A14DCC72504F}" {
+         m_Script GC_PeakFactionPopulationCheck "{893E4FC662A70B41}" {
+          m_sFaction "GC_SEPARATIST"
+          m_fRatio 1
+         }
+        }
+        GC_MissionFlagCondition "{869D9C9D9CACC4CC}" {
+         m_sFlagName "shutdown"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{578BE8A6B1C9E4CB}" {
+       m_sMessage "Major SOBR Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{996B301210C3A0C6}" {
+     m_sName "Minor SOBR Victory"
+     m_aConditions {
+      GC_ConditionGroup "{705DBB2C25F0B57A}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_CustomScriptCondition "{559CFBBC2DAB751B}" {
+         m_Script GC_PeakFactionPopulationCheck "{3FABB813226BFB7F}" {
+          m_sFaction "GC_SEPARATIST"
+          m_fRatio 1
+         }
+        }
+        GC_MissionFlagCondition "{7587E8CED3CB5412}" {
+         m_sFlagName "exploded"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8BD58A40F2D58B93}" {
+       m_sMessage "Minor SOBR Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{053C10C496D19C3A}" {
+     m_sName "EXTR Victory"
+     m_aConditions {
+      GC_GameModeStateCondition "{AA0BF8FD5B1F7940}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{A4005A715121E67E}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_CustomScriptCondition "{EDC59CFB4F694F08}" {
+         m_Script GC_PeakFactionPopulationCheck "{E2BF9FBAE0195E51}" {
+          m_sFaction "RHS_AFRF"
+          m_fRatio 0.85
+         }
+        }
+        GC_MissionFlagCondition "{889AD9B5B4F7AEB4}" {
+         m_sFlagName "exploded"
+         m_bRequireFalse 1
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B544321D5CB3CB44}" {
+       m_sMessage "EXTR Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A70648A10260B44B}" {
+     m_sName "Shutdown"
+     m_aConditions {
+      GC_MissionFlagCondition "{F7322FD9E86B177B}" {
+       m_sFlagName "shutdown"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{818D5A3AF2B5AC64}" {
+       m_sMessage "Shutdown"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B9BD765B4DE08163}" {
+     m_sName "Shutdown (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7E62797AF3287857}" {
+       m_sEventName "Shutdown"
+      }
+     }
+     m_Advanced GC_EventOptions "{D14BCF3F4EB8FE03}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{9C5424CC0E695535}" {
+       m_sTitle "Shutdown complete"
+       m_sMessage "The generators were shut down in time."
+       m_aFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{1CAEE4E2D93C65B8}" {
+     m_sName "Explosion"
+     m_aConditions {
+      GC_GameModeStateCondition "{75AEE1798539D6DF}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{3EA2B74E4B40D6CA}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{4D24CCAC6F8DE774}" {
+         m_sFlagName "try_explosion"
+        }
+        GC_MissionFlagCondition "{825C384527CB3474}" {
+         m_sFlagName "shutdown"
+         m_bRequireFalse 1
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FB94FBE4D607685C}" {
+       m_sMessage "Explosion"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{DE46500B49E8302B}" {
+     m_sName "Explosion (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{D41B3AB738DFC88C}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{2239ACACF20D9347}" {
+       m_sEventName "Explosion"
+      }
+     }
+     m_aActions {
+      GC_FlagAction "{3EB0374D6C680976}" {
+       m_sFlagName "exploded"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{06688F7E849F0B78}" {
+     m_sName "Explosion (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{3590356206FB7FC8}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{4CB120437D7DEE59}" {
+       m_sEventName "Explosion"
+      }
+     }
+     m_Advanced GC_EventOptions "{F2200C58239B4A91}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{0C6D8C9989A2F19B}" {
+       m_aEntities {
+        "interaction_shutdown"
+       }
+      }
+     }
+    }
+    GC_Event "{6BC55C304FB6C1F4}" {
+     m_sName "GC_MigratedSpawn_A3AFFBC912BA08A5"
+     m_aConditions {
+      GC_GameModeStateCondition "{BC2C66CF3BB807A8}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{4D7760406A70FD90}" {
+       m_sFlagName "exploded"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E27A2DCFDD685A84}" {
+       m_sMessage "GC_MigratedSpawn_A3AFFBC912BA08A5"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BBF5019E745FC0E4}" {
+     m_sName "GC_MigratedSpawn_A3AFFBC912BA08A5 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{606A94A5D811CA66}" {
+       m_sEventName "GC_MigratedSpawn_A3AFFBC912BA08A5"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{BBF5019E745FC0E4}" {
+       m_Spawn GC_PrefabSpawn "{9FB54F35E667CB9B}" {
+        m_sLocation "spawner_explosion"
+        m_sPrefab "{B7C039735B4254A5}Prefabs/Weapons/Warheads/Explosions/Explosion_Fuel_Medium.et"
+       }
+      }
+     }
+    }
+    GC_Event "{1FB0614F46BE558F}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{8ABDBEB71AA74460}" {
+       m_fSeconds 90.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{BF22A986ED7ACC62}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     UIInfo SCR_FactionUIInfo "{5977478D568C0938}" {
+      Name "SOBR"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3%4"
+     }
+    }
+    SCR_Faction "{62EB308733CA83DD}" {
+     UIInfo SCR_FactionUIInfo "{62EB259E4C94C2BD}" {
+      Name "Extremists"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3%4"
+     }
+    }
+   }
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{6144B0BE2EAC6897}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneMedium.et" {
+ coords 6036.308 235.375 6324.493
+}
