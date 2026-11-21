@@ -1,0 +1,459 @@
+SCR_AIWorld : "{33A5B976E41B0A4C}Prefabs/AI/SCR_AIWorld_BadOrb_GC.et" {
+}
+GC_LobbyGameMode GC_MigratedMission : "{32B4E359BC591FFB}worlds/Til/KasselbergClamber/KasselbergClamber_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6589720C9E7F061D}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 7
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{93DCCB7C40C86541}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{BD6CA33468F2EF8A}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 120.000000
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{C08D58FC15165F73}" {
+     m_sName "time"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{A32404A501B504AE}" {
+     m_sName "US Major Victory"
+     m_aConditions {
+      GC_GameModeStateCondition "{BBF833EA6FB5F7DB}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{F34902511FD444D6}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{D5BB0ACC0883257A}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_ConditionGroup "{DC546177B1E3335D}" {
+           m_iMatch 1
+           m_aConditions {
+            GC_AreaCondition "{612FEEDE57CA6277}" {
+             m_sArea "GC_MigrationArea_obj1"
+             m_Targets GC_CharacterAreaTargets "{45D7F79BD3DD7E73}" {
+              m_iWho 2
+              m_aFactions {
+               "US"
+              }
+             }
+             m_Requirement GC_LocalFactionShare "{7909242A457542CB}" {
+              m_fRequiredShare 1
+             }
+             m_Capture GC_AreaCaptureOptions "{0849B245F5928AD5}" {
+              m_fSeconds 0
+              m_bUseElapsedTime 1
+              m_iInterruption 3
+              m_bStopAfterFirstChange 1
+              m_Messages GC_CaptureMessages "{BDABC78C513734AA}" {
+               m_sLocation "Wasserberg"
+               m_sCaptured "The %1 has taken control of %2."
+               m_sCapturing "The %1 is taking control of %2."
+               m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+               m_sLost "The %1 has lost control of %2."
+               m_sLosing "The %1 is losing control of %2."
+               m_sLossInterrupted "The %1 is no longer losing control of %2."
+              }
+             }
+            }
+            GC_AreaCondition "{F305123DAED12B55}" {
+             m_sArea "GC_MigrationArea_obj2"
+             m_Targets GC_CharacterAreaTargets "{FC6A9A6DDCB02850}" {
+              m_iWho 2
+              m_aFactions {
+               "US"
+              }
+             }
+             m_Requirement GC_LocalFactionShare "{6EA47B7911328DCC}" {
+              m_fRequiredShare 1
+             }
+             m_Capture GC_AreaCaptureOptions "{3EA5FD33A8F35F27}" {
+              m_fSeconds 0
+              m_bUseElapsedTime 1
+              m_iInterruption 3
+              m_bStopAfterFirstChange 1
+              m_Messages GC_CaptureMessages "{9060F727BB5A7AA0}" {
+               m_sLocation "Allenburg"
+               m_sCaptured "The %1 has taken control of %2."
+               m_sCapturing "The %1 is taking control of %2."
+               m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+               m_sLost "The %1 has lost control of %2."
+               m_sLosing "The %1 is losing control of %2."
+               m_sLossInterrupted "The %1 is no longer losing control of %2."
+              }
+             }
+            }
+           }
+          }
+          GC_AreaCondition "{9279A9D96695BC6A}" {
+           m_sArea "GC_MigrationArea_obj3"
+           m_Targets GC_CharacterAreaTargets "{1BFAC69F884A1331}" {
+            m_iWho 2
+            m_aFactions {
+             "US"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{32D795A8FCE22F47}" {
+            m_fRequiredShare 1
+           }
+           m_Capture GC_AreaCaptureOptions "{C6340ABC4FE7EC46}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_Messages GC_CaptureMessages "{0F6B5F8172AC54B5}" {
+             m_sLocation "Kasselberg"
+             m_sCaptured "The %1 has taken control of %2."
+             m_sCapturing "The %1 is taking control of %2."
+             m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+             m_sLost "The %1 has lost control of %2."
+             m_sLosing "The %1 is losing control of %2."
+             m_sLossInterrupted "The %1 is no longer losing control of %2."
+            }
+           }
+          }
+         }
+        }
+        GC_MissionFlagCondition "{76F9AD50F62E0277}" {
+         m_sFlagName "time"
+         m_bRequireFalse 1
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A1B39D65316FCDDB}" {
+       m_sMessage "US Major Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{45B5E492A4CF738D}" {
+     m_sName "US Major Victory (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{32C64AEEE2B66DE7}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{A94090D2FB5E80C1}" {
+       m_sEventName "US Major Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{096BE231C2EA4483}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{12D7483CB127B887}" {
+       m_sTitle "US MAJOR VICTORY"
+       m_sMessage "US forces reached Kasselberg without significant delays."
+      }
+      GC_EndMissionAction "{5ED8D63BC88426AB}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{B555B604897D9496}" {
+     m_sName "US Major Victory (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{20EB1997164B8B37}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{7BB6728F5905AD05}" {
+       m_sEventName "US Major Victory"
+      }
+     }
+     m_aActions {
+      GC_EventControlAction "{318647BD7E414BF8}" {
+       m_sEventName "US Minor Victory"
+       m_iOperation 1
+      }
+     }
+    }
+    GC_Event "{8953E653F60FB0E6}" {
+     m_sName "US Minor Victory"
+     m_aConditions {
+      GC_GameModeStateCondition "{A3A5396BC4B6AA6E}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{0CEAABD8FFD810E0}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{CF43F4273C5367FA}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_ConditionGroup "{2EDD1EE8DEB91EAA}" {
+           m_iMatch 1
+           m_aConditions {
+            GC_AreaCondition "{E9853B6D765D0DBF}" {
+             m_sArea "GC_MigrationArea_obj1"
+             m_Targets GC_CharacterAreaTargets "{B2B5E1BFDCA6AC97}" {
+              m_iWho 2
+              m_aFactions {
+               "US"
+              }
+             }
+             m_Requirement GC_LocalFactionShare "{681A656030ED160A}" {
+              m_fRequiredShare 1
+             }
+             m_Capture GC_AreaCaptureOptions "{F35F3AD170C96B04}" {
+              m_fSeconds 0
+              m_bUseElapsedTime 1
+              m_iInterruption 3
+              m_bStopAfterFirstChange 1
+             }
+            }
+            GC_AreaCondition "{23E7F0DA5577B318}" {
+             m_sArea "GC_MigrationArea_obj2"
+             m_Targets GC_CharacterAreaTargets "{C36FC3C6EC00FA68}" {
+              m_iWho 2
+              m_aFactions {
+               "US"
+              }
+             }
+             m_Requirement GC_LocalFactionShare "{357DAB6589F71447}" {
+              m_fRequiredShare 1
+             }
+             m_Capture GC_AreaCaptureOptions "{E9981B8AACD8462F}" {
+              m_fSeconds 0
+              m_bUseElapsedTime 1
+              m_iInterruption 3
+              m_bStopAfterFirstChange 1
+             }
+            }
+           }
+          }
+          GC_AreaCondition "{70F284A3F1EC5E45}" {
+           m_sArea "GC_MigrationArea_obj3"
+           m_Targets GC_CharacterAreaTargets "{A6567C3E9327E869}" {
+            m_iWho 2
+            m_aFactions {
+             "US"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{B37F55C51C79AD33}" {
+            m_fRequiredShare 1
+           }
+           m_Capture GC_AreaCaptureOptions "{E1F63FD1FD1B6DAC}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+           }
+          }
+         }
+        }
+        GC_MissionFlagCondition "{C1F025969D01403D}" {
+         m_sFlagName "time"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F10286116458D56B}" {
+       m_sMessage "US Minor Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{4E4BE07AE3BBBCFB}" {
+     m_sName "US Minor Victory (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{C051BB7AD020E518}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{7E57EBFC173A613A}" {
+       m_sEventName "US Minor Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{0EB534C8EFB4E10C}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{4978B323532B4130}" {
+       m_sTitle "US MINOR VICTORY"
+       m_sMessage "US forces reached Kasselberg, but were somewhat delayed by the NVA."
+      }
+      GC_EndMissionAction "{AACD0CC9522967EE}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{D53B1B23D650DA30}" {
+     m_sName "Time flag (2400s)"
+     m_Advanced GC_EventOptions "{1805A404B409473D}" {
+      m_fDelay 2400
+     }
+     m_aActions {
+      GC_FlagAction "{824602B3941032D3}" {
+       m_sFlagName "time"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{1FC47A5223BD5CF6}" {
+     m_sName "NVA Victory"
+     m_aConditions {
+      GC_CustomScriptCondition "{DCC561FCDCF754D3}" {
+       m_Script GC_PeakFactionPopulationCheck "{A8D2B7000494F7CB}" {
+        m_sFaction "US"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{53613715524CA1BA}" {
+       m_sMessage "NVA Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{285F210DA3C1561A}" {
+     m_sName "NVA Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{AABF39EE657A7C45}" {
+       m_sEventName "NVA Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{1DBE47A919BF7055}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{31A188938E36FD40}" {
+       m_sTitle "NVA VICTORY"
+       m_sMessage "US forces took severe casualties."
+      }
+      GC_EndMissionAction "{599E1EB42AE246D2}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_NVA"
+       }
+      }
+     }
+    }
+    GC_Event "{0BDAE38B62678391}" {
+     m_sName "Release OBJ3 group"
+     m_aConditions {
+      GC_ConditionGroup "{1DDFE16BC0B594D6}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_AreaCondition "{1AAB4CF7DF524F31}" {
+         m_sArea "GC_MigrationArea_obj1"
+         m_Targets GC_CharacterAreaTargets "{32F0406934A74912}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{44FD3667FDB1EF3B}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{31E518ED6E42AB64}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{5D8BEFEA8BECBBC6}" {
+         m_sArea "GC_MigrationArea_obj2"
+         m_Targets GC_CharacterAreaTargets "{076323B1FF4DE163}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{B5165C04D05D676F}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{3EEAE28DEBF2FB4F}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{D346758A3AF02F46}" {
+         m_sArea "GC_MigrationArea_obj3"
+         m_Targets GC_CharacterAreaTargets "{953F9CFC5543E233}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{D2FB3D86B3F37CE1}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{949A19218E30A91F}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A30B5F76B934EF45}" {
+       m_sMessage "Release OBJ3 group"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0070E67D707BFF4B}" {
+     m_sName "Release OBJ3 group (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A97E42B211BC6EC7}" {
+       m_sEventName "Release OBJ3 group"
+      }
+     }
+     m_aActions {
+      GC_AssignWaypointsAction "{A57D36A79D3855AE}" {
+       m_sGroupName "gr_nva_33"
+       m_bReplaceExisting 1
+      }
+     }
+    }
+    GC_Event "{844BD684350CF76E}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{4FD4E46E16895200}" {
+       m_fSeconds 120.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{83D97A479B6F6FDB}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+   m_iSlotReservationTimeoutSeconds 180
+   m_iMatchSlotReservationTimeoutSeconds -1
+  }
+ }
+ coords 0 0 0
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 1843.376 154.492 4163.088
+}
