@@ -1,0 +1,405 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 2408.164 6.761 1042.497
+}
+GC_LobbyGameMode GC_MigratedMission : "{C62A53129259F5AC}worlds/Woody/COXX_Torske_Crossing/COXX_Torske_Crossing_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{655E043AA934CB58}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 16
+     m_iStartingMinutes 30
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 8
+   m_iMonth 5
+   m_iYear 2009
+  }
+  GC_PeakFactionPopulationComponent "{9C691C0FC9096354}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{E75040C61A01DC72}" {
+     m_sName "UK L"
+     m_aConditions {
+      GC_CustomScriptCondition "{37736C68CA9DF2B1}" {
+       m_Script GC_PeakFactionPopulationCheck "{3FA98EC12E016ED8}" {
+        m_sFaction "UK"
+        m_fRatio 0.75
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{98442A212DF1C622}" {
+       m_sMessage "UK L"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{987345DECDE432E5}" {
+     m_sName "UK L (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{083EA3975ED7B671}" {
+       m_sEventName "UK L"
+      }
+     }
+     m_Advanced GC_EventOptions "{BA22F3212FE98AEE}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{7870B0B28DA83085}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{03906B9583AA1AB1}" {
+     m_sName "UK L (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3F6CBFE66108F252}" {
+       m_sEventName "UK L"
+      }
+     }
+     m_Advanced GC_EventOptions "{14EBD651BDF806F9}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{3C0DA3568AE2DEFE}" {
+       m_sTitle "UK Defeat"
+       m_sMessage "British Forces have sustained 75% casualties."
+      }
+     }
+    }
+    GC_Event "{278FF27435545973}" {
+     m_sName "UK W"
+     m_aConditions {
+      GC_AreaCondition "{02B35D84D915A7A5}" {
+       m_sArea "GC_MigrationArea_obj"
+       m_Targets GC_CharacterAreaTargets "{FA613E0C29EC98F3}" {
+        m_iWho 2
+        m_aFactions {
+         "UK"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{041DFD0DAE3EAF6E}" {
+        m_fRequiredShare 0.99
+       }
+       m_Capture GC_AreaCaptureOptions "{12FA8937168F067F}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+        m_bSkipDiscovery 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A1994CE1FD53EFBD}" {
+       m_sMessage "UK W"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8DDC4DF6A771F637}" {
+     m_sName "UK W (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F33ED23C68DF9918}" {
+       m_sEventName "UK W"
+      }
+     }
+     m_Advanced GC_EventOptions "{086D1760EEFC1FE8}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{D2B37F0E7BA41694}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{49C630A7B17394C3}" {
+     m_sName "UK W (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{FC22075AB1C69A98}" {
+       m_sEventName "UK W"
+      }
+     }
+     m_Advanced GC_EventOptions "{94B8013EE2F62969}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{1FA25DF6FCE7635E}" {
+       m_sTitle "UK Victory"
+       m_sMessage "British Forces have seized the Russian Company HQ position."
+      }
+     }
+    }
+    GC_Event "{EEBD34CF7AABBCC8}" {
+     m_sName "GC_MigratedSpawn_3F335A0AF225E46E"
+     m_aConditions {
+      GC_AreaCondition "{9453F24BB79E0C94}" {
+       m_sArea "GC_MigrationArea_crossing"
+       m_Targets GC_CharacterAreaTargets "{DB98DA5229FEB70B}" {
+        m_iWho 2
+        m_aFactions {
+         "UK"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{2DED98258B94D393}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{85877A78A263449C}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+        m_bSkipDiscovery 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FD692A8D310D374B}" {
+       m_sMessage "GC_MigratedSpawn_3F335A0AF225E46E"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{85E408F2B3EF0D66}" {
+     m_sName "GC_MigratedSpawn_3F335A0AF225E46E (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{09089F1355CD3FE7}" {
+       m_sEventName "GC_MigratedSpawn_3F335A0AF225E46E"
+      }
+     }
+     m_Advanced GC_EventOptions "{B6CC9D6D68614B82}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{F270CBF455D9F3C8}" {
+       m_Spawn GC_AIGroupSpawn "{33D8350B75EE4B25}" {
+        m_sLocation "GC_Spawner_3F335A0AF225E46E"
+        m_sPrefab "{F6CEAA1D2B0A7ED0}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_RifleSquad.et"
+        m_aWaypoints {
+         "fm1"
+         "m1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{6B6E2B6360135FEC}" {
+     m_sName "GC_MigratedSpawn_3F335A0AF225E46E (105s)"
+     m_aConditions {
+      GC_MissionEventCondition "{AC813A38BD0E5E72}" {
+       m_sEventName "GC_MigratedSpawn_3F335A0AF225E46E"
+      }
+     }
+     m_Advanced GC_EventOptions "{79CF4183066BF7D4}" {
+      m_fDelay 105
+     }
+     m_aActions {
+      GC_SpawnAction "{3B7B4CD304F2C0D1}" {
+       m_Spawn GC_AIGroupSpawn "{1F7CF7780EFC36E6}" {
+        m_sLocation "GC_Spawner_3F335A0AF225E46E"
+        m_sPrefab "{F6CEAA1D2B0A7ED0}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_RifleSquad.et"
+        m_aWaypoints {
+         "fm1"
+         "m1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{0359E776A3798604}" {
+     m_sName "GC_MigratedSpawn_B3ADECA091398757"
+     m_aConditions {
+      GC_AreaCondition "{301D33622DF451A7}" {
+       m_sArea "GC_MigrationArea_crossing"
+       m_Targets GC_CharacterAreaTargets "{D8A364F0BCEE11EB}" {
+        m_iWho 2
+        m_aFactions {
+         "UK"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{69864F7468F3576F}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{0E77007E8F5E6ADC}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+        m_bSkipDiscovery 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B771A1AD755E5A41}" {
+       m_sMessage "GC_MigratedSpawn_B3ADECA091398757"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E39321D386C032F7}" {
+     m_sName "GC_MigratedSpawn_B3ADECA091398757 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B89CDB9070BCCC30}" {
+       m_sEventName "GC_MigratedSpawn_B3ADECA091398757"
+      }
+     }
+     m_Advanced GC_EventOptions "{EEA5CAE0C56C1A70}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{96ECA223ABC13C09}" {
+       m_Spawn GC_AIGroupSpawn "{8C17CB820F373082}" {
+        m_sLocation "GC_Spawner_B3ADECA091398757"
+        m_sPrefab "{F6CEAA1D2B0A7ED0}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_RifleSquad.et"
+        m_aWaypoints {
+         "fm1"
+         "m2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{31F8F8BBFB63B4E9}" {
+     m_sName "GC_MigratedSpawn_B3ADECA091398757 (110s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4991C8A12B8DE330}" {
+       m_sEventName "GC_MigratedSpawn_B3ADECA091398757"
+      }
+     }
+     m_Advanced GC_EventOptions "{91D0D0081E083506}" {
+      m_fDelay 110
+     }
+     m_aActions {
+      GC_SpawnAction "{CD57562D3B5EBE8D}" {
+       m_Spawn GC_AIGroupSpawn "{583E90F9A5AB8D6A}" {
+        m_sLocation "GC_Spawner_B3ADECA091398757"
+        m_sPrefab "{F6CEAA1D2B0A7ED0}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_RifleSquad.et"
+        m_aWaypoints {
+         "fm1"
+         "m2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{822BCAF8ED18A58A}" {
+     m_sName "GC_MigratedSpawn_ACEFC9CCFD6C508C"
+     m_aConditions {
+      GC_AreaCondition "{873E2CDB2B0CD999}" {
+       m_sArea "GC_MigrationArea_crossing"
+       m_Targets GC_CharacterAreaTargets "{929D877931D5F04D}" {
+        m_iWho 2
+        m_aFactions {
+         "UK"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{8ED981129A156273}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{61DE65F9641C4FE4}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+        m_bSkipDiscovery 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DACA032F0B48CADC}" {
+       m_sMessage "GC_MigratedSpawn_ACEFC9CCFD6C508C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C9B702D8A9D0D350}" {
+     m_sName "GC_MigratedSpawn_ACEFC9CCFD6C508C (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{807E5352939DA0EA}" {
+       m_sEventName "GC_MigratedSpawn_ACEFC9CCFD6C508C"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{C9B702D8A9D0D350}" {
+       m_Spawn GC_AIGroupSpawn "{C69FC20934FA47DB}" {
+        m_sLocation "GC_Spawner_ACEFC9CCFD6C508C"
+        m_sPrefab "{F6CEAA1D2B0A7ED0}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_RifleSquad.et"
+        m_aWaypoints {
+         "fm1"
+         "m3"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 2054.025 27.312 878.064
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{61500924662B6062}" {
+     UIInfo SCR_FactionUIInfo "{615009275A4B9FE7}" {
+      Name "1 RIFLES"
+      m_sNameUpper "1 RIFLES"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "0"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "C"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "E"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "G"
+       }
+       SCR_CallsignInfo "{65371177AD1EF615}" {
+        m_sCallsign "-"
+       }
+       SCR_CallsignInfo "{65371177AD43CF68}" {
+        m_sCallsign "-"
+       }
+       SCR_CallsignInfo "{65371177AECDA3B3}" {
+        m_sCallsign "-"
+       }
+       SCR_CallsignInfo "{65371177B9B5E302}" {
+        m_sCallsign "-"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GC_RadiusAreaEntity GC_MigrationArea_obj : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 2754.135 7.048 1108.864
+ m_fRadius 55
+}
+GC_RadiusAreaEntity GC_MigrationArea_crossing : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 3185.043 18.269 1116.052
+ m_fRadius 750
+}
