@@ -1,0 +1,203 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 5825.977 56.995 7653.192
+}
+GC_LobbyGameMode GC_MigratedMission : "{B02E4DE5922C037C}worlds/James/FuckDitchesGetMoney/FuckDitchesGetMoney_GC_Settings.et" {
+ components {
+  GC_PeakFactionPopulationComponent "{D141131403847FCA}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{84A448FCCB2CD4ED}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 300
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{FED4E538BBBD292C}" {
+     m_sName "US Dead"
+     m_aConditions {
+      GC_CustomScriptCondition "{FEF9FF834578065E}" {
+       m_Script GC_PeakFactionPopulationCheck "{C2DE9D3174CC1A8D}" {
+        m_sFaction "US"
+        m_fRatio 0.85
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{82EAC4A968E4A993}" {
+       m_sMessage "US Dead"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9FB1137577506CDE}" {
+     m_sName "US Dead (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DF6396AE33A676C1}" {
+       m_sEventName "US Dead"
+      }
+     }
+     m_Advanced GC_EventOptions "{A42683E190BC5C75}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_MessageAction "{33F5EAEBB0701364}" {
+       m_sTitle "US Forces Killed"
+       m_sMessage "US forces have taken 85% casualties."
+      }
+     }
+    }
+    GC_Event "{A16FC0254ADCE035}" {
+     m_sName "OBJ Cap"
+     m_aConditions {
+      GC_AreaCondition "{73EC4BB68EBC20FD}" {
+       m_sArea "GC_MigrationArea_obj"
+       m_Targets GC_CharacterAreaTargets "{34B0341A87857A34}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{DDD52F5240FC3305}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{20FBDB3506410970}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{188ED6517C3680F6}" {
+       m_sMessage "OBJ Cap"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0B62E60CB35DEDD1}" {
+     m_sName "OBJ Cap (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{0DFC5FBC567E509E}" {
+       m_sEventName "OBJ Cap"
+      }
+     }
+     m_Advanced GC_EventOptions "{0EBA3A3F23D1E33B}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_MessageAction "{82CB5D347393C924}" {
+       m_sTitle "OBJ Captured"
+       m_sMessage "The cap zone has been secured by US forces."
+      }
+     }
+    }
+    GC_Event "{9646E981BB9CBBF7}" {
+     m_sName "USSR Dead"
+     m_aConditions {
+      GC_CustomScriptCondition "{4812BB1994F2C998}" {
+       m_Script GC_PeakFactionPopulationCheck "{79D7E36F6197B48E}" {
+        m_sFaction "USSR"
+        m_fRatio 0.85
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C2BDF0B70D4B329F}" {
+       m_sMessage "USSR Dead"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BE35737231956A7D}" {
+     m_sName "USSR Dead (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E4951F2000553FC1}" {
+       m_sEventName "USSR Dead"
+      }
+     }
+     m_Advanced GC_EventOptions "{16E3EF74A59F55E6}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_MessageAction "{8947CF82FF1FA48D}" {
+       m_sTitle "Soviet Forces Killed"
+       m_sMessage "Soviet forces have taken 85% casualties."
+      }
+     }
+    }
+    GC_Event "{1304D637B33416F8}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{BD4A72461ABAA139}" {
+       m_fSeconds 300
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{7187555AE11B95C9}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 5815.147 57.653 7634.109
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{685E9CE0BBE29029}" {
+        m_sCallsign "K"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GC_RadiusAreaEntity GC_MigrationArea_obj : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 5986.441 56.843 7416.166
+ m_fRadius 150
+}
+GenericEntity : "{A3CF425C1BE37485}Prefabs/World/Locations/Common/Natural/LocationNaturalMajor.et" {
+ components {
+  SCR_EditableCommentComponent "{529AB059519FE609}" {
+   m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+    Name "Shallow Swamp"
+   }
+  }
+  SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+   DisplayName "Shallow Swamp"
+   MainType "Name Water Major"
+  }
+ }
+ coords 3943.176 104.967 7632.938
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 3820.937 96.522 7503.194
+}
+GenericEntity : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "circle-2"
+   m_Color 0 0 0 0.881
+   m_fSize 415
+   m_bWorldScale 1
+   m_sDescription ""
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+  }
+ }
+ coords 5986.441 56.843 7416.166
+ angles 0 0 0
+}
