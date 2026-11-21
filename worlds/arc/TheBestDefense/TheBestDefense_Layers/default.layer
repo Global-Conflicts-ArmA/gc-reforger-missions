@@ -1,0 +1,567 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F9E52831}" {
+     NavmeshFile "{AD5F99CD7C59D5E0}worlds/GameMaster/Navmeshes/GM_Eden.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F3B4EE8A}" {
+     NavmeshFile "{C35ECF3276824654}worlds/GameMaster/Navmeshes/GM_Eden_vehicles.nmn"
+    }
+   }
+  }
+ }
+ coords 2789.057 0 1333.482
+}
+GC_LobbyGameMode GC_MigratedMission : "{E148D2C458FAA869}worlds/arc/TheBestDefense/TheBestDefense_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6446152116DE9BFE}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 15
+     m_iStartingMinutes 20
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{1143EA5A42B44340}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{8E24861929BBC14B}" {
+     m_sName "US_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{613F7EEE8F65DC4E}" {
+       m_Script GC_PeakFactionPopulationCheck "{3599CDB3DDC4FDDF}" {
+        m_sFaction "US"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4B0834AF2F941345}" {
+       m_sMessage "US_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F2B26FBA6ED847A7}" {
+     m_sName "US_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6A72B880726CDDF9}" {
+       m_sEventName "US_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{2A4FB0600EAEFF61}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{D4C0407366904B92}" {
+       m_sTitle "DEFEAT"
+       m_sMessage "US Forces have taken significant casualties."
+      }
+     }
+    }
+    GC_Event "{516B10237E27D5FB}" {
+     m_sName "US_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{94F51D2EDBDA05C7}" {
+       m_sEventName "US_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{B178B3A6B874FC7D}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{06F60D4503FA282A}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{E5C091E50BA90A23}" {
+     m_sName "TIME_LIMIT (4505s)"
+     m_Advanced GC_EventOptions "{4157438D231EA9D6}" {
+      m_fDelay 4505
+     }
+     m_aActions {
+      GC_MessageAction "{0BDFA2E85A231986}" {
+       m_sTitle "DEFEAT"
+       m_sMessage "Time limit reached - Soviet reinforcement are inbound and friendly US forces are being overrun."
+      }
+     }
+    }
+    GC_Event "{97D299ED8946211B}" {
+     m_sName "TIME_LIMIT (4515s)"
+     m_Advanced GC_EventOptions "{9C91703A11607333}" {
+      m_fDelay 4515
+     }
+     m_aActions {
+      GC_EndMissionAction "{D1F40B2603AB678F}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{AC33EDC79DC011D2}" {
+     m_sName "US_CAP"
+     m_aConditions {
+      GC_AreaCondition "{8B23D9DFB42043F3}" {
+       m_sArea "GC_MigrationArea_US_CAP"
+       m_Targets GC_CharacterAreaTargets "{80C9E06B0FEA05A2}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{71ED79852F185731}" {
+        m_fRequiredShare 0.8
+       }
+       m_Capture GC_AreaCaptureOptions "{0A01D845C97DF623}" {
+        m_fSeconds 60
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{247A97BFF2CE63C5}" {
+       m_sMessage "US_CAP"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{93025599A82C686C}" {
+     m_sName "US_CAP (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{FF22FEB0623F027D}" {
+       m_sEventName "US_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{4E404A863EED38EC}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{FF59B8DD85318776}" {
+       m_sTitle "REGINA SECURED"
+       m_sMessage "Enemy reinforcements are inbound. Maintain control of the town for 15 minutes."
+      }
+      GC_SpawnAction "{9D274A4CE5765341}" {
+       m_Spawn GC_CrewedVehicleSpawn "{C73EC43632F30930}" {
+        m_sLocation "QRFSPAWN1"
+        m_sPrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+        m_sEntityName "QRFBTR1"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{7CC315EB579C21F3}" {
+          m_bShareIdleGunnerGroup 1
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "QRFAssaultWpN"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{FAB658EC2A5AF69F}" {
+       m_Spawn GC_CrewedVehicleSpawn "{E09AA783599C2D1C}" {
+        m_sLocation "SQRFSPAWN1"
+        m_sPrefab "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{56BB729BE58C5135}" {
+          m_bPassengers 0
+          m_aCharacters {
+           "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+           "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+          }
+          m_bShareIdleGunnerGroup 1
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "QRFAssaultWpS"
+          }
+         }
+        }
+       }
+      }
+      GC_AssignWaypointsAction "{7151CCF71C1446F8}" {
+       m_sGroupName "QRFSquad1"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "QRFAssaultWpS"
+       }
+      }
+      GC_AssignWaypointsAction "{69A8CF6CEA5F7D5D}" {
+       m_sGroupName "QRFSquad2"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "QRFAssaultWpN"
+       }
+      }
+      GC_SpawnAction "{8F8E886B96FAABDE}" {
+       m_Spawn GC_AIGroupSpawn "{BEFF3C921483646D}" {
+        m_sLocation "EQRFSPAWN1"
+        m_sPrefab "{E552DABF3636C2AD}Prefabs/Groups/OPFOR/Group_USSR_RifleSquad.et"
+        m_aWaypoints {
+         "QRFAssaultWpN"
+        }
+       }
+      }
+      GC_SpawnAction "{6456ABECA3A4DD81}" {
+       m_Spawn GC_AIGroupSpawn "{73FE58871667269D}" {
+        m_sLocation "EQRFSPAWN2"
+        m_sPrefab "{E552DABF3636C2AD}Prefabs/Groups/OPFOR/Group_USSR_RifleSquad.et"
+        m_aWaypoints {
+         "ReginaOverwatchWp"
+        }
+       }
+      }
+      GC_SpawnAction "{C2F89F9EB11E6EB5}" {
+       m_Spawn GC_AIGroupSpawn "{4259E17A87CD2C07}" {
+        m_sLocation "SQRFSPAWN3"
+        m_sPrefab "{E552DABF3636C2AD}Prefabs/Groups/OPFOR/Group_USSR_RifleSquad.et"
+        m_aWaypoints {
+         "QRFAssaultWpS"
+        }
+       }
+      }
+      GC_SpawnAction "{53A535FBB4367A2E}" {
+       m_Spawn GC_AIGroupSpawn "{FBAC741B600249EB}" {
+        m_sLocation "SQRFSPAWN4"
+        m_sPrefab "{E552DABF3636C2AD}Prefabs/Groups/OPFOR/Group_USSR_RifleSquad.et"
+        m_aWaypoints {
+         "QRFAssaultWpS"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{31501500A23C2A99}" {
+     m_sName "US_CAP (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F29C93B5C75C4794}" {
+       m_sEventName "US_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{741759852417BF16}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_SpawnAction "{ED857BAFD7267414}" {
+       m_Spawn GC_CrewedVehicleSpawn "{03A6AF3A940B2FE1}" {
+        m_sLocation "QRFSPAWN2"
+        m_sPrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+        m_sEntityName "QRFBTR2"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{D2A640D93FAF80F5}" {
+          m_bShareIdleGunnerGroup 1
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "QRFAssaultWpN"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{CD6CD595E4C65313}" {
+     m_sName "US_CAP (35s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A4C6DF21F01644A9}" {
+       m_sEventName "US_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{297F7C7115B48C46}" {
+      m_fDelay 35
+     }
+     m_aActions {
+      GC_SpawnAction "{91B4A91875C17A46}" {
+       m_Spawn GC_CrewedVehicleSpawn "{A0A7CF75AB434840}" {
+        m_sLocation "QRFSPAWN3"
+        m_sPrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+        m_sEntityName "QRFBTR3"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{E6C6938399C61876}" {
+          m_bShareIdleGunnerGroup 1
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "QRFAssaultWpN"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F4A74A3933FB2617}" {
+     m_sName "US_CAP (50s)"
+     m_aConditions {
+      GC_MissionEventCondition "{39DAB64ABD1888F2}" {
+       m_sEventName "US_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{6A82668B49C32AF0}" {
+      m_fDelay 50
+     }
+     m_aActions {
+      GC_SpawnAction "{EC9FC3674560EBCF}" {
+       m_Spawn GC_CrewedVehicleSpawn "{5D483AEB539F8891}" {
+        m_sLocation "QRFSPAWN4"
+        m_sPrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+        m_sEntityName "QRFBTR4"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{33ACD22A40E9A99F}" {
+          m_bShareIdleGunnerGroup 1
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "QRFAssaultWpN"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{82AF13CF0817C840}" {
+     m_sName "US_CAP (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{56215862DD340EED}" {
+       m_sEventName "US_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{E9CE836CBE9592A6}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{3750FC688FCFE428}" {
+       m_Spawn GC_CrewedVehicleSpawn "{9C4769617DE463CC}" {
+        m_sLocation "SQRFSPAWN2"
+        m_sPrefab "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{39B1C7B4D30A21F2}" {
+          m_bPassengers 0
+          m_aCharacters {
+           "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+           "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+          }
+          m_bShareIdleGunnerGroup 1
+          m_fWaypointDelay 10
+          m_aWaypoints {
+           "QRFAssaultWpS"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4B8CD99E2848E483}" {
+     m_sName "US_CAP (905s)"
+     m_aConditions {
+      GC_MissionEventCondition "{33FCA7B6EC38AF33}" {
+       m_sEventName "US_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{42AF96779E5BFFEB}" {
+      m_fDelay 905
+     }
+     m_aActions {
+      GC_MessageAction "{ABD4FDC5F547EAA8}" {
+       m_sTitle "VICTORY"
+       m_sMessage "Regina was captured and held for 15 minutes."
+      }
+     }
+    }
+    GC_Event "{5B01F6F1864E76DA}" {
+     m_sName "US_CAP (915s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B25D84F104C5092F}" {
+       m_sEventName "US_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{EE29FDD367F5304A}" {
+      m_fDelay 915
+     }
+     m_aActions {
+      GC_EndMissionAction "{B7D748CDAF7F1BFE}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{D3C93F319AE7D0DD}" {
+     m_sName "ASSIGN_WAYPOINTS (5s)"
+     m_Advanced GC_EventOptions "{583EBCFAB2E52096}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_AssignWaypointsAction "{7FC82F3CBB258339}" {
+       m_sGroupName "PATROL_E"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "ReginaPatrolWpE1"
+        "ReginaPatrolWpE2"
+        "ReginaPatrolWpE3"
+        "ReginaPatrolWpE4"
+        "ReginaPatrolWpECycle"
+       }
+      }
+      GC_AssignWaypointsAction "{70049B941C91E9D5}" {
+       m_sGroupName "PATROL_W"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "ReginaPatrolWpW1"
+        "ReginaPatrolWpW2"
+        "ReginaPatrolWpW3"
+        "ReginaPatrolWpW4"
+        "ReginaPatrolWpWCycle"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 2845.313 0 1293.748
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792CE18FB44}" {
+        m_sCallsign "Crossbow"
+       }
+       SCR_CallsignInfo "{55CCB792CE02ECFA}" {
+        m_sCallsign "Chariot"
+       }
+       SCR_CallsignInfo "{6539256C26FC4EA6}" {
+        m_sCallsign "2"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{644565448C208DE5}" {
+        m_sCallsign "4"
+       }
+      }
+      m_sCallsignGroupFormat "%2-%3"
+      m_sCallsignCharacterFormat "%2-%3: %4"
+      m_sCallsignCharacterWithRoleFormat "%2-%3: %4"
+     }
+    }
+   }
+  }
+ }
+}
+$grp GenericEntity {
+ QRFSPAWN1 {
+  coords 7053.429 86.23 3325.343
+  angleX 4.441
+  angleY -178.434
+  angleZ 1.014
+ }
+ SQRFSPAWN1 {
+  coords 8351.071 232.715 2436.043
+  angleY -152.403
+ }
+ SQRFSPAWN2 {
+  coords 8363.917 227.558 2466.373
+  angleY -176.835
+ }
+ EQRFSPAWN1 {
+  coords 7964.066 315.424 3297.605
+  angleY -176.835
+ }
+ EQRFSPAWN2 {
+  coords 8038.09 316.486 2951.147
+  angleY -176.835
+ }
+ SQRFSPAWN3 {
+  coords 7886.643 25.331 1550.637
+  angleY -176.835
+ }
+ SQRFSPAWN4 {
+  coords 7830.305 18.96 1527.622
+  angleY -176.835
+ }
+ QRFSPAWN2 {
+  coords 7055.566 82.508 3359.924
+  angleX 6.226
+  angleY -175.876
+  angleZ 0.448
+ }
+ QRFSPAWN3 {
+  coords 7053.35 78.9 3390.52
+  angleX 6.211
+  angleY 164.137
+  angleZ -0.057
+ }
+ QRFSPAWN4 {
+  coords 7041.391 74.338 3429.496
+  angleX 6.763
+  angleY 161.558
+  angleZ 0.561
+ }
+}
+GenericEntity : "{1D7174C97DF571DC}PrefabsEditable/SupportStationSystems/E_SupportStationSystem_Base.et" {
+ components {
+  SCR_FuelSupportStationComponent "{64456545E14D1857}" {
+   m_eSupportStationPriority HIGH
+   m_fRange 200
+  }
+  SCR_HealSupportStationComponent "{64456545DD4F3023}" {
+   m_eSupportStationPriority HIGH
+   m_fRange 200
+   m_iSupplyCostDamageHealed 0
+   m_iSuppliesPerDoTHealed 0
+   m_iSupplyCostBloodHealed 0
+  }
+  SCR_RepairSupportStationComponent "{64456545CCB5FC9B}" {
+   m_eSupportStationPriority HIGH
+   m_fRange 200
+   m_iSupplyCostDamageHealed 0
+   m_iSuppliesPerDoTHealed 0
+   m_iSupplyCostPerFireRateReduction 0
+  }
+  WCS_RearmSupportStationComponent "{64456545D210D5CD}" {
+   m_eSupportStationPriority HIGH
+   m_fRange 200
+  }
+ }
+ coords 2951.316 7.306 2086.873
+}
+GC_RadiusAreaEntity GC_MigrationArea_US_CAP : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 7184.625 137.253 2335.776
+ m_fRadius 100
+}
