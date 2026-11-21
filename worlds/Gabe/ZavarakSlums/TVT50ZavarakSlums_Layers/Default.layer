@@ -1,0 +1,283 @@
+SCR_AIWorld SCR_AIWorld_Takistan : "{3DE6090FC602E566}Prefabs/AI/SCR_AIWorld_Takistan.et" {
+ coords 10539.188 197.925 10730.347
+ angles 1.817 -0.559 -17.104
+}
+GC_LobbyGameMode GC_MigratedMission : "{8ACF90EBA499BC06}worlds/Gabe/ZavarakSlums/TVT50ZavarakSlums_GC_Settings.et" {
+ components {
+  SCR_InitWeatherComponent "{61B68227C35BFE9A}" {
+   m_initialWeatherDurationMin 5
+   m_initialWeatherDurationMax 6
+  }
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 18
+   m_iStartingMinutes 40
+   m_fFogAmount 0.722
+   m_fFogHeightDensity 1
+   m_bDateOverride 1
+   m_iDay 7
+   m_iMonth 7
+   m_iYear 2012
+  }
+  GC_MissionEnvironmentComponent "{02F2AD2D790E4E9E}" {
+   m_bOverrideGeographicCoordinates 1
+   m_fLatitude -52.308
+   m_fLongitude 10.769
+   m_bOverrideTimeZone 1
+   m_fTimeZoneOffset 4.3
+   m_fDSTOffsetHours 0
+   m_bDSTEnabled 1
+   m_bOverrideAtmosphere 0
+  }
+  GC_PeakFactionPopulationComponent "{C1BCC4C34B6491C3}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{4DD580CD2654ED5F}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 150.000000
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{E892B08782D9A68F}" {
+     m_sName "Blufor Victory"
+     m_aConditions {
+      GC_CustomScriptCondition "{B10FB4F162B3C7D6}" {
+       m_Script GC_PeakFactionPopulationCheck "{5DAC390BF80A3A3D}" {
+        m_sFaction "GC_INSURGENT"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{940CB3AC46917661}" {
+       m_sMessage "Blufor Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B6D2D3C332EB5BFA}" {
+     m_sName "Blufor Victory (2.5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E2EA0DFD6F92E24A}" {
+       m_sEventName "Blufor Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{474AFD3C6FF7F538}" {
+      m_fDelay 2.5
+     }
+     m_aActions {
+      GC_MessageAction "{A9BEDC0D69223731}" {
+       m_sTitle "US Victory (BLUFOR)"
+       m_sMessage "Insurgents (OPFOR) have taken 90% casualties"
+      }
+     }
+    }
+    GC_Event "{C285A7773910D668}" {
+     m_sName "Opfor Victory"
+     m_aConditions {
+      GC_CustomScriptCondition "{F2CA03E53EBDD409}" {
+       m_Script GC_PeakFactionPopulationCheck "{16DD2884294E0C82}" {
+        m_sFaction "US"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B5AE10BE5F316849}" {
+       m_sMessage "Opfor Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A843B5692E117E3E}" {
+     m_sName "Opfor Victory (2.5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8C00966D1E063B23}" {
+       m_sEventName "Opfor Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{0717178A7B7F2B16}" {
+      m_fDelay 2.5
+     }
+     m_aActions {
+      GC_MessageAction "{0AD2274909103866}" {
+       m_sTitle "Insurgent Victory (OPFOR)"
+       m_sMessage "US (BLUFOR) has taken 90% casualties"
+      }
+     }
+    }
+    GC_Event "{0F8CF8DA4236E06F}" {
+     m_sName "GC_MigrationAreaStatus_BA8D64CFA6723E98"
+     m_aConditions {
+      GC_AreaCondition "{98FEBAD848AB0352}" {
+       m_sArea "CapZoneOpfor"
+       m_Targets GC_CharacterAreaTargets "{DCC5AB7B5F99B2FC}" {
+        m_aFactions {
+         "GC_INSURGENT"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{3CA366AD0434FED1}" {
+        m_fRequiredShare 0.51
+       }
+       m_Capture GC_AreaCaptureOptions "{6C9DF80885F0C254}" {
+        m_fSeconds 600
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_Messages GC_CaptureMessages "{DB4AF05B7F7A465C}" {
+         m_sLocation "the objective"
+         m_sCaptured "The %1 WIN! They've taken control of %2."
+         m_sCapturing "The %1 are taking control of %2."
+         m_sCaptureInterrupted "The %1 are no longer taking control of %2."
+         m_sLost "The %1 have lost control of %2."
+         m_sLosing "The %1 are losing control of %2."
+         m_sLossInterrupted "The %1 are no longer losing control of %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{99DFB5E1E926B720}" {
+       m_sMessage "GC_MigrationAreaStatus_BA8D64CFA6723E98"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A9C4B442BCE2D2D7}" {
+     m_sName "GC_MigrationAreaStatus_803B6F59C215E2E0"
+     m_aConditions {
+      GC_AreaCondition "{7C408D4010DFF450}" {
+       m_sArea "CapZoneBlufor"
+       m_Targets GC_CharacterAreaTargets "{83FFACEB083B13AC}" {
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{1B1B79AC7C7CDBD4}" {
+        m_fRequiredShare 0.51
+       }
+       m_Capture GC_AreaCaptureOptions "{A9FEF9001947B974}" {
+        m_fSeconds 600
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_Messages GC_CaptureMessages "{53CE1CBADA426DBE}" {
+         m_sLocation "the objective"
+         m_sCaptured "The %1 WINS! They've taken control of %2."
+         m_sCapturing "The %1 is taking control of %2."
+         m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+         m_sLost "The %1 has lost control of %2."
+         m_sLosing "The %1 is losing control of %2."
+         m_sLossInterrupted "The %1 is no longer losing control of %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{122B680CE2878F70}" {
+       m_sMessage "GC_MigrationAreaStatus_803B6F59C215E2E0"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CC0F8C5CE0D550BE}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{3F7D2102157AE00B}" {
+       m_fSeconds 150.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{0339F85760422DC0}" {
+       m_aEntities {
+        "RestrictZone_Blufor"
+        "RestrictZone_Opfor"
+       }
+      }
+     }
+    }
+   }
+   m_iSlotReservationTimeoutSeconds 180
+   m_iMatchSlotReservationTimeoutSeconds -1
+  }
+ }
+ coords 10570.682 204.87 10699.063
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     FactionKey "RHS_USAF"
+     m_iOrder 1
+     m_FactionLabel FACTION_RHS_USAF
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CCD598D3}" {
+        m_sCallsign "Bravo"
+       }
+      }
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     FactionKey "US"
+     m_FactionLabel FACTION_US
+    }
+    SCR_Faction "{632925D53C7F1148}" {
+     m_iOrder 2
+     m_bShowInWelcomeScreenIfNonPlayable 1
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_bIsAssignedRandomly 0
+      m_aCompanyNames {
+       SCR_CallsignInfo "{58B2B630FDD64B73}" {
+        m_sCallsign "Zavarak"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{58B2B630FDD64B65}" {
+        m_sCallsign "Cell"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "HQ"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+        m_sCallsign "4"
+       }
+      }
+      m_sCallsignGroupFormat "%1 %2 %3"
+      m_sCallsignCharacterFormat "%1 %2 %3 %4"
+      m_sCallsignCharacterWithRoleFormat "%1 %2 %3 %4"
+     }
+     m_iFactionRadioFrequency 42000
+    }
+   }
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity RestrictZone_Blufor : "{6144B0BE2EAC6897}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneMedium.et" {
+ coords 10199.08 173.605 10648.705
+ m_fZoneRadius 50
+ m_fZoneTeleportedRadius 65
+}
+SCR_EditorRestrictionZoneEntity RestrictZone_Opfor : "{6144B0BE2EAC6897}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneMedium.et" {
+ coords 10895.964 174.331 10736.731
+ angles -1.136 0.022 -0.853
+ m_fZoneRadius 50
+ m_fZoneTeleportedRadius 65
+}
+GC_RadiusAreaEntity CapZoneOpfor : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 10478.855 160.823 11084.951
+ m_fRadius 85
+}
+GC_RadiusAreaEntity CapZoneBlufor : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 10478.855 160.823 11084.951
+ m_fRadius 85
+}
