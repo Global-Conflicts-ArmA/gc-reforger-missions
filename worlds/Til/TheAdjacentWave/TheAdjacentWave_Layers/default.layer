@@ -1,0 +1,251 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 5.081 -1.243 17.417
+}
+GC_LobbyGameMode GC_MigratedMission : "{F0F9B9FFDA338A7A}worlds/Til/TheAdjacentWave/TheAdjacentWave_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bRandomStartingWeather 1
+  }
+  GC_PeakFactionPopulationComponent "{0F2C7EB16AE9D1D4}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{3CB286FDC6D217D6}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 180.000000
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{30476E445598B5D5}" {
+     m_sName "CDF Victory"
+     m_aConditions {
+      GC_CustomScriptCondition "{13A752C355BD9904}" {
+       m_Script GC_PeakFactionPopulationCheck "{026DF589736ADFD0}" {
+        m_sFaction "RHS_AFRF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{59D8E168D7CA2C2E}" {
+       m_sMessage "CDF Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1A624BBEC9EA0756}" {
+     m_sName "CDF Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{057502C671629770}" {
+       m_sEventName "CDF Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{F5C7E034A18C89E8}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{A2179C691ED99E9D}" {
+       m_sTitle "CDF Victory"
+       m_sMessage "The Russians took too many casualties."
+      }
+     }
+    }
+    GC_Event "{1FE6DC972F813948}" {
+     m_sName "CDF Victory (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{81FE7434252DF8A4}" {
+       m_sEventName "CDF Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{19FC246259AA3723}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_EndMissionAction "{F1ED67BB56414BA5}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_CDF"
+       }
+      }
+     }
+    }
+    GC_Event "{4F18FA2DBF982386}" {
+     m_sName "AFRF Victory"
+     m_aConditions {
+      GC_AreaCondition "{8780CB156941AAB6}" {
+       m_sArea "GC_MigrationArea_obj"
+       m_Targets GC_CharacterAreaTargets "{CC1C93A356773326}" {
+        m_iWho 2
+        m_aFactions {
+         "RHS_AFRF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{525A3D8370B8FFB1}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{F8CC4ECE05628F27}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{93DEE385996A87BF}" {
+       m_sMessage "AFRF Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7F66B0C03F566822}" {
+     m_sName "AFRF Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7E905E12B8C9A766}" {
+       m_sEventName "AFRF Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{D9389023953AA121}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{20550605988FA797}" {
+       m_sTitle "AFRF Victory"
+       m_sMessage "The Russians seized the objective."
+      }
+     }
+    }
+    GC_Event "{4AF0D8A2AF70541D}" {
+     m_sName "AFRF Victory (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A0747F75935CFEC9}" {
+       m_sEventName "AFRF Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{AB618538883069B8}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{5A215E7DB4BC4207}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{26351B446053B68D}" {
+     m_sName "Time Limit (1500s)"
+     m_Advanced GC_EventOptions "{CC6CEBF99F4B52FB}" {
+      m_fDelay 1500
+     }
+     m_aActions {
+      GC_MessageAction "{ED80A275CAB398A1}" {
+       m_sTitle "Time Limit"
+       m_sMessage "CDF reinforcements will arrive in 5 minutes."
+      }
+     }
+    }
+    GC_Event "{366ABE620D96EC02}" {
+     m_sName "Time Limit (1800s)"
+     m_Advanced GC_EventOptions "{A8F03109EABCE4A9}" {
+      m_fDelay 1800
+     }
+     m_aActions {
+      GC_MessageAction "{FE9C3BDFB2033E61}" {
+       m_sTitle "CDF Victory"
+       m_sMessage "After 30 minutes, CDF reinforcements have arrived."
+      }
+     }
+    }
+    GC_Event "{4B9B0DA6ED708495}" {
+     m_sName "Time Limit (1815s)"
+     m_Advanced GC_EventOptions "{F74E503AFBF1E9FE}" {
+      m_fDelay 1815
+     }
+     m_aActions {
+      GC_EndMissionAction "{8A404873F0ABEF6E}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_CDF"
+       }
+      }
+     }
+    }
+    GC_Event "{8DDE6842F614453D}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{B4F92874A2D0FDAA}" {
+       m_fSeconds 180.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{8FDF1D5F82FE502F}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{5977478D568C092E}" {
+        m_sCallsign "327 HQ"
+       }
+       SCR_CallsignInfo "{5977478D568C092D}" {
+        m_sCallsign "327"
+       }
+       SCR_CallsignInfo "{5977478D568D935E}" {
+        m_sCallsign "328"
+       }
+       SCR_CallsignInfo "{5977478D568D935F}" {
+        m_sCallsign "329"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3%4"
+     }
+    }
+    SCR_Faction "{5E5106B25048F22B}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5E5106B0E940AF39}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "0"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3: %4"
+      m_sCallsignCharacterWithRoleFormat "%3: %4"
+     }
+    }
+   }
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{6144B0BE2EAC6897}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneMedium.et" {
+ coords 3939.475 19.314 2390.095
+}
+GC_RadiusAreaEntity GC_MigrationArea_obj : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 3001.605 20.678 2403.767
+ m_fRadius 75
+}
