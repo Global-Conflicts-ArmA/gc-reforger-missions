@@ -33,6 +33,19 @@ class GC_RouletteSetupComponent : GC_LobbySetupGateComponent
 	protected int m_iScenarioIndex;
 	protected int m_iSeed;
 	protected bool m_bPublished;
+	protected GC_RadiusAreaEntity m_CaptureArea;
+	protected ref array<ref GC_EventDefinition> m_aMatchEvents;
+
+	override bool ProvidesMatchEvents()
+	{
+		return true;
+	}
+
+	override array<ref GC_EventDefinition> GetMatchEvents()
+	{
+		return m_aMatchEvents;
+	}
+
 
 	override bool IsLobbySetupReady()
 	{
@@ -160,17 +173,58 @@ class GC_RouletteSetupComponent : GC_LobbySetupGateComponent
 			return;
 		}
 		GC_RouletteRosterPlan plan = m_Roll.BuildRoster(m_Scenario, defenderTeam, attackerTeam, m_iPlayerTarget);
-		if (!plan || !m_Placement.Replace(m_Terrain, plan, objective, defender, attacker))
+		array<ref GC_EventDefinition> events = {};
+		FactionKey defendingFaction = m_Scenario.m_teamsList[defenderTeam].m_factionKey;
+		FactionKey attackingFaction = m_Scenario.m_teamsList[attackerTeam].m_factionKey;
+		if (!plan || !GC_RouletteRules.Build(defendingFaction, attackingFaction, m_Scenario.m_timeLimit, events))
 		{
-			FailRoll("could not place roster");
+			FailRoll("could not prepare roster or objectives");
 			return;
 		}
 
+		vector mins, maxs;
+		m_Objective.GetBounds(mins, maxs);
+		vector size = maxs - mins;
+		float radius = Math.Max(15, Math.Max(size[0], size[2]) * 1.25);
+		if (!PlaceRosterAndObjective(plan, objective, defender, attacker, radius))
+		{
+			FailRoll("could not place roster or objective");
+			return;
+		}
+
+		m_aMatchEvents = events;
 		ApplyEnvironment();
 		m_bPublished = true;
 		PrintFormat("GC Roulette | roster ready | seed=%1 scenario=%2 defenderSlots=%3 attackerSlots=%4",
 			m_iSeed, m_Scenario.m_scenarioName, plan.m_iDefenderSlots, plan.m_iAttackerSlots);
 		ClearRoll();
+	}
+
+	protected bool PlaceRosterAndObjective(GC_RouletteRosterPlan plan, vector objective, vector defender, vector attacker, float radius)
+	{
+		if (!(radius >= 0.1 && radius <= 100000))
+			return false;
+		GC_RadiusAreaEntity area = m_CaptureArea;
+		if (!area)
+		{
+			BaseWorld world = GetOwner().GetWorld();
+			if (world.FindEntityByName(GC_RouletteRules.OBJECTIVE))
+				return false;
+			area = GC_RadiusAreaEntity.Cast(GetGame().SpawnEntity(GC_RadiusAreaEntity, world));
+			if (!area)
+				return false;
+			area.SetName(GC_RouletteRules.OBJECTIVE);
+		}
+		if (!m_Placement.Replace(m_Terrain, plan, objective, defender, attacker))
+		{
+			if (area != m_CaptureArea)
+				SCR_EntityHelper.DeleteEntityAndChildren(area);
+			return false;
+		}
+		area.SetOrigin(objective);
+		area.SetRadius(radius);
+		m_CaptureArea = area;
+		return true;
 	}
 
 	protected void ApplyEnvironment()
