@@ -35,9 +35,11 @@ class GC_RouletteRosterPlacement
 
 		array<IEntity> pending = {};
 		array<ref GC_RouletteCallsign> callsigns = {};
+		plan.m_aDefenderVehicles.Clear();
+		plan.m_aAttackerVehicles.Clear();
 		terrain.SetPlacementState(m_aActive);
-		bool prepared = PlaceTeam(terrain, plan.m_aDefenders, defender, vector.Direction(defender, attacker).ToYaw(), pending, callsigns)
-			&& PlaceTeam(terrain, plan.m_aAttackers, attacker, vector.Direction(attacker, objective).ToYaw(), pending, callsigns);
+		bool prepared = PlaceTeam(terrain, plan.m_aDefenders, defender, vector.Direction(defender, attacker).ToYaw(), pending, callsigns, plan.m_aDefenderVehicles)
+			&& PlaceTeam(terrain, plan.m_aAttackers, attacker, vector.Direction(attacker, objective).ToYaw(), pending, callsigns, plan.m_aAttackerVehicles);
 		terrain.SetPlacementState(null);
 		if (!prepared || !CanReplace())
 		{
@@ -56,7 +58,7 @@ class GC_RouletteRosterPlacement
 		return true;
 	}
 
-	protected bool PlaceTeam(GC_RouletteTerrain terrain, array<GC_RouletteElement> elements, vector start, float yaw, array<IEntity> pending, array<ref GC_RouletteCallsign> callsigns)
+	protected bool PlaceTeam(GC_RouletteTerrain terrain, array<GC_RouletteElement> elements, vector start, float yaw, array<IEntity> pending, array<ref GC_RouletteCallsign> callsigns, array<IEntity> vehicles)
 	{
 		int companyIndex;
 		int platoonIndex;
@@ -77,6 +79,7 @@ class GC_RouletteRosterPlacement
 				IEntity vehicle = Spawn(element.m_vehiclePrefab, position, yaw, pending);
 				if (!vehicle)
 					return false;
+				vehicles.Insert(vehicle);
 				vector mins, maxs;
 				vehicle.GetBounds(mins, maxs);
 				vector size = maxs - mins;

@@ -23,6 +23,7 @@ class GC_RouletteSetupComponent : GC_LobbySetupGateComponent
 	protected ref GC_RouletteMap m_Map;
 	protected ref GC_RouletteCatalogue m_Catalogue;
 	protected ref GC_RouletteRosterPlacement m_Placement;
+	protected ref GC_RoulettePresentation m_Presentation;
 	protected ref GC_RouletteRoll m_Roll;
 	protected ref GC_RouletteTerrain m_Terrain;
 	protected GC_RouletteScenario m_Scenario;
@@ -66,6 +67,7 @@ class GC_RouletteSetupComponent : GC_LobbySetupGateComponent
 		}
 
 		m_Placement = new GC_RouletteRosterPlacement(m_Manager);
+		m_Presentation = new GC_RoulettePresentation(m_Manager);
 		m_iRemainingRolls = MAX_ROLLS;
 		if (m_iStartupSeed != 0)
 			m_iRemainingRolls = 1;
@@ -174,9 +176,9 @@ class GC_RouletteSetupComponent : GC_LobbySetupGateComponent
 		}
 		GC_RouletteRosterPlan plan = m_Roll.BuildRoster(m_Scenario, defenderTeam, attackerTeam, m_iPlayerTarget);
 		array<ref GC_EventDefinition> events = {};
-		FactionKey defendingFaction = m_Scenario.m_teamsList[defenderTeam].m_factionKey;
-		FactionKey attackingFaction = m_Scenario.m_teamsList[attackerTeam].m_factionKey;
-		if (!plan || !GC_RouletteRules.Build(defendingFaction, attackingFaction, m_Scenario.m_timeLimit, events))
+		GC_RouletteTeam defending = m_Scenario.m_teamsList[defenderTeam];
+		GC_RouletteTeam attacking = m_Scenario.m_teamsList[attackerTeam];
+		if (!plan || !GC_RouletteRules.Build(defending.m_factionKey, attacking.m_factionKey, m_Scenario.m_timeLimit, events))
 		{
 			FailRoll("could not prepare roster or objectives");
 			return;
@@ -186,14 +188,23 @@ class GC_RouletteSetupComponent : GC_LobbySetupGateComponent
 		m_Objective.GetBounds(mins, maxs);
 		vector size = maxs - mins;
 		float radius = Math.Max(15, Math.Max(size[0], size[2]) * 1.25);
-		if (!PlaceRosterAndObjective(plan, objective, defender, attacker, radius))
+		array<vector> polygon = {};
+		GC_RoulettePresentation.GetPolygon(attacker, objective, m_Scenario.m_width, polygon);
+		if (!m_Presentation.CanPublish(m_Scenario, defending.m_factionKey, attacking.m_factionKey, polygon)
+			|| !PlaceRosterAndObjective(plan, objective, defender, attacker, radius))
 		{
 			FailRoll("could not place roster or objective");
 			return;
 		}
 
-		m_aMatchEvents = events;
 		ApplyEnvironment();
+		if (!m_Presentation.Publish(m_Scenario, defending, attacking, plan, objective, defender, attacker, polygon))
+		{
+			m_bPublished = false;
+			FailRoll("could not publish briefing or boundary");
+			return;
+		}
+		m_aMatchEvents = events;
 		m_bPublished = true;
 		PrintFormat("GC Roulette | roster ready | seed=%1 scenario=%2 defenderSlots=%3 attackerSlots=%4",
 			m_iSeed, m_Scenario.m_scenarioName, plan.m_iDefenderSlots, plan.m_iAttackerSlots);

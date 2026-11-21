@@ -30,6 +30,11 @@ class GC_RouletteBriefing
 
 	[Attribute("0", UIWidgets.ComboBox, "", "", ParamEnumArray.FromEnum(GC_ERouletteBriefingVariables))]
 	GC_ERouletteBriefingVariables m_variables;
+
+	static bool IsSupportedSide(GC_ERouletteBriefingSide side)
+	{
+		return side >= GC_ERouletteBriefingSide.Empty && side <= GC_ERouletteBriefingSide.Team1;
+	}
 }
 
 [BaseContainerProps()]

@@ -133,6 +133,8 @@ class GC_RouletteRosterPlan
 {
 	ref array<GC_RouletteElement> m_aDefenders = {};
 	ref array<GC_RouletteElement> m_aAttackers = {};
+	ref array<IEntity> m_aDefenderVehicles = {};
+	ref array<IEntity> m_aAttackerVehicles = {};
 	int m_iDefenderSlots;
 	int m_iAttackerSlots;
 }
