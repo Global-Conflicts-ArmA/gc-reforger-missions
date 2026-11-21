@@ -1,0 +1,186 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 10070.712 299.497 2578.681
+}
+GenericWorldFogEntity : "{78D9BBF0F423FEB4}Prefabs/World/DefaultWorld/FogHaze_Default.et" {
+ coords 1767.751 66.03 6658.533
+ HeightDensity 1
+}
+GC_LobbyGameMode GC_MigratedMission : "{3281745196D63AAC}worlds/Jub/Duck Hunt/Duck Hunt_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{65D9122E96DBA160}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 7
+    }
+   }
+   m_bAllowHeaderSettings 1
+   m_bDateOverride 1
+   m_iDay 1
+   m_iMonth 9
+   m_iYear 2025
+  }
+  GC_MissionEnvironmentComponent "{123BB8DBF41E88EC}" {
+   m_fFogAmount 0
+   m_fFogHeightDensity 0
+   m_fRainIntensity 0
+   m_fWindSpeed 5
+  }
+  GC_PeakFactionPopulationComponent "{DF1C51C2FD47678C}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{E5A0B3D1EFE92207}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 60.000000
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{68DBD2D752676E6B}" {
+     m_sName "US_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{8B94721D2AB4D053}" {
+       m_Script GC_PeakFactionPopulationCheck "{9EEA25696C62BA5F}" {
+        m_sFaction "RHS_USAF"
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3239ED68E148EA5A}" {
+       m_sMessage "US_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{84B2AA41F698BFD1}" {
+     m_sName "US_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{AA284D032F3DEE1B}" {
+       m_sEventName "US_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{68F01B74D7573BBF}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{7D9C3377C365E0EE}" {
+       m_sTitle "Duck VICTORY"
+       m_sMessage "Hunter forces have taken significant casualties."
+      }
+     }
+    }
+    GC_Event "{A2581BFA8D5ADF5C}" {
+     m_sName "RU_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{6F968777D6280700}" {
+       m_Script GC_PeakFactionPopulationCheck "{32BDE0E00453797D}" {
+        m_sFaction "RHS_AFRF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{63DF963AF98F9309}" {
+       m_sMessage "RU_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5526C97926726573}" {
+     m_sName "RU_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{568F5E793C41F3A7}" {
+       m_sEventName "RU_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{657940E806E8178A}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{2E065BBACDA00591}" {
+       m_sTitle "Hunter VICTORY"
+       m_sMessage "Duck forces have taken significant casualties."
+      }
+     }
+    }
+    GC_Event "{7CED36A5368FA52D}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{A32B5390352AF173}" {
+       m_fSeconds 60.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{A15FF215BDA593FF}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 1970.315 66.375 6740.193
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CD021D5C}" {
+        m_sCallsign "Hammer"
+       }
+       SCR_CallsignInfo "{55CCB792CCD598D3}" {
+        m_sCallsign "Bandit"
+       }
+       SCR_CallsignInfo "{55CCB792CC9C7AD6}" {
+        m_sCallsign "Cutter"
+       }
+       SCR_CallsignInfo "{55CCB792CCB4D441}" {
+        m_sCallsign "Draco"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792CE18FB44}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792CE02ECFA}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{55CCB792CE2A44BD}" {
+        m_sCallsign "4"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{66033D9362ED2B8A}" {
+        m_sCallsign "4"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 10930.689 58.478 2000.876
+}
