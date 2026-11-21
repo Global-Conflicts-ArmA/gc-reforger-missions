@@ -1,0 +1,703 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F9E52831}" {
+     NavmeshFile "{AD5F99CD7C59D5E0}worlds/GameMaster/Navmeshes/GM_Eden.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F3B4EE8A}" {
+     NavmeshFile "{C35ECF3276824654}worlds/GameMaster/Navmeshes/GM_Eden_vehicles.nmn"
+    }
+   }
+  }
+ }
+}
+GC_LobbyGameMode GC_MigratedMission : "{2341B6026E298D70}worlds/Til/HueyHill/HueyHill_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6262DB89721E4618}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 18
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{A9FDC22E524BF0CE}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{A1CBDC314D293A50}" {
+     m_sName "EngineRepaired"
+    }
+    GC_MissionFlag "{625D4004F7AB9658}" {
+     m_sName "HeliDestroyed"
+    }
+    GC_MissionFlag "{430F624B5AFB71BD}" {
+     m_sName "HullRepaired"
+    }
+    GC_MissionFlag "{3558BCAB48988025}" {
+     m_sName "Pilot1Dead"
+    }
+    GC_MissionFlag "{9D093AB14DFA5406}" {
+     m_sName "Pilot2Dead"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{C9DB7FC0F0039CF7}" {
+     m_sName "Major Defeat (PlayersDead)"
+     m_aConditions {
+      GC_CustomScriptCondition "{F388E9AF95B99E17}" {
+       m_Script GC_PeakFactionPopulationCheck "{32CEE6787BBF3312}" {
+        m_sFaction "US"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1099D933D9D69CF3}" {
+       m_sMessage "Major Defeat (PlayersDead)"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{40A359B076195AC9}" {
+     m_sName "Major Defeat (PlayersDead) (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7979FEC35BF37553}" {
+       m_sEventName "Major Defeat (PlayersDead)"
+      }
+     }
+     m_Advanced GC_EventOptions "{1CE2305D6BC62C0F}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{542607E153DF1AD6}" {
+       m_sTitle "Major Defeat"
+       m_sMessage "All US forces were killed."
+      }
+     }
+    }
+    GC_Event "{4839424069C74BAC}" {
+     m_sName "Major Defeat (PlayersDead) (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{19C611E1321D78DC}" {
+       m_sEventName "Major Defeat (PlayersDead)"
+      }
+     }
+     m_Advanced GC_EventOptions "{8A90F1E28141C9C5}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_EndMissionAction "{62F1ADB3D9B5DAF5}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{2CC5096D47D018BD}" {
+     m_sName "Minor Defeat (HeliDestroyed)"
+     m_aConditions {
+      GC_GameModeStateCondition "{7A7F0302A1F1B279}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{0C6C5665915CCCA6}" {
+       m_sFlagName "HeliDestroyed"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{56D95586F2346137}" {
+       m_sMessage "Minor Defeat (HeliDestroyed)"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9532A443B6282D8D}" {
+     m_sName "Minor Defeat (HeliDestroyed) (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{20255D382AAB780D}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{DDD96565D62D3939}" {
+       m_sEventName "Minor Defeat (HeliDestroyed)"
+      }
+     }
+     m_Advanced GC_EventOptions "{02E9AB50EF123C40}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{743AE5E61EF945F0}" {
+       m_sTitle "Minor Defeat"
+       m_sMessage "The Huey was destroyed."
+      }
+     }
+    }
+    GC_Event "{CBC96563026D6407}" {
+     m_sName "Minor Defeat (HeliDestroyed) (15s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{C36BC1FD73EC9E0C}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{1BC56D6F158E0888}" {
+       m_sEventName "Minor Defeat (HeliDestroyed)"
+      }
+     }
+     m_Advanced GC_EventOptions "{555A99F633D530BD}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{04AB6F42FD82CA96}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{9A37643FA663677F}" {
+     m_sName "Minor Defeat (PilotsDead)"
+     m_aConditions {
+      GC_GameModeStateCondition "{E729AC5EA1581B74}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{A6F17676B22F9CD7}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{D65420C8C4CC5368}" {
+         m_sFlagName "Pilot1Dead"
+        }
+        GC_MissionFlagCondition "{B5DE3347F96EC9CF}" {
+         m_sFlagName "Pilot2Dead"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{84EC3BA6DF71DDD0}" {
+       m_sMessage "Minor Defeat (PilotsDead)"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{147D53A28ECA8A1C}" {
+     m_sName "Minor Defeat (PilotsDead) (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{5A8B8693ECC49D42}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{0A557FD9C07EF4FB}" {
+       m_sEventName "Minor Defeat (PilotsDead)"
+      }
+     }
+     m_Advanced GC_EventOptions "{514F24343FD53D08}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{4FBAE403098B1A5E}" {
+       m_sTitle "Minor Defeat"
+       m_sMessage "The pilots were killed in the crossfire."
+      }
+     }
+    }
+    GC_Event "{3ADFD45CEAE6B339}" {
+     m_sName "Minor Defeat (PilotsDead) (15s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{F7CEA84D9B2B5B37}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{C6968EBF1D976556}" {
+       m_sEventName "Minor Defeat (PilotsDead)"
+      }
+     }
+     m_Advanced GC_EventOptions "{C6B3418D6BEDF5C3}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{3416596C4300245F}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{9C8A9018416CB6DC}" {
+     m_sName "Minor Defeat (TruckDestroyed)"
+     m_aConditions {
+      GC_GameModeStateCondition "{5149BB49460526B7}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{0DDE36C057A1A8F6}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_GameModeStateCondition "{381378B98317D50B}" {
+         m_eGameModeState GAME
+         m_bRequireOtherState 1
+        }
+        GC_MissionFlagCondition "{8746BC54AEBC46AA}" {
+         m_sFlagName "EngineRepaired"
+         m_bRequireFalse 1
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{556E08DD80E16965}" {
+       m_sMessage "Minor Defeat (TruckDestroyed)"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8A68E6DAA163732C}" {
+     m_sName "Minor Defeat (TruckDestroyed) (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{C8722B59F8AE3D4F}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{99841116358F48BC}" {
+       m_sEventName "Minor Defeat (TruckDestroyed)"
+      }
+     }
+     m_Advanced GC_EventOptions "{AB5CDA3A1C6939DB}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{E56981A700E85421}" {
+       m_sTitle "Minor Defeat"
+       m_sMessage "The maintenance truck was destroyed before the Huey could be repaired."
+      }
+     }
+    }
+    GC_Event "{5205C6ACD38EC247}" {
+     m_sName "Minor Defeat (TruckDestroyed) (15s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{DAE66FBC627F707B}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{32E29425871FD944}" {
+       m_sEventName "Minor Defeat (TruckDestroyed)"
+      }
+     }
+     m_Advanced GC_EventOptions "{B2691A26BD5F16AA}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{2D3CBA9AF1FB6877}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{759A3A1BE3174ACB}" {
+     m_sName "Minor Victory (PilotDead)"
+     m_aConditions {
+      GC_GameModeStateCondition "{C9CDD33EAD6826EF}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{2AEF6245809AF53B}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{8FB5760693402072}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_MissionFlagCondition "{37ECE2899E1235BE}" {
+           m_sFlagName "EngineRepaired"
+          }
+          GC_ConditionCount "{10B5FA279B45147F}" {
+           m_iComparison 2
+           m_iRequiredCount 1
+           m_aConditions {
+            GC_MissionFlagCondition "{479D912A980025C2}" {
+             m_sFlagName "Pilot1Dead"
+            }
+            GC_MissionFlagCondition "{7EBED60DA4A6371F}" {
+             m_sFlagName "Pilot2Dead"
+            }
+           }
+          }
+          GC_AreaCondition "{37F7379B4C58B57F}" {
+           m_sArea "GC_MigrationArea_AreaSecure"
+           m_Targets GC_CharacterAreaTargets "{4CE6CD49148F777E}" {
+            m_iWho 2
+            m_aFactions {
+             "USSR"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{E172B4A0D0FDEC91}" {
+            m_fRequiredShare 0
+            m_bAtMost 1
+           }
+           m_Capture GC_AreaCaptureOptions "{F2F618164CB5FDFE}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A536FB0F4820DBB7}" {
+       m_sMessage "Minor Victory (PilotDead)"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CA43F123F4B35C1F}" {
+     m_sName "Minor Victory (PilotDead) (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{33635CA3889CF8C3}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{CA027DC278D6E8B8}" {
+       m_sEventName "Minor Victory (PilotDead)"
+      }
+     }
+     m_Advanced GC_EventOptions "{1423A28A57AB4049}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{42A551BBD5041A33}" {
+       m_sTitle "Minor Victory"
+       m_sMessage "The Huey engine was repaired, but one of the pilots died in the crossfire."
+      }
+     }
+    }
+    GC_Event "{013198F18B43B6FA}" {
+     m_sName "Minor Victory (PilotDead) (20s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{6C0598F3B40FD7E7}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{987821382576AF97}" {
+       m_sEventName "Minor Victory (PilotDead)"
+      }
+     }
+     m_Advanced GC_EventOptions "{3433DCE4B37C04A7}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_EndMissionAction "{894B85B0D61E3AB4}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{70E5C6C478046433}" {
+     m_sName "Major Victory (HeliRepaired)"
+     m_aConditions {
+      GC_GameModeStateCondition "{CA672D87D5C0CD1D}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{63BAA52D888055E6}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{677149817139D0FD}" {
+         m_sFlagName "EngineRepaired"
+        }
+        GC_MissionFlagCondition "{F9967A8F82C8BB18}" {
+         m_sFlagName "Pilot1Dead"
+         m_bRequireFalse 1
+        }
+        GC_MissionFlagCondition "{A09F44D58DA26363}" {
+         m_sFlagName "Pilot2Dead"
+         m_bRequireFalse 1
+        }
+        GC_AreaCondition "{D6E16DAA406BE186}" {
+         m_sArea "GC_MigrationArea_AreaSecure"
+         m_Targets GC_CharacterAreaTargets "{D7D83883307896C6}" {
+          m_iWho 2
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{C9F5D88867472D69}" {
+          m_fRequiredShare 0
+          m_bAtMost 1
+         }
+         m_Capture GC_AreaCaptureOptions "{232C16A2A3E91A3D}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7F9B5D0111FC88B8}" {
+       m_sMessage "Major Victory (HeliRepaired)"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3799EEF0957B4DE6}" {
+     m_sName "Major Victory (HeliRepaired) (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{69F2B498B31A89DB}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{BF9F6B98457D2B36}" {
+       m_sEventName "Major Victory (HeliRepaired)"
+      }
+     }
+     m_Advanced GC_EventOptions "{51A93AEEC89269B5}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{84E19FF8819589FD}" {
+       m_sTitle "Major Victory"
+       m_sMessage "The Huey engine was repaired, and the pilots are ready for takeoff."
+      }
+     }
+    }
+    GC_Event "{0A9A31F2F1044DB6}" {
+     m_sName "Major Victory (HeliRepaired) (20s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{5888ECDBF7D0D861}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{FB3C2670B767858F}" {
+       m_sEventName "Major Victory (HeliRepaired)"
+      }
+     }
+     m_Advanced GC_EventOptions "{5E13C52C01E08234}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_EndMissionAction "{85918F4F97DAF7F8}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 0 0 0
+}
+GenericEntity : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "dot"
+   m_Color 0.502 0 0 1
+   m_fSize 75
+   m_bWorldScale 1
+   m_sDescription "FLET"
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+  }
+ }
+ coords 2200 90.429 6050
+ angleY 90
+}
+GenericEntity : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "dot"
+   m_Color 0.502 0 0 1
+   m_fSize 75
+   m_bWorldScale 1
+   m_sDescription "FLET"
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+  }
+ }
+ coords 2250 93.376 6050
+ angleY 90
+}
+GenericEntity : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "dot"
+   m_Color 0.502 0 0 1
+   m_fSize 75
+   m_bWorldScale 1
+   m_sDescription "FLET"
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+  }
+ }
+ coords 2300 95.342 6050
+ angleY 90
+}
+GenericEntity : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "dot"
+   m_Color 0.502 0 0 1
+   m_fSize 75
+   m_bWorldScale 1
+   m_sDescription "FLET"
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+  }
+ }
+ coords 2350 96.230 6050
+ angleY 90
+}
+GenericEntity : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "dot"
+   m_Color 0.502 0 0 1
+   m_fSize 75
+   m_bWorldScale 1
+   m_sDescription "FLET"
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+  }
+ }
+ coords 2400 92.853 6050
+ angleY 90
+}
+GenericEntity : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "dot"
+   m_Color 0.502 0 0 1
+   m_fSize 75
+   m_bWorldScale 1
+   m_sDescription "FLET"
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+  }
+ }
+ coords 2450 86.440 6050
+ angleY 90
+}
+GenericEntity : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "dot"
+   m_Color 0.502 0 0 1
+   m_fSize 75
+   m_bWorldScale 1
+   m_sDescription "FLET"
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+  }
+ }
+ coords 2500 86.982 6050
+ angleY 90
+}
+GenericEntity : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "dot"
+   m_Color 0.502 0 0 1
+   m_fSize 75
+   m_bWorldScale 1
+   m_sDescription "FLET"
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+  }
+ }
+ coords 2550 88.133 6050
+ angleY 90
+}
+GenericEntity : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "dot"
+   m_Color 0.502 0 0 1
+   m_fSize 75
+   m_bWorldScale 1
+   m_sDescription "FLET"
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+  }
+ }
+ coords 2600 88.313 6050
+ angleY 90
+}
+GenericEntity : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "dot"
+   m_Color 0.502 0 0 1
+   m_fSize 75
+   m_bWorldScale 1
+   m_sDescription "FLET"
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+  }
+ }
+ coords 2650 88.232 6050
+ angleY 90
+}
+GenericEntity : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "dot"
+   m_Color 0.502 0 0 1
+   m_fSize 75
+   m_bWorldScale 1
+   m_sDescription "FLET"
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+  }
+ }
+ coords 2700 90.716 6050
+ angleY 90
+}
+GenericEntity : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet ""
+   m_sQuadName "dot"
+   m_Color 0.502 0 0 1
+   m_fSize 75
+   m_bWorldScale 1
+   m_sDescription "FLET"
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+  }
+ }
+ coords 2750 96.088 6050
+ angleY 90
+}
