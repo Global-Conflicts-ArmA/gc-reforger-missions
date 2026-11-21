@@ -1,0 +1,345 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 3172.084 25.676 4479.75
+}
+GC_LobbyGameMode GC_MigratedMission : "{DBDB414F6D3BEB2F}worlds/arc/BunkerBustersXL/BunkerBustersXL_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6444F7CB77EFB821}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 23
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{47E2B28E59D50E8C}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{ACE8F1BFFF52295D}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 300.000000
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{174833E7FB2B4217}" {
+     m_sName "US_CAP"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{166834A3AAE367A9}" {
+     m_sName "US_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{0B5460FA91FB245B}" {
+       m_Script GC_PeakFactionPopulationCheck "{35486EF4A1A9DFCE}" {
+        m_sFaction "RHS_USAF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3C77183F1414C76E}" {
+       m_sMessage "US_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BEBC38A30311CC3E}" {
+     m_sName "US_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5A2130644952B28D}" {
+       m_sEventName "US_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{28042503AFD7A3FA}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{F603C10B4834CA3C}" {
+       m_sTitle "SEPARATIST VICTORY"
+       m_sMessage "US forces have taken significant casualties."
+      }
+     }
+    }
+    GC_Event "{9EFF76D9EDBD28AD}" {
+     m_sName "US_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E883FF8293FBB71E}" {
+       m_sEventName "US_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{E99EE6094097DE83}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{324CA655B9F0470B}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_SEPARATIST"
+       }
+      }
+     }
+    }
+    GC_Event "{A024F5448056E582}" {
+     m_sName "TIME_LIMIT"
+     m_aConditions {
+      GC_CustomScriptCondition "{2E4A637F1708F4DC}" {
+       m_Script GC_PeakFactionPopulationCheck "{20716296F544F747}" {
+        m_sFaction "RHS_USAF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{01BBB793F2CE08AE}" {
+       m_sMessage "TIME_LIMIT"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{81B64F5C201F5875}" {
+     m_sName "TIME_LIMIT (3905s)"
+     m_aConditions {
+      GC_MissionEventCondition "{743884D4F843B54F}" {
+       m_sEventName "TIME_LIMIT"
+      }
+     }
+     m_Advanced GC_EventOptions "{5FB6D3291E3730BA}" {
+      m_fDelay 3905
+     }
+     m_aActions {
+      GC_MessageAction "{5135FCF879930430}" {
+       m_sTitle "SEPARATIST VICTORY"
+       m_sMessage "Time limit reached. The separatists are now extracting via the service tunnel."
+      }
+     }
+    }
+    GC_Event "{15CD657CA5B77DE1}" {
+     m_sName "TIME_LIMIT (3915s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A7E1C7A27E96F942}" {
+       m_sEventName "TIME_LIMIT"
+      }
+     }
+     m_Advanced GC_EventOptions "{42E73CE6DA5EE3C4}" {
+      m_fDelay 3915
+     }
+     m_aActions {
+      GC_EndMissionAction "{CE258DBD6B1045E1}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_SEPARATIST"
+       }
+      }
+     }
+    }
+    GC_Event "{8E67BCE045998C40}" {
+     m_sName "US_CAP"
+     m_aConditions {
+      GC_ConditionGroup "{DFC0214A635658AD}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{BCB2D865C52C0535}" {
+         m_sFlagName "US_CAP"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{85E1B7C3025F9813}" {
+       m_sMessage "US_CAP"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2C91912E0279FCB5}" {
+     m_sName "US_CAP (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{091D4A1625FF1000}" {
+       m_sEventName "US_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{87F3AF6CF1FB2BE6}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{B8C1EF804DB26A47}" {
+       m_sTitle "US VICTORY"
+       m_sMessage "The nuclear material has been secured."
+      }
+     }
+    }
+    GC_Event "{11101ADA87F60F81}" {
+     m_sName "US_CAP (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{06ABE0BD0850D2CB}" {
+       m_sEventName "US_CAP"
+      }
+     }
+     m_Advanced GC_EventOptions "{A9EAD51599E962CA}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{ABBDBA1107C8EC5A}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+    GC_Event "{3C6E83BECBD2CA5B}" {
+     m_sName "SEP_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{62E9AAC022A32B24}" {
+       m_Script GC_PeakFactionPopulationCheck "{B1CEB11AF20B92F7}" {
+        m_sFaction "GC_SEPARATIST"
+        m_fRatio 0.95
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9E50AECA6C990690}" {
+       m_sMessage "SEP_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9CFBA1B8EE5EA62C}" {
+     m_sName "SEP_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{886B8EFA7C1EA6E2}" {
+       m_sEventName "SEP_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{A9D7730D9DB4DE19}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{A3357CAEF2A550DA}" {
+       m_sTitle "US VICTORY"
+       m_sMessage "Separatists have taken significant casualties, allowing the nuclear material to be secured."
+      }
+     }
+    }
+    GC_Event "{6446BC9DE3E503EF}" {
+     m_sName "SEP_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4D0682270F5110D4}" {
+       m_sEventName "SEP_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{C18601DA18F66A6A}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{2F8D6EFCC21A00FC}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+    GC_Event "{126290C8AB0EC8E8}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{83B86AE0BD5BA439}" {
+       m_fSeconds 300.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{DE3D4ECFC99B38EF}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+        "GC_MigrationStartingZone2"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 3156.978 27.596 4476.364
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "0"
+       }
+       SCR_CallsignInfo "{55CCB792CE18FB44}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792CE02ECFA}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792CE2A44BD}" {
+        m_sCallsign "Cleric"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{6445169647911B72}" {
+        m_sCallsign "4"
+       }
+       SCR_CallsignInfo "{6469081EA14C340B}" {
+        m_sCallsign "5"
+       }
+      }
+      m_sCallsignGroupFormat "%2-%3"
+      m_sCallsignCharacterFormat "%2-%3: %4"
+     }
+    }
+    SCR_Faction "{62EB308733CA83DD}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "HQ"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "1st Squad"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "2nd Squad"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3: %4"
+      m_sCallsignCharacterWithRoleFormat "%3: %4"
+     }
+    }
+   }
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 3806.047 18.719 1771.924
+ m_fWarnRadius 125
+ m_fZoneRadius 150
+ m_fZoneTeleportedRadius 125
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone2 : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 3147.142 25.404 4279.001
+ m_fWarnRadius 250
+ m_fZoneRadius 300
+ m_fZoneTeleportedRadius 325
+}
