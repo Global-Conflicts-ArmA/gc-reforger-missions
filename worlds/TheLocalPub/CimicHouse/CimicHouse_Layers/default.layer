@@ -1,0 +1,1663 @@
+SCR_AIWorld : "{0946C019EBADE117}Prefabs/AI/SCR_AIworld_AL_Hadra.et" {
+ components {
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{99B5FDCC8F6AADBB}Map_data/new/Navmesh/LowRes_navmesh1.nmn"
+    }
+   }
+  }
+ }
+ coords 2108.696 20.054 1341.953
+}
+GC_LobbyGameMode GC_MigratedMission : "{B9F97B63D74DBDAE}worlds/TheLocalPub/CimicHouse/CimicHouse_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 12
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{69E30848C3C488AD}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 12
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 13
+   m_iMonth 8
+   m_iYear 2004
+  }
+  SCR_CampaignBuildingManagerComponent "{60EC2158F48C679A}" {
+   m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
+   m_BudgetType CAMPAIGN
+   m_iCompositionRefundPercentage 100
+   m_OutlineManager GC_ConstructionOutlineManager "{60EC2158E10CB829}" : "{96A8B496A076F1C0}scripts/Game/Building/CampaignBuildingCompositionOutline.conf" {
+    m_fPreparationMultiplier 1000
+    m_fMatchMultiplier 1000
+   }
+   m_sPrefabsToBuildResource "{D2527D9AA5B4A33E}Configs/Editor/PlaceableEntities/Compositions/Compositions_FreeRoamBuilding.conf"
+  }
+  GC_PeakFactionPopulationComponent "{4B1A797B493F0A5E}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{520874B604924CAD}" {
+     m_sName "UK_Victory (1800s)"
+     m_Advanced GC_EventOptions "{54C80FACB5EF1023}" {
+      m_fDelay 1800
+     }
+     m_aActions {
+      GC_MessageAction "{2B090EEED122791D}" {
+       m_sTitle "BRITISH VICTORY"
+       m_sMessage "British forces have successfully held their position long enough to force the Iraqi assault to break off. Enemy forces are withdrawing from the area and the immediate threat to the compound has ended."\
+       ""\
+       "Excellent work."\
+       "Mission will conclude shortly..."
+      }
+      GC_EventControlAction "{959FECC9D0822B72}" {
+       m_sEventName "IRAQ_Victory"
+       m_iOperation 1
+      }
+     }
+    }
+    GC_Event "{D800B086B3B7BCC7}" {
+     m_sName "IRAQ_Victory"
+     m_aConditions {
+      GC_ConditionGroup "{14994F3077FB7B18}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_CustomScriptCondition "{E380E5118AF83CEB}" {
+         m_Script GC_PeakFactionPopulationCheck "{3C5358D9D8CA6F17}" {
+          m_sFaction "UK"
+          m_fRatio 0.85
+         }
+        }
+        GC_AreaCondition "{CEE01B34658F048F}" {
+         m_sArea "Iraq_OccupyZone"
+         m_Targets GC_CharacterAreaTargets "{8429288003F0F17F}" {
+          m_iWho 2
+          m_aFactions {
+           "GC_IRAQ"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{8A755AAFDF5D6D26}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "UK"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{92B14CEDE3F3B8E7}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5A3BA0CCF0C9FF53}" {
+       m_sMessage "IRAQ_Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{002F37FC7AD4403A}" {
+     m_sName "IRAQ_Victory (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3DD7DBDD2BB479D5}" {
+       m_sEventName "IRAQ_Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{2B5AA2E40BCD197D}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_MessageAction "{2BA11E7C4DC4D631}" {
+       m_sTitle "IRAQI VICTORY"
+       m_sMessage "Iraqi forces have successfully overrun the British garrison at CIMIC House, capturing the compound and eliminating the defending force."\
+       ""\
+       "Well done."\
+       "Mission will conclude shortly..."
+      }
+     }
+    }
+    GC_Event "{82810B0422C2D8CE}" {
+     m_sName "GC_MigratedSpawn_70B90600061DAF9A (20s)"
+     m_Advanced GC_EventOptions "{FCF0E48ADEE404D9}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_SpawnAction "{9D2E006B330EFEF7}" {
+       m_Spawn GC_AIGroupSpawn "{97124E37B54289BA}" {
+        m_sLocation "AI_HQ1"
+        m_sPrefab "{03B12A3C43CCACFF}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_PHQ.et"
+        m_aWaypoints {
+         "FM3"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{FA57C3ECFFD42694}" {
+     m_sName "GC_MigratedSpawn_70B90600061DAF9A (300s)"
+     m_Advanced GC_EventOptions "{774D286F07180654}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{4E7B341E9B279D65}" {
+       m_Spawn GC_AIGroupSpawn "{39335FA920CC2591}" {
+        m_sLocation "AI_HQ1"
+        m_sPrefab "{03B12A3C43CCACFF}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_PHQ.et"
+        m_aWaypoints {
+         "FM3"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{32B519DB907C4B93}" {
+     m_sName "GC_MigratedSpawn_70B90600061DAF9A (600s)"
+     m_Advanced GC_EventOptions "{33464FB04EA6D4C1}" {
+      m_fDelay 600
+     }
+     m_aActions {
+      GC_SpawnAction "{CC44E7B2508C7FAD}" {
+       m_Spawn GC_AIGroupSpawn "{51164E4200462D6D}" {
+        m_sLocation "AI_HQ1"
+        m_sPrefab "{03B12A3C43CCACFF}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_PHQ.et"
+        m_aWaypoints {
+         "FM3"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B931317721847888}" {
+     m_sName "GC_MigratedSpawn_70B90600061DAF9A (950s)"
+     m_Advanced GC_EventOptions "{D806BBD40837E830}" {
+      m_fDelay 950
+     }
+     m_aActions {
+      GC_SpawnAction "{D8469721544E7797}" {
+       m_Spawn GC_AIGroupSpawn "{AC6F865E704693B8}" {
+        m_sLocation "AI_HQ1"
+        m_sPrefab "{03B12A3C43CCACFF}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_PHQ.et"
+        m_aWaypoints {
+         "FM3"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{EC1E28BB4BACDF68}" {
+     m_sName "GC_MigratedSpawn_70B90600061DAF9A (1280s)"
+     m_Advanced GC_EventOptions "{EDE6676A2BD574FC}" {
+      m_fDelay 1280
+     }
+     m_aActions {
+      GC_SpawnAction "{7E41EE333138E1A0}" {
+       m_Spawn GC_AIGroupSpawn "{6D6274847EBFBD03}" {
+        m_sLocation "AI_HQ1"
+        m_sPrefab "{03B12A3C43CCACFF}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_PHQ.et"
+        m_aWaypoints {
+         "FM3"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A83DF35330EF1608}" {
+     m_sName "GC_MigratedSpawn_70B90600061DAF9A (1560s)"
+     m_Advanced GC_EventOptions "{AE003B91E60BF5AB}" {
+      m_fDelay 1560
+     }
+     m_aActions {
+      GC_SpawnAction "{8A418E6AC0CA6A48}" {
+       m_Spawn GC_AIGroupSpawn "{AC4558D84E890497}" {
+        m_sLocation "AI_HQ1"
+        m_sPrefab "{03B12A3C43CCACFF}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_PHQ.et"
+        m_aWaypoints {
+         "FM3"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{618421FE0BCA0C01}" {
+     m_sName "GC_MigratedSpawn_C5C67DC4FABF2518 (8s)"
+     m_Advanced GC_EventOptions "{A2789BFCD1394A6F}" {
+      m_fDelay 8
+     }
+     m_aActions {
+      GC_SpawnAction "{CC4FC3899E382A3A}" {
+       m_Spawn GC_AIGroupSpawn "{045AE0F3EB6B7DEB}" {
+        m_sLocation "AI_Rifle1"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM8"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{FB9E98BBB752D25E}" {
+     m_sName "GC_MigratedSpawn_C5C67DC4FABF2518 (300s)"
+     m_Advanced GC_EventOptions "{539F53AD7BF85E86}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{A65B74901D7CBAA5}" {
+       m_Spawn GC_AIGroupSpawn "{EEB93F1329DF56C8}" {
+        m_sLocation "AI_Rifle1"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM8"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4EFDFD67FEF4018A}" {
+     m_sName "GC_MigratedSpawn_C5C67DC4FABF2518 (630s)"
+     m_Advanced GC_EventOptions "{3EF063E7B14DA3F0}" {
+      m_fDelay 630
+     }
+     m_aActions {
+      GC_SpawnAction "{C766D14DED64AAF8}" {
+       m_Spawn GC_AIGroupSpawn "{D80E012B4EF9CC4F}" {
+        m_sLocation "AI_Rifle1"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM8"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{7AE53055C49E16CD}" {
+     m_sName "GC_MigratedSpawn_C5C67DC4FABF2518 (900s)"
+     m_Advanced GC_EventOptions "{A4BC51BC70C47E3A}" {
+      m_fDelay 900
+     }
+     m_aActions {
+      GC_SpawnAction "{A61A4943C9B0E60D}" {
+       m_Spawn GC_AIGroupSpawn "{D32438C39B4FB396}" {
+        m_sLocation "AI_Rifle1"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM8"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{32BF39F93F73BAD7}" {
+     m_sName "GC_MigratedSpawn_C5C67DC4FABF2518 (1200s)"
+     m_Advanced GC_EventOptions "{FAD816648954C460}" {
+      m_fDelay 1200
+     }
+     m_aActions {
+      GC_SpawnAction "{D4563CF50DE11EA0}" {
+       m_Spawn GC_AIGroupSpawn "{D545C74CEF1392F6}" {
+        m_sLocation "AI_Rifle1"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM8"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4D76046028EECC16}" {
+     m_sName "GC_MigratedSpawn_C5C67DC4FABF2518 (1510s)"
+     m_Advanced GC_EventOptions "{00A1AEB8309ACBB2}" {
+      m_fDelay 1510
+     }
+     m_aActions {
+      GC_SpawnAction "{EED33DD52E877A6F}" {
+       m_Spawn GC_AIGroupSpawn "{D02EB14E7265BA37}" {
+        m_sLocation "AI_Rifle1"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM8"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4B48DF10A2B7FA51}" {
+     m_sName "GC_MigratedSpawn_D0E046CF951093C3 (9s)"
+     m_Advanced GC_EventOptions "{85C74E6ECCF47807}" {
+      m_fDelay 9
+     }
+     m_aActions {
+      GC_SpawnAction "{656E641F7EF6900B}" {
+       m_Spawn GC_AIGroupSpawn "{41178BC4B44883F3}" {
+        m_sLocation "AI_Rifle2"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM9"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9CD65E8026165E93}" {
+     m_sName "GC_MigratedSpawn_D0E046CF951093C3 (300s)"
+     m_Advanced GC_EventOptions "{8D1D48946CCB33B4}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{5CD9EF86AAFCEA25}" {
+       m_Spawn GC_AIGroupSpawn "{6054975AF1333DF3}" {
+        m_sLocation "AI_Rifle2"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM9"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{FDCFAE9F11E66E6B}" {
+     m_sName "GC_MigratedSpawn_D0E046CF951093C3 (600s)"
+     m_Advanced GC_EventOptions "{FF1C2C1DE51E735D}" {
+      m_fDelay 600
+     }
+     m_aActions {
+      GC_SpawnAction "{E5BB5A078ACFE193}" {
+       m_Spawn GC_AIGroupSpawn "{7816318295DCB188}" {
+        m_sLocation "AI_Rifle2"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM9"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{99E691DF5461BA5F}" {
+     m_sName "GC_MigratedSpawn_D0E046CF951093C3 (960s)"
+     m_Advanced GC_EventOptions "{3925F00BF2DBDB3D}" {
+      m_fDelay 960
+     }
+     m_aActions {
+      GC_SpawnAction "{DB4C8204B5517516}" {
+       m_Spawn GC_AIGroupSpawn "{1BC9DE73D0CD32A0}" {
+        m_sLocation "AI_Rifle2"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM9"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C25F0C14F5A93629}" {
+     m_sName "GC_MigratedSpawn_D0E046CF951093C3 (1200s)"
+     m_Advanced GC_EventOptions "{DA6CBBB062A175FA}" {
+      m_fDelay 1200
+     }
+     m_aActions {
+      GC_SpawnAction "{EFEF92D0CB1F7047}" {
+       m_Spawn GC_AIGroupSpawn "{BDBA6A9A28542F14}" {
+        m_sLocation "AI_Rifle2"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM9"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{94AF397F80EA8829}" {
+     m_sName "GC_MigratedSpawn_D0E046CF951093C3 (1500s)"
+     m_Advanced GC_EventOptions "{32698D68B165C763}" {
+      m_fDelay 1500
+     }
+     m_aActions {
+      GC_SpawnAction "{00842A5092CE35B4}" {
+       m_Spawn GC_AIGroupSpawn "{81E4327B7F7EB3F0}" {
+        m_sLocation "AI_Rifle2"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM9"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{00072866D5B87A1B}" {
+     m_sName "GC_MigratedSpawn_7188C85B5BB6043D (5s)"
+     m_Advanced GC_EventOptions "{D0D17D9B964A886F}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{BB3199FDD61CEBD2}" {
+       m_Spawn GC_AIGroupSpawn "{EBE6AA656FC96A69}" {
+        m_sLocation "AI_AT1"
+        m_sPrefab "{936293AB24844C2C}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_ATGroup.et"
+        m_aWaypoints {
+         "FM1"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{6915899A0768EB8F}" {
+     m_sName "GC_MigratedSpawn_7188C85B5BB6043D (300s)"
+     m_Advanced GC_EventOptions "{30A2C47B39411E95}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{972BDB39BFEE1128}" {
+       m_Spawn GC_AIGroupSpawn "{19277511635F050D}" {
+        m_sLocation "AI_AT1"
+        m_sPrefab "{936293AB24844C2C}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_ATGroup.et"
+        m_aWaypoints {
+         "FM1"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{8C774F7D6AF43CFC}" {
+     m_sName "GC_MigratedSpawn_7188C85B5BB6043D (680s)"
+     m_Advanced GC_EventOptions "{592B1513A7024ADF}" {
+      m_fDelay 680
+     }
+     m_aActions {
+      GC_SpawnAction "{C26570C93B3152B2}" {
+       m_Spawn GC_AIGroupSpawn "{CFEDBED9CEFF0A75}" {
+        m_sLocation "AI_AT1"
+        m_sPrefab "{936293AB24844C2C}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_ATGroup.et"
+        m_aWaypoints {
+         "FM1"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{AA783FDF0286518A}" {
+     m_sName "GC_MigratedSpawn_7188C85B5BB6043D (900s)"
+     m_Advanced GC_EventOptions "{A5583313F4A838CF}" {
+      m_fDelay 900
+     }
+     m_aActions {
+      GC_SpawnAction "{E8E25B9182211822}" {
+       m_Spawn GC_AIGroupSpawn "{89239615A3B06823}" {
+        m_sLocation "AI_AT1"
+        m_sPrefab "{936293AB24844C2C}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_ATGroup.et"
+        m_aWaypoints {
+         "FM1"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{8C2AC8398A3303CC}" {
+     m_sName "GC_MigratedSpawn_7188C85B5BB6043D (1250s)"
+     m_Advanced GC_EventOptions "{4901AB9D83696FEC}" {
+      m_fDelay 1250
+     }
+     m_aActions {
+      GC_SpawnAction "{A24D678F95800125}" {
+       m_Spawn GC_AIGroupSpawn "{B461A8173F8DF66E}" {
+        m_sLocation "AI_AT1"
+        m_sPrefab "{936293AB24844C2C}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_ATGroup.et"
+        m_aWaypoints {
+         "FM1"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F70239BE0B53B55D}" {
+     m_sName "GC_MigratedSpawn_7188C85B5BB6043D (1555s)"
+     m_Advanced GC_EventOptions "{696AE6E8B378B294}" {
+      m_fDelay 1555
+     }
+     m_aActions {
+      GC_SpawnAction "{00072866D5B87A1B}" {
+       m_Spawn GC_AIGroupSpawn "{136BC2C323CF6953}" {
+        m_sLocation "AI_AT1"
+        m_sPrefab "{936293AB24844C2C}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_ATGroup.et"
+        m_aWaypoints {
+         "FM1"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9D7433D10640AA5C}" {
+     m_sName "GC_MigratedSpawn_E47C5617B19FFAD4 (10s)"
+     m_Advanced GC_EventOptions "{C2E87F50702C76F5}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{117F3E3C7431C9AB}" {
+       m_Spawn GC_AIGroupSpawn "{171BFC4B9AD900DD}" {
+        m_sLocation "AI_Rifle3"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9E6226929208A804}" {
+     m_sName "GC_MigratedSpawn_E47C5617B19FFAD4 (300s)"
+     m_Advanced GC_EventOptions "{6790E4ECDB08EB9B}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{C1AD1DCB539E7817}" {
+       m_Spawn GC_AIGroupSpawn "{25AB97133A15F33D}" {
+        m_sLocation "AI_Rifle3"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A3054D586D383057}" {
+     m_sName "GC_MigratedSpawn_E47C5617B19FFAD4 (650s)"
+     m_Advanced GC_EventOptions "{EF6C6069B0FFC800}" {
+      m_fDelay 650
+     }
+     m_aActions {
+      GC_SpawnAction "{C97623059CE72F2A}" {
+       m_Spawn GC_AIGroupSpawn "{99EA0D64C392E8C3}" {
+        m_sLocation "AI_Rifle3"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3FA4D89CB2D1C9F8}" {
+     m_sName "GC_MigratedSpawn_E47C5617B19FFAD4 (900s)"
+     m_Advanced GC_EventOptions "{DCCE5CCF61F3899A}" {
+      m_fDelay 900
+     }
+     m_aActions {
+      GC_SpawnAction "{9B3C2082FBB3488D}" {
+       m_Spawn GC_AIGroupSpawn "{914F57EEA42B5480}" {
+        m_sLocation "AI_Rifle3"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{304DBA7C11E4E4C4}" {
+     m_sName "GC_MigratedSpawn_E47C5617B19FFAD4 (1200s)"
+     m_Advanced GC_EventOptions "{A04A9320ADF68793}" {
+      m_fDelay 1200
+     }
+     m_aActions {
+      GC_SpawnAction "{4023F21D17E4ED67}" {
+       m_Spawn GC_AIGroupSpawn "{46AFAFF79C453A0C}" {
+        m_sLocation "AI_Rifle3"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{56EDD886508BB354}" {
+     m_sName "GC_MigratedSpawn_E47C5617B19FFAD4 (1520s)"
+     m_Advanced GC_EventOptions "{0A23D27765DE39CC}" {
+      m_fDelay 1520
+     }
+     m_aActions {
+      GC_SpawnAction "{B9365BD1E91FA4F9}" {
+       m_Spawn GC_AIGroupSpawn "{ACF7A23C9DB5C955}" {
+        m_sLocation "AI_Rifle3"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{73454AB8D75C6B19}" {
+     m_sName "GC_MigratedSpawn_645AE15191269ADF (4s)"
+     m_Advanced GC_EventOptions "{120CE3A8078B9CFA}" {
+      m_fDelay 4
+     }
+     m_aActions {
+      GC_SpawnAction "{061506AEE80F6C7D}" {
+       m_Spawn GC_AIGroupSpawn "{9CAB70230DAD4350}" {
+        m_sLocation "AI_HQ2"
+        m_sPrefab "{03B12A3C43CCACFF}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_PHQ.et"
+        m_aWaypoints {
+         "FM4"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{2A26923458E4CA8C}" {
+     m_sName "GC_MigratedSpawn_645AE15191269ADF (300s)"
+     m_Advanced GC_EventOptions "{267AC7DDF59CC7AA}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{02152DF8D587C346}" {
+       m_Spawn GC_AIGroupSpawn "{C482386ECFF51F74}" {
+        m_sLocation "AI_HQ2"
+        m_sPrefab "{03B12A3C43CCACFF}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_PHQ.et"
+        m_aWaypoints {
+         "FM4"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C00C391358ED65C3}" {
+     m_sName "GC_MigratedSpawn_645AE15191269ADF (650s)"
+     m_Advanced GC_EventOptions "{671E246A3B23D819}" {
+      m_fDelay 650
+     }
+     m_aActions {
+      GC_SpawnAction "{E668DF4AB8CC671C}" {
+       m_Spawn GC_AIGroupSpawn "{CD3104EED78747CB}" {
+        m_sLocation "AI_HQ2"
+        m_sPrefab "{03B12A3C43CCACFF}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_PHQ.et"
+        m_aWaypoints {
+         "FM4"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{198411FFE08ECDA7}" {
+     m_sName "GC_MigratedSpawn_645AE15191269ADF (900s)"
+     m_Advanced GC_EventOptions "{BCEB55DD4EFD14F8}" {
+      m_fDelay 900
+     }
+     m_aActions {
+      GC_SpawnAction "{A89858352BFF1959}" {
+       m_Spawn GC_AIGroupSpawn "{4DDD4FE3DCBA1B7F}" {
+        m_sLocation "AI_HQ2"
+        m_sPrefab "{03B12A3C43CCACFF}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_PHQ.et"
+        m_aWaypoints {
+         "FM4"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{AEE842185D6A850F}" {
+     m_sName "GC_MigratedSpawn_645AE15191269ADF (1200s)"
+     m_Advanced GC_EventOptions "{6C2C5BDA93731235}" {
+      m_fDelay 1200
+     }
+     m_aActions {
+      GC_SpawnAction "{73454AB8D75C6B19}" {
+       m_Spawn GC_AIGroupSpawn "{ECFF51D656EACFEB}" {
+        m_sLocation "AI_HQ2"
+        m_sPrefab "{03B12A3C43CCACFF}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_PHQ.et"
+        m_aWaypoints {
+         "FM4"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{CFC596E649FBF5DD}" {
+     m_sName "GC_MigratedSpawn_645AE15191269ADF (1500s)"
+     m_Advanced GC_EventOptions "{900AE4D1FD42A32E}" {
+      m_fDelay 1500
+     }
+     m_aActions {
+      GC_SpawnAction "{31AD2BA5FEBFC4BD}" {
+       m_Spawn GC_AIGroupSpawn "{31B8EB5150A7DFD2}" {
+        m_sLocation "AI_HQ2"
+        m_sPrefab "{03B12A3C43CCACFF}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_PHQ.et"
+        m_aWaypoints {
+         "FM4"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E4F86751D5F54976}" {
+     m_sName "GC_MigratedSpawn_BD491941075E3F0F (6s)"
+     m_Advanced GC_EventOptions "{21B1E0348C16BD6C}" {
+      m_fDelay 6
+     }
+     m_aActions {
+      GC_SpawnAction "{F1CF68A4680E2594}" {
+       m_Spawn GC_AIGroupSpawn "{2D270E6B2794B1CE}" {
+        m_sLocation "AI_MG1"
+        m_sPrefab "{874A9874220A640C}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_MGTeam.et"
+        m_aWaypoints {
+         "FM6"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A7083F71C12E6C1C}" {
+     m_sName "GC_MigratedSpawn_BD491941075E3F0F (300s)"
+     m_Advanced GC_EventOptions "{3690627401248B5D}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{96ECB1630D2B6E12}" {
+       m_Spawn GC_AIGroupSpawn "{A574EE9027A604B1}" {
+        m_sLocation "AI_MG1"
+        m_sPrefab "{874A9874220A640C}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_MGTeam.et"
+        m_aWaypoints {
+         "FM6"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{772BC091E14B9EE5}" {
+     m_sName "GC_MigratedSpawn_BD491941075E3F0F (600s)"
+     m_Advanced GC_EventOptions "{EAE32BE70C639552}" {
+      m_fDelay 600
+     }
+     m_aActions {
+      GC_SpawnAction "{11B330D0CB7F2526}" {
+       m_Spawn GC_AIGroupSpawn "{FC26C9D6C643806D}" {
+        m_sLocation "AI_MG1"
+        m_sPrefab "{874A9874220A640C}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_MGTeam.et"
+        m_aWaypoints {
+         "FM6"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C0518C1B515B33E0}" {
+     m_sName "GC_MigratedSpawn_BD491941075E3F0F (900s)"
+     m_Advanced GC_EventOptions "{E747A8CA22DFEC84}" {
+      m_fDelay 900
+     }
+     m_aActions {
+      GC_SpawnAction "{6BED21C58EAC7B90}" {
+       m_Spawn GC_AIGroupSpawn "{749D938AB9E0B875}" {
+        m_sLocation "AI_MG1"
+        m_sPrefab "{874A9874220A640C}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_MGTeam.et"
+        m_aWaypoints {
+         "FM6"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{19138289A2479426}" {
+     m_sName "GC_MigratedSpawn_BD491941075E3F0F (1215s)"
+     m_Advanced GC_EventOptions "{05288ED58752ADE7}" {
+      m_fDelay 1215
+     }
+     m_aActions {
+      GC_SpawnAction "{D4AC73A4189726DA}" {
+       m_Spawn GC_AIGroupSpawn "{21B82547A3E2D83A}" {
+        m_sLocation "AI_MG1"
+        m_sPrefab "{874A9874220A640C}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_MGTeam.et"
+        m_aWaypoints {
+         "FM6"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{2376A978FA468F57}" {
+     m_sName "GC_MigratedSpawn_BD491941075E3F0F (1500s)"
+     m_Advanced GC_EventOptions "{DC8B1058E3FAF148}" {
+      m_fDelay 1500
+     }
+     m_aActions {
+      GC_SpawnAction "{7B115849AF2688B7}" {
+       m_Spawn GC_AIGroupSpawn "{D21FBB0658A2FF17}" {
+        m_sLocation "AI_MG1"
+        m_sPrefab "{874A9874220A640C}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_MGTeam.et"
+        m_aWaypoints {
+         "FM6"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{BE73298F74250279}" {
+     m_sName "GC_MigratedSpawn_E23FE5AEE1D17F23 (30s)"
+     m_Advanced GC_EventOptions "{17F23D8FF2B783CB}" {
+      m_fDelay 30
+     }
+     m_aActions {
+      GC_SpawnAction "{F1579303942C246A}" {
+       m_Spawn GC_AIGroupSpawn "{A2139F53AD860BAF}" {
+        m_sLocation "AI_Rifle4"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM11"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{1997B314219D4D1E}" {
+     m_sName "GC_MigratedSpawn_E23FE5AEE1D17F23 (300s)"
+     m_Advanced GC_EventOptions "{DC338EC452E1D79E}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{6790CF37C1F87714}" {
+       m_Spawn GC_AIGroupSpawn "{2788A01939BE349A}" {
+        m_sLocation "AI_Rifle4"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM11"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{2549561DBCB4CC22}" {
+     m_sName "GC_MigratedSpawn_E23FE5AEE1D17F23 (600s)"
+     m_Advanced GC_EventOptions "{582409699E7EE83C}" {
+      m_fDelay 600
+     }
+     m_aActions {
+      GC_SpawnAction "{21CEED78587CF14C}" {
+       m_Spawn GC_AIGroupSpawn "{D32A3CA38E7A5BFB}" {
+        m_sLocation "AI_Rifle4"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM11"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{6AB6C2F127058DDB}" {
+     m_sName "GC_MigratedSpawn_E23FE5AEE1D17F23 (900s)"
+     m_Advanced GC_EventOptions "{CAD3A6A9DDF44555}" {
+      m_fDelay 900
+     }
+     m_aActions {
+      GC_SpawnAction "{6EDBB31D1D1B8948}" {
+       m_Spawn GC_AIGroupSpawn "{95C577B77A96CCB8}" {
+        m_sLocation "AI_Rifle4"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM11"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{1FB7335E2177ADF9}" {
+     m_sName "GC_MigratedSpawn_E23FE5AEE1D17F23 (1250s)"
+     m_Advanced GC_EventOptions "{89FDC13E41B22289}" {
+      m_fDelay 1250
+     }
+     m_aActions {
+      GC_SpawnAction "{1F83F60693B26F78}" {
+       m_Spawn GC_AIGroupSpawn "{AB8DE4C2E8187A81}" {
+        m_sLocation "AI_Rifle4"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM11"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{0CA6EBEB2840DD00}" {
+     m_sName "GC_MigratedSpawn_E23FE5AEE1D17F23 (1500s)"
+     m_Advanced GC_EventOptions "{29A164FB27B0D8B1}" {
+      m_fDelay 1500
+     }
+     m_aActions {
+      GC_SpawnAction "{D4AC03781D6E9735}" {
+       m_Spawn GC_AIGroupSpawn "{3F4A23D339445049}" {
+        m_sLocation "AI_Rifle4"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM11"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{667141803BEA9E01}" {
+     m_sName "GC_MigratedSpawn_FE3DADA2A75DB4C4 (2s)"
+     m_Advanced GC_EventOptions "{39CC4A70FC5959D3}" {
+      m_fDelay 2
+     }
+     m_aActions {
+      GC_SpawnAction "{B86BA279D57448CE}" {
+       m_Spawn GC_AIGroupSpawn "{3F92C211430230F2}" {
+        m_sLocation "AI_AT2"
+        m_sPrefab "{936293AB24844C2C}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_ATGroup.et"
+        m_aWaypoints {
+         "FM2"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{62761E95E3970352}" {
+     m_sName "GC_MigratedSpawn_FE3DADA2A75DB4C4 (300s)"
+     m_Advanced GC_EventOptions "{D80B84BB8AEDD8BF}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{62B693A41E186689}" {
+       m_Spawn GC_AIGroupSpawn "{CAD9D1C25C4E0B24}" {
+        m_sLocation "AI_AT2"
+        m_sPrefab "{936293AB24844C2C}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_ATGroup.et"
+        m_aWaypoints {
+         "FM2"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{45EA3CCE1E42DC6B}" {
+     m_sName "GC_MigratedSpawn_FE3DADA2A75DB4C4 (600s)"
+     m_Advanced GC_EventOptions "{A020A8AF95DBAA3E}" {
+      m_fDelay 600
+     }
+     m_aActions {
+      GC_SpawnAction "{667141803BEA9E01}" {
+       m_Spawn GC_AIGroupSpawn "{AF14078D697CBB09}" {
+        m_sLocation "AI_AT2"
+        m_sPrefab "{936293AB24844C2C}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_ATGroup.et"
+        m_aWaypoints {
+         "FM2"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{0A7C2FBD4DB6EE1C}" {
+     m_sName "GC_MigratedSpawn_FE3DADA2A75DB4C4 (930s)"
+     m_Advanced GC_EventOptions "{29B6A50EA624788F}" {
+      m_fDelay 930
+     }
+     m_aActions {
+      GC_SpawnAction "{6618441C0AB87BB4}" {
+       m_Spawn GC_AIGroupSpawn "{41B0D32A14A95994}" {
+        m_sLocation "AI_AT2"
+        m_sPrefab "{936293AB24844C2C}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_ATGroup.et"
+        m_aWaypoints {
+         "FM2"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{FE4CFB53F46A53F4}" {
+     m_sName "GC_MigratedSpawn_FE3DADA2A75DB4C4 (1200s)"
+     m_Advanced GC_EventOptions "{2D4DC0BE39E94F85}" {
+      m_fDelay 1200
+     }
+     m_aActions {
+      GC_SpawnAction "{5AE3CBBEA75A9EE7}" {
+       m_Spawn GC_AIGroupSpawn "{0F8AB980AB50CDF6}" {
+        m_sLocation "AI_AT2"
+        m_sPrefab "{936293AB24844C2C}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_ATGroup.et"
+        m_aWaypoints {
+         "FM2"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9A8F5CCD2A63BA18}" {
+     m_sName "GC_MigratedSpawn_FE3DADA2A75DB4C4 (1500s)"
+     m_Advanced GC_EventOptions "{C8729DDEE0F78E3B}" {
+      m_fDelay 1500
+     }
+     m_aActions {
+      GC_SpawnAction "{23365627D441251F}" {
+       m_Spawn GC_AIGroupSpawn "{50B2EE7ABA122A91}" {
+        m_sLocation "AI_AT2"
+        m_sPrefab "{936293AB24844C2C}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_ATGroup.et"
+        m_aWaypoints {
+         "FM2"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C823626F66C27185}" {
+     m_sName "GC_MigratedSpawn_A8292FE870F79C1F (5s)"
+     m_Advanced GC_EventOptions "{6C9B075D78074D68}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{ECA6511DFDD103BD}" {
+       m_Spawn GC_AIGroupSpawn "{018B43DC16D47100}" {
+        m_sLocation "AI_HQ3"
+        m_sPrefab "{03B12A3C43CCACFF}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_PHQ.et"
+        m_aWaypoints {
+         "FM5"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{330F900E32B3070E}" {
+     m_sName "GC_MigratedSpawn_A8292FE870F79C1F (300s)"
+     m_Advanced GC_EventOptions "{2840AACD41560D6B}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{F57E71776FDD109E}" {
+       m_Spawn GC_AIGroupSpawn "{978FC5A00281BED7}" {
+        m_sLocation "AI_HQ3"
+        m_sPrefab "{03B12A3C43CCACFF}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_PHQ.et"
+        m_aWaypoints {
+         "FM5"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{DC2F696B6B0357FA}" {
+     m_sName "GC_MigratedSpawn_A8292FE870F79C1F (690s)"
+     m_Advanced GC_EventOptions "{CC8FBAFCAE5DBEFA}" {
+      m_fDelay 690
+     }
+     m_aActions {
+      GC_SpawnAction "{DA954324C6872818}" {
+       m_Spawn GC_AIGroupSpawn "{3B4BFA22742FB713}" {
+        m_sLocation "AI_HQ3"
+        m_sPrefab "{03B12A3C43CCACFF}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_PHQ.et"
+        m_aWaypoints {
+         "FM5"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{5D308BEBC902C8D2}" {
+     m_sName "GC_MigratedSpawn_A8292FE870F79C1F (900s)"
+     m_Advanced GC_EventOptions "{94C2F41F8B42182B}" {
+      m_fDelay 900
+     }
+     m_aActions {
+      GC_SpawnAction "{565B0039AD674620}" {
+       m_Spawn GC_AIGroupSpawn "{6B7BEA2A1EB18DC0}" {
+        m_sLocation "AI_HQ3"
+        m_sPrefab "{03B12A3C43CCACFF}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_PHQ.et"
+        m_aWaypoints {
+         "FM5"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F8FEFBCB739D12AF}" {
+     m_sName "GC_MigratedSpawn_A8292FE870F79C1F (1200s)"
+     m_Advanced GC_EventOptions "{86C300B448462398}" {
+      m_fDelay 1200
+     }
+     m_aActions {
+      GC_SpawnAction "{01E75B4469DF04BD}" {
+       m_Spawn GC_AIGroupSpawn "{333674B26461EA41}" {
+        m_sLocation "AI_HQ3"
+        m_sPrefab "{03B12A3C43CCACFF}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_PHQ.et"
+        m_aWaypoints {
+         "FM5"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{8E0FD7D759FFCA2C}" {
+     m_sName "GC_MigratedSpawn_A8292FE870F79C1F (1500s)"
+     m_Advanced GC_EventOptions "{1B37803BACF9B06C}" {
+      m_fDelay 1500
+     }
+     m_aActions {
+      GC_SpawnAction "{C823626F66C27185}" {
+       m_Spawn GC_AIGroupSpawn "{D0A67A7B785F625F}" {
+        m_sLocation "AI_HQ3"
+        m_sPrefab "{03B12A3C43CCACFF}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_PHQ.et"
+        m_aWaypoints {
+         "FM5"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{2A388AA62B9B25F2}" {
+     m_sName "GC_MigratedSpawn_85C8DE9E8C9AB87B (12s)"
+     m_Advanced GC_EventOptions "{93185F5FE4BB9532}" {
+      m_fDelay 12
+     }
+     m_aActions {
+      GC_SpawnAction "{6C867F4FB6FC47D9}" {
+       m_Spawn GC_AIGroupSpawn "{CCC6FBEFF2591CB9}" {
+        m_sLocation "AI_Rifle5"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM12"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4537B6ABD0CFCE52}" {
+     m_sName "GC_MigratedSpawn_85C8DE9E8C9AB87B (300s)"
+     m_Advanced GC_EventOptions "{42E95A5AAD00D163}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{67640CCAE6F49E9A}" {
+       m_Spawn GC_AIGroupSpawn "{48C8025FD80147E6}" {
+        m_sLocation "AI_Rifle5"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM12"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B9706A5B7216E92B}" {
+     m_sName "GC_MigratedSpawn_85C8DE9E8C9AB87B (600s)"
+     m_Advanced GC_EventOptions "{CD26D00B97137EF0}" {
+      m_fDelay 600
+     }
+     m_aActions {
+      GC_SpawnAction "{5B6A955B6FFBCC29}" {
+       m_Spawn GC_AIGroupSpawn "{57211BD2CEFB7421}" {
+        m_sLocation "AI_Rifle5"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM12"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{AA8FCCF3389871ED}" {
+     m_sName "GC_MigratedSpawn_85C8DE9E8C9AB87B (900s)"
+     m_Advanced GC_EventOptions "{55C6104DA8760E8D}" {
+      m_fDelay 900
+     }
+     m_aActions {
+      GC_SpawnAction "{73B91A7145B7BD40}" {
+       m_Spawn GC_AIGroupSpawn "{6AE2EE68B21F91A2}" {
+        m_sLocation "AI_Rifle5"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM12"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{71364A7127CE1C46}" {
+     m_sName "GC_MigratedSpawn_85C8DE9E8C9AB87B (1270s)"
+     m_Advanced GC_EventOptions "{00288827AE2A29A0}" {
+      m_fDelay 1270
+     }
+     m_aActions {
+      GC_SpawnAction "{8A2A0598757DB196}" {
+       m_Spawn GC_AIGroupSpawn "{34A6033C9F94777D}" {
+        m_sLocation "AI_Rifle5"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM12"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{AEDC14C7FACA9967}" {
+     m_sName "GC_MigratedSpawn_85C8DE9E8C9AB87B (1530s)"
+     m_Advanced GC_EventOptions "{5DA78DC125EA1A14}" {
+      m_fDelay 1530
+     }
+     m_aActions {
+      GC_SpawnAction "{F3EE7A2CBFFDE135}" {
+       m_Spawn GC_AIGroupSpawn "{8FBAC5542064D62D}" {
+        m_sLocation "AI_Rifle5"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM12"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{AE6CFF317D9E731C}" {
+     m_sName "GC_MigratedSpawn_F735441B176DEC80 (7s)"
+     m_Advanced GC_EventOptions "{FBAE0B62759F687E}" {
+      m_fDelay 7
+     }
+     m_aActions {
+      GC_SpawnAction "{5A549224CE125B1C}" {
+       m_Spawn GC_AIGroupSpawn "{FCBA2B7E48F8D2C5}" {
+        m_sLocation "AI_MG2"
+        m_sPrefab "{874A9874220A640C}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_MGTeam.et"
+        m_aWaypoints {
+         "FM7"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{7DDE32AFDCDCF2A1}" {
+     m_sName "GC_MigratedSpawn_F735441B176DEC80 (300s)"
+     m_Advanced GC_EventOptions "{A9EE0FE2B8D339A7}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{28CA6B939765B80D}" {
+       m_Spawn GC_AIGroupSpawn "{45329D9D513A1618}" {
+        m_sLocation "AI_MG2"
+        m_sPrefab "{874A9874220A640C}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_MGTeam.et"
+        m_aWaypoints {
+         "FM7"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{FEAD75CF251F9B4E}" {
+     m_sName "GC_MigratedSpawn_F735441B176DEC80 (600s)"
+     m_Advanced GC_EventOptions "{509C110187B2DF41}" {
+      m_fDelay 600
+     }
+     m_aActions {
+      GC_SpawnAction "{9E640D11D2AE48BB}" {
+       m_Spawn GC_AIGroupSpawn "{854776D28FDFB8E1}" {
+        m_sLocation "AI_MG2"
+        m_sPrefab "{874A9874220A640C}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_MGTeam.et"
+        m_aWaypoints {
+         "FM7"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{027F603D4D313045}" {
+     m_sName "GC_MigratedSpawn_F735441B176DEC80 (910s)"
+     m_Advanced GC_EventOptions "{581D156C985744BC}" {
+      m_fDelay 910
+     }
+     m_aActions {
+      GC_SpawnAction "{424D6DFD88FC1DE7}" {
+       m_Spawn GC_AIGroupSpawn "{9DE2F2BBB1036C86}" {
+        m_sLocation "AI_MG2"
+        m_sPrefab "{874A9874220A640C}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_MGTeam.et"
+        m_aWaypoints {
+         "FM7"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{DD2AFE188CDB1322}" {
+     m_sName "GC_MigratedSpawn_F735441B176DEC80 (1200s)"
+     m_Advanced GC_EventOptions "{763A1882CA7F51BF}" {
+      m_fDelay 1200
+     }
+     m_aActions {
+      GC_SpawnAction "{D9BA4E4325C2397B}" {
+       m_Spawn GC_AIGroupSpawn "{3361DDC29231C7C3}" {
+        m_sLocation "AI_MG2"
+        m_sPrefab "{874A9874220A640C}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_MGTeam.et"
+        m_aWaypoints {
+         "FM7"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{D3A3208B31C669C9}" {
+     m_sName "GC_MigratedSpawn_F735441B176DEC80 (1500s)"
+     m_Advanced GC_EventOptions "{D42B7061552BB4B6}" {
+      m_fDelay 1500
+     }
+     m_aActions {
+      GC_SpawnAction "{7CD3B2E815B4CDE1}" {
+       m_Spawn GC_AIGroupSpawn "{94C09E38A7CEDB2A}" {
+        m_sLocation "AI_MG2"
+        m_sPrefab "{874A9874220A640C}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_MGTeam.et"
+        m_aWaypoints {
+         "FM7"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9A24A720B5922D0F}" {
+     m_sName "GC_MigratedSpawn_363C82E25645A64F (1200s)"
+     m_Advanced GC_EventOptions "{AE0942E0117E13FB}" {
+      m_fDelay 1200
+     }
+     m_aActions {
+      GC_SpawnAction "{AC0C362D4B7EC798}" {
+       m_Spawn GC_CrewedVehicleSpawn "{BB237D79A64AC9E6}" {
+        m_sLocation "AI_BTR1"
+        m_sPrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{B81C8F81529BB4C9}" {
+          m_aStations {
+           GC_SpawnCrewStation "{CDBDA904284A5D14}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{0ABEF5BCC17208C9}Prefabs/Characters/Factions/OPFOR/GC_IRAQ/2000/Regulars/Standard dress/Character_IRAQ_2000_CrewDriver.et"
+             "{07805F51B976989A}Prefabs/Characters/Factions/OPFOR/GC_IRAQ/2000/Regulars/Standard dress/Character_IRAQ_2000_CrewGunner.et"
+             "{F6D1007DA886E99E}Prefabs/Characters/Factions/OPFOR/GC_IRAQ/2000/Regulars/Standard dress/Character_IRAQ_2000_CrewCmdr.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Attack1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9C4A18E10B161DDE}" {
+     m_sName "GC_MigratedSpawn_5CCA508E713D6B44 (600s)"
+     m_Advanced GC_EventOptions "{4031296A8EF7DBC8}" {
+      m_fDelay 600
+     }
+     m_aActions {
+      GC_SpawnAction "{F1BD0054061D460F}" {
+       m_Spawn GC_CrewedVehicleSpawn "{EC0D0D0E7472E77C}" {
+        m_sLocation "AI_BRDM"
+        m_sPrefab "{254289B9C09904AB}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{23F514F8C8FD078B}" {
+          m_aStations {
+           GC_SpawnCrewStation "{94B011F9AB15699D}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{0ABEF5BCC17208C9}Prefabs/Characters/Factions/OPFOR/GC_IRAQ/2000/Regulars/Standard dress/Character_IRAQ_2000_CrewDriver.et"
+             "{07805F51B976989A}Prefabs/Characters/Factions/OPFOR/GC_IRAQ/2000/Regulars/Standard dress/Character_IRAQ_2000_CrewGunner.et"
+             "{F6D1007DA886E99E}Prefabs/Characters/Factions/OPFOR/GC_IRAQ/2000/Regulars/Standard dress/Character_IRAQ_2000_CrewCmdr.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Attack1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{53022E3B27A5D546}" {
+     m_sName "GC_MigratedSpawn_3B13DFD70195FFEB (1200s)"
+     m_Advanced GC_EventOptions "{7A0CB41A100C1AEB}" {
+      m_fDelay 1200
+     }
+     m_aActions {
+      GC_SpawnAction "{20E43926C7A0664C}" {
+       m_Spawn GC_CrewedVehicleSpawn "{3F2C94BEB55F4D88}" {
+        m_sLocation "AI_BRDM2"
+        m_sPrefab "{254289B9C09904AB}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{BD2D317F3B5FA0D0}" {
+          m_aStations {
+           GC_SpawnCrewStation "{47318B55CA56E55C}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{0ABEF5BCC17208C9}Prefabs/Characters/Factions/OPFOR/GC_IRAQ/2000/Regulars/Standard dress/Character_IRAQ_2000_CrewDriver.et"
+             "{07805F51B976989A}Prefabs/Characters/Factions/OPFOR/GC_IRAQ/2000/Regulars/Standard dress/Character_IRAQ_2000_CrewGunner.et"
+             "{F6D1007DA886E99E}Prefabs/Characters/Factions/OPFOR/GC_IRAQ/2000/Regulars/Standard dress/Character_IRAQ_2000_CrewCmdr.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Attack1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{47BF014E9EE8C174}" {
+     m_sName "GC_MigratedSpawn_0C248D49191BAD34 (300s)"
+     m_Advanced GC_EventOptions "{2927E136B1C996DE}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{752DFBE2C7663599}" {
+       m_Spawn GC_CrewedVehicleSpawn "{46745BB1B7917E75}" {
+        m_sLocation "AI_BTR2"
+        m_sPrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{A4FD0663756A19B6}" {
+          m_aStations {
+           GC_SpawnCrewStation "{3FB762384F69D6C7}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{0ABEF5BCC17208C9}Prefabs/Characters/Factions/OPFOR/GC_IRAQ/2000/Regulars/Standard dress/Character_IRAQ_2000_CrewDriver.et"
+             "{07805F51B976989A}Prefabs/Characters/Factions/OPFOR/GC_IRAQ/2000/Regulars/Standard dress/Character_IRAQ_2000_CrewGunner.et"
+             "{F6D1007DA886E99E}Prefabs/Characters/Factions/OPFOR/GC_IRAQ/2000/Regulars/Standard dress/Character_IRAQ_2000_CrewCmdr.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Attack1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B0AFC3B654119DE6}" {
+     m_sName "GC_MigratedSpawn_7702F836278B43EF (60s)"
+     m_Advanced GC_EventOptions "{CEB35EABD6B4BF0D}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{8DD67DA2AE339E30}" {
+       m_Spawn GC_AIGroupSpawn "{55BE34B829655C46}" {
+        m_sLocation "AI_Rifle6"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM13"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{1F713F143A056B74}" {
+     m_sName "GC_MigratedSpawn_7702F836278B43EF (300s)"
+     m_Advanced GC_EventOptions "{DAAB1EBC9CDE71B7}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{0FBDFEF5C7701A07}" {
+       m_Spawn GC_AIGroupSpawn "{BA16404E2209515D}" {
+        m_sLocation "AI_Rifle6"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM13"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{6AF03A5C0FDB52B6}" {
+     m_sName "GC_MigratedSpawn_7702F836278B43EF (630s)"
+     m_Advanced GC_EventOptions "{EA7B127EFDC076DE}" {
+      m_fDelay 630
+     }
+     m_aActions {
+      GC_SpawnAction "{FE36D4A7B25E13FB}" {
+       m_Spawn GC_AIGroupSpawn "{18562599EC76AC6C}" {
+        m_sLocation "AI_Rifle6"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM13"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{5063F01AAE3E44AB}" {
+     m_sName "GC_MigratedSpawn_7702F836278B43EF (900s)"
+     m_Advanced GC_EventOptions "{5D496FD125AA77E9}" {
+      m_fDelay 900
+     }
+     m_aActions {
+      GC_SpawnAction "{DEE0214C3E86A2E7}" {
+       m_Spawn GC_AIGroupSpawn "{1DDD36D4CBFE9A8A}" {
+        m_sLocation "AI_Rifle6"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM13"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{FB55FB3303E94801}" {
+     m_sName "GC_MigratedSpawn_7702F836278B43EF (1200s)"
+     m_Advanced GC_EventOptions "{15861591987E7267}" {
+      m_fDelay 1200
+     }
+     m_aActions {
+      GC_SpawnAction "{7E708FFB15719C98}" {
+       m_Spawn GC_AIGroupSpawn "{550B0A858DAB041C}" {
+        m_sLocation "AI_Rifle6"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM13"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{44D6129F5C863A02}" {
+     m_sName "GC_MigratedSpawn_7702F836278B43EF (1510s)"
+     m_Advanced GC_EventOptions "{A532BF10E8043478}" {
+      m_fDelay 1510
+     }
+     m_aActions {
+      GC_SpawnAction "{BDB85C58673E6003}" {
+       m_Spawn GC_AIGroupSpawn "{716F54B00D4C8034}" {
+        m_sLocation "AI_Rifle6"
+        m_sPrefab "{AF540CE6219CCC3B}Prefabs/Groups/OPFOR/GC_IRAQ/2000/Standard dress/Group_IRAQ_2000_RifleSquad.et"
+        m_aWaypoints {
+         "FM13"
+         "Attack1"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 6692.722 53.557 3608.832
+}
