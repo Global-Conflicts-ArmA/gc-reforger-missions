@@ -1,0 +1,139 @@
+SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
+ coords 12156.064 99.427 10549.185
+}
+GC_LobbyGameMode GC_MigratedMission : "{C0243EB10FB28E58}worlds/Corax/SerriffBusters/SerrifBusters_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 6
+   m_iStartingMinutes 15
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{689B1CA005BD63B3}" {
+     m_sWeatherPresetName "Rainy"
+     m_iStartingHour 6
+     m_iStartingMinutes 15
+    }
+   }
+  }
+  SCR_CampaignBuildingManagerComponent "{61B4DDBF56BF1B48}" {
+  }
+  GC_PeakFactionPopulationComponent "{45D6CE2FB016B50E}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{58BBB7431517FF1E}" {
+     m_sName "Outcome 689B66CCE2DAC9A1"
+     m_aConditions {
+      GC_CustomScriptCondition "{16D4B54C279FBAC1}" {
+       m_Script GC_PeakFactionPopulationCheck "{BB090E22F7F4DE42}" {
+        m_sFaction "GC_DON"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{42B5E9649D2C9E22}" {
+       m_sMessage "Outcome 689B66CCE2DAC9A1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2FD037039040E3CF}" {
+     m_sName "Outcome 689B66CCE2DAC9A1 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{91916A383E7EA706}" {
+       m_sEventName "Outcome 689B66CCE2DAC9A1"
+      }
+     }
+     m_Advanced GC_EventOptions "{0B1D6D76FFF7337D}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{861AB74DF3247925}" {
+       m_sTitle "San Serriffe Victory"
+       m_sMessage "Donovian forces have revieved to many casualties"
+       m_aFactions {
+        "GC_DON" "San_Serriffe"
+       }
+      }
+     }
+    }
+    GC_Event "{83E49FF7FCAE112A}" {
+     m_sName "Outcome 689B66CCE0CF315C"
+     m_aConditions {
+      GC_CustomScriptCondition "{7528AA4A63C58EDA}" {
+       m_Script GC_PeakFactionPopulationCheck "{BDF7C302D9314615}" {
+        m_sFaction "San_Serriffe"
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{555C1206F496D555}" {
+       m_sMessage "Outcome 689B66CCE0CF315C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{896C981236FF34DE}" {
+     m_sName "Outcome 689B66CCE0CF315C (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{88829F97453D5D8A}" {
+       m_sEventName "Outcome 689B66CCE0CF315C"
+      }
+     }
+     m_Advanced GC_EventOptions "{2FCE73A700C6AD04}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{8E7ECA05FDFE7DCB}" {
+       m_sTitle "Donovian Victory"
+       m_sMessage "All San Serriffe Forces have been killed"
+       m_aFactions {
+        "GC_DON" "San_Serriffe"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 11332.928 89.457 10508.188
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{6893355199B1327F}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{6892ED4DAD875777}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{64E2F896FFC45153}" {
+        m_sCallsign "4"
+       }
+       SCR_CallsignInfo "{64E2F896F0699D6A}" {
+        m_sCallsign "7"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp GenericEntity : "{972F01488E5B23C2}Prefabs/Structures/Military/CamoNets/US/CamoNet_Medium_Top_US.et" {
+ {
+  coords 5011.126 682.023 6370.889
+ }
+ {
+  coords 5024.974 688.462 6346.793
+  angles 0 91.018 0
+ }
+ {
+  coords 5034.276 691.345 6322.947
+  angles 0 56.381 0
+ }
+ {
+  coords 5056.322 697.285 6329.412
+  angles 0 137.235 0
+ }
+}
