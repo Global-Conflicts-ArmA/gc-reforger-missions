@@ -14,6 +14,20 @@ class GC_RouletteTerrain
 	protected float m_fQueryRadius;
 	protected bool m_bOccupied;
 
+	protected array<IEntity> m_IgnoredObstacles;
+	protected ref array<vector> m_aReservedPositions = {};
+
+	void SetPlacementState(array<IEntity> ignored)
+	{
+		m_IgnoredObstacles = ignored;
+		m_aReservedPositions.Clear();
+	}
+
+	void ReserveGroupPosition(vector position)
+	{
+		m_aReservedPositions.Insert(position);
+	}
+
 	void GC_RouletteTerrain(BaseWorld world, IEntity worldEntity, GC_RouletteScenario scenario)
 	{
 		m_World = world;
@@ -210,6 +224,11 @@ class GC_RouletteTerrain
 
 	protected bool IsClear(vector position, float radius)
 	{
+		foreach (vector occupied : m_aReservedPositions)
+		{
+			if (vector.DistanceXZ(occupied, position) <= radius)
+				return false;
+		}
 		m_vQueryCenter = position;
 		m_fQueryRadius = radius;
 		m_bOccupied = false;
@@ -220,7 +239,8 @@ class GC_RouletteTerrain
 
 	protected bool CollectObstacle(IEntity entity)
 	{
-		if (!entity || entity.GetParent() || !entity.GetPhysics() || !IntersectsSearch(entity))
+		if (!entity || entity.GetParent() || !entity.GetPhysics() || !IntersectsSearch(entity)
+			|| (m_IgnoredObstacles && m_IgnoredObstacles.Contains(entity)))
 			return true;
 		m_bOccupied = true;
 		return false;
