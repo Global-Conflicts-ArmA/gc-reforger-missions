@@ -1,0 +1,196 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{65DCFA5D10A03917}" {
+     NavmeshFile "{C54FCF0DC85B9642}worlds/Gamemaster/Navmeshes/GM_Ruha_navmesh_soldiers.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{301510D49B59DE2C}worlds/Gamemaster/Navmeshes/GM_Ruha_navmesh_vehicles.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{806B3036EA17E548}worlds/Gamemaster/Navmeshes/GM_Ruha_navmesh_lowres.nmn"
+    }
+   }
+  }
+ }
+ coords 7069.225 51.698 6258.017
+}
+GenericWorldFogEntity : "{78D9BBF0F423FEB4}Prefabs/World/DefaultWorld/FogHaze_Default.et" {
+ coords 7005.508 51.637 6401.88
+ HeightDensity 1
+ DistanceDensity 0.425
+ HazeDensity 0.75
+ FogHeightStart entity
+ NearFog 1
+}
+GC_LobbyGameMode GC_MigratedMission : "{85003F0885FDA301}worlds/arc/JEFRMCWAC/JEFRMCWAC_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{65DD1E3147B54D3A}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 18
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 1
+   m_iMonth 8
+   m_iYear 2025
+  }
+  GC_PeakFactionPopulationComponent "{2D3DA7CCA3D9A4F1}" {
+  }
+  GC_LivingAndDeadAIComponent "{B267AC6B529F636D}" {
+   m_sFaction "RHS_AFRF"
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{D1B3367ED4B5B665}" {
+     m_sName "RU_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{5FC72DFC1AA4CA3F}" {
+       m_Script GC_LivingAndDeadAICheck "{EABE9A752B593429}" {
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B652257F62B1C9F6}" {
+       m_sMessage "RU_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{008AF33EA5E7CBDA}" {
+     m_sName "RU_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{132CECAA349CEFBF}" {
+       m_sEventName "RU_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{EE0CD3BF185A7BA0}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{20E7842AC85053F2}" {
+       m_sTitle "VICTORY"
+       m_sMessage "Russian forces have taken significant casualties."
+      }
+     }
+    }
+    GC_Event "{2FAA25D1A7B7A0FD}" {
+     m_sName "RU_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{FED5C7E173663DD8}" {
+       m_sEventName "RU_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{FCEC71F2C4FDB048}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{961491591A65BD95}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{D5D701F6A907C29B}" {
+     m_sName "UK_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{A6BFA68B151D59B7}" {
+       m_Script GC_PeakFactionPopulationCheck "{E7E93FE3038E1089}" {
+        m_sFaction "UK"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{51BDFC56ECC4C9A0}" {
+       m_sMessage "UK_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7CC8ACDB80106838}" {
+     m_sName "UK_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{FFB18E851C864397}" {
+       m_sEventName "UK_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{5B2EBE64D2222191}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{8227ED668C02D433}" {
+       m_sTitle "DEFEAT"
+       m_sMessage "British forces have taken significant casualties."
+      }
+     }
+    }
+    GC_Event "{10E8E106652CCDE0}" {
+     m_sName "UK_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{795E9ADD1080932E}" {
+       m_sEventName "UK_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{41E6A2C5A61A2DF9}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{824801ACE34C0D1D}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{B1B6B63526C125A7}" {
+     m_sName "TIME_LIMIT (4505s)"
+     m_Advanced GC_EventOptions "{5A4453293E445F3B}" {
+      m_fDelay 4505
+     }
+     m_aActions {
+      GC_MessageAction "{5196A730AA42D6C7}" {
+       m_sTitle "DEFEAT"
+       m_sMessage "Time limit reached."
+      }
+     }
+    }
+    GC_Event "{4141BD1CAD88F16E}" {
+     m_sName "TIME_LIMIT (4515s)"
+     m_Advanced GC_EventOptions "{5BBC4C10A8F897C4}" {
+      m_fDelay 4515
+     }
+     m_aActions {
+      GC_EndMissionAction "{16A25264306FA9DD}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 7072.168 52.124 6258.083
+}
