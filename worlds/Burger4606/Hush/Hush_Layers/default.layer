@@ -1,0 +1,315 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F9E52831}" {
+     NavmeshFile "{AD5F99CD7C59D5E0}worlds/GameMaster/Navmeshes/GM_Eden.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F3B4EE8A}" {
+     NavmeshFile "{C35ECF3276824654}worlds/GameMaster/Navmeshes/GM_Eden_vehicles.nmn"
+    }
+   }
+  }
+ }
+ coords 6946.119 0 9346.555
+}
+GC_LobbyGameMode GC_MigratedMission : "{D1FAAAC474BF6DDE}worlds/Burger4606/Hush/Hush_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 5
+   m_iStartingMinutes 6
+   m_iRangeHoursStart 5
+   m_iRangeHoursEnd 23
+   m_bRandomStartingWeather 1
+   m_bRandomWeatherChanges 1
+  }
+  GC_PeakFactionPopulationComponent "{D2FBF7C1943288A1}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{7B3501FCFC2DFB6C}" {
+     m_sName "Both taken"
+     m_aConditions {
+      GC_ConditionGroup "{E7130C7BB2F33700}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{D7069FF43D861FAE}" {
+         m_sArea "OBJ_A"
+         m_Targets GC_CharacterAreaTargets "{F30621FD404A21D5}" {
+          m_iWho 2
+          m_aFactions {
+           "UK"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{649CBEA57D7C12CD}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{D00E3EF8CA72C62A}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{7B23603C66EF55E1}" {
+           m_sLocation "objective Alpha"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{1F83924A5FAB46DB}" {
+         m_sArea "OBJ_B"
+         m_Targets GC_CharacterAreaTargets "{79745064ABD74DA8}" {
+          m_iWho 2
+          m_aFactions {
+           "UK"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{AC6715A87B1C319C}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{174FC00262718532}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{DF892F4E995BA72E}" {
+           m_sLocation "objective Bravo"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{01FC871DFE028CF9}" {
+       m_sMessage "Both taken"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9EAA4783CDB9790A}" {
+     m_sName "Both taken (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6C0F6B5F992BF6EC}" {
+       m_sEventName "Both taken"
+      }
+     }
+     m_Advanced GC_EventOptions "{0049714319DB9591}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{3D531B4D9C229EF6}" {
+       m_sTitle "Both objectives taken"
+       m_sMessage "The UK has captured both objectives, move to exfil."
+      }
+     }
+    }
+    GC_Event "{77067432CD9A1FA2}" {
+     m_sName "EXFIL"
+     m_aConditions {
+      GC_ConditionGroup "{BC84F72F653CE5E5}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{BE624DAEA7B1AB36}" {
+         m_sArea "OBJ_A"
+         m_Targets GC_CharacterAreaTargets "{A3A3728E2058B3BB}" {
+          m_iWho 2
+          m_aFactions {
+           "UK"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{296DCF43A40779C7}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{435118EEF55F0CA9}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{503560754E8458C7}" {
+         m_sArea "OBJ_B"
+         m_Targets GC_CharacterAreaTargets "{C2A289394969C6ED}" {
+          m_iWho 2
+          m_aFactions {
+           "UK"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{91CD307C16F94BFC}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{3CAC801DE93491E6}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{F8BCC6B997B4AD25}" {
+         m_sArea "GC_MigrationArea_EXFIL"
+         m_Targets GC_CharacterAreaTargets "{0E6F71EF324FF397}" {
+          m_aFactions {
+           "UK"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{7857374E06D15F0F}" {
+          m_fRequiredShare 1
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{4C50C371ED7C82CF}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3391AC34B858E5B1}" {
+       m_sMessage "EXFIL"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B6EE20AE8094AA3F}" {
+     m_sName "EXFIL (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DE3812CAD8AD2E6E}" {
+       m_sEventName "EXFIL"
+      }
+     }
+     m_Advanced GC_EventOptions "{97EEDCCB9484CABE}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{1A7B8F367C4F1195}" {
+       m_sTitle "Exfil reached"
+       m_sMessage "Successful exfil. The game will end soon."
+      }
+     }
+    }
+    GC_Event "{9B63548453803AD7}" {
+     m_sName "EXFIL (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E1C321586C6C5617}" {
+       m_sEventName "EXFIL"
+      }
+     }
+     m_Advanced GC_EventOptions "{DB5E54A6CFFA1BDF}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{0BE6B8D866F3A28D}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{9C9873E61307E8AC}" {
+     m_sName "UK KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{5B9304C54BE2D9B6}" {
+       m_Script GC_PeakFactionPopulationCheck "{80D0DA516A6DB3D0}" {
+        m_sFaction "UK"
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5579716F265578FD}" {
+       m_sMessage "UK KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8D1587B84EE957D7}" {
+     m_sName "UK KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D405F7E6B457FDA0}" {
+       m_sEventName "UK KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{B1D7665880C36D26}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{D7530859DC1DA54D}" {
+       m_sTitle "UK KIA"
+       m_sMessage "Mission failed due to casualties."
+      }
+     }
+    }
+    GC_Event "{CEFA21FB05D02696}" {
+     m_sName "UK KIA (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{919D3E687E307C39}" {
+       m_sEventName "UK KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{8D4A9144776D6B72}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_EndMissionAction "{42AE9C69A299886C}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{4C2773B72B391AEF}" {
+     m_sName "Time limit (2680s)"
+     m_Advanced GC_EventOptions "{3CD3A4BCBD0B1563}" {
+      m_fDelay 2680
+     }
+     m_aActions {
+      GC_MessageAction "{682E6059A6643624}" {
+       m_sTitle "Time limit reached"
+       m_sMessage "45 minutes up. The game will end soon."
+      }
+     }
+    }
+    GC_Event "{C0BA9AA59E5611D4}" {
+     m_sName "Time limit (2700s)"
+     m_Advanced GC_EventOptions "{7EBA0656DD0226BD}" {
+      m_fDelay 2700
+     }
+     m_aActions {
+      GC_EndMissionAction "{FC34B85CFD0DD208}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 6934.404 0 9369.548
+}
