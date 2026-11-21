@@ -1,0 +1,586 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F9E52831}" {
+     NavmeshFile "{AD5F99CD7C59D5E0}worlds/GameMaster/Navmeshes/GM_Eden.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F3B4EE8A}" {
+     NavmeshFile "{C35ECF3276824654}worlds/GameMaster/Navmeshes/GM_Eden_vehicles.nmn"
+    }
+   }
+  }
+ }
+ coords 6199.499 88.693 4836.196
+}
+GC_LobbyGameMode GC_MigratedMission : "{D210C492985C1D78}worlds/Blue/SimonsAbatis/SimonsAbatis_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{64C9644A5A6EF12E}" {
+     m_sWeatherPresetName "Rainy"
+     m_iStartingHour 13
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{34E1EA1A5A11A60C}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{75FA1A88CE258457}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 180.000000
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{91541E66C3908906}" {
+     m_sName "BTR1_DESTROYED"
+    }
+    GC_MissionFlag "{0ADE358CD46A1752}" {
+     m_sName "BTR2_DESTROYED"
+    }
+    GC_MissionFlag "{A5B254E469D31192}" {
+     m_sName "BTR3_DESTROYED"
+    }
+    GC_MissionFlag "{E27D1FA8C633D3BF}" {
+     m_sName "BTR4_DESTROYED"
+    }
+    GC_MissionFlag "{806509790B594A74}" {
+     m_sName "Extract_Available"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{66D4B5A5C4087026}" {
+     m_sName "BLUFOR Major Victory"
+     m_aConditions {
+      GC_CustomScriptCondition "{D56CFA717EEF4B4A}" {
+       m_Script GC_PeakFactionPopulationCheck "{801097CCB35657C4}" {
+        m_sFaction "USSR"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D8FF0504FA3D0908}" {
+       m_sMessage "BLUFOR Major Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{12D18B56D82C9820}" {
+     m_sName "BLUFOR Major Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CCD9CD6C6D9D67CA}" {
+       m_sEventName "BLUFOR Major Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{C641DC58D95B1E2F}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{8CF37D86A3B2D016}" {
+       m_sTitle "BLUFOR Major Victory"
+       m_sMessage "OPFOR greater than 80% Casualties. 2 mins to end firefights."
+      }
+     }
+    }
+    GC_Event "{1AAE00CC09330D53}" {
+     m_sName "BLUFOR Major Victory (120s)"
+     m_aConditions {
+      GC_MissionEventCondition "{11181120DCFF08B1}" {
+       m_sEventName "BLUFOR Major Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{770365F7A723E215}" {
+      m_fDelay 120
+     }
+     m_aActions {
+      GC_EndMissionAction "{63764715552AC627}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_CAF"
+       }
+      }
+     }
+    }
+    GC_Event "{5F94861E2600B540}" {
+     m_sName "BLUFOR Major Victory 2"
+     m_aConditions {
+      GC_GameModeStateCondition "{35FA478FCAE44F3D}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{5500E6FFF265B993}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionCount "{3F88214AD866B48F}" {
+         m_iComparison 0
+         m_iRequiredCount 1
+         m_aConditions {
+          GC_MissionFlagCondition "{BB43606BBC07DA17}" {
+           m_sFlagName "BTR1_DESTROYED"
+          }
+          GC_MissionFlagCondition "{2C7C2136664589B3}" {
+           m_sFlagName "BTR2_DESTROYED"
+          }
+          GC_MissionFlagCondition "{59247A194A4F5881}" {
+           m_sFlagName "BTR3_DESTROYED"
+          }
+          GC_MissionFlagCondition "{90A13A1E5BF05810}" {
+           m_sFlagName "BTR4_DESTROYED"
+          }
+         }
+        }
+        GC_MissionFlagCondition "{20AA5D09D7FAF17F}" {
+         m_sFlagName "Extract_Available"
+        }
+        GC_AreaCondition "{971BF13B289D26ED}" {
+         m_sArea "GC_MigrationArea_BLUFOR_EXTRACTED"
+         m_Targets GC_CharacterAreaTargets "{ACD0E7EC61823E32}" {
+          m_aFactions {
+           "GC_CAF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{E8A8C610638E5D57}" {
+          m_fRequiredShare 0.5
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{F1E3A362BD8D0C99}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{30EE1664652154A4}" {
+       m_sMessage "BLUFOR Major Victory 2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B0093B506B6EDA40}" {
+     m_sName "BLUFOR Major Victory 2 (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{F8B0BE2C8565A07A}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{68D9348376E08E42}" {
+       m_sEventName "BLUFOR Major Victory 2"
+      }
+     }
+     m_Advanced GC_EventOptions "{4C663829F95027E7}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{443F94859898C82C}" {
+       m_sTitle "BLUFOR Major Victory"
+       m_sMessage "BLUFOR Sucessfuly Delayed & Withdrawed. 2 mins to end firefights."
+      }
+     }
+    }
+    GC_Event "{094F1FFE3E7A5911}" {
+     m_sName "BLUFOR Major Victory 2 (120s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{7DCD314607576761}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{EA430A91078C86D5}" {
+       m_sEventName "BLUFOR Major Victory 2"
+      }
+     }
+     m_Advanced GC_EventOptions "{6BC1305764A74F10}" {
+      m_fDelay 120
+     }
+     m_aActions {
+      GC_EndMissionAction "{70DFAD261FCCB20F}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_CAF"
+       }
+      }
+     }
+    }
+    GC_Event "{46070C58A08F11D4}" {
+     m_sName "BLUFOR Minor Victory"
+     m_aConditions {
+      GC_GameModeStateCondition "{4A5EBFB8E6A8025F}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{73BDE48192A91C15}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{B952ABB7A9DEFC6B}" {
+         m_sArea "GC_MigrationArea_BLUFOR_EXTRACTED"
+         m_Targets GC_CharacterAreaTargets "{3C0546AB49207C2A}" {
+          m_aFactions {
+           "GC_CAF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{9905DC12F75863EC}" {
+          m_fRequiredShare 0.5
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{5C1305BF8C6EE832}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+        GC_MissionFlagCondition "{99A61FF34F36888E}" {
+         m_sFlagName "Extract_Available"
+        }
+        GC_ConditionCount "{D3469DA5141DEE1B}" {
+         m_iComparison 1
+         m_iRequiredCount 2
+         m_aConditions {
+          GC_MissionFlagCondition "{3F4F3D53637F5DED}" {
+           m_sFlagName "BTR1_DESTROYED"
+          }
+          GC_MissionFlagCondition "{3BD8A957E85C6FD7}" {
+           m_sFlagName "BTR2_DESTROYED"
+          }
+          GC_MissionFlagCondition "{181D447B17CE71EA}" {
+           m_sFlagName "BTR3_DESTROYED"
+          }
+          GC_MissionFlagCondition "{B4648C3FB537B779}" {
+           m_sFlagName "BTR4_DESTROYED"
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{CFD0BECB9FBB601B}" {
+       m_sMessage "BLUFOR Minor Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9FED2DE22B09704F}" {
+     m_sName "BLUFOR Minor Victory (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{F3B8B999933339E7}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{A3AC14B71230051C}" {
+       m_sEventName "BLUFOR Minor Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{C5D0F33D92DBDAD8}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{C95DD3FDA3D2E15E}" {
+       m_sTitle "BLUFOR Minor Victory"
+       m_sMessage "Successful Delaying Action. 2 mins to end firefights."
+      }
+     }
+    }
+    GC_Event "{A64E5258BCFB8D0C}" {
+     m_sName "BLUFOR Minor Victory (15s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{EA60090A1266C37E}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{6390FD1E4B1C59B2}" {
+       m_sEventName "BLUFOR Minor Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{B6C7668AFBE5B9D0}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{7EACC45473BA247A}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_CAF"
+       }
+      }
+     }
+    }
+    GC_Event "{2339187BF793DD96}" {
+     m_sName "OPFOR Major Victory"
+     m_aConditions {
+      GC_CustomScriptCondition "{356486BB5E4320F8}" {
+       m_Script GC_PeakFactionPopulationCheck "{5B4BD7B53B8B3F14}" {
+        m_sFaction "GC_CAF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B85C7F1C4671E63A}" {
+       m_sMessage "OPFOR Major Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A8261DD9A2EFF64D}" {
+     m_sName "OPFOR Major Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3771F9080E021E5D}" {
+       m_sEventName "OPFOR Major Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{0A6BEF56F0B5D106}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{24795841821ADED4}" {
+       m_sTitle "OPFOR Major Victory"
+       m_sMessage "BLUFOR Forces Destroyed"
+      }
+     }
+    }
+    GC_Event "{6177A07A8B864132}" {
+     m_sName "OPFOR Major Victory (12s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D3EB73EACDA84617}" {
+       m_sEventName "OPFOR Major Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{3C3E1A448AD05BC0}" {
+      m_fDelay 12
+     }
+     m_aActions {
+      GC_EndMissionAction "{37D45264A964124F}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "USSR"
+       }
+      }
+     }
+    }
+    GC_Event "{561EF26BCAE665E7}" {
+     m_sName "OPFOR Minor Victory"
+     m_aConditions {
+      GC_AreaCondition "{379ABAF75D097860}" {
+       m_sArea "Crossroad_Capture2"
+       m_Targets GC_CharacterAreaTargets "{25A5A3B2287B28F7}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{7A47FBCEFF7C848D}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{21F5A4800B61ACA6}" {
+        m_fSeconds 300
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+        m_Messages GC_CaptureMessages "{6955BB38AE7496F8}" {
+         m_sLocation "CROSSROAD"
+         m_sCaptured "The %1 has taken control of %2."
+         m_sCapturing "The %1 is taking control of %2."
+         m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+         m_sLost "The %1 has lost control of %2."
+         m_sLosing "The %1 is losing control of %2."
+         m_sLossInterrupted "The %1 is no longer losing control of %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{304B3035804BD11F}" {
+       m_sMessage "OPFOR Minor Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A5489027F6AEE8E5}" {
+     m_sName "OPFOR Minor Victory (12s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F2E79CE26B013B2F}" {
+       m_sEventName "OPFOR Minor Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{2E24B447B42B6DF5}" {
+      m_fDelay 12
+     }
+     m_aActions {
+      GC_EndMissionAction "{B6A410D436D35B54}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "USSR"
+       }
+      }
+     }
+    }
+    GC_Event "{B59384295DDD902E}" {
+     m_sName "OPFOR Minor Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DE7E1503A5F69305}" {
+       m_sEventName "OPFOR Minor Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{EDAD5F730B0362B5}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{F3DBDC833DE4EE9A}" {
+       m_sTitle "OPFOR Minor Victory"
+       m_sMessage "Crossroad Secured"
+      }
+     }
+    }
+    GC_Event "{8BA9B13652C715B9}" {
+     m_sName "Game Start (1800s)"
+     m_Advanced GC_EventOptions "{ED21292DD5CBAD0D}" {
+      m_fDelay 1800
+     }
+     m_aActions {
+      GC_FlagAction "{DAA9E09D7E3D3F4F}" {
+       m_sFlagName "Extract_Available"
+       m_iOperation 1
+       m_iAmount 1
+      }
+      GC_MessageAction "{064CB3621C9A4E6A}" {
+       m_sTitle "Extract Available"
+       m_sMessage ""
+       m_aFactions {
+        "GC_CAF"
+       }
+      }
+     }
+    }
+    GC_Event "{FDE4DD678FF58A71}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{1A2705DE32DA1441}" {
+       m_fSeconds 180.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{C34EEA67279D25EA}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 6151.787 100.354 4886.03
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     UIInfo SCR_FactionUIInfo "{528C961236B7DCD3}" {
+      Name "Canadian Armed Forces"
+      Icon "{8C37AA80F865D794}Assets/Characters/Patches/data/patch_Canada_flag_embroidered_BCR.edds"
+     }
+    }
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792821E9332}" {
+        m_sCallsign "3"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB79284BA6D27}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB79284A2F6C9}" {
+        m_sCallsign "1"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "1 HQ"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{64C9644C9895734B}" {
+        m_sCallsign "4 HQ"
+       }
+       SCR_CallsignInfo "{64E2BD27F5D37845}" {
+        m_sCallsign "4"
+       }
+       SCR_CallsignInfo "{64E2BD27F424C640}" {
+        m_sCallsign "5"
+       }
+       SCR_CallsignInfo "{64E2BD29E813E7D1}" {
+        m_sCallsign "6"
+       }
+      }
+      m_sCallsignGroupFormat "%1%2%3"
+     }
+    }
+    SCR_Faction "{64AA098AEA5B1498}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{64AA098204A61453}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{68C317D48D7EEC88}" {
+        m_sCallsign "5"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+       }
+      }
+     }
+     m_iFactionRadioFrequency 40500
+    }
+   }
+  }
+ }
+}
+GC_RadiusAreaEntity GC_MigrationArea_BLUFOR_EXTRACTED : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 6505.136 87.221 5292.806
+ m_fRadius 24.8
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{7846A93EA395CFBA}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneBase.et" {
+ components {
+  SCR_ZoneRestrictionAreaMeshComponent "{56D8A3C5A31496A1}" {
+   m_fHeight 9.1
+   m_bFollowTerrain 1
+  }
+ }
+ coords 5673.56 71.5 4702.353
+ m_fWarnRadius 80
+ m_fZoneRadius 120
+ m_fZoneTeleportedRadius 140
+ {
+  GenericEntity {
+   ID "59D673B36B893D84"
+   coords 0 -19.123 0
+  }
+ }
+}
+GC_RadiusAreaEntity Crossroad_Capture2 : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 6253.14 109.126 5176.617
+ m_fRadius 50.5
+}
