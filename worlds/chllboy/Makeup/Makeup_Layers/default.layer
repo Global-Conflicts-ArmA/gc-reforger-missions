@@ -1,0 +1,236 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 5079.265 256.529 9668.034
+}
+GC_LobbyGameMode GC_MigratedMission : "{ABD44522D40532A2}worlds/chllboy/Makeup/Makeup_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{68F87C997D6AF5DA}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 13
+     m_iStartingMinutes 30
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 17
+   m_iMonth 8
+   m_iYear 2019
+  }
+  GC_PeakFactionPopulationComponent "{70732BB2D7F5F2EE}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{E12A22840387F4CD}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 300
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{98E7A5661A981B19}" {
+     m_sName "CACHE1_DESTROYED"
+     m_aConditions {
+      GC_EntityDamageCondition "{77F9F4D5D0155422}" {
+       m_sEntityName "GC_Damage_91B08F2655B32CE8"
+      }
+     }
+    }
+    GC_MissionFlag "{0330552EDEDD1222}" {
+     m_sName "CACHE2_DESTROYED"
+     m_aConditions {
+      GC_EntityDamageCondition "{6D63DACB01916C72}" {
+       m_sEntityName "GC_Damage_C3B259C00F9BDDD1"
+      }
+     }
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{1E3F56BCFB61E917}" {
+     m_sName "CACHE1 DESTROYED"
+     m_aConditions {
+      GC_MissionFlagCondition "{D278C2FF593410A8}" {
+       m_sFlagName "CACHE1_DESTROYED"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DB1F0EB42CA5E9F8}" {
+       m_sMessage "CACHE1 DESTROYED"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{561AD54AC2A19271}" {
+     m_sName "CACHE1 DESTROYED (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1551A333355AA15F}" {
+       m_sEventName "CACHE1 DESTROYED"
+      }
+     }
+     m_Advanced GC_EventOptions "{B807F759DD6BB5FB}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{72CB378D0D8DDA46}" {
+       m_sTitle "FIA CACHE DESTROYED"
+       m_sMessage "Ammunition cache used by the FIA has been destroyed."
+      }
+     }
+    }
+    GC_Event "{8B39AF1FD577BD71}" {
+     m_sName "CACHE2 DESTROYED"
+     m_aConditions {
+      GC_MissionFlagCondition "{6F98A0D7A30FB4E2}" {
+       m_sFlagName "CACHE2_DESTROYED"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{624E21E58A95B260}" {
+       m_sMessage "CACHE2 DESTROYED"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A350E3C0A14A3A8F}" {
+     m_sName "CACHE2 DESTROYED (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D6DCF0F9BCEF6A44}" {
+       m_sEventName "CACHE2 DESTROYED"
+      }
+     }
+     m_Advanced GC_EventOptions "{71F800F599B67028}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{84C5933869871EB2}" {
+       m_sTitle "FIA CACHE DESTROYED"
+       m_sMessage "Ammunition cache used by the FIA has been destroyed."
+      }
+     }
+    }
+    GC_Event "{11A7EAE9D5F5BED7}" {
+     m_sName "CACHES DESTROYED"
+     m_aConditions {
+      GC_ConditionGroup "{9E961CA1EB52D673}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{943DC5A349CFD4D5}" {
+         m_sFlagName "CACHE1_DESTROYED"
+        }
+        GC_MissionFlagCondition "{7C706B815D5FEE1B}" {
+         m_sFlagName "CACHE2_DESTROYED"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E02160E581B6A586}" {
+       m_sMessage "CACHES DESTROYED"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9FEB2FA0B7386847}" {
+     m_sName "CACHES DESTROYED (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{18B82B535C062E48}" {
+       m_sEventName "CACHES DESTROYED"
+      }
+     }
+     m_Advanced GC_EventOptions "{D321B80FA42C761C}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{64E3B02BFA19173A}" {
+       m_sTitle "ALL FIA CACHES DESTROYED"
+       m_sMessage "All ammunition caches used by the FIA have been destroyed and they can no longer continue their operations in the region."
+      }
+     }
+    }
+    GC_Event "{26AE66D0AB8D7E17}" {
+     m_sName "AFRF KILLED"
+     m_aConditions {
+      GC_CustomScriptCondition "{4350D4501A2CA405}" {
+       m_Script GC_PeakFactionPopulationCheck "{8F5232CE9B06DCD6}" {
+        m_sFaction "RHS_AFRF"
+        m_fRatio 0.85
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C6B7D12F5064F30F}" {
+       m_sMessage "AFRF KILLED"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F2D2E2D62E1CB4F3}" {
+     m_sName "AFRF KILLED (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C863722A2B9F7A77}" {
+       m_sEventName "AFRF KILLED"
+      }
+     }
+     m_Advanced GC_EventOptions "{93A6CCF06F353AC8}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{3DAC1AF86894D561}" {
+       m_sTitle "AFRF HAVE TAKEN SIGNIFICANT CASUALTIES"
+       m_sMessage "Members of the tactical detachment are retreating due to unacceptable casualties."
+      }
+     }
+    }
+    GC_Event "{05251D6DCB8C18FF}" {
+     m_sName "FIA KILLED"
+     m_aConditions {
+      GC_CustomScriptCondition "{A4762376175D8F1D}" {
+       m_Script GC_PeakFactionPopulationCheck "{FE8197D34BE6E949}" {
+        m_sFaction "FIA"
+        m_fRatio 0.95
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{472C4BA92CC8B88A}" {
+       m_sMessage "FIA KILLED"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{83341CF90DE51653}" {
+     m_sName "FIA KILLED (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CD746CA800D254DB}" {
+       m_sEventName "FIA KILLED"
+      }
+     }
+     m_Advanced GC_EventOptions "{B4E2787CE4B534F5}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{81851874D6986B32}" {
+       m_sTitle "FIA CELL HAS BEEN DESTROYED"
+       m_sMessage "The FIA cell has lost most of it's members and can no longer continue their operations in the region."
+      }
+     }
+    }
+    GC_Event "{483771042505EBF9}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{4AAB80BD8639AF4C}" {
+       m_fSeconds 300
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{7461E5D8A3A9515D}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 5074.251 256.73 9673.312
+}
