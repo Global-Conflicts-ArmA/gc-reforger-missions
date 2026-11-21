@@ -1,0 +1,1379 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 6638.526 96.656 1345.924
+}
+GC_LobbyGameMode GC_MigratedMission : "{5248D027DC3907F8}worlds/arc/QuickReaction/QuickReaction_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{660F35A841A8F893}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 15
+     m_iStartingMinutes 15
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 10
+   m_iMonth 8
+   m_iYear 2025
+  }
+  GC_PeakFactionPopulationComponent "{FBDCD547A1E21F82}" {
+  }
+  GC_LivingAndDeadAIComponent "{811578A49A5D9872}" {
+   m_sFaction "GC_SEPARATIST"
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{9A5700506CA87781}" {
+     m_sName "CDF_CAPPED"
+    }
+    GC_MissionFlag "{F5DFA1486DDF71A0}" {
+     m_sName "CDF_CAPPED_TL"
+    }
+    GC_MissionFlag "{2C1D7CEEBFE6942C}" {
+     m_sName "CDF_CAPPED_WINCON"
+    }
+    GC_MissionFlag "{607579B910C8D1BF}" {
+     m_sName "TIME_LIMIT"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{31EE475AC7D2997D}" {
+     m_sName "ASSIGN_WAYPOINTS_CDF (5s)"
+     m_Advanced GC_EventOptions "{EDD2BEACF38EB916}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_AssignWaypointsAction "{27A24DFF35B0C5C3}" {
+       m_sGroupName "CDFMECHSQD1"
+       m_aWaypoints {
+        "CDFMECHSQD1WP"
+       }
+      }
+      GC_AssignWaypointsAction "{18A320B765F399ED}" {
+       m_sGroupName "CDFMECHSQD2"
+       m_aWaypoints {
+        "CDFMECHSQD2WP"
+       }
+      }
+      GC_AssignWaypointsAction "{13AE655A16AFFC5E}" {
+       m_sGroupName "CDFMECHSQD3"
+       m_aWaypoints {
+        "CDFMECHSQD3WP"
+       }
+      }
+     }
+    }
+    GC_Event "{04B25068F5798A03}" {
+     m_sName "ASSIGN_WAYPOINTS_SEP (5s)"
+     m_Advanced GC_EventOptions "{204BE041706390A8}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_AssignWaypointsAction "{32FC9419E14A03E3}" {
+       m_sGroupName "DEFPLT1HQ"
+       m_aWaypoints {
+        "DEFPLT1HQWP"
+       }
+      }
+      GC_AssignWaypointsAction "{5799900652771DBF}" {
+       m_sGroupName "DEFPLT1SQD1"
+       m_aWaypoints {
+        "DEFPLT1SQD1WP"
+       }
+      }
+      GC_AssignWaypointsAction "{433DCB49FE7D3240}" {
+       m_sGroupName "DEFPLT1SQD2"
+       m_aWaypoints {
+        "DEFPLT1SQD2WP"
+       }
+      }
+      GC_AssignWaypointsAction "{E2E5867B3D80FD20}" {
+       m_sGroupName "DEFPLT1SQD3"
+       m_aWaypoints {
+        "DEFPLT1SQD3WP"
+       }
+      }
+      GC_AssignWaypointsAction "{5944FE7F59E95849}" {
+       m_sGroupName "DEFPLT2HQ"
+       m_aWaypoints {
+        "DEFPLT2HQWP"
+       }
+      }
+      GC_AssignWaypointsAction "{2AD274EC51B5AA84}" {
+       m_sGroupName "DEFPLT2SQD1"
+       m_aWaypoints {
+        "DEFPLT2SQD1WP"
+       }
+      }
+      GC_AssignWaypointsAction "{8716DB574663667F}" {
+       m_sGroupName "DEFPLT2SQD2"
+       m_aWaypoints {
+        "DEFPLT2SQD2WP"
+       }
+      }
+      GC_AssignWaypointsAction "{2BB5BAB5EC359319}" {
+       m_sGroupName "DEFPLT2SQD3"
+       m_aWaypoints {
+        "DEFPLT2SQD3WP"
+       }
+      }
+      GC_AssignWaypointsAction "{C488505E28901E5A}" {
+       m_sGroupName "DEFPLT2SQD4"
+       m_aWaypoints {
+        "DEFPLT2SQD4WP"
+       }
+      }
+      GC_AssignWaypointsAction "{19CE605A830D6C1B}" {
+       m_sGroupName "DEFPLT3HQ"
+       m_aWaypoints {
+        "DEFPLT3HQWP"
+       }
+      }
+      GC_AssignWaypointsAction "{3CB5512A2E030809}" {
+       m_sGroupName "DEFPLT3SQD1"
+       m_aWaypoints {
+        "DEFPLT3SQD1WP"
+       }
+      }
+      GC_AssignWaypointsAction "{EC82CBCC6118C8ED}" {
+       m_sGroupName "DEFPLT3SQD2"
+       m_aWaypoints {
+        "DEFPLT3SQD2WP"
+       }
+      }
+      GC_AssignWaypointsAction "{3AFBF5B72F2FA700}" {
+       m_sGroupName "DEFPLT3SQD3"
+       m_aWaypoints {
+        "DEFPLT3SQD3WP"
+       }
+      }
+      GC_AssignWaypointsAction "{CF1EFEF0330AD322}" {
+       m_sGroupName "DEFPLT3SQD4"
+       m_aWaypoints {
+        "DEFPLT3SQD4WP"
+       }
+      }
+     }
+    }
+    GC_Event "{C95376EACC8C0E42}" {
+     m_sName "CDF_CAPPED"
+     m_aConditions {
+      GC_ConditionGroup "{16B5BE7F426D24B9}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{7C5D4B84D4A3A63C}" {
+         m_sArea "GC_MigrationArea_CDF_CAP_1"
+         m_Targets GC_CharacterAreaTargets "{E1C81B3A52798ED1}" {
+          m_iWho 2
+          m_aFactions {
+           "GC_CDF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{3F56B125336F7327}" {
+          m_fRequiredShare 0.9
+         }
+         m_Capture GC_AreaCaptureOptions "{C707B08399B8C9C5}" {
+          m_fSeconds 10
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{0EBDF029E52A8632}" {
+           m_sLocation "east Jarvela"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{DA1CFBC9B6C17886}" {
+         m_sArea "GC_MigrationArea_CDF_CAP_2"
+         m_Targets GC_CharacterAreaTargets "{CBC1A79BCAF68106}" {
+          m_iWho 2
+          m_aFactions {
+           "GC_CDF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{266179BD1CD59278}" {
+          m_fRequiredShare 0.9
+         }
+         m_Capture GC_AreaCaptureOptions "{EB05FE534C31B4C9}" {
+          m_fSeconds 10
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{C838BDD10CD991DD}" {
+           m_sLocation "west Jarvela"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4DD40293282D8EF2}" {
+       m_sMessage "CDF_CAPPED"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E2EF8C4D0CD896F3}" {
+     m_sName "CDF_CAPPED (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{36AC67A0C2BD1B5C}" {
+       m_sEventName "CDF_CAPPED"
+      }
+     }
+     m_Advanced GC_EventOptions "{46F224DF93CDC797}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_FlagAction "{BB5E5F5123133F6B}" {
+       m_sFlagName "CDF_CAPPED"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{5D96238EAF33D0E8}" {
+     m_sName "CDF_CAPPED (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{0636113927499B2A}" {
+       m_sEventName "CDF_CAPPED"
+      }
+     }
+     m_Advanced GC_EventOptions "{24F50C1DE92DD153}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_FlagAction "{4B9ED1F825827D3F}" {
+       m_sFlagName "CDF_CAPPED_WINCON"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{A4E60E3108E6B08E}" {
+     m_sName "CDF_CAPPED (600s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E3A663CFBC678CEE}" {
+       m_sEventName "CDF_CAPPED"
+      }
+     }
+     m_Advanced GC_EventOptions "{18AF2D2FC5D0794C}" {
+      m_fDelay 600
+     }
+     m_aActions {
+      GC_FlagAction "{6042530F2FDCB3E3}" {
+       m_sFlagName "CDF_CAPPED_TL"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{A5CEF1B896079A9F}" {
+     m_sName "TIME_LIMIT_FLAG (4500s)"
+     m_Advanced GC_EventOptions "{89FDE5757A8B5D37}" {
+      m_fDelay 4500
+     }
+     m_aActions {
+      GC_FlagAction "{53F8E56BAF106BE2}" {
+       m_sFlagName "TIME_LIMIT"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{A6789D0C9E3193E4}" {
+     m_sName "TIME_LIMIT"
+     m_aConditions {
+      GC_GameModeStateCondition "{28EA6FBA245F2264}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{1C3BDC8172F4C8C5}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{416814EABA47CC57}" {
+         m_sFlagName "TIME_LIMIT"
+        }
+        GC_MissionFlagCondition "{D4360C3C8DCFE456}" {
+         m_sFlagName "CDF_CAPPED"
+         m_bRequireFalse 1
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C55DDAFE8F8CACB1}" {
+       m_sMessage "TIME_LIMIT"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2A05D122898A6A59}" {
+     m_sName "TIME_LIMIT (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{CE186A1C80E48E13}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{5E156725ADA07622}" {
+       m_sEventName "TIME_LIMIT"
+      }
+     }
+     m_Advanced GC_EventOptions "{BF4D535AD744B473}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{6C89B4BE3535C15F}" {
+       m_sTitle "DEFEAT"
+       m_sMessage "Jarvela was not secured within the time limit."
+      }
+      GC_EndMissionAction "{79DDB8A450CD650D}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_CDF"
+       }
+      }
+     }
+    }
+    GC_Event "{92840A6306F2F7E4}" {
+     m_sName "CDF_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{054260BF4EDFCF61}" {
+       m_Script GC_PeakFactionPopulationCheck "{A07B8301CCF332AF}" {
+        m_sFaction "GC_CDF"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B86AF652A12049B6}" {
+       m_sMessage "CDF_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{27EF501BC2C928E6}" {
+     m_sName "CDF_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{53EC80B7661217BD}" {
+       m_sEventName "CDF_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{6FC106BBF42DD4B6}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{2A99083645B4D3B1}" {
+       m_sTitle "DEFEAT"
+       m_sMessage "CDF forces have taken significant casualties."
+      }
+     }
+    }
+    GC_Event "{1E08E90457A2007A}" {
+     m_sName "CDF_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{20EDF10FA7880C53}" {
+       m_sEventName "CDF_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{C5D7B9BB844B1631}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{F911386D9C87DDDC}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_CDF"
+       }
+      }
+     }
+    }
+    GC_Event "{92771CFE80D4BD27}" {
+     m_sName "CDF_VICTORY"
+     m_aConditions {
+      GC_ConditionGroup "{67974DC569B7F768}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{6EAC210E5E6783A2}" {
+         m_sFlagName "CDF_CAPPED_WINCON"
+        }
+        GC_ConditionGroup "{1EDAD274A54F00A0}" {
+         m_iMatch 1
+         m_aConditions {
+          GC_CustomScriptCondition "{5EE9EB721D9A37FF}" {
+           m_Script GC_LivingAndDeadAICheck "{0CE1A16B2CCFAE8A}" {
+            m_fRatio 0.9
+           }
+          }
+          GC_MissionFlagCondition "{8254765CFCDF7C34}" {
+           m_sFlagName "CDF_CAPPED_TL"
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A4B027F739E5F9FF}" {
+       m_sMessage "CDF_VICTORY"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C0FF3BD4274E06D6}" {
+     m_sName "CDF_VICTORY (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{153CA8C4CDF81E86}" {
+       m_sEventName "CDF_VICTORY"
+      }
+     }
+     m_Advanced GC_EventOptions "{1B223F1938485A67}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{DDCED1D74554AF19}" {
+       m_sTitle "VICTORY"
+       m_sMessage "CDF forces have secured Jarvela and halted the ChDKZ advance."
+      }
+     }
+    }
+    GC_Event "{7A1204E9E429442E}" {
+     m_sName "CDF_VICTORY (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{EB1D9AC85AE6DD6F}" {
+       m_sEventName "CDF_VICTORY"
+      }
+     }
+     m_Advanced GC_EventOptions "{83981D11DA6696A8}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{90D7C16524D3C06C}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_CDF"
+       }
+      }
+     }
+    }
+    GC_Event "{76AFBBBA2F165EEF}" {
+     m_sName "GC_MigratedSpawn_F422EE6C086CD82E (180s)"
+     m_Advanced GC_EventOptions "{3C72F708806EEDD7}" {
+      m_fDelay 180
+     }
+     m_aActions {
+      GC_SpawnAction "{90909FF959158764}" {
+       m_Spawn GC_AIGroupSpawn "{9A7315BD5433F59F}" {
+        m_sLocation "ATKSQD1"
+        m_sPrefab "{D57725689E9E8EDA}Prefabs/Groups/OPFOR/GC_SEPARATIST/2020/Group_SEP_RifleSquad.et"
+        m_aWaypoints {
+         "ATKSQDWP"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{5389E75B9D5FEEBF}" {
+     m_sName "GC_MigratedSpawn_1E66C824263CC3D4 (180s)"
+     m_Advanced GC_EventOptions "{B617B29C7DCF8DD9}" {
+      m_fDelay 180
+     }
+     m_aActions {
+      GC_SpawnAction "{0FE5B78DFFDD2D5A}" {
+       m_Spawn GC_AIGroupSpawn "{7CD98266D57684C7}" {
+        m_sLocation "ATKSQD2"
+        m_sPrefab "{D57725689E9E8EDA}Prefabs/Groups/OPFOR/GC_SEPARATIST/2020/Group_SEP_RifleSquad.et"
+        m_aWaypoints {
+         "ATKSQDWP"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3DFF5AEAD6878BF0}" {
+     m_sName "GC_MigratedSpawn_E9207279756D6B2E (180s)"
+     m_Advanced GC_EventOptions "{8CD28252EA618F40}" {
+      m_fDelay 180
+     }
+     m_aActions {
+      GC_SpawnAction "{FBC6D10058EB1505}" {
+       m_Spawn GC_AIGroupSpawn "{3ADAE822B0FABD63}" {
+        m_sLocation "ATKSQD3"
+        m_sPrefab "{D57725689E9E8EDA}Prefabs/Groups/OPFOR/GC_SEPARATIST/2020/Group_SEP_RifleSquad.et"
+        m_aWaypoints {
+         "ATKSQDWP"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C7389E2ED9D30C60}" {
+     m_sName "GC_MigratedSpawn_292BECB2DB23FAC7 (180s)"
+     m_Advanced GC_EventOptions "{08F5DAF34E07894E}" {
+      m_fDelay 180
+     }
+     m_aActions {
+      GC_SpawnAction "{8C17C930CD357F6F}" {
+       m_Spawn GC_AIGroupSpawn "{CE5DC12FB64287D8}" {
+        m_sLocation "ATKSQD4"
+        m_sPrefab "{D57725689E9E8EDA}Prefabs/Groups/OPFOR/GC_SEPARATIST/2020/Group_SEP_RifleSquad.et"
+        m_aWaypoints {
+         "ATKSQDWP"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C54007BA41989A2C}" {
+     m_sName "GC_MigratedSpawn_120C7EB0F9593FEA (180s)"
+     m_Advanced GC_EventOptions "{C78947500BB6FA95}" {
+      m_fDelay 180
+     }
+     m_aActions {
+      GC_SpawnAction "{2BC16AFA3DB3C1BF}" {
+       m_Spawn GC_CrewedVehicleSpawn "{1936D18066218498}" {
+        m_sLocation "ATKBTR"
+        m_sPrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{B5630391222534D9}" {
+          m_aStations {
+           GC_SpawnCrewStation "{C60A49B0D76C837D}" {
+            m_aCharacters {
+             "{D0448B34C8BB43D9}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Crew.et"
+             "{D0448B34C8BB43D9}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Crew.et"
+             "{D0448B34C8BB43D9}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Crew.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "ATKSQDWP"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{5839A7D3502830F8}" {
+     m_sName "GC_MigratedSpawn_CD3C39A9271794D6"
+     m_aConditions {
+      GC_GameModeStateCondition "{2EC24957ECF9433E}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{8B89452473F98AC4}" {
+       m_sFlagName "CDF_CAPPED"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7DDA6B7E208FA3B3}" {
+       m_sMessage "GC_MigratedSpawn_CD3C39A9271794D6"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A119C76F28790424}" {
+     m_sName "GC_MigratedSpawn_CD3C39A9271794D6 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B0C6355C1C9F88C6}" {
+       m_sEventName "GC_MigratedSpawn_CD3C39A9271794D6"
+      }
+     }
+     m_Advanced GC_EventOptions "{A8545CB1C342E3BE}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{F28AE86FE91CC391}" {
+       m_Spawn GC_CrewedVehicleSpawn "{49BAE8747264A397}" {
+        m_sLocation "CTRBMP1"
+        m_sPrefab "{0144F571F1998FC4}Prefabs/Vehicles/Tracked/BMP1/BMP1_FIA.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{4432CBAE56D6536A}" {
+          m_aStations {
+           GC_SpawnCrewStation "{03E1DDE4D4032188}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{D0448B34C8BB43D9}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Crew.et"
+             "{D0448B34C8BB43D9}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Crew.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "CTRBMP1WP"
+          }
+         }
+         GC_SpawnCrewGroup "{A285CA9601CCA9F3}" {
+          m_sGroupName "CTRSQD1"
+          m_bNameShadowedByAnchor 1
+          m_aStations {
+           GC_SpawnCrewStation "{EE748B88529C535C}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{4C362B06571604F9}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_SL.et"
+             "{F916B3D81C1BB8B6}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_AT.et"
+             "{1559CC3DA0422836}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_AR.et"
+             "{917322E3B14A77B7}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Rifleman.et"
+             "{7F16C773F44030E6}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_TL.et"
+             "{1559CC3DA0422836}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_AR.et"
+             "{73A904030BDDB209}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_MG.et"
+             "{CB27EDA5465F0582}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Medic.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "CTRBMP1SQDWP"
+           "CTRWP3"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{587F7DC4612A0356}" {
+     m_sName "GC_MigratedSpawn_AE49D6293B1E5012"
+     m_aConditions {
+      GC_GameModeStateCondition "{2390DD9AD005D563}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{03E23F98E0276103}" {
+       m_sFlagName "CDF_CAPPED"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C0C686E69765AF13}" {
+       m_sMessage "GC_MigratedSpawn_AE49D6293B1E5012"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{30AF2B7D743540B4}" {
+     m_sName "GC_MigratedSpawn_AE49D6293B1E5012 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F1F1A2D82EB55DF1}" {
+       m_sEventName "GC_MigratedSpawn_AE49D6293B1E5012"
+      }
+     }
+     m_Advanced GC_EventOptions "{5B9C42847D263578}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{52FEE7380C94603A}" {
+       m_Spawn GC_CrewedVehicleSpawn "{3292F60A6331F1A4}" {
+        m_sLocation "CTRBMP2"
+        m_sPrefab "{0144F571F1998FC4}Prefabs/Vehicles/Tracked/BMP1/BMP1_FIA.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{DD3B8116C407CBB8}" {
+          m_aStations {
+           GC_SpawnCrewStation "{E2A2D9D706745B78}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{D0448B34C8BB43D9}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Crew.et"
+             "{D0448B34C8BB43D9}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Crew.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "CTRBMP2WP"
+          }
+         }
+         GC_SpawnCrewGroup "{2F55361FDB5DDE35}" {
+          m_sGroupName "CTRSQD2"
+          m_bNameShadowedByAnchor 1
+          m_aStations {
+           GC_SpawnCrewStation "{6A928D8029F0F759}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{4C362B06571604F9}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_SL.et"
+             "{F916B3D81C1BB8B6}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_AT.et"
+             "{1559CC3DA0422836}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_AR.et"
+             "{917322E3B14A77B7}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Rifleman.et"
+             "{7F16C773F44030E6}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_TL.et"
+             "{1559CC3DA0422836}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_AR.et"
+             "{73A904030BDDB209}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_MG.et"
+             "{CB27EDA5465F0582}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Medic.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "CTRBMP2SQDWP"
+           "CTRWP2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3A31D68B763A2E03}" {
+     m_sName "GC_MigratedSpawn_5395F43AB9AE1585"
+     m_aConditions {
+      GC_GameModeStateCondition "{C63DE07EA4D7D66F}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{41F0D4684CD34CA8}" {
+       m_sFlagName "CDF_CAPPED"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4C445E5739811840}" {
+       m_sMessage "GC_MigratedSpawn_5395F43AB9AE1585"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F73FE3FB9052BFFC}" {
+     m_sName "GC_MigratedSpawn_5395F43AB9AE1585 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{97D64D7B8CC3EEC7}" {
+       m_sEventName "GC_MigratedSpawn_5395F43AB9AE1585"
+      }
+     }
+     m_Advanced GC_EventOptions "{6DDBE537AB0EF6E8}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{FF6F51E262DFF405}" {
+       m_Spawn GC_CrewedVehicleSpawn "{F6CDFECD2E42D23D}" {
+        m_sLocation "CTRTANK1"
+        m_sPrefab "{2B9DB09AC8BEA673}Prefabs/Vehicles/Tracked/T72A/T72A_FIA.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{8889CD002D26C74C}" {
+          m_aStations {
+           GC_SpawnCrewStation "{6457EECDBCBF7A5F}" {
+            m_aCharacters {
+             "{D0448B34C8BB43D9}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Crew.et"
+             "{D0448B34C8BB43D9}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Crew.et"
+             "{D0448B34C8BB43D9}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Crew.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "CTRTANK1WP"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{20C35B864D0C53F3}" {
+     m_sName "GC_MigratedSpawn_3825DA5CCF8C49F3"
+     m_aConditions {
+      GC_GameModeStateCondition "{6F018D639E92FEB5}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{43C076ABF8DB2B5F}" {
+       m_sFlagName "CDF_CAPPED"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F0D3D6FA44B8EBB6}" {
+       m_sMessage "GC_MigratedSpawn_3825DA5CCF8C49F3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8CBD438DB4D97CED}" {
+     m_sName "GC_MigratedSpawn_3825DA5CCF8C49F3 (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7FA21D829BB7E95A}" {
+       m_sEventName "GC_MigratedSpawn_3825DA5CCF8C49F3"
+      }
+     }
+     m_Advanced GC_EventOptions "{FCDDAD11381F02B2}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_SpawnAction "{FD72167E6ADDC2C3}" {
+       m_Spawn GC_CrewedVehicleSpawn "{3AEC0E691FF3606A}" {
+        m_sLocation "CTRBMP3"
+        m_sPrefab "{0144F571F1998FC4}Prefabs/Vehicles/Tracked/BMP1/BMP1_FIA.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{D6F417E0D78190BB}" {
+          m_aStations {
+           GC_SpawnCrewStation "{09DCF87B2D97723E}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{D0448B34C8BB43D9}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Crew.et"
+             "{D0448B34C8BB43D9}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Crew.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "CTRBMP3WP"
+          }
+         }
+         GC_SpawnCrewGroup "{A4A6F79174E31957}" {
+          m_sGroupName "CTRSQD3"
+          m_bNameShadowedByAnchor 1
+          m_aStations {
+           GC_SpawnCrewStation "{DF843D51232AE152}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{4C362B06571604F9}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_SL.et"
+             "{F916B3D81C1BB8B6}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_AT.et"
+             "{1559CC3DA0422836}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_AR.et"
+             "{917322E3B14A77B7}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Rifleman.et"
+             "{7F16C773F44030E6}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_TL.et"
+             "{1559CC3DA0422836}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_AR.et"
+             "{73A904030BDDB209}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_MG.et"
+             "{CB27EDA5465F0582}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Medic.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "CTRBMP3SQDWP"
+           "CTRWP1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9114494B0739C73F}" {
+     m_sName "GC_MigratedSpawn_E0CDB51C6D53E742"
+     m_aConditions {
+      GC_GameModeStateCondition "{4F715F5E7372D0C4}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{EDC71DEC6A29AA09}" {
+       m_sFlagName "CDF_CAPPED"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5C8EFCDA60D71FAE}" {
+       m_sMessage "GC_MigratedSpawn_E0CDB51C6D53E742"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0E071DB96D79ED3F}" {
+     m_sName "GC_MigratedSpawn_E0CDB51C6D53E742 (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E7A03A83CF233954}" {
+       m_sEventName "GC_MigratedSpawn_E0CDB51C6D53E742"
+      }
+     }
+     m_Advanced GC_EventOptions "{AB2EA0989AAF56B4}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_SpawnAction "{1632E851FB3C05FD}" {
+       m_Spawn GC_CrewedVehicleSpawn "{55543B0F84319D48}" {
+        m_sLocation "CTRBMP4"
+        m_sPrefab "{0144F571F1998FC4}Prefabs/Vehicles/Tracked/BMP1/BMP1_FIA.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{C24F42AD00C802AB}" {
+          m_aStations {
+           GC_SpawnCrewStation "{4776156F268E1E38}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{D0448B34C8BB43D9}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Crew.et"
+             "{D0448B34C8BB43D9}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Crew.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "CTRBMP4WP"
+          }
+         }
+         GC_SpawnCrewGroup "{C0942EB992F5E200}" {
+          m_sGroupName "CTRSQD3"
+          m_bNameShadowedByAnchor 1
+          m_aStations {
+           GC_SpawnCrewStation "{4DE7057B66ACC1B2}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{4C362B06571604F9}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_SL.et"
+             "{F916B3D81C1BB8B6}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_AT.et"
+             "{1559CC3DA0422836}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_AR.et"
+             "{917322E3B14A77B7}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Rifleman.et"
+             "{7F16C773F44030E6}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_TL.et"
+             "{1559CC3DA0422836}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_AR.et"
+             "{73A904030BDDB209}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_MG.et"
+             "{CB27EDA5465F0582}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Medic.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "CTRBMP4SQDWP"
+           "CTRWP1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{2B31938D7286F00E}" {
+     m_sName "GC_MigratedSpawn_3568FFA398966BC4"
+     m_aConditions {
+      GC_GameModeStateCondition "{4ED9D564C5CE18EC}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{167E977C230EB4F0}" {
+       m_sFlagName "CDF_CAPPED"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DE5F986D9DBAA23A}" {
+       m_sMessage "GC_MigratedSpawn_3568FFA398966BC4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1C27BC921AB9A595}" {
+     m_sName "GC_MigratedSpawn_3568FFA398966BC4 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3786BC9A32011D8D}" {
+       m_sEventName "GC_MigratedSpawn_3568FFA398966BC4"
+      }
+     }
+     m_Advanced GC_EventOptions "{E32B64D9864F9CA4}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{21D6E262956227CA}" {
+       m_Spawn GC_CrewedVehicleSpawn "{0C574F021B920A02}" {
+        m_sLocation "CTRTANK2"
+        m_sPrefab "{2B9DB09AC8BEA673}Prefabs/Vehicles/Tracked/T72A/T72A_FIA.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{3027DA04D5486651}" {
+          m_aStations {
+           GC_SpawnCrewStation "{F8FF07C95771D1A9}" {
+            m_aCharacters {
+             "{D0448B34C8BB43D9}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Crew.et"
+             "{D0448B34C8BB43D9}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Crew.et"
+             "{D0448B34C8BB43D9}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Crew.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "CTRTANK2WP"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9474075BDEDA7028}" {
+     m_sName "GC_MigratedSpawn_6B308358C96FFBBF"
+     m_aConditions {
+      GC_GameModeStateCondition "{9D84D84CF3830265}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{F183857931F19AE9}" {
+       m_sFlagName "CDF_CAPPED"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0CFF8AD3F75F1046}" {
+       m_sMessage "GC_MigratedSpawn_6B308358C96FFBBF"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9398620E18F2628E}" {
+     m_sName "GC_MigratedSpawn_6B308358C96FFBBF (25s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E2D72DD05A2B77ED}" {
+       m_sEventName "GC_MigratedSpawn_6B308358C96FFBBF"
+      }
+     }
+     m_Advanced GC_EventOptions "{1DEEBBE09F99776B}" {
+      m_fDelay 25
+     }
+     m_aActions {
+      GC_SpawnAction "{1DBB13DB128A40B8}" {
+       m_Spawn GC_CrewedVehicleSpawn "{1D4F065E41A52176}" {
+        m_sLocation "CTRBMP5"
+        m_sPrefab "{0144F571F1998FC4}Prefabs/Vehicles/Tracked/BMP1/BMP1_FIA.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{0780768D25DFD877}" {
+          m_aStations {
+           GC_SpawnCrewStation "{11F1E92B23F8D244}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{D0448B34C8BB43D9}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Crew.et"
+             "{D0448B34C8BB43D9}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Crew.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "CTRBMP5WP"
+          }
+         }
+         GC_SpawnCrewGroup "{548B99579C93372A}" {
+          m_sGroupName "CTRSQD3"
+          m_bNameShadowedByAnchor 1
+          m_aStations {
+           GC_SpawnCrewStation "{76F1B1D94EFBB160}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{4C362B06571604F9}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_SL.et"
+             "{F916B3D81C1BB8B6}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_AT.et"
+             "{1559CC3DA0422836}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_AR.et"
+             "{917322E3B14A77B7}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Rifleman.et"
+             "{7F16C773F44030E6}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_TL.et"
+             "{1559CC3DA0422836}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_AR.et"
+             "{73A904030BDDB209}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_MG.et"
+             "{CB27EDA5465F0582}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/2020/Character_SEP_Medic.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "CTRBMP5SQDWP"
+           "CTRWP1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E7E88E99DB9FAF67}" {
+     m_sName "GC_MigratedSpawn_5050CD95A10FF570"
+     m_aConditions {
+      GC_GameModeStateCondition "{12B0D2F451B1CDC4}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{B0B3FC6B284AD084}" {
+       m_sFlagName "CDF_CAPPED"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8976EE87DFD67824}" {
+       m_sMessage "GC_MigratedSpawn_5050CD95A10FF570"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FB2A0AF7370EDD46}" {
+     m_sName "GC_MigratedSpawn_5050CD95A10FF570 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7BDCDEB4398EB562}" {
+       m_sEventName "GC_MigratedSpawn_5050CD95A10FF570"
+      }
+     }
+     m_Advanced GC_EventOptions "{D6CB224F56DFB50E}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{12090B91BD95A758}" {
+       m_Spawn GC_AIGroupSpawn "{C49C3ADDD2C6BAFD}" {
+        m_sLocation "CTRSQD1"
+        m_sPrefab "{D57725689E9E8EDA}Prefabs/Groups/OPFOR/GC_SEPARATIST/2020/Group_SEP_RifleSquad.et"
+        m_aWaypoints {
+         "CTRWP3"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{608E3B976B2BB90A}" {
+     m_sName "GC_MigratedSpawn_CDAAFB972706314F"
+     m_aConditions {
+      GC_GameModeStateCondition "{584C18F5C8763393}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{CA15F25084E0BD79}" {
+       m_sFlagName "CDF_CAPPED"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A8711E7FE24F3FDF}" {
+       m_sMessage "GC_MigratedSpawn_CDAAFB972706314F"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F20911E495A4978B}" {
+     m_sName "GC_MigratedSpawn_CDAAFB972706314F (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{608999BDDF32218B}" {
+       m_sEventName "GC_MigratedSpawn_CDAAFB972706314F"
+      }
+     }
+     m_Advanced GC_EventOptions "{54DCD55BF8BFAB30}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{4061D995BA726BF0}" {
+       m_Spawn GC_AIGroupSpawn "{3160188B7D61DC03}" {
+        m_sLocation "CTRSQD2"
+        m_sPrefab "{D57725689E9E8EDA}Prefabs/Groups/OPFOR/GC_SEPARATIST/2020/Group_SEP_RifleSquad.et"
+        m_aWaypoints {
+         "CTRWP3"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F5B6D2F2C668F42F}" {
+     m_sName "GC_MigratedSpawn_5F7E225818F28DB7"
+     m_aConditions {
+      GC_GameModeStateCondition "{C30526A80696EF43}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{EB115A2DE19E72D5}" {
+       m_sFlagName "CDF_CAPPED"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E56696E7F7727FB9}" {
+       m_sMessage "GC_MigratedSpawn_5F7E225818F28DB7"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{45CEB6FD4A829ED4}" {
+     m_sName "GC_MigratedSpawn_5F7E225818F28DB7 (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C08733EC70CF69EF}" {
+       m_sEventName "GC_MigratedSpawn_5F7E225818F28DB7"
+      }
+     }
+     m_Advanced GC_EventOptions "{647163FF81826918}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_SpawnAction "{ADB4923B07925535}" {
+       m_Spawn GC_AIGroupSpawn "{CAAC7B05015A25EE}" {
+        m_sLocation "CTRSQD3"
+        m_sPrefab "{D57725689E9E8EDA}Prefabs/Groups/OPFOR/GC_SEPARATIST/2020/Group_SEP_RifleSquad.et"
+        m_aWaypoints {
+         "CTRWP2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{8381CEFD9A0A4267}" {
+     m_sName "GC_MigratedSpawn_98D6508498326996"
+     m_aConditions {
+      GC_GameModeStateCondition "{6D37F428B9065145}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{E067FF86067B8CE1}" {
+       m_sFlagName "CDF_CAPPED"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A8F8207C5FB00B29}" {
+       m_sMessage "GC_MigratedSpawn_98D6508498326996"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B9A1DE8CF13B5CA8}" {
+     m_sName "GC_MigratedSpawn_98D6508498326996 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{13697F856D86D934}" {
+       m_sEventName "GC_MigratedSpawn_98D6508498326996"
+      }
+     }
+     m_Advanced GC_EventOptions "{888A4967106BA376}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{F6EACC7BD839BD56}" {
+       m_Spawn GC_AIGroupSpawn "{0BAEDAD9D8C4F8BC}" {
+        m_sLocation "CTRSQD4"
+        m_sPrefab "{D57725689E9E8EDA}Prefabs/Groups/OPFOR/GC_SEPARATIST/2020/Group_SEP_RifleSquad.et"
+        m_aWaypoints {
+         "CTRWP2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C84E9A0B97DC2ADA}" {
+     m_sName "GC_MigratedSpawn_D11E6EB5990CAD16"
+     m_aConditions {
+      GC_GameModeStateCondition "{A9BF193AB29E474E}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{2F9A68426D0810D8}" {
+       m_sFlagName "CDF_CAPPED"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1B60ABBB9884609E}" {
+       m_sMessage "GC_MigratedSpawn_D11E6EB5990CAD16"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7717609857E95D55}" {
+     m_sName "GC_MigratedSpawn_D11E6EB5990CAD16 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{0A8A14344E49BE7D}" {
+       m_sEventName "GC_MigratedSpawn_D11E6EB5990CAD16"
+      }
+     }
+     m_Advanced GC_EventOptions "{AC98BAB0018370CB}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{404FFAB58A6237C1}" {
+       m_Spawn GC_AIGroupSpawn "{8F6C0B31568872CA}" {
+        m_sLocation "CTRSQD5"
+        m_sPrefab "{D57725689E9E8EDA}Prefabs/Groups/OPFOR/GC_SEPARATIST/2020/Group_SEP_RifleSquad.et"
+        m_aWaypoints {
+         "CTRWP1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C9A7C968519AFCDC}" {
+     m_sName "GC_MigratedSpawn_D7515D9B5D369218"
+     m_aConditions {
+      GC_GameModeStateCondition "{7B002EEC9EE474F9}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{5A5FCC13CB3974D3}" {
+       m_sFlagName "CDF_CAPPED"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E656E9D2EFFBAA7B}" {
+       m_sMessage "GC_MigratedSpawn_D7515D9B5D369218"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8E6536F3429214ED}" {
+     m_sName "GC_MigratedSpawn_D7515D9B5D369218 (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{557E94AC6A8BD0F8}" {
+       m_sEventName "GC_MigratedSpawn_D7515D9B5D369218"
+      }
+     }
+     m_Advanced GC_EventOptions "{92D4E0DFFBB2B6B9}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_SpawnAction "{8D389D33FB9CA215}" {
+       m_Spawn GC_AIGroupSpawn "{BADBA3490F960C87}" {
+        m_sLocation "CTRSQD6"
+        m_sPrefab "{D57725689E9E8EDA}Prefabs/Groups/OPFOR/GC_SEPARATIST/2020/Group_SEP_RifleSquad.et"
+        m_aWaypoints {
+         "CTRWP1"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 6646.714 96.656 1346.413
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{648D46336748B246}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{648D3C2E4F6005BD}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{648D3C2E4A762E8E}" {
+        m_sCallsign "Spear-"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{648D3C2E4014D4BE}" {
+        m_sCallsign "0"
+       }
+       SCR_CallsignInfo "{648D3C2E41FD0E05}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{648D3C2E41C585C3}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{648D3C2E41AA9237}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{660F35AB3E23C914}" {
+        m_sCallsign "4"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{47B7E8CA1935BB28}PrefabsEditable/SupportStationSystems/E_SupportStationSystem_Fuel.et" {
+ components {
+  SCR_FuelSupportStationComponent "{5E1CF311DF6C3CBE}" {
+   m_fRange 200
+  }
+  SCR_RepairSupportStationComponent "{660F35AF83301960}" {
+   m_eSupportStationPriority HIGH
+   m_fRange 200
+   m_iSupplyCostDamageHealed 0
+   m_iSuppliesPerDoTHealed 0
+   m_iSupplyCostPerFireRateReduction 0
+  }
+  WCS_RearmSupportStationComponent "{660F35AC691E6DDB}" {
+   m_eSupportStationPriority HIGH
+   m_fRange 200
+  }
+ }
+ coords 6690.952 96.656 1214.05
+}
+GC_RadiusAreaEntity GC_MigrationArea_CDF_CAP_1 : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 2349.637 61.198 1561.877
+ m_fRadius 70
+}
+GC_RadiusAreaEntity GC_MigrationArea_CDF_CAP_2 : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 1759.498 63.376 1699.893
+ m_fRadius 70
+}
