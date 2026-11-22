@@ -1,0 +1,2609 @@
+SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F9E52831}" {
+     NavmeshFile "{ACBE49C3E71A9E65}worlds/GameMaster/Navmeshes/GM_Cain.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F3B4EE8A}" {
+     NavmeshFile "{27D8B11BF4E78009}worlds/GameMaster/Navmeshes/GM_Cain_vehicles.nmn"
+    }
+   }
+  }
+ }
+ coords 9707.47 0 4288.958
+}
+GC_LobbyGameMode GC_MigratedMission : "{94EC70C3157B9746}worlds/Wade/TheLocalFiles/TheLocalFiles_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 1
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{67235C4D9DB6C924}" {
+     m_sWeatherPresetName "Rainy"
+     m_iStartingHour 1
+    }
+   }
+   m_bRandomWeatherChanges 1
+   m_bWindOverride 1
+   m_fWindSpeed 5
+   m_fWindDirection 0.187
+   m_bFogOverride 1
+   m_fFogAmount 0.708
+   m_fFogHeightDensity 0.544
+  }
+  GC_PeakFactionPopulationComponent "{75A24C70F20227CD}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 300
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{EA61AD5283C47A6D}" {
+     m_sName "BananaRandomFlag1"
+    }
+    GC_MissionFlag "{5683192DDA4D8126}" {
+     m_sName "BananaRandomFlag2"
+    }
+    GC_MissionFlag "{28348ACE28800A32}" {
+     m_sName "BananaRandomFlag3"
+    }
+    GC_MissionFlag "{EE42EE9E3916A521}" {
+     m_sName "BananaRandomFlag4"
+    }
+    GC_MissionFlag "{39822FECD23D62B5}" {
+     m_sName "BananaRandomFlag5"
+    }
+    GC_MissionFlag "{FD7725560996549B}" {
+     m_sName "BananaRandomFlag6"
+    }
+    GC_MissionFlag "{03F1293FB8FFAEA0}" {
+     m_sName "BothTeamsDead"
+    }
+    GC_MissionFlag "{896F856BDB4860D9}" {
+     m_sName "ComputerCaptured"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{ED9F9F8A1764D888}" {
+     m_sName "GC_MigrationStartupSampling"
+     m_aConditions {
+      GC_ConditionGroup "{47043159264FCE40}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{484D3021FEDD30C1}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{8327645BBBDFEAB9}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{03F828D5C6FC1A21}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_FlagSamplingAction "{484D3021FEDD30C1}" {
+       m_iDrawCount 1
+       m_aFlags {
+        "BananaRandomFlag1"
+        "BananaRandomFlag2"
+        "BananaRandomFlag3"
+        "BananaRandomFlag4"
+        "BananaRandomFlag5"
+        "BananaRandomFlag6"
+       }
+      }
+     }
+    }
+    GC_Event "{51A0B7EF0F841C7E}" {
+     m_sName "BothExtractBlufor"
+     m_aConditions {
+      GC_GameModeStateCondition "{4A13BDD9F6CB82B5}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{50BB4A7D857F8049}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{A83038F06C70B5A5}" {
+         m_sArea "HVTExtractBlufor"
+         m_Targets GC_CharacterAreaTargets "{33CEF758BFF1E512}" {
+          m_iWho 2
+          m_aFactions {
+           "CIV"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{145AAFFACFE9555F}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{9B40EF9CEC23131E}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_Messages GC_CaptureMessages "{63EA5151797DA48B}" {
+           m_sLocation "the location"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{4F89E8DF673F66B3}" {
+         m_sArea "IntelExtractBlufor"
+         m_Targets GC_NamedAreaTargets "{FC281983359196F4}" {
+          m_aNames {
+           "Intel"
+          }
+          m_bCountMissingAsOutside 1
+          m_bExcludeDestroyed 1
+         }
+         m_Requirement GC_LivingProportion "{AA15D550A957F305}" {
+          m_fRequiredProportion 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{5FF38D08A9B43FC9}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4097E5F073D025FB}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_sTitle "BLUFOR Major Victory"
+       m_sMessage "Both the HVT and intel were extracted."
+      }
+     }
+    }
+    GC_Event "{552C073746A1825A}" {
+     m_sName "BothExtractOpfor"
+     m_aConditions {
+      GC_GameModeStateCondition "{2CD477455D07F334}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{82EFCE34DAF76171}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{7663239D905BDA5B}" {
+         m_sArea "HVTExtractOpfor"
+         m_Targets GC_CharacterAreaTargets "{D7983445262C1039}" {
+          m_iWho 2
+          m_aFactions {
+           "CIV"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{23542B40BFA1F788}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{FD4A41EC96E56AE9}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_Messages GC_CaptureMessages "{B89B686507BC7B30}" {
+           m_sLocation "the location"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{584270091EDE8139}" {
+         m_sArea "IntelExtractOpfor"
+         m_Targets GC_NamedAreaTargets "{888A4B250A19B643}" {
+          m_aNames {
+           "Intel"
+          }
+          m_bCountMissingAsOutside 1
+          m_bExcludeDestroyed 1
+         }
+         m_Requirement GC_LivingProportion "{7C100828805B6899}" {
+          m_fRequiredProportion 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{EDB74AC2ACE03F7D}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{78DDE07F7C27C590}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_sTitle "OPFOR Major Victory"
+       m_sMessage "Both the HVT and intel were extracted."
+      }
+     }
+    }
+    GC_Event "{F8609A71004ED2D7}" {
+     m_sName "IntelExtractBlufor"
+     m_aConditions {
+      GC_GameModeStateCondition "{4202D8E98AEF6C30}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionCount "{7E0FB4BC46E4953A}" {
+       m_iComparison 2
+       m_iRequiredCount 1
+       m_aConditions {
+        GC_AreaCondition "{160740A08B427D75}" {
+         m_sArea "HVTExtractBlufor"
+         m_Targets GC_CharacterAreaTargets "{CDCF7F751DF59947}" {
+          m_iWho 2
+          m_aFactions {
+           "CIV"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{E40A9F62C54E89F3}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{3C1F5BC37B7C740E}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+        GC_AreaCondition "{3DB1BB0F74E8011B}" {
+         m_sArea "IntelExtractBlufor"
+         m_Targets GC_NamedAreaTargets "{B1B5AF15C8DF48E6}" {
+          m_aNames {
+           "Intel"
+          }
+          m_bCountMissingAsOutside 1
+          m_bExcludeDestroyed 1
+         }
+         m_Requirement GC_LivingProportion "{8FF7D28F4D9263D7}" {
+          m_fRequiredProportion 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{9F4CE3FA9B3EC25E}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{EF29D1594D24EB15}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_sTitle "BLUFOR Minor Victory"
+       m_sMessage "The intel was extracted."
+      }
+     }
+    }
+    GC_Event "{362708190F4F0298}" {
+     m_sName "IntelExtractOpfor"
+     m_aConditions {
+      GC_GameModeStateCondition "{192A8EEF3B195D30}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionCount "{D266A172FD7BEC06}" {
+       m_iComparison 2
+       m_iRequiredCount 1
+       m_aConditions {
+        GC_AreaCondition "{0CA6AB605C67DEAE}" {
+         m_sArea "HVTExtractOpfor"
+         m_Targets GC_CharacterAreaTargets "{B610E45F246E7488}" {
+          m_iWho 2
+          m_aFactions {
+           "CIV"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{E1B8BC314EAC0EAA}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{24A745BB7E1E93CC}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+        GC_AreaCondition "{F9AE83105812E267}" {
+         m_sArea "IntelExtractOpfor"
+         m_Targets GC_NamedAreaTargets "{78FFCB2E32933CD1}" {
+          m_aNames {
+           "Intel"
+          }
+          m_bCountMissingAsOutside 1
+          m_bExcludeDestroyed 1
+         }
+         m_Requirement GC_LivingProportion "{C589C630F4D4E0E8}" {
+          m_fRequiredProportion 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{0622BB98F5A14959}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DC547A5BCFEE4D70}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_sTitle "OPFOR Minor Victory"
+       m_sMessage "The intel was extracted."
+      }
+     }
+    }
+    GC_Event "{76658C2BA5EC8EB0}" {
+     m_sName "LocalFileSearchMessage"
+     m_aConditions {
+      GC_GameModeStateCondition "{5985CB01D50E4869}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{39D724417D0F0D1A}" {
+       m_sFlagName "ComputerCaptured"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8661DE14C8A8E5A1}" {
+       m_bScheduleAction 1
+       m_fActionDelay 60
+       m_sTitle "Computer Searched!"
+       m_sMessage "Lunchyyy has searched another computer for the Pub files!"
+      }
+      GC_FlagAction "{912C6B4EFFF0BA31}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_sFlagName "ComputerCaptured"
+       m_iOperation 4
+      }
+      GC_EventControlAction "{19EBDC062234D90C}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_sEventName "LocalFileSearchMessage"
+       m_iOperation 4
+      }
+     }
+    }
+    GC_Event "{1D43C208E281D069}" {
+     m_sName "BluforMessage"
+     m_aConditions {
+      GC_GameModeStateCondition "{F7C34C6B7026AF83}" {
+       m_eGameModeState 1
+      }
+      GC_CustomScriptCondition "{07BED90C3FE0C90C}" {
+       m_Script GC_PeakFactionPopulationCheck "{47D78803EC74F449}" {
+        m_sFaction "RHS_USAF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0FA07E1DA3FDDAC5}" {
+       m_bScheduleAction 1
+       m_fActionDelay 60
+       m_sTitle "BLUFOR has sustained significant causalties!"
+       m_sMessage "If BLUFOR ain't doing radical shit right now, then they have lost."
+      }
+     }
+    }
+    GC_Event "{EFB77E4EA6000799}" {
+     m_sName "OpforMessage"
+     m_aConditions {
+      GC_GameModeStateCondition "{EF19D319EC3DE41D}" {
+       m_eGameModeState 1
+      }
+      GC_CustomScriptCondition "{5761A82ABDF90D0F}" {
+       m_Script GC_PeakFactionPopulationCheck "{021C1BFD9AD11D16}" {
+        m_sFaction "RHS_AFRF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{CAE93703E4047D74}" {
+       m_bScheduleAction 1
+       m_fActionDelay 60
+       m_sTitle "OPFOR has sustained significant causalties!"
+       m_sMessage "If OPFOR ain't doing radical shit right now, then they have lost."
+      }
+     }
+    }
+    GC_Event "{03DC6E803012D09F}" {
+     m_sName "BothTeamsDead"
+     m_aConditions {
+      GC_GameModeStateCondition "{473B1763C05B6407}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{BB2729CCC4962020}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_CustomScriptCondition "{EADFB8C693E1BD31}" {
+         m_Script GC_PeakFactionPopulationCheck "{588806B0B1129098}" {
+          m_sFaction "RHS_USAF"
+          m_fRatio 0.9
+         }
+        }
+        GC_CustomScriptCondition "{AF0C597603BD5FAD}" {
+         m_Script GC_PeakFactionPopulationCheck "{6CFE151AD1280123}" {
+          m_sFaction "RHS_AFRF"
+          m_fRatio 0.9
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A48F0C5F6EEA2612}" {
+       m_bScheduleAction 1
+       m_fActionDelay 75
+       m_sTitle "BLUFOR and OPFOR have sustained signifcant casualties!"
+       m_sMessage "Put it in the leadership feedback. How did they let this happen?"
+      }
+      GC_FlagAction "{D3EA8FEE9ABC9204}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_sFlagName "BothTeamsDead"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{E04102F39DB22D72}" {
+     m_sName "HVTWins"
+     m_aConditions {
+      GC_GameModeStateCondition "{BABD60C8FFC2ED98}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{44EC2A54EA3AEA2E}" {
+       m_sFlagName "BothTeamsDead"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DFDAF77ECEDCA1DB}" {
+       m_bScheduleAction 1
+       m_fActionDelay 90
+       m_sTitle "HVT Wins!"
+       m_sMessage "If radical shit ain't happening, then the HVT has won."\
+       ""\
+       "This should never happen. Get better CO's."
+      }
+     }
+    }
+    GC_Event "{76F1EC870630A901}" {
+     m_sName "GC_ComputerSpawns_BananaRandomFlag1"
+     m_aConditions {
+      GC_GameModeStateCondition "{962A02D72B6196B6}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{FFE06C17F59296C2}" {
+       m_sFlagName "BananaRandomFlag1"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6AB90CED9FA1F30B}" {
+       m_sMessage "GC_ComputerSpawns_BananaRandomFlag1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7F4772CAE670125A}" {
+     m_sName "GC_ComputerSpawns_BananaRandomFlag1 (300s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{ECDC1A31211D615F}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{156241D1230AAF58}" {
+       m_sEventName "GC_ComputerSpawns_BananaRandomFlag1"
+      }
+     }
+     m_Advanced GC_EventOptions "{2CA5D02373CBAC81}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{116E9636A74D42D9}" {
+       m_Spawn GC_PrefabSpawn "{35821A4EE1FE8081}" {
+        m_sLocation "GC_Spawner_655D9BED42345450"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{077BDAD684A1C875}" {
+       m_Spawn GC_PrefabSpawn "{3C696FC9A643A8C4}" {
+        m_sLocation "GC_Spawner_DD1A4103AFAFCB3A"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{B15F4BFE317CF00E}" {
+       m_Spawn GC_PrefabSpawn "{1EFA374B0E39D7D2}" {
+        m_sLocation "GC_Spawner_9BBDF05A7F9AB7F9"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{C5982F4696F62B21}" {
+       m_Spawn GC_PrefabSpawn "{04E7E9A260209B8C}" {
+        m_sLocation "GC_Spawner_08C094A5E41C61B5"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{C32CE75C4E5225CC}" {
+       m_Spawn GC_PrefabSpawn "{7FE5DF37D61AB4FA}" {
+        m_sLocation "GC_Spawner_15FA3D2DE826960A"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{13321092A9E846D3}" {
+       m_Spawn GC_PrefabSpawn "{46A7225204791060}" {
+        m_sLocation "GC_Spawner_01199AFFF5FFF336"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{09940CCD2190B5FC}" {
+       m_Spawn GC_PrefabSpawn "{D46FC048D1998E51}" {
+        m_sLocation "GC_Spawner_3E515715B68B926E"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{16377BBAE87800E6}" {
+       m_Spawn GC_PrefabSpawn "{AB499635FD5E66D6}" {
+        m_sLocation "GC_Spawner_268C8E5E558DCF5C"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{ACE677B40BFBEA98}" {
+       m_Spawn GC_PrefabSpawn "{635618CBF228C234}" {
+        m_sLocation "GC_Spawner_94EF00D1714B5E15"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{FD0967190FC7FA6A}" {
+       m_Spawn GC_PrefabSpawn "{3F4F9ED78955A540}" {
+        m_sLocation "GC_Spawner_83FD81772B78794D"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{348109687AEF2358}" {
+       m_Spawn GC_PrefabSpawn "{86A64838497A26A5}" {
+        m_sLocation "GC_Spawner_6F75A73F0FD522B9"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{5B9D61838E75FDDD}" {
+       m_Spawn GC_PrefabSpawn "{93C3631D8551E7A7}" {
+        m_sLocation "GC_Spawner_32D742BE3BDA4170"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{4FD7F4F798AD5351}" {
+       m_Spawn GC_PrefabSpawn "{4AE13F5C0B277D15}" {
+        m_sLocation "GC_Spawner_635AA2DAAD2A8C82"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{CE12009E0BB1DD40}" {
+       m_Spawn GC_PrefabSpawn "{13436846111E3B2C}" {
+        m_sLocation "GC_Spawner_245301ECF43CDB3C"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{975F78BF822A4801}" {
+       m_Spawn GC_PrefabSpawn "{DC175D6C6E5186CE}" {
+        m_sLocation "GC_Spawner_EF089A7219941133"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{E5F368BC65021820}" {
+       m_Spawn GC_PrefabSpawn "{D5045C2E26CD433A}" {
+        m_sLocation "GC_Spawner_7C7D5A235D4AB8DC"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{C03C0684909C4B60}" {
+       m_Spawn GC_PrefabSpawn "{8051DD1B56423F6E}" {
+        m_sLocation "GC_Spawner_FA14C4796D7B8542"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{5739E84BCEC868BD}" {
+       m_Spawn GC_PrefabSpawn "{DB973A73C49FB59B}" {
+        m_sLocation "GC_Spawner_A64DEFA50316DC97"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{1332A514B16A3806}" {
+       m_Spawn GC_PrefabSpawn "{F0086BD268B07F41}" {
+        m_sLocation "GC_Spawner_E1BE7070B09CCD3A"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{160F7BD31576D38F}" {
+       m_Spawn GC_PrefabSpawn "{610C97E1FDD80A27}" {
+        m_sLocation "GC_Spawner_1F50598D039DAF1B"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{02A42BC8E21E68D2}" {
+       m_Spawn GC_PrefabSpawn "{D4D2D7717BDCA724}" {
+        m_sLocation "GC_Spawner_099816BB61DE7B69"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{2711B973F402DE16}" {
+       m_Spawn GC_PrefabSpawn "{81F86F5815F21F4F}" {
+        m_sLocation "GC_Spawner_47D4422D81CDA240"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{F98E82E5246F052A}" {
+       m_Spawn GC_PrefabSpawn "{9537BBAD88A35467}" {
+        m_sLocation "GC_Spawner_F7AA8D9F73A2AAFD"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{6DAE8BBDE8B474C4}" {
+       m_Spawn GC_PrefabSpawn "{4D616407CF7F0D8A}" {
+        m_sLocation "GC_Spawner_42B680BE794CC2ED"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{ACF02D0EC0295873}" {
+       m_Spawn GC_PrefabSpawn "{67717A8FA7C882D1}" {
+        m_sLocation "GC_Spawner_BA4424A84F2F4D09"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{0FEE46A17FB4B725}" {
+       m_Spawn GC_PrefabSpawn "{95EED7A38B604341}" {
+        m_sLocation "GC_Spawner_7D118E0D7D24A035"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{96769F07381F3F85}" {
+       m_Spawn GC_PrefabSpawn "{979F76B50C7E25E0}" {
+        m_sLocation "GC_Spawner_C03DB356F4FEF2EE"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{1818F9C4FFF23BA1}" {
+       m_Spawn GC_PrefabSpawn "{A6BC2A45AE928249}" {
+        m_sLocation "GC_Spawner_A8272312000F5257"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{C00002CE48DE5BCB}" {
+       m_Spawn GC_PrefabSpawn "{46A0A274FD164E14}" {
+        m_sLocation "GC_Spawner_F4C896442CEB32B1"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{A776DEA430534387}" {
+       m_Spawn GC_PrefabSpawn "{49FBD8625909F469}" {
+        m_sLocation "GC_Spawner_E29B8E47577C8337"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{3617BE7BDF68810F}" {
+       m_Spawn GC_PrefabSpawn "{74302E28CE74EE78}" {
+        m_sLocation "GC_Spawner_3246178290815157"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{BEEF76725E5D265B}" {
+       m_Spawn GC_PrefabSpawn "{65D22C027CC08D9A}" {
+        m_sLocation "GC_Spawner_C4B8025BC09875D8"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{1F73DF2D156E8E95}" {
+       m_Spawn GC_PrefabSpawn "{0953060EFCC245CC}" {
+        m_sLocation "GC_Spawner_4A036CD92768AD53"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{E69C0A3E2111B008}" {
+       m_Spawn GC_PrefabSpawn "{E77C4EB301CA02ED}" {
+        m_sLocation "GC_Spawner_A99BDFCA27F8EDA6"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{D6646AB4C2A976D3}" {
+       m_Spawn GC_PrefabSpawn "{7E1489359A1F3766}" {
+        m_sLocation "GC_Spawner_7B3F021A4C6C8BCD"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{1AEA50849A9DF06F}" {
+       m_Spawn GC_PrefabSpawn "{56FCF7C9E30D3F47}" {
+        m_sLocation "GC_Spawner_A184AF976B451EF4"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{1ADBCB161DC7ABD4}" {
+       m_Spawn GC_PrefabSpawn "{3BBE5B20FE34AC75}" {
+        m_sLocation "GC_Spawner_A1538B33E2A78BFF"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{A000387EC78D4482}" {
+       m_Spawn GC_PrefabSpawn "{45DD6A990961C233}" {
+        m_sLocation "GC_Spawner_D63646FC6175A74A"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{ED42BD152C8BD9FE}" {
+       m_Spawn GC_PrefabSpawn "{76FD5475067ACDC6}" {
+        m_sLocation "GC_Spawner_484DC8E3E7B4AC22"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{C3A469F38188798D}" {
+       m_Spawn GC_PrefabSpawn "{C2C661B4FA42820E}" {
+        m_sLocation "GC_Spawner_5607D79E3995CB43"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{769BC6BC34A41ADF}" {
+       m_Spawn GC_PrefabSpawn "{C2963A503DAD9B97}" {
+        m_sLocation "GC_Spawner_BAB4EB3792E153F7"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{8B404B095B07575D}" {
+       m_Spawn GC_PrefabSpawn "{E7D779E270C07470}" {
+        m_sLocation "GC_Spawner_A5303D3D2923E0C7"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{D904ED9E2E707813}" {
+       m_Spawn GC_PrefabSpawn "{3D94970054758985}" {
+        m_sLocation "GC_Spawner_76588E107496DCA1"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{238493D4CF78F7FC}" {
+       m_Spawn GC_PrefabSpawn "{0925553E7B5A4DF5}" {
+        m_sLocation "GC_Spawner_9D877575865B7A18"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{280EFA5B295199FF}" {
+       m_Spawn GC_PrefabSpawn "{A2564B668AB0C042}" {
+        m_sLocation "GC_Spawner_2432E9F98701D207"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{BF5818E2D42E0B2A}" {
+       m_Spawn GC_PrefabSpawn "{C7BCE204EE17ED7A}" {
+        m_sLocation "GC_Spawner_5A9909C6FFB6B687"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{4FE67D677766785F}" {
+       m_Spawn GC_PrefabSpawn "{312343DB0F207B35}" {
+        m_sLocation "GC_Spawner_89986E9D7E63D6BD"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{1BAF6B8F9901875D}" {
+       m_Spawn GC_PrefabSpawn "{F8EDC3BD4C22B8DE}" {
+        m_sLocation "GC_Spawner_79AE0700A3659858"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{D6453B9CFEF7F9BC}" {
+       m_Spawn GC_PrefabSpawn "{1D498A3807526A53}" {
+        m_sLocation "GC_Spawner_06BEC2F82032B999"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{7ACF89B33C97B3CD}" {
+       m_Spawn GC_PrefabSpawn "{E59FDEFA09A32915}" {
+        m_sLocation "GC_Spawner_357FB882DB236D59"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+     }
+    }
+    GC_Event "{04690A080E06F895}" {
+     m_sName "GC_ComputerSpawns_BananaRandomFlag2"
+     m_aConditions {
+      GC_GameModeStateCondition "{48347B2B1E347841}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{E2C802786FB3DBFD}" {
+       m_sFlagName "BananaRandomFlag2"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5D0299AC5F67388F}" {
+       m_sMessage "GC_ComputerSpawns_BananaRandomFlag2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D0498AEC06C2AB49}" {
+     m_sName "GC_ComputerSpawns_BananaRandomFlag2 (300s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{D9CC7867434F9FD7}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{560E22DFCA7C430C}" {
+       m_sEventName "GC_ComputerSpawns_BananaRandomFlag2"
+      }
+     }
+     m_Advanced GC_EventOptions "{7E0C935C8983D79E}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{4F4AAEEB8C271AAB}" {
+       m_Spawn GC_PrefabSpawn "{9A7FCEFCC1A83555}" {
+        m_sLocation "GC_Spawner_A64F2DE571D0B088"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{A0D756983FB5E71D}" {
+       m_Spawn GC_PrefabSpawn "{0EFBBB15E923B215}" {
+        m_sLocation "GC_Spawner_09017BFB7B7E5646"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{CEECCF0A50DAD722}" {
+       m_Spawn GC_PrefabSpawn "{EE4F33AC9E70C4A4}" {
+        m_sLocation "GC_Spawner_FDF09B9582A8A42D"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{2196DCA95E763448}" {
+       m_Spawn GC_PrefabSpawn "{BFEB2224B4CAF64E}" {
+        m_sLocation "GC_Spawner_8A8B6E36703F715F"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{7F84E27F0DD0CCBE}" {
+       m_Spawn GC_PrefabSpawn "{1DF6AE07AD42B5F1}" {
+        m_sLocation "GC_Spawner_E5ABC35A8852868A"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{BD266B68368493BD}" {
+       m_Spawn GC_PrefabSpawn "{8E2AE7FA3AE22526}" {
+        m_sLocation "GC_Spawner_F6D32826A12C11FD"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{6A5E14FF78526044}" {
+       m_Spawn GC_PrefabSpawn "{EC6A81B3EB6B4C6B}" {
+        m_sLocation "GC_Spawner_F95042668CB13C1F"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{6913F69D74D785DF}" {
+       m_Spawn GC_PrefabSpawn "{F041AA8C0E68F3C6}" {
+        m_sLocation "GC_Spawner_F77F1F1B354A46C1"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{27B2391AFD4FFDFD}" {
+       m_Spawn GC_PrefabSpawn "{2B01F17CA25414BB}" {
+        m_sLocation "GC_Spawner_EB93CD7D44CACB90"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{518E8723DA7BB057}" {
+       m_Spawn GC_PrefabSpawn "{D0AEE4200F03287C}" {
+        m_sLocation "GC_Spawner_84937A9CCDDB3795"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{5E59611E92681A91}" {
+       m_Spawn GC_PrefabSpawn "{A71B4DF01982773C}" {
+        m_sLocation "GC_Spawner_A8F7C2FD50D979AB"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{1B922F6E79180690}" {
+       m_Spawn GC_PrefabSpawn "{4FEF16D5721F3079}" {
+        m_sLocation "GC_Spawner_918712237A80719A"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{4BA74F06BA8FFCCB}" {
+       m_Spawn GC_PrefabSpawn "{AF6BC30268C5B088}" {
+        m_sLocation "GC_Spawner_6669C85EF311B966"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{D4B63883E0B71198}" {
+       m_Spawn GC_PrefabSpawn "{D7C32DF382DA57FC}" {
+        m_sLocation "GC_Spawner_8E4E58284C7E4EA3"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{0EFCD08BF2A2182D}" {
+       m_Spawn GC_PrefabSpawn "{01F5E016860E6B1E}" {
+        m_sLocation "GC_Spawner_DA9D454A13AC1199"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{6638612BD52123A8}" {
+       m_Spawn GC_PrefabSpawn "{99D1AA09B4DFD0DC}" {
+        m_sLocation "GC_Spawner_801C4DD3C9DA9960"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{50895E1D2E2E5343}" {
+       m_Spawn GC_PrefabSpawn "{AC1D09249119F966}" {
+        m_sLocation "GC_Spawner_8136EF3BC4F8A3F3"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{F7ABF9AC1207E347}" {
+       m_Spawn GC_PrefabSpawn "{08EB6BCE9A466111}" {
+        m_sLocation "GC_Spawner_E0C7B01998CAF494"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{FD46F407EDE5B90D}" {
+       m_Spawn GC_PrefabSpawn "{788EFEEE115E6736}" {
+        m_sLocation "GC_Spawner_BE47D7861E7525EF"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{585169819AFFC798}" {
+       m_Spawn GC_PrefabSpawn "{D5AA4837DF1BB82A}" {
+        m_sLocation "GC_Spawner_6D9CDF3A76BE5DAF"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{F0CF2EC4C8656A43}" {
+       m_Spawn GC_PrefabSpawn "{5E0ABF3FF4E9B485}" {
+        m_sLocation "GC_Spawner_51E7DC6A43EFB7DB"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{64DCB1F172F5068A}" {
+       m_Spawn GC_PrefabSpawn "{1636E4AE2CDD9302}" {
+        m_sLocation "GC_Spawner_14E4C978380ABF9A"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{6EE35FEA533A9F8D}" {
+       m_Spawn GC_PrefabSpawn "{427B0D24E20D7739}" {
+        m_sLocation "GC_Spawner_3B4C991DB03FD41A"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{CEFAD2DBC7217DA4}" {
+       m_Spawn GC_PrefabSpawn "{DD26306293DDC0DC}" {
+        m_sLocation "GC_Spawner_7D28211277A391EB"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{A99DA804BFA77ECC}" {
+       m_Spawn GC_PrefabSpawn "{16102F365D24AE8A}" {
+        m_sLocation "GC_Spawner_4EAAB34BC98B44DA"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{D96F699DC570A29B}" {
+       m_Spawn GC_PrefabSpawn "{989D6B027B9B64DD}" {
+        m_sLocation "GC_Spawner_4BB6F32B8480D12C"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{6A745CF0915719DE}" {
+       m_Spawn GC_PrefabSpawn "{B6101802E2C55521}" {
+        m_sLocation "GC_Spawner_0C3E12E7095B4E3C"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{CB0E6204C5E76591}" {
+       m_Spawn GC_PrefabSpawn "{045CF5B5B77A2E9E}" {
+        m_sLocation "GC_Spawner_2B5BF332077A5384"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{1A6CC637100840DD}" {
+       m_Spawn GC_PrefabSpawn "{561CC0CD5EBB793A}" {
+        m_sLocation "GC_Spawner_4F5718394744BAB3"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{F8A30AA734317B3D}" {
+       m_Spawn GC_PrefabSpawn "{C3CAEE2E753A510F}" {
+        m_sLocation "GC_Spawner_3F64BEEB3452DA13"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{6FA28B0668DB7632}" {
+       m_Spawn GC_PrefabSpawn "{618492943C087EC3}" {
+        m_sLocation "GC_Spawner_B8B4D3585440D0CC"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{99614ADCBC7D84D4}" {
+       m_Spawn GC_PrefabSpawn "{CBDFB443CD8DC331}" {
+        m_sLocation "GC_Spawner_1E35436B61517CD0"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{273C79C58653A280}" {
+       m_Spawn GC_PrefabSpawn "{DA44B6E1DC503EA4}" {
+        m_sLocation "GC_Spawner_303733AE9AC2CF30"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{A3DF60B7F8D72698}" {
+       m_Spawn GC_PrefabSpawn "{7303BD4A75C8E654}" {
+        m_sLocation "GC_Spawner_153125E0323435A7"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{10B97D367CB20770}" {
+       m_Spawn GC_PrefabSpawn "{14AB76649B9F004A}" {
+        m_sLocation "GC_Spawner_2FC3986CAEEA2E2B"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{9C831B5213B63750}" {
+       m_Spawn GC_PrefabSpawn "{8F7F219312D2A389}" {
+        m_sLocation "GC_Spawner_84087C2BE4463FD1"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{F57C73DC45774050}" {
+       m_Spawn GC_PrefabSpawn "{0F8F64FBD7889F64}" {
+        m_sLocation "GC_Spawner_E76B78C191DDAF3D"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{84D8AC2CA4D24A76}" {
+       m_Spawn GC_PrefabSpawn "{FD46A013BAC56F6F}" {
+        m_sLocation "GC_Spawner_67352B1C5436AFE4"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{68FFA007C5FAECB5}" {
+       m_Spawn GC_PrefabSpawn "{78BBB4E7541EA3A7}" {
+        m_sLocation "GC_Spawner_E30F103E9C456091"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{FAB7B386AE421AEA}" {
+       m_Spawn GC_PrefabSpawn "{181D72753656EC66}" {
+        m_sLocation "GC_Spawner_37AAF81975E7555F"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{1688B6EF87D293F4}" {
+       m_Spawn GC_PrefabSpawn "{EF97FE2615BA05E9}" {
+        m_sLocation "GC_Spawner_D9A95E91FF73F1A7"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{25D0DC82FF5F1149}" {
+       m_Spawn GC_PrefabSpawn "{244D88B9711E851D}" {
+        m_sLocation "GC_Spawner_1367FF175BBB355A"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{CDF12FAFA218DA76}" {
+       m_Spawn GC_PrefabSpawn "{D7EBEE3A19664291}" {
+        m_sLocation "GC_Spawner_B7BC338AC5561578"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{B60C7EA02F8F7C4F}" {
+       m_Spawn GC_PrefabSpawn "{F7B2184EB53BC5CE}" {
+        m_sLocation "GC_Spawner_AB2035137EDF0AC2"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{B70E87CC7304B878}" {
+       m_Spawn GC_PrefabSpawn "{ADC11F8F83A7D1D3}" {
+        m_sLocation "GC_Spawner_7617EA6F58D0A90D"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{4A46D705C842F8C9}" {
+       m_Spawn GC_PrefabSpawn "{E825C77D4184C020}" {
+        m_sLocation "GC_Spawner_6AAE2619B1EE7131"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{A68896C32138A747}" {
+       m_Spawn GC_PrefabSpawn "{B9E8403E338F7CFD}" {
+        m_sLocation "GC_Spawner_05AAECFE7BC2399C"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{9E9108DB2B15BA75}" {
+       m_Spawn GC_PrefabSpawn "{4F2706F4E0CF5D44}" {
+        m_sLocation "GC_Spawner_06ADB586128BCDEC"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{BF9C2C1E061C2718}" {
+       m_Spawn GC_PrefabSpawn "{10AB8B95251A46EA}" {
+        m_sLocation "GC_Spawner_121906677F272DA9"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{140E4D2E7A8DB613}" {
+       m_Spawn GC_PrefabSpawn "{B1226F2F2C88BB55}" {
+        m_sLocation "GC_Spawner_10EC213BE7FBC2F6"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+     }
+    }
+    GC_Event "{12409583FF252471}" {
+     m_sName "GC_ComputerSpawns_BananaRandomFlag3"
+     m_aConditions {
+      GC_GameModeStateCondition "{90D05137C2046039}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{703D57958EA278F2}" {
+       m_sFlagName "BananaRandomFlag3"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7D444D302664580C}" {
+       m_sMessage "GC_ComputerSpawns_BananaRandomFlag3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D0F6F253F79753E3}" {
+     m_sName "GC_ComputerSpawns_BananaRandomFlag3 (300s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{3CA190153BEA4745}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{310C94666BAEE517}" {
+       m_sEventName "GC_ComputerSpawns_BananaRandomFlag3"
+      }
+     }
+     m_Advanced GC_EventOptions "{8400C0A4425CBDEE}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{945AD4F70488C655}" {
+       m_Spawn GC_PrefabSpawn "{367CD9721F881B8F}" {
+        m_sLocation "GC_Spawner_4CD560364AB8E3EC"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{A837EC7F40062BEC}" {
+       m_Spawn GC_PrefabSpawn "{5C22153FD891BE3C}" {
+        m_sLocation "GC_Spawner_877EA0ECFB70BB64"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{BC88BC5B876C93C3}" {
+       m_Spawn GC_PrefabSpawn "{817BBD47F5BDB027}" {
+        m_sLocation "GC_Spawner_E1ED81DA29318F7A"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{14DD5CDAA2B10AE3}" {
+       m_Spawn GC_PrefabSpawn "{242CEEA506F277F2}" {
+        m_sLocation "GC_Spawner_A3EF2014FE7DAA4F"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{F6F9A996B4A999A3}" {
+       m_Spawn GC_PrefabSpawn "{6F40FF9E618CCFE0}" {
+        m_sLocation "GC_Spawner_443519588E80D71C"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{9A5C8D74DD5A23E8}" {
+       m_Spawn GC_PrefabSpawn "{C79E752D77E8EB54}" {
+        m_sLocation "GC_Spawner_209B4F53578B2FCA"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{78B6FFAE0844BECF}" {
+       m_Spawn GC_PrefabSpawn "{BBE5508DB1D70FE9}" {
+        m_sLocation "GC_Spawner_C5479A3A2D72B0BE"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{985044CA9BD1673D}" {
+       m_Spawn GC_PrefabSpawn "{78857524BAD72E0E}" {
+        m_sLocation "GC_Spawner_A03671AB8E7D5ADB"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{9D141448E7D01511}" {
+       m_Spawn GC_PrefabSpawn "{F1DA4ECC7C4B3DB2}" {
+        m_sLocation "GC_Spawner_1224BD1AD4308D8D"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{3AC9F17C094C05EF}" {
+       m_Spawn GC_PrefabSpawn "{06E55A6B3532127A}" {
+        m_sLocation "GC_Spawner_3F3CC6447CCB248A"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{3FE2FC6C8A27472B}" {
+       m_Spawn GC_PrefabSpawn "{EB8215760FBEA7ED}" {
+        m_sLocation "GC_Spawner_6DA1491100DEA700"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{5FB2C93D148260C3}" {
+       m_Spawn GC_PrefabSpawn "{DABA79910F2389ED}" {
+        m_sLocation "GC_Spawner_A84080030D9948F8"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{4EA4F9E3650B6D87}" {
+       m_Spawn GC_PrefabSpawn "{B70B994A6ABF820E}" {
+        m_sLocation "GC_Spawner_006364B98AC82131"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{B0269139863ADC2A}" {
+       m_Spawn GC_PrefabSpawn "{E2141D1E48FE0820}" {
+        m_sLocation "GC_Spawner_E9B94EAE625BBE14"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{04F63364F0A60988}" {
+       m_Spawn GC_PrefabSpawn "{B0FFBBDB62D2FC5A}" {
+        m_sLocation "GC_Spawner_F9CF9CF390778ED6"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{0ABDB08153C04C13}" {
+       m_Spawn GC_PrefabSpawn "{DBC2B6A415C1D27D}" {
+        m_sLocation "GC_Spawner_E4CD822C3F92B79C"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{B0728AD8DB41FDFC}" {
+       m_Spawn GC_PrefabSpawn "{ACCDB7357184C91E}" {
+        m_sLocation "GC_Spawner_CAA8F9F6431BA002"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{38ED2CACCD86F783}" {
+       m_Spawn GC_PrefabSpawn "{E56CF31FCFA5C7E3}" {
+        m_sLocation "GC_Spawner_45AA7D2EB6A7F6FB"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{A5C6BFFA63B97369}" {
+       m_Spawn GC_PrefabSpawn "{39319FE2FB4148E0}" {
+        m_sLocation "GC_Spawner_3F465C91444D65EE"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{7FD89CD3B32A7DF4}" {
+       m_Spawn GC_PrefabSpawn "{20B7B97DAC002751}" {
+        m_sLocation "GC_Spawner_E4D68D46DEEF0F85"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{92E412973C5B0BF8}" {
+       m_Spawn GC_PrefabSpawn "{25E4B3B8DC668C5A}" {
+        m_sLocation "GC_Spawner_139FE3F99374A312"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{8C6E5FEA8C9D10A1}" {
+       m_Spawn GC_PrefabSpawn "{FD1428D380146A62}" {
+        m_sLocation "GC_Spawner_26DF297129C91420"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{94338C6B5CC3CC5E}" {
+       m_Spawn GC_PrefabSpawn "{3AC069A5021775FB}" {
+        m_sLocation "GC_Spawner_210BAA5FB5581745"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{FCBE283D83F12AFD}" {
+       m_Spawn GC_PrefabSpawn "{6A6C00B64BE38F16}" {
+        m_sLocation "GC_Spawner_D0CDB5A56150D832"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{F834AA8080992040}" {
+       m_Spawn GC_PrefabSpawn "{23594C91993AE849}" {
+        m_sLocation "GC_Spawner_B5737E55E96778F9"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{40D9477FF55CE324}" {
+       m_Spawn GC_PrefabSpawn "{AC99D3E66E5786CB}" {
+        m_sLocation "GC_Spawner_6AEA180A65D12ED5"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{85B6598B52B7F738}" {
+       m_Spawn GC_PrefabSpawn "{632B91A39505D17E}" {
+        m_sLocation "GC_Spawner_AB2758FF5DC4AC28"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{B53E459459F9B4B5}" {
+       m_Spawn GC_PrefabSpawn "{E87CCB5444AA0870}" {
+        m_sLocation "GC_Spawner_1E4C57AB67B078A1"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{06C335CF769D4E1B}" {
+       m_Spawn GC_PrefabSpawn "{B785AA8ECF9E6A43}" {
+        m_sLocation "GC_Spawner_4401F0125425B87B"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{088E22D268D0C9F1}" {
+       m_Spawn GC_PrefabSpawn "{FEA30E642214A7BD}" {
+        m_sLocation "GC_Spawner_8D40B096C1499626"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{81851A560E8DF250}" {
+       m_Spawn GC_PrefabSpawn "{FD71A09D357F8105}" {
+        m_sLocation "GC_Spawner_D872F55CA0B38C7F"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{39FD25DEAA28EC16}" {
+       m_Spawn GC_PrefabSpawn "{5720B56DD1A46669}" {
+        m_sLocation "GC_Spawner_63C9BD5B854F0080"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{8DA75A510234F6BF}" {
+       m_Spawn GC_PrefabSpawn "{99ECBA078EA02B22}" {
+        m_sLocation "GC_Spawner_AC2CAABCEC06FF5B"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{E8C74AA2D8573D9C}" {
+       m_Spawn GC_PrefabSpawn "{D4DA3BA5BDD808E6}" {
+        m_sLocation "GC_Spawner_79092E33550FAB15"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{A1BDF2282B7CF88E}" {
+       m_Spawn GC_PrefabSpawn "{CC6E49474A92B064}" {
+        m_sLocation "GC_Spawner_B67BDEDF275A19E2"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{C394C8D669437EFE}" {
+       m_Spawn GC_PrefabSpawn "{89803AF68FF5C74D}" {
+        m_sLocation "GC_Spawner_E1ADA4649F4E0845"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{E932C09A170379E4}" {
+       m_Spawn GC_PrefabSpawn "{3AAFF18E1D3AAC47}" {
+        m_sLocation "GC_Spawner_E9ADE7F9CC131F2D"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{8584F7F8C15D77E0}" {
+       m_Spawn GC_PrefabSpawn "{A5A770F817E31447}" {
+        m_sLocation "GC_Spawner_FE66EC908EB982D6"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{15CC18EB0EA0CBF9}" {
+       m_Spawn GC_PrefabSpawn "{C5585BF30464C0E4}" {
+        m_sLocation "GC_Spawner_A8BC680A026E547F"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{0579E85CFD46D4B2}" {
+       m_Spawn GC_PrefabSpawn "{D734408E207E8D69}" {
+        m_sLocation "GC_Spawner_E3F12E0BC2141D90"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{A7BA88F1753C52D7}" {
+       m_Spawn GC_PrefabSpawn "{C67A37E75CD7927F}" {
+        m_sLocation "GC_Spawner_300486F8B0F601DA"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{191837C7F7A1D92E}" {
+       m_Spawn GC_PrefabSpawn "{A30ABD40C4062DC0}" {
+        m_sLocation "GC_Spawner_58C9F4818C2D7C12"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{3CDF284B83189988}" {
+       m_Spawn GC_PrefabSpawn "{E43ECADF2F2EAB9F}" {
+        m_sLocation "GC_Spawner_F2E90D92C13C99BB"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{DE1E422AF39B0468}" {
+       m_Spawn GC_PrefabSpawn "{6A1B1932ACA78CC1}" {
+        m_sLocation "GC_Spawner_4A35302DE4C69CC3"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{0B2407A90A7E8654}" {
+       m_Spawn GC_PrefabSpawn "{D54FC2212E5FF286}" {
+        m_sLocation "GC_Spawner_B1DB2E4087E33B0F"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{E91C4976BBE7D246}" {
+       m_Spawn GC_PrefabSpawn "{CB739EF80CCDD694}" {
+        m_sLocation "GC_Spawner_9FA23039B29E3BA9"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{A0E0187E9D6A29C4}" {
+       m_Spawn GC_PrefabSpawn "{05EA508D979A6D7E}" {
+        m_sLocation "GC_Spawner_BF24CCFD3DA9B454"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{E1890CDCB77723CF}" {
+       m_Spawn GC_PrefabSpawn "{EEF389905A766111}" {
+        m_sLocation "GC_Spawner_201A34A4DCF87BE0"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{2E52A865F90B9FBC}" {
+       m_Spawn GC_PrefabSpawn "{099B8DEB2B4790D2}" {
+        m_sLocation "GC_Spawner_660846185B341B6B"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{E4BB67F50A9FE5EF}" {
+       m_Spawn GC_PrefabSpawn "{E62397D21A2E146A}" {
+        m_sLocation "GC_Spawner_D13B83F7CE1FA23C"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+     }
+    }
+    GC_Event "{63ACF04A5F710BF8}" {
+     m_sName "GC_ComputerSpawns_BananaRandomFlag4"
+     m_aConditions {
+      GC_GameModeStateCondition "{DC833DF7F4E005DB}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{075E0FC8A877F6BB}" {
+       m_sFlagName "BananaRandomFlag4"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{241C8EF8F9D872B9}" {
+       m_sMessage "GC_ComputerSpawns_BananaRandomFlag4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F22EF870F7157D2C}" {
+     m_sName "GC_ComputerSpawns_BananaRandomFlag4 (300s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{C9778E2573CF5778}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{D88C5112AF781BBC}" {
+       m_sEventName "GC_ComputerSpawns_BananaRandomFlag4"
+      }
+     }
+     m_Advanced GC_EventOptions "{249A78CCAD63DFBC}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{36E22F30D4B5B149}" {
+       m_Spawn GC_PrefabSpawn "{153E9442162820B9}" {
+        m_sLocation "GC_Spawner_BD55714FF05D1395"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{E0B297AFE83943B3}" {
+       m_Spawn GC_PrefabSpawn "{85AF479F06B41211}" {
+        m_sLocation "GC_Spawner_E737E77412558885"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{CFF9E9FC9691C403}" {
+       m_Spawn GC_PrefabSpawn "{1F3CCCF491D815DC}" {
+        m_sLocation "GC_Spawner_625DF3DA3D95CF37"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{796EA08281678C84}" {
+       m_Spawn GC_PrefabSpawn "{382C44A9FF7913D9}" {
+        m_sLocation "GC_Spawner_B27C32CB928BBAB6"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{4EF8726C51C937DF}" {
+       m_Spawn GC_PrefabSpawn "{060369D96FBA33BE}" {
+        m_sLocation "GC_Spawner_D7F657206BFA2A5F"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{498E6E7F321BF62D}" {
+       m_Spawn GC_PrefabSpawn "{29523BA2CCC96AE2}" {
+        m_sLocation "GC_Spawner_817A8C2EA8DA059C"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{2AD8C98B4C772F9F}" {
+       m_Spawn GC_PrefabSpawn "{F905E7B47E7B162B}" {
+        m_sLocation "GC_Spawner_89EA4500EE885CED"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{EB5D48058C3A6A29}" {
+       m_Spawn GC_PrefabSpawn "{DB64D53C88867FB1}" {
+        m_sLocation "GC_Spawner_61846B7913DAEC4D"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{934CC46684568C59}" {
+       m_Spawn GC_PrefabSpawn "{24DE8BB8F398E8C6}" {
+        m_sLocation "GC_Spawner_7F3DBB2D94A5BB79"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{026A69E6543E9FA1}" {
+       m_Spawn GC_PrefabSpawn "{2A0FF5F799C33FE8}" {
+        m_sLocation "GC_Spawner_7762CF94232BAFDC"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{75A0D159E585C82C}" {
+       m_Spawn GC_PrefabSpawn "{24280618ECB57B4E}" {
+        m_sLocation "GC_Spawner_C98D05064832DD5B"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{6B51898E9171B7F6}" {
+       m_Spawn GC_PrefabSpawn "{8EBF6F5AF6ABFEFF}" {
+        m_sLocation "GC_Spawner_9AFACE1E0C23A1DD"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{A6DC563A19626998}" {
+       m_Spawn GC_PrefabSpawn "{1840727D24757F8C}" {
+        m_sLocation "GC_Spawner_EE14A79394F9CAD9"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{7620B6B7DE62E576}" {
+       m_Spawn GC_PrefabSpawn "{4E401E7D6F9B2435}" {
+        m_sLocation "GC_Spawner_6231DF678C3A04B9"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{103EF978779065FB}" {
+       m_Spawn GC_PrefabSpawn "{2C7E2C8DD715404E}" {
+        m_sLocation "GC_Spawner_274795DFE077E1BD"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{EAC477EDFD035BAE}" {
+       m_Spawn GC_PrefabSpawn "{C407EB91AB1A5EEC}" {
+        m_sLocation "GC_Spawner_10A91E0FE26418F0"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{104980CF2CC5474E}" {
+       m_Spawn GC_PrefabSpawn "{DCA25962BD0F926E}" {
+        m_sLocation "GC_Spawner_04D39C236CF8A5F8"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{4A8BA27A7B5F2ABE}" {
+       m_Spawn GC_PrefabSpawn "{889A8694F91DE590}" {
+        m_sLocation "GC_Spawner_ECB4891381CB9C14"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{0FC43FC345A012DA}" {
+       m_Spawn GC_PrefabSpawn "{7819302CCC4D1EBC}" {
+        m_sLocation "GC_Spawner_A5124289EA59D8B4"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{D74B29525ACB0383}" {
+       m_Spawn GC_PrefabSpawn "{90E7BC268DCA01D8}" {
+        m_sLocation "GC_Spawner_8ACADA4564A4EF40"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{84415F4E3341F4AB}" {
+       m_Spawn GC_PrefabSpawn "{A92C2428357FC34E}" {
+        m_sLocation "GC_Spawner_18BFDE00BF05A417"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{3F339129C6F62B2A}" {
+       m_Spawn GC_PrefabSpawn "{57A47732AA4B501E}" {
+        m_sLocation "GC_Spawner_4F899B92DADB5F36"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{E74FA75D49C73160}" {
+       m_Spawn GC_PrefabSpawn "{82ADE17EDA21F340}" {
+        m_sLocation "GC_Spawner_67A796DE6989CED7"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{DBF52EC56C90A327}" {
+       m_Spawn GC_PrefabSpawn "{B09237A8283B3A00}" {
+        m_sLocation "GC_Spawner_CECCCC4238831F5C"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{FC2B752CBF69A7E9}" {
+       m_Spawn GC_PrefabSpawn "{33A4945C0F675538}" {
+        m_sLocation "GC_Spawner_052733BA1D19422F"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{A4ACACC74FE5CFD9}" {
+       m_Spawn GC_PrefabSpawn "{07F779B9BF42FD91}" {
+        m_sLocation "GC_Spawner_05BBA2C38DAAA40D"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{5634389E69ADCE88}" {
+       m_Spawn GC_PrefabSpawn "{3251B8E2C9B2BA25}" {
+        m_sLocation "GC_Spawner_E12D3838B411A35E"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{46E12230E6A97ECA}" {
+       m_Spawn GC_PrefabSpawn "{FEDEC4F6AF556376}" {
+        m_sLocation "GC_Spawner_7013CCF5186C1930"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{59DC085AE2B2A8CB}" {
+       m_Spawn GC_PrefabSpawn "{EACABE5E71D2E268}" {
+        m_sLocation "GC_Spawner_4F2410A889583941"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{AF2BB1FD9C818C81}" {
+       m_Spawn GC_PrefabSpawn "{1EC8D96993C100CA}" {
+        m_sLocation "GC_Spawner_041EC8FA5C093F17"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{07C923E5DC741489}" {
+       m_Spawn GC_PrefabSpawn "{2851C010F89FBD54}" {
+        m_sLocation "GC_Spawner_FA8EAA7E70EBE3E2"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{9CC7B739CA68F88E}" {
+       m_Spawn GC_PrefabSpawn "{4CD95F45183259BC}" {
+        m_sLocation "GC_Spawner_96E725B574AF3C8D"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{64AABEBA50AB61BD}" {
+       m_Spawn GC_PrefabSpawn "{66A702220503D04F}" {
+        m_sLocation "GC_Spawner_455EE1E095FA5414"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{1285A568110899FB}" {
+       m_Spawn GC_PrefabSpawn "{B9EDC68E1EE585C9}" {
+        m_sLocation "GC_Spawner_F1BDF4D96331350D"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{8C11709BB7611BF2}" {
+       m_Spawn GC_PrefabSpawn "{131EBAB77C5C84FE}" {
+        m_sLocation "GC_Spawner_DEFB4283FF700731"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{40B51949E95B01E8}" {
+       m_Spawn GC_PrefabSpawn "{38E8B2C479B69F96}" {
+        m_sLocation "GC_Spawner_8BDA3795EC399DEA"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{A2A0A81DF5C03F51}" {
+       m_Spawn GC_PrefabSpawn "{210B61F251CFEEEE}" {
+        m_sLocation "GC_Spawner_1B58490FB1C4EB2D"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{C448EB6C15C5DE07}" {
+       m_Spawn GC_PrefabSpawn "{C770FF4ECB1A3CD8}" {
+        m_sLocation "GC_Spawner_BCD0DD7C2D7DA8CE"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{970BE9E16EC9984C}" {
+       m_Spawn GC_PrefabSpawn "{BA05ACAF4DDFD4AD}" {
+        m_sLocation "GC_Spawner_C5D66BBDCEBD845A"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{3C89AD98EF3EB128}" {
+       m_Spawn GC_PrefabSpawn "{0DF3EBF5FC869EB5}" {
+        m_sLocation "GC_Spawner_69B208DC2DF348FE"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{50F2BC645D0A5D96}" {
+       m_Spawn GC_PrefabSpawn "{B0446B5B7D370176}" {
+        m_sLocation "GC_Spawner_01D8634112A1F5D3"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{D19F5BFC12B9A819}" {
+       m_Spawn GC_PrefabSpawn "{3DBCC5BAE02FA0E5}" {
+        m_sLocation "GC_Spawner_A0CAA4E23D5CD08A"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{932C5F84E6ED170F}" {
+       m_Spawn GC_PrefabSpawn "{8876AD12883ECF80}" {
+        m_sLocation "GC_Spawner_8181E26F7390BA1D"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{5259A06BFA73D6ED}" {
+       m_Spawn GC_PrefabSpawn "{C6ADC2BD10C2F3BB}" {
+        m_sLocation "GC_Spawner_E62717F7B7484AE0"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{7A33D31DBC35A03F}" {
+       m_Spawn GC_PrefabSpawn "{F73B59BDCE0EE667}" {
+        m_sLocation "GC_Spawner_DC7B402F4140E5E9"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{6A445DDCDFC0EE2D}" {
+       m_Spawn GC_PrefabSpawn "{5A10DB715628E0E7}" {
+        m_sLocation "GC_Spawner_81456EBA697FC6E9"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{6778D1CD246B7D08}" {
+       m_Spawn GC_PrefabSpawn "{7421A9AD6D6BC889}" {
+        m_sLocation "GC_Spawner_EE40769E90A9D727"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{59E006905D62004F}" {
+       m_Spawn GC_PrefabSpawn "{799C0FF6BBB42F84}" {
+        m_sLocation "GC_Spawner_C5EE142EAC50E6BF"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{C137826A38B9D754}" {
+       m_Spawn GC_PrefabSpawn "{C90F7FB2E62E67DE}" {
+        m_sLocation "GC_Spawner_4B5E2B5144B890ED"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{A5C3BC0390781A37}" {
+       m_Spawn GC_PrefabSpawn "{D1758A68CC7C67C0}" {
+        m_sLocation "GC_Spawner_28582C24069FCBEA"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+     }
+    }
+    GC_Event "{A594E0F04FF8C636}" {
+     m_sName "GC_ComputerSpawns_BananaRandomFlag5"
+     m_aConditions {
+      GC_GameModeStateCondition "{50EA3709E5444724}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{434C679462DDDCBF}" {
+       m_sFlagName "BananaRandomFlag5"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1111FE5450800D93}" {
+       m_sMessage "GC_ComputerSpawns_BananaRandomFlag5"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E6267428D692BF6D}" {
+     m_sName "GC_ComputerSpawns_BananaRandomFlag5 (300s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{3414E6581DF8B53C}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{CAC3A9A96C6CCAE2}" {
+       m_sEventName "GC_ComputerSpawns_BananaRandomFlag5"
+      }
+     }
+     m_Advanced GC_EventOptions "{F5041A9AEA07478A}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{B76BAC2377AF8621}" {
+       m_Spawn GC_PrefabSpawn "{5293A219B2E6F174}" {
+        m_sLocation "GC_Spawner_89EF9ABB2F3EC929"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{105A7B7A8DDE0088}" {
+       m_Spawn GC_PrefabSpawn "{E55D67A16E9F012C}" {
+        m_sLocation "GC_Spawner_FD9CA0574796EC2A"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{DDBA8787222F316C}" {
+       m_Spawn GC_PrefabSpawn "{1FCC9BBB2BBA7894}" {
+        m_sLocation "GC_Spawner_17978143A2CF49DE"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{42744DB15F72314E}" {
+       m_Spawn GC_PrefabSpawn "{20C2DAC40EDAB2EB}" {
+        m_sLocation "GC_Spawner_495821426F18F9FE"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{B0BB11211C7049C1}" {
+       m_Spawn GC_PrefabSpawn "{6125FB55F7F0EF21}" {
+        m_sLocation "GC_Spawner_91BD2DE95DC44C05"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{D7EB6AD88AD520AC}" {
+       m_Spawn GC_PrefabSpawn "{D3A6AF6A53F20943}" {
+        m_sLocation "GC_Spawner_E1D5D48119C028F7"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{3CDCB41FACD94B63}" {
+       m_Spawn GC_PrefabSpawn "{90D9620C5E8CDD4E}" {
+        m_sLocation "GC_Spawner_FD65F941D7B34117"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{62B1247F76597E62}" {
+       m_Spawn GC_PrefabSpawn "{047B2002739D0A7D}" {
+        m_sLocation "GC_Spawner_EE829B8EE68EBC3C"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{B72A4FDB225132F8}" {
+       m_Spawn GC_PrefabSpawn "{209FD68B254B6E77}" {
+        m_sLocation "GC_Spawner_D233C3C91B307F9A"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{38F7506A48B66B0A}" {
+       m_Spawn GC_PrefabSpawn "{842EC430F41FF7B0}" {
+        m_sLocation "GC_Spawner_66175F77A1931583"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{8C179EFE75C32E4F}" {
+       m_Spawn GC_PrefabSpawn "{07C254485456D3A5}" {
+        m_sLocation "GC_Spawner_5177533F1E747099"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{F6692026EF2AA79F}" {
+       m_Spawn GC_PrefabSpawn "{E07074B41596DCDD}" {
+        m_sLocation "GC_Spawner_F10D946F65D8BCAD"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{B66A9426F9F5BD9B}" {
+       m_Spawn GC_PrefabSpawn "{81C3393A9BB4D34F}" {
+        m_sLocation "GC_Spawner_34AE6CB30B41BE3D"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{66519D1CBE020C0B}" {
+       m_Spawn GC_PrefabSpawn "{FE3BC116AF2AAD25}" {
+        m_sLocation "GC_Spawner_51DCCE25A06AAA29"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{8500663B59E5165A}" {
+       m_Spawn GC_PrefabSpawn "{D795AF9053C84A5A}" {
+        m_sLocation "GC_Spawner_AD469B5DF8B7A60B"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{460D548AD0051A2E}" {
+       m_Spawn GC_PrefabSpawn "{C03D297E332C680B}" {
+        m_sLocation "GC_Spawner_3B3C53C94FEDB21F"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{A195999E31886AEC}" {
+       m_Spawn GC_PrefabSpawn "{25022109ECD8B34E}" {
+        m_sLocation "GC_Spawner_A7C037A5CF0089B9"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{E7914B08A9BEEC1C}" {
+       m_Spawn GC_PrefabSpawn "{2C588EA8D1774CC2}" {
+        m_sLocation "GC_Spawner_FE611E84A03FC187"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{0608076B7F545F4E}" {
+       m_Spawn GC_PrefabSpawn "{8323D7550CD8FD5C}" {
+        m_sLocation "GC_Spawner_BEFA514718261D07"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{4B020D2C6C67DF9A}" {
+       m_Spawn GC_PrefabSpawn "{4D5BE4E76BE235C6}" {
+        m_sLocation "GC_Spawner_1E6FC2E3EF51321E"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{231253F385EB5B69}" {
+       m_Spawn GC_PrefabSpawn "{862918CBB92A296D}" {
+        m_sLocation "GC_Spawner_736808FC35702086"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{03C74392B8B162EA}" {
+       m_Spawn GC_PrefabSpawn "{F984A059B75DDBCC}" {
+        m_sLocation "GC_Spawner_8F304F1F95EAC784"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{2A96905720CF892A}" {
+       m_Spawn GC_PrefabSpawn "{ED84AB730D3CCB9B}" {
+        m_sLocation "GC_Spawner_D5558F0531152DA8"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{1C717B9464AB5C37}" {
+       m_Spawn GC_PrefabSpawn "{66182A1495F81E29}" {
+        m_sLocation "GC_Spawner_2169D84CBEFAE59E"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{0588ED448F5FE38E}" {
+       m_Spawn GC_PrefabSpawn "{5A53FEBCF7EB3F40}" {
+        m_sLocation "GC_Spawner_523DA98611EDB89A"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{44D822D401F3D857}" {
+       m_Spawn GC_PrefabSpawn "{4165469CDE72A88B}" {
+        m_sLocation "GC_Spawner_51E49B9B75C6F662"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{52F6A45286058639}" {
+       m_Spawn GC_PrefabSpawn "{5E2DC435134DE307}" {
+        m_sLocation "GC_Spawner_48A4777AC290A265"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{4D9C9D64249669CE}" {
+       m_Spawn GC_PrefabSpawn "{0A67E5950A1A3315}" {
+        m_sLocation "GC_Spawner_EA95E7486E32897B"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{892B298B223D22D6}" {
+       m_Spawn GC_PrefabSpawn "{EBAE88F8562B9427}" {
+        m_sLocation "GC_Spawner_8E35C84A8D6AAAF6"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{74052E6DBED3B476}" {
+       m_Spawn GC_PrefabSpawn "{3A24655DE21F1F2D}" {
+        m_sLocation "GC_Spawner_23A8D0D8A90C99C1"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{295C05C43003C6CB}" {
+       m_Spawn GC_PrefabSpawn "{EA908553B6AEB493}" {
+        m_sLocation "GC_Spawner_3A39CAEA126F2E42"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{82BEB22CB7082862}" {
+       m_Spawn GC_PrefabSpawn "{FAACEBD6A73F4FC2}" {
+        m_sLocation "GC_Spawner_B12D7E160B840B42"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{DA8D59B501CB798F}" {
+       m_Spawn GC_PrefabSpawn "{3615C5E1B4AEB613}" {
+        m_sLocation "GC_Spawner_FBBFB5AEEF141DD0"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{13279A9C4E31CDDC}" {
+       m_Spawn GC_PrefabSpawn "{6636EE303B772F4D}" {
+        m_sLocation "GC_Spawner_3294B2A3D54E5A84"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{887CA0BE1686E39D}" {
+       m_Spawn GC_PrefabSpawn "{CA6C0EDD83A33CAE}" {
+        m_sLocation "GC_Spawner_5FE17B92C6FE3080"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{D9FDF868E204E783}" {
+       m_Spawn GC_PrefabSpawn "{C5DA18453BEB3B6C}" {
+        m_sLocation "GC_Spawner_37FD91332BC5D509"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{AFEBC7105647A521}" {
+       m_Spawn GC_PrefabSpawn "{1951C1FA3A5B1BD2}" {
+        m_sLocation "GC_Spawner_1CFE95BD13FF1ED8"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{CC71176280FA80D0}" {
+       m_Spawn GC_PrefabSpawn "{41B346A5AF519EE9}" {
+        m_sLocation "GC_Spawner_032A827F717F68EE"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{043E989D10A15C58}" {
+       m_Spawn GC_PrefabSpawn "{4F8E1EE1C9266E79}" {
+        m_sLocation "GC_Spawner_5C378A2F4728A4C6"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{344C8E82424187F4}" {
+       m_Spawn GC_PrefabSpawn "{17391EAAC512D83B}" {
+        m_sLocation "GC_Spawner_E1C70C7351029F4A"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{50143123C4E073FF}" {
+       m_Spawn GC_PrefabSpawn "{79A1C488C4786CF5}" {
+        m_sLocation "GC_Spawner_A881202DE4588E98"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{182F4101D31F0AA2}" {
+       m_Spawn GC_PrefabSpawn "{CA420D437F123F48}" {
+        m_sLocation "GC_Spawner_448CA39D30279791"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{E0EDE5F8E8BD7D62}" {
+       m_Spawn GC_PrefabSpawn "{8E9FF2D7BB3B15CC}" {
+        m_sLocation "GC_Spawner_EE84CD7834149D59"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{3224D57011209214}" {
+       m_Spawn GC_PrefabSpawn "{D5449664E6D8C64A}" {
+        m_sLocation "GC_Spawner_E1395CB5D004A84F"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{1B958FD4E35E1EA4}" {
+       m_Spawn GC_PrefabSpawn "{156E3529E715ED30}" {
+        m_sLocation "GC_Spawner_0BC5B934C41DA993"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{6CDF77DF70A84A16}" {
+       m_Spawn GC_PrefabSpawn "{BAD74017C3A6A993}" {
+        m_sLocation "GC_Spawner_4CD0F59EC9AEE98B"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{3B9AD9087DFE18FB}" {
+       m_Spawn GC_PrefabSpawn "{FE911777B10E7819}" {
+        m_sLocation "GC_Spawner_22C740E868563BC2"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{671AF947635302AE}" {
+       m_Spawn GC_PrefabSpawn "{010CEAD29FCE655A}" {
+        m_sLocation "GC_Spawner_D9D7BA91A10BABE8"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{32F3BA0CE1980C1E}" {
+       m_Spawn GC_PrefabSpawn "{B2920C8B6AD918F2}" {
+        m_sLocation "GC_Spawner_6AD095CF122BD409"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{9AF99083C4A15537}" {
+       m_Spawn GC_PrefabSpawn "{5B424DD0DAA104E6}" {
+        m_sLocation "GC_Spawner_5E564A5C8493272F"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+     }
+    }
+    GC_Event "{20CF2DD6A8B8DBE7}" {
+     m_sName "GC_ComputerSpawns_BananaRandomFlag6"
+     m_aConditions {
+      GC_GameModeStateCondition "{5804E61E60A77690}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{FD2A20B9AB3BC503}" {
+       m_sFlagName "BananaRandomFlag6"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B7B08F0E6873CD4C}" {
+       m_sMessage "GC_ComputerSpawns_BananaRandomFlag6"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5A20BDA3B47F9BFE}" {
+     m_sName "GC_ComputerSpawns_BananaRandomFlag6 (300s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{6BEFEB800A6DEA2C}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{98232130485279DF}" {
+       m_sEventName "GC_ComputerSpawns_BananaRandomFlag6"
+      }
+     }
+     m_Advanced GC_EventOptions "{A2245883037C12E6}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{3DCEC52807D426BA}" {
+       m_Spawn GC_PrefabSpawn "{BFF41C4E947410C8}" {
+        m_sLocation "GC_Spawner_E77F49B2607F746B"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{662E5F539AB9DE42}" {
+       m_Spawn GC_PrefabSpawn "{549446AFBD322636}" {
+        m_sLocation "GC_Spawner_12E9734E4705EF10"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{159851EA31881924}" {
+       m_Spawn GC_PrefabSpawn "{E7BDFBA253E938C2}" {
+        m_sLocation "GC_Spawner_F116D4EF821B8354"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{B8FE83EC66D4FE39}" {
+       m_Spawn GC_PrefabSpawn "{20AC8C751DE43B90}" {
+        m_sLocation "GC_Spawner_CCDF6D61D919E2E2"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{3E20A2C02D363FD2}" {
+       m_Spawn GC_PrefabSpawn "{983EDA0AE1ABCBBF}" {
+        m_sLocation "GC_Spawner_DD49A2F2C59AA171"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{A432D1C470AE598A}" {
+       m_Spawn GC_PrefabSpawn "{7741986ABD0AAE08}" {
+        m_sLocation "GC_Spawner_72D2963FE0C01D19"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{0422912EF169906A}" {
+       m_Spawn GC_PrefabSpawn "{999D7DA526CE469D}" {
+        m_sLocation "GC_Spawner_686855716C6197A7"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{40B80F2D438F1FDC}" {
+       m_Spawn GC_PrefabSpawn "{BF5DA357B2EBF1B9}" {
+        m_sLocation "GC_Spawner_690BEF4779E4D191"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{0006EE2A798F1F95}" {
+       m_Spawn GC_PrefabSpawn "{A7301FD64715DE38}" {
+        m_sLocation "GC_Spawner_E1DB04207B0FF154"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{8BDAD441C5355C87}" {
+       m_Spawn GC_PrefabSpawn "{AFC1BC85A9BC766D}" {
+        m_sLocation "GC_Spawner_0A8405FEF7810A27"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{84D5CD11AEE1C4C6}" {
+       m_Spawn GC_PrefabSpawn "{67B0DC411E4C21B4}" {
+        m_sLocation "GC_Spawner_C39AB5399C59F2D6"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{C669DD7DD3EE0A09}" {
+       m_Spawn GC_PrefabSpawn "{592C09F19BF86601}" {
+        m_sLocation "GC_Spawner_793C5768B3756F49"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{C2D86DFB52467521}" {
+       m_Spawn GC_PrefabSpawn "{EFA68FC2532668A2}" {
+        m_sLocation "GC_Spawner_AF34AF98E104F364"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{3EB699BA62017C53}" {
+       m_Spawn GC_PrefabSpawn "{BE8F7B932C75B90E}" {
+        m_sLocation "GC_Spawner_1BDDDB3C0AA4EFAD"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{F64027D9A127E7B7}" {
+       m_Spawn GC_PrefabSpawn "{2A8FEB45E5C999A2}" {
+        m_sLocation "GC_Spawner_CBFCF7F20B67F28E"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{37B5EDF144193C50}" {
+       m_Spawn GC_PrefabSpawn "{15438395070A4A8A}" {
+        m_sLocation "GC_Spawner_6D5B381AC58B83F9"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{1F942B8F3BE720F2}" {
+       m_Spawn GC_PrefabSpawn "{FAE3E2DA10C8180F}" {
+        m_sLocation "GC_Spawner_6F3F9E04F3F529BF"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{AF3451A137AC313A}" {
+       m_Spawn GC_PrefabSpawn "{BDE343F108BD173F}" {
+        m_sLocation "GC_Spawner_6448BDC3FC49060B"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{1BC8FC40FA36FE93}" {
+       m_Spawn GC_PrefabSpawn "{B8FB63DFB782D376}" {
+        m_sLocation "GC_Spawner_7E99C2F1D468B5FF"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{59BB715495F5A359}" {
+       m_Spawn GC_PrefabSpawn "{28294C8C6A90BA80}" {
+        m_sLocation "GC_Spawner_E0C677D19C5D8F52"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{877A28A8FD03D926}" {
+       m_Spawn GC_PrefabSpawn "{606E72571652898E}" {
+        m_sLocation "GC_Spawner_C1F5C581FF55F999"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{BD1AA8B1E1CBA9F7}" {
+       m_Spawn GC_PrefabSpawn "{7F32B92424B98237}" {
+        m_sLocation "GC_Spawner_BD6A10E163AF9D08"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{733466813572831D}" {
+       m_Spawn GC_PrefabSpawn "{5B345A96B40B4375}" {
+        m_sLocation "GC_Spawner_3D5530CD39015632"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{10218D297A67216C}" {
+       m_Spawn GC_PrefabSpawn "{C2AB4872A589B2EF}" {
+        m_sLocation "GC_Spawner_0944EC78ED84C4A1"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{2B3FEAE082646CB8}" {
+       m_Spawn GC_PrefabSpawn "{65192D77C911EA11}" {
+        m_sLocation "GC_Spawner_DFB5F8E074B43C57"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{B1412D2EBA479C64}" {
+       m_Spawn GC_PrefabSpawn "{B635F0B6DECE3305}" {
+        m_sLocation "GC_Spawner_D7BD415990FA88F5"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{214FA14B1A06CA37}" {
+       m_Spawn GC_PrefabSpawn "{35E38CD1A8059BF6}" {
+        m_sLocation "GC_Spawner_C66B7E11B35B431E"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{812CEAB0CD4763E8}" {
+       m_Spawn GC_PrefabSpawn "{F2124E2FEA94BE49}" {
+        m_sLocation "GC_Spawner_FCC7C428BDA96D49"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{40A0A4F4AEA75F2A}" {
+       m_Spawn GC_PrefabSpawn "{DB5CD09E4BD2487B}" {
+        m_sLocation "GC_Spawner_0098D91E676E4506"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{2D9AA458B850B58B}" {
+       m_Spawn GC_PrefabSpawn "{B20E529DFF244511}" {
+        m_sLocation "GC_Spawner_6D999F671ED1D50B"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{FC26E61A9245EA55}" {
+       m_Spawn GC_PrefabSpawn "{92E1519664A146C6}" {
+        m_sLocation "GC_Spawner_B48912159D8547E2"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{9987FD6F2962B8BE}" {
+       m_Spawn GC_PrefabSpawn "{D9270675AC1E7584}" {
+        m_sLocation "GC_Spawner_CF46DF2E7416B2BD"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{BA9246B11230B633}" {
+       m_Spawn GC_PrefabSpawn "{58C1292F958CD8CA}" {
+        m_sLocation "GC_Spawner_D6441E144B0B3B3E"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{FF0BFC01EABF8E8A}" {
+       m_Spawn GC_PrefabSpawn "{B5D12B3A553E6F9A}" {
+        m_sLocation "GC_Spawner_AA66ABD03511376A"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{8CE3B18336C846B7}" {
+       m_Spawn GC_PrefabSpawn "{B8FA0633EAE59741}" {
+        m_sLocation "GC_Spawner_E2F09329608C70C3"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{074AA77FEA9DC933}" {
+       m_Spawn GC_PrefabSpawn "{26C9EDEA0266C4E7}" {
+        m_sLocation "GC_Spawner_CD2E76B6A17EDA3C"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{1897DEC87EE0D61B}" {
+       m_Spawn GC_PrefabSpawn "{A4AE60489A9D1B91}" {
+        m_sLocation "GC_Spawner_5AB68DABDC66A1F3"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{DD8601C35C01F9E5}" {
+       m_Spawn GC_PrefabSpawn "{5C4F52806123C5C7}" {
+        m_sLocation "GC_Spawner_6266D96CD7C938E6"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{A4415B21FE795B2F}" {
+       m_Spawn GC_PrefabSpawn "{58A297A44C8D5634}" {
+        m_sLocation "GC_Spawner_E12CDFE3402CE3F6"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{FE01F894E3821856}" {
+       m_Spawn GC_PrefabSpawn "{4D235EC793C4D278}" {
+        m_sLocation "GC_Spawner_B8D243E232896973"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{7536354A08865FDA}" {
+       m_Spawn GC_PrefabSpawn "{F796F827614AE676}" {
+        m_sLocation "GC_Spawner_9E4F294B58370ABA"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{113BE1D543806B1A}" {
+       m_Spawn GC_PrefabSpawn "{10266B8F96436997}" {
+        m_sLocation "GC_Spawner_D4E776F4D65C44B5"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{583BE925F5774F8D}" {
+       m_Spawn GC_PrefabSpawn "{AFB0B97F5577AA36}" {
+        m_sLocation "GC_Spawner_EEBF91DBACFF6C5F"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{4BB4D6963567F1FD}" {
+       m_Spawn GC_PrefabSpawn "{D7133D5ACC7EBF1B}" {
+        m_sLocation "GC_Spawner_408B73098D727ABE"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{3D142D02037B8062}" {
+       m_Spawn GC_PrefabSpawn "{E41338458B66BB13}" {
+        m_sLocation "GC_Spawner_1C52A0F9A44D7CE6"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{0E133BC162CC0D11}" {
+       m_Spawn GC_PrefabSpawn "{EE40208973D839CD}" {
+        m_sLocation "GC_Spawner_C9336902DBA31EB8"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{EA8DDDC5AAAF5B8A}" {
+       m_Spawn GC_PrefabSpawn "{43A3CAEB4D617E4B}" {
+        m_sLocation "GC_Spawner_BB7B2ACBB1DEE4E6"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{E3F181156EB9B76A}" {
+       m_Spawn GC_PrefabSpawn "{1A0BC6C557993176}" {
+        m_sLocation "GC_Spawner_206D180E1B773BD6"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+      GC_SpawnAction "{E4A875B158DFCD96}" {
+       m_Spawn GC_PrefabSpawn "{FF5511B3F75252C1}" {
+        m_sLocation "GC_Spawner_F6FFBF89740AF0E0"
+        m_sPrefab "{F9516BAAF0D2E496}worlds/Wade/TheLocalFiles/Computer_Secure.et"
+       }
+      }
+      GC_SpawnAction "{1EC72230EF23D310}" {
+       m_Spawn GC_PrefabSpawn "{55B1F1545178A880}" {
+        m_sLocation "GC_Spawner_9D9481597FF43F9B"
+        m_sPrefab "{7CEE9BACABE39C3E}worlds/Wade/TheLocalFiles/ComputerMarker.et"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 3061.744 2.762 1734.644
+ m_eJipMode DISABLED
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB79282FF010C}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792829053B0}" {
+        m_sCallsign "Auora"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB7928490AEEE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{55CCB79284BA6D27}" {
+        m_sCallsign " "
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign " "
+       }
+      }
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CD021D5C}" {
+       }
+       SCR_CallsignInfo "{55CCB792CCD598D3}" {
+        m_sCallsign "Alpha"
+       }
+       SCR_CallsignInfo "{55CCB792CC9C7AD6}" {
+        m_sCallsign "Chaos"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE18FB44}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{672A2C571F679A55}" {
+        m_sCallsign " "
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "'6"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "'1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "'2"
+       }
+       SCR_CallsignInfo "{672A2C57134407CE}" {
+        m_sCallsign " "
+       }
+      }
+      m_sCallsignGroupFormat "%1 %2%3"
+     }
+    }
+   }
+  }
+ }
+}
+GC_RadiusAreaEntity IntelExtractBlufor : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 3070.019 18.105 12599.194
+ m_fRadius 130
+}
+GC_RadiusAreaEntity IntelExtractOpfor : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 8892.158 18.106 -955.31
+ angles 0 -18.534 0
+ m_fRadius 130
+}
+GC_RadiusAreaEntity HVTExtractOpfor : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 8892.158 18.106 -955.31
+ angles 0 -18.534 0
+ m_fRadius 130
+}
+GC_RadiusAreaEntity HVTExtractBlufor : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 3070.015 18.105 12599.181
+ m_fRadius 130
+}
+GenericEntity Intel : "{F3739484332D8932}worlds/Wade/TheLocalFiles/Intel.et" {
+ coords 2720.457 25.492 5480.746
+ angles 0 -178.961 0
+}
+GenericEntity GC_LocalFilesIntelMarker : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet "{67B3A6DC2D712B52}UI/Textures/Icons/icons_mapMarkersUI-glow.imageset"
+   m_sQuadName "objective-marker"
+   m_Color 0.5 0 1 1
+   m_fSize 300
+   m_bWorldScale 1
+   m_sDescription "HVT"
+   m_sTrackedEntity "Intel"
+   m_iTrackingIntervalMs 600000
+   m_iZOrder 100
+   m_iHoverZOrder 10000
+   m_bHideWithoutFaction 1
+  }
+ }
+ coords 2720.457 25.492 5480.746
+ angleY 0
+}

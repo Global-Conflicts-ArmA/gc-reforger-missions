@@ -1,0 +1,40 @@
+GenericEntity : "{98079765627F6EA3}Prefabs/Props/Civilian/Computer_E_01/Computer_E_01_case.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  SignalsManagerComponent "{66EE3ACA7A89280F}" {
+  }
+  SoundComponent "{66EE3ACA7A893103}" {
+   Filenames {
+    "{5FC6F9522FDC06B3}Sounds/Props/Civilian/Computer_E_01/Props_Computer_E_01.acp"
+   }
+  }
+ }
+ {
+  GenericEntity : "{2595F6426CDFDBBB}Prefabs/Props/Civilian/Computer_E_01/Computer_E_01_Monitor_on.et" {
+   ID "66EE3ACA7A892819"
+   coords 0 0.116 -0.08
+   angles 0 -1.906 0
+  }
+  GenericEntity : "{B48D431A323D4564}Prefabs/Logic/Mission/Interaction.et" {
+   ID "670408DA48402A52"
+   components {
+    GC_MissionInteractionComponent "{DCEC291493734CD4}" {
+     m_sActionName "Search for TheLocalPub's Video"
+     m_sCallFlag "ComputerCaptured"
+     m_bSingleUse 1
+     m_aFactions {
+      "CIV"
+     }
+    }
+    ActionsManagerComponent "{ADA66F0D5EA84AC2}" {
+     additionalActions {
+      GC_MissionInteractionAction "{4F65BF8AFE944D18}" {
+       Duration 30
+      }
+     }
+    }
+   }
+   coords 0 0 0
+  }
+ }
+}
