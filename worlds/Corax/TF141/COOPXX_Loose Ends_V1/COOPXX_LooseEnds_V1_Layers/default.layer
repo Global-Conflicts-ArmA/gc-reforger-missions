@@ -1,0 +1,1458 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 1354.943 1.803 3959.665
+ "Price of roadnetwork paths" 2
+}
+GC_LobbyGameMode GC_MigratedMission : "{6B9B218C6FC65E22}worlds/Corax/TF141/COOPXX_Loose Ends_V1/COOPXX_LooseEnds_V1_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 0
+   m_iRangeHoursStart 0
+   m_iRangeHoursEnd 0
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{65772E30D9ECF331}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 2
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 24
+   m_iMonth 11
+   m_iYear 2010
+  }
+  GC_MissionEnvironmentComponent "{F68532C04D688538}" {
+   m_bOverrideGeographicCoordinates 1
+   m_fLatitude 49.019
+   m_fLongitude 37.921
+   m_bOverrideTimeZone 1
+   m_fTimeZoneOffset 2
+   m_fDSTOffsetHours 1
+   m_bDSTEnabled 1
+   m_bOverrideAtmosphere 0
+  }
+  SCR_GameOverScreenManagerComponent "{56DEC646298AD219}" {
+   m_GameOverScreenConfig SCR_GameOverScreenConfig "{56DEC6462FFDD82D}" {
+    m_aGameOverScreens {
+     SCR_FactionVictoryGameOverScreenInfo "{568EB6DFEF507060}" {
+      m_OptionalParams SCR_BaseGameOverScreenInfoOptional "{568EB6DFF87D9C84}" {
+       m_sSubtitle "Delta Force successfully secured and handed over the sensitive hardware"
+      }
+     }
+     SCR_EditorFactionGameOverScreenInfo "{56EED1ED0A9954E6}" {
+      m_OptionalParams SCR_BaseGameOverScreenInfoOptional "{56EED1ED10CDB164}" {
+       m_sSubtitle "Task force casaulties are too high we must retreat"
+      }
+     }
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{57317C1DA41D2A18}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{EECE205BB2743564}" {
+     m_sName "Couter attack message"
+     m_aConditions {
+      GC_AreaCondition "{2A7E71EB6EF2E74F}" {
+       m_sArea "bridgesecure"
+       m_Targets GC_CharacterAreaTargets "{2DA6704908A8B48B}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_SEPARATIST"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{F86EFF73262B83A6}" {
+        m_fRequiredShare 0
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{C28710DA8630B3CA}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bSkipDiscovery 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{EBBC4AB1C1C54EC7}" {
+       m_sMessage "Couter attack message"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D7F61706A68731EA}" {
+     m_sName "Couter attack message (120s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F27F092755243064}" {
+       m_sEventName "Couter attack message"
+      }
+     }
+     m_Advanced GC_EventOptions "{96002F3D533046E1}" {
+      m_fDelay 120
+     }
+     m_aActions {
+      GC_MessageAction "{AB2B4A371179F3F2}" {
+       m_sTitle "Intel Report"
+       m_sMessage "GLINT SAR Assets have picked up a Company to Battalion sized force operating north of the Lake has started moving south. SIGINT believes it is russian regular forces."
+      }
+     }
+    }
+    GC_Event "{6144B50F06B33D60}" {
+     m_sName "Handover"
+     m_aConditions {
+      GC_AreaCondition "{09C1563FEE88B0C8}" {
+       m_sArea "computertrigger"
+       m_Targets GC_NamedAreaTargets "{8F5A72B0FB60797F}" {
+        m_aNames {
+         "Computer"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{895D58FFD0C69B55}" {
+        m_fRequiredProportion 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{D3EAB34AD50DB349}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3B7D7FB45FB5EDD4}" {
+       m_sMessage "Handover"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{DE04007791752511}" {
+     m_sName "Handover (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F82CA5B2EC6F27F4}" {
+       m_sEventName "Handover"
+      }
+     }
+     m_Advanced GC_EventOptions "{1EF4BA75282FB7C2}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{E35B4B23B5671B38}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+    GC_Event "{97A74894E55BE19A}" {
+     m_sName "Casaulties"
+     m_aConditions {
+      GC_CustomScriptCondition "{38D0217F8491B9C5}" {
+       m_Script GC_PeakFactionPopulationCheck "{C9CB138D37CB4796}" {
+        m_sFaction "RHS_USAF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{68E3220C8095BDA7}" {
+       m_sMessage "Casaulties"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7EA6DC2A994D68A9}" {
+     m_sName "Casaulties (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9395DD54B7877534}" {
+       m_sEventName "Casaulties"
+      }
+     }
+     m_Advanced GC_EventOptions "{612AE895C63A6B1F}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_EndMissionAction "{C41AAF7C693695C9}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+    GC_Event "{A339973EA2962C0B}" {
+     m_sName "Outcome 6528DD86FEDB617A"
+     m_aConditions {
+      GC_AreaCondition "{4944051DBED4A583}" {
+       m_sArea "bridgesecure"
+       m_Targets GC_CharacterAreaTargets "{EBE0ED016AAA2B97}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_SEPARATIST"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{1DA216467CB533EE}" {
+        m_fRequiredShare 0
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{09EFB4BA2B24691D}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bSkipDiscovery 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1069829BFB51ADF6}" {
+       m_sMessage "Outcome 6528DD86FEDB617A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E55F85CA0988D619}" {
+     m_sName "Outcome 6528DD86FEDB617A (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{780729A4A734C91F}" {
+       m_sEventName "Outcome 6528DD86FEDB617A"
+      }
+     }
+     m_Advanced GC_EventOptions "{D929C55085D4A8B8}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{1461FEAB0E882C96}" {
+       m_sTitle "Ops Command"
+       m_sMessage "Rangers have captured the bridge and Delta are released to attack Lake Krolyk "
+      }
+     }
+    }
+    GC_Event "{6B5CF8E1E2996453}" {
+     m_sName "GC_MigrationSpawnCapture_69351CA0705DB742"
+     m_aConditions {
+      GC_AreaCondition "{3F690373C70260D9}" {
+       m_sArea "atlake"
+       m_Targets GC_CharacterAreaTargets "{3E45FB5C03C30472}" {
+        m_aFactions {
+         "RHS_USAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{86923AA4C663A1EE}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{F41DBA6F96EC6B8C}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6259F0C2AFE6C96E}" {
+       m_sMessage "GC_MigrationSpawnCapture_69351CA0705DB742"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CE7C147DDB3A8616}" {
+     m_sName "GC_MigrationSpawnCapture_BB7B0B1E224CE47A"
+     m_aConditions {
+      GC_AreaCondition "{69227BBB479AFABC}" {
+       m_sArea "bridgesecure"
+       m_Targets GC_CharacterAreaTargets "{1BA36C34092E1E74}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_SEPARATIST"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{F104CC5F6DE19747}" {
+        m_fRequiredShare 0
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{9F9764C64B413081}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bSkipDiscovery 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B9C8E328A07442B4}" {
+       m_sMessage "GC_MigrationSpawnCapture_BB7B0B1E224CE47A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A0FED1E0111FA9DE}" {
+     m_sName "GC_MigratedSpawn_F9FEEAD46AB9750A"
+     m_aConditions {
+      GC_MissionEventCondition "{F9B168AF08D31692}" {
+       m_sEventName "GC_MigrationSpawnCapture_BB7B0B1E224CE47A"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0A636B441F500079}" {
+       m_sMessage "GC_MigratedSpawn_F9FEEAD46AB9750A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{46FCFE7B40E04C28}" {
+     m_sName "GC_MigratedSpawn_F9FEEAD46AB9750A (600s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C7EEF9C8C092C662}" {
+       m_sEventName "GC_MigratedSpawn_F9FEEAD46AB9750A"
+      }
+     }
+     m_Advanced GC_EventOptions "{C4361E391BB7C6AE}" {
+      m_fDelay 600
+     }
+     m_aActions {
+      GC_SpawnAction "{706776DBD6ECEF68}" {
+       m_Spawn GC_CrewedVehicleSpawn "{3EE3BA540BB123F8}" {
+        m_sLocation "GC_Spawner_F9FEEAD46AB9750A"
+        m_sPrefab "{6B7CD408BDFB94F5}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM_Green.et"
+        m_bReserveNextCrewSeat 1
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{350BC5301C9DBB07}" {
+          m_aStations {
+           GC_SpawnCrewStation "{747D3394EBA63F37}" {
+            m_aCharacters {
+             "{B3C496CCFA72D25E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SL.et"
+             "{DE4C67D3C8F6704D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AR.et"
+             "{06E40E12B17F6E11}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AT.et"
+             "{4375F8D9CF5FCB47}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AAT.et"
+             "{9E5162BC890ADFCF}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SR.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "getout"
+           "attack_bridge"
+          }
+         }
+         GC_SpawnCrewGroup "{92396A504F3CD635}" {
+          m_aStations {
+           GC_SpawnCrewStation "{0C7C54FD05381751}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A6D5B3DB7C42C656}" {
+     m_sName "GC_MigratedSpawn_7908CF57308D2E9B"
+     m_aConditions {
+      GC_MissionEventCondition "{FD3921656B82F17D}" {
+       m_sEventName "GC_MigrationSpawnCapture_BB7B0B1E224CE47A"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3FC63AE717D45A58}" {
+       m_sMessage "GC_MigratedSpawn_7908CF57308D2E9B"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{895F5F561F6552CA}" {
+     m_sName "GC_MigratedSpawn_7908CF57308D2E9B (600s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BEA84857D5FFC6B3}" {
+       m_sEventName "GC_MigratedSpawn_7908CF57308D2E9B"
+      }
+     }
+     m_Advanced GC_EventOptions "{96D1D12517A98C53}" {
+      m_fDelay 600
+     }
+     m_aActions {
+      GC_SpawnAction "{C2BA0E16895C6426}" {
+       m_Spawn GC_CrewedVehicleSpawn "{78A5FF210851D89F}" {
+        m_sLocation "GC_Spawner_7908CF57308D2E9B"
+        m_sPrefab "{6B7CD408BDFB94F5}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM_Green.et"
+        m_bReserveNextCrewSeat 1
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{91CCCA1587BA5756}" {
+          m_aStations {
+           GC_SpawnCrewStation "{7C1DF51685689A8F}" {
+            m_aCharacters {
+             "{B3C496CCFA72D25E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SL.et"
+             "{DE4C67D3C8F6704D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AR.et"
+             "{06E40E12B17F6E11}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AT.et"
+             "{4375F8D9CF5FCB47}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AAT.et"
+             "{9E5162BC890ADFCF}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SR.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "getout"
+           "attack_bridge"
+          }
+         }
+         GC_SpawnCrewGroup "{D79EE439FA2EBE3E}" {
+          m_aStations {
+           GC_SpawnCrewStation "{F0A45CA751999D13}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{BD193202CD0DF941}" {
+     m_sName "GC_MigratedSpawn_3231420E21F6376D"
+     m_aConditions {
+      GC_MissionEventCondition "{2C4AEC5BDC328D56}" {
+       m_sEventName "GC_MigrationSpawnCapture_BB7B0B1E224CE47A"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{47308F13BAF68964}" {
+       m_sMessage "GC_MigratedSpawn_3231420E21F6376D"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3E0DB359FF80D829}" {
+     m_sName "GC_MigratedSpawn_3231420E21F6376D (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{0D33D4B05D9CBA00}" {
+       m_sEventName "GC_MigratedSpawn_3231420E21F6376D"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{3E0DB359FF80D829}" {
+       m_Spawn GC_CrewedVehicleSpawn "{71D3D6147286B10A}" {
+        m_sLocation "GC_Spawner_3231420E21F6376D"
+        m_sPrefab "{6B7CD408BDFB94F5}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM_Green.et"
+        m_bReserveNextCrewSeat 1
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{19DE71DECA0A9C0A}" {
+          m_aStations {
+           GC_SpawnCrewStation "{2485339B7C837C58}" {
+            m_aCharacters {
+             "{B3C496CCFA72D25E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SL.et"
+             "{DE4C67D3C8F6704D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AR.et"
+             "{06E40E12B17F6E11}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AT.et"
+             "{4375F8D9CF5FCB47}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AAT.et"
+             "{9E5162BC890ADFCF}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SR.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "getout"
+           "attack_bridge"
+          }
+         }
+         GC_SpawnCrewGroup "{359D73EBD5F69E9E}" {
+          m_aStations {
+           GC_SpawnCrewStation "{1DDF32E9903A1250}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{1D693F28FFB53229}" {
+     m_sName "GC_MigratedSpawn_28B6CD19CA401227"
+     m_aConditions {
+      GC_MissionEventCondition "{7E1F37A577DDADAA}" {
+       m_sEventName "GC_MigrationSpawnCapture_BB7B0B1E224CE47A"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{BD384739FC403C9D}" {
+       m_sMessage "GC_MigratedSpawn_28B6CD19CA401227"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{DDEA5AAF804E21E9}" {
+     m_sName "GC_MigratedSpawn_28B6CD19CA401227 (30s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E854EDDC57D30736}" {
+       m_sEventName "GC_MigratedSpawn_28B6CD19CA401227"
+      }
+     }
+     m_Advanced GC_EventOptions "{D3FA6CE007D46831}" {
+      m_fDelay 30
+     }
+     m_aActions {
+      GC_SpawnAction "{F00723DE1A1599B3}" {
+       m_Spawn GC_CrewedVehicleSpawn "{3EB699DBFB62ED86}" {
+        m_sLocation "GC_Spawner_28B6CD19CA401227"
+        m_sPrefab "{6B7CD408BDFB94F5}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM_Green.et"
+        m_bReserveNextCrewSeat 1
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{7CDB5690BF3D6ADA}" {
+          m_aStations {
+           GC_SpawnCrewStation "{D817EE76D6829E48}" {
+            m_aCharacters {
+             "{B3C496CCFA72D25E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SL.et"
+             "{DE4C67D3C8F6704D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AR.et"
+             "{06E40E12B17F6E11}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AT.et"
+             "{4375F8D9CF5FCB47}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AAT.et"
+             "{9E5162BC890ADFCF}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SR.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "attack_bridge"
+          }
+         }
+         GC_SpawnCrewGroup "{00E219522541EF34}" {
+          m_aStations {
+           GC_SpawnCrewStation "{84E49DC2F1DE6FDC}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F00723DE1A1599B3}" {
+     m_sName "GC_MigratedSpawn_28B6CD19CA401227 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7A02E1EFF0ECFE57}" {
+       m_sEventName "GC_MigratedSpawn_28B6CD19CA401227"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{E97D7706B42B67C0}" {
+       m_Spawn GC_CrewedVehicleSpawn "{871BEB7460979279}" {
+        m_sLocation "GC_Spawner_28B6CD19CA401227"
+        m_sPrefab "{6B7CD408BDFB94F5}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM_Green.et"
+        m_bReserveNextCrewSeat 1
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{2441524E18486F52}" {
+          m_aStations {
+           GC_SpawnCrewStation "{A7078CA6959D29DE}" {
+            m_aCharacters {
+             "{B3C496CCFA72D25E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SL.et"
+             "{DE4C67D3C8F6704D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AR.et"
+             "{06E40E12B17F6E11}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AT.et"
+             "{4375F8D9CF5FCB47}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AAT.et"
+             "{9E5162BC890ADFCF}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SR.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "attack_bridge"
+          }
+         }
+         GC_SpawnCrewGroup "{7CB61F0DDECD044A}" {
+          m_aStations {
+           GC_SpawnCrewStation "{43B80779B159BC2E}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{5B3422208FEA294C}" {
+     m_sName "GC_MigratedSpawn_39C43D523DD21809"
+     m_aConditions {
+      GC_MissionEventCondition "{F0D517897A83EDE4}" {
+       m_sEventName "GC_MigrationSpawnCapture_BB7B0B1E224CE47A"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D4CBE69DD72F54CD}" {
+       m_sMessage "GC_MigratedSpawn_39C43D523DD21809"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B6EAD61B222DCF66}" {
+     m_sName "GC_MigratedSpawn_39C43D523DD21809 (30s)"
+     m_aConditions {
+      GC_MissionEventCondition "{79BC8E3A5C4E50C2}" {
+       m_sEventName "GC_MigratedSpawn_39C43D523DD21809"
+      }
+     }
+     m_Advanced GC_EventOptions "{1A13EC1A7F1752EB}" {
+      m_fDelay 30
+     }
+     m_aActions {
+      GC_SpawnAction "{46B94743D9745A52}" {
+       m_Spawn GC_CrewedVehicleSpawn "{042D97EA12F9405C}" {
+        m_sLocation "GC_Spawner_39C43D523DD21809"
+        m_sPrefab "{6B7CD408BDFB94F5}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM_Green.et"
+        m_bReserveNextCrewSeat 1
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{570225E18B104674}" {
+          m_aStations {
+           GC_SpawnCrewStation "{9959D29C74FF02D9}" {
+            m_aCharacters {
+             "{B3C496CCFA72D25E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SL.et"
+             "{DE4C67D3C8F6704D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AR.et"
+             "{06E40E12B17F6E11}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AT.et"
+             "{4375F8D9CF5FCB47}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AAT.et"
+             "{9E5162BC890ADFCF}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SR.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "attack_bridge"
+          }
+         }
+         GC_SpawnCrewGroup "{2E91688A632CE664}" {
+          m_aStations {
+           GC_SpawnCrewStation "{064E552199CFA8C2}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{46B94743D9745A52}" {
+     m_sName "GC_MigratedSpawn_39C43D523DD21809 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D7F0D79A57464ABC}" {
+       m_sEventName "GC_MigratedSpawn_39C43D523DD21809"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{11879B515684CD3B}" {
+       m_Spawn GC_CrewedVehicleSpawn "{B4F253682BAF7769}" {
+        m_sLocation "GC_Spawner_39C43D523DD21809"
+        m_sPrefab "{6B7CD408BDFB94F5}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM_Green.et"
+        m_bReserveNextCrewSeat 1
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{5605DB81A13274DF}" {
+          m_aStations {
+           GC_SpawnCrewStation "{0672024CAA4283C0}" {
+            m_aCharacters {
+             "{B3C496CCFA72D25E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SL.et"
+             "{DE4C67D3C8F6704D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AR.et"
+             "{06E40E12B17F6E11}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AT.et"
+             "{4375F8D9CF5FCB47}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AAT.et"
+             "{9E5162BC890ADFCF}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SR.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "attack_bridge"
+          }
+         }
+         GC_SpawnCrewGroup "{0CAAACED871EE1C9}" {
+          m_aStations {
+           GC_SpawnCrewStation "{28F43078FC0F662A}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{861EA32A52DAF584}" {
+     m_sName "GC_MigratedSpawn_48208E79997E5A44"
+     m_aConditions {
+      GC_MissionEventCondition "{279BC857CA54A9F4}" {
+       m_sEventName "GC_MigrationSpawnCapture_BB7B0B1E224CE47A"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{14B66D04F3F6032C}" {
+       m_sMessage "GC_MigratedSpawn_48208E79997E5A44"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{85C288B3C0F4087E}" {
+     m_sName "GC_MigratedSpawn_48208E79997E5A44 (600s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B33BA79B129D905B}" {
+       m_sEventName "GC_MigratedSpawn_48208E79997E5A44"
+      }
+     }
+     m_Advanced GC_EventOptions "{1C6C5F8DAE963DBD}" {
+      m_fDelay 600
+     }
+     m_aActions {
+      GC_SpawnAction "{556D3F25966A38AB}" {
+       m_Spawn GC_CrewedVehicleSpawn "{942538A823314860}" {
+        m_sLocation "GC_Spawner_48208E79997E5A44"
+        m_sPrefab "{6B7CD408BDFB94F5}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM_Green.et"
+        m_bReserveNextCrewSeat 1
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{49B4BE1637E41B26}" {
+          m_aStations {
+           GC_SpawnCrewStation "{B531F6557AA74CB5}" {
+            m_aCharacters {
+             "{B3C496CCFA72D25E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SL.et"
+             "{DE4C67D3C8F6704D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AR.et"
+             "{06E40E12B17F6E11}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AT.et"
+             "{4375F8D9CF5FCB47}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AAT.et"
+             "{9E5162BC890ADFCF}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SR.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "getout"
+           "attack_bridge"
+          }
+         }
+         GC_SpawnCrewGroup "{BCCAD12F5D2AFBEC}" {
+          m_aStations {
+           GC_SpawnCrewStation "{3E261241D9CC1A55}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{6E4AFD07EE586451}" {
+     m_sName "GC_MigratedSpawn_4338681CEBD67318"
+     m_aConditions {
+      GC_MissionEventCondition "{D8EA29B27201ABB8}" {
+       m_sEventName "GC_MigrationSpawnCapture_BB7B0B1E224CE47A"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8C6FF57D4C2A45E5}" {
+       m_sMessage "GC_MigratedSpawn_4338681CEBD67318"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2ECCAFACB8ACBEE7}" {
+     m_sName "GC_MigratedSpawn_4338681CEBD67318 (30s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6FD4753A77BD69AC}" {
+       m_sEventName "GC_MigratedSpawn_4338681CEBD67318"
+      }
+     }
+     m_Advanced GC_EventOptions "{1935176BD51178B1}" {
+      m_fDelay 30
+     }
+     m_aActions {
+      GC_SpawnAction "{E7D1F8CB074A78C6}" {
+       m_Spawn GC_CrewedVehicleSpawn "{569F629B2A32D412}" {
+        m_sLocation "GC_Spawner_4338681CEBD67318"
+        m_sPrefab "{6B7CD408BDFB94F5}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM_Green.et"
+        m_bReserveNextCrewSeat 1
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{86885D28AA9AFDAC}" {
+          m_aStations {
+           GC_SpawnCrewStation "{08FB9AFD1B6ED6F2}" {
+            m_aCharacters {
+             "{B3C496CCFA72D25E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SL.et"
+             "{DE4C67D3C8F6704D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AR.et"
+             "{06E40E12B17F6E11}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AT.et"
+             "{4375F8D9CF5FCB47}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AAT.et"
+             "{9E5162BC890ADFCF}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SR.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "attack_bridge"
+          }
+         }
+         GC_SpawnCrewGroup "{77E767CE1C752522}" {
+          m_aStations {
+           GC_SpawnCrewStation "{17516704690BDBAA}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{142282632046C0A2}" {
+     m_sName "GC_MigratedSpawn_4338681CEBD67318 (300s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2600FE8839309519}" {
+       m_sEventName "GC_MigratedSpawn_4338681CEBD67318"
+      }
+     }
+     m_Advanced GC_EventOptions "{2B4FD5503918DDE0}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{3482EE3BCC90EB5D}" {
+       m_Spawn GC_CrewedVehicleSpawn "{3FD7D7FCCD30F667}" {
+        m_sLocation "GC_Spawner_4338681CEBD67318"
+        m_sPrefab "{6B7CD408BDFB94F5}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM_Green.et"
+        m_bReserveNextCrewSeat 1
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{6E1EA4E48E40083E}" {
+          m_aStations {
+           GC_SpawnCrewStation "{0C7AF7C5EAD46BCA}" {
+            m_aCharacters {
+             "{B3C496CCFA72D25E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SL.et"
+             "{DE4C67D3C8F6704D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AR.et"
+             "{06E40E12B17F6E11}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AT.et"
+             "{4375F8D9CF5FCB47}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AAT.et"
+             "{9E5162BC890ADFCF}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SR.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "attack_bridge"
+          }
+         }
+         GC_SpawnCrewGroup "{F1E8B54A9EBBAD95}" {
+          m_aStations {
+           GC_SpawnCrewStation "{B110B97BEE5FED5C}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3BF268FB1E01B7CD}" {
+     m_sName "GC_MigratedSpawn_225930F538F9CD21"
+     m_aConditions {
+      GC_MissionEventCondition "{7B637F42272AF5A6}" {
+       m_sEventName "GC_MigrationSpawnCapture_BB7B0B1E224CE47A"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DDEFE14EF97AA357}" {
+       m_sMessage "GC_MigratedSpawn_225930F538F9CD21"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F3749CD36464DB33}" {
+     m_sName "GC_MigratedSpawn_225930F538F9CD21 (600s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4AC208362D5442E1}" {
+       m_sEventName "GC_MigratedSpawn_225930F538F9CD21"
+      }
+     }
+     m_Advanced GC_EventOptions "{4075B3EF3530D11C}" {
+      m_fDelay 600
+     }
+     m_aActions {
+      GC_SpawnAction "{6E99EA67A0330026}" {
+       m_Spawn GC_CrewedVehicleSpawn "{4C7C36E8A0242142}" {
+        m_sLocation "GC_Spawner_225930F538F9CD21"
+        m_sPrefab "{6B7CD408BDFB94F5}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM_Green.et"
+        m_bReserveNextCrewSeat 1
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{E1B3655E6DBCE7C3}" {
+          m_aStations {
+           GC_SpawnCrewStation "{6B4AE3BCB9FF92C7}" {
+            m_aCharacters {
+             "{B3C496CCFA72D25E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SL.et"
+             "{DE4C67D3C8F6704D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AR.et"
+             "{06E40E12B17F6E11}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AT.et"
+             "{4375F8D9CF5FCB47}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AAT.et"
+             "{9E5162BC890ADFCF}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SR.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "getout"
+           "attack_bridge"
+          }
+         }
+         GC_SpawnCrewGroup "{969886EB62B12970}" {
+          m_aStations {
+           GC_SpawnCrewStation "{BEDC6D293AC5E031}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C8719B675E79B221}" {
+     m_sName "GC_MigratedSpawn_CFEB8735D6B51FEA"
+     m_aConditions {
+      GC_MissionEventCondition "{D8FDC049D7F4AB90}" {
+       m_sEventName "GC_MigrationSpawnCapture_BB7B0B1E224CE47A"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FE2A93C6273ADFAF}" {
+       m_sMessage "GC_MigratedSpawn_CFEB8735D6B51FEA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6929D3D5AE06863E}" {
+     m_sName "GC_MigratedSpawn_CFEB8735D6B51FEA (300s)"
+     m_aConditions {
+      GC_MissionEventCondition "{299683525B9DDA6B}" {
+       m_sEventName "GC_MigratedSpawn_CFEB8735D6B51FEA"
+      }
+     }
+     m_Advanced GC_EventOptions "{7573FC177C8440CA}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{CDCF66BEA7035C5A}" {
+       m_Spawn GC_CrewedVehicleSpawn "{CD4CBD9BA14E79F2}" {
+        m_sLocation "GC_Spawner_CFEB8735D6B51FEA"
+        m_sPrefab "{6B7CD408BDFB94F5}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM_Green.et"
+        m_bReserveNextCrewSeat 1
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{B3A2C48D766C4AD1}" {
+          m_aStations {
+           GC_SpawnCrewStation "{EF0F3285A17AFDA0}" {
+            m_aCharacters {
+             "{B3C496CCFA72D25E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SL.et"
+             "{DE4C67D3C8F6704D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AR.et"
+             "{06E40E12B17F6E11}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AT.et"
+             "{4375F8D9CF5FCB47}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AAT.et"
+             "{9E5162BC890ADFCF}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SR.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "getout"
+           "attack_bridge"
+          }
+         }
+         GC_SpawnCrewGroup "{1C61768B44243803}" {
+          m_aStations {
+           GC_SpawnCrewStation "{A8CF82471099976D}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{437A50ED586C4C2E}" {
+     m_sName "GC_MigratedSpawn_86CFA7142B558B40"
+     m_aConditions {
+      GC_MissionEventCondition "{C96401E07FDAD900}" {
+       m_sEventName "GC_MigrationSpawnCapture_BB7B0B1E224CE47A"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DC5FDD5D638E13BC}" {
+       m_sMessage "GC_MigratedSpawn_86CFA7142B558B40"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7383320083A80480}" {
+     m_sName "GC_MigratedSpawn_86CFA7142B558B40 (300s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D671CC753ABAECD5}" {
+       m_sEventName "GC_MigratedSpawn_86CFA7142B558B40"
+      }
+     }
+     m_Advanced GC_EventOptions "{9C859610B13EE186}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{A556035680F35CAB}" {
+       m_Spawn GC_CrewedVehicleSpawn "{C250198378A26EAB}" {
+        m_sLocation "GC_Spawner_86CFA7142B558B40"
+        m_sPrefab "{6B7CD408BDFB94F5}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM_Green.et"
+        m_bReserveNextCrewSeat 1
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{5197B01E21FBCC79}" {
+          m_aStations {
+           GC_SpawnCrewStation "{BDBB9ECF44CD395E}" {
+            m_aCharacters {
+             "{B3C496CCFA72D25E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SL.et"
+             "{DE4C67D3C8F6704D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AR.et"
+             "{06E40E12B17F6E11}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AT.et"
+             "{4375F8D9CF5FCB47}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AAT.et"
+             "{9E5162BC890ADFCF}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SR.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 1
+          m_aWaypoints {
+           "flankmove"
+           "flankgetout"
+           "flankbridge"
+          }
+         }
+         GC_SpawnCrewGroup "{6E822FEBAF533562}" {
+          m_aStations {
+           GC_SpawnCrewStation "{A89CADA344CA79D9}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{447B2A0F38F68145}" {
+     m_sName "GC_MigratedSpawn_739CD7B2F29B5F0B"
+     m_aConditions {
+      GC_MissionEventCondition "{0EB34ADCF30457F8}" {
+       m_sEventName "GC_MigrationSpawnCapture_69351CA0705DB742"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0D7B51D5940E7EBD}" {
+       m_sMessage "GC_MigratedSpawn_739CD7B2F29B5F0B"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FF4B4D72F03F8631}" {
+     m_sName "GC_MigratedSpawn_739CD7B2F29B5F0B (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{309F7ED6067BDE62}" {
+       m_sEventName "GC_MigratedSpawn_739CD7B2F29B5F0B"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{FF4B4D72F03F8631}" {
+       m_Spawn GC_AIGroupSpawn "{6933906A1E263E40}" {
+        m_sLocation "lakeqrf1"
+        m_sPrefab "{D57725689E9E8EDA}Prefabs/Groups/OPFOR/GC_SEPARATIST/2020/Group_SEP_RifleSquad.et"
+        m_aWaypoints {
+         "defendlake"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F5A796BE0451EAD6}" {
+     m_sName "GC_MigratedSpawn_DE1301A97D452B36"
+     m_aConditions {
+      GC_MissionEventCondition "{59C916EC03C13E83}" {
+       m_sEventName "GC_MigrationSpawnCapture_69351CA0705DB742"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{884EB99D4A639B59}" {
+       m_sMessage "GC_MigratedSpawn_DE1301A97D452B36"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{DD688268CE33D602}" {
+     m_sName "GC_MigratedSpawn_DE1301A97D452B36 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{11B0A4453A14A38E}" {
+       m_sEventName "GC_MigratedSpawn_DE1301A97D452B36"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{DD688268CE33D602}" {
+       m_Spawn GC_AIGroupSpawn "{EA2617A4DC1347FC}" {
+        m_sLocation "lakeqrf2"
+        m_sPrefab "{D57725689E9E8EDA}Prefabs/Groups/OPFOR/GC_SEPARATIST/2020/Group_SEP_RifleSquad.et"
+        m_aWaypoints {
+         "defendlake"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A078392ABF6891E3}" {
+     m_sName "GC_MigratedSpawn_047DA35304C4DAA1 (0s)"
+     m_aActions {
+      GC_SpawnAction "{A078392ABF6891E3}" {
+       m_Spawn GC_AIGroupSpawn "{4C1BE191215B884A}" {
+        m_sLocation "GC_Spawner_047DA35304C4DAA1"
+        m_sPrefab "{D57725689E9E8EDA}Prefabs/Groups/OPFOR/GC_SEPARATIST/2020/Group_SEP_RifleSquad.et"
+        m_aWaypoints {
+         "defbridge"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{0AF36383B3C99AB8}" {
+     m_sName "GC_MigratedSpawn_D1E13DACD8CE4D3A (0s)"
+     m_aActions {
+      GC_SpawnAction "{0AF36383B3C99AB8}" {
+       m_Spawn GC_AIGroupSpawn "{A07BA503DB887EE9}" {
+        m_sLocation "GC_Spawner_D1E13DACD8CE4D3A"
+        m_sPrefab "{D57725689E9E8EDA}Prefabs/Groups/OPFOR/GC_SEPARATIST/2020/Group_SEP_RifleSquad.et"
+        m_aWaypoints {
+         "defbridge"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{50C1C9D85FFA749F}" {
+     m_sName "GC_MigratedSpawn_F6CC39C61F598373 (0s)"
+     m_aActions {
+      GC_SpawnAction "{50C1C9D85FFA749F}" {
+       m_Spawn GC_AIGroupSpawn "{6F14FB1FD8741B24}" {
+        m_sLocation "GC_Spawner_F6CC39C61F598373"
+        m_sPrefab "{D57725689E9E8EDA}Prefabs/Groups/OPFOR/GC_SEPARATIST/2020/Group_SEP_RifleSquad.et"
+        m_aWaypoints {
+         "defbridge"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{7D971DF9FA23148D}" {
+     m_sName "GC_MigratedSpawn_DE6302AA3805DA3B"
+     m_aConditions {
+      GC_MissionEventCondition "{9E9E3B5BF6265B02}" {
+       m_sEventName "GC_MigrationSpawnCapture_BB7B0B1E224CE47A"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{057555EC024EC86F}" {
+       m_sMessage "GC_MigratedSpawn_DE6302AA3805DA3B"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{46DE280D35F0613C}" {
+     m_sName "GC_MigratedSpawn_DE6302AA3805DA3B (300s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5226E9403830BD8E}" {
+       m_sEventName "GC_MigratedSpawn_DE6302AA3805DA3B"
+      }
+     }
+     m_Advanced GC_EventOptions "{6A4BED815B387C2E}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{53EAD4B779573876}" {
+       m_Spawn GC_CrewedVehicleSpawn "{8D4FD9A98CA5C547}" {
+        m_sLocation "GC_Spawner_DE6302AA3805DA3B"
+        m_sPrefab "{6B7CD408BDFB94F5}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM_Green.et"
+        m_bReserveNextCrewSeat 1
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{C6A1D1BD7744DB17}" {
+          m_aStations {
+           GC_SpawnCrewStation "{441755F393EBDB17}" {
+            m_aCharacters {
+             "{B3C496CCFA72D25E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SL.et"
+             "{DE4C67D3C8F6704D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AR.et"
+             "{06E40E12B17F6E11}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AT.et"
+             "{4375F8D9CF5FCB47}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AAT.et"
+             "{9E5162BC890ADFCF}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SR.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "getout"
+           "attack_bridge"
+          }
+         }
+         GC_SpawnCrewGroup "{082CA308D463F19A}" {
+          m_aStations {
+           GC_SpawnCrewStation "{EAFA6D6DF5B9754C}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{97AC3FE2AADA022A}" {
+     m_sName "GC_MigratedSpawn_4B93F08940516118"
+     m_aConditions {
+      GC_MissionEventCondition "{F45BD2F0D688A77F}" {
+       m_sEventName "GC_MigrationSpawnCapture_BB7B0B1E224CE47A"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A879D0D83D3342DE}" {
+       m_sMessage "GC_MigratedSpawn_4B93F08940516118"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3B20B72F2D6F0657}" {
+     m_sName "GC_MigratedSpawn_4B93F08940516118 (300s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A5DF3C3071047DC9}" {
+       m_sEventName "GC_MigratedSpawn_4B93F08940516118"
+      }
+     }
+     m_Advanced GC_EventOptions "{F9DF9016641E754F}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{C34B5F19BAEA0CBC}" {
+       m_Spawn GC_CrewedVehicleSpawn "{C277A5601CE1A68E}" {
+        m_sLocation "GC_Spawner_4B93F08940516118"
+        m_sPrefab "{6B7CD408BDFB94F5}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM_Green.et"
+        m_bReserveNextCrewSeat 1
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{30F1D7F83CC7B3BC}" {
+          m_aStations {
+           GC_SpawnCrewStation "{12D05BBD96A7385F}" {
+            m_aCharacters {
+             "{B3C496CCFA72D25E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SL.et"
+             "{DE4C67D3C8F6704D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AR.et"
+             "{06E40E12B17F6E11}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AT.et"
+             "{4375F8D9CF5FCB47}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AAT.et"
+             "{9E5162BC890ADFCF}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SR.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "getout"
+           "attack_bridge"
+          }
+         }
+         GC_SpawnCrewGroup "{26B9F48F3F317906}" {
+          m_aStations {
+           GC_SpawnCrewStation "{2C0B4A079AC5551C}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{EA9D80CD180DBED3}" {
+     m_sName "GC_MigratedSpawn_1FFA84D47ACC982D"
+     m_aConditions {
+      GC_MissionEventCondition "{EFFD2192073FC997}" {
+       m_sEventName "GC_MigrationSpawnCapture_BB7B0B1E224CE47A"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{13BD0CB4225F02F5}" {
+       m_sMessage "GC_MigratedSpawn_1FFA84D47ACC982D"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D4FE31ABF6918CA9}" {
+     m_sName "GC_MigratedSpawn_1FFA84D47ACC982D (300s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4FAE2AC8384E51C5}" {
+       m_sEventName "GC_MigratedSpawn_1FFA84D47ACC982D"
+      }
+     }
+     m_Advanced GC_EventOptions "{779699840166CB76}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_SpawnAction "{B2E49C53626233C5}" {
+       m_Spawn GC_CrewedVehicleSpawn "{33E08F667DAFC22E}" {
+        m_sLocation "GC_Spawner_1FFA84D47ACC982D"
+        m_sPrefab "{6B7CD408BDFB94F5}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM_Green.et"
+        m_bReserveNextCrewSeat 1
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{DD1CF97889CBAAB6}" {
+          m_aStations {
+           GC_SpawnCrewStation "{6492A0EA973E685F}" {
+            m_aCharacters {
+             "{B3C496CCFA72D25E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SL.et"
+             "{DE4C67D3C8F6704D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AR.et"
+             "{06E40E12B17F6E11}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AT.et"
+             "{4375F8D9CF5FCB47}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_AAT.et"
+             "{9E5162BC890ADFCF}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_SR.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+            }
+           }
+          }
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "getout"
+           "attack_bridge"
+          }
+         }
+         GC_SpawnCrewGroup "{508245274D97E037}" {
+          m_aStations {
+           GC_SpawnCrewStation "{3BFD5E0047CD0CD1}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 1155.337 7.664 3284.516
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_aFriendlyFactionsIds {
+      "GC_SEPARATIST"
+     }
+    }
+   }
+  }
+ }
+}
+$grp Vehicle : "{3EA6F47D95867114}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et" {
+ M1025_armed_M2HB4 {
+  coords 2103.12 14.22 3321.373
+  angles 0 154.8 0
+ }
+ M1025_armed_M2HB5 {
+  coords 2107.539 14.423 3312.208
+  angles 0 154.8 0
+ }
+ M1025_armed_M2HB6 {
+  coords 2111.979 14.5 3303.751
+  angles 0 154.8 0
+ }
+ M1025_armed_M2HB7 {
+  coords 2114.809 14.588 3294.987
+  angles 0 154.8 0
+ }
+ M1025_armed_M2HB8 {
+  coords 2119.718 14.746 3284.33
+  angles 0 154.8 0
+ }
+ M1025_armed_M2HB9 {
+  coords 2125.885 14.995 3271.57
+  angles 0 154.8 0
+ }
+ M1025_armed_M2HB10 {
+  coords 2130.788 15.119 3258.822
+  angles 0 154.8 0
+ }
+ M1025_armed_M2HB11 {
+  coords 2098.133 13.921 3333.537
+  angles 0 154.8 0
+ }
+}
+GC_RadiusAreaEntity atlake : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 251.638 2.856 3214.398
+ m_fRadius 175
+}
+Vehicle M998_covered_long1 : "{9B1BF9644E0378D6}Prefabs/Vehicles/Wheeled/M998/M998_covered_long.et" {
+ coords 2093.774 13.661 3343.427
+}
