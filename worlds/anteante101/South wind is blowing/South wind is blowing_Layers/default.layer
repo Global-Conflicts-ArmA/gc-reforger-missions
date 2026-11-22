@@ -1,0 +1,278 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 6317.298 159.593 6454.232
+}
+GC_LobbyGameMode GC_MigratedMission : "{76761E66A5D3803B}worlds/anteante101/South wind is blowing/South wind is blowing_GC_Settings.et" {
+ components {
+  GC_PeakFactionPopulationComponent "{58B82CDCE1B9BE7E}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{13C444266197A208}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 180
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{18337F14C605487D}" {
+     m_sName "Enfield0"
+    }
+    GC_MissionFlag "{538E2B1A62BB2D84}" {
+     m_sName "Enfield1"
+    }
+    GC_MissionFlag "{E878FD2324A02D42}" {
+     m_sName "Enfield2"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{8DDB898810BEAA0D}" {
+     m_sName "GC_MigrationStartupSampling"
+     m_aConditions {
+      GC_ConditionGroup "{078BF7ACC9F1DD22}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{4EBC074494910DFE}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{3424BE97C829618F}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{D1A31B7EE319188D}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_FlagSamplingAction "{4EBC074494910DFE}" {
+       m_iDrawCount 1
+       m_aFlags {
+        "Enfield0"
+        "Enfield1"
+        "Enfield2"
+       }
+      }
+     }
+    }
+    GC_Event "{57AE81585DE8FAC4}" {
+     m_sName "Outcome 692D2DEAD345098C"
+     m_aConditions {
+      GC_AreaCondition "{570EA6E83671E104}" {
+       m_sArea "GC_MigrationArea_CAPTURED"
+       m_Targets GC_CharacterAreaTargets "{5ACC49B7ECD5AABB}" {
+        m_aFactions {
+         "FIA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{CF948A0DC341D72A}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{531DC1948E5ECB40}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{46B0692F73C927AE}" {
+       m_sMessage "Outcome 692D2DEAD345098C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2E4733F1931262FE}" {
+     m_sName "Outcome 692D2DEAD345098C (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3821C4C7C600F565}" {
+       m_sEventName "Outcome 692D2DEAD345098C"
+      }
+     }
+     m_Advanced GC_EventOptions "{FDF35ECB206ACE3B}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{AFCA9533E8A63BE4}" {
+       m_sTitle "THE PATRIOTS ARE IN CONTROL!!!"
+       m_sMessage "FIA has control of the US base and their equipment!"\
+       ""\
+       "FIA won!!!"\
+       ""
+      }
+     }
+    }
+    GC_Event "{90A39BACAB8D79AE}" {
+     m_sName "fia_dead"
+     m_aConditions {
+      GC_CustomScriptCondition "{0B77442659A0DAAD}" {
+       m_Script GC_PeakFactionPopulationCheck "{6719B25888006DD9}" {
+        m_sFaction "FIA"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{95F96542D08DA89F}" {
+       m_sMessage "fia_dead"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{82761F5821F97F02}" {
+     m_sName "fia_dead (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{63CC191248F34BAC}" {
+       m_sEventName "fia_dead"
+      }
+     }
+     m_Advanced GC_EventOptions "{C79D1FC0500BBE28}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{1E6196C7E648AAE6}" {
+       m_sTitle "FIA have taken heavy casualties!!!"
+       m_sMessage "Their moral has broken and are falling back."\
+       ""\
+       "US won!!!"
+      }
+     }
+    }
+    GC_Event "{18080A76EA60A091}" {
+     m_sName "us dead"
+     m_aConditions {
+      GC_CustomScriptCondition "{8709B1EAEA50ECC8}" {
+       m_Script GC_PeakFactionPopulationCheck "{3F1C0D4023C9E74B}" {
+        m_sFaction "US"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{03074E32598D50CC}" {
+       m_sMessage "us dead"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{213544B06E8B5E73}" {
+     m_sName "us dead (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{77BDF247386A8AC3}" {
+       m_sEventName "us dead"
+      }
+     }
+     m_Advanced GC_EventOptions "{5AF0CE8A5C32B375}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{AE54152B346DBC29}" {
+       m_sTitle "US forces are eliminated!!! "
+       m_sMessage "The FIA has control of the base!"\
+       ""\
+       "FIA won!!!"
+      }
+     }
+    }
+    GC_Event "{0BEE0CD002722469}" {
+     m_sName "US won time limit (2400s)"
+     m_Advanced GC_EventOptions "{BB9388EB52156B6F}" {
+      m_fDelay 2400
+     }
+     m_aActions {
+      GC_EndMissionAction "{E9E29B383B730031}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{352D7CD0ED0B2A8D}" {
+     m_sName "GC_MigratedSpawn_ED411339B861D55D"
+     m_aConditions {
+      GC_GameModeStateCondition "{D73A49EFDFA8C3EA}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{A87575555E57F151}" {
+       m_sFlagName "Enfield0"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C923CEDE4FB72A7D}" {
+       m_sMessage "GC_MigratedSpawn_ED411339B861D55D"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9F632270D1F5D7C8}" {
+     m_sName "GC_MigratedSpawn_ED411339B861D55D (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{0ED58F9E2C00A02D}" {
+       m_sEventName "GC_MigratedSpawn_ED411339B861D55D"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{9F632270D1F5D7C8}" {
+       m_Spawn GC_PrefabSpawn "{4724F442BCB367C0}" {
+        m_sLocation "GC_Spawner_ED411339B861D55D"
+        m_sPrefab "{DBFBF80D96CCA0F8}worlds/anteante101/Prefabs/Weapons/box_m67_AA101.et"
+       }
+      }
+     }
+    }
+    GC_Event "{5FF2315E3614752D}" {
+     m_sName "GC_MigratedSpawn_F100671D3232420D"
+     m_aConditions {
+      GC_GameModeStateCondition "{34BA163FF1F36C29}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{04ED00A00B0BFF36}" {
+       m_sFlagName "Enfield0"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9ED32A5D00FFCD42}" {
+       m_sMessage "GC_MigratedSpawn_F100671D3232420D"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1EE06142E15E365D}" {
+     m_sName "GC_MigratedSpawn_F100671D3232420D (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{EECD5B07EC8254C9}" {
+       m_sEventName "GC_MigratedSpawn_F100671D3232420D"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{1EE06142E15E365D}" {
+       m_Spawn GC_PrefabSpawn "{8E51B236C5EF3B49}" {
+        m_sLocation "GC_Spawner_F100671D3232420D"
+        m_sPrefab "{43BAA494D2DCA5AF}worlds/anteante101/Prefabs/Weapons/MG_M60_empty_AA101.et"
+       }
+      }
+     }
+    }
+    GC_Event "{658B58C129438CDC}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{6CF1F18E1CD685EA}" {
+       m_fSeconds 180.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{8A69F72432E26221}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 6355.929 152.949 6348.105
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 7007.521 115.415 5951.764
+}
