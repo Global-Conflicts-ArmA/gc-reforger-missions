@@ -1,0 +1,290 @@
+SCR_AIWorld : "{33A5B976E41B0A4C}Prefabs/AI/SCR_AIWorld_BadOrb_GC.et" {
+}
+GC_LobbyGameMode GC_MigratedMission : "{E14CEE765E69C0B9}worlds/Woody/COXX_Funf_Wege_Lodgement/COXX_Funf_Wege_Lodgement_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bRandomStartingDaytime 1
+   m_bRandomStartingWeather 1
+   m_bRandomWeatherChanges 1
+   m_bDateOverride 1
+   m_iDay 1
+   m_iMonth 8
+   m_iYear 1984
+  }
+  GC_PeakFactionPopulationComponent "{EC7F2784265AAF93}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{807242E6768FB2FD}" {
+     m_sName "missionstart"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{2BE0F09893FA7979}" {
+     m_sName "NVA L"
+     m_aConditions {
+      GC_CustomScriptCondition "{7459C61893D48F19}" {
+       m_Script GC_PeakFactionPopulationCheck "{D6048BC13E65EF46}" {
+        m_sFaction "GC_NVA"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{BA1DABB66E2C21B9}" {
+       m_sMessage "NVA L"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{48AEBD51374BC798}" {
+     m_sName "NVA L (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B83AFB81CDBC9439}" {
+       m_sEventName "NVA L"
+      }
+     }
+     m_Advanced GC_EventOptions "{049B906E12139200}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_MessageAction "{3597B14E892C5B16}" {
+       m_sTitle "Mission Failed!"
+       m_sMessage "NVA forces have sustained 80% casualties!"
+      }
+     }
+    }
+    GC_Event "{1BA0F9E15518D39F}" {
+     m_sName "NVA W"
+     m_aConditions {
+      GC_ConditionGroup "{9654493B3F0D79DD}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{EC4E0AD01FA09E38}" {
+         m_sArea "GC_MigrationArea_obj1"
+         m_Targets GC_CharacterAreaTargets "{8D447676DC2D7F1D}" {
+          m_iWho 2
+          m_aFactions {
+           "NVA"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{A809F77298634AE3}" {
+          m_fRequiredShare 0.99
+         }
+         m_Capture GC_AreaCaptureOptions "{BDFFD069FFA9FB02}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{EA1E8CC39DCBF67A}" {
+           m_sLocation "Forstfahrzeug-Wartungshof"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{5B9B98627C2FA2C6}" {
+         m_sArea "GC_MigrationArea_obj2"
+         m_Targets GC_CharacterAreaTargets "{A3A5C288C4ED3CEF}" {
+          m_iWho 2
+          m_aFactions {
+           "NVA"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{66B582FA842D5541}" {
+          m_fRequiredShare 0.99
+         }
+         m_Capture GC_AreaCaptureOptions "{A7A030F27B9EE785}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{8CB64F0EB9FB1900}" {
+           m_sLocation "Funf-Wege"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3FB067D300A8C8F0}" {
+       m_sMessage "NVA W"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{57C581E2E06F5570}" {
+     m_sName "NVA W (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9BA2701A2FE286DB}" {
+       m_sEventName "NVA W"
+      }
+     }
+     m_Advanced GC_EventOptions "{3A4395DD59B80B13}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_MessageAction "{FCB6F59A77FE4C65}" {
+       m_sTitle "Mission Accomplished!"
+       m_sMessage "Both objectives seized!"
+      }
+     }
+    }
+    GC_Event "{2F23405E866F773A}" {
+     m_sName "Outcome 65303A1521269BB3 (5s)"
+     m_Advanced GC_EventOptions "{9C18CA656EEC2446}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_FlagAction "{42D47B1A475F3410}" {
+       m_sFlagName "missionstart"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{3D737D5B47AADD06}" {
+     m_sName "GC_MigratedSpawn_46057376B0BF7A4E"
+     m_aConditions {
+      GC_GameModeStateCondition "{411EC800D3337CAC}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{B84E4A0D0755EC84}" {
+       m_sFlagName "missionstart"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{AF9DC616F9A0C7BB}" {
+       m_sMessage "GC_MigratedSpawn_46057376B0BF7A4E"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{35E3A0795F3E52CE}" {
+     m_sName "GC_MigratedSpawn_46057376B0BF7A4E (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C5D88F7E7B3E220B}" {
+       m_sEventName "GC_MigratedSpawn_46057376B0BF7A4E"
+      }
+     }
+     m_Advanced GC_EventOptions "{BC353076E71E7B96}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{025EDB10EAA280D1}" {
+       m_Spawn GC_AIGroupSpawn "{C8420F230A179E52}" {
+        m_sLocation "GC_Spawner_46057376B0BF7A4E"
+        m_sPrefab "{4679AD5C647BBE6A}Prefabs/Groups/BLUFOR/British Forces/1983/Group_UK_1983_Regulars_InfantrySection.et"
+        m_aWaypoints {
+         "south_m1"
+         "south_atk"
+         "south_snd"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{72FCA66FC511D0DB}" {
+     m_sName "GC_MigratedSpawn_46057376B0BF7A4E (65s)"
+     m_aConditions {
+      GC_MissionEventCondition "{74C8C85274094B72}" {
+       m_sEventName "GC_MigratedSpawn_46057376B0BF7A4E"
+      }
+     }
+     m_Advanced GC_EventOptions "{29805CCD6A5C6314}" {
+      m_fDelay 65
+     }
+     m_aActions {
+      GC_SpawnAction "{BC1DD7C6021750CA}" {
+       m_Spawn GC_AIGroupSpawn "{B9828DAE1FADEE26}" {
+        m_sLocation "GC_Spawner_46057376B0BF7A4E"
+        m_sPrefab "{4679AD5C647BBE6A}Prefabs/Groups/BLUFOR/British Forces/1983/Group_UK_1983_Regulars_InfantrySection.et"
+        m_aWaypoints {
+         "south_m1"
+         "south_atk"
+         "south_snd"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{7958B7E3A41FA572}" {
+     m_sName "GC_MigratedSpawn_1A7C287AC7153842"
+     m_aConditions {
+      GC_GameModeStateCondition "{5B4ADB82F0186C98}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{5A4ED419B7B886EC}" {
+       m_sFlagName "missionstart"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3CE026AE6B5C8B72}" {
+       m_sMessage "GC_MigratedSpawn_1A7C287AC7153842"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E0AF00194C72E806}" {
+     m_sName "GC_MigratedSpawn_1A7C287AC7153842 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{107F52883C6CC86C}" {
+       m_sEventName "GC_MigratedSpawn_1A7C287AC7153842"
+      }
+     }
+     m_Advanced GC_EventOptions "{4024341A478768A9}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{C631EA73165AD913}" {
+       m_Spawn GC_AIGroupSpawn "{36424EAB9B1273B5}" {
+        m_sLocation "GC_Spawner_1A7C287AC7153842"
+        m_sPrefab "{4679AD5C647BBE6A}Prefabs/Groups/BLUFOR/British Forces/1983/Group_UK_1983_Regulars_InfantrySection.et"
+        m_aWaypoints {
+         "south_atk"
+         "south_snd"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F82B0729475BAC91}" {
+     m_sName "GC_MigratedSpawn_1A7C287AC7153842 (70s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A9EFC06AAF1A7E61}" {
+       m_sEventName "GC_MigratedSpawn_1A7C287AC7153842"
+      }
+     }
+     m_Advanced GC_EventOptions "{0DFB46A2ECA18084}" {
+      m_fDelay 70
+     }
+     m_aActions {
+      GC_SpawnAction "{9061809A8D6C01CB}" {
+       m_Spawn GC_AIGroupSpawn "{F5F9EE68AF30638D}" {
+        m_sLocation "GC_Spawner_1A7C287AC7153842"
+        m_sPrefab "{4679AD5C647BBE6A}Prefabs/Groups/BLUFOR/British Forces/1983/Group_UK_1983_Regulars_InfantrySection.et"
+        m_aWaypoints {
+         "south_atk"
+         "south_snd"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 3038.989 205.239 4779.645
+}
