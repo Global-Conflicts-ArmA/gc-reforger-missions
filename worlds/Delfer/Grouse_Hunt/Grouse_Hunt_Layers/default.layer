@@ -1,0 +1,552 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 6390.121 158.892 6421.301
+}
+GC_LobbyGameMode GC_MigratedMission : "{31ADF969759EC5DD}worlds/Delfer/Grouse_Hunt/Grouse_Hunt_GC_Settings.et" {
+ components {
+  SCR_InitWeatherComponent "{61B68227C35BFE9A}" {
+   m_sInitialStartingWeatherId "Heavy Wet Fog"
+   m_iSetWeatherConstant 1
+  }
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 15
+   m_iStartingMinutes 20
+   m_bRandomStartingWeather 1
+   m_bDateOverride 1
+   m_iDay 9
+   m_iMonth 5
+   m_iYear 1979
+  }
+  GC_PeakFactionPopulationComponent "{1BDB1F7001032A3C}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_RandomEventGroup "{A7B9F67FFFD4DABA}" {
+     m_sName "GC_MigrationStartupSelection"
+     m_iPickCount 1
+     m_aConditions {
+      GC_ConditionGroup "{0B15A7CCC2E318C8}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{5FAD259FE01D5A15}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{C2C57465390A034D}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{E42406825FC73F4C}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aEvents {
+      GC_Event "{C0109632A3056A80}" {
+       m_sName "GC_MigrationChoice_POS1"
+       m_aActions {
+        GC_MessageAction "{143B3B7FDEAF1FCD}" {
+         m_sMessage "GC_MigrationChoice_POS1"
+         m_iDelivery 2
+        }
+       }
+      }
+      GC_Event "{0BECC2CCC228B1C0}" {
+       m_sName "GC_MigrationChoice_POS2"
+       m_aActions {
+        GC_MessageAction "{EDF4103D06DC23A1}" {
+         m_sMessage "GC_MigrationChoice_POS2"
+         m_iDelivery 2
+        }
+       }
+      }
+      GC_Event "{EDBDE9FB5FA06C7A}" {
+       m_sName "GC_MigrationChoice_POS3"
+       m_aActions {
+        GC_MessageAction "{D33A916764852292}" {
+         m_sMessage "GC_MigrationChoice_POS3"
+         m_iDelivery 2
+        }
+       }
+      }
+      GC_Event "{A82BB29ED59E8E58}" {
+       m_sName "GC_MigrationChoice_POS4"
+       m_aActions {
+        GC_MessageAction "{8031E14D61E6AB2E}" {
+         m_sMessage "GC_MigrationChoice_POS4"
+         m_iDelivery 2
+        }
+       }
+      }
+      GC_Event "{A944E3377B4AC9ED}" {
+       m_sName "GC_MigrationChoice_POS5"
+       m_aActions {
+        GC_MessageAction "{0F58B07E012F80DA}" {
+         m_sMessage "GC_MigrationChoice_POS5"
+         m_iDelivery 2
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{1873FA1B2A511CCA}" {
+     m_sName "OPFOR Victory 1"
+     m_aConditions {
+      GC_ConditionGroup "{43730AA7CD03602E}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_CustomScriptCondition "{F0CEA434E544C946}" {
+         m_Script GC_PeakFactionPopulationCheck "{A5D8A221AD1AC7DA}" {
+          m_sFaction "US"
+          m_fRatio 1
+         }
+        }
+        GC_CustomScriptCondition "{E9A27D04B7A80A7A}" {
+         m_Script GC_PeakFactionPopulationCheck "{AE572783A9DBA757}" {
+          m_sFaction "GC_IRA"
+          m_fRatio 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{455BB742D10D3166}" {
+       m_sMessage "OPFOR Victory 1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5470FF6CA4AA5628}" {
+     m_sName "OPFOR Victory 1 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C4CC73AF35235BAB}" {
+       m_sEventName "OPFOR Victory 1"
+      }
+     }
+     m_Advanced GC_EventOptions "{10215CB07818642A}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{3B10B90BBD4FD8C0}" {
+       m_sTitle "OPFOR Victory"
+       m_sMessage "US and Indfor Dead"
+      }
+     }
+    }
+    GC_Event "{D905C8F48A400D0B}" {
+     m_sName "OPFOR Victory 2"
+     m_aConditions {
+      GC_ConditionGroup "{3E7E2803879C3366}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{AC224CFF50E25781}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_CustomScriptCondition "{A53336F16B2259C6}" {
+           m_Script GC_PeakFactionPopulationCheck "{1414F9071F2CB14E}" {
+            m_sFaction "US"
+            m_fRatio 1
+           }
+          }
+          GC_AreaCondition "{2DE85F2C459E2136}" {
+           m_sArea "intelopfor"
+           m_Targets GC_NamedAreaTargets "{BBF00A195ED474AD}" {
+            m_aNames {
+             "Intel"
+            }
+            m_bCountMissingAsOutside 1
+            m_bExcludeDestroyed 1
+           }
+           m_Requirement GC_LivingProportion "{F53196234540D878}" {
+            m_fRequiredProportion 1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{6783F430DB663FED}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_Messages GC_CaptureMessages "{BA7406E6A186599C}" {
+             m_sLocation ""
+             m_sCaptured "The intel is at OPFOR HQ."
+             m_sCapturing "ERROR: Trigger Status Messages are not configured properly, there should be exactly 6 elements."
+             m_sCaptureInterrupted "ERROR: Trigger Status Messages are not configured properly, there should be exactly 6 elements."
+             m_sLost "ERROR: Trigger Status Messages are not configured properly, there should be exactly 6 elements."
+             m_sLosing "ERROR: Trigger Status Messages are not configured properly, there should be exactly 6 elements."
+             m_sLossInterrupted "ERROR: Trigger Status Messages are not configured properly, there should be exactly 6 elements."
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{201E40CB57F5047A}" {
+       m_sMessage "OPFOR Victory 2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{63BF2E5C8D93952E}" {
+     m_sName "INDFOR Victory"
+     m_aConditions {
+      GC_CustomScriptCondition "{1483FBFD81E8ACB2}" {
+       m_Script GC_PeakFactionPopulationCheck "{6B228F749A755CCB}" {
+        m_sFaction "USSR"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7135696C805BAE83}" {
+       m_sMessage "INDFOR Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E2FEBB5F0CA96563}" {
+     m_sName "INDFOR Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E0662C881F730112}" {
+       m_sEventName "INDFOR Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{703F9D78A499B02A}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{320B7BAF4B8F7BD4}" {
+       m_sTitle "INDFOR Victory"
+       m_sMessage "OPFOR Dead"
+      }
+     }
+    }
+    GC_Event "{A418B31A3C756A30}" {
+     m_sName "INDFOR Victory 2"
+     m_aConditions {
+      GC_ConditionGroup "{4C224C7B70CAE022}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{21130F2954A80F1F}" {
+         m_sArea "GC_MigrationArea_Blufor_Extract"
+         m_Targets GC_CharacterAreaTargets "{1531781294AC4A1D}" {
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{BBB1056958B8B816}" {
+          m_fRequiredShare 1
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{68160FD207862299}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_Messages GC_CaptureMessages "{59FAA09E4F49DB6F}" {
+           m_sLocation "The Safehouse"
+           m_sCaptured "Pilot has extracted."
+           m_sCapturing "The %1 has extracted to %2."
+           m_sCaptureInterrupted "The %1 has extracted to %2."
+           m_sLost "The %1 has extracted to %2."
+           m_sLosing "The %1 has extracted to %2."
+           m_sLossInterrupted "The %1 has extracted to %2."
+          }
+         }
+        }
+        GC_AreaCondition "{15BC65C832228ADD}" {
+         m_sArea "intelblufor"
+         m_Targets GC_NamedAreaTargets "{CBD381C01382510A}" {
+          m_aNames {
+           "Intel"
+          }
+          m_bCountMissingAsOutside 1
+          m_bExcludeDestroyed 1
+         }
+         m_Requirement GC_LivingProportion "{6398B0393B534144}" {
+          m_fRequiredProportion 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{31FCCE377E1C4875}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_Messages GC_CaptureMessages "{1FE5E09B27C9ED30}" {
+           m_sLocation ""
+           m_sCaptured "The intel is at US's extraction point."
+           m_sCapturing "ERROR: Trigger Status Messages are not configured properly, there should be exactly 6 elements."
+           m_sCaptureInterrupted "ERROR: Trigger Status Messages are not configured properly, there should be exactly 6 elements."
+           m_sLost "ERROR: Trigger Status Messages are not configured properly, there should be exactly 6 elements."
+           m_sLosing "ERROR: Trigger Status Messages are not configured properly, there should be exactly 6 elements."
+           m_sLossInterrupted "ERROR: Trigger Status Messages are not configured properly, there should be exactly 6 elements."
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{BC8382D224BD695F}" {
+       m_sMessage "INDFOR Victory 2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E837B97D6393FF58}" {
+     m_sName "INDFOR Victory 2 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F9B6D3C075CA1A93}" {
+       m_sEventName "INDFOR Victory 2"
+      }
+     }
+     m_Advanced GC_EventOptions "{58928B38B481E14F}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{9B8D4FA9F93C9CE4}" {
+       m_sTitle "INDFOR Victory"
+       m_sMessage "Pilot and Intel Extracted"
+      }
+     }
+    }
+    GC_Event "{0C9A65DF9D93AF5B}" {
+     m_sName "POS1 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E7577FAEEFF2DC76}" {
+       m_sEventName "GC_MigrationChoice_POS1"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{0F1D7B4C9F8D6AD2}" {
+       m_Spawn GC_PrefabSpawn "{C7C37FD798DEC935}" {
+        m_sLocation "POSITION1"
+        m_sPrefab "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et"
+        m_sEntityName "Intel"
+       }
+      }
+      GC_SpawnAction "{131F1BE9B518A3A0}" {
+       m_Spawn GC_PrefabSpawn "{17287D902EB5A912}" {
+        m_sLocation "POSITION1"
+        m_sPrefab "{9ADD554959C09197}Prefabs/DeployedParachutes/Core/DeployedParachuteMK4.et"
+        m_sEntityName "Chute"
+       }
+      }
+      GC_SpawnAction "{6F84A1869D1E0F5F}" {
+       m_Spawn GC_PrefabSpawn "{5A7022EBC202FD33}" {
+        m_sLocation "POSITION1"
+        m_sPrefab "{1A486F1C4D22A32A}Prefabs/Vehicles/Tracked/T14/VehParts/Seats/T14_seat.et"
+        m_sEntityName "Seat"
+       }
+      }
+     }
+    }
+    GC_Event "{2B81305952B32377}" {
+     m_sName "POS2 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{82C98C4E8110872E}" {
+       m_sEventName "GC_MigrationChoice_POS2"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{D74F24E269A9F0B7}" {
+       m_Spawn GC_PrefabSpawn "{33E929FC5808E036}" {
+        m_sLocation "POSITION2"
+        m_sPrefab "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et"
+        m_sEntityName "Intel"
+       }
+      }
+      GC_SpawnAction "{5E680BFD17D5B949}" {
+       m_Spawn GC_PrefabSpawn "{76B023CDE63240C5}" {
+        m_sLocation "POSITION2"
+        m_sPrefab "{9ADD554959C09197}Prefabs/DeployedParachutes/Core/DeployedParachuteMK4.et"
+        m_sEntityName "Chute"
+       }
+      }
+      GC_SpawnAction "{8ABD0C706230A745}" {
+       m_Spawn GC_PrefabSpawn "{173E3576D8024A7D}" {
+        m_sLocation "POSITION2"
+        m_sPrefab "{1A486F1C4D22A32A}Prefabs/Vehicles/Tracked/T14/VehParts/Seats/T14_seat.et"
+        m_sEntityName "Seat"
+       }
+      }
+     }
+    }
+    GC_Event "{3BEC5DF8525923D2}" {
+     m_sName "POS3 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{28F87F939632FF98}" {
+       m_sEventName "GC_MigrationChoice_POS3"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{A56D75C8D0F4B94C}" {
+       m_Spawn GC_PrefabSpawn "{2D0D36328A69D293}" {
+        m_sLocation "POSITION3"
+        m_sPrefab "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et"
+        m_sEntityName "Intel"
+       }
+      }
+      GC_SpawnAction "{B75A36337DC06EF9}" {
+       m_Spawn GC_PrefabSpawn "{0056E14C07DA0FA7}" {
+        m_sLocation "POSITION3"
+        m_sPrefab "{9ADD554959C09197}Prefabs/DeployedParachutes/Core/DeployedParachuteMK4.et"
+        m_sEntityName "Chute"
+       }
+      }
+      GC_SpawnAction "{ADF8FAF7D971F3D1}" {
+       m_Spawn GC_PrefabSpawn "{6F689A2F149F8912}" {
+        m_sLocation "POSITION3"
+        m_sPrefab "{1A486F1C4D22A32A}Prefabs/Vehicles/Tracked/T14/VehParts/Seats/T14_seat.et"
+        m_sEntityName "Seat"
+       }
+      }
+     }
+    }
+    GC_Event "{E6FA5A70C35BE7E4}" {
+     m_sName "POS4 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{0974D935609F440A}" {
+       m_sEventName "GC_MigrationChoice_POS4"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{7685E22F4EADA2A1}" {
+       m_Spawn GC_PrefabSpawn "{A12C626174C4B831}" {
+        m_sLocation "POSITION4"
+        m_sPrefab "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et"
+        m_sEntityName "Intel"
+       }
+      }
+      GC_SpawnAction "{381F2066FC56FC21}" {
+       m_Spawn GC_PrefabSpawn "{EEFCFC8F8378BD40}" {
+        m_sLocation "POSITION4"
+        m_sPrefab "{9ADD554959C09197}Prefabs/DeployedParachutes/Core/DeployedParachuteMK4.et"
+        m_sEntityName "Chute"
+       }
+      }
+      GC_SpawnAction "{3363FE2B54857EA6}" {
+       m_Spawn GC_PrefabSpawn "{35FBF4A39FBFC4C8}" {
+        m_sLocation "POSITION4"
+        m_sPrefab "{1A486F1C4D22A32A}Prefabs/Vehicles/Tracked/T14/VehParts/Seats/T14_seat.et"
+        m_sEntityName "Seat"
+       }
+      }
+     }
+    }
+    GC_Event "{860880B6FFF1AC62}" {
+     m_sName "POS5 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{69C44508937A8048}" {
+       m_sEventName "GC_MigrationChoice_POS5"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{A3067BCA13AF5206}" {
+       m_Spawn GC_PrefabSpawn "{3A06400C7AF30D1E}" {
+        m_sLocation "POSITION5"
+        m_sPrefab "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et"
+        m_sEntityName "Intel"
+       }
+      }
+      GC_SpawnAction "{4D0CAA40877351F7}" {
+       m_Spawn GC_PrefabSpawn "{2ACB3205D98A2519}" {
+        m_sLocation "POSITION5"
+        m_sPrefab "{9ADD554959C09197}Prefabs/DeployedParachutes/Core/DeployedParachuteMK4.et"
+        m_sEntityName "Chute"
+       }
+      }
+      GC_SpawnAction "{C8439D480C0F078D}" {
+       m_Spawn GC_PrefabSpawn "{55A9D585806FB5D9}" {
+        m_sLocation "POSITION5"
+        m_sPrefab "{1A486F1C4D22A32A}Prefabs/Vehicles/Tracked/T14/VehParts/Seats/T14_seat.et"
+        m_sEntityName "Seat"
+       }
+      }
+     }
+    }
+    GC_Event "{6AF9E7D595A27484}" {
+     m_sName "GC_MigrationAreaStatus_362D0A142D437340"
+     m_aConditions {
+      GC_AreaCondition "{10973622B6F21840}" {
+       m_sArea "GC_MigrationArea_Opfor_extract"
+       m_Targets GC_CharacterAreaTargets "{926C026BA9A59292}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{B3E1064B57FC4178}" {
+        m_fRequiredShare 1
+        m_bWholeMission 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{BD62290DA90F4734}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_Messages GC_CaptureMessages "{C33530FFFA9D004E}" {
+         m_sLocation "OPFOR HQ."
+         m_sCaptured "OPFOR has returned to their HQ."
+         m_sCapturing "The %1 has extracted to %2."
+         m_sCaptureInterrupted "The %1 has extracted to %2."
+         m_sLost "The %1 has extracted to %2."
+         m_sLosing "The %1 has extracted to %2."
+         m_sLossInterrupted "The %1 has extracted to %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8C5B143119FAFF0F}" {
+       m_sMessage "GC_MigrationAreaStatus_362D0A142D437340"
+       m_iDelivery 2
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 6394.121 159.125 6423.654
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{633D460D559977CA}" {
+     UIInfo SCR_FactionUIInfo "{633D46001FC1655D}" {
+      Name "West German Militia"
+      Icon "{29BD4B2192625A29}worlds/Delfer/Grouse_Hunt/GC_BDW_icon.edds"
+     }
+     m_sFactionFlag "{29BD4B2192625A29}worlds/Delfer/Grouse_Hunt/GC_BDW_icon.edds"
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_bIsAssignedRandomly 0
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{58B2B630FDD64B65}" {
+        m_sCallsign "Spatel"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "HQ"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+        m_sCallsign ""
+       }
+      }
+      m_sCallsignGroupFormat "%2-%3"
+      m_sCallsignCharacterFormat "%2-%3 %4"
+      m_sCallsignCharacterWithRoleFormat "%2-%3 %4"
+     }
+    }
+   }
+  }
+ }
+}
