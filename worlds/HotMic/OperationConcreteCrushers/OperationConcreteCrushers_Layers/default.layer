@@ -1,0 +1,3767 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 9481.182 6.443 7007.93
+ angleY 60
+}
+GC_LobbyGameMode GC_MigratedMission : "{7AF81A5005C8D5F2}worlds/HotMic/OperationConcreteCrushers/OperationConcreteCrushers_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 10
+   m_bRandomStartingWeather 1
+   m_bRandomWeatherChanges 1
+  }
+  GC_PeakFactionPopulationComponent "{1ACF8B4EDA962FE0}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{317D9590116FAAB1}" {
+     m_sName "Chotain Military Site Objective Flag"
+    }
+    GC_MissionFlag "{D05BA63C0B33E394}" {
+     m_sName "Chotain Objective Flag"
+    }
+    GC_MissionFlag "{F87E79410E14A654}" {
+     m_sName "ChotainMilitarySite_Intel"
+    }
+    GC_MissionFlag "{600D2EC189C1C2F4}" {
+     m_sName "Chotain_Intel"
+    }
+    GC_MissionFlag "{CC0BF1FE4E70B0FC}" {
+     m_sName "GC_MigrationCommanderReveal"
+    }
+    GC_MissionFlag "{99C0C60EEFB3C8D5}" {
+     m_sName "GC_MigrationIntelCleanup"
+    }
+    GC_MissionFlag "{05C4A78545B35523}" {
+     m_sName "GC_MigrationIntelCount"
+    }
+    GC_MissionFlag "{74E1847561DFAE31}" {
+     m_sName "Lamentin Flag"
+    }
+    GC_MissionFlag "{CAABE10BD6869200}" {
+     m_sName "Lamentin Spawn Flag"
+    }
+    GC_MissionFlag "{0D9B9008D7DB495F}" {
+     m_sName "Laruns Objective Flag"
+    }
+    GC_MissionFlag "{891AA8C1AC634980}" {
+     m_sName "Laruns_Intel"
+    }
+    GC_MissionFlag "{71DD51A35E9CBFD8}" {
+     m_sName "Levie Objective Flag"
+    }
+    GC_MissionFlag "{A18E0FCFB2C60662}" {
+     m_sName "Levie_Intel"
+    }
+    GC_MissionFlag "{828E440A54E2868C}" {
+     m_sName "Military Site Objective Flag"
+    }
+    GC_MissionFlag "{BE2E33D8B8E95018}" {
+     m_sName "MilitarySite_Intel"
+    }
+    GC_MissionFlag "{941E4CA9C45CB937}" {
+     m_sName "Mission Complete Flag"
+    }
+    GC_MissionFlag "{956C0D54C8BE058F}" {
+     m_sName "Montignac Flag"
+    }
+    GC_MissionFlag "{5C6C260513316EEB}" {
+     m_sName "Montignac Spawn Flag"
+    }
+    GC_MissionFlag "{89C6982830C17C36}" {
+     m_sName "Morton Flag"
+    }
+    GC_MissionFlag "{C18CA81B8CCCD46E}" {
+     m_sName "Morton Spawn Flag"
+    }
+    GC_MissionFlag "{FA4A8E70B8CC3871}" {
+     m_sName "Phase 1 Done Flag"
+    }
+    GC_MissionFlag "{4F40A5928AEA119B}" {
+     m_sName "RHS RF Commander Killed Flag"
+    }
+    GC_MissionFlag "{2D2B32A433476069}" {
+     m_sName "StPhillipe Flag"
+    }
+    GC_MissionFlag "{4759DAC4A8428C46}" {
+     m_sName "StPhillipe Spawn Flag"
+    }
+    GC_MissionFlag "{D76EE387F7CBE91D}" {
+     m_sName "StPierre Flag"
+    }
+    GC_MissionFlag "{0B3F7F62E623587F}" {
+     m_sName "StPierre Spawn Flag"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{4CA39AD54F8AB2A8}" {
+     m_sName "GC_MigrationStartupSampling"
+     m_aConditions {
+      GC_ConditionGroup "{F9A5ACF55364E821}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{B82FB44CD14C9B38}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{56D9B2BEAFCBF747}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{8F1C076B1EED2B32}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_FlagSamplingAction "{B82FB44CD14C9B38}" {
+       m_iDrawCount 2
+       m_aFlags {
+        "Chotain_Intel"
+        "ChotainMilitarySite_Intel"
+        "Laruns_Intel"
+        "Levie_Intel"
+        "MilitarySite_Intel"
+       }
+      }
+      GC_FlagSamplingAction "{1148F7194E16B31E}" {
+       m_iDrawCount 1
+       m_aFlags {
+        "Lamentin Flag"
+        "Montignac Flag"
+        "Morton Flag"
+        "StPierre Flag"
+        "StPhillipe Flag"
+       }
+      }
+     }
+    }
+    GC_Event "{9057F50B583FAFD1}" {
+     m_sName "Complete intel collection"
+     m_aConditions {
+      GC_GameModeStateCondition "{A74203A4E9C21EED}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionCount "{4953F40B62C18D04}" {
+       m_bCountFlagCalls 1
+       m_iComparison 2
+       m_iRequiredCount 2
+       m_sFlagName "GC_MigrationIntelCount"
+      }
+     }
+     m_aActions {
+      GC_FlagAction "{98CBAF6970BE731C}" {
+       m_sFlagName "Phase 1 Done Flag"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{594558F7B20443F5}" {
+     m_sName "Remove unselected Chotain_Intel"
+     m_aConditions {
+      GC_MissionFlagCondition "{E2F0FABC7ADBF110}" {
+       m_sFlagName "GC_MigrationIntelCleanup"
+      }
+      GC_MissionFlagCondition "{50EB6F127E3B7BB7}" {
+       m_sFlagName "Chotain_Intel"
+       m_bRequireFalse 1
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{93E97DE11C976A51}" {
+       m_aEntities {
+        "Chotain_Intel" "Chotain_Intel_Marker"
+       }
+      }
+     }
+    }
+    GC_Event "{13D3FDB54458A3D7}" {
+     m_sName "Remove unselected ChotainMilitarySite_Intel"
+     m_aConditions {
+      GC_MissionFlagCondition "{BF0CC70F66529905}" {
+       m_sFlagName "GC_MigrationIntelCleanup"
+      }
+      GC_MissionFlagCondition "{55DF125EF94876C3}" {
+       m_sFlagName "ChotainMilitarySite_Intel"
+       m_bRequireFalse 1
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{19E7E53F22C7CB81}" {
+       m_aEntities {
+        "ChotainMilitarySite_Intel" "ChotainMilitarySite_Intel_Marker"
+       }
+      }
+     }
+    }
+    GC_Event "{2D04965B2C7FA2F4}" {
+     m_sName "Remove unselected Laruns_Intel"
+     m_aConditions {
+      GC_MissionFlagCondition "{C0BD00521936277D}" {
+       m_sFlagName "GC_MigrationIntelCleanup"
+      }
+      GC_MissionFlagCondition "{1755928B34806F2B}" {
+       m_sFlagName "Laruns_Intel"
+       m_bRequireFalse 1
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{E2DD58FC44EA6366}" {
+       m_aEntities {
+        "Laruns_Intel" "Laruns_Intel_Marker"
+       }
+      }
+     }
+    }
+    GC_Event "{205F2BE24FF7953D}" {
+     m_sName "Remove unselected Levie_Intel"
+     m_aConditions {
+      GC_MissionFlagCondition "{DE82A94508230194}" {
+       m_sFlagName "GC_MigrationIntelCleanup"
+      }
+      GC_MissionFlagCondition "{71B96B3CB4A7CAE9}" {
+       m_sFlagName "Levie_Intel"
+       m_bRequireFalse 1
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{E4559753F6D048FA}" {
+       m_aEntities {
+        "Levie_Intel" "Levie_Intel_Marker"
+       }
+      }
+     }
+    }
+    GC_Event "{BE3ECAAF6A93B596}" {
+     m_sName "Remove unselected MilitarySite_Intel"
+     m_aConditions {
+      GC_MissionFlagCondition "{7B0CE9E250DC4C6C}" {
+       m_sFlagName "GC_MigrationIntelCleanup"
+      }
+      GC_MissionFlagCondition "{13FEF82CFC17367F}" {
+       m_sFlagName "MilitarySite_Intel"
+       m_bRequireFalse 1
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{D774FFC7C6B0F35C}" {
+       m_aEntities {
+        "MilitarySite_Intel" "MilitarySite_Intel_Marker"
+       }
+      }
+     }
+    }
+    GC_Event "{2E4069EB5F112F88}" {
+     m_sName "Reveal commander in Lamentin"
+     m_aConditions {
+      GC_MissionFlagCondition "{A8DD32A3CB8904EB}" {
+       m_sFlagName "GC_MigrationCommanderReveal"
+      }
+      GC_MissionFlagCondition "{9352035FA9FB2FC9}" {
+       m_sFlagName "Lamentin Flag"
+      }
+     }
+     m_aActions {
+      GC_FlagAction "{63D547E2C2D35EEE}" {
+       m_sFlagName "Lamentin Spawn Flag"
+       m_iOperation 1
+       m_iAmount 1
+      }
+      GC_MessageAction "{A0BA810E017C2939}" {
+       m_sTitle "Enemy Commander Located!"
+       m_sMessage "The Commander is located at Lamentin"
+       m_aFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+    GC_Event "{8F518D56DE43F1B1}" {
+     m_sName "Reveal commander in Montignac"
+     m_aConditions {
+      GC_MissionFlagCondition "{B710AC938AA6CF2F}" {
+       m_sFlagName "GC_MigrationCommanderReveal"
+      }
+      GC_MissionFlagCondition "{D17612B8F1FFACEF}" {
+       m_sFlagName "Montignac Flag"
+      }
+     }
+     m_aActions {
+      GC_FlagAction "{455915BBDEE981D7}" {
+       m_sFlagName "Montignac Spawn Flag"
+       m_iOperation 1
+       m_iAmount 1
+      }
+      GC_MessageAction "{E511C6B88F432664}" {
+       m_sTitle "Enemy Commander Located!"
+       m_sMessage "The Commander is located at Montignac"
+       m_aFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+    GC_Event "{7BB4C2785AB01235}" {
+     m_sName "Reveal commander in Morton"
+     m_aConditions {
+      GC_MissionFlagCondition "{A9A4CB2334E517D5}" {
+       m_sFlagName "GC_MigrationCommanderReveal"
+      }
+      GC_MissionFlagCondition "{AB2C564ADF397266}" {
+       m_sFlagName "Morton Flag"
+      }
+     }
+     m_aActions {
+      GC_FlagAction "{67FEA1286BFC9B6D}" {
+       m_sFlagName "Morton Spawn Flag"
+       m_iOperation 1
+       m_iAmount 1
+      }
+      GC_MessageAction "{5CC51011CB91422C}" {
+       m_sTitle "Enemy Commander Located!"
+       m_sMessage "The Commander is located at Morton"
+       m_aFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+    GC_Event "{0C625C4C6F8CB6DB}" {
+     m_sName "Reveal commander in StPierre"
+     m_aConditions {
+      GC_MissionFlagCondition "{29CFD4E9EAB342FA}" {
+       m_sFlagName "GC_MigrationCommanderReveal"
+      }
+      GC_MissionFlagCondition "{CD701097F433549D}" {
+       m_sFlagName "StPierre Flag"
+      }
+     }
+     m_aActions {
+      GC_FlagAction "{3606DF6259DD63CB}" {
+       m_sFlagName "StPierre Spawn Flag"
+       m_iOperation 1
+       m_iAmount 1
+      }
+      GC_MessageAction "{FB9A4DEE144D0AB9}" {
+       m_sTitle "Enemy Commander Located!"
+       m_sMessage "The Commander is located at StPierre"
+       m_aFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+    GC_Event "{FAB11A7FFB2ED82C}" {
+     m_sName "Reveal commander in StPhillipe"
+     m_aConditions {
+      GC_MissionFlagCondition "{C297119F95BC3619}" {
+       m_sFlagName "GC_MigrationCommanderReveal"
+      }
+      GC_MissionFlagCondition "{C57471C8766477BE}" {
+       m_sFlagName "StPhillipe Flag"
+      }
+     }
+     m_aActions {
+      GC_FlagAction "{963C851D242DD893}" {
+       m_sFlagName "StPhillipe Spawn Flag"
+       m_iOperation 1
+       m_iAmount 1
+      }
+      GC_MessageAction "{8353CD7D9B998D6D}" {
+       m_sTitle "Enemy Commander Located!"
+       m_sMessage "The Commander is located at StPhillipe"
+       m_aFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+    GC_Event "{C720600DE3613C80}" {
+     m_sName "Phase 1 Setup"
+     m_aConditions {
+      GC_ConditionGroup "{FA36E62885FE8182}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{D352C7DC1B611297}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{B92ABDCC748523CD}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{7F31E48DB71B3340}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B81AC7ACD25CFD3D}" {
+       m_sMessage "Phase 1 Setup"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{92E8A2D8B354B946}" {
+     m_sName "Phase 1 Setup (0.5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{62C07C5FA43AAEFE}" {
+       m_sEventName "Phase 1 Setup"
+      }
+     }
+     m_Advanced GC_EventOptions "{6160C941EBB6DA42}" {
+      m_fDelay 0.5
+     }
+     m_aActions {
+      GC_FlagAction "{94708F8AA3D1AF67}" {
+       m_sFlagName "GC_MigrationIntelCleanup"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{647A09EFC9607743}" {
+     m_sName "Chotain Intel"
+     m_aConditions {
+      GC_MissionFlagCondition "{8ED2B96C89029214}" {
+       m_sFlagName "Chotain Objective Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E553E09B3A709657}" {
+       m_sMessage "Chotain Intel"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1DCA7FD2A852FF29}" {
+     m_sName "Chotain Intel (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{11E1A74C04388B0C}" {
+       m_sEventName "Chotain Intel"
+      }
+     }
+     m_Advanced GC_EventOptions "{E92E2A98B80052C8}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{3C609A27F448400C}" {
+       m_sTitle "Secured Intel at Chotain "
+       m_sMessage ""
+      }
+      GC_FlagAction "{4CCD2DF446B576F2}" {
+       m_sFlagName "GC_MigrationIntelCount"
+       m_iOperation 2
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{6169FD972B93DCB1}" {
+     m_sName "Chotain Military Site Intel"
+     m_aConditions {
+      GC_MissionFlagCondition "{3DE77775DC06EF09}" {
+       m_sFlagName "Chotain Military Site Objective Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C163B37157232330}" {
+       m_sMessage "Chotain Military Site Intel"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BA761A0325A1018E}" {
+     m_sName "Chotain Military Site Intel (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{968D5AEE83D8A6EB}" {
+       m_sEventName "Chotain Military Site Intel"
+      }
+     }
+     m_Advanced GC_EventOptions "{BE1449607302E980}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{0647C509EE79A1F6}" {
+       m_sTitle "Secured Intel at Chotain Military Site"
+       m_sMessage ""
+      }
+      GC_FlagAction "{BB52974FEA90438C}" {
+       m_sFlagName "GC_MigrationIntelCount"
+       m_iOperation 2
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{77C821ED198958B1}" {
+     m_sName "Laruns Intel"
+     m_aConditions {
+      GC_MissionFlagCondition "{C8973904F1D5E93A}" {
+       m_sFlagName "Laruns Objective Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4AC645DCD843B201}" {
+       m_sMessage "Laruns Intel"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{39BD7D62B2845915}" {
+     m_sName "Laruns Intel (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A3D3C769E4B3BA78}" {
+       m_sEventName "Laruns Intel"
+      }
+     }
+     m_Advanced GC_EventOptions "{918C747C34524D8A}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{879557C878329403}" {
+       m_sTitle "Secured Intel at Laruns "
+       m_sMessage ""
+      }
+      GC_FlagAction "{0637351B1789FB24}" {
+       m_sFlagName "GC_MigrationIntelCount"
+       m_iOperation 2
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{AC7CF1AFA6E7D140}" {
+     m_sName "Levie Intel"
+     m_aConditions {
+      GC_MissionFlagCondition "{CEFDAF87B2C3C6EC}" {
+       m_sFlagName "Levie Objective Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{BBD35909CD75E977}" {
+       m_sMessage "Levie Intel"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B34D265F36A82530}" {
+     m_sName "Levie Intel (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E1003BE873E0EE41}" {
+       m_sEventName "Levie Intel"
+      }
+     }
+     m_Advanced GC_EventOptions "{075F262887936F61}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{4DC45B8FED6771E7}" {
+       m_sTitle "Secured Intel at Levie "
+       m_sMessage ""
+      }
+      GC_FlagAction "{CD899FFB0855DFB7}" {
+       m_sFlagName "GC_MigrationIntelCount"
+       m_iOperation 2
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{6E1CADC950AFE581}" {
+     m_sName "Military Site Intel"
+     m_aConditions {
+      GC_MissionFlagCondition "{95EF230C34B7F0A3}" {
+       m_sFlagName "Military Site Objective Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3C4356136A619063}" {
+       m_sMessage "Military Site Intel"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{EDF1E5C29E0D5975}" {
+     m_sName "Military Site Intel (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E6B8809928F80C7F}" {
+       m_sEventName "Military Site Intel"
+      }
+     }
+     m_Advanced GC_EventOptions "{BD490949734D5B25}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{716BBBEA8289C5FF}" {
+       m_sTitle "Secured Intel at Military Site "
+       m_sMessage ""
+      }
+      GC_FlagAction "{69D81346175B41DE}" {
+       m_sFlagName "GC_MigrationIntelCount"
+       m_iOperation 2
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{1BE1B8383169D185}" {
+     m_sName "Phase 1 Done"
+     m_aConditions {
+      GC_MissionFlagCondition "{06735551614EAD1C}" {
+       m_sFlagName "Phase 1 Done Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8412AB1607C1F0FF}" {
+       m_sMessage "Phase 1 Done"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{81A06BCAA2F52BDF}" {
+     m_sName "Phase 1 Done (2s)"
+     m_aConditions {
+      GC_MissionEventCondition "{13AEADFF5587A9B4}" {
+       m_sEventName "Phase 1 Done"
+      }
+     }
+     m_Advanced GC_EventOptions "{87952EC1AE89E14D}" {
+      m_fDelay 2
+     }
+     m_aActions {
+      GC_MessageAction "{C6C44BF94816E006}" {
+       m_sTitle "Phase 1 Done"
+       m_sMessage ""
+      }
+     }
+    }
+    GC_Event "{1C2E257947164360}" {
+     m_sName "Phase 1 Done (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7F96F2E128B980B9}" {
+       m_sEventName "Phase 1 Done"
+      }
+     }
+     m_Advanced GC_EventOptions "{A88D0721A0202D0C}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{96120348C1168F0C}" {
+       m_sTitle "Live Map Edit is allowed!"
+       m_sMessage "Only top 2 ground CO and Flight Lead is allowed to place markers on the map. You have 5 mins."
+      }
+     }
+    }
+    GC_Event "{29D7BD6EEFB87B3A}" {
+     m_sName "Phase 1 Done (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3DCC35DCC9C9E452}" {
+       m_sEventName "Phase 1 Done"
+      }
+     }
+     m_Advanced GC_EventOptions "{EFC60B0F85142E0A}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_FlagAction "{28C99875B1504439}" {
+       m_sFlagName "GC_MigrationCommanderReveal"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{068EC24C9BAF2CE6}" {
+     m_sName "Phase 1 Done (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B0A487A67E8A6333}" {
+       m_sEventName "Phase 1 Done"
+      }
+     }
+     m_Advanced GC_EventOptions "{F900B062399597C5}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{C9067736A933F063}" {
+       m_aEntities {
+        "AOPhase1"
+       }
+      }
+     }
+    }
+    GC_Event "{86B8AA4F5CB473DB}" {
+     m_sName "Phase 1 Done (305s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B314DDDFF09FE753}" {
+       m_sEventName "Phase 1 Done"
+      }
+     }
+     m_Advanced GC_EventOptions "{483D2FBB8E7443F7}" {
+      m_fDelay 305
+     }
+     m_aActions {
+      GC_MessageAction "{5B39DAD60F4983D5}" {
+       m_sTitle "Live Map Edit is now close!"
+       m_sMessage "Happy Hunting and good luck!"
+      }
+     }
+    }
+    GC_Event "{500E53C273A66B36}" {
+     m_sName "Phase 1 Delete Units"
+     m_aConditions {
+      GC_GameModeStateCondition "{7A370E341F309D6C}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{FA211BBD69C972C7}" {
+       m_sFlagName "Phase 1 Delete Units Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{418A8ACE730892D3}" {
+       m_sMessage "Phase 1 Delete Units"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C6FB3CF35AA403B7}" {
+     m_sName "Phase 1 Delete Units (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{7A99949F7C914AB3}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{5EC1DA14D5099112}" {
+       m_sEventName "Phase 1 Delete Units"
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{2165BDEE731AD770}" {
+       m_aEntities {
+        "ChotainDefendSquad1"
+        "ChotainDefendSquad2"
+        "ChotainDefendSquad3"
+        "ChotainDefendSquad4"
+       }
+      }
+     }
+    }
+    GC_Event "{4F9BF3A307B7927C}" {
+     m_sName "Phase 1 Delete Units (3s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{95929E2B2D40E6B7}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{DAB614EF20E84512}" {
+       m_sEventName "Phase 1 Delete Units"
+      }
+     }
+     m_Advanced GC_EventOptions "{86F3CD1DD505B82E}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{C7985567572A628A}" {
+       m_aEntities {
+        "ChotainMilitarySiteDefendSquad1"
+        "ChotainMilitarySiteDefendSquad2"
+        "ChotainMilitarySiteDefendSquad3"
+        "ChotainMilitarySiteDefendSquad4"
+       }
+      }
+     }
+    }
+    GC_Event "{F86E9870C6E7A8BE}" {
+     m_sName "Phase 1 Delete Units (6s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{83B558437C72FBC7}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{956D8EDBCDA86B9A}" {
+       m_sEventName "Phase 1 Delete Units"
+      }
+     }
+     m_Advanced GC_EventOptions "{D763339B0B99EEE1}" {
+      m_fDelay 6
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{19AC47C9CE53D377}" {
+       m_aEntities {
+        "LarunDefendSquad1"
+        "LarunDefendSquad2"
+        "LarunDefendSquad3"
+        "LarunDefendSquad4"
+        "LarunDefendSquad5"
+       }
+      }
+     }
+    }
+    GC_Event "{165683E46C50BF5E}" {
+     m_sName "Phase 1 Delete Units (9s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{FB8E03F247AA29FC}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{FFD72AAFB3885602}" {
+       m_sEventName "Phase 1 Delete Units"
+      }
+     }
+     m_Advanced GC_EventOptions "{7A16BCF0E9168CF0}" {
+      m_fDelay 9
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{75D4415D0D339F41}" {
+       m_aEntities {
+        "LevieDefendSquad1"
+        "LevieDefendSquad2"
+        "LevieDefendSquad3"
+        "LevieDefendSquad4"
+       }
+      }
+     }
+    }
+    GC_Event "{24FE7A803165B859}" {
+     m_sName "Phase 1 Delete Units (12s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{348A2A0329EBC669}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{EB35674823BDEA9C}" {
+       m_sEventName "Phase 1 Delete Units"
+      }
+     }
+     m_Advanced GC_EventOptions "{127C30BA0CB5816C}" {
+      m_fDelay 12
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{4DB8C9774B91C720}" {
+       m_aEntities {
+        "MilitarySiteDefendSquad1"
+        "MilitarySiteDefendSquad2"
+        "MilitarySiteDefendSquad3"
+        "MilitarySiteDefendSquad4"
+       }
+      }
+     }
+    }
+    GC_Event "{A7672CD89DACA226}" {
+     m_sName "Phase 1 Delete Units (15s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{A9E2BB8F92B532B8}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{9890C416D25E28EB}" {
+       m_sEventName "Phase 1 Delete Units"
+      }
+     }
+     m_Advanced GC_EventOptions "{E602A706CA0E695A}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{EBD6B14CB2AB5B5B}" {
+       m_aEntities {
+        "ChotainMilitarySitePatrolSquadNorth"
+        "ChotainMilitarySitePatrolSquadWest"
+        "LarunsPatrolSquadEast"
+        "LarunsPatrolSquadNorth"
+        "LarunsPatrolSquadWest"
+        "LeviePatrolSquadEast"
+        "LeviePatrolSquadNorth"
+        "LeviePatrolSquadSouth"
+        "MilitarySitePatrolSquadEast"
+        "MilitarySitePatrolSquadWest"
+       }
+      }
+     }
+    }
+    GC_Event "{E69B3AB184F882C2}" {
+     m_sName "Phase 1 Delete Units (18s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{86F4E4EADD65D9C6}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{D56B11BD71E7C89F}" {
+       m_sEventName "Phase 1 Delete Units"
+      }
+     }
+     m_Advanced GC_EventOptions "{28DCC0F3ADA73589}" {
+      m_fDelay 18
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{0DD755BAB63F5F1B}" {
+       m_aEntities {
+        "chotainBTR1"
+        "chotainBTR2"
+        "cmsBTR1"
+        "larunsBTR1"
+        "larunsBTR2"
+        "LevieBTR1"
+        "msBTR1"
+       }
+      }
+     }
+    }
+    GC_Event "{FDB343E9619C72A7}" {
+     m_sName "Show Lamentin Marker"
+     m_aConditions {
+      GC_GameModeStateCondition "{C5F1176E86F7E837}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{6A0079DACCCDEB2C}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{D4F7AB6757C2A296}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_MissionFlagCondition "{CAF9450B9B75D5BF}" {
+           m_sFlagName "Lamentin Flag"
+          }
+          GC_MissionFlagCondition "{D5D5C30E2CA63CFD}" {
+           m_sFlagName "Phase 1 Done Flag"
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{12E9E01EFB0AD5BE}" {
+       m_sMessage "Show Lamentin Marker"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A463A57EC1E05BC5}" {
+     m_sName "Show Lamentin Marker (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{D51F7A50DB899787}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{D8D1CB9DDDC6CCCE}" {
+       m_sEventName "Show Lamentin Marker"
+      }
+     }
+     m_aActions {
+      GC_MapMarkerVisibilityAction "{447C5DD98C0E1A11}" {
+       m_aMarkers {
+        "LamentinMarker"
+       }
+       m_bVisibleWithoutFaction 0
+       m_aFactions {
+        GC_MarkerFactionVisibility "{E53DF62F245B3A95}" {
+         m_sFaction "RHS_USAF"
+         m_bVisible 1
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{66666C3BD7BE94F2}" {
+     m_sName "Show Montignac Marker"
+     m_aConditions {
+      GC_GameModeStateCondition "{0CD08069B965BDA0}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{B6F2B9986F304128}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{88848D6622004A20}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_MissionFlagCondition "{961CE5F3E3D69661}" {
+           m_sFlagName "Montignac Flag"
+          }
+          GC_MissionFlagCondition "{B966F054F3185D9F}" {
+           m_sFlagName "Phase 1 Done Flag"
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{22605DD5EC2B23FB}" {
+       m_sMessage "Show Montignac Marker"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D4B659401E0C833B}" {
+     m_sName "Show Montignac Marker (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{F4DE4DDC3C0A881F}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{2F649F983B74B50F}" {
+       m_sEventName "Show Montignac Marker"
+      }
+     }
+     m_aActions {
+      GC_MapMarkerVisibilityAction "{836CA431273F30F1}" {
+       m_aMarkers {
+        "MontignacMarker"
+       }
+       m_bVisibleWithoutFaction 0
+       m_aFactions {
+        GC_MarkerFactionVisibility "{806B8D70C19891B5}" {
+         m_sFaction "RHS_USAF"
+         m_bVisible 1
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{2DE121132104E093}" {
+     m_sName "Show Morton Marker"
+     m_aConditions {
+      GC_GameModeStateCondition "{92C97767BC649C9A}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{D80E68F68ABFBBBE}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{5EBCB16759944981}" {
+         m_sFlagName "Morton Flag"
+        }
+        GC_MissionFlagCondition "{C2780FE73D45A176}" {
+         m_sFlagName "Phase 1 Done Flag"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{70DA13751E4D110F}" {
+       m_sMessage "Show Morton Marker"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1B186DB434A49C79}" {
+     m_sName "Show Morton Marker (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{C1EBE58E0D7D88E2}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{0D44612FF6AB2F46}" {
+       m_sEventName "Show Morton Marker"
+      }
+     }
+     m_aActions {
+      GC_MapMarkerVisibilityAction "{E3BFDB265AF5F1C4}" {
+       m_aMarkers {
+        "MortonMarker"
+       }
+       m_bVisibleWithoutFaction 0
+       m_aFactions {
+        GC_MarkerFactionVisibility "{847910761CFB2D32}" {
+         m_sFaction "RHS_USAF"
+         m_bVisible 1
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C63930C7781E6B89}" {
+     m_sName "Show StPhilipe Marker"
+     m_aConditions {
+      GC_GameModeStateCondition "{578AED25AE2A1EEB}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{9009FF259A60F36C}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{8950B0B90C2EB784}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_MissionFlagCondition "{60DE33B8A0500B78}" {
+           m_sFlagName "StPhillipe Flag"
+          }
+          GC_MissionFlagCondition "{F3E604FA228DC651}" {
+           m_sFlagName "Phase 1 Done Flag"
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{506A5F34AADBD2DD}" {
+       m_sMessage "Show StPhilipe Marker"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{30CE69CC6A364F64}" {
+     m_sName "Show StPhilipe Marker (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{A9B10D8AF9D398B7}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{22BD6D1E06F760E7}" {
+       m_sEventName "Show StPhilipe Marker"
+      }
+     }
+     m_aActions {
+      GC_MapMarkerVisibilityAction "{56A5FC38E19D02FE}" {
+       m_aMarkers {
+        "StPhilipeMarker"
+       }
+       m_bVisibleWithoutFaction 0
+       m_aFactions {
+        GC_MarkerFactionVisibility "{E1749A63A8790A30}" {
+         m_sFaction "RHS_USAF"
+         m_bVisible 1
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9ECF713EA3F72F8F}" {
+     m_sName "Show StPierre Marker"
+     m_aConditions {
+      GC_GameModeStateCondition "{7E83B76B1BC620B1}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{A997ACA7DFD9C261}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{517ABED887BD437F}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_MissionFlagCondition "{B64D8605BF2DDE99}" {
+           m_sFlagName "StPierre Flag"
+          }
+          GC_MissionFlagCondition "{AE313067D6335070}" {
+           m_sFlagName "Phase 1 Done Flag"
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1A7509DED2B6FDBE}" {
+       m_sMessage "Show StPierre Marker"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7F471FF4209C815B}" {
+     m_sName "Show StPierre Marker (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{FFAC7274FBC0B1CE}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{93E2A70D7BEEE5A7}" {
+       m_sEventName "Show StPierre Marker"
+      }
+     }
+     m_aActions {
+      GC_MapMarkerVisibilityAction "{F9AE913893BD325A}" {
+       m_aMarkers {
+        "StPierreMarker"
+       }
+       m_bVisibleWithoutFaction 0
+       m_aFactions {
+        GC_MarkerFactionVisibility "{BC42FE4F48D1F260}" {
+         m_sFaction "RHS_USAF"
+         m_bVisible 1
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{86ACDC85F77E2B3C}" {
+     m_sName "Phase 2 Commander Killed"
+     m_aConditions {
+      GC_MissionFlagCondition "{5B2DAEBAE1DEEEFA}" {
+       m_sFlagName "RHS RF Commander Killed Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F08DA71CDE9DA5F3}" {
+       m_sMessage "Phase 2 Commander Killed"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{90CB7474E2F197C4}" {
+     m_sName "Phase 2 Commander Killed (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C15957A0A07EEDE3}" {
+       m_sEventName "Phase 2 Commander Killed"
+      }
+     }
+     m_Advanced GC_EventOptions "{F1C0891828141449}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{BD97A005E52D5223}" {
+       m_sTitle "Enemy Commander is killed! "
+       m_sMessage "Start extracting back to LHD."
+      }
+      GC_FlagAction "{4307CF4891D6948D}" {
+       m_sFlagName "Mission Complete Flag"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{20BC82A3C5A6434E}" {
+     m_sName "Phase 2 Complete"
+     m_aConditions {
+      GC_ConditionGroup "{D9DFD66022F754E8}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{B65C2D343EA2245E}" {
+         m_sFlagName "Mission Complete Flag"
+        }
+        GC_AreaCondition "{64C9151BFB257CCC}" {
+         m_sArea "GC_MigrationArea_4176FBE4CB5D0706"
+         m_Targets GC_CharacterAreaTargets "{A7A9A9A973B7006D}" {
+          m_aFactions {
+           "RHS_USAF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{881706A49197ED7C}" {
+          m_fRequiredShare 0.95
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{78FF9862603FECB8}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{08CA7EA97868B258}" {
+       m_sMessage "Phase 2 Complete"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B965A9A9AF879472}" {
+     m_sName "Phase 2 Complete (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9058FD43586C7ED3}" {
+       m_sEventName "Phase 2 Complete"
+      }
+     }
+     m_Advanced GC_EventOptions "{BDF8DE86CF5B0ACB}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{AC53AF6E914110BE}" {
+       m_sTitle "Mission Complete!"
+       m_sMessage "Excellent Job. Now wait for GMs to pick the next mission."
+      }
+     }
+    }
+    GC_Event "{DDB4F6D957F6CEFF}" {
+     m_sName "Phase 2 Complete (300s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E726D64007EBE17E}" {
+       m_sEventName "Phase 2 Complete"
+      }
+     }
+     m_Advanced GC_EventOptions "{2B001DF8BBFE05BC}" {
+      m_fDelay 300
+     }
+     m_aActions {
+      GC_EndMissionAction "{064EA0CF16BEFE2A}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+    GC_Event "{E309175252B6A530}" {
+     m_sName "US Casualties"
+     m_aConditions {
+      GC_CustomScriptCondition "{9F8D2B8904F5857F}" {
+       m_Script GC_PeakFactionPopulationCheck "{54480E4A6B596270}" {
+        m_sFaction "RHS_USAF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B2AC4E0CB1DAA9BE}" {
+       m_sMessage "US Casualties"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B9EBD09FEABCA18D}" {
+     m_sName "US Casualties (2s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B8FEDF0EF94C72CF}" {
+       m_sEventName "US Casualties"
+      }
+     }
+     m_Advanced GC_EventOptions "{81718B6A5680A666}" {
+      m_fDelay 2
+     }
+     m_aActions {
+      GC_MessageAction "{6D126D028F1B9D40}" {
+       m_sTitle "US Defeat!"
+       m_sMessage "We have taken too much casualties!"
+      }
+     }
+    }
+    GC_Event "{451E42F85F1FAB6B}" {
+     m_sName "GC_MigratedSpawn_E089DD18F8B45A5A"
+     m_aConditions {
+      GC_ConditionGroup "{20ED684197569EDD}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{4828E0D4EADBD158}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{513AF825C54CBA1E}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{8A1D708BBA1179CF}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{AED647B8FAB9BAB6}" {
+       m_sMessage "GC_MigratedSpawn_E089DD18F8B45A5A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A8699281431C9688}" {
+     m_sName "GC_MigratedSpawn_E089DD18F8B45A5A (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F8F0A254ADCAAEB1}" {
+       m_sEventName "GC_MigratedSpawn_E089DD18F8B45A5A"
+      }
+     }
+     m_Advanced GC_EventOptions "{372E1582F78496E5}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{4828E0D4EADBD158}" {
+       m_Spawn GC_CrewedVehicleSpawn "{9DC6A569A9E942A4}" {
+        m_sLocation "GC_Spawner_E089DD18F8B45A5A"
+        m_sPrefab "{1C5FE7B7FF49BB8D}Prefabs/Vehicles/Wheeled/BTR70/BTR70_Base.et"
+        m_sEntityName "chotainBTR1"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{D786E3273B09FD87}" {
+          m_aStations {
+           GC_SpawnCrewStation "{C23522ECA16B5ADD}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{234A37EC8608DFAC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_Rifleman_Random.et"
+             "{234A37EC8608DFAC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_Rifleman_Random.et"
+             "{1701B425406974A0}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_SL_Random.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{23DEE91789A7F88C}" {
+     m_sName "GC_MigratedSpawn_917C61562A9D46A1"
+     m_aConditions {
+      GC_ConditionGroup "{08C917B3A9CE525A}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{F7FC281C1C732C39}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{DD07236D04A234B9}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{81B8020920FFAB8E}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7EB999CDC0CDEACC}" {
+       m_sMessage "GC_MigratedSpawn_917C61562A9D46A1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{492B8ADEADCDB137}" {
+     m_sName "GC_MigratedSpawn_917C61562A9D46A1 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{37DAB68617088AD1}" {
+       m_sEventName "GC_MigratedSpawn_917C61562A9D46A1"
+      }
+     }
+     m_Advanced GC_EventOptions "{AE979BF3E282B4A9}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{F7FC281C1C732C39}" {
+       m_Spawn GC_CrewedVehicleSpawn "{EF61DE81032F9E1E}" {
+        m_sLocation "GC_Spawner_917C61562A9D46A1"
+        m_sPrefab "{1C5FE7B7FF49BB8D}Prefabs/Vehicles/Wheeled/BTR70/BTR70_Base.et"
+        m_sEntityName "chotainBTR2"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{6DE1F977275C0C8A}" {
+          m_aStations {
+           GC_SpawnCrewStation "{3A062648E9336DE9}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{234A37EC8608DFAC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_Rifleman_Random.et"
+             "{234A37EC8608DFAC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_Rifleman_Random.et"
+             "{1701B425406974A0}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_SL_Random.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{896E03937CC4A3DE}" {
+     m_sName "GC_MigratedSpawn_4D138F475619B0C0"
+     m_aConditions {
+      GC_ConditionGroup "{E4D922B8FE0D9511}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{23F1E12F1D2D618A}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{7BF81C09571AD727}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{F565A0A267C205F3}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A237BDEEC8B5DEEA}" {
+       m_sMessage "GC_MigratedSpawn_4D138F475619B0C0"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C4ED3F0E4C0CBFB0}" {
+     m_sName "GC_MigratedSpawn_4D138F475619B0C0 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{20D3705E92901E26}" {
+       m_sEventName "GC_MigratedSpawn_4D138F475619B0C0"
+      }
+     }
+     m_Advanced GC_EventOptions "{91B2F1DD4D383390}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{23F1E12F1D2D618A}" {
+       m_Spawn GC_CrewedVehicleSpawn "{4E4D82D2F422BD29}" {
+        m_sLocation "GC_Spawner_4D138F475619B0C0"
+        m_sPrefab "{1C5FE7B7FF49BB8D}Prefabs/Vehicles/Wheeled/BTR70/BTR70_Base.et"
+        m_sEntityName "cmsBTR1"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{9325CABC7A2A8BEA}" {
+          m_aStations {
+           GC_SpawnCrewStation "{6B3DA84E54E990A8}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{234A37EC8608DFAC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_Rifleman_Random.et"
+             "{234A37EC8608DFAC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_Rifleman_Random.et"
+             "{1701B425406974A0}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_SL_Random.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{43173D461B0DC9CF}" {
+     m_sName "GC_MigratedSpawn_1CD681F255CF30A4"
+     m_aConditions {
+      GC_ConditionGroup "{B52DB00751515ABB}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{659D7D1C4C0E3E14}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{25F26A8A319C6B7A}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{E3C4F558270CD883}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{29046EA8CFF5077D}" {
+       m_sMessage "GC_MigratedSpawn_1CD681F255CF30A4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{573AE6ADDDB6B1E6}" {
+     m_sName "GC_MigratedSpawn_1CD681F255CF30A4 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{FAC29E42E00DF1E9}" {
+       m_sEventName "GC_MigratedSpawn_1CD681F255CF30A4"
+      }
+     }
+     m_Advanced GC_EventOptions "{215DD2B329ADAE1E}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{659D7D1C4C0E3E14}" {
+       m_Spawn GC_CrewedVehicleSpawn "{8DF7E5249ABD03AD}" {
+        m_sLocation "GC_Spawner_1CD681F255CF30A4"
+        m_sPrefab "{1C5FE7B7FF49BB8D}Prefabs/Vehicles/Wheeled/BTR70/BTR70_Base.et"
+        m_sEntityName "larunsBTR1"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{A5F4D25E64EDA611}" {
+          m_aStations {
+           GC_SpawnCrewStation "{090DAD203F14E093}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{234A37EC8608DFAC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_Rifleman_Random.et"
+             "{234A37EC8608DFAC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_Rifleman_Random.et"
+             "{1701B425406974A0}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_SL_Random.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{480DDAC68A6B4D85}" {
+     m_sName "GC_MigratedSpawn_92805F060FCC37CC"
+     m_aConditions {
+      GC_ConditionGroup "{E1D734740730933F}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{F3B52EC09F4D86C4}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{8EA2A449DA17BA4B}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{92EF85CC4A050474}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B320C48633B71271}" {
+       m_sMessage "GC_MigratedSpawn_92805F060FCC37CC"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8665BA4ECA9E67DD}" {
+     m_sName "GC_MigratedSpawn_92805F060FCC37CC (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{AE11AC52901AA680}" {
+       m_sEventName "GC_MigratedSpawn_92805F060FCC37CC"
+      }
+     }
+     m_Advanced GC_EventOptions "{7794AB86F1A16F14}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{F3B52EC09F4D86C4}" {
+       m_Spawn GC_CrewedVehicleSpawn "{B1C4F0F61CA26CDB}" {
+        m_sLocation "GC_Spawner_92805F060FCC37CC"
+        m_sPrefab "{1C5FE7B7FF49BB8D}Prefabs/Vehicles/Wheeled/BTR70/BTR70_Base.et"
+        m_sEntityName "larunsBTR2"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{28CCA8BD2FDDEEF8}" {
+          m_aStations {
+           GC_SpawnCrewStation "{40BB3CE864562991}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{234A37EC8608DFAC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_Rifleman_Random.et"
+             "{234A37EC8608DFAC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_Rifleman_Random.et"
+             "{1701B425406974A0}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_SL_Random.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{72AE0AFBA4BFD777}" {
+     m_sName "GC_MigratedSpawn_DE417068D8119C78"
+     m_aConditions {
+      GC_ConditionGroup "{73F3030AAB29E22B}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{D3745994E1A0EF00}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{6C2AB71564401BB9}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{ED3B7FBAD6F752A4}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{CC18E31D2965BEA3}" {
+       m_sMessage "GC_MigratedSpawn_DE417068D8119C78"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D658C72BF88BB198}" {
+     m_sName "GC_MigratedSpawn_DE417068D8119C78 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{082935EAE1011339}" {
+       m_sEventName "GC_MigratedSpawn_DE417068D8119C78"
+      }
+     }
+     m_Advanced GC_EventOptions "{133BAE2576CE6D62}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{D3745994E1A0EF00}" {
+       m_Spawn GC_CrewedVehicleSpawn "{22B4497FF6D4C287}" {
+        m_sLocation "GC_Spawner_DE417068D8119C78"
+        m_sPrefab "{1C5FE7B7FF49BB8D}Prefabs/Vehicles/Wheeled/BTR70/BTR70_Base.et"
+        m_sEntityName "LevieBTR1"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{97EAE679162446EA}" {
+          m_aStations {
+           GC_SpawnCrewStation "{7638C7E451F3E954}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{234A37EC8608DFAC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_Rifleman_Random.et"
+             "{234A37EC8608DFAC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_Rifleman_Random.et"
+             "{1701B425406974A0}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_SL_Random.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C251CF9DAB19800A}" {
+     m_sName "GC_MigratedSpawn_9444B80D927BA5EE"
+     m_aConditions {
+      GC_ConditionGroup "{0A0DDDD941888FC2}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{030B539349698EF5}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{A678C0BAA8F5FD2B}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{9EB37F639B948A68}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{AAB1D40784D2A6F2}" {
+       m_sMessage "GC_MigratedSpawn_9444B80D927BA5EE"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1210ABE9B8022A70}" {
+     m_sName "GC_MigratedSpawn_9444B80D927BA5EE (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5AC9B0BA8A26BBB7}" {
+       m_sEventName "GC_MigratedSpawn_9444B80D927BA5EE"
+      }
+     }
+     m_Advanced GC_EventOptions "{ACA41F928463A308}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{030B539349698EF5}" {
+       m_Spawn GC_CrewedVehicleSpawn "{14E4AAAFFC1B98A4}" {
+        m_sLocation "GC_Spawner_9444B80D927BA5EE"
+        m_sPrefab "{1C5FE7B7FF49BB8D}Prefabs/Vehicles/Wheeled/BTR70/BTR70_Base.et"
+        m_sEntityName "msBTR1"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{816F1B008AB55B56}" {
+          m_aStations {
+           GC_SpawnCrewStation "{2E91D01E1086E6F8}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{234A37EC8608DFAC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_Rifleman_Random.et"
+             "{234A37EC8608DFAC}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_Rifleman_Random.et"
+             "{1701B425406974A0}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/RandomSoldiers/Character_RHS_RF_MSV_VKPO_DS_SL_Random.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B4FB404C8424A08D}" {
+     m_sName "GC_MigratedSpawn_169A10B52FA8D24D"
+     m_aConditions {
+      GC_GameModeStateCondition "{7A4476F71CC756E2}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{826B10B66921A8BF}" {
+       m_sFlagName "Lamentin Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{177EA6F3038BDE67}" {
+       m_sMessage "GC_MigratedSpawn_169A10B52FA8D24D"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3214A6CC7F974999}" {
+     m_sName "GC_MigratedSpawn_169A10B52FA8D24D (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{706067377F43B281}" {
+       m_sEventName "GC_MigratedSpawn_169A10B52FA8D24D"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{3214A6CC7F974999}" {
+       m_Spawn GC_AIGroupSpawn "{177A2C2A52696D7B}" {
+        m_sLocation "GC_Spawner_169A10B52FA8D24D"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "LamentinDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{0F9213227C293E84}" {
+     m_sName "GC_MigratedSpawn_19F2A7E2EB84B4D2"
+     m_aConditions {
+      GC_GameModeStateCondition "{403A82F642BEA66E}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{F939A1C6A32D72B7}" {
+       m_sFlagName "Lamentin Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{91A62D465AF3234D}" {
+       m_sMessage "GC_MigratedSpawn_19F2A7E2EB84B4D2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{322E8DBCC57E0910}" {
+     m_sName "GC_MigratedSpawn_19F2A7E2EB84B4D2 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E34FE35E3EE852B4}" {
+       m_sEventName "GC_MigratedSpawn_19F2A7E2EB84B4D2"
+      }
+     }
+     m_Advanced GC_EventOptions "{5F5F4DDC40B533A8}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{A00EA558E8F9F0A4}" {
+       m_Spawn GC_AIGroupSpawn "{AEDF0E5DDDCE8A7C}" {
+        m_sLocation "GC_Spawner_19F2A7E2EB84B4D2"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "LamentinDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{79A0F65D0A7FB2C3}" {
+     m_sName "GC_MigratedSpawn_8618969E90E23A28"
+     m_aConditions {
+      GC_GameModeStateCondition "{F885F353000F6BB3}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{4ABE3EFA2BCC8739}" {
+       m_sFlagName "Lamentin Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{AA6415E4EC345879}" {
+       m_sMessage "GC_MigratedSpawn_8618969E90E23A28"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6C62A46B7751C1F6}" {
+     m_sName "GC_MigratedSpawn_8618969E90E23A28 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{63CBFCACE6315C2B}" {
+       m_sEventName "GC_MigratedSpawn_8618969E90E23A28"
+      }
+     }
+     m_Advanced GC_EventOptions "{76636F696F379D67}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{CF15475E4959DB9D}" {
+       m_Spawn GC_AIGroupSpawn "{AC47B8D19EBC4D0D}" {
+        m_sLocation "GC_Spawner_8618969E90E23A28"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "LamentinDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E12F9900703846BC}" {
+     m_sName "GC_MigratedSpawn_7D8C8A426F7C6A37"
+     m_aConditions {
+      GC_GameModeStateCondition "{027BFE0057862DE4}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{4A8FB177D1ADC890}" {
+       m_sFlagName "Lamentin Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5906A2238C2DB32F}" {
+       m_sMessage "GC_MigratedSpawn_7D8C8A426F7C6A37"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{ECAB9C02D3930656}" {
+     m_sName "GC_MigratedSpawn_7D8C8A426F7C6A37 (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{36760FC3C113727B}" {
+       m_sEventName "GC_MigratedSpawn_7D8C8A426F7C6A37"
+      }
+     }
+     m_Advanced GC_EventOptions "{82AE4FF75A2F053F}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_SpawnAction "{1E6D9E6F39558A4F}" {
+       m_Spawn GC_AIGroupSpawn "{70B91F5527F6E228}" {
+        m_sLocation "GC_Spawner_7D8C8A426F7C6A37"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "LamentinDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A103391E5CECF895}" {
+     m_sName "GC_MigratedSpawn_A749755CCF07BC5D"
+     m_aConditions {
+      GC_GameModeStateCondition "{23920FFE65E279BA}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{A315074BC011DE88}" {
+       m_sFlagName "Lamentin Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{37E49F2122775223}" {
+       m_sMessage "GC_MigratedSpawn_A749755CCF07BC5D"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{4494B63EC12B6E1C}" {
+     m_sName "GC_MigratedSpawn_A749755CCF07BC5D (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{33B55A9A25E52EC2}" {
+       m_sEventName "GC_MigratedSpawn_A749755CCF07BC5D"
+      }
+     }
+     m_Advanced GC_EventOptions "{5D76F71B7937097C}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_SpawnAction "{C7A13B48ECCB29E9}" {
+       m_Spawn GC_AIGroupSpawn "{BEEE976D50A588A7}" {
+        m_sLocation "GC_Spawner_A749755CCF07BC5D"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "LamentinDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{FF8E11B5BB23D563}" {
+     m_sName "GC_MigratedSpawn_72D4A6DB02FCCDB5"
+     m_aConditions {
+      GC_GameModeStateCondition "{92F93E90D96DCC95}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{CAE7D96C4FD0DF94}" {
+       m_sFlagName "Lamentin Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C3FFB3CDA08AAD00}" {
+       m_sMessage "GC_MigratedSpawn_72D4A6DB02FCCDB5"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D5654AE0B13A2A75}" {
+     m_sName "GC_MigratedSpawn_72D4A6DB02FCCDB5 (25s)"
+     m_aConditions {
+      GC_MissionEventCondition "{09A10831C249EA49}" {
+       m_sEventName "GC_MigratedSpawn_72D4A6DB02FCCDB5"
+      }
+     }
+     m_Advanced GC_EventOptions "{4CFE38FB358A87CF}" {
+      m_fDelay 25
+     }
+     m_aActions {
+      GC_SpawnAction "{20C6687403789C85}" {
+       m_Spawn GC_AIGroupSpawn "{40A0A828CFD79819}" {
+        m_sLocation "GC_Spawner_72D4A6DB02FCCDB5"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "LamentinDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{5EE8BA8743411C22}" {
+     m_sName "GC_MigratedSpawn_F4C3ECE23E9D933C"
+     m_aConditions {
+      GC_GameModeStateCondition "{C6D6EE8A3D369647}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{6F2DD3132AE57994}" {
+       m_sFlagName "Lamentin Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2C53F724C64BCBDF}" {
+       m_sMessage "GC_MigratedSpawn_F4C3ECE23E9D933C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{ABAE2C8ED8D778A3}" {
+     m_sName "GC_MigratedSpawn_F4C3ECE23E9D933C (30s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9B50696519ECF3EE}" {
+       m_sEventName "GC_MigratedSpawn_F4C3ECE23E9D933C"
+      }
+     }
+     m_Advanced GC_EventOptions "{8BE24268D389F8F2}" {
+      m_fDelay 30
+     }
+     m_aActions {
+      GC_SpawnAction "{C86CD9531CEE1B0D}" {
+       m_Spawn GC_AIGroupSpawn "{4F36233DB5181193}" {
+        m_sLocation "GC_Spawner_F4C3ECE23E9D933C"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "LamentinDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E60604A032D6D695}" {
+     m_sName "GC_MigratedSpawn_73E74B2E7FFF00B5"
+     m_aConditions {
+      GC_GameModeStateCondition "{0A5B286CD9AE3DB1}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{111D13CCD716A009}" {
+       m_sFlagName "Lamentin Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E05B81CC12C2588D}" {
+       m_sMessage "GC_MigratedSpawn_73E74B2E7FFF00B5"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{062BC72F61ADE4CA}" {
+     m_sName "GC_MigratedSpawn_73E74B2E7FFF00B5 (35s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4F975794AD3E4569}" {
+       m_sEventName "GC_MigratedSpawn_73E74B2E7FFF00B5"
+      }
+     }
+     m_Advanced GC_EventOptions "{3A980DC04B77CC79}" {
+      m_fDelay 35
+     }
+     m_aActions {
+      GC_SpawnAction "{8F21F05F8899D277}" {
+       m_Spawn GC_AIGroupSpawn "{618E4CB3D3E98B97}" {
+        m_sLocation "GC_Spawner_73E74B2E7FFF00B5"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "LamentinDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{88BAC0616B41A06F}" {
+     m_sName "GC_MigratedSpawn_11923A728BE2E577"
+     m_aConditions {
+      GC_GameModeStateCondition "{957BC0CB746A3FAF}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{A783E8F6DA49851D}" {
+       m_sFlagName "Lamentin Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D8E7128CD882D243}" {
+       m_sMessage "GC_MigratedSpawn_11923A728BE2E577"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6D855A930A332DFA}" {
+     m_sName "GC_MigratedSpawn_11923A728BE2E577 (40s)"
+     m_aConditions {
+      GC_MissionEventCondition "{EC534A273DEC1FBF}" {
+       m_sEventName "GC_MigratedSpawn_11923A728BE2E577"
+      }
+     }
+     m_Advanced GC_EventOptions "{A707CCC4D7138790}" {
+      m_fDelay 40
+     }
+     m_aActions {
+      GC_SpawnAction "{2D72F3DF01C037DE}" {
+       m_Spawn GC_AIGroupSpawn "{45A32FBE7D627D87}" {
+        m_sLocation "GC_Spawner_11923A728BE2E577"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "LamentinDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{7E02D3A63890AD48}" {
+     m_sName "GC_MigratedSpawn_478A9CBDECF9AD7A"
+     m_aConditions {
+      GC_GameModeStateCondition "{008B63BEB034088A}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{E9E7943E00BEAD2C}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{6B358336AAF41856}" {
+         m_sFlagName "Lamentin Flag"
+        }
+        GC_MissionFlagCondition "{F3121CD1D4E8C30F}" {
+         m_sFlagName "Phase 1 Done Flag"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{CFB8F265BBDF9918}" {
+       m_sMessage "GC_MigratedSpawn_478A9CBDECF9AD7A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A67562821992F5A9}" {
+     m_sName "GC_MigratedSpawn_478A9CBDECF9AD7A (43s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{C056B20CE85D38BD}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{732DE7D032644B8F}" {
+       m_sEventName "GC_MigratedSpawn_478A9CBDECF9AD7A"
+      }
+     }
+     m_Advanced GC_EventOptions "{97F1D2818DDB5B73}" {
+      m_fDelay 43
+     }
+     m_aActions {
+      GC_SpawnAction "{EFC089465974B8D4}" {
+       m_Spawn GC_PrefabSpawn "{FB34B66C6166B350}" {
+        m_sLocation "CommanderSpawner1"
+        m_sPrefab "{C36FA3DD3507C03E}worlds/HotMic/Prefabs/Characters/Objectives/RHS_RF_Commander.et"
+       }
+      }
+     }
+    }
+    GC_Event "{B6AE860E2A3BFBE6}" {
+     m_sName "GC_MigratedSpawn_1D822D0BFA1FAE9A"
+     m_aConditions {
+      GC_GameModeStateCondition "{32715EB401AC8D77}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{FFC7C2DB7A517814}" {
+       m_sFlagName "Montignac Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{94DC015377BD0C60}" {
+       m_sMessage "GC_MigratedSpawn_1D822D0BFA1FAE9A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3BF1C53364B54E46}" {
+     m_sName "GC_MigratedSpawn_1D822D0BFA1FAE9A (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{EA768548E6F2E6B4}" {
+       m_sEventName "GC_MigratedSpawn_1D822D0BFA1FAE9A"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{3BF1C53364B54E46}" {
+       m_Spawn GC_AIGroupSpawn "{1D421C0BB729B50A}" {
+        m_sLocation "GC_Spawner_1D822D0BFA1FAE9A"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "MontignacDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3968CF2F608AB7B9}" {
+     m_sName "GC_MigratedSpawn_1D7C558E540B7264"
+     m_aConditions {
+      GC_GameModeStateCondition "{048F4080F349EF95}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{E19F245000D46385}" {
+       m_sFlagName "Montignac Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7B022653C171D354}" {
+       m_sMessage "GC_MigratedSpawn_1D7C558E540B7264"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{19B96F23AC938B94}" {
+     m_sName "GC_MigratedSpawn_1D7C558E540B7264 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{46D2BAEAF4864488}" {
+       m_sEventName "GC_MigratedSpawn_1D7C558E540B7264"
+      }
+     }
+     m_Advanced GC_EventOptions "{DBBE343BB75F9C0E}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{B4174326F09FD0C7}" {
+       m_Spawn GC_AIGroupSpawn "{D3582965D3C0F94D}" {
+        m_sLocation "GC_Spawner_1D7C558E540B7264"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "MontignacDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{D5A37479A6F46414}" {
+     m_sName "GC_MigratedSpawn_9E1351CDA355CE33"
+     m_aConditions {
+      GC_GameModeStateCondition "{03842A2DD4D54B8E}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{E53C1370932DBF69}" {
+       m_sFlagName "Montignac Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B25826099C9A73C1}" {
+       m_sMessage "GC_MigratedSpawn_9E1351CDA355CE33"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{64E4B8645CBD53FD}" {
+     m_sName "GC_MigratedSpawn_9E1351CDA355CE33 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B2C9862F41929BD0}" {
+       m_sEventName "GC_MigratedSpawn_9E1351CDA355CE33"
+      }
+     }
+     m_Advanced GC_EventOptions "{B0DE632F3B51CCEC}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{33BBF511BE1E6A98}" {
+       m_Spawn GC_AIGroupSpawn "{DFDD8DEB6E24778A}" {
+        m_sLocation "GC_Spawner_9E1351CDA355CE33"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "MontignacDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{7B6E5B8550371DEC}" {
+     m_sName "GC_MigratedSpawn_5F060A75E9C8F1F1"
+     m_aConditions {
+      GC_GameModeStateCondition "{192BA611F0797CD1}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{414444A8EC287EFD}" {
+       m_sFlagName "Montignac Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5F81DF1DE1002E6B}" {
+       m_sMessage "GC_MigratedSpawn_5F060A75E9C8F1F1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FD4E264A9E8B4DCA}" {
+     m_sName "GC_MigratedSpawn_5F060A75E9C8F1F1 (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D164CFFCBD84EFB0}" {
+       m_sEventName "GC_MigratedSpawn_5F060A75E9C8F1F1"
+      }
+     }
+     m_Advanced GC_EventOptions "{1555CD2C5E45CB4D}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_SpawnAction "{1EA48964EB4A180B}" {
+       m_Spawn GC_AIGroupSpawn "{6CDB3BA5DF350FBA}" {
+        m_sLocation "GC_Spawner_5F060A75E9C8F1F1"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "MontignacDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9CEE521A3DEFC0C6}" {
+     m_sName "GC_MigratedSpawn_C658768BE86B39FA"
+     m_aConditions {
+      GC_GameModeStateCondition "{562585D0F05EBEC1}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{F8F2DFDCFD7ACC5C}" {
+       m_sFlagName "Montignac Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{302EF99F9F6AC97E}" {
+       m_sMessage "GC_MigratedSpawn_C658768BE86B39FA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{15F4D17ABAAD5A2D}" {
+     m_sName "GC_MigratedSpawn_C658768BE86B39FA (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{73EC36FB427A63CE}" {
+       m_sEventName "GC_MigratedSpawn_C658768BE86B39FA"
+      }
+     }
+     m_Advanced GC_EventOptions "{7EABF7DA6A42BBB4}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_SpawnAction "{D57B8B058DFEEAA6}" {
+       m_Spawn GC_AIGroupSpawn "{5EEBE483921BC6AD}" {
+        m_sLocation "GC_Spawner_C658768BE86B39FA"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "MontignacDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{42CDD0CE73A29065}" {
+     m_sName "GC_MigratedSpawn_34C3C022DB262174"
+     m_aConditions {
+      GC_GameModeStateCondition "{0497A012EAD7A103}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{3822CB61A9D8FF0C}" {
+       m_sFlagName "Montignac Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{69F71C4187DDA4A0}" {
+       m_sMessage "GC_MigratedSpawn_34C3C022DB262174"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{381DA91DDE308D99}" {
+     m_sName "GC_MigratedSpawn_34C3C022DB262174 (25s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F1245E590EE95801}" {
+       m_sEventName "GC_MigratedSpawn_34C3C022DB262174"
+      }
+     }
+     m_Advanced GC_EventOptions "{1D5E2B8252DAB500}" {
+      m_fDelay 25
+     }
+     m_aActions {
+      GC_SpawnAction "{D23F8D4860E59AE7}" {
+       m_Spawn GC_AIGroupSpawn "{412D9D1B9524C305}" {
+        m_sLocation "GC_Spawner_34C3C022DB262174"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "MontignacDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{467B0EFF41A7616C}" {
+     m_sName "GC_MigratedSpawn_22A8AF5FD37E5314"
+     m_aConditions {
+      GC_GameModeStateCondition "{F4206D31FF301306}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{F9188ABB8FA33089}" {
+       m_sFlagName "Montignac Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E5D74233946F0551}" {
+       m_sMessage "GC_MigratedSpawn_22A8AF5FD37E5314"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{00B132AEA072AE15}" {
+     m_sName "GC_MigratedSpawn_22A8AF5FD37E5314 (30s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4EE935B252FEE0DF}" {
+       m_sEventName "GC_MigratedSpawn_22A8AF5FD37E5314"
+      }
+     }
+     m_Advanced GC_EventOptions "{B8C4CB5A3A1C4613}" {
+      m_fDelay 30
+     }
+     m_aActions {
+      GC_SpawnAction "{1D5CA30C382E22BE}" {
+       m_Spawn GC_AIGroupSpawn "{DE8FC821BFB4976A}" {
+        m_sLocation "GC_Spawner_22A8AF5FD37E5314"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "MontignacDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{CF4FAF9860C353BA}" {
+     m_sName "GC_MigratedSpawn_1BD0F71B2E54E2F0"
+     m_aConditions {
+      GC_GameModeStateCondition "{27F2C3AC0D30AE52}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{165BA7916014C149}" {
+       m_sFlagName "Montignac Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1B952EEBCE65D8C8}" {
+       m_sMessage "GC_MigratedSpawn_1BD0F71B2E54E2F0"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CB0943EA3A9E8FC7}" {
+     m_sName "GC_MigratedSpawn_1BD0F71B2E54E2F0 (35s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A242DB994EDB275A}" {
+       m_sEventName "GC_MigratedSpawn_1BD0F71B2E54E2F0"
+      }
+     }
+     m_Advanced GC_EventOptions "{3E8196956E4FA24C}" {
+      m_fDelay 35
+     }
+     m_aActions {
+      GC_SpawnAction "{5051E74DD4C3650E}" {
+       m_Spawn GC_AIGroupSpawn "{0BE15551539C0A48}" {
+        m_sLocation "GC_Spawner_1BD0F71B2E54E2F0"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "MontignacDefenseWaypoint2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{D6D7147E3B168FE1}" {
+     m_sName "GC_MigratedSpawn_954065883747A6BB"
+     m_aConditions {
+      GC_GameModeStateCondition "{03E1E0552C6A6722}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{DF36FAD535AA4E91}" {
+       m_sFlagName "Montignac Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0A50C713C864F2BF}" {
+       m_sMessage "GC_MigratedSpawn_954065883747A6BB"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B772568DD51CA223}" {
+     m_sName "GC_MigratedSpawn_954065883747A6BB (40s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6634D8A9DB660291}" {
+       m_sEventName "GC_MigratedSpawn_954065883747A6BB"
+      }
+     }
+     m_Advanced GC_EventOptions "{D62380CA3FEC44F1}" {
+      m_fDelay 40
+     }
+     m_aActions {
+      GC_SpawnAction "{1C5D6D3BA6BC44E2}" {
+       m_Spawn GC_AIGroupSpawn "{8F415075A553C870}" {
+        m_sLocation "GC_Spawner_954065883747A6BB"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "MontignacDefenseWaypoint2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{D65D9B2056403703}" {
+     m_sName "GC_MigratedSpawn_6CE25D196F6BC892"
+     m_aConditions {
+      GC_GameModeStateCondition "{7C758E005275DFDB}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{364B3E2BD8334A65}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{056A04C065BD2729}" {
+         m_sFlagName "Montignac Flag"
+        }
+        GC_MissionFlagCondition "{B7A2A671BF038088}" {
+         m_sFlagName "Phase 1 Done Flag"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B9A6860842D0556E}" {
+       m_sMessage "GC_MigratedSpawn_6CE25D196F6BC892"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0C26BCFF90F72CD7}" {
+     m_sName "GC_MigratedSpawn_6CE25D196F6BC892 (43s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{2C8059CFBD6A39FF}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{2D34CEE89DFEDB1C}" {
+       m_sEventName "GC_MigratedSpawn_6CE25D196F6BC892"
+      }
+     }
+     m_Advanced GC_EventOptions "{A5470269D696378A}" {
+      m_fDelay 43
+     }
+     m_aActions {
+      GC_SpawnAction "{16B93DDE50411677}" {
+       m_Spawn GC_PrefabSpawn "{84C3A7E8F91201D1}" {
+        m_sLocation "CommanderSpawner2"
+        m_sPrefab "{C36FA3DD3507C03E}worlds/HotMic/Prefabs/Characters/Objectives/RHS_RF_Commander.et"
+       }
+      }
+     }
+    }
+    GC_Event "{A7BEA491EC1DB8CF}" {
+     m_sName "GC_MigratedSpawn_784DBEECC6C5FBF9"
+     m_aConditions {
+      GC_GameModeStateCondition "{AB01BE12614D7390}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{1BBCFFC4EA6561AC}" {
+       m_sFlagName "Morton Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A6448D727EAE1D00}" {
+       m_sMessage "GC_MigratedSpawn_784DBEECC6C5FBF9"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3338BC8B7F11789A}" {
+     m_sName "GC_MigratedSpawn_784DBEECC6C5FBF9 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{76A74D470CF946FB}" {
+       m_sEventName "GC_MigratedSpawn_784DBEECC6C5FBF9"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{3338BC8B7F11789A}" {
+       m_Spawn GC_AIGroupSpawn "{386BAC7C2D6B8009}" {
+        m_sLocation "GC_Spawner_784DBEECC6C5FBF9"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "MortonDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{183429260D9642BC}" {
+     m_sName "GC_MigratedSpawn_F310716750143A97"
+     m_aConditions {
+      GC_GameModeStateCondition "{F1E80B86AE0865D8}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{F456C4CB4B7D3A36}" {
+       m_sFlagName "Morton Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E0087D5D43A65A94}" {
+       m_sMessage "GC_MigratedSpawn_F310716750143A97"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{140D08E628A17DA1}" {
+     m_sName "GC_MigratedSpawn_F310716750143A97 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9C235727C24DC918}" {
+       m_sEventName "GC_MigratedSpawn_F310716750143A97"
+      }
+     }
+     m_Advanced GC_EventOptions "{61FEBD332F2A786C}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{6097A2F89A6A699E}" {
+       m_Spawn GC_AIGroupSpawn "{47AE3DECE6593A4D}" {
+        m_sLocation "GC_Spawner_F310716750143A97"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "MortonDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{33EC7EDB3897FE6B}" {
+     m_sName "GC_MigratedSpawn_8F3F7EB803090971"
+     m_aConditions {
+      GC_GameModeStateCondition "{3512467D8296C545}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{4A8FA690528CFA53}" {
+       m_sFlagName "Morton Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{932E81ABD7FD1844}" {
+       m_sMessage "GC_MigratedSpawn_8F3F7EB803090971"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B509D8941BBC1023}" {
+     m_sName "GC_MigratedSpawn_8F3F7EB803090971 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D7D8C578419E4BFF}" {
+       m_sEventName "GC_MigratedSpawn_8F3F7EB803090971"
+      }
+     }
+     m_Advanced GC_EventOptions "{D77D5276E54A99F0}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{4FED100D6DAF0BD4}" {
+       m_Spawn GC_AIGroupSpawn "{DDF977C7FBC7C3C4}" {
+        m_sLocation "GC_Spawner_8F3F7EB803090971"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "MortonDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{34BCEA3DF0833419}" {
+     m_sName "GC_MigratedSpawn_69DF55E1358582EA"
+     m_aConditions {
+      GC_GameModeStateCondition "{D26F4A8C13D1C483}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{1407DC383C5FD86A}" {
+       m_sFlagName "Morton Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D3C177C358CE9476}" {
+       m_sMessage "GC_MigratedSpawn_69DF55E1358582EA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AA2BA4DE4713CA47}" {
+     m_sName "GC_MigratedSpawn_69DF55E1358582EA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{035C276E05C0F31D}" {
+       m_sEventName "GC_MigratedSpawn_69DF55E1358582EA"
+      }
+     }
+     m_Advanced GC_EventOptions "{5960C9388E2B27BD}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_SpawnAction "{FD4D1B64F65D8556}" {
+       m_Spawn GC_AIGroupSpawn "{85F7CC08F3C31C02}" {
+        m_sLocation "GC_Spawner_69DF55E1358582EA"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "MortonDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{8B5045CC18F778E5}" {
+     m_sName "GC_MigratedSpawn_877D219E51CB6686"
+     m_aConditions {
+      GC_GameModeStateCondition "{0FB02CA1D47763BE}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{D54D6383FC919CB6}" {
+       m_sFlagName "Morton Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DEBC67C848F5686B}" {
+       m_sMessage "GC_MigratedSpawn_877D219E51CB6686"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C79200942B5ABC3A}" {
+     m_sName "GC_MigratedSpawn_877D219E51CB6686 (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D587388BD79DB63C}" {
+       m_sEventName "GC_MigratedSpawn_877D219E51CB6686"
+      }
+     }
+     m_Advanced GC_EventOptions "{361A45A982C4C42F}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_SpawnAction "{2AB9C7B72FAB0649}" {
+       m_Spawn GC_AIGroupSpawn "{A872D22B723CE7A8}" {
+        m_sLocation "GC_Spawner_877D219E51CB6686"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "MortonDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{BFE577AD7AA696E9}" {
+     m_sName "GC_MigratedSpawn_1E82031438685D5C"
+     m_aConditions {
+      GC_GameModeStateCondition "{C79E016E969B3272}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{5DCE150094FEDF9E}" {
+       m_sFlagName "Morton Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E62567C6617DDA46}" {
+       m_sMessage "GC_MigratedSpawn_1E82031438685D5C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0CD20B622F41DDE8}" {
+     m_sName "GC_MigratedSpawn_1E82031438685D5C (25s)"
+     m_aConditions {
+      GC_MissionEventCondition "{105EADC0B85F21EB}" {
+       m_sEventName "GC_MigratedSpawn_1E82031438685D5C"
+      }
+     }
+     m_Advanced GC_EventOptions "{99E24327BAA394B5}" {
+      m_fDelay 25
+     }
+     m_aActions {
+      GC_SpawnAction "{9DFCDEF748A2D6AA}" {
+       m_Spawn GC_AIGroupSpawn "{8368EB12DD640B5D}" {
+        m_sLocation "GC_Spawner_1E82031438685D5C"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "MortonDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B49C057C9F7DD38E}" {
+     m_sName "GC_MigratedSpawn_43A0639847A8076F"
+     m_aConditions {
+      GC_GameModeStateCondition "{63F4798D44C5E4B6}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{6CCA9D6D77809E56}" {
+       m_sFlagName "Morton Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B6B4495D45978FB1}" {
+       m_sMessage "GC_MigratedSpawn_43A0639847A8076F"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2FEB53508BF2C0C5}" {
+     m_sName "GC_MigratedSpawn_43A0639847A8076F (30s)"
+     m_aConditions {
+      GC_MissionEventCondition "{581905C98F5F3476}" {
+       m_sEventName "GC_MigratedSpawn_43A0639847A8076F"
+      }
+     }
+     m_Advanced GC_EventOptions "{EE034288F573D912}" {
+      m_fDelay 30
+     }
+     m_aActions {
+      GC_SpawnAction "{087E6C4CB20583E7}" {
+       m_Spawn GC_AIGroupSpawn "{E62DA7FF90517C4F}" {
+        m_sLocation "GC_Spawner_43A0639847A8076F"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "MortonDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{34561148F9B6FBD6}" {
+     m_sName "GC_MigratedSpawn_AC48AFAE76D7397A"
+     m_aConditions {
+      GC_GameModeStateCondition "{C8B1586389B49059}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{4E2D4289571CB589}" {
+       m_sFlagName "Morton Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A614A0D703E86659}" {
+       m_sMessage "GC_MigratedSpawn_AC48AFAE76D7397A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8530E8EC924ED9F6}" {
+     m_sName "GC_MigratedSpawn_AC48AFAE76D7397A (35s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C5D374649CCDD0AC}" {
+       m_sEventName "GC_MigratedSpawn_AC48AFAE76D7397A"
+      }
+     }
+     m_Advanced GC_EventOptions "{958F662BD0C0410F}" {
+      m_fDelay 35
+     }
+     m_aActions {
+      GC_SpawnAction "{B7ED58B0E8B6B5B4}" {
+       m_Spawn GC_AIGroupSpawn "{96DBA2CD3CB2A29A}" {
+        m_sLocation "GC_Spawner_AC48AFAE76D7397A"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "MortonDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{FFBFDE498A3E21F2}" {
+     m_sName "GC_MigratedSpawn_C0B24A8BE7960266"
+     m_aConditions {
+      GC_GameModeStateCondition "{D70A31A034310F8A}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{C0CA4323B58F4D12}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{D2FACD2AB74D3CE7}" {
+         m_sFlagName "Morton Flag"
+        }
+        GC_MissionFlagCondition "{6954F77BE3E30092}" {
+         m_sFlagName "Phase 1 Done Flag"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E761B822C90D268E}" {
+       m_sMessage "GC_MigratedSpawn_C0B24A8BE7960266"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B5880B1D61113CF2}" {
+     m_sName "GC_MigratedSpawn_C0B24A8BE7960266 (43s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{049FB78339C23496}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{AB91EFD13BE5D6E6}" {
+       m_sEventName "GC_MigratedSpawn_C0B24A8BE7960266"
+      }
+     }
+     m_Advanced GC_EventOptions "{59F33FF309EFA89B}" {
+      m_fDelay 43
+     }
+     m_aActions {
+      GC_SpawnAction "{C2AB987EF803FD19}" {
+       m_Spawn GC_PrefabSpawn "{7D70D2655EC367C9}" {
+        m_sLocation "CommanderSpawner3"
+        m_sPrefab "{C36FA3DD3507C03E}worlds/HotMic/Prefabs/Characters/Objectives/RHS_RF_Commander.et"
+       }
+      }
+     }
+    }
+    GC_Event "{838B1AB54B13EAE8}" {
+     m_sName "GC_MigratedSpawn_25DC3397056DE2C3"
+     m_aConditions {
+      GC_GameModeStateCondition "{E61428EDED7F38C1}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{D10D101D9AC1B557}" {
+       m_sFlagName "Morton Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A34EB47BDA21E687}" {
+       m_sMessage "GC_MigratedSpawn_25DC3397056DE2C3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{069DC3BE8E211553}" {
+     m_sName "GC_MigratedSpawn_25DC3397056DE2C3 (40s)"
+     m_aConditions {
+      GC_MissionEventCondition "{05E57805F5FF2751}" {
+       m_sEventName "GC_MigratedSpawn_25DC3397056DE2C3"
+      }
+     }
+     m_Advanced GC_EventOptions "{0FE762F93B101F42}" {
+      m_fDelay 40
+     }
+     m_aActions {
+      GC_SpawnAction "{CB87B5AC5F86706D}" {
+       m_Spawn GC_AIGroupSpawn "{BD8590D3F76B0ECC}" {
+        m_sLocation "GC_Spawner_25DC3397056DE2C3"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "MortonDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9C17C2538F452BF3}" {
+     m_sName "GC_MigratedSpawn_588B99DD2BFC6D47"
+     m_aConditions {
+      GC_GameModeStateCondition "{8F64C6FC3BCF35B5}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{643F51F31A0EF007}" {
+       m_sFlagName "StPhillipe Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E4DD6902678D1F0A}" {
+       m_sMessage "GC_MigratedSpawn_588B99DD2BFC6D47"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{44D13343C4488A57}" {
+     m_sName "GC_MigratedSpawn_588B99DD2BFC6D47 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{70DE8DDFF09BB131}" {
+       m_sEventName "GC_MigratedSpawn_588B99DD2BFC6D47"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{44D13343C4488A57}" {
+       m_Spawn GC_AIGroupSpawn "{1741017AB394E120}" {
+        m_sLocation "GC_Spawner_588B99DD2BFC6D47"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "PhillipeDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{883999D679E566EC}" {
+     m_sName "GC_MigratedSpawn_22217BAFFF4FA3B4"
+     m_aConditions {
+      GC_GameModeStateCondition "{72D449B02B695B44}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{DF71BBAA5DA2979F}" {
+       m_sFlagName "StPhillipe Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0CB16EE2D322D906}" {
+       m_sMessage "GC_MigratedSpawn_22217BAFFF4FA3B4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B62850B48304D91A}" {
+     m_sName "GC_MigratedSpawn_22217BAFFF4FA3B4 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{143775DA460F0301}" {
+       m_sEventName "GC_MigratedSpawn_22217BAFFF4FA3B4"
+      }
+     }
+     m_Advanced GC_EventOptions "{D00A3A96C5CF22EB}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{08AC20406BCEC7A9}" {
+       m_Spawn GC_AIGroupSpawn "{65406B29243E8799}" {
+        m_sLocation "GC_Spawner_22217BAFFF4FA3B4"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "PhillipeDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{D0CBFE07E5AAF855}" {
+     m_sName "GC_MigratedSpawn_AF5DBB452935AFAD"
+     m_aConditions {
+      GC_GameModeStateCondition "{591A5E989A321E06}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{01528F55FD996165}" {
+       m_sFlagName "StPhillipe Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6B13EBEC44A48E1F}" {
+       m_sMessage "GC_MigratedSpawn_AF5DBB452935AFAD"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BED3A0586FE67FE0}" {
+     m_sName "GC_MigratedSpawn_AF5DBB452935AFAD (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F73ED3278334CAFE}" {
+       m_sEventName "GC_MigratedSpawn_AF5DBB452935AFAD"
+      }
+     }
+     m_Advanced GC_EventOptions "{292B4680BC2D9102}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{C2AB3EB02BE3BA4B}" {
+       m_Spawn GC_AIGroupSpawn "{B6BB12C5E785663C}" {
+        m_sLocation "GC_Spawner_AF5DBB452935AFAD"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "PhillipeDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{93D40CCD411191D3}" {
+     m_sName "GC_MigratedSpawn_AA082408B13B5AD8"
+     m_aConditions {
+      GC_GameModeStateCondition "{811167D05FADA3BF}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{0165F32FC2398A5F}" {
+       m_sFlagName "StPhillipe Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{65E9AE4C6FD2CCEF}" {
+       m_sMessage "GC_MigratedSpawn_AA082408B13B5AD8"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A2AB1C72AB8F67D6}" {
+     m_sName "GC_MigratedSpawn_AA082408B13B5AD8 (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1129A327BB8C1002}" {
+       m_sEventName "GC_MigratedSpawn_AA082408B13B5AD8"
+      }
+     }
+     m_Advanced GC_EventOptions "{F757332FA11E2782}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_SpawnAction "{3E84919BABB3F960}" {
+       m_Spawn GC_AIGroupSpawn "{A60440A5831FA366}" {
+        m_sLocation "GC_Spawner_AA082408B13B5AD8"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "PhillipeDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A93A003ADBF11292}" {
+     m_sName "GC_MigratedSpawn_EACB03530343B3CA"
+     m_aConditions {
+      GC_GameModeStateCondition "{0783516F2B08D106}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{D1F993065B05A01A}" {
+       m_sFlagName "StPhillipe Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2F4F2E2C0552F9A4}" {
+       m_sMessage "GC_MigratedSpawn_EACB03530343B3CA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3A06DD1B77725A45}" {
+     m_sName "GC_MigratedSpawn_EACB03530343B3CA (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{70523172640E96CF}" {
+       m_sEventName "GC_MigratedSpawn_EACB03530343B3CA"
+      }
+     }
+     m_Advanced GC_EventOptions "{EC2D8083E9998791}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_SpawnAction "{044FBFC360182A40}" {
+       m_Spawn GC_AIGroupSpawn "{D10D84A12D2B48A2}" {
+        m_sLocation "GC_Spawner_EACB03530343B3CA"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "PhillipeDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{95B99899FAC2ADB1}" {
+     m_sName "GC_MigratedSpawn_C42EE82494F0B5E6"
+     m_aConditions {
+      GC_GameModeStateCondition "{1FEBE663D417E5A6}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{52D7BA46BBBBE560}" {
+       m_sFlagName "StPhillipe Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6BF8D5FF77B1C90D}" {
+       m_sMessage "GC_MigratedSpawn_C42EE82494F0B5E6"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8AB27A538ADDF19F}" {
+     m_sName "GC_MigratedSpawn_C42EE82494F0B5E6 (25s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B9F834C76FE95685}" {
+       m_sEventName "GC_MigratedSpawn_C42EE82494F0B5E6"
+      }
+     }
+     m_Advanced GC_EventOptions "{713038796B2E21EC}" {
+      m_fDelay 25
+     }
+     m_aActions {
+      GC_SpawnAction "{7C5D2C1A27080A70}" {
+       m_Spawn GC_AIGroupSpawn "{AF1B490665D7B817}" {
+        m_sLocation "GC_Spawner_C42EE82494F0B5E6"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "PhillipeDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C54FB14E00DD1A03}" {
+     m_sName "GC_MigratedSpawn_0616D0C112CB6788"
+     m_aConditions {
+      GC_GameModeStateCondition "{B23E1D94E70BD5B2}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{1B0F399251A51A03}" {
+       m_sFlagName "StPhillipe Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{45B29F4DF4A3685D}" {
+       m_sMessage "GC_MigratedSpawn_0616D0C112CB6788"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F9835F3E075B367F}" {
+     m_sName "GC_MigratedSpawn_0616D0C112CB6788 (30s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A1E443402D025A09}" {
+       m_sEventName "GC_MigratedSpawn_0616D0C112CB6788"
+      }
+     }
+     m_Advanced GC_EventOptions "{CE3DF72CBB7A6121}" {
+      m_fDelay 30
+     }
+     m_aActions {
+      GC_SpawnAction "{BF7132EEA4F628C2}" {
+       m_Spawn GC_AIGroupSpawn "{58F66DAE0525A777}" {
+        m_sLocation "GC_Spawner_0616D0C112CB6788"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "PhillipeDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A7E9980085FF4EF5}" {
+     m_sName "GC_MigratedSpawn_C853964A3E7A85F3"
+     m_aConditions {
+      GC_GameModeStateCondition "{704181234B8B88C3}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{2CE19963278BFA93}" {
+       m_sFlagName "StPhillipe Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{72CA7E8E3375B855}" {
+       m_sMessage "GC_MigratedSpawn_C853964A3E7A85F3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{04DB63B9A777181E}" {
+     m_sName "GC_MigratedSpawn_C853964A3E7A85F3 (35s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6C028AE9C68D7701}" {
+       m_sEventName "GC_MigratedSpawn_C853964A3E7A85F3"
+      }
+     }
+     m_Advanced GC_EventOptions "{8E5320455C0531CE}" {
+      m_fDelay 35
+     }
+     m_aActions {
+      GC_SpawnAction "{67AAB472D6AD1F4C}" {
+       m_Spawn GC_AIGroupSpawn "{A0133528F753DA70}" {
+        m_sLocation "GC_Spawner_C853964A3E7A85F3"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "PhillipeDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{678B85605C7083F4}" {
+     m_sName "GC_MigratedSpawn_F9031866F6580908"
+     m_aConditions {
+      GC_GameModeStateCondition "{004FE01C09F28962}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{A585315E4ECAA225}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{76088BD52DEDEF5D}" {
+         m_sFlagName "StPhillipe Flag"
+        }
+        GC_MissionFlagCondition "{B549B97A2F72441B}" {
+         m_sFlagName "Phase 1 Done Flag"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7BB7664710CEF2DA}" {
+       m_sMessage "GC_MigratedSpawn_F9031866F6580908"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{55B9AF1B71BFAEC6}" {
+     m_sName "GC_MigratedSpawn_F9031866F6580908 (38s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{B1FEFDC8E02E863E}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{60E61F3E78273226}" {
+       m_sEventName "GC_MigratedSpawn_F9031866F6580908"
+      }
+     }
+     m_Advanced GC_EventOptions "{578114999BC960F7}" {
+      m_fDelay 38
+     }
+     m_aActions {
+      GC_SpawnAction "{8C0ECFC39E60C3E1}" {
+       m_Spawn GC_PrefabSpawn "{FDC4889B5ABE9DEA}" {
+        m_sLocation "CommanderSpawner4"
+        m_sPrefab "{C36FA3DD3507C03E}worlds/HotMic/Prefabs/Characters/Objectives/RHS_RF_Commander.et"
+       }
+      }
+     }
+    }
+    GC_Event "{9B23E2F7047C2DFA}" {
+     m_sName "GC_MigratedSpawn_32A4F6096467176B"
+     m_aConditions {
+      GC_GameModeStateCondition "{CFEAA6D06AE0822B}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{DFE2148980292B64}" {
+       m_sFlagName "StPierre Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{BCA9AB69D61A9096}" {
+       m_sMessage "GC_MigratedSpawn_32A4F6096467176B"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{463834350ABC8E1E}" {
+     m_sName "GC_MigratedSpawn_32A4F6096467176B (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{15D52810479F5474}" {
+       m_sEventName "GC_MigratedSpawn_32A4F6096467176B"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{463834350ABC8E1E}" {
+       m_Spawn GC_AIGroupSpawn "{4EC68D00001A2BEE}" {
+        m_sLocation "GC_Spawner_32A4F6096467176B"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "PierreDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4DA1E4D09D4D3FC1}" {
+     m_sName "GC_MigratedSpawn_BA1EAB74C831CEFC"
+     m_aConditions {
+      GC_GameModeStateCondition "{37CDC999E492378D}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{9421AE9B1FF0F44D}" {
+       m_sFlagName "StPierre Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3CCE837F9484C56E}" {
+       m_sMessage "GC_MigratedSpawn_BA1EAB74C831CEFC"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A63BDA69D535C00B}" {
+     m_sName "GC_MigratedSpawn_BA1EAB74C831CEFC (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F6B06375D3E5CC73}" {
+       m_sEventName "GC_MigratedSpawn_BA1EAB74C831CEFC"
+      }
+     }
+     m_Advanced GC_EventOptions "{58EC959F17B8047D}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{2B64FCA0FF344B09}" {
+       m_Spawn GC_AIGroupSpawn "{2E29E631FB87C97D}" {
+        m_sLocation "GC_Spawner_BA1EAB74C831CEFC"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "PierreDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E7FDD8E14816AC6D}" {
+     m_sName "GC_MigratedSpawn_7C647F235C5AA1EF"
+     m_aConditions {
+      GC_GameModeStateCondition "{B078D764113D255C}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{328E05714AE6AAB9}" {
+       m_sFlagName "StPierre Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8AF6719E7FE043F7}" {
+       m_sMessage "GC_MigratedSpawn_7C647F235C5AA1EF"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5E55AE468272322C}" {
+     m_sName "GC_MigratedSpawn_7C647F235C5AA1EF (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{95910245F9073055}" {
+       m_sEventName "GC_MigratedSpawn_7C647F235C5AA1EF"
+      }
+     }
+     m_Advanced GC_EventOptions "{F8DF8EA203461804}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{B6672F2DFD75789E}" {
+       m_Spawn GC_AIGroupSpawn "{A0A1435E8488B496}" {
+        m_sLocation "GC_Spawner_7C647F235C5AA1EF"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "PierreDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C82E78CA6973F667}" {
+     m_sName "GC_MigratedSpawn_369CD9D1A3DA2650"
+     m_aConditions {
+      GC_GameModeStateCondition "{D6C9F2BA5536B505}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{AA073819377A491E}" {
+       m_sFlagName "StPierre Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{CAB48E04435DCA7B}" {
+       m_sMessage "GC_MigratedSpawn_369CD9D1A3DA2650"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FE0F05FE8CD3E81B}" {
+     m_sName "GC_MigratedSpawn_369CD9D1A3DA2650 (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D700026B2A3431DC}" {
+       m_sEventName "GC_MigratedSpawn_369CD9D1A3DA2650"
+      }
+     }
+     m_Advanced GC_EventOptions "{22B7A305EEF1F8A3}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_SpawnAction "{C5B4EC967700BCDA}" {
+       m_Spawn GC_AIGroupSpawn "{2B263353DDB4BFA9}" {
+        m_sLocation "GC_Spawner_369CD9D1A3DA2650"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "PierreDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9269F42A51B8DBEE}" {
+     m_sName "GC_MigratedSpawn_401C8A39F525D8E9"
+     m_aConditions {
+      GC_GameModeStateCondition "{D7D39CEE833679E9}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{5BED4CEBE05CF2AB}" {
+       m_sFlagName "StPierre Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1069F81F00C0A135}" {
+       m_sMessage "GC_MigratedSpawn_401C8A39F525D8E9"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0A38ABAA29BF0161}" {
+     m_sName "GC_MigratedSpawn_401C8A39F525D8E9 (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8F34309672BAD267}" {
+       m_sEventName "GC_MigratedSpawn_401C8A39F525D8E9"
+      }
+     }
+     m_Advanced GC_EventOptions "{B636DB3AABB7E6AD}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_SpawnAction "{B7BDDC8D2F34E54A}" {
+       m_Spawn GC_AIGroupSpawn "{6CE488C0D77307FA}" {
+        m_sLocation "GC_Spawner_401C8A39F525D8E9"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "PierreDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B34B7B0573FA668D}" {
+     m_sName "GC_MigratedSpawn_2A3AEA308A706B23"
+     m_aConditions {
+      GC_GameModeStateCondition "{DC790A3EF1586314}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{887DBA0B3DC5E319}" {
+       m_sFlagName "StPierre Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1A9329D37ADBBABE}" {
+       m_sMessage "GC_MigratedSpawn_2A3AEA308A706B23"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7B23A7353A4DD7A3}" {
+     m_sName "GC_MigratedSpawn_2A3AEA308A706B23 (25s)"
+     m_aConditions {
+      GC_MissionEventCondition "{640EB612351AF172}" {
+       m_sEventName "GC_MigratedSpawn_2A3AEA308A706B23"
+      }
+     }
+     m_Advanced GC_EventOptions "{AD11C035B5E886DB}" {
+      m_fDelay 25
+     }
+     m_aActions {
+      GC_SpawnAction "{7E382EA1ADDEAE76}" {
+       m_Spawn GC_AIGroupSpawn "{B9DB0DD12B6293DB}" {
+        m_sLocation "GC_Spawner_2A3AEA308A706B23"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "PierreDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{97C284F46AFB883E}" {
+     m_sName "GC_MigratedSpawn_1C8F94745F089208"
+     m_aConditions {
+      GC_GameModeStateCondition "{17A2F4A697BA1C9F}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{FF2DB9472028C3A9}" {
+       m_sFlagName "StPierre Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{CCA2D9E016B3BD91}" {
+       m_sMessage "GC_MigratedSpawn_1C8F94745F089208"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FC293D0D002205B5}" {
+     m_sName "GC_MigratedSpawn_1C8F94745F089208 (30s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BD3D7E7365249534}" {
+       m_sEventName "GC_MigratedSpawn_1C8F94745F089208"
+      }
+     }
+     m_Advanced GC_EventOptions "{755A509F8F4F4B3A}" {
+      m_fDelay 30
+     }
+     m_aActions {
+      GC_SpawnAction "{E97524C6BDE27C5A}" {
+       m_Spawn GC_AIGroupSpawn "{CDE70F8B1A7CB89B}" {
+        m_sLocation "GC_Spawner_1C8F94745F089208"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "PierreDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{47FA56D59F520938}" {
+     m_sName "GC_MigratedSpawn_2548A43D97850B34"
+     m_aConditions {
+      GC_GameModeStateCondition "{FB647D320E3C56DA}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{4A9B59F3A6DE5EE5}" {
+       m_sFlagName "StPierre Spawn Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2436EAFBE55EE1BB}" {
+       m_sMessage "GC_MigratedSpawn_2548A43D97850B34"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F7DF881A33799F3E}" {
+     m_sName "GC_MigratedSpawn_2548A43D97850B34 (35s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5B1BD06BFE1BE12B}" {
+       m_sEventName "GC_MigratedSpawn_2548A43D97850B34"
+      }
+     }
+     m_Advanced GC_EventOptions "{614879865D4594A8}" {
+      m_fDelay 35
+     }
+     m_aActions {
+      GC_SpawnAction "{E173B66E0CF15F26}" {
+       m_Spawn GC_AIGroupSpawn "{A7437195FCD132A7}" {
+        m_sLocation "GC_Spawner_2548A43D97850B34"
+        m_sPrefab "{4090BCC2DFA7066B}Prefabs/Groups/OPFOR/Russia/2020/AFRF_MotorRifles_2010s/AFRF_MotRifles_2020_RifleSquad.et"
+        m_aWaypoints {
+         "PierreDefenseWaypoint"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{200785983358C8D7}" {
+     m_sName "GC_MigratedSpawn_297ED87F5893F248"
+     m_aConditions {
+      GC_GameModeStateCondition "{DC28BA6A79FA73E4}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{CF76D4AEA17A6F20}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{15489B45CEB35914}" {
+         m_sFlagName "StPierre Flag"
+        }
+        GC_MissionFlagCondition "{E1CCFBC411CDD6C9}" {
+         m_sFlagName "Phase 1 Done Flag"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D004DCD9590E0B6F}" {
+       m_sMessage "GC_MigratedSpawn_297ED87F5893F248"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E18B91934AB8C7AE}" {
+     m_sName "GC_MigratedSpawn_297ED87F5893F248 (38s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{1E1B8C07237B6270}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{672B644C3FAB80F3}" {
+       m_sEventName "GC_MigratedSpawn_297ED87F5893F248"
+      }
+     }
+     m_Advanced GC_EventOptions "{B55461458E7E3724}" {
+      m_fDelay 38
+     }
+     m_aActions {
+      GC_SpawnAction "{E68F757163F71749}" {
+       m_Spawn GC_PrefabSpawn "{2F2669F0402ACB09}" {
+        m_sLocation "CommanderSpawner5"
+        m_sPrefab "{C36FA3DD3507C03E}worlds/HotMic/Prefabs/Characters/Objectives/RHS_RF_Commander.et"
+       }
+      }
+     }
+    }
+   }
+   m_aAreaFlagObservers {
+    GC_AreaFlagObserver "{D199D6A109833D36}" {
+     m_sFlag "Phase 1 Delete Units Flag"
+     m_Area GC_AreaCondition "{CF6AECA5FC5FA123}" {
+      m_sArea "GC_MigrationArea_E2BB9F51C434ED98_A157BDEBCC735B60"
+      m_Targets GC_CharacterAreaTargets "{CE7A9F01BEFF991A}" {
+       m_aFactions {
+        "RHS_USAF"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{383A444D8E84F1B9}" {
+       m_fRequiredShare 0.85
+       m_bWholeMission 1
+       m_bWholeNumberQuotient 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{43EA13D4D8CE8341}" {
+     m_sFlag "Phase 1 Delete Units Flag"
+     m_Area GC_AreaCondition "{5959972BA0D88A1E}" {
+      m_sArea "GC_MigrationArea_E2BB9F51C434ED98_BF431360579254D7"
+      m_Targets GC_CharacterAreaTargets "{25015725A4623FB0}" {
+       m_aFactions {
+        "RHS_USAF"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{B4B1CD304338CC5E}" {
+       m_fRequiredShare 0.85
+       m_bWholeMission 1
+       m_bWholeNumberQuotient 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{2226E3A2F2DDC1AB}" {
+     m_sFlag "Phase 1 Delete Units Flag"
+     m_Area GC_AreaCondition "{DE3C445257AA180B}" {
+      m_sArea "GC_MigrationArea_E2BB9F51C434ED98_3C61D0ECD3FC69BB"
+      m_Targets GC_CharacterAreaTargets "{1B027586AF3F182E}" {
+       m_aFactions {
+        "RHS_USAF"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{2F3AFF4D75B2861C}" {
+       m_fRequiredShare 0.85
+       m_bWholeMission 1
+       m_bWholeNumberQuotient 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{38D78B7A5E927567}" {
+     m_sFlag "Phase 1 Delete Units Flag"
+     m_Area GC_AreaCondition "{23F57EADF8DD9B02}" {
+      m_sArea "GC_MigrationArea_E2BB9F51C434ED98_DA769D57FEF075B2"
+      m_Targets GC_CharacterAreaTargets "{79DF0D09D184595D}" {
+       m_aFactions {
+        "RHS_USAF"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{169C42DB40279745}" {
+       m_fRequiredShare 0.85
+       m_bWholeMission 1
+       m_bWholeNumberQuotient 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{E900A56C0D60411E}" {
+     m_sFlag "Phase 1 Delete Units Flag"
+     m_Area GC_AreaCondition "{DB34C3FF54073C1F}" {
+      m_sArea "GC_MigrationArea_E2BB9F51C434ED98_1074532351CE8885"
+      m_Targets GC_CharacterAreaTargets "{8399728FF25716F0}" {
+       m_aFactions {
+        "RHS_USAF"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{FE7DBFD41155EE4E}" {
+       m_fRequiredShare 0.85
+       m_bWholeMission 1
+       m_bWholeNumberQuotient 1
+      }
+     }
+    }
+   }
+   m_aAuthoredRespawns {
+    GC_AuthoredFactionRespawn "{0AB2D26A362ECFA0}" {
+     m_sFaction "RHS_USAF"
+     m_iTickets 20
+     m_iIntervalMs 0
+    }
+   }
+  }
+ }
+ coords 9480.512 22.799 7001.048
+ angleY 60
+ {
+  RadioManagerEntity {
+   ID "A79C4E0A43DEB824"
+   coords -26.89 38.579 -2.479
+  }
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   coords 0 0 0.001
+   Factions + {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "#AR-Callsign_US_Platoon_2"
+       }
+       SCR_CallsignInfo "{55CCB792CE18FB44}" {
+        m_sCallsign "#AR-Callsign_US_Platoon_1"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{66632CF14F47B95D}" {
+        m_sCallsign "4"
+       }
+      }
+     }
+    }
+   }
+  }
+  ItemPreviewManagerEntity : "{9F18C476AB860F3B}Prefabs/World/Game/ItemPreviewManager.et" {
+   ID "5ED9088735FF2DD5"
+   coords -12.247 1 -7.526
+  }
+  SCR_EditorSettingsEntity {
+   ID "61B4E967E6C20362"
+   coords 0 0 0.001
+   m_bIsUnlimitedEditorLegal 1
+  }
+ }
+}
+GC_RadiusAreaEntity GC_MigrationArea_4176FBE4CB5D0706 : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 9473.101 19.171 6989.059
+ m_fRadius 100
+}
