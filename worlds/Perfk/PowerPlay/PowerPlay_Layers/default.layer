@@ -1,0 +1,4657 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{64EF613827D811A2}" {
+     NavmeshFileOveride {
+      "{5CE37881212BDBAE}worlds/Perfk/NavMesh/Ruha_Power_Plant/PK_Ruha_Power_Plant.nmn"
+     }
+    }
+   }
+  }
+ }
+ coords 3899.376 61.647 1356.94
+}
+GC_LobbyGameMode GC_MigratedMission : "{20A13358639A25EA}worlds/Perfk/PowerPlay/PowerPlay_GC_Settings.et" {
+ components {
+  SCR_InitWeatherComponent "{61B68227C35BFE9A}" {
+   m_sInitialStartingWeatherId "Clear"
+  }
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 1
+   m_iRangeHoursStart 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6694DC330BC6219C}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 1
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 3
+   m_iMonth 2
+   m_iYear 1989
+  }
+  SCR_GroupsManagerComponent "{5706EC99934496F5}" {
+   m_aGroupFlags {
+   }
+  }
+  GC_PeakFactionPopulationComponent "{3D672E2DFB34CB28}" {
+  }
+  GC_LivingAndDeadAIComponent "{869239B845903555}" {
+   m_sFaction "GC_SEPARATIST"
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_bLockLimitedEditorAfterStaging 1
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{B8A9A024B18DE9B9}" {
+     m_sName "BombActive"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{65AB15F2F0B99FF9}" {
+     m_sName "GC_MigrationCapture_BombSecured"
+     m_aConditions {
+      GC_AreaCondition "{22D53B871506D33A}" {
+       m_sArea "GC_MigrationArea_BombSecured"
+       m_Targets GC_CharacterAreaTargets "{480C83D34E39C70E}" {
+        m_aFactions {
+         "RHS_USAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{FFB1E0DDBC21481A}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{8CCDD65FD336E795}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{81B62E0646744EBC}" {
+       m_sMessage "GC_MigrationCapture_BombSecured"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F2D3D9685C2100FB}" {
+     m_sName "ReactorSecured"
+     m_aConditions {
+      GC_MissionEventCondition "{5073BE32539C2921}" {
+       m_sEventName "GC_MigrationCapture_BombSecured"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C9ADB2C564446DF3}" {
+       m_sMessage "ReactorSecured"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2CCFCBD55498130B}" {
+     m_sName "ReactorSecured (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9BBA14FF4471E2F6}" {
+       m_sEventName "ReactorSecured"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{129247B6C1D9928F}" {
+       m_sTitle "Intel"
+       m_sMessage "Reactor area secured, bomb defused - Continue clearing the power plant"
+      }
+     }
+    }
+    GC_Event "{820B49967D387A18}" {
+     m_sName "ReactorArmed"
+     m_aConditions {
+      GC_MissionEventCondition "{2CDE0A72F0F5CC8B}" {
+       m_sEventName "GC_MigrationCapture_BombSecured"
+       m_bRequireFalse 1
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0255B6987939E66D}" {
+       m_sMessage "ReactorArmed"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F7F81A69DC581543}" {
+     m_sName "ReactorArmed (1200s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9F2CB267243AD9B0}" {
+       m_sEventName "ReactorArmed"
+      }
+     }
+     m_Advanced GC_EventOptions "{7B49337CEB0BFBF3}" {
+      m_fDelay 1200
+     }
+     m_aActions {
+      GC_MessageAction "{E0941CF50132E599}" {
+       m_sTitle "Intel"
+       m_sMessage "Bomb in reactor is armed and is expected to go off in 5 min unless the area is secured"
+      }
+     }
+    }
+    GC_Event "{ADF10E4C3B552FC5}" {
+     m_sName "ReactorCritical"
+     m_aConditions {
+      GC_MissionEventCondition "{D5404465A600FE13}" {
+       m_sEventName "GC_MigrationCapture_BombSecured"
+       m_bRequireFalse 1
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C17445DF9391F9BF}" {
+       m_sMessage "ReactorCritical"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FEB1E726A9D18933}" {
+     m_sName "ReactorCritical (1500s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BF63DAC5B8D73D68}" {
+       m_sEventName "ReactorCritical"
+      }
+     }
+     m_Advanced GC_EventOptions "{A62EF4B6AE413BA0}" {
+      m_fDelay 1500
+     }
+     m_aActions {
+      GC_FlagAction "{47380971E1ABD19A}" {
+       m_sFlagName "BombActive"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{FB19C4BCBD663DFE}" {
+     m_sName "ReactorCritical (1560s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C1F0D0D6D9021C8D}" {
+       m_sEventName "ReactorCritical"
+      }
+     }
+     m_Advanced GC_EventOptions "{8A7CF156324A9F32}" {
+      m_fDelay 1560
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{D192176802A997B1}" {
+       m_aEntities {
+        "airraidsiren_sound"
+       }
+      }
+     }
+    }
+    GC_Event "{B2B0E141349878A5}" {
+     m_sName "OpforCASMessage"
+     m_aConditions {
+      GC_CustomScriptCondition "{2DC47188EF6613A0}" {
+       m_Script GC_LivingAndDeadAICheck "{0C1D36D22580B165}" {
+        m_fRatio 0.85
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E960AAF3AC55196B}" {
+       m_sMessage "OpforCASMessage"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{835EDDEA4A2D563A}" {
+     m_sName "OpforCASMessage (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9886395C313ABA00}" {
+       m_sEventName "OpforCASMessage"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7AECC6691F221767}" {
+       m_sTitle "Opfor 85% Casualty limit"
+       m_sMessage "Opfor has lost 85% of its forces, GMs consider calling the mission as Blufor Victory"
+      }
+     }
+    }
+    GC_Event "{B45DA5D4FB0884F3}" {
+     m_sName "BluforCASMessage"
+     m_aConditions {
+      GC_CustomScriptCondition "{2B309C7E894CD2AA}" {
+       m_Script GC_PeakFactionPopulationCheck "{94F9ADA20143DE76}" {
+        m_sFaction "RHS_USAF"
+        m_fRatio 0.85
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{237C3FB6172BCCA6}" {
+       m_sMessage "BluforCASMessage"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F37828886227EB66}" {
+     m_sName "BluforCASMessage (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{08C81430565B6002}" {
+       m_sEventName "BluforCASMessage"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6495759C091365CC}" {
+       m_sTitle "Blufor 85% Casualty limit"
+       m_sMessage "Blufor has lost 85% of its forces, GMs consider calling the mission as Opfor Victory"
+      }
+     }
+    }
+    GC_Event "{84F8C0132CEB32BE}" {
+     m_sName "ReleaseOpfor"
+     m_aConditions {
+      GC_GameModeStateCondition "{7C10A5589FB77E5D}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{375B9140EB9FCF16}" {
+       m_sFlagName "ReleaseOpfor"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A8B4D7A4D00BF16E}" {
+       m_sMessage "ReleaseOpfor"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CAD0710AB29A1307}" {
+     m_sName "ReleaseOpfor (30s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{27008B934CC9A2E6}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{E9E315799788B634}" {
+       m_sEventName "ReleaseOpfor"
+      }
+     }
+     m_Advanced GC_EventOptions "{3F110897448AA293}" {
+      m_fDelay 30
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{3E71502A1B53374D}" {
+       m_aEntities {
+        "opforAoLimit"
+       }
+      }
+      GC_MessageAction "{816FDE838CFA33AB}" {
+       m_sTitle "BLUFOR BREACHED"
+       m_sMessage "Starting AO LIMIT REMOVED, you are free to roam the Power Plant"
+       m_aFactions {
+        "GC_SEPARATIST"
+       }
+      }
+     }
+    }
+    GC_Event "{1B6A11133E986233}" {
+     m_sName "GC_MigratedSpawn_63A2B9C3449DD79A"
+     m_aConditions {
+      GC_GameModeStateCondition "{8600E720857E1E9B}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{81EF3DF18E468324}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{CEDEC2A8143CF77D}" {
+       m_sMessage "GC_MigratedSpawn_63A2B9C3449DD79A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{80F6224D1853C6A3}" {
+     m_sName "GC_MigratedSpawn_63A2B9C3449DD79A (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B1F781A6D88CBE17}" {
+       m_sEventName "GC_MigratedSpawn_63A2B9C3449DD79A"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{80F6224D1853C6A3}" {
+       m_Spawn GC_PrefabSpawn "{3A29F540473C3624}" {
+        m_sLocation "bomb"
+        m_sPrefab "{DDDDBEC77B49A995}Prefabs/Systems/Explosions/Wrapper_Bomb_Huge.et"
+       }
+      }
+     }
+    }
+    GC_Event "{A4A71C18DF89D475}" {
+     m_sName "GC_MigratedSpawn_D391C5A4BE89FA02"
+     m_aConditions {
+      GC_GameModeStateCondition "{7C7322DE5D2BE7DC}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{28A8C8CB0EB9D2FF}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6535D7B1EFAED2D9}" {
+       m_sMessage "GC_MigratedSpawn_D391C5A4BE89FA02"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{14618C50AED882AB}" {
+     m_sName "GC_MigratedSpawn_D391C5A4BE89FA02 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{EC1E4E10FE9C373C}" {
+       m_sEventName "GC_MigratedSpawn_D391C5A4BE89FA02"
+      }
+     }
+     m_Advanced GC_EventOptions "{5E0E7EC1C41A6138}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{C35C4E39306796A0}" {
+       m_Spawn GC_PrefabSpawn "{15717C4A85F2E1FD}" {
+        m_sLocation "fire"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{5E89FE5D5EE5E133}" {
+     m_sName "GC_MigratedSpawn_D15BE0E5A82C1CB5"
+     m_aConditions {
+      GC_GameModeStateCondition "{6356D4BB9F393BED}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{3CAFC15AEB4EA175}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5CAEF288CABE1B96}" {
+       m_sMessage "GC_MigratedSpawn_D15BE0E5A82C1CB5"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{26DABD7B0D0CCDD1}" {
+     m_sName "GC_MigratedSpawn_D15BE0E5A82C1CB5 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C626B9AB903FB0BB}" {
+       m_sEventName "GC_MigratedSpawn_D15BE0E5A82C1CB5"
+      }
+     }
+     m_Advanced GC_EventOptions "{0F1CBD1009C98081}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{7A472E5F2E9DDC62}" {
+       m_Spawn GC_PrefabSpawn "{8BBB32870B15DA90}" {
+        m_sLocation "airraidsiren"
+        m_sPrefab "{93FC2145F05A1EEE}Prefabs/Systems/Sound/sound_airraidsiren.et"
+        m_sEntityName "airraidsiren_sound"
+       }
+      }
+     }
+    }
+    GC_Event "{2877027829BC3BE7}" {
+     m_sName "GC_MigratedSpawn_C93E977D88F56745"
+     m_aConditions {
+      GC_GameModeStateCondition "{F573E70004336D2B}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{04400C2D3B66523C}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5DAD1DBAB1937993}" {
+       m_sMessage "GC_MigratedSpawn_C93E977D88F56745"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{892A79C11FD58DEE}" {
+     m_sName "GC_MigratedSpawn_C93E977D88F56745 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6185BF97A21CA9B0}" {
+       m_sEventName "GC_MigratedSpawn_C93E977D88F56745"
+      }
+     }
+     m_Advanced GC_EventOptions "{353D9058A79CCF20}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{0A591C2D07EB21C6}" {
+       m_Spawn GC_PrefabSpawn "{63707F18A5384C52}" {
+        m_sLocation "fire2"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{8CF027675D346906}" {
+     m_sName "GC_MigratedSpawn_9717326E2269C13E"
+     m_aConditions {
+      GC_GameModeStateCondition "{AC6986CFB6A3AB60}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{E0B10D72776D4281}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E8A93FA087DD17D1}" {
+       m_sMessage "GC_MigratedSpawn_9717326E2269C13E"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{DD882E64B30E1E21}" {
+     m_sName "GC_MigratedSpawn_9717326E2269C13E (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C5E10DFE79A8C357}" {
+       m_sEventName "GC_MigratedSpawn_9717326E2269C13E"
+      }
+     }
+     m_Advanced GC_EventOptions "{4016A4290832C053}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{C2D91F5A01416192}" {
+       m_Spawn GC_PrefabSpawn "{D94691AB45C2BCAF}" {
+        m_sLocation "fire3"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{C618D594C50ED4BF}" {
+     m_sName "GC_MigratedSpawn_10F12B2CA8F0BEBF"
+     m_aConditions {
+      GC_GameModeStateCondition "{436982EEBE3B1FFA}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{19492EF4A82B4580}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D2C3CDE5D8132F37}" {
+       m_sMessage "GC_MigratedSpawn_10F12B2CA8F0BEBF"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{4BC7DC75035CC24D}" {
+     m_sName "GC_MigratedSpawn_10F12B2CA8F0BEBF (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E731FA1D0D7F1564}" {
+       m_sEventName "GC_MigratedSpawn_10F12B2CA8F0BEBF"
+      }
+     }
+     m_Advanced GC_EventOptions "{348CA2FFC17744D4}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{0282A4F725C50A25}" {
+       m_Spawn GC_PrefabSpawn "{BD756E47B97EAF33}" {
+        m_sLocation "fire4"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{1087048C5DDB8110}" {
+     m_sName "GC_MigratedSpawn_D53E43E5384A1DB4"
+     m_aConditions {
+      GC_GameModeStateCondition "{92D9C2B7CD790235}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{28A3FF890F2D200E}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9E7C65046EDA829E}" {
+       m_sMessage "GC_MigratedSpawn_D53E43E5384A1DB4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1C9744A54B9E12B9}" {
+     m_sName "GC_MigratedSpawn_D53E43E5384A1DB4 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9C4A1202572221D1}" {
+       m_sEventName "GC_MigratedSpawn_D53E43E5384A1DB4"
+      }
+     }
+     m_Advanced GC_EventOptions "{0ED3677FA116E0EC}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{57D95970819DEB9D}" {
+       m_Spawn GC_PrefabSpawn "{3B6731E54A3D8828}" {
+        m_sLocation "fire5"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{1A245E2819EBC7CE}" {
+     m_sName "GC_MigratedSpawn_18180783A94D2C20"
+     m_aConditions {
+      GC_GameModeStateCondition "{012C1270AEA08386}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{A3BC66425F57109F}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C93BBE1E1098318A}" {
+       m_sMessage "GC_MigratedSpawn_18180783A94D2C20"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3C6D66FD0CCE1FAD}" {
+     m_sName "GC_MigratedSpawn_18180783A94D2C20 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{91622FBFDD68B7C9}" {
+       m_sEventName "GC_MigratedSpawn_18180783A94D2C20"
+      }
+     }
+     m_Advanced GC_EventOptions "{1CAE24E73CC80E03}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{5CE741A2BA94F823}" {
+       m_Spawn GC_PrefabSpawn "{2AC60C687E87154F}" {
+        m_sLocation "fire6"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{8668B4BE8DA126F6}" {
+     m_sName "GC_MigratedSpawn_42866D78BD53D414"
+     m_aConditions {
+      GC_GameModeStateCondition "{079736089E760707}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{391787BD50212BCE}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7BA7AE178A9E0AF3}" {
+       m_sMessage "GC_MigratedSpawn_42866D78BD53D414"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2E39BE60E6FB7EAB}" {
+     m_sName "GC_MigratedSpawn_42866D78BD53D414 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A4BD1139CAD5B01E}" {
+       m_sEventName "GC_MigratedSpawn_42866D78BD53D414"
+      }
+     }
+     m_Advanced GC_EventOptions "{250A45028E7E4124}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{F3DB3A15D8C91935}" {
+       m_Spawn GC_PrefabSpawn "{04C015031CA5D811}" {
+        m_sLocation "fire7"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{FAD1879B8B2B9374}" {
+     m_sName "GC_MigratedSpawn_20B0B9D0AE2A5D38"
+     m_aConditions {
+      GC_GameModeStateCondition "{2B391D6AB90C6D94}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{3126EB4367AEFCA6}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F2CE5C70DF3D520E}" {
+       m_sMessage "GC_MigratedSpawn_20B0B9D0AE2A5D38"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7CB19ECC99A6B5F0}" {
+     m_sName "GC_MigratedSpawn_20B0B9D0AE2A5D38 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{729E25236A679FE4}" {
+       m_sEventName "GC_MigratedSpawn_20B0B9D0AE2A5D38"
+      }
+     }
+     m_Advanced GC_EventOptions "{5F014BD7E7F084D1}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{A5C2CC990B9B7DD2}" {
+       m_Spawn GC_PrefabSpawn "{BADC5398055673B1}" {
+        m_sLocation "fire8"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{676CB419DEB9E280}" {
+     m_sName "GC_MigratedSpawn_381411A341D4D6AA"
+     m_aConditions {
+      GC_GameModeStateCondition "{EFB9591F2BF1D88B}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{736B0A5681053067}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D09B5991A62F93A0}" {
+       m_sMessage "GC_MigratedSpawn_381411A341D4D6AA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D322351E08017A9A}" {
+     m_sName "GC_MigratedSpawn_381411A341D4D6AA (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1363B14ADCAA1A70}" {
+       m_sEventName "GC_MigratedSpawn_381411A341D4D6AA"
+      }
+     }
+     m_Advanced GC_EventOptions "{BF562829408B6D7B}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{7DD870B9BBC5D3BB}" {
+       m_Spawn GC_PrefabSpawn "{137DF45975029212}" {
+        m_sLocation "fire9"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{62D633228EF3442B}" {
+     m_sName "GC_MigratedSpawn_5E78619CFCE8FF53"
+     m_aConditions {
+      GC_GameModeStateCondition "{EFE1EFC3235A8DDC}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{1AB6E30620B113C3}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0B33DDA77D8D8C5F}" {
+       m_sMessage "GC_MigratedSpawn_5E78619CFCE8FF53"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E399AC0B6F25FE21}" {
+     m_sName "GC_MigratedSpawn_5E78619CFCE8FF53 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5B0B87FE7545EF00}" {
+       m_sEventName "GC_MigratedSpawn_5E78619CFCE8FF53"
+      }
+     }
+     m_Advanced GC_EventOptions "{894AA558D6F65176}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{E5035AF4C2D8169C}" {
+       m_Spawn GC_PrefabSpawn "{39894C711EBF6A03}" {
+        m_sLocation "fire10"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{1B59A332DD0C5256}" {
+     m_sName "GC_MigratedSpawn_A8E29E5B4E48A369"
+     m_aConditions {
+      GC_GameModeStateCondition "{2D8D749F50100ABE}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{CF71AE6E769A1A86}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{67C729A3090C6660}" {
+       m_sMessage "GC_MigratedSpawn_A8E29E5B4E48A369"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1C8D7457B6A7ED1F}" {
+     m_sName "GC_MigratedSpawn_A8E29E5B4E48A369 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{EA3287BC309AE615}" {
+       m_sEventName "GC_MigratedSpawn_A8E29E5B4E48A369"
+      }
+     }
+     m_Advanced GC_EventOptions "{05FF8C0935FC3FCC}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{D37AD77AA67BA14C}" {
+       m_Spawn GC_PrefabSpawn "{B11EE5EADD63D04F}" {
+        m_sLocation "fire11"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{18957B0C51871905}" {
+     m_sName "GC_MigratedSpawn_1FA37308D82F1FDF"
+     m_aConditions {
+      GC_GameModeStateCondition "{4EEF2F83D8D6DCD3}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{D31B91B6253E2FA2}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FB9FF50C417C9CF8}" {
+       m_sMessage "GC_MigratedSpawn_1FA37308D82F1FDF"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BE3191D2DFF3BFA1}" {
+     m_sName "GC_MigratedSpawn_1FA37308D82F1FDF (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{93444976FEB1E5DD}" {
+       m_sEventName "GC_MigratedSpawn_1FA37308D82F1FDF"
+      }
+     }
+     m_Advanced GC_EventOptions "{72ACD00348FC35CF}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{37D91221FAC25968}" {
+       m_Spawn GC_PrefabSpawn "{69876237328C6B0D}" {
+        m_sLocation "fire12"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{9A4C5684A9E20904}" {
+     m_sName "GC_MigratedSpawn_957DD84B68447AE5"
+     m_aConditions {
+      GC_GameModeStateCondition "{E4F4184FB15CC32F}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{A353719E9D450950}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{97DED50591039023}" {
+       m_sMessage "GC_MigratedSpawn_957DD84B68447AE5"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{923633FD8766C6A4}" {
+     m_sName "GC_MigratedSpawn_957DD84B68447AE5 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BCBBE111D7584942}" {
+       m_sEventName "GC_MigratedSpawn_957DD84B68447AE5"
+      }
+     }
+     m_Advanced GC_EventOptions "{974BAB4640E55D20}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{C5B583B4F102494D}" {
+       m_Spawn GC_PrefabSpawn "{257789B08F1AA45C}" {
+        m_sLocation "fire13"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{537206927602DAB8}" {
+     m_sName "GC_MigratedSpawn_98FC629FF7CBBF31"
+     m_aConditions {
+      GC_GameModeStateCondition "{7ADD52568FBF203E}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{2ED783EA8AC33074}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A530D759FE027568}" {
+       m_sMessage "GC_MigratedSpawn_98FC629FF7CBBF31"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A9BC93B5EAA717FB}" {
+     m_sName "GC_MigratedSpawn_98FC629FF7CBBF31 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{AA4F7AFAD3DCEB5E}" {
+       m_sEventName "GC_MigratedSpawn_98FC629FF7CBBF31"
+      }
+     }
+     m_Advanced GC_EventOptions "{8AE3771E02344259}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{9E18CCD79297B209}" {
+       m_Spawn GC_PrefabSpawn "{33325B60428B7393}" {
+        m_sLocation "fire14"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{D6CB95C11F81C9C9}" {
+     m_sName "GC_MigratedSpawn_52F54C7E498CDD6E"
+     m_aConditions {
+      GC_GameModeStateCondition "{718944A269A7D50D}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{E338EB0283EDE867}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{74F89939EE6FFF52}" {
+       m_sMessage "GC_MigratedSpawn_52F54C7E498CDD6E"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B13591BF008BB510}" {
+     m_sName "GC_MigratedSpawn_52F54C7E498CDD6E (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{05B453FC8073D447}" {
+       m_sEventName "GC_MigratedSpawn_52F54C7E498CDD6E"
+      }
+     }
+     m_Advanced GC_EventOptions "{8E06124909A826E5}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{21ABFD243344F03E}" {
+       m_Spawn GC_PrefabSpawn "{E247B768F536CBE6}" {
+        m_sLocation "fire15"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{DA9A218A64623AEA}" {
+     m_sName "GC_MigratedSpawn_EFF4AA7D29299041"
+     m_aConditions {
+      GC_GameModeStateCondition "{E4473ED90B60D7A5}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{C9D338AD94FB61D6}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1DE197C1B5457C41}" {
+       m_sMessage "GC_MigratedSpawn_EFF4AA7D29299041"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AD6F8FACFB1AD63F}" {
+     m_sName "GC_MigratedSpawn_EFF4AA7D29299041 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{FDF86AA3FED83021}" {
+       m_sEventName "GC_MigratedSpawn_EFF4AA7D29299041"
+      }
+     }
+     m_Advanced GC_EventOptions "{CA7F2939A9F774EE}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{D0C62D3182407B65}" {
+       m_Spawn GC_PrefabSpawn "{134EB747E443C26C}" {
+        m_sLocation "fire16"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{3F82E9784DC0F8A0}" {
+     m_sName "GC_MigratedSpawn_C7958A2F1FA3DBC1"
+     m_aConditions {
+      GC_GameModeStateCondition "{CAE99E262B3FC000}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{6437CEEBACB3A847}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5F667CD6F6AFD195}" {
+       m_sMessage "GC_MigratedSpawn_C7958A2F1FA3DBC1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C2B296C323FD821B}" {
+     m_sName "GC_MigratedSpawn_C7958A2F1FA3DBC1 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C57FB51472844FAB}" {
+       m_sEventName "GC_MigratedSpawn_C7958A2F1FA3DBC1"
+      }
+     }
+     m_Advanced GC_EventOptions "{48C9F1BF45F305C6}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{734AAA9C1AF9CD2C}" {
+       m_Spawn GC_PrefabSpawn "{C0D8DAF0DAE96423}" {
+        m_sLocation "fire17"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{C0A372519E3F7D65}" {
+     m_sName "GC_MigratedSpawn_3CCFB9A20779DA63"
+     m_aConditions {
+      GC_GameModeStateCondition "{5B320B7C12204FC2}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{E7A1452B20630931}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0AF968AC21C10EDE}" {
+       m_sMessage "GC_MigratedSpawn_3CCFB9A20779DA63"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FDB389DB99C2155E}" {
+     m_sName "GC_MigratedSpawn_3CCFB9A20779DA63 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{699B607E7CA45B88}" {
+       m_sEventName "GC_MigratedSpawn_3CCFB9A20779DA63"
+      }
+     }
+     m_Advanced GC_EventOptions "{3F5C7026FCCF4E1C}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{01C2F017D0A51AC1}" {
+       m_Spawn GC_PrefabSpawn "{8F2B8F92695FB657}" {
+        m_sLocation "fire18"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{FD4F175153DF3FA1}" {
+     m_sName "GC_MigratedSpawn_824C3B6278B5A501"
+     m_aConditions {
+      GC_GameModeStateCondition "{E80BE895BBDBAE83}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{78E3D91059B33A2A}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6A6D7BAFA9068E5A}" {
+       m_sMessage "GC_MigratedSpawn_824C3B6278B5A501"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2142247A6B94FF16}" {
+     m_sName "GC_MigratedSpawn_824C3B6278B5A501 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{120955A8AF98B15E}" {
+       m_sEventName "GC_MigratedSpawn_824C3B6278B5A501"
+      }
+     }
+     m_Advanced GC_EventOptions "{236C23D3656FDF65}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{25D00F2EBBC25CBC}" {
+       m_Spawn GC_PrefabSpawn "{0B76595271C30E69}" {
+        m_sLocation "fire19"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{10C1FCC7829C66E9}" {
+     m_sName "GC_MigratedSpawn_6C08C0E6F18C1F49"
+     m_aConditions {
+      GC_GameModeStateCondition "{AB81250DB1A088BA}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{C1DF90C9DD8CB171}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{AFD64ECD92EFCF03}" {
+       m_sMessage "GC_MigratedSpawn_6C08C0E6F18C1F49"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{20C5916BFF73C75D}" {
+     m_sName "GC_MigratedSpawn_6C08C0E6F18C1F49 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CE5918CEBF158CA7}" {
+       m_sEventName "GC_MigratedSpawn_6C08C0E6F18C1F49"
+      }
+     }
+     m_Advanced GC_EventOptions "{3199AC29459100FF}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{6D877C8924633D19}" {
+       m_Spawn GC_PrefabSpawn "{A465E6FAEAB2E49B}" {
+        m_sLocation "fire20"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{9C9D5CC551534D5B}" {
+     m_sName "GC_MigratedSpawn_C54020D48B040206"
+     m_aConditions {
+      GC_GameModeStateCondition "{AA7BBBCAD6712A84}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{49843175F1EDB1D6}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7608108DD965E8E8}" {
+       m_sMessage "GC_MigratedSpawn_C54020D48B040206"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{55BE50E694F9ABB4}" {
+     m_sName "GC_MigratedSpawn_C54020D48B040206 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{71EE89F910E14EA4}" {
+       m_sEventName "GC_MigratedSpawn_C54020D48B040206"
+      }
+     }
+     m_Advanced GC_EventOptions "{775CA58D9ED1ECEA}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{928A57B04EBE0211}" {
+       m_Spawn GC_PrefabSpawn "{22E5EC006565D128}" {
+        m_sLocation "fire21"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{5F338798A4F7256B}" {
+     m_sName "GC_MigratedSpawn_D9B6B5BD597248D7"
+     m_aConditions {
+      GC_GameModeStateCondition "{601DDB59A9047036}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{9BBA58DBD556AEEC}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3CE436179F85C07E}" {
+       m_sMessage "GC_MigratedSpawn_D9B6B5BD597248D7"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2ABA725F0FA53323}" {
+     m_sName "GC_MigratedSpawn_D9B6B5BD597248D7 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3FBAECED6781706E}" {
+       m_sEventName "GC_MigratedSpawn_D9B6B5BD597248D7"
+      }
+     }
+     m_Advanced GC_EventOptions "{AF840D7422779B83}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{0520450EF214D75A}" {
+       m_Spawn GC_PrefabSpawn "{88BD4A3EFCDDA33B}" {
+        m_sLocation "fire22"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{E35722982F2AD04D}" {
+     m_sName "GC_MigratedSpawn_4749BC8C5F8700EE"
+     m_aConditions {
+      GC_GameModeStateCondition "{57E5D09CE7A17D7B}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{0FD648F979B47F19}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F2FE394FC72FF718}" {
+       m_sMessage "GC_MigratedSpawn_4749BC8C5F8700EE"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8BBDE2F956F03157}" {
+     m_sName "GC_MigratedSpawn_4749BC8C5F8700EE (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5B2921E3A2EE2058}" {
+       m_sEventName "GC_MigratedSpawn_4749BC8C5F8700EE"
+      }
+     }
+     m_Advanced GC_EventOptions "{AB9B57CCD30EB221}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{AAE61B3A2F149AE7}" {
+       m_Spawn GC_PrefabSpawn "{3DF9ED1195CA756E}" {
+        m_sLocation "fire23"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{672D69973568CBA7}" {
+     m_sName "GC_MigratedSpawn_655D8968D9C38C6E"
+     m_aConditions {
+      GC_GameModeStateCondition "{1361DB632A6DC96E}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{B8FA3E0063E050E1}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{58DC3467791DF8B0}" {
+       m_sMessage "GC_MigratedSpawn_655D8968D9C38C6E"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6F343CFE379070D7}" {
+     m_sName "GC_MigratedSpawn_655D8968D9C38C6E (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B24B5D5E6F91B101}" {
+       m_sEventName "GC_MigratedSpawn_655D8968D9C38C6E"
+      }
+     }
+     m_Advanced GC_EventOptions "{6B278E6E979A936E}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{93F4825F33BE1A9D}" {
+       m_Spawn GC_PrefabSpawn "{C06AB0B5338EB47A}" {
+        m_sLocation "fire24"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{3BA3EAB0DA6343F9}" {
+     m_sName "GC_MigratedSpawn_85429EBECA0E67DC"
+     m_aConditions {
+      GC_GameModeStateCondition "{C0FED719D3CF3AF4}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{137A450C398C53A2}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{BFCA5FF20216D144}" {
+       m_sMessage "GC_MigratedSpawn_85429EBECA0E67DC"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C4DBE2DD137C8E1B}" {
+     m_sName "GC_MigratedSpawn_85429EBECA0E67DC (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5C0F79A5020015E6}" {
+       m_sEventName "GC_MigratedSpawn_85429EBECA0E67DC"
+      }
+     }
+     m_Advanced GC_EventOptions "{64C9AA4C60C60091}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{268FDC2B6961AB29}" {
+       m_Spawn GC_PrefabSpawn "{96C10182C15079AF}" {
+        m_sLocation "fire25"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{85BC51EF8D39C1C5}" {
+     m_sName "GC_MigratedSpawn_365E944FA17F7F4B"
+     m_aConditions {
+      GC_GameModeStateCondition "{0AE0CEEFCB1A38FB}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{C2F7F823A43F6C49}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{ABE95A6AC616DDFB}" {
+       m_sMessage "GC_MigratedSpawn_365E944FA17F7F4B"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6F2EB3A2054A35EC}" {
+     m_sName "GC_MigratedSpawn_365E944FA17F7F4B (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D248A1FBC39DC584}" {
+       m_sEventName "GC_MigratedSpawn_365E944FA17F7F4B"
+      }
+     }
+     m_Advanced GC_EventOptions "{C2ACD0DCE0A312DC}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{C5E8DC2172E8414D}" {
+       m_Spawn GC_PrefabSpawn "{A7EF0CC92C327BF2}" {
+        m_sLocation "fire26"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{F4F3A65202ECE7B4}" {
+     m_sName "GC_MigratedSpawn_0777695DCDCAB14D"
+     m_aConditions {
+      GC_GameModeStateCondition "{A676B9773823215A}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{00DE137C2CFF6368}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6E01ED250C43AE4D}" {
+       m_sMessage "GC_MigratedSpawn_0777695DCDCAB14D"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D8F98C3A2B4D8364}" {
+     m_sName "GC_MigratedSpawn_0777695DCDCAB14D (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2CA0226E83E59215}" {
+       m_sEventName "GC_MigratedSpawn_0777695DCDCAB14D"
+      }
+     }
+     m_Advanced GC_EventOptions "{3EF48C13AB69FC15}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{497D660D4E0D19FD}" {
+       m_Spawn GC_PrefabSpawn "{FA7595EB41EDAF2A}" {
+        m_sLocation "fire27"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{8578A1ABDF91AC32}" {
+     m_sName "GC_MigratedSpawn_69BEB400C3F2D5A4"
+     m_aConditions {
+      GC_GameModeStateCondition "{A93BEDD6DA7AFBA0}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{17A802BFBE450E5C}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{AEC71EDDE1038290}" {
+       m_sMessage "GC_MigratedSpawn_69BEB400C3F2D5A4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FBD378279265F2AD}" {
+     m_sName "GC_MigratedSpawn_69BEB400C3F2D5A4 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{565328CC7F878894}" {
+       m_sEventName "GC_MigratedSpawn_69BEB400C3F2D5A4"
+      }
+     }
+     m_Advanced GC_EventOptions "{EF7EA08D1E74AB58}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{52A6CCC8CA399549}" {
+       m_Spawn GC_PrefabSpawn "{246610917C4AB9F5}" {
+        m_sLocation "fire28"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{26966B948AD3077E}" {
+     m_sName "GC_MigratedSpawn_F381C916CE47A973"
+     m_aConditions {
+      GC_GameModeStateCondition "{75BB93ABBBA81894}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{1E0BE8FFDE13B4C7}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{EDB4020C1FAE5AC4}" {
+       m_sMessage "GC_MigratedSpawn_F381C916CE47A973"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D6ADF1415570014F}" {
+     m_sName "GC_MigratedSpawn_F381C916CE47A973 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1362866AA9A98A5B}" {
+       m_sEventName "GC_MigratedSpawn_F381C916CE47A973"
+      }
+     }
+     m_Advanced GC_EventOptions "{38652EFA0A9B077E}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{E2021AE7CAAFAFDA}" {
+       m_Spawn GC_PrefabSpawn "{B9AB69599BF177F3}" {
+        m_sLocation "fire29"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{88E54D8979534CC8}" {
+     m_sName "GC_MigratedSpawn_CD7650C4023E20C4"
+     m_aConditions {
+      GC_GameModeStateCondition "{A276EEBD851A5ACD}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{8FF61749C370CFEE}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{047BE21C76935CB3}" {
+       m_sMessage "GC_MigratedSpawn_CD7650C4023E20C4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0FAA3E002221A89C}" {
+     m_sName "GC_MigratedSpawn_CD7650C4023E20C4 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B782D9CD4827CE77}" {
+       m_sEventName "GC_MigratedSpawn_CD7650C4023E20C4"
+      }
+     }
+     m_Advanced GC_EventOptions "{F45F92679A053867}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{30C09FEAFCE9D561}" {
+       m_Spawn GC_PrefabSpawn "{EAE88E433D54F4A2}" {
+        m_sLocation "fire30"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{095B0004C07F3CE2}" {
+     m_sName "GC_MigratedSpawn_A9A73FB2751FC12F"
+     m_aConditions {
+      GC_GameModeStateCondition "{984D4F3DD0F3559D}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{C763CC9A31643226}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{BF589698428AD1BC}" {
+       m_sMessage "GC_MigratedSpawn_A9A73FB2751FC12F"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F36424D571BDE638}" {
+     m_sName "GC_MigratedSpawn_A9A73FB2751FC12F (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{352D0D1FC8A6F6C9}" {
+       m_sEventName "GC_MigratedSpawn_A9A73FB2751FC12F"
+      }
+     }
+     m_Advanced GC_EventOptions "{F59D3F3A3C1AD132}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{1668B30F1F9EF191}" {
+       m_Spawn GC_PrefabSpawn "{44CADCEB7028A8CB}" {
+        m_sLocation "fire31"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{044466917722BE64}" {
+     m_sName "GC_MigratedSpawn_9629C0F8FFAAC6D3"
+     m_aConditions {
+      GC_GameModeStateCondition "{96EA8D15C009E149}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{091A45A571F6CEA9}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{30D13720EFEA97FF}" {
+       m_sMessage "GC_MigratedSpawn_9629C0F8FFAAC6D3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3272C82D562FE77B}" {
+     m_sName "GC_MigratedSpawn_9629C0F8FFAAC6D3 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{895DBDC17F27EDBA}" {
+       m_sEventName "GC_MigratedSpawn_9629C0F8FFAAC6D3"
+      }
+     }
+     m_Advanced GC_EventOptions "{8AF93E9E0BDEE9EB}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{582A024000AB87FA}" {
+       m_Spawn GC_PrefabSpawn "{36A4DD96A085C1A1}" {
+        m_sLocation "fire32"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{35E7F18EB32A27C3}" {
+     m_sName "GC_MigratedSpawn_1EABABF62AFFC215"
+     m_aConditions {
+      GC_GameModeStateCondition "{FB77ECEC953129DE}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{DC1531D3AE2878B0}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{93D48D0927FFF092}" {
+       m_sMessage "GC_MigratedSpawn_1EABABF62AFFC215"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BA7B6CE28A23029E}" {
+     m_sName "GC_MigratedSpawn_1EABABF62AFFC215 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6D258485656EEEB2}" {
+       m_sEventName "GC_MigratedSpawn_1EABABF62AFFC215"
+      }
+     }
+     m_Advanced GC_EventOptions "{BE7EF4B4DA90F931}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{BCA7775851E3DD9A}" {
+       m_Spawn GC_PrefabSpawn "{E2CDCA9A507830EE}" {
+        m_sLocation "fire33"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{7B28CD93C86A2627}" {
+     m_sName "GC_MigratedSpawn_2642E0E97D2966EB"
+     m_aConditions {
+      GC_GameModeStateCondition "{5FD9323C0EA7FBA5}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{265E3C90B2D6E41B}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{08246F6D10974086}" {
+       m_sMessage "GC_MigratedSpawn_2642E0E97D2966EB"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F77FBE244CEFDAB2}" {
+     m_sName "GC_MigratedSpawn_2642E0E97D2966EB (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{FEE4AAD619B832CE}" {
+       m_sEventName "GC_MigratedSpawn_2642E0E97D2966EB"
+      }
+     }
+     m_Advanced GC_EventOptions "{8E7C3CA5755ABDA3}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{0E78BD2ABC29D219}" {
+       m_Spawn GC_PrefabSpawn "{680DAEAA0DD15764}" {
+        m_sLocation "fire34"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{F346E60C247F95AB}" {
+     m_sName "GC_MigratedSpawn_DA7EBB8479770936"
+     m_aConditions {
+      GC_GameModeStateCondition "{3164C2677A51CE80}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{4519F3BC5B4C6C2B}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{550F5A32185F2035}" {
+       m_sMessage "GC_MigratedSpawn_DA7EBB8479770936"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8C3D08050900A846}" {
+     m_sName "GC_MigratedSpawn_DA7EBB8479770936 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DEBFCAF2910E2F7A}" {
+       m_sEventName "GC_MigratedSpawn_DA7EBB8479770936"
+      }
+     }
+     m_Advanced GC_EventOptions "{65785322CDEC75FC}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{DD9CB3A4C88B4278}" {
+       m_Spawn GC_PrefabSpawn "{709023CEED1509CB}" {
+        m_sLocation "fire35"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{A4B59446EAAFC2BF}" {
+     m_sName "GC_MigratedSpawn_DB1437E1430E6C4B"
+     m_aConditions {
+      GC_GameModeStateCondition "{B246F4940443AD2B}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{0C9C9A2476B024C4}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{91AD029B2A5D83E4}" {
+       m_sMessage "GC_MigratedSpawn_DB1437E1430E6C4B"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{294EC21041020E9B}" {
+     m_sName "GC_MigratedSpawn_DB1437E1430E6C4B (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{207FBDA7651A70BF}" {
+       m_sEventName "GC_MigratedSpawn_DB1437E1430E6C4B"
+      }
+     }
+     m_Advanced GC_EventOptions "{BA8387E5EF6FFA12}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{2AFAD52AC4D62AD6}" {
+       m_Spawn GC_PrefabSpawn "{F430E129CEB3AFE6}" {
+        m_sLocation "fire36"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{0828BCB579086952}" {
+     m_sName "GC_MigratedSpawn_3EBC7036E19A383C"
+     m_aConditions {
+      GC_GameModeStateCondition "{E3E5DB6661FA2D05}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{CB67F7ED6CC22158}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{288B1C41DD13B913}" {
+       m_sMessage "GC_MigratedSpawn_3EBC7036E19A383C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{58BB06305B621E08}" {
+     m_sName "GC_MigratedSpawn_3EBC7036E19A383C (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8CC0542DF5511A4E}" {
+       m_sEventName "GC_MigratedSpawn_3EBC7036E19A383C"
+      }
+     }
+     m_Advanced GC_EventOptions "{01B0C23CB3B5317C}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{FE153207FE85CDB6}" {
+       m_Spawn GC_PrefabSpawn "{BC3D7044599437B5}" {
+        m_sLocation "fire37"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{4FAB15E09FB69345}" {
+     m_sName "GC_MigratedSpawn_5BC7C713F297F906"
+     m_aConditions {
+      GC_GameModeStateCondition "{8EA4AC8EE667DAA6}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{32B08933BD9707C5}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{063C51FB9E28A59E}" {
+       m_sMessage "GC_MigratedSpawn_5BC7C713F297F906"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{4B42D1D15177095E}" {
+     m_sName "GC_MigratedSpawn_5BC7C713F297F906 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2AD4232E98748C0C}" {
+       m_sEventName "GC_MigratedSpawn_5BC7C713F297F906"
+      }
+     }
+     m_Advanced GC_EventOptions "{388AE5CEFC569C64}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{0BD35B86237BC04C}" {
+       m_Spawn GC_PrefabSpawn "{12EB33CE1630B803}" {
+        m_sLocation "fire38"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{34746F2F6B3DB1CD}" {
+     m_sName "GC_MigratedSpawn_99011B92718DAF13"
+     m_aConditions {
+      GC_GameModeStateCondition "{6A3E6D3D49BA7661}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{4AD810481B74C4E9}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{555E72C2E9E6C7BF}" {
+       m_sMessage "GC_MigratedSpawn_99011B92718DAF13"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C9B78E84387D2078}" {
+     m_sName "GC_MigratedSpawn_99011B92718DAF13 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{AB10AA494502FB04}" {
+       m_sEventName "GC_MigratedSpawn_99011B92718DAF13"
+      }
+     }
+     m_Advanced GC_EventOptions "{2E32910E0A89F751}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{5F2985B54359C834}" {
+       m_Spawn GC_PrefabSpawn "{AD277D9CE406643F}" {
+        m_sLocation "fire39"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{AB455F507BFA9211}" {
+     m_sName "GC_MigratedSpawn_AE2F18D5493EAF05"
+     m_aConditions {
+      GC_GameModeStateCondition "{3EEE466EEE14C077}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{C3D3743F94A3FFD7}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D7AF39C436C62525}" {
+       m_sMessage "GC_MigratedSpawn_AE2F18D5493EAF05"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{26627F4EBB17112E}" {
+     m_sName "GC_MigratedSpawn_AE2F18D5493EAF05 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C7130A379C9D8F2F}" {
+       m_sEventName "GC_MigratedSpawn_AE2F18D5493EAF05"
+      }
+     }
+     m_Advanced GC_EventOptions "{A089886FFCB0E9A3}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{3B6CDEF71D6768E2}" {
+       m_Spawn GC_PrefabSpawn "{983BAE67B3B1E9D3}" {
+        m_sLocation "fire40"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{A7AB5E852DF83EC8}" {
+     m_sName "GC_MigratedSpawn_E19AF467A169A2C2"
+     m_aConditions {
+      GC_GameModeStateCondition "{08E2C7D6D57B8FD9}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{81A85870FB6F8A9F}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0EDE09CE4380CA1C}" {
+       m_sMessage "GC_MigratedSpawn_E19AF467A169A2C2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B4C9FC72DDE56E42}" {
+     m_sName "GC_MigratedSpawn_E19AF467A169A2C2 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{071D181E9DDD3F9E}" {
+       m_sEventName "GC_MigratedSpawn_E19AF467A169A2C2"
+      }
+     }
+     m_Advanced GC_EventOptions "{3FBD96C2BE415F7A}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{EA44608BF0E3D867}" {
+       m_Spawn GC_PrefabSpawn "{CDCD2DB2CE9810A9}" {
+        m_sLocation "fire41"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{29A585480D7AA45C}" {
+     m_sName "GC_MigratedSpawn_5482EFA0033FB2E2"
+     m_aConditions {
+      GC_GameModeStateCondition "{DC3F5AF387F765CF}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{5613D8FC8AB9DD79}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E801E646B275EB51}" {
+       m_sMessage "GC_MigratedSpawn_5482EFA0033FB2E2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FD841792672DF9C7}" {
+     m_sName "GC_MigratedSpawn_5482EFA0033FB2E2 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{904D0F1ED7281358}" {
+       m_sEventName "GC_MigratedSpawn_5482EFA0033FB2E2"
+      }
+     }
+     m_Advanced GC_EventOptions "{91646FE7EF8F97E2}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{607953674283F08C}" {
+       m_Spawn GC_PrefabSpawn "{D831CF332019137C}" {
+        m_sLocation "fire42"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{6B444BA6B982DCAC}" {
+     m_sName "GC_MigratedSpawn_04DF03283A127025"
+     m_aConditions {
+      GC_GameModeStateCondition "{A27B73ECB5F1CF1B}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{496DCD5DC591C336}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2C583C35E9B9FFEB}" {
+       m_sMessage "GC_MigratedSpawn_04DF03283A127025"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9591D77919CE3C60}" {
+     m_sName "GC_MigratedSpawn_04DF03283A127025 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9EB72070FDE4AF4D}" {
+       m_sEventName "GC_MigratedSpawn_04DF03283A127025"
+      }
+     }
+     m_Advanced GC_EventOptions "{B6A40D056062DE21}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{C756571297DD9F3F}" {
+       m_Spawn GC_PrefabSpawn "{CE5751DB432A7DCC}" {
+        m_sLocation "fire43"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{A5176EC807CBEE7E}" {
+     m_sName "GC_MigratedSpawn_2CE694791EC2590C"
+     m_aConditions {
+      GC_GameModeStateCondition "{548F0CC21E387A9F}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{99C9DF0E66D31E21}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1082BBC67D0104E6}" {
+       m_sMessage "GC_MigratedSpawn_2CE694791EC2590C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{04304F3C5A307106}" {
+     m_sName "GC_MigratedSpawn_2CE694791EC2590C (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D00B7DA93E3EF120}" {
+       m_sEventName "GC_MigratedSpawn_2CE694791EC2590C"
+      }
+     }
+     m_Advanced GC_EventOptions "{2A28F2E077838C84}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{96C5A2B30B84E051}" {
+       m_Spawn GC_PrefabSpawn "{724114537BAC3459}" {
+        m_sLocation "fire44"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{3BD6A724B48CCE29}" {
+     m_sName "GC_MigratedSpawn_24BC331A2F5D4831"
+     m_aConditions {
+      GC_GameModeStateCondition "{5A379B93EFF73E87}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{45E44F32AFF99DEA}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0AE30B98F2A97649}" {
+       m_sMessage "GC_MigratedSpawn_24BC331A2F5D4831"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7AFD90E72CD76F1F}" {
+     m_sName "GC_MigratedSpawn_24BC331A2F5D4831 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7F3AFF544AABF234}" {
+       m_sEventName "GC_MigratedSpawn_24BC331A2F5D4831"
+      }
+     }
+     m_Advanced GC_EventOptions "{6AB634B3D9162ADF}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{A2848F1A648523F3}" {
+       m_Spawn GC_PrefabSpawn "{E291E70D7198F87D}" {
+        m_sLocation "fire45"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{1D095A9E65765F47}" {
+     m_sName "GC_MigratedSpawn_E54D40E54AF67181"
+     m_aConditions {
+      GC_GameModeStateCondition "{AEBF6235B441DEF8}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{725DDC96EA5F5425}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DECDE5832FBC64DE}" {
+       m_sMessage "GC_MigratedSpawn_E54D40E54AF67181"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8A025EE4FDC7DBDC}" {
+     m_sName "GC_MigratedSpawn_E54D40E54AF67181 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3362C081DCDA6BB9}" {
+       m_sEventName "GC_MigratedSpawn_E54D40E54AF67181"
+      }
+     }
+     m_Advanced GC_EventOptions "{EF8291582268A00D}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{6BFC93E80B4AEF64}" {
+       m_Spawn GC_PrefabSpawn "{CB1A6B6BCF562D2E}" {
+        m_sLocation "fire46"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{E25CCE536B45A53D}" {
+     m_sName "GC_MigratedSpawn_31FFB37D6F2A2333"
+     m_aConditions {
+      GC_GameModeStateCondition "{3D3D1E46C9E38ED8}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{E23796C6732020B1}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2ABA4D47691AAEFE}" {
+       m_sMessage "GC_MigratedSpawn_31FFB37D6F2A2333"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{14E66939DD2E65DF}" {
+     m_sName "GC_MigratedSpawn_31FFB37D6F2A2333 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{63BA762787C527AE}" {
+       m_sEventName "GC_MigratedSpawn_31FFB37D6F2A2333"
+      }
+     }
+     m_Advanced GC_EventOptions "{6F4AAE8A222FE67E}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{6599EED4FE41AF89}" {
+       m_Spawn GC_PrefabSpawn "{9BFE4D36D1DC8FFE}" {
+        m_sLocation "fire47"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{639D14F4B8CB64AF}" {
+     m_sName "GC_MigratedSpawn_4A2FD043CE23CF5A"
+     m_aConditions {
+      GC_GameModeStateCondition "{7B580F06CFCDAB80}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{E70326EC0585AA72}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2C898235EFC085D6}" {
+       m_sMessage "GC_MigratedSpawn_4A2FD043CE23CF5A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A8B8ECEA78D46B92}" {
+     m_sName "GC_MigratedSpawn_4A2FD043CE23CF5A (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B8CE0E6F9B6E14A7}" {
+       m_sEventName "GC_MigratedSpawn_4A2FD043CE23CF5A"
+      }
+     }
+     m_Advanced GC_EventOptions "{57B3F899664DD6D3}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{F2A752F27945F947}" {
+       m_Spawn GC_PrefabSpawn "{F78732B0286FD160}" {
+        m_sLocation "fire48"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{CC815430A44CE872}" {
+     m_sName "GC_MigratedSpawn_FCFB2B55F393E2A3"
+     m_aConditions {
+      GC_GameModeStateCondition "{AAC192AE95A20119}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{37CF0E1B411B2EA4}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{40404BD514AF58DB}" {
+       m_sMessage "GC_MigratedSpawn_FCFB2B55F393E2A3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{14EF614D2CA61B19}" {
+     m_sName "GC_MigratedSpawn_FCFB2B55F393E2A3 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E7243C719BBBB536}" {
+       m_sEventName "GC_MigratedSpawn_FCFB2B55F393E2A3"
+      }
+     }
+     m_Advanced GC_EventOptions "{B2000EA1BB4C08C8}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{45534559423E2B5A}" {
+       m_Spawn GC_PrefabSpawn "{130B3E8FDB0A171A}" {
+        m_sLocation "fire49"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{6717427E8E3FA90A}" {
+     m_sName "GC_MigratedSpawn_218E1EBEBD26F017"
+     m_aConditions {
+      GC_GameModeStateCondition "{BE7AD224BE9CD7A5}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{EE1183CF95311E42}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{33F24C08E79FD2B4}" {
+       m_sMessage "GC_MigratedSpawn_218E1EBEBD26F017"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9C336FCA2E9C44EE}" {
+     m_sName "GC_MigratedSpawn_218E1EBEBD26F017 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7E3E1402E7367CB5}" {
+       m_sEventName "GC_MigratedSpawn_218E1EBEBD26F017"
+      }
+     }
+     m_Advanced GC_EventOptions "{99EE1A51037522F4}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{23EA443F5D66E39C}" {
+       m_Spawn GC_PrefabSpawn "{EBD9600DB881FC54}" {
+        m_sLocation "fire50"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{5170D5A31042F504}" {
+     m_sName "GC_MigratedSpawn_7F17FEF82411AB56"
+     m_aConditions {
+      GC_GameModeStateCondition "{6BFC051A52C91E8C}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{50C1E55D8ECDCCBF}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1D607941A120CFDC}" {
+       m_sMessage "GC_MigratedSpawn_7F17FEF82411AB56"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D029F7A1D13DE808}" {
+     m_sName "GC_MigratedSpawn_7F17FEF82411AB56 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8D12106FE1E2AA50}" {
+       m_sEventName "GC_MigratedSpawn_7F17FEF82411AB56"
+      }
+     }
+     m_Advanced GC_EventOptions "{1064A67437B34881}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{5BDE8D07ACCA230B}" {
+       m_Spawn GC_PrefabSpawn "{152807017C680D8F}" {
+        m_sLocation "fire51"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{83B525FBF78A7AF1}" {
+     m_sName "GC_MigratedSpawn_E4AA2F07B87BD412"
+     m_aConditions {
+      GC_GameModeStateCondition "{CD94A2080A98FFE8}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{BAB4DFC7C0DA744E}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5877114E3D4B0D41}" {
+       m_sMessage "GC_MigratedSpawn_E4AA2F07B87BD412"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{ACA99094E90698CA}" {
+     m_sName "GC_MigratedSpawn_E4AA2F07B87BD412 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3491A7F109BAFB00}" {
+       m_sEventName "GC_MigratedSpawn_E4AA2F07B87BD412"
+      }
+     }
+     m_Advanced GC_EventOptions "{95D0307F6808AB7F}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{949CC986B64A2950}" {
+       m_Spawn GC_PrefabSpawn "{A269EBF39F4520AD}" {
+        m_sLocation "fire52"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{4C8FE636600E3D53}" {
+     m_sName "GC_MigratedSpawn_76290DCE7CEC9004"
+     m_aConditions {
+      GC_GameModeStateCondition "{614677A423849870}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{3FAAD788E38A65EC}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2FE53AFD70171116}" {
+       m_sMessage "GC_MigratedSpawn_76290DCE7CEC9004"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{11F822E1481E3BC2}" {
+     m_sName "GC_MigratedSpawn_76290DCE7CEC9004 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DB739DAA5289C633}" {
+       m_sEventName "GC_MigratedSpawn_76290DCE7CEC9004"
+      }
+     }
+     m_Advanced GC_EventOptions "{8739B848A37C2548}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{DC0B418479D463C1}" {
+       m_Spawn GC_PrefabSpawn "{18F886934215C0A2}" {
+        m_sLocation "fire53"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{D7488634074A4A5B}" {
+     m_sName "GC_MigratedSpawn_D451886EB335EFEB"
+     m_aConditions {
+      GC_GameModeStateCondition "{7CB838F326B78E73}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{2AA789DE32B4968E}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{EEAC861189605E33}" {
+       m_sMessage "GC_MigratedSpawn_D451886EB335EFEB"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{63C011D8860E0BDE}" {
+     m_sName "GC_MigratedSpawn_D451886EB335EFEB (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C1D58FE0111B8A2F}" {
+       m_sEventName "GC_MigratedSpawn_D451886EB335EFEB"
+      }
+     }
+     m_Advanced GC_EventOptions "{1F4C11926104FC83}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{D9EC47299E2277B7}" {
+       m_Spawn GC_PrefabSpawn "{58677C11929162BF}" {
+        m_sLocation "fire54"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{66741799DEB5C408}" {
+     m_sName "GC_MigratedSpawn_561ED8F7B410C399"
+     m_aConditions {
+      GC_GameModeStateCondition "{73A3538661E7A015}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{52AF3D4D20AC7109}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{52AD6BCBCED61049}" {
+       m_sMessage "GC_MigratedSpawn_561ED8F7B410C399"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{945ABE0931E6F329}" {
+     m_sName "GC_MigratedSpawn_561ED8F7B410C399 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{52994BE6551C6A65}" {
+       m_sEventName "GC_MigratedSpawn_561ED8F7B410C399"
+      }
+     }
+     m_Advanced GC_EventOptions "{2291F72AA48C7210}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{7FAE32EE34585AA2}" {
+       m_Spawn GC_PrefabSpawn "{12B293DE30AC5EF0}" {
+        m_sLocation "fire55"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{1FB250736817201F}" {
+     m_sName "GC_MigratedSpawn_284D04A71BCD1535"
+     m_aConditions {
+      GC_GameModeStateCondition "{94B282298400D5B5}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{33FD5B4EE18B0537}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{70BD12E3FDE0BB9D}" {
+       m_sMessage "GC_MigratedSpawn_284D04A71BCD1535"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C25E465E83E99DCF}" {
+     m_sName "GC_MigratedSpawn_284D04A71BCD1535 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{FEEE1BC62D512048}" {
+       m_sEventName "GC_MigratedSpawn_284D04A71BCD1535"
+      }
+     }
+     m_Advanced GC_EventOptions "{78171F9D5BE06D05}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{E209A427A5DBF0C5}" {
+       m_Spawn GC_PrefabSpawn "{352E4BF4BC942E60}" {
+        m_sLocation "fire56"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{F5D87297BD1CF932}" {
+     m_sName "GC_MigratedSpawn_E600970B96C03365"
+     m_aConditions {
+      GC_GameModeStateCondition "{87C6755AA325ABE9}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{24300D51D8AA3A61}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F4C40044CD9C8214}" {
+       m_sMessage "GC_MigratedSpawn_E600970B96C03365"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D76FC93F2FFB89E1}" {
+     m_sName "GC_MigratedSpawn_E600970B96C03365 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8C6AECC10F585F79}" {
+       m_sEventName "GC_MigratedSpawn_E600970B96C03365"
+      }
+     }
+     m_Advanced GC_EventOptions "{F103BBD9FE81B042}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{04EEC8EE394099D3}" {
+       m_Spawn GC_PrefabSpawn "{A83CAD20684A78F3}" {
+        m_sLocation "fire57"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{337090D3B90A349B}" {
+     m_sName "GC_MigratedSpawn_44909ABDEDF8E638"
+     m_aConditions {
+      GC_GameModeStateCondition "{F0951ADDE1848463}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{AF4DE72B8695347A}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B23A5AF9BC338DEB}" {
+       m_sMessage "GC_MigratedSpawn_44909ABDEDF8E638"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{08C3786B8574E2ED}" {
+     m_sName "GC_MigratedSpawn_44909ABDEDF8E638 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5E0C724F909C98A2}" {
+       m_sEventName "GC_MigratedSpawn_44909ABDEDF8E638"
+      }
+     }
+     m_Advanced GC_EventOptions "{A3A40CB39C415F05}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{D8725D070BDACA7C}" {
+       m_Spawn GC_PrefabSpawn "{57731123FCD1A95C}" {
+        m_sLocation "fire58"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{BC452F32533CC5DE}" {
+     m_sName "GC_MigratedSpawn_BA94F12B1992E4CE"
+     m_aConditions {
+      GC_GameModeStateCondition "{637933BFB2647391}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{53BD231023A0DF72}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E012FCAFF40F2C64}" {
+       m_sMessage "GC_MigratedSpawn_BA94F12B1992E4CE"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AFB272945EBC112E}" {
+     m_sName "GC_MigratedSpawn_BA94F12B1992E4CE (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{0D993CFA60A17224}" {
+       m_sEventName "GC_MigratedSpawn_BA94F12B1992E4CE"
+      }
+     }
+     m_Advanced GC_EventOptions "{CDABB82D34D5B6C9}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{B54A5F7317625612}" {
+       m_Spawn GC_PrefabSpawn "{055B26ABD21CD1E3}" {
+        m_sLocation "fire59"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{EAFCB2F3008B7050}" {
+     m_sName "GC_MigratedSpawn_99511E4B2111DE11"
+     m_aConditions {
+      GC_GameModeStateCondition "{A838772626378E32}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{89E4DD95BA06689E}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8F513D4AB707BAD5}" {
+       m_sMessage "GC_MigratedSpawn_99511E4B2111DE11"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{780DC6D7E2042356}" {
+     m_sName "GC_MigratedSpawn_99511E4B2111DE11 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{04567FC289CA8CED}" {
+       m_sEventName "GC_MigratedSpawn_99511E4B2111DE11"
+      }
+     }
+     m_Advanced GC_EventOptions "{20731A835D509778}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{933EB35361D6EE0E}" {
+       m_Spawn GC_PrefabSpawn "{1C1858E302595129}" {
+        m_sLocation "fire60"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{839680A7B496EAEF}" {
+     m_sName "GC_MigratedSpawn_E0A05DC1A108A4C2"
+     m_aConditions {
+      GC_GameModeStateCondition "{60C5F406FB52701A}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{C5C799D8C70CBD69}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{23935EE9B74C4B0C}" {
+       m_sMessage "GC_MigratedSpawn_E0A05DC1A108A4C2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0FFE9770AE534E59}" {
+     m_sName "GC_MigratedSpawn_E0A05DC1A108A4C2 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BF77159EA4B6F862}" {
+       m_sEventName "GC_MigratedSpawn_E0A05DC1A108A4C2"
+      }
+     }
+     m_Advanced GC_EventOptions "{3AA5DAC6E0C7EBB4}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{C38F4AA0183C57AA}" {
+       m_Spawn GC_PrefabSpawn "{B2D4FC9B632AD5C3}" {
+        m_sLocation "fire61"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{D41CAA53744544EA}" {
+     m_sName "GC_MigratedSpawn_79777E954125BC8E"
+     m_aConditions {
+      GC_GameModeStateCondition "{A423504887ED6673}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{167FA9F794F62EF0}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6091A9B4BD204571}" {
+       m_sMessage "GC_MigratedSpawn_79777E954125BC8E"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2E364AEBCDD8F828}" {
+     m_sName "GC_MigratedSpawn_79777E954125BC8E (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{0F741453A66D1CBF}" {
+       m_sEventName "GC_MigratedSpawn_79777E954125BC8E"
+      }
+     }
+     m_Advanced GC_EventOptions "{0E4F3F53057DEFC1}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{007D065F9EBC4752}" {
+       m_Spawn GC_PrefabSpawn "{4CC4D62A5118FC55}" {
+        m_sLocation "fire62"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{9691FEE8B6CA8D54}" {
+     m_sName "GC_MigratedSpawn_41B0C6BA0FAE3B1F"
+     m_aConditions {
+      GC_GameModeStateCondition "{0207B2FEEC5B5790}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{2E7374C7395F9361}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{EC9B0566251BA2C8}" {
+       m_sMessage "GC_MigratedSpawn_41B0C6BA0FAE3B1F"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A8724A31A180A07D}" {
+     m_sName "GC_MigratedSpawn_41B0C6BA0FAE3B1F (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{64C2C4727826B3BB}" {
+       m_sEventName "GC_MigratedSpawn_41B0C6BA0FAE3B1F"
+      }
+     }
+     m_Advanced GC_EventOptions "{0F280E780F329674}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{7FAFFA38432B5E01}" {
+       m_Spawn GC_PrefabSpawn "{E366EB311A4AF041}" {
+        m_sLocation "fire63"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{C3A244E4251DCD48}" {
+     m_sName "GC_MigratedSpawn_18F1D27E7276421C"
+     m_aConditions {
+      GC_GameModeStateCondition "{8A216E4367FF271F}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{2E14F273B96823C3}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8F4F64671F0EAF38}" {
+       m_sMessage "GC_MigratedSpawn_18F1D27E7276421C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{75F17462461DAB19}" {
+     m_sName "GC_MigratedSpawn_18F1D27E7276421C (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{AB344009AE9520D7}" {
+       m_sEventName "GC_MigratedSpawn_18F1D27E7276421C"
+      }
+     }
+     m_Advanced GC_EventOptions "{9FFC9108EBCF9085}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{FDABF0623CF254BE}" {
+       m_Spawn GC_PrefabSpawn "{F2D70656D722AA0B}" {
+        m_sLocation "fire64"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{195AEE06FC77DD0B}" {
+     m_sName "GC_MigratedSpawn_EE01EB17805A4915"
+     m_aConditions {
+      GC_GameModeStateCondition "{6A9DF88D2A18AF2F}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{D05014DDA104935A}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{AF98D3A55E2F4073}" {
+       m_sMessage "GC_MigratedSpawn_EE01EB17805A4915"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0A91762792F9AEDD}" {
+     m_sName "GC_MigratedSpawn_EE01EB17805A4915 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C34D1D6A9B84D1DE}" {
+       m_sEventName "GC_MigratedSpawn_EE01EB17805A4915"
+      }
+     }
+     m_Advanced GC_EventOptions "{3F8AED2ADEE228B6}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{BE1F9DA2AA52B4F3}" {
+       m_Spawn GC_PrefabSpawn "{7AFE4E8F461ADA54}" {
+        m_sLocation "fire65"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{ECF955E2832A38D9}" {
+     m_sName "GC_MigratedSpawn_1450E3798DBE2BF8"
+     m_aConditions {
+      GC_GameModeStateCondition "{31073D05AC71912D}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{7500B361C1A5A479}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1B9A950D3FDE86D9}" {
+       m_sMessage "GC_MigratedSpawn_1450E3798DBE2BF8"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{EA8F65EC8187A9DA}" {
+     m_sName "GC_MigratedSpawn_1450E3798DBE2BF8 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D0A0C06D48ED1331}" {
+       m_sEventName "GC_MigratedSpawn_1450E3798DBE2BF8"
+      }
+     }
+     m_Advanced GC_EventOptions "{8B50B805B9057A90}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{5E3A20D6654B436D}" {
+       m_Spawn GC_PrefabSpawn "{D067EBEAD6A2DB8F}" {
+        m_sLocation "fire66"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{C23E8FBEF936DF76}" {
+     m_sName "GC_MigratedSpawn_D0BE5BDF44252EBC"
+     m_aConditions {
+      GC_GameModeStateCondition "{7DF76FEE2CAFCF77}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{A452BF6785115DD5}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{450A8D41703AA353}" {
+       m_sMessage "GC_MigratedSpawn_D0BE5BDF44252EBC"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9A6C83EE335FADF5}" {
+     m_sName "GC_MigratedSpawn_D0BE5BDF44252EBC (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BEA42936D61EAAEA}" {
+       m_sEventName "GC_MigratedSpawn_D0BE5BDF44252EBC"
+      }
+     }
+     m_Advanced GC_EventOptions "{CAA556E8C16B97A1}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{4106E38B6D0C6097}" {
+       m_Spawn GC_PrefabSpawn "{328AA79ED7B0C46B}" {
+        m_sLocation "fire67"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{E86BE2391536DABE}" {
+     m_sName "GC_MigratedSpawn_3BBDDD8CC6D4B551"
+     m_aConditions {
+      GC_GameModeStateCondition "{CB83B8E8A9791C69}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{50A6732E1FF33495}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1EA2BD87F76A2761}" {
+       m_sMessage "GC_MigratedSpawn_3BBDDD8CC6D4B551"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B4E209C979EC6183}" {
+     m_sName "GC_MigratedSpawn_3BBDDD8CC6D4B551 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F546ABFCA8F31186}" {
+       m_sEventName "GC_MigratedSpawn_3BBDDD8CC6D4B551"
+      }
+     }
+     m_Advanced GC_EventOptions "{AB0C1BC63611AF15}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{82186088BD0E66A3}" {
+       m_Spawn GC_PrefabSpawn "{F95F7C256433455A}" {
+        m_sLocation "fire68"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{9003F96312FE2ADB}" {
+     m_sName "GC_MigratedSpawn_C4EB211B1C32607C"
+     m_aConditions {
+      GC_GameModeStateCondition "{82C4406C2486C975}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{E6C5F1726EF6559D}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7573B9422D83C144}" {
+       m_sMessage "GC_MigratedSpawn_C4EB211B1C32607C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B900DAAC3FED2A49}" {
+     m_sName "GC_MigratedSpawn_C4EB211B1C32607C (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{21D75C109082D9CA}" {
+       m_sEventName "GC_MigratedSpawn_C4EB211B1C32607C"
+      }
+     }
+     m_Advanced GC_EventOptions "{ECD76D53E8E27F46}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{2895C30945A439F8}" {
+       m_Spawn GC_PrefabSpawn "{E3172F241B0CF9B3}" {
+        m_sLocation "fire69"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{20F3022F7F51A706}" {
+     m_sName "GC_MigratedSpawn_AA39CBE1D3B1E069"
+     m_aConditions {
+      GC_GameModeStateCondition "{DAE35322A3D02582}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{2D51267BCA0A1912}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{763B28708CAB16E8}" {
+       m_sMessage "GC_MigratedSpawn_AA39CBE1D3B1E069"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{451CCC1D377AD2B4}" {
+     m_sName "GC_MigratedSpawn_AA39CBE1D3B1E069 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{74F7ACEDDAEA4BA7}" {
+       m_sEventName "GC_MigratedSpawn_AA39CBE1D3B1E069"
+      }
+     }
+     m_Advanced GC_EventOptions "{674D7FA76B8FFA5D}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{1450E95C03983D82}" {
+       m_Spawn GC_PrefabSpawn "{408F07329E8AD2B8}" {
+        m_sLocation "fire70"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{2F363D1BCD1AF61A}" {
+     m_sName "GC_MigratedSpawn_5B0D52133691F4D4"
+     m_aConditions {
+      GC_GameModeStateCondition "{2C79DF8DC335C857}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{728299841CDD6617}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{041A6435220034FB}" {
+       m_sMessage "GC_MigratedSpawn_5B0D52133691F4D4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E890D404FA312965}" {
+     m_sName "GC_MigratedSpawn_5B0D52133691F4D4 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{424BBA7F1E1D82EA}" {
+       m_sEventName "GC_MigratedSpawn_5B0D52133691F4D4"
+      }
+     }
+     m_Advanced GC_EventOptions "{AAF02BFA691ABBC4}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{571FF00103D61CD6}" {
+       m_Spawn GC_PrefabSpawn "{D15E2844C64FACE2}" {
+        m_sLocation "fire71"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{20FA95FB50FB01A2}" {
+     m_sName "GC_MigratedSpawn_24BFFFB487C9379A"
+     m_aConditions {
+      GC_GameModeStateCondition "{0CD5469DB2B7CBAE}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{CE34387D3ED546AD}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0B24820EA520EDD8}" {
+       m_sMessage "GC_MigratedSpawn_24BFFFB487C9379A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3A570B03F16EAF93}" {
+     m_sName "GC_MigratedSpawn_24BFFFB487C9379A (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{079D26DEDD495ED0}" {
+       m_sEventName "GC_MigratedSpawn_24BFFFB487C9379A"
+      }
+     }
+     m_Advanced GC_EventOptions "{8FEC0CBBF65928D5}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{9B51B3207B676142}" {
+       m_Spawn GC_PrefabSpawn "{BFEBE1CA8F5B5FA3}" {
+        m_sLocation "fire72"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{4329DF9C623D834F}" {
+     m_sName "GC_MigratedSpawn_8288A1F169C687BE"
+     m_aConditions {
+      GC_GameModeStateCondition "{F43C194234CE5E4E}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{969375B257EC0F3B}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6E4E41B1875316B3}" {
+       m_sMessage "GC_MigratedSpawn_8288A1F169C687BE"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F8DFE434878509CF}" {
+     m_sName "GC_MigratedSpawn_8288A1F169C687BE (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C9D684C90795C552}" {
+       m_sEventName "GC_MigratedSpawn_8288A1F169C687BE"
+      }
+     }
+     m_Advanced GC_EventOptions "{A1652193A5728A7A}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{A6DAEC7FAD903013}" {
+       m_Spawn GC_PrefabSpawn "{A9AB49C2966BD10B}" {
+        m_sLocation "fire73"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{7E69577F105FC530}" {
+     m_sName "GC_MigratedSpawn_A52505308D627495"
+     m_aConditions {
+      GC_GameModeStateCondition "{ABD8734A6364262D}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{D90AFE0E47D49E90}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{16E57AA5CD63FF7C}" {
+       m_sMessage "GC_MigratedSpawn_A52505308D627495"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E6D972A75D5B1816}" {
+     m_sName "GC_MigratedSpawn_A52505308D627495 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A06AC5F395428E9C}" {
+       m_sEventName "GC_MigratedSpawn_A52505308D627495"
+      }
+     }
+     m_Advanced GC_EventOptions "{BD72CDC321F074C6}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{8CD62E710E3EF5B7}" {
+       m_Spawn GC_PrefabSpawn "{9080EE6817ADB3CD}" {
+        m_sLocation "fire74"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{2832B63DA446D4AE}" {
+     m_sName "GC_MigratedSpawn_2EB804EB30C06962"
+     m_aConditions {
+      GC_GameModeStateCondition "{475A64C7CC2EFB2E}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{6F2B3BF2AFF72C40}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FC9E4911F990AA94}" {
+       m_sMessage "GC_MigratedSpawn_2EB804EB30C06962"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{34C44D69076067DB}" {
+     m_sName "GC_MigratedSpawn_2EB804EB30C06962 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F4B11FF8DAE31085}" {
+       m_sEventName "GC_MigratedSpawn_2EB804EB30C06962"
+      }
+     }
+     m_Advanced GC_EventOptions "{C11E3EEDA7EACEEC}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{99BC20230CEAA4BB}" {
+       m_Spawn GC_PrefabSpawn "{E88B46B8C81045DF}" {
+        m_sLocation "fire75"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{097E2C0A765871A1}" {
+     m_sName "GC_MigratedSpawn_B30F791B98A1136D"
+     m_aConditions {
+      GC_GameModeStateCondition "{911ADB99606ACF6A}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{12465E39AD6CAA31}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7A7E867BD8CE74A0}" {
+       m_sMessage "GC_MigratedSpawn_B30F791B98A1136D"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9FA85AEFE143F5CE}" {
+     m_sName "GC_MigratedSpawn_B30F791B98A1136D (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B4D32F9BFC927710}" {
+       m_sEventName "GC_MigratedSpawn_B30F791B98A1136D"
+      }
+     }
+     m_Advanced GC_EventOptions "{247784A74F8269EC}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{FC3CC1F3450AFD2F}" {
+       m_Spawn GC_PrefabSpawn "{D267989649DDCB22}" {
+        m_sLocation "fire76"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{870E73640A280878}" {
+     m_sName "GC_MigratedSpawn_498BCE9AB5B59AB6"
+     m_aConditions {
+      GC_GameModeStateCondition "{1151E4C09BBBB7A8}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{9053EE1DBDA240C6}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C3076B2ED5A104AD}" {
+       m_sMessage "GC_MigratedSpawn_498BCE9AB5B59AB6"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D49EFAA3CCEE30E4}" {
+     m_sName "GC_MigratedSpawn_498BCE9AB5B59AB6 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{AB7EAD262CBBD75B}" {
+       m_sEventName "GC_MigratedSpawn_498BCE9AB5B59AB6"
+      }
+     }
+     m_Advanced GC_EventOptions "{CEAF963FD891C96B}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{CC64E6EFF06AA2EE}" {
+       m_Spawn GC_PrefabSpawn "{D65408118E3C65E2}" {
+        m_sLocation "fire77"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{CCABA9A08C6C8864}" {
+     m_sName "GC_MigratedSpawn_711C298689D16AB6"
+     m_aConditions {
+      GC_GameModeStateCondition "{DF441CFBC7B0CE5F}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{EDF65C48A1A14212}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6F9FE336EADE3E8E}" {
+       m_sMessage "GC_MigratedSpawn_711C298689D16AB6"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{41640EB02F1F2FD9}" {
+     m_sName "GC_MigratedSpawn_711C298689D16AB6 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7F503E7A5E24F1C7}" {
+       m_sEventName "GC_MigratedSpawn_711C298689D16AB6"
+      }
+     }
+     m_Advanced GC_EventOptions "{8E4867427ECA5647}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{A0D0F3516A29AF73}" {
+       m_Spawn GC_PrefabSpawn "{717A019C6E968690}" {
+        m_sLocation "fire78"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{D335ABB0E9E1226A}" {
+     m_sName "GC_MigratedSpawn_C83498F06CB787ED"
+     m_aConditions {
+      GC_GameModeStateCondition "{3B254007414B2CB3}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{573CC109752701D4}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{84B61BEC495AB7D2}" {
+       m_sMessage "GC_MigratedSpawn_C83498F06CB787ED"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{789E56FC7739878C}" {
+     m_sName "GC_MigratedSpawn_C83498F06CB787ED (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{42825E4E64482444}" {
+       m_sEventName "GC_MigratedSpawn_C83498F06CB787ED"
+      }
+     }
+     m_Advanced GC_EventOptions "{07DF0D4E2CC3A455}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{BBB33B64020CF63D}" {
+       m_Spawn GC_PrefabSpawn "{6A4D6BA592CFC7E6}" {
+        m_sLocation "fire79"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{A8D4EAE53FA911EE}" {
+     m_sName "GC_MigratedSpawn_8211170943BD4592"
+     m_aConditions {
+      GC_GameModeStateCondition "{5119573CA81A4C85}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{42DEB67A25F9347D}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9486D4A64D9D7CDD}" {
+       m_sMessage "GC_MigratedSpawn_8211170943BD4592"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7EF15322CF299ADC}" {
+     m_sName "GC_MigratedSpawn_8211170943BD4592 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C8BD6F4696319686}" {
+       m_sEventName "GC_MigratedSpawn_8211170943BD4592"
+      }
+     }
+     m_Advanced GC_EventOptions "{C69490EE28556CDB}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{AA8CCE8650F044A3}" {
+       m_Spawn GC_PrefabSpawn "{3933C262C6AD0B9C}" {
+        m_sLocation "fire80"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{5FF7E6F1ABBAC3CA}" {
+     m_sName "GC_MigratedSpawn_2F01262F1ECB8EC7"
+     m_aConditions {
+      GC_GameModeStateCondition "{3311971563C03523}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{9BDB4406830F6845}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8CC5F23C8F69ED1F}" {
+       m_sMessage "GC_MigratedSpawn_2F01262F1ECB8EC7"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{677225454C906CE4}" {
+     m_sName "GC_MigratedSpawn_2F01262F1ECB8EC7 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{100AF7D53F7C19ED}" {
+       m_sEventName "GC_MigratedSpawn_2F01262F1ECB8EC7"
+      }
+     }
+     m_Advanced GC_EventOptions "{C9962EAA2B6531D8}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{E8C0DB46D529B98D}" {
+       m_Spawn GC_PrefabSpawn "{A3C11190D1ED4CC2}" {
+        m_sLocation "fire81"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{9619CB0C1D1BC34C}" {
+     m_sName "GC_MigratedSpawn_59648249DBB77B30"
+     m_aConditions {
+      GC_GameModeStateCondition "{EFB13FB1DC6BADD1}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{72C81FB022C57361}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1CE8503B865A6511}" {
+       m_sMessage "GC_MigratedSpawn_59648249DBB77B30"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9B6EBF8BC188E68D}" {
+     m_sName "GC_MigratedSpawn_59648249DBB77B30 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A5E61F64D833BDCE}" {
+       m_sEventName "GC_MigratedSpawn_59648249DBB77B30"
+      }
+     }
+     m_Advanced GC_EventOptions "{9C196D6396AE42A3}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{9A6502D0DF07503D}" {
+       m_Spawn GC_PrefabSpawn "{E523403C783979ED}" {
+        m_sLocation "fire82"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{B9E162DFCBFB15DC}" {
+     m_sName "GC_MigratedSpawn_43286AF1CBBE5E00"
+     m_aConditions {
+      GC_GameModeStateCondition "{90C49AE43B96BE02}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{85BC441A02F4F7C4}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{413CD224A567BEA0}" {
+       m_sMessage "GC_MigratedSpawn_43286AF1CBBE5E00"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{07866C82E13C1E21}" {
+     m_sName "GC_MigratedSpawn_43286AF1CBBE5E00 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{543218C2AAF145D9}" {
+       m_sEventName "GC_MigratedSpawn_43286AF1CBBE5E00"
+      }
+     }
+     m_Advanced GC_EventOptions "{90D4DDA4A8C12420}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{321FCB6051C65558}" {
+       m_Spawn GC_PrefabSpawn "{26F848DCF092F058}" {
+        m_sLocation "fire83"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{79EB247F8E52D4EC}" {
+     m_sName "GC_MigratedSpawn_8863C9704714B0CE"
+     m_aConditions {
+      GC_GameModeStateCondition "{A3529CBE431BEDCA}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{EE86B41F48DF6867}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DB3F262071B3666F}" {
+       m_sMessage "GC_MigratedSpawn_8863C9704714B0CE"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E7E17A7181DD2C16}" {
+     m_sName "GC_MigratedSpawn_8863C9704714B0CE (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DF7857A045937883}" {
+       m_sEventName "GC_MigratedSpawn_8863C9704714B0CE"
+      }
+     }
+     m_Advanced GC_EventOptions "{0C8C3B6C16DF8A27}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{0AAE24303F749457}" {
+       m_Spawn GC_PrefabSpawn "{113BCDFC69849788}" {
+        m_sLocation "fire84"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{F894EE8DC5216177}" {
+     m_sName "GC_MigratedSpawn_A91C19B6C8026F6B"
+     m_aConditions {
+      GC_GameModeStateCondition "{B083702BF1CCB546}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{C5C0F33AE7578203}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B68DFA6CA2EBF24C}" {
+       m_sMessage "GC_MigratedSpawn_A91C19B6C8026F6B"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A45E1BFAEE841429}" {
+     m_sName "GC_MigratedSpawn_A91C19B6C8026F6B (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2453237ECFB2666B}" {
+       m_sEventName "GC_MigratedSpawn_A91C19B6C8026F6B"
+      }
+     }
+     m_Advanced GC_EventOptions "{76464BE3B9CDA21D}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{67F4D9CC95DC0894}" {
+       m_Spawn GC_PrefabSpawn "{C39A9B6B511A37F3}" {
+        m_sLocation "fire85"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{A54F53540CC18D7A}" {
+     m_sName "GC_MigratedSpawn_16C844D6ECB0AD61"
+     m_aConditions {
+      GC_GameModeStateCondition "{3D4F8AAD329FA79E}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{357E1A4D79156B35}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B1C93937C306360F}" {
+       m_sMessage "GC_MigratedSpawn_16C844D6ECB0AD61"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1A2D1BD72CF2E20C}" {
+     m_sName "GC_MigratedSpawn_16C844D6ECB0AD61 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{772357D9A521082C}" {
+       m_sEventName "GC_MigratedSpawn_16C844D6ECB0AD61"
+      }
+     }
+     m_Advanced GC_EventOptions "{CDD7979875006DF7}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{0F5FFA5B25A40111}" {
+       m_Spawn GC_PrefabSpawn "{32F1C309282486EF}" {
+        m_sLocation "fire86"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{33FD41CD54F6EF72}" {
+     m_sName "GC_MigratedSpawn_8CF7E19F99473FAE"
+     m_aConditions {
+      GC_GameModeStateCondition "{CDDB6D4EC276D80A}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{443F39AB6560AB27}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{00A9004CD0B54D86}" {
+       m_sMessage "GC_MigratedSpawn_8CF7E19F99473FAE"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{75D22B84AA89B4EF}" {
+     m_sName "GC_MigratedSpawn_8CF7E19F99473FAE (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A8F962B1DC1282B4}" {
+       m_sEventName "GC_MigratedSpawn_8CF7E19F99473FAE"
+      }
+     }
+     m_Advanced GC_EventOptions "{82B8960FDBFF80D2}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{45E909878F18F426}" {
+       m_Spawn GC_PrefabSpawn "{7896ECC1462AE1EF}" {
+        m_sLocation "bomb2"
+        m_sPrefab "{9016E09E91956B2E}Prefabs/Systems/Explosions/Wrapper_Bomb_Medium.et"
+       }
+      }
+     }
+    }
+    GC_Event "{AE8FC2E13200EB9B}" {
+     m_sName "GC_MigratedSpawn_E77F33871DA0C963"
+     m_aConditions {
+      GC_GameModeStateCondition "{11B79D35319DEA6F}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{DB7EAE7748897E34}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{166CE84CB7C616C4}" {
+       m_sMessage "GC_MigratedSpawn_E77F33871DA0C963"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F9F06AD3FB14A5FD}" {
+     m_sName "GC_MigratedSpawn_E77F33871DA0C963 (4s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B61A26C04356430C}" {
+       m_sEventName "GC_MigratedSpawn_E77F33871DA0C963"
+      }
+     }
+     m_Advanced GC_EventOptions "{8FE82ED22915384C}" {
+      m_fDelay 4
+     }
+     m_aActions {
+      GC_SpawnAction "{C1751DF16C37E8E9}" {
+       m_Spawn GC_PrefabSpawn "{69D129CF44551192}" {
+        m_sLocation "bomb3"
+        m_sPrefab "{9016E09E91956B2E}Prefabs/Systems/Explosions/Wrapper_Bomb_Medium.et"
+       }
+      }
+     }
+    }
+    GC_Event "{74C7D924174A970E}" {
+     m_sName "GC_MigratedSpawn_CC50B1F84BE2A18D"
+     m_aConditions {
+      GC_GameModeStateCondition "{90471D734E333D6E}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{8E5C5FCC97FDFED2}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D421421BF8FEDC45}" {
+       m_sMessage "GC_MigratedSpawn_CC50B1F84BE2A18D"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FEBA946C230DFF13}" {
+     m_sName "GC_MigratedSpawn_CC50B1F84BE2A18D (6s)"
+     m_aConditions {
+      GC_MissionEventCondition "{08E7836F57A5C7FB}" {
+       m_sEventName "GC_MigratedSpawn_CC50B1F84BE2A18D"
+      }
+     }
+     m_Advanced GC_EventOptions "{F0C6E379EB5874FE}" {
+      m_fDelay 6
+     }
+     m_aActions {
+      GC_SpawnAction "{44768AEFED1F2A70}" {
+       m_Spawn GC_PrefabSpawn "{ACDD7F4B12E4672D}" {
+        m_sLocation "bomb4"
+        m_sPrefab "{9016E09E91956B2E}Prefabs/Systems/Explosions/Wrapper_Bomb_Medium.et"
+       }
+      }
+     }
+    }
+    GC_Event "{0EEBE5B045B10E4C}" {
+     m_sName "GC_MigratedSpawn_F1500F9CE40A6FDD"
+     m_aConditions {
+      GC_GameModeStateCondition "{D69310A9CA5649C6}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{34D2D787AD64C111}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C23D2C2E016FD222}" {
+       m_sMessage "GC_MigratedSpawn_F1500F9CE40A6FDD"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{83E68EEBB286E296}" {
+     m_sName "GC_MigratedSpawn_F1500F9CE40A6FDD (2s)"
+     m_aConditions {
+      GC_MissionEventCondition "{25E860A437402123}" {
+       m_sEventName "GC_MigratedSpawn_F1500F9CE40A6FDD"
+      }
+     }
+     m_Advanced GC_EventOptions "{78E4EE82DB3D8160}" {
+      m_fDelay 2
+     }
+     m_aActions {
+      GC_SpawnAction "{B8AFC63DD2F73B13}" {
+       m_Spawn GC_PrefabSpawn "{AFE7475B3C6C1D58}" {
+        m_sLocation "bomb5"
+        m_sPrefab "{9016E09E91956B2E}Prefabs/Systems/Explosions/Wrapper_Bomb_Medium.et"
+       }
+      }
+     }
+    }
+    GC_Event "{04E7CE28CC562DAD}" {
+     m_sName "GC_MigratedSpawn_88B13ACDB1B86E10"
+     m_aConditions {
+      GC_GameModeStateCondition "{7AF474D28E465919}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{981A57062234B399}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{EF658A1F8AC44307}" {
+       m_sMessage "GC_MigratedSpawn_88B13ACDB1B86E10"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{15C8DFA282E0E8B7}" {
+     m_sName "GC_MigratedSpawn_88B13ACDB1B86E10 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A1E8C86BB8E7D5C1}" {
+       m_sEventName "GC_MigratedSpawn_88B13ACDB1B86E10"
+      }
+     }
+     m_Advanced GC_EventOptions "{8A5FB3FB0CC690FA}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{C74AAEFBB0A74488}" {
+       m_Spawn GC_PrefabSpawn "{D2580DB1236CDBCE}" {
+        m_sLocation "bomb6"
+        m_sPrefab "{9016E09E91956B2E}Prefabs/Systems/Explosions/Wrapper_Bomb_Medium.et"
+       }
+      }
+     }
+    }
+    GC_Event "{019E6F7EF9FE7041}" {
+     m_sName "GC_MigratedSpawn_5F93EA4E27F0030C"
+     m_aConditions {
+      GC_GameModeStateCondition "{D9E1426B4CC9324F}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{58AFA5D75DC033C0}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B93DAA1476D0FC1B}" {
+       m_sMessage "GC_MigratedSpawn_5F93EA4E27F0030C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C08944524CFDD0E8}" {
+     m_sName "GC_MigratedSpawn_5F93EA4E27F0030C (2s)"
+     m_aConditions {
+      GC_MissionEventCondition "{02D14640F1C81B3B}" {
+       m_sEventName "GC_MigratedSpawn_5F93EA4E27F0030C"
+      }
+     }
+     m_Advanced GC_EventOptions "{F6B908D560F0CD6A}" {
+      m_fDelay 2
+     }
+     m_aActions {
+      GC_SpawnAction "{1BD6C52F7DADCBFD}" {
+       m_Spawn GC_PrefabSpawn "{1F61FA9008E5CE3F}" {
+        m_sLocation "bomb7"
+        m_sPrefab "{9016E09E91956B2E}Prefabs/Systems/Explosions/Wrapper_Bomb_Medium.et"
+       }
+      }
+     }
+    }
+    GC_Event "{8860041F65BE8F13}" {
+     m_sName "GC_MigratedSpawn_DC3AB0260A1E058B"
+     m_aConditions {
+      GC_GameModeStateCondition "{5303126D8D2F9978}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{B8F501B5A9186A4D}" {
+       m_sFlagName "BombActive"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{170E30BC923FD322}" {
+       m_sMessage "GC_MigratedSpawn_DC3AB0260A1E058B"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AD69B8F92F0DA668}" {
+     m_sName "GC_MigratedSpawn_DC3AB0260A1E058B (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{36BE17170ACE257E}" {
+       m_sEventName "GC_MigratedSpawn_DC3AB0260A1E058B"
+      }
+     }
+     m_Advanced GC_EventOptions "{44DEE76747B15FFC}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{32E7CDE3B88987E5}" {
+       m_Spawn GC_PrefabSpawn "{72AB3AB3A4288E20}" {
+        m_sLocation "bomb8"
+        m_sPrefab "{DDDDBEC77B49A995}Prefabs/Systems/Explosions/Wrapper_Bomb_Huge.et"
+       }
+      }
+     }
+    }
+   }
+   m_aAreaFlagObservers {
+    GC_AreaFlagObserver "{297966428231A43D}" {
+     m_sFlag "ReleaseOpfor"
+     m_Area GC_AreaCondition "{C1EA2D434FDD1F38}" {
+      m_sArea "GC_MigrationArea_ReleaseOpfor_646595CAFB06B0E8"
+      m_Targets GC_CharacterAreaTargets "{48142FBFB977F30E}" {
+       m_aFactions {
+        "RHS_USAF"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{54BC9248E13B43A2}" {
+       m_fRequiredShare 1
+       m_aIgnoredFactions {
+        "GC_SEPARATIST"
+       }
+      }
+     }
+    }
+    GC_AreaFlagObserver "{8713AC9C19B7C422}" {
+     m_sFlag "ReleaseOpfor"
+     m_Area GC_AreaCondition "{446AC336D754C078}" {
+      m_sArea "GC_MigrationArea_ReleaseOpfor_3FC36A4A06375D53"
+      m_Targets GC_CharacterAreaTargets "{101365A697577615}" {
+       m_aFactions {
+        "RHS_USAF"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{0E737B2E0A5E020A}" {
+       m_fRequiredShare 1
+       m_aIgnoredFactions {
+        "GC_SEPARATIST"
+       }
+      }
+     }
+    }
+    GC_AreaFlagObserver "{F639FC1CE2E9D300}" {
+     m_sFlag "ReleaseOpfor"
+     m_Area GC_AreaCondition "{0AFB775618B5B8D9}" {
+      m_sArea "GC_MigrationArea_ReleaseOpfor_380ECC62AD1D1E8C"
+      m_Targets GC_CharacterAreaTargets "{CDEDD4907F893CBD}" {
+       m_aFactions {
+        "RHS_USAF"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{9AA4CA9D9B11FB78}" {
+       m_fRequiredShare 1
+       m_aIgnoredFactions {
+        "GC_SEPARATIST"
+       }
+      }
+     }
+    }
+    GC_AreaFlagObserver "{D070125804B45BF8}" {
+     m_sFlag "ReleaseOpfor"
+     m_Area GC_AreaCondition "{43A781B8207E7E9C}" {
+      m_sArea "GC_MigrationArea_ReleaseOpfor_C5A821580F34761B"
+      m_Targets GC_CharacterAreaTargets "{E9248660DF6C97A7}" {
+       m_aFactions {
+        "RHS_USAF"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{6710EAD27CDE8273}" {
+       m_fRequiredShare 1
+       m_aIgnoredFactions {
+        "GC_SEPARATIST"
+       }
+      }
+     }
+    }
+    GC_AreaFlagObserver "{704B70F6FC8A290E}" {
+     m_sFlag "ReleaseOpfor"
+     m_Area GC_AreaCondition "{E8E0EEDAC486DCA7}" {
+      m_sArea "GC_MigrationArea_ReleaseOpfor_AB7BF34AFF88A770"
+      m_Targets GC_CharacterAreaTargets "{0C3947F24B11B602}" {
+       m_aFactions {
+        "RHS_USAF"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{2683AAF903961D5E}" {
+       m_fRequiredShare 1
+       m_aIgnoredFactions {
+        "GC_SEPARATIST"
+       }
+      }
+     }
+    }
+    GC_AreaFlagObserver "{2678759E31718E16}" {
+     m_sFlag "ReleaseOpfor"
+     m_Area GC_AreaCondition "{467C2D2B83CB7798}" {
+      m_sArea "GC_MigrationArea_ReleaseOpfor_77AD3F9F17F6BC27"
+      m_Targets GC_CharacterAreaTargets "{3FB54A40AA5C59BC}" {
+       m_aFactions {
+        "RHS_USAF"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{117DFFE86BFA309F}" {
+       m_fRequiredShare 1
+       m_aIgnoredFactions {
+        "GC_SEPARATIST"
+       }
+      }
+     }
+    }
+   }
+   m_aAuthoredRespawns {
+    GC_AuthoredFactionRespawn "{D34E17434AEDED0E}" {
+     m_sFaction "RHS_USAF"
+     m_iTickets 10
+     m_iIntervalMs 30000
+    }
+   }
+  }
+ }
+ coords 3888.29 61.607 1341.115
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     UIInfo SCR_FactionUIInfo "{5CC8B5EDA0CDBD62}" {
+      Name "US Rangers"
+      Icon "{46FB2FB2C2125A3C}UI/Textures/Flags/US-flag-base-3it.edds"
+      m_sNameUpper "US Rangers"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CD021D5C}" {
+        m_sCallsign "A"
+       }
+       SCR_CallsignInfo "{55CCB792CCD598D3}" {
+        m_sCallsign "B"
+       }
+       SCR_CallsignInfo "{55CCB792CC9C7AD6}" {
+        m_sCallsign "C"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "0"
+       }
+       SCR_CallsignInfo "{55CCB792CE18FB44}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792CE02ECFA}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792CE2A44BD}" {
+        m_sCallsign "3"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+      }
+      m_sCallsignGroupFormat "%1 %2'%3"
+      m_sCallsignCharacterWithRoleFormat "%1 %2 %3: %4"
+     }
+    }
+   }
+  }
+  SCR_EditorSettingsEntity {
+   ID "61B4E967E6C20362"
+   m_bIsUnlimitedEditorLegal 1
+   m_EditorManagerPrefab "{23C09F78414E6B35}Prefabs/Editor/GC_EditorManagerStagedAccess.et"
+  }
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1805.552 68.371 3375.719
+ m_fRadius 6
+ m_aPrefabs {
+  "{5E7626D8E78566B4}Prefabs/Props/Furniture/Desk_01_long.et"
+  "{3CF7EAA0F05546FF}Prefabs/Props/Furniture/PhoneTable_01_Base.et"
+  "{D19D5E8950BC4DD1}Prefabs/Props/Furniture/ChairOffice_01.et"
+  "{7A63E9272B714EC7}Prefabs/Props/Civilian/AshtrayStreet_01.et"
+  "{25B473F35DCBDA7A}Prefabs/Props/Civilian/ClockUniversal_01.et"
+  "{814C842990C8569A}Prefabs/Props/Civilian/StepladderWooden_01_Open.et"
+  "{33882C61BA9F0F90}Prefabs/Props/Civilian/Globe_01.et"
+  "{A0B6FFA5FDC5B029}Prefabs/Props/Civilian/ArmillarySphere_01/ArmillarySphere_01.et"
+  "{757FCCE8E756175C}Prefabs/Props/Furniture/MeetingTable_01.et"
+  "{3359E8A4DF1C2981}Prefabs/Props/Furniture/Chair_03/Chair_03_tan.et"
+  "{6FD13E995D293853}Prefabs/Props/Furniture/SinkOld_01.et"
+  "{547D462165B175C2}Prefabs/Props/Furniture/CupboardOld_01/CupboardOld_01_small.et"
+  "{9E6BB1D7AA5D0FEB}Prefabs/Props/Furniture/Stove_01.et"
+  "{E1D3E7F0A1833454}Prefabs/Props/Furniture/Kitchen_02.et"
+  "{FF8BD8E8A95DB3D2}Prefabs/Props/Furniture/Fridge_01.et"
+  "{BBF415EE68294A4E}Prefabs/Props/Furniture/FridgeSmall_01.et"
+  "{00C9C0860D1D8A84}Prefabs/Props/Furniture/TableSmall_01/TableSmall_01_DarkWood.et"
+  "{EF8A1F5F6535D280}Prefabs/Props/Furniture/BenchKitchen_01/BenchKitchen_01_Orange.et"
+  "{A98BE51AF0C0ED91}Prefabs/Props/Furniture/BenchKitchen_01/BenchKitchen_01_corner_Orange.et"
+  "{AE4BFFE75F7DA86F}Prefabs/Props/Furniture/CoatRack_04.et"
+  "{D31FBEC7A468AE3B}Prefabs/Props/Furniture/PantryOld_01.et"
+  "{716F88F928ACC3EB}Prefabs/Props/Furniture/Toilet_01/Toilet_01_golden.et"
+  "{69A94CE4EA276A2B}Prefabs/Structures/BuildingParts/Bathroom/ToiletStall_01/ToiletStall_01_wall_red.et"
+  "{49012FE1DEF653EE}Prefabs/Props/Furniture/Sink_01.et"
+  "{1AB7A2C69A30391D}Prefabs/Props/Furniture/CoatRack_01.et"
+  "{FD47FF9699A52E82}Prefabs/Props/Furniture/Wardrobe_01.et"
+  "{A319C11D446D88B3}Prefabs/Props/Furniture/Dresser_01.et"
+  "{457331BE1519B200}Prefabs/Props/Furniture/BunkBed_01.et"
+  "{D21DAFB24F46D64C}Prefabs/Props/Furniture/Nightstand_02.et"
+  "{C3C7A8E9B6324130}Prefabs/Props/Furniture/Safe_01.et"
+  "{3FD3598CF08D3EE0}Prefabs/Props/Furniture/LampInterior_02/LampInterior_02_Orange.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1779.075 68.404 3346.842
+ m_fRadius 6.5
+ m_aPrefabs {
+  "{7E08142AFFDE045E}Prefabs/Props/Furniture/CabinetMetal_02.et"
+  "{108B2B2A04700231}Prefabs/Props/Furniture/ClockFloor_01.et"
+  "{D4C5F6B949A01F1D}Prefabs/Props/Furniture/Bookshelf_02/Parts/Bookshelf_02_glass_02.et"
+  "{4CC2C69DE1AEF103}Prefabs/Props/Core/DestructibleMultiPhase_Props_Base.et"
+  "{02D4A61D327D2BD9}Prefabs/Props/Furniture/Carpet_03_green.et"
+  "{F5B5608E37C75332}Prefabs/Props/Civilian/CandleHolderDecorative_01/CandleHolderDecorative_01.et"
+  "{13891AA1F5833C4A}Prefabs/Props/Civilian/Notebook_01_Double.et"
+  "{6645BAF208F04426}Prefabs/Props/Furniture/PhoneTable_02.et"
+  "{E56F1B739B9792C4}Prefabs/Props/Civilian/Ashtray_01_Full_green.et"
+  "{47F1001F1E64E923}Prefabs/Props/Furniture/ChairDecorative_01/ChairDecorative_01.et"
+  "{C3C7A8E9B6324130}Prefabs/Props/Furniture/Safe_01.et"
+  "{A924939DC9CB318C}Prefabs/Props/Commercial/CabinetCardFile_01/CabinetCardFile_01_grey.et"
+  "{1AB7A2C69A30391D}Prefabs/Props/Furniture/CoatRack_01.et"
+  "{5E7626D8E78566B4}Prefabs/Props/Furniture/Desk_01_long.et"
+  "{39C308BBB5945B85}Prefabs/Props/Military/Furniture/ChairMilitary_US_02.et"
+  "{757FCCE8E756175C}Prefabs/Props/Furniture/MeetingTable_01.et"
+  "{3359E8A4DF1C2981}Prefabs/Props/Furniture/Chair_03/Chair_03_tan.et"
+  "{E3382F292BA2A27D}Prefabs/Props/Furniture/TableCoffee_01.et"
+  "{F80E87795A543758}Prefabs/Structures/Infrastructure/Piping/DieselPipe_01_section_valve_cnc.et"
+  "{A2C5EA360E334882}Prefabs/Structures/Infrastructure/Piping/DieselPipe_01_straight_low_1m_cnc.et"
+  "{75740637080EB024}Prefabs/Props/Commercial/CoffeeGrinderShop_01.et"
+  "{D0B44EB8DBEDDA97}Prefabs/Props/Civilian/Bucket_02.et"
+  "{6F36C3530B1C3493}Prefabs/Props/Airport/ATCPanel_E_01.et"
+  "{40CA4D96AB0E3FC4}Prefabs/Models/ind/tem_control_sector_1.et"
+  "{68AC0C801DB072C1}Prefabs/Models/ind/tem_computer_1.et"
+  "{A1E894C6354794CF}Prefabs/Models/ind/tem_electricbox2.et"
+  "{A4338FA3A55AA804}Prefabs/Models/ind/tem_controlpaneel2.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1805.552 68.371 3385.624
+ m_fRadius 6
+ m_aPrefabs {
+  "{5E7626D8E78566B4}Prefabs/Props/Furniture/Desk_01_long.et"
+  "{3CF7EAA0F05546FF}Prefabs/Props/Furniture/PhoneTable_01_Base.et"
+  "{D19D5E8950BC4DD1}Prefabs/Props/Furniture/ChairOffice_01.et"
+  "{7A63E9272B714EC7}Prefabs/Props/Civilian/AshtrayStreet_01.et"
+  "{25B473F35DCBDA7A}Prefabs/Props/Civilian/ClockUniversal_01.et"
+  "{814C842990C8569A}Prefabs/Props/Civilian/StepladderWooden_01_Open.et"
+  "{33882C61BA9F0F90}Prefabs/Props/Civilian/Globe_01.et"
+  "{A0B6FFA5FDC5B029}Prefabs/Props/Civilian/ArmillarySphere_01/ArmillarySphere_01.et"
+  "{757FCCE8E756175C}Prefabs/Props/Furniture/MeetingTable_01.et"
+  "{3359E8A4DF1C2981}Prefabs/Props/Furniture/Chair_03/Chair_03_tan.et"
+  "{6FD13E995D293853}Prefabs/Props/Furniture/SinkOld_01.et"
+  "{547D462165B175C2}Prefabs/Props/Furniture/CupboardOld_01/CupboardOld_01_small.et"
+  "{9E6BB1D7AA5D0FEB}Prefabs/Props/Furniture/Stove_01.et"
+  "{E1D3E7F0A1833454}Prefabs/Props/Furniture/Kitchen_02.et"
+  "{FF8BD8E8A95DB3D2}Prefabs/Props/Furniture/Fridge_01.et"
+  "{BBF415EE68294A4E}Prefabs/Props/Furniture/FridgeSmall_01.et"
+  "{00C9C0860D1D8A84}Prefabs/Props/Furniture/TableSmall_01/TableSmall_01_DarkWood.et"
+  "{EF8A1F5F6535D280}Prefabs/Props/Furniture/BenchKitchen_01/BenchKitchen_01_Orange.et"
+  "{A98BE51AF0C0ED91}Prefabs/Props/Furniture/BenchKitchen_01/BenchKitchen_01_corner_Orange.et"
+  "{AE4BFFE75F7DA86F}Prefabs/Props/Furniture/CoatRack_04.et"
+  "{D31FBEC7A468AE3B}Prefabs/Props/Furniture/PantryOld_01.et"
+  "{716F88F928ACC3EB}Prefabs/Props/Furniture/Toilet_01/Toilet_01_golden.et"
+  "{69A94CE4EA276A2B}Prefabs/Structures/BuildingParts/Bathroom/ToiletStall_01/ToiletStall_01_wall_red.et"
+  "{49012FE1DEF653EE}Prefabs/Props/Furniture/Sink_01.et"
+  "{1AB7A2C69A30391D}Prefabs/Props/Furniture/CoatRack_01.et"
+  "{FD47FF9699A52E82}Prefabs/Props/Furniture/Wardrobe_01.et"
+  "{A319C11D446D88B3}Prefabs/Props/Furniture/Dresser_01.et"
+  "{457331BE1519B200}Prefabs/Props/Furniture/BunkBed_01.et"
+  "{D21DAFB24F46D64C}Prefabs/Props/Furniture/Nightstand_02.et"
+  "{C3C7A8E9B6324130}Prefabs/Props/Furniture/Safe_01.et"
+  "{3FD3598CF08D3EE0}Prefabs/Props/Furniture/LampInterior_02/LampInterior_02_Orange.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1805.552 64.351 3386.098
+ m_fRadius 6
+ m_aPrefabs {
+  "{5E7626D8E78566B4}Prefabs/Props/Furniture/Desk_01_long.et"
+  "{3CF7EAA0F05546FF}Prefabs/Props/Furniture/PhoneTable_01_Base.et"
+  "{D19D5E8950BC4DD1}Prefabs/Props/Furniture/ChairOffice_01.et"
+  "{7A63E9272B714EC7}Prefabs/Props/Civilian/AshtrayStreet_01.et"
+  "{25B473F35DCBDA7A}Prefabs/Props/Civilian/ClockUniversal_01.et"
+  "{814C842990C8569A}Prefabs/Props/Civilian/StepladderWooden_01_Open.et"
+  "{33882C61BA9F0F90}Prefabs/Props/Civilian/Globe_01.et"
+  "{A0B6FFA5FDC5B029}Prefabs/Props/Civilian/ArmillarySphere_01/ArmillarySphere_01.et"
+  "{757FCCE8E756175C}Prefabs/Props/Furniture/MeetingTable_01.et"
+  "{3359E8A4DF1C2981}Prefabs/Props/Furniture/Chair_03/Chair_03_tan.et"
+  "{6FD13E995D293853}Prefabs/Props/Furniture/SinkOld_01.et"
+  "{547D462165B175C2}Prefabs/Props/Furniture/CupboardOld_01/CupboardOld_01_small.et"
+  "{9E6BB1D7AA5D0FEB}Prefabs/Props/Furniture/Stove_01.et"
+  "{E1D3E7F0A1833454}Prefabs/Props/Furniture/Kitchen_02.et"
+  "{FF8BD8E8A95DB3D2}Prefabs/Props/Furniture/Fridge_01.et"
+  "{BBF415EE68294A4E}Prefabs/Props/Furniture/FridgeSmall_01.et"
+  "{00C9C0860D1D8A84}Prefabs/Props/Furniture/TableSmall_01/TableSmall_01_DarkWood.et"
+  "{EF8A1F5F6535D280}Prefabs/Props/Furniture/BenchKitchen_01/BenchKitchen_01_Orange.et"
+  "{A98BE51AF0C0ED91}Prefabs/Props/Furniture/BenchKitchen_01/BenchKitchen_01_corner_Orange.et"
+  "{AE4BFFE75F7DA86F}Prefabs/Props/Furniture/CoatRack_04.et"
+  "{D31FBEC7A468AE3B}Prefabs/Props/Furniture/PantryOld_01.et"
+  "{716F88F928ACC3EB}Prefabs/Props/Furniture/Toilet_01/Toilet_01_golden.et"
+  "{69A94CE4EA276A2B}Prefabs/Structures/BuildingParts/Bathroom/ToiletStall_01/ToiletStall_01_wall_red.et"
+  "{49012FE1DEF653EE}Prefabs/Props/Furniture/Sink_01.et"
+  "{1AB7A2C69A30391D}Prefabs/Props/Furniture/CoatRack_01.et"
+  "{FD47FF9699A52E82}Prefabs/Props/Furniture/Wardrobe_01.et"
+  "{A319C11D446D88B3}Prefabs/Props/Furniture/Dresser_01.et"
+  "{457331BE1519B200}Prefabs/Props/Furniture/BunkBed_01.et"
+  "{D21DAFB24F46D64C}Prefabs/Props/Furniture/Nightstand_02.et"
+  "{C3C7A8E9B6324130}Prefabs/Props/Furniture/Safe_01.et"
+  "{3FD3598CF08D3EE0}Prefabs/Props/Furniture/LampInterior_02/LampInterior_02_Orange.et"
+  "{D0BD7A55306FC46B}Prefabs/Props/Furniture/Faucet_01/Faucet_01.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1768.466 68.404 3346.842
+ m_fRadius 6.5
+ m_aPrefabs {
+  "{7E08142AFFDE045E}Prefabs/Props/Furniture/CabinetMetal_02.et"
+  "{108B2B2A04700231}Prefabs/Props/Furniture/ClockFloor_01.et"
+  "{D4C5F6B949A01F1D}Prefabs/Props/Furniture/Bookshelf_02/Parts/Bookshelf_02_glass_02.et"
+  "{4CC2C69DE1AEF103}Prefabs/Props/Core/DestructibleMultiPhase_Props_Base.et"
+  "{02D4A61D327D2BD9}Prefabs/Props/Furniture/Carpet_03_green.et"
+  "{F5B5608E37C75332}Prefabs/Props/Civilian/CandleHolderDecorative_01/CandleHolderDecorative_01.et"
+  "{13891AA1F5833C4A}Prefabs/Props/Civilian/Notebook_01_Double.et"
+  "{6645BAF208F04426}Prefabs/Props/Furniture/PhoneTable_02.et"
+  "{E56F1B739B9792C4}Prefabs/Props/Civilian/Ashtray_01_Full_green.et"
+  "{47F1001F1E64E923}Prefabs/Props/Furniture/ChairDecorative_01/ChairDecorative_01.et"
+  "{C3C7A8E9B6324130}Prefabs/Props/Furniture/Safe_01.et"
+  "{A924939DC9CB318C}Prefabs/Props/Commercial/CabinetCardFile_01/CabinetCardFile_01_grey.et"
+  "{1AB7A2C69A30391D}Prefabs/Props/Furniture/CoatRack_01.et"
+  "{5E7626D8E78566B4}Prefabs/Props/Furniture/Desk_01_long.et"
+  "{39C308BBB5945B85}Prefabs/Props/Military/Furniture/ChairMilitary_US_02.et"
+  "{757FCCE8E756175C}Prefabs/Props/Furniture/MeetingTable_01.et"
+  "{3359E8A4DF1C2981}Prefabs/Props/Furniture/Chair_03/Chair_03_tan.et"
+  "{E3382F292BA2A27D}Prefabs/Props/Furniture/TableCoffee_01.et"
+  "{F80E87795A543758}Prefabs/Structures/Infrastructure/Piping/DieselPipe_01_section_valve_cnc.et"
+  "{A2C5EA360E334882}Prefabs/Structures/Infrastructure/Piping/DieselPipe_01_straight_low_1m_cnc.et"
+  "{75740637080EB024}Prefabs/Props/Commercial/CoffeeGrinderShop_01.et"
+  "{D0B44EB8DBEDDA97}Prefabs/Props/Civilian/Bucket_02.et"
+  "{6F36C3530B1C3493}Prefabs/Props/Airport/ATCPanel_E_01.et"
+  "{40CA4D96AB0E3FC4}Prefabs/Models/ind/tem_control_sector_1.et"
+  "{68AC0C801DB072C1}Prefabs/Models/ind/tem_computer_1.et"
+  "{A1E894C6354794CF}Prefabs/Models/ind/tem_electricbox2.et"
+  "{A4338FA3A55AA804}Prefabs/Models/ind/tem_controlpaneel2.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1805.552 64.351 3396.152
+ m_fRadius 6
+ m_aPrefabs {
+  "{5E7626D8E78566B4}Prefabs/Props/Furniture/Desk_01_long.et"
+  "{3CF7EAA0F05546FF}Prefabs/Props/Furniture/PhoneTable_01_Base.et"
+  "{D19D5E8950BC4DD1}Prefabs/Props/Furniture/ChairOffice_01.et"
+  "{7A63E9272B714EC7}Prefabs/Props/Civilian/AshtrayStreet_01.et"
+  "{25B473F35DCBDA7A}Prefabs/Props/Civilian/ClockUniversal_01.et"
+  "{814C842990C8569A}Prefabs/Props/Civilian/StepladderWooden_01_Open.et"
+  "{33882C61BA9F0F90}Prefabs/Props/Civilian/Globe_01.et"
+  "{A0B6FFA5FDC5B029}Prefabs/Props/Civilian/ArmillarySphere_01/ArmillarySphere_01.et"
+  "{757FCCE8E756175C}Prefabs/Props/Furniture/MeetingTable_01.et"
+  "{3359E8A4DF1C2981}Prefabs/Props/Furniture/Chair_03/Chair_03_tan.et"
+  "{6FD13E995D293853}Prefabs/Props/Furniture/SinkOld_01.et"
+  "{547D462165B175C2}Prefabs/Props/Furniture/CupboardOld_01/CupboardOld_01_small.et"
+  "{9E6BB1D7AA5D0FEB}Prefabs/Props/Furniture/Stove_01.et"
+  "{E1D3E7F0A1833454}Prefabs/Props/Furniture/Kitchen_02.et"
+  "{FF8BD8E8A95DB3D2}Prefabs/Props/Furniture/Fridge_01.et"
+  "{BBF415EE68294A4E}Prefabs/Props/Furniture/FridgeSmall_01.et"
+  "{00C9C0860D1D8A84}Prefabs/Props/Furniture/TableSmall_01/TableSmall_01_DarkWood.et"
+  "{EF8A1F5F6535D280}Prefabs/Props/Furniture/BenchKitchen_01/BenchKitchen_01_Orange.et"
+  "{A98BE51AF0C0ED91}Prefabs/Props/Furniture/BenchKitchen_01/BenchKitchen_01_corner_Orange.et"
+  "{AE4BFFE75F7DA86F}Prefabs/Props/Furniture/CoatRack_04.et"
+  "{D31FBEC7A468AE3B}Prefabs/Props/Furniture/PantryOld_01.et"
+  "{716F88F928ACC3EB}Prefabs/Props/Furniture/Toilet_01/Toilet_01_golden.et"
+  "{69A94CE4EA276A2B}Prefabs/Structures/BuildingParts/Bathroom/ToiletStall_01/ToiletStall_01_wall_red.et"
+  "{49012FE1DEF653EE}Prefabs/Props/Furniture/Sink_01.et"
+  "{1AB7A2C69A30391D}Prefabs/Props/Furniture/CoatRack_01.et"
+  "{FD47FF9699A52E82}Prefabs/Props/Furniture/Wardrobe_01.et"
+  "{A319C11D446D88B3}Prefabs/Props/Furniture/Dresser_01.et"
+  "{457331BE1519B200}Prefabs/Props/Furniture/BunkBed_01.et"
+  "{D21DAFB24F46D64C}Prefabs/Props/Furniture/Nightstand_02.et"
+  "{C3C7A8E9B6324130}Prefabs/Props/Furniture/Safe_01.et"
+  "{3FD3598CF08D3EE0}Prefabs/Props/Furniture/LampInterior_02/LampInterior_02_Orange.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1778.498 64.351 3346.842
+ m_fRadius 6.5
+ m_aPrefabs {
+  "{7E08142AFFDE045E}Prefabs/Props/Furniture/CabinetMetal_02.et"
+  "{108B2B2A04700231}Prefabs/Props/Furniture/ClockFloor_01.et"
+  "{D4C5F6B949A01F1D}Prefabs/Props/Furniture/Bookshelf_02/Parts/Bookshelf_02_glass_02.et"
+  "{4CC2C69DE1AEF103}Prefabs/Props/Core/DestructibleMultiPhase_Props_Base.et"
+  "{02D4A61D327D2BD9}Prefabs/Props/Furniture/Carpet_03_green.et"
+  "{F5B5608E37C75332}Prefabs/Props/Civilian/CandleHolderDecorative_01/CandleHolderDecorative_01.et"
+  "{13891AA1F5833C4A}Prefabs/Props/Civilian/Notebook_01_Double.et"
+  "{6645BAF208F04426}Prefabs/Props/Furniture/PhoneTable_02.et"
+  "{E56F1B739B9792C4}Prefabs/Props/Civilian/Ashtray_01_Full_green.et"
+  "{47F1001F1E64E923}Prefabs/Props/Furniture/ChairDecorative_01/ChairDecorative_01.et"
+  "{C3C7A8E9B6324130}Prefabs/Props/Furniture/Safe_01.et"
+  "{A924939DC9CB318C}Prefabs/Props/Commercial/CabinetCardFile_01/CabinetCardFile_01_grey.et"
+  "{1AB7A2C69A30391D}Prefabs/Props/Furniture/CoatRack_01.et"
+  "{5E7626D8E78566B4}Prefabs/Props/Furniture/Desk_01_long.et"
+  "{39C308BBB5945B85}Prefabs/Props/Military/Furniture/ChairMilitary_US_02.et"
+  "{757FCCE8E756175C}Prefabs/Props/Furniture/MeetingTable_01.et"
+  "{3359E8A4DF1C2981}Prefabs/Props/Furniture/Chair_03/Chair_03_tan.et"
+  "{E3382F292BA2A27D}Prefabs/Props/Furniture/TableCoffee_01.et"
+  "{F80E87795A543758}Prefabs/Structures/Infrastructure/Piping/DieselPipe_01_section_valve_cnc.et"
+  "{A2C5EA360E334882}Prefabs/Structures/Infrastructure/Piping/DieselPipe_01_straight_low_1m_cnc.et"
+  "{75740637080EB024}Prefabs/Props/Commercial/CoffeeGrinderShop_01.et"
+  "{D0B44EB8DBEDDA97}Prefabs/Props/Civilian/Bucket_02.et"
+  "{6F36C3530B1C3493}Prefabs/Props/Airport/ATCPanel_E_01.et"
+  "{40CA4D96AB0E3FC4}Prefabs/Models/ind/tem_control_sector_1.et"
+  "{68AC0C801DB072C1}Prefabs/Models/ind/tem_computer_1.et"
+  "{A1E894C6354794CF}Prefabs/Models/ind/tem_electricbox2.et"
+  "{A4338FA3A55AA804}Prefabs/Models/ind/tem_controlpaneel2.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1727.678 64.351 3345.456
+ m_fRadius 12
+ m_aPrefabs {
+  "{A1E894C6354794CF}Prefabs/Models/ind/tem_electricbox2.et"
+  "{A1E894C6354794CF}Prefabs/Models/ind/tem_electricbox2.et"
+  "{7E08142AFFDE045E}Prefabs/Props/Furniture/CabinetMetal_02.et"
+  "{40CA4D96AB0E3FC4}Prefabs/Models/ind/tem_control_sector_1.et"
+  "{4474D83F39A203A4}Prefabs/Models/ind/tem_electricbox3.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1753.81 64.351 3424.791
+ m_fRadius 8
+ m_aPrefabs {
+  "{A1E894C6354794CF}Prefabs/Models/ind/tem_electricbox2.et"
+  "{A1E894C6354794CF}Prefabs/Models/ind/tem_electricbox2.et"
+  "{7E08142AFFDE045E}Prefabs/Props/Furniture/CabinetMetal_02.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1805.552 64.351 3366.569
+ m_fRadius 6
+ m_aPrefabs {
+  "{5E7626D8E78566B4}Prefabs/Props/Furniture/Desk_01_long.et"
+  "{3CF7EAA0F05546FF}Prefabs/Props/Furniture/PhoneTable_01_Base.et"
+  "{D19D5E8950BC4DD1}Prefabs/Props/Furniture/ChairOffice_01.et"
+  "{7A63E9272B714EC7}Prefabs/Props/Civilian/AshtrayStreet_01.et"
+  "{25B473F35DCBDA7A}Prefabs/Props/Civilian/ClockUniversal_01.et"
+  "{814C842990C8569A}Prefabs/Props/Civilian/StepladderWooden_01_Open.et"
+  "{33882C61BA9F0F90}Prefabs/Props/Civilian/Globe_01.et"
+  "{A0B6FFA5FDC5B029}Prefabs/Props/Civilian/ArmillarySphere_01/ArmillarySphere_01.et"
+  "{757FCCE8E756175C}Prefabs/Props/Furniture/MeetingTable_01.et"
+  "{3359E8A4DF1C2981}Prefabs/Props/Furniture/Chair_03/Chair_03_tan.et"
+  "{6FD13E995D293853}Prefabs/Props/Furniture/SinkOld_01.et"
+  "{547D462165B175C2}Prefabs/Props/Furniture/CupboardOld_01/CupboardOld_01_small.et"
+  "{9E6BB1D7AA5D0FEB}Prefabs/Props/Furniture/Stove_01.et"
+  "{E1D3E7F0A1833454}Prefabs/Props/Furniture/Kitchen_02.et"
+  "{FF8BD8E8A95DB3D2}Prefabs/Props/Furniture/Fridge_01.et"
+  "{BBF415EE68294A4E}Prefabs/Props/Furniture/FridgeSmall_01.et"
+  "{00C9C0860D1D8A84}Prefabs/Props/Furniture/TableSmall_01/TableSmall_01_DarkWood.et"
+  "{EF8A1F5F6535D280}Prefabs/Props/Furniture/BenchKitchen_01/BenchKitchen_01_Orange.et"
+  "{A98BE51AF0C0ED91}Prefabs/Props/Furniture/BenchKitchen_01/BenchKitchen_01_corner_Orange.et"
+  "{AE4BFFE75F7DA86F}Prefabs/Props/Furniture/CoatRack_04.et"
+  "{D31FBEC7A468AE3B}Prefabs/Props/Furniture/PantryOld_01.et"
+  "{716F88F928ACC3EB}Prefabs/Props/Furniture/Toilet_01/Toilet_01_golden.et"
+  "{69A94CE4EA276A2B}Prefabs/Structures/BuildingParts/Bathroom/ToiletStall_01/ToiletStall_01_wall_red.et"
+  "{49012FE1DEF653EE}Prefabs/Props/Furniture/Sink_01.et"
+  "{1AB7A2C69A30391D}Prefabs/Props/Furniture/CoatRack_01.et"
+  "{FD47FF9699A52E82}Prefabs/Props/Furniture/Wardrobe_01.et"
+  "{A319C11D446D88B3}Prefabs/Props/Furniture/Dresser_01.et"
+  "{457331BE1519B200}Prefabs/Props/Furniture/BunkBed_01.et"
+  "{D21DAFB24F46D64C}Prefabs/Props/Furniture/Nightstand_02.et"
+  "{C3C7A8E9B6324130}Prefabs/Props/Furniture/Safe_01.et"
+  "{3FD3598CF08D3EE0}Prefabs/Props/Furniture/LampInterior_02/LampInterior_02_Orange.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1707.967 64.351 3444.067
+ m_fRadius 15
+ m_aPrefabs {
+  "{CDBCA02689831BE1}Prefabs/Models/ind/tem_electricbox1.et"
+  "{A1E894C6354794CF}Prefabs/Models/ind/tem_electricbox2.et"
+  "{7E08142AFFDE045E}Prefabs/Props/Furniture/CabinetMetal_02.et"
+  "{4474D83F39A203A4}Prefabs/Models/ind/tem_electricbox3.et"
+  "{1112756E8A13445B}Prefabs/Props/Industrial/Pallets/Pallet_01_Pile.et"
+  "{40CA4D96AB0E3FC4}Prefabs/Models/ind/tem_control_sector_1.et"
+  "{2C9E797617CAB0EA}Prefabs/Models/ind/tem_control_sector_2.et"
+  "{C902358F1B2F2781}Prefabs/Models/ind/tem_control_sector_3.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1774.684 68.371 3351.632
+ m_fRadius 3
+ m_aPrefabs {
+  "{A1E894C6354794CF}Prefabs/Models/ind/tem_electricbox2.et"
+  "{A1E894C6354794CF}Prefabs/Models/ind/tem_electricbox2.et"
+  "{7E08142AFFDE045E}Prefabs/Props/Furniture/CabinetMetal_02.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1805.552 64.351 3376.18
+ m_fRadius 6
+ m_aPrefabs {
+  "{5E7626D8E78566B4}Prefabs/Props/Furniture/Desk_01_long.et"
+  "{3CF7EAA0F05546FF}Prefabs/Props/Furniture/PhoneTable_01_Base.et"
+  "{D19D5E8950BC4DD1}Prefabs/Props/Furniture/ChairOffice_01.et"
+  "{7A63E9272B714EC7}Prefabs/Props/Civilian/AshtrayStreet_01.et"
+  "{25B473F35DCBDA7A}Prefabs/Props/Civilian/ClockUniversal_01.et"
+  "{814C842990C8569A}Prefabs/Props/Civilian/StepladderWooden_01_Open.et"
+  "{33882C61BA9F0F90}Prefabs/Props/Civilian/Globe_01.et"
+  "{A0B6FFA5FDC5B029}Prefabs/Props/Civilian/ArmillarySphere_01/ArmillarySphere_01.et"
+  "{757FCCE8E756175C}Prefabs/Props/Furniture/MeetingTable_01.et"
+  "{3359E8A4DF1C2981}Prefabs/Props/Furniture/Chair_03/Chair_03_tan.et"
+  "{6FD13E995D293853}Prefabs/Props/Furniture/SinkOld_01.et"
+  "{547D462165B175C2}Prefabs/Props/Furniture/CupboardOld_01/CupboardOld_01_small.et"
+  "{9E6BB1D7AA5D0FEB}Prefabs/Props/Furniture/Stove_01.et"
+  "{E1D3E7F0A1833454}Prefabs/Props/Furniture/Kitchen_02.et"
+  "{FF8BD8E8A95DB3D2}Prefabs/Props/Furniture/Fridge_01.et"
+  "{BBF415EE68294A4E}Prefabs/Props/Furniture/FridgeSmall_01.et"
+  "{00C9C0860D1D8A84}Prefabs/Props/Furniture/TableSmall_01/TableSmall_01_DarkWood.et"
+  "{EF8A1F5F6535D280}Prefabs/Props/Furniture/BenchKitchen_01/BenchKitchen_01_Orange.et"
+  "{A98BE51AF0C0ED91}Prefabs/Props/Furniture/BenchKitchen_01/BenchKitchen_01_corner_Orange.et"
+  "{AE4BFFE75F7DA86F}Prefabs/Props/Furniture/CoatRack_04.et"
+  "{D31FBEC7A468AE3B}Prefabs/Props/Furniture/PantryOld_01.et"
+  "{716F88F928ACC3EB}Prefabs/Props/Furniture/Toilet_01/Toilet_01_golden.et"
+  "{69A94CE4EA276A2B}Prefabs/Structures/BuildingParts/Bathroom/ToiletStall_01/ToiletStall_01_wall_red.et"
+  "{49012FE1DEF653EE}Prefabs/Props/Furniture/Sink_01.et"
+  "{1AB7A2C69A30391D}Prefabs/Props/Furniture/CoatRack_01.et"
+  "{FD47FF9699A52E82}Prefabs/Props/Furniture/Wardrobe_01.et"
+  "{A319C11D446D88B3}Prefabs/Props/Furniture/Dresser_01.et"
+  "{457331BE1519B200}Prefabs/Props/Furniture/BunkBed_01.et"
+  "{D21DAFB24F46D64C}Prefabs/Props/Furniture/Nightstand_02.et"
+  "{C3C7A8E9B6324130}Prefabs/Props/Furniture/Safe_01.et"
+  "{3FD3598CF08D3EE0}Prefabs/Props/Furniture/LampInterior_02/LampInterior_02_Orange.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1737.206 67.134 3442.698
+ m_fRadius 16
+ m_aPrefabs {
+  "{A1E894C6354794CF}Prefabs/Models/ind/tem_electricbox2.et"
+  "{A1E894C6354794CF}Prefabs/Models/ind/tem_electricbox2.et"
+  "{7E08142AFFDE045E}Prefabs/Props/Furniture/CabinetMetal_02.et"
+  "{4474D83F39A203A4}Prefabs/Models/ind/tem_electricbox3.et"
+  "{1112756E8A13445B}Prefabs/Props/Industrial/Pallets/Pallet_01_Pile.et"
+  "{60315717A8C131A8}Prefabs/Props/Furniture/Rack_02_brown.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1768.176 61.718 3364.274
+ m_fRadius 9
+ m_aPrefabs {
+  "{CDBCA02689831BE1}Prefabs/Models/ind/tem_electricbox1.et"
+  "{A1E894C6354794CF}Prefabs/Models/ind/tem_electricbox2.et"
+  "{4474D83F39A203A4}Prefabs/Models/ind/tem_electricbox3.et"
+  "{7E08142AFFDE045E}Prefabs/Props/Furniture/CabinetMetal_02.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1728.801 64.629 3420.778
+ m_fRadius 7
+ m_aPrefabs {
+  "{CDBCA02689831BE1}Prefabs/Models/ind/tem_electricbox1.et"
+  "{A1E894C6354794CF}Prefabs/Models/ind/tem_electricbox2.et"
+  "{7E08142AFFDE045E}Prefabs/Props/Furniture/CabinetMetal_02.et"
+  "{4474D83F39A203A4}Prefabs/Models/ind/tem_electricbox3.et"
+  "{1112756E8A13445B}Prefabs/Props/Industrial/Pallets/Pallet_01_Pile.et"
+  "{C902358F1B2F2781}Prefabs/Models/ind/tem_control_sector_3.et"
+  "{2C9E797617CAB0EA}Prefabs/Models/ind/tem_control_sector_2.et"
+  "{40CA4D96AB0E3FC4}Prefabs/Models/ind/tem_control_sector_1.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1693.052 66.178 3457.074
+ m_fRadius 6
+ m_aPrefabs {
+  "{8296A47E98E36752}Prefabs/Structures/Industrial/Pipelines/ProductPipeline_01/ProductPipeline_USSR_01_underpass_wide.et"
+  "{009EA26048832312}Prefabs/Structures/Industrial/Pipelines/ProductPipeline_01/ProductPipeline_USSR_01_low_corner.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1762.239 64.351 3390.469
+ m_fRadius 10
+ m_aPrefabs {
+  "{A1E894C6354794CF}Prefabs/Models/ind/tem_electricbox2.et"
+  "{60315717A8C131A8}Prefabs/Props/Furniture/Rack_02_brown.et"
+  "{7E08142AFFDE045E}Prefabs/Props/Furniture/CabinetMetal_02.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1795.494 64.351 3419.569
+ m_aPrefabs {
+  "{60315717A8C131A8}Prefabs/Props/Furniture/Rack_02_brown.et"
+  "{080E381B512E1B01}Prefabs/Props/Crates/CrateWooden_02/CrateWooden_02_1x15x3.et"
+  "{9F35A268E0DD98A4}Prefabs/Props/Military/Fuel/MobileWaterTank_US_01_fuel.et"
+  "{7E08142AFFDE045E}Prefabs/Props/Furniture/CabinetMetal_02.et"
+  "{90A74133C1DC6226}Prefabs/Props/Industrial/Repair/EngineCrane_01.et"
+  "{50A752B7D5E679A2}Prefabs/Props/Industrial/Repair/GasWelder_01.et"
+  "{A1E894C6354794CF}Prefabs/Models/ind/tem_electricbox2.et"
+  "{4474D83F39A203A4}Prefabs/Models/ind/tem_electricbox3.et"
+  "{CDBCA02689831BE1}Prefabs/Models/ind/tem_electricbox1.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1758.036 68.404 3346.842
+ m_fRadius 6.5
+ m_aPrefabs {
+  "{7E08142AFFDE045E}Prefabs/Props/Furniture/CabinetMetal_02.et"
+  "{108B2B2A04700231}Prefabs/Props/Furniture/ClockFloor_01.et"
+  "{D4C5F6B949A01F1D}Prefabs/Props/Furniture/Bookshelf_02/Parts/Bookshelf_02_glass_02.et"
+  "{4CC2C69DE1AEF103}Prefabs/Props/Core/DestructibleMultiPhase_Props_Base.et"
+  "{02D4A61D327D2BD9}Prefabs/Props/Furniture/Carpet_03_green.et"
+  "{F5B5608E37C75332}Prefabs/Props/Civilian/CandleHolderDecorative_01/CandleHolderDecorative_01.et"
+  "{13891AA1F5833C4A}Prefabs/Props/Civilian/Notebook_01_Double.et"
+  "{6645BAF208F04426}Prefabs/Props/Furniture/PhoneTable_02.et"
+  "{E56F1B739B9792C4}Prefabs/Props/Civilian/Ashtray_01_Full_green.et"
+  "{47F1001F1E64E923}Prefabs/Props/Furniture/ChairDecorative_01/ChairDecorative_01.et"
+  "{C3C7A8E9B6324130}Prefabs/Props/Furniture/Safe_01.et"
+  "{A924939DC9CB318C}Prefabs/Props/Commercial/CabinetCardFile_01/CabinetCardFile_01_grey.et"
+  "{1AB7A2C69A30391D}Prefabs/Props/Furniture/CoatRack_01.et"
+  "{5E7626D8E78566B4}Prefabs/Props/Furniture/Desk_01_long.et"
+  "{39C308BBB5945B85}Prefabs/Props/Military/Furniture/ChairMilitary_US_02.et"
+  "{757FCCE8E756175C}Prefabs/Props/Furniture/MeetingTable_01.et"
+  "{3359E8A4DF1C2981}Prefabs/Props/Furniture/Chair_03/Chair_03_tan.et"
+  "{E3382F292BA2A27D}Prefabs/Props/Furniture/TableCoffee_01.et"
+  "{F80E87795A543758}Prefabs/Structures/Infrastructure/Piping/DieselPipe_01_section_valve_cnc.et"
+  "{A2C5EA360E334882}Prefabs/Structures/Infrastructure/Piping/DieselPipe_01_straight_low_1m_cnc.et"
+  "{75740637080EB024}Prefabs/Props/Commercial/CoffeeGrinderShop_01.et"
+  "{D0B44EB8DBEDDA97}Prefabs/Props/Civilian/Bucket_02.et"
+  "{6F36C3530B1C3493}Prefabs/Props/Airport/ATCPanel_E_01.et"
+  "{40CA4D96AB0E3FC4}Prefabs/Models/ind/tem_control_sector_1.et"
+  "{68AC0C801DB072C1}Prefabs/Models/ind/tem_computer_1.et"
+  "{A1E894C6354794CF}Prefabs/Models/ind/tem_electricbox2.et"
+  "{A4338FA3A55AA804}Prefabs/Models/ind/tem_controlpaneel2.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1717.818 64.351 3411.041
+ m_fRadius 9
+ m_aPrefabs {
+  "{1ABF17BD1E5E5B96}Prefabs/Models/ind/tem_nucpower_doorset.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1687.221 64.351 3441.043
+ m_fRadius 12
+ m_aPrefabs {
+  "{60315717A8C131A8}Prefabs/Props/Furniture/Rack_02_brown.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1758.684 64.351 3346.842
+ m_fRadius 6.5
+ m_aPrefabs {
+  "{7E08142AFFDE045E}Prefabs/Props/Furniture/CabinetMetal_02.et"
+  "{108B2B2A04700231}Prefabs/Props/Furniture/ClockFloor_01.et"
+  "{D4C5F6B949A01F1D}Prefabs/Props/Furniture/Bookshelf_02/Parts/Bookshelf_02_glass_02.et"
+  "{4CC2C69DE1AEF103}Prefabs/Props/Core/DestructibleMultiPhase_Props_Base.et"
+  "{02D4A61D327D2BD9}Prefabs/Props/Furniture/Carpet_03_green.et"
+  "{F5B5608E37C75332}Prefabs/Props/Civilian/CandleHolderDecorative_01/CandleHolderDecorative_01.et"
+  "{13891AA1F5833C4A}Prefabs/Props/Civilian/Notebook_01_Double.et"
+  "{6645BAF208F04426}Prefabs/Props/Furniture/PhoneTable_02.et"
+  "{E56F1B739B9792C4}Prefabs/Props/Civilian/Ashtray_01_Full_green.et"
+  "{47F1001F1E64E923}Prefabs/Props/Furniture/ChairDecorative_01/ChairDecorative_01.et"
+  "{C3C7A8E9B6324130}Prefabs/Props/Furniture/Safe_01.et"
+  "{A924939DC9CB318C}Prefabs/Props/Commercial/CabinetCardFile_01/CabinetCardFile_01_grey.et"
+  "{1AB7A2C69A30391D}Prefabs/Props/Furniture/CoatRack_01.et"
+  "{5E7626D8E78566B4}Prefabs/Props/Furniture/Desk_01_long.et"
+  "{39C308BBB5945B85}Prefabs/Props/Military/Furniture/ChairMilitary_US_02.et"
+  "{757FCCE8E756175C}Prefabs/Props/Furniture/MeetingTable_01.et"
+  "{3359E8A4DF1C2981}Prefabs/Props/Furniture/Chair_03/Chair_03_tan.et"
+  "{E3382F292BA2A27D}Prefabs/Props/Furniture/TableCoffee_01.et"
+  "{F80E87795A543758}Prefabs/Structures/Infrastructure/Piping/DieselPipe_01_section_valve_cnc.et"
+  "{A2C5EA360E334882}Prefabs/Structures/Infrastructure/Piping/DieselPipe_01_straight_low_1m_cnc.et"
+  "{75740637080EB024}Prefabs/Props/Commercial/CoffeeGrinderShop_01.et"
+  "{D0B44EB8DBEDDA97}Prefabs/Props/Civilian/Bucket_02.et"
+  "{6F36C3530B1C3493}Prefabs/Props/Airport/ATCPanel_E_01.et"
+  "{40CA4D96AB0E3FC4}Prefabs/Models/ind/tem_control_sector_1.et"
+  "{68AC0C801DB072C1}Prefabs/Models/ind/tem_computer_1.et"
+  "{A1E894C6354794CF}Prefabs/Models/ind/tem_electricbox2.et"
+  "{A4338FA3A55AA804}Prefabs/Models/ind/tem_controlpaneel2.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1704.525 64.496 3456.748
+ m_fRadius 6
+ m_aPrefabs {
+  "{8296A47E98E36752}Prefabs/Structures/Industrial/Pipelines/ProductPipeline_01/ProductPipeline_USSR_01_underpass_wide.et"
+  "{009EA26048832312}Prefabs/Structures/Industrial/Pipelines/ProductPipeline_01/ProductPipeline_USSR_01_low_corner.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1804.218 64.351 3445.239
+ m_fRadius 15
+ m_aPrefabs {
+  "{60315717A8C131A8}Prefabs/Props/Furniture/Rack_02_brown.et"
+  "{080E381B512E1B01}Prefabs/Props/Crates/CrateWooden_02/CrateWooden_02_1x15x3.et"
+  "{9F35A268E0DD98A4}Prefabs/Props/Military/Fuel/MobileWaterTank_US_01_fuel.et"
+  "{7E08142AFFDE045E}Prefabs/Props/Furniture/CabinetMetal_02.et"
+  "{90A74133C1DC6226}Prefabs/Props/Industrial/Repair/EngineCrane_01.et"
+  "{50A752B7D5E679A2}Prefabs/Props/Industrial/Repair/GasWelder_01.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1786.427 64.351 3386.974
+ m_fRadius 5
+ m_aPrefabs {
+  "{7E08142AFFDE045E}Prefabs/Props/Furniture/CabinetMetal_02.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1748.303 64.351 3346.842
+ m_fRadius 6.5
+ m_aPrefabs {
+  "{7E08142AFFDE045E}Prefabs/Props/Furniture/CabinetMetal_02.et"
+  "{108B2B2A04700231}Prefabs/Props/Furniture/ClockFloor_01.et"
+  "{D4C5F6B949A01F1D}Prefabs/Props/Furniture/Bookshelf_02/Parts/Bookshelf_02_glass_02.et"
+  "{4CC2C69DE1AEF103}Prefabs/Props/Core/DestructibleMultiPhase_Props_Base.et"
+  "{02D4A61D327D2BD9}Prefabs/Props/Furniture/Carpet_03_green.et"
+  "{F5B5608E37C75332}Prefabs/Props/Civilian/CandleHolderDecorative_01/CandleHolderDecorative_01.et"
+  "{13891AA1F5833C4A}Prefabs/Props/Civilian/Notebook_01_Double.et"
+  "{6645BAF208F04426}Prefabs/Props/Furniture/PhoneTable_02.et"
+  "{E56F1B739B9792C4}Prefabs/Props/Civilian/Ashtray_01_Full_green.et"
+  "{47F1001F1E64E923}Prefabs/Props/Furniture/ChairDecorative_01/ChairDecorative_01.et"
+  "{C3C7A8E9B6324130}Prefabs/Props/Furniture/Safe_01.et"
+  "{A924939DC9CB318C}Prefabs/Props/Commercial/CabinetCardFile_01/CabinetCardFile_01_grey.et"
+  "{1AB7A2C69A30391D}Prefabs/Props/Furniture/CoatRack_01.et"
+  "{5E7626D8E78566B4}Prefabs/Props/Furniture/Desk_01_long.et"
+  "{39C308BBB5945B85}Prefabs/Props/Military/Furniture/ChairMilitary_US_02.et"
+  "{757FCCE8E756175C}Prefabs/Props/Furniture/MeetingTable_01.et"
+  "{3359E8A4DF1C2981}Prefabs/Props/Furniture/Chair_03/Chair_03_tan.et"
+  "{E3382F292BA2A27D}Prefabs/Props/Furniture/TableCoffee_01.et"
+  "{F80E87795A543758}Prefabs/Structures/Infrastructure/Piping/DieselPipe_01_section_valve_cnc.et"
+  "{A2C5EA360E334882}Prefabs/Structures/Infrastructure/Piping/DieselPipe_01_straight_low_1m_cnc.et"
+  "{75740637080EB024}Prefabs/Props/Commercial/CoffeeGrinderShop_01.et"
+  "{D0B44EB8DBEDDA97}Prefabs/Props/Civilian/Bucket_02.et"
+  "{6F36C3530B1C3493}Prefabs/Props/Airport/ATCPanel_E_01.et"
+  "{40CA4D96AB0E3FC4}Prefabs/Models/ind/tem_control_sector_1.et"
+  "{68AC0C801DB072C1}Prefabs/Models/ind/tem_computer_1.et"
+  "{A1E894C6354794CF}Prefabs/Models/ind/tem_electricbox2.et"
+  "{A4338FA3A55AA804}Prefabs/Models/ind/tem_controlpaneel2.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1769.372 64.351 3346.842
+ m_fRadius 6.5
+ m_aPrefabs {
+  "{7E08142AFFDE045E}Prefabs/Props/Furniture/CabinetMetal_02.et"
+  "{108B2B2A04700231}Prefabs/Props/Furniture/ClockFloor_01.et"
+  "{D4C5F6B949A01F1D}Prefabs/Props/Furniture/Bookshelf_02/Parts/Bookshelf_02_glass_02.et"
+  "{4CC2C69DE1AEF103}Prefabs/Props/Core/DestructibleMultiPhase_Props_Base.et"
+  "{02D4A61D327D2BD9}Prefabs/Props/Furniture/Carpet_03_green.et"
+  "{F5B5608E37C75332}Prefabs/Props/Civilian/CandleHolderDecorative_01/CandleHolderDecorative_01.et"
+  "{13891AA1F5833C4A}Prefabs/Props/Civilian/Notebook_01_Double.et"
+  "{6645BAF208F04426}Prefabs/Props/Furniture/PhoneTable_02.et"
+  "{E56F1B739B9792C4}Prefabs/Props/Civilian/Ashtray_01_Full_green.et"
+  "{47F1001F1E64E923}Prefabs/Props/Furniture/ChairDecorative_01/ChairDecorative_01.et"
+  "{C3C7A8E9B6324130}Prefabs/Props/Furniture/Safe_01.et"
+  "{A924939DC9CB318C}Prefabs/Props/Commercial/CabinetCardFile_01/CabinetCardFile_01_grey.et"
+  "{1AB7A2C69A30391D}Prefabs/Props/Furniture/CoatRack_01.et"
+  "{5E7626D8E78566B4}Prefabs/Props/Furniture/Desk_01_long.et"
+  "{39C308BBB5945B85}Prefabs/Props/Military/Furniture/ChairMilitary_US_02.et"
+  "{757FCCE8E756175C}Prefabs/Props/Furniture/MeetingTable_01.et"
+  "{3359E8A4DF1C2981}Prefabs/Props/Furniture/Chair_03/Chair_03_tan.et"
+  "{E3382F292BA2A27D}Prefabs/Props/Furniture/TableCoffee_01.et"
+  "{F80E87795A543758}Prefabs/Structures/Infrastructure/Piping/DieselPipe_01_section_valve_cnc.et"
+  "{A2C5EA360E334882}Prefabs/Structures/Infrastructure/Piping/DieselPipe_01_straight_low_1m_cnc.et"
+  "{75740637080EB024}Prefabs/Props/Commercial/CoffeeGrinderShop_01.et"
+  "{D0B44EB8DBEDDA97}Prefabs/Props/Civilian/Bucket_02.et"
+  "{6F36C3530B1C3493}Prefabs/Props/Airport/ATCPanel_E_01.et"
+  "{40CA4D96AB0E3FC4}Prefabs/Models/ind/tem_control_sector_1.et"
+  "{68AC0C801DB072C1}Prefabs/Models/ind/tem_computer_1.et"
+  "{A1E894C6354794CF}Prefabs/Models/ind/tem_electricbox2.et"
+  "{A4338FA3A55AA804}Prefabs/Models/ind/tem_controlpaneel2.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1743.637 65.111 3422.662
+ m_fRadius 2
+ m_aPrefabs {
+  "{A1E894C6354794CF}Prefabs/Models/ind/tem_electricbox2.et"
+  "{A1E894C6354794CF}Prefabs/Models/ind/tem_electricbox2.et"
+  "{7E08142AFFDE045E}Prefabs/Props/Furniture/CabinetMetal_02.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1754.947 64.351 3411.338
+ m_fRadius 10
+ m_aPrefabs {
+  "{A1E894C6354794CF}Prefabs/Models/ind/tem_electricbox2.et"
+  "{60315717A8C131A8}Prefabs/Props/Furniture/Rack_02_brown.et"
+  "{7E08142AFFDE045E}Prefabs/Props/Furniture/CabinetMetal_02.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1694.074 68.041 3443.532
+ m_fRadius 6
+ m_aPrefabs {
+  "{5432CEEAD87D9BEB}Prefabs/Structures/Industrial/Pipelines/ProductPipeline_01/ProductPipeline_USSR_01_high_24m.et"
+  "{3E6CA4F2F90FA2F6}Prefabs/Structures/Industrial/Pipelines/ProductPipeline_01/ProductPipeline_USSR_01_high_8m.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1771.045 64.351 3411.129
+ m_fRadius 10
+ m_aPrefabs {
+  "{CDBCA02689831BE1}Prefabs/Models/ind/tem_electricbox1.et"
+  "{A1E894C6354794CF}Prefabs/Models/ind/tem_electricbox2.et"
+  "{4474D83F39A203A4}Prefabs/Models/ind/tem_electricbox3.et"
+  "{7E08142AFFDE045E}Prefabs/Props/Furniture/CabinetMetal_02.et"
+  "{60315717A8C131A8}Prefabs/Props/Furniture/Rack_02_brown.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1713.084 65.664 3427.814
+ m_fRadius 3
+ m_aPrefabs {
+  "{60315717A8C131A8}Prefabs/Props/Furniture/Rack_02_brown.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1805.552 68.371 3366.569
+ m_fRadius 6
+ m_aPrefabs {
+  "{5E7626D8E78566B4}Prefabs/Props/Furniture/Desk_01_long.et"
+  "{3CF7EAA0F05546FF}Prefabs/Props/Furniture/PhoneTable_01_Base.et"
+  "{D19D5E8950BC4DD1}Prefabs/Props/Furniture/ChairOffice_01.et"
+  "{7A63E9272B714EC7}Prefabs/Props/Civilian/AshtrayStreet_01.et"
+  "{25B473F35DCBDA7A}Prefabs/Props/Civilian/ClockUniversal_01.et"
+  "{814C842990C8569A}Prefabs/Props/Civilian/StepladderWooden_01_Open.et"
+  "{33882C61BA9F0F90}Prefabs/Props/Civilian/Globe_01.et"
+  "{A0B6FFA5FDC5B029}Prefabs/Props/Civilian/ArmillarySphere_01/ArmillarySphere_01.et"
+  "{757FCCE8E756175C}Prefabs/Props/Furniture/MeetingTable_01.et"
+  "{3359E8A4DF1C2981}Prefabs/Props/Furniture/Chair_03/Chair_03_tan.et"
+  "{6FD13E995D293853}Prefabs/Props/Furniture/SinkOld_01.et"
+  "{547D462165B175C2}Prefabs/Props/Furniture/CupboardOld_01/CupboardOld_01_small.et"
+  "{9E6BB1D7AA5D0FEB}Prefabs/Props/Furniture/Stove_01.et"
+  "{E1D3E7F0A1833454}Prefabs/Props/Furniture/Kitchen_02.et"
+  "{FF8BD8E8A95DB3D2}Prefabs/Props/Furniture/Fridge_01.et"
+  "{BBF415EE68294A4E}Prefabs/Props/Furniture/FridgeSmall_01.et"
+  "{00C9C0860D1D8A84}Prefabs/Props/Furniture/TableSmall_01/TableSmall_01_DarkWood.et"
+  "{EF8A1F5F6535D280}Prefabs/Props/Furniture/BenchKitchen_01/BenchKitchen_01_Orange.et"
+  "{A98BE51AF0C0ED91}Prefabs/Props/Furniture/BenchKitchen_01/BenchKitchen_01_corner_Orange.et"
+  "{AE4BFFE75F7DA86F}Prefabs/Props/Furniture/CoatRack_04.et"
+  "{D31FBEC7A468AE3B}Prefabs/Props/Furniture/PantryOld_01.et"
+  "{716F88F928ACC3EB}Prefabs/Props/Furniture/Toilet_01/Toilet_01_golden.et"
+  "{69A94CE4EA276A2B}Prefabs/Structures/BuildingParts/Bathroom/ToiletStall_01/ToiletStall_01_wall_red.et"
+  "{49012FE1DEF653EE}Prefabs/Props/Furniture/Sink_01.et"
+  "{1AB7A2C69A30391D}Prefabs/Props/Furniture/CoatRack_01.et"
+  "{FD47FF9699A52E82}Prefabs/Props/Furniture/Wardrobe_01.et"
+  "{A319C11D446D88B3}Prefabs/Props/Furniture/Dresser_01.et"
+  "{457331BE1519B200}Prefabs/Props/Furniture/BunkBed_01.et"
+  "{D21DAFB24F46D64C}Prefabs/Props/Furniture/Nightstand_02.et"
+  "{C3C7A8E9B6324130}Prefabs/Props/Furniture/Safe_01.et"
+  "{3FD3598CF08D3EE0}Prefabs/Props/Furniture/LampInterior_02/LampInterior_02_Orange.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1770.622 64.694 3374.972
+ m_fRadius 9
+ m_aPrefabs {
+  "{CDBCA02689831BE1}Prefabs/Models/ind/tem_electricbox1.et"
+  "{A1E894C6354794CF}Prefabs/Models/ind/tem_electricbox2.et"
+  "{4474D83F39A203A4}Prefabs/Models/ind/tem_electricbox3.et"
+  "{7E08142AFFDE045E}Prefabs/Props/Furniture/CabinetMetal_02.et"
+  "{7E08142AFFDE045E}Prefabs/Props/Furniture/CabinetMetal_02.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1781.81 64.351 3380.736
+ m_fRadius 9
+ m_aPrefabs {
+  "{CDBCA02689831BE1}Prefabs/Models/ind/tem_electricbox1.et"
+  "{A1E894C6354794CF}Prefabs/Models/ind/tem_electricbox2.et"
+  "{4474D83F39A203A4}Prefabs/Models/ind/tem_electricbox3.et"
+  "{7E08142AFFDE045E}Prefabs/Props/Furniture/CabinetMetal_02.et"
+  "{7B3DC0F2263E1036}Prefabs/Props/Military/WaterTanks/MobileWaterTank_base.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1805.552 68.395 3396.152
+ m_fRadius 6
+ m_aPrefabs {
+  "{5E7626D8E78566B4}Prefabs/Props/Furniture/Desk_01_long.et"
+  "{3CF7EAA0F05546FF}Prefabs/Props/Furniture/PhoneTable_01_Base.et"
+  "{D19D5E8950BC4DD1}Prefabs/Props/Furniture/ChairOffice_01.et"
+  "{7A63E9272B714EC7}Prefabs/Props/Civilian/AshtrayStreet_01.et"
+  "{25B473F35DCBDA7A}Prefabs/Props/Civilian/ClockUniversal_01.et"
+  "{814C842990C8569A}Prefabs/Props/Civilian/StepladderWooden_01_Open.et"
+  "{33882C61BA9F0F90}Prefabs/Props/Civilian/Globe_01.et"
+  "{A0B6FFA5FDC5B029}Prefabs/Props/Civilian/ArmillarySphere_01/ArmillarySphere_01.et"
+  "{757FCCE8E756175C}Prefabs/Props/Furniture/MeetingTable_01.et"
+  "{3359E8A4DF1C2981}Prefabs/Props/Furniture/Chair_03/Chair_03_tan.et"
+  "{6FD13E995D293853}Prefabs/Props/Furniture/SinkOld_01.et"
+  "{547D462165B175C2}Prefabs/Props/Furniture/CupboardOld_01/CupboardOld_01_small.et"
+  "{9E6BB1D7AA5D0FEB}Prefabs/Props/Furniture/Stove_01.et"
+  "{E1D3E7F0A1833454}Prefabs/Props/Furniture/Kitchen_02.et"
+  "{FF8BD8E8A95DB3D2}Prefabs/Props/Furniture/Fridge_01.et"
+  "{BBF415EE68294A4E}Prefabs/Props/Furniture/FridgeSmall_01.et"
+  "{00C9C0860D1D8A84}Prefabs/Props/Furniture/TableSmall_01/TableSmall_01_DarkWood.et"
+  "{EF8A1F5F6535D280}Prefabs/Props/Furniture/BenchKitchen_01/BenchKitchen_01_Orange.et"
+  "{A98BE51AF0C0ED91}Prefabs/Props/Furniture/BenchKitchen_01/BenchKitchen_01_corner_Orange.et"
+  "{AE4BFFE75F7DA86F}Prefabs/Props/Furniture/CoatRack_04.et"
+  "{D31FBEC7A468AE3B}Prefabs/Props/Furniture/PantryOld_01.et"
+  "{716F88F928ACC3EB}Prefabs/Props/Furniture/Toilet_01/Toilet_01_golden.et"
+  "{69A94CE4EA276A2B}Prefabs/Structures/BuildingParts/Bathroom/ToiletStall_01/ToiletStall_01_wall_red.et"
+  "{49012FE1DEF653EE}Prefabs/Props/Furniture/Sink_01.et"
+  "{1AB7A2C69A30391D}Prefabs/Props/Furniture/CoatRack_01.et"
+  "{FD47FF9699A52E82}Prefabs/Props/Furniture/Wardrobe_01.et"
+  "{A319C11D446D88B3}Prefabs/Props/Furniture/Dresser_01.et"
+  "{457331BE1519B200}Prefabs/Props/Furniture/BunkBed_01.et"
+  "{D21DAFB24F46D64C}Prefabs/Props/Furniture/Nightstand_02.et"
+  "{C3C7A8E9B6324130}Prefabs/Props/Furniture/Safe_01.et"
+  "{3FD3598CF08D3EE0}Prefabs/Props/Furniture/LampInterior_02/LampInterior_02_Orange.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1769.984 64.351 3423.533
+ m_fRadius 10
+ m_aPrefabs {
+  "{CDBCA02689831BE1}Prefabs/Models/ind/tem_electricbox1.et"
+  "{A1E894C6354794CF}Prefabs/Models/ind/tem_electricbox2.et"
+  "{4474D83F39A203A4}Prefabs/Models/ind/tem_electricbox3.et"
+  "{7E08142AFFDE045E}Prefabs/Props/Furniture/CabinetMetal_02.et"
+  "{60315717A8C131A8}Prefabs/Props/Furniture/Rack_02_brown.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1717.731 64.351 3417.724
+ m_fRadius 7
+ m_aPrefabs {
+  "{64C9C1D1C2C1B38D}Prefabs/Props/Infrastructure/Roadblocks/RoadBlock_01.et"
+ }
+}
