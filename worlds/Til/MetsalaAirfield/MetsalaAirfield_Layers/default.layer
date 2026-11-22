@@ -1,0 +1,238 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 0 0 0
+}
+GC_LobbyGameMode GC_MigratedMission : "{FC7464BF0592E233}worlds/Til/MetsalaAirfield/MetsalaAirfield_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{65F17CBB722D7067}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 12
+     m_iStartingMinutes 15
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{1CDB1AD0FB4ABA2A}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{3FDEFF062B571FED}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 300
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{708F1031E62B1DD3}" {
+     m_sName "VDV Victory"
+     m_aConditions {
+      GC_ConditionGroup "{9810D30762F08792}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{C46F35EF198CB0B8}" {
+         m_sArea "GC_MigrationArea_AA1294AEDF032DDC"
+         m_Targets GC_CharacterAreaTargets "{A8499A2EFEC1ADD5}" {
+          m_iWho 2
+          m_aFactions {
+           "RHS_AFRF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{E60404B3749631D0}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{F36C04B3579878B8}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{FD6FBAB9FE3D3B0D}" {
+           m_sLocation "the northern facility"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{C17C1CDACC1D56D1}" {
+         m_sArea "GC_MigrationArea_912521735F9AA47C"
+         m_Targets GC_CharacterAreaTargets "{0BF20F2846BF3B0E}" {
+          m_iWho 2
+          m_aFactions {
+           "RHS_AFRF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{0E2005B9C31BBED5}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{F967BE2CB6FAB066}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{3371E21D0E295543}" {
+           m_sLocation "the southern area"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{66176F066D08781A}" {
+       m_sMessage "VDV Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{204D59F067C3C833}" {
+     m_sName "VDV Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{47AC4E9A0DF4FCA4}" {
+       m_sEventName "VDV Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{22FCB2F0201338A2}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{A05C0C7AAB3DD645}" {
+       m_sTitle "VDV VICTORY"
+       m_sMessage "The VDV took control of the airfield."
+      }
+     }
+    }
+    GC_Event "{F231BD972CF8FB56}" {
+     m_sName "CDF Victory"
+     m_aConditions {
+      GC_CustomScriptCondition "{356F1F1FCD5E342D}" {
+       m_Script GC_PeakFactionPopulationCheck "{B3126D594206C02B}" {
+        m_sFaction "RHS_AFRF"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8BCD4BE06F2D8AB3}" {
+       m_sMessage "CDF Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{98190B1EFEA350DC}" {
+     m_sName "CDF Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9608D765AB60EB03}" {
+       m_sEventName "CDF Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{E4640337475BC799}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{147F995DF47CD6D6}" {
+       m_sTitle "CDF VICTORY"
+       m_sMessage "After suffering 80% casualties, the VDV is unable to take control of the airfield."
+      }
+     }
+    }
+    GC_Event "{48291ACB40429D7A}" {
+     m_sName "Mission Start (150s)"
+     m_Advanced GC_EventOptions "{F83114AB301D5FD5}" {
+      m_fDelay 150
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{3F644791FC1FD1E9}" {
+       m_aEntities {
+        "cm1"
+       }
+      }
+     }
+    }
+    GC_Event "{3656D0C074B7FC41}" {
+     m_sName "Mission Start (4200s)"
+     m_Advanced GC_EventOptions "{3A6D19DC23339239}" {
+      m_fDelay 4200
+     }
+     m_aActions {
+      GC_MessageAction "{D2AAB693FF880E1C}" {
+       m_sTitle "CDF VICTORY"
+       m_sMessage "The VDV company was unable to secure the airfield before the arrival of CDF reinforcements."
+      }
+     }
+    }
+    GC_Event "{9B34453DDA9F9056}" {
+     m_sName "GC_MigratedSpawn_EDA83978446FDF01 (120s)"
+     m_Advanced GC_EventOptions "{B0B8027C7F9AC88C}" {
+      m_fDelay 120
+     }
+     m_aActions {
+      GC_SpawnAction "{D97406B4578B9607}" {
+       m_Spawn GC_PrefabSpawn "{7B82A1548AC6F98E}" {
+        m_sLocation "kh55_flyby"
+        m_sPrefab "{17B08DA4B050BBFE}Prefabs/Vehicles/Missles/kh55/KH55_CAS.et"
+        m_sEntityName "cm1"
+       }
+      }
+     }
+    }
+    GC_Event "{009D438C48B986BA}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{C6C170638CC0C918}" {
+       m_fSeconds 300.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{456DBE5F5F486824}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+   m_aAuthoredRespawns {
+    GC_AuthoredFactionRespawn "{FDB523F17A12DD3E}" {
+     m_sFaction "GC_CDF"
+     m_iTickets 5
+     m_iIntervalMs 0
+    }
+    GC_AuthoredFactionRespawn "{4796FBBCF438A000}" {
+     m_sFaction "RHS_AFRF"
+     m_iTickets 10
+     m_iIntervalMs 0
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ m_eJipMode DISABLED
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     UIInfo SCR_FactionUIInfo "{5977478D568C0938}" {
+      Name "VDV"
+      Icon "{51B9E47090841936}UI/Textures/Editor/ContentBrowser/RHS_AFRF_GF_VDV_Icon.edds"
+     }
+    }
+   }
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 4980.606 73.693 6270.59
+ m_fWarnRadius 125
+ m_fZoneRadius 150
+ m_fZoneTeleportedRadius 160
+}
