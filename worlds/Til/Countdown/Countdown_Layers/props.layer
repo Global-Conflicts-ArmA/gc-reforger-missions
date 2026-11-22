@@ -1,0 +1,191 @@
+GenericEntity {
+ components {
+  MeshObject "{69CECC13A03F088E}" {
+   Object "{8FDEE3196C8B75AB}Assets/Items/Equipment/Kits/RepairKit_01/RepairKit_01_wrench.xob"
+  }
+ }
+ coords 4853.968 384.365 6409.163
+ angles 0 -67.376 0
+}
+GenericEntity : "{0F866B72D473D8C4}Prefabs/Props/Industrial/ToolBox_01/ToolBox_01_grey.et" {
+ coords 4852.327 385.374 6409.688
+ angles 0 134.769 0
+}
+GenericEntity : "{2B26287DC5B7F9D0}Prefabs/Props/Industrial/ToolBox_01/ToolBox_01_red.et" {
+ coords 4853.682 384.365 6409.679
+ angles 0 -98.312 0
+}
+$grp GameEntity : "{575EA58E67448C2A}Prefabs/Items/Equipment/Flashlights/Flashlight_Soviet_01/Flashlight_Soviet_01.et" {
+ {
+  coords 4990.288 321.451 6402.063
+ }
+ {
+  coords 4991.375 321.451 6401.669
+ }
+ {
+  coords 4989.495 321.451 6402.606
+ }
+}
+$grp GameEntity : "{5F71AB03597B3D25}Prefabs/Characters/HeadGear/Helmet_6B47/Helmet_6B47.et" {
+ {
+  coords 4816.303 405.116 6406.188
+ }
+ {
+  coords 4857.78 383.995 6403.418
+ }
+ {
+  coords 4764.394 369.534 6329.273
+ }
+}
+$grp GameEntity : "{64322D5D501B7D79}Prefabs/Items/Equipment/Nightvision/PVS14/NVG_PVS14_Base.et" {
+ {
+  coords 4763.791 369.483 6328.845
+ }
+ {
+  coords 4816.119 405.13 6405.954
+ }
+ {
+  coords 4857.906 383.995 6403.668
+ }
+}
+SCR_DestructibleEntity : "{879865F07EA907B0}Prefabs/Structures/Walls/Concrete/ConcreteWall_02/ConcreteWall_02_4m.et" {
+ coords 3236.149 4.174 10073.613
+ angles 0 -121.458 0
+ scale 2.25
+ {
+  SCR_DestructibleEntity : "{879865F07EA907B0}Prefabs/Structures/Walls/Concrete/ConcreteWall_02/ConcreteWall_02_4m.et" {
+   coords 3.949 0 0.021
+   angles 0 0 0
+  }
+ }
+}
+GenericEntity : "{98DD643927F87912}Prefabs/Props/Commercial/BeerKegMetal_01_lines.et" {
+ coords 4853.498 384.659 6409.159
+ angles 0 -36.73 -90
+ scale 2
+ {
+  GenericEntity : "{A9DC69EC1CE466A0}Prefabs/Props/Civilian/Computer_E_01/Computer_E_01_on.et" {
+   components {
+    SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+     EnableDamage 0
+    }
+   }
+   coords 0.099 1.049 0.274
+   angles 0 180 -90
+   scale 0.5
+   {
+    GenericEntity {
+     ID "620AA4AC9B735F5F"
+     components {
+      SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       EnableDamage 0
+      }
+     }
+     coords -0.005 0.116 -0.091
+     angles 0 -5.487 0
+    }
+    GenericEntity : "{261F10BDC068BB35}Prefabs/Props/Furniture/ChairOld_01.et" {
+     components {
+      SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+       Enabled 0
+      }
+     }
+     coords -0.022 -0.495 -0.093
+     angles 0 -0.79 0
+    }
+    GenericEntity : "{B48D431A323D4564}Prefabs/Logic/Mission/Interaction.et" {
+     components {
+      GC_MissionInteractionComponent "{DCEC291493734CD4}" {
+       m_sActionName "Disarm Nuke"
+       m_sCallFlag "disarmed"
+       m_bSingleUse 1
+       m_aFactions {
+        "RHS_USAF"
+       }
+       m_sRequiredFlag "pre_explosion"
+      }
+      ActionsManagerComponent "{ADA66F0D5EA84AC2}" {
+       additionalActions {
+        GC_MissionInteractionAction "{4F65BF8AFE944D18}" {
+        }
+       }
+      }
+     }
+     coords 0.011 0.145 0.151
+     angles 0 -143.27 0
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{D5DCF3520C2A8C41}Prefabs/Props/Furniture/Flipchart_01/Flipchart_01.et" {
+ components {
+  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+   EnableDamage 0
+  }
+ }
+ coords 3249.346 286.195 10085.641
+ angles 0 -119.992 0
+ {
+  GenericEntity : "{4A7B7EF936B349A7}Prefabs/Logic/Mission/TeleportInteraction.et" {
+   components {
+    GC_TeleportInteractionComponent "{B3632A2C9CA24FDF}" {
+     m_sActionName "North West"
+     m_sDestinationName "ReconTP_NW"
+     m_sInteractionKey "404C2C5909834FF5"
+    }
+    GC_TeleportInteractionComponent "{FA28759778DA0C2F}" {
+     m_sActionName "North East"
+     m_sDestinationName "ReconTP_NE"
+     m_sInteractionKey "69CD24281DA6C8AE"
+    }
+    GC_TeleportInteractionComponent "{562C7B1123133E2B}" {
+     m_sActionName "South West"
+     m_sDestinationName "ReconTP_SW"
+     m_sInteractionKey "69CD242863A2CC83"
+    }
+    GC_TeleportInteractionComponent "{E426590D3B122F0B}" {
+     m_sActionName "South East"
+     m_sDestinationName "ReconTP_SE"
+     m_sInteractionKey "69CD242861069A68"
+    }
+    ActionsManagerComponent "{F097C296BF6748C5}" {
+     additionalActions {
+      GC_MissionInteractionAction "{404C2C5909834FF5}" {
+       m_sInteractionKey "404C2C5909834FF5"
+      }
+      GC_MissionInteractionAction "{69CD24281DA6C8AE}" {
+       ParentContextList {
+        "MissionInteraction"
+       }
+       ActionTitle "Interact_B"
+       Duration 1
+       m_sInteractionKey "69CD24281DA6C8AE"
+      }
+      GC_MissionInteractionAction "{69CD242863A2CC83}" {
+       ParentContextList {
+        "MissionInteraction"
+       }
+       ActionTitle "Interact_C"
+       Duration 1
+       m_sInteractionKey "69CD242863A2CC83"
+      }
+      GC_MissionInteractionAction "{69CD242861069A68}" {
+       ParentContextList {
+        "MissionInteraction"
+       }
+       ActionTitle "Interact_D"
+       Duration 1
+       m_sInteractionKey "69CD242861069A68"
+      }
+     }
+    }
+   }
+   coords 0 1.3 0.1
+  }
+ }
+}
+SCR_DestructibleBuildingEntity : "{FD1CE2903D41D4A7}Prefabs/Structures/Walls/Concrete/ConcreteRetainingWall_01/ConcreteRetainingWall_01_8m.et" {
+ coords 3250.969 287.558 10086.529
+ angles 6.186 62.254 0
+}
