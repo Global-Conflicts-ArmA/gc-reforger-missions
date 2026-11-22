@@ -1,0 +1,475 @@
+SCR_AIWorld : "{3D0FE80570D5BFCC}Prefabs/AI/SCR_AIWorld_Anizay.et" {
+ coords 3649.322 138.19 6972.788
+}
+GC_LobbyGameMode GC_MigratedMission : "{BC2C51E46BB0EA1E}worlds/anteante101/Operation Desert Sentinel/Operation Desert Sentinel_GC_Settings.et" {
+ components {
+  GC_PeakFactionPopulationComponent "{16D503C2AB3ECF8B}" {
+  }
+  GC_LivingAndDeadAIComponent "{65BD6E20A375B533}" {
+   m_sFaction "US"
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{F4B9B66C5D7D0278}" {
+     m_sName "vic_destroyed"
+     m_aConditions {
+      GC_EntityDamageCondition "{0D6B0CCB968C5111}" {
+       m_sEntityName "M923A1_command1"
+      }
+     }
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{03232723A5B57FFF}" {
+     m_sName "qrf_spawn"
+     m_aConditions {
+      GC_GameModeStateCondition "{55FACB062A391F26}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{846C3637594334CD}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_CustomScriptCondition "{C86667E5F2D5F165}" {
+         m_Script GC_LivingAndDeadAICheck "{9BB6D0761A6CD529}" {
+          m_fRatio 0.5
+         }
+        }
+        GC_MissionFlagCondition "{9D6265EFBF7E9829}" {
+         m_sFlagName "vic_destroyed"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E3C1A3AC2AF8EA8B}" {
+       m_sMessage "qrf_spawn"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AD80EC98C698F9FA}" {
+     m_sName "qrf_spawn (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{3F00E63F8A14B755}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{AA45B2BDEF24F076}" {
+       m_sEventName "qrf_spawn"
+      }
+     }
+     m_Advanced GC_EventOptions "{AA5DE1CBF5AE812A}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{C67AEB1128054169}" {
+       m_sTitle "QRF IS ON ITS WAY!!!"
+       m_sMessage " FINISH THE MISSION OR EXTRACT!!!"
+      }
+     }
+    }
+    GC_Event "{213E8E8BF38A87D3}" {
+     m_sName "mission failer"
+     m_aConditions {
+      GC_CustomScriptCondition "{86D18E2AA5F37B24}" {
+       m_Script GC_PeakFactionPopulationCheck "{9AB62988615574A0}" {
+        m_sFaction "GC_MUJ"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{291BDD7058E77910}" {
+       m_sMessage "mission failer"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3DEC26F8442AFA21}" {
+     m_sName "mission failer (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{EF8BE96A8451042E}" {
+       m_sEventName "mission failer"
+      }
+     }
+     m_Advanced GC_EventOptions "{475C126E4E27624F}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{8FA7296D5020B859}" {
+       m_sTitle "Mission failure"
+       m_sMessage "Too many casualties.We have failed..."
+      }
+     }
+    }
+    GC_Event "{97A982E9685E4096}" {
+     m_sName "Mission Victory"
+     m_aConditions {
+      GC_GameModeStateCondition "{A49011923A2EA4E4}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{B714396DEDDF4020}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{CDED6B763F3643FF}" {
+         m_sFlagName "extract"
+        }
+        GC_MissionFlagCondition "{4A0B7FF7DF5C64EA}" {
+         m_sFlagName "vic_destroyed"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B3EB28D05D59DA8B}" {
+       m_sMessage "Mission Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{99DCDB30C24A1387}" {
+     m_sName "Mission Victory (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{554CC5407F6887D0}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{16DEC4956EA0AF61}" {
+       m_sEventName "Mission Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{F58942C48F6A6A16}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{1A1A5AD1758102CD}" {
+       m_sTitle "Major Victory"
+       m_sMessage "We destroyed their command truck and have escaped to tell the tale. The US will fear our might!"
+      }
+     }
+    }
+    GC_Event "{34DE5F991E70A217}" {
+     m_sName "minor"
+     m_aConditions {
+      GC_GameModeStateCondition "{1CE6C86EE40A6C29}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{0689699F296F8B62}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{62FBA37262416156}" {
+         m_sFlagName "vic_destroyed"
+        }
+        GC_CustomScriptCondition "{C76E9B73399A314D}" {
+         m_Script GC_PeakFactionPopulationCheck "{59053B2AEE14E426}" {
+          m_sFaction "GC_MUJ"
+          m_fRatio 0.9
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{49985C03DEBADB8F}" {
+       m_sMessage "minor"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{EB18CAC639895D25}" {
+     m_sName "minor (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{49528516CD3C13E7}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{86B0E87990F07345}" {
+       m_sEventName "minor"
+      }
+     }
+     m_Advanced GC_EventOptions "{37D075E1DDEA3004}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{B3D7B460B6DB282E}" {
+       m_sTitle "Minor victory..."
+       m_sMessage "We destroyed their command truck but suffered too much to do that. We succeeded but we don't have the right to be proud."
+      }
+     }
+    }
+    GC_Event "{E6249A48D40B5DA9}" {
+     m_sName "GC_MigratedSpawn_72174F0C4BAF4946 (0s)"
+     m_aActions {
+      GC_SpawnAction "{E6249A48D40B5DA9}" {
+       m_Spawn GC_CrewedVehicleSpawn "{01833E0A641EA68B}" {
+        m_sLocation "GC_Spawner_72174F0C4BAF4946"
+        m_sPrefab "{C00B26E6C8808EF8}Prefabs/Vehicles/Wheeled/M998/CRX_M1025_armed_M2HB_gunshield_DESERT.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{0D0688099C4540EE}" {
+          m_aStations {
+           GC_SpawnCrewStation "{57774195FF093968}" {
+            m_bDriver 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{A6C85E9CD7539F9A}Prefabs/Characters/Factions/BLUFOR/US_Army/2003/Infantry (Desert)/Character_US_2003_D_AR.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{2B3445BE7E0D229C}" {
+     m_sName "GC_MigratedSpawn_1285970888539B05 (0s)"
+     m_aActions {
+      GC_SpawnAction "{2B3445BE7E0D229C}" {
+       m_Spawn GC_CrewedVehicleSpawn "{7DE44E83A6320253}" {
+        m_sLocation "GC_Spawner_1285970888539B05"
+        m_sPrefab "{C00B26E6C8808EF8}Prefabs/Vehicles/Wheeled/M998/CRX_M1025_armed_M2HB_gunshield_DESERT.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{270AEB867BE7B123}" {
+          m_aStations {
+           GC_SpawnCrewStation "{02FFA0AB224C66CD}" {
+            m_bDriver 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{A6C85E9CD7539F9A}Prefabs/Characters/Factions/BLUFOR/US_Army/2003/Infantry (Desert)/Character_US_2003_D_AR.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{06C35435F55680D4}" {
+     m_sName "GC_MigratedSpawn_0E5034D721CA488E (0s)"
+     m_aActions {
+      GC_SpawnAction "{06C35435F55680D4}" {
+       m_Spawn GC_CrewedVehicleSpawn "{86E16D4E52B26B1F}" {
+        m_sLocation "GC_Spawner_0E5034D721CA488E"
+        m_sPrefab "{C00B26E6C8808EF8}Prefabs/Vehicles/Wheeled/M998/CRX_M1025_armed_M2HB_gunshield_DESERT.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{91EEC4CF32CB23FA}" {
+          m_aStations {
+           GC_SpawnCrewStation "{81FE7AF05A8AC61A}" {
+            m_bDriver 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{A6C85E9CD7539F9A}Prefabs/Characters/Factions/BLUFOR/US_Army/2003/Infantry (Desert)/Character_US_2003_D_AR.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{662F025E31788F86}" {
+     m_sName "GC_MigratedSpawn_92175CA9AE9DA0A6"
+     m_aConditions {
+      GC_GameModeStateCondition "{23374CB01E22A10E}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{4A78933B5E6C022C}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_CustomScriptCondition "{73A24F48EFF54A8B}" {
+         m_Script GC_LivingAndDeadAICheck "{D170536BEA20664B}" {
+          m_fRatio 0.5
+         }
+        }
+        GC_MissionFlagCondition "{979FD9B975F30F98}" {
+         m_sFlagName "vic_destroyed"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E9EE625D08F22B6A}" {
+       m_sMessage "GC_MigratedSpawn_92175CA9AE9DA0A6"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D8BDF36B1B53D371}" {
+     m_sName "GC_MigratedSpawn_92175CA9AE9DA0A6 (0.8s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{CEAD18B761C6C2EE}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{88D6F1E5C6EC03F1}" {
+       m_sEventName "GC_MigratedSpawn_92175CA9AE9DA0A6"
+      }
+     }
+     m_Advanced GC_EventOptions "{D60BAD9C980E424E}" {
+      m_fDelay 0.8
+     }
+     m_aActions {
+      GC_SpawnAction "{5E3967E45C125DC6}" {
+       m_Spawn GC_CrewedVehicleSpawn "{7F7AB470E0633C3C}" {
+        m_sLocation "qrf_ai"
+        m_sPrefab "{123595894023C474}Prefabs/Vehicles/Wheeled/LAV25/LAV25_RHS_D.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{A72EC7FAA920EB45}" {
+          m_aStations {
+           GC_SpawnCrewStation "{956478E880793040}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{88B61981BD94BAE1}Prefabs/Characters/Factions/BLUFOR/US_Army/2003/Infantry (Desert)/Character_US_2003_D_SL.et"
+             "{4BE6B6062F3CFA70}Prefabs/Characters/Factions/BLUFOR/US_Army/2003/Infantry (Desert)/Character_US_2003_D_Grenadier.et"
+             "{AA86CB4755FD1B1B}Prefabs/Characters/Factions/BLUFOR/US_Army/2003/Infantry (Desert)/Character_US_2003_D_MG.et"
+             "{19EF5C0DB7AFC643}Prefabs/Characters/Factions/BLUFOR/US_Army/2003/Infantry (Desert)/Character_US_2003_D_MGAsst.et"
+             "{A6C85E9CD7539F9A}Prefabs/Characters/Factions/BLUFOR/US_Army/2003/Infantry (Desert)/Character_US_2003_D_AR.et"
+             "{F7561B8F24FFD223}Prefabs/Characters/Factions/BLUFOR/US_Army/2003/Infantry (Desert)/Character_US_2003_D_TL.et"
+            }
+           }
+           GC_SpawnCrewStation "{3B455A32EBFEE911}" {
+            m_aCharacters {
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "QRF"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{5253E801AFAD6EC6}" {
+     m_sName "GC_MigratedSpawn_129382228C81A757"
+     m_aConditions {
+      GC_GameModeStateCondition "{6FF5E440AF4F9547}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{8203478A710877A1}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_CustomScriptCondition "{7D5760D635A55EBA}" {
+         m_Script GC_LivingAndDeadAICheck "{84452CCA58478210}" {
+          m_fRatio 0.5
+         }
+        }
+        GC_MissionFlagCondition "{9E2EF94BC12AB1F9}" {
+         m_sFlagName "vic_destroyed"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9C2AC8BEE90D84C8}" {
+       m_sMessage "GC_MigratedSpawn_129382228C81A757"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{50AA35043F0EF70F}" {
+     m_sName "GC_MigratedSpawn_129382228C81A757 (0.8s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{C00261090E07CC10}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{ABBA5D4D48BF57B4}" {
+       m_sEventName "GC_MigratedSpawn_129382228C81A757"
+      }
+     }
+     m_Advanced GC_EventOptions "{B0B4CBC61C72135F}" {
+      m_fDelay 0.8
+     }
+     m_aActions {
+      GC_SpawnAction "{333A11AA11BC875B}" {
+       m_Spawn GC_CrewedVehicleSpawn "{EBCD47F4BB06ABE2}" {
+        m_sLocation "qrf_ai2"
+        m_sPrefab "{123595894023C474}Prefabs/Vehicles/Wheeled/LAV25/LAV25_RHS_D.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{DE18E7DC2B212006}" {
+          m_aStations {
+           GC_SpawnCrewStation "{83C5066B0A589E04}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{88B61981BD94BAE1}Prefabs/Characters/Factions/BLUFOR/US_Army/2003/Infantry (Desert)/Character_US_2003_D_SL.et"
+             "{4BE6B6062F3CFA70}Prefabs/Characters/Factions/BLUFOR/US_Army/2003/Infantry (Desert)/Character_US_2003_D_Grenadier.et"
+             "{AA86CB4755FD1B1B}Prefabs/Characters/Factions/BLUFOR/US_Army/2003/Infantry (Desert)/Character_US_2003_D_MG.et"
+             "{19EF5C0DB7AFC643}Prefabs/Characters/Factions/BLUFOR/US_Army/2003/Infantry (Desert)/Character_US_2003_D_MGAsst.et"
+             "{A6C85E9CD7539F9A}Prefabs/Characters/Factions/BLUFOR/US_Army/2003/Infantry (Desert)/Character_US_2003_D_AR.et"
+             "{F7561B8F24FFD223}Prefabs/Characters/Factions/BLUFOR/US_Army/2003/Infantry (Desert)/Character_US_2003_D_TL.et"
+            }
+           }
+           GC_SpawnCrewStation "{43FC9BAC778933C6}" {
+            m_aCharacters {
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "QRF"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+   m_aAreaFlagObservers {
+    GC_AreaFlagObserver "{4BC46076CFC59973}" {
+     m_sFlag "extract"
+     m_Area GC_AreaCondition "{9EBE31B592C1AA49}" {
+      m_sArea "GC_MigrationArea_extract_C6CBC01DFC1C2E8F"
+      m_Targets GC_CharacterAreaTargets "{4BB84B019CCFC549}" {
+       m_aFactions {
+        "GC_MUJ"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{ECF1588478B10754}" {
+       m_fRequiredShare 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{9B30887350C6B592}" {
+     m_sFlag "extract"
+     m_Area GC_AreaCondition "{E595CB7F49E67130}" {
+      m_sArea "GC_MigrationArea_extract_FC1A2CACE584C21F"
+      m_Targets GC_CharacterAreaTargets "{B27E60C9AC69E9F7}" {
+       m_aFactions {
+        "GC_MUJ"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{4874B0FFE964D1BC}" {
+       m_fRequiredShare 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{FFDB30B38A6EF86A}" {
+     m_sFlag "extract"
+     m_Area GC_AreaCondition "{0B637652ACCF5421}" {
+      m_sArea "GC_MigrationArea_extract_9C904948E54B9958"
+      m_Targets GC_CharacterAreaTargets "{A7D67ACDD934E74E}" {
+       m_aFactions {
+        "GC_MUJ"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{FDB420369523BB91}" {
+       m_fRequiredShare 1
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 3614.961 156.568 7340.254
+}
