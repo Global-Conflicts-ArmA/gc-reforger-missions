@@ -1,0 +1,751 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F9E52831}" {
+     NavmeshFile "{AD5F99CD7C59D5E0}worlds/GameMaster/Navmeshes/GM_Eden.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F3B4EE8A}" {
+     NavmeshFile "{C35ECF3276824654}worlds/GameMaster/Navmeshes/GM_Eden_vehicles.nmn"
+    }
+   }
+  }
+ }
+ coords 3735.64 0 11156.573
+ Formations {
+  AIFormationDefinition "{56ACE3951AA8D3EB}" {
+   Offsets {
+    0 0 0 0 0 -2 0 0 -4 0 0 -6 0 0 -8 0 0 -10 0 0 -12 0 0 -14 0 0 -16 0 0 -18 0 0 -20
+   }
+  }
+ }
+}
+GC_LobbyGameMode GC_MigratedMission : "{8A635D84D12C3E15}worlds/arc/UrbanTroubles/UrbanTroubles_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 11
+   m_iStartingMinutes 30
+   m_bRandomStartingWeather 1
+  }
+  GC_PeakFactionPopulationComponent "{AB0F7CEB0BE163E0}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{DF71D094EE6D87C8}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 300
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{0DBD44729DA32A48}" {
+     m_sName "OBJ_1_SPAWN"
+    }
+    GC_MissionFlag "{FE8A06CA59EB7978}" {
+     m_sName "OBJ_2_SPAWN"
+    }
+    GC_MissionFlag "{E96ED88EDFD8ED51}" {
+     m_sName "OBJ_3_SPAWN"
+    }
+    GC_MissionFlag "{D4EFA3106803041D}" {
+     m_sName "OBJ_4_SPAWN"
+    }
+    GC_MissionFlag "{7041085825F22200}" {
+     m_sName "OBJ_5_SPAWN"
+    }
+    GC_MissionFlag "{4B2EEA4621E59710}" {
+     m_sName "OBJ_6_SPAWN"
+    }
+    GC_MissionFlag "{5AA6BFCD851B543C}" {
+     m_sName "UK_CAP_1"
+    }
+    GC_MissionFlag "{053BA11E1A983DA9}" {
+     m_sName "UK_CAP_2"
+    }
+    GC_MissionFlag "{9B9043892CDD17A2}" {
+     m_sName "UK_CAP_3"
+    }
+    GC_MissionFlag "{9B8340C6E430FE02}" {
+     m_sName "UK_CAP_4"
+    }
+    GC_MissionFlag "{9AC47004C8901A9F}" {
+     m_sName "UK_CAP_5"
+    }
+    GC_MissionFlag "{3702CD64E2683B2B}" {
+     m_sName "UK_CAP_6"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{CA3D25BC172D1848}" {
+     m_sName "GC_MigrationStartupSampling"
+     m_aConditions {
+      GC_ConditionGroup "{A9EFE8D4EE6E3916}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{28A4DC1784948AE1}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{33A094C74C709C50}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{753281FE0471C014}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_FlagSamplingAction "{28A4DC1784948AE1}" {
+       m_iDrawCount 3
+       m_aFlags {
+        "OBJ_1_SPAWN"
+        "OBJ_2_SPAWN"
+        "OBJ_3_SPAWN"
+        "OBJ_4_SPAWN"
+        "OBJ_5_SPAWN"
+        "OBJ_6_SPAWN"
+       }
+      }
+     }
+    }
+    GC_Event "{209BFB67A327C6D7}" {
+     m_sName "OBJ_1_SPAWN"
+     m_aConditions {
+      GC_ConditionGroup "{A998BD34CAD8764B}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{080686A36FDD2E26}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{A85FEF6B3C1434AC}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{C26B2469D03A1A31}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{D988002B41AC0B25}" {
+       m_sFlagName "OBJ_1_SPAWN"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B544374FF529A970}" {
+       m_sMessage "OBJ_1_SPAWN"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A3B8F412EEDBCA56}" {
+     m_sName "OBJ_1_SPAWN (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{036C7E94258FC310}" {
+       m_sEventName "OBJ_1_SPAWN"
+      }
+     }
+     m_Advanced GC_EventOptions "{23E3EF4CFDD82901}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{FFAF85D2E80E804C}" {
+       m_Spawn GC_PrefabSpawn "{E8867EE515A6D650}" {
+        m_sLocation "OBJ_1"
+        m_sPrefab "{E6F5A15235156C45}worlds/arc/UrbanTroubles/Prefabs/UrbanTroubles_Cache_1.et"
+       }
+      }
+      GC_MapMarkerVisibilityAction "{4D100D4091417BB0}" {
+       m_aMarkers {
+        "OBJ_1_MARKER"
+       }
+       m_bVisibleWithoutFaction 1
+       m_aFactions {
+        GC_MarkerFactionVisibility "{780E49C9B342FE07}" {
+         m_sFaction "GC_IRA"
+         m_bVisible 0
+        }
+        GC_MarkerFactionVisibility "{F07805B9E7F8F26D}" {
+         m_sFaction "UK"
+         m_bVisible 1
+        }
+       }
+      }
+      GC_MapMarkerVisibilityAction "{736FF361712F8421}" {
+       m_aMarkers {
+        "OBJ_1_MARKER2"
+       }
+       m_bVisibleWithoutFaction 0
+       m_aFactions {
+        GC_MarkerFactionVisibility "{EA328BA0D2AE54CC}" {
+         m_sFaction "GC_IRA"
+         m_bVisible 1
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{32B85751265A9801}" {
+     m_sName "OBJ_2_SPAWN"
+     m_aConditions {
+      GC_ConditionGroup "{B17DEB6779E34D57}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{66B8890BF2173A63}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{DA55241FDA9977D4}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{371E5C54FF70996C}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{78E384F1904B6BCE}" {
+       m_sFlagName "OBJ_2_SPAWN"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5EF8983FC8E61B98}" {
+       m_sMessage "OBJ_2_SPAWN"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8D1BF95AD5B87B58}" {
+     m_sName "OBJ_2_SPAWN (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{46087030235B5B2F}" {
+       m_sEventName "OBJ_2_SPAWN"
+      }
+     }
+     m_Advanced GC_EventOptions "{BDD6E6EECA27D4D1}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{60EC217EF2886A06}" {
+       m_Spawn GC_PrefabSpawn "{2E3FDC36E54D1216}" {
+        m_sLocation "OBJ_2"
+        m_sPrefab "{12247E8A39D9DB2A}worlds/arc/UrbanTroubles/Prefabs/UrbanTroubles_Cache_2.et"
+       }
+      }
+      GC_MapMarkerVisibilityAction "{364CA4A7FA2FB28C}" {
+       m_aMarkers {
+        "OBJ_2_MARKER"
+       }
+       m_bVisibleWithoutFaction 1
+       m_aFactions {
+        GC_MarkerFactionVisibility "{DB0B4E9CA06D51E2}" {
+         m_sFaction "GC_IRA"
+         m_bVisible 0
+        }
+        GC_MarkerFactionVisibility "{8C5ED9D7EF77CD80}" {
+         m_sFaction "UK"
+         m_bVisible 1
+        }
+       }
+      }
+      GC_MapMarkerVisibilityAction "{B741BEE3E95FC406}" {
+       m_aMarkers {
+        "OBJ_2_MARKER2"
+       }
+       m_bVisibleWithoutFaction 0
+       m_aFactions {
+        GC_MarkerFactionVisibility "{2D8F7157F3796C5A}" {
+         m_sFaction "GC_IRA"
+         m_bVisible 1
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4D23F254928F751D}" {
+     m_sName "OBJ_3_SPAWN"
+     m_aConditions {
+      GC_ConditionGroup "{0CFA8F0996A2B3EB}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{8D8DF4CDD7B236EB}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{BAE00A4594C709F0}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{A4E3C1058DE33EA7}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{62A88875A5623728}" {
+       m_sFlagName "OBJ_3_SPAWN"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E6DB61E7D14EEC82}" {
+       m_sMessage "OBJ_3_SPAWN"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{004256D3470C2EDD}" {
+     m_sName "OBJ_3_SPAWN (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{956D6D2E4DE70319}" {
+       m_sEventName "OBJ_3_SPAWN"
+      }
+     }
+     m_Advanced GC_EventOptions "{BB08F7DDEB637111}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{9412ECECD5ED994C}" {
+       m_Spawn GC_PrefabSpawn "{A2B2678FCACD9582}" {
+        m_sLocation "OBJ_3"
+        m_sPrefab "{F7B83273353C4C41}worlds/arc/UrbanTroubles/Prefabs/UrbanTroubles_Cache_3.et"
+       }
+      }
+      GC_MapMarkerVisibilityAction "{5FEF88C52B3BC4CB}" {
+       m_aMarkers {
+        "OBJ_3_MARKER"
+       }
+       m_bVisibleWithoutFaction 1
+       m_aFactions {
+        GC_MarkerFactionVisibility "{9B47517D1C4B3DFE}" {
+         m_sFaction "GC_IRA"
+         m_bVisible 0
+        }
+        GC_MarkerFactionVisibility "{ABF20BEF8509684A}" {
+         m_sFaction "UK"
+         m_bVisible 1
+        }
+       }
+      }
+      GC_MapMarkerVisibilityAction "{9C739A65C48AFAB5}" {
+       m_aMarkers {
+        "OBJ_3_MARKER2"
+       }
+       m_bVisibleWithoutFaction 0
+       m_aFactions {
+        GC_MarkerFactionVisibility "{2A37375C679CDB58}" {
+         m_sFaction "GC_IRA"
+         m_bVisible 1
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4416FF6CA0C9B7CC}" {
+     m_sName "OBJ_4_SPAWN"
+     m_aConditions {
+      GC_ConditionGroup "{C46DD3CB58FAA355}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{BD92A89AAC9C0DDC}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{6A5312051C0248CB}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{613286EA01AD691B}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{61B5C0CF03893FC1}" {
+       m_sFlagName "OBJ_4_SPAWN"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7277E773D6CDD8B9}" {
+       m_sMessage "OBJ_4_SPAWN"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D60487AFBC0706E0}" {
+     m_sName "OBJ_4_SPAWN (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F8228C52167D059F}" {
+       m_sEventName "OBJ_4_SPAWN"
+      }
+     }
+     m_Advanced GC_EventOptions "{E83DC539971DF3D1}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{93196CF3B87EEBCC}" {
+       m_Spawn GC_PrefabSpawn "{3CFCD6B24052FAEA}" {
+        m_sLocation "OBJ_4"
+        m_sPrefab "{CA8C174B4050C576}worlds/arc/UrbanTroubles/Prefabs/UrbanTroubles_Cache_4.et"
+       }
+      }
+      GC_MapMarkerVisibilityAction "{41D283928207D19C}" {
+       m_aMarkers {
+        "OBJ_4_MARKER"
+       }
+       m_bVisibleWithoutFaction 1
+       m_aFactions {
+        GC_MarkerFactionVisibility "{A593385F1BB84781}" {
+         m_sFaction "GC_IRA"
+         m_bVisible 0
+        }
+        GC_MarkerFactionVisibility "{A06002627D8A4FAD}" {
+         m_sFaction "UK"
+         m_bVisible 1
+        }
+       }
+      }
+      GC_MapMarkerVisibilityAction "{1C6A0B8B9B9FBEDE}" {
+       m_aMarkers {
+        "OBJ_4_MARKER2"
+       }
+       m_bVisibleWithoutFaction 0
+       m_aFactions {
+        GC_MarkerFactionVisibility "{5E68F506DBB3E00F}" {
+         m_sFaction "GC_IRA"
+         m_bVisible 1
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{FFDDBCE5E5227B8C}" {
+     m_sName "OBJ_5_SPAWN"
+     m_aConditions {
+      GC_ConditionGroup "{58706A3D0F934B65}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{21BE15A8C0F0D41B}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{65CA3A90FCB700F1}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{E676994ED801D8D8}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{CA90D5B2ACB045BA}" {
+       m_sFlagName "OBJ_5_SPAWN"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{969F9AD4AC6DE997}" {
+       m_sMessage "OBJ_5_SPAWN"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AA2AEC4F13A3F062}" {
+     m_sName "OBJ_5_SPAWN (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{0E3515A328578B03}" {
+       m_sEventName "OBJ_5_SPAWN"
+      }
+     }
+     m_Advanced GC_EventOptions "{B90A75B7BDDF1C13}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{F4E1D822C3E381BC}" {
+       m_Spawn GC_PrefabSpawn "{BFC5EC4308C7A9DC}" {
+        m_sLocation "OBJ_5"
+        m_sPrefab "{2F105BB24CB5521D}worlds/arc/UrbanTroubles/Prefabs/UrbanTroubles_Cache_5.et"
+       }
+      }
+      GC_MapMarkerVisibilityAction "{7C61881B4FC53997}" {
+       m_aMarkers {
+        "OBJ_5_MARKER"
+       }
+       m_bVisibleWithoutFaction 1
+       m_aFactions {
+        GC_MarkerFactionVisibility "{5DD2E08C267E523D}" {
+         m_sFaction "GC_IRA"
+         m_bVisible 0
+        }
+        GC_MarkerFactionVisibility "{4461D6308F62A458}" {
+         m_sFaction "UK"
+         m_bVisible 1
+        }
+       }
+      }
+      GC_MapMarkerVisibilityAction "{DD5BD119A917DD8E}" {
+       m_aMarkers {
+        "OBJ_5_MARKER2"
+       }
+       m_bVisibleWithoutFaction 0
+       m_aFactions {
+        GC_MarkerFactionVisibility "{7F3D9F868FFED359}" {
+         m_sFaction "GC_IRA"
+         m_bVisible 1
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{5DFF71F5764F6CF9}" {
+     m_sName "OBJ_6_SPAWN"
+     m_aConditions {
+      GC_ConditionGroup "{710D28B850AD11E8}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{74EFD38012A80645}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{8F67E2566098718D}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{7115F6CEF89FC3EB}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{96494EB1906B606D}" {
+       m_sFlagName "OBJ_6_SPAWN"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0F741F4500BD5C40}" {
+       m_sMessage "OBJ_6_SPAWN"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FC451F75AB87664E}" {
+     m_sName "OBJ_6_SPAWN (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{17007379093485F7}" {
+       m_sEventName "OBJ_6_SPAWN"
+      }
+     }
+     m_Advanced GC_EventOptions "{05C161EEA984C4EE}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{6276FE3240653005}" {
+       m_Spawn GC_PrefabSpawn "{AE357FAD95A7D55D}" {
+        m_sLocation "OBJ_6"
+        m_sPrefab "{43446F52F071DD33}worlds/arc/UrbanTroubles/Prefabs/UrbanTroubles_Cache_6.et"
+       }
+      }
+      GC_MapMarkerVisibilityAction "{6E870E66EEE16ECF}" {
+       m_aMarkers {
+        "OBJ_6_MARKER"
+       }
+       m_bVisibleWithoutFaction 1
+       m_aFactions {
+        GC_MarkerFactionVisibility "{A1D5DBF85A49BE0E}" {
+         m_sFaction "GC_IRA"
+         m_bVisible 0
+        }
+        GC_MarkerFactionVisibility "{C3501B05FAEE5869}" {
+         m_sFaction "UK"
+         m_bVisible 1
+        }
+       }
+      }
+      GC_MapMarkerVisibilityAction "{87F36EC110953EFB}" {
+       m_aMarkers {
+        "OBJ_6_MARKER2"
+       }
+       m_bVisibleWithoutFaction 0
+       m_aFactions {
+        GC_MarkerFactionVisibility "{8E3A8F597A2D9A39}" {
+         m_sFaction "GC_IRA"
+         m_bVisible 1
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{10068E45869DAE82}" {
+     m_sName "UK_VICTORY"
+     m_aConditions {
+      GC_GameModeStateCondition "{F0F19F2031DD4AAF}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionCount "{2C2DCE61B62DE539}" {
+       m_iComparison 0
+       m_iRequiredCount 2
+       m_aConditions {
+        GC_MissionFlagCondition "{F33B3A3B381F8935}" {
+         m_sFlagName "UK_CAP_1"
+        }
+        GC_MissionFlagCondition "{D1EFAC9C0BD0735F}" {
+         m_sFlagName "UK_CAP_2"
+        }
+        GC_MissionFlagCondition "{47AA20F7FFDD9983}" {
+         m_sFlagName "UK_CAP_3"
+        }
+        GC_MissionFlagCondition "{1D1F1EEF97C50627}" {
+         m_sFlagName "UK_CAP_4"
+        }
+        GC_MissionFlagCondition "{91610BEC072C0961}" {
+         m_sFlagName "UK_CAP_5"
+        }
+        GC_MissionFlagCondition "{BF73140DCC2F04B4}" {
+         m_sFlagName "UK_CAP_6"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3FCD320F4E70AB87}" {
+       m_sMessage "UK_VICTORY"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{85B8FC2705D7F27D}" {
+     m_sName "UK_VICTORY (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{2276D0F3BF452128}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{2DFF151AA1436BE6}" {
+       m_sEventName "UK_VICTORY"
+      }
+     }
+     m_Advanced GC_EventOptions "{9A3804FD18728D0C}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{EAAD2772AFF68F39}" {
+       m_sTitle "UK Victory"
+       m_sMessage "3 IRA caches have been secured."
+      }
+     }
+    }
+    GC_Event "{4171E4BAFF286A46}" {
+     m_sName "UK_VICTORY (15s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{533D018BE843AFB8}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{33BB3CA81ACF2D4B}" {
+       m_sEventName "UK_VICTORY"
+      }
+     }
+     m_Advanced GC_EventOptions "{CBF64B2D791FE2FC}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{B1C70886098990A4}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{BC1D2C7161A7A4B7}" {
+     m_sName "UK_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{0454AF39EDD42043}" {
+       m_Script GC_PeakFactionPopulationCheck "{62B7257064A4B182}" {
+        m_sFaction "UK"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{575E76C54ED37DA6}" {
+       m_sMessage "UK_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{45873C9F2C981721}" {
+     m_sName "UK_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{27D3BB50EC3999D0}" {
+       m_sEventName "UK_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{1FF7D9BEBCA2DD0A}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{6F3AB1A92BEBE57E}" {
+       m_sTitle "IRA VICTORY"
+       m_sMessage "British forces have taken significant casualties."
+      }
+     }
+    }
+    GC_Event "{64B9CC242F682A3F}" {
+     m_sName "UK_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F4E15ABCD625877F}" {
+       m_sEventName "UK_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{60C4270AF08E99DE}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{45B2E1C14E2C2F48}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_IRA"
+       }
+      }
+     }
+    }
+    GC_Event "{A2BD1F017120F217}" {
+     m_sName "TIME_LIMIT (3905s)"
+     m_Advanced GC_EventOptions "{ED15071DADA2F4DE}" {
+      m_fDelay 3905
+     }
+     m_aActions {
+      GC_MessageAction "{B1054C03882DF043}" {
+       m_sTitle "IRA VICTORY"
+       m_sMessage "Time limit reached."
+      }
+     }
+    }
+    GC_Event "{599A671E822BE4D0}" {
+     m_sName "TIME_LIMIT (3915s)"
+     m_Advanced GC_EventOptions "{5790889409E96B3B}" {
+      m_fDelay 3915
+     }
+     m_aActions {
+      GC_EndMissionAction "{7C945CC1DA8958CF}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_IRA"
+       }
+      }
+     }
+    }
+    GC_Event "{CCDFB49BA6EB1B0D}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{E4A8FBF212956198}" {
+       m_fSeconds 300.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{368E3BA18FE1B4E5}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 3737.939 0 11096.261
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{6144B0BE2EAC6897}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneMedium.et" {
+ coords 4993.194 25.73 9970.061
+ m_fWarnRadius 60
+ m_fZoneRadius 70
+ m_fZoneTeleportedRadius 80
+}
