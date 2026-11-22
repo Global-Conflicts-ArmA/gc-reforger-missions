@@ -1,0 +1,1146 @@
+SCR_AIWorld : "{E2A016456BBC697D}Prefabs/SCR_AIWorld_Kunar.et" {
+ coords 2683.716 8 3054.829
+}
+GC_LobbyGameMode GC_MigratedMission : "{C6BDF6FD10DDD5E2}worlds/HotMic/VehicleInterdictionCOOPKunar/VehicleInterdictionCOOPKunar_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 11
+   m_bRandomStartingWeather 1
+  }
+  GC_PeakFactionPopulationComponent "{EA6D023DCD900543}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{19D6FA07FD5514CF}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 60
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{158330AC2987F705}" {
+     m_sName "Check Supplies Success Flag"
+    }
+    GC_MissionFlag "{CEB7A3B5749FD622}" {
+     m_sName "Check Supplies for Completion Flag"
+    }
+    GC_MissionFlag "{251609A4C7877988}" {
+     m_sName "Failed Cargo Van Supplies Flag"
+    }
+    GC_MissionFlag "{8BEAFBBF89B55007}" {
+     m_sName "PickConvoyAFlag"
+    }
+    GC_MissionFlag "{2F4F8CFAA7068898}" {
+     m_sName "PickConvoyBFlag"
+    }
+    GC_MissionFlag "{BB360D8921154CDD}" {
+     m_sName "PickConvoyCFlag"
+    }
+    GC_MissionFlag "{79A559A89C6AD0AA}" {
+     m_sName "Spawn Convoy A Flag"
+    }
+    GC_MissionFlag "{A454D323D65F9DED}" {
+     m_sName "Spawn Convoy B Flag"
+    }
+    GC_MissionFlag "{B0009BC33546A906}" {
+     m_sName "Spawn Convoy C Flag"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{1BAD36CA944F901A}" {
+     m_sName "GC_MigrationStartupSampling"
+     m_aConditions {
+      GC_ConditionGroup "{5F20B06DE3A75D0B}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{51E3DC6BDEE962F3}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{4759F7F0F0D4D767}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{81968C7D406C9EEB}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_FlagSamplingAction "{51E3DC6BDEE962F3}" {
+       m_iDrawCount 1
+       m_aFlags {
+        "PickConvoyAFlag"
+        "PickConvoyBFlag"
+        "PickConvoyCFlag"
+       }
+      }
+     }
+    }
+    GC_Event "{FE1D3C84D676530B}" {
+     m_sName "Spawn Convoys & Start Auto-Check"
+     m_aConditions {
+      GC_GameModeStateCondition "{7870E1A9353B7C81}" {
+       m_eGameModeState 1
+      }
+     }
+     m_aActions {
+      GC_CustomScriptAction "{38183DC982EAB0EF}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_Script GC_MissionSupplyScript "{9F847816DFB66352}" {
+        m_eOperation 0
+        m_sDepot "Bluefor_Supply_Depot"
+       }
+      }
+      GC_FlagAction "{1B94DE37E557E85E}" {
+       m_bScheduleAction 1
+       m_fActionDelay 45
+       m_sFlagName "Spawn Convoy A Flag"
+       m_iOperation 1
+       m_iAmount 1
+      }
+      GC_FlagAction "{BEDB3986049A992C}" {
+       m_bScheduleAction 1
+       m_fActionDelay 50
+       m_sFlagName "Spawn Convoy B Flag"
+       m_iOperation 1
+       m_iAmount 1
+      }
+      GC_FlagAction "{919878B537A68BF1}" {
+       m_bScheduleAction 1
+       m_fActionDelay 35
+       m_sFlagName "Spawn Convoy C Flag"
+       m_iOperation 1
+       m_iAmount 1
+      }
+      GC_FlagAction "{CD634B320EF99356}" {
+       m_bScheduleAction 1
+       m_fActionDelay 180
+       m_sFlagName "Check Supplies for Completion Flag"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{5BA28FB870BE2AD7}" {
+     m_sName "Spawn Convoy A"
+     m_aConditions {
+      GC_GameModeStateCondition "{FFE1332EFD9B117A}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{F6407E833C60F95F}" {
+       m_sFlagName "Spawn Convoy A Flag"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{C53ED75EE5556B4A}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_Spawn GC_CrewedVehicleSpawn "{1D71CAA544F30A87}" {
+        m_sLocation "CVA1"
+        m_sPrefab "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{F44ADD0AB18C996F}" {
+          m_aStations {
+           GC_SpawnCrewStation "{473EC9AFFF624F30}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{656C3D2563E79F50}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Sapper.et"
+             "{E5F99A8C0A000A59}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Machinegunner_RPD.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "ConvoyA_ForcedMove"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{4351046DD7DB8463}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3
+       m_Spawn GC_CrewedVehicleSpawn "{AE7FFACE77378D7D}" {
+        m_sLocation "CVA2"
+        m_sPrefab "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{419EC365F13918BD}" {
+          m_aStations {
+           GC_SpawnCrewStation "{23DD264202C8A939}" {
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "ConvoyA_ForcedMove"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{F6164334B92C4FC1}" {
+       m_bScheduleAction 1
+       m_fActionDelay 6
+       m_Spawn GC_CrewedVehicleSpawn "{FF6E32970B48DE67}" {
+        m_sLocation "CVA3"
+        m_sPrefab "{767D49C35F87DC1A}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_randomized.et"
+        m_sEntityName "CargoA"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{DE9DA0F24A5C8858}" {
+          m_aStations {
+           GC_SpawnCrewStation "{CC4DFC177BA1806D}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{756CF0BB5ACB956E}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_SL.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "ConvoyA_ForcedMove"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{B3326FCA75CA371F}" {
+       m_bScheduleAction 1
+       m_fActionDelay 9
+       m_Spawn GC_CrewedVehicleSpawn "{BFA35EF78A181FCA}" {
+        m_sLocation "CVA4"
+        m_sPrefab "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{501057151D1084F7}" {
+          m_aStations {
+           GC_SpawnCrewStation "{2BDD566E4314E0CB}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{656C3D2563E79F50}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Sapper.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "ConvoyA_ForcedMove"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{E6007E20770BEDCE}" {
+       m_bScheduleAction 1
+       m_fActionDelay 12
+       m_Spawn GC_CrewedVehicleSpawn "{23E2B24E1B046D27}" {
+        m_sLocation "CVA5"
+        m_sPrefab "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{88BC41561AF772BA}" {
+          m_aStations {
+           GC_SpawnCrewStation "{46451437C9009C8C}" {
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "ConvoyA_ForcedMove"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9D151F0FB7A37656}" {
+     m_sName "Spawn Convoy B"
+     m_aConditions {
+      GC_GameModeStateCondition "{AB1239FD04307FF9}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{80A22892BBFD587C}" {
+       m_sFlagName "Spawn Convoy B Flag"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{688E19AD616475CE}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_Spawn GC_CrewedVehicleSpawn "{93C566C2226B7E90}" {
+        m_sLocation "CVB1"
+        m_sPrefab "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{40E833FA86F23D16}" {
+          m_aStations {
+           GC_SpawnCrewStation "{921627D3DA696CC4}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{756CF0BB5ACB956E}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_SL.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "ConvoyB_ForcedMove"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{E8E8309BE3C445B0}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3
+       m_Spawn GC_CrewedVehicleSpawn "{FF888163A3A0B0E1}" {
+        m_sLocation "CVB2"
+        m_sPrefab "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{CAD24A9E3104AED1}" {
+          m_aStations {
+           GC_SpawnCrewStation "{13F78F45EEDEF8DC}" {
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "ConvoyB_ForcedMove"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{771A3795CA797AE2}" {
+       m_bScheduleAction 1
+       m_fActionDelay 6
+       m_Spawn GC_CrewedVehicleSpawn "{A4F44E5DE1AC102B}" {
+        m_sLocation "CVB3"
+        m_sPrefab "{767D49C35F87DC1A}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_randomized.et"
+        m_sEntityName "CargoB"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{997CD3C0A0497754}" {
+          m_aStations {
+           GC_SpawnCrewStation "{AF12D5513EEF1DCB}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "ConvoyB_ForcedMove"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{8E708F354F7AE778}" {
+       m_bScheduleAction 1
+       m_fActionDelay 9
+       m_Spawn GC_CrewedVehicleSpawn "{4AC94EE34913BF68}" {
+        m_sLocation "CVB4"
+        m_sPrefab "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{3671FD197174BB53}" {
+          m_aStations {
+           GC_SpawnCrewStation "{ACB94E9CA3ECF842}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{756CF0BB5ACB956E}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_SL.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "ConvoyB_ForcedMove"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{C31038AAC5CB80D6}" {
+       m_bScheduleAction 1
+       m_fActionDelay 12
+       m_Spawn GC_CrewedVehicleSpawn "{A4A635E0EBFA99AF}" {
+        m_sLocation "CVB5"
+        m_sPrefab "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{90B25B757CD8AE63}" {
+          m_aStations {
+           GC_SpawnCrewStation "{4EF6753BC31392E6}" {
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "ConvoyB_ForcedMove"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4FAA2668739B6D5C}" {
+     m_sName "Spawn Convoy C"
+     m_aConditions {
+      GC_GameModeStateCondition "{482E4727E3FA2FB8}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{A7C5C98E202D390F}" {
+       m_sFlagName "Spawn Convoy C Flag"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{9FE3673BED492C02}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_Spawn GC_CrewedVehicleSpawn "{5D256C0F83CB9A13}" {
+        m_sLocation "CVC1"
+        m_sPrefab "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{E84582FDF9DD21B5}" {
+          m_aStations {
+           GC_SpawnCrewStation "{610B50679AC6EE42}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{756CF0BB5ACB956E}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_SL.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "ConvoyC_ForcedMove"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{5637D4FAA3182215}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3
+       m_Spawn GC_CrewedVehicleSpawn "{D40A2169B97ECDF3}" {
+        m_sLocation "CVC2"
+        m_sPrefab "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{77F6C4B4E0615961}" {
+          m_aStations {
+           GC_SpawnCrewStation "{FC76885B6C86BF3F}" {
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "ConvoyC_ForcedMove"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{BB06D38CC5441942}" {
+       m_bScheduleAction 1
+       m_fActionDelay 6
+       m_Spawn GC_CrewedVehicleSpawn "{54776119123FDF80}" {
+        m_sLocation "CVC3"
+        m_sPrefab "{767D49C35F87DC1A}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_randomized.et"
+        m_sEntityName "CargoC"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{5F4C0275068B3299}" {
+          m_aStations {
+           GC_SpawnCrewStation "{970C85D540DF4040}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "ConvoyC_ForcedMove"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{52A3B1A6E297ABF4}" {
+       m_bScheduleAction 1
+       m_fActionDelay 9
+       m_Spawn GC_CrewedVehicleSpawn "{8FE4C319412814AC}" {
+        m_sLocation "CVC4"
+        m_sPrefab "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{D8F6FB2FCFCF73B1}" {
+          m_aStations {
+           GC_SpawnCrewStation "{33D81D35AAD3A524}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{756CF0BB5ACB956E}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_SL.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "ConvoyC_ForcedMove"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{D4C853014030618A}" {
+       m_bScheduleAction 1
+       m_fActionDelay 12
+       m_Spawn GC_CrewedVehicleSpawn "{3A306FB16213F09A}" {
+        m_sLocation "CVC5"
+        m_sPrefab "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{6D8415B1BF1B08B2}" {
+          m_aStations {
+           GC_SpawnCrewStation "{303B7286642932E0}" {
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "ConvoyC_ForcedMove"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{AAB2666790D7E6D3}" {
+     m_sName "Set Cargo Van with Supplies"
+     m_aConditions {
+      GC_GameModeStateCondition "{369699505589D178}" {
+       m_eGameModeState 1
+      }
+      GC_AreaCondition "{22D3B82B3434DE46}" {
+       m_sArea "PresenceTriggerAll"
+       m_Targets GC_NamedAreaTargets "{FDF11C2F02DB13EF}" {
+        m_aNames {
+         "CargoA" "CargoB" "CargoC"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{C0F9A2BC043C45A1}" {
+        m_fRequiredProportion 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{C0C1908965762CCB}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+       }
+      }
+     }
+     m_aActions {
+      GC_CustomScriptAction "{AB487E942B9FD548}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_Script GC_MissionSupplyScript "{CE96C1E1753AFD50}" {
+        m_eOperation 1
+        m_iSupplies 250
+        m_sResultFlag "Failed Cargo Van Supplies Flag"
+        m_aChoiceFlags {
+         "PickConvoyAFlag" "PickConvoyBFlag" "PickConvoyCFlag"
+        }
+        m_aCargoNames {
+         "CargoA" "CargoB" "CargoC"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{6B199A9634ECFCF7}" {
+     m_sName "Failed Set Cargo Van with Supplies"
+     m_aConditions {
+      GC_GameModeStateCondition "{677968AEB7A45690}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{8F208BB0209A474C}" {
+       m_sFlagName "Failed Cargo Van Supplies Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{BFFDA84C3AAED56C}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_sTitle "Failed Cargo Van Supplies"
+       m_sMessage "There's a problem with the FW1's custom script; GMs - your call!"
+      }
+     }
+    }
+    GC_Event "{3AB67D805B9E067F}" {
+     m_sName "Casualties Limit "
+     m_aConditions {
+      GC_GameModeStateCondition "{1FF4904FA7B10A0D}" {
+       m_eGameModeState 1
+      }
+      GC_CustomScriptCondition "{15E3E794CD81352E}" {
+       m_Script GC_PeakFactionPopulationCheck "{09D66945C7FA5927}" {
+        m_sFaction "GC_TKA"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2B55C635C24B2569}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_sTitle "Mission Failed!"
+       m_sMessage "We have taken to much loses! Fall Back!"
+      }
+      GC_EndMissionAction "{49F0022BCEB0F635}" {
+       m_bScheduleAction 1
+       m_fActionDelay 120
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_TKA"
+       }
+      }
+     }
+    }
+    GC_Event "{9F3D7D88FD537F23}" {
+     m_sName "Cargo Van Reached Designation"
+     m_aConditions {
+      GC_GameModeStateCondition "{1FB33541F03A922C}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{E9F0A2CE5144036A}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_ConditionGroup "{A83362C40FC92EE4}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_MissionFlagCondition "{04BE6001BA25EA9B}" {
+           m_sFlagName "PickConvoyAFlag"
+          }
+          GC_AreaCondition "{A26DFEC61E71F0E7}" {
+           m_sArea "PresenceTriggerA"
+           m_Targets GC_NamedAreaTargets "{87DBED30473A11FC}" {
+            m_aNames {
+             "CargoA"
+            }
+            m_bCountMissingAsOutside 1
+            m_bExcludeDestroyed 1
+           }
+           m_Requirement GC_LivingProportion "{885831EE67990DC4}" {
+            m_fRequiredProportion 1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{7E378799C5EB8F30}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+           }
+          }
+         }
+        }
+        GC_ConditionGroup "{881473CBD4C7B3AD}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_MissionFlagCondition "{BF20EC551845DC99}" {
+           m_sFlagName "PickConvoyBFlag"
+          }
+          GC_AreaCondition "{4062D4A6F7007789}" {
+           m_sArea "PresenceTriggerB"
+           m_Targets GC_NamedAreaTargets "{5650BFCC24079A80}" {
+            m_aNames {
+             "CargoB"
+            }
+            m_bCountMissingAsOutside 1
+            m_bExcludeDestroyed 1
+           }
+           m_Requirement GC_LivingProportion "{3FA5004C7CCA0057}" {
+            m_fRequiredProportion 1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{F59FA58CF30C6F54}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+           }
+          }
+         }
+        }
+        GC_ConditionGroup "{9B599D24B98239DF}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_MissionFlagCondition "{8FACD23A9B3D77F5}" {
+           m_sFlagName "PickConvoyCFlag"
+          }
+          GC_AreaCondition "{338D1E0E4F5A1BBA}" {
+           m_sArea "PresenceTriggerC"
+           m_Targets GC_NamedAreaTargets "{71D60F0F0E8078B3}" {
+            m_aNames {
+             "CargoC"
+            }
+            m_bCountMissingAsOutside 1
+            m_bExcludeDestroyed 1
+           }
+           m_Requirement GC_LivingProportion "{0A61B8AF06735374}" {
+            m_fRequiredProportion 1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{A5A7D53A400BD74B}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5751CFE4A0582AF9}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2
+       m_sTitle "Mission Failed!"
+       m_sMessage "Cargo Van with Supplies has reached the Designation"
+      }
+      GC_EndMissionAction "{F5416AE4B7EFAFF5}" {
+       m_bScheduleAction 1
+       m_fActionDelay 120
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_TKA"
+       }
+      }
+     }
+    }
+    GC_Event "{DCC5AC3C7EF62CCC}" {
+     m_sName "Check Supplies for Completion"
+     m_aConditions {
+      GC_GameModeStateCondition "{9E72AA90246BA7DF}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{13F26F69B88F1179}" {
+       m_sFlagName "Check Supplies for Completion Flag"
+      }
+     }
+     m_aActions {
+      GC_CustomScriptAction "{B2777AEDA2FE0E6B}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_Script GC_MissionSupplyScript "{6856272808023E70}" {
+        m_eOperation 2
+        m_iSupplies 250
+        m_sResultFlag "Check Supplies Success Flag"
+       }
+      }
+      GC_EventControlAction "{6F4B910D8A51B0D6}" {
+       m_bScheduleAction 1
+       m_fActionDelay 10
+       m_sEventName "Check Supplies for Completion"
+       m_iOperation 4
+      }
+     }
+    }
+    GC_Event "{063D415F2D7DDA21}" {
+     m_sName "Check Supplies: Success"
+     m_aConditions {
+      GC_GameModeStateCondition "{A8E4FC95C368C04D}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{0988FDFD3A83AA3F}" {
+       m_sFlagName "Check Supplies Success Flag"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8BB414C1031F4B45}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1
+       m_sTitle "Mission Success"
+       m_sMessage "Great Job, wait for GMs to end the mission."
+      }
+     }
+    }
+    GC_Event "{A2C3C682323D156B}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{91A6DDABC6283418}" {
+       m_fSeconds 60.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{67F5409B87A9E573}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+  GC_MissionSupplyDepotComponent "{B1143C8FFD9EDB26}" {
+  }
+ }
+ coords 2680.271 8 3051.191
+ m_bBriefingLeaderMarkers 1
+}
+$grp SplineShapeEntity {
+ {
+  coords 841.105 114.928 2411.302
+  Points {
+   ShapePoint "{660400C69AF2D863}" {
+    Position -4.137 0 9.681
+   }
+   ShapePoint "{660400C69861C58A}" {
+    Position 3.176 0.783 -5.248
+   }
+  }
+  {
+   RoadGeneratorEntity : "{8E83BBD5CEC42A11}Prefabs/WEGenerators/Roads/Dirt/RG_Road_Dirt_01.et" {
+    coords 0 0 0
+    GeneratorType GeneratorType "{663867FAE634CC73}" {
+    }
+    {
+     RoadEntity {
+      ID "523EAA80CAA6C6B5"
+      SplinePoints {
+       ShapePoint "{52346539D885C296}" {
+        Position -4.137 0 9.681
+       }
+       ShapePoint "{52346539D885C1A2}" {
+        Position 3.176 0.783 -5.249
+       }
+      }
+      IsClosedSpline 0
+      Type "Road Minor"
+      Width 4
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 3810.841 146.064 1558.279
+  Points {
+   ShapePoint "{660400C69AF2D863}" {
+    Position 13.88 -5.296 43.626
+   }
+   ShapePoint "{660400C69861C58A}" {
+    Position -10.28 -0.225 8.53
+   }
+  }
+  {
+   RoadGeneratorEntity : "{8E83BBD5CEC42A11}Prefabs/WEGenerators/Roads/Dirt/RG_Road_Dirt_01.et" {
+    coords 0 0 0
+    GeneratorType GeneratorType "{663867FAE634CC73}" {
+    }
+    {
+     RoadEntity {
+      ID "523EAA80CAA6C6B5"
+      SplinePoints {
+       ShapePoint "{52346539D885C296}" {
+        Position 13.88 -5.296 43.626
+       }
+       ShapePoint "{52346539D885C1A2}" {
+        Position -10.28 -0.225 8.53
+       }
+      }
+      IsClosedSpline 0
+      Type "Road Minor"
+      Width 4
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 3612.439 282.438 401.515
+  Points {
+   ShapePoint "{660400C69AF2D863}" {
+    Position -11.056 -2.55 6.761
+   }
+   ShapePoint "{660400C69861C58A}" {
+    Position -4.202 -2.643 -0.751
+   }
+  }
+  {
+   RoadGeneratorEntity : "{8E83BBD5CEC42A11}Prefabs/WEGenerators/Roads/Dirt/RG_Road_Dirt_01.et" {
+    coords 0 0 0
+    GeneratorType GeneratorType "{663867FAE634CC73}" {
+    }
+    {
+     RoadEntity {
+      ID "523EAA80CAA6C6B5"
+      SplinePoints {
+       ShapePoint "{52346539D885C296}" {
+        Position -11.056 -2.55 6.761
+       }
+       ShapePoint "{52346539D885C1A2}" {
+        Position -4.202 -2.643 -0.751
+       }
+      }
+      IsClosedSpline 0
+      Type "Road Minor"
+      Width 4
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{47B7E8CA1935BB28}PrefabsEditable/SupportStationSystems/E_SupportStationSystem_Fuel.et" {
+ components {
+  SCR_FuelSupportStationComponent "{5E1CF311DF6C3CBE}" {
+   m_fRange 150
+  }
+  SCR_RepairSupportStationComponent "{66276DFCDF5C947F}" {
+   m_eSupportStationPriority HIGH
+   m_fRange 290
+   m_iSupplyCostDamageHealed 0
+   m_iSupplyCostPerFireRateReduction 0
+  }
+  SCR_SupportStationAreaMeshComponent "{5B2AD5B869A9C26D}" {
+   m_eShape RECTANGLE
+   m_fRadius 25
+  }
+  WCS_RearmSupportStationComponent "{66283DAFD30D92CB}" {
+   m_eSupportStationPriority HIGH
+   m_fRange 290
+  }
+ }
+ coords 2975.203 10 3036.359
+ angleY 32.126
+}
+GenericEntity : "{5A25DAC561B3BFF8}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Medical_USSR_01.et" {
+ coords 2898.679 10 3004.281
+ angleY 34.458
+ {
+  GenericEntity {
+   ID "620EDD9FE2C8259B"
+   components {
+    SCR_ArsenalComponent "{589F01C9C8D4A475}" {
+     m_eSupportedArsenalItemTypes 192
+     m_OverwriteArsenalConfig SCR_ArsenalItemListConfig "{663C4C72BDE3A245}" {
+      m_aArsenalItems {
+       SCR_ArsenalItemStandalone "{663C4C715C4797F3}" {
+        m_eItemType HEAL
+        m_ItemResourceName "{0D9A5DCF89AE7AA9}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01.et"
+       }
+       SCR_ArsenalItemStandalone "{663C4C72E415B779}" {
+        m_eItemType HEAL
+        m_ItemResourceName "{D511F5C330B1697E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_USSR_01_Base.et"
+       }
+       SCR_ArsenalItemStandalone "{663C4C71A652736F}" {
+        m_eItemType HEAL
+        m_ItemResourceName "{80E75A71C29190DB}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_USSR_01.et"
+       }
+       SCR_ArsenalItemStandalone "{663C4C72E6CFDAB6}" {
+        m_eItemType HEAL
+        m_ItemResourceName "{5B2FD067D70C1E8F}Prefabs/Items/Medicine/EpinephrineInjection/ACE_Medical_EpinephrineInjection.et"
+       }
+       SCR_ArsenalItemStandalone "{663C4C72E317B572}" {
+        m_eItemType HEAL
+        m_ItemResourceName "{02DD34077F51F65E}Prefabs/Items/Medicine/NaloxoneInjection/ACE_Medical_NaloxoneInjection.et"
+       }
+       SCR_ArsenalItemStandalone "{663C4C72E08A4257}" {
+        m_eItemType HEAL
+        m_ItemResourceName "{9BBA766CD869002C}Prefabs/Items/Medicine/PhenylephrineInjection/ACE_Medical_PhenylephrineInjection.et"
+       }
+       SCR_ArsenalItemStandalone "{663C4C72E2721C23}" {
+        m_eItemType HEAL
+        m_ItemResourceName "{D0434D5215B54181}Prefabs/Items/Medicine/MetoprololInjection/ACE_Medical_MetoprololInjection.et"
+       }
+       SCR_ArsenalItemStandalone "{663C4C729DCF7478}" {
+        m_eItemType HEAL
+        m_ItemResourceName "{58CF3AB87C441295}Prefabs/Items/Medicine/AmmoniumCarbonatePackage/ACE_Medical_AmmoniumCarbonatePackage.et"
+       }
+       SCR_ArsenalItemStandalone "{663C4C72D6A0602E}" {
+        m_eItemType HEAL
+        m_ItemResourceName "{527D7C5D2E476BDC}Prefabs/Items/Medicine/SalineBag_01/SalineBag_USSR_01.et"
+       }
+       SCR_ArsenalItemStandalone "{663C4C72D601C973}" {
+        m_eItemType HEAL
+        m_ItemResourceName "{21EF98BFC1EB3793}Prefabs/Items/Equipment/Kits/MedicalKit_01/MedicalKit_01_USSR.et"
+       }
+       SCR_ArsenalItemStandalone "{663C4C72BAF74927}" {
+        m_eItemType BACKPACK
+        m_ItemResourceName "{41A9C55B61F375F0}Prefabs/Items/Equipment/Backpacks/Backpack_Kolobok.et"
+       }
+       SCR_ArsenalItemStandalone "{663C4C728925859F}" {
+        m_eItemType BACKPACK
+        m_ItemResourceName "{3DE0155EC9767B98}Prefabs/Items/Equipment/Backpacks/Backpack_Veshmeshok.et"
+       }
+      }
+     }
+    }
+    SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
+     Enabled 0
+    }
+    SCR_ResourceComponent "{5E5ABDF371AE8B21}" {
+     m_aContainers {
+      SCR_ResourceContainer "{663E2286C4C8F5FF}" {
+       m_eResourceRights ALL
+       m_eStorageType STORED
+       m_fResourceValueCurrent 30
+       m_fResourceValueMax 30
+       m_bEnableResourceGain 1
+       m_fResourceGain 2
+       m_fResourceGainTickrate 300
+      }
+     }
+     m_aConsumers {
+      SCR_ResourceConsumerServicePoint "{5E5ABDF28A4FEC1F}" {
+       m_fBuyMultiplier 0
+      }
+     }
+    }
+   }
+  }
+  StaticModelEntity {
+   ID "5CC4E286B5B34824"
+   {
+    SCR_DestructibleBuildingEntity {
+     ID "5A5344E1BED63C5B"
+     components {
+      SCR_HealSupportStationComponent "{5EE8A81A8ACCE524}" {
+       m_iSupplyCostDamageHealed 0
+      }
+     }
+     {
+      GenericEntity {
+       ID "5EE8A819345602B2"
+       components {
+        SCR_SupportStationAreaMeshComponent "{5EE8A8193109F3F1}" {
+         m_eSearchForType NONE
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp StaticModelEntity : "{8CDB9C117669AF4A}Prefabs/Structures/Military/Camps/HelipadImprovised_01/HelipadImprovised_USSR_01.et" {
+ {
+  coords 3000.883 0 3019.504
+  angleY 32.698
+ }
+ {
+  coords 2969.948 0 3039.362
+  angleY 32.698
+ }
+ {
+  coords 2930.824 0 3064.477
+  angleY 32.698
+ }
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 2953.004 10 3002.024
+ m_fZoneRadius 85
+ m_fZoneTeleportedRadius 95
+}
+GenericEntity : "{FA7A86697340C58C}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_05.et" {
+ coords 2915.016 10 2997.727
+ angleY 30.753
+ {
+  GenericEntity Bluefor_Supply_Depot {
+   ID "5D4539393E1536C3"
+   components {
+    SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+     m_aContainers {
+      SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+       m_bEnableResourceGain 0
+      }
+     }
+    }
+   }
+   {
+    GenericEntity {
+     ID "5D45393936823FC0"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+         m_fResourceValueMax 500
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5D45393936823FC3"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+         m_fResourceValueMax 500
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
