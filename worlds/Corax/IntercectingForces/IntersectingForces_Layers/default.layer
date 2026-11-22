@@ -1,0 +1,1044 @@
+SCR_AIWorld : "{33A5B976E41B0A4C}Prefabs/AI/SCR_AIWorld_BadOrb_GC.et" {
+ coords 449.497 136.752 4768.45
+}
+GC_LobbyGameMode GC_MigratedMission : "{A8F745B0F029379F}worlds/Corax/IntercectingForces/IntersectingForces_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 5
+   m_bRandomStartingWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6536AA5A2F86C321}" {
+     m_sWeatherPresetName "Rainy"
+     m_iStartingHour 6
+    }
+   }
+   m_bRandomWeatherChanges 1
+   m_bDateOverride 1
+   m_iDay 12
+   m_iMonth 4
+   m_iYear 1986
+  }
+  GC_PeakFactionPopulationComponent "{72CAEB9B9B839036}" {
+  }
+  GC_LivingAndDeadAIComponent "{F2089A77F5CFB0A4}" {
+   m_sFaction "USSR"
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{93ED3D58FA056584}" {
+     m_sName "Outcome 6536AA4743C7E617"
+     m_aConditions {
+      GC_CustomScriptCondition "{3F016FEC3F744584}" {
+       m_Script GC_PeakFactionPopulationCheck "{D07D942B13FB9A4F}" {
+        m_sFaction "US"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E12E0B3C6F454AF2}" {
+       m_sMessage "Outcome 6536AA4743C7E617"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{605E6136535B0A67}" {
+     m_sName "Outcome 6536AA4743C7E617 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{55B317F674953BF8}" {
+       m_sEventName "Outcome 6536AA4743C7E617"
+      }
+     }
+     m_Advanced GC_EventOptions "{3587A55EBA4D5645}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{5BB74817EF695A9A}" {
+       m_sTitle "Sucks to be you"
+       m_sMessage "B COY casualties are too too High, Mission failure. mission will end in 2 minutes"
+       m_aFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{4B7861E6766E31AC}" {
+     m_sName "Outcome 6536AA4788DFF721"
+     m_aConditions {
+      GC_CustomScriptCondition "{241F85F0C21A929B}" {
+       m_Script GC_PeakFactionPopulationCheck "{E634EC1CF861FA9A}" {
+        m_sFaction "US"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E676ECE6E93FBC2F}" {
+       m_sMessage "Outcome 6536AA4788DFF721"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6CFF31254D48143E}" {
+     m_sName "Outcome 6536AA4788DFF721 (125s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CC7E62AABB48EC19}" {
+       m_sEventName "Outcome 6536AA4788DFF721"
+      }
+     }
+     m_Advanced GC_EventOptions "{99655E90589B9F27}" {
+      m_fDelay 125
+     }
+     m_aActions {
+      GC_EndMissionAction "{3E6D36AF1D94B516}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{7B41BF34ACA27DED}" {
+     m_sName "Outcome 6536AA47F9162732"
+     m_aConditions {
+      GC_CustomScriptCondition "{57F706826E9C21D0}" {
+       m_Script GC_LivingAndDeadAICheck "{BE49B688135C22FA}" {
+        m_fRatio 0.95
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4C379C23ECC2EAF7}" {
+       m_sMessage "Outcome 6536AA47F9162732"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D73DD269C82EBBCF}" {
+     m_sName "Outcome 6536AA47F9162732 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D19C6BD1CF5D3D94}" {
+       m_sEventName "Outcome 6536AA47F9162732"
+      }
+     }
+     m_Advanced GC_EventOptions "{1DDB2D58EF53D5F3}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{A7E35186A149F9BF}" {
+       m_sTitle "Army Strong"
+       m_sMessage "The intersection has been seured and the VDV are retreating into the valley. mission will end in 60 seconds"
+       m_aFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{8CD9EEA54C411A33}" {
+     m_sName "Outcome 6536AA47F9162732 (65s)"
+     m_aConditions {
+      GC_MissionEventCondition "{074C8B1BF2441A9A}" {
+       m_sEventName "Outcome 6536AA47F9162732"
+      }
+     }
+     m_Advanced GC_EventOptions "{33E2FBB20F9D3E19}" {
+      m_fDelay 65
+     }
+     m_aActions {
+      GC_EndMissionAction "{F9D19489BC923056}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{7E170AE9CD770D7D}" {
+     m_sName "Outcome 6536AA7D1327767D"
+     m_aConditions {
+      GC_AreaCondition "{EDCFD2FB2E1D2401}" {
+       m_sArea "GC_MigrationArea_mortar1"
+       m_Targets GC_CharacterAreaTargets "{CCEA0973FC4B513D}" {
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{3DF8076C34FC6D83}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{A160E71A6C7C3B20}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{86ADB0457A24EB22}" {
+       m_sMessage "Outcome 6536AA7D1327767D"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{19DE30F81846037D}" {
+     m_sName "Outcome 6536AA7D1327767D (25s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C3C74B2985F6F782}" {
+       m_sEventName "Outcome 6536AA7D1327767D"
+      }
+     }
+     m_Advanced GC_EventOptions "{8DC3F83AD6291F5E}" {
+      m_fDelay 25
+     }
+     m_aActions {
+      GC_MessageAction "{B2E8844F8ABEE1B9}" {
+       m_sTitle "BTN HQ"
+       m_sMessage "Counter Battery reports outbound IDF"
+       m_aFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{094118823C87D10D}" {
+     m_sName "Outcome 6536AA7D5CE8810A"
+     m_aConditions {
+      GC_AreaCondition "{5113D92FEDCC40E0}" {
+       m_sArea "GC_MigrationArea_mortar2"
+       m_Targets GC_CharacterAreaTargets "{C62884DE6F740F13}" {
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{750F5DCA9F32F34D}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{4A435F7BEB5591FF}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{617E1B4C8FF7E793}" {
+       m_sMessage "Outcome 6536AA7D5CE8810A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{98DD4090A678D385}" {
+     m_sName "Outcome 6536AA7D5CE8810A (25s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DCEB93E669C88224}" {
+       m_sEventName "Outcome 6536AA7D5CE8810A"
+      }
+     }
+     m_Advanced GC_EventOptions "{117AF6E5726A2560}" {
+      m_fDelay 25
+     }
+     m_aActions {
+      GC_MessageAction "{B21C954635CA5D75}" {
+       m_sTitle "BTN HQ"
+       m_sMessage "Counter Battery reports outbound IDF"
+       m_aFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{A3C2E0646FB6D7DE}" {
+     m_sName "Outcome 6536AA7D5C1A8F8B"
+     m_aConditions {
+      GC_AreaCondition "{3E39B7D734708CF4}" {
+       m_sArea "GC_MigrationArea_mortar3"
+       m_Targets GC_CharacterAreaTargets "{56079E4295AC33A3}" {
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{286BAA1BAEC0620E}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{8BE1B33871E57384}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E46453550108C084}" {
+       m_sMessage "Outcome 6536AA7D5C1A8F8B"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D46FCCF0813880B3}" {
+     m_sName "Outcome 6536AA7D5C1A8F8B (25s)"
+     m_aConditions {
+      GC_MissionEventCondition "{03399EEB846EDCB2}" {
+       m_sEventName "Outcome 6536AA7D5C1A8F8B"
+      }
+     }
+     m_Advanced GC_EventOptions "{933124BB471BB29C}" {
+      m_fDelay 25
+     }
+     m_aActions {
+      GC_MessageAction "{DD9746F3F529DB8D}" {
+       m_sTitle "BTN HQ"
+       m_sMessage "Counter Battery reports outbound IDF"
+       m_aFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{9FE2A1D9A100F5E9}" {
+     m_sName "Outcome 6536AA7D5DBE6BEE"
+     m_aConditions {
+      GC_AreaCondition "{3C15278B0C9FD150}" {
+       m_sArea "GC_MigrationArea_mortar4"
+       m_Targets GC_CharacterAreaTargets "{A134342FDE2A68CB}" {
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{A66B3E3DCEA0F61B}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{E9C3CC2CB530C6B6}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{25C894F793EB53C0}" {
+       m_sMessage "Outcome 6536AA7D5DBE6BEE"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{52DFB899C73D4F4A}" {
+     m_sName "Outcome 6536AA7D5DBE6BEE (25s)"
+     m_aConditions {
+      GC_MissionEventCondition "{AEADCFC1F2462D4E}" {
+       m_sEventName "Outcome 6536AA7D5DBE6BEE"
+      }
+     }
+     m_Advanced GC_EventOptions "{A266345E649147E4}" {
+      m_fDelay 25
+     }
+     m_aActions {
+      GC_MessageAction "{845EDC5E547FA6B3}" {
+       m_sTitle "BTN HQ"
+       m_sMessage "Counter Battery reports outbound IDF"
+       m_aFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{CF4C51103D19146E}" {
+     m_sName "GC_MigratedSpawn_1252BD5FF2A5A798 (0s)"
+     m_aActions {
+      GC_SpawnAction "{CF4C51103D19146E}" {
+       m_Spawn GC_AIGroupSpawn "{9429F4895685C687}" {
+        m_sLocation "GC_Spawner_1252BD5FF2A5A798"
+        m_sPrefab "{E1A0797669362096}Prefabs/Groups/OPFOR/Russia/1980s/Airborne 1983/Group_USSR_VDV_PHQ.et"
+        m_aWaypoints {
+         "defhq2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E7FE7894B431DE26}" {
+     m_sName "GC_MigratedSpawn_8A69CFFB9F68CDAF (0s)"
+     m_aActions {
+      GC_SpawnAction "{E7FE7894B431DE26}" {
+       m_Spawn GC_AIGroupSpawn "{37631AB72E52C9F2}" {
+        m_sLocation "GC_Spawner_8A69CFFB9F68CDAF"
+        m_sPrefab "{870783CDCE09CCD9}Prefabs/Groups/OPFOR/Russia/1980s/Airborne 1983/Group_USSR_VDV_Squad.et"
+        m_aWaypoints {
+         "defhq"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{783129E6E3581BB7}" {
+     m_sName "GC_MigratedSpawn_C78658888A68D7A5 (0s)"
+     m_aActions {
+      GC_SpawnAction "{783129E6E3581BB7}" {
+       m_Spawn GC_AIGroupSpawn "{E974E3CCF0A7AA3C}" {
+        m_sLocation "GC_Spawner_C78658888A68D7A5"
+        m_sPrefab "{E1A0797669362096}Prefabs/Groups/OPFOR/Russia/1980s/Airborne 1983/Group_USSR_VDV_PHQ.et"
+        m_aWaypoints {
+         "defhq"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{63092468F2D8E8A6}" {
+     m_sName "GC_MigratedSpawn_663875D3CF935B4D (0s)"
+     m_aActions {
+      GC_SpawnAction "{63092468F2D8E8A6}" {
+       m_Spawn GC_AIGroupSpawn "{A9D6EDABACBC9617}" {
+        m_sLocation "GC_Spawner_663875D3CF935B4D"
+        m_sPrefab "{870783CDCE09CCD9}Prefabs/Groups/OPFOR/Russia/1980s/Airborne 1983/Group_USSR_VDV_Squad.et"
+        m_aWaypoints {
+         "defbuckewald"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{38CB7C5E49C653DA}" {
+     m_sName "GC_MigratedSpawn_AF6E173CA1B06948 (0s)"
+     m_aActions {
+      GC_SpawnAction "{38CB7C5E49C653DA}" {
+       m_Spawn GC_AIGroupSpawn "{D992033EB7E8DD1E}" {
+        m_sLocation "GC_Spawner_AF6E173CA1B06948"
+        m_sPrefab "{870783CDCE09CCD9}Prefabs/Groups/OPFOR/Russia/1980s/Airborne 1983/Group_USSR_VDV_Squad.et"
+        m_aWaypoints {
+         "defkinzig2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3C13BA0EB00ED492}" {
+     m_sName "GC_MigratedSpawn_82F2FA5D6AF61436 (0s)"
+     m_aActions {
+      GC_SpawnAction "{3C13BA0EB00ED492}" {
+       m_Spawn GC_AIGroupSpawn "{9EC75A0451697BCC}" {
+        m_sLocation "GC_Spawner_82F2FA5D6AF61436"
+        m_sPrefab "{870783CDCE09CCD9}Prefabs/Groups/OPFOR/Russia/1980s/Airborne 1983/Group_USSR_VDV_Squad.et"
+        m_aWaypoints {
+         "defkinzig3"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{2E0DF0DE4DD1A08B}" {
+     m_sName "GC_MigratedSpawn_1A150B32C8463ED9 (0s)"
+     m_aActions {
+      GC_SpawnAction "{2E0DF0DE4DD1A08B}" {
+       m_Spawn GC_AIGroupSpawn "{880649D87FD52184}" {
+        m_sLocation "GC_Spawner_1A150B32C8463ED9"
+        m_sPrefab "{870783CDCE09CCD9}Prefabs/Groups/OPFOR/Russia/1980s/Airborne 1983/Group_USSR_VDV_Squad.et"
+        m_aWaypoints {
+         "defkinzigwald"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E406F4648D4A2B65}" {
+     m_sName "GC_MigratedSpawn_F1AAF4A372086185 (0s)"
+     m_aActions {
+      GC_SpawnAction "{E406F4648D4A2B65}" {
+       m_Spawn GC_AIGroupSpawn "{AED07F13ED2EE3E0}" {
+        m_sLocation "GC_Spawner_F1AAF4A372086185"
+        m_sPrefab "{870783CDCE09CCD9}Prefabs/Groups/OPFOR/Russia/1980s/Airborne 1983/Group_USSR_VDV_Squad.et"
+        m_aWaypoints {
+         "defkinzigwald2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{EAE4253ADDF35534}" {
+     m_sName "GC_MigratedSpawn_3B1CAEF36FB401F1 (0s)"
+     m_aActions {
+      GC_SpawnAction "{EAE4253ADDF35534}" {
+       m_Spawn GC_AIGroupSpawn "{3F31E4F2B468F9BA}" {
+        m_sLocation "GC_Spawner_3B1CAEF36FB401F1"
+        m_sPrefab "{870783CDCE09CCD9}Prefabs/Groups/OPFOR/Russia/1980s/Airborne 1983/Group_USSR_VDV_Squad.et"
+        m_aWaypoints {
+         "defrb"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A6E71E6BD8C312BB}" {
+     m_sName "GC_MigratedSpawn_7D2F19B9910E6CFF (0s)"
+     m_aActions {
+      GC_SpawnAction "{A6E71E6BD8C312BB}" {
+       m_Spawn GC_AIGroupSpawn "{890EE4FF3BF2B896}" {
+        m_sLocation "GC_Spawner_7D2F19B9910E6CFF"
+        m_sPrefab "{870783CDCE09CCD9}Prefabs/Groups/OPFOR/Russia/1980s/Airborne 1983/Group_USSR_VDV_Squad.et"
+        m_aWaypoints {
+         "defrb2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{97A2F35E8F115AC5}" {
+     m_sName "GC_MigratedSpawn_405A26FA8CEED887 (0s)"
+     m_aActions {
+      GC_SpawnAction "{97A2F35E8F115AC5}" {
+       m_Spawn GC_AIGroupSpawn "{C297F6A5C8F482F2}" {
+        m_sLocation "GC_Spawner_405A26FA8CEED887"
+        m_sPrefab "{870783CDCE09CCD9}Prefabs/Groups/OPFOR/Russia/1980s/Airborne 1983/Group_USSR_VDV_Squad.et"
+        m_aWaypoints {
+         "defrb3"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{BE04F8C2F6203227}" {
+     m_sName "GC_MigratedSpawn_F0C81AF62370DC5A (0s)"
+     m_aActions {
+      GC_SpawnAction "{BE04F8C2F6203227}" {
+       m_Spawn GC_AIGroupSpawn "{A39656D8FC902758}" {
+        m_sLocation "GC_Spawner_F0C81AF62370DC5A"
+        m_sPrefab "{870783CDCE09CCD9}Prefabs/Groups/OPFOR/Russia/1980s/Airborne 1983/Group_USSR_VDV_Squad.et"
+        m_aWaypoints {
+         "defbuckewald2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{8CBDB5E1B7A74B20}" {
+     m_sName "GC_MigratedSpawn_A4151D5490755295 (0s)"
+     m_aActions {
+      GC_SpawnAction "{8CBDB5E1B7A74B20}" {
+       m_Spawn GC_AIGroupSpawn "{8F508C3803BB93D4}" {
+        m_sLocation "GC_Spawner_A4151D5490755295"
+        m_sPrefab "{870783CDCE09CCD9}Prefabs/Groups/OPFOR/Russia/1980s/Airborne 1983/Group_USSR_VDV_Squad.et"
+        m_aWaypoints {
+         "defbuckewald3"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{1A82FBE4FD8D9BBB}" {
+     m_sName "GC_MigratedSpawn_A808BDF7C3255B09 (0s)"
+     m_aActions {
+      GC_SpawnAction "{1A82FBE4FD8D9BBB}" {
+       m_Spawn GC_AIGroupSpawn "{55FF65B21E41A2D8}" {
+        m_sLocation "GC_Spawner_A808BDF7C3255B09"
+        m_sPrefab "{870783CDCE09CCD9}Prefabs/Groups/OPFOR/Russia/1980s/Airborne 1983/Group_USSR_VDV_Squad.et"
+        m_aWaypoints {
+         "loiter"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4AEA8A6D3242C837}" {
+     m_sName "GC_MigratedSpawn_6EDCAB3223BA0759 (0s)"
+     m_aActions {
+      GC_SpawnAction "{4AEA8A6D3242C837}" {
+       m_Spawn GC_AIGroupSpawn "{E8EB44EF23F3C67A}" {
+        m_sLocation "GC_Spawner_6EDCAB3223BA0759"
+        m_sPrefab "{870783CDCE09CCD9}Prefabs/Groups/OPFOR/Russia/1980s/Airborne 1983/Group_USSR_VDV_Squad.et"
+        m_aWaypoints {
+         "loiter"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C8383552CAE3EFF2}" {
+     m_sName "GC_MigratedSpawn_20FB75D7EF5EB441 (0s)"
+     m_aActions {
+      GC_SpawnAction "{C8383552CAE3EFF2}" {
+       m_Spawn GC_AIGroupSpawn "{4C8CE437FC16C623}" {
+        m_sLocation "GC_Spawner_20FB75D7EF5EB441"
+        m_sPrefab "{870783CDCE09CCD9}Prefabs/Groups/OPFOR/Russia/1980s/Airborne 1983/Group_USSR_VDV_Squad.et"
+        m_aWaypoints {
+         "defkinzigwald"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{1B2F74768C517820}" {
+     m_sName "GC_MigratedSpawn_22140D448F629BC5 (0s)"
+     m_aActions {
+      GC_SpawnAction "{1B2F74768C517820}" {
+       m_Spawn GC_AIGroupSpawn "{83CFFB5391E40B37}" {
+        m_sLocation "GC_Spawner_22140D448F629BC5"
+        m_sPrefab "{870783CDCE09CCD9}Prefabs/Groups/OPFOR/Russia/1980s/Airborne 1983/Group_USSR_VDV_Squad.et"
+        m_aWaypoints {
+         "defkinzig4"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{1161C5459FBAEA9D}" {
+     m_sName "GC_MigratedSpawn_F101D4F2BD03562C (0s)"
+     m_aActions {
+      GC_SpawnAction "{1161C5459FBAEA9D}" {
+       m_Spawn GC_AIGroupSpawn "{DF3482E128731CC6}" {
+        m_sLocation "GC_Spawner_F101D4F2BD03562C"
+        m_sPrefab "{870783CDCE09CCD9}Prefabs/Groups/OPFOR/Russia/1980s/Airborne 1983/Group_USSR_VDV_Squad.et"
+        m_aWaypoints {
+         "loiter2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F75DA060979D12C9}" {
+     m_sName "GC_MigratedSpawn_0EF0A5D043249E3A (0s)"
+     m_aActions {
+      GC_SpawnAction "{F75DA060979D12C9}" {
+       m_Spawn GC_AIGroupSpawn "{2568543D30A695B7}" {
+        m_sLocation "GC_Spawner_0EF0A5D043249E3A"
+        m_sPrefab "{870783CDCE09CCD9}Prefabs/Groups/OPFOR/Russia/1980s/Airborne 1983/Group_USSR_VDV_Squad.et"
+        m_aWaypoints {
+         "loiter3"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3FAEC02665998E6C}" {
+     m_sName "GC_MigratedSpawn_B4E5688B24694390 (0s)"
+     m_aActions {
+      GC_SpawnAction "{3FAEC02665998E6C}" {
+       m_Spawn GC_AIGroupSpawn "{EC35319922E2B35E}" {
+        m_sLocation "GC_Spawner_B4E5688B24694390"
+        m_sPrefab "{870783CDCE09CCD9}Prefabs/Groups/OPFOR/Russia/1980s/Airborne 1983/Group_USSR_VDV_Squad.et"
+        m_aWaypoints {
+         "defkinzig"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4DF7E26083FDEDAA}" {
+     m_sName "GC_MigratedSpawn_AAB2AD4F171BEA89 (0s)"
+     m_aActions {
+      GC_SpawnAction "{4DF7E26083FDEDAA}" {
+       m_Spawn GC_AIGroupSpawn "{8B9CEAA445DA1E34}" {
+        m_sLocation "GC_Spawner_AAB2AD4F171BEA89"
+        m_sPrefab "{870783CDCE09CCD9}Prefabs/Groups/OPFOR/Russia/1980s/Airborne 1983/Group_USSR_VDV_Squad.et"
+        m_aWaypoints {
+         "defkinzig"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{344A36474D857AF0}" {
+     m_sName "GC_MigratedSpawn_AA5EB02351EAB395"
+     m_aConditions {
+      GC_GameModeStateCondition "{1C19A66095F6730A}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{49EC10C0E14C3C61}" {
+       m_sFlagName "reinforce"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{45FCFEA4AACCDA46}" {
+       m_sMessage "GC_MigratedSpawn_AA5EB02351EAB395"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C5E8D3F65030AC26}" {
+     m_sName "GC_MigratedSpawn_AA5EB02351EAB395 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E7D832B3C45FF22E}" {
+       m_sEventName "GC_MigratedSpawn_AA5EB02351EAB395"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{C5E8D3F65030AC26}" {
+       m_Spawn GC_AIGroupSpawn "{12AD29E468DDD055}" {
+        m_sLocation "GC_Spawner_AA5EB02351EAB395"
+        m_sPrefab "{4D3BBEC1A955626A}Prefabs/Groups/OPFOR/Spetsnaz/Group_USSR_Spetsnaz_Squad.et"
+        m_aWaypoints {
+         "defbridge"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{36CDD8052B7A13DD}" {
+     m_sName "GC_MigratedSpawn_C2E01EB039871651"
+     m_aConditions {
+      GC_GameModeStateCondition "{66E835A2C45F8628}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{53B0BC06E8AAA189}" {
+       m_sFlagName "reinforce"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D413162422DFF10E}" {
+       m_sMessage "GC_MigratedSpawn_C2E01EB039871651"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9392D18B678F7B2F}" {
+     m_sName "GC_MigratedSpawn_C2E01EB039871651 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CF3510DB7FD2E339}" {
+       m_sEventName "GC_MigratedSpawn_C2E01EB039871651"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{9392D18B678F7B2F}" {
+       m_Spawn GC_AIGroupSpawn "{6D62D12921A8288F}" {
+        m_sLocation "GC_Spawner_C2E01EB039871651"
+        m_sPrefab "{4D3BBEC1A955626A}Prefabs/Groups/OPFOR/Spetsnaz/Group_USSR_Spetsnaz_Squad.et"
+        m_aWaypoints {
+         "defbridge"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{509F60ABC50F8AE2}" {
+     m_sName "GC_MigratedSpawn_94EC99716794517C"
+     m_aConditions {
+      GC_GameModeStateCondition "{94C02B81907A072B}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{281E71F0E59902AD}" {
+       m_sFlagName "reinforce"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2DD80ABEFD363341}" {
+       m_sMessage "GC_MigratedSpawn_94EC99716794517C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5E21CADAE18E2A52}" {
+     m_sName "GC_MigratedSpawn_94EC99716794517C (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E96BB106B25B7C2E}" {
+       m_sEventName "GC_MigratedSpawn_94EC99716794517C"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{5E21CADAE18E2A52}" {
+       m_Spawn GC_AIGroupSpawn "{2958E35D4295FB69}" {
+        m_sLocation "GC_Spawner_94EC99716794517C"
+        m_sPrefab "{4D3BBEC1A955626A}Prefabs/Groups/OPFOR/Spetsnaz/Group_USSR_Spetsnaz_Squad.et"
+        m_aWaypoints {
+         "defbridge"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{CD6DA165A5C25988}" {
+     m_sName "GC_MigratedSpawn_A29EE683968538AF (0s)"
+     m_aActions {
+      GC_SpawnAction "{CD6DA165A5C25988}" {
+       m_Spawn GC_AIGroupSpawn "{43719270B3F8F09A}" {
+        m_sLocation "GC_Spawner_A29EE683968538AF"
+        m_sPrefab "{4C44B4D8F2820F25}Prefabs/Groups/OPFOR/Spetsnaz/Group_USSR_Spetsnaz_SentryTeam.et"
+        m_aWaypoints {
+         "OP1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{EB111D710DA6159B}" {
+     m_sName "GC_MigratedSpawn_A0B0E598D8A39A40 (0s)"
+     m_aActions {
+      GC_SpawnAction "{EB111D710DA6159B}" {
+       m_Spawn GC_AIGroupSpawn "{F95A013425818B3E}" {
+        m_sLocation "GC_Spawner_A0B0E598D8A39A40"
+        m_sPrefab "{4C44B4D8F2820F25}Prefabs/Groups/OPFOR/Spetsnaz/Group_USSR_Spetsnaz_SentryTeam.et"
+        m_aWaypoints {
+         "ptrl"
+         "ptrl"
+         "cycle"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{CC0A9B2769C52F33}" {
+     m_sName "GC_MigratedSpawn_EBB25AFE7291D196"
+     m_aConditions {
+      GC_AreaCondition "{83C4D5D54860941B}" {
+       m_sArea "GC_MigrationArea_mortar4"
+       m_Targets GC_CharacterAreaTargets "{3A362F687FD55781}" {
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{3F3FC96740B5B167}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{68FD506808C63533}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{17FCDC87B863A61E}" {
+       m_sMessage "GC_MigratedSpawn_EBB25AFE7291D196"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7453FB0C2AE5C441}" {
+     m_sName "GC_MigratedSpawn_EBB25AFE7291D196 (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E90193F91C2DAFA2}" {
+       m_sEventName "GC_MigratedSpawn_EBB25AFE7291D196"
+      }
+     }
+     m_Advanced GC_EventOptions "{717D86BAF31737BC}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{D11A5F678889F605}" {
+       m_Spawn GC_PrefabSpawn "{52E8FC01CEC5FD70}" {
+        m_sLocation "GC_Spawner_EBB25AFE7291D196"
+        m_sPrefab "{239D26E5BCFA8A47}worlds/Corax/IntercectingForces/EffectModule_Zoned_MortarBarrage_Larger.et"
+       }
+      }
+     }
+    }
+    GC_Event "{633C21D2089A19E9}" {
+     m_sName "GC_MigratedSpawn_B7FB08A923BA7B2F"
+     m_aConditions {
+      GC_AreaCondition "{0A4B101619E38CCD}" {
+       m_sArea "GC_MigrationArea_mortar3"
+       m_Targets GC_CharacterAreaTargets "{0A0F022747FABCAA}" {
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{297B4293FB9E585D}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{D3CD91B8AEB2E8DD}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{897B88207712AEC3}" {
+       m_sMessage "GC_MigratedSpawn_B7FB08A923BA7B2F"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{70F4D1F57EF86F5D}" {
+     m_sName "GC_MigratedSpawn_B7FB08A923BA7B2F (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{666F625583D758E9}" {
+       m_sEventName "GC_MigratedSpawn_B7FB08A923BA7B2F"
+      }
+     }
+     m_Advanced GC_EventOptions "{10E84FD660224468}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{45998B6E254E806F}" {
+       m_Spawn GC_PrefabSpawn "{A79B35C1BF6066A8}" {
+        m_sLocation "GC_Spawner_B7FB08A923BA7B2F"
+        m_sPrefab "{239D26E5BCFA8A47}worlds/Corax/IntercectingForces/EffectModule_Zoned_MortarBarrage_Larger.et"
+       }
+      }
+     }
+    }
+    GC_Event "{F87A88CAA8700154}" {
+     m_sName "GC_MigratedSpawn_0CEAEF586E6E6D37"
+     m_aConditions {
+      GC_AreaCondition "{2A66B4E51EB2D9B9}" {
+       m_sArea "GC_MigrationArea_mortar2"
+       m_Targets GC_CharacterAreaTargets "{DDF3FA2CFDC1AD7F}" {
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{CFD983BDBD6BEB0F}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{01DC5C5E454EE042}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7FF095DE1A26D8BE}" {
+       m_sMessage "GC_MigratedSpawn_0CEAEF586E6E6D37"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{11BBBA08D1848EC0}" {
+     m_sName "GC_MigratedSpawn_0CEAEF586E6E6D37 (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{854167B6770B807E}" {
+       m_sEventName "GC_MigratedSpawn_0CEAEF586E6E6D37"
+      }
+     }
+     m_Advanced GC_EventOptions "{2171479B5B9187C8}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{89E56AAD1EED9210}" {
+       m_Spawn GC_PrefabSpawn "{D43A5407E8BA67E1}" {
+        m_sLocation "GC_Spawner_0CEAEF586E6E6D37"
+        m_sPrefab "{239D26E5BCFA8A47}worlds/Corax/IntercectingForces/EffectModule_Zoned_MortarBarrage_Larger.et"
+       }
+      }
+     }
+    }
+    GC_Event "{C3AE7C8FCACC629A}" {
+     m_sName "GC_MigratedSpawn_8C33BB9E8FE8E822"
+     m_aConditions {
+      GC_AreaCondition "{B4CEBEE00C8EFD7B}" {
+       m_sArea "GC_MigrationArea_mortar1"
+       m_Targets GC_CharacterAreaTargets "{AED9AA595C569915}" {
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{D924C5A6E1834AE5}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{427B124F5B53989A}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F97A83273CE480B5}" {
+       m_sMessage "GC_MigratedSpawn_8C33BB9E8FE8E822"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2AC55301CEE0B582}" {
+     m_sName "GC_MigratedSpawn_8C33BB9E8FE8E822 (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2114EC7F7533F24A}" {
+       m_sEventName "GC_MigratedSpawn_8C33BB9E8FE8E822"
+      }
+     }
+     m_Advanced GC_EventOptions "{A7E3B6B666810A98}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{886A02F014AF0C0B}" {
+       m_Spawn GC_PrefabSpawn "{D03D2BD3C776E1E9}" {
+        m_sLocation "GC_Spawner_8C33BB9E8FE8E822"
+        m_sPrefab "{239D26E5BCFA8A47}worlds/Corax/IntercectingForces/EffectModule_Zoned_MortarBarrage_Larger.et"
+       }
+      }
+     }
+    }
+   }
+   m_aAreaFlagObservers {
+    GC_AreaFlagObserver "{1BC58ED5A4005BA4}" {
+     m_sFlag "reinforce"
+     m_bStopAfterMatchChange 1
+     m_bResetAfterDiscovery 1
+     m_Area GC_AreaCondition "{8D6FF1C646B2DD64}" {
+      m_sArea "GC_MigrationArea_reinforce_0731839EDC7F0933"
+      m_Targets GC_CharacterAreaTargets "{C7784B3B1FAE6A05}" {
+       m_aFactions {
+        "US"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{8A4C84A0422FCD49}" {
+       m_fRequiredShare 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{48D7D2A51585A545}" {
+     m_sFlag "reinforce"
+     m_bStopAfterMatchChange 1
+     m_bResetAfterDiscovery 1
+     m_Area GC_AreaCondition "{83A7B3FA3435C2ED}" {
+      m_sArea "GC_MigrationArea_reinforce_EC2022B52A1FA541"
+      m_Targets GC_CharacterAreaTargets "{810E2C1D520317E0}" {
+       m_aFactions {
+        "US"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{AB558635E26E64F0}" {
+       m_fRequiredShare 1
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 580.077 137.067 4694.376
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "  "
+       }
+       SCR_CallsignInfo "{653B089713AD9E55}" {
+        m_sCallsign " "
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GC_RadiusAreaEntity GC_MigrationArea_reinforce_0731839EDC7F0933 : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 1049.215 153.634 4164.077
+ m_fRadius 150
+}
+GC_RadiusAreaEntity GC_MigrationArea_reinforce_EC2022B52A1FA541 : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 1155.138 153.634 4416.475
+ m_fRadius 150
+}
+$grp GenericEntity : "{F0C80F54A089F40B}Prefabs/Vehicles/Airplanes/FA18A/CAS_Spawner_GBU12.et" {
+ {
+  coords 812.006 134.905 4452.108
+ }
+ {
+  coords 859.256 137.883 4376.219
+ }
+}
