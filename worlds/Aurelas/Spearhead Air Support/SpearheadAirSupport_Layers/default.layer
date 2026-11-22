@@ -1,0 +1,2393 @@
+SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
+ coords 1466.282 38.017 2876.815
+}
+GC_LobbyGameMode GC_MigratedMission : "{9617C2E86CA8D03B}worlds/Aurelas/Spearhead Air Support/SpearheadAirSupport_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 11
+   m_iStartingMinutes 15
+   m_iRangeMinutesStart 15
+   m_iRangeHoursEnd 13
+   m_iRangeMinutesEnd 15
+  }
+  GC_PeakFactionPopulationComponent "{6B7C1B6688F96394}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{9F815BE7134BF7C2}" {
+     m_sName "BRDM_1_Destroyed"
+    }
+    GC_MissionFlag "{73F43FF0A46A2DDC}" {
+     m_sName "BRDM_2_Destroyed"
+    }
+    GC_MissionFlag "{FE8BD1EFB90DF93A}" {
+     m_sName "SH_Destroyed_1"
+    }
+    GC_MissionFlag "{B530381AA7DB5A50}" {
+     m_sName "SH_Destroyed_2"
+    }
+    GC_MissionFlag "{F897AB302B3BD00C}" {
+     m_sName "SH_Destroyed_3"
+    }
+    GC_MissionFlag "{785D1C9678D51CD6}" {
+     m_sName "SH_Destroyed_4"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{81D2E598CCFB640D}" {
+     m_sName "Mission Start (15s)"
+     m_Advanced GC_EventOptions "{108033F35A7EF6FC}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_MessageAction "{07D667FC7AFB7239}" {
+       m_sTitle "All Spearhead Callsigns this is the USS Concrete"
+       m_sMessage "Spearhead you are cleared for liftoff. Remember to disrupt the Soviet Comms Center and await tasking from FAC."\
+       ""\
+       "Stay Safe and Happy Hunting!"\
+       ""\
+       "USS Concrete out."
+      }
+     }
+    }
+    GC_Event "{6808809AD2F0A8C1}" {
+     m_sName "Mission Start (420s)"
+     m_Advanced GC_EventOptions "{CA130758848CA233}" {
+      m_fDelay 420
+     }
+     m_aActions {
+      GC_MessageAction "{64789F69541E67E9}" {
+       m_sTitle "All Spearhead Callsigns this is FAC"
+       m_sMessage "A Forward Ammunition and Resupply Point has been established at the Airfield at Grid (009,028) for you to use."\
+       "The FARP is marked by Blue Smoke."\
+       ""\
+       "FAC Out."
+      }
+     }
+    }
+    GC_Event "{08D314B0184ACA81}" {
+     m_sName "Mission Start (2700s)"
+     m_Advanced GC_EventOptions "{A21A6DB876213F16}" {
+      m_fDelay 2700
+     }
+     m_aActions {
+      GC_MessageAction "{7D1FD0BC484789D6}" {
+       m_sTitle "TIME LIMIT REACHED"
+       m_sMessage "The time window has closed."
+      }
+     }
+    }
+    GC_Event "{911E5CC1CEC2921F}" {
+     m_sName "Signal Hill Clear"
+     m_aConditions {
+      GC_GameModeStateCondition "{279F529DC6454E21}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{21DB9152ECEF1938}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{87A8B8BE6136734A}" {
+         m_sArea "Signal_Hill_Clear"
+         m_Targets GC_NamedAreaTargets "{E992A0D85BA4C855}" {
+          m_aNames {
+           "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+          }
+          m_bCountMissingAsOutside 1
+          m_bExcludeDestroyed 1
+         }
+         m_Requirement GC_LivingProportion "{C5EDF99BEFE347F7}" {
+          m_fRequiredProportion 0.2
+          m_bWholeNumberQuotient 1
+          m_bAtMost 1
+         }
+         m_Capture GC_AreaCaptureOptions "{B16D32E32E800845}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_MissionFlagCondition "{7B31C5CDD80B2F87}" {
+         m_sFlagName "BRDM_1_Destroyed"
+        }
+        GC_MissionFlagCondition "{096DFBEBEABEBA3B}" {
+         m_sFlagName "BRDM_2_Destroyed"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{159680C0518818A1}" {
+       m_sMessage "Signal Hill Clear"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{73E8ABFF86DFEDF0}" {
+     m_sName "Signal Hill Clear (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{828220EF04680F31}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{325F1262AE84027F}" {
+       m_sEventName "Signal Hill Clear"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DE57E66B3CD497C6}" {
+       m_sTitle "All Spearhead Callsigns this is FAC"
+       m_sMessage "Ground observers report significant Soviet casualities at Signal Hill."\
+       ""\
+       "Good work."\
+       ""\
+       "Standby for next tasking."\
+       ""\
+       "Over."
+      }
+     }
+    }
+    GC_Event "{E73ED791105F0983}" {
+     m_sName "Signal Hill Clear (25s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{FD002DE07C901081}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{7423A34F8233CFAC}" {
+       m_sEventName "Signal Hill Clear"
+      }
+     }
+     m_Advanced GC_EventOptions "{A52949979ACC2934}" {
+      m_fDelay 25
+     }
+     m_aActions {
+      GC_MessageAction "{25C740F017568B1F}" {
+       m_sTitle "All Spearhead Callsigns this is FAC"
+       m_sMessage "Troops in contact at Beauregard are requesting support against Soviet Mechanized Infantry holding the town. "\
+       "Break. "\
+       "Friendly troops marking positions with green smoke. All weapons cleared hot."\
+       ""\
+       "FAC Out."
+      }
+     }
+    }
+    GC_Event "{ACDF6F9E51A25EB3}" {
+     m_sName "Soviet Comms Destroyed"
+     m_aConditions {
+      GC_GameModeStateCondition "{6E21AC0AC519232E}" {
+       m_eGameModeState GAME
+      }
+      GC_ConditionGroup "{7B3BB18739EBAB07}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{D84D9B9D97299D0D}" {
+         m_sFlagName "SH_Destroyed_1"
+        }
+        GC_MissionFlagCondition "{C148941B33D72270}" {
+         m_sFlagName "SH_Destroyed_2"
+        }
+        GC_MissionFlagCondition "{7BCE3F2921FC9322}" {
+         m_sFlagName "SH_Destroyed_3"
+        }
+        GC_MissionFlagCondition "{0D745E070DC50DCE}" {
+         m_sFlagName "SH_Destroyed_4"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5C0AEBF6A3BB5707}" {
+       m_sMessage "Soviet Comms Destroyed"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{865791A7B3284BB8}" {
+     m_sName "Soviet Comms Destroyed (10s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{51A27E18B1D53FEB}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionEventCondition "{6C69F3DCD6EE72FE}" {
+       m_sEventName "Soviet Comms Destroyed"
+      }
+     }
+     m_Advanced GC_EventOptions "{B3100788C1B47422}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_MessageAction "{87F4BDDF73C2CD2A}" {
+       m_sTitle "All Spearhead Callsigns this is FAC"
+       m_sMessage "Reports indicate Soviet communications have been disrupted."\
+       "Clean up remaining troops at signal hill and await next tasking. "\
+       ""\
+       "Over."
+      }
+     }
+    }
+    GC_Event "{C52738C643DDCC76}" {
+     m_sName "Beauregard Clear"
+     m_aConditions {
+      GC_ConditionGroup "{9E8FD927E314FE21}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{93A2B6DD08DB567F}" {
+         m_sArea "Signal_Hill_Clear"
+         m_Targets GC_NamedAreaTargets "{4EC00DE2BC58761D}" {
+          m_aNames {
+           "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+          }
+          m_bCountMissingAsOutside 1
+          m_bExcludeDestroyed 1
+         }
+         m_Requirement GC_LivingProportion "{C5B5111510BF4DBB}" {
+          m_fRequiredProportion 0.2
+          m_bWholeNumberQuotient 1
+          m_bAtMost 1
+         }
+         m_Capture GC_AreaCaptureOptions "{AEA397ACAA8F84AB}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{3383EE5417F1DEE8}" {
+         m_sArea "Beauredard_Clear"
+         m_Targets GC_CharacterAreaTargets "{BC550312575D36EC}" {
+          m_iWho 2
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{C98AA20C6418BEDE}" {
+          m_fRequiredShare 0.2
+          m_bAtMost 1
+         }
+         m_Capture GC_AreaCaptureOptions "{F304E2008D1F7F0E}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3CF66A1F05FE8B7C}" {
+       m_sMessage "Beauregard Clear"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0549D7DD09E1DC65}" {
+     m_sName "Beauregard Clear (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5FE72C9F0E9E005A}" {
+       m_sEventName "Beauregard Clear"
+      }
+     }
+     m_Advanced GC_EventOptions "{44D156520A5D2891}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{CC00DCE83626AE3D}" {
+       m_sTitle "All Spearhead Callsigns this is FAC"
+       m_sMessage "Soviet troops have taken signifigant casualties and our Marines have secured the town of Beauregard."\
+       "Return to the USS Concrete to rearm and refuel."\
+       ""\
+       "Good work today."\
+       ""\
+       "FAC Out."
+      }
+     }
+    }
+    GC_Event "{70F833AF685DA5D6}" {
+     m_sName "US Victory"
+     m_aConditions {
+      GC_ConditionGroup "{2AF9E30D8393C1A9}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{3B41F2D1589F38FE}" {
+         m_sArea "Signal_Hill_Clear"
+         m_Targets GC_NamedAreaTargets "{23A42D175B170126}" {
+          m_aNames {
+           "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+          }
+          m_bCountMissingAsOutside 1
+          m_bExcludeDestroyed 1
+         }
+         m_Requirement GC_LivingProportion "{31C42D8AABBD7C22}" {
+          m_fRequiredProportion 0.2
+          m_bWholeNumberQuotient 1
+          m_bAtMost 1
+         }
+         m_Capture GC_AreaCaptureOptions "{3DBBE63F055F61EC}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{9869F3DF227E3FE0}" {
+         m_sArea "Beauredard_Clear"
+         m_Targets GC_CharacterAreaTargets "{DCB47510A9DA66FB}" {
+          m_iWho 2
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{68D9FC6EFC519292}" {
+          m_fRequiredShare 0.2
+          m_bAtMost 1
+         }
+         m_Capture GC_AreaCaptureOptions "{5950D97F873D4FBA}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F52697A528492AC0}" {
+       m_sMessage "US Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D7DFE7189B83D307}" {
+     m_sName "US Victory (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{04B6AB5730EB7168}" {
+       m_sEventName "US Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{BEA1CC7E8CA9F60B}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_MessageAction "{97801119345DABE5}" {
+       m_sTitle "US Victory"
+       m_sMessage "Spearhead squad has succeed in providing air support and the US has taken a significant foothold on the island of Arland."
+      }
+     }
+    }
+    GC_Event "{6904F669127B4606}" {
+     m_sName "US Defeat"
+     m_aConditions {
+      GC_CustomScriptCondition "{1EC981B0500DD231}" {
+       m_Script GC_PeakFactionPopulationCheck "{DA9B77A36D26910D}" {
+        m_sFaction "US"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{226CD15559B5E9B7}" {
+       m_sMessage "US Defeat"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AC12FC47DE0DAF92}" {
+     m_sName "US Defeat (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{834A3AB569AFF3D3}" {
+       m_sEventName "US Defeat"
+      }
+     }
+     m_Advanced GC_EventOptions "{F82E6233D5888B26}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_EndMissionAction "{92A6B90EF47F97D8}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{258C7DAABAA45205}" {
+     m_sName "GC_MigratedSpawn_BE6EF3E08B5EBCB6 (420s)"
+     m_Advanced GC_EventOptions "{F274458CB33F5BC5}" {
+      m_fDelay 420
+     }
+     m_aActions {
+      GC_SpawnAction "{1F6305B80BB7B991}" {
+       m_Spawn GC_PrefabSpawn "{917AC05E2E9527FB}" {
+        m_sLocation "US_BlueSmoke_FARP1"
+        m_sPrefab "{2D854F52D8D6B31E}Prefabs/Systems/Smoke/Wrapper_Smoke_Purple.et"
+       }
+      }
+     }
+    }
+    GC_Event "{5B6AC3F6E87F33C5}" {
+     m_sName "GC_MigratedSpawn_BE6EF3E08B5EBCB6 (510s)"
+     m_Advanced GC_EventOptions "{03D4F1A054050B9E}" {
+      m_fDelay 510
+     }
+     m_aActions {
+      GC_SpawnAction "{89B4B7CF650A9E68}" {
+       m_Spawn GC_PrefabSpawn "{2F42577A7E13C028}" {
+        m_sLocation "US_BlueSmoke_FARP1"
+        m_sPrefab "{2D854F52D8D6B31E}Prefabs/Systems/Smoke/Wrapper_Smoke_Purple.et"
+       }
+      }
+     }
+    }
+    GC_Event "{CC5887C99D1FA2BA}" {
+     m_sName "GC_MigratedSpawn_BE6EF3E08B5EBCB6 (630s)"
+     m_Advanced GC_EventOptions "{6D5F2C444248B0C7}" {
+      m_fDelay 630
+     }
+     m_aActions {
+      GC_SpawnAction "{E61EC5E7EF9BA5FC}" {
+       m_Spawn GC_PrefabSpawn "{52877CD5BD7AF07D}" {
+        m_sLocation "US_BlueSmoke_FARP1"
+        m_sPrefab "{2D854F52D8D6B31E}Prefabs/Systems/Smoke/Wrapper_Smoke_Purple.et"
+       }
+      }
+     }
+    }
+    GC_Event "{9EE2A186EE94417D}" {
+     m_sName "GC_MigratedSpawn_BE6EF3E08B5EBCB6 (750s)"
+     m_Advanced GC_EventOptions "{24981BE232799D37}" {
+      m_fDelay 750
+     }
+     m_aActions {
+      GC_SpawnAction "{2F6BE9FA86CCEBF5}" {
+       m_Spawn GC_PrefabSpawn "{B57A564505007F08}" {
+        m_sLocation "US_BlueSmoke_FARP1"
+        m_sPrefab "{2D854F52D8D6B31E}Prefabs/Systems/Smoke/Wrapper_Smoke_Purple.et"
+       }
+      }
+     }
+    }
+    GC_Event "{9B02225C83B175CD}" {
+     m_sName "GC_MigratedSpawn_BE6EF3E08B5EBCB6 (870s)"
+     m_Advanced GC_EventOptions "{FE6C58959298CEEB}" {
+      m_fDelay 870
+     }
+     m_aActions {
+      GC_SpawnAction "{CD9BDC815A15903E}" {
+       m_Spawn GC_PrefabSpawn "{3426510F83A19068}" {
+        m_sLocation "US_BlueSmoke_FARP1"
+        m_sPrefab "{2D854F52D8D6B31E}Prefabs/Systems/Smoke/Wrapper_Smoke_Purple.et"
+       }
+      }
+     }
+    }
+    GC_Event "{1E63E1BD98C2235B}" {
+     m_sName "GC_MigratedSpawn_BE6EF3E08B5EBCB6 (990s)"
+     m_Advanced GC_EventOptions "{5447018428110FAF}" {
+      m_fDelay 990
+     }
+     m_aActions {
+      GC_SpawnAction "{97572088CC50369D}" {
+       m_Spawn GC_PrefabSpawn "{225E771793DFEBA4}" {
+        m_sLocation "US_BlueSmoke_FARP1"
+        m_sPrefab "{2D854F52D8D6B31E}Prefabs/Systems/Smoke/Wrapper_Smoke_Purple.et"
+       }
+      }
+     }
+    }
+    GC_Event "{F06CDD03147F1BF0}" {
+     m_sName "GC_MigratedSpawn_BE6EF3E08B5EBCB6 (1110s)"
+     m_Advanced GC_EventOptions "{419E50775E41ED99}" {
+      m_fDelay 1110
+     }
+     m_aActions {
+      GC_SpawnAction "{2FB339116EF07CD8}" {
+       m_Spawn GC_PrefabSpawn "{20CD9FC27DAEA496}" {
+        m_sLocation "US_BlueSmoke_FARP1"
+        m_sPrefab "{2D854F52D8D6B31E}Prefabs/Systems/Smoke/Wrapper_Smoke_Purple.et"
+       }
+      }
+     }
+    }
+    GC_Event "{E27296D9654EB3F5}" {
+     m_sName "GC_MigratedSpawn_BE6EF3E08B5EBCB6 (1230s)"
+     m_Advanced GC_EventOptions "{78A96CBE3D615A93}" {
+      m_fDelay 1230
+     }
+     m_aActions {
+      GC_SpawnAction "{B98882FBEE3B182B}" {
+       m_Spawn GC_PrefabSpawn "{85A95B53DFE08905}" {
+        m_sLocation "US_BlueSmoke_FARP1"
+        m_sPrefab "{2D854F52D8D6B31E}Prefabs/Systems/Smoke/Wrapper_Smoke_Purple.et"
+       }
+      }
+     }
+    }
+    GC_Event "{643801F6B4ECDB6F}" {
+     m_sName "GC_MigratedSpawn_5604A7F0AA12781F (420s)"
+     m_Advanced GC_EventOptions "{A9CAA506258DAE7D}" {
+      m_fDelay 420
+     }
+     m_aActions {
+      GC_SpawnAction "{2F84DFDCD4DDC36E}" {
+       m_Spawn GC_PrefabSpawn "{432CBDB6F08F6600}" {
+        m_sLocation "US_BlueSmoke_FARP2"
+        m_sPrefab "{2D854F52D8D6B31E}Prefabs/Systems/Smoke/Wrapper_Smoke_Purple.et"
+       }
+      }
+     }
+    }
+    GC_Event "{E5D952DE5D1AA62F}" {
+     m_sName "GC_MigratedSpawn_5604A7F0AA12781F (540s)"
+     m_Advanced GC_EventOptions "{49FEB715AA1F1D0E}" {
+      m_fDelay 540
+     }
+     m_aActions {
+      GC_SpawnAction "{14675E0C734E6895}" {
+       m_Spawn GC_PrefabSpawn "{D0B755D06499DB67}" {
+        m_sLocation "US_BlueSmoke_FARP2"
+        m_sPrefab "{2D854F52D8D6B31E}Prefabs/Systems/Smoke/Wrapper_Smoke_Purple.et"
+       }
+      }
+     }
+    }
+    GC_Event "{E70FC2F609D21FFE}" {
+     m_sName "GC_MigratedSpawn_5604A7F0AA12781F (660s)"
+     m_Advanced GC_EventOptions "{5654A7C7F58E88B4}" {
+      m_fDelay 660
+     }
+     m_aActions {
+      GC_SpawnAction "{8A91642A95D59BA7}" {
+       m_Spawn GC_PrefabSpawn "{5D18AD0FCD5DC1BB}" {
+        m_sLocation "US_BlueSmoke_FARP2"
+        m_sPrefab "{2D854F52D8D6B31E}Prefabs/Systems/Smoke/Wrapper_Smoke_Purple.et"
+       }
+      }
+     }
+    }
+    GC_Event "{AA6E4CD99AC84E64}" {
+     m_sName "GC_MigratedSpawn_5604A7F0AA12781F (780s)"
+     m_Advanced GC_EventOptions "{02944867213DE37C}" {
+      m_fDelay 780
+     }
+     m_aActions {
+      GC_SpawnAction "{B5DE4BFC801B33A6}" {
+       m_Spawn GC_PrefabSpawn "{8A9A42E39D549CDD}" {
+        m_sLocation "US_BlueSmoke_FARP2"
+        m_sPrefab "{2D854F52D8D6B31E}Prefabs/Systems/Smoke/Wrapper_Smoke_Purple.et"
+       }
+      }
+     }
+    }
+    GC_Event "{7A1DA96177E20923}" {
+     m_sName "GC_MigratedSpawn_5604A7F0AA12781F (900s)"
+     m_Advanced GC_EventOptions "{B4286A6C11E3AE45}" {
+      m_fDelay 900
+     }
+     m_aActions {
+      GC_SpawnAction "{BE1E61B750132A0C}" {
+       m_Spawn GC_PrefabSpawn "{D8D23BB4A8141AD3}" {
+        m_sLocation "US_BlueSmoke_FARP2"
+        m_sPrefab "{2D854F52D8D6B31E}Prefabs/Systems/Smoke/Wrapper_Smoke_Purple.et"
+       }
+      }
+     }
+    }
+    GC_Event "{865F053967BA55A8}" {
+     m_sName "GC_MigratedSpawn_5604A7F0AA12781F (1020s)"
+     m_Advanced GC_EventOptions "{D9044941400190ED}" {
+      m_fDelay 1020
+     }
+     m_aActions {
+      GC_SpawnAction "{0A7DF1D99A97E510}" {
+       m_Spawn GC_PrefabSpawn "{2681267A7E6CCBB3}" {
+        m_sLocation "US_BlueSmoke_FARP2"
+        m_sPrefab "{2D854F52D8D6B31E}Prefabs/Systems/Smoke/Wrapper_Smoke_Purple.et"
+       }
+      }
+     }
+    }
+    GC_Event "{4D8231A539C7B99F}" {
+     m_sName "GC_MigratedSpawn_5604A7F0AA12781F (1140s)"
+     m_Advanced GC_EventOptions "{135DA55DDB179BE4}" {
+      m_fDelay 1140
+     }
+     m_aActions {
+      GC_SpawnAction "{336EC71F7B6A2CC5}" {
+       m_Spawn GC_PrefabSpawn "{306320C1FDA1043E}" {
+        m_sLocation "US_BlueSmoke_FARP2"
+        m_sPrefab "{2D854F52D8D6B31E}Prefabs/Systems/Smoke/Wrapper_Smoke_Purple.et"
+       }
+      }
+     }
+    }
+    GC_Event "{95D2AF53FB8AB0D8}" {
+     m_sName "GC_MigratedSpawn_5604A7F0AA12781F (1260s)"
+     m_Advanced GC_EventOptions "{E98D09B54E9E2D34}" {
+      m_fDelay 1260
+     }
+     m_aActions {
+      GC_SpawnAction "{6E48BD6DE8A4B143}" {
+       m_Spawn GC_PrefabSpawn "{D7DEE053F0B11808}" {
+        m_sLocation "US_BlueSmoke_FARP2"
+        m_sPrefab "{2D854F52D8D6B31E}Prefabs/Systems/Smoke/Wrapper_Smoke_Purple.et"
+       }
+      }
+     }
+    }
+    GC_Event "{B6DD37C205EE66C7}" {
+     m_sName "GC_MigratedSpawn_F0B2FFA1642046C7"
+     m_aConditions {
+      GC_AreaCondition "{EE80DA49E086FF47}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{3274BE1B14694055}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{91CF37D333E5C2B1}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{954B43324F23C3F8}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A869566F804CBBA6}" {
+       m_sMessage "GC_MigratedSpawn_F0B2FFA1642046C7"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{114C89AF6D12D057}" {
+     m_sName "GC_MigratedSpawn_F0B2FFA1642046C7 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8480411A058AAAAA}" {
+       m_sEventName "GC_MigratedSpawn_F0B2FFA1642046C7"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{114C89AF6D12D057}" {
+       m_Spawn GC_PrefabSpawn "{21E92AC4DB20E8CF}" {
+        m_sLocation "US_GreenSmoke_1"
+        m_sPrefab "{6BDBEFF5CE6E2F28}Prefabs/Systems/Smoke/Wrapper_Smoke_Green.et"
+       }
+      }
+     }
+    }
+    GC_Event "{D634F1038B9B5DC5}" {
+     m_sName "GC_MigratedSpawn_4EA9CEA91D19CF7E"
+     m_aConditions {
+      GC_AreaCondition "{3835724C40C86DA0}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{DA5D6C61B9FCFF39}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{71CC6135906AB2E2}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{CD6821515F5DFFC1}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{83EB410B1BFDC051}" {
+       m_sMessage "GC_MigratedSpawn_4EA9CEA91D19CF7E"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{848BA67B09B010AC}" {
+     m_sName "GC_MigratedSpawn_4EA9CEA91D19CF7E (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{47978FE526061927}" {
+       m_sEventName "GC_MigratedSpawn_4EA9CEA91D19CF7E"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{848BA67B09B010AC}" {
+       m_Spawn GC_PrefabSpawn "{9CA9B17C1C824F0A}" {
+        m_sLocation "US_GreenSmoke_2"
+        m_sPrefab "{6BDBEFF5CE6E2F28}Prefabs/Systems/Smoke/Wrapper_Smoke_Green.et"
+       }
+      }
+     }
+    }
+    GC_Event "{A557FEFEBD33D10B}" {
+     m_sName "GC_MigratedSpawn_42A9B2A765FBB9C0"
+     m_aConditions {
+      GC_AreaCondition "{483D7125E954EB72}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{C2B6E2916F44AED7}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{D57AE995DD7DCC92}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{9644AADDDADDAF13}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{356FC48EDD982320}" {
+       m_sMessage "GC_MigratedSpawn_42A9B2A765FBB9C0"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{273ADCE0B7EC0153}" {
+     m_sName "GC_MigratedSpawn_42A9B2A765FBB9C0 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E3F819EB67030127}" {
+       m_sEventName "GC_MigratedSpawn_42A9B2A765FBB9C0"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{273ADCE0B7EC0153}" {
+       m_Spawn GC_PrefabSpawn "{02B272747C9482B5}" {
+        m_sLocation "US_GreenSmoke_3"
+        m_sPrefab "{6BDBEFF5CE6E2F28}Prefabs/Systems/Smoke/Wrapper_Smoke_Green.et"
+       }
+      }
+     }
+    }
+    GC_Event "{BFA2814D8F1FC181}" {
+     m_sName "GC_MigratedSpawn_D37F4716D0F55389"
+     m_aConditions {
+      GC_AreaCondition "{4FC6DEBC6BAC6DD3}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{D6FB67B69CD0CA6D}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{E55829FD0FBD78F8}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{245F6374F8C28DB6}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E82DB719518D4ABA}" {
+       m_sMessage "GC_MigratedSpawn_D37F4716D0F55389"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{44CFDBF0E7305137}" {
+     m_sName "GC_MigratedSpawn_D37F4716D0F55389 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{547534BB61E4FAF2}" {
+       m_sEventName "GC_MigratedSpawn_D37F4716D0F55389"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{44CFDBF0E7305137}" {
+       m_Spawn GC_PrefabSpawn "{2ACAAC09A436E929}" {
+        m_sLocation "US_GreenSmoke_4"
+        m_sPrefab "{6BDBEFF5CE6E2F28}Prefabs/Systems/Smoke/Wrapper_Smoke_Green.et"
+       }
+      }
+     }
+    }
+    GC_Event "{FD409C505985D36E}" {
+     m_sName "GC_MigratedSpawn_E40625E6CED9F2C0"
+     m_aConditions {
+      GC_AreaCondition "{DCB139E6DCE1AAB1}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{D91766CC69FB2A44}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{0E7B42C70B64252D}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{4B2D49C655747AEF}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DC7C78EEBA3FF2C3}" {
+       m_sMessage "GC_MigratedSpawn_E40625E6CED9F2C0"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7705592E9928F92E}" {
+     m_sName "GC_MigratedSpawn_E40625E6CED9F2C0 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{286EA53CFF4860F5}" {
+       m_sEventName "GC_MigratedSpawn_E40625E6CED9F2C0"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{7705592E9928F92E}" {
+       m_Spawn GC_PrefabSpawn "{3805D8710A9BE74A}" {
+        m_sLocation "US_GreenSmoke_5"
+        m_sPrefab "{6BDBEFF5CE6E2F28}Prefabs/Systems/Smoke/Wrapper_Smoke_Green.et"
+       }
+      }
+     }
+    }
+    GC_Event "{29D1AF7C293E47C5}" {
+     m_sName "GC_MigratedSpawn_8DDC2A253A7C7FD4"
+     m_aConditions {
+      GC_AreaCondition "{1CBC17ED441601D7}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{8EA21FD6E228F54F}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{F27BE552624AF241}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{AABA9542AD5278E4}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{823ADCE3FCE594BF}" {
+       m_sMessage "GC_MigratedSpawn_8DDC2A253A7C7FD4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{EF0012FEC0684723}" {
+     m_sName "GC_MigratedSpawn_8DDC2A253A7C7FD4 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3B430041CE95E558}" {
+       m_sEventName "GC_MigratedSpawn_8DDC2A253A7C7FD4"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{EF0012FEC0684723}" {
+       m_Spawn GC_PrefabSpawn "{937977C4543AFDDB}" {
+        m_sLocation "US_GreenSmoke_6"
+        m_sPrefab "{6BDBEFF5CE6E2F28}Prefabs/Systems/Smoke/Wrapper_Smoke_Green.et"
+       }
+      }
+     }
+    }
+    GC_Event "{AD74479C09E61A90}" {
+     m_sName "GC_MigratedSpawn_8C7F322574B4B518"
+     m_aConditions {
+      GC_AreaCondition "{85B0DEB4D14088D4}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{2A5BE539D562A432}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{01C3233A90D224B3}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{3CF07D9DCCB5F08C}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{05A0DCC8A8B55A15}" {
+       m_sMessage "GC_MigratedSpawn_8C7F322574B4B518"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7D04DF209AD31791}" {
+     m_sName "GC_MigratedSpawn_8C7F322574B4B518 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8EB7B994368B7D50}" {
+       m_sEventName "GC_MigratedSpawn_8C7F322574B4B518"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{7D04DF209AD31791}" {
+       m_Spawn GC_PrefabSpawn "{A15AEC6A666D34D1}" {
+        m_sLocation "US_GreenSmoke_7"
+        m_sPrefab "{6BDBEFF5CE6E2F28}Prefabs/Systems/Smoke/Wrapper_Smoke_Green.et"
+       }
+      }
+     }
+    }
+    GC_Event "{DCD29C19AA82CFCD}" {
+     m_sName "GC_MigratedSpawn_86BE23E58144F22A"
+     m_aConditions {
+      GC_AreaCondition "{B625A31EA35D7D02}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{707EC0AE6057A9EB}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{FAA8A33A5A336730}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{9DA7DD7FA36A18E6}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3D338A13921921F6}" {
+       m_sMessage "GC_MigratedSpawn_86BE23E58144F22A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1918CF21312441BB}" {
+     m_sName "GC_MigratedSpawn_86BE23E58144F22A (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B1DB6DFE88311C57}" {
+       m_sEventName "GC_MigratedSpawn_86BE23E58144F22A"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{1918CF21312441BB}" {
+       m_Spawn GC_PrefabSpawn "{62849009FA7E801F}" {
+        m_sLocation "US_GreenSmoke_8"
+        m_sPrefab "{6BDBEFF5CE6E2F28}Prefabs/Systems/Smoke/Wrapper_Smoke_Green.et"
+       }
+      }
+     }
+    }
+    GC_Event "{10F65F38929F134B}" {
+     m_sName "GC_MigratedSpawn_63C60363A5314DC4"
+     m_aConditions {
+      GC_AreaCondition "{750B270700A1B866}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{054EC9B4EBA75F80}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{273F2752CCFE72A0}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{8100EE04AAA41A5C}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{75593CCE79CD218C}" {
+       m_sMessage "GC_MigratedSpawn_63C60363A5314DC4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B4F6D097F29F3152}" {
+     m_sName "GC_MigratedSpawn_63C60363A5314DC4 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B91E211E142A8569}" {
+       m_sEventName "GC_MigratedSpawn_63C60363A5314DC4"
+      }
+     }
+     m_Advanced GC_EventOptions "{FBC942C679F2FFBB}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{B297E90EA670E81A}" {
+       m_Spawn GC_AIGroupSpawn "{E33F77B2FA2DC17E}" {
+        m_sLocation "USSR_Inf_3"
+        m_sPrefab "{E552DABF3636C2AD}Prefabs/Groups/OPFOR/Group_USSR_RifleSquad.et"
+        m_aWaypoints {
+         "BGWP_Defend_02"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{042AC2984039F32B}" {
+     m_sName "GC_MigratedSpawn_5FA9996EBC75AE34"
+     m_aConditions {
+      GC_AreaCondition "{69997E954344F987}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{20AA70D9C30FACAE}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{F563D874A3B13B02}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{9EBF8E454A3552CA}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{64B6FC52C93E2F5F}" {
+       m_sMessage "GC_MigratedSpawn_5FA9996EBC75AE34"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{04EBA071D7B52ECA}" {
+     m_sName "GC_MigratedSpawn_5FA9996EBC75AE34 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{EB1FB87ED94ACE79}" {
+       m_sEventName "GC_MigratedSpawn_5FA9996EBC75AE34"
+      }
+     }
+     m_Advanced GC_EventOptions "{25833686114691C8}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{E7DAE2ED76ECBC8A}" {
+       m_Spawn GC_AIGroupSpawn "{00FF854005C5B293}" {
+        m_sLocation "USSR_Inf_1"
+        m_sPrefab "{E552DABF3636C2AD}Prefabs/Groups/OPFOR/Group_USSR_RifleSquad.et"
+        m_aWaypoints {
+         "BGWP_Defend_01"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{0522D0C0B4794B9F}" {
+     m_sName "GC_MigratedSpawn_46B7A63DB039FB4D"
+     m_aConditions {
+      GC_AreaCondition "{FB4F6758820FCB26}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{006B62DF8E69BB41}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{5BA8559CD591592A}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{402FF12C4A26BB13}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F48EB0C2CEEC0695}" {
+       m_sMessage "GC_MigratedSpawn_46B7A63DB039FB4D"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5BB583F88A612B61}" {
+     m_sName "GC_MigratedSpawn_46B7A63DB039FB4D (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{831644F3B1400522}" {
+       m_sEventName "GC_MigratedSpawn_46B7A63DB039FB4D"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{5BB583F88A612B61}" {
+       m_Spawn GC_AIGroupSpawn "{E04A7C9E05A11C5C}" {
+        m_sLocation "USSR_Inf_2"
+        m_sPrefab "{E552DABF3636C2AD}Prefabs/Groups/OPFOR/Group_USSR_RifleSquad.et"
+        m_aWaypoints {
+         "BGWP_Defend_04"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{34A79CFCBB644E0F}" {
+     m_sName "GC_MigratedSpawn_C8F40143AC1A996D"
+     m_aConditions {
+      GC_AreaCondition "{1A726292E22781E5}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{39A55824CEAD58EB}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{2D19DBC996D6623A}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{89EA4AD238ED476F}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A2A4A3187CF6F5B1}" {
+       m_sMessage "GC_MigratedSpawn_C8F40143AC1A996D"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9CC0E14FDDEDA3EE}" {
+     m_sName "GC_MigratedSpawn_C8F40143AC1A996D (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6E167C011E457A45}" {
+       m_sEventName "GC_MigratedSpawn_C8F40143AC1A996D"
+      }
+     }
+     m_Advanced GC_EventOptions "{1369BAE0B57841AA}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_SpawnAction "{547B7EB002D09374}" {
+       m_Spawn GC_AIGroupSpawn "{43A501A50D87A05D}" {
+        m_sLocation "USSR_Inf_4"
+        m_sPrefab "{E552DABF3636C2AD}Prefabs/Groups/OPFOR/Group_USSR_RifleSquad.et"
+        m_aWaypoints {
+         "BGWP_Defend_03"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{799A6F2829CEFBD5}" {
+     m_sName "GC_MigratedSpawn_344550AA9E0C6523"
+     m_aConditions {
+      GC_AreaCondition "{2933671C7F131C2F}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{68E9941007E74934}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{F40E08EC63317625}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{7CA48B2740CB0109}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1EA399B07C29FDF4}" {
+       m_sMessage "GC_MigratedSpawn_344550AA9E0C6523"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E1564DEB4AA74C1E}" {
+     m_sName "GC_MigratedSpawn_344550AA9E0C6523 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C2943338D6B49509}" {
+       m_sEventName "GC_MigratedSpawn_344550AA9E0C6523"
+      }
+     }
+     m_Advanced GC_EventOptions "{2C3C57DBB6EF65E8}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{9E184CDA48767D91}" {
+       m_Spawn GC_CrewedVehicleSpawn "{6CAE75FC981EE213}" {
+        m_sLocation "USSR_BTR_3"
+        m_sPrefab "{AAB3119124C9167A}Prefabs/Vehicles/Wheeled/BTR70/USSR/BTR70_USSR.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{D94DDCE601047EC9}" {
+          m_aStations {
+           GC_SpawnCrewStation "{1F71B946E9563724}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{9FFEF10757E742EB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Crew.et"
+             "{9FFEF10757E742EB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Crew.et"
+             "{9FFEF10757E742EB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Crew.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{20CE8A3536B5B296}" {
+     m_sName "GC_MigratedSpawn_1E54A25AAC6FA8A5"
+     m_aConditions {
+      GC_AreaCondition "{D4E7EBEB922BA6EE}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{D420301F625B451E}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{2C0667E6F3286B96}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{4E3A33166117AFF9}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4708D9171D2F9605}" {
+       m_sMessage "GC_MigratedSpawn_1E54A25AAC6FA8A5"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D1D7DE060FAD4F16}" {
+     m_sName "GC_MigratedSpawn_1E54A25AAC6FA8A5 (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{EA1B8F2E7C20E30F}" {
+       m_sEventName "GC_MigratedSpawn_1E54A25AAC6FA8A5"
+      }
+     }
+     m_Advanced GC_EventOptions "{647AB846AB8B2905}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_SpawnAction "{D3408A422EAFFCD4}" {
+       m_Spawn GC_CrewedVehicleSpawn "{3399BC352A67137C}" {
+        m_sLocation "USSR_BTR_1"
+        m_sPrefab "{1C5FE7B7FF49BB8D}Prefabs/Vehicles/Wheeled/BTR70/BTR70_Base.et"
+        m_sEntityName "BTR 1"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{748213830DF57CBB}" {
+          m_aStations {
+           GC_SpawnCrewStation "{361F73C4F01DBB05}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{9FFEF10757E742EB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Crew.et"
+             "{9FFEF10757E742EB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Crew.et"
+             "{9FFEF10757E742EB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Crew.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "BGWP_Defend_Harbor"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3A7FA861CD55F231}" {
+     m_sName "GC_MigratedSpawn_EC2378872EA5DD2F"
+     m_aConditions {
+      GC_AreaCondition "{7E5257A6F4937502}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{D66BA165B7BAF581}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{BA9312E050F8E3B7}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{629B23DEE1A4890F}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6894F3D01F960341}" {
+       m_sMessage "GC_MigratedSpawn_EC2378872EA5DD2F"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6BF9F4598029CF8F}" {
+     m_sName "GC_MigratedSpawn_EC2378872EA5DD2F (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{023FA61D53D269FF}" {
+       m_sEventName "GC_MigratedSpawn_EC2378872EA5DD2F"
+      }
+     }
+     m_Advanced GC_EventOptions "{0BDE40938A0F5D09}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_SpawnAction "{59718AE168111083}" {
+       m_Spawn GC_CrewedVehicleSpawn "{1DAEA263AF7CC364}" {
+        m_sLocation "USSR_BTR_2"
+        m_sPrefab "{AAB3119124C9167A}Prefabs/Vehicles/Wheeled/BTR70/USSR/BTR70_USSR.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{236FAF535F2EDEFE}" {
+          m_aStations {
+           GC_SpawnCrewStation "{2C6ADE9DD84650F1}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{9FFEF10757E742EB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Crew.et"
+             "{9FFEF10757E742EB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Crew.et"
+             "{9FFEF10757E742EB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Crew.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B511E21EF33A609B}" {
+     m_sName "GC_MigratedSpawn_1B6FBD3FE836A976"
+     m_aConditions {
+      GC_AreaCondition "{013CC0048BF3A206}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{E94E13833B8CED6B}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{9DDBE3753C500F3C}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{492008698381CA43}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C031CDAA81E4D900}" {
+       m_sMessage "GC_MigratedSpawn_1B6FBD3FE836A976"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0F46B62E6A485F2C}" {
+     m_sName "GC_MigratedSpawn_1B6FBD3FE836A976 (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9B1A3AD6CDA4F6FA}" {
+       m_sEventName "GC_MigratedSpawn_1B6FBD3FE836A976"
+      }
+     }
+     m_Advanced GC_EventOptions "{5B9B1F231D259648}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_SpawnAction "{DFC645AA876298C2}" {
+       m_Spawn GC_AIGroupSpawn "{2D18B7F047BE6A24}" {
+        m_sLocation "USSR_Inf_5"
+        m_sPrefab "{E552DABF3636C2AD}Prefabs/Groups/OPFOR/Group_USSR_RifleSquad.et"
+        m_aWaypoints {
+         "BGWP_Defend_Harbor"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F466A7EBFE94FF0A}" {
+     m_sName "GC_MigratedSpawn_2682CE2358EED600"
+     m_aConditions {
+      GC_AreaCondition "{9019F9F3D5CCA942}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{B828EED44BA6DCB7}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{A5F725DE845EE1C7}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{500CBFDF59A7AE29}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3794E68992EC1C08}" {
+       m_sMessage "GC_MigratedSpawn_2682CE2358EED600"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FC09AFE7914CE9F1}" {
+     m_sName "GC_MigratedSpawn_2682CE2358EED600 (20s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4CFFD4D5D4EFDC3C}" {
+       m_sEventName "GC_MigratedSpawn_2682CE2358EED600"
+      }
+     }
+     m_Advanced GC_EventOptions "{4E2715F32810C4CC}" {
+      m_fDelay 20
+     }
+     m_aActions {
+      GC_SpawnAction "{A55E8B2C3AD82706}" {
+       m_Spawn GC_AIGroupSpawn "{629C665ABD1B246D}" {
+        m_sLocation "USSR_Inf_6"
+        m_sPrefab "{E552DABF3636C2AD}Prefabs/Groups/OPFOR/Group_USSR_RifleSquad.et"
+        m_aWaypoints {
+         "BGWP_Defend_Harbor"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{0C86477FF4E20291}" {
+     m_sName "GC_MigratedSpawn_84A4877603317F18"
+     m_aConditions {
+      GC_AreaCondition "{CA8E6777CAA288CE}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{8093B7CE82B0EBA0}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{64459BAD92B631B3}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{92F05001B25E7D65}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0D7757321670B98B}" {
+       m_sMessage "GC_MigratedSpawn_84A4877603317F18"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E2927F8580EE4C49}" {
+     m_sName "GC_MigratedSpawn_84A4877603317F18 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C57EA7F4DBCC615D}" {
+       m_sEventName "GC_MigratedSpawn_84A4877603317F18"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{E2927F8580EE4C49}" {
+       m_Spawn GC_AIGroupSpawn "{9680CF61D0650E43}" {
+        m_sLocation "USSR_Inf_7"
+        m_sPrefab "{E552DABF3636C2AD}Prefabs/Groups/OPFOR/Group_USSR_RifleSquad.et"
+        m_aWaypoints {
+         "BGWP_Defend_04"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E9F3770C77696740}" {
+     m_sName "GC_MigratedSpawn_AED942AD7A133BB8"
+     m_aConditions {
+      GC_AreaCondition "{24AB72FF754A6752}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{ACDE3BCACE6619FA}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{776314198DCE8F50}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{D6F9EFE4EF765092}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{79FFFBF11AF1FFBA}" {
+       m_sMessage "GC_MigratedSpawn_AED942AD7A133BB8"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B26B59D6FA4F7A1B}" {
+     m_sName "GC_MigratedSpawn_AED942AD7A133BB8 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{136F6184F7F0CEC2}" {
+       m_sEventName "GC_MigratedSpawn_AED942AD7A133BB8"
+      }
+     }
+     m_Advanced GC_EventOptions "{E4E86EFEBACB90F1}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{28F911C9F1CB5DA9}" {
+       m_Spawn GC_CrewedVehicleSpawn "{4FE0A350215C742E}" {
+        m_sLocation "USSR_BTR_4"
+        m_sPrefab "{AAB3119124C9167A}Prefabs/Vehicles/Wheeled/BTR70/USSR/BTR70_USSR.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{DA89E3EA8C1849E0}" {
+          m_aStations {
+           GC_SpawnCrewStation "{32C1444A86B089E7}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{9FFEF10757E742EB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Crew.et"
+             "{9FFEF10757E742EB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Crew.et"
+             "{9FFEF10757E742EB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Crew.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{2BC82FB72138227E}" {
+     m_sName "GC_MigratedSpawn_5FBF3D77879C2A09"
+     m_aConditions {
+      GC_AreaCondition "{ACA202D255EB8124}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{AF6B7ED42497DA4F}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{F4A69EA145AE944E}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{9BB9E11AC0F87956}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8A20A3F8E3A58491}" {
+       m_sMessage "GC_MigratedSpawn_5FBF3D77879C2A09"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9E7C3BEB0AC24D04}" {
+     m_sName "GC_MigratedSpawn_5FBF3D77879C2A09 (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B874DA4A49E6290F}" {
+       m_sEventName "GC_MigratedSpawn_5FBF3D77879C2A09"
+      }
+     }
+     m_Advanced GC_EventOptions "{ACBDBCF9FDCEC4F8}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_SpawnAction "{299C7AAA3E528F25}" {
+       m_Spawn GC_CrewedVehicleSpawn "{82839D6AF0E3793E}" {
+        m_sLocation "USSR_BTR_5"
+        m_sPrefab "{AAB3119124C9167A}Prefabs/Vehicles/Wheeled/BTR70/USSR/BTR70_USSR.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{6FD6F1C87871078F}" {
+          m_aStations {
+           GC_SpawnCrewStation "{6A4A9CE6D42EB908}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{9FFEF10757E742EB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Crew.et"
+             "{9FFEF10757E742EB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Crew.et"
+             "{9FFEF10757E742EB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Crew.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{79E99F612D3399FE}" {
+     m_sName "GC_MigratedSpawn_CD3B0EE7B7E095BC"
+     m_aConditions {
+      GC_AreaCondition "{0D19577A17808589}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{71BFA98AE9D616B7}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{AD96ED5C0897E743}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{196261756AB92460}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{34CE7F6ACEDF7CFA}" {
+       m_sMessage "GC_MigratedSpawn_CD3B0EE7B7E095BC"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{EAA88554A8D26701}" {
+     m_sName "GC_MigratedSpawn_CD3B0EE7B7E095BC (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{007511994D732C95}" {
+       m_sEventName "GC_MigratedSpawn_CD3B0EE7B7E095BC"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{EAA88554A8D26701}" {
+       m_Spawn GC_AIGroupSpawn "{4853D8A6409887F0}" {
+        m_sLocation "USSR_Inf_8"
+        m_sPrefab "{E552DABF3636C2AD}Prefabs/Groups/OPFOR/Group_USSR_RifleSquad.et"
+        m_aWaypoints {
+         "BGWP_Defend_05"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{EFAB4F3293FDF5BB}" {
+     m_sName "GC_MigratedSpawn_EE44C0511214D4DC"
+     m_aConditions {
+      GC_AreaCondition "{BB7E2E3D51701880}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{C5DFD3312C451BD2}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{BBCF8650FD3737CF}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{CF2AB5252624781D}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4D4712B0EF777DAC}" {
+       m_sMessage "GC_MigratedSpawn_EE44C0511214D4DC"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7DE67FA89F8D79D7}" {
+     m_sName "GC_MigratedSpawn_EE44C0511214D4DC (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3576090523C03554}" {
+       m_sEventName "GC_MigratedSpawn_EE44C0511214D4DC"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{7DE67FA89F8D79D7}" {
+       m_Spawn GC_AIGroupSpawn "{B5A187DEC0D9E705}" {
+        m_sLocation "USSR_Inf_9"
+        m_sPrefab "{E552DABF3636C2AD}Prefabs/Groups/OPFOR/Group_USSR_RifleSquad.et"
+        m_aWaypoints {
+         "BGWP_Defend_05"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{5AD255D382C25857}" {
+     m_sName "GC_MigratedSpawn_3158D06C1DE9FA83"
+     m_aConditions {
+      GC_AreaCondition "{FE020BE7C6A93436}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{59484BE6922A8C57}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{BB1142F9D53E5AEA}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{BA2AEC97FEE5066C}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E8B5D9DB7BE9C667}" {
+       m_sMessage "GC_MigratedSpawn_3158D06C1DE9FA83"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C884F98186C42D29}" {
+     m_sName "GC_MigratedSpawn_3158D06C1DE9FA83 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F57DC5F710D19A95}" {
+       m_sEventName "GC_MigratedSpawn_3158D06C1DE9FA83"
+      }
+     }
+     m_Advanced GC_EventOptions "{634676D6E2B668A1}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{C0FA4401F8381240}" {
+       m_Spawn GC_AIGroupSpawn "{2C511243347C42F8}" {
+        m_sLocation "USSR_Inf_10"
+        m_sPrefab "{E552DABF3636C2AD}Prefabs/Groups/OPFOR/Group_USSR_RifleSquad.et"
+        m_aWaypoints {
+         "BGWP_Defend_05"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F49E19ED0DB5E653}" {
+     m_sName "GC_MigratedSpawn_D836806239622F23"
+     m_aConditions {
+      GC_AreaCondition "{41E992480470B6BF}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{6DBCBDC2E39BCE57}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{2F57EEAFCED7F7DD}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{C6CC259348234DE8}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{977F8775F8A1C557}" {
+       m_sMessage "GC_MigratedSpawn_D836806239622F23"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{240FD58636E35969}" {
+     m_sName "GC_MigratedSpawn_D836806239622F23 (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6A1E9E839724721D}" {
+       m_sEventName "GC_MigratedSpawn_D836806239622F23"
+      }
+     }
+     m_Advanced GC_EventOptions "{16E6E76DCD16673B}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_SpawnAction "{67F8530FBB0A54C9}" {
+       m_Spawn GC_AIGroupSpawn "{327AA893E5A92E34}" {
+        m_sLocation "USSR_Inf_11"
+        m_sPrefab "{E552DABF3636C2AD}Prefabs/Groups/OPFOR/Group_USSR_RifleSquad.et"
+        m_aWaypoints {
+         "BGWP_Defend_05"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4BBDA8767A5DDD2E}" {
+     m_sName "GC_MigratedSpawn_59B403C8EF01A3B7"
+     m_aConditions {
+      GC_AreaCondition "{0A6DC193E70473FA}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{5316983D0A2A4189}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{553815089FC09047}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{80E1B80A49CD3F56}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{76CA369718455017}" {
+       m_sMessage "GC_MigratedSpawn_59B403C8EF01A3B7"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FE94C165D5C20B76}" {
+     m_sName "GC_MigratedSpawn_59B403C8EF01A3B7 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{830066F91BFEB7F8}" {
+       m_sEventName "GC_MigratedSpawn_59B403C8EF01A3B7"
+      }
+     }
+     m_Advanced GC_EventOptions "{04C8A7F8D8475EFB}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{A75D86C1273457A1}" {
+       m_Spawn GC_AIGroupSpawn "{AAD8C03A855B47AF}" {
+        m_sLocation "US_Inf_1"
+        m_sPrefab "{547A69AC528EE2CC}Prefabs/Groups/BLUFOR/US/Marines/1990/Marine Rifles/Group_US_Marines_1990_RifleSquad.et"
+        m_aWaypoints {
+         "BGWP_Attack_1"
+         "BGWP_Attack_8"
+         "BGWP_Attack_11"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{47112AD9EB985F80}" {
+     m_sName "GC_MigratedSpawn_DB2F85D6147BB7C1"
+     m_aConditions {
+      GC_AreaCondition "{83C8776DF5DCC686}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{2C3950B1AAFEB2AD}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{BDF51D6A3EDBB533}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{25B55A5F48BF6C23}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E63445F0FADFFFBA}" {
+       m_sMessage "GC_MigratedSpawn_DB2F85D6147BB7C1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E693F80B9DFE9E14}" {
+     m_sName "GC_MigratedSpawn_DB2F85D6147BB7C1 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{05D5E7E1EBC38931}" {
+       m_sEventName "GC_MigratedSpawn_DB2F85D6147BB7C1"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{E693F80B9DFE9E14}" {
+       m_Spawn GC_AIGroupSpawn "{1E0D4A92A82C8D5E}" {
+        m_sLocation "US_Inf_2"
+        m_sPrefab "{547A69AC528EE2CC}Prefabs/Groups/BLUFOR/US/Marines/1990/Marine Rifles/Group_US_Marines_1990_RifleSquad.et"
+        m_aWaypoints {
+         "BGWP_Attack_2"
+         "BGWP_Attack_8"
+         "BGWP_Attack_11"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{811DAA426907D0DA}" {
+     m_sName "GC_MigratedSpawn_7A3522A0E6870FDB"
+     m_aConditions {
+      GC_AreaCondition "{3E05789EB7CE5B87}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{8FCDFFFA882B036D}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{F88A65CBB3D122DC}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{B50448D7415B582E}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{384D02F255100DB5}" {
+       m_sMessage "GC_MigratedSpawn_7A3522A0E6870FDB"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D7DAA1B442B4984F}" {
+     m_sName "GC_MigratedSpawn_7A3522A0E6870FDB (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{58AD5466FB57DFAE}" {
+       m_sEventName "GC_MigratedSpawn_7A3522A0E6870FDB"
+      }
+     }
+     m_Advanced GC_EventOptions "{1D10D5C0CDD7848B}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{5030DF6CDB535C4E}" {
+       m_Spawn GC_AIGroupSpawn "{88E06DCFFA375A18}" {
+        m_sLocation "US_Inf_4"
+        m_sPrefab "{547A69AC528EE2CC}Prefabs/Groups/BLUFOR/US/Marines/1990/Marine Rifles/Group_US_Marines_1990_RifleSquad.et"
+        m_aWaypoints {
+         "BGWP_Attack_4"
+         "BGWP_Attack_9"
+         "BGWP_Attack_12"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3A77BDBF7123DA61}" {
+     m_sName "GC_MigratedSpawn_AECD08F35DDEA786"
+     m_aConditions {
+      GC_AreaCondition "{EE021981F86CB9E2}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{81EE58072D2AD8BE}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{161395764E9B9FD7}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{D4EAB5AD486C0D6F}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{EE09E0C2BC8E6143}" {
+       m_sMessage "GC_MigratedSpawn_AECD08F35DDEA786"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A0206239BF3FC6C2}" {
+     m_sName "GC_MigratedSpawn_AECD08F35DDEA786 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{481604F4710677B6}" {
+       m_sEventName "GC_MigratedSpawn_AECD08F35DDEA786"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{A0206239BF3FC6C2}" {
+       m_Spawn GC_AIGroupSpawn "{FEF07F3C77EBE829}" {
+        m_sLocation "US_Inf_3"
+        m_sPrefab "{547A69AC528EE2CC}Prefabs/Groups/BLUFOR/US/Marines/1990/Marine Rifles/Group_US_Marines_1990_RifleSquad.et"
+        m_aWaypoints {
+         "BGWP_Attack_3"
+         "BGWP_Attack_9"
+         "BGWP_Attack_12"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{2930E387E47F952A}" {
+     m_sName "GC_MigratedSpawn_5BD6A18A6164C4D5"
+     m_aConditions {
+      GC_AreaCondition "{14949A8E0900D19B}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{7E9F40E10A0007B0}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{E0F15EC7B4EBE152}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{A4865E58F093245D}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{91C5A33CBCD6512B}" {
+       m_sMessage "GC_MigratedSpawn_5BD6A18A6164C4D5"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0D58594B0707CD1C}" {
+     m_sName "GC_MigratedSpawn_5BD6A18A6164C4D5 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4A13F6D98C8E4E63}" {
+       m_sEventName "GC_MigratedSpawn_5BD6A18A6164C4D5"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{0D58594B0707CD1C}" {
+       m_Spawn GC_AIGroupSpawn "{BC25E96393C3ED25}" {
+        m_sLocation "US_Inf_6"
+        m_sPrefab "{547A69AC528EE2CC}Prefabs/Groups/BLUFOR/US/Marines/1990/Marine Rifles/Group_US_Marines_1990_RifleSquad.et"
+        m_aWaypoints {
+         "BGWP_Attack_6"
+         "BGWP_Attack_10"
+         "BGWP_Attack_13"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{852E8366BA3E1488}" {
+     m_sName "GC_MigratedSpawn_C2D4B0AD01691B5D"
+     m_aConditions {
+      GC_AreaCondition "{8E24D62F7331B8A7}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{2C1B7018077C9627}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{B627A7C578BDA7CE}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{CF82A7EABFF75B2E}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{275376F977533FFA}" {
+       m_sMessage "GC_MigratedSpawn_C2D4B0AD01691B5D"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A877088479937048}" {
+     m_sName "GC_MigratedSpawn_C2D4B0AD01691B5D (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9688183163096D58}" {
+       m_sEventName "GC_MigratedSpawn_C2D4B0AD01691B5D"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{A877088479937048}" {
+       m_Spawn GC_AIGroupSpawn "{E3080F163ECB54D7}" {
+        m_sLocation "US_Inf_5"
+        m_sPrefab "{547A69AC528EE2CC}Prefabs/Groups/BLUFOR/US/Marines/1990/Marine Rifles/Group_US_Marines_1990_RifleSquad.et"
+        m_aWaypoints {
+         "BGWP_Attack_5"
+         "BGWP_Attack_9"
+         "BGWP_Attack_12"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{1AFC2A55709B90D4}" {
+     m_sName "GC_MigratedSpawn_2F3665EC92D22189"
+     m_aConditions {
+      GC_AreaCondition "{EB777DCF5F0B87D6}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{F6C3A06C612736E8}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{B4B5C7563239F7B1}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{6C83EECE48F2C21E}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{28BD28AA45D2E64D}" {
+       m_sMessage "GC_MigratedSpawn_2F3665EC92D22189"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8611DDD54ED3B091}" {
+     m_sName "GC_MigratedSpawn_2F3665EC92D22189 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{82525689B53273A6}" {
+       m_sEventName "GC_MigratedSpawn_2F3665EC92D22189"
+      }
+     }
+     m_Advanced GC_EventOptions "{C55E3EFF7056AD1E}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{6A86974C70010BAA}" {
+       m_Spawn GC_AIGroupSpawn "{B49BCFD9ED5A8055}" {
+        m_sLocation "US_Inf_8"
+        m_sPrefab "{547A69AC528EE2CC}Prefabs/Groups/BLUFOR/US/Marines/1990/Marine Rifles/Group_US_Marines_1990_RifleSquad.et"
+        m_aWaypoints {
+         "BGWP_Attack_7"
+         "BGWP_Attack_10"
+         "BGWP_Attack_13"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{7625BBB079AD5254}" {
+     m_sName "GC_MigratedSpawn_299EBBC9DA56F426"
+     m_aConditions {
+      GC_AreaCondition "{76834CABF4B34716}" {
+       m_sArea "Signal_Hill_Clear"
+       m_Targets GC_NamedAreaTargets "{4AAB262BF140466B}" {
+        m_aNames {
+         "SH_Medics_1" "SH_MG_Gunner_1" "SH_MG_Gunner_2" "SH_MGTeam_1" "SH_Mortar_Crew_1" "SH_Mortar_Crew_2" "SH_Mortar_Crew_3" "SH_PHQ_1" "SH_Rifles_1"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{D9AE2E67FBEC39BE}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+        m_bAtMost 1
+       }
+       m_Capture GC_AreaCaptureOptions "{4E6B83B35F937541}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5EA7C405AA6EE9C7}" {
+       m_sMessage "GC_MigratedSpawn_299EBBC9DA56F426"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3021C1CD6CA47714}" {
+     m_sName "GC_MigratedSpawn_299EBBC9DA56F426 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D576592F665D786A}" {
+       m_sEventName "GC_MigratedSpawn_299EBBC9DA56F426"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{3021C1CD6CA47714}" {
+       m_Spawn GC_AIGroupSpawn "{125E5085E7C7DF4A}" {
+        m_sLocation "US_Inf_7"
+        m_sPrefab "{547A69AC528EE2CC}Prefabs/Groups/BLUFOR/US/Marines/1990/Marine Rifles/Group_US_Marines_1990_RifleSquad.et"
+        m_aWaypoints {
+         "BGWP_Attack_6"
+         "BGWP_Attack_10"
+         "BGWP_Attack_13"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 1478.697 38.001 2898.635
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "Spearhead"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3: %4"
+      m_sCallsignCharacterWithRoleFormat "%3: %4"
+     }
+    }
+   }
+  }
+ }
+}
