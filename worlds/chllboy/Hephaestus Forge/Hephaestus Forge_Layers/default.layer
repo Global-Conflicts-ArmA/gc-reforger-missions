@@ -1,0 +1,321 @@
+SCR_AIWorld : "{E2A016456BBC697D}Prefabs/SCR_AIWorld_Kunar.et" {
+ coords 2539.388 80.484 1753.05
+}
+GC_LobbyGameMode GC_MigratedMission : "{929B51A1178F1B64}worlds/chllboy/Hephaestus Forge/Hephaestus Forge_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 1
+   m_iStartingMinutes 30
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{68E74A7B5293C0BA}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 1
+     m_iStartingMinutes 30
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 6
+   m_iMonth 7
+   m_iYear 2020
+  }
+  GC_PeakFactionPopulationComponent "{8F6E69C794A70075}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{8577D12BF039AF5E}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 300
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{5FD66A263F7D45B3}" {
+     m_sName "AMMO_CACHE_DESTROYED1"
+    }
+    GC_MissionFlag "{6C626355A10FD668}" {
+     m_sName "AMMO_CACHE_DESTROYED2"
+    }
+    GC_MissionFlag "{0236BCF8B28A3FC3}" {
+     m_sName "DRONE_CACHE_DESTROYED_1"
+    }
+    GC_MissionFlag "{41B979387E929631}" {
+     m_sName "DRONE_CACHE_DESTROYED_2"
+    }
+    GC_MissionFlag "{206443B4A0E7FACA}" {
+     m_sName "INTEL_LOCATED"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{1A9F6ABE8C37BA1E}" {
+     m_sName "Destruction of drone caches"
+     m_aConditions {
+      GC_GameModeStateCondition "{39350FB3B1BC020C}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{E3A7C3685EEC0036}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{A7508246053F05A6}" {
+         m_sFlagName "DRONE_CACHE_DESTROYED_1"
+        }
+        GC_MissionFlagCondition "{B6B09A6674419889}" {
+         m_sFlagName "DRONE_CACHE_DESTROYED_2"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{781F5D3FC7BF163B}" {
+       m_sMessage "Destruction of drone caches"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0BF3C92525787AD2}" {
+     m_sName "Destruction of drone caches (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{91373664E907CF25}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{B9BAF893EF96E07C}" {
+       m_sEventName "Destruction of drone caches"
+      }
+     }
+     m_Advanced GC_EventOptions "{9A097A389A9CED2F}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{B9D2E5004538A08D}" {
+       m_sTitle "DRONE CACHES HAVE BEEN DESTROYED"
+       m_sMessage "Insurgents' drone caches have been destroyed."
+      }
+     }
+    }
+    GC_Event "{230C6A3DB03835EC}" {
+     m_sName "Destruction of ammo caches"
+     m_aConditions {
+      GC_GameModeStateCondition "{F542C26B60B3B94C}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{A5122DFCB6C84776}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{DBD7EC6EBF782D7A}" {
+         m_sFlagName "AMMO_CACHE_DESTROYED1"
+        }
+        GC_MissionFlagCondition "{73A654141F9B626C}" {
+         m_sFlagName "AMMO_CACHE_DESTROYED2"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3A3641EF83E5B093}" {
+       m_sMessage "Destruction of ammo caches"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{61DEB056C3F64B8A}" {
+     m_sName "Destruction of ammo caches (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{E46CA274DEB39A37}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{DD84D7E9FC235C8B}" {
+       m_sEventName "Destruction of ammo caches"
+      }
+     }
+     m_Advanced GC_EventOptions "{097C4B8489F300AC}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{93C7CED740DB3C86}" {
+       m_sTitle "AMMO CACHES HAVE BEEN DESTROYED"
+       m_sMessage "Insurgents' amunition caches have been destroyed."
+      }
+     }
+    }
+    GC_Event "{FD30E1E730CF49B3}" {
+     m_sName "Location of intel"
+     m_aConditions {
+      GC_MissionFlagCondition "{A066729053CBD976}" {
+       m_sFlagName "INTEL_LOCATED"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0756B48BE5F6263D}" {
+       m_sMessage "Location of intel"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CA9AA2BB17651075}" {
+     m_sName "Location of intel (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{08F8EA7429C9EEC1}" {
+       m_sEventName "Location of intel"
+      }
+     }
+     m_Advanced GC_EventOptions "{F8706FAFB790FC25}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{D00871FD51F85A25}" {
+       m_sTitle "INTELIGENCE HAS BEEN LOCATED"
+       m_sMessage "Information on the shipping routes of drone parts has been found."
+      }
+     }
+    }
+    GC_Event "{FBA8E849CAFFE1F8}" {
+     m_sName "Rangers killed"
+     m_aConditions {
+      GC_CustomScriptCondition "{10F1B4126E7B66E0}" {
+       m_Script GC_PeakFactionPopulationCheck "{13A839C32AF65547}" {
+        m_sFaction "RHS_USAF"
+        m_fRatio 0.85
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0B9873CAA1AAE418}" {
+       m_sMessage "Rangers killed"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{4B8EDE897657C3C8}" {
+     m_sName "Rangers killed (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F0A891A0D557C5CE}" {
+       m_sEventName "Rangers killed"
+      }
+     }
+     m_Advanced GC_EventOptions "{C1369B2953716CE3}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{7A1845378EBBA266}" {
+       m_sTitle "THE RANGERS ARE RETREATING DUE TO UNACCEPTABLE CASUALTIES"
+       m_sMessage "The Insurgents have eliminated the attacking Ranger forces."
+      }
+     }
+    }
+    GC_Event "{2B0543AA1C821AF0}" {
+     m_sName "Insurgents killed"
+     m_aConditions {
+      GC_CustomScriptCondition "{190680F93AACF444}" {
+       m_Script GC_PeakFactionPopulationCheck "{9D13709F594330D6}" {
+        m_sFaction "GC_INSURGENT"
+        m_fRatio 0.95
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A732B7B73CB750ED}" {
+       m_sMessage "Insurgents killed"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5DE2D84258279A45}" {
+     m_sName "Insurgents killed (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{42743D1FB912A873}" {
+       m_sEventName "Insurgents killed"
+      }
+     }
+     m_Advanced GC_EventOptions "{10BE4623B25B5DF6}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{72672571F63700BF}" {
+       m_sTitle "THE INSURGENT CELL HAS BEEN ELIMINATED"
+       m_sMessage "The Insurgent cell has taken devastating losses."
+      }
+     }
+    }
+    GC_Event "{F32D35687675EA19}" {
+     m_sName "Blufor victory"
+     m_aConditions {
+      GC_GameModeStateCondition "{1CFD939588D4ABD0}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{DCF1D1ABEFF29242}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{F4183BB5BB810C38}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_MissionFlagCondition "{DE7382E8C3FF5602}" {
+           m_sFlagName "DRONE_CACHE_DESTROYED_1"
+          }
+          GC_MissionFlagCondition "{F090DF251F95D1A6}" {
+           m_sFlagName "DRONE_CACHE_DESTROYED_2"
+          }
+         }
+        }
+        GC_ConditionGroup "{DEBBB873BFA87F20}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_MissionFlagCondition "{DDDD1FBA26DF7147}" {
+           m_sFlagName "AMMO_CACHE_DESTROYED1"
+          }
+          GC_MissionFlagCondition "{2AFF4D641A0E64D5}" {
+           m_sFlagName "AMMO_CACHE_DESTROYED2"
+          }
+         }
+        }
+        GC_MissionFlagCondition "{A461C41C263688F9}" {
+         m_sFlagName "INTEL_LOCATED"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F2555AE405451458}" {
+       m_sMessage "Blufor victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{990F26285C484D47}" {
+     m_sName "Blufor victory (15s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{24F7E9CDAD52449F}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{ACCE12FFBBF0F8CA}" {
+       m_sEventName "Blufor victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{9EB988EF7C741CDE}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_MessageAction "{A32A18C091746CD5}" {
+       m_sTitle "BLUFOR VICTORY"
+       m_sMessage "The Rangers have completed all of their objectives."
+      }
+     }
+    }
+    GC_Event "{757D24356AF418FA}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{32C8F0EDD0D6853B}" {
+       m_fSeconds 300.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{25100C56F673C40C}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 2552.154 90.449 1718.287
+}
