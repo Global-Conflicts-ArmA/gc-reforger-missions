@@ -1,0 +1,3186 @@
+SCR_AIWorld : "{E2A016456BBC697D}Prefabs/SCR_AIWorld_Kunar.et" {
+ coords 3056.764 10 3070.821
+}
+GC_LobbyGameMode GC_MigratedMission : "{D09878D48D096C18}worlds/Perfk/AbadDayinKunarUSSR/AbadDayinKunarUSSR_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 7
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{684AF9EC80A44493}" {
+    }
+   }
+   m_iMonth 8
+  }
+  GC_PeakFactionPopulationComponent "{2B7340ACE92A2AF9}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{DE102C66AEB397AA}" {
+     m_sName "Objective_1"
+    }
+    GC_MissionFlag "{B37D2B8452067B0E}" {
+     m_sName "SpawnPosition_A"
+    }
+    GC_MissionFlag "{0B5C82038C6A49AE}" {
+     m_sName "SpawnPosition_B"
+    }
+    GC_MissionFlag "{FA867E5C0DC183A2}" {
+     m_sName "SpawnPosition_C"
+    }
+    GC_MissionFlag "{348FCFE2DFE5CAAB}" {
+     m_sName "SpawnPosition_D"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{98B80F381E413A5D}" {
+     m_sName "GC_MigrationStartupSampling"
+     m_aConditions {
+      GC_ConditionGroup "{353B1315351CC6A0}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{D9A2068F8B2395E4}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{F96225D8A848D33C}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{541553EE7EBA4B99}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_FlagSamplingAction "{D9A2068F8B2395E4}" {
+       m_iDrawCount 1
+       m_aFlags {
+        "SpawnPosition_A"
+        "SpawnPosition_B"
+        "SpawnPosition_C"
+        "SpawnPosition_D"
+       }
+      }
+     }
+    }
+    GC_Event "{FC0FBB0E04577514}" {
+     m_sName "Building 1"
+     m_aConditions {
+      GC_AreaCondition "{68314E402E71EDBA}" {
+       m_sArea "Building_1_Trigger"
+       m_Targets GC_CharacterAreaTargets "{2CB0CB795227A4B6}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{797DE2F5CCF95B7C}" {
+        m_fRequiredShare 1
+        m_aIgnoredFactions {
+         "GC_INSURGENT"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{09AA63DF32D77F98}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B631A5F189A547DD}" {
+       m_sMessage "Building 1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1CE407F5B495A88D}" {
+     m_sName "Building 1 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{0E9FF10C74697B83}" {
+       m_sEventName "Building 1"
+      }
+     }
+     m_aActions {
+      GC_AssignWaypointsAction "{BA2BCCE535A3C5A2}" {
+       m_sGroupName "Building_1_Loiter_AI"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "Building_1_SD_WP"
+       }
+      }
+     }
+    }
+    GC_Event "{17D185E98952E6E6}" {
+     m_sName "Building 2"
+     m_aConditions {
+      GC_AreaCondition "{76A33E8FF6703464}" {
+       m_sArea "Building_1_Trigger"
+       m_Targets GC_CharacterAreaTargets "{35B31BB994684313}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{9C67ACE366456723}" {
+        m_fRequiredShare 1
+        m_aIgnoredFactions {
+         "GC_INSURGENT"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{C0BAB5BB9BC4DE0D}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C0D9D667DF61C29C}" {
+       m_sMessage "Building 2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BA7AFB90E98E38D4}" {
+     m_sName "Building 2 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B46DC0798BBC0569}" {
+       m_sEventName "Building 2"
+      }
+     }
+     m_aActions {
+      GC_AssignWaypointsAction "{981480FA69E67115}" {
+       m_sGroupName "Building_2_Loiter_AI"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "Building_2_SD_WP"
+       }
+      }
+     }
+    }
+    GC_Event "{C590405B2E857338}" {
+     m_sName "Cache Destroyed (5s)"
+     m_Advanced GC_EventOptions "{CABCF1C55A98E523}" {
+      m_fDelay 5
+      m_bDisabled 1
+     }
+     m_aActions {
+      GC_MessageAction "{5950294ACB18E926}" {
+       m_sTitle "Ammo Cache Destroyed"
+       m_sMessage "USSR Force is expected to set up a blocking force to the west before GM can call the mission"
+      }
+     }
+    }
+    GC_Event "{7EA29A09B7D433CF}" {
+     m_sName "Blufor Casualty"
+     m_aConditions {
+      GC_CustomScriptCondition "{A3FEA3ACFC96C6DA}" {
+       m_Script GC_PeakFactionPopulationCheck "{369CB700DCF4FC3E}" {
+        m_sFaction "USSR"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4A799DF08E3E0C8E}" {
+       m_sMessage "Blufor Casualty"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{032CA24F83B5CCB6}" {
+     m_sName "Blufor Casualty (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{29FDAB5FA5287A59}" {
+       m_sEventName "Blufor Casualty"
+      }
+     }
+     m_Advanced GC_EventOptions "{5663D5DF535806E5}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{10FE828D4B550874}" {
+       m_sTitle "Mujahideen Victory"
+       m_sMessage "USSR Forces Sustained 90% casualties.. GM Discretion when to end the mission"
+      }
+     }
+    }
+    GC_Event "{C111480B0AEB8601}" {
+     m_sName "GC_MigratedSpawn_71F72B25D86F27BB"
+     m_aConditions {
+      GC_GameModeStateCondition "{1CE8C5186E4E9B97}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{1BEC287955A69750}" {
+       m_sFlagName "SpawnPosition_A"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{51DA96B84931ED91}" {
+       m_sMessage "GC_MigratedSpawn_71F72B25D86F27BB"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B283F019DD3A50DF}" {
+     m_sName "GC_MigratedSpawn_71F72B25D86F27BB (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E6D1E7BEBD7C94B9}" {
+       m_sEventName "GC_MigratedSpawn_71F72B25D86F27BB"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{B283F019DD3A50DF}" {
+       m_Spawn GC_PrefabSpawn "{F651D6239968B7B3}" {
+        m_sLocation "Objective_A_Ammo_1"
+        m_sPrefab "{31FD8EB914B494F6}worlds/Perfk/Prefabs/Destructible/AmmoStorage/PK_GMFX_AmmoStorage_USSR_Objective_1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{68211440029E3CAE}" {
+     m_sName "GC_MigratedSpawn_2421F6C692F8484A"
+     m_aConditions {
+      GC_GameModeStateCondition "{44BEC6BA6557A1D9}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{80AC27A262FEBDA8}" {
+       m_sFlagName "SpawnPosition_A"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B12B246349A9D827}" {
+       m_sMessage "GC_MigratedSpawn_2421F6C692F8484A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5E007B10645CAC6C}" {
+     m_sName "GC_MigratedSpawn_2421F6C692F8484A (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A75FABFBBBB1F9DC}" {
+       m_sEventName "GC_MigratedSpawn_2421F6C692F8484A"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{5E007B10645CAC6C}" {
+       m_Spawn GC_PrefabSpawn "{5C70D26FDF462C0B}" {
+        m_sLocation "Objective_A_Ammo_2"
+        m_sPrefab "{31FD8EB914B494F6}worlds/Perfk/Prefabs/Destructible/AmmoStorage/PK_GMFX_AmmoStorage_USSR_Objective_1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{5A2AC2691C268C26}" {
+     m_sName "GC_MigratedSpawn_48EC53E571CA23A8"
+     m_aConditions {
+      GC_GameModeStateCondition "{01B1990B3BDEDCED}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{544248F134A95C3D}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{436E867BED21C291}" {
+         m_sFlagName "Objective_1"
+        }
+        GC_MissionFlagCondition "{D3ECD05D49533611}" {
+         m_sFlagName "SpawnPosition_A"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{24615806D13BB2D7}" {
+       m_sMessage "GC_MigratedSpawn_48EC53E571CA23A8"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0C6810C27E403D52}" {
+     m_sName "GC_MigratedSpawn_48EC53E571CA23A8 (1.5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{96ED21B502701E09}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{ED2F6AA1978AC4A3}" {
+       m_sEventName "GC_MigratedSpawn_48EC53E571CA23A8"
+      }
+     }
+     m_Advanced GC_EventOptions "{F621C00BED329CBE}" {
+      m_fDelay 1.5
+     }
+     m_aActions {
+      GC_SpawnAction "{BE50CADCAE615827}" {
+       m_Spawn GC_PrefabSpawn "{FC29E5D6E9FB02AA}" {
+        m_sLocation "Objective_A_explosion_1"
+        m_sPrefab "{9016E09E91956B2E}Prefabs/Systems/Explosions/Wrapper_Bomb_Medium.et"
+       }
+      }
+     }
+    }
+    GC_Event "{9BEF9DE2F9B87A69}" {
+     m_sName "GC_MigratedSpawn_A64C3EE382ED6454"
+     m_aConditions {
+      GC_GameModeStateCondition "{5EF9F2322BEBF04F}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{154BE78C490947D2}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{980444E9DA50325C}" {
+         m_sFlagName "Objective_1"
+        }
+        GC_MissionFlagCondition "{1A4D6104A84E7791}" {
+         m_sFlagName "SpawnPosition_A"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D56C6D5DD281CF36}" {
+       m_sMessage "GC_MigratedSpawn_A64C3EE382ED6454"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C62256A9185B5B83}" {
+     m_sName "GC_MigratedSpawn_A64C3EE382ED6454 (3s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{FE8BDAFDC6CEB6C4}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{A41D7AF66D20A309}" {
+       m_sEventName "GC_MigratedSpawn_A64C3EE382ED6454"
+      }
+     }
+     m_Advanced GC_EventOptions "{5AFFBE14E8F251E9}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{0CCBB6CC650BC575}" {
+       m_Spawn GC_PrefabSpawn "{726777DBEE08ED7E}" {
+        m_sLocation "Objective_A_fire_1"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{FBB3A8147E5DB859}" {
+     m_sName "GC_MigratedSpawn_A08593190EE7871D"
+     m_aConditions {
+      GC_GameModeStateCondition "{8DE716FE8BBF0DDF}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{2E6026A12ACF9C6E}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{2A326BC2B18D9D03}" {
+         m_sFlagName "Objective_1"
+        }
+        GC_MissionFlagCondition "{3AE33E74AC192FBC}" {
+         m_sFlagName "SpawnPosition_A"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5F68DEC0A04D4805}" {
+       m_sMessage "GC_MigratedSpawn_A08593190EE7871D"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1699936FE9DF4336}" {
+     m_sName "GC_MigratedSpawn_A08593190EE7871D (3s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{11F63437C0418D13}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{FEFE7980C8916CC7}" {
+       m_sEventName "GC_MigratedSpawn_A08593190EE7871D"
+      }
+     }
+     m_Advanced GC_EventOptions "{72EBB49A2F9E7E34}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{E026C7C685A7D846}" {
+       m_Spawn GC_PrefabSpawn "{6403D5A58249F336}" {
+        m_sLocation "Objective_A_fire_2"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{22DDCAF656464AE0}" {
+     m_sName "GC_MigratedSpawn_1182FE9436AE7257"
+     m_aConditions {
+      GC_GameModeStateCondition "{60C60EDF95DC78AF}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{0E1A4E09FFDC67AD}" {
+       m_sFlagName "SpawnPosition_B"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FD9F01B1B4EFD814}" {
+       m_sMessage "GC_MigratedSpawn_1182FE9436AE7257"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3AC34B40BF3E4A33}" {
+     m_sName "GC_MigratedSpawn_1182FE9436AE7257 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{EB479C9301CAFE23}" {
+       m_sEventName "GC_MigratedSpawn_1182FE9436AE7257"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{3AC34B40BF3E4A33}" {
+       m_Spawn GC_PrefabSpawn "{17374FC3A91BA4DC}" {
+        m_sLocation "Objective_B_Ammo_1"
+        m_sPrefab "{31FD8EB914B494F6}worlds/Perfk/Prefabs/Destructible/AmmoStorage/PK_GMFX_AmmoStorage_USSR_Objective_1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{4890DC0771C8EBBF}" {
+     m_sName "GC_MigratedSpawn_09B4AFFDEE2B963E"
+     m_aConditions {
+      GC_GameModeStateCondition "{95AE419C7EECB879}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{9510AC5A63F2D1DE}" {
+       m_sFlagName "SpawnPosition_B"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{68C6C49A7ABBC09C}" {
+       m_sMessage "GC_MigratedSpawn_09B4AFFDEE2B963E"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{36222333BCD35283}" {
+     m_sName "GC_MigratedSpawn_09B4AFFDEE2B963E (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DB2E71A9EECC44AC}" {
+       m_sEventName "GC_MigratedSpawn_09B4AFFDEE2B963E"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{36222333BCD35283}" {
+       m_Spawn GC_PrefabSpawn "{379CD0A8512280E2}" {
+        m_sLocation "Objective_B_Ammo_2"
+        m_sPrefab "{31FD8EB914B494F6}worlds/Perfk/Prefabs/Destructible/AmmoStorage/PK_GMFX_AmmoStorage_USSR_Objective_1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{09636A7A6CE0D95B}" {
+     m_sName "GC_MigratedSpawn_15E46B6D0A123F98"
+     m_aConditions {
+      GC_GameModeStateCondition "{F11C96A43AC8BD49}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{01E88F10C6B416C0}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{014CBB2FA9F2BF68}" {
+         m_sFlagName "Objective_1"
+        }
+        GC_MissionFlagCondition "{2EED83B2A273578B}" {
+         m_sFlagName "SpawnPosition_B"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{05DC3A6DEE9F56E4}" {
+       m_sMessage "GC_MigratedSpawn_15E46B6D0A123F98"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{452E2375BD38FEAE}" {
+     m_sName "GC_MigratedSpawn_15E46B6D0A123F98 (1.5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{40CEEB245A893CF7}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{19E7CAE9F58AF0FD}" {
+       m_sEventName "GC_MigratedSpawn_15E46B6D0A123F98"
+      }
+     }
+     m_Advanced GC_EventOptions "{682A1D03B96EE405}" {
+      m_fDelay 1.5
+     }
+     m_aActions {
+      GC_SpawnAction "{858D4CA155C9C527}" {
+       m_Spawn GC_PrefabSpawn "{7726524AAFE3BD24}" {
+        m_sLocation "Objective_B_explosion_1"
+        m_sPrefab "{9016E09E91956B2E}Prefabs/Systems/Explosions/Wrapper_Bomb_Medium.et"
+       }
+      }
+     }
+    }
+    GC_Event "{F57369D639FFC054}" {
+     m_sName "GC_MigratedSpawn_6A7F87328BFA79ED"
+     m_aConditions {
+      GC_GameModeStateCondition "{AD5BEB9A4B934806}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{BD4167C2D47A3AF1}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{986B52A9D8AD7052}" {
+         m_sFlagName "Objective_1"
+        }
+        GC_MissionFlagCondition "{D190825715BA9648}" {
+         m_sFlagName "SpawnPosition_B"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{20F664FF8903484E}" {
+       m_sMessage "GC_MigratedSpawn_6A7F87328BFA79ED"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{65C48000F1BD5EB8}" {
+     m_sName "GC_MigratedSpawn_6A7F87328BFA79ED (1.7s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{D7DE46A408182497}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{9513E400DEE3E0A3}" {
+       m_sEventName "GC_MigratedSpawn_6A7F87328BFA79ED"
+      }
+     }
+     m_Advanced GC_EventOptions "{5C2E261C9F65275C}" {
+      m_fDelay 1.7
+     }
+     m_aActions {
+      GC_SpawnAction "{E5F04001AA520C36}" {
+       m_Spawn GC_PrefabSpawn "{547DDCDF57855668}" {
+        m_sLocation "Objective_B_explosion_2"
+        m_sPrefab "{9016E09E91956B2E}Prefabs/Systems/Explosions/Wrapper_Bomb_Medium.et"
+       }
+      }
+     }
+    }
+    GC_Event "{8F4DDFA21AE7F4DF}" {
+     m_sName "GC_MigratedSpawn_B3F94AC8B86A90E4"
+     m_aConditions {
+      GC_GameModeStateCondition "{07B049CEEB21A079}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{8EF8EBA868671458}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{98AA1453FBD0D6AA}" {
+         m_sFlagName "Objective_1"
+        }
+        GC_MissionFlagCondition "{133B839604A878C7}" {
+         m_sFlagName "SpawnPosition_B"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A3C3FBF6454E6217}" {
+       m_sMessage "GC_MigratedSpawn_B3F94AC8B86A90E4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{51CA6D0E0A498028}" {
+     m_sName "GC_MigratedSpawn_B3F94AC8B86A90E4 (3s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{D8C7D53212BEB83F}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{EF4D673A556DB62A}" {
+       m_sEventName "GC_MigratedSpawn_B3F94AC8B86A90E4"
+      }
+     }
+     m_Advanced GC_EventOptions "{B671218C77245B04}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{74639F8107E1F518}" {
+       m_Spawn GC_PrefabSpawn "{868A80BB5590872E}" {
+        m_sLocation "Objective_B_fire_1"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{DF56B152832B5896}" {
+     m_sName "GC_MigratedSpawn_2BD0BDAA77E17B2F"
+     m_aConditions {
+      GC_GameModeStateCondition "{1E01A1B15D1FD87F}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{53AE733DCFE80A47}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{A01C36C799E6C690}" {
+         m_sFlagName "Objective_1"
+        }
+        GC_MissionFlagCondition "{D201B78B84C595B2}" {
+         m_sFlagName "SpawnPosition_B"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{AB78891AB8EA2DC2}" {
+       m_sMessage "GC_MigratedSpawn_2BD0BDAA77E17B2F"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{EAA97CE5D98511D6}" {
+     m_sName "GC_MigratedSpawn_2BD0BDAA77E17B2F (3s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{A6E5E3197540CC62}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{2066EB825A787257}" {
+       m_sEventName "GC_MigratedSpawn_2BD0BDAA77E17B2F"
+      }
+     }
+     m_Advanced GC_EventOptions "{8E9666BECAD10AD6}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{ED5AE9CD5822109A}" {
+       m_Spawn GC_PrefabSpawn "{D270CCC7F9486EEA}" {
+        m_sLocation "Objective_B_fire_2"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{13F6A97AA79FD8BE}" {
+     m_sName "GC_MigratedSpawn_EEC0365FBE3B4637"
+     m_aConditions {
+      GC_GameModeStateCondition "{3A1E5A591571FA40}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{419419D047AC9235}" {
+       m_sFlagName "SpawnPosition_D"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{45FD5F9A65489E3A}" {
+       m_sMessage "GC_MigratedSpawn_EEC0365FBE3B4637"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{341354A02105FF0E}" {
+     m_sName "GC_MigratedSpawn_EEC0365FBE3B4637 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7C5E8E0EE413919A}" {
+       m_sEventName "GC_MigratedSpawn_EEC0365FBE3B4637"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{341354A02105FF0E}" {
+       m_Spawn GC_PrefabSpawn "{1320E420148293DE}" {
+        m_sLocation "Objective_D_Ammo_1"
+        m_sPrefab "{31FD8EB914B494F6}worlds/Perfk/Prefabs/Destructible/AmmoStorage/PK_GMFX_AmmoStorage_USSR_Objective_1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{AC701A39082738DE}" {
+     m_sName "GC_MigratedSpawn_15A66F4D1624B45E"
+     m_aConditions {
+      GC_GameModeStateCondition "{FD8FED2F1F39C6B8}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{4103CEBDB5D1C3A8}" {
+       m_sFlagName "SpawnPosition_D"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{64C2A26DE9F0FE08}" {
+       m_sMessage "GC_MigratedSpawn_15A66F4D1624B45E"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F1993413C28E77B2}" {
+     m_sName "GC_MigratedSpawn_15A66F4D1624B45E (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{151FE7C341DB360B}" {
+       m_sEventName "GC_MigratedSpawn_15A66F4D1624B45E"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{F1993413C28E77B2}" {
+       m_Spawn GC_PrefabSpawn "{F0F10B737BE0479C}" {
+        m_sLocation "Objective_D_Ammo_2"
+        m_sPrefab "{31FD8EB914B494F6}worlds/Perfk/Prefabs/Destructible/AmmoStorage/PK_GMFX_AmmoStorage_USSR_Objective_1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{644DA692B34B3DA1}" {
+     m_sName "GC_MigratedSpawn_519D5D18F629FC23"
+     m_aConditions {
+      GC_GameModeStateCondition "{844231BEC1D41B2B}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{0AC728404E779A39}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{821A2C0B3D5F9AB9}" {
+         m_sFlagName "Objective_1"
+        }
+        GC_MissionFlagCondition "{DD7299829C7A47D2}" {
+         m_sFlagName "SpawnPosition_D"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3F7A4C4DA36DDED8}" {
+       m_sMessage "GC_MigratedSpawn_519D5D18F629FC23"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B49089ADB84D625C}" {
+     m_sName "GC_MigratedSpawn_519D5D18F629FC23 (1.5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{EAC42A20B86A234A}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{139D9BF6307F9C2E}" {
+       m_sEventName "GC_MigratedSpawn_519D5D18F629FC23"
+      }
+     }
+     m_Advanced GC_EventOptions "{F2C1B9CBCBA04C85}" {
+      m_fDelay 1.5
+     }
+     m_aActions {
+      GC_SpawnAction "{6C9C956CA119A70F}" {
+       m_Spawn GC_PrefabSpawn "{3D908604650EE47D}" {
+        m_sLocation "Objective_D_explosion_1"
+        m_sPrefab "{9016E09E91956B2E}Prefabs/Systems/Explosions/Wrapper_Bomb_Medium.et"
+       }
+      }
+     }
+    }
+    GC_Event "{B04BBC6526E639D2}" {
+     m_sName "GC_MigratedSpawn_183F0350C083C0C6"
+     m_aConditions {
+      GC_GameModeStateCondition "{27323A0A3E4C8193}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{A8495FA539A4EA04}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{F76AF146E349C5BC}" {
+         m_sFlagName "Objective_1"
+        }
+        GC_MissionFlagCondition "{81622B262BB1EE88}" {
+         m_sFlagName "SpawnPosition_D"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A1E6C0275F97CB62}" {
+       m_sMessage "GC_MigratedSpawn_183F0350C083C0C6"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B74731E7699605B1}" {
+     m_sName "GC_MigratedSpawn_183F0350C083C0C6 (3s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{DFB513B4D1203C96}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{B6D5595FEED651B6}" {
+       m_sEventName "GC_MigratedSpawn_183F0350C083C0C6"
+      }
+     }
+     m_Advanced GC_EventOptions "{BEB66D7C5816F61E}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{525D2463A0406E1D}" {
+       m_Spawn GC_PrefabSpawn "{6A7FE58C391FED0F}" {
+        m_sLocation "Objective_D_fire_1"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{7F1587354E9B8EE9}" {
+     m_sName "GC_MigratedSpawn_13D008EC9947B035"
+     m_aConditions {
+      GC_GameModeStateCondition "{D873C5607DE89842}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{673BA092475A0A78}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{5F1A0D701B88A7D3}" {
+         m_sFlagName "Objective_1"
+        }
+        GC_MissionFlagCondition "{C7D6F9795CEF16C5}" {
+         m_sFlagName "SpawnPosition_D"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DFA040924053A564}" {
+       m_sMessage "GC_MigratedSpawn_13D008EC9947B035"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{DF24411BEA890951}" {
+     m_sName "GC_MigratedSpawn_13D008EC9947B035 (3s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{4EBA033B17ACBBEA}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{8EEADB89E55E0FB5}" {
+       m_sEventName "GC_MigratedSpawn_13D008EC9947B035"
+      }
+     }
+     m_Advanced GC_EventOptions "{F34EE0E27E135573}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{2EE1CF2D721F16D4}" {
+       m_Spawn GC_PrefabSpawn "{418FCF061E70707F}" {
+        m_sLocation "Objective_D_fire_2"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{CC9B19CA9ECFCF5E}" {
+     m_sName "GC_MigratedSpawn_78CEFCD6E64D885C"
+     m_aConditions {
+      GC_GameModeStateCondition "{615419B7FFDE713B}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{E8FD9BD38035E0DE}" {
+       m_sFlagName "SpawnPosition_C"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0380987AC46D6B88}" {
+       m_sMessage "GC_MigratedSpawn_78CEFCD6E64D885C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BD25F3F54D68CF95}" {
+     m_sName "GC_MigratedSpawn_78CEFCD6E64D885C (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C7427ADACFC690A3}" {
+       m_sEventName "GC_MigratedSpawn_78CEFCD6E64D885C"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{BD25F3F54D68CF95}" {
+       m_Spawn GC_PrefabSpawn "{C88C95441E6CD7C5}" {
+        m_sLocation "Objective_C_Ammo_1"
+        m_sPrefab "{31FD8EB914B494F6}worlds/Perfk/Prefabs/Destructible/AmmoStorage/PK_GMFX_AmmoStorage_USSR_Objective_1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{C8B22E9896E42537}" {
+     m_sName "GC_MigratedSpawn_FF6B22D2A45090DD"
+     m_aConditions {
+      GC_GameModeStateCondition "{59B303615B5BEAF6}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{69BF7A468D553DBC}" {
+       m_sFlagName "SpawnPosition_C"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F80C37C25498A01A}" {
+       m_sMessage "GC_MigratedSpawn_FF6B22D2A45090DD"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{96C55B3BE5F87D7E}" {
+     m_sName "GC_MigratedSpawn_FF6B22D2A45090DD (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4EC65932371C5760}" {
+       m_sEventName "GC_MigratedSpawn_FF6B22D2A45090DD"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{96C55B3BE5F87D7E}" {
+       m_Spawn GC_PrefabSpawn "{E74A1739374FB4D6}" {
+        m_sLocation "Objective_C_Ammo_2"
+        m_sPrefab "{31FD8EB914B494F6}worlds/Perfk/Prefabs/Destructible/AmmoStorage/PK_GMFX_AmmoStorage_USSR_Objective_1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{30C04E577A6A9A7D}" {
+     m_sName "GC_MigratedSpawn_9E76255994297F21"
+     m_aConditions {
+      GC_GameModeStateCondition "{44C79254013FB1C4}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{4EB86A286FBF2EAE}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{B2393D8C8B051921}" {
+         m_sFlagName "Objective_1"
+        }
+        GC_MissionFlagCondition "{682F506B60888A55}" {
+         m_sFlagName "SpawnPosition_C"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FFB62208D609C7D4}" {
+       m_sMessage "GC_MigratedSpawn_9E76255994297F21"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F839F2C75247D215}" {
+     m_sName "GC_MigratedSpawn_9E76255994297F21 (1.5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{9C53EEC55FBF8279}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{D2ECCF1608BA420C}" {
+       m_sEventName "GC_MigratedSpawn_9E76255994297F21"
+      }
+     }
+     m_Advanced GC_EventOptions "{6DCCA88671F687BF}" {
+      m_fDelay 1.5
+     }
+     m_aActions {
+      GC_SpawnAction "{751AB2C0A7D0E096}" {
+       m_Spawn GC_PrefabSpawn "{56D191598EAA46FF}" {
+        m_sLocation "Objective_C_explosion_1"
+        m_sPrefab "{9016E09E91956B2E}Prefabs/Systems/Explosions/Wrapper_Bomb_Medium.et"
+       }
+      }
+     }
+    }
+    GC_Event "{6A70613F7DA9D50F}" {
+     m_sName "GC_MigratedSpawn_C4A4C8D50AD8C2C3"
+     m_aConditions {
+      GC_GameModeStateCondition "{886BEB31AA267BD7}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{00D8790F3E29DD5D}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{6BE25C3BC6AB7780}" {
+         m_sFlagName "Objective_1"
+        }
+        GC_MissionFlagCondition "{5C1432D5233EAEC5}" {
+         m_sFlagName "SpawnPosition_C"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8AE9063092C27A60}" {
+       m_sMessage "GC_MigratedSpawn_C4A4C8D50AD8C2C3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7D8241869C5EF411}" {
+     m_sName "GC_MigratedSpawn_C4A4C8D50AD8C2C3 (3s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{61AE62357D53D886}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{73C29426F2301592}" {
+       m_sEventName "GC_MigratedSpawn_C4A4C8D50AD8C2C3"
+      }
+     }
+     m_Advanced GC_EventOptions "{6C81E0D50536477F}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{144D51D49168CA4F}" {
+       m_Spawn GC_PrefabSpawn "{3DE919467F777DDF}" {
+        m_sLocation "Objective_C_fire_1"
+        m_sPrefab "{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{DF29BD9CACB376A4}" {
+     m_sName "GC_MigratedSpawn_920F28DE44961CC3"
+     m_aConditions {
+      GC_GameModeStateCondition "{DDA244FE8E2391A6}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{FE5C339D1701D47E}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_AreaCondition "{45A585BD5271A65F}" {
+         m_sArea "US_Trigger_Right_1"
+         m_Targets GC_CharacterAreaTargets "{B9790D0B0BAD8ADA}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{59D40F68E3CAC625}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "GC_MUJ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{DC57E23A551B9E6F}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{FA51C43F34F1765D}" {
+         m_sArea "US_Trigger_Center_1"
+         m_Targets GC_CharacterAreaTargets "{710BFBB2FB309348}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{D0717B1CB389B6C3}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "GC_MUJ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{DBFB6F64161AC01A}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{570F5318BC9383C3}" {
+         m_sArea "US_Trigger_Left_1"
+         m_Targets GC_CharacterAreaTargets "{A32863DAE10198FA}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{1817B1052BFA4708}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "GC_MUJ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{89755AF342A22475}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C6CD69EAC25FFBB9}" {
+       m_sMessage "GC_MigratedSpawn_920F28DE44961CC3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E8EBD779D47AD293}" {
+     m_sName "GC_MigratedSpawn_920F28DE44961CC3 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{4CE1ADC5960D34F3}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{90D7FB907ED10A9F}" {
+       m_sEventName "GC_MigratedSpawn_920F28DE44961CC3"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{E8EBD779D47AD293}" {
+       m_Spawn GC_AIGroupSpawn "{4B091237EACB1D13}" {
+        m_sLocation "Building_3_Defend_AI5"
+        m_sPrefab "{6B66F8E0B49D4CA1}worlds/Perfk/Prefabs/Groups/PK_MUJ_13_Fighters.et"
+        m_aWaypoints {
+         "Building_3_Defend_WP5"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{AEE36B9359B98D8D}" {
+     m_sName "GC_MigratedSpawn_81085381C9C5EFA3"
+     m_aConditions {
+      GC_GameModeStateCondition "{A5DA5E84AED45508}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{45A3E0BAB284C796}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_AreaCondition "{7B506C69798517E8}" {
+         m_sArea "US_Trigger_Right_1"
+         m_Targets GC_CharacterAreaTargets "{BFFE8699B80F98FE}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{F98AAC30B6168073}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "GC_MUJ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{650142C48F295FAC}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{21C8051384C7A3D6}" {
+         m_sArea "US_Trigger_Center_1"
+         m_Targets GC_CharacterAreaTargets "{E5D53EA67BAC5DA2}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{A9E19165B3AF0DB2}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "GC_MUJ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{CEA75A56B8895865}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{666A913A3988AAD1}" {
+         m_sArea "US_Trigger_Left_1"
+         m_Targets GC_CharacterAreaTargets "{0EAC14212AEE5B62}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{339616C1F48E4919}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "GC_MUJ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{5DEB3F487AF4E15C}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{852C8BB0E070260B}" {
+       m_sMessage "GC_MigratedSpawn_81085381C9C5EFA3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9D39E26816B89FE5}" {
+     m_sName "GC_MigratedSpawn_81085381C9C5EFA3 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{8F15E24FDFF6FE1B}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{69D15E077E2F0FD0}" {
+       m_sEventName "GC_MigratedSpawn_81085381C9C5EFA3"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{9D39E26816B89FE5}" {
+       m_Spawn GC_AIGroupSpawn "{0AC31DC28F9F1140}" {
+        m_sLocation "Building_8_Defend_AI19"
+        m_sPrefab "{637E4F99E4F91AD0}worlds/Perfk/Prefabs/Groups/PK_MUJ_07_Fighters.et"
+        m_aWaypoints {
+         "Building_3_Defend_WP6"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F24DCDE232048AC0}" {
+     m_sName "GC_MigratedSpawn_8FD58BF8B420CE85"
+     m_aConditions {
+      GC_GameModeStateCondition "{7FDE74B6D69CB9A8}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{12E2F1D4206C079D}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_AreaCondition "{E15AAD6A485BE5F8}" {
+         m_sArea "US_Trigger_Right_1"
+         m_Targets GC_CharacterAreaTargets "{1F872E060BA37831}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{DE4EC5DD93746AFC}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "GC_MUJ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{AFE8A5F0D2DAD77D}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{EB95C3A55FE5D172}" {
+         m_sArea "US_Trigger_Center_1"
+         m_Targets GC_CharacterAreaTargets "{9B78BA4B0DCE635C}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{08F19AC6E586A6FA}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "GC_MUJ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{8D525F7583339A89}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{41C1B8C2FCCD1AA7}" {
+         m_sArea "US_Trigger_Left_1"
+         m_Targets GC_CharacterAreaTargets "{180E711DA6EAF05D}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{4A5DE1C8881420E1}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "GC_MUJ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{2EC5500B9F30CDF5}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FBCCDED8E62E47B5}" {
+       m_sMessage "GC_MigratedSpawn_8FD58BF8B420CE85"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A2634998C00CD876}" {
+     m_sName "GC_MigratedSpawn_8FD58BF8B420CE85 (0.5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{6B54C45720C178BB}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{36E03A16CB5FF054}" {
+       m_sEventName "GC_MigratedSpawn_8FD58BF8B420CE85"
+      }
+     }
+     m_Advanced GC_EventOptions "{69431C58C3B6ACA1}" {
+      m_fDelay 0.5
+     }
+     m_aActions {
+      GC_SpawnAction "{5007C184FC973902}" {
+       m_Spawn GC_AIGroupSpawn "{CA9EDCEA30028A6A}" {
+        m_sLocation "Building_8_Defend_AI7"
+        m_sPrefab "{5245AD1550BD5281}worlds/Perfk/Prefabs/Groups/PK_MUJ_02_Fighters.et"
+        m_aWaypoints {
+         "Building_3_Defend_WP7"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9ACFCF86DF8C19C9}" {
+     m_sName "GC_MigratedSpawn_5FACF2C4E623BE4D"
+     m_aConditions {
+      GC_GameModeStateCondition "{F792997815BE245C}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{FA4C68A82EE190FB}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_AreaCondition "{A43EC93F593AAF79}" {
+         m_sArea "US_Trigger_Right_1"
+         m_Targets GC_CharacterAreaTargets "{F203F5E9D5019FCA}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{5BCF185F721A4F79}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "GC_MUJ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{8E9C55FD36EFB93C}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{FB3369C66AA98F8D}" {
+         m_sArea "US_Trigger_Center_1"
+         m_Targets GC_CharacterAreaTargets "{FD4D0B1F9B2354BB}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{1297E797217B2C42}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "GC_MUJ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{118E5237EC53F5A7}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{A453318657B1504A}" {
+         m_sArea "US_Trigger_Left_1"
+         m_Targets GC_CharacterAreaTargets "{609BF2E2E317AFBC}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{574DB0BAA23B6866}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "GC_MUJ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{652871BB68A76659}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{290D55E11D0C96A8}" {
+       m_sMessage "GC_MigratedSpawn_5FACF2C4E623BE4D"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C319CB6315CD9A18}" {
+     m_sName "GC_MigratedSpawn_5FACF2C4E623BE4D (1s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{446D9EA9BCF38F8C}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{D39CC39A368F7896}" {
+       m_sEventName "GC_MigratedSpawn_5FACF2C4E623BE4D"
+      }
+     }
+     m_Advanced GC_EventOptions "{3A85FB8A0D600F4B}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{2D2FC661E182E1F8}" {
+       m_Spawn GC_AIGroupSpawn "{2729DB47FC559EFB}" {
+        m_sLocation "Building_3_Defend_AI6"
+        m_sPrefab "{98909778EFEFAF8B}worlds/Perfk/Prefabs/Groups/PK_MUJ_11_Fighters.et"
+        m_aWaypoints {
+         "Building_3_Defend_WP8"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E4072A1EDD901AB3}" {
+     m_sName "GC_MigratedSpawn_30117A1904E896EF"
+     m_aConditions {
+      GC_GameModeStateCondition "{0C98D8330A1ADAA8}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{28EE6C444E125E1D}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_AreaCondition "{5804C8E14E2D40CF}" {
+         m_sArea "US_Trigger_Right_1"
+         m_Targets GC_CharacterAreaTargets "{5D044CC23092F26D}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{458CC970A402E991}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "GC_MUJ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{78975420E7715BA2}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{6C947EBBD03B9CB3}" {
+         m_sArea "US_Trigger_Center_1"
+         m_Targets GC_CharacterAreaTargets "{FF06590D920BDC4E}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{9A4DE74FB60E0861}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "GC_MUJ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{723D6BEC21E17254}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{110E9210F10343CE}" {
+         m_sArea "US_Trigger_Left_1"
+         m_Targets GC_CharacterAreaTargets "{0CDEE6563120DDEC}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{E7C7B88629CF117A}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "GC_MUJ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{619BE17E8BE3126E}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{229CC0ACD50D38C6}" {
+       m_sMessage "GC_MigratedSpawn_30117A1904E896EF"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1EAFFDA7DD6ECB3E}" {
+     m_sName "GC_MigratedSpawn_30117A1904E896EF (1.5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{F663ED0C97542165}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{83DE6A79CF994403}" {
+       m_sEventName "GC_MigratedSpawn_30117A1904E896EF"
+      }
+     }
+     m_Advanced GC_EventOptions "{D7678A5E1A9FF25A}" {
+      m_fDelay 1.5
+     }
+     m_aActions {
+      GC_SpawnAction "{470467EE3384FB1D}" {
+       m_Spawn GC_AIGroupSpawn "{6E16EC6090E58707}" {
+        m_sLocation "Building_8_Defend_AI2"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Building_3_Defend_WP9"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B5251AEACFB9E66E}" {
+     m_sName "GC_MigratedSpawn_52721BDF08F3373B"
+     m_aConditions {
+      GC_GameModeStateCondition "{1840423BDEAB5A3B}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{AD4D7D75D6F29A2C}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_AreaCondition "{3E150124854713A3}" {
+         m_sArea "US_Trigger_Right_1"
+         m_Targets GC_CharacterAreaTargets "{2FCA3ED17CF52323}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{A206A8980E46A25C}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "GC_MUJ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{1905D62B8D6A9BD4}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{FA72D811C5C1319C}" {
+         m_sArea "US_Trigger_Center_1"
+         m_Targets GC_CharacterAreaTargets "{BE8F289E6BF5C551}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{70E1280E25972E04}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "GC_MUJ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{1A865F478FA62B73}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{D541356ADF6752ED}" {
+         m_sArea "US_Trigger_Left_1"
+         m_Targets GC_CharacterAreaTargets "{827AAFDBE1436786}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{9BD24476879217A7}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "GC_MUJ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{5361DB223A6BDEDB}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{CE2110797D03C69E}" {
+       m_sMessage "GC_MigratedSpawn_52721BDF08F3373B"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A720B46E11BF52D1}" {
+     m_sName "GC_MigratedSpawn_52721BDF08F3373B (2s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{A4DB06EEFC9ED0D1}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{807D531D7E68067E}" {
+       m_sEventName "GC_MigratedSpawn_52721BDF08F3373B"
+      }
+     }
+     m_Advanced GC_EventOptions "{32E83C38E3DA51F2}" {
+      m_fDelay 2
+     }
+     m_aActions {
+      GC_SpawnAction "{771F1DE9E61751BD}" {
+       m_Spawn GC_AIGroupSpawn "{4D3EB1C0AF2B1CB1}" {
+        m_sLocation "Building_8_Defend_AI3"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Building_3_Defend_WP10"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{746AA268DCECF9E1}" {
+     m_sName "GC_MigratedSpawn_57ADE2617A8976A5"
+     m_aConditions {
+      GC_GameModeStateCondition "{1C32031366896998}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{E850BE6CEC139C47}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_AreaCondition "{19FE987E8E4C4A7B}" {
+         m_sArea "US_Trigger_Right_1"
+         m_Targets GC_CharacterAreaTargets "{970B3CB32C61EB4B}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{A76006617DA9B778}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "GC_MUJ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{0062C7E47A432888}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{F589075A4E0B9134}" {
+         m_sArea "US_Trigger_Center_1"
+         m_Targets GC_CharacterAreaTargets "{1EF900B88CBBEB63}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{9457F2D0A894E589}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "GC_MUJ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{87D5CB770F6DE56B}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{C0610FCD14CAED8F}" {
+         m_sArea "US_Trigger_Left_1"
+         m_Targets GC_CharacterAreaTargets "{2C1D1FDB08A076D8}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{9D9C2E6192D1EF79}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "GC_MUJ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{3E32B3273A3E858B}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{51000D40189180BA}" {
+       m_sMessage "GC_MigratedSpawn_57ADE2617A8976A5"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E7C396C4EAA7BE97}" {
+     m_sName "GC_MigratedSpawn_57ADE2617A8976A5 (2.5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{403FE9E7746B9D6B}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{564BE6AEB296955C}" {
+       m_sEventName "GC_MigratedSpawn_57ADE2617A8976A5"
+      }
+     }
+     m_Advanced GC_EventOptions "{8E673C80FC5F4001}" {
+      m_fDelay 2.5
+     }
+     m_aActions {
+      GC_SpawnAction "{A6E2F95D72089AD5}" {
+       m_Spawn GC_AIGroupSpawn "{62E5FE7E40D3754A}" {
+        m_sLocation "Building_8_Defend_AI4"
+        m_sPrefab "{98909778EFEFAF8B}worlds/Perfk/Prefabs/Groups/PK_MUJ_11_Fighters.et"
+        m_aWaypoints {
+         "Building_3_Defend_WP11"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{AB708BED8C5654D9}" {
+     m_sName "GC_MigratedSpawn_F606CE6CD38BF91F"
+     m_aConditions {
+      GC_GameModeStateCondition "{5096AC0CF3CB8552}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{28C0095079F68EC5}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_AreaCondition "{6DDADDA7E3B0B079}" {
+         m_sArea "US_Trigger_Right_1"
+         m_Targets GC_CharacterAreaTargets "{E12BC9996C1A0792}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{90CE61C4F70C27F6}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "GC_MUJ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{FFBFF6A67A9326BA}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{38874D9EE040332E}" {
+         m_sArea "US_Trigger_Center_1"
+         m_Targets GC_CharacterAreaTargets "{734BF29A32A59FCE}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{D4CF64DF0BD7920A}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "GC_MUJ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{D6B6EAE4BFB1BD21}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{A6AF494FFFB66478}" {
+         m_sArea "US_Trigger_Left_1"
+         m_Targets GC_CharacterAreaTargets "{6575F604AD0541C5}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{9B0EA056DC32ABC6}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "GC_MUJ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{E0C6CB358603B964}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C63372A73AD9E11F}" {
+       m_sMessage "GC_MigratedSpawn_F606CE6CD38BF91F"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BA2EB5E5F208F675}" {
+     m_sName "GC_MigratedSpawn_F606CE6CD38BF91F (3s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{BA2DB8560BAFCA7B}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{C2BE66E288F74618}" {
+       m_sEventName "GC_MigratedSpawn_F606CE6CD38BF91F"
+      }
+     }
+     m_Advanced GC_EventOptions "{3227436D23598950}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{A704E809ED839CE6}" {
+       m_Spawn GC_AIGroupSpawn "{FDA08CBE0D16A747}" {
+        m_sLocation "Building_8_Defend_AI5"
+        m_sPrefab "{98909778EFEFAF8B}worlds/Perfk/Prefabs/Groups/PK_MUJ_11_Fighters.et"
+        m_aWaypoints {
+         "Building_3_Defend_WP12"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{76D20648E3C3B150}" {
+     m_sName "GC_MigratedSpawn_C38BF6322299D51F"
+     m_aConditions {
+      GC_GameModeStateCondition "{158521F059C1EC3B}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{05A10B01AFF58075}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_AreaCondition "{656CE2C734D65544}" {
+         m_sArea "US_Trigger_Right_1"
+         m_Targets GC_CharacterAreaTargets "{6277692AFEA00FA0}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{DE0F8AD97A3E1E2F}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "GC_MUJ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{8013CE6BE447A0E4}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{2D874EAB522801B1}" {
+         m_sArea "US_Trigger_Center_1"
+         m_Targets GC_CharacterAreaTargets "{3F38C51CCEEE297D}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{A83A4B458843B320}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "GC_MUJ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{C65768596E4FB709}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{5909FD6C956BB26E}" {
+         m_sArea "US_Trigger_Left_1"
+         m_Targets GC_CharacterAreaTargets "{8C10501F96FCC267}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{D5A95855E909C553}" {
+          m_fRequiredShare 0.001
+          m_aIgnoredFactions {
+           "GC_MUJ"
+          }
+         }
+         m_Capture GC_AreaCaptureOptions "{FF9EA1BFAE33F056}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FE3E59F8E0C14C23}" {
+       m_sMessage "GC_MigratedSpawn_C38BF6322299D51F"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5AC4CFFDFA5A1BDE}" {
+     m_sName "GC_MigratedSpawn_C38BF6322299D51F (3.5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{6DA131A2471A8DD9}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{542E6AFB9677F673}" {
+       m_sEventName "GC_MigratedSpawn_C38BF6322299D51F"
+      }
+     }
+     m_Advanced GC_EventOptions "{D7E350FF2A4ECFFE}" {
+      m_fDelay 3.5
+     }
+     m_aActions {
+      GC_SpawnAction "{627E53EF3F81D5E7}" {
+       m_Spawn GC_AIGroupSpawn "{703B5FC3BB006D45}" {
+        m_sLocation "Building_8_Defend_AI6"
+        m_sPrefab "{6B66F8E0B49D4CA1}worlds/Perfk/Prefabs/Groups/PK_MUJ_13_Fighters.et"
+        m_aWaypoints {
+         "Building_3_Defend_WP13"
+        }
+       }
+      }
+     }
+    }
+
+
+    GC_Event "{E5DE5C2A5C16B80C}" {
+     m_sName "GC_MigratedSpawn_757B0AEEB9BDE38C"
+     m_aConditions {
+      GC_AreaCondition "{4E626CF8FFADD7CB}" {
+       m_sArea "US_Trigger_Left_2"
+       m_Targets GC_CharacterAreaTargets "{5623A60CEAC1ECBD}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{685FA952D6D99B42}" {
+        m_fRequiredShare 0.001
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{47B5C75DBC07F2D4}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4EF0863AD74D8398}" {
+       m_sMessage "GC_MigratedSpawn_757B0AEEB9BDE38C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{44DE9C4B29B34371}" {
+     m_sName "GC_MigratedSpawn_757B0AEEB9BDE38C (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{FBD7D53D9A42497A}" {
+       m_sEventName "GC_MigratedSpawn_757B0AEEB9BDE38C"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{44DE9C4B29B34371}" {
+       m_Spawn GC_AIGroupSpawn "{74A2B7975A9C12FF}" {
+        m_sLocation "Building_8_Defend_AI10"
+        m_sPrefab "{637E4F99E4F91AD0}worlds/Perfk/Prefabs/Groups/PK_MUJ_07_Fighters.et"
+        m_aWaypoints {
+         "Building_3_Defend_WP18"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{FD3386BCB81DEDAC}" {
+     m_sName "GC_MigratedSpawn_3A72AF996EE97203"
+     m_aConditions {
+      GC_AreaCondition "{883A769B021016E6}" {
+       m_sArea "US_Trigger_Center_2"
+       m_Targets GC_CharacterAreaTargets "{F3AB12AE77F2D997}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{93FD599BFC7D8958}" {
+        m_fRequiredShare 0.001
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{7EB672E366F07CD3}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8C599EEFD557F35C}" {
+       m_sMessage "GC_MigratedSpawn_3A72AF996EE97203"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{4DFD8EF8115CC397}" {
+     m_sName "GC_MigratedSpawn_3A72AF996EE97203 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{60F07D50D359AEFF}" {
+       m_sEventName "GC_MigratedSpawn_3A72AF996EE97203"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{4DFD8EF8115CC397}" {
+       m_Spawn GC_AIGroupSpawn "{17FBE23BB37AFFB1}" {
+        m_sLocation "Building_8_Defend_AI21"
+        m_sPrefab "{98909778EFEFAF8B}worlds/Perfk/Prefabs/Groups/PK_MUJ_11_Fighters.et"
+        m_aWaypoints {
+         "Building_3_Defend_WP21_inside"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{43559D11B9F0A7CC}" {
+     m_sName "GC_MigratedSpawn_4BBC6841C53C15A3"
+     m_aConditions {
+      GC_AreaCondition "{014AD9AEDFC13C53}" {
+       m_sArea "US_Trigger_Center_2"
+       m_Targets GC_CharacterAreaTargets "{4BFABF4C2C40605D}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{026C8252327EAE4B}" {
+        m_fRequiredShare 0.001
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{8DED435AEAAB53A7}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A871D33826D75972}" {
+       m_sMessage "GC_MigratedSpawn_4BBC6841C53C15A3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8BB14FE1B9E6FD2C}" {
+     m_sName "GC_MigratedSpawn_4BBC6841C53C15A3 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E15277EF8F846FCF}" {
+       m_sEventName "GC_MigratedSpawn_4BBC6841C53C15A3"
+      }
+     }
+     m_Advanced GC_EventOptions "{166757B57A8DD4FD}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{12A3AA7B6A094A95}" {
+       m_Spawn GC_AIGroupSpawn "{5B717EF0E5AFAA10}" {
+        m_sLocation "Building_8_Defend_AI22"
+        m_sPrefab "{98909778EFEFAF8B}worlds/Perfk/Prefabs/Groups/PK_MUJ_11_Fighters.et"
+        m_aWaypoints {
+         "Building_3_Defend_WP21_Roof"
+        }
+       }
+      }
+     }
+    }
+
+    GC_Event "{108ECA49AFBEB21E}" {
+     m_sName "GC_MigratedSpawn_11294F5A10A9E2AD"
+     m_aConditions {
+      GC_AreaCondition "{CD34274311BD90C7}" {
+       m_sArea "US_Trigger_Left_2"
+       m_Targets GC_CharacterAreaTargets "{CF82A58FEC3D9E54}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{3ED1AC8823759710}" {
+        m_fRequiredShare 0.001
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{CD16EA210C3AAA80}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2FD7174D8B372C56}" {
+       m_sMessage "GC_MigratedSpawn_11294F5A10A9E2AD"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BC9F6C6FD1B9A389}" {
+     m_sName "GC_MigratedSpawn_11294F5A10A9E2AD (0.5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{11A60415EDC24BE2}" {
+       m_sEventName "GC_MigratedSpawn_11294F5A10A9E2AD"
+      }
+     }
+     m_Advanced GC_EventOptions "{912912C9C8B8F0F8}" {
+      m_fDelay 0.5
+     }
+     m_aActions {
+      GC_SpawnAction "{4B23089A8280AAED}" {
+       m_Spawn GC_AIGroupSpawn "{DAC10B96F25C9CA8}" {
+        m_sLocation "Building_8_Defend_AI11"
+        m_sPrefab "{637E4F99E4F91AD0}worlds/Perfk/Prefabs/Groups/PK_MUJ_07_Fighters.et"
+        m_aWaypoints {
+         "Building_3_Defend_WP23"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{192C6F8C82CD56C2}" {
+     m_sName "GC_MigratedSpawn_63680833188AF4AE"
+     m_aConditions {
+      GC_AreaCondition "{8CE51D18549C138E}" {
+       m_sArea "US_Trigger_Left_2"
+       m_Targets GC_CharacterAreaTargets "{81A893778CBA8CD6}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{A5B35174DB7157AB}" {
+        m_fRequiredShare 0.001
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{0EF0D694A6208517}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D81DA99A80A80942}" {
+       m_sMessage "GC_MigratedSpawn_63680833188AF4AE"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{54AA4017A56ED886}" {
+     m_sName "GC_MigratedSpawn_63680833188AF4AE (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E09DB893A16C5B3F}" {
+       m_sEventName "GC_MigratedSpawn_63680833188AF4AE"
+      }
+     }
+     m_Advanced GC_EventOptions "{E520A833A094089F}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{83A97C5943FCF268}" {
+       m_Spawn GC_AIGroupSpawn "{5C61374AE32D0880}" {
+        m_sLocation "Building_8_Defend_AI12"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Building_3_Defend_WP24"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C636159680DF2BE3}" {
+     m_sName "GC_MigratedSpawn_D904BC3180FF5008"
+     m_aConditions {
+      GC_AreaCondition "{389B35C4C17695AF}" {
+       m_sArea "US_Trigger_Left_3"
+       m_Targets GC_CharacterAreaTargets "{AE917CAB05E95C9B}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{641E333A617B8621}" {
+        m_fRequiredShare 0.001
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{E66FA02B3D68493C}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{390E5E4501C592FD}" {
+       m_sMessage "GC_MigratedSpawn_D904BC3180FF5008"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D5378376B464A7FF}" {
+     m_sName "GC_MigratedSpawn_D904BC3180FF5008 (1.5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{FD014B7AF0F81F2A}" {
+       m_sEventName "GC_MigratedSpawn_D904BC3180FF5008"
+      }
+     }
+     m_Advanced GC_EventOptions "{542F1E245058E5DB}" {
+      m_fDelay 1.5
+     }
+     m_aActions {
+      GC_SpawnAction "{457F7CFC26895BDC}" {
+       m_Spawn GC_AIGroupSpawn "{C5C4B2B7A9BB8533}" {
+        m_sLocation "Building_8_Defend_AI13"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Building_3_Defend_WP25"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{DD8B9A1C3D754943}" {
+     m_sName "GC_MigratedSpawn_CB45DBE4E1E1A2ED"
+     m_aConditions {
+      GC_AreaCondition "{4B4B9CD1969E5D8F}" {
+       m_sArea "US_Trigger_Left_2"
+       m_Targets GC_CharacterAreaTargets "{A95940F402CB871D}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{2C21FD2E39A0E694}" {
+        m_fRequiredShare 0.001
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{952F387E00CEAE83}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{52DB12A453FA9905}" {
+       m_sMessage "GC_MigratedSpawn_CB45DBE4E1E1A2ED"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8A8AE4A097DC9C5E}" {
+     m_sName "GC_MigratedSpawn_CB45DBE4E1E1A2ED (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{60CA20019D12F136}" {
+       m_sEventName "GC_MigratedSpawn_CB45DBE4E1E1A2ED"
+      }
+     }
+     m_Advanced GC_EventOptions "{DB3E6D7C257D4874}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{CECABA62E9E48FF6}" {
+       m_Spawn GC_AIGroupSpawn "{37D33FCED21183E6}" {
+        m_sLocation "Building_8_Defend_AI14"
+        m_sPrefab "{637E4F99E4F91AD0}worlds/Perfk/Prefabs/Groups/PK_MUJ_07_Fighters.et"
+        m_aWaypoints {
+         "Building_3_Defend_WP26"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{53DDC75A2DA35755}" {
+     m_sName "GC_MigratedSpawn_4B3530954A9BF02D"
+     m_aConditions {
+      GC_AreaCondition "{11E6A53876DB2E7E}" {
+       m_sArea "US_Trigger_Left_2"
+       m_Targets GC_CharacterAreaTargets "{A9B21A37BE0512CE}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{FE8D1C17AB044299}" {
+        m_fRequiredShare 0.001
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{7D019BAA3A376D00}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{387C2B7714B18180}" {
+       m_sMessage "GC_MigratedSpawn_4B3530954A9BF02D"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{73B015CF90C839F6}" {
+     m_sName "GC_MigratedSpawn_4B3530954A9BF02D (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BF22F34906A9A561}" {
+       m_sEventName "GC_MigratedSpawn_4B3530954A9BF02D"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{73B015CF90C839F6}" {
+       m_Spawn GC_AIGroupSpawn "{6AB9E30AEBB0C9CA}" {
+        m_sLocation "Building_8_Defend_AI15"
+        m_sPrefab "{98909778EFEFAF8B}worlds/Perfk/Prefabs/Groups/PK_MUJ_11_Fighters.et"
+        m_aWaypoints {
+         "Building_3_Defend_WP27"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{77D609B42E3662A7}" {
+     m_sName "GC_MigratedSpawn_371C9E2D421BAD67"
+     m_aConditions {
+      GC_AreaCondition "{46BD690B6E49AC07}" {
+       m_sArea "US_Trigger_Left_2"
+       m_Targets GC_CharacterAreaTargets "{69624BA8F7778673}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{CD60AC684A131F17}" {
+        m_fRequiredShare 0.001
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{AE6C5EC108926F9D}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9867246B08128A50}" {
+       m_sMessage "GC_MigratedSpawn_371C9E2D421BAD67"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{53B52688A23A8387}" {
+     m_sName "GC_MigratedSpawn_371C9E2D421BAD67 (0.5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1A5B41D49B5D2DEE}" {
+       m_sEventName "GC_MigratedSpawn_371C9E2D421BAD67"
+      }
+     }
+     m_Advanced GC_EventOptions "{2D470DCCC0E97EAF}" {
+      m_fDelay 0.5
+     }
+     m_aActions {
+      GC_SpawnAction "{F7555A0BDDD17F93}" {
+       m_Spawn GC_AIGroupSpawn "{DD1F5B5F26AA9AD4}" {
+        m_sLocation "Building_8_Defend_AI16"
+        m_sPrefab "{98909778EFEFAF8B}worlds/Perfk/Prefabs/Groups/PK_MUJ_11_Fighters.et"
+        m_aWaypoints {
+         "Building_3_Defend_WP28"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{7A8E3F30F33D7F53}" {
+     m_sName "GC_MigratedSpawn_5E6FE7BD2F4579F5"
+     m_aConditions {
+      GC_AreaCondition "{F15324741956947E}" {
+       m_sArea "US_Trigger_Left_2"
+       m_Targets GC_CharacterAreaTargets "{DB2A96FD1F103D95}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{BB50C27F82B68FA8}" {
+        m_fRequiredShare 0.001
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{3E5612478DC33608}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0EE551FD256DD47C}" {
+       m_sMessage "GC_MigratedSpawn_5E6FE7BD2F4579F5"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AFAC18B5844599DE}" {
+     m_sName "GC_MigratedSpawn_5E6FE7BD2F4579F5 (3.5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B49566D533FFD935}" {
+       m_sEventName "GC_MigratedSpawn_5E6FE7BD2F4579F5"
+      }
+     }
+     m_Advanced GC_EventOptions "{666088C32BAEA2A7}" {
+      m_fDelay 3.5
+     }
+     m_aActions {
+      GC_SpawnAction "{06F57DA89F2A057A}" {
+       m_Spawn GC_AIGroupSpawn "{C021C7851F2E8EA1}" {
+        m_sLocation "Building_8_Defend_AI18"
+        m_sPrefab "{3D3547C1CDF10CBE}worlds/Perfk/Prefabs/Groups/PK_MUJ_03_Fighters.et"
+        m_aWaypoints {
+         "Mosque_WP_Defend_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E0FA3998C85E8963}" {
+     m_sName "GC_MigratedSpawn_61CBA8B0F6FBA1DB"
+     m_aConditions {
+      GC_AreaCondition "{427C4B43F430D00F}" {
+       m_sArea "US_Trigger_Left_2"
+       m_Targets GC_CharacterAreaTargets "{3A49A59239080964}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{9C92A87A2760B724}" {
+        m_fRequiredShare 0.001
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{EA7F1166D2A5F85B}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D2EEAA0B2C8C996F}" {
+       m_sMessage "GC_MigratedSpawn_61CBA8B0F6FBA1DB"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{39A68631529EE903}" {
+     m_sName "GC_MigratedSpawn_61CBA8B0F6FBA1DB (1.5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B0E554DA6F4BAA2B}" {
+       m_sEventName "GC_MigratedSpawn_61CBA8B0F6FBA1DB"
+      }
+     }
+     m_Advanced GC_EventOptions "{92EFC30BEA36DAF2}" {
+      m_fDelay 1.5
+     }
+     m_aActions {
+      GC_SpawnAction "{4BF46F404CE66B50}" {
+       m_Spawn GC_AIGroupSpawn "{C7D532782325323C}" {
+        m_sLocation "Building_8_Defend_AI17"
+        m_sPrefab "{3D3547C1CDF10CBE}worlds/Perfk/Prefabs/Groups/PK_MUJ_03_Fighters.et"
+        m_aWaypoints {
+         "Mosque_WP_Defend_2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{0B84FB0CA20AC64B}" {
+     m_sName "GC_MigratedSpawn_419BC72856632389"
+     m_aConditions {
+      GC_AreaCondition "{0BBD2116B1BF8B61}" {
+       m_sArea "US_Trigger_Left_4"
+       m_Targets GC_CharacterAreaTargets "{AFBCE73827A963E2}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{FFCE892DF0915238}" {
+        m_fRequiredShare 0.001
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{61206FEF7D46A3B1}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DB49A85E9FDF9418}" {
+       m_sMessage "GC_MigratedSpawn_419BC72856632389"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D2B04C7BE2B895DD}" {
+     m_sName "GC_MigratedSpawn_419BC72856632389 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{EE7FBF58BDF16B9A}" {
+       m_sEventName "GC_MigratedSpawn_419BC72856632389"
+      }
+     }
+     m_Advanced GC_EventOptions "{D1CB1C7C185AEBA3}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{0E9AC0333D3A707D}" {
+       m_Spawn GC_AIGroupSpawn "{E0F4FBB85AE62329}" {
+        m_sLocation "Building_8_Defend_AI20"
+        m_sPrefab "{98909778EFEFAF8B}worlds/Perfk/Prefabs/Groups/PK_MUJ_11_Fighters.et"
+        m_aWaypoints {
+         "Mosque_WP_Defend_3"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{996CE5C823B74FF9}" {
+     m_sName "GC_MigratedSpawn_AEEA44018CD57E8C"
+     m_aConditions {
+      GC_AreaCondition "{6E4DF4474DA98BF9}" {
+       m_sArea "US_Trigger_Right_1"
+       m_Targets GC_CharacterAreaTargets "{EA58B36FAC62718F}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{F0F3847DA9D64992}" {
+        m_fRequiredShare 0.001
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{6D9267486213ABFE}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5E51136D90F4A66B}" {
+       m_sMessage "GC_MigratedSpawn_AEEA44018CD57E8C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{749A801B2CD71DDB}" {
+     m_sName "GC_MigratedSpawn_AEEA44018CD57E8C (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{414CAAC371ECDF00}" {
+       m_sEventName "GC_MigratedSpawn_AEEA44018CD57E8C"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{749A801B2CD71DDB}" {
+       m_Spawn GC_AIGroupSpawn "{1E75E36DAD0D70A9}" {
+        m_sLocation "US_Spawner_Right_1"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "US_WP_Right_1_1"
+         "WP_Fallback"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{47934A0E6025C619}" {
+     m_sName "GC_MigratedSpawn_AEEA44018CD57E8C (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{0DC943738BA760F9}" {
+       m_sEventName "GC_MigratedSpawn_AEEA44018CD57E8C"
+      }
+     }
+     m_Advanced GC_EventOptions "{49FD912753BEE03C}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{333D95C65B701A21}" {
+       m_Spawn GC_AIGroupSpawn "{988229273C7E8D7B}" {
+        m_sLocation "US_Spawner_Right_1"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "US_WP_Right_1_1"
+         "WP_Fallback"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{736F34A26C946502}" {
+     m_sName "GC_MigratedSpawn_F74CB136A1102141"
+     m_aConditions {
+      GC_AreaCondition "{DA87DA5558C2A3C5}" {
+       m_sArea "US_Trigger_Center_1"
+       m_Targets GC_CharacterAreaTargets "{B37CCC4FBD1DA7E2}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{71B4A904EDCD99C7}" {
+        m_fRequiredShare 0.001
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{AD32B054FEF86DBD}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C258BF80AB71AC53}" {
+       m_sMessage "GC_MigratedSpawn_F74CB136A1102141"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D1CFF961949F1726}" {
+     m_sName "GC_MigratedSpawn_F74CB136A1102141 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{04BF47C6B062020C}" {
+       m_sEventName "GC_MigratedSpawn_F74CB136A1102141"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{D1CFF961949F1726}" {
+       m_Spawn GC_AIGroupSpawn "{BC29E55143BC6DCF}" {
+        m_sLocation "US_Spawner_Center_1"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "US_WP_Center_1_1"
+         "WP_Fallback"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{5576C9281452924D}" {
+     m_sName "GC_MigratedSpawn_F74CB136A1102141 (200s)"
+     m_aConditions {
+      GC_MissionEventCondition "{468EF3D491DFF903}" {
+       m_sEventName "GC_MigratedSpawn_F74CB136A1102141"
+      }
+     }
+     m_Advanced GC_EventOptions "{02D03E2BE3E503C6}" {
+      m_fDelay 200
+     }
+     m_aActions {
+      GC_SpawnAction "{EDC44863584D993B}" {
+       m_Spawn GC_AIGroupSpawn "{B418DA9F7F4ADE87}" {
+        m_sLocation "US_Spawner_Center_1"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "US_WP_Center_1_1"
+         "WP_Fallback"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4B5EF686B0D916BD}" {
+     m_sName "GC_MigratedSpawn_A0C34BB35301163A"
+     m_aConditions {
+      GC_AreaCondition "{E9290A6D57C3C102}" {
+       m_sArea "US_Trigger_Left_1"
+       m_Targets GC_CharacterAreaTargets "{F80302817833F056}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{028A8ED622DE3BF1}" {
+        m_fRequiredShare 0.001
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{920DAD5BD7DFD297}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D17CB9D7FE7517CF}" {
+       m_sMessage "GC_MigratedSpawn_A0C34BB35301163A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6BBFB71937A9B1D2}" {
+     m_sName "GC_MigratedSpawn_A0C34BB35301163A (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{01C1857EDD24A825}" {
+       m_sEventName "GC_MigratedSpawn_A0C34BB35301163A"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{6BBFB71937A9B1D2}" {
+       m_Spawn GC_AIGroupSpawn "{23BBCD5CA67AD13D}" {
+        m_sLocation "US_Spawner_Left_1_2"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "US_WP_Left_1_1"
+         "WP_Fallback"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{CD0799446C773FA2}" {
+     m_sName "GC_MigratedSpawn_A0C34BB35301163A (130s)"
+     m_aConditions {
+      GC_MissionEventCondition "{91F7DCE727B2B8C0}" {
+       m_sEventName "GC_MigratedSpawn_A0C34BB35301163A"
+      }
+     }
+     m_Advanced GC_EventOptions "{59DE4F3AFA68650C}" {
+      m_fDelay 130
+     }
+     m_aActions {
+      GC_SpawnAction "{D63FBE10431FA292}" {
+       m_Spawn GC_AIGroupSpawn "{F5F8EA2136174B0C}" {
+        m_sLocation "US_Spawner_Left_1_2"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "US_WP_Left_1_1"
+         "WP_Fallback"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{FA27258DABE87759}" {
+     m_sName "GC_MigratedSpawn_463687EB4FB6F01F"
+     m_aConditions {
+      GC_AreaCondition "{98752484D4B58BA7}" {
+       m_sArea "US_Trigger_Center_2"
+       m_Targets GC_CharacterAreaTargets "{016FE55F21904D64}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{006C16B5A1BD592D}" {
+        m_fRequiredShare 0.001
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{49BE3542F7CF987B}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A84C0B71F602BC79}" {
+       m_sMessage "GC_MigratedSpawn_463687EB4FB6F01F"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2C80029E9FA05A46}" {
+     m_sName "GC_MigratedSpawn_463687EB4FB6F01F (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{89761BB5F184165A}" {
+       m_sEventName "GC_MigratedSpawn_463687EB4FB6F01F"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{2C80029E9FA05A46}" {
+       m_Spawn GC_AIGroupSpawn "{EC5D1E6CA3F75A83}" {
+        m_sLocation "US_Spawner_Center_2"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "US_WP_Center_2_1"
+         "WP_Fallback"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C279C32826226785}" {
+     m_sName "GC_MigratedSpawn_3204BBDFD4319BB9"
+     m_aConditions {
+      GC_AreaCondition "{CD5ABA7039298467}" {
+       m_sArea "US_Trigger_Left_3"
+       m_Targets GC_CharacterAreaTargets "{B969869760A48B1A}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{260A01B8A24FC54E}" {
+        m_fRequiredShare 0.001
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{155D97900F61AFE2}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7F6A45061BB23767}" {
+       m_sMessage "GC_MigratedSpawn_3204BBDFD4319BB9"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{086D7981D667974A}" {
+     m_sName "GC_MigratedSpawn_3204BBDFD4319BB9 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A3FD26593C10AE72}" {
+       m_sEventName "GC_MigratedSpawn_3204BBDFD4319BB9"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{086D7981D667974A}" {
+       m_Spawn GC_AIGroupSpawn "{9B3D97104664A877}" {
+        m_sLocation "US_Spawner_Left_3"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "US_WP_Left_3_1"
+         "WP_Fallback"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B99F5D549860662C}" {
+     m_sName "GC_MigratedSpawn_3204BBDFD4319BB9 (180s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E9DDBB66B6AA8C50}" {
+       m_sEventName "GC_MigratedSpawn_3204BBDFD4319BB9"
+      }
+     }
+     m_Advanced GC_EventOptions "{1996770F59CE5B7A}" {
+      m_fDelay 180
+     }
+     m_aActions {
+      GC_SpawnAction "{EED7BF4D3B440A76}" {
+       m_Spawn GC_AIGroupSpawn "{FEE23FD34B5417BB}" {
+        m_sLocation "US_Spawner_Left_3"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "US_WP_Left_3_1"
+         "WP_Fallback"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{903F916742354A5E}" {
+     m_sName "GC_MigratedSpawn_9519E4E11ACD256D"
+     m_aConditions {
+      GC_AreaCondition "{FFF819001B6CFB8C}" {
+       m_sArea "US_Trigger_Left_2"
+       m_Targets GC_CharacterAreaTargets "{7A6E29DFFADC644C}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{2C8F985437EA6400}" {
+        m_fRequiredShare 0.001
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{778323BB62573CE0}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{093E640110F03218}" {
+       m_sMessage "GC_MigratedSpawn_9519E4E11ACD256D"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9CC72894B1B7F4A1}" {
+     m_sName "GC_MigratedSpawn_9519E4E11ACD256D (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{AE1C0A3F2C6D150D}" {
+       m_sEventName "GC_MigratedSpawn_9519E4E11ACD256D"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{9CC72894B1B7F4A1}" {
+       m_Spawn GC_AIGroupSpawn "{4E7992EF74E742BB}" {
+        m_sLocation "US_Spawner_Left_2"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "US_WP_Left_2_1"
+         "WP_Fallback"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{8303E083D66FC830}" {
+     m_sName "GC_MigratedSpawn_9519E4E11ACD256D (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5D4D30F576FBADCD}" {
+       m_sEventName "GC_MigratedSpawn_9519E4E11ACD256D"
+      }
+     }
+     m_Advanced GC_EventOptions "{FF916B7DFAB81247}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{B910F6EF0AB95103}" {
+       m_Spawn GC_AIGroupSpawn "{BCD14E52981E70B8}" {
+        m_sLocation "US_Spawner_Left_2"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "US_WP_Left_2_1"
+         "WP_Fallback"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{5A73A16D61CBE22E}" {
+     m_sName "GC_MigratedSpawn_072373545049BB6C"
+     m_aConditions {
+      GC_AreaCondition "{4A9DB93338FEA77C}" {
+       m_sArea "US_Trigger_Left_4"
+       m_Targets GC_CharacterAreaTargets "{8DDDEB4CAF6149B1}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{632B6529DED8B966}" {
+        m_fRequiredShare 0.001
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{7F97B08876336BBA}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B15D041C26EED724}" {
+       m_sMessage "GC_MigratedSpawn_072373545049BB6C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B014E4C6F44AE6D5}" {
+     m_sName "GC_MigratedSpawn_072373545049BB6C (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{122B292489D2BFEF}" {
+       m_sEventName "GC_MigratedSpawn_072373545049BB6C"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{B014E4C6F44AE6D5}" {
+       m_Spawn GC_AIGroupSpawn "{302E6216FA016F41}" {
+        m_sLocation "US_Spawner_Left_4"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "US_WP_Left_4_1"
+         "WP_Fallback"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{89C28B40E537B3C7}" {
+     m_sName "GC_MigratedSpawn_072373545049BB6C (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{0DDD19633849D6FB}" {
+       m_sEventName "GC_MigratedSpawn_072373545049BB6C"
+      }
+     }
+     m_Advanced GC_EventOptions "{B9AF4E14DE0A7ED4}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{4FEFCD61AFE04A6D}" {
+       m_Spawn GC_AIGroupSpawn "{5FCE3FE378556A13}" {
+        m_sLocation "US_Spawner_Left_4"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "US_WP_Left_4_1"
+         "WP_Fallback"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{8AF9EB1D3E74AC2A}" {
+     m_sName "GC_MigratedSpawn_3531D43D3C2031A1"
+     m_aConditions {
+      GC_AreaCondition "{B2C66A10A07EA646}" {
+       m_sArea "US_Trigger_Right_2"
+       m_Targets GC_CharacterAreaTargets "{60349B68E3427DC8}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{1B74D6BCAC5411FD}" {
+        m_fRequiredShare 0.001
+        m_aIgnoredFactions {
+         "GC_MUJ"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{EF69C8B6E4E8A30D}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3CC8B1980A19CE3E}" {
+       m_sMessage "GC_MigratedSpawn_3531D43D3C2031A1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2CE8F7876764F280}" {
+     m_sName "GC_MigratedSpawn_3531D43D3C2031A1 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F5FBC6AB6C3869EF}" {
+       m_sEventName "GC_MigratedSpawn_3531D43D3C2031A1"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{2CE8F7876764F280}" {
+       m_Spawn GC_AIGroupSpawn "{528BBCD6146FDA86}" {
+        m_sLocation "US_Spawner_Right_2"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "US_WP_Right_2_1"
+         "WP_Fallback"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{8689F3F7A8CF1644}" {
+     m_sName "GC_MigratedSpawn_3531D43D3C2031A1 (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E7DB02A6B9F1E230}" {
+       m_sEventName "GC_MigratedSpawn_3531D43D3C2031A1"
+      }
+     }
+     m_Advanced GC_EventOptions "{B86771D32D436D7F}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{C6699158AD5FEF18}" {
+       m_Spawn GC_AIGroupSpawn "{415356482FFCA6C4}" {
+        m_sLocation "US_Spawner_Right_2"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "US_WP_Right_2_1"
+         "WP_Fallback"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 3052.448 10 3058.805
+ m_eJipMode MANUAL
+ m_iJipOpenSeconds 600
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "GC_MUJ"
+     }
+    }
+   }
+  }
+ }
+}
