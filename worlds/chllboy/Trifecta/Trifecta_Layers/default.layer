@@ -1,0 +1,2114 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 4600.619 17.875 10633.706
+}
+GC_LobbyGameMode GC_MigratedMission : "{BBF93E8296514D71}worlds/chllboy/Trifecta/Trifecta_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{691C83A674C02713}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 20
+     m_iStartingMinutes 45
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 15
+   m_iMonth 8
+   m_iYear 2025
+  }
+  GC_PeakFactionPopulationComponent "{4829631DF621CA9B}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{4CE44A54062804B0}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 120
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{B1322554D6968C5F}" {
+     m_sName "PART_1"
+    }
+    GC_MissionFlag "{3BCCF93278490756}" {
+     m_sName "PART_2"
+    }
+    GC_MissionFlag "{754CB3517F420332}" {
+     m_sName "PART_3"
+    }
+    GC_MissionFlag "{3C89BFA0EC618332}" {
+     m_sName "PART_4"
+    }
+    GC_MissionFlag "{95A99FF90626166C}" {
+     m_sName "PART_5"
+    }
+    GC_MissionFlag "{9865D0CC6FFA056F}" {
+     m_sName "PART_6"
+    }
+    GC_MissionFlag "{2166BF3FC6E95A7C}" {
+     m_sName "PART_7"
+    }
+    GC_MissionFlag "{EBE6531EAC2B67B8}" {
+     m_sName "PART_8"
+    }
+    GC_MissionFlag "{C6C2304BC25459AC}" {
+     m_sName "POS1"
+    }
+    GC_MissionFlag "{7DCD25DC58D4E0F0}" {
+     m_sName "POS2"
+    }
+    GC_MissionFlag "{3BE51529FDAF0E60}" {
+     m_sName "POS3"
+    }
+    GC_MissionFlag "{F074ABE2F75229AC}" {
+     m_sName "POS4"
+    }
+    GC_MissionFlag "{F955EBE5F28A548D}" {
+     m_sName "POS5"
+    }
+    GC_MissionFlag "{D9769E3B522E531A}" {
+     m_sName "R1"
+    }
+    GC_MissionFlag "{E37E458FC17BFC66}" {
+     m_sName "R10"
+    }
+    GC_MissionFlag "{6C6DB190DD9E10F6}" {
+     m_sName "R11"
+    }
+    GC_MissionFlag "{422B7EC09CC49555}" {
+     m_sName "R12"
+    }
+    GC_MissionFlag "{13C0FA589A4E752A}" {
+     m_sName "R2"
+    }
+    GC_MissionFlag "{66215BAFFBE1BAAC}" {
+     m_sName "R3"
+    }
+    GC_MissionFlag "{30113F29709EDD06}" {
+     m_sName "R4"
+    }
+    GC_MissionFlag "{66558FED52ADF005}" {
+     m_sName "R5"
+    }
+    GC_MissionFlag "{B443DA34250D3EF9}" {
+     m_sName "R6"
+    }
+    GC_MissionFlag "{A794E5802AFB2B13}" {
+     m_sName "R7"
+    }
+    GC_MissionFlag "{6529F3A2A77DB427}" {
+     m_sName "R8"
+    }
+    GC_MissionFlag "{F64DF79AF3DE1528}" {
+     m_sName "R9"
+    }
+    GC_MissionFlag "{345A8FF574CABC48}" {
+     m_sName "SETUP_OVER"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{13B6867EC7FB3739}" {
+     m_sName "GC_MigrationStartupSampling"
+     m_aConditions {
+      GC_ConditionGroup "{455230BA1090D7C8}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{F34563989D8ADACD}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{FBEACAD2C91CF28C}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{000124B3CDE2EF94}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_FlagSamplingAction "{F34563989D8ADACD}" {
+       m_iDrawCount 1
+       m_aFlags {
+        "POS1"
+        "POS2"
+        "POS3"
+        "POS4"
+        "POS5"
+       }
+      }
+      GC_FlagSamplingAction "{EFBECC86C7CD4C8E}" {
+       m_iDrawCount 4
+       m_aFlags {
+        "R1"
+        "R2"
+        "R3"
+        "R4"
+        "R5"
+        "R6"
+        "R7"
+        "R8"
+        "R9"
+        "R10"
+        "R11"
+        "R12"
+       }
+      }
+     }
+    }
+    GC_Event "{FEFC6159AF71CAA2}" {
+     m_sName "DECRYPTION_KEY_FULL_MARKER"
+     m_aConditions {
+      GC_GameModeStateCondition "{08DCF90F183FC0EC}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{9F9D4FA027E5B229}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{A6551E565A0E6BC5}" {
+         m_sFlagName "PART_1"
+        }
+        GC_MissionFlagCondition "{000F0DBB6518D763}" {
+         m_sFlagName "PART_2"
+        }
+        GC_MissionFlagCondition "{06FE5A7FFE26954A}" {
+         m_sFlagName "PART_3"
+        }
+        GC_MissionFlagCondition "{D47ABB3BB9EC9328}" {
+         m_sFlagName "PART_4"
+        }
+        GC_MissionFlagCondition "{4E3BE0467B6BAA6D}" {
+         m_sFlagName "PART_5"
+        }
+        GC_MissionFlagCondition "{A0E1CA97359B6CC3}" {
+         m_sFlagName "PART_6"
+        }
+        GC_MissionFlagCondition "{02E677CFE9737048}" {
+         m_sFlagName "PART_7"
+        }
+        GC_MissionFlagCondition "{AABD6B3FEF243B7D}" {
+         m_sFlagName "PART_8"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MapMarkerVisibilityAction "{BF925E738F06C6CE}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_aMarkers {
+        "STMMARK"
+       }
+       m_bVisibleWithoutFaction 0
+       m_aFactions {
+        GC_MarkerFactionVisibility "{D66B78A10E5077F1}" {
+         m_sFaction "FIA"
+         m_bVisible 1
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{EB19D1A923187ECF}" {
+     m_sName "DECRYPTION_KEY_1"
+     m_aConditions {
+      GC_GameModeStateCondition "{7B5E6F90C88012DC}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionCount "{D1B83DCA35BFB93D}" {
+       m_iComparison 2
+       m_iRequiredCount 1
+       m_aConditions {
+        GC_MissionFlagCondition "{A91BE9C50086C4D3}" {
+         m_sFlagName "PART_1"
+        }
+        GC_MissionFlagCondition "{D2305958DBE19063}" {
+         m_sFlagName "PART_2"
+        }
+        GC_MissionFlagCondition "{BDF1534E4EF4276E}" {
+         m_sFlagName "PART_3"
+        }
+        GC_MissionFlagCondition "{BF2319D215270D2C}" {
+         m_sFlagName "PART_4"
+        }
+        GC_MissionFlagCondition "{CD73A14E0E749D9B}" {
+         m_sFlagName "PART_5"
+        }
+        GC_MissionFlagCondition "{31B40B6AFA5DD067}" {
+         m_sFlagName "PART_6"
+        }
+        GC_MissionFlagCondition "{2F439BC731A059D6}" {
+         m_sFlagName "PART_7"
+        }
+        GC_MissionFlagCondition "{A99598F68738DB9A}" {
+         m_sFlagName "PART_8"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8245AB274E6A3B69}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_sTitle "DECRYPTION KEY PART RECOVERED 1/8"
+       m_sMessage ""
+       m_aFactions {
+        "FIA"
+       }
+      }
+     }
+    }
+    GC_Event "{211EDA5A78BF7164}" {
+     m_sName "DECRYPTION_KEY_2"
+     m_aConditions {
+      GC_GameModeStateCondition "{81757CFE94354CD4}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionCount "{3BB1D38E52FCEC5F}" {
+       m_iComparison 2
+       m_iRequiredCount 2
+       m_aConditions {
+        GC_MissionFlagCondition "{C8415504F592C727}" {
+         m_sFlagName "PART_1"
+        }
+        GC_MissionFlagCondition "{1C6B091E552D84C6}" {
+         m_sFlagName "PART_2"
+        }
+        GC_MissionFlagCondition "{8D6A098B196288DC}" {
+         m_sFlagName "PART_3"
+        }
+        GC_MissionFlagCondition "{7F0AE6B4F7441E29}" {
+         m_sFlagName "PART_4"
+        }
+        GC_MissionFlagCondition "{41F3111B6BE29CE8}" {
+         m_sFlagName "PART_5"
+        }
+        GC_MissionFlagCondition "{7EA9C739905B1A8B}" {
+         m_sFlagName "PART_6"
+        }
+        GC_MissionFlagCondition "{E35D22BB4D5F3551}" {
+         m_sFlagName "PART_7"
+        }
+        GC_MissionFlagCondition "{74C6D25F840520A7}" {
+         m_sFlagName "PART_8"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5C5EE2D9757274FC}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_sTitle "DECRYPTION KEY PART RECOVERED 2/8"
+       m_sMessage ""
+       m_aFactions {
+        "FIA"
+       }
+      }
+     }
+    }
+    GC_Event "{6D5C3ED711F55E3E}" {
+     m_sName "DECRYPTION_KEY_3"
+     m_aConditions {
+      GC_GameModeStateCondition "{E1CB03564A384A79}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionCount "{E7CD4E2EE237DC52}" {
+       m_iComparison 2
+       m_iRequiredCount 3
+       m_aConditions {
+        GC_MissionFlagCondition "{1D25E8975B6796BB}" {
+         m_sFlagName "PART_1"
+        }
+        GC_MissionFlagCondition "{74D4CD7E50744946}" {
+         m_sFlagName "PART_2"
+        }
+        GC_MissionFlagCondition "{235C448D93DFEDFB}" {
+         m_sFlagName "PART_3"
+        }
+        GC_MissionFlagCondition "{CB0024CC1DD95298}" {
+         m_sFlagName "PART_4"
+        }
+        GC_MissionFlagCondition "{142E3AF87A260B64}" {
+         m_sFlagName "PART_5"
+        }
+        GC_MissionFlagCondition "{4640A133C3B5FF0C}" {
+         m_sFlagName "PART_6"
+        }
+        GC_MissionFlagCondition "{871A806116050699}" {
+         m_sFlagName "PART_7"
+        }
+        GC_MissionFlagCondition "{2D23069BD8517FB7}" {
+         m_sFlagName "PART_8"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{34B07BF78AEB0419}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_sTitle "DECRYPTION KEY PART RECOVERED 3/8"
+       m_sMessage ""
+       m_aFactions {
+        "FIA"
+       }
+      }
+     }
+    }
+    GC_Event "{7C0EF200065817DE}" {
+     m_sName "DECRYPTION_KEY_4"
+     m_aConditions {
+      GC_GameModeStateCondition "{19634550C23E9094}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionCount "{D6147E93B198EA1D}" {
+       m_iComparison 2
+       m_iRequiredCount 4
+       m_aConditions {
+        GC_MissionFlagCondition "{345200C2BD57FA79}" {
+         m_sFlagName "PART_1"
+        }
+        GC_MissionFlagCondition "{D56F2CA93770E138}" {
+         m_sFlagName "PART_2"
+        }
+        GC_MissionFlagCondition "{1C64493AD8F0ACCA}" {
+         m_sFlagName "PART_3"
+        }
+        GC_MissionFlagCondition "{97017DAF58DEEC94}" {
+         m_sFlagName "PART_4"
+        }
+        GC_MissionFlagCondition "{810BB2362DDDC38E}" {
+         m_sFlagName "PART_5"
+        }
+        GC_MissionFlagCondition "{5721EC64191CD359}" {
+         m_sFlagName "PART_6"
+        }
+        GC_MissionFlagCondition "{A9A595F06E1E7153}" {
+         m_sFlagName "PART_7"
+        }
+        GC_MissionFlagCondition "{13FD0FD38EA7F0E0}" {
+         m_sFlagName "PART_8"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4A7B09173EDF1081}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_sTitle "DECRYPTION KEY PART RECOVERED 4/8"
+       m_sMessage ""
+       m_aFactions {
+        "FIA"
+       }
+      }
+     }
+    }
+    GC_Event "{595E0FF101AC66A9}" {
+     m_sName "DECRYPTION_KEY_5"
+     m_aConditions {
+      GC_GameModeStateCondition "{FA976EEE72515161}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionCount "{274F569BF0CD39BD}" {
+       m_iComparison 2
+       m_iRequiredCount 5
+       m_aConditions {
+        GC_MissionFlagCondition "{0684A61CB14CD369}" {
+         m_sFlagName "PART_1"
+        }
+        GC_MissionFlagCondition "{6E822E3091CFC6A9}" {
+         m_sFlagName "PART_2"
+        }
+        GC_MissionFlagCondition "{13DB7DC0591CBD83}" {
+         m_sFlagName "PART_3"
+        }
+        GC_MissionFlagCondition "{CCDA05EBA1988018}" {
+         m_sFlagName "PART_4"
+        }
+        GC_MissionFlagCondition "{0EFC69C5A61284DB}" {
+         m_sFlagName "PART_5"
+        }
+        GC_MissionFlagCondition "{8D4ABCB4AE95177C}" {
+         m_sFlagName "PART_6"
+        }
+        GC_MissionFlagCondition "{6E6C518D0595F623}" {
+         m_sFlagName "PART_7"
+        }
+        GC_MissionFlagCondition "{B62CA7836ED73C73}" {
+         m_sFlagName "PART_8"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{312CD02634E44D33}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_sTitle "DECRYPTION KEY PART RECOVERED 5/8"
+       m_sMessage ""
+       m_aFactions {
+        "FIA"
+       }
+      }
+     }
+    }
+    GC_Event "{6271A40EA9992093}" {
+     m_sName "DECRYPTION_KEY_6"
+     m_aConditions {
+      GC_GameModeStateCondition "{9E86928B277FB91F}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionCount "{089D8F841CBC4DD7}" {
+       m_iComparison 2
+       m_iRequiredCount 6
+       m_aConditions {
+        GC_MissionFlagCondition "{BE1D87760D35ABA3}" {
+         m_sFlagName "PART_1"
+        }
+        GC_MissionFlagCondition "{AFFC803370FA856C}" {
+         m_sFlagName "PART_2"
+        }
+        GC_MissionFlagCondition "{27C625809155B740}" {
+         m_sFlagName "PART_3"
+        }
+        GC_MissionFlagCondition "{083318043B91936B}" {
+         m_sFlagName "PART_4"
+        }
+        GC_MissionFlagCondition "{C7AF03B1D4E1C5F6}" {
+         m_sFlagName "PART_5"
+        }
+        GC_MissionFlagCondition "{BD438844EC715AA7}" {
+         m_sFlagName "PART_6"
+        }
+        GC_MissionFlagCondition "{A488B384BC82A718}" {
+         m_sFlagName "PART_7"
+        }
+        GC_MissionFlagCondition "{B12A63DB0952CED5}" {
+         m_sFlagName "PART_8"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A800E242BA3A904A}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_sTitle "DECRYPTION KEY PART RECOVERED 6/8"
+       m_sMessage ""
+       m_aFactions {
+        "FIA"
+       }
+      }
+     }
+    }
+    GC_Event "{39A4B959CD056971}" {
+     m_sName "DECRYPTION_KEY_7"
+     m_aConditions {
+      GC_GameModeStateCondition "{D99B2B8AFDFE7660}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionCount "{C102D0BF12515B1B}" {
+       m_iComparison 2
+       m_iRequiredCount 7
+       m_aConditions {
+        GC_MissionFlagCondition "{264E2288F1BFAE59}" {
+         m_sFlagName "PART_1"
+        }
+        GC_MissionFlagCondition "{336DEF7A3CEA73A5}" {
+         m_sFlagName "PART_2"
+        }
+        GC_MissionFlagCondition "{D3CE70414FEB0513}" {
+         m_sFlagName "PART_3"
+        }
+        GC_MissionFlagCondition "{3310C89459D1CB98}" {
+         m_sFlagName "PART_4"
+        }
+        GC_MissionFlagCondition "{8DB48E3F79FBC252}" {
+         m_sFlagName "PART_5"
+        }
+        GC_MissionFlagCondition "{D085CF0D073619A7}" {
+         m_sFlagName "PART_6"
+        }
+        GC_MissionFlagCondition "{7FDD8DFBECF013DE}" {
+         m_sFlagName "PART_7"
+        }
+        GC_MissionFlagCondition "{0D51A42F91276262}" {
+         m_sFlagName "PART_8"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{25B1987CED7AAFB8}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_sTitle "DECRYPTION KEY PART RECOVERED 7/8"
+       m_sMessage ""
+       m_aFactions {
+        "FIA"
+       }
+      }
+     }
+    }
+    GC_Event "{361E9BA6D2578AD9}" {
+     m_sName "DECRYPTION_KEY_FULL"
+     m_aConditions {
+      GC_GameModeStateCondition "{12D445774E1B319E}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{AB461A6E526EDE04}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{70AFEDE046BCE9D3}" {
+         m_sFlagName "PART_1"
+        }
+        GC_MissionFlagCondition "{B20E3D604F9FCD10}" {
+         m_sFlagName "PART_2"
+        }
+        GC_MissionFlagCondition "{AC186015216AE478}" {
+         m_sFlagName "PART_3"
+        }
+        GC_MissionFlagCondition "{C38F93AD25F7AA57}" {
+         m_sFlagName "PART_4"
+        }
+        GC_MissionFlagCondition "{DFD82CFFBC68E0E3}" {
+         m_sFlagName "PART_5"
+        }
+        GC_MissionFlagCondition "{EC80F897CCF64C31}" {
+         m_sFlagName "PART_6"
+        }
+        GC_MissionFlagCondition "{D8CF9A8B6773DFC9}" {
+         m_sFlagName "PART_7"
+        }
+        GC_MissionFlagCondition "{0AE4030BEB815C1A}" {
+         m_sFlagName "PART_8"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B637ADF5E28D4596}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_sTitle "DECRYPTION KEY ACQUIRED"
+       m_sMessage ""
+       m_aFactions {
+        "FIA"
+       }
+      }
+     }
+    }
+    GC_Event "{E39292AA5C819800}" {
+     m_sName "STM_HARBOUR_EX"
+     m_aConditions {
+      GC_GameModeStateCondition "{A4F2EE472E64D3B9}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{7977D097AAF6AEE3}" {
+       m_sFlagName "STM_IN_HARBOUR"
+      }
+     }
+     m_aActions {
+      GC_EventControlAction "{79FD34BDA6A5C9E4}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_sEventName "STM_NOT_IN_HARBOUR"
+       m_iOperation 4
+      }
+      GC_SpawnAction "{27629E6A2BA40D6D}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_Spawn GC_PrefabSpawn "{D4A5E3ED061A4F8D}" {
+        m_sLocation "HARBOUR_EX"
+        m_sPrefab "{24B24161E870CE7B}worlds/chllboy/Trifecta/Prefabs/ION_HARBOUR_EXTRACT.et"
+        m_sEntityName "ION_HARBOUR_EX"
+       }
+      }
+     }
+    }
+    GC_Event "{A6EC48FD24E50F78}" {
+     m_sName "STM_NOT_IN_HARBOUR"
+     m_aConditions {
+      GC_GameModeStateCondition "{293F75FE8790185F}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{689E16CA9DF56A75}" {
+       m_sFlagName "STM_IN_HARBOUR"
+       m_bRequireFalse 1
+      }
+     }
+     m_aActions {
+      GC_EventControlAction "{1A33F5B6704E7EA3}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_sEventName "STM_HARBOUR_EX"
+       m_iOperation 4
+      }
+      GC_DeleteEntitiesAction "{5135F8E50AE94284}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_aEntities {
+        "ION_HARBOUR_EX"
+       }
+      }
+     }
+    }
+    GC_Event "{DB90E2FC6447CC32}" {
+     m_sName "STM_BEACH_EX"
+     m_aConditions {
+      GC_GameModeStateCondition "{D4AA22172E02D233}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{224E2B2FD9D798DE}" {
+       m_sFlagName "STM_IN_BEACH"
+      }
+     }
+     m_aActions {
+      GC_EventControlAction "{856722E961BC6027}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_sEventName "STM_NOT_IN_BEACH"
+       m_iOperation 4
+      }
+      GC_SpawnAction "{0A947E03F5D9BC15}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_Spawn GC_PrefabSpawn "{74F49412E7FB7B3D}" {
+        m_sLocation "BEACH_EX"
+        m_sPrefab "{9C8ABD5BDB78B4E8}worlds/chllboy/Trifecta/Prefabs/ION_BEACH_EXTRACT.et"
+        m_sEntityName "ION_BEACH_EX"
+       }
+      }
+     }
+    }
+    GC_Event "{ABBA4FCA9336477A}" {
+     m_sName "STM_NOT_IN_BEACH"
+     m_aConditions {
+      GC_GameModeStateCondition "{B7D195DE0286C8C5}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{3DA166D5AA23E2ED}" {
+       m_sFlagName "STM_IN_BEACH"
+       m_bRequireFalse 1
+      }
+     }
+     m_aActions {
+      GC_EventControlAction "{7497600D4EA7FBAC}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_sEventName "STM_BEACH_EX"
+       m_iOperation 4
+      }
+      GC_DeleteEntitiesAction "{24ECDA35101BE0BD}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_aEntities {
+        "ION_BEACH_EX"
+       }
+      }
+     }
+    }
+    GC_Event "{7D04AC4350DB6B6F}" {
+     m_sName "STM_KERMOVAN_EX"
+     m_aConditions {
+      GC_GameModeStateCondition "{B4D08EDAF49C9130}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{E1E0C1A2737E203C}" {
+       m_sFlagName "STM_IN_KERMOVAN"
+      }
+     }
+     m_aActions {
+      GC_EventControlAction "{2A385CBADD3E981C}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_sEventName "STM_NOT_IN_KERMOVAN"
+       m_iOperation 4
+      }
+      GC_SpawnAction "{5E6674E1125FE3A3}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_Spawn GC_PrefabSpawn "{631826A2F7F0290C}" {
+        m_sLocation "KERMOVAN_EX"
+        m_sPrefab "{E0CC1F1AECDAEDB3}worlds/chllboy/Trifecta/Prefabs/AFRF_KERMOVAN_EX.et"
+        m_sEntityName "AFRF_KERMOVAN_EX"
+       }
+      }
+     }
+    }
+    GC_Event "{8254B9413E7DF6D6}" {
+     m_sName "STM_NOT_IN_KERMOVAN"
+     m_aConditions {
+      GC_GameModeStateCondition "{54D85CCB8A183A06}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{9098BDDECCF0D791}" {
+       m_sFlagName "STM_IN_KERMOVAN"
+       m_bRequireFalse 1
+      }
+     }
+     m_aActions {
+      GC_EventControlAction "{8D104E154350155D}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_sEventName "STM_KERMOVAN_EX"
+       m_iOperation 4
+      }
+      GC_DeleteEntitiesAction "{C9D5716584F4A713}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_aEntities {
+        "AFRF_KERMOVAN_EX"
+       }
+      }
+     }
+    }
+    GC_Event "{3DD7F9AD56DE34AB}" {
+     m_sName "STM_BOAT_EX"
+     m_aConditions {
+      GC_GameModeStateCondition "{EFA35DA4107BC4C6}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{0E9471FE25BF6B31}" {
+       m_sFlagName "STM_IN_BOAT"
+      }
+     }
+     m_aActions {
+      GC_EventControlAction "{2976C2563B069AE7}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_sEventName "STM_NOT_IN_BOAT"
+       m_iOperation 4
+      }
+      GC_SpawnAction "{517ECF237DBBAA4C}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_Spawn GC_PrefabSpawn "{E74DB2A84F946265}" {
+        m_sLocation "BOAT_EX"
+        m_sPrefab "{DFC65F8E60D54E83}worlds/chllboy/Trifecta/Prefabs/AFRF_BOAT_EX.et"
+        m_sEntityName "AFRF_BOAT_EX"
+       }
+      }
+     }
+    }
+    GC_Event "{9353CB144946EBDB}" {
+     m_sName "STM_NOT_IN_BOAT"
+     m_aConditions {
+      GC_GameModeStateCondition "{A5D2DFCBE909ED0F}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{967D7CAC0C95A50A}" {
+       m_sFlagName "STM_IN_BOAT"
+       m_bRequireFalse 1
+      }
+     }
+     m_aActions {
+      GC_EventControlAction "{3535365FC24773EB}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_sEventName "STM_BOAT_EX"
+       m_iOperation 4
+      }
+      GC_DeleteEntitiesAction "{A8C9F86E48999610}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_aEntities {
+        "AFRF_BOAT_EX"
+       }
+      }
+     }
+    }
+    GC_Event "{A774F0A5C103110C}" {
+     m_sName "STM_MIL_EX"
+     m_aConditions {
+      GC_GameModeStateCondition "{973BE21290A13B85}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{DDF3B5F8BC784138}" {
+       m_sFlagName "STM_IN_MIL"
+      }
+     }
+     m_aActions {
+      GC_EventControlAction "{482ABAD8DBF322C4}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_sEventName "STM_NOT_IN_MIL"
+       m_iOperation 4
+      }
+      GC_SpawnAction "{45C8C926D651C09E}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_Spawn GC_PrefabSpawn "{012909BAE6DF6E6D}" {
+        m_sLocation "MIL_EX"
+        m_sPrefab "{E214CD324D84F76E}worlds/chllboy/Trifecta/Prefabs/FIA_MIL_EX.et"
+        m_sEntityName "FIA_MIL_EX"
+       }
+      }
+     }
+    }
+    GC_Event "{9A0FC4D8AC62CEB3}" {
+     m_sName "STM_NOT_IN_MIL"
+     m_aConditions {
+      GC_GameModeStateCondition "{04F8BF86171DB767}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{260754665F9A9734}" {
+       m_sFlagName "STM_IN_MIL"
+       m_bRequireFalse 1
+      }
+     }
+     m_aActions {
+      GC_EventControlAction "{37F82901F32AAF07}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_sEventName "STM_MIL_EX"
+       m_iOperation 4
+      }
+      GC_DeleteEntitiesAction "{D629848399EE6E26}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_aEntities {
+        "FIA_MIL_EX"
+       }
+      }
+     }
+    }
+    GC_Event "{46078CCA2FEE3273}" {
+     m_sName "POS1"
+     m_aConditions {
+      GC_ConditionGroup "{0C4358D74BDB9736}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{788F275E7F8B3608}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{883E255B9ED613CA}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{4EE36512612800C9}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{561ABA82A4D7EFB5}" {
+       m_sFlagName "POS1"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FF032C0B5CADEE43}" {
+       m_sMessage "POS1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{788F275E7F8B3608}" {
+     m_sName "POS1 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2CF137C429CEFC2A}" {
+       m_sEventName "POS1"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{45E50CB7897A3A0F}" {
+       m_Spawn GC_PrefabSpawn "{5A4A88A2BC18988D}" {
+        m_sLocation "POSITION1"
+        m_sPrefab "{75851785A28EBCA0}worlds/chllboy/Trifecta/Prefabs/STM.et"
+        m_sEntityName "STM"
+       }
+      }
+      GC_SpawnAction "{21078A9730439F6E}" {
+       m_Spawn GC_PrefabSpawn "{D24CA86221510F33}" {
+        m_sLocation "POSITION1"
+        m_sPrefab "{8244C31CF993A0C7}worlds/chllboy/Trifecta/Prefabs/Module_marker.et"
+        m_sEntityName "STMMARK"
+       }
+      }
+     }
+    }
+    GC_Event "{24AF60DFA3069BF2}" {
+     m_sName "POS2"
+     m_aConditions {
+      GC_ConditionGroup "{14EB685E73725AF9}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{CB6D01BC023F9BD7}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{A2D416C8F9596F43}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{DBB2D08A617DD51E}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{5030447CC1DABC4B}" {
+       m_sFlagName "POS2"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8CF1372FFB10ADE0}" {
+       m_sMessage "POS2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CB6D01BC023F9BD7}" {
+     m_sName "POS2 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{FDAD3D92E4FDE480}" {
+       m_sEventName "POS2"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{DE6152B6FA8AA96A}" {
+       m_Spawn GC_PrefabSpawn "{48992F959CD1E156}" {
+        m_sLocation "POSITION2"
+        m_sPrefab "{75851785A28EBCA0}worlds/chllboy/Trifecta/Prefabs/STM.et"
+        m_sEntityName "STM"
+       }
+      }
+      GC_SpawnAction "{BFDB54DC83C118B4}" {
+       m_Spawn GC_PrefabSpawn "{142E205C12B49A45}" {
+        m_sLocation "POSITION2"
+        m_sPrefab "{8244C31CF993A0C7}worlds/chllboy/Trifecta/Prefabs/Module_marker.et"
+        m_sEntityName "STMMARK"
+       }
+      }
+     }
+    }
+    GC_Event "{75845C6B3C9B08EB}" {
+     m_sName "POS3"
+     m_aConditions {
+      GC_ConditionGroup "{3054FEDA2B33B51C}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{2DEA413F5509ADB0}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{61681D3D7D8B4E06}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{9587197C30284013}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{614327D958340684}" {
+       m_sFlagName "POS3"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9555026F9CB148EB}" {
+       m_sMessage "POS3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2DEA413F5509ADB0}" {
+     m_sName "POS3 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A63295D5D6E66A6D}" {
+       m_sEventName "POS3"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{59F00DD48C5EDEB8}" {
+       m_Spawn GC_PrefabSpawn "{3B8B87ACC9E6379E}" {
+        m_sLocation "POSITION3"
+        m_sPrefab "{75851785A28EBCA0}worlds/chllboy/Trifecta/Prefabs/STM.et"
+        m_sEntityName "STM"
+       }
+      }
+      GC_SpawnAction "{F65C8494AE03C0F7}" {
+       m_Spawn GC_PrefabSpawn "{0CA450805FF321E6}" {
+        m_sLocation "POSITION3"
+        m_sPrefab "{8244C31CF993A0C7}worlds/chllboy/Trifecta/Prefabs/Module_marker.et"
+        m_sEntityName "STMMARK"
+       }
+      }
+     }
+    }
+    GC_Event "{5D5AFC94E94E6DB2}" {
+     m_sName "POS4"
+     m_aConditions {
+      GC_ConditionGroup "{69BEAA867F405DE0}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{7B09C0576B17FBF7}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{DDE804EEDC057D79}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{0412E9FDD3DA7402}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{017EB0E422E425DC}" {
+       m_sFlagName "POS4"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1D1AB6E5099303BB}" {
+       m_sMessage "POS4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7B09C0576B17FBF7}" {
+     m_sName "POS4 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{80273107DF9876FA}" {
+       m_sEventName "POS4"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{98D3E7D91D9F1B60}" {
+       m_Spawn GC_PrefabSpawn "{078006F2242C1AE7}" {
+        m_sLocation "POSITION4"
+        m_sPrefab "{75851785A28EBCA0}worlds/chllboy/Trifecta/Prefabs/STM.et"
+        m_sEntityName "STM"
+       }
+      }
+      GC_SpawnAction "{8E412974579234B6}" {
+       m_Spawn GC_PrefabSpawn "{8C95BB6EDC49BA4F}" {
+        m_sLocation "POSITION4"
+        m_sPrefab "{8244C31CF993A0C7}worlds/chllboy/Trifecta/Prefabs/Module_marker.et"
+        m_sEntityName "STMMARK"
+       }
+      }
+     }
+    }
+    GC_Event "{96B87784EF01DD12}" {
+     m_sName "POS5"
+     m_aConditions {
+      GC_ConditionGroup "{614E5FEBDBC9E14D}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{EB35A7400EDF2B33}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{7D9A2DF6C61CAE1D}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{6BC5B29EA4FBC183}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{F875C47934D6DB00}" {
+       m_sFlagName "POS5"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{240176F84520A864}" {
+       m_sMessage "POS5"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{EB35A7400EDF2B33}" {
+     m_sName "POS5 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4124BFC4DEB386C1}" {
+       m_sEventName "POS5"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{B10A4A08C797C25C}" {
+       m_Spawn GC_PrefabSpawn "{5A06158E0C37C772}" {
+        m_sLocation "POSITION5"
+        m_sPrefab "{75851785A28EBCA0}worlds/chllboy/Trifecta/Prefabs/STM.et"
+        m_sEntityName "STM"
+       }
+      }
+      GC_SpawnAction "{DC7B2D03918F1389}" {
+       m_Spawn GC_PrefabSpawn "{029B0C6CEE3ED673}" {
+        m_sLocation "POSITION5"
+        m_sPrefab "{8244C31CF993A0C7}worlds/chllboy/Trifecta/Prefabs/Module_marker.et"
+        m_sEntityName "STMMARK"
+       }
+      }
+     }
+    }
+    GC_Event "{F73ECB788186FCC3}" {
+     m_sName "FIA_WIN_CAS"
+     m_aConditions {
+      GC_GameModeStateCondition "{8E2474B61425B00A}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{525A76E9C6EAA962}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_CustomScriptCondition "{98D60695F9EF0542}" {
+         m_Script GC_PeakFactionPopulationCheck "{4FE9700F9F5F8CFA}" {
+          m_sFaction "RHS_ION"
+          m_fRatio 0.95
+         }
+        }
+        GC_CustomScriptCondition "{EF829B8F0A2C23C2}" {
+         m_Script GC_PeakFactionPopulationCheck "{E6433F78E94C6767}" {
+          m_sFaction "RHS_AFRF"
+          m_fRatio 0.95
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{31BDB502B14D8618}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_sTitle "FIA VICTORY"
+       m_sMessage "Both ION and PATRIOT forces have taken devastating casualties and cannot continue the operation."
+       m_aFactions {
+        "RHS_AFRF" "RHS_ION" "FIA"
+       }
+      }
+     }
+    }
+    GC_Event "{2BC1C306EAFD4BEF}" {
+     m_sName "ION_WIN_CAS"
+     m_aConditions {
+      GC_GameModeStateCondition "{2BF3EF2CA63D7C08}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{FFD0F6E5D1A22BE2}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_CustomScriptCondition "{2ED91B048F1E1BF8}" {
+         m_Script GC_PeakFactionPopulationCheck "{79CE35BCE2E753F2}" {
+          m_sFaction "FIA"
+          m_fRatio 0.95
+         }
+        }
+        GC_CustomScriptCondition "{1831479A8B2422AE}" {
+         m_Script GC_PeakFactionPopulationCheck "{67D7785210D5198F}" {
+          m_sFaction "RHS_AFRF"
+          m_fRatio 0.95
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1D1969EF5FE70983}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_sTitle "ION VICTORY"
+       m_sMessage "Both FIA and PATRIOT forces have taken devastating casualties and cannot continue the operation."
+       m_aFactions {
+        "RHS_AFRF" "RHS_ION" "FIA"
+       }
+      }
+     }
+    }
+    GC_Event "{1B80ED6443527CF4}" {
+     m_sName "PATRIOT_WIN_CAS"
+     m_aConditions {
+      GC_GameModeStateCondition "{CE230220EB7E638F}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{C631851F42728AAB}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_CustomScriptCondition "{CE6A6F4058EA64B6}" {
+         m_Script GC_PeakFactionPopulationCheck "{D5336E1A5C30B655}" {
+          m_sFaction "FIA"
+          m_fRatio 0.95
+         }
+        }
+        GC_CustomScriptCondition "{9CE8C03CCE8BCF25}" {
+         m_Script GC_PeakFactionPopulationCheck "{3FD0B416F61255B9}" {
+          m_sFaction "RHS_ION"
+          m_fRatio 0.95
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{AFD015D05C06BBA5}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_sTitle "PATRIOT VICTORY"
+       m_sMessage "Both FIA and ION forces have taken devastating casualties and cannot continue the operation."
+       m_aFactions {
+        "RHS_AFRF" "RHS_ION" "FIA"
+       }
+      }
+     }
+    }
+    GC_Event "{641FAD7CE91B111C}" {
+     m_sName "mark1"
+     m_aConditions {
+      GC_GameModeStateCondition "{B99B2E1C296AA853}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{340B9D0EA73F7940}" {
+       m_sFlagName "PART_1"
+      }
+     }
+     m_aActions {
+      GC_MapMarkerVisibilityAction "{F67850409404273A}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_aMarkers {
+        "mark1"
+       }
+       m_bVisibleWithoutFaction 0
+       m_aFactions {
+        GC_MarkerFactionVisibility "{E771346883CBB4A2}" {
+         m_sFaction "FIA"
+         m_bVisible 0
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{45021991453BE606}" {
+     m_sName "mark2"
+     m_aConditions {
+      GC_GameModeStateCondition "{6BA2053BD6FAB7E8}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{53324E661E20256B}" {
+       m_sFlagName "PART_2"
+      }
+     }
+     m_aActions {
+      GC_MapMarkerVisibilityAction "{5E98E5A365ADBED1}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_aMarkers {
+        "mark2"
+       }
+       m_bVisibleWithoutFaction 0
+       m_aFactions {
+        GC_MarkerFactionVisibility "{132E3677083EF465}" {
+         m_sFaction "FIA"
+         m_bVisible 0
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{EC8FAC9AFB8D5BE1}" {
+     m_sName "mark3"
+     m_aConditions {
+      GC_GameModeStateCondition "{FA6E7213323A76B3}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{992B6F6C962D6241}" {
+       m_sFlagName "PART_3"
+      }
+     }
+     m_aActions {
+      GC_MapMarkerVisibilityAction "{A8078E66B747AD6D}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_aMarkers {
+        "mark3"
+       }
+       m_bVisibleWithoutFaction 0
+       m_aFactions {
+        GC_MarkerFactionVisibility "{DED55057839A43E6}" {
+         m_sFaction "FIA"
+         m_bVisible 0
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B52B4DADA916B508}" {
+     m_sName "mark4"
+     m_aConditions {
+      GC_GameModeStateCondition "{A11A335EC6B376BC}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{DA4B6FD6CA29B096}" {
+       m_sFlagName "PART_4"
+      }
+     }
+     m_aActions {
+      GC_MapMarkerVisibilityAction "{28733A72CCAC209E}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_aMarkers {
+        "mark4"
+       }
+       m_bVisibleWithoutFaction 0
+       m_aFactions {
+        GC_MarkerFactionVisibility "{DDA7534A9DA218BF}" {
+         m_sFaction "FIA"
+         m_bVisible 0
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{8F4B81E5CE301741}" {
+     m_sName "mark5"
+     m_aConditions {
+      GC_GameModeStateCondition "{8B59946448B47D87}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{D34FE7F1FE9D6B2A}" {
+       m_sFlagName "PART_5"
+      }
+     }
+     m_aActions {
+      GC_MapMarkerVisibilityAction "{1A8BB947242C7F28}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_aMarkers {
+        "mark5"
+       }
+       m_bVisibleWithoutFaction 0
+       m_aFactions {
+        GC_MarkerFactionVisibility "{4D367BC1BD18D454}" {
+         m_sFaction "FIA"
+         m_bVisible 0
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{09783E643CFAE8B5}" {
+     m_sName "mark6"
+     m_aConditions {
+      GC_GameModeStateCondition "{9071CC48040840E4}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{993646A183105298}" {
+       m_sFlagName "PART_6"
+      }
+     }
+     m_aActions {
+      GC_MapMarkerVisibilityAction "{62F3B183FCAA5AFD}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_aMarkers {
+        "mark6"
+       }
+       m_bVisibleWithoutFaction 0
+       m_aFactions {
+        GC_MarkerFactionVisibility "{97006B8C800216EA}" {
+         m_sFaction "FIA"
+         m_bVisible 0
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{29A584A644124EE7}" {
+     m_sName "mark7"
+     m_aConditions {
+      GC_GameModeStateCondition "{D79CA683BACE8DE1}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{90F64B7DD6C73FA3}" {
+       m_sFlagName "PART_7"
+      }
+     }
+     m_aActions {
+      GC_MapMarkerVisibilityAction "{4CA9026059AF0E87}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_aMarkers {
+        "mark7"
+       }
+       m_bVisibleWithoutFaction 0
+       m_aFactions {
+        GC_MarkerFactionVisibility "{DB78A5AC67A49712}" {
+         m_sFaction "FIA"
+         m_bVisible 0
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{D7E9AD4E9D278716}" {
+     m_sName "mark8"
+     m_aConditions {
+      GC_GameModeStateCondition "{604FCED94E862BB3}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{53938AF29ADD4F95}" {
+       m_sFlagName "PART_8"
+      }
+     }
+     m_aActions {
+      GC_MapMarkerVisibilityAction "{34E32FC53639DE2E}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_aMarkers {
+        "mark8"
+       }
+       m_bVisibleWithoutFaction 0
+       m_aFactions {
+        GC_MarkerFactionVisibility "{AE709D8A6A3E09E7}" {
+         m_sFaction "FIA"
+         m_bVisible 0
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3F910C4311344314}" {
+     m_sName "RANDMONA1"
+     m_aConditions {
+      GC_ConditionGroup "{CEFF95C4A946FC8E}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{AE6D0AE802E3F747}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{FE8F382631EC5254}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{19C5E2A97280B7E6}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{70A390B62E7FF101}" {
+       m_sFlagName "R1"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{235A4319FB5BA88C}" {
+       m_sMessage "RANDMONA1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AE6D0AE802E3F747}" {
+     m_sName "RANDMONA1 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{ABF1F66635D62727}" {
+       m_sEventName "RANDMONA1"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{93156A9762A32AB1}" {
+       m_Spawn GC_PrefabSpawn "{9EAD0260C613339F}" {
+        m_sLocation "R1"
+        m_sPrefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
+       }
+      }
+     }
+    }
+    GC_Event "{B875FEF2F92D1E50}" {
+     m_sName "RANDMONA2"
+     m_aConditions {
+      GC_ConditionGroup "{80896F5CB897E8A1}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{B7D87E33A000F153}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{7C90D654ED39B94D}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{BCEF25764B5BDFD5}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{EA331E293C64AA65}" {
+       m_sFlagName "R2"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3EA609726EF0297B}" {
+       m_sMessage "RANDMONA2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B7D87E33A000F153}" {
+     m_sName "RANDMONA2 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{75152EF5C8892966}" {
+       m_sEventName "RANDMONA2"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{B1E71FC3E5E7E144}" {
+       m_Spawn GC_PrefabSpawn "{069799D2611CA5E3}" {
+        m_sLocation "R2"
+        m_sPrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+       }
+      }
+     }
+    }
+    GC_Event "{AF1A71800219AAC2}" {
+     m_sName "RANDMONA3"
+     m_aConditions {
+      GC_ConditionGroup "{FE7288252952D566}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{50F196B4EC8E85C2}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{9653762A0B595B83}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{37D31AE08A217FDB}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{4D7292FC6F287517}" {
+       m_sFlagName "R3"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2B2FF60F44831E5D}" {
+       m_sMessage "RANDMONA3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{50F196B4EC8E85C2}" {
+     m_sName "RANDMONA3 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C86EDDC3BA9DA9A0}" {
+       m_sEventName "RANDMONA3"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{96E30F749FE85A26}" {
+       m_Spawn GC_PrefabSpawn "{7D0DA6DA2601E560}" {
+        m_sLocation "R3"
+        m_sPrefab "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
+       }
+      }
+     }
+    }
+    GC_Event "{613BB0868F4509F6}" {
+     m_sName "RANDMONA4"
+     m_aConditions {
+      GC_ConditionGroup "{3558DF9F227905A5}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{87BC96F88172A103}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{5D871EF104C05D73}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{74231412F6A9187E}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{F49F12755D1586B8}" {
+       m_sFlagName "R4"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5CA8765270BC4876}" {
+       m_sMessage "RANDMONA4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{87BC96F88172A103}" {
+     m_sName "RANDMONA4 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{66865D0AF1B438D5}" {
+       m_sEventName "RANDMONA4"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{17B9ED1EDD39D6C1}" {
+       m_Spawn GC_PrefabSpawn "{ABC935805A2A549A}" {
+        m_sLocation "R4"
+        m_sPrefab "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+       }
+      }
+     }
+    }
+    GC_Event "{C374F1B4C76A0462}" {
+     m_sName "RANDMONA5"
+     m_aConditions {
+      GC_ConditionGroup "{1D0C50B1E674AFE1}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{226632236BC9D53C}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{11942F49A3BCFC37}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{9945AF25AE4DF027}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{8D2888E34228899E}" {
+       m_sFlagName "R5"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{684BA106B87A1AF3}" {
+       m_sMessage "RANDMONA5"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{226632236BC9D53C}" {
+     m_sName "RANDMONA5 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7571166ECEF95121}" {
+       m_sEventName "RANDMONA5"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{984FDBFEEBD27297}" {
+       m_Spawn GC_PrefabSpawn "{181A21CCD6328DD9}" {
+        m_sLocation "R5"
+        m_sPrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+       }
+      }
+     }
+    }
+    GC_Event "{717AAFAB371E3D2C}" {
+     m_sName "RANDMONA6"
+     m_aConditions {
+      GC_ConditionGroup "{E85B44208C5F1E25}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{FCEEA9292B4C780C}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{396E965678EF95FB}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{9D8B995436F23F67}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{1445C32468F3FA8D}" {
+       m_sFlagName "R6"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0EB50D2FD026FA6E}" {
+       m_sMessage "RANDMONA6"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FCEEA9292B4C780C}" {
+     m_sName "RANDMONA6 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{EAFB66E66A9B2B3D}" {
+       m_sEventName "RANDMONA6"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{9EF7F6387FA20BC7}" {
+       m_Spawn GC_PrefabSpawn "{8D4367623D10CA08}" {
+        m_sLocation "R6"
+        m_sPrefab "{1B0D46B41C50873D}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_Randomized.et"
+       }
+      }
+     }
+    }
+    GC_Event "{CEE25AEB5026DEAF}" {
+     m_sName "RANDMONA7"
+     m_aConditions {
+      GC_ConditionGroup "{980AD8EB5D38027A}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{5F198B6999898763}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{08D148CBFFDB161D}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{D173286BA217AA7F}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{9B38F13895E737FA}" {
+       m_sFlagName "R7"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C4662C48BCEF3680}" {
+       m_sMessage "RANDMONA7"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5F198B6999898763}" {
+     m_sName "RANDMONA7 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2A25A3B91899F401}" {
+       m_sEventName "RANDMONA7"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{B6821ACCCE80F7AC}" {
+       m_Spawn GC_PrefabSpawn "{95DAF2092F3BBC49}" {
+        m_sLocation "R7"
+        m_sPrefab "{C7CE8044B5E301F5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport_CIV_randomized.et"
+       }
+      }
+     }
+    }
+    GC_Event "{0A80011828D29837}" {
+     m_sName "RANDMONA8"
+     m_aConditions {
+      GC_ConditionGroup "{CF077A0F46F44283}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{12E41A5E66B12A43}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{0AEBB35E3818C358}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{EC46E20DF0D91346}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{18A1C4DE74DCCE18}" {
+       m_sFlagName "R8"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C872A365C048AE5C}" {
+       m_sMessage "RANDMONA8"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{12E41A5E66B12A43}" {
+     m_sName "RANDMONA8 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3C1C6557C09D9588}" {
+       m_sEventName "RANDMONA8"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{3D06CD65B6D3BBD3}" {
+       m_Spawn GC_PrefabSpawn "{380E8991A392AC3A}" {
+        m_sLocation "R8"
+        m_sPrefab "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
+       }
+      }
+     }
+    }
+    GC_Event "{F1F5F05BCD23AC3A}" {
+     m_sName "RANDMONA9"
+     m_aConditions {
+      GC_ConditionGroup "{E88B22B13FFB059A}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{558A5402657F1242}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{68878C9DBE936875}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{5B8103757CCFFC45}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{A9AA4D4FA9E32553}" {
+       m_sFlagName "R9"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3C0DFC30B282095E}" {
+       m_sMessage "RANDMONA9"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{558A5402657F1242}" {
+     m_sName "RANDMONA9 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{0D6449E4950CBA40}" {
+       m_sEventName "RANDMONA9"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{51A85E76E2F7B078}" {
+       m_Spawn GC_PrefabSpawn "{A2380F968BEF412E}" {
+        m_sLocation "R9"
+        m_sPrefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
+       }
+      }
+     }
+    }
+    GC_Event "{6F819D992568488E}" {
+     m_sName "RANDMONA10"
+     m_aConditions {
+      GC_ConditionGroup "{B8B13046EAC819E7}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{412396CDD2A518D5}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{AE02034D7C0561F6}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{0362B55325DF6D39}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{FD92776E4C7D75AF}" {
+       m_sFlagName "R10"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{070863B8351AB2A3}" {
+       m_sMessage "RANDMONA10"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{412396CDD2A518D5}" {
+     m_sName "RANDMONA10 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{57E8A541E336D468}" {
+       m_sEventName "RANDMONA10"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{007147A6A54D8B73}" {
+       m_Spawn GC_PrefabSpawn "{E9BD224D98544D9A}" {
+        m_sLocation "RZ10"
+        m_sPrefab "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et"
+       }
+      }
+     }
+    }
+    GC_Event "{C9707E3FFCE5E947}" {
+     m_sName "RANDMONA11"
+     m_aConditions {
+      GC_ConditionGroup "{1705DA32EFE26F24}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{36F07A1B4C6112E4}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{BE1E276A5A3F7CF7}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{94AD36A6B2D26022}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{49BD256D0803BF50}" {
+       m_sFlagName "R11"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3A7A538B9021F3B2}" {
+       m_sMessage "RANDMONA11"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{36F07A1B4C6112E4}" {
+     m_sName "RANDMONA11 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A682C866DBB4BAD5}" {
+       m_sEventName "RANDMONA11"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{D4E5B4FF51611C43}" {
+       m_Spawn GC_PrefabSpawn "{267F950772179E1E}" {
+        m_sLocation "RZ11"
+        m_sPrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+       }
+      }
+     }
+    }
+    GC_Event "{A33A5B3585831D3D}" {
+     m_sName "RANDMONA12"
+     m_aConditions {
+      GC_ConditionGroup "{AE0DB8891DD8AB46}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{7BEE954C5489197D}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{2167C19F244D82E0}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{8221DC47F4D6F3B3}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{1838677D6B526363}" {
+       m_sFlagName "R12"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{42EA80681B4A5BBE}" {
+       m_sMessage "RANDMONA12"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7BEE954C5489197D}" {
+     m_sName "RANDMONA12 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9F2BD0277322D7B9}" {
+       m_sEventName "RANDMONA12"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{E7BA332DADCB93ED}" {
+       m_Spawn GC_PrefabSpawn "{3E50A32C4002E770}" {
+        m_sLocation "RZ12"
+        m_sPrefab "{1B0D46B41C50873D}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_Randomized.et"
+       }
+      }
+     }
+    }
+    GC_Event "{3E8098A41707118A}" {
+     m_sName "SETUP_OVER"
+     m_aConditions {
+      GC_GameModeStateCondition "{199F80E325E0E2EC}" {
+       m_eGameModeState 1
+      }
+     }
+     m_aActions {
+      GC_FlagAction "{8F5648A1C51489E2}" {
+       m_bScheduleAction 1
+       m_fActionDelay 120
+       m_sFlagName "SETUP_OVER"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{4B831985505A40D8}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{519C4035E329CDDA}" {
+       m_fSeconds 120.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{B158E92692E9011F}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+        "GC_MigrationStartingZone2"
+        "GC_MigrationStartingZone3"
+       }
+      }
+     }
+    }
+   }
+   m_aAreaFlagObservers {
+    GC_AreaFlagObserver "{CD308D94923EB197}" {
+     m_sFlag "STM_IN_MIL"
+     m_Area GC_AreaCondition "{70EDB296E984981A}" {
+      m_sArea "MIL_STM_CHECK"
+      m_Targets GC_NamedAreaTargets "{8ADCF8E36CC62CD8}" {
+       m_aNames {
+        "STM"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{45EC603EA7672158}" {
+       m_fRequiredProportion 1
+       m_bWholeNumberQuotient 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{4876538FAD8AC180}" {
+     m_sFlag "STM_IN_BEACH"
+     m_Area GC_AreaCondition "{483F6686F4EDBBA2}" {
+      m_sArea "BEACH_STM_CHECK"
+      m_Targets GC_NamedAreaTargets "{139166044A357F71}" {
+       m_aNames {
+        "STM"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{4A0E7F54AF0ECC66}" {
+       m_fRequiredProportion 1
+       m_bWholeNumberQuotient 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{652A4843340FA789}" {
+     m_sFlag "STM_IN_HARBOUR"
+     m_Area GC_AreaCondition "{26B33B4E622B29EE}" {
+      m_sArea "HARBOUR_STM_CHECK"
+      m_Targets GC_NamedAreaTargets "{AF96DE90FC729D55}" {
+       m_aNames {
+        "STM"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{DD99B1E9A6771E1C}" {
+       m_fRequiredProportion 1
+       m_bWholeNumberQuotient 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{AC4718725D79B21C}" {
+     m_sFlag "STM_IN_BOAT"
+     m_Area GC_AreaCondition "{E04F1350F583B5E9}" {
+      m_sArea "BOAT_STM_CHECK"
+      m_Targets GC_NamedAreaTargets "{1C601DFAB223038D}" {
+       m_aNames {
+        "STM"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{49DEB65FE5551D62}" {
+       m_fRequiredProportion 1
+       m_bWholeNumberQuotient 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{03CC147CDDA0450B}" {
+     m_sFlag "STM_IN_KERMOVAN"
+     m_Area GC_AreaCondition "{050AF25DDEDCCA2D}" {
+      m_sArea "KERMOVAN_STM_CHECK"
+      m_Targets GC_NamedAreaTargets "{7A699D7B609D3D0B}" {
+       m_aNames {
+        "STM"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{5CB189E953E83C48}" {
+       m_fRequiredProportion 1
+       m_bWholeNumberQuotient 1
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 4592.964 17.985 10643.017
+}
