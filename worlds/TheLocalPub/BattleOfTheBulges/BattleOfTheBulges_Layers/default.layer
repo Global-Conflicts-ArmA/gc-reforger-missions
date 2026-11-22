@@ -1,0 +1,710 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords -6.588 48.426 5473.396
+}
+GC_LobbyGameMode GC_MigratedMission : "{7E54CA4343E579A0}worlds/TheLocalPub/BattleOfTheBulges/BattleOfTheBulges_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingMinutes 15
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{632EA9AA0EFED87D}" {
+     m_sWeatherPresetName "Rainy"
+     m_iStartingMinutes 15
+    }
+   }
+   m_bRandomWeatherChanges 1
+  }
+  GC_PeakFactionPopulationComponent "{A93BC20CD7F1BEB5}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{34902F88CD91168B}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 45
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{92D69901E54F54C3}" {
+     m_sName "BlueTicketAdd"
+    }
+    GC_MissionFlag "{3AE81E40B831B9B1}" {
+     m_sName "RedTicketAdd"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{330D8CF33204CEFC}" {
+     m_sName "MOTD (5s)"
+     m_Advanced GC_EventOptions "{0329EC61009A3FFF}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{FABC1A274041D5C6}" {
+       m_sTitle "BATTLE OF THE BULGES"
+       m_sMessage "OFFCIERS! FORM UP THE RANKS!"\
+       "We have less then 1min to step off! "\
+       ""\
+       "Good luck soldiers. God speed."
+      }
+     }
+    }
+    GC_Event "{A45F9DF154518306}" {
+     m_sName "Time Limit (2400s)"
+     m_Advanced GC_EventOptions "{076E7B491057AAEF}" {
+      m_fDelay 2400
+     }
+     m_aActions {
+      GC_MessageAction "{D9DDB8346542811F}" {
+       m_sTitle "MOTHS SIGHTED!"
+       m_sMessage "Moths have been sighted fast approaching our location, they've heard the battle and are coming to get us!"\
+       ""\
+       "Outpost 6 reports they'll be here in approx 5mins. "\
+       "Everyone, standby to withdraw!"
+      }
+     }
+    }
+    GC_Event "{39669E8EBF9526C9}" {
+     m_sName "Time Limit (2682s)"
+     m_Advanced GC_EventOptions "{516F8A5DBFB2D4CB}" {
+      m_fDelay 2682
+     }
+     m_aActions {
+      GC_MessageAction "{F623AA38B8B4C481}" {
+       m_sTitle "WITHDRAW!"
+       m_sMessage "That's it, withdraw! Moths upon us!"\
+       "Back into the undergrounds we go!"\
+       ""\
+       "TIME LIMIT REACHED"\
+       "Mission will end soon...."
+      }
+     }
+    }
+    GC_Event "{E68BB3F1FE1F762E}" {
+     m_sName "RedCapzoneCaptured"
+     m_aConditions {
+      GC_AreaCondition "{2E622BE2E494E950}" {
+       m_sArea "RedEndTrigger"
+       m_Targets GC_CharacterAreaTargets "{E66A142988355679}" {
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{982BB7DB9CFA7D07}" {
+        m_fRequiredShare 0.6
+       }
+       m_Capture GC_AreaCaptureOptions "{440E79F4EAE7A2E4}" {
+        m_fSeconds 120
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+        m_Messages GC_CaptureMessages "{58A20E2164FECEAB}" {
+         m_sLocation "Red's base"
+         m_sCaptured "The %1 has taken control of %2."
+         m_sCapturing "The %1 is taking control of %2."
+         m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+         m_sLost "The %1 has lost control of %2."
+         m_sLosing "The %1 is losing control of %2."
+         m_sLossInterrupted "The %1 is no longer losing control of %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{229A6443436B97B1}" {
+       m_sMessage "RedCapzoneCaptured"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C5A8C97F835EB331}" {
+     m_sName "RedCapzoneCaptured (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B3605DF46EA820E8}" {
+       m_sEventName "RedCapzoneCaptured"
+      }
+     }
+     m_Advanced GC_EventOptions "{9E5A434D60F5C855}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{32AC9BF1D1C19DD2}" {
+       m_sTitle "BLUE VICTORY!"
+       m_sMessage "Blue clan has managed to capture Red's base."\
+       ""\
+       "BLUE IS VICTORIOUS"\
+       "Mission will end soon..."
+      }
+     }
+    }
+    GC_Event "{AB111017B62260BA}" {
+     m_sName "RedCapzoneCaptured (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3D93418EA8CFCAB1}" {
+       m_sEventName "RedCapzoneCaptured"
+      }
+     }
+     m_Advanced GC_EventOptions "{E7AC086CC7FF15CF}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{3A5789E81222823D}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{7760050E1CAC96FB}" {
+     m_sName "BlueCapzoneCaptured"
+     m_aConditions {
+      GC_AreaCondition "{0977B650669E1E9D}" {
+       m_sArea "BlueEndTrigger"
+       m_Targets GC_CharacterAreaTargets "{18F80DCC810B083B}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{23CEA242359A885A}" {
+        m_fRequiredShare 0.6
+       }
+       m_Capture GC_AreaCaptureOptions "{7505714E07BA9AEA}" {
+        m_fSeconds 120
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_Messages GC_CaptureMessages "{05B6FBDD6CA53410}" {
+         m_sLocation "Blue's base"
+         m_sCaptured "The %1 has taken control of %2."
+         m_sCapturing "The %1 is taking control of %2."
+         m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+         m_sLost "The %1 has lost control of %2."
+         m_sLosing "The %1 is losing control of %2."
+         m_sLossInterrupted "The %1 is no longer losing control of %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{884923312F7CFCC1}" {
+       m_sMessage "BlueCapzoneCaptured"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{910C032BCF3DCFB2}" {
+     m_sName "BlueCapzoneCaptured (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{32BBA21F8D652B7B}" {
+       m_sEventName "BlueCapzoneCaptured"
+      }
+     }
+     m_Advanced GC_EventOptions "{736CCDE783D8F78B}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{215E3ABB221F3A11}" {
+       m_sTitle "RED VICTORY!"
+       m_sMessage "Red clan has managed to capture Blue's base."\
+       ""\
+       "RED IS VICTORIOUS"\
+       "Mission will end soon..."
+      }
+     }
+    }
+    GC_Event "{E386D6650D1AF5B2}" {
+     m_sName "BlueCapzoneCaptured (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3E6E018C10AE3F78}" {
+       m_sEventName "BlueCapzoneCaptured"
+      }
+     }
+     m_Advanced GC_EventOptions "{E407FC3BB771C757}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{1CFE55D1386117C5}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "USSR"
+       }
+      }
+     }
+    }
+    GC_Event "{588C44736A7DE40B}" {
+     m_sName "RedCasualties"
+     m_aConditions {
+      GC_CustomScriptCondition "{369E73BD0F818C47}" {
+       m_Script GC_PeakFactionPopulationCheck "{329E559CBC894425}" {
+        m_sFaction "USSR"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{BF51D8AE966E0C1C}" {
+       m_sMessage "RedCasualties"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{4C451C519DC7198A}" {
+     m_sName "RedCasualties (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A38DD1F40C749D03}" {
+       m_sEventName "RedCasualties"
+      }
+     }
+     m_Advanced GC_EventOptions "{B78FB566A5B6A0FB}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{E6CC06644E785674}" {
+       m_sTitle "BLUE VICTORY"
+       m_sMessage "Red are in full retreat!"\
+       ""\
+       "Blue clan have managed to deal enough casualties and red have withdrawn."\
+       ""\
+       "Well done blue! "\
+       "Mission will end soon..."
+      }
+     }
+    }
+    GC_Event "{F3AE7612A50CD4A9}" {
+     m_sName "RedCasualties (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8477A3CB52586B8A}" {
+       m_sEventName "RedCasualties"
+      }
+     }
+     m_Advanced GC_EventOptions "{A2C9E2F266B98164}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{C0D85894A873F3AC}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{AC17C0AB06E203FF}" {
+     m_sName "BlueCasualties"
+     m_aConditions {
+      GC_CustomScriptCondition "{FB85D60A6F96C862}" {
+       m_Script GC_PeakFactionPopulationCheck "{1B7E2721ED5A6557}" {
+        m_sFaction "US"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A5EB372515805DF4}" {
+       m_sMessage "BlueCasualties"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{481D683E3DB57896}" {
+     m_sName "BlueCasualties (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{EDE52DE2AABB87D0}" {
+       m_sEventName "BlueCasualties"
+      }
+     }
+     m_Advanced GC_EventOptions "{2B8D00B05195D06E}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{DB9B31D2B5434F91}" {
+       m_sTitle "RED VICTORY"
+       m_sMessage "Blue are in full retreat!"\
+       ""\
+       "Red clan have managed to deal enough casualties and Blue have withdrawn."\
+       ""\
+       "Well done Red! "\
+       "Mission will end soon..."
+      }
+     }
+    }
+    GC_Event "{78D3A9E9FCC64243}" {
+     m_sName "BlueCasualties (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{53F870D8C8B25332}" {
+       m_sEventName "BlueCasualties"
+      }
+     }
+     m_Advanced GC_EventOptions "{E82FFCC4D111DDFB}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{F97168A8A5E831B0}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "USSR"
+       }
+      }
+     }
+    }
+    GC_Event "{29290B22084079F7}" {
+     m_sName "RedTicketDeduct"
+     m_aConditions {
+      GC_AreaCondition "{574E385C55E67C64}" {
+       m_sArea "RedDeductTicketTrigger2"
+       m_Targets GC_CharacterAreaTargets "{7FE3288A91037D32}" {
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{B9649093233F2630}" {
+        m_fRequiredShare 0.75
+       }
+       m_Capture GC_AreaCaptureOptions "{A61060CC88A6DF79}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{201EACCA6DC65C19}" {
+       m_sMessage "RedTicketDeduct"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FC4B3B7053E5DC6F}" {
+     m_sName "RedTicketDeduct (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DEC74090933E1AAC}" {
+       m_sEventName "RedTicketDeduct"
+      }
+     }
+     m_Advanced GC_EventOptions "{4B07D1A4D30EFB20}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{2E815DF70FF6A00A}" {
+       m_sTitle "RED CUT-OFF!"
+       m_sMessage "Red clan have stopped sending reinforcements as they've been cut-off as Blue clan approaches."\
+       "Go for the final strike before Red clan can regain control of their supply lines and continue reinforcing."
+      }
+     }
+    }
+    GC_Event "{A56944A5871A4CF8}" {
+     m_sName "RedTicketDeduct (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{17A2BC678E8ED2EE}" {
+       m_sEventName "RedTicketDeduct"
+      }
+     }
+     m_Advanced GC_EventOptions "{A24BCF24FEF7FEA8}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_RespawnTicketsAction "{AF01BA2D354C1D53}" {
+       m_sFaction "USSR"
+       m_iOperation 0
+       m_iAmount 0
+      }
+      GC_FlagAction "{EE03A0DB39645B1D}" {
+       m_sFlagName "RedTicketAdd"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{13B231BD9EBDD15C}" {
+     m_sName "BlueTicketDeduct"
+     m_aConditions {
+      GC_AreaCondition "{D4CBB82EBDABEF58}" {
+       m_sArea "BlueDeductTicketTrigger"
+       m_Targets GC_CharacterAreaTargets "{B47BF46DEB48E668}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{D925A4D231AC931C}" {
+        m_fRequiredShare 0.75
+       }
+       m_Capture GC_AreaCaptureOptions "{4FE1BE47DD0FBABE}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{05028017C9E80788}" {
+       m_sMessage "BlueTicketDeduct"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1035C7568CA21A17}" {
+     m_sName "BlueTicketDeduct (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9AD441D77CF2E6C2}" {
+       m_sEventName "BlueTicketDeduct"
+      }
+     }
+     m_Advanced GC_EventOptions "{1003061E6DB397EA}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_RespawnTicketsAction "{081C31D43F31A418}" {
+       m_sFaction "US"
+       m_iOperation 0
+       m_iAmount 0
+      }
+      GC_FlagAction "{8D065A2C360F0652}" {
+       m_sFlagName "BlueTicketAdd"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{10A22AB2E7F5CAE8}" {
+     m_sName "BlueTicketDeduct (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C77ED7FB7065A4E8}" {
+       m_sEventName "BlueTicketDeduct"
+      }
+     }
+     m_Advanced GC_EventOptions "{2FEB2536150DB2A6}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{58F683249A9E5C58}" {
+       m_sTitle "BLUE CUT-OFF!"
+       m_sMessage "Blue clan have stopped sending reinforcements as they've been cut-off"\
+       "as Red clan approaches."\
+       "Go for the final strike before Blue clan can regain control of their supply lines and continue reinforcing."
+      }
+     }
+    }
+    GC_Event "{0EC69B76C8663EE5}" {
+     m_sName "BlueTicketAdd"
+     m_aConditions {
+      GC_GameModeStateCondition "{F08E8FA379F1F7EC}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{956029640D0C353F}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{74B07FCA21B9261A}" {
+         m_sFlagName "BlueTicketAdd"
+        }
+        GC_ConditionGroup "{B69064B21D85B0FF}" {
+         m_iMatch 2
+         m_aConditions {
+          GC_AreaCondition "{EEB4CC9C5F6CFAF9}" {
+           m_sArea "BlueDeductTicketTrigger"
+           m_Targets GC_CharacterAreaTargets "{B887342430BB638A}" {
+            m_aFactions {
+             "USSR"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{7EED102E92EFCB41}" {
+            m_fRequiredShare 0.75
+           }
+           m_Capture GC_AreaCaptureOptions "{C6964C25740AA5E4}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4A1920DF84005883}" {
+       m_sMessage "BlueTicketAdd"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{03127E45AACE3913}" {
+     m_sName "BlueTicketAdd (1s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{4BA46387CDBF30DE}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{AFCFCDA0FC44F28E}" {
+       m_sEventName "BlueTicketAdd"
+      }
+     }
+     m_Advanced GC_EventOptions "{90B458AAD3B42441}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_RespawnTicketsAction "{88113EA950A88A4E}" {
+       m_sFaction "US"
+       m_iOperation 0
+       m_iAmount 10
+      }
+      GC_FlagAction "{9A47B9922F88EBB4}" {
+       m_sFlagName "BlueTicketAdd"
+       m_iOperation 4
+      }
+     }
+    }
+    GC_Event "{54F4E1641544404B}" {
+     m_sName "BlueTicketAdd (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{51F5622D212E499D}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{CBA2A693F606F6B1}" {
+       m_sEventName "BlueTicketAdd"
+      }
+     }
+     m_Advanced GC_EventOptions "{2405F9233E6E4CFB}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{7C27832F91128FA8}" {
+       m_sTitle "BLUE REINFORCED!"
+       m_sMessage "Blue clan have regained control of their lines and have sent 10 reinforcements to the battle!"\
+       ""\
+       ""
+      }
+     }
+    }
+    GC_Event "{F5EF3BEAFAC22647}" {
+     m_sName "RedTicketAdd"
+     m_aConditions {
+      GC_GameModeStateCondition "{EC102B35967A9344}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{6622072938454B93}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{087331ED26968EEB}" {
+         m_sFlagName "RedTicketAdd"
+        }
+        GC_ConditionGroup "{E7D92D2525DE9571}" {
+         m_iMatch 2
+         m_aConditions {
+          GC_AreaCondition "{BBBEAFCED860807D}" {
+           m_sArea "RedDeductTicketTrigger2"
+           m_Targets GC_CharacterAreaTargets "{854F718BDC4DF939}" {
+            m_aFactions {
+             "US"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{269D138E7D709F47}" {
+            m_fRequiredShare 0.75
+           }
+           m_Capture GC_AreaCaptureOptions "{0382C2890203F273}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C4B304289B0F788C}" {
+       m_sMessage "RedTicketAdd"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{51DAD7680801B937}" {
+     m_sName "RedTicketAdd (1s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{952AD0C307AFAA83}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{8565A506F18AC8AE}" {
+       m_sEventName "RedTicketAdd"
+      }
+     }
+     m_Advanced GC_EventOptions "{13518D75B6AEADFC}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_RespawnTicketsAction "{F0A37F82CE743C9D}" {
+       m_sFaction "USSR"
+       m_iOperation 0
+       m_iAmount 10
+      }
+      GC_FlagAction "{A230B813585954B0}" {
+       m_sFlagName "RedTicketAdd"
+       m_iOperation 4
+      }
+     }
+    }
+    GC_Event "{C1D0F96330485E0D}" {
+     m_sName "RedTicketAdd (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{B0DB2B37D132EE40}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{EC8BB408000E3750}" {
+       m_sEventName "RedTicketAdd"
+      }
+     }
+     m_Advanced GC_EventOptions "{A86361F3D8024A3A}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{AC7D25BFA55A3E9C}" {
+       m_sTitle "RED REINFORCED!"
+       m_sMessage "Red clan have regained control of their lines and have sent 10 reinforcements to the battle!"\
+       ""\
+       ""
+      }
+     }
+    }
+    GC_Event "{86530C4685E1EFC3}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{F6E684516EE71F6E}" {
+       m_fSeconds 45.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{F88401FD21AE7C61}" {
+       m_aEntities {
+        "BLUSETUP"
+        "REDSETUP"
+       }
+      }
+     }
+    }
+   }
+   m_aAuthoredRespawns {
+    GC_AuthoredFactionRespawn "{01DEC84A105B04F4}" {
+     m_sFaction "US"
+     m_iTickets 50
+     m_iIntervalMs 16
+     m_bWave 1
+    }
+    GC_AuthoredFactionRespawn "{48FFB64F7A943B15}" {
+     m_sFaction "USSR"
+     m_iTickets 50
+     m_iIntervalMs 16
+     m_bWave 1
+    }
+   }
+  }
+ }
+ coords 2339.494 119.897 4007.505
+}
+CommentEntity {
+ coords 2873.949 164.01 2505.188
+ angles 0 67.804 0
+ m_Comment "BATTLEFIELD 1"\
+ ""
+ m_Size 25
+}
