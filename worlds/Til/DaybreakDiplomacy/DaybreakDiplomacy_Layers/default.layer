@@ -1,0 +1,1563 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 0 0 0
+}
+GC_LobbyGameMode GC_MigratedMission : "{EDC7A780ADD9A3D7}worlds/Til/DaybreakDiplomacy/DaybreakDiplomacy_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bRandomStartingWeather 1
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{65F6E35A2AF907AB}" {
+     m_iStartingHour 5
+     m_iStartingMinutes 10
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{21B5BEE56FF48771}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{B0B6CA424507CB8D}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 180
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{0A1643E7B9E51E7D}" {
+     m_sName "bm1_killed"
+    }
+    GC_MissionFlag "{74016D2B744F920A}" {
+     m_sName "bm2_killed"
+    }
+    GC_MissionFlag "{221AF68C5E72D509}" {
+     m_sName "rec1"
+    }
+    GC_MissionFlag "{0080BFCA02F37732}" {
+     m_sName "rec2"
+    }
+    GC_MissionFlag "{2A048816F7D979B6}" {
+     m_sName "rec3"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{7171477C4EDA6E5A}" {
+     m_sName "GC_MigrationStartupSampling"
+     m_aConditions {
+      GC_ConditionGroup "{3AE063C057D76E38}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{586B5CC19C7B563E}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{3FA7C26F4C5694A6}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{0C7A946049823BF8}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_FlagSamplingAction "{586B5CC19C7B563E}" {
+       m_iDrawCount 2
+       m_aFlags {
+        "rec1"
+        "rec2"
+        "rec3"
+       }
+      }
+     }
+    }
+    GC_Event "{D8AF398B63517280}" {
+     m_sName "Hostages: Both rescued"
+     m_aConditions {
+      GC_GameModeStateCondition "{1F19FBC57EF75A37}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{B2F87BA042C7C63B}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{4317E0575B0573F0}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_AreaCondition "{E45571DD8D392177}" {
+           m_sArea "GC_MigrationArea_us_extract"
+           m_Targets GC_CharacterAreaTargets "{4FFF2788397CC878}" {
+            m_aFactions {
+             "RHS_USAF"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{82263F0067605A5A}" {
+            m_fRequiredShare 1
+            m_bWholeMission 1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{E87110C992D4691E}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_ConditionGroup "{92A52A68E501470E}" {
+           m_iMatch 0
+           m_aConditions {
+            GC_AreaCondition "{97F139B02BA32204}" {
+             m_sArea "GC_MigrationArea_hostage_extract"
+             m_Targets GC_CharacterAreaTargets "{3F3FA67F57C8C56D}" {
+              m_aFactions {
+               "CIV"
+              }
+             }
+             m_Requirement GC_LocalFactionShare "{D3AE438F345B86CE}" {
+              m_fRequiredShare 1
+              m_bWholeMission 1
+              m_bWholeNumberQuotient 1
+             }
+             m_Capture GC_AreaCaptureOptions "{E87F66881B1DF8B7}" {
+              m_fSeconds 0
+              m_bUseElapsedTime 1
+              m_iInterruption 3
+              m_bStopAfterFirstChange 1
+             }
+            }
+            GC_MissionFlagCondition "{E37F19F2C9740715}" {
+             m_sFlagName "bm1_killed"
+             m_bRequireFalse 1
+            }
+            GC_MissionFlagCondition "{1F3B38BFE7357E40}" {
+             m_sFlagName "bm2_killed"
+             m_bRequireFalse 1
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B9D79148AF6C609F}" {
+       m_sMessage "Hostages: Both rescued"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E451A678F67E4C40}" {
+     m_sName "Hostages: Both rescued (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{A14D55283BAE4992}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{2EDE5994B5DAEA00}" {
+       m_sEventName "Hostages: Both rescued"
+      }
+     }
+     m_Advanced GC_EventOptions "{AC8816C56093E794}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{E45139995A7EC42F}" {
+       m_sTitle "HOSTAGE OUTCOME"
+       m_sMessage "Delta Force managed to rescue both US diplomats."
+      }
+     }
+    }
+    GC_Event "{6B23CD0BD69E7E99}" {
+     m_sName "Hostages: One rescued"
+     m_aConditions {
+      GC_GameModeStateCondition "{F1779FE057A50778}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{B550C5478E835922}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{F418210BA6C840B9}" {
+         m_sArea "GC_MigrationArea_us_extract"
+         m_Targets GC_CharacterAreaTargets "{2B4427E2CB85AC31}" {
+          m_aFactions {
+           "RHS_USAF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{7E1EE9CC285AC18C}" {
+          m_fRequiredShare 1
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{814C068513CF3E9A}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_ConditionGroup "{2F325FD522A8D8EA}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_AreaCondition "{E74A7B9A8721BBDC}" {
+           m_sArea "GC_MigrationArea_hostage_extract"
+           m_Targets GC_CharacterAreaTargets "{6C61ED0D10D11B0A}" {
+            m_aFactions {
+             "CIV"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{9E2F250C60002CC7}" {
+            m_fRequiredShare 1
+            m_bWholeMission 1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{D2261B8C4C2695C0}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_ConditionCount "{CFFCD8953C366CF3}" {
+           m_iComparison 2
+           m_iRequiredCount 1
+           m_aConditions {
+            GC_MissionFlagCondition "{1CB4A52DBF69F371}" {
+             m_sFlagName "bm1_killed"
+            }
+            GC_MissionFlagCondition "{516ECD9B8DE9BA4F}" {
+             m_sFlagName "bm2_killed"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{75953213F7ED1508}" {
+       m_sMessage "Hostages: One rescued"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{96C38014FCF1BA95}" {
+     m_sName "Hostages: One rescued (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{1CE6C2226282D79A}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{3293BC3DB3A5D1C9}" {
+       m_sEventName "Hostages: One rescued"
+      }
+     }
+     m_Advanced GC_EventOptions "{5A675B007DAE7160}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{61126ECD7BFB81AB}" {
+       m_sTitle "HOSTAGE OUTCOME"
+       m_sMessage "Delta Force managed to rescue one of the US diplomats, the other was killed."
+      }
+     }
+    }
+    GC_Event "{29294828C089AA05}" {
+     m_sName "Hostages: Both killed"
+     m_aConditions {
+      GC_GameModeStateCondition "{A8B8E034EDA0CBB4}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{617F8F45C16E3159}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{205C9E5ABA6635BA}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_AreaCondition "{ECD5268090AC02C8}" {
+           m_sArea "GC_MigrationArea_us_extract"
+           m_Targets GC_CharacterAreaTargets "{190C641EF16A5612}" {
+            m_aFactions {
+             "RHS_USAF"
+            }
+           }
+           m_Requirement GC_LocalFactionShare "{A19D6304C38C993C}" {
+            m_fRequiredShare 1
+            m_bWholeMission 1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{E51B17B140741179}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_ConditionGroup "{DD29ADD3924D1F72}" {
+           m_iMatch 0
+           m_aConditions {
+            GC_MissionFlagCondition "{259EFD2FE4F0CB32}" {
+             m_sFlagName "bm1_killed"
+            }
+            GC_MissionFlagCondition "{98BF7E5B6E331270}" {
+             m_sFlagName "bm2_killed"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A63705BAEE2671B7}" {
+       m_sMessage "Hostages: Both killed"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B3EB345AF143B395}" {
+     m_sName "Hostages: Both killed (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{894711EB65B0839F}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{47ED0039F5FFC890}" {
+       m_sEventName "Hostages: Both killed"
+      }
+     }
+     m_Advanced GC_EventOptions "{1A59CA6204C64347}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{47D33FD63892C2B7}" {
+       m_sTitle "HOSTAGE OUTCOME"
+       m_sMessage "Delta Force did not suceed in rescuing the US diplomats, both of them were killed."
+      }
+     }
+    }
+    GC_Event "{4834833E30D9F663}" {
+     m_sName "Delta: High casualties"
+     m_aConditions {
+      GC_GameModeStateCondition "{45FA2FBB9FE2FD23}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{74A16EBED44B204A}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{1EB2D45D5656DAB6}" {
+         m_iMatch 1
+         m_aConditions {
+          GC_CustomScriptCondition "{0926EAC2C2DA34A9}" {
+           m_Script GC_PeakFactionPopulationCheck "{CF18743996F8C6E5}" {
+            m_sFaction "RHS_USAF"
+            m_fRatio 0.75
+           }
+          }
+          GC_ConditionGroup "{5CE2EA7301E4C066}" {
+           m_iMatch 0
+           m_aConditions {
+            GC_AreaCondition "{01FDFF93E633050C}" {
+             m_sArea "GC_MigrationArea_us_extract"
+             m_Targets GC_CharacterAreaTargets "{6243BBA088B4C724}" {
+              m_aFactions {
+               "RHS_USAF"
+              }
+             }
+             m_Requirement GC_LocalFactionShare "{BD002FEA31BA5044}" {
+              m_fRequiredShare 1
+              m_bWholeMission 1
+              m_bWholeNumberQuotient 1
+             }
+             m_Capture GC_AreaCaptureOptions "{7107DF3B089F4705}" {
+              m_fSeconds 0
+              m_bUseElapsedTime 1
+              m_iInterruption 3
+              m_bStopAfterFirstChange 1
+             }
+            }
+            GC_ConditionGroup "{8A94B71A22294899}" {
+             m_iMatch 1
+             m_aConditions {
+              GC_ConditionGroup "{E6745E760E9C61F3}" {
+               m_iMatch 0
+               m_aConditions {
+                GC_AreaCondition "{CEC329CD1210B430}" {
+                 m_sArea "GC_MigrationArea_hostage_extract"
+                 m_Targets GC_CharacterAreaTargets "{667455DE183F6C14}" {
+                  m_aFactions {
+                   "CIV"
+                  }
+                 }
+                 m_Requirement GC_LocalFactionShare "{6607C30DFCAC31C7}" {
+                  m_fRequiredShare 1
+                  m_bWholeMission 1
+                  m_bWholeNumberQuotient 1
+                 }
+                 m_Capture GC_AreaCaptureOptions "{2263EEFB91F02FC9}" {
+                  m_fSeconds 0
+                  m_bUseElapsedTime 1
+                  m_iInterruption 3
+                  m_bStopAfterFirstChange 1
+                 }
+                }
+                GC_MissionFlagCondition "{0F948AC1D34DC61A}" {
+                 m_sFlagName "bm1_killed"
+                 m_bRequireFalse 1
+                }
+                GC_MissionFlagCondition "{30D1949B72A63C7B}" {
+                 m_sFlagName "bm2_killed"
+                 m_bRequireFalse 1
+                }
+               }
+              }
+              GC_ConditionGroup "{6F0CD2871CE90351}" {
+               m_iMatch 0
+               m_aConditions {
+                GC_AreaCondition "{28F1285C4EECBA21}" {
+                 m_sArea "GC_MigrationArea_hostage_extract"
+                 m_Targets GC_CharacterAreaTargets "{85B2EE4A4719C5BB}" {
+                  m_aFactions {
+                   "CIV"
+                  }
+                 }
+                 m_Requirement GC_LocalFactionShare "{BCFD728556E71FB1}" {
+                  m_fRequiredShare 1
+                  m_bWholeMission 1
+                  m_bWholeNumberQuotient 1
+                 }
+                 m_Capture GC_AreaCaptureOptions "{411D051AC8222B77}" {
+                  m_fSeconds 0
+                  m_bUseElapsedTime 1
+                  m_iInterruption 3
+                  m_bStopAfterFirstChange 1
+                 }
+                }
+                GC_ConditionCount "{ED4C278945A1283C}" {
+                 m_iComparison 2
+                 m_iRequiredCount 1
+                 m_aConditions {
+                  GC_MissionFlagCondition "{4E37FCA1B191DB4E}" {
+                   m_sFlagName "bm1_killed"
+                  }
+                  GC_MissionFlagCondition "{F9B3AC1BBD16D767}" {
+                   m_sFlagName "bm2_killed"
+                  }
+                 }
+                }
+               }
+              }
+              GC_ConditionGroup "{4D57E73026F4C2C8}" {
+               m_iMatch 0
+               m_aConditions {
+                GC_MissionFlagCondition "{78F27DFEEF22D986}" {
+                 m_sFlagName "bm1_killed"
+                }
+                GC_MissionFlagCondition "{A5D69059325C5D66}" {
+                 m_sFlagName "bm2_killed"
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+        GC_CustomScriptCondition "{B38710D7D262EC8E}" {
+         m_Script GC_PeakFactionPopulationCheck "{9639C5801AF661A3}" {
+          m_sFaction "RHS_USAF"
+          m_fRatio 0.75
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DE284CDC5748E5D3}" {
+       m_sMessage "Delta: High casualties"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{DBB9EA8EFE7D234B}" {
+     m_sName "Delta: High casualties (15s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{1D1BFBA1786E0585}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{8315E07E8542B67A}" {
+       m_sEventName "Delta: High casualties"
+      }
+     }
+     m_Advanced GC_EventOptions "{90FDE582E7B9D688}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_MessageAction "{08AA3ACFC7633010}" {
+       m_sTitle "DELTA OUTCOME"
+       m_sMessage "Delta suffered extreme casualties, forcing them to abandon the mission."
+      }
+     }
+    }
+    GC_Event "{661470EBDAAE3E91}" {
+     m_sName "Delta: Medium casualties"
+     m_aConditions {
+      GC_GameModeStateCondition "{DC20DBCF8553BA20}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{3FDDD3DF32CC314A}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{B7CB3EC53EA9E9CC}" {
+         m_iMatch 1
+         m_aConditions {
+          GC_CustomScriptCondition "{67B1AC5CFE66F696}" {
+           m_Script GC_PeakFactionPopulationCheck "{2B0B40BDDEBD0F68}" {
+            m_sFaction "RHS_USAF"
+            m_fRatio 0.75
+           }
+          }
+          GC_ConditionGroup "{35B2F3837E98DE89}" {
+           m_iMatch 0
+           m_aConditions {
+            GC_AreaCondition "{9CC65A1872571AFF}" {
+             m_sArea "GC_MigrationArea_us_extract"
+             m_Targets GC_CharacterAreaTargets "{03FB53749ADED433}" {
+              m_aFactions {
+               "RHS_USAF"
+              }
+             }
+             m_Requirement GC_LocalFactionShare "{DFFB7FB25CC450F1}" {
+              m_fRequiredShare 1
+              m_bWholeMission 1
+              m_bWholeNumberQuotient 1
+             }
+             m_Capture GC_AreaCaptureOptions "{BB0A8BBEE5F2ED49}" {
+              m_fSeconds 0
+              m_bUseElapsedTime 1
+              m_iInterruption 3
+              m_bStopAfterFirstChange 1
+             }
+            }
+            GC_ConditionGroup "{D975A0DEE920A46F}" {
+             m_iMatch 1
+             m_aConditions {
+              GC_ConditionGroup "{F9D5F5D8712AED67}" {
+               m_iMatch 0
+               m_aConditions {
+                GC_AreaCondition "{B4149DFC0DE34021}" {
+                 m_sArea "GC_MigrationArea_hostage_extract"
+                 m_Targets GC_CharacterAreaTargets "{80877F121D1414EE}" {
+                  m_aFactions {
+                   "CIV"
+                  }
+                 }
+                 m_Requirement GC_LocalFactionShare "{9224906170E96409}" {
+                  m_fRequiredShare 1
+                  m_bWholeMission 1
+                  m_bWholeNumberQuotient 1
+                 }
+                 m_Capture GC_AreaCaptureOptions "{02E14326167563C2}" {
+                  m_fSeconds 0
+                  m_bUseElapsedTime 1
+                  m_iInterruption 3
+                  m_bStopAfterFirstChange 1
+                 }
+                }
+                GC_MissionFlagCondition "{3F5A3FE16E5DA4E0}" {
+                 m_sFlagName "bm1_killed"
+                 m_bRequireFalse 1
+                }
+                GC_MissionFlagCondition "{FFDE6DE8711A87F5}" {
+                 m_sFlagName "bm2_killed"
+                 m_bRequireFalse 1
+                }
+               }
+              }
+              GC_ConditionGroup "{676614273E23BAE7}" {
+               m_iMatch 0
+               m_aConditions {
+                GC_AreaCondition "{065E5C98EDE8633C}" {
+                 m_sArea "GC_MigrationArea_hostage_extract"
+                 m_Targets GC_CharacterAreaTargets "{0E72161A54468F82}" {
+                  m_aFactions {
+                   "CIV"
+                  }
+                 }
+                 m_Requirement GC_LocalFactionShare "{B10694B4D1342C8E}" {
+                  m_fRequiredShare 1
+                  m_bWholeMission 1
+                  m_bWholeNumberQuotient 1
+                 }
+                 m_Capture GC_AreaCaptureOptions "{77DF79CC3085022D}" {
+                  m_fSeconds 0
+                  m_bUseElapsedTime 1
+                  m_iInterruption 3
+                  m_bStopAfterFirstChange 1
+                 }
+                }
+                GC_ConditionCount "{AEDB786AB6016257}" {
+                 m_iComparison 2
+                 m_iRequiredCount 1
+                 m_aConditions {
+                  GC_MissionFlagCondition "{CAE5396073C5DBD0}" {
+                   m_sFlagName "bm1_killed"
+                  }
+                  GC_MissionFlagCondition "{D32C19B79D630081}" {
+                   m_sFlagName "bm2_killed"
+                  }
+                 }
+                }
+               }
+              }
+              GC_ConditionGroup "{5D211297A7BB8F9F}" {
+               m_iMatch 0
+               m_aConditions {
+                GC_MissionFlagCondition "{AB673D5CF9ACD3FA}" {
+                 m_sFlagName "bm1_killed"
+                }
+                GC_MissionFlagCondition "{052C157945B93F7F}" {
+                 m_sFlagName "bm2_killed"
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+        GC_CustomScriptCondition "{A086381FFEBCE108}" {
+         m_Script GC_PeakFactionPopulationCheck "{E66E79267CB07DD5}" {
+          m_sFaction "RHS_USAF"
+          m_fRatio 0.25
+         }
+        }
+        GC_CustomScriptCondition "{A437A1CD6D78D29D}" {
+         m_Script GC_PeakFactionPopulationCheck "{A483484D04E03212}" {
+          m_sFaction "RHS_USAF"
+          m_bInvert 1
+          m_fRatio 0.75
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5540D044BC66ACC9}" {
+       m_sMessage "Delta: Medium casualties"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AF7D5563BAD4BC55}" {
+     m_sName "Delta: Medium casualties (15s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{3C6730DEDAB4F831}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{FF6B2FFE74E56D22}" {
+       m_sEventName "Delta: Medium casualties"
+      }
+     }
+     m_Advanced GC_EventOptions "{2F19581B3739F2BF}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_MessageAction "{07E9B443A98011C3}" {
+       m_sTitle "DELTA OUTCOME"
+       m_sMessage "Delta Force sustained significant casualties in the process."
+      }
+     }
+    }
+    GC_Event "{86E51448FBEA7DAB}" {
+     m_sName "Delta: Low casualites"
+     m_aConditions {
+      GC_GameModeStateCondition "{0D2EC9738232D3B1}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{1AC3398AB8777F47}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{FD7071568DF42A50}" {
+         m_iMatch 1
+         m_aConditions {
+          GC_CustomScriptCondition "{17E281DC97CDD9B6}" {
+           m_Script GC_PeakFactionPopulationCheck "{18FBEE9F9D2C0A70}" {
+            m_sFaction "RHS_USAF"
+            m_fRatio 0.75
+           }
+          }
+          GC_ConditionGroup "{ED88E23157BE291B}" {
+           m_iMatch 0
+           m_aConditions {
+            GC_AreaCondition "{D5EDF2360F0D7BCC}" {
+             m_sArea "GC_MigrationArea_us_extract"
+             m_Targets GC_CharacterAreaTargets "{1AB2BF23C5ED10FF}" {
+              m_aFactions {
+               "RHS_USAF"
+              }
+             }
+             m_Requirement GC_LocalFactionShare "{79B5CE66BE576465}" {
+              m_fRequiredShare 1
+              m_bWholeMission 1
+              m_bWholeNumberQuotient 1
+             }
+             m_Capture GC_AreaCaptureOptions "{FA9F7926385FEEF0}" {
+              m_fSeconds 0
+              m_bUseElapsedTime 1
+              m_iInterruption 3
+              m_bStopAfterFirstChange 1
+             }
+            }
+            GC_ConditionGroup "{BB7E62583A154D7A}" {
+             m_iMatch 1
+             m_aConditions {
+              GC_ConditionGroup "{012FAC98DE633C8B}" {
+               m_iMatch 0
+               m_aConditions {
+                GC_AreaCondition "{8CC4D1449C003DE4}" {
+                 m_sArea "GC_MigrationArea_hostage_extract"
+                 m_Targets GC_CharacterAreaTargets "{A41E422D14C5D912}" {
+                  m_aFactions {
+                   "CIV"
+                  }
+                 }
+                 m_Requirement GC_LocalFactionShare "{8FF3DF47D9725945}" {
+                  m_fRequiredShare 1
+                  m_bWholeMission 1
+                  m_bWholeNumberQuotient 1
+                 }
+                 m_Capture GC_AreaCaptureOptions "{87BF6E6870443D0B}" {
+                  m_fSeconds 0
+                  m_bUseElapsedTime 1
+                  m_iInterruption 3
+                  m_bStopAfterFirstChange 1
+                 }
+                }
+                GC_MissionFlagCondition "{B9151B204E473D8E}" {
+                 m_sFlagName "bm1_killed"
+                 m_bRequireFalse 1
+                }
+                GC_MissionFlagCondition "{9C9DCCF92A099137}" {
+                 m_sFlagName "bm2_killed"
+                 m_bRequireFalse 1
+                }
+               }
+              }
+              GC_ConditionGroup "{27DA10973F591592}" {
+               m_iMatch 0
+               m_aConditions {
+                GC_AreaCondition "{1AA7DD663E9D5B50}" {
+                 m_sArea "GC_MigrationArea_hostage_extract"
+                 m_Targets GC_CharacterAreaTargets "{2CFE69D287A2E80A}" {
+                  m_aFactions {
+                   "CIV"
+                  }
+                 }
+                 m_Requirement GC_LocalFactionShare "{10888FD2B1699A94}" {
+                  m_fRequiredShare 1
+                  m_bWholeMission 1
+                  m_bWholeNumberQuotient 1
+                 }
+                 m_Capture GC_AreaCaptureOptions "{E79BE67FF2E13FEB}" {
+                  m_fSeconds 0
+                  m_bUseElapsedTime 1
+                  m_iInterruption 3
+                  m_bStopAfterFirstChange 1
+                 }
+                }
+                GC_ConditionCount "{EED7C78CBBC49EA3}" {
+                 m_iComparison 2
+                 m_iRequiredCount 1
+                 m_aConditions {
+                  GC_MissionFlagCondition "{BB0B6FF2851D364B}" {
+                   m_sFlagName "bm1_killed"
+                  }
+                  GC_MissionFlagCondition "{031D00D47F425381}" {
+                   m_sFlagName "bm2_killed"
+                  }
+                 }
+                }
+               }
+              }
+              GC_ConditionGroup "{00C6A86CA1895C94}" {
+               m_iMatch 0
+               m_aConditions {
+                GC_MissionFlagCondition "{8D2679B347A2F3CC}" {
+                 m_sFlagName "bm1_killed"
+                }
+                GC_MissionFlagCondition "{795DE75AA1D3FA55}" {
+                 m_sFlagName "bm2_killed"
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+        GC_CustomScriptCondition "{F4FE0BEEB4307149}" {
+         m_Script GC_PeakFactionPopulationCheck "{EB8909D6BC8F2787}" {
+          m_sFaction "RHS_USAF"
+          m_bInvert 1
+          m_fRatio 0.25
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{15908B22FDE29478}" {
+       m_sMessage "Delta: Low casualites"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{31B49B48B1D5F895}" {
+     m_sName "Delta: Low casualites (15s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{1807DE7889BB28EE}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{C399C9313E46D5C9}" {
+       m_sEventName "Delta: Low casualites"
+      }
+     }
+     m_Advanced GC_EventOptions "{EEB3EE3C818B6BE0}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_MessageAction "{9321848846F26723}" {
+       m_sTitle "DELTA OUTCOME"
+       m_sMessage "Delta Force did not take overly high casualties during the operation."
+      }
+     }
+    }
+    GC_Event "{BD5D2E22CB267EEA}" {
+     m_sName "Extremists: High casualties"
+     m_aConditions {
+      GC_GameModeStateCondition "{62B6BB0E46E9791A}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{9C3E3C3CA8FC54BC}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{91AAECCA8EBFA61E}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_ConditionGroup "{B85F7714407BA2E0}" {
+           m_iMatch 1
+           m_aConditions {
+            GC_CustomScriptCondition "{28D34615AA9655DE}" {
+             m_Script GC_PeakFactionPopulationCheck "{E78A614442AA55B7}" {
+              m_sFaction "RHS_USAF"
+              m_fRatio 0.75
+             }
+            }
+            GC_ConditionGroup "{AEBD59E7D55F80B9}" {
+             m_iMatch 0
+             m_aConditions {
+              GC_AreaCondition "{3D0257121252CD96}" {
+               m_sArea "GC_MigrationArea_us_extract"
+               m_Targets GC_CharacterAreaTargets "{09985AE81A280987}" {
+                m_aFactions {
+                 "RHS_USAF"
+                }
+               }
+               m_Requirement GC_LocalFactionShare "{949A0C40E71D1528}" {
+                m_fRequiredShare 1
+                m_bWholeMission 1
+                m_bWholeNumberQuotient 1
+               }
+               m_Capture GC_AreaCaptureOptions "{D78693C3A5430376}" {
+                m_fSeconds 0
+                m_bUseElapsedTime 1
+                m_iInterruption 3
+                m_bStopAfterFirstChange 1
+               }
+              }
+              GC_ConditionGroup "{BD53A4497CC71D8B}" {
+               m_iMatch 1
+               m_aConditions {
+                GC_ConditionGroup "{8C096B1CCFB6EF4B}" {
+                 m_iMatch 0
+                 m_aConditions {
+                  GC_AreaCondition "{CFD4ACA68CF612E7}" {
+                   m_sArea "GC_MigrationArea_hostage_extract"
+                   m_Targets GC_CharacterAreaTargets "{D892B16B8CD98324}" {
+                    m_aFactions {
+                     "CIV"
+                    }
+                   }
+                   m_Requirement GC_LocalFactionShare "{F71AFFF6459D5497}" {
+                    m_fRequiredShare 1
+                    m_bWholeMission 1
+                    m_bWholeNumberQuotient 1
+                   }
+                   m_Capture GC_AreaCaptureOptions "{F49CC93D60CDB9EA}" {
+                    m_fSeconds 0
+                    m_bUseElapsedTime 1
+                    m_iInterruption 3
+                    m_bStopAfterFirstChange 1
+                   }
+                  }
+                  GC_MissionFlagCondition "{101651C3B9C6CF30}" {
+                   m_sFlagName "bm1_killed"
+                   m_bRequireFalse 1
+                  }
+                  GC_MissionFlagCondition "{290269D5B47BF481}" {
+                   m_sFlagName "bm2_killed"
+                   m_bRequireFalse 1
+                  }
+                 }
+                }
+                GC_ConditionGroup "{8287D7E47B966E98}" {
+                 m_iMatch 0
+                 m_aConditions {
+                  GC_AreaCondition "{977AF7BADC365FAF}" {
+                   m_sArea "GC_MigrationArea_hostage_extract"
+                   m_Targets GC_CharacterAreaTargets "{AF0676375BE204B7}" {
+                    m_aFactions {
+                     "CIV"
+                    }
+                   }
+                   m_Requirement GC_LocalFactionShare "{25B5C25B0E58BFF6}" {
+                    m_fRequiredShare 1
+                    m_bWholeMission 1
+                    m_bWholeNumberQuotient 1
+                   }
+                   m_Capture GC_AreaCaptureOptions "{128AB5769EFC0896}" {
+                    m_fSeconds 0
+                    m_bUseElapsedTime 1
+                    m_iInterruption 3
+                    m_bStopAfterFirstChange 1
+                   }
+                  }
+                  GC_ConditionCount "{977F2E44C9492690}" {
+                   m_iComparison 2
+                   m_iRequiredCount 1
+                   m_aConditions {
+                    GC_MissionFlagCondition "{C995EA53AECF9E20}" {
+                     m_sFlagName "bm1_killed"
+                    }
+                    GC_MissionFlagCondition "{D8C744B47E25A470}" {
+                     m_sFlagName "bm2_killed"
+                    }
+                   }
+                  }
+                 }
+                }
+                GC_ConditionGroup "{46A0BDF71FC89D21}" {
+                 m_iMatch 0
+                 m_aConditions {
+                  GC_MissionFlagCondition "{78D7BE596E1044F1}" {
+                   m_sFlagName "bm1_killed"
+                  }
+                  GC_MissionFlagCondition "{9B08F9DD1FB7FD4A}" {
+                   m_sFlagName "bm2_killed"
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+          GC_CustomScriptCondition "{FF6A1ED62EECCD80}" {
+           m_Script GC_PeakFactionPopulationCheck "{7D522DFC708FDE8E}" {
+            m_sFaction "GC_SEPARATIST"
+            m_fRatio 0.8
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{29CE8F18DC1D398B}" {
+       m_sMessage "Extremists: High casualties"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1155A0900403CB5D}" {
+     m_sName "Extremists: High casualties (25s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{2CA042F51E8A5415}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{24DE9BCC7C721599}" {
+       m_sEventName "Extremists: High casualties"
+      }
+     }
+     m_Advanced GC_EventOptions "{98F779F9FEF40528}" {
+      m_fDelay 25
+     }
+     m_aActions {
+      GC_MessageAction "{221061C022904F01}" {
+       m_sTitle "EXTREMIST OUTCOME"
+       m_sMessage "Nearly all members of the extremist group were eliminated, bringing an decisive end to its activities."
+      }
+     }
+    }
+    GC_Event "{67AE35C7A328E435}" {
+     m_sName "Extremists: Medium casualties"
+     m_aConditions {
+      GC_GameModeStateCondition "{535F3061228E2CBD}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{79041F01F9870E22}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{BC45200617408791}" {
+         m_iMatch 1
+         m_aConditions {
+          GC_CustomScriptCondition "{4E201B72C139F8CC}" {
+           m_Script GC_PeakFactionPopulationCheck "{B45E54FBD9AE1BFE}" {
+            m_sFaction "RHS_USAF"
+            m_fRatio 0.75
+           }
+          }
+          GC_ConditionGroup "{8790A62095C9A31C}" {
+           m_iMatch 0
+           m_aConditions {
+            GC_AreaCondition "{109E162C5F6BD283}" {
+             m_sArea "GC_MigrationArea_us_extract"
+             m_Targets GC_CharacterAreaTargets "{DC2D9E186E46EF4E}" {
+              m_aFactions {
+               "RHS_USAF"
+              }
+             }
+             m_Requirement GC_LocalFactionShare "{597B707863E47F0A}" {
+              m_fRequiredShare 1
+              m_bWholeMission 1
+              m_bWholeNumberQuotient 1
+             }
+             m_Capture GC_AreaCaptureOptions "{EA1445AA36EEA8D0}" {
+              m_fSeconds 0
+              m_bUseElapsedTime 1
+              m_iInterruption 3
+              m_bStopAfterFirstChange 1
+             }
+            }
+            GC_ConditionGroup "{6243E3E3AC1194E6}" {
+             m_iMatch 1
+             m_aConditions {
+              GC_ConditionGroup "{E36A72CDFF559402}" {
+               m_iMatch 0
+               m_aConditions {
+                GC_AreaCondition "{74B6FE17C26FF8EF}" {
+                 m_sArea "GC_MigrationArea_hostage_extract"
+                 m_Targets GC_CharacterAreaTargets "{35A26E39AEEFC2E7}" {
+                  m_aFactions {
+                   "CIV"
+                  }
+                 }
+                 m_Requirement GC_LocalFactionShare "{3F9DF3DD9545DEEC}" {
+                  m_fRequiredShare 1
+                  m_bWholeMission 1
+                  m_bWholeNumberQuotient 1
+                 }
+                 m_Capture GC_AreaCaptureOptions "{D481C2A6287F75DA}" {
+                  m_fSeconds 0
+                  m_bUseElapsedTime 1
+                  m_iInterruption 3
+                  m_bStopAfterFirstChange 1
+                 }
+                }
+                GC_MissionFlagCondition "{1B5B87D2F408CD33}" {
+                 m_sFlagName "bm1_killed"
+                 m_bRequireFalse 1
+                }
+                GC_MissionFlagCondition "{D6651A3AAA67A8FE}" {
+                 m_sFlagName "bm2_killed"
+                 m_bRequireFalse 1
+                }
+               }
+              }
+              GC_ConditionGroup "{96E2CCD9A61271F6}" {
+               m_iMatch 0
+               m_aConditions {
+                GC_AreaCondition "{E2A4254161F90BB2}" {
+                 m_sArea "GC_MigrationArea_hostage_extract"
+                 m_Targets GC_CharacterAreaTargets "{A6EF38BF7E908468}" {
+                  m_aFactions {
+                   "CIV"
+                  }
+                 }
+                 m_Requirement GC_LocalFactionShare "{3586363557FC0EC8}" {
+                  m_fRequiredShare 1
+                  m_bWholeMission 1
+                  m_bWholeNumberQuotient 1
+                 }
+                 m_Capture GC_AreaCaptureOptions "{C63C2B314B60AFED}" {
+                  m_fSeconds 0
+                  m_bUseElapsedTime 1
+                  m_iInterruption 3
+                  m_bStopAfterFirstChange 1
+                 }
+                }
+                GC_ConditionCount "{1BC237B6611B93F3}" {
+                 m_iComparison 2
+                 m_iRequiredCount 1
+                 m_aConditions {
+                  GC_MissionFlagCondition "{F24DD76ABA15484D}" {
+                   m_sFlagName "bm1_killed"
+                  }
+                  GC_MissionFlagCondition "{72A02DCB5C2285CC}" {
+                   m_sFlagName "bm2_killed"
+                  }
+                 }
+                }
+               }
+              }
+              GC_ConditionGroup "{F37044B47EC14B44}" {
+               m_iMatch 0
+               m_aConditions {
+                GC_MissionFlagCondition "{13BA996F2C7DE8D5}" {
+                 m_sFlagName "bm1_killed"
+                }
+                GC_MissionFlagCondition "{EB8A054459A38E72}" {
+                 m_sFlagName "bm2_killed"
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+        GC_CustomScriptCondition "{9BFEA561B5D056F8}" {
+         m_Script GC_PeakFactionPopulationCheck "{D613674B6A3C68E7}" {
+          m_sFaction "GC_SEPARATIST"
+          m_fRatio 0.4
+         }
+        }
+        GC_CustomScriptCondition "{15B5A521763B4C9B}" {
+         m_Script GC_PeakFactionPopulationCheck "{3C27BB761FC696BD}" {
+          m_sFaction "GC_SEPARATIST"
+          m_bInvert 1
+          m_fRatio 0.8
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{20AAFAA0A657DD22}" {
+       m_sMessage "Extremists: Medium casualties"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{55F78DADB17C3228}" {
+     m_sName "Extremists: Medium casualties (25s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{1E212B418865E778}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{69366164A20F6C4B}" {
+       m_sEventName "Extremists: Medium casualties"
+      }
+     }
+     m_Advanced GC_EventOptions "{A59FA6141CB3C0CE}" {
+      m_fDelay 25
+     }
+     m_aActions {
+      GC_MessageAction "{95AED4DBE9FF5319}" {
+       m_sTitle "EXTREMIST OUTCOME"
+       m_sMessage "The hostage takers took significant casualties, but a fair share survived the encounter."
+      }
+     }
+    }
+    GC_Event "{1629F291496C57ED}" {
+     m_sName "Extremists: Low casualties"
+     m_aConditions {
+      GC_GameModeStateCondition "{D00653F69E4262BA}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{F05EDA2C805A0D9E}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{B58657B84CFD3D46}" {
+         m_iMatch 1
+         m_aConditions {
+          GC_CustomScriptCondition "{1E21728C40E361B6}" {
+           m_Script GC_PeakFactionPopulationCheck "{FE3EED3C273F3744}" {
+            m_sFaction "RHS_USAF"
+            m_fRatio 0.75
+           }
+          }
+          GC_ConditionGroup "{56AE6DD10B0F4533}" {
+           m_iMatch 0
+           m_aConditions {
+            GC_AreaCondition "{6F519DE1F39D5973}" {
+             m_sArea "GC_MigrationArea_us_extract"
+             m_Targets GC_CharacterAreaTargets "{1FA83B36A5A2E3C7}" {
+              m_aFactions {
+               "RHS_USAF"
+              }
+             }
+             m_Requirement GC_LocalFactionShare "{EB2BB4391236EF8F}" {
+              m_fRequiredShare 1
+              m_bWholeMission 1
+              m_bWholeNumberQuotient 1
+             }
+             m_Capture GC_AreaCaptureOptions "{144B4AD95769ABCA}" {
+              m_fSeconds 0
+              m_bUseElapsedTime 1
+              m_iInterruption 3
+              m_bStopAfterFirstChange 1
+             }
+            }
+            GC_ConditionGroup "{04CBFB274332A220}" {
+             m_iMatch 1
+             m_aConditions {
+              GC_ConditionGroup "{49592EE1CA4464E4}" {
+               m_iMatch 0
+               m_aConditions {
+                GC_AreaCondition "{B8B4C2ECD829FBD3}" {
+                 m_sArea "GC_MigrationArea_hostage_extract"
+                 m_Targets GC_CharacterAreaTargets "{A4BFBEDC9765DF77}" {
+                  m_aFactions {
+                   "CIV"
+                  }
+                 }
+                 m_Requirement GC_LocalFactionShare "{D11275D3103A6967}" {
+                  m_fRequiredShare 1
+                  m_bWholeMission 1
+                  m_bWholeNumberQuotient 1
+                 }
+                 m_Capture GC_AreaCaptureOptions "{5A7117EE3063CBB5}" {
+                  m_fSeconds 0
+                  m_bUseElapsedTime 1
+                  m_iInterruption 3
+                  m_bStopAfterFirstChange 1
+                 }
+                }
+                GC_MissionFlagCondition "{B3DE1545F9CFBCEB}" {
+                 m_sFlagName "bm1_killed"
+                 m_bRequireFalse 1
+                }
+                GC_MissionFlagCondition "{A2642E3680EDA8F3}" {
+                 m_sFlagName "bm2_killed"
+                 m_bRequireFalse 1
+                }
+               }
+              }
+              GC_ConditionGroup "{CC7AC51D063C7852}" {
+               m_iMatch 0
+               m_aConditions {
+                GC_AreaCondition "{E48038A3B972E5C1}" {
+                 m_sArea "GC_MigrationArea_hostage_extract"
+                 m_Targets GC_CharacterAreaTargets "{E10E350F332E4D76}" {
+                  m_aFactions {
+                   "CIV"
+                  }
+                 }
+                 m_Requirement GC_LocalFactionShare "{9BD7986BEBCF49C8}" {
+                  m_fRequiredShare 1
+                  m_bWholeMission 1
+                  m_bWholeNumberQuotient 1
+                 }
+                 m_Capture GC_AreaCaptureOptions "{8D396F9E29B7CB31}" {
+                  m_fSeconds 0
+                  m_bUseElapsedTime 1
+                  m_iInterruption 3
+                  m_bStopAfterFirstChange 1
+                 }
+                }
+                GC_ConditionCount "{69C46E3F80F709D7}" {
+                 m_iComparison 2
+                 m_iRequiredCount 1
+                 m_aConditions {
+                  GC_MissionFlagCondition "{9235CAF11F22CB02}" {
+                   m_sFlagName "bm1_killed"
+                  }
+                  GC_MissionFlagCondition "{B8BD4D01F105E22D}" {
+                   m_sFlagName "bm2_killed"
+                  }
+                 }
+                }
+               }
+              }
+              GC_ConditionGroup "{EC509A25F46DCAA7}" {
+               m_iMatch 0
+               m_aConditions {
+                GC_MissionFlagCondition "{BDC181E38E2B4417}" {
+                 m_sFlagName "bm1_killed"
+                }
+                GC_MissionFlagCondition "{DF7E758450C627B5}" {
+                 m_sFlagName "bm2_killed"
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+        GC_CustomScriptCondition "{FDB4F0F21F4DBFA6}" {
+         m_Script GC_PeakFactionPopulationCheck "{88BE49305C1391BC}" {
+          m_sFaction "GC_SEPARATIST"
+          m_bInvert 1
+          m_fRatio 0.4
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{801D5BB6E5AD27A7}" {
+       m_sMessage "Extremists: Low casualties"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7DE5A7AB15AF4002}" {
+     m_sName "Extremists: Low casualties (25s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{385B0A69196AD5A5}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{9CE76D0F0F5C1074}" {
+       m_sEventName "Extremists: Low casualties"
+      }
+     }
+     m_Advanced GC_EventOptions "{2A1F8DCA00E490CF}" {
+      m_fDelay 25
+     }
+     m_aActions {
+      GC_MessageAction "{94DFB583ACF3DA84}" {
+       m_sTitle "EXTREMIST OUTCOME"
+       m_sMessage "The hostage takers got off lightly, managing to avoid significant losses for the time being."
+      }
+     }
+    }
+    GC_Event "{17B1ACB225462383}" {
+     m_sName "Delete recon 1"
+     m_aConditions {
+      GC_ConditionGroup "{AB6148AA52A8A0BC}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{3480E8BC1D4658F6}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{07FEA92E391FC685}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{90974D32FB051346}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{EBE182028E94DA22}" {
+       m_sFlagName "rec1"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{CD5300A8B267BF3A}" {
+       m_sMessage "Delete recon 1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3480E8BC1D4658F6}" {
+     m_sName "Delete recon 1 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B1AAD5000D51C998}" {
+       m_sEventName "Delete recon 1"
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{8096A58CAB818356}" {
+       m_aEntities {
+        "us_team_4_1"
+        "marker_rec1"
+       }
+      }
+     }
+    }
+    GC_Event "{880FD5A4CB93A573}" {
+     m_sName "Delete recon 2"
+     m_aConditions {
+      GC_ConditionGroup "{8350CDBE01411072}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{0627700599A69AA2}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{140517184566DCA7}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{FF4A6F036DACBCD3}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{BD555485A8EB7397}" {
+       m_sFlagName "rec2"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{44855846B5C9DBD9}" {
+       m_sMessage "Delete recon 2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0627700599A69AA2}" {
+     m_sName "Delete recon 2 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6D2162DE8CDDF686}" {
+       m_sEventName "Delete recon 2"
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{655C2F33AF97D71D}" {
+       m_aEntities {
+        "us_team_4_2"
+        "marker_rec2"
+       }
+      }
+     }
+    }
+    GC_Event "{78F1768FC36F7FB5}" {
+     m_sName "Delete recon 3"
+     m_aConditions {
+      GC_ConditionGroup "{6467D94E15EFB64E}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{68BEE0B6309FFCE9}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{89AC1F0B360C9B2D}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{83B7EC28F70FE89B}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{7722CF638B17395E}" {
+       m_sFlagName "rec3"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FA5D5F1EBB136F09}" {
+       m_sMessage "Delete recon 3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{68BEE0B6309FFCE9}" {
+     m_sName "Delete recon 3 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8521364D95BB88EB}" {
+       m_sEventName "Delete recon 3"
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{21E338CCF39D779F}" {
+       m_aEntities {
+        "us_team_4_3"
+        "marker_rec3"
+       }
+      }
+     }
+    }
+    GC_Event "{AA9FE471FB83EBDB}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{3EFD0268C2FFC527}" {
+       m_fSeconds 180.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{969C032A83AFCC56}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     UIInfo SCR_FactionUIInfo "{56B49118D8D0A9C5}" {
+      Name "Hostages"
+      Icon "{EB7F65DBC9392557}UI/Textures/Editor/EditableEntities/Factions/EditableEntity_Faction_USA.edds"
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     UIInfo SCR_FactionUIInfo "{5CC8B5EDA0CDBD62}" {
+      Name "1st SFOD-D"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{6602E4E33C7D1666}" {
+        m_sCallsign "4"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3: %4"
+     }
+    }
+    SCR_Faction "{62EB308733CA83DD}" {
+     UIInfo SCR_FactionUIInfo "{62EB259E4C94C2BD}" {
+      Name "Extremists"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "0"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+        m_sCallsign "4"
+       }
+       SCR_CallsignInfo "{6602E4E08990DB8E}" {
+        m_sCallsign "5"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3%4"
+      m_sCallsignCharacterWithRoleFormat "%3 %4"
+     }
+    }
+   }
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 2738.757 64.893 3675.591
+}
