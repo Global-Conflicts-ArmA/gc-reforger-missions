@@ -1,0 +1,2661 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 2758.863 11.932 2454.95
+}
+GC_LobbyGameMode GC_MigratedMission : "{D4C621CAD8F7C93B}worlds/HitTheMan/3rd Break The Line/3rdBreakTheLine_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 5
+   m_iStartingMinutes 30
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{650415CBAFAE6875}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 5
+     m_iStartingMinutes 30
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 21
+   m_iMonth 7
+   m_iYear 1983
+  }
+  GC_MissionEnvironmentComponent "{E6D54CC8A37277FC}" {
+   m_fFogAmount 0.5
+   m_fFogHeightDensity 0.7
+   m_fRainIntensity 0
+   m_fWindSpeed 6
+  }
+  GC_PeakFactionPopulationComponent "{60034D164758BEA5}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{E0AE48924E7C3D8F}" {
+     m_sName "US Victory Casualties"
+     m_aConditions {
+      GC_CustomScriptCondition "{414F9F6B414F3409}" {
+       m_Script GC_PeakFactionPopulationCheck "{B8746D2F1AC47F0A}" {
+        m_sFaction "GC_NVA"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4245EDD21BBA6621}" {
+       m_sMessage "US Victory Casualties"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C3AB91417D0FAC62}" {
+     m_sName "US Victory Casualties (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{25431CC45AD37ED0}" {
+       m_sEventName "US Victory Casualties"
+      }
+     }
+     m_Advanced GC_EventOptions "{666249D2891F41FB}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{80C78D5D21EE27B0}" {
+       m_sTitle "United States Army Victory"
+       m_sMessage "NVA Sustained too many casualties.. GM Discretion when to end the mission"
+      }
+     }
+    }
+    GC_Event "{2AADFDD31AD8AE3A}" {
+     m_sName "Time Limit (2700s)"
+     m_Advanced GC_EventOptions "{0A824E30D5EBC7E6}" {
+      m_fDelay 2700
+     }
+     m_aActions {
+      GC_MessageAction "{7ED36EEB6755B8EA}" {
+       m_sTitle "Time Limit"
+       m_sMessage "The Mission will end in 45 minutes"
+      }
+     }
+    }
+    GC_Event "{02D5B1C2EA8FEF5E}" {
+     m_sName "Time Limit (4200s)"
+     m_Advanced GC_EventOptions "{8AED1AE649A02FBF}" {
+      m_fDelay 4200
+     }
+     m_aActions {
+      GC_MessageAction "{941566905A2A829C}" {
+       m_sTitle "Time Limit"
+       m_sMessage "The Mission will end in 20 minutes"
+      }
+     }
+    }
+    GC_Event "{4E1599B791AF6D0D}" {
+     m_sName "Time Limit (4800s)"
+     m_Advanced GC_EventOptions "{B50AB34C11D63946}" {
+      m_fDelay 4800
+     }
+     m_aActions {
+      GC_MessageAction "{046D4DB46F077962}" {
+       m_sTitle "Time Limit"
+       m_sMessage "The Mission will end in 10 minutes"
+      }
+     }
+    }
+    GC_Event "{A8F8531509C956E3}" {
+     m_sName "Time Limit (5400s)"
+     m_Advanced GC_EventOptions "{89CA14A0A76D8728}" {
+      m_fDelay 5400
+     }
+     m_aActions {
+      GC_MessageAction "{854265D22AF10DE8}" {
+       m_sTitle "United States Army Victory"
+       m_sMessage "US held the town long enough forcing the NVA to fall back... GM Discretion when to end the mission"
+      }
+     }
+    }
+    GC_Event "{592D093B6F765356}" {
+     m_sName "Time Limit (5410s)"
+     m_Advanced GC_EventOptions "{59CBB1196BE31770}" {
+      m_fDelay 5410
+     }
+     m_aActions {
+      GC_EndMissionAction "{BEDAB092D862B1D5}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{5A21940EDA7306B7}" {
+     m_sName "NVA Victory"
+     m_aConditions {
+      GC_ConditionGroup "{192EFC77F0497626}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{0DC2763048BFF794}" {
+         m_sArea "Church_Trigger"
+         m_Targets GC_CharacterAreaTargets "{E79F76054478F8D5}" {
+          m_iWho 2
+          m_aFactions {
+           "GC_NVA"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{AA217A58EA7A4F8D}" {
+          m_fRequiredShare 0.9
+         }
+         m_Capture GC_AreaCaptureOptions "{B904FF4517C9F2A0}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{634BF112017007CD}" {
+           m_sLocation "the Church of Ascension"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{1068FCEDA369D652}" {
+         m_sArea "NTrenchline_Trigger"
+         m_Targets GC_CharacterAreaTargets "{B591CE809C525A61}" {
+          m_iWho 2
+          m_aFactions {
+           "GC_NVA"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{8B4FAC5E9EBC6919}" {
+          m_fRequiredShare 0.9
+         }
+         m_Capture GC_AreaCaptureOptions "{CFC34AE6D538EA8B}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{718B5BF35426D714}" {
+           m_sLocation "the Northern Trenchline"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{2C482EC164FA16BA}" {
+         m_sArea "STrenchline_Trigger"
+         m_Targets GC_CharacterAreaTargets "{598EF75D87FAB24B}" {
+          m_iWho 2
+          m_aFactions {
+           "GC_NVA"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{F7210B4C3D327F22}" {
+          m_fRequiredShare 0.9
+         }
+         m_Capture GC_AreaCaptureOptions "{7E387FB6A165CACD}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{483C367B33B9EB28}" {
+           m_sLocation "the Southern Trenchline"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{3938344F4A419EBD}" {
+         m_sArea "COYHQ_Trigger"
+         m_Targets GC_CharacterAreaTargets "{F51027D2030849BB}" {
+          m_iWho 2
+          m_aFactions {
+           "GC_NVA"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{C2A126C405A6A156}" {
+          m_fRequiredShare 0.9
+         }
+         m_Capture GC_AreaCaptureOptions "{D3ABD42226E419EC}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{32E820E196984C60}" {
+           m_sLocation "the Company HQ"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3C04A01538E0646F}" {
+       m_sMessage "NVA Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{4B9EF191D8DE5404}" {
+     m_sName "NVA Victory (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{AEED0B019E72C459}" {
+       m_sEventName "NVA Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{52E375CE4010EFD2}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_MessageAction "{1DB47973D0F71378}" {
+       m_sTitle "Status Report:"
+       m_sMessage "Town of Bad Orb has been secured, hold it for 15 Minutes.."
+      }
+     }
+    }
+    GC_Event "{0CB794C80A21E1EB}" {
+     m_sName "NVA Victory (900s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9510E24A23A64706}" {
+       m_sEventName "NVA Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{3D34E8F3FCA96877}" {
+      m_fDelay 900
+     }
+     m_aActions {
+      GC_MessageAction "{903A3D18E3ED38B2}" {
+       m_sTitle "NVA Victory"
+       m_sMessage "NVA has managed to secure & hold the town of Western Bad Orb... "\
+       "GM Discretion when to end the mission"
+      }
+     }
+    }
+    GC_Event "{D7C287653F3A7636}" {
+     m_sName "GC_MigratedSpawn_03EA5B20C3A382C9"
+     m_aConditions {
+      GC_AreaCondition "{A853A12F0C281642}" {
+       m_sArea "Counter_Trigger_1"
+       m_Targets GC_CharacterAreaTargets "{EB47E2449AF8F977}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{02F66ABB15EBBB0B}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{C1B5A2BF0A4FD51E}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5C0A917BF5236745}" {
+       m_sMessage "GC_MigratedSpawn_03EA5B20C3A382C9"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AF7E02DADF19147B}" {
+     m_sName "GC_MigratedSpawn_03EA5B20C3A382C9 (180s)"
+     m_aConditions {
+      GC_MissionEventCondition "{ADE8908357C6C42B}" {
+       m_sEventName "GC_MigratedSpawn_03EA5B20C3A382C9"
+      }
+     }
+     m_Advanced GC_EventOptions "{E18F22CB6627D658}" {
+      m_fDelay 180
+     }
+     m_aActions {
+      GC_SpawnAction "{A4AF7DDEF68245D6}" {
+       m_Spawn GC_AIGroupSpawn "{98BC693976B3CC1E}" {
+        m_sLocation "Spawn_In_Defenders_1"
+        m_sPrefab "{7A0813F1B65EA589}Prefabs/Groups/BLUFOR/US/Deprecated/Army_1985_Rifles/Group_US_Army_1985_RifleSquad.et"
+        m_aWaypoints {
+         "def_wp_town_CAF_25"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{17DFA05B521ED4C1}" {
+     m_sName "GC_MigratedSpawn_03EA5B20C3A382C9 (360s)"
+     m_aConditions {
+      GC_MissionEventCondition "{0B62CCB6D2A3736F}" {
+       m_sEventName "GC_MigratedSpawn_03EA5B20C3A382C9"
+      }
+     }
+     m_Advanced GC_EventOptions "{EB3D01EF0675E6C0}" {
+      m_fDelay 360
+     }
+     m_aActions {
+      GC_SpawnAction "{02E34554283F616E}" {
+       m_Spawn GC_AIGroupSpawn "{B6E56A2A32DD0982}" {
+        m_sLocation "Spawn_In_Defenders_1"
+        m_sPrefab "{7A0813F1B65EA589}Prefabs/Groups/BLUFOR/US/Deprecated/Army_1985_Rifles/Group_US_Army_1985_RifleSquad.et"
+        m_aWaypoints {
+         "def_wp_town_CAF_25"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3B5F1A6DEF4A92CB}" {
+     m_sName "GC_MigratedSpawn_EC5E864D1499CDAF"
+     m_aConditions {
+      GC_AreaCondition "{EB3E7E769660C752}" {
+       m_sArea "Counter_Trigger_1"
+       m_Targets GC_CharacterAreaTargets "{2613645DCF085230}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{0D123F2F2D921BD3}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{293496166D171317}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E40ADB68B5CEFC23}" {
+       m_sMessage "GC_MigratedSpawn_EC5E864D1499CDAF"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E9A1587ED3DCD596}" {
+     m_sName "GC_MigratedSpawn_EC5E864D1499CDAF (180s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DA8AE09D2D905902}" {
+       m_sEventName "GC_MigratedSpawn_EC5E864D1499CDAF"
+      }
+     }
+     m_Advanced GC_EventOptions "{0230E3549AE17736}" {
+      m_fDelay 180
+     }
+     m_aActions {
+      GC_SpawnAction "{6E0D6E7F2E81F261}" {
+       m_Spawn GC_AIGroupSpawn "{1049561646AC8ADE}" {
+        m_sLocation "Spawn_In_Defenders_2"
+        m_sPrefab "{7A0813F1B65EA589}Prefabs/Groups/BLUFOR/US/Deprecated/Army_1985_Rifles/Group_US_Army_1985_RifleSquad.et"
+        m_aWaypoints {
+         "def_wp_town_CAF_26"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{AFDF79D5BB292328}" {
+     m_sName "GC_MigratedSpawn_EC5E864D1499CDAF (360s)"
+     m_aConditions {
+      GC_MissionEventCondition "{39EE4340196B40C4}" {
+       m_sEventName "GC_MigratedSpawn_EC5E864D1499CDAF"
+      }
+     }
+     m_Advanced GC_EventOptions "{AFE0394F552955AE}" {
+      m_fDelay 360
+     }
+     m_aActions {
+      GC_SpawnAction "{D14C68E21D6B039E}" {
+       m_Spawn GC_AIGroupSpawn "{8F67BB809329355D}" {
+        m_sLocation "Spawn_In_Defenders_2"
+        m_sPrefab "{7A0813F1B65EA589}Prefabs/Groups/BLUFOR/US/Deprecated/Army_1985_Rifles/Group_US_Army_1985_RifleSquad.et"
+        m_aWaypoints {
+         "def_wp_town_CAF_26"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F08165461F99D4AF}" {
+     m_sName "GC_MigratedSpawn_1F47B2792B0512CD"
+     m_aConditions {
+      GC_AreaCondition "{0C6BE695914BCC9C}" {
+       m_sArea "Counter_Trigger_1"
+       m_Targets GC_CharacterAreaTargets "{A9461253B797CAA9}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{8CC5B293E8B1430D}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{EFC21D3983CFC4C5}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{64414C7548112D4B}" {
+       m_sMessage "GC_MigratedSpawn_1F47B2792B0512CD"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{70E8A4ABEFCC728D}" {
+     m_sName "GC_MigratedSpawn_1F47B2792B0512CD (180s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A1B9B2D651C77001}" {
+       m_sEventName "GC_MigratedSpawn_1F47B2792B0512CD"
+      }
+     }
+     m_Advanced GC_EventOptions "{BE860CA7064A239C}" {
+      m_fDelay 180
+     }
+     m_aActions {
+      GC_SpawnAction "{628B8BAA05B620B3}" {
+       m_Spawn GC_AIGroupSpawn "{EA2B16BB1EDCD673}" {
+        m_sLocation "Spawn_In_Defenders_3"
+        m_sPrefab "{7A0813F1B65EA589}Prefabs/Groups/BLUFOR/US/Deprecated/Army_1985_Rifles/Group_US_Army_1985_RifleSquad.et"
+        m_aWaypoints {
+         "def_wp_town_CAF_27"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{8FC198FD56E65CBC}" {
+     m_sName "GC_MigratedSpawn_1F47B2792B0512CD (360s)"
+     m_aConditions {
+      GC_MissionEventCondition "{0DBF80ED7B4160FC}" {
+       m_sEventName "GC_MigratedSpawn_1F47B2792B0512CD"
+      }
+     }
+     m_Advanced GC_EventOptions "{C4A548B5DFF5E0ED}" {
+      m_fDelay 360
+     }
+     m_aActions {
+      GC_SpawnAction "{078A40625A502E46}" {
+       m_Spawn GC_AIGroupSpawn "{B133B356C3220D07}" {
+        m_sLocation "Spawn_In_Defenders_3"
+        m_sPrefab "{7A0813F1B65EA589}Prefabs/Groups/BLUFOR/US/Deprecated/Army_1985_Rifles/Group_US_Army_1985_RifleSquad.et"
+        m_aWaypoints {
+         "def_wp_town_CAF_27"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B2ABD7CE7E0B0EC8}" {
+     m_sName "GC_MigratedSpawn_44A1BB5E59BE75C8"
+     m_aConditions {
+      GC_AreaCondition "{E65E818F7F203D0D}" {
+       m_sArea "Counter_Trigger_1"
+       m_Targets GC_CharacterAreaTargets "{CD13932CF00687B4}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{3ADFB6850AC169B2}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{84ACBD902DC97923}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F7BDF3AF1567C18C}" {
+       m_sMessage "GC_MigratedSpawn_44A1BB5E59BE75C8"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F527F8B642FA3EDD}" {
+     m_sName "GC_MigratedSpawn_44A1BB5E59BE75C8 (180s)"
+     m_aConditions {
+      GC_MissionEventCondition "{783B45A712B24195}" {
+       m_sEventName "GC_MigratedSpawn_44A1BB5E59BE75C8"
+      }
+     }
+     m_Advanced GC_EventOptions "{49C35ABF417708D5}" {
+      m_fDelay 180
+     }
+     m_aActions {
+      GC_SpawnAction "{727348D1F8BDABD7}" {
+       m_Spawn GC_AIGroupSpawn "{9B8B4806CFE02573}" {
+        m_sLocation "Spawn_In_Defenders_4"
+        m_sPrefab "{7A0813F1B65EA589}Prefabs/Groups/BLUFOR/US/Deprecated/Army_1985_Rifles/Group_US_Army_1985_RifleSquad.et"
+        m_aWaypoints {
+         "def_wp_town_CAF_29"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{6494C2C34259C2BA}" {
+     m_sName "GC_MigratedSpawn_9FC26CBAADF375B9"
+     m_aConditions {
+      GC_AreaCondition "{DB78E3EAE894E343}" {
+       m_sArea "Counter_Trigger_1"
+       m_Targets GC_CharacterAreaTargets "{96E72BBCFC9026C8}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{F38A24697AFB365B}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{CC48B57C4EFD069D}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{BBDC7FC6DB61FD86}" {
+       m_sMessage "GC_MigratedSpawn_9FC26CBAADF375B9"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2846DD3C015D99FD}" {
+     m_sName "GC_MigratedSpawn_9FC26CBAADF375B9 (180s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7193AABD1778798F}" {
+       m_sEventName "GC_MigratedSpawn_9FC26CBAADF375B9"
+      }
+     }
+     m_Advanced GC_EventOptions "{CD7EE7B3A022A7BC}" {
+      m_fDelay 180
+     }
+     m_aActions {
+      GC_SpawnAction "{63E95DC10EFA63D2}" {
+       m_Spawn GC_AIGroupSpawn "{6924F8FA3A6EDBB7}" {
+        m_sLocation "Spawn_In_Defenders_5"
+        m_sPrefab "{7A0813F1B65EA589}Prefabs/Groups/BLUFOR/US/Deprecated/Army_1985_Rifles/Group_US_Army_1985_RifleSquad.et"
+        m_aWaypoints {
+         "def_wp_town_CAF_30"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{53F7EC432D1824D4}" {
+     m_sName "GC_MigratedSpawn_DA51D7F442FED120"
+     m_aConditions {
+      GC_AreaCondition "{2156F6A8D53C50B5}" {
+       m_sArea "Counter_Trigger_1"
+       m_Targets GC_CharacterAreaTargets "{870B97B0A5306A68}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{8CBA4BC48B768B96}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{418E045279EE93B5}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FD9D012A676B9A8A}" {
+       m_sMessage "GC_MigratedSpawn_DA51D7F442FED120"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CF6A991DAF79FE65}" {
+     m_sName "GC_MigratedSpawn_DA51D7F442FED120 (180s)"
+     m_aConditions {
+      GC_MissionEventCondition "{24EFD702B2B32231}" {
+       m_sEventName "GC_MigratedSpawn_DA51D7F442FED120"
+      }
+     }
+     m_Advanced GC_EventOptions "{A3187385719BA9DA}" {
+      m_fDelay 180
+     }
+     m_aActions {
+      GC_SpawnAction "{575B8011EFE60CE1}" {
+       m_Spawn GC_AIGroupSpawn "{EABCABDB3EE81FE2}" {
+        m_sLocation "Spawn_In_Defenders_6"
+        m_sPrefab "{7A0813F1B65EA589}Prefabs/Groups/BLUFOR/US/Deprecated/Army_1985_Rifles/Group_US_Army_1985_RifleSquad.et"
+        m_aWaypoints {
+         "def_wp_town_CAF_31"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A67345B32535561A}" {
+     m_sName "GC_MigratedSpawn_9C91A703D226E300"
+     m_aConditions {
+      GC_AreaCondition "{A7CCC2BBC0FD6621}" {
+       m_sArea "Counter_Trigger_1"
+       m_Targets GC_CharacterAreaTargets "{F7A9C14F0A7D4555}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{E63F9D29CEE87E67}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{CCCD7160BEAF7D37}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D6AD2C711C0C783A}" {
+       m_sMessage "GC_MigratedSpawn_9C91A703D226E300"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2555E589E81C118D}" {
+     m_sName "GC_MigratedSpawn_9C91A703D226E300 (80s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2DCEBACACCAE3B54}" {
+       m_sEventName "GC_MigratedSpawn_9C91A703D226E300"
+      }
+     }
+     m_Advanced GC_EventOptions "{79D3614BCE7CC38E}" {
+      m_fDelay 80
+     }
+     m_aActions {
+      GC_SpawnAction "{5E4AC748740F4617}" {
+       m_Spawn GC_AIGroupSpawn "{B774A944F736F82A}" {
+        m_sLocation "CAFInf_CounterTown_Spawn_1"
+        m_sPrefab "{7A0813F1B65EA589}Prefabs/Groups/BLUFOR/US/Deprecated/Army_1985_Rifles/Group_US_Army_1985_RifleSquad.et"
+        m_aWaypoints {
+         "CounterAttack"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{58F242EE400612DE}" {
+     m_sName "GC_MigratedSpawn_9C91A703D226E300 (140s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2FFA7FCEE4452A05}" {
+       m_sEventName "GC_MigratedSpawn_9C91A703D226E300"
+      }
+     }
+     m_Advanced GC_EventOptions "{B53671C9BACD11BA}" {
+      m_fDelay 140
+     }
+     m_aActions {
+      GC_SpawnAction "{64AF9798D402737B}" {
+       m_Spawn GC_AIGroupSpawn "{087DD9A654AD2689}" {
+        m_sLocation "CAFInf_CounterTown_Spawn_1"
+        m_sPrefab "{7A0813F1B65EA589}Prefabs/Groups/BLUFOR/US/Deprecated/Army_1985_Rifles/Group_US_Army_1985_RifleSquad.et"
+        m_aWaypoints {
+         "CounterAttack"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E152E8D1FD8B4323}" {
+     m_sName "GC_MigratedSpawn_175FF40218A031C3"
+     m_aConditions {
+      GC_AreaCondition "{243C85860CFC6954}" {
+       m_sArea "Counter_Trigger_2"
+       m_Targets GC_CharacterAreaTargets "{E326C47D8836EE82}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{6B0269AEC0DB0E92}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{A8ED0EB372E4ABA7}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3F0443629EDA526B}" {
+       m_sMessage "GC_MigratedSpawn_175FF40218A031C3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5F4075EC5ECC327D}" {
+     m_sName "GC_MigratedSpawn_175FF40218A031C3 (80s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C3C58473534D6BA3}" {
+       m_sEventName "GC_MigratedSpawn_175FF40218A031C3"
+      }
+     }
+     m_Advanced GC_EventOptions "{9FF42DE7E9D48829}" {
+      m_fDelay 80
+     }
+     m_aActions {
+      GC_SpawnAction "{317E2830B26E98BE}" {
+       m_Spawn GC_AIGroupSpawn "{ECD9789C7A08D96F}" {
+        m_sLocation "CAFInf_CounterTown_Spawn_2"
+        m_sPrefab "{7A0813F1B65EA589}Prefabs/Groups/BLUFOR/US/Deprecated/Army_1985_Rifles/Group_US_Army_1985_RifleSquad.et"
+        m_aWaypoints {
+         "CounterAttack2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{7B0F5B50E35E91B1}" {
+     m_sName "GC_MigratedSpawn_175FF40218A031C3 (140s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2AA11808D1F85DA6}" {
+       m_sEventName "GC_MigratedSpawn_175FF40218A031C3"
+      }
+     }
+     m_Advanced GC_EventOptions "{08E94AAAE8A0C792}" {
+      m_fDelay 140
+     }
+     m_aActions {
+      GC_SpawnAction "{06B32D5635CDDC88}" {
+       m_Spawn GC_AIGroupSpawn "{E4238E94BE232784}" {
+        m_sLocation "CAFInf_CounterTown_Spawn_2"
+        m_sPrefab "{7A0813F1B65EA589}Prefabs/Groups/BLUFOR/US/Deprecated/Army_1985_Rifles/Group_US_Army_1985_RifleSquad.et"
+        m_aWaypoints {
+         "CounterAttack2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{6E77771B3823F955}" {
+     m_sName "GC_MigratedSpawn_B37EDD349C375BD3"
+     m_aConditions {
+      GC_AreaCondition "{74AECFE63860FB3E}" {
+       m_sArea "Counter_Trigger_2"
+       m_Targets GC_CharacterAreaTargets "{3345279731D79420}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{4BE25A41A785E708}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{9B7DB9CA08D8B122}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0BF189F2EC0E7C15}" {
+       m_sMessage "GC_MigratedSpawn_B37EDD349C375BD3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{165BE07750CFF3B7}" {
+     m_sName "GC_MigratedSpawn_B37EDD349C375BD3 (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9E724B3953ABDE53}" {
+       m_sEventName "GC_MigratedSpawn_B37EDD349C375BD3"
+      }
+     }
+     m_Advanced GC_EventOptions "{B5B99E76BE8D4E86}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{E8F8ADEB2CF8F7BA}" {
+       m_Spawn GC_CrewedVehicleSpawn "{45B1250E4A7B72C4}" {
+        m_sLocation "M2A2_Counter_Spawn_2"
+        m_sPrefab "{5CFD8CB5C3E55A4E}Prefabs/Vehicles/Tracked/M2A2/M2A2_MERDC.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{0181EA1E1E109AA5}" {
+          m_aStations {
+           GC_SpawnCrewStation "{CE1C66417CD3842E}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{E1CB513B8B9B08F4}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Crew.et"
+             "{E1CB513B8B9B08F4}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Crew.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "N_Move_24"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3AFEEF314E582DCD}" {
+     m_sName "GC_MigratedSpawn_E712C7C404A9438C"
+     m_aConditions {
+      GC_AreaCondition "{F6DAF46356440403}" {
+       m_sArea "Counter_Trigger_1"
+       m_Targets GC_CharacterAreaTargets "{4331DC1C7FF26A24}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{F063B7E9C63F41F7}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{CBAE5314714B5F4F}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{08C1803C0BDF0B2C}" {
+       m_sMessage "GC_MigratedSpawn_E712C7C404A9438C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A79C184AEB87C25C}" {
+     m_sName "GC_MigratedSpawn_E712C7C404A9438C (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4FC55F51083939AE}" {
+       m_sEventName "GC_MigratedSpawn_E712C7C404A9438C"
+      }
+     }
+     m_Advanced GC_EventOptions "{7283972F304EF347}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{9412D7F419BA152B}" {
+       m_Spawn GC_CrewedVehicleSpawn "{B1879A14A5B24931}" {
+        m_sLocation "M2A2_Counter_Spawn_1"
+        m_sPrefab "{5CFD8CB5C3E55A4E}Prefabs/Vehicles/Tracked/M2A2/M2A2_MERDC.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{EFA44ADD74329AA1}" {
+          m_aStations {
+           GC_SpawnCrewStation "{6C8CDA00239B975B}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{E1CB513B8B9B08F4}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Crew.et"
+             "{E1CB513B8B9B08F4}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Crew.et"
+            }
+           }
+          }
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "N_Move_12"
+           "N_Move_13"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{D1F0AEE9250505C5}" {
+     m_sName "GC_MigratedSpawn_C6850749772E4C76"
+     m_aConditions {
+      GC_AreaCondition "{43317E9D9ABC46C9}" {
+       m_sArea "Counter_Trigger_1"
+       m_Targets GC_CharacterAreaTargets "{FA3D31211F646F80}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{E36D496A3629ACD6}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{F59258CA5A08D8EB}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F69A5D5C8DEA180F}" {
+       m_sMessage "GC_MigratedSpawn_C6850749772E4C76"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2A30B20C5535393C}" {
+     m_sName "GC_MigratedSpawn_C6850749772E4C76 (100s)"
+     m_aConditions {
+      GC_MissionEventCondition "{690340F470AECCC2}" {
+       m_sEventName "GC_MigratedSpawn_C6850749772E4C76"
+      }
+     }
+     m_Advanced GC_EventOptions "{6E14CC10BAD7CEB7}" {
+      m_fDelay 100
+     }
+     m_aActions {
+      GC_SpawnAction "{14C41157FBECBD73}" {
+       m_Spawn GC_AIGroupSpawn "{665D01C49A44A825}" {
+        m_sLocation "CAFInf_CounterTown_Spawn_3"
+        m_sPrefab "{7A0813F1B65EA589}Prefabs/Groups/BLUFOR/US/Deprecated/Army_1985_Rifles/Group_US_Army_1985_RifleSquad.et"
+        m_aWaypoints {
+         "CounterAttack"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{382BDE05C88C5E81}" {
+     m_sName "GC_MigratedSpawn_C6850749772E4C76 (200s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9B57657CD9AB1618}" {
+       m_sEventName "GC_MigratedSpawn_C6850749772E4C76"
+      }
+     }
+     m_Advanced GC_EventOptions "{EC1D37E03ECF1713}" {
+      m_fDelay 200
+     }
+     m_aActions {
+      GC_SpawnAction "{1948C7B3161BF03B}" {
+       m_Spawn GC_AIGroupSpawn "{478259A9D4FD697F}" {
+        m_sLocation "CAFInf_CounterTown_Spawn_3"
+        m_sPrefab "{7A0813F1B65EA589}Prefabs/Groups/BLUFOR/US/Deprecated/Army_1985_Rifles/Group_US_Army_1985_RifleSquad.et"
+        m_aWaypoints {
+         "CounterAttack"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{74765B4468C3BA8F}" {
+     m_sName "GC_MigratedSpawn_4ED2F0B4E6068915"
+     m_aConditions {
+      GC_AreaCondition "{3E7F810B8AA8BE99}" {
+       m_sArea "Counter_Trigger_2"
+       m_Targets GC_CharacterAreaTargets "{F014C9A587446653}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{02BE931702ACE9C1}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{838EAD4D0CAD7208}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B685898613C2B4C5}" {
+       m_sMessage "GC_MigratedSpawn_4ED2F0B4E6068915"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{25175471FE916F43}" {
+     m_sName "GC_MigratedSpawn_4ED2F0B4E6068915 (100s)"
+     m_aConditions {
+      GC_MissionEventCondition "{96B3B1574E563A19}" {
+       m_sEventName "GC_MigratedSpawn_4ED2F0B4E6068915"
+      }
+     }
+     m_Advanced GC_EventOptions "{CACE801B870E85C5}" {
+      m_fDelay 100
+     }
+     m_aActions {
+      GC_SpawnAction "{30E68107F1482101}" {
+       m_Spawn GC_AIGroupSpawn "{792E38BB33D414A5}" {
+        m_sLocation "CAFInf_CounterTown_Spawn_4"
+        m_sPrefab "{7A0813F1B65EA589}Prefabs/Groups/BLUFOR/US/Deprecated/Army_1985_Rifles/Group_US_Army_1985_RifleSquad.et"
+        m_aWaypoints {
+         "CounterAttack2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{69AAD5BD071AE0C4}" {
+     m_sName "GC_MigratedSpawn_4ED2F0B4E6068915 (200s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7D39198E6A2E03C1}" {
+       m_sEventName "GC_MigratedSpawn_4ED2F0B4E6068915"
+      }
+     }
+     m_Advanced GC_EventOptions "{9683D5B4927F5679}" {
+      m_fDelay 200
+     }
+     m_aActions {
+      GC_SpawnAction "{07BA77ADD1977B3E}" {
+       m_Spawn GC_AIGroupSpawn "{171C71A5EDF03360}" {
+        m_sLocation "CAFInf_CounterTown_Spawn_4"
+        m_sPrefab "{7A0813F1B65EA589}Prefabs/Groups/BLUFOR/US/Deprecated/Army_1985_Rifles/Group_US_Army_1985_RifleSquad.et"
+        m_aWaypoints {
+         "CounterAttack2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{CCE61EBCA54FF3A4}" {
+     m_sName "GC_MigratedSpawn_896862CC91B9AD56"
+     m_aConditions {
+      GC_AreaCondition "{C7BDFB7528BB8571}" {
+       m_sArea "Mortar_Creeping_Trigger_1"
+       m_Targets GC_CharacterAreaTargets "{B1F051A21E4242A7}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{C3E29FD6647D3D90}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{128D0CE7772EBFC0}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{21DA1A13E6D91B0C}" {
+       m_sMessage "GC_MigratedSpawn_896862CC91B9AD56"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{334335B2DF52AF67}" {
+     m_sName "GC_MigratedSpawn_896862CC91B9AD56 (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F8E0CE6377AE7B9E}" {
+       m_sEventName "GC_MigratedSpawn_896862CC91B9AD56"
+      }
+     }
+     m_Advanced GC_EventOptions "{C6120EC888443BAA}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_SpawnAction "{70239110F1C0C421}" {
+       m_Spawn GC_PrefabSpawn "{769B2565EFA5BD3B}" {
+        m_sLocation "Mortar_Creeping_1"
+        m_sPrefab "{A7E0C1FAD9FFAB46}worlds/HitTheMan/2nd Break The Line/HTM_EffectModule_Zoned_MortarBarrage_Creeping.et"
+       }
+      }
+     }
+    }
+    GC_Event "{898050E494D7DA39}" {
+     m_sName "GC_MigratedSpawn_2541DBD0D557B1CF"
+     m_aConditions {
+      GC_AreaCondition "{A3B4949B9141A137}" {
+       m_sArea "Mortar_Creeping_Trigger_2"
+       m_Targets GC_CharacterAreaTargets "{3F448BF804DE4BC1}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{4BCF408CFC2AC220}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{6974876BDF559FE6}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E2B9714566BFDFD8}" {
+       m_sMessage "GC_MigratedSpawn_2541DBD0D557B1CF"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{18C35BBEE112D5D3}" {
+     m_sName "GC_MigratedSpawn_2541DBD0D557B1CF (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3F67D91BF8A44295}" {
+       m_sEventName "GC_MigratedSpawn_2541DBD0D557B1CF"
+      }
+     }
+     m_Advanced GC_EventOptions "{652429B57A0B350E}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_SpawnAction "{2F1C215A2A646269}" {
+       m_Spawn GC_PrefabSpawn "{2059235C0344F669}" {
+        m_sLocation "Mortar_Creeping_2"
+        m_sPrefab "{A7E0C1FAD9FFAB46}worlds/HitTheMan/2nd Break The Line/HTM_EffectModule_Zoned_MortarBarrage_Creeping.et"
+       }
+      }
+     }
+    }
+    GC_Event "{CF015F4CE952CEA9}" {
+     m_sName "GC_MigratedSpawn_CCD08FE8DAD78BFB"
+     m_aConditions {
+      GC_AreaCondition "{105ABAAAEA54A589}" {
+       m_sArea "Mortar_Creeping_Trigger_3"
+       m_Targets GC_CharacterAreaTargets "{622324882B77A064}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{0059B384D5EE4F54}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{50F3CE36618DE90C}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{730F4B234B336B55}" {
+       m_sMessage "GC_MigratedSpawn_CCD08FE8DAD78BFB"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7887F09017675F5F}" {
+     m_sName "GC_MigratedSpawn_CCD08FE8DAD78BFB (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{445D05094FF680D0}" {
+       m_sEventName "GC_MigratedSpawn_CCD08FE8DAD78BFB"
+      }
+     }
+     m_Advanced GC_EventOptions "{A15CFE43CE3E3D7E}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_SpawnAction "{D02CA173CF340A4C}" {
+       m_Spawn GC_PrefabSpawn "{B41AD1192F40CF94}" {
+        m_sLocation "Mortar_Creeping_3"
+        m_sPrefab "{A7E0C1FAD9FFAB46}worlds/HitTheMan/2nd Break The Line/HTM_EffectModule_Zoned_MortarBarrage_Creeping.et"
+       }
+      }
+     }
+    }
+    GC_Event "{95245128C3BF0521}" {
+     m_sName "GC_MigratedSpawn_3734FB27C7AF99D9"
+     m_aConditions {
+      GC_AreaCondition "{628A4EEF9DE2D71C}" {
+       m_sArea "Mortar_Creeping_Trigger_4"
+       m_Targets GC_CharacterAreaTargets "{6DCEF29CC5F31C88}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{9B1EC9245DCB07FF}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{8FA19118BDA73F27}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{668F5909BA6363E3}" {
+       m_sMessage "GC_MigratedSpawn_3734FB27C7AF99D9"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E2977194D4177EB0}" {
+     m_sName "GC_MigratedSpawn_3734FB27C7AF99D9 (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CD2DF00B9751C285}" {
+       m_sEventName "GC_MigratedSpawn_3734FB27C7AF99D9"
+      }
+     }
+     m_Advanced GC_EventOptions "{EE2BA2EFBD41EFD1}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_SpawnAction "{03D7B0FDDCB477BE}" {
+       m_Spawn GC_PrefabSpawn "{7DA77A13BE77E590}" {
+        m_sLocation "Mortar_Creeping_4"
+        m_sPrefab "{A7E0C1FAD9FFAB46}worlds/HitTheMan/2nd Break The Line/HTM_EffectModule_Zoned_MortarBarrage_Creeping.et"
+       }
+      }
+     }
+    }
+    GC_Event "{7755912757530DDB}" {
+     m_sName "GC_MigratedSpawn_8754909428FC66E6"
+     m_aConditions {
+      GC_AreaCondition "{1B477C00DB3B997B}" {
+       m_sArea "Mortar_Creeping_Trigger_5"
+       m_Targets GC_CharacterAreaTargets "{0C27AD0BB0D22477}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{E0F5DDF5285C3464}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{8D1B13A2FC756A50}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{12D2D2F93958A922}" {
+       m_sMessage "GC_MigratedSpawn_8754909428FC66E6"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{DC24B87E3043ED9B}" {
+     m_sName "GC_MigratedSpawn_8754909428FC66E6 (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BB0424E73005CD33}" {
+       m_sEventName "GC_MigratedSpawn_8754909428FC66E6"
+      }
+     }
+     m_Advanced GC_EventOptions "{1A05E5443A01AB3B}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_SpawnAction "{B906BEFB2C444508}" {
+       m_Spawn GC_PrefabSpawn "{CB44D0E367E99AF8}" {
+        m_sLocation "Mortar_Creeping_5"
+        m_sPrefab "{A7E0C1FAD9FFAB46}worlds/HitTheMan/2nd Break The Line/HTM_EffectModule_Zoned_MortarBarrage_Creeping.et"
+       }
+      }
+     }
+    }
+    GC_Event "{A37E580126811350}" {
+     m_sName "GC_MigratedSpawn_A2F5C1B764CF3723"
+     m_aConditions {
+      GC_AreaCondition "{67F7CCB6AE3AC028}" {
+       m_sArea "Mortar_Creeping_Trigger_6"
+       m_Targets GC_CharacterAreaTargets "{0B97C74457FF45BE}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{9418E0B21D18C3D8}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{6AD586A776824406}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{15EAE07ED0447F6A}" {
+       m_sMessage "GC_MigratedSpawn_A2F5C1B764CF3723"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2EE29D770B130E58}" {
+     m_sName "GC_MigratedSpawn_A2F5C1B764CF3723 (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E505EF144F5F05C3}" {
+       m_sEventName "GC_MigratedSpawn_A2F5C1B764CF3723"
+      }
+     }
+     m_Advanced GC_EventOptions "{2E60776AC15678DE}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_SpawnAction "{7D2A5C85AC257775}" {
+       m_Spawn GC_PrefabSpawn "{584F4BD6904C3267}" {
+        m_sLocation "Mortar_Creeping_6"
+        m_sPrefab "{A7E0C1FAD9FFAB46}worlds/HitTheMan/2nd Break The Line/HTM_EffectModule_Zoned_MortarBarrage_Creeping.et"
+       }
+      }
+     }
+    }
+    GC_Event "{39004BE183583054}" {
+     m_sName "GC_MigratedSpawn_E5604D35D1B64B25"
+     m_aConditions {
+      GC_AreaCondition "{E8886A3FB5455C76}" {
+       m_sArea "Mortar_Creeping_Trigger_7"
+       m_Targets GC_CharacterAreaTargets "{94803121BB6DB97C}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{0C37CEDE61ABF0E3}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{0633FBFAC5CD760F}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C09C3CDAAD1D2276}" {
+       m_sMessage "GC_MigratedSpawn_E5604D35D1B64B25"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{921136449133EEDF}" {
+     m_sName "GC_MigratedSpawn_E5604D35D1B64B25 (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6CB9C63285A18EB2}" {
+       m_sEventName "GC_MigratedSpawn_E5604D35D1B64B25"
+      }
+     }
+     m_Advanced GC_EventOptions "{94B0EACB04BF3134}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_SpawnAction "{959B018DD6BEFE4F}" {
+       m_Spawn GC_PrefabSpawn "{3FC57B00D8942CF0}" {
+        m_sLocation "Mortar_Creeping_7"
+        m_sPrefab "{A7E0C1FAD9FFAB46}worlds/HitTheMan/2nd Break The Line/HTM_EffectModule_Zoned_MortarBarrage_Creeping.et"
+       }
+      }
+     }
+    }
+    GC_Event "{688F376F5AF05ACA}" {
+     m_sName "GC_MigratedSpawn_6D14653709FF3550"
+     m_aConditions {
+      GC_AreaCondition "{184BA5C4D8CCC050}" {
+       m_sArea "Counter_Trigger_2"
+       m_Targets GC_CharacterAreaTargets "{11A7A483A40AD3EB}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{87B70AA4C1DB5E8E}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{EB7FBE612EC6F7C7}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3663A90707302F61}" {
+       m_sMessage "GC_MigratedSpawn_6D14653709FF3550"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3217230F0397D571}" {
+     m_sName "GC_MigratedSpawn_6D14653709FF3550 (100s)"
+     m_aConditions {
+      GC_MissionEventCondition "{076BA40C81C10C0D}" {
+       m_sEventName "GC_MigratedSpawn_6D14653709FF3550"
+      }
+     }
+     m_Advanced GC_EventOptions "{CEEF51CB06BF14D6}" {
+      m_fDelay 100
+     }
+     m_aActions {
+      GC_SpawnAction "{844F545031B4AD4B}" {
+       m_Spawn GC_PrefabSpawn "{A942F17F1254538E}" {
+        m_sLocation "SmokeMortar_Creeping_1"
+        m_sPrefab "{189D347F759C07DF}worlds/HitTheMan/2nd Break The Line/HTM_EffectModule_Zoned_Smoke_MortarBarrage_Creeping.et.et"
+       }
+      }
+     }
+    }
+    GC_Event "{E6777D562476C09A}" {
+     m_sName "GC_MigratedSpawn_6D14653709FF3550 (125s)"
+     m_aConditions {
+      GC_MissionEventCondition "{60CDF44B72E20AC8}" {
+       m_sEventName "GC_MigratedSpawn_6D14653709FF3550"
+      }
+     }
+     m_Advanced GC_EventOptions "{D2F7B512EE700D33}" {
+      m_fDelay 125
+     }
+     m_aActions {
+      GC_SpawnAction "{639DA2065AECB1FA}" {
+       m_Spawn GC_PrefabSpawn "{582C5AD15728FCB9}" {
+        m_sLocation "SmokeMortar_Creeping_1"
+        m_sPrefab "{189D347F759C07DF}worlds/HitTheMan/2nd Break The Line/HTM_EffectModule_Zoned_Smoke_MortarBarrage_Creeping.et.et"
+       }
+      }
+     }
+    }
+    GC_Event "{A59AC3573F01B263}" {
+     m_sName "GC_MigratedSpawn_435F8D3AE8A03052"
+     m_aConditions {
+      GC_AreaCondition "{AF990772F8143BEF}" {
+       m_sArea "Counter_Trigger_2"
+       m_Targets GC_CharacterAreaTargets "{5A7A46B9D17C1C7D}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{24291B2DE714D768}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{70ED4D02B220C54D}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{AC54CD76D3F6AA88}" {
+       m_sMessage "GC_MigratedSpawn_435F8D3AE8A03052"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C1AFFC2866D2CF7E}" {
+     m_sName "GC_MigratedSpawn_435F8D3AE8A03052 (100s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7ED359D1B4FA98AA}" {
+       m_sEventName "GC_MigratedSpawn_435F8D3AE8A03052"
+      }
+     }
+     m_Advanced GC_EventOptions "{D29E8FBCBFB58F50}" {
+      m_fDelay 100
+     }
+     m_aActions {
+      GC_SpawnAction "{063AB3EC19257109}" {
+       m_Spawn GC_PrefabSpawn "{FA10F9D556C2960E}" {
+        m_sLocation "SmokeMortar_Creeping_2"
+        m_sPrefab "{189D347F759C07DF}worlds/HitTheMan/2nd Break The Line/HTM_EffectModule_Zoned_Smoke_MortarBarrage_Creeping.et.et"
+       }
+      }
+     }
+    }
+    GC_Event "{B4089BBD35B36EDE}" {
+     m_sName "GC_MigratedSpawn_435F8D3AE8A03052 (125s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D212E49FF4C05201}" {
+       m_sEventName "GC_MigratedSpawn_435F8D3AE8A03052"
+      }
+     }
+     m_Advanced GC_EventOptions "{B50C583899CE11C8}" {
+      m_fDelay 125
+     }
+     m_aActions {
+      GC_SpawnAction "{B07456C80428D7B9}" {
+       m_Spawn GC_PrefabSpawn "{44464E87C9B8E894}" {
+        m_sLocation "SmokeMortar_Creeping_2"
+        m_sPrefab "{189D347F759C07DF}worlds/HitTheMan/2nd Break The Line/HTM_EffectModule_Zoned_Smoke_MortarBarrage_Creeping.et.et"
+       }
+      }
+     }
+    }
+    GC_Event "{4C089B1F3A45A2DA}" {
+     m_sName "GC_MigratedSpawn_F410DAD005741A1C"
+     m_aConditions {
+      GC_AreaCondition "{BE1E87FCEE924F2B}" {
+       m_sArea "Counter_Trigger_1"
+       m_Targets GC_CharacterAreaTargets "{8949986297944277}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{FD4C4AF506D65CA9}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{B6AF29F32477FBBF}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4E9C5A429F29B188}" {
+       m_sMessage "GC_MigratedSpawn_F410DAD005741A1C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C3294DEEC0793415}" {
+     m_sName "GC_MigratedSpawn_F410DAD005741A1C (100s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BCBE3194A24C3F64}" {
+       m_sEventName "GC_MigratedSpawn_F410DAD005741A1C"
+      }
+     }
+     m_Advanced GC_EventOptions "{18E28FE0CFB00D8A}" {
+      m_fDelay 100
+     }
+     m_aActions {
+      GC_SpawnAction "{829EDB96270CA212}" {
+       m_Spawn GC_PrefabSpawn "{B9229882830107BC}" {
+        m_sLocation "SmokeMortar_Creeping_3"
+        m_sPrefab "{189D347F759C07DF}worlds/HitTheMan/2nd Break The Line/HTM_EffectModule_Zoned_Smoke_MortarBarrage_Creeping.et.et"
+       }
+      }
+     }
+    }
+    GC_Event "{50C954F503562103}" {
+     m_sName "GC_MigratedSpawn_F410DAD005741A1C (125s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D92B6E1C76571FF5}" {
+       m_sEventName "GC_MigratedSpawn_F410DAD005741A1C"
+      }
+     }
+     m_Advanced GC_EventOptions "{44F7C6F962863DB3}" {
+      m_fDelay 125
+     }
+     m_aActions {
+      GC_SpawnAction "{33D0E41DD3617C9C}" {
+       m_Spawn GC_PrefabSpawn "{351D8A03D9E2F375}" {
+        m_sLocation "SmokeMortar_Creeping_3"
+        m_sPrefab "{189D347F759C07DF}worlds/HitTheMan/2nd Break The Line/HTM_EffectModule_Zoned_Smoke_MortarBarrage_Creeping.et.et"
+       }
+      }
+     }
+    }
+    GC_Event "{F69A12FCB8003DB8}" {
+     m_sName "GC_MigratedSpawn_7619F3977632D0D2"
+     m_aConditions {
+      GC_AreaCondition "{FB31EED1F1413521}" {
+       m_sArea "Counter_Trigger_1"
+       m_Targets GC_CharacterAreaTargets "{964E454BAB93B014}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{1C42F503399CE121}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{551EB1106E8337F1}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FEA715A7ABB6247B}" {
+       m_sMessage "GC_MigratedSpawn_7619F3977632D0D2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6A20311C8ADE2974}" {
+     m_sName "GC_MigratedSpawn_7619F3977632D0D2 (100s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8DF2B55DC4DEE2B2}" {
+       m_sEventName "GC_MigratedSpawn_7619F3977632D0D2"
+      }
+     }
+     m_Advanced GC_EventOptions "{7B8FBD05186829D9}" {
+      m_fDelay 100
+     }
+     m_aActions {
+      GC_SpawnAction "{A1935484CEB13CEA}" {
+       m_Spawn GC_PrefabSpawn "{600F631F8D349B1C}" {
+        m_sLocation "SmokeMortar_Creeping_4"
+        m_sPrefab "{189D347F759C07DF}worlds/HitTheMan/2nd Break The Line/HTM_EffectModule_Zoned_Smoke_MortarBarrage_Creeping.et.et"
+       }
+      }
+     }
+    }
+    GC_Event "{03448C405DCC626B}" {
+     m_sName "GC_MigratedSpawn_7619F3977632D0D2 (125s)"
+     m_aConditions {
+      GC_MissionEventCondition "{579742294AE78D0E}" {
+       m_sEventName "GC_MigratedSpawn_7619F3977632D0D2"
+      }
+     }
+     m_Advanced GC_EventOptions "{07E0A95917B3D6D8}" {
+      m_fDelay 125
+     }
+     m_aActions {
+      GC_SpawnAction "{524AB4FC3172DF10}" {
+       m_Spawn GC_PrefabSpawn "{DD697EB8A12AFF67}" {
+        m_sLocation "SmokeMortar_Creeping_4"
+        m_sPrefab "{189D347F759C07DF}worlds/HitTheMan/2nd Break The Line/HTM_EffectModule_Zoned_Smoke_MortarBarrage_Creeping.et.et"
+       }
+      }
+     }
+    }
+    GC_Event "{E48F8B1A10708406}" {
+     m_sName "GC_MigratedSpawn_EA6E3C8FBC7BD6FB"
+     m_aConditions {
+      GC_AreaCondition "{E897731C10CC87B0}" {
+       m_sArea "Mortar_Creeping_Trigger_8"
+       m_Targets GC_CharacterAreaTargets "{CC60783A325DF16F}" {
+        m_iWho 2
+        m_aFactions {
+         "GC_NVA"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{8F45E5944E7AEA60}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{2E74B0C27D3A6B75}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{03250F6193950512}" {
+       m_sMessage "GC_MigratedSpawn_EA6E3C8FBC7BD6FB"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{936A2FFF92CF3552}" {
+     m_sName "GC_MigratedSpawn_EA6E3C8FBC7BD6FB (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B00EAD038016B685}" {
+       m_sEventName "GC_MigratedSpawn_EA6E3C8FBC7BD6FB"
+      }
+     }
+     m_Advanced GC_EventOptions "{3ADFD67DF239D1BD}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_SpawnAction "{6A4E19B4CEA49FB0}" {
+       m_Spawn GC_PrefabSpawn "{F7812E1C1EAAE4FE}" {
+        m_sLocation "Mortar_Creeping_8"
+        m_sPrefab "{A7E0C1FAD9FFAB46}worlds/HitTheMan/2nd Break The Line/HTM_EffectModule_Zoned_MortarBarrage_Creeping.et"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 3697.287 353.796 1652.506
+ {
+  RadioManagerEntity {
+   ID "A79C4E0A43DEB824"
+   coords -26.889 23.04 -2.478
+  }
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   coords 0 0 0
+   Factions + {
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
+      Name "Soviet Air Force"
+      Icon "{B522FE456D7F091A}worlds/HitTheMan/Screening The Orb/330px-Flag_of_the_Soviet_Air_Force.svg.edds"
+     }
+     m_iOrder 1
+     m_sFactionFlag "{B522FE456D7F091A}worlds/HitTheMan/Screening The Orb/330px-Flag_of_the_Soviet_Air_Force.svg.edds"
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB79282FF010C}" {
+       }
+       SCR_CallsignInfo "{55CCB792829053B0}" {
+        m_sCallsign "Berkut"
+       }
+       SCR_CallsignInfo "{55CCB79282A19687}" {
+        m_sCallsign "2"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB79284A2F6C9}" {
+        m_sCallsign " "
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{64E2F896E232A50B}" {
+        m_sCallsign "5"
+       }
+       SCR_CallsignInfo "{64E2F896FFC45153}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{64E2F896E5466F70}" {
+        m_sCallsign "4v"
+       }
+      }
+     }
+    }
+    SCR_Faction "{64AA098AEA5B1498}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{64AA098204A61453}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{64AA098204A6145D}" {
+        m_sCallsign "9"
+       }
+       SCR_CallsignInfo "{64AA098204A61443}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{64AA098204A61441}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{64AA098204A61446}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{650AE15C940BA34B}" {
+        m_sCallsign "4"
+       }
+       SCR_CallsignInfo "{650AE15C8B7A1EC2}" {
+        m_sCallsign "5"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "Sunray"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "Alpha"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "Bravo"
+       }
+       SCR_CallsignInfo "{61677618371B4C91}" {
+        m_sCallsign "Charlie"
+       }
+       SCR_CallsignInfo "{65055DBDAC6F7853}" {
+        m_sCallsign "Whiskey"
+       }
+       SCR_CallsignInfo "{65055DB6CE3F5934}" {
+        m_sCallsign "Echo"
+       }
+       SCR_CallsignInfo "{650AE1494DA67E1D}" {
+        m_sCallsign "Foxtrot"
+       }
+      }
+     }
+     m_iFactionRadioFrequency 50000
+    }
+    SCR_Faction "{652F615735715119}" {
+    }
+   }
+  }
+  ScriptedChatEntity {
+   ID "A79C4E0A43DEB825"
+   coords -318.966 137.025 1.838
+  }
+  ItemPreviewManagerEntity : "{9F18C476AB860F3B}Prefabs/World/Game/ItemPreviewManager.et" {
+   ID "5ED9088735FF2DD5"
+   coords -12.245 -3.267 -7.529
+  }
+  SCR_EditorSettingsEntity {
+   ID "61B4E967E6C20362"
+   coords 0 0 0
+   m_bIsUnlimitedEditorLegal 1
+  }
+ }
+}
+$grp GenericEntity : "{2323F9E4C524F047}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_US_01.et" {
+ {
+  coords 2122.913 2.977 2489.656
+  angleY 72.762
+ }
+ {
+  coords 2139.18 4.012 2485.699
+  angleY 72.762
+ }
+ {
+  coords 2127.706 2.652 2473.16
+  angleY 72.762
+ }
+}
+GC_OffMapArtillery GC_OffMapArtillery : "{3AF7F6A04B4F7564}Prefabs/Modules/GC_OffMapArtillery.et" {
+ coords 3884.554 21.972 2808.203
+ m_artyRounds {
+  GC_OffMapRound "{652B743A90CE7EE7}" {
+   m_shellPrefab "{A544A2C131DE2C64}Prefabs/Weapons/Ammo/Ammo_Shell_82mm_Smoke_D832DU.et"
+   m_roundName "82mm D832 Smoke"
+   m_factionKeys {
+    "GC_NVA"
+   }
+   m_allowedFrequencies {
+    49000
+   }
+   m_roundCount 240
+   m_gunCount 3
+   m_roundDelay 60
+   m_roundReload 6
+  }
+ }
+}
+GenericEntity : "{77F90F896D5145C8}Prefabs/Compositions/Slotted/SlotFlatSmall/LivingArea_S_US_01.et" {
+ coords 2331.517 9.932 2523.526
+ angleX -1.648
+ angleY 111.876
+ angleZ -10.196
+ {
+  GenericEntity {
+   ID "5D22B92C55FB6E83"
+   coords -3.126 0.024 -0.354
+   angleX 0.106
+   angleY -147.32
+   angleZ -1.998
+  }
+  GenericEntity {
+   ID "5D45393EBFC416D1"
+   coords -0.107 -0.023 -2.03
+   angleX 1.723
+   angleY -49.492
+   angleZ -0.484
+  }
+  GenericEntity {
+   ID "5D088D365E56BF25"
+   coords -2.695 0.003 -1.762
+   angleX 1.263
+   angleY -75.172
+   angleZ 0.08
+  }
+  GenericEntity {
+   ID "5D088D365E56BF55"
+   coords -3.167 0.072 1.963
+   angleX 0.232
+   angleY 48.743
+   angleZ 1.775
+   {
+    DecalEntity {
+     ID "56E0B29E01E2AC90"
+     coords 0.001 0 0
+     angleX 0
+     angleY -167.864
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D088D365E56BF7F"
+   coords -1.146 0.016 -3.261
+   angleX 0.795
+   angleY -18.697
+   angleZ 3.917
+   {
+    DecalEntity {
+     ID "56E0B29E01E2AC90"
+     coords 0 0 0
+     angleX 0
+     angleY -90.732
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D24733A5888C7CC"
+   coords -5.278 0.256 7.536
+   angleX 1.986
+   angleY -53.271
+   angleZ 0.247
+  }
+  GenericEntity {
+   ID "5D088D365E56BFA6"
+   coords -4.297 0.082 0.109
+   angleX 2.7
+   angleY -100.659
+   angleZ -1.763
+   {
+    DecalEntity {
+     ID "56E0B29F4975B6A9"
+     coords 0 0 0
+     angleX 0
+     angleY -48.256
+     angleZ 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D088D365E56BFB2"
+   coords -3.024 0.013 -1.059
+   angleX -0.562
+   angleY 164.85
+   angleZ -1.134
+   {
+    DecalEntity {
+     ID "56E0B29F4975B6A9"
+     coords -0.001 0 0
+     angleX 0
+     angleY 56.138
+     angleZ 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D088D365E56BEB7"
+   coords 0.571 0.044 2.359
+   angleX 2
+   angleY -8.95
+   angleZ -0.06
+   {
+    GenericEntity {
+     ID "5CB6B284E999C100"
+     coords -4.191 0.04 1.247
+     angleX 1.478
+     angleY -130.661
+     angleZ -1.348
+    }
+    GenericEntity {
+     ID "5D2262BCF81469CF"
+     coords -0.287 0 0.44
+     angleY -1.11
+    }
+    GenericEntity {
+     ID "5CB6B284E999C136"
+     coords 3.7 0.071 -3.897
+     angleX -0.475
+     angleY 33.044
+     angleZ -0.758
+    }
+    GenericEntity {
+     ID "5DCAAA1F5B5A57D9"
+     coords 0.418 0.009 -1.536
+     angleX 1.909
+     angleY -48.857
+     angleZ 2.086
+    }
+    StaticModelEntity {
+     ID "5CB6B284E99923C6"
+     coords 0 0 0
+     angleY 180
+     {
+      GenericEntity {
+       ID "5A3C89682DFDAA01"
+       coords -0.008 0 -0.008
+      }
+      StaticModelEntity {
+       ID "5D466416286F4114"
+       coords -0.008 0 -0.008
+       {
+        StaticModelEntity {
+         ID "5D44C2DB95A685B0"
+         coords -2.304 -0.01 2.513
+         angleX 2.339
+         angleY -40.707
+         angleZ -1.594
+         {
+          StaticModelEntity {
+           ID "5D38E5916001C17C"
+           coords -0.002 0.048 -1.204
+           angleX -2.724
+           angleY 0.161
+           angleZ 3.547
+           {
+            StaticModelEntity {
+             ID "5D44AE1C21AC9CA9"
+             coords 0 0 0.024
+             angleX -3.3
+             angleY -0.058
+             angleZ -1.854
+            }
+           }
+          }
+         }
+        }
+        StaticModelEntity {
+         ID "5D44C7DD925DE682"
+         coords -3.877 0.078 4.351
+         angleX 0.862
+         angleY -40.52
+         angleZ -0.241
+         {
+          StaticModelEntity {
+           ID "5D38E5916001C17C"
+           coords 0 -0.006 -1.206
+           angleX 2.584
+           angleY -0.072
+           angleZ -0.727
+           {
+            StaticModelEntity {
+             ID "5D44AE1C21B12310"
+             coords 0.002 0 0
+             angleX 0
+             angleY -0.077
+             {
+              StaticModelEntity {
+               ID "5D44AE1C21B12312"
+               coords 0 0 0
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+        StaticModelEntity {
+         ID "5D44C7DD3033981E"
+         coords 2.412 -0.018 -3.011
+         angleX -0.62
+         angleY 139.496
+         angleZ 1.103
+         {
+          StaticModelEntity {
+           ID "5D38E5916001C17C"
+           coords -0.001 -0.014 -1.208
+           angleX -0.241
+           angleY 0.04
+           angleZ -0.862
+           {
+            StaticModelEntity {
+             ID "5D44AE1C21AF877B"
+             coords 0.001 0.001 0
+             angleX 0
+             angleY -0.053
+             {
+              StaticModelEntity {
+               ID "5D44AE1C21AF877A"
+               coords 0 0 0
+              }
+             }
+            }
+           }
+          }
+          StaticModelEntity {
+           ID "5D44AE1C21AF877C"
+           coords 0 -0.008 -2.423
+           angleX 0.621
+           angleY 0.017
+           angleZ -1.103
+          }
+         }
+        }
+        StaticModelEntity {
+         ID "5D44C2DB95A68590"
+         coords -0.753 -0.005 0.78
+         angleX 0.911
+         angleY -78.529
+         angleZ 1.777
+         {
+          StaticModelEntity {
+           ID "5D38E5916001C17C"
+           coords -0.617 0 -0.895
+           angleX 1.561
+           angleY 78.526
+           angleZ -1.246
+           {
+            StaticModelEntity {
+             ID "5D44AE1C21B37017"
+             coords 0 0 0
+             angleX 0
+             angleY -0.521
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      StaticModelEntity {
+       ID "5D466416345A60C6"
+       coords -0.008 0 -0.008
+       angleX 0
+       angleY 179.687
+      }
+      StaticModelEntity {
+       ID "5D466416773DDF19"
+       coords -1.567 -0.014 1.634
+       angleX -3.675
+       angleY -40.609
+       angleZ 0.109
+      }
+      StaticModelEntity {
+       ID "5D466416773DDFFA"
+       coords -3.108 0.054 3.432
+       angleX 3.445
+       angleY -40.649
+       angleZ -0.973
+      }
+      StaticModelEntity {
+       ID "5D466416345A60A8"
+       coords 1.614 -0.018 -2.093
+       angleX 0.862
+       angleY -40.5
+       angleZ -0.241
+      }
+     }
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D088D0B9E7F85ED"
+   coords -1.548 0.14 6.759
+   angleX 0.778
+   angleY -130.885
+   angleZ -0.999
+  }
+  GenericEntity {
+   ID "5D088D0B9E7F8593"
+   coords -0.037 0.104 8.743
+   angleX 1.277
+   angleY -147.607
+   angleZ -1.541
+  }
+ }
+}
+GenericEntity : "{8B4B8BF44162B24E}Prefabs/Compositions/Slotted/SlotFlatSmall/Antenna_S_US_01.et" {
+ coords 2336.922 8.913 2545.558
+ angleX 0.895
+ angleY 177.941
+ angleZ -0.032
+ {
+  GenericEntity {
+   ID "5D088D25EF4020F0"
+   coords -0.009 -0.007 2.078
+   angleX 2.605
+   angleY 34.667
+   angleZ -1.017
+   {
+    DecalEntity {
+     ID "56E0B29E01E2AC90"
+     coords 0.001 0 0
+     angleX 0
+     angleY 110.237
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D088D25EF402104"
+   coords -0.57 -0.009 -3.278
+   angleX -1.722
+   angleY -161.583
+   angleZ 0.973
+  }
+  GenericEntity {
+   ID "5D088D25EF4020B9"
+   coords 0 0 0
+  }
+  GenericEntity {
+   ID "5D371AC87254ED3A"
+   coords 0 0 0
+   angleX -5.072
+   angleY 38.931
+   angleZ -4.054
+  }
+  GenericEntity {
+   ID "5EA88D65C2A5898A"
+   coords -2.996 -0.174 1.296
+   angleX 3.059
+   angleY 61.008
+   angleZ -2.542
+  }
+  GenericEntity {
+   ID "5DCAAA1816D09E42"
+   coords -2.573 -0.057 -2.071
+   angleX 0.576
+   angleY 14.512
+   angleZ -2.751
+  }
+  GenericEntity {
+   ID "5DCAAA1816D09E6E"
+   coords 2.842 -0.161 -0.103
+   angleX 3.534
+   angleY -36.312
+   angleZ 4.353
+  }
+  GenericEntity {
+   ID "5D088D25EF4020D1"
+   coords -5.749 -0.149 -1.65
+   angleX -2.49
+   angleY -36.658
+   angleZ 0.947
+   {
+    DecalEntity {
+     ID "56DF08929A14FB98"
+     coords 0 0 0
+     angleX 0
+     angleY 176.666
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D088D25EF402134"
+   coords -4.059 -0.132 -1.025
+   angleX 0.554
+   angleY 14.056
+   angleZ -2.756
+   {
+    DecalEntity {
+     ID "56DF08929A14FB98"
+     coords 0 0 0
+     angleX 0
+     angleY 109.025
+    }
+   }
+  }
+  GenericEntity {
+   ID "5EA88D65C2A58996"
+   coords -1.516 -0.753 6.101
+   angleX -4.582
+   angleY -82.831
+   angleZ 10.66
+  }
+  GenericEntity {
+   ID "5EA88D65C2A589AD"
+   coords 1.518 -0.647 6.714
+   angleX -2.895
+   angleY -95.445
+   angleZ 5.81
+  }
+ }
+}
+GC_RadiusAreaEntity COYHQ_Trigger : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 2345.25 10.192 2520.925
+ angleX -2.385
+ angleY -75.89
+ angleZ -1.521
+ m_fRadius 30
+}
+GC_RadiusAreaEntity STrenchline_Trigger : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 2673.573 444.172 2533.626
+ m_fRadius 100
+}
+GC_RadiusAreaEntity Church_Trigger : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 2341.282 25.684 2302.831
+ m_fRadius 27
+}
+GC_RadiusAreaEntity NTrenchline_Trigger : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 2515.855 449.666 2797.924
+ m_fRadius 75
+}
+StaticModelEntity : "{F1C5F8E2EF1105F9}Prefabs/Compositions/Misc/SubCompositions/Tent_HQ_Camo_Cluttered_US_01.et" {
+ coords 2327.913 9.014 2535.561
+ angleX -0.601
+ angleY -70.387
+ angleZ 1.686
+ {
+  GenericEntity {
+   ID "571095C408F62EEF"
+   coords 2.198 -0.014 -2.87
+   angleX -0.551
+   angleY -35.934
+   angleZ 5.296
+  }
+  GenericEntity {
+   ID "5704A24BB96C93EA"
+   coords 0.144 0.043 1.975
+   angleX 8.135
+   angleY -56.128
+   angleZ -3.513
+  }
+  GenericEntity {
+   ID "5704A24D39D49E42"
+   coords 2.232 -0.116 -1.107
+   angleX 4.181
+   angleY -84.951
+   angleZ 3.211
+  }
+  GenericEntity {
+   ID "571095C408F62ECC"
+   coords 2.387 -0.042 -2.627
+   angleX 4.375
+   angleY -166.678
+   angleZ -3.037
+  }
+  GenericEntity {
+   ID "5A3C896838F93777"
+   coords -0.005 0 -0.005
+  }
+  StaticModelEntity {
+   ID "5D466416286F4114"
+   coords -0.005 0 -0.005
+   {
+    GenericEntity {
+     ID "5D4669A08ACACECC"
+     coords -0.013 0 1.184
+    }
+    StaticModelEntity {
+     ID "5D44C2DB95A685B0"
+     coords -0.011 0.317 3.619
+     angleX 9.863
+     angleY 0.022
+     angleZ 0.991
+     {
+      StaticModelEntity {
+       ID "5D38E5916001C17C"
+       coords -0.003 0.005 -1.207
+       angleX -2.394
+       angleY 0.07
+       angleZ 3.777
+       {
+        StaticModelEntity {
+         ID "5D44AE1C21AC9CA9"
+         coords 0 -0.001 0.026
+         angleX 0
+         angleY -0.012
+        }
+       }
+      }
+     }
+    }
+    StaticModelEntity {
+     ID "5D44C7DD925DE682"
+     coords -0.011 0.648 6.02
+     angleX 7.598
+     angleY 0.074
+     angleZ -0.428
+     {
+      StaticModelEntity {
+       ID "5D38E5916001C17C"
+       coords 0.002 0 -1.208
+       angleY -0.051
+       {
+        StaticModelEntity {
+         ID "5D44AE1C21B12310"
+         coords 0 0 0
+         angleX 0
+         angleY -0.005
+         {
+          StaticModelEntity {
+           ID "5D44AE1C21B12312"
+           coords 0 0 0
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    StaticModelEntity {
+     ID "5D44C7DD3033981E"
+     coords 0.04 0.038 -3.683
+     angleX -2.961
+     angleY 179.854
+     angleZ -1.887
+     {
+      StaticModelEntity {
+       ID "5D38E5916001C17C"
+       coords 0.022 -0.066 -1.267
+       angleX 4.14
+       angleY 5.401
+       angleZ 3.214
+       {
+        StaticModelEntity {
+         ID "5D44AE1C21AF877B"
+         coords 0 0 0
+         angleX 0
+         angleY 0.119
+         {
+          StaticModelEntity {
+           ID "5D44AE1C21AF877A"
+           coords 0 0.001 0.001
+          }
+         }
+        }
+       }
+      }
+      StaticModelEntity {
+       ID "5D44AE1C21AF877C"
+       coords 0.016 -0.157 -2.455
+       angleX 4.342
+       angleY 1.632
+       angleZ 2.935
+      }
+     }
+    }
+    StaticModelEntity {
+     ID "5D44C2DB95A68590"
+     coords -0.012 0 1.217
+     {
+      StaticModelEntity {
+       ID "5D38E5916001C17C"
+       coords 0.013 -0.001 -1.22
+       {
+        StaticModelEntity {
+         ID "5D44AE1C21B37017"
+         coords 0 0 0
+         angleX 0
+         angleY -0.012
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  StaticModelEntity {
+   ID "5D466416773DDF19"
+   coords -0.02 0.123 2.482
+   angleX 7.469
+   angleY 0.043
+   angleZ 4.773
+  }
+  StaticModelEntity {
+   ID "5D466416773DDFFA"
+   coords -0.016 0.49 4.825
+   angleX 7.598
+   angleY 0.02
+   angleZ -0.435
+  }
+  StaticModelEntity {
+   ID "5D466416345A60A8"
+   coords 0.017 0.041 -2.442
+   angleX -1.448
+   angleY 0.47
+   angleZ -0.945
+  }
+  StaticModelEntity {
+   ID "5D466416345A60C6"
+   coords -0.005 -0.001 0.086
+   angleX 0
+   angleY 179.993
+  }
+ }
+}
+StaticModelEntity : "{FA06509902D591F4}Prefabs/Compositions/Misc/SubCompositions/Tent_BarrackHQ_Cluttered_US_01.et" {
+ coords 2351.772 9.27 2530.153
+ angleX -0.07
+ angleY 98.73
+ angleZ -5.429
+ {
+  GenericEntity {
+   ID "5A3C896838F93777"
+   coords 0.004 0.001 0.01
+  }
+  StaticModelEntity {
+   ID "5D466416286F4114"
+   coords 0.004 0.001 0.01
+   {
+    GenericEntity {
+     ID "5D4669A08ACACECC"
+     coords -0.016 0 1.179
+    }
+    StaticModelEntity {
+     ID "5D44C2DB95A685B0"
+     coords -0.052 0.001 3.637
+     angleX 0.414
+     angleY -0.627
+     angleZ 1.173
+     {
+      StaticModelEntity {
+       ID "5D38E5916001C17C"
+       coords 0.005 0.007 -1.209
+       angleX -0.399
+       angleY 0.749
+       angleZ -1.178
+       {
+        StaticModelEntity {
+         ID "5D44AE1C21AC9CA9"
+         coords -0.001 0.001 0.025
+         angleX 0
+         angleY 0.035
+        }
+       }
+      }
+     }
+    }
+    StaticModelEntity {
+     ID "5D44C7DD925DE682"
+     coords -0.084 0.018 6.053
+     angleX 0.414
+     angleY -0.627
+     angleZ 1.173
+     {
+      StaticModelEntity {
+       ID "5D38E5916001C17C"
+       coords 0.002 0 -1.202
+       {
+        StaticModelEntity {
+         ID "5D44AE1C21B12310"
+         coords 0 0 -0.002
+         angleX 0
+         angleY 0.021
+         {
+          StaticModelEntity {
+           ID "5D44AE1C21B12312"
+           coords 0 0 0
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    StaticModelEntity {
+     ID "5D44C7DD3033981E"
+     coords 0.046 0.031 -3.635
+     angleX 0.438
+     angleY 179.601
+     angleZ 3.169
+     {
+      StaticModelEntity {
+       ID "5D38E5916001C17C"
+       coords 0.007 0 -1.203
+       angleY -0.08
+       {
+        StaticModelEntity {
+         ID "5D44AE1C21AF877B"
+         coords -0.001 0 -0.001
+         angleX 0
+         angleY 0.023
+         {
+          StaticModelEntity {
+           ID "5D44AE1C21AF877A"
+           coords 0 0 0
+          }
+         }
+        }
+       }
+      }
+      StaticModelEntity {
+       ID "5D44AE1C21AF877C"
+       coords 0.014 -0.009 -2.421
+       angleX -0.029
+       angleY -0.098
+       angleZ -1.989
+      }
+     }
+    }
+    StaticModelEntity {
+     ID "5D44C2DB95A68590"
+     coords -0.017 0 1.207
+     {
+      StaticModelEntity {
+       ID "5D38E5916001C17C"
+       coords 0.018 0 -1.211
+       {
+        StaticModelEntity {
+         ID "5D44AE1C21B37017"
+         coords 0 0 0
+         angleX 0
+         angleY 0.041
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  StaticModelEntity {
+   ID "5D466416773DDF19"
+   coords -0.032 0 2.497
+   angleX 0
+   angleY 0.135
+  }
+  StaticModelEntity {
+   ID "5D466416773DDFFA"
+   coords -0.064 0.01 4.868
+   angleX 0.414
+   angleY -0.615
+   angleZ 1.173
+  }
+  StaticModelEntity {
+   ID "5D466416345A60A8"
+   coords 0.036 0.021 -2.414
+   angleX -0.441
+   angleY -0.465
+   angleZ -3.169
+  }
+  StaticModelEntity {
+   ID "5D466416345A60C6"
+   coords 0.002 0.001 0.099
+   angleX 0
+   angleY -179.975
+  }
+ }
+}
