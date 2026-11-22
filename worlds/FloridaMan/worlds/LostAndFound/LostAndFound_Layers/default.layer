@@ -1,0 +1,1328 @@
+SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A2995A7E8BC2}" {
+     NavmeshFile "{D8EF7131FB31AF97}worlds/GameMaster/Navmeshes/GM_Arland.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A299509CF377}" {
+     NavmeshFile "{A0AEEB1E7EF474FA}worlds/GameMaster/Navmeshes/GM_Arland_vehicles.nmn"
+    }
+   }
+  }
+ }
+ coords 2346.653 94.346 1307.558
+}
+GC_LobbyGameMode GC_MigratedMission : "{BB1DD5F800A61E81}worlds/FloridaMan/worlds/LostAndFound/LostAndFound_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 3
+   m_bDateOverride 1
+   m_iDay 14
+   m_iMonth 6
+   m_iYear 2017
+  }
+  GC_PeakFactionPopulationComponent "{7559913F83740AAE}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{C260C0294F16D662}" {
+     m_sName "BlackboxRemoved"
+    }
+    GC_MissionFlag "{45B28C6DA7DBCC6A}" {
+     m_sName "ExtractPoint1"
+    }
+    GC_MissionFlag "{6E6E9AB1A22FBD88}" {
+     m_sName "ExtractPoint2"
+    }
+    GC_MissionFlag "{0D59E6DAFBD0B0E5}" {
+     m_sName "ExtractPoint3"
+    }
+    GC_MissionFlag "{2485DD7EDEB8EEFE}" {
+     m_sName "ExtractPoint4"
+    }
+    GC_MissionFlag "{AD1FD6752C957513}" {
+     m_sName "ExtractPoint5"
+    }
+    GC_MissionFlag "{466098CCB2C5A00A}" {
+     m_sName "helispawn1"
+    }
+    GC_MissionFlag "{1C42F8C0F216D7EE}" {
+     m_sName "helispawn2"
+    }
+    GC_MissionFlag "{9D59481DF3A50552}" {
+     m_sName "helispawn3"
+    }
+    GC_MissionFlag "{BF28E116AFB75B3B}" {
+     m_sName "helispawn4"
+    }
+    GC_MissionFlag "{C82296A9C9DCF5CD}" {
+     m_sName "helispawn5"
+    }
+    GC_MissionFlag "{DCC4BF17AE0E3384}" {
+     m_sName "mission_in_progress"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{01FC0EBC8C4C5E51}" {
+     m_sName "GC_MigrationStartupSampling"
+     m_aConditions {
+      GC_ConditionGroup "{1DFD0FDFE774B31C}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{078527A53897C271}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{78C1F2C0222B4137}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{18B5F2A2E1E31CDF}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_FlagSamplingAction "{078527A53897C271}" {
+       m_iDrawCount 1
+       m_aFlags {
+        "ExtractPoint1"
+        "ExtractPoint2"
+        "ExtractPoint3"
+        "ExtractPoint4"
+        "ExtractPoint5"
+       }
+      }
+      GC_FlagSamplingAction "{D7CEA00323B37566}" {
+       m_iDrawCount 1
+       m_aFlags {
+        "helispawn1"
+        "helispawn2"
+        "helispawn3"
+        "helispawn4"
+        "helispawn5"
+       }
+      }
+     }
+    }
+    GC_Event "{24D3F8868778ECFC}" {
+     m_sName "GC_MigrationCapture_USInPropagandaArea"
+     m_aConditions {
+      GC_AreaCondition "{08719762E8D518D0}" {
+       m_sArea "GC_MigrationArea_USInPropagandaArea"
+       m_Targets GC_CharacterAreaTargets "{FB1EB521EE4FBB1D}" {
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{46C8E9E94143DEF7}" {
+        m_fRequiredShare 1
+        m_bWholeMission 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{A23C5708F97C86F1}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8CEAF3F49BB81366}" {
+       m_sMessage "GC_MigrationCapture_USInPropagandaArea"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BB762F1CEACE970D}" {
+     m_sName "Blackbox recovered"
+     m_aConditions {
+      GC_MissionFlagCondition "{15DB13D9A35C2FCB}" {
+       m_sFlagName "BlackboxRemoved"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8FFDBFDB37939E1B}" {
+       m_sMessage "Blackbox recovered"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E9E967AB6F968FBC}" {
+     m_sName "Blackbox recovered (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BB25F23D05F813D9}" {
+       m_sEventName "Blackbox recovered"
+      }
+     }
+     m_Advanced GC_EventOptions "{B4038A75A15ADA97}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{FA08C7EEB9B3FEC0}" {
+       m_sTitle "Blackbox recovered"
+       m_sMessage "The blackbox has been recovered from the downed apache."
+       m_aFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+    GC_Event "{B82EF7784A00A4FC}" {
+     m_sName "Spawn Extract - Location 1"
+     m_aConditions {
+      GC_ConditionGroup "{342880A616B3EA05}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{3D14BD5D0F99A3AC}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{E9AB9AF56663866D}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{88FB23E06E9C285F}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{F0A7AE23DD7D9776}" {
+       m_sFlagName "ExtractPoint1"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B4C9946C30F50137}" {
+       m_sMessage "Spawn Extract - Location 1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3D14BD5D0F99A3AC}" {
+     m_sName "Spawn Extract - Location 1 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{97CDCA9232EAD822}" {
+       m_sEventName "Spawn Extract - Location 1"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{5A8C734ECAF3656C}" {
+       m_Spawn GC_PrefabSpawn "{C5DBEB66A40BBDD3}" {
+        m_sLocation "extract1"
+        m_sPrefab "{B9CFA890D70B27DE}worlds/FloridaMan/Prefabs/Setpeice/BLUFOR_Extract_Point.et"
+        m_sEntityName "GC_MigrationExtraction_C135FB86F926B856"
+       }
+      }
+      GC_SpawnAction "{D8EB4AAB3BB0DF89}" {
+       m_Spawn GC_PrefabSpawn "{D1518BB415676C9B}" {
+        m_sLocation "extract1"
+        m_sPrefab "{FA26D5D4A3525551}worlds/FloridaMan/Prefabs/Setpeice/BLUFOR_Extract_Point_Pilots.et"
+        m_sEntityName "GC_MigrationExtraction_C0B38C4F1328BAEA"
+       }
+      }
+     }
+    }
+    GC_Event "{79ADE9407E250306}" {
+     m_sName "Spawn Extract - Location 2"
+     m_aConditions {
+      GC_ConditionGroup "{AA56C19920674D05}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{C1F2079FEAF93D27}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{825608DEF7F116FA}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{F37CC37FCFDD9286}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{B54ABF53E7C40682}" {
+       m_sFlagName "ExtractPoint2"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8F7B82D16CB0B155}" {
+       m_sMessage "Spawn Extract - Location 2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C1F2079FEAF93D27}" {
+     m_sName "Spawn Extract - Location 2 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5A585D17201AF552}" {
+       m_sEventName "Spawn Extract - Location 2"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{D7890845A68CC176}" {
+       m_Spawn GC_PrefabSpawn "{21F2906C2CEE8C44}" {
+        m_sLocation "extract2"
+        m_sPrefab "{B9CFA890D70B27DE}worlds/FloridaMan/Prefabs/Setpeice/BLUFOR_Extract_Point.et"
+        m_sEntityName "GC_MigrationExtraction_C135FB86F926B856"
+       }
+      }
+      GC_SpawnAction "{1C0622BB8985E74F}" {
+       m_Spawn GC_PrefabSpawn "{C6EE1F1B0E0F8403}" {
+        m_sLocation "extract2"
+        m_sPrefab "{FA26D5D4A3525551}worlds/FloridaMan/Prefabs/Setpeice/BLUFOR_Extract_Point_Pilots.et"
+        m_sEntityName "GC_MigrationExtraction_C0B38C4F1328BAEA"
+       }
+      }
+     }
+    }
+    GC_Event "{C18B3321E15E4845}" {
+     m_sName "Spawn Extract - Location 3"
+     m_aConditions {
+      GC_ConditionGroup "{1CD59255C0127A5D}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{F597759009B8E14E}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{BAD2FD5E5F61A788}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{5F854AE9293F5B5C}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{5F3E87714E51EAF6}" {
+       m_sFlagName "ExtractPoint3"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{92217EF953683C2A}" {
+       m_sMessage "Spawn Extract - Location 3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F597759009B8E14E}" {
+     m_sName "Spawn Extract - Location 3 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{ED81AFE5EB997451}" {
+       m_sEventName "Spawn Extract - Location 3"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{1B8C528C1D856325}" {
+       m_Spawn GC_PrefabSpawn "{82C6843238331EDF}" {
+        m_sLocation "extract3"
+        m_sPrefab "{B9CFA890D70B27DE}worlds/FloridaMan/Prefabs/Setpeice/BLUFOR_Extract_Point.et"
+        m_sEntityName "GC_MigrationExtraction_C135FB86F926B856"
+       }
+      }
+      GC_SpawnAction "{F28716EBE21AC12D}" {
+       m_Spawn GC_PrefabSpawn "{35135AD31BBA501F}" {
+        m_sLocation "extract3"
+        m_sPrefab "{FA26D5D4A3525551}worlds/FloridaMan/Prefabs/Setpeice/BLUFOR_Extract_Point_Pilots.et"
+        m_sEntityName "GC_MigrationExtraction_C0B38C4F1328BAEA"
+       }
+      }
+     }
+    }
+    GC_Event "{6D799A64B3406717}" {
+     m_sName "Spawn Extract - Location 4"
+     m_aConditions {
+      GC_ConditionGroup "{0753BBB15E847A59}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{787818FD3A38BA84}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{513BE58B9CCC683A}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{53589CBBAABF785D}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{0E30BFB38187DBCB}" {
+       m_sFlagName "ExtractPoint4"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{BE439D471B648B60}" {
+       m_sMessage "Spawn Extract - Location 4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{787818FD3A38BA84}" {
+     m_sName "Spawn Extract - Location 4 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2CA5EDEDA885BD48}" {
+       m_sEventName "Spawn Extract - Location 4"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{75A3ED05800CDCA2}" {
+       m_Spawn GC_PrefabSpawn "{6C8714608C77A4D5}" {
+        m_sLocation "extract4"
+        m_sPrefab "{B9CFA890D70B27DE}worlds/FloridaMan/Prefabs/Setpeice/BLUFOR_Extract_Point.et"
+        m_sEntityName "GC_MigrationExtraction_C135FB86F926B856"
+       }
+      }
+      GC_SpawnAction "{94E7EEEAAAD7BB5C}" {
+       m_Spawn GC_PrefabSpawn "{DEE315FCDC13F088}" {
+        m_sLocation "extract4"
+        m_sPrefab "{FA26D5D4A3525551}worlds/FloridaMan/Prefabs/Setpeice/BLUFOR_Extract_Point_Pilots.et"
+        m_sEntityName "GC_MigrationExtraction_C0B38C4F1328BAEA"
+       }
+      }
+     }
+    }
+    GC_Event "{1BD8FFC6D1CEA273}" {
+     m_sName "Spawn Extract - Location 5"
+     m_aConditions {
+      GC_ConditionGroup "{401F40AE5C8797E8}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{F9B2A65E1B035D1E}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{A09CD718DEB5D0FA}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{2BAA85BF499B0412}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{E209431480AEDFB7}" {
+       m_sFlagName "ExtractPoint5"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3D6EA840953E5B5D}" {
+       m_sMessage "Spawn Extract - Location 5"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F9B2A65E1B035D1E}" {
+     m_sName "Spawn Extract - Location 5 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E071F9E40C98F2C7}" {
+       m_sEventName "Spawn Extract - Location 5"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{342B151C0EBD0C72}" {
+       m_Spawn GC_PrefabSpawn "{7897DAF67DA967A6}" {
+        m_sLocation "extract5"
+        m_sPrefab "{B9CFA890D70B27DE}worlds/FloridaMan/Prefabs/Setpeice/BLUFOR_Extract_Point.et"
+        m_sEntityName "GC_MigrationExtraction_C135FB86F926B856"
+       }
+      }
+      GC_SpawnAction "{197BE43CC84A98B5}" {
+       m_Spawn GC_PrefabSpawn "{EE958092C5F6F432}" {
+        m_sLocation "extract5"
+        m_sPrefab "{FA26D5D4A3525551}worlds/FloridaMan/Prefabs/Setpeice/BLUFOR_Extract_Point_Pilots.et"
+        m_sEntityName "GC_MigrationExtraction_C0B38C4F1328BAEA"
+       }
+      }
+     }
+    }
+    GC_Event "{C23FAA5588C17545}" {
+     m_sName "Delete Crash - Keep 1"
+     m_aConditions {
+      GC_ConditionGroup "{6AD56993CA6EFC50}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{6A35017613FB326A}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{2DF77B7BB926E023}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{65E6494A63F22D6C}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{5BE000313E26A2EA}" {
+       m_sFlagName "helispawn1"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0AF4FDCAA3C4697A}" {
+       m_sMessage "Delete Crash - Keep 1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6A35017613FB326A}" {
+     m_sName "Delete Crash - Keep 1 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DF09F2838E299A4B}" {
+       m_sEventName "Delete Crash - Keep 1"
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{D164C010577D65E7}" {
+       m_aEntities {
+        "Wreck2"
+        "Wreck3"
+        "Wreck4"
+        "Wreck5"
+       }
+      }
+     }
+    }
+    GC_Event "{0789E6FF11A2A334}" {
+     m_sName "Delete Crash - Keep 2"
+     m_aConditions {
+      GC_ConditionGroup "{D4BA2ACCBEB98E1F}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{38E81EDCE3E5F2C8}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{222518C57495610C}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{BC87E576516C3247}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{28844B5449264D1E}" {
+       m_sFlagName "helispawn2"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3FE0458EAC471515}" {
+       m_sMessage "Delete Crash - Keep 2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{38E81EDCE3E5F2C8}" {
+     m_sName "Delete Crash - Keep 2 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F922A14A943ED3CB}" {
+       m_sEventName "Delete Crash - Keep 2"
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{9F13222538426E99}" {
+       m_aEntities {
+        "Wreck1"
+        "Wreck3"
+        "Wreck4"
+        "Wreck5"
+       }
+      }
+     }
+    }
+    GC_Event "{1DB99FF2070F8DF4}" {
+     m_sName "Delete Crash - Keep 3"
+     m_aConditions {
+      GC_ConditionGroup "{9E6B5AEC7564E93A}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{83161A5C6762131F}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{D043D6C21CB899EF}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{73549629137E79E6}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{7A92F8FBC4C67C55}" {
+       m_sFlagName "helispawn3"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2CD783F152D79E7F}" {
+       m_sMessage "Delete Crash - Keep 3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{83161A5C6762131F}" {
+     m_sName "Delete Crash - Keep 3 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9F1FBEAE98E06F16}" {
+       m_sEventName "Delete Crash - Keep 3"
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{95EECD46A918F8ED}" {
+       m_aEntities {
+        "Wreck2"
+        "Wreck1"
+        "Wreck4"
+        "Wreck5"
+       }
+      }
+     }
+    }
+    GC_Event "{64C50EAC883F7295}" {
+     m_sName "Delete Crash - Keep 4"
+     m_aConditions {
+      GC_ConditionGroup "{17FF401B4F491CA0}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{F0A77E367CD1F63F}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{AA9C4EB47C3AB66D}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{A62FFBB14D2D775D}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{D974CCBC24AE2A3B}" {
+       m_sFlagName "helispawn4"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{11039C5F2F5D3471}" {
+       m_sMessage "Delete Crash - Keep 4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F0A77E367CD1F63F}" {
+     m_sName "Delete Crash - Keep 4 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{98AEBBE0F884AAC9}" {
+       m_sEventName "Delete Crash - Keep 4"
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{9CA4D1D44D92E9CB}" {
+       m_aEntities {
+        "Wreck2"
+        "Wreck3"
+        "Wreck1"
+        "Wreck5"
+       }
+      }
+     }
+    }
+    GC_Event "{C8DBE628545023AE}" {
+     m_sName "Delete Crash - Keep 5"
+     m_aConditions {
+      GC_ConditionGroup "{38A748E215402946}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{FADA9E5CD51D896E}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{91D4BF8F254C145D}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{7A7C58A68A3AD163}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+      GC_MissionFlagCondition "{9F185C9A1D00E841}" {
+       m_sFlagName "helispawn5"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DAEF1BDC9EF4BBAF}" {
+       m_sMessage "Delete Crash - Keep 5"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FADA9E5CD51D896E}" {
+     m_sName "Delete Crash - Keep 5 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1F2A8E4D7099C781}" {
+       m_sEventName "Delete Crash - Keep 5"
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{C00415E95D88619C}" {
+       m_aEntities {
+        "Wreck2"
+        "Wreck3"
+        "Wreck4"
+        "Wreck1"
+       }
+      }
+     }
+    }
+    GC_Event "{1D3D260F71A9AC5C}" {
+     m_sName "End Mission Notice - Pilots Killed in Propaganda"
+     m_aConditions {
+      GC_ConditionGroup "{FA62E9625FA6452A}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionEventCondition "{642B779CEDAD1A6E}" {
+         m_sEventName "GC_MigrationCapture_USInPropagandaArea"
+        }
+        GC_CustomScriptCondition "{2AB174B1F8158C54}" {
+         m_Script GC_PeakFactionPopulationCheck "{7B4630E29450F5CA}" {
+          m_sFaction "US"
+          m_fRatio 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{CD777DDFAD5EC89D}" {
+       m_sMessage "End Mission Notice - Pilots Killed in Propaganda"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C5325D104B15426F}" {
+     m_sName "End Mission Notice - Pilots Killed in Propaganda (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{454D9E5D9C0B49ED}" {
+       m_sEventName "End Mission Notice - Pilots Killed in Propaganda"
+      }
+     }
+     m_Advanced GC_EventOptions "{79E1253199309440}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{6E4654154BB8FEA2}" {
+       m_sTitle "REDFOR MAJOR VICTORY (NOT MISSION END)"
+       m_sMessage "The separatists have successfully killed the pilots on live TV. You still have to kill the rescuers."
+      }
+     }
+    }
+    GC_Event "{13A4F98CED3AF921}" {
+     m_sName "End Mission Notice - Pilots & Pararescue Killed"
+     m_aConditions {
+      GC_ConditionGroup "{98F68603E3D707F3}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionEventCondition "{4A4439196428793C}" {
+         m_sEventName "GC_MigrationCapture_USInPropagandaArea"
+         m_bRequireFalse 1
+        }
+        GC_CustomScriptCondition "{F00D8D059BDE6D6B}" {
+         m_Script GC_PeakFactionPopulationCheck "{87ACBEA21EE94783}" {
+          m_sFaction "US"
+          m_fRatio 1
+         }
+        }
+        GC_CustomScriptCondition "{0D3A20352B999A6C}" {
+         m_Script GC_PeakFactionPopulationCheck "{788E8FEB08D0B0D2}" {
+          m_sFaction "RHS_USAF"
+          m_fRatio 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{25FC5AC85822A685}" {
+       m_sMessage "End Mission Notice - Pilots & Pararescue Killed"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{EF771AE57B550CD8}" {
+     m_sName "End Mission Notice - Pilots & Pararescue Killed (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{63312AE6D7CBC3C1}" {
+       m_sEventName "End Mission Notice - Pilots & Pararescue Killed"
+      }
+     }
+     m_Advanced GC_EventOptions "{154EE5E81B0D975E}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{D96674505B544641}" {
+       m_sTitle "REDFOR MAJOR VICTORY"
+       m_sMessage "The separatists have killed the pilots and pararescue. Mission Complete."
+      }
+     }
+    }
+    GC_Event "{EB17C77ADC9F8BF6}" {
+     m_sName "End Mission Notice - Pilots extracted and blackbox recovered"
+     m_aConditions {
+      GC_GameModeStateCondition "{68623BDEA89D5D0B}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{FE76D1665D952CBF}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{5890B0EB251E8A09}" {
+         m_sFlagName "BlackboxRemoved"
+        }
+        GC_AreaCondition "{7217106A28C76FAA}" {
+         m_sArea "GC_MigrationExtraction_C0B38C4F1328BAEA"
+         m_Targets GC_CharacterAreaTargets "{8C4FF9F4A1448287}" {
+          m_aFactions {
+           US
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{985FE78EDAE7270B}" {
+          m_fRequiredShare 1
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+        }
+        GC_AreaCondition "{75920DE4AE11D8F5}" {
+         m_sArea "GC_MigrationExtraction_C135FB86F926B856"
+         m_Targets GC_CharacterAreaTargets "{371A4FACCB65BB87}" {
+          m_aFactions {
+           RHS_USAF
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{3DEB5F4768D3C22C}" {
+          m_fRequiredShare 0.9
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{291E13D6B2A960D1}" {
+       m_sMessage "End Mission Notice - Pilots extracted and blackbox recovered"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E954D51FCD4592B8}" {
+     m_sName "End Mission Notice - Pilots extracted and blackbox recovered (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{6168D98C0A18D0C6}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{B4A0A042C2EA3A8C}" {
+       m_sEventName "End Mission Notice - Pilots extracted and blackbox recovered"
+      }
+     }
+     m_Advanced GC_EventOptions "{999E026B5E68128D}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{85A96ECF3F6855A1}" {
+       m_sTitle "BLUFOR MAJOR VICTORY"
+       m_sMessage "Pararescue has successfully extracted the pilots and blackbox. Mission Complete."
+      }
+     }
+    }
+    GC_Event "{CD895403D9397E39}" {
+     m_sName "End Mission Notice - Pilots killed and blackbox recovered"
+     m_aConditions {
+      GC_GameModeStateCondition "{1EFD47FFA1CCFA8E}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{AF1D913493FFACFD}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{68E03342AF0B88F3}" {
+         m_sFlagName "BlackboxRemoved"
+        }
+        GC_CustomScriptCondition "{37A67B81373E86EA}" {
+         m_Script GC_PeakFactionPopulationCheck "{C862BC026E3EAAB1}" {
+          m_sFaction "US"
+          m_fRatio 1
+         }
+        }
+        GC_AreaCondition "{D4F0E5F5318E7ACE}" {
+         m_sArea "GC_MigrationExtraction_C135FB86F926B856"
+         m_Targets GC_CharacterAreaTargets "{7E531AB023739C73}" {
+          m_aFactions {
+           RHS_USAF
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{25352F0874E55581}" {
+          m_fRequiredShare 0.9
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F00923882C36D884}" {
+       m_sMessage "End Mission Notice - Pilots killed and blackbox recovered"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2AF44EE87AE50C6E}" {
+     m_sName "End Mission Notice - Pilots killed and blackbox recovered (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{53F7FA3E1D50BFDD}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{072D68BFDAF40179}" {
+       m_sEventName "End Mission Notice - Pilots killed and blackbox recovered"
+      }
+     }
+     m_Advanced GC_EventOptions "{930241348F433A70}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{B330E233899AFC7A}" {
+       m_sTitle "BLUFOR MINOR VICTORY"
+       m_sMessage "Pararescue has successfully extracted the blackbox but the pilots were killed. Mission Complete."
+      }
+     }
+    }
+    GC_Event "{FF438983E121648F}" {
+     m_sName "End Mission Notice - REDFOR Dead"
+     m_aConditions {
+      GC_CustomScriptCondition "{A9FE50EA31EF051D}" {
+       m_Script GC_PeakFactionPopulationCheck "{E166E4C36B0606A9}" {
+        m_sFaction "GC_SEPARATIST"
+        m_fRatio 0.95
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6B33C90076AA2D91}" {
+       m_sMessage "End Mission Notice - REDFOR Dead"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7FEDD05038054F6B}" {
+     m_sName "End Mission Notice - REDFOR Dead (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{707CFF6EEE9F3309}" {
+       m_sEventName "End Mission Notice - REDFOR Dead"
+      }
+     }
+     m_Advanced GC_EventOptions "{477DEB5243041656}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{449F4D4893486191}" {
+       m_sTitle "BLUFOR MAJOR VICTORY???"
+       m_sMessage "BLUFOR somehow managed to kill 95% of the REDFOR force... causing the island to be secure from enemy forces. You need to touch grass. Mission Complete"
+      }
+     }
+    }
+    GC_Event "{E2D9A3E18725A7A0}" {
+     m_sName "Spawn OPFOR Marker - Location 1"
+     m_aConditions {
+      GC_GameModeStateCondition "{9C5CF59393A08901}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{1AD6283E438D652E}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{7D1DC4960EB5C4B0}" {
+         m_sFlagName "ExtractPoint1"
+        }
+        GC_AreaCondition "{20D8322E04C2740D}" {
+         m_sArea "GC_MigrationArea_Pilots_Left_Area"
+         m_Targets GC_CharacterAreaTargets "{42C810393EF2F6BE}" {
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{B80D5F793B960858}" {
+          m_fRequiredShare 0.49
+          m_bWholeMission 1
+          m_bAtMost 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{2ECD2884F4A7DDB5}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+        GC_MissionFlagCondition "{47F265C5EF28FA6D}" {
+         m_sFlagName "mission_in_progress"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{81165C31548A6D35}" {
+       m_sMessage "Spawn OPFOR Marker - Location 1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{30D35E6C6CE555D4}" {
+     m_sName "Spawn OPFOR Marker - Location 1 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{83CAF23D166A6CE9}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{E236792419788A82}" {
+       m_sEventName "Spawn OPFOR Marker - Location 1"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{DF91E5B8A728D082}" {
+       m_Spawn GC_PrefabSpawn "{DD0BC9483752F936}" {
+        m_sLocation "extract1"
+        m_sPrefab "{02742280107F45D9}worlds/FloridaMan/Prefabs/Setpeice/opfor_notice_marker.et"
+       }
+      }
+      GC_MessageAction "{027A56921DB5DC85}" {
+       m_sTitle "INTEL Update"
+       m_sMessage "A group of locals have reported a strange looking military unit moving towards the coast. The area they indicated is now marked on your map."
+      }
+     }
+    }
+    GC_Event "{B141B9285CBFBEA2}" {
+     m_sName "Spawn OPFOR Marker - Location 2"
+     m_aConditions {
+      GC_GameModeStateCondition "{09202490E8AF767F}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{5A259D95357B5024}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{653E0FB6F66F72FC}" {
+         m_sFlagName "ExtractPoint2"
+        }
+        GC_AreaCondition "{04FF0748C6288895}" {
+         m_sArea "GC_MigrationArea_Pilots_Left_Area"
+         m_Targets GC_CharacterAreaTargets "{6C655DA49F07E9D3}" {
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{9E856284F1C095A5}" {
+          m_fRequiredShare 0.49
+          m_bWholeMission 1
+          m_bAtMost 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{05A92A32615F69A8}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+        GC_MissionFlagCondition "{B4573944533F74B2}" {
+         m_sFlagName "mission_in_progress"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{98F68D94DAC81AFC}" {
+       m_sMessage "Spawn OPFOR Marker - Location 2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AD410BAD98D8365D}" {
+     m_sName "Spawn OPFOR Marker - Location 2 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{B889E33C430592BC}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{9423599130AB681C}" {
+       m_sEventName "Spawn OPFOR Marker - Location 2"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{AFB7260BB655B60B}" {
+       m_Spawn GC_PrefabSpawn "{2BB596D2219BB953}" {
+        m_sLocation "extract2"
+        m_sPrefab "{02742280107F45D9}worlds/FloridaMan/Prefabs/Setpeice/opfor_notice_marker.et"
+       }
+      }
+      GC_MessageAction "{59DD673F011E2CA4}" {
+       m_sTitle "INTEL Update"
+       m_sMessage "A group of locals have reported a strange looking military unit moving towards the coast. The area they indicated is now marked on your map."
+      }
+     }
+    }
+    GC_Event "{FE36FE3C13A795EC}" {
+     m_sName "Spawn OPFOR Marker - Location 3"
+     m_aConditions {
+      GC_GameModeStateCondition "{4D73A1DA3D4DBF0D}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{CA1DA58FDEAF4283}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{FBE9A376EFD8F7F9}" {
+         m_sFlagName "ExtractPoint3"
+        }
+        GC_AreaCondition "{4E08B745886CC056}" {
+         m_sArea "GC_MigrationArea_Pilots_Left_Area"
+         m_Targets GC_CharacterAreaTargets "{73E9A05D9339C08F}" {
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{712CE9BDCD48C090}" {
+          m_fRequiredShare 0.49
+          m_bWholeMission 1
+          m_bAtMost 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{89F9781F7927A959}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+        GC_MissionFlagCondition "{4FF875A7E071F243}" {
+         m_sFlagName "mission_in_progress"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{43BC3DEEF5005D8E}" {
+       m_sMessage "Spawn OPFOR Marker - Location 3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F1E7AF4E631EB87B}" {
+     m_sName "Spawn OPFOR Marker - Location 3 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{C98612A20E0FE870}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{D504F495EFC18F8D}" {
+       m_sEventName "Spawn OPFOR Marker - Location 3"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{EE26099967C6C864}" {
+       m_Spawn GC_PrefabSpawn "{C24A770C218DB192}" {
+        m_sLocation "extract3"
+        m_sPrefab "{02742280107F45D9}worlds/FloridaMan/Prefabs/Setpeice/opfor_notice_marker.et"
+       }
+      }
+      GC_MessageAction "{0EEDCF1F075F9015}" {
+       m_sTitle "INTEL Update"
+       m_sMessage "A group of locals have reported a strange looking military unit moving towards the coast. The area they indicated is now marked on your map."
+      }
+     }
+    }
+    GC_Event "{34033572817C32A2}" {
+     m_sName "Spawn OPFOR Marker - Location 4"
+     m_aConditions {
+      GC_GameModeStateCondition "{DAAA9CB7CE2786DE}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{BA6C4124FC803B79}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{817341EE5830EA57}" {
+         m_sFlagName "ExtractPoint4"
+        }
+        GC_AreaCondition "{E31D27F6BFE895CA}" {
+         m_sArea "GC_MigrationArea_Pilots_Left_Area"
+         m_Targets GC_CharacterAreaTargets "{771EFB9B22AF1F7A}" {
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{945F5718BFC09F0C}" {
+          m_fRequiredShare 0.49
+          m_bWholeMission 1
+          m_bAtMost 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{EE661E92EDB73BF7}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+        GC_MissionFlagCondition "{AC07D8972263015E}" {
+         m_sFlagName "mission_in_progress"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{07AEC2A3197B00BA}" {
+       m_sMessage "Spawn OPFOR Marker - Location 4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{EC4735B593D8C151}" {
+     m_sName "Spawn OPFOR Marker - Location 4 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{6354311064384CBE}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{E2449BFD31D764E9}" {
+       m_sEventName "Spawn OPFOR Marker - Location 4"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{DEE1DB25CDE0EFCA}" {
+       m_Spawn GC_PrefabSpawn "{33EED25E738E82CB}" {
+        m_sLocation "extract4"
+        m_sPrefab "{02742280107F45D9}worlds/FloridaMan/Prefabs/Setpeice/opfor_notice_marker.et"
+       }
+      }
+      GC_MessageAction "{A8B27DCDE59C01ED}" {
+       m_sTitle "INTEL Update"
+       m_sMessage "A group of locals have reported a strange looking military unit moving towards the coast. The area they indicated is now marked on your map."
+      }
+     }
+    }
+    GC_Event "{1DD84E1C5EB7F1F1}" {
+     m_sName "Spawn OPFOR Marker - Location 5"
+     m_aConditions {
+      GC_GameModeStateCondition "{25E0FAF6D50BD5E2}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{8721A90324D7CB50}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{D5B0D793BCA94540}" {
+         m_sFlagName "ExtractPoint5"
+        }
+        GC_AreaCondition "{5571AE820C8786F0}" {
+         m_sArea "GC_MigrationArea_Pilots_Left_Area"
+         m_Targets GC_CharacterAreaTargets "{1A5EF0D084E778E5}" {
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{58F54BF764034018}" {
+          m_fRequiredShare 0.49
+          m_bWholeMission 1
+          m_bAtMost 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{CEF80EE32B9EB336}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+        GC_MissionFlagCondition "{FDC8E2C5EB5FC1E6}" {
+         m_sFlagName "mission_in_progress"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D3E586A4BA2EAD65}" {
+       m_sMessage "Spawn OPFOR Marker - Location 5"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9FF5ED690FF468BF}" {
+     m_sName "Spawn OPFOR Marker - Location 5 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{FDA1EDA72F2AACBB}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{814C1DB9C0212933}" {
+       m_sEventName "Spawn OPFOR Marker - Location 5"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{4F61B9ED312CF421}" {
+       m_Spawn GC_PrefabSpawn "{B3CE51FE8193A823}" {
+        m_sLocation "extract5"
+        m_sPrefab "{02742280107F45D9}worlds/FloridaMan/Prefabs/Setpeice/opfor_notice_marker.et"
+       }
+      }
+      GC_MessageAction "{E9280FD4DCF4D404}" {
+       m_sTitle "INTEL Update"
+       m_sMessage "A group of locals have reported a strange looking military unit moving towards the coast. The area they indicated is now marked on your map."
+      }
+     }
+    }
+    GC_Event "{D5B0602799C1E106}" {
+     m_sName "MidMission Workaround (10s)"
+     m_Advanced GC_EventOptions "{B9530D2E9E0F29F5}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_FlagAction "{3ED2C565E9D6D051}" {
+       m_sFlagName "mission_in_progress"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 2343.295 94.405 1305.605
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CC5F08F3}" {
+        m_sCallsign "Spear"
+       }
+      }
+     }
+     m_sFactionRadioEncryptionKey "GetShotDownDumbasses"
+     m_iFactionRadioFrequency 62000
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     UIInfo SCR_FactionUIInfo "{5CC8B5EDA0CDBD62}" {
+      Name "Pararescue"
+     }
+     m_aFriendlyFactionsIds {
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CC5F08F3}" {
+        m_sCallsign "Spear"
+       }
+      }
+      m_sCallsignGroupFormat "Team %3, 54th Pararescue Group"
+     }
+    }
+    SCR_Faction "{62EB308733CA83DD}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "0"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "3"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GC_RadiusAreaEntity GC_MigrationArea_USInPropagandaArea : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 2750.99 77.397 1651.592
+ m_fRadius 5.5
+}
