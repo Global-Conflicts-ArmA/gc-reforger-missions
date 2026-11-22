@@ -1,0 +1,2797 @@
+SCR_AIWorld aiw : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{6A3CBE980723EAF5}" {
+     NavmeshFile "{E08B16AADAB901D8}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Soldier.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{04F808CEFD545B32}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Vehicle.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{6D7CE9C2F346F22E}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_LowRes.nmn"
+    }
+   }
+  }
+ }
+}
+GC_LobbyGameMode GC_MigratedMission : "{E6EF26D6A7AC958A}worlds/Til/RouteTremaux/RouteTremaux_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6A4724D94576E4C4}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 6
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{9BF226BF50BF6F6E}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{7BE1E118CC3BC976}" {
+     m_sName "block_AB"
+    }
+    GC_MissionFlag "{CC8DE8F6AB1E198B}" {
+     m_sName "block_BF"
+    }
+    GC_MissionFlag "{AF42A6E216BC9AAE}" {
+     m_sName "block_CD1"
+    }
+    GC_MissionFlag "{76E2977B780F6711}" {
+     m_sName "block_CD2"
+    }
+    GC_MissionFlag "{E7A1854714D59B98}" {
+     m_sName "block_CD3"
+    }
+    GC_MissionFlag "{7EAA5A22FD92077C}" {
+     m_sName "block_DE"
+    }
+    GC_MissionFlag "{C318187C838364A9}" {
+     m_sName "block_DF"
+    }
+    GC_MissionFlag "{BDA18B4CB9E65F03}" {
+     m_sName "block_EO1"
+    }
+    GC_MissionFlag "{BFCB4CCFB9E845D8}" {
+     m_sName "block_EO2"
+    }
+    GC_MissionFlag "{1F2573386846B626}" {
+     m_sName "block_FG"
+    }
+    GC_MissionFlag "{088652DF8BD3DC49}" {
+     m_sName "block_FH"
+    }
+    GC_MissionFlag "{4B39203BB2A299FB}" {
+     m_sName "block_GO"
+    }
+    GC_MissionFlag "{87C0A7F948F4C3C9}" {
+     m_sName "block_HO"
+    }
+    GC_MissionFlag "{F00D221D0D15B795}" {
+     m_sName "block_SA"
+    }
+    GC_MissionFlag "{F1297364D3806DA2}" {
+     m_sName "block_SB"
+    }
+    GC_MissionFlag "{477DB722EF219CF8}" {
+     m_sName "block_SC"
+    }
+    GC_MissionFlag "{CDD37A0009A6D24A}" {
+     m_sName "block_SD"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{255D8745D4702569}" {
+     m_sName "GC_MigrationStartupSampling"
+     m_aConditions {
+      GC_ConditionGroup "{AAFA18CF22935FF0}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{1269C63B79419833}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{A7E306F709F2B6A5}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{86C1F951200F200C}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_FlagSamplingAction "{1269C63B79419833}" {
+       m_iDrawCount 1
+       m_aFlags {
+        "block_SA"
+        "block_SB"
+       }
+      }
+      GC_FlagSamplingAction "{7E176A1CCCE2936F}" {
+       m_iDrawCount 1
+       m_aFlags {
+        "block_SC"
+        "block_SD"
+       }
+      }
+      GC_FlagSamplingAction "{3548BCFC7E2B752D}" {
+       m_iDrawCount 1
+       m_aFlags {
+        "block_AB"
+        "block_BF"
+       }
+      }
+      GC_FlagSamplingAction "{E86D5678E022E17B}" {
+       m_iDrawCount 2
+       m_aFlags {
+        "block_CD1"
+        "block_CD2"
+        "block_CD3"
+       }
+      }
+      GC_FlagSamplingAction "{A75A008C8E8A5723}" {
+       m_iDrawCount 1
+       m_aFlags {
+        "block_DE"
+        "block_DF"
+       }
+      }
+      GC_FlagSamplingAction "{D88907F990031731}" {
+       m_iDrawCount 1
+       m_aFlags {
+        "block_EO1"
+        "block_EO2"
+       }
+      }
+      GC_FlagSamplingAction "{E3A298C1EA573ADA}" {
+       m_iDrawCount 1
+       m_aFlags {
+        "block_FG"
+        "block_FH"
+       }
+      }
+      GC_FlagSamplingAction "{1F533E716A32C590}" {
+       m_iDrawCount 1
+       m_aFlags {
+        "block_GO"
+        "block_HO"
+       }
+      }
+     }
+    }
+    GC_Event "{05044B318D412CB7}" {
+     m_sName "Major Victory"
+     m_aConditions {
+      GC_MissionFlagCondition "{9B20989C1D45EFB9}" {
+       m_sFlagName "O"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D94C037178DD4FF6}" {
+       m_sMessage "Major Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2123BF0911DCAF00}" {
+     m_sName "Major Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{089A3E38E7385AF3}" {
+       m_sEventName "Major Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{CF6DB798BD18D305}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{C09321D455718587}" {
+       m_sTitle "MAJOR VICTORY"
+       m_sMessage "The LAR platoon completed its reconnaissance mission and was successful in identifying a viable route."
+      }
+     }
+    }
+    GC_Event "{31FE24DF5D16ED3F}" {
+     m_sName "Minor Victory"
+     m_aConditions {
+      GC_GameModeStateCondition "{1AB0BBE04A9479B4}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{E208128EA90BF6CF}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{092ACE8F2BBE06EB}" {
+         m_sFlagName "_O"
+        }
+        GC_MissionFlagCondition "{A2963C0AB0AC5D8D}" {
+         m_sFlagName "O"
+         m_bRequireFalse 1
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{80DC72BB992B7BE3}" {
+       m_sMessage "Minor Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{834E0D7D24DEB319}" {
+     m_sName "Minor Victory (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{E6635BF2FE6E2595}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{2A7E9D81461013FE}" {
+       m_sEventName "Minor Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{BA61D6D787ADE3AF}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{4377306BC93C971D}" {
+       m_sTitle "MINOR VICTORY"
+       m_sMessage "The LAR platoon finished its reconnaissance mission, but failed to fully clear an adequate route along the way."
+      }
+     }
+    }
+    GC_Event "{DCF05F2A72A801F0}" {
+     m_sName "Defeat"
+     m_aConditions {
+      GC_CustomScriptCondition "{73236CABE60078C7}" {
+       m_Script GC_PeakFactionPopulationCheck "{C4A3F09B8D3FDABB}" {
+        m_sFaction "US"
+        m_fRatio 0.7
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E474F354F72C3754}" {
+       m_sMessage "Defeat"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BDCC3BFEAE938D9D}" {
+     m_sName "Defeat (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{14FA392747F93B04}" {
+       m_sEventName "Defeat"
+      }
+     }
+     m_Advanced GC_EventOptions "{8442EA510F0D19E3}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{300DA4992D0E005B}" {
+       m_sTitle "US DEFEAT"
+       m_sMessage "The LAR platoon took severe casualties and is unable to continue its mission."
+      }
+     }
+    }
+    GC_Event "{B64AC65DD21DEA75}" {
+     m_sName "GC_MigratedSpawn_68C985A54802A9B0"
+     m_aConditions {
+      GC_GameModeStateCondition "{4E473ED607B1F377}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{6349C6D807D3997D}" {
+       m_sFlagName "block_DF"
+       m_bRequireFalse 1
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F232C98CC882F6E7}" {
+       m_sMessage "GC_MigratedSpawn_68C985A54802A9B0"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3BC6BA16CB0FCB39}" {
+     m_sName "GC_MigratedSpawn_68C985A54802A9B0 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{C8F487837678807B}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{0305100BABA3840F}" {
+       m_sEventName "GC_MigratedSpawn_68C985A54802A9B0"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{3BC6BA16CB0FCB39}" {
+       m_Spawn GC_PrefabSpawn "{80510A65E6D6FC24}" {
+        m_sLocation "spawner_bridge_df"
+        m_sPrefab "{433EE8B3C947540E}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Narrow_Long_PillarBig.et"
+       }
+      }
+     }
+    }
+    GC_Event "{1B1201F4F3ACD8F9}" {
+     m_sName "GC_MigratedSpawn_927F859CB28EA751"
+     m_aConditions {
+      GC_GameModeStateCondition "{B52866C697AAB9F2}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{8CCD8E2500601FE9}" {
+       m_sFlagName "block_GO"
+       m_bRequireFalse 1
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3B155EE5C07345C5}" {
+       m_sMessage "GC_MigratedSpawn_927F859CB28EA751"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{4E301D2BB2DE7EF6}" {
+     m_sName "GC_MigratedSpawn_927F859CB28EA751 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{CE05C9460FDF4EF7}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{C50B4C9E5151054F}" {
+       m_sEventName "GC_MigratedSpawn_927F859CB28EA751"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{4E301D2BB2DE7EF6}" {
+       m_Spawn GC_PrefabSpawn "{D92A8A965A679C34}" {
+        m_sLocation "spawner_bridge_go"
+        m_sPrefab "{433EE8B3C947540E}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Narrow_Long_PillarBig.et"
+       }
+      }
+     }
+    }
+    GC_Event "{81F6123CB2990421}" {
+     m_sName "GC_MigratedSpawn_D6EB01A25ADEB4DC"
+     m_aConditions {
+      GC_GameModeStateCondition "{ABB9BBF14384A0A8}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{6305ECDA09038BFD}" {
+       m_sFlagName "block_SA"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{65E2624DA7936835}" {
+       m_sMessage "GC_MigratedSpawn_D6EB01A25ADEB4DC"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CC21044A01EDEC83}" {
+     m_sName "GC_MigratedSpawn_D6EB01A25ADEB4DC (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B682566779745ACF}" {
+       m_sEventName "GC_MigratedSpawn_D6EB01A25ADEB4DC"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{CC21044A01EDEC83}" {
+       m_Spawn GC_PrefabSpawn "{C79EF41E4E631EF9}" {
+        m_sLocation "spawner_abatis_sa_1"
+        m_sPrefab "{15714A0546C1DD3B}worlds/Til/RouteTremaux/Prefabs/blockers/abatis_1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{FAF3085022AA4B3A}" {
+     m_sName "GC_MigratedSpawn_5C2C4562BE277C9A"
+     m_aConditions {
+      GC_GameModeStateCondition "{88E6BE0383C3AC9C}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{F7F37FEE75731202}" {
+       m_sFlagName "block_SA"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5F37C031EA65E61C}" {
+       m_sMessage "GC_MigratedSpawn_5C2C4562BE277C9A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F369BB9C88D6AE1B}" {
+     m_sName "GC_MigratedSpawn_5C2C4562BE277C9A (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A6DA904A14BFEE5D}" {
+       m_sEventName "GC_MigratedSpawn_5C2C4562BE277C9A"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{F369BB9C88D6AE1B}" {
+       m_Spawn GC_PrefabSpawn "{2CA26AD041220591}" {
+        m_sLocation "spawner_abatis_sa_2"
+        m_sPrefab "{15714A0546C1DD3B}worlds/Til/RouteTremaux/Prefabs/blockers/abatis_1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{C05B4388520B8977}" {
+     m_sName "GC_MigratedSpawn_042D010460BFE358"
+     m_aConditions {
+      GC_GameModeStateCondition "{2191AF0270CEB1A4}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{550F7B34EDD1B945}" {
+       m_sFlagName "block_BF"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{BEA211F24ADC8D52}" {
+       m_sMessage "GC_MigratedSpawn_042D010460BFE358"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8D35C37A3F32FCBC}" {
+     m_sName "GC_MigratedSpawn_042D010460BFE358 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{15176A0CB433719D}" {
+       m_sEventName "GC_MigratedSpawn_042D010460BFE358"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{8D35C37A3F32FCBC}" {
+       m_Spawn GC_PrefabSpawn "{8EC3F134B56A822E}" {
+        m_sLocation "spawner_abatis_bf_1"
+        m_sPrefab "{15714A0546C1DD3B}worlds/Til/RouteTremaux/Prefabs/blockers/abatis_1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{24B4FB5341592851}" {
+     m_sName "GC_MigratedSpawn_BAC31384F8E5501C"
+     m_aConditions {
+      GC_GameModeStateCondition "{4E7EEC5794E28F91}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{27E6DC9207AF2CF7}" {
+       m_sFlagName "block_BF"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{47A524957543CC2A}" {
+       m_sMessage "GC_MigratedSpawn_BAC31384F8E5501C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1AB356AE51DF79A8}" {
+     m_sName "GC_MigratedSpawn_BAC31384F8E5501C (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5FF6903B8A83FEE9}" {
+       m_sEventName "GC_MigratedSpawn_BAC31384F8E5501C"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{1AB356AE51DF79A8}" {
+       m_Spawn GC_PrefabSpawn "{C591EF19CC975904}" {
+        m_sLocation "spawner_abatis_bf_2"
+        m_sPrefab "{15714A0546C1DD3B}worlds/Til/RouteTremaux/Prefabs/blockers/abatis_1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{CD062692038E36C1}" {
+     m_sName "GC_MigratedSpawn_200D62D33F10BBC2"
+     m_aConditions {
+      GC_GameModeStateCondition "{52F73ED38A0FE5C6}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{8EA6A3BB7AB8B496}" {
+       m_sFlagName "block_SB"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8198708916A9FBAE}" {
+       m_sMessage "GC_MigratedSpawn_200D62D33F10BBC2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9B414804679FFFAD}" {
+     m_sName "GC_MigratedSpawn_200D62D33F10BBC2 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E4F31140F79E6828}" {
+       m_sEventName "GC_MigratedSpawn_200D62D33F10BBC2"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{9B414804679FFFAD}" {
+       m_Spawn GC_PrefabSpawn "{A7C6E423C75C8EF8}" {
+        m_sLocation "spawner_wrecks_sb"
+        m_sPrefab "{12110181E5515F61}worlds/Til/RouteTremaux/Prefabs/blockers/wreck_blockage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{C90EFD7A6661DF73}" {
+     m_sName "GC_MigratedSpawn_A86BAFF80396877D"
+     m_aConditions {
+      GC_GameModeStateCondition "{12F9EB1DB78273D9}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{A9884174ECD15E2C}" {
+       m_sFlagName "block_AB"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{53F1D3941442AC05}" {
+       m_sMessage "GC_MigratedSpawn_A86BAFF80396877D"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A9FFFF14100E0C56}" {
+     m_sName "GC_MigratedSpawn_A86BAFF80396877D (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6E20F4D6B23418A9}" {
+       m_sEventName "GC_MigratedSpawn_A86BAFF80396877D"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{A9FFFF14100E0C56}" {
+       m_Spawn GC_PrefabSpawn "{8718156A2AD2637C}" {
+        m_sLocation "spawner_rocks_ab_1"
+        m_sPrefab "{DFE345C3BB1A8F13}worlds/Til/RouteTremaux/Prefabs/blockers/rocks_1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{6FD85F8D9F5FFA94}" {
+     m_sName "GC_MigratedSpawn_B3B1BFE829D0B924"
+     m_aConditions {
+      GC_GameModeStateCondition "{17C627B2F1C9B774}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{0078F3EF80C8F600}" {
+       m_sFlagName "block_AB"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DC5695D932FEB3E2}" {
+       m_sMessage "GC_MigratedSpawn_B3B1BFE829D0B924"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9666C45C2D91C66B}" {
+     m_sName "GC_MigratedSpawn_B3B1BFE829D0B924 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CAF04CF6547B7A67}" {
+       m_sEventName "GC_MigratedSpawn_B3B1BFE829D0B924"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{9666C45C2D91C66B}" {
+       m_Spawn GC_PrefabSpawn "{5F0632A4BE18D75F}" {
+        m_sLocation "spawner_rocks_ab_2"
+        m_sPrefab "{DFE345C3BB1A8F13}worlds/Til/RouteTremaux/Prefabs/blockers/rocks_1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{AE0AA9AA2D195564}" {
+     m_sName "GC_MigratedSpawn_2187C7BF72A705A0"
+     m_aConditions {
+      GC_GameModeStateCondition "{1A84B142043DC679}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{73E339F46F492B98}" {
+       m_sFlagName "block_SC"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1DE86F0B1FFCA681}" {
+       m_sMessage "GC_MigratedSpawn_2187C7BF72A705A0"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{93D4C0D33DBD3D6D}" {
+     m_sName "GC_MigratedSpawn_2187C7BF72A705A0 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F94DFC67E8BBE0FD}" {
+       m_sEventName "GC_MigratedSpawn_2187C7BF72A705A0"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{93D4C0D33DBD3D6D}" {
+       m_Spawn GC_PrefabSpawn "{A5CBADCF4BA13EDA}" {
+        m_sLocation "spawner_abatis_sc_1"
+        m_sPrefab "{15714A0546C1DD3B}worlds/Til/RouteTremaux/Prefabs/blockers/abatis_1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{32FC937D42BE11B5}" {
+     m_sName "GC_MigratedSpawn_70BBFEB1DA6B853B"
+     m_aConditions {
+      GC_GameModeStateCondition "{1A99C0FA126BCE82}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{FC2B0BA58468EED5}" {
+       m_sFlagName "block_SC"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A42F13A011AC91FF}" {
+       m_sMessage "GC_MigratedSpawn_70BBFEB1DA6B853B"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FB6EC831303629A2}" {
+     m_sName "GC_MigratedSpawn_70BBFEB1DA6B853B (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1861E916832B4F46}" {
+       m_sEventName "GC_MigratedSpawn_70BBFEB1DA6B853B"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{FB6EC831303629A2}" {
+       m_Spawn GC_PrefabSpawn "{CB72DA1658D8FF2D}" {
+        m_sLocation "spawner_abatis_sc_2"
+        m_sPrefab "{15714A0546C1DD3B}worlds/Til/RouteTremaux/Prefabs/blockers/abatis_1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{E61B62352D9FC2A5}" {
+     m_sName "GC_MigratedSpawn_B7B0EC85851ABCF7"
+     m_aConditions {
+      GC_GameModeStateCondition "{4C2BC83C09BF5FB0}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{CD08681FCB3EF834}" {
+       m_sFlagName "block_SD"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F7C2E0266DAB35F8}" {
+       m_sMessage "GC_MigratedSpawn_B7B0EC85851ABCF7"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7CD5E2488A4586C9}" {
+     m_sName "GC_MigratedSpawn_B7B0EC85851ABCF7 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{44FF1274C6B707FA}" {
+       m_sEventName "GC_MigratedSpawn_B7B0EC85851ABCF7"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{7CD5E2488A4586C9}" {
+       m_Spawn GC_PrefabSpawn "{C51C4A7DEA0C7A16}" {
+        m_sLocation "spawner_abatis_sd_1"
+        m_sPrefab "{15714A0546C1DD3B}worlds/Til/RouteTremaux/Prefabs/blockers/abatis_1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{33187F2942BFA60D}" {
+     m_sName "GC_MigratedSpawn_7DDC232F323123C2"
+     m_aConditions {
+      GC_GameModeStateCondition "{F354D68533EEB629}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{64910A4DB6508690}" {
+       m_sFlagName "block_SD"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{45FA6A82918DBEFB}" {
+       m_sMessage "GC_MigratedSpawn_7DDC232F323123C2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7627E3F5E42B00EF}" {
+     m_sName "GC_MigratedSpawn_7DDC232F323123C2 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B62BD04913601F90}" {
+       m_sEventName "GC_MigratedSpawn_7DDC232F323123C2"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{7627E3F5E42B00EF}" {
+       m_Spawn GC_PrefabSpawn "{3D099D1BB2D058AF}" {
+        m_sLocation "spawner_abatis_sd_2"
+        m_sPrefab "{15714A0546C1DD3B}worlds/Til/RouteTremaux/Prefabs/blockers/abatis_1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{96917ED0E39F0D35}" {
+     m_sName "GC_MigratedSpawn_35989C2B4E5908C2"
+     m_aConditions {
+      GC_GameModeStateCondition "{17E6225E72EA2D99}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{42748F08099EA456}" {
+       m_sFlagName "block_CD1"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{98FB43CB2D047E41}" {
+       m_sMessage "GC_MigratedSpawn_35989C2B4E5908C2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9F883EEB105E658F}" {
+     m_sName "GC_MigratedSpawn_35989C2B4E5908C2 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{94B402B82A2A3D40}" {
+       m_sEventName "GC_MigratedSpawn_35989C2B4E5908C2"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{9F883EEB105E658F}" {
+       m_Spawn GC_PrefabSpawn "{425134D4CA13A594}" {
+        m_sLocation "spawner_abatis_cd1"
+        m_sPrefab "{15714A0546C1DD3B}worlds/Til/RouteTremaux/Prefabs/blockers/abatis_1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{278B00A48F721F98}" {
+     m_sName "GC_MigratedSpawn_62D25D127FC54035"
+     m_aConditions {
+      GC_GameModeStateCondition "{6179C9ABC6E68902}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{238B7A49AC94D27E}" {
+       m_sFlagName "block_CD2"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{44DFF4F756A28135}" {
+       m_sMessage "GC_MigratedSpawn_62D25D127FC54035"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1D2FBC74D5037EDA}" {
+     m_sName "GC_MigratedSpawn_62D25D127FC54035 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BB79099BB401F266}" {
+       m_sEventName "GC_MigratedSpawn_62D25D127FC54035"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{1D2FBC74D5037EDA}" {
+       m_Spawn GC_PrefabSpawn "{3FE9288C268DAA0B}" {
+        m_sLocation "spawner_abatis_cd2"
+        m_sPrefab "{15714A0546C1DD3B}worlds/Til/RouteTremaux/Prefabs/blockers/abatis_1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{B1CB42E70997C2DF}" {
+     m_sName "GC_MigratedSpawn_7C40577AC7DA9113"
+     m_aConditions {
+      GC_GameModeStateCondition "{72DCB850DC95D48F}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{FB448AFB68567243}" {
+       m_sFlagName "block_CD3"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D881CE9FF5A532C0}" {
+       m_sMessage "GC_MigratedSpawn_7C40577AC7DA9113"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E0F33F9A6D3383BD}" {
+     m_sName "GC_MigratedSpawn_7C40577AC7DA9113 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{82A43D10EC95E495}" {
+       m_sEventName "GC_MigratedSpawn_7C40577AC7DA9113"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{E0F33F9A6D3383BD}" {
+       m_Spawn GC_PrefabSpawn "{A6B033DA5532A93D}" {
+        m_sLocation "spawner_abatis_cd3"
+        m_sPrefab "{15714A0546C1DD3B}worlds/Til/RouteTremaux/Prefabs/blockers/abatis_1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{C4EE8BD137101D89}" {
+     m_sName "GC_MigratedSpawn_D128C78E78F29D66"
+     m_aConditions {
+      GC_GameModeStateCondition "{A8CB661EB484570D}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{D482003144DEC023}" {
+       m_sFlagName "block_DE"
+       m_bRequireFalse 1
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{15A9EA3AEC9E66EA}" {
+       m_sMessage "GC_MigratedSpawn_D128C78E78F29D66"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D85300D90E9AA3FD}" {
+     m_sName "GC_MigratedSpawn_D128C78E78F29D66 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{6A99BD8421E09467}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{163A731C80A327FF}" {
+       m_sEventName "GC_MigratedSpawn_D128C78E78F29D66"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{D85300D90E9AA3FD}" {
+       m_Spawn GC_PrefabSpawn "{3163F77944629F57}" {
+        m_sLocation "spawner_bridge_de"
+        m_sPrefab "{433EE8B3C947540E}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Narrow_Long_PillarBig.et"
+       }
+      }
+     }
+    }
+    GC_Event "{A232DCE1F3F2B068}" {
+     m_sName "GC_MigratedSpawn_75109BCF723C10A8"
+     m_aConditions {
+      GC_GameModeStateCondition "{2A82E7B105194F12}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{657C815D7CF0D68F}" {
+       m_sFlagName "block_EO1"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3BE782689659B6DD}" {
+       m_sMessage "GC_MigratedSpawn_75109BCF723C10A8"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{DEDF1891EB4BBE46}" {
+     m_sName "GC_MigratedSpawn_75109BCF723C10A8 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{48B60B10207A795F}" {
+       m_sEventName "GC_MigratedSpawn_75109BCF723C10A8"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{DEDF1891EB4BBE46}" {
+       m_Spawn GC_PrefabSpawn "{5A404DC7F7D35CFA}" {
+        m_sLocation "spawner_wrecks_eo1"
+        m_sPrefab "{3D5CC9EC2D3F0A8B}worlds/Til/RouteTremaux/Prefabs/blockers/creek_wrecks.et"
+       }
+      }
+     }
+    }
+    GC_Event "{DE11EDFAF790E0F9}" {
+     m_sName "GC_MigratedSpawn_B7B50903D8210691"
+     m_aConditions {
+      GC_GameModeStateCondition "{20AB919B0FB68815}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{B472A88C6006077D}" {
+       m_sFlagName "block_EO2"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E271D155D274AF56}" {
+       m_sMessage "GC_MigratedSpawn_B7B50903D8210691"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8C43D769A996CB8D}" {
+     m_sName "GC_MigratedSpawn_B7B50903D8210691 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{EC364265E7F6DDF4}" {
+       m_sEventName "GC_MigratedSpawn_B7B50903D8210691"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{8C43D769A996CB8D}" {
+       m_Spawn GC_PrefabSpawn "{0EC39C14AFCEAA25}" {
+        m_sLocation "spawner_wrecks_eo2"
+        m_sPrefab "{3D5CC9EC2D3F0A8B}worlds/Til/RouteTremaux/Prefabs/blockers/creek_wrecks.et"
+       }
+      }
+     }
+    }
+    GC_Event "{020B5AB581BE0D2F}" {
+     m_sName "GC_MigratedSpawn_09278589C75564E9"
+     m_aConditions {
+      GC_GameModeStateCondition "{1AB5F7304A71E970}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{C7CF3318722CD846}" {
+       m_sFlagName "block_FG"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{318FE9CF658CCA86}" {
+       m_sMessage "GC_MigratedSpawn_09278589C75564E9"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0E83D1EAC347F265}" {
+     m_sName "GC_MigratedSpawn_09278589C75564E9 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{90477ACAEC264B67}" {
+       m_sEventName "GC_MigratedSpawn_09278589C75564E9"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{0E83D1EAC347F265}" {
+       m_Spawn GC_PrefabSpawn "{E35EADFDCBC81AEE}" {
+        m_sLocation "spawner_rocks_fg_1"
+        m_sPrefab "{DFE345C3BB1A8F13}worlds/Til/RouteTremaux/Prefabs/blockers/rocks_1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{6244FCA5CF719964}" {
+     m_sName "GC_MigratedSpawn_77AC1AA3FA1DB98F"
+     m_aConditions {
+      GC_GameModeStateCondition "{F3A6287A8977DA28}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{8D379E7970A0742C}" {
+       m_sFlagName "block_FG"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FAADF9C24BD5A8D1}" {
+       m_sMessage "GC_MigratedSpawn_77AC1AA3FA1DB98F"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C81BEF898E9FDF1A}" {
+     m_sName "GC_MigratedSpawn_77AC1AA3FA1DB98F (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C480F6C3C20E89FF}" {
+       m_sEventName "GC_MigratedSpawn_77AC1AA3FA1DB98F"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{C81BEF898E9FDF1A}" {
+       m_Spawn GC_PrefabSpawn "{ACE05169BAE9B3E2}" {
+        m_sLocation "spawner_rocks_fg_2"
+        m_sPrefab "{DFE345C3BB1A8F13}worlds/Til/RouteTremaux/Prefabs/blockers/rocks_1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{494DE7638500BBB1}" {
+     m_sName "GC_MigratedSpawn_D5E3A723E7CDB054"
+     m_aConditions {
+      GC_GameModeStateCondition "{E8D1F0F5C6EA3BCE}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{44E934758AB0270D}" {
+       m_sFlagName "block_FG"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{AABFC71841206F21}" {
+       m_sMessage "GC_MigratedSpawn_D5E3A723E7CDB054"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B592E7A3C216EE41}" {
+     m_sName "GC_MigratedSpawn_D5E3A723E7CDB054 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{76616DB12627150E}" {
+       m_sEventName "GC_MigratedSpawn_D5E3A723E7CDB054"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{B592E7A3C216EE41}" {
+       m_Spawn GC_PrefabSpawn "{969DE5D05B551174}" {
+        m_sLocation "spawner_rocks_fg_3"
+        m_sPrefab "{DFE345C3BB1A8F13}worlds/Til/RouteTremaux/Prefabs/blockers/rocks_1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{265C544A203F38E2}" {
+     m_sName "GC_MigratedSpawn_EF9F45974CCC9254"
+     m_aConditions {
+      GC_GameModeStateCondition "{705098BBDBF5BBAE}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{1C940A036332A056}" {
+       m_sFlagName "block_FH"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{EBC1EAD9582AFD00}" {
+       m_sMessage "GC_MigratedSpawn_EF9F45974CCC9254"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{48FC35D287A6FA3B}" {
+     m_sName "GC_MigratedSpawn_EF9F45974CCC9254 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8EBD34A8CC099A21}" {
+       m_sEventName "GC_MigratedSpawn_EF9F45974CCC9254"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{48FC35D287A6FA3B}" {
+       m_Spawn GC_PrefabSpawn "{7A4389033E813F7B}" {
+        m_sLocation "spawner_abatis_fh"
+        m_sPrefab "{15714A0546C1DD3B}worlds/Til/RouteTremaux/Prefabs/blockers/abatis_1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{8E55E79B198C81EE}" {
+     m_sName "GC_MigratedSpawn_F9DDABD5CAAE0A2F"
+     m_aConditions {
+      GC_GameModeStateCondition "{04DD2475C60FE060}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{467678EF5177CDF5}" {
+       m_sFlagName "block_HO"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{025D8BE24EACA67C}" {
+       m_sMessage "GC_MigratedSpawn_F9DDABD5CAAE0A2F"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CE4A17A990B6470F}" {
+     m_sName "GC_MigratedSpawn_F9DDABD5CAAE0A2F (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CFF6D1AAC5FC8E4D}" {
+       m_sEventName "GC_MigratedSpawn_F9DDABD5CAAE0A2F"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{CE4A17A990B6470F}" {
+       m_Spawn GC_PrefabSpawn "{6FC31E9DDABDDD11}" {
+        m_sLocation "spawner_wrecks_HO"
+        m_sPrefab "{3D5CC9EC2D3F0A8B}worlds/Til/RouteTremaux/Prefabs/blockers/creek_wrecks.et"
+       }
+      }
+     }
+    }
+    GC_Event "{2C64B9C07760A012}" {
+     m_sName "GC_MigratedSpawn_A612FB623271CCB8"
+     m_aConditions {
+      GC_GameModeStateCondition "{5EDC230E19C0F5BA}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{28A725D088562249}" {
+       m_sFlagName "block_DF"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E5927DDBFE67C52B}" {
+       m_sMessage "GC_MigratedSpawn_A612FB623271CCB8"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6F94B149CC8F6404}" {
+     m_sName "GC_MigratedSpawn_A612FB623271CCB8 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{70F6D8173D37D7A0}" {
+       m_sEventName "GC_MigratedSpawn_A612FB623271CCB8"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{6F94B149CC8F6404}" {
+       m_Spawn GC_PrefabSpawn "{387CE761BDDFD25A}" {
+        m_sLocation "spawner_wrecks_df"
+        m_sPrefab "{4DE0785DC4B7316D}worlds/Til/RouteTremaux/Prefabs/blockers/bridge_wrecks.et"
+       }
+      }
+     }
+    }
+    GC_Event "{FC64521A288E6DFC}" {
+     m_sName "GC_MigratedSpawn_C94ED33AE8A3EAD8"
+     m_aConditions {
+      GC_GameModeStateCondition "{7D76F1521A075ADE}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{35471641AA728B5B}" {
+       m_sFlagName "block_DE"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F59AB964DA87AF90}" {
+       m_sMessage "GC_MigratedSpawn_C94ED33AE8A3EAD8"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{909A59F2EBDD8934}" {
+     m_sName "GC_MigratedSpawn_C94ED33AE8A3EAD8 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{AC527A33D490801B}" {
+       m_sEventName "GC_MigratedSpawn_C94ED33AE8A3EAD8"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{909A59F2EBDD8934}" {
+       m_Spawn GC_PrefabSpawn "{1789E1E76433A29C}" {
+        m_sLocation "spawner_wrecks_de"
+        m_sPrefab "{4DE0785DC4B7316D}worlds/Til/RouteTremaux/Prefabs/blockers/bridge_wrecks.et"
+       }
+      }
+     }
+    }
+   }
+   m_aAreaFlagObservers {
+    GC_AreaFlagObserver "{F73459D034782AEC}" {
+     m_sFlag "_O"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{3F4D62F97DC07575}" {
+      m_sArea "shape_O"
+      m_Targets GC_CharacterAreaTargets "{04D64A30206383B1}" {
+       m_aFactions {
+        "US"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{557971F9F816FA5C}" {
+       m_fRequiredShare 0.75
+       m_bWholeMission 1
+       m_bWholeNumberQuotient 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{243119D0AFEA5CB2}" {
+     m_sFlag "_A"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{522A6135DFBF1AF3}" {
+      m_sArea "trigger_A"
+      m_Targets GC_CharacterAreaTargets "{4D4935A5140B3061}" {
+       m_iWho 2
+       m_aFactions {
+        "US"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{D6626154174702FC}" {
+       m_fRequiredShare 0.5
+      }
+     }
+    }
+    GC_AreaFlagObserver "{C577ECB95F096AD7}" {
+     m_sFlag "_B"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{8615FB0DDF9F35E8}" {
+      m_sArea "trigger_B"
+      m_Targets GC_CharacterAreaTargets "{FAF69B4A1918FF3A}" {
+       m_iWho 2
+       m_aFactions {
+        "US"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{D2F5C193CBB0D64B}" {
+       m_fRequiredShare 0.5
+      }
+     }
+    }
+    GC_AreaFlagObserver "{404D0A18310859E7}" {
+     m_sFlag "_C"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{2B43A4D8A26886EF}" {
+      m_sArea "trigger_C"
+      m_Targets GC_CharacterAreaTargets "{7BA649F5F8A93B1D}" {
+       m_iWho 2
+       m_aFactions {
+        "US"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{B23264B742550038}" {
+       m_fRequiredShare 0.25
+      }
+     }
+    }
+    GC_AreaFlagObserver "{D7E0013386420D87}" {
+     m_sFlag "_D"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{8ADBD9CD070C8232}" {
+      m_sArea "trigger_D"
+      m_Targets GC_CharacterAreaTargets "{BF65A6A47845B779}" {
+       m_iWho 2
+       m_aFactions {
+        "US"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{3DE37DF34D347860}" {
+       m_fRequiredShare 0.25
+      }
+     }
+    }
+    GC_AreaFlagObserver "{5B10B13A219CF603}" {
+     m_sFlag "_E"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{FE50D1D0BA81592D}" {
+      m_sArea "trigger_E"
+      m_Targets GC_CharacterAreaTargets "{FE5B5074D920A6F0}" {
+       m_iWho 2
+       m_aFactions {
+        "US"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{B8BC6CE7FB2E3868}" {
+       m_fRequiredShare 0.5
+      }
+     }
+    }
+    GC_AreaFlagObserver "{E343E013F9C000AB}" {
+     m_sFlag "_F"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{FB9D80FF986C65FB}" {
+      m_sArea "trigger_F"
+      m_Targets GC_CharacterAreaTargets "{787B4D447EB745CF}" {
+       m_iWho 2
+       m_aFactions {
+        "US"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{41DC6AA9AE388EF2}" {
+       m_fRequiredShare 0.5
+      }
+     }
+    }
+    GC_AreaFlagObserver "{590180F95387D322}" {
+     m_sFlag "_G"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{49DBA6072897152A}" {
+      m_sArea "trigger_G"
+      m_Targets GC_CharacterAreaTargets "{DCCF95E9FBE0F9CE}" {
+       m_iWho 2
+       m_aFactions {
+        "US"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{6CF3CE5A0E6B48EF}" {
+       m_fRequiredShare 0.5
+      }
+     }
+    }
+    GC_AreaFlagObserver "{70E874D6A33D2174}" {
+     m_sFlag "_H"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{90ACB03A357715E7}" {
+      m_sArea "trigger_H"
+      m_Targets GC_CharacterAreaTargets "{27B2E2B9741AF04E}" {
+       m_iWho 2
+       m_aFactions {
+        "US"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{217C338897D949DA}" {
+       m_fRequiredShare 0.5
+      }
+     }
+    }
+    GC_AreaFlagObserver "{4FB71121630C97D3}" {
+     m_sFlag "obst_05"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{824D2C4D60F44A02}" {
+      m_sArea "tr_05"
+      m_Targets GC_NamedAreaTargets "{D9B7956449C74515}" {
+       m_aNames {
+        "oid_051" "oid_052" "oid_053" "oid_054"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{EB2AC30A0CCF4968}" {
+       m_fRequiredProportion 0
+       m_bWholeNumberQuotient 1
+       m_bAtMost 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{E504780467C79DBC}" {
+     m_sFlag "obst_06"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{F609F388D17D2259}" {
+      m_sArea "tr_06"
+      m_Targets GC_NamedAreaTargets "{384CBB6996597954}" {
+       m_aNames {
+        "oid_061" "oid_062" "oid_063" "oid_064"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{CC04A67424AF848F}" {
+       m_fRequiredProportion 0
+       m_bWholeNumberQuotient 1
+       m_bAtMost 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{BC9E6F6057795D9E}" {
+     m_sFlag "obst_08"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{C7CDF408B8684FBC}" {
+      m_sArea "tr_08"
+      m_Targets GC_NamedAreaTargets "{A44C536687BB99F4}" {
+       m_aNames {
+        "oid_081" "oid_082" "oid_083" "oid_084"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{FD1E79568A52C6D5}" {
+       m_fRequiredProportion 0
+       m_bWholeNumberQuotient 1
+       m_bAtMost 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{760BDF44565B9466}" {
+     m_sFlag "obst_09"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{9D31608C4C63C4B5}" {
+      m_sArea "tr_09"
+      m_Targets GC_NamedAreaTargets "{3275E770E77221E0}" {
+       m_aNames {
+        "oid_091" "oid_092" "oid_093" "oid_094"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{60B7C694973F1EFD}" {
+       m_fRequiredProportion 0
+       m_bWholeNumberQuotient 1
+       m_bAtMost 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{4D15C131FBB8473C}" {
+     m_sFlag "obst_12"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{D936D8FAC425822E}" {
+      m_sArea "tr_12"
+      m_Targets GC_NamedAreaTargets "{E0EE2B4783439050}" {
+       m_aNames {
+        "oid_121" "oid_122" "oid_123" "oid_124"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{A4EFED1D2B6B3839}" {
+       m_fRequiredProportion 0
+       m_bWholeNumberQuotient 1
+       m_bAtMost 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{EC922AC69DD5AB03}" {
+     m_sFlag "obst_15"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{03ECC65762409EF4}" {
+      m_sArea "tr_15"
+      m_Targets GC_NamedAreaTargets "{710D58F48491C83C}" {
+       m_aNames {
+        "oid_151" "oid_152" "oid_153" "oid_154"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{999721F8010080F9}" {
+       m_fRequiredProportion 0
+       m_bWholeNumberQuotient 1
+       m_bAtMost 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{5C3469540C441B02}" {
+     m_sFlag "obst_18"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{2C85E51E2F391C1F}" {
+      m_sArea "tr_18"
+      m_Targets GC_NamedAreaTargets "{32B56F0CA79E6FC7}" {
+       m_aNames {
+        "oid_181" "oid_182" "oid_183" "oid_184"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{D617323989C94A06}" {
+       m_fRequiredProportion 0
+       m_bWholeNumberQuotient 1
+       m_bAtMost 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{6272D47ACA26E9E0}" {
+     m_sFlag "obst_20"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{F4DAD4A78D7300E5}" {
+      m_sArea "tr_20"
+      m_Targets GC_NamedAreaTargets "{DF9947653A9AA2B8}" {
+       m_aNames {
+        "oid_201" "oid_202" "oid_203" "oid_204"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{E86BFF9A48321116}" {
+       m_fRequiredProportion 0
+       m_bWholeNumberQuotient 1
+       m_bAtMost 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{CA3AD685A2F8EE71}" {
+     m_sFlag "obst_21"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{D547EC7E9F01FC63}" {
+      m_sArea "tr_21"
+      m_Targets GC_NamedAreaTargets "{4CC033AEDC78FE15}" {
+       m_aNames {
+        "oid_211" "oid_212" "oid_213" "oid_214"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{34CE24159EB1F405}" {
+       m_fRequiredProportion 0
+       m_bWholeNumberQuotient 1
+       m_bAtMost 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{D2B989F8A9BF2E12}" {
+     m_sFlag "obst_22"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{70CE373B5DE054BF}" {
+      m_sArea "tr_22"
+      m_Targets GC_NamedAreaTargets "{ADCF860A4800E08F}" {
+       m_aNames {
+        "oid_221" "oid_222" "oid_223" "oid_224"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{2ACE0A201D388510}" {
+       m_fRequiredProportion 0
+       m_bWholeNumberQuotient 1
+       m_bAtMost 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{599CEA5F4021C378}" {
+     m_sFlag "obst_25"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{F5C91ECCB25E7A84}" {
+      m_sArea "tr_25"
+      m_Targets GC_NamedAreaTargets "{72E7379092696234}" {
+       m_aNames {
+        "oid_251" "oid_252" "oid_253" "oid_254"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{52C20BC85A91AF94}" {
+       m_fRequiredProportion 0
+       m_bWholeNumberQuotient 1
+       m_bAtMost 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{D9B7308B5E572439}" {
+     m_sFlag "obst_02"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{3C86B57107E0E41D}" {
+      m_sArea "tr_02"
+      m_Targets GC_NamedAreaTargets "{5F0249EA85F262BB}" {
+       m_aNames {
+        "oid_021" "oid_022" "oid_023" "oid_024" "oid_025"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{8535C5135DB0D5F1}" {
+       m_fRequiredProportion 0
+       m_bWholeNumberQuotient 1
+       m_bAtMost 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{8166415DE2134D86}" {
+     m_sFlag "obst_03"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{44D1CD1D18F531B8}" {
+      m_sArea "tr_03"
+      m_Targets GC_NamedAreaTargets "{400302A020F0231D}" {
+       m_aNames {
+        "oid_031" "oid_032" "oid_033" "oid_034" "oid_035"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{9A4D50571ECBF8F9}" {
+       m_fRequiredProportion 0
+       m_bWholeNumberQuotient 1
+       m_bAtMost 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{4A365BE759D87936}" {
+     m_sFlag "obst_04"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{B560FB57FA059935}" {
+      m_sArea "tr_04"
+      m_Targets GC_NamedAreaTargets "{C2583C8FC3CC5061}" {
+       m_aNames {
+        "oid_041" "oid_042" "oid_043" "oid_044" "oid_045"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{E6D3F231F645456B}" {
+       m_fRequiredProportion 0
+       m_bWholeNumberQuotient 1
+       m_bAtMost 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{B6E6BDADAD9000A5}" {
+     m_sFlag "obst_11"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{A3386D36426F3C66}" {
+      m_sArea "tr_11"
+      m_Targets GC_NamedAreaTargets "{D8592F827AF0D04E}" {
+       m_aNames {
+        "oid_111" "oid_112" "oid_113" "oid_114" "oid_115"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{7251DFE7C1D7EB7D}" {
+       m_fRequiredProportion 0
+       m_bWholeNumberQuotient 1
+       m_bAtMost 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{07553D732828C1B1}" {
+     m_sFlag "obst_13"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{C90F2CC4F5FCDC4A}" {
+      m_sArea "tr_13"
+      m_Targets GC_NamedAreaTargets "{7C465E2659F45355}" {
+       m_aNames {
+        "oid_131" "oid_132" "oid_133" "oid_134" "oid_135"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{B76F85BA364BA7FF}" {
+       m_fRequiredProportion 0
+       m_bWholeNumberQuotient 1
+       m_bAtMost 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{A54E272A47124718}" {
+     m_sFlag "obst_19"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{530AE311B8A3417E}" {
+      m_sArea "tr_19"
+      m_Targets GC_NamedAreaTargets "{F9A5DE7ED71A25EB}" {
+       m_aNames {
+        "oid_191" "oid_192" "oid_193" "oid_194" "oid_195"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{38CD3E19716F3091}" {
+       m_fRequiredProportion 0
+       m_bWholeNumberQuotient 1
+       m_bAtMost 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{CA095931A2AA25DE}" {
+     m_sFlag "obst_23"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{CE6BA302DF467251}" {
+      m_sArea "tr_23"
+      m_Targets GC_NamedAreaTargets "{68B909AAFDC6FB5D}" {
+       m_aNames {
+        "oid_231" "oid_232" "oid_233" "oid_234" "oid_235"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{2A0AC3791BA30CBD}" {
+       m_fRequiredProportion 0
+       m_bWholeNumberQuotient 1
+       m_bAtMost 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{3D81C938CC54FC6B}" {
+     m_sFlag "obst_24"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{D42FE9C7C3B5A05B}" {
+      m_sArea "tr_24"
+      m_Targets GC_NamedAreaTargets "{D17F17EE31212F33}" {
+       m_aNames {
+        "oid_241" "oid_242" "oid_243" "oid_244" "oid_245"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{77A1F670D93BABF4}" {
+       m_fRequiredProportion 0
+       m_bWholeNumberQuotient 1
+       m_bAtMost 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{A17F65A44CE252AF}" {
+     m_sFlag "obst_01"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{7D64FEF1C7D32B3C}" {
+      m_sArea "tr_01"
+      m_Targets GC_NamedAreaTargets "{261EF6F1F6F55E73}" {
+       m_aNames {
+        "oid_011" "oid_012" "oid_013" "oid_014" "oid_015"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{9A1A7F2637BAAB2B}" {
+       m_fRequiredProportion 0.26
+       m_bWholeNumberQuotient 1
+       m_bAtMost 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{4A7AFC591AA423CC}" {
+     m_sFlag "obst_07"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{B6DAF2752B3CA351}" {
+      m_sArea "tr_07"
+      m_Targets GC_NamedAreaTargets "{3ED6B2A2C8C366CF}" {
+       m_aNames {
+        "oid_071" "oid_072" "oid_073" "oid_074" "oid_075"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{56872A0EB5C0F15B}" {
+       m_fRequiredProportion 0.26
+       m_bWholeNumberQuotient 1
+       m_bAtMost 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{99DAF37880BC5728}" {
+     m_sFlag "obst_10"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{385ACEAF2F20B739}" {
+      m_sArea "tr_10"
+      m_Targets GC_NamedAreaTargets "{897A340D6A14A2F1}" {
+       m_aNames {
+        "oid_101" "oid_102" "oid_103" "oid_104" "oid_105"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{9083A21C9F384076}" {
+       m_fRequiredProportion 0.26
+       m_bWholeNumberQuotient 1
+       m_bAtMost 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{A36E4233765FECE3}" {
+     m_sFlag "obst_14"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{D2B65A8E70B5FB4F}" {
+      m_sArea "tr_14"
+      m_Targets GC_NamedAreaTargets "{69DC286491B7B9F5}" {
+       m_aNames {
+        "oid_141" "oid_142" "oid_143" "oid_144" "oid_145"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{638A1ED74D9FBB47}" {
+       m_fRequiredProportion 0.26
+       m_bWholeNumberQuotient 1
+       m_bAtMost 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{2953E8C563341EC8}" {
+     m_sFlag "obst_16"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{7E337ED7690D43EB}" {
+      m_sArea "tr_16"
+      m_Targets GC_NamedAreaTargets "{8D45E11C1ACE3A64}" {
+       m_aNames {
+        "oid_161" "oid_162" "oid_163" "oid_164" "oid_165"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{CC03C0E3E72610F1}" {
+       m_fRequiredProportion 0.26
+       m_bWholeNumberQuotient 1
+       m_bAtMost 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{DADFE27854959FB7}" {
+     m_sFlag "obst_17"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{FDB5BE7FAF7705EF}" {
+      m_sArea "tr_17"
+      m_Targets GC_NamedAreaTargets "{0E63CE75B6E47AB0}" {
+       m_aNames {
+        "oid_171" "oid_172" "oid_173" "oid_174" "oid_175"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{8A0B3A653A82F692}" {
+       m_fRequiredProportion 0.26
+       m_bWholeNumberQuotient 1
+       m_bAtMost 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{333246996132E912}" {
+     m_sFlag "obst_26"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{3B80635DFEA0A0F8}" {
+      m_sArea "tr_26"
+      m_Targets GC_NamedAreaTargets "{4B197BD88B410B4E}" {
+       m_aNames {
+        "oid_261" "oid_262" "oid_263" "oid_264" "oid_265"
+       }
+       m_bCountMissingAsOutside 1
+       m_bExcludeDestroyed 1
+      }
+      m_Requirement GC_LivingProportion "{37BCD90C87DD2870}" {
+       m_fRequiredProportion 0.26
+       m_bWholeNumberQuotient 1
+       m_bAtMost 1
+      }
+     }
+    }
+   }
+   m_aDerivedMissionFlags {
+    GC_DerivedMissionFlag "{37AF9731BC03ACFC}" {
+     m_sName "S"
+     m_Expression GC_RuleCondition "{11C91D1683879395}" {
+      m_iCheck 2
+      m_bTestAnswer 1
+     }
+    }
+    GC_DerivedMissionFlag "{FA6568C718EA7D83}" {
+     m_sName "O"
+     m_Expression GC_RuleCondition "{A17F5566D71FB0A1}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{E2859C3D654668A8}" {
+        m_iCheck 1
+        m_sFlagName "_O"
+       }
+       GC_RuleCondition "{94F8C5A873130E86}" {
+        m_eGroupNeeds 1
+        m_aChecks {
+         GC_RuleCondition "{39046ABE723A2ADF}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{3D9824F65376F852}" {
+            m_iCheck 1
+            m_sFlagName "EO1"
+           }
+           GC_RuleCondition "{89F5686BEB79B69A}" {
+            m_iCheck 1
+            m_sFlagName "E"
+           }
+          }
+         }
+         GC_RuleCondition "{6031A6ABA80F7585}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{01856C8B8222A27E}" {
+            m_iCheck 1
+            m_sFlagName "EO2"
+           }
+           GC_RuleCondition "{38E3920C9912EA91}" {
+            m_iCheck 1
+            m_sFlagName "E"
+           }
+          }
+         }
+         GC_RuleCondition "{291E523C2617B067}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{8D9FD2A054159259}" {
+            m_iCheck 1
+            m_sFlagName "GO"
+           }
+           GC_RuleCondition "{59217B46E5B3E738}" {
+            m_iCheck 1
+            m_sFlagName "G"
+           }
+          }
+         }
+         GC_RuleCondition "{D43FD3C393103361}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{D0932FFD2A95F8D9}" {
+            m_iCheck 1
+            m_sFlagName "HO"
+           }
+           GC_RuleCondition "{57285E763B4B703C}" {
+            m_iCheck 1
+            m_sFlagName "H"
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{EBDC1D4C5A0906D9}" {
+     m_sName "A"
+     m_Expression GC_RuleCondition "{0C80CCF612EA7F58}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{4844AA1DBEE2FB49}" {
+        m_iCheck 1
+        m_sFlagName "_A"
+       }
+       GC_RuleCondition "{E6728AE229F6228E}" {
+        m_eGroupNeeds 1
+        m_aChecks {
+         GC_RuleCondition "{A7A51A3C4AF4DE01}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{80C2CB3576CD11BF}" {
+            m_iCheck 1
+            m_sFlagName "SA"
+           }
+           GC_RuleCondition "{D453955E8563C188}" {
+            m_iCheck 1
+            m_sFlagName "S"
+           }
+          }
+         }
+         GC_RuleCondition "{720A2D25071706E8}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{3617AE8526694065}" {
+            m_iCheck 1
+            m_sFlagName "AB"
+           }
+           GC_RuleCondition "{AA122EE3268283CB}" {
+            m_iCheck 1
+            m_sFlagName "B"
+           }
+          }
+         }
+         GC_RuleCondition "{8867B5A8E5463BD7}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{BA28AA754F2784F0}" {
+            m_iCheck 1
+            m_sFlagName "AC"
+           }
+           GC_RuleCondition "{581C9B4B3ABCC0F3}" {
+            m_iCheck 1
+            m_sFlagName "C"
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{791FDAA1B24D17AE}" {
+     m_sName "B"
+     m_Expression GC_RuleCondition "{7AFFA3E703C083DE}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{B5BC73738766294C}" {
+        m_iCheck 1
+        m_sFlagName "_B"
+       }
+       GC_RuleCondition "{9CD0148E6E6AF88B}" {
+        m_eGroupNeeds 1
+        m_aChecks {
+         GC_RuleCondition "{6829E84AEB0FFC99}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{4DE0FC82EE946FCA}" {
+            m_iCheck 1
+            m_sFlagName "SB"
+           }
+           GC_RuleCondition "{F128C2675FA8E81A}" {
+            m_iCheck 1
+            m_sFlagName "S"
+           }
+          }
+         }
+         GC_RuleCondition "{B64615A65FF60A30}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{C93881C86FE01BD2}" {
+            m_iCheck 1
+            m_sFlagName "AB"
+           }
+           GC_RuleCondition "{1EBE1DD3F32CC26B}" {
+            m_iCheck 1
+            m_sFlagName "A"
+           }
+          }
+         }
+         GC_RuleCondition "{B6B137D8FE7C1D37}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{A833D53C98965555}" {
+            m_iCheck 1
+            m_sFlagName "BF"
+           }
+           GC_RuleCondition "{B56778FAE62BF1B1}" {
+            m_iCheck 1
+            m_sFlagName "F"
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{D57887F227339FAD}" {
+     m_sName "C"
+     m_Expression GC_RuleCondition "{96A614E973294822}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{4DEB263913EF3B71}" {
+        m_iCheck 1
+        m_sFlagName "_C"
+       }
+       GC_RuleCondition "{EADF94827417CBDE}" {
+        m_eGroupNeeds 1
+        m_aChecks {
+         GC_RuleCondition "{FDA63CF639FBA01C}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{3D6A2A82130069CA}" {
+            m_iCheck 1
+            m_sFlagName "SC"
+           }
+           GC_RuleCondition "{716F1E18770CFC96}" {
+            m_iCheck 1
+            m_sFlagName "S"
+           }
+          }
+         }
+         GC_RuleCondition "{D48DF250B238C18E}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{26787723720A251E}" {
+            m_iCheck 1
+            m_sFlagName "AC"
+           }
+           GC_RuleCondition "{3FD9E9726B55B719}" {
+            m_iCheck 1
+            m_sFlagName "A"
+           }
+          }
+         }
+         GC_RuleCondition "{40762D623EF46A16}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{5752FA674F19BBD0}" {
+            m_iCheck 1
+            m_sFlagName "CD1"
+           }
+           GC_RuleCondition "{7B279579AF9582E0}" {
+            m_iCheck 1
+            m_sFlagName "D"
+           }
+          }
+         }
+         GC_RuleCondition "{151C599E542B1DF3}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{52AE3B23B3ED5BBB}" {
+            m_iCheck 1
+            m_sFlagName "CD2"
+           }
+           GC_RuleCondition "{A44AA15765702A8E}" {
+            m_iCheck 1
+            m_sFlagName "D"
+           }
+          }
+         }
+         GC_RuleCondition "{B47ACA01B27E0B77}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{E80773DA7AA6D30D}" {
+            m_iCheck 1
+            m_sFlagName "CD3"
+           }
+           GC_RuleCondition "{33BC5D52C7B8EDEB}" {
+            m_iCheck 1
+            m_sFlagName "D"
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{05DE5F37E4B85DF6}" {
+     m_sName "D"
+     m_Expression GC_RuleCondition "{AB88006EE47A7933}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{AF7B17E83241B260}" {
+        m_iCheck 1
+        m_sFlagName "_D"
+       }
+       GC_RuleCondition "{2C639CA0272BD7F6}" {
+        m_eGroupNeeds 1
+        m_aChecks {
+         GC_RuleCondition "{3674C161F9785AE4}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{81642D8588DE31AD}" {
+            m_iCheck 1
+            m_sFlagName "SD"
+           }
+           GC_RuleCondition "{321E6D0F54699B3D}" {
+            m_iCheck 1
+            m_sFlagName "S"
+           }
+          }
+         }
+         GC_RuleCondition "{D7A893E2F097A670}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{B31422B2FDF5671F}" {
+            m_iCheck 1
+            m_sFlagName "CD1"
+           }
+           GC_RuleCondition "{90EDA5FCA2BEA02C}" {
+            m_iCheck 1
+            m_sFlagName "C"
+           }
+          }
+         }
+         GC_RuleCondition "{1E30FDFB792B62E9}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{E57712683CEECCB6}" {
+            m_iCheck 1
+            m_sFlagName "CD2"
+           }
+           GC_RuleCondition "{01365B977BC0AC21}" {
+            m_iCheck 1
+            m_sFlagName "C"
+           }
+          }
+         }
+         GC_RuleCondition "{2096515B1E3A7DBE}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{CDA6234EC797189F}" {
+            m_iCheck 1
+            m_sFlagName "CD3"
+           }
+           GC_RuleCondition "{AD103193C97696D0}" {
+            m_iCheck 1
+            m_sFlagName "C"
+           }
+          }
+         }
+         GC_RuleCondition "{045673E1948478B7}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{0BBD467E8B4FBAF2}" {
+            m_iCheck 1
+            m_sFlagName "DE"
+           }
+           GC_RuleCondition "{4D2DC42AD3F2652F}" {
+            m_iCheck 1
+            m_sFlagName "E"
+           }
+          }
+         }
+         GC_RuleCondition "{8224FAD258B0A763}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{C797F8224A2319EC}" {
+            m_iCheck 1
+            m_sFlagName "DF"
+           }
+           GC_RuleCondition "{493DA4FE5F61F32E}" {
+            m_iCheck 1
+            m_sFlagName "F"
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{0BB8CA239FFE118E}" {
+     m_sName "E"
+     m_Expression GC_RuleCondition "{AC3313F1189D23D7}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{3305D5F5A14C5324}" {
+        m_iCheck 1
+        m_sFlagName "_E"
+       }
+       GC_RuleCondition "{4C62C08F1C6F5F58}" {
+        m_eGroupNeeds 1
+        m_aChecks {
+         GC_RuleCondition "{DEE4D81DC8C6F0AC}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{2E353C4F77CA78C3}" {
+            m_iCheck 1
+            m_sFlagName "DE"
+           }
+           GC_RuleCondition "{F7BB7DADD58CF237}" {
+            m_iCheck 1
+            m_sFlagName "D"
+           }
+          }
+         }
+         GC_RuleCondition "{CEA0E43D2749BF63}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{51E61B4A46708ACD}" {
+            m_iCheck 1
+            m_sFlagName "EF"
+           }
+           GC_RuleCondition "{C0B75393F3460EC7}" {
+            m_iCheck 1
+            m_sFlagName "F"
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{0F955C0A5C018905}" {
+     m_sName "F"
+     m_Expression GC_RuleCondition "{9DD4A15DC2D44E31}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{A850C0E4D8FECBF6}" {
+        m_iCheck 1
+        m_sFlagName "_F"
+       }
+       GC_RuleCondition "{9D08BC002D799565}" {
+        m_eGroupNeeds 1
+        m_aChecks {
+         GC_RuleCondition "{07BE2C9880B748D7}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{DAA153937E3B9DCE}" {
+            m_iCheck 1
+            m_sFlagName "BF"
+           }
+           GC_RuleCondition "{D68BAC57E1234119}" {
+            m_iCheck 1
+            m_sFlagName "B"
+           }
+          }
+         }
+         GC_RuleCondition "{CC2009BBF9E044B7}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{4C597FFE34AB2396}" {
+            m_iCheck 1
+            m_sFlagName "DF"
+           }
+           GC_RuleCondition "{089D10AAD22C49BE}" {
+            m_iCheck 1
+            m_sFlagName "D"
+           }
+          }
+         }
+         GC_RuleCondition "{2DEA81A9BD519B62}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{ED0A9DAD01445896}" {
+            m_iCheck 1
+            m_sFlagName "EF"
+           }
+           GC_RuleCondition "{FE4DE402F663244F}" {
+            m_iCheck 1
+            m_sFlagName "E"
+           }
+          }
+         }
+         GC_RuleCondition "{BF2249670F26999B}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{82AC1382E57FB7EB}" {
+            m_iCheck 1
+            m_sFlagName "FG"
+           }
+           GC_RuleCondition "{B7D78A0FAC5FAB00}" {
+            m_iCheck 1
+            m_sFlagName "G"
+           }
+          }
+         }
+         GC_RuleCondition "{8E9D6EA92F4B35E4}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{5F788B69073A0AA4}" {
+            m_iCheck 1
+            m_sFlagName "FH"
+           }
+           GC_RuleCondition "{333E1BA5ACCF7454}" {
+            m_iCheck 1
+            m_sFlagName "H"
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{D09526700553D68B}" {
+     m_sName "G"
+     m_Expression GC_RuleCondition "{CCDF9782716B57F9}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{6861CB154A61972B}" {
+        m_iCheck 1
+        m_sFlagName "_G"
+       }
+       GC_RuleCondition "{76FD32D6CA16A966}" {
+        m_eGroupNeeds 1
+        m_aChecks {
+         GC_RuleCondition "{79760E2602297596}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{628D9EA6B89EE778}" {
+            m_iCheck 1
+            m_sFlagName "FG"
+           }
+           GC_RuleCondition "{E4669DC46DF0140E}" {
+            m_iCheck 1
+            m_sFlagName "F"
+           }
+          }
+         }
+         GC_RuleCondition "{03217F896796DC7F}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{F45AB2498F78978B}" {
+            m_iCheck 1
+            m_sFlagName "GH"
+           }
+           GC_RuleCondition "{1534BBDF78647CB0}" {
+            m_iCheck 1
+            m_sFlagName "H"
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{1C6656549480CE0A}" {
+     m_sName "H"
+     m_Expression GC_RuleCondition "{C5FBEA7AA511CC33}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{0E5BCAC063D5ACBF}" {
+        m_iCheck 1
+        m_sFlagName "_H"
+       }
+       GC_RuleCondition "{6BF49F404086BC33}" {
+        m_eGroupNeeds 1
+        m_aChecks {
+         GC_RuleCondition "{98CFB94E692965FB}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{29000127AC78FF42}" {
+            m_iCheck 1
+            m_sFlagName "FH"
+           }
+           GC_RuleCondition "{AA3E9D26BDECBE54}" {
+            m_iCheck 1
+            m_sFlagName "F"
+           }
+          }
+         }
+         GC_RuleCondition "{6FDF19FA9D94BDF2}" {
+          m_eGroupNeeds 0
+          m_aChecks {
+           GC_RuleCondition "{77BBF143D3A629F1}" {
+            m_iCheck 1
+            m_sFlagName "GH"
+           }
+           GC_RuleCondition "{E5D68C2F4E439206}" {
+            m_iCheck 1
+            m_sFlagName "G"
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{EE8338E522FDEBC7}" {
+     m_sName "SA"
+     m_Expression GC_RuleCondition "{D8A45012348B0A54}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{2AE047B3C51FC91B}" {
+        m_iCheck 1
+        m_sFlagName "block_SA"
+        m_bReverseAnswer 1
+       }
+       GC_RuleCondition "{031CC4982F2D1140}" {
+        m_iCheck 1
+        m_sFlagName "obst_02"
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{89908D9185172878}" {
+     m_sName "SB"
+     m_Expression GC_RuleCondition "{B88527CD56672241}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{054F05F6EAB24E77}" {
+        m_iCheck 1
+        m_sFlagName "block_SB"
+        m_bReverseAnswer 1
+       }
+       GC_RuleCondition "{D68C24B0035DA5E3}" {
+        m_iCheck 1
+        m_sFlagName "obst_01"
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{A278DE8270355AF1}" {
+     m_sName "SC"
+     m_Expression GC_RuleCondition "{262ABE5DA04C0697}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{BB891C35A2647ABF}" {
+        m_iCheck 1
+        m_sFlagName "block_SC"
+        m_bReverseAnswer 1
+       }
+       GC_RuleCondition "{B43D2CB0739C0236}" {
+        m_iCheck 1
+        m_sFlagName "obst_03"
+       }
+       GC_RuleCondition "{FF7579C8CA5A96D4}" {
+        m_iCheck 1
+        m_sFlagName "obst_06"
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{2DD0DE4FF362C1B1}" {
+     m_sName "SD"
+     m_Expression GC_RuleCondition "{907B1EDCD42EF0C8}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{EC1914B804F6992C}" {
+        m_iCheck 1
+        m_sFlagName "block_SD"
+        m_bReverseAnswer 1
+       }
+       GC_RuleCondition "{410B8BE9522F1E2B}" {
+        m_iCheck 1
+        m_sFlagName "obst_04"
+       }
+       GC_RuleCondition "{83B0ACF97C10612E}" {
+        m_iCheck 1
+        m_sFlagName "obst_05"
+       }
+       GC_RuleCondition "{4D02E054B56DE4B2}" {
+        m_iCheck 1
+        m_sFlagName "obst_13"
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{AE5FFB7E2701959A}" {
+     m_sName "AB"
+     m_Expression GC_RuleCondition "{C315AEE063D9FFAC}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{605D72B53409CB8A}" {
+        m_iCheck 1
+        m_sFlagName "block_AB"
+        m_bReverseAnswer 1
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{228ACEAE39DB4E3B}" {
+     m_sName "AC"
+     m_Expression GC_RuleCondition "{914CD4083088C3DE}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{034D5FA4D3C7CA07}" {
+        m_iCheck 1
+        m_sFlagName "block_AC"
+        m_bReverseAnswer 1
+       }
+       GC_RuleCondition "{9B4FFD6FFED17A3C}" {
+        m_iCheck 1
+        m_sFlagName "obst_09"
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{E2E9C616F71880B6}" {
+     m_sName "BF"
+     m_Expression GC_RuleCondition "{CD81706E5407B1C5}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{9E32A54A563C19DA}" {
+        m_iCheck 1
+        m_sFlagName "block_BF"
+        m_bReverseAnswer 1
+       }
+       GC_RuleCondition "{BA52E0C99FFC4F65}" {
+        m_iCheck 1
+        m_sFlagName "obst_07"
+       }
+       GC_RuleCondition "{EC8E3C2AB4FBABCE}" {
+        m_iCheck 1
+        m_sFlagName "obst_08"
+       }
+       GC_RuleCondition "{71F63E5338FAD587}" {
+        m_iCheck 1
+        m_sFlagName "obst_16"
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{7D1AF92A873DF563}" {
+     m_sName "CD1"
+     m_Expression GC_RuleCondition "{49AA7378E18378DD}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{CE56B4C2B07448D1}" {
+        m_iCheck 1
+        m_sFlagName "block_CD1"
+        m_bReverseAnswer 1
+       }
+       GC_RuleCondition "{ECC06517EF0C1279}" {
+        m_iCheck 1
+        m_sFlagName "obst_12"
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{2969C2EAD42301C6}" {
+     m_sName "CD2"
+     m_Expression GC_RuleCondition "{CA00E3336E921CAE}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{6C8D209BD83215D7}" {
+        m_iCheck 1
+        m_sFlagName "block_CD2"
+        m_bReverseAnswer 1
+       }
+       GC_RuleCondition "{45C37DCE75B5C63D}" {
+        m_iCheck 1
+        m_sFlagName "obst_10"
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{1C4F9DE5A83DAD0A}" {
+     m_sName "CD3"
+     m_Expression GC_RuleCondition "{00995ED317AA2D46}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{CA638C781C0C41B9}" {
+        m_iCheck 1
+        m_sFlagName "block_CD3"
+        m_bReverseAnswer 1
+       }
+       GC_RuleCondition "{BE7279478AF2C01D}" {
+        m_iCheck 1
+        m_sFlagName "obst_11"
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{DEBB4E2FB6F62646}" {
+     m_sName "DE"
+     m_Expression GC_RuleCondition "{DE631C1677F7604C}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{E6298B613FE8CA11}" {
+        m_iCheck 1
+        m_sFlagName "block_DE"
+        m_bReverseAnswer 1
+       }
+       GC_RuleCondition "{D823DD8C8FC68C58}" {
+        m_iCheck 1
+        m_sFlagName "obst_14"
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{41FA2F85CFE51B4C}" {
+     m_sName "DF"
+     m_Expression GC_RuleCondition "{A79ABD0ABB1FA13E}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{0DE243160FB79470}" {
+        m_iCheck 1
+        m_sFlagName "block_DF"
+        m_bReverseAnswer 1
+       }
+       GC_RuleCondition "{53F2B5630866C62B}" {
+        m_iCheck 1
+        m_sFlagName "obst_15"
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{E89445441F8B569F}" {
+     m_sName "EF"
+     m_Expression GC_RuleCondition "{17B5A2D33A2E6A41}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{13BD5E2CB2D69162}" {
+        m_iCheck 1
+        m_sFlagName "block_EF"
+        m_bReverseAnswer 1
+       }
+       GC_RuleCondition "{49360DC84B7D5302}" {
+        m_iCheck 1
+        m_sFlagName "obst_17"
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{3B58BCDA9512985D}" {
+     m_sName "EO1"
+     m_Expression GC_RuleCondition "{CDE9B6D3794FA1E3}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{1CF5CEF039CFA001}" {
+        m_iCheck 1
+        m_sFlagName "block_EO1"
+        m_bReverseAnswer 1
+       }
+       GC_RuleCondition "{9F573E452023CEC6}" {
+        m_iCheck 1
+        m_sFlagName "obst_24"
+       }
+       GC_RuleCondition "{98E284DF84971AC5}" {
+        m_iCheck 1
+        m_sFlagName "obst_25"
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{765E281F05BC32FD}" {
+     m_sName "EO2"
+     m_Expression GC_RuleCondition "{2D848C5A50F911F7}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{842677CBA2677423}" {
+        m_iCheck 1
+        m_sFlagName "block_EO2"
+        m_bReverseAnswer 1
+       }
+       GC_RuleCondition "{F57865F1C38174A8}" {
+        m_iCheck 1
+        m_sFlagName "obst_23"
+       }
+       GC_RuleCondition "{37D2AD58AB173281}" {
+        m_iCheck 1
+        m_sFlagName "obst_26"
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{EA228F96BF22746B}" {
+     m_sName "FG"
+     m_Expression GC_RuleCondition "{AC6322E1EB607810}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{002EA9E913D1F932}" {
+        m_iCheck 1
+        m_sFlagName "block_FG"
+        m_bReverseAnswer 1
+       }
+       GC_RuleCondition "{B8FD7D1C7AB84368}" {
+        m_iCheck 1
+        m_sFlagName "obst_18"
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{D58416B02CE054A5}" {
+     m_sName "FH"
+     m_Expression GC_RuleCondition "{BCA4D2A173577174}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{1BCF1C9C4C47CD39}" {
+        m_iCheck 1
+        m_sFlagName "block_FH"
+        m_bReverseAnswer 1
+       }
+       GC_RuleCondition "{E64F6E330FF870B6}" {
+        m_iCheck 1
+        m_sFlagName "obst_19"
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{55DE348F394D7A0E}" {
+     m_sName "GH"
+     m_Expression GC_RuleCondition "{26DC7595711655E7}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{A180396FDBA74085}" {
+        m_iCheck 1
+        m_sFlagName "block_GH"
+        m_bReverseAnswer 1
+       }
+       GC_RuleCondition "{49E19FFE3C822AFA}" {
+        m_iCheck 1
+        m_sFlagName "obst_20"
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{F8F7EFB92C8EF816}" {
+     m_sName "GO"
+     m_Expression GC_RuleCondition "{43E778C920F97442}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{A2A192E121AC215E}" {
+        m_iCheck 1
+        m_sFlagName "block_GO"
+        m_bReverseAnswer 1
+       }
+       GC_RuleCondition "{E8A0C4E437489092}" {
+        m_iCheck 1
+        m_sFlagName "obst_22"
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{A9807F0FCFF4B07E}" {
+     m_sName "HO"
+     m_Expression GC_RuleCondition "{881B5AAA7750B65C}" {
+      m_eGroupNeeds 0
+      m_aChecks {
+       GC_RuleCondition "{8D626C652BD7BF76}" {
+        m_iCheck 1
+        m_sFlagName "block_HO"
+        m_bReverseAnswer 1
+       }
+       GC_RuleCondition "{F8E1E2B07FB1F1B1}" {
+        m_iCheck 1
+        m_sFlagName "obst_21"
+       }
+      }
+     }
+    }
+    GC_DerivedMissionFlag "{364FEC98A3531F1E}" {
+     m_sName "spawn_bridge_df"
+     m_Expression GC_RuleCondition "{55294A2C0D69D93A}" {
+      m_iCheck 1
+      m_sFlagName "block_DF"
+      m_bReverseAnswer 1
+     }
+    }
+    GC_DerivedMissionFlag "{CC0B99DE74FCE4A5}" {
+     m_sName "spawn_bridge_go"
+     m_Expression GC_RuleCondition "{E3AA57BA29F23327}" {
+      m_iCheck 1
+      m_sFlagName "block_GO"
+      m_bReverseAnswer 1
+     }
+    }
+    GC_DerivedMissionFlag "{0D6A7406C6BCF137}" {
+     m_sName "spawn_bridge_de"
+     m_Expression GC_RuleCondition "{814290E9BED390A5}" {
+      m_iCheck 1
+      m_sFlagName "block_DE"
+      m_bReverseAnswer 1
+     }
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     UIInfo SCR_FactionUIInfo "{528C961236B7DCD3}" {
+      Name "USMC"
+      m_sNameUpper "USMC"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "A1"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "A2"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "B1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "B2"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3 %4"
+      m_sCallsignCharacterWithRoleFormat "%3: %4"
+     }
+    }
+   }
+  }
+ }
+}
