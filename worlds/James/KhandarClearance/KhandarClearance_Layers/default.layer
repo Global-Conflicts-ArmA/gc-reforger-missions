@@ -1,0 +1,1199 @@
+SCR_AIWorld : "{E2A016456BBC697D}Prefabs/SCR_AIWorld_Kunar.et" {
+ coords 1621.981 52.721 3426.134
+}
+GC_LobbyGameMode GC_MigratedMission : "{B5BF2197BDC35FD0}worlds/James/KhandarClearance/KhandarClearance_GC_Settings.et" {
+ components {
+  GC_PeakFactionPopulationComponent "{593063D854770BAA}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{C0816ECDDBFF9720}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 300
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{71AA663C4F7CE065}" {
+     m_sName "USSR Dead"
+     m_aConditions {
+      GC_CustomScriptCondition "{6703A37284AA73AF}" {
+       m_Script GC_PeakFactionPopulationCheck "{0021367CDC9F5237}" {
+        m_sFaction "USSR"
+        m_fRatio 0.85
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9B100776E86839F9}" {
+       m_sMessage "USSR Dead"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{4016DF9EE300C694}" {
+     m_sName "USSR Dead (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{149530224BA04D25}" {
+       m_sEventName "USSR Dead"
+      }
+     }
+     m_Advanced GC_EventOptions "{4724C7976EB88C05}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_MessageAction "{8A39B5AC3D0EE177}" {
+       m_sTitle "Red Army Combat Ineffective"
+       m_sMessage "You have taken a lot of casualties. HQ is unhappy with your results."
+      }
+     }
+    }
+    GC_Event "{AC89637A6B73977B}" {
+     m_sName "OBJ1 Cap"
+     m_aConditions {
+      GC_AreaCondition "{3C9B9669FE824B11}" {
+       m_sArea "GC_MigrationArea_obj1cap"
+       m_Targets GC_CharacterAreaTargets "{36BBF2B00134C12F}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{0C707BC2794C8192}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{48C8CCE27AB120D8}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6709B88406A969E6}" {
+       m_sMessage "OBJ1 Cap"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6648C7F2C9169C4B}" {
+     m_sName "OBJ1 Cap (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{748AB42A6D1A2E38}" {
+       m_sEventName "OBJ1 Cap"
+      }
+     }
+     m_Advanced GC_EventOptions "{1328A4FAA90F65A7}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_MessageAction "{495713ADCD7C6768}" {
+       m_sTitle "Strongpoint 1 Cleared"
+       m_sMessage "320 this is HQ. Good work, proceed taking the next strongpoints."
+      }
+     }
+    }
+    GC_Event "{2A0AAC86715AC1D5}" {
+     m_sName "OBJ2 Cap"
+     m_aConditions {
+      GC_AreaCondition "{114422723FFE6A32}" {
+       m_sArea "GC_MigrationArea_obj2cap"
+       m_Targets GC_CharacterAreaTargets "{7424C43BF33B911E}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{E22070F352005B1D}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{07D97E9C985F933E}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2CD104A2FDA8EFF6}" {
+       m_sMessage "OBJ2 Cap"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{58487A99624502BA}" {
+     m_sName "OBJ2 Cap (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{FA63B393A7D56D08}" {
+       m_sEventName "OBJ2 Cap"
+      }
+     }
+     m_Advanced GC_EventOptions "{8676A2414E2B117E}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_MessageAction "{083DD40FF6AF5BEF}" {
+       m_sTitle "Strongpoint 2 Cleared"
+       m_sMessage "320 this is HQ. Good work, proceed taking the next strongpoint."
+      }
+     }
+    }
+    GC_Event "{BB046D000B160F02}" {
+     m_sName "OBJ3 Cap"
+     m_aConditions {
+      GC_AreaCondition "{C5C0754E64E64569}" {
+       m_sArea "GC_MigrationArea_obj3cap"
+       m_Targets GC_CharacterAreaTargets "{4DAA2A50E08F8E6C}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{1AB669B9A3C90FF6}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{B2A48982B609F342}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3F95AE6A5A152FC7}" {
+       m_sMessage "OBJ3 Cap"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E9A47BBBD3A8CDD8}" {
+     m_sName "OBJ3 Cap (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{56AC5B35A9186352}" {
+       m_sEventName "OBJ3 Cap"
+      }
+     }
+     m_Advanced GC_EventOptions "{7963B0CB571066FE}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_MessageAction "{530B6DA123D826F6}" {
+       m_sTitle "Strongpoint 3 Cleared"
+       m_sMessage "320 this is HQ. Good work taking the third strongpoint."
+      }
+     }
+    }
+    GC_Event "{C3215BC19126660C}" {
+     m_sName "OBJs Cap"
+     m_aConditions {
+      GC_ConditionGroup "{3C5A7CA181F5F121}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{B357B7271B8F6063}" {
+         m_sArea "GC_MigrationArea_obj1cap"
+         m_Targets GC_CharacterAreaTargets "{A7C4879672F63EA1}" {
+          m_iWho 2
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{DEFF5105DB69E98F}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{9300B151D51EA37C}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{3E5D68EEFAC20C65}" {
+         m_sArea "GC_MigrationArea_obj2cap"
+         m_Targets GC_CharacterAreaTargets "{6DF9A4A2B73FFE84}" {
+          m_iWho 2
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{0B2671C869CE3A22}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{70BE4E59D686EE17}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{48EF707ADC3752D6}" {
+         m_sArea "GC_MigrationArea_obj3cap"
+         m_Targets GC_CharacterAreaTargets "{905058EEFD3F7C57}" {
+          m_iWho 2
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{280AC3DD49465472}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{122AABB708707B37}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{325FD7746FDF50B3}" {
+       m_sMessage "OBJs Cap"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D8B4F5C7A2CA0090}" {
+     m_sName "OBJs Cap (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3DED938E3293F7D1}" {
+       m_sEventName "OBJs Cap"
+      }
+     }
+     m_Advanced GC_EventOptions "{6EE10D91D067B554}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_MessageAction "{70B4B0D0237DE45A}" {
+       m_sTitle "All OBJs Cleared"
+       m_sMessage "320, HQ. Again good work. Reorg and await relief from the 3rd company. HQ out."
+      }
+     }
+    }
+    GC_Event "{A5ED075A8F51F08F}" {
+     m_sName "GC_MigrationSpawnCapture_50076BEFB17799B7"
+     m_aConditions {
+      GC_AreaCondition "{F03B6BADF1A14F4E}" {
+       m_sArea "GC_MigrationArea_east"
+       m_Targets GC_CharacterAreaTargets "{1FB00726A855F445}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{7630B198EA93B8FF}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{C9EC8E17ACE04FB0}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{81D4580546E699E7}" {
+       m_sMessage "GC_MigrationSpawnCapture_50076BEFB17799B7"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5725139FEA61F003}" {
+     m_sName "GC_MigrationSpawnCapture_3CAA3781C2E31F63"
+     m_aConditions {
+      GC_AreaCondition "{F72D0F2E100BB7AB}" {
+       m_sArea "GC_MigrationArea_hill"
+       m_Targets GC_CharacterAreaTargets "{635A274CC0B8EC4D}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{C873ABDB857938DC}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{300D662B6444E97F}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C6389C40A6E51D4A}" {
+       m_sMessage "GC_MigrationSpawnCapture_3CAA3781C2E31F63"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{80BFF349CDD2FF7C}" {
+     m_sName "GC_MigratedSpawn_A11EB9EE48B1D136 (0s)"
+     m_aActions {
+      GC_SpawnAction "{80BFF349CDD2FF7C}" {
+       m_Spawn GC_AIGroupSpawn "{A856A2F385EEE8B5}" {
+        m_sLocation "GC_Spawner_A11EB9EE48B1D136"
+        m_sPrefab "{81A45DE2A1C7C267}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Mixed.et"
+        m_aWaypoints {
+         "deftop2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F89EC1F5F0045FAD}" {
+     m_sName "GC_MigratedSpawn_D4CCBBBBF907D218 (0s)"
+     m_aActions {
+      GC_SpawnAction "{F89EC1F5F0045FAD}" {
+       m_Spawn GC_AIGroupSpawn "{9D11B8A591E7AB15}" {
+        m_sLocation "GC_Spawner_D4CCBBBBF907D218"
+        m_sPrefab "{81A45DE2A1C7C267}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Mixed.et"
+        m_aWaypoints {
+         "deftop3"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3AFB7DE8F92F10E6}" {
+     m_sName "GC_MigratedSpawn_BCD1856B12192ECE (0s)"
+     m_aActions {
+      GC_SpawnAction "{3AFB7DE8F92F10E6}" {
+       m_Spawn GC_AIGroupSpawn "{247AD1F11310EAB0}" {
+        m_sLocation "GC_Spawner_BCD1856B12192ECE"
+        m_sPrefab "{81A45DE2A1C7C267}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Mixed.et"
+        m_aWaypoints {
+         "deftop4"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F43CEE9FF56DA0E7}" {
+     m_sName "GC_MigratedSpawn_BA87798700F5AF7C (0s)"
+     m_aActions {
+      GC_SpawnAction "{F43CEE9FF56DA0E7}" {
+       m_Spawn GC_AIGroupSpawn "{AA2A7640127A0204}" {
+        m_sLocation "GC_Spawner_BA87798700F5AF7C"
+        m_sPrefab "{81A45DE2A1C7C267}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Mixed.et"
+        m_aWaypoints {
+         "deftop1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{32FBF1C2548BFC5A}" {
+     m_sName "GC_MigratedSpawn_D40D7A4D12D103BC (0s)"
+     m_aActions {
+      GC_SpawnAction "{32FBF1C2548BFC5A}" {
+       m_Spawn GC_AIGroupSpawn "{CA3EBDDBAA82B7CF}" {
+        m_sLocation "GC_Spawner_D40D7A4D12D103BC"
+        m_sPrefab "{81A45DE2A1C7C267}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Mixed.et"
+        m_aWaypoints {
+         "deftop5"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4F23C868B9CE89B7}" {
+     m_sName "GC_MigratedSpawn_7E05CE9A9B67BDAD"
+     m_aConditions {
+      GC_MissionEventCondition "{AB47EF9511CAC117}" {
+       m_sEventName "GC_MigrationSpawnCapture_3CAA3781C2E31F63"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6AC710E25F19419E}" {
+       m_sMessage "GC_MigratedSpawn_7E05CE9A9B67BDAD"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D43302A6646FD224}" {
+     m_sName "GC_MigratedSpawn_7E05CE9A9B67BDAD (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7D59EF96790B2474}" {
+       m_sEventName "GC_MigratedSpawn_7E05CE9A9B67BDAD"
+      }
+     }
+     m_Advanced GC_EventOptions "{E3925CD0F04C985E}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{0ACFC5EA55C9DA12}" {
+       m_Spawn GC_AIGroupSpawn "{2212A9B6746AD795}" {
+        m_sLocation "GC_Spawner_7E05CE9A9B67BDAD"
+        m_sPrefab "{25669906D0128E09}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Assault.et"
+        m_aWaypoints {
+         "deftop6"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4116BCE30D10FC90}" {
+     m_sName "GC_MigratedSpawn_F72B85898A000D28"
+     m_aConditions {
+      GC_MissionEventCondition "{EC93EDC96F2888DB}" {
+       m_sEventName "GC_MigrationSpawnCapture_3CAA3781C2E31F63"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A461AE84AD8F61D5}" {
+       m_sMessage "GC_MigratedSpawn_F72B85898A000D28"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D62F8612188CC2D7}" {
+     m_sName "GC_MigratedSpawn_F72B85898A000D28 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3563B636AB30751D}" {
+       m_sEventName "GC_MigratedSpawn_F72B85898A000D28"
+      }
+     }
+     m_Advanced GC_EventOptions "{DF91CB4E0312705F}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{864AC81C4BB99028}" {
+       m_Spawn GC_AIGroupSpawn "{107560DF107055B9}" {
+        m_sLocation "GC_Spawner_F72B85898A000D28"
+        m_sPrefab "{81A45DE2A1C7C267}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Mixed.et"
+        m_aWaypoints {
+         "deftop7"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{D2B76E5E8A2C60C7}" {
+     m_sName "GC_MigratedSpawn_8EB825D8A6D01662 (0s)"
+     m_aActions {
+      GC_SpawnAction "{D2B76E5E8A2C60C7}" {
+       m_Spawn GC_AIGroupSpawn "{359D2FBE85E23EF2}" {
+        m_sLocation "GC_Spawner_8EB825D8A6D01662"
+        m_sPrefab "{25669906D0128E09}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Assault.et"
+        m_aWaypoints {
+         "defeast2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{D73E81D59058590B}" {
+     m_sName "GC_MigratedSpawn_BFD088A29D9BA75F (0s)"
+     m_aActions {
+      GC_SpawnAction "{D73E81D59058590B}" {
+       m_Spawn GC_AIGroupSpawn "{1611F468B5D08343}" {
+        m_sLocation "GC_Spawner_BFD088A29D9BA75F"
+        m_sPrefab "{81A45DE2A1C7C267}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Mixed.et"
+        m_aWaypoints {
+         "defeast1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{BBA199E1C2138DB4}" {
+     m_sName "GC_MigratedSpawn_7FC8277ED4D88560 (0s)"
+     m_aActions {
+      GC_SpawnAction "{BBA199E1C2138DB4}" {
+       m_Spawn GC_AIGroupSpawn "{656AA69D8FB3CD68}" {
+        m_sLocation "GC_Spawner_7FC8277ED4D88560"
+        m_sPrefab "{81A45DE2A1C7C267}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Mixed.et"
+        m_aWaypoints {
+         "defeast6"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{CC4C5F7681E47819}" {
+     m_sName "GC_MigratedSpawn_FB8E22A7877366E6 (0s)"
+     m_aActions {
+      GC_SpawnAction "{CC4C5F7681E47819}" {
+       m_Spawn GC_AIGroupSpawn "{23D302FD26AD33BB}" {
+        m_sLocation "GC_Spawner_FB8E22A7877366E6"
+        m_sPrefab "{25669906D0128E09}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Assault.et"
+        m_aWaypoints {
+         "defnorth1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{D91F363EE1505D44}" {
+     m_sName "GC_MigratedSpawn_122094E171EF5BAB (0s)"
+     m_aActions {
+      GC_SpawnAction "{D91F363EE1505D44}" {
+       m_Spawn GC_AIGroupSpawn "{1E095DFC67224074}" {
+        m_sLocation "GC_Spawner_122094E171EF5BAB"
+        m_sPrefab "{81A45DE2A1C7C267}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Mixed.et"
+        m_aWaypoints {
+         "defwest"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{10D39C863B0D1D7E}" {
+     m_sName "GC_MigratedSpawn_4104EF2932CD13B6"
+     m_aConditions {
+      GC_MissionEventCondition "{822E5FE06B794435}" {
+       m_sEventName "GC_MigrationSpawnCapture_3CAA3781C2E31F63"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{92D83DCDA42DEE61}" {
+       m_sMessage "GC_MigratedSpawn_4104EF2932CD13B6"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1ED6D5600237E1CB}" {
+     m_sName "GC_MigratedSpawn_4104EF2932CD13B6 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{740C7BBFEC297EC8}" {
+       m_sEventName "GC_MigratedSpawn_4104EF2932CD13B6"
+      }
+     }
+     m_Advanced GC_EventOptions "{EE4C194BA96A0A69}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{8D3782FB897D5F23}" {
+       m_Spawn GC_AIGroupSpawn "{855B657EA35B18D8}" {
+        m_sLocation "GC_Spawner_4104EF2932CD13B6"
+        m_sPrefab "{81A45DE2A1C7C267}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Mixed.et"
+        m_aWaypoints {
+         "atk3"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A8B9967594113B9F}" {
+     m_sName "GC_MigratedSpawn_9408D551C39A9752"
+     m_aConditions {
+      GC_MissionEventCondition "{EB68993262063278}" {
+       m_sEventName "GC_MigrationSpawnCapture_50076BEFB17799B7"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3547E02E6AAB9EBD}" {
+       m_sMessage "GC_MigratedSpawn_9408D551C39A9752"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CCB3D386371B96C3}" {
+     m_sName "GC_MigratedSpawn_9408D551C39A9752 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{14E9322F1422B444}" {
+       m_sEventName "GC_MigratedSpawn_9408D551C39A9752"
+      }
+     }
+     m_Advanced GC_EventOptions "{87B01C26846EDC28}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{085E32FB8001B93A}" {
+       m_Spawn GC_AIGroupSpawn "{EFC131626784A098}" {
+        m_sLocation "GC_Spawner_9408D551C39A9752"
+        m_sPrefab "{25669906D0128E09}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Assault.et"
+        m_aWaypoints {
+         "atk2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9840E766E6956563}" {
+     m_sName "GC_MigratedSpawn_B66702F0B4C37C9F"
+     m_aConditions {
+      GC_MissionEventCondition "{848FD23C14EC5C9B}" {
+       m_sEventName "GC_MigrationSpawnCapture_3CAA3781C2E31F63"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8B8A2A3138312C76}" {
+       m_sMessage "GC_MigratedSpawn_B66702F0B4C37C9F"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{548D383290A986C7}" {
+     m_sName "GC_MigratedSpawn_B66702F0B4C37C9F (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{958F6A2C3B1E3323}" {
+       m_sEventName "GC_MigratedSpawn_B66702F0B4C37C9F"
+      }
+     }
+     m_Advanced GC_EventOptions "{A644F3040CC1C05D}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{5893B3844CB6CA47}" {
+       m_Spawn GC_AIGroupSpawn "{7069B25AEC9D0846}" {
+        m_sLocation "GC_Spawner_B66702F0B4C37C9F"
+        m_sPrefab "{25669906D0128E09}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Assault.et"
+        m_aWaypoints {
+         "defmountain"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{DDEDB6C403DA5D32}" {
+     m_sName "GC_MigratedSpawn_DCA6A8F42BA97F53"
+     m_aConditions {
+      GC_MissionEventCondition "{65CADC3CB92CD6BF}" {
+       m_sEventName "GC_MigrationSpawnCapture_3CAA3781C2E31F63"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1A0BAB6579AD319A}" {
+       m_sMessage "GC_MigratedSpawn_DCA6A8F42BA97F53"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E45EC5E82AFCF504}" {
+     m_sName "GC_MigratedSpawn_DCA6A8F42BA97F53 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{621D518DA45C2FAC}" {
+       m_sEventName "GC_MigratedSpawn_DCA6A8F42BA97F53"
+      }
+     }
+     m_Advanced GC_EventOptions "{C9471DBADEF73E61}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{980500242AD8F3F4}" {
+       m_Spawn GC_AIGroupSpawn "{1EE40A2DFB34E90E}" {
+        m_sLocation "GC_Spawner_DCA6A8F42BA97F53"
+        m_sPrefab "{81A45DE2A1C7C267}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Mixed.et"
+        m_aWaypoints {
+         "atk3"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{2DC996AB2A352CD0}" {
+     m_sName "GC_MigratedSpawn_000B28F793D1BC0E (0s)"
+     m_aActions {
+      GC_SpawnAction "{2DC996AB2A352CD0}" {
+       m_Spawn GC_AIGroupSpawn "{DD25F3965B0D5125}" {
+        m_sLocation "GC_Spawner_000B28F793D1BC0E"
+        m_sPrefab "{81A45DE2A1C7C267}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Mixed.et"
+        m_aWaypoints {
+         "defwest"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{1E9B2ABFBCE437A8}" {
+     m_sName "GC_MigratedSpawn_57EF92A41BCFB335 (0s)"
+     m_aActions {
+      GC_SpawnAction "{1E9B2ABFBCE437A8}" {
+       m_Spawn GC_AIGroupSpawn "{E2C40C6E7C9A6D9F}" {
+        m_sLocation "GC_Spawner_57EF92A41BCFB335"
+        m_sPrefab "{81A45DE2A1C7C267}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Mixed.et"
+       }
+      }
+     }
+    }
+    GC_Event "{EE1598830BDDEB61}" {
+     m_sName "GC_MigratedSpawn_FA9113305FD95010 (0s)"
+     m_aActions {
+      GC_SpawnAction "{EE1598830BDDEB61}" {
+       m_Spawn GC_AIGroupSpawn "{7294FB1E01D3E453}" {
+        m_sLocation "GC_Spawner_FA9113305FD95010"
+        m_sPrefab "{81A45DE2A1C7C267}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Mixed.et"
+        m_aWaypoints {
+         "defeast3"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{038B459B3F3F5759}" {
+     m_sName "GC_MigratedSpawn_FE742407D7775954 (0s)"
+     m_aActions {
+      GC_SpawnAction "{038B459B3F3F5759}" {
+       m_Spawn GC_AIGroupSpawn "{F51D2E642AE6D422}" {
+        m_sLocation "GC_Spawner_FE742407D7775954"
+        m_sPrefab "{81A45DE2A1C7C267}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Mixed.et"
+        m_aWaypoints {
+         "defeast4"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9F8B4F381CACF33E}" {
+     m_sName "GC_MigratedSpawn_E7645C78267D8BE6 (0s)"
+     m_aActions {
+      GC_SpawnAction "{9F8B4F381CACF33E}" {
+       m_Spawn GC_AIGroupSpawn "{ED63143B6C2D6C21}" {
+        m_sLocation "GC_Spawner_E7645C78267D8BE6"
+        m_sPrefab "{81A45DE2A1C7C267}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Mixed.et"
+        m_aWaypoints {
+         "defeast5"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{67A9DB01F1C741AA}" {
+     m_sName "GC_MigratedSpawn_6973CF80436F1B08 (0s)"
+     m_aActions {
+      GC_SpawnAction "{67A9DB01F1C741AA}" {
+       m_Spawn GC_AIGroupSpawn "{30F90E09661044C7}" {
+        m_sLocation "GC_Spawner_6973CF80436F1B08"
+        m_sPrefab "{81A45DE2A1C7C267}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Mixed.et"
+        m_aWaypoints {
+         "deftop8"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{33B045C31AD7E6E1}" {
+     m_sName "GC_MigratedSpawn_1EEE5E6B066E29D8 (0s)"
+     m_aActions {
+      GC_SpawnAction "{33B045C31AD7E6E1}" {
+       m_Spawn GC_AIGroupSpawn "{B545562C3A0F3B5B}" {
+        m_sLocation "GC_Spawner_1EEE5E6B066E29D8"
+        m_sPrefab "{25669906D0128E09}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Assault.et"
+        m_aWaypoints {
+         "defnorth2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{12E7C7FB0EB85A22}" {
+     m_sName "GC_MigratedSpawn_3B827BD1AFAE0F7E (0s)"
+     m_aActions {
+      GC_SpawnAction "{12E7C7FB0EB85A22}" {
+       m_Spawn GC_AIGroupSpawn "{5FAFB48141BB8B40}" {
+        m_sLocation "GC_Spawner_3B827BD1AFAE0F7E"
+        m_sPrefab "{25669906D0128E09}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Assault.et"
+        m_aWaypoints {
+         "defnorth3"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E9CF84733C2F19D9}" {
+     m_sName "GC_MigratedSpawn_DA010E79F25D3092"
+     m_aConditions {
+      GC_MissionEventCondition "{220482947CDFEE82}" {
+       m_sEventName "GC_MigrationSpawnCapture_50076BEFB17799B7"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4E2AA11CFD85D5C4}" {
+       m_sMessage "GC_MigratedSpawn_DA010E79F25D3092"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{4903AA45589CD08A}" {
+     m_sName "GC_MigratedSpawn_DA010E79F25D3092 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{08748009188B7077}" {
+       m_sEventName "GC_MigratedSpawn_DA010E79F25D3092"
+      }
+     }
+     m_Advanced GC_EventOptions "{42084E6E100AB5C6}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{A06E45CBDEF73259}" {
+       m_Spawn GC_AIGroupSpawn "{269872523E90C0EB}" {
+        m_sLocation "GC_Spawner_DA010E79F25D3092"
+        m_sPrefab "{81A45DE2A1C7C267}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Mixed.et"
+        m_aWaypoints {
+         "atk2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A74B30D9FE1ED4E5}" {
+     m_sName "GC_MigratedSpawn_8B7CC8C4B4FA4102 (0s)"
+     m_aActions {
+      GC_SpawnAction "{A74B30D9FE1ED4E5}" {
+       m_Spawn GC_AIGroupSpawn "{7C5D93594EBF595A}" {
+        m_sLocation "GC_Spawner_8B7CC8C4B4FA4102"
+        m_sPrefab "{81A45DE2A1C7C267}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Mixed.et"
+        m_aWaypoints {
+         "deftop3"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4DE80DD701C5C42E}" {
+     m_sName "GC_MigratedSpawn_8B367390E9A54826 (0s)"
+     m_aActions {
+      GC_SpawnAction "{4DE80DD701C5C42E}" {
+       m_Spawn GC_AIGroupSpawn "{EF3BB17F8E34166F}" {
+        m_sLocation "GC_Spawner_8B367390E9A54826"
+        m_sPrefab "{81A45DE2A1C7C267}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Mixed.et"
+        m_aWaypoints {
+         "defeast2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A3781E53C706AC7C}" {
+     m_sName "GC_MigratedSpawn_15C8706B9A85CEBA (0s)"
+     m_aActions {
+      GC_SpawnAction "{A3781E53C706AC7C}" {
+       m_Spawn GC_AIGroupSpawn "{C8F743968B48FAD8}" {
+        m_sLocation "GC_Spawner_15C8706B9A85CEBA"
+        m_sPrefab "{81A45DE2A1C7C267}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Mixed.et"
+        m_aWaypoints {
+         "defeast2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{8F417250A848C420}" {
+     m_sName "GC_MigratedSpawn_F829A61E07F8113C (0s)"
+     m_aActions {
+      GC_SpawnAction "{8F417250A848C420}" {
+       m_Spawn GC_AIGroupSpawn "{04E27E1A925FB35A}" {
+        m_sLocation "GC_Spawner_F829A61E07F8113C"
+        m_sPrefab "{81A45DE2A1C7C267}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Mixed.et"
+        m_aWaypoints {
+         "defwest"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{5B3DA3B094807044}" {
+     m_sName "GC_MigratedSpawn_BBAFFA2764D30475"
+     m_aConditions {
+      GC_MissionEventCondition "{9A694317629775DA}" {
+       m_sEventName "GC_MigrationSpawnCapture_50076BEFB17799B7"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4B87A04BFBC8A44A}" {
+       m_sMessage "GC_MigratedSpawn_BBAFFA2764D30475"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C313DB320393485B}" {
+     m_sName "GC_MigratedSpawn_BBAFFA2764D30475 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E333C847297F3999}" {
+       m_sEventName "GC_MigratedSpawn_BBAFFA2764D30475"
+      }
+     }
+     m_Advanced GC_EventOptions "{B889D479ED00132E}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{0D0899CBE025117D}" {
+       m_Spawn GC_AIGroupSpawn "{49EF44F32D6C2899}" {
+        m_sLocation "GC_Spawner_BBAFFA2764D30475"
+        m_sPrefab "{25669906D0128E09}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Assault.et"
+        m_aWaypoints {
+         "atk2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{8589356F10DCAACB}" {
+     m_sName "GC_MigratedSpawn_64F62780890C540A (0s)"
+     m_aActions {
+      GC_SpawnAction "{8589356F10DCAACB}" {
+       m_Spawn GC_AIGroupSpawn "{584F0909DA361552}" {
+        m_sLocation "GC_Spawner_64F62780890C540A"
+        m_sPrefab "{81A45DE2A1C7C267}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Mixed.et"
+        m_aWaypoints {
+         "deftop1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{287E45F924F01D5B}" {
+     m_sName "GC_MigratedSpawn_44FEE37DB3376774 (0s)"
+     m_aActions {
+      GC_SpawnAction "{287E45F924F01D5B}" {
+       m_Spawn GC_AIGroupSpawn "{5FC50366DEA55250}" {
+        m_sLocation "GC_Spawner_44FEE37DB3376774"
+        m_sPrefab "{81A45DE2A1C7C267}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Mixed.et"
+        m_aWaypoints {
+         "defnorth1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{FD2B1EF0460CD7DC}" {
+     m_sName "GC_MigratedSpawn_C672734BBA80D337 (0s)"
+     m_aActions {
+      GC_SpawnAction "{FD2B1EF0460CD7DC}" {
+       m_Spawn GC_AIGroupSpawn "{79A01515081F8ECA}" {
+        m_sLocation "GC_Spawner_C672734BBA80D337"
+        m_sPrefab "{25669906D0128E09}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Assault.et"
+        m_aWaypoints {
+         "defnorth2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{2101E986F102D481}" {
+     m_sName "GC_MigratedSpawn_4AAEE6EB171CAE59"
+     m_aConditions {
+      GC_MissionEventCondition "{E0BEB14F32B48345}" {
+       m_sEventName "GC_MigrationSpawnCapture_3CAA3781C2E31F63"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A0D685EB79C507CC}" {
+       m_sMessage "GC_MigratedSpawn_4AAEE6EB171CAE59"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{998AF9297C320C22}" {
+     m_sName "GC_MigratedSpawn_4AAEE6EB171CAE59 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9975CEB6E2B35D07}" {
+       m_sEventName "GC_MigratedSpawn_4AAEE6EB171CAE59"
+      }
+     }
+     m_Advanced GC_EventOptions "{043D958825FF9C8A}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{9147816969A2940E}" {
+       m_Spawn GC_AIGroupSpawn "{5043F23FD186367B}" {
+        m_sLocation "GC_Spawner_4AAEE6EB171CAE59"
+        m_sPrefab "{81A45DE2A1C7C267}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Mixed.et"
+        m_aWaypoints {
+         "atk3"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{6D9CF23E469C7016}" {
+     m_sName "GC_MigratedSpawn_BA3CBEA337861E60 (0s)"
+     m_aActions {
+      GC_SpawnAction "{6D9CF23E469C7016}" {
+       m_Spawn GC_AIGroupSpawn "{ECFA745E16991BC2}" {
+        m_sLocation "GC_Spawner_BA3CBEA337861E60"
+        m_sPrefab "{81A45DE2A1C7C267}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Mixed.et"
+        m_aWaypoints {
+         "defeast5"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{59C93C2A17CB0BFC}" {
+     m_sName "GC_MigratedSpawn_CE6045244805BA4A (0s)"
+     m_aActions {
+      GC_SpawnAction "{59C93C2A17CB0BFC}" {
+       m_Spawn GC_AIGroupSpawn "{69F873466B08BB92}" {
+        m_sLocation "GC_Spawner_CE6045244805BA4A"
+        m_sPrefab "{81A45DE2A1C7C267}Prefabs/Groups/INDFOR/GC_MUJ/Group_MUJ_Mixed.et"
+        m_aWaypoints {
+         "deftop6"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{1CDC0BB2F5F265FC}" {
+     m_sName "GC_MigratedSpawn_106D2EB9BFC89A8F (345s)"
+     m_Advanced GC_EventOptions "{0D0254E588BDE43B}" {
+      m_fDelay 345
+     }
+     m_aActions {
+      GC_SpawnAction "{D2C1722D0E622371}" {
+       m_Spawn GC_PrefabSpawn "{FBDB473AE48DD978}" {
+        m_sLocation "arty1"
+        m_sPrefab "{9A011A8BAA2E8351}worlds/James/KhandarClearance/EffectModule_Zoned_BM21Barrage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{7D498F318EE3F8D0}" {
+     m_sName "GC_MigratedSpawn_D14C1D3C1EC18C62 (360s)"
+     m_Advanced GC_EventOptions "{B7D6A51772C10127}" {
+      m_fDelay 360
+     }
+     m_aActions {
+      GC_SpawnAction "{27C57BD8C91A24A3}" {
+       m_Spawn GC_PrefabSpawn "{D9F2A9E44C629D31}" {
+        m_sLocation "arty2"
+        m_sPrefab "{9A011A8BAA2E8351}worlds/James/KhandarClearance/EffectModule_Zoned_BM21Barrage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{01DB57F57E6F547A}" {
+     m_sName "GC_MigratedSpawn_A071880959EE2B5E (370s)"
+     m_Advanced GC_EventOptions "{1606BFA3D7622D25}" {
+      m_fDelay 370
+     }
+     m_aActions {
+      GC_SpawnAction "{F35A763DEE3A95BF}" {
+       m_Spawn GC_PrefabSpawn "{1FECFB58403A3EBC}" {
+        m_sLocation "arty3"
+        m_sPrefab "{9A011A8BAA2E8351}worlds/James/KhandarClearance/EffectModule_Zoned_BM21Barrage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{D201BB3ADDF5B4C3}" {
+     m_sName "GC_MigratedSpawn_BEFE83A4D3798533 (370s)"
+     m_Advanced GC_EventOptions "{884358EDA11CF43D}" {
+      m_fDelay 370
+     }
+     m_aActions {
+      GC_SpawnAction "{83D1AA10B778686E}" {
+       m_Spawn GC_PrefabSpawn "{43A612E88AFD9696}" {
+        m_sLocation "arty4"
+        m_sPrefab "{9A011A8BAA2E8351}worlds/James/KhandarClearance/EffectModule_Zoned_BM21Barrage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{EF89138F82BCF815}" {
+     m_sName "GC_MigratedSpawn_C7BE1CA1FCD42195 (345s)"
+     m_Advanced GC_EventOptions "{143C186E0076DD13}" {
+      m_fDelay 345
+     }
+     m_aActions {
+      GC_SpawnAction "{4920D39A108BD6E8}" {
+       m_Spawn GC_PrefabSpawn "{644B8D268EC5A92F}" {
+        m_sLocation "arty5"
+        m_sPrefab "{9A011A8BAA2E8351}worlds/James/KhandarClearance/EffectModule_Zoned_BM21Barrage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{F98236EA78CDF8F0}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{9CB33F3938CFB073}" {
+       m_fSeconds 300.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{B255E5B5E95AF7E2}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 1617.568 49.886 3426.212
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{6860BC690F09CE56}" {
+        m_sCallsign " Weapons Platoon"
+       }
+       SCR_CallsignInfo "{6860BC690F4CFAE2}" {
+        m_sCallsign " MG Squad"
+       }
+       SCR_CallsignInfo "{6860BC6912B99497}" {
+        m_sCallsign " AGS Squad"
+       }
+       SCR_CallsignInfo "{6860BC6912CECCE2}" {
+        m_sCallsign " Bronegruppa"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1455.598 111.261 3102.636
+ m_fRadius 33
+ m_bExcludePrefabs 1
+ m_aPrefabs {
+  "{83CCFE4065C11827}Prefabs/Structures/Rock/Afghan_Rock/GraniteCliff_Afghan_02.et"
+  "{EF98CAA0D9059709}Prefabs/Structures/Rock/Afghan_Rock/GraniteCliff_Afghan_01.et"
+  "{6650B2B969248F4C}Prefabs/Structures/Rock/Afghan_Rock/GraniteCliff_Afghan_03.et"
+  "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 1385.552 143.689 3044.346
+ m_fRadius 15
+}
+GC_StartupCleanupEntity {
+ coords 1480.163 91.35 3149.29
+ m_bExcludePrefabs 1
+ m_aPrefabs {
+  "{83CCFE4065C11827}Prefabs/Structures/Rock/Afghan_Rock/GraniteCliff_Afghan_02.et"
+  "{EF98CAA0D9059709}Prefabs/Structures/Rock/Afghan_Rock/GraniteCliff_Afghan_01.et"
+  "{6650B2B969248F4C}Prefabs/Structures/Rock/Afghan_Rock/GraniteCliff_Afghan_03.et"
+  "{AD7EFA7B1214DD21}PrefabLibrary/DefaultLibrary/Vegetation/Bushes/b_corylus_avellana_0l.et"
+  "{DA7492F3E6B63251}PrefabLibrary/DefaultLibrary/Vegetation/Bushes/b_corylus_avellana_1l.et"
+  "{1A407760EEAE4156}Prefabs/Vehicles/Static/BaconZU23/BaconZU23_Turret_Deployed.et"
+  "{CB61133572F1545F}Prefabs/Vehicles/Static/BaconZU23/BaconZU23_Base.et"
+  "{F7B2E6105296C81F}Prefabs/Weapons/HeavyWeapons/BaconZU23_Cannon.et"
+  "{AB801054310BC947}Prefabs/Weapons/Magazines/Box_BaconZU23_23x152.et"
+ }
+}
+GC_StartupCleanupEntity {
+ coords 958.185 192.642 2846.409
+ m_fRadius 65
+}
+GC_StartupCleanupEntity {
+ coords 1241.395 103.734 3615.077
+ m_fRadius 25
+ m_bExcludePrefabs 1
+ m_aPrefabs {
+  "{83CCFE4065C11827}Prefabs/Structures/Rock/Afghan_Rock/GraniteCliff_Afghan_02.et"
+  "{EF98CAA0D9059709}Prefabs/Structures/Rock/Afghan_Rock/GraniteCliff_Afghan_01.et"
+  "{6650B2B969248F4C}Prefabs/Structures/Rock/Afghan_Rock/GraniteCliff_Afghan_03.et"
+  "{EF36F6B0E1F170B7}Prefabs/Structures/Rock/R_Rock_01_EP1.et"
+ }
+}
+GC_RadiusAreaEntity GC_MigrationArea_obj1cap : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 1384.722 69.562 3212.304
+ m_fRadius 75
+}
+GC_RadiusAreaEntity GC_MigrationArea_obj2cap : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 1494.523 40.063 3343.398
+ m_fRadius 65
+}
+GC_RadiusAreaEntity GC_MigrationArea_obj3cap : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 1232.675 55.036 3274.506
+ m_fRadius 55
+}
