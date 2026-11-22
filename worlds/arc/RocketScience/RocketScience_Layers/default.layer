@@ -1,0 +1,467 @@
+SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A2995A7E8BC2}" {
+     NavmeshFile "{D8EF7131FB31AF97}worlds/GameMaster/Navmeshes/GM_Arland.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A299509CF377}" {
+     NavmeshFile "{A0AEEB1E7EF474FA}worlds/GameMaster/Navmeshes/GM_Arland_vehicles.nmn"
+    }
+   }
+  }
+ }
+ coords 1752.19 0 3683.903
+}
+GC_LobbyGameMode GC_MigratedMission : "{F478D66B68D248C1}worlds/arc/RocketScience/RocketScience_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{62E73B204CBBE608}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 0
+    }
+   }
+  }
+  SCR_SupportStationManagerComponent "{5B0AB3A852FCBF7E}" {
+   Enabled 0
+  }
+  GC_PeakFactionPopulationComponent "{C816609559B9088B}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{545592748937AD2F}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 60
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{373F960CEEAF93C1}" {
+     m_sName "CIV_UK"
+    }
+    GC_MissionFlag "{BEE62A2C34DC4006}" {
+     m_sName "CIV_USSR"
+    }
+    GC_MissionFlag "{34C8BA2C205F4929}" {
+     m_sName "HOSTAGE_KIA"
+     m_aConditions {
+      GC_EntityDamageCondition "{0B04F776D2ACAF05}" {
+       m_sEntityName "rs_hostage"
+      }
+     }
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{7FD440E8B09E770E}" {
+     m_sName "USSR_EXTRACT_CMD"
+     m_aConditions {
+      GC_MissionFlagCondition "{9CEA3D559F31DFD4}" {
+       m_sFlagName "CIV_USSR"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{742B81784A407BCF}" {
+       m_sMessage "USSR_EXTRACT_CMD"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0EC9AF59133EEE57}" {
+     m_sName "USSR_EXTRACT_CMD (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9B9E13CBE6713783}" {
+       m_sEventName "USSR_EXTRACT_CMD"
+      }
+     }
+     m_Advanced GC_EventOptions "{FBF9C839BA4E98CD}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_AssignWaypointsAction "{6CD35A0BA723CB3C}" {
+       m_sGroupName "HOSTAGE_GROUP"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "USSR_Extract_Wp"
+       }
+      }
+     }
+    }
+    GC_Event "{2D0230867C1E87DB}" {
+     m_sName "UK_EXTRACT_CMD"
+     m_aConditions {
+      GC_MissionFlagCondition "{37CA0AF75EBFCE4B}" {
+       m_sFlagName "CIV_UK"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{40E7ED78F865A2E8}" {
+       m_sMessage "UK_EXTRACT_CMD"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{69718C9C96CCAAA4}" {
+     m_sName "UK_EXTRACT_CMD (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CB4C2F5A2339D622}" {
+       m_sEventName "UK_EXTRACT_CMD"
+      }
+     }
+     m_Advanced GC_EventOptions "{F26388973DE5F12F}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_AssignWaypointsAction "{B89C8BD7F08D6D14}" {
+       m_sGroupName "HOSTAGE_GROUP"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "UK_Extract_Wp"
+       }
+      }
+     }
+    }
+    GC_Event "{7265B49F80DE39F6}" {
+     m_sName "USSR_EXTRACTED"
+     m_aConditions {
+      GC_AreaCondition "{4B4C90A0A2A2C383}" {
+       m_sArea "GC_MigrationArea_USSR_EXTRACTED"
+       m_Targets GC_NamedAreaTargets "{8784D5F80AED52F5}" {
+        m_aNames {
+         "rs_hostage"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{49C5F1554CBEEB90}" {
+        m_fRequiredProportion 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{7EAE3E68BBB72FBA}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{138201DDCCC60CB3}" {
+       m_sMessage "USSR_EXTRACTED"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{4E9FBFFDBDC6ED2F}" {
+     m_sName "USSR_EXTRACTED (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{40E32F70B6BCE401}" {
+       m_sEventName "USSR_EXTRACTED"
+      }
+     }
+     m_Advanced GC_EventOptions "{BF812C3159B54406}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{3666AC923A168B67}" {
+       m_sTitle "USSR VICTORY"
+       m_sMessage "The scientist has been extracted by the Spetznaz."
+      }
+     }
+    }
+    GC_Event "{CF099779FC3CC769}" {
+     m_sName "USSR_EXTRACTED (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6016873C263979D1}" {
+       m_sEventName "USSR_EXTRACTED"
+      }
+     }
+     m_Advanced GC_EventOptions "{0917E018D19BD8B0}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{BDD435FFCE09DFBB}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "USSR"
+       }
+      }
+     }
+    }
+    GC_Event "{44DD1977ED86181A}" {
+     m_sName "UK_EXTRACTED"
+     m_aConditions {
+      GC_AreaCondition "{9581FCEAE62FDACB}" {
+       m_sArea "GC_MigrationArea_UK_EXTRACTED"
+       m_Targets GC_NamedAreaTargets "{9B07B9F9A1729212}" {
+        m_aNames {
+         "rs_hostage"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{C94251B61A076EA0}" {
+        m_fRequiredProportion 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{8C9E258F9FB645B2}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9C8972A18480FC41}" {
+       m_sMessage "UK_EXTRACTED"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F23FC234E9669BDE}" {
+     m_sName "UK_EXTRACTED (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6D368AA55321B2C5}" {
+       m_sEventName "UK_EXTRACTED"
+      }
+     }
+     m_Advanced GC_EventOptions "{F7A7134443AB7A2E}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{20B1A05407662404}" {
+       m_sTitle "UK VICTORY"
+       m_sMessage "The scientist has been extracted by the SAS."
+      }
+     }
+    }
+    GC_Event "{E51159CC7917B4B4}" {
+     m_sName "UK_EXTRACTED (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{29B8C0EAD1B431FB}" {
+       m_sEventName "UK_EXTRACTED"
+      }
+     }
+     m_Advanced GC_EventOptions "{74CBC8E48D28EB70}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{DCE5E9A9CF6AE5EB}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{A62E891061E28A85}" {
+     m_sName "USSR_KIA"
+     m_aConditions {
+      GC_ConditionGroup "{1EE9468DA2573D39}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_CustomScriptCondition "{0F108E4DC0F04F60}" {
+         m_Script GC_PeakFactionPopulationCheck "{7D39925E023DC844}" {
+          m_sFaction "USSR"
+          m_fRatio 1
+         }
+        }
+        GC_MissionFlagCondition "{B3E9CC9A828CD6A8}" {
+         m_sFlagName "HOSTAGE_KIA"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{097F0D6A6AB26A26}" {
+       m_sMessage "USSR_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F189CD69616D15AC}" {
+     m_sName "USSR_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B4CAC4D8A0D60A9B}" {
+       m_sEventName "USSR_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{3EBF5883333C2972}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{9CA79A67BDCADCF9}" {
+       m_sTitle "UK MINOR VICTORY"
+       m_sMessage "The scientist was killed but all Spetznaz forces have been eliminated."
+      }
+     }
+    }
+    GC_Event "{E6883EC261CBA983}" {
+     m_sName "USSR_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9085540BED4273BE}" {
+       m_sEventName "USSR_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{3BF2100554EC5693}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{B7F153149A8A37EF}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{FCDCAC12A7C84346}" {
+     m_sName "UK_KIA"
+     m_aConditions {
+      GC_ConditionGroup "{B6F5EF481FF19D53}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_CustomScriptCondition "{8ED2D0B906D115CB}" {
+         m_Script GC_PeakFactionPopulationCheck "{735E76FB543F853B}" {
+          m_sFaction "UK"
+          m_fRatio 1
+         }
+        }
+        GC_MissionFlagCondition "{49E913DD042E2132}" {
+         m_sFlagName "HOSTAGE_KIA"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D50FB8AD50A1E37F}" {
+       m_sMessage "UK_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8C3A176A131BA688}" {
+     m_sName "UK_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{62809A9BFAB32127}" {
+       m_sEventName "UK_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{FB21D6B065D1BC9B}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{B14A1836227788A1}" {
+       m_sTitle "USSR MINOR VICTORY"
+       m_sMessage "The scientist was killed but all SAS forces have been eliminated."
+      }
+     }
+    }
+    GC_Event "{80DF871F3D660DED}" {
+     m_sName "UK_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B6D77302BA0AD780}" {
+       m_sEventName "UK_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{2A9E5065EDCE9D68}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{3D5BF5A1CF84D66F}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "USSR"
+       }
+      }
+     }
+    }
+    GC_Event "{F03EC26CD4778EF1}" {
+     m_sName "TIME_LIMIT (1805s)"
+     m_Advanced GC_EventOptions "{42AA251ED713D399}" {
+      m_fDelay 1805
+     }
+     m_aActions {
+      GC_MessageAction "{AF33A70A22BC9FB7}" {
+       m_sTitle "DRAW"
+       m_sMessage "Time limit reached."
+      }
+     }
+    }
+    GC_Event "{DC3D97734F362DCF}" {
+     m_sName "ASSIGN_WAYPOINTS (5s)"
+     m_Advanced GC_EventOptions "{206AFB47FA8A3E45}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_AssignWaypointsAction "{841397EE18807438}" {
+       m_sGroupName "FIASQD"
+       m_aWaypoints {
+        "PatrolWp1"
+        "PatrolWp2"
+        "PatrolWp3"
+        "PatrolWp4"
+        "CycleWp"
+       }
+      }
+     }
+    }
+    GC_Event "{100655A5F77529EF}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{E3509E059CA2B631}" {
+       m_fSeconds 60.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{E75A5DE4F114E7A4}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+        "GC_MigrationStartingZone2"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 1782.28 0 3681.627
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{61500924662B6062}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GC_RadiusAreaEntity GC_MigrationArea_USSR_EXTRACTED : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 2488.908 3.569 3220.142
+ m_fRadius 25
+}
+GC_RadiusAreaEntity GC_MigrationArea_UK_EXTRACTED : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 1408.135 3.301 3547.71
+ m_fRadius 25
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 2487.319 3.13 3219.224
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone2 : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 1407.735 3.224 3548.173
+}
