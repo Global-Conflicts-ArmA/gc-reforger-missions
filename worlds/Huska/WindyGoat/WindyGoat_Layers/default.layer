@@ -1,0 +1,442 @@
+SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
+ coords 2645.281 24.218 5584.309
+}
+GC_LobbyGameMode GC_MigratedMission : "{60E764DD5973ACCF}worlds/Huska/WindyGoat/WindyGoat_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 6
+   m_iStartingMinutes 45
+   m_bRandomStartingWeather 1
+   m_bWindOverride 1
+  }
+  GC_PeakFactionPopulationComponent "{C54996AD41BD385D}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{08D9D2DFA64DCE31}" {
+     m_sName "All_HVTs_Extracted"
+     m_aConditions {
+      GC_GameModeStateCondition "{B8E55A8D580CB005}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{17390D00C9A06456}" {
+       m_sFlagName "HVT_Extracted"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{96F1B3DED25A6FE2}" {
+       m_sMessage "All_HVTs_Extracted"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6F796FDDB20C0CF3}" {
+     m_sName "All_HVTs_Extracted (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{8F0FFB84653B04C4}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{35DC19A19F852618}" {
+       m_sEventName "All_HVTs_Extracted"
+      }
+     }
+     m_Advanced GC_EventOptions "{5E45B6783982D261}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{5DA3A4F4F57D52AF}" {
+       m_sTitle "HVTs Extracted, Blufor victory"
+       m_sMessage "Blufor wins, both HVTs were extracted"
+      }
+     }
+    }
+   }
+   m_aAreaFlagObservers {
+    GC_AreaFlagObserver "{D12E08DB60A1361F}" {
+     m_sFlag "HVT_Extracted"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{56ADB66AEE8EA1DF}" {
+      m_sArea "GC_MigrationArea_HVT_Extracted_AAC7263D67F5FE15"
+      m_Targets GC_CharacterAreaTargets "{5605EE85CCEB1F94}" {
+       m_iWho 2
+       m_aFactions {
+        "GC_INSURGENT"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{8309A1ADAA1F82D7}" {
+       m_fRequiredShare 0
+      }
+     }
+    }
+    GC_AreaFlagObserver "{B43FB586A90FCA91}" {
+     m_sFlag "HVT_Extracted"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{114B4A74675C23D9}" {
+      m_sArea "GC_MigrationArea_HVT_Extracted_BE525733B71F6C92"
+      m_Targets GC_CharacterAreaTargets "{55BFE33C67D2D9FA}" {
+       m_iWho 2
+       m_aFactions {
+        "GC_SEPARATIST"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{B3572289CB86F50A}" {
+       m_fRequiredShare 0
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 2624.555 24.22 5577.351
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_bShowInWelcomeScreenIfNonPlayable 0
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CD021D5C}" {
+        m_sCallsign ""
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+       }
+       SCR_CallsignInfo "{66FCF8A18D32E515}" {
+       }
+       SCR_CallsignInfo "{66FCF8A18D5A2608}" {
+       }
+       SCR_CallsignInfo "{66FCF8AA257E1E0E}" {
+        m_sCallsign "HAWK 6"
+       }
+      }
+      m_sCallsignGroupFormat "%1%2%3"
+      m_sCallsignCharacterFormat "%1%2%3%4"
+      m_sCallsignCharacterWithRoleFormat "%1%2%3%4"
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CD021D5C}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{55CCB792CCD598D3}" {
+        m_sCallsign ""
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "DINGO"
+       }
+       SCR_CallsignInfo "{55CCB792CE18FB44}" {
+        m_sCallsign "RAPTOR"
+       }
+       SCR_CallsignInfo "{55CCB792CE02ECFA}" {
+        m_sCallsign ""
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "0"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{66FCF8AB8A3B653E}" {
+        m_sCallsign "4"
+       }
+       SCR_CallsignInfo "{66FCF8AB7D176304}" {
+       }
+       SCR_CallsignInfo "{66FCF8AB7DAA8DB6}" {
+       }
+       SCR_CallsignInfo "{66FCF8AB7DC0A796}" {
+       }
+       SCR_CallsignInfo "{66FCF8AB7C70C367}" {
+        m_sCallsign "HAWK 6"
+       }
+      }
+      m_sCallsignGroupFormat "%1%2 %3"
+      m_sCallsignCharacterFormat "%1%2 %3: %4"
+     }
+    }
+    SCR_Faction "{62EB308733CA83DD}" {
+     UIInfo SCR_FactionUIInfo "{62EB259E4C94C2BD}" {
+      Name "Warlord Wade"
+     }
+     m_aFriendlyFactionsIds {
+      "GC_INSURGENT"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{58B2B630FDD64B73}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B7A}" {
+        m_sCallsign ""
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{58B2B630FDD64B65}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B6B}" {
+        m_sCallsign ""
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{66FCF8A391C67E91}" {
+       }
+       SCR_CallsignInfo "{66FCF8A3900BA1AE}" {
+       }
+       SCR_CallsignInfo "{66FCF8A3904EFCB8}" {
+        m_sCallsign "Warlord Wade"
+       }
+       SCR_CallsignInfo "{66FCF8AAA3F20EE5}" {
+        m_sCallsign "Wade's Guards"
+       }
+      }
+      m_sCallsignGroupFormat "%1%2%3"
+      m_sCallsignCharacterFormat "%1%2%3%4"
+      m_sCallsignCharacterWithRoleFormat "%1%2%3 %4"
+     }
+    }
+    SCR_Faction "{632925D53C7F1148}" {
+     UIInfo SCR_FactionUIInfo "{6328D378FF9975BC}" {
+      Name "The Scourge of Gabriel"
+     }
+     m_aFriendlyFactionsIds {
+      "GC_SEPARATIST"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{58B2B630FDD64B73}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B7A}" {
+        m_sCallsign ""
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{58B2B630FDD64B65}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B6B}" {
+        m_sCallsign ""
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{66FCF8A24CFC13CF}" {
+       }
+       SCR_CallsignInfo "{66FCF8A24F3DDA50}" {
+       }
+       SCR_CallsignInfo "{66FCF8A24B28605A}" {
+        m_sCallsign "Terrorist Leader Gabriel"
+       }
+       SCR_CallsignInfo "{66FCF8A2449DBB81}" {
+        m_sCallsign "The Scourge of Gabriel"
+       }
+      }
+      m_sCallsignGroupFormat "%1%2%3"
+      m_sCallsignCharacterFormat "%1%2%3%4"
+      m_sCallsignCharacterWithRoleFormat "%1%2%3%4"
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity OBJ_WINDY_GOAT : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet "{67B3A6DC2D712B52}UI/Textures/Icons/icons_mapMarkersUI-glow.imageset"
+   m_sQuadName "flag-2"
+   m_Color 0 0.502 0.125 1
+   m_fSize 100
+   m_bWorldScale 1
+   m_sDescription "OBJ WINDY GOAT"
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+   m_aFactionKeys {
+    "RHS_USAF" "US"
+   }
+  }
+  SCR_EditableSystemComponent "{5EDF4803CD048668}" {
+   m_EntityType FACTION
+   m_UIInfo SCR_EditableDescriptorUIInfo "{5EDF4803E71335A1}" {
+    Name "Map Marker"
+    Description "OBJ WINDY GOAT"
+    Icon "{D8DDF2331F405C18}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_UNKNOWN_UI.edds"
+    m_Image "{5E7A3FF224D598E3}UI/Textures/FieldManual/Gameplay/Navigation/Tiles/protractor-icon-brown_ui.edds"
+    m_aAuthoredLabels {
+     1
+    }
+    m_aAutoLabels {
+     7
+    }
+    m_sNameFormat "Marker"
+   }
+   m_bAutoRegister ALWAYS
+   m_bStatic 1
+   m_Flags 71
+  }
+  SCR_EditableEntityVisibilityChildComponent "{5EDF48006635F3CA}" {
+   m_State 96
+  }
+  RplComponent "{5EDF48006635FC82}" {
+   Streamable Disabled
+  }
+  Hierarchy "{5EDF48006635FC42}" {
+  }
+ }
+ coords 1942.048 134.173 7420.438
+ angleY 90
+}
+GenericEntity Wades_Villa : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet "{67B3A6DC2D712B52}UI/Textures/Icons/icons_mapMarkersUI-glow.imageset"
+   m_sQuadName "mark-exclamation"
+   m_Color 0.502 0 0 1
+   m_fSize 100
+   m_bWorldScale 1
+   m_sDescription "Wade's Villa"
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+   m_aFactionKeys {
+    "GC_INSURGENT" "GC_SEPARATIST"
+   }
+   m_bRestrictToListedFactions 1
+  }
+  SCR_EditableSystemComponent "{5EDF4803CD048668}" {
+   m_EntityType FACTION
+   m_UIInfo SCR_EditableDescriptorUIInfo "{5EDF4803E71335A1}" {
+    Name "Map Marker"
+    Description "OBJ WINDY GOAT"
+    Icon "{D8DDF2331F405C18}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_UNKNOWN_UI.edds"
+    m_Image "{5E7A3FF224D598E3}UI/Textures/FieldManual/Gameplay/Navigation/Tiles/protractor-icon-brown_ui.edds"
+    m_aAuthoredLabels {
+     1
+    }
+    m_aAutoLabels {
+     7
+    }
+    m_sNameFormat "Marker"
+   }
+   m_bAutoRegister ALWAYS
+   m_bStatic 1
+   m_Flags 71
+  }
+  SCR_EditableEntityVisibilityChildComponent "{5EDF48006635F3CA}" {
+   m_State 96
+  }
+  RplComponent "{5EDF48006635FC82}" {
+   Streamable Disabled
+  }
+  Hierarchy "{5EDF48006635FC42}" {
+  }
+ }
+ coords 1939.286 137.19 7422.788
+ angleY 90
+}
+GenericEntity Joint_base : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet "{67B3A6DC2D712B52}UI/Textures/Icons/icons_mapMarkersUI-glow.imageset"
+   m_sQuadName "point-of-interest"
+   m_Color 0 0.125 0.502 1
+   m_fSize 100
+   m_bWorldScale 1
+   m_sDescription "Joint Base Edwards"
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+  }
+  SCR_EditableSystemComponent "{5EDF4803CD048668}" {
+   m_EntityType FACTION
+   m_UIInfo SCR_EditableDescriptorUIInfo "{5EDF4803E71335A1}" {
+    Name "Map Marker"
+    Description "OBJ WINDY GOAT"
+    Icon "{D8DDF2331F405C18}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_UNKNOWN_UI.edds"
+    m_Image "{5E7A3FF224D598E3}UI/Textures/FieldManual/Gameplay/Navigation/Tiles/protractor-icon-brown_ui.edds"
+    m_aAuthoredLabels {
+     1
+    }
+    m_aAutoLabels {
+     7
+    }
+    m_sNameFormat "Marker"
+   }
+   m_bAutoRegister ALWAYS
+   m_bStatic 1
+   m_Flags 71
+  }
+  SCR_EditableEntityVisibilityChildComponent "{5EDF48006635F3CA}" {
+   m_State 96
+  }
+  RplComponent "{5EDF48006635FC82}" {
+   Streamable Disabled
+  }
+  Hierarchy "{5EDF48006635FC42}" {
+  }
+ }
+ coords 2615.245 24.281 5243.906
+ angleY 90
+}
+GenericEntity Gabes_smoke_break : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet "{67B3A6DC2D712B52}UI/Textures/Icons/icons_mapMarkersUI-glow.imageset"
+   m_sQuadName "heal"
+   m_Color 0.502 0 0 1
+   m_fSize 100
+   m_bWorldScale 1
+   m_sDescription "Gabe's smoke break"
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+   m_aFactionKeys {
+    "GC_INSURGENT"
+   }
+  }
+  SCR_EditableSystemComponent "{5EDF4803CD048668}" {
+   m_EntityType FACTION
+   m_UIInfo SCR_EditableDescriptorUIInfo "{5EDF4803E71335A1}" {
+    Name "Map Marker"
+    Description "OBJ WINDY GOAT"
+    Icon "{D8DDF2331F405C18}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_UNKNOWN_UI.edds"
+    m_Image "{5E7A3FF224D598E3}UI/Textures/FieldManual/Gameplay/Navigation/Tiles/protractor-icon-brown_ui.edds"
+    m_aAuthoredLabels {
+     1
+    }
+    m_aAutoLabels {
+     7
+    }
+    m_sNameFormat "Marker"
+   }
+   m_bAutoRegister ALWAYS
+   m_bStatic 1
+   m_Flags 71
+  }
+  SCR_EditableEntityVisibilityChildComponent "{5EDF48006635F3CA}" {
+   m_State 96
+  }
+  RplComponent "{5EDF48006635FC82}" {
+   Streamable Disabled
+  }
+  Hierarchy "{5EDF48006635FC42}" {
+  }
+ }
+ coords 3612.88 260.11 6915.583
+ angleY 90
+}
