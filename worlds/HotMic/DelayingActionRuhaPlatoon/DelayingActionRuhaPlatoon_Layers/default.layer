@@ -1,0 +1,1701 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 6644.838 96.656 1207.725
+}
+GC_LobbyGameMode GC_MigratedMission : "{943076F7170BA518}worlds/HotMic/DelayingActionRuhaPlatoon/DelayingActionRuhaPlatoon_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 11
+  }
+  GC_PeakFactionPopulationComponent "{69469520B317061F}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{D0D3EECB37A3F8AD}" {
+     m_sName "Phase 1 Can Respawn"
+    }
+    GC_MissionFlag "{BBF6CAEEBDB2A424}" {
+     m_sName "Phase 1 Flag"
+    }
+    GC_MissionFlag "{02524038AD8105A9}" {
+     m_sName "Phase 1 Mortars"
+    }
+    GC_MissionFlag "{B4E65B27F46B0CAD}" {
+     m_sName "Phase 2 Can Respawn"
+    }
+    GC_MissionFlag "{E07F67D99FCC1932}" {
+     m_sName "Phase 2 Flag"
+    }
+    GC_MissionFlag "{04408B22C761D123}" {
+     m_sName "Phase 2 Mortars"
+    }
+    GC_MissionFlag "{0533AA1E2B2B1FFD}" {
+     m_sName "Phase 3 Can Respawn"
+    }
+    GC_MissionFlag "{C9022A4A98E3CDB8}" {
+     m_sName "Phase 3 Flag"
+    }
+    GC_MissionFlag "{A3929A4CDB86D141}" {
+     m_sName "Phase 3 Mortars"
+    }
+    GC_MissionFlag "{D890764AE302904F}" {
+     m_sName "Within Time Limit"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{B8C5D0C210FCB52B}" {
+     m_sName "Pre-Game Events"
+     m_aConditions {
+      GC_ConditionGroup "{9F8BAD2ACA6D2E83}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{540933D956152DE6}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{AF622C18BF4D62C3}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{E5F10BE62D322A8B}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{788C475A162ECE2E}" {
+       m_sMessage "Pre-Game Events"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{32325469D7DD4684}" {
+     m_sName "Pre-Game Events (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2D55CD8479940C87}" {
+       m_sEventName "Pre-Game Events"
+      }
+     }
+     m_Advanced GC_EventOptions "{8728048A830CC216}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_FlagAction "{5D9AD86C1227CC30}" {
+       m_sFlagName "Phase 1 Can Respawn"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{2C5EA059CE10B78E}" {
+     m_sName "Pre-Game Events (2s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8DFE84EEA55708D5}" {
+       m_sEventName "Pre-Game Events"
+      }
+     }
+     m_Advanced GC_EventOptions "{3F26A45F8725E580}" {
+      m_fDelay 2
+     }
+     m_aActions {
+      GC_FlagAction "{69A63625537A36CC}" {
+       m_sFlagName "Phase 2 Can Respawn"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{11C0EA9A89AA3000}" {
+     m_sName "Pre-Game Events (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{AC53F87FD67A08CF}" {
+       m_sEventName "Pre-Game Events"
+      }
+     }
+     m_Advanced GC_EventOptions "{CAC089D821570BF6}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_FlagAction "{05F50C56F13B82A6}" {
+       m_sFlagName "Phase 3 Can Respawn"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{847F238F794BFC71}" {
+     m_sName "Pre-Game Events (4s)"
+     m_aConditions {
+      GC_MissionEventCondition "{996A4CDB3B3C17FB}" {
+       m_sEventName "Pre-Game Events"
+      }
+     }
+     m_Advanced GC_EventOptions "{EE26FEB5AF6C5E43}" {
+      m_fDelay 4
+     }
+     m_aActions {
+      GC_FlagAction "{A7FA4DCBCD6B1B93}" {
+       m_sFlagName "Within Time Limit"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{491D42E2E8AE8FED}" {
+     m_sName "Pre-Phase 1"
+     m_aConditions {
+      GC_GameModeStateCondition "{33EE6B35829FA4F7}" {
+       m_eGameModeState 1
+      }
+     }
+     m_aActions {
+      GC_FlagAction "{73A4D3C36AB4F42E}" {
+       m_bScheduleAction 1
+       m_fActionDelay 60
+       m_sFlagName "Phase 1 Flag"
+       m_iOperation 1
+       m_iAmount 1
+      }
+      GC_FlagAction "{FAC3512F00AF47A1}" {
+       m_bScheduleAction 1
+       m_fActionDelay 60
+       m_sFlagName "Phase 1 Mortars"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{2FA1E10F2DA2BBFE}" {
+     m_sName "Phase 1"
+     m_aConditions {
+      GC_GameModeStateCondition "{11D1979063F319CC}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{2974AB8D12BE58C6}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{F1AFB2858CD64FA3}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_MissionFlagCondition "{DABAB40611F74A10}" {
+           m_sFlagName "Phase 1 Flag"
+          }
+          GC_MissionFlagCondition "{AA794B8EB7900568}" {
+           m_sFlagName "Phase 1 Can Respawn"
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{E2B612D0463C09A7}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_Spawn GC_CrewedVehicleSpawn "{A150BD325B46183C}" {
+        m_sLocation "Phase1_Main_Vics"
+        m_sPrefab "{9AEDF323A812F9ED}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2_AFRF.et"
+        m_sEntityName "Unit1"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{62785D74D036515F}" {
+          m_aStations {
+           GC_SpawnCrewStation "{73BF99D36C7DF0FD}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{5436629450D8387A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Phase1_ForcedMove_Main_Waypoint"
+           "Phase1_Move_Waypoint"
+           "Phase2_Move_Waypoint"
+           "Phase3_Move_Waypoint"
+           "Phase4_Move_Waypoint"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{542A2A9C88B922FA}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3
+       m_Spawn GC_CrewedVehicleSpawn "{53E3129813849595}" {
+        m_sLocation "Phase1_Main_Vics2"
+        m_sPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{5F1D2DD578942077}" {
+          m_sGroupName "Unit2"
+          m_aStations {
+           GC_SpawnCrewStation "{7B7E33F453E7A6B1}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{5436629450D8387A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{AB9726163EC1BD81}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{96C784C502AC37DA}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MG.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Phase1_ForcedMove_Main_Waypoint"
+           "Phase1_Move_Waypoint"
+           "Phase2_Move_Waypoint"
+           "Phase3_Move_Waypoint"
+           "Phase4_Move_Waypoint"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{FB746E2EF0F63305}" {
+       m_bScheduleAction 1
+       m_fActionDelay 6
+       m_Spawn GC_CrewedVehicleSpawn "{3A51CE4B3D4A947D}" {
+        m_sLocation "Phase1_Main_Vics3"
+        m_sPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{F982DFD9AC9E2FAE}" {
+          m_sGroupName "Unit3"
+          m_aStations {
+           GC_SpawnCrewStation "{2010602E4AB258BD}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{5436629450D8387A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{AB9726163EC1BD81}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{96C784C502AC37DA}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MG.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Phase1_ForcedMove_Main_Waypoint"
+           "Phase1_Move_Waypoint"
+           "Phase2_Move_Waypoint"
+           "Phase3_Move_Waypoint"
+           "Phase4_Move_Waypoint"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{0EA496FC2E1971A5}" {
+       m_bScheduleAction 1
+       m_fActionDelay 60
+       m_Spawn GC_CrewedVehicleSpawn "{F508ACC7969555CA}" {
+        m_sLocation "Phase1_ASR_Vics"
+        m_sPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{8605109E112A6124}" {
+          m_sGroupName "Unit4"
+          m_aStations {
+           GC_SpawnCrewStation "{60000AAED2957370}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{5436629450D8387A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{AB9726163EC1BD81}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{96C784C502AC37DA}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MG.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Phase1_ForcedMove_ASR_Waypoint"
+           "Phase1_Move_Waypoint"
+           "Phase2_Move_Waypoint"
+           "Phase3_Move_Waypoint"
+           "Phase4_Move_Waypoint"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{1846D6DB924462F5}" {
+       m_bScheduleAction 1
+       m_fActionDelay 63
+       m_Spawn GC_CrewedVehicleSpawn "{30864B305DF8D6DA}" {
+        m_sLocation "Phase1_ASR_Vics2"
+        m_sPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{E4A4907C8B30901F}" {
+          m_sGroupName "Unit5"
+          m_aStations {
+           GC_SpawnCrewStation "{75AAFBD54DF942A5}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{5436629450D8387A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{AB9726163EC1BD81}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{96C784C502AC37DA}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MG.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Phase1_ForcedMove_ASR_Waypoint"
+           "Phase1_Move_Waypoint"
+           "Phase2_Move_Waypoint"
+           "Phase3_Move_Waypoint"
+           "Phase4_Move_Waypoint"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{37B90077167B23F3}" {
+       m_bScheduleAction 1
+       m_fActionDelay 70
+       m_Spawn GC_CrewedVehicleSpawn "{41A66849F1C99D3C}" {
+        m_sLocation "Phase1_Flanking_Vics"
+        m_sPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{B66340011525D4E7}" {
+          m_sGroupName "Unit6"
+          m_aStations {
+           GC_SpawnCrewStation "{49C78DE36A92F2AC}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{5436629450D8387A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{AB9726163EC1BD81}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{96C784C502AC37DA}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MG.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Phase1_ForcedMove_Flanking_Waypoint"
+           "Phase1_Move_Waypoint"
+           "Phase2_Move_Waypoint"
+           "Phase3_Move_Waypoint"
+           "Phase4_Move_Waypoint"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{8CAC9CC809A7A743}" {
+       m_bScheduleAction 1
+       m_fActionDelay 73
+       m_Spawn GC_CrewedVehicleSpawn "{C4DBB88A371B6668}" {
+        m_sLocation "Phase1_Flanking_Vics2"
+        m_sPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{09A3126D91964FB9}" {
+          m_sGroupName "Unit7"
+          m_aStations {
+           GC_SpawnCrewStation "{27D83743BC2458DD}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{5436629450D8387A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{AB9726163EC1BD81}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{96C784C502AC37DA}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MG.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Phase1_ForcedMove_Flanking_Waypoint"
+           "Phase1_Move_Waypoint"
+           "Phase2_Move_Waypoint"
+           "Phase3_Move_Waypoint"
+           "Phase4_Move_Waypoint"
+          }
+         }
+        }
+       }
+      }
+      GC_CustomScriptAction "{6A2280C6E27053A8}" {
+       m_bScheduleAction 1
+       m_fActionDelay 75
+       m_Script GC_PhaseEntitySetScript "{29BC9869F2F69003}" {
+       }
+      }
+      GC_EventControlAction "{78F356C6D8BFEC6A}" {
+       m_bScheduleAction 1
+       m_fActionDelay 240
+       m_sEventName "Phase 1"
+       m_iOperation 4
+      }
+     }
+    }
+    GC_Event "{E11EF528874C56E1}" {
+     m_sName "Phase 1 Mortars"
+     m_aConditions {
+      GC_GameModeStateCondition "{9AB89AE5484E6FB1}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{461051ECC17F11F8}" {
+       m_sFlagName "Phase 1 Mortars"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{E6AEC162904E0FD4}" {
+       m_bScheduleAction 1
+       m_fActionDelay 300
+       m_Spawn GC_PrefabSpawn "{DEAAFA8BDBF8EABA}" {
+        m_sLocation "Phase1_Smoke"
+        m_sPrefab "{2FDF3089DF6EC422}PrefabsEditable/EffectsModules/Mortar/Smoke/EffectModule_Zoned_MortarBarrage_Smoke_Medium.et"
+       }
+      }
+      GC_SpawnAction "{6026E8E95706A43D}" {
+       m_bScheduleAction 1
+       m_fActionDelay 305
+       m_Spawn GC_PrefabSpawn "{29A98679B02D0823}" {
+        m_sLocation "Phase1_Smoke2"
+        m_sPrefab "{2FDF3089DF6EC422}PrefabsEditable/EffectsModules/Mortar/Smoke/EffectModule_Zoned_MortarBarrage_Smoke_Medium.et"
+       }
+      }
+      GC_SpawnAction "{21CB7127EC98D827}" {
+       m_bScheduleAction 1
+       m_fActionDelay 610
+       m_Spawn GC_PrefabSpawn "{97AAE157875925C2}" {
+        m_sLocation "Phase1_Creeping"
+        m_sPrefab "{F5FAFFDBC271088C}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Creeping.et"
+       }
+      }
+      GC_SpawnAction "{7DDCB91B0418B59A}" {
+       m_bScheduleAction 1
+       m_fActionDelay 600
+       m_Spawn GC_PrefabSpawn "{AF1DB26B997E8F21}" {
+        m_sLocation "Phase1_Creeping2"
+        m_sPrefab "{F5FAFFDBC271088C}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Creeping.et"
+       }
+      }
+      GC_SpawnAction "{C3F174AA65E15C3A}" {
+       m_bScheduleAction 1
+       m_fActionDelay 605
+       m_Spawn GC_PrefabSpawn "{FD826A30C4006DA0}" {
+        m_sLocation "Phase1_Creeping3"
+        m_sPrefab "{F5FAFFDBC271088C}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Creeping.et"
+       }
+      }
+     }
+    }
+    GC_Event "{F94B766100511902}" {
+     m_sName "Pre-Phase 2"
+     m_aConditions {
+      GC_GameModeStateCondition "{5C28F6D39E6BB00F}" {
+       m_eGameModeState 1
+      }
+      GC_AreaCondition "{A17F596D39C6E246}" {
+       m_sArea "GC_MigrationArea_CDEBEF99D3C36A43"
+       m_Targets GC_CharacterAreaTargets "{66C982CCA9206BDF}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{7CD205DF32F9B08E}" {
+        m_fRequiredShare 0.75
+       }
+       m_Capture GC_AreaCaptureOptions "{1576783434E4434B}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+        m_Messages GC_CaptureMessages "{6D14545A858F5858}" {
+         m_sLocation "Point Alpha"
+         m_sCaptured "The %1 has taken control of %2."
+         m_sCapturing "The %1 is taking control of %2."
+         m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+         m_sLost "The %1 has lost control of %2."
+         m_sLosing "The %1 is losing control of %2."
+         m_sLossInterrupted "The %1 is no longer losing control of %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_FlagAction "{AD0EFDA549E1B254}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_sFlagName "Phase 1 Can Respawn"
+       m_iOperation 4
+      }
+      GC_CustomScriptAction "{544BC64E31C497DF}" {
+       m_bScheduleAction 1
+       m_fActionDelay 6
+       m_Script GC_PhaseEntitySetScript "{D95D45EB538179E8}" {
+        m_bDeleteCaptured 1
+       }
+      }
+      GC_FlagAction "{E5F2BB20594E7A0D}" {
+       m_bScheduleAction 1
+       m_fActionDelay 120
+       m_sFlagName "Phase 2 Flag"
+       m_iOperation 1
+       m_iAmount 1
+      }
+      GC_FlagAction "{8FD95097DD6046C7}" {
+       m_bScheduleAction 1
+       m_fActionDelay 120
+       m_sFlagName "Phase 2 Mortars"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{AF17B25E00D7F583}" {
+     m_sName "Phase 2"
+     m_aConditions {
+      GC_GameModeStateCondition "{3B1FACA9B7AB9913}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{23AD21AA29A13D40}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{6CC197934B2D7593}" {
+         m_sFlagName "Phase 2 Flag"
+        }
+        GC_MissionFlagCondition "{686C49EC245F288D}" {
+         m_sFlagName "Phase 2 Can Respawn"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{AE990D3826FECDB3}" {
+       m_bScheduleAction 1
+       m_fActionDelay 6
+       m_Spawn GC_CrewedVehicleSpawn "{60605C6C4439B206}" {
+        m_sLocation "Phase2_Main_Vics"
+        m_sPrefab "{BC07885176C7FF8A}Prefabs/Vehicles/Tracked/T-72A/T72A_base.et"
+        m_sEntityName "Unit1"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{EE2B6F581134F27A}" {
+          m_aStations {
+           GC_SpawnCrewStation "{183C82467497296A}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{5436629450D8387A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Phase2_ForcedMove_Main_Waypoint"
+           "Phase2_Move_Waypoint"
+           "Phase3_Move_Waypoint"
+           "Phase4_Move_Waypoint"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{042FF51AF4F822E0}" {
+       m_bScheduleAction 1
+       m_fActionDelay 6
+       m_Spawn GC_CrewedVehicleSpawn "{6071027F78B1C60D}" {
+        m_sLocation "Phase2_Main_Vics3"
+        m_sPrefab "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+        m_sEntityName "Unit3"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{B51E72F20660797F}" {
+          m_aStations {
+           GC_SpawnCrewStation "{C4DFC39741836FDA}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{5436629450D8387A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{95A22DBB32A07A73}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{5436629450D8387A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Phase2_ForcedMove_Main_Waypoint"
+           "Phase2_Move_Waypoint"
+           "Phase3_Move_Waypoint"
+           "Phase4_Move_Waypoint"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{342378905FA3B1E0}" {
+       m_bScheduleAction 1
+       m_fActionDelay 6
+       m_Spawn GC_CrewedVehicleSpawn "{8A902A9B08CFD5BA}" {
+        m_sLocation "Phase2_Flanking_Vics"
+        m_sPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{AD0B7ABF249A2A31}" {
+          m_sGroupName "Unit6"
+          m_aStations {
+           GC_SpawnCrewStation "{B1A573B87C6ACC3C}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{5436629450D8387A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{AB9726163EC1BD81}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{96C784C502AC37DA}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MG.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Phase2_ForcedMove_Flanking_Waypoint"
+           "Phase2_Move_Waypoint"
+           "Phase3_Move_Waypoint"
+           "Phase4_Move_Waypoint"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{7FA0ADF8FC15F9AC}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3
+       m_Spawn GC_CrewedVehicleSpawn "{42F3E1B0C647A434}" {
+        m_sLocation "Phase2_Main_Vics2"
+        m_sPrefab "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+        m_sEntityName "Unit2"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{038D7052FA493E8E}" {
+          m_aStations {
+           GC_SpawnCrewStation "{6A41D257C2DC8A05}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{5436629450D8387A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{A7C367859B8CCB5D}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{5436629450D8387A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Phase2_ForcedMove_Main_Waypoint"
+           "Phase2_Move_Waypoint"
+           "Phase3_Move_Waypoint"
+           "Phase4_Move_Waypoint"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{6E7ED70257209E42}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2
+       m_Spawn GC_CrewedVehicleSpawn "{A4FAC4495BDEA9C6}" {
+        m_sLocation "Phase2_ASR_Vics"
+        m_sPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{91CF882974126C46}" {
+          m_sGroupName "Unit4"
+          m_aStations {
+           GC_SpawnCrewStation "{37E5A8E40652A594}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{5436629450D8387A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{AB9726163EC1BD81}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{96C784C502AC37DA}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MG.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Phase2_ForcedMove_ASR_Waypoint"
+           "Phase2_Move_Waypoint"
+           "Phase3_Move_Waypoint"
+           "Phase4_Move_Waypoint"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{E9169A53647DE088}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_Spawn GC_CrewedVehicleSpawn "{0398D4F54F5B72BE}" {
+        m_sLocation "Phase2_ASR_Vics2"
+        m_sPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{E647E95D198C125B}" {
+          m_sGroupName "Unit5"
+          m_aStations {
+           GC_SpawnCrewStation "{6E31E584C051B2DD}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{5436629450D8387A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{AB9726163EC1BD81}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{96C784C502AC37DA}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MG.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Phase2_ForcedMove_ASR_Waypoint"
+           "Phase2_Move_Waypoint"
+           "Phase3_Move_Waypoint"
+           "Phase4_Move_Waypoint"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{9C8ADB265663FDED}" {
+       m_bScheduleAction 1
+       m_fActionDelay 9
+       m_Spawn GC_CrewedVehicleSpawn "{B2F75D47F3EBA5F1}" {
+        m_sLocation "Phase2_Flanking_Vics2"
+        m_sPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{FF589168E22AD9B0}" {
+          m_sGroupName "Unit7"
+          m_aStations {
+           GC_SpawnCrewStation "{F90311F971847380}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{5436629450D8387A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{AB9726163EC1BD81}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{96C784C502AC37DA}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MG.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Phase2_ForcedMove_Flanking_Waypoint"
+           "Phase2_Move_Waypoint"
+           "Phase3_Move_Waypoint"
+           "Phase4_Move_Waypoint"
+          }
+         }
+        }
+       }
+      }
+      GC_CustomScriptAction "{1002A4ADF6614533}" {
+       m_bScheduleAction 1
+       m_fActionDelay 10
+       m_Script GC_PhaseEntitySetScript "{64E9241539452D81}" {
+       }
+      }
+      GC_SpawnAction "{858475462F9F359E}" {
+       m_bScheduleAction 1
+       m_fActionDelay 200
+       m_Spawn GC_AIGroupSpawn "{16FD92E55827CE3E}" {
+        m_sLocation "Phase2_Flanking_Infantry"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_sEntityName "Unit8"
+        m_aWaypoints {
+         "Phase2_Move_Waypoint"
+         "Phase3_Move_Waypoint"
+         "Phase4_Move_Waypoint"
+        }
+       }
+      }
+      GC_SpawnAction "{40C056D1FB037AE6}" {
+       m_bScheduleAction 1
+       m_fActionDelay 210
+       m_Spawn GC_AIGroupSpawn "{272476ED32A3BC7C}" {
+        m_sLocation "Phase2_ASR_Infantry"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_sEntityName "Unit9"
+        m_aWaypoints {
+         "Phase2_Move_Waypoint"
+         "Phase3_Move_Waypoint"
+         "Phase4_Move_Waypoint"
+        }
+       }
+      }
+      GC_SpawnAction "{3693470996600C3E}" {
+       m_bScheduleAction 1
+       m_fActionDelay 220
+       m_Spawn GC_AIGroupSpawn "{3CE8FFD8314347A5}" {
+        m_sLocation "Phase2_ASR_Infantry"
+        m_sPrefab "{F40CBB1DD386AFCF}Prefabs/Groups/OPFOR/Russia/1980s/MotorRifle_MSV80/Group_USSR_MSV80_RifleSquad.et"
+        m_sEntityName "Unit10"
+        m_aWaypoints {
+         "Phase2_Move_Waypoint"
+         "Phase3_Move_Waypoint"
+         "Phase4_Move_Waypoint"
+        }
+       }
+      }
+      GC_CustomScriptAction "{421E1ECA63FF5301}" {
+       m_bScheduleAction 1
+       m_fActionDelay 225
+       m_Script GC_PhaseEntitySetScript "{606E780B34491EF0}" {
+       }
+      }
+     }
+    }
+    GC_Event "{3AF1C09CDCF7A5AA}" {
+     m_sName "Phase 2 Mortars"
+     m_aConditions {
+      GC_GameModeStateCondition "{BED691DBCFFF7E83}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{D27B07F1388E7BFB}" {
+       m_sFlagName "Phase 2 Mortars"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{0623786496D0B617}" {
+       m_bScheduleAction 1
+       m_fActionDelay 300
+       m_Spawn GC_PrefabSpawn "{76881E6445A60CD7}" {
+        m_sLocation "Phase2_Smoke1"
+        m_sPrefab "{2FDF3089DF6EC422}PrefabsEditable/EffectsModules/Mortar/Smoke/EffectModule_Zoned_MortarBarrage_Smoke_Medium.et"
+       }
+      }
+      GC_SpawnAction "{ABF834B67F8B29DC}" {
+       m_bScheduleAction 1
+       m_fActionDelay 305
+       m_Spawn GC_PrefabSpawn "{8672FD1C85CD4C67}" {
+        m_sLocation "Phase2_Smoke2"
+        m_sPrefab "{2FDF3089DF6EC422}PrefabsEditable/EffectsModules/Mortar/Smoke/EffectModule_Zoned_MortarBarrage_Smoke_Medium.et"
+       }
+      }
+      GC_SpawnAction "{AC6BA3107C7505E4}" {
+       m_bScheduleAction 1
+       m_fActionDelay 610
+       m_Spawn GC_PrefabSpawn "{C82B59EAF8BF1C87}" {
+        m_sLocation "Phase2_Creeping"
+        m_sPrefab "{F5FAFFDBC271088C}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Creeping.et"
+       }
+      }
+      GC_SpawnAction "{FF125216DDDB21AD}" {
+       m_bScheduleAction 1
+       m_fActionDelay 600
+       m_Spawn GC_PrefabSpawn "{53F003CEF73D0B71}" {
+        m_sLocation "Phase2_Creeping2"
+        m_sPrefab "{F5FAFFDBC271088C}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Creeping.et"
+       }
+      }
+      GC_SpawnAction "{80673B411AE096A2}" {
+       m_bScheduleAction 1
+       m_fActionDelay 605
+       m_Spawn GC_PrefabSpawn "{8962B2A45F67D650}" {
+        m_sLocation "Phase2_Creeping3"
+        m_sPrefab "{F5FAFFDBC271088C}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Creeping.et"
+       }
+      }
+     }
+    }
+    GC_Event "{086FF7190DDA0246}" {
+     m_sName "Pre-Phase 3"
+     m_aConditions {
+      GC_GameModeStateCondition "{0AA569781E42778A}" {
+       m_eGameModeState 1
+      }
+      GC_AreaCondition "{B1AC32F0B3372F5F}" {
+       m_sArea "GC_MigrationArea_E6A8075DAD86F9CE"
+       m_Targets GC_CharacterAreaTargets "{8B2D1B15B68D4432}" {
+        m_iWho 2
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{A45BD6703798F07F}" {
+        m_fRequiredShare 0.75
+       }
+       m_Capture GC_AreaCaptureOptions "{26896F76546F97D3}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+        m_Messages GC_CaptureMessages "{2F953FC56C202EDF}" {
+         m_sLocation "Point Bravo"
+         m_sCaptured "The %1 has taken control of %2."
+         m_sCapturing "The %1 is taking control of %2."
+         m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+         m_sLost "The %1 has lost control of %2."
+         m_sLosing "The %1 is losing control of %2."
+         m_sLossInterrupted "The %1 is no longer losing control of %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_FlagAction "{254551A65BA1BA65}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_sFlagName "Phase 2 Can Respawn"
+       m_iOperation 4
+      }
+      GC_CustomScriptAction "{D5422645F4C42D1D}" {
+       m_bScheduleAction 1
+       m_fActionDelay 6
+       m_Script GC_PhaseEntitySetScript "{F896946EE10ABCE1}" {
+        m_bDeleteCaptured 1
+       }
+      }
+      GC_FlagAction "{323E7A92D7DBF2CE}" {
+       m_bScheduleAction 1
+       m_fActionDelay 120
+       m_sFlagName "Phase 3 Flag"
+       m_iOperation 1
+       m_iAmount 1
+      }
+      GC_FlagAction "{0448C05258440AF1}" {
+       m_bScheduleAction 1
+       m_fActionDelay 120
+       m_sFlagName "Phase 3 Mortars"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{96B177504238333B}" {
+     m_sName "Phase 3"
+     m_aConditions {
+      GC_GameModeStateCondition "{188EB1C50E24097E}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{C8BD6E965701CDA8}" {
+       m_sFlagName "Phase 3 Flag"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{57E5F24EC4E95263}" {
+       m_bScheduleAction 1
+       m_fActionDelay 12
+       m_Spawn GC_CrewedVehicleSpawn "{E480874229EE0FDA}" {
+        m_sLocation "Phase3_Main_Vics"
+        m_sPrefab "{BC07885176C7FF8A}Prefabs/Vehicles/Tracked/T-72A/T72A_base.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{C43D646CAFEB3744}" {
+          m_aStations {
+           GC_SpawnCrewStation "{C6346637318A1947}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{5436629450D8387A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Phase3_ForcedMove_Main_Waypoint"
+           "Phase3_ForcedMove_MainLineA_Waypoint"
+           "Phase3_Move_Waypoint"
+           "Phase4_Move_Waypoint"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{E2335DC16D3475C5}" {
+       m_bScheduleAction 1
+       m_fActionDelay 15
+       m_Spawn GC_CrewedVehicleSpawn "{4066B730C1045FD0}" {
+        m_sLocation "Phase3_Main_Vics2"
+        m_sPrefab "{BC07885176C7FF8A}Prefabs/Vehicles/Tracked/T-72A/T72A_base.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{3D3759ADEE3DE16A}" {
+          m_aStations {
+           GC_SpawnCrewStation "{2B44778883A3961B}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{5436629450D8387A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Phase3_ForcedMove_Main_Waypoint"
+           "Phase3_ForcedMove_MainLineA_Waypoint"
+           "Phase3_Move_Waypoint"
+           "Phase4_Move_Waypoint"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{8EDC3AFEF9F0A72C}" {
+       m_bScheduleAction 1
+       m_fActionDelay 18
+       m_Spawn GC_CrewedVehicleSpawn "{79E608858F36397F}" {
+        m_sLocation "Phase3_Main_Vics3"
+        m_sPrefab "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{FE36AF3A3F8F33FE}" {
+          m_aStations {
+           GC_SpawnCrewStation "{0D063BF3C4D4C94D}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{5436629450D8387A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{70033E6F29BCCE3C}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{5436629450D8387A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Phase3_ForcedMove_Main_Waypoint"
+           "Phase3_ForcedMove_MainLineA_Waypoint"
+           "Phase3_Move_Waypoint"
+           "Phase4_Move_Waypoint"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{88DA2F7C9DBB7B91}" {
+       m_bScheduleAction 1
+       m_fActionDelay 21
+       m_Spawn GC_CrewedVehicleSpawn "{BC35EAB82FDA7DA1}" {
+        m_sLocation "Phase3_Main_Vics4"
+        m_sPrefab "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{59CDC6BA241625F1}" {
+          m_aStations {
+           GC_SpawnCrewStation "{4406D6E5B3828FBE}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{5436629450D8387A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+           GC_SpawnCrewStation "{7974D96B66D9AD9A}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{5436629450D8387A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Phase3_ForcedMove_Main_Waypoint"
+           "Phase3_ForcedMove_MainLineA_Waypoint"
+           "Phase3_Move_Waypoint"
+           "Phase4_Move_Waypoint"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{48DB0FF8E8C7F702}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0
+       m_Spawn GC_CrewedVehicleSpawn "{16F71975D032CF40}" {
+        m_sLocation "Phase3_ASR_Vics"
+        m_sPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{46AC669A98702CDF}" {
+          m_aStations {
+           GC_SpawnCrewStation "{33949B734B73139A}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{5436629450D8387A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{AB9726163EC1BD81}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{96C784C502AC37DA}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MG.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Phase3_ForcedMove_ASR_Waypoint"
+           "Phase3_Move_Waypoint"
+           "Phase4_Move_Waypoint"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{7CF1F8DD54D2111A}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3
+       m_Spawn GC_CrewedVehicleSpawn "{DDEC6F66CC68C48D}" {
+        m_sLocation "Phase3_ASR_Vics2"
+        m_sPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{D5BE08BE99D1BF3C}" {
+          m_aStations {
+           GC_SpawnCrewStation "{51411A851225A786}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{5436629450D8387A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{AB9726163EC1BD81}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{96C784C502AC37DA}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MG.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Phase3_ForcedMove_ASR_Waypoint"
+           "Phase3_Move_Waypoint"
+           "Phase4_Move_Waypoint"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{94B7722EBFF31A26}" {
+       m_bScheduleAction 1
+       m_fActionDelay 6
+       m_Spawn GC_CrewedVehicleSpawn "{7F72F019A01EADA3}" {
+        m_sLocation "Phase3_Flanking_Vics"
+        m_sPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{D5AB21AEED44BC6B}" {
+          m_aStations {
+           GC_SpawnCrewStation "{48A13DB796065294}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{5436629450D8387A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{AB9726163EC1BD81}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{96C784C502AC37DA}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MG.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Phase3_Flanking_Getout_Waypoint"
+           "Phase3_Move_Waypoint"
+           "Phase4_Move_Waypoint"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{49BB40C8B5632732}" {
+       m_bScheduleAction 1
+       m_fActionDelay 9
+       m_Spawn GC_CrewedVehicleSpawn "{E6D3CE780EC7C1D4}" {
+        m_sLocation "Phase3_Flanking_Vics2"
+        m_sPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{3D544B39FF3AD16D}" {
+          m_aStations {
+           GC_SpawnCrewStation "{C032E10147C5696A}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+             "{5436629450D8387A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{AB9726163EC1BD81}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic.et"
+             "{23ADBBC31B6A3DC6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR.et"
+             "{8E0FE664CE7D1CA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL.et"
+             "{1C78331E156A3D65}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT.et"
+             "{96C784C502AC37DA}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MG.et"
+             "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Phase3_Flanking_Getout_Waypoint"
+           "Phase3_Move_Waypoint"
+           "Phase4_Move_Waypoint"
+          }
+         }
+        }
+       }
+      }
+      GC_EventControlAction "{C473193CF977CE01}" {
+       m_bScheduleAction 1
+       m_fActionDelay 240
+       m_sEventName "Phase 3"
+       m_iOperation 4
+      }
+     }
+    }
+    GC_Event "{0A0A7C9DDE06F82B}" {
+     m_sName "Phase 3 Mortars"
+     m_aConditions {
+      GC_GameModeStateCondition "{1A8AA25DADCC2C0A}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{2AAA503F57B8368B}" {
+       m_sFlagName "Phase 3 Mortars"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{3D413B7F80B6DB66}" {
+       m_bScheduleAction 1
+       m_fActionDelay 300
+       m_Spawn GC_PrefabSpawn "{4705B43B4A354B5A}" {
+        m_sLocation "Phase3_Smoke1"
+        m_sPrefab "{B12C93E225913EFE}PrefabsEditable/EffectsModules/Mortar/Smoke/EffectModule_Zoned_MortarBarrage_Smoke_Large.et"
+       }
+      }
+      GC_SpawnAction "{F8B67710999FADE6}" {
+       m_bScheduleAction 1
+       m_fActionDelay 305
+       m_Spawn GC_PrefabSpawn "{954C31EC32076FAF}" {
+        m_sLocation "Phase3_Smoke2"
+        m_sPrefab "{B12C93E225913EFE}PrefabsEditable/EffectsModules/Mortar/Smoke/EffectModule_Zoned_MortarBarrage_Smoke_Large.et"
+       }
+      }
+      GC_SpawnAction "{3413A3C960353B67}" {
+       m_bScheduleAction 1
+       m_fActionDelay 730
+       m_Spawn GC_PrefabSpawn "{4FD7FD337C4D1C8A}" {
+        m_sLocation "Phase3_Creeping"
+        m_sPrefab "{F5FAFFDBC271088C}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Creeping.et"
+       }
+      }
+      GC_SpawnAction "{DD6811B6EFCB7D8C}" {
+       m_bScheduleAction 1
+       m_fActionDelay 720
+       m_Spawn GC_PrefabSpawn "{9A62F61E8228F930}" {
+        m_sLocation "Phase3_Creeping2"
+        m_sPrefab "{F5FAFFDBC271088C}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Creeping.et"
+       }
+      }
+      GC_SpawnAction "{2530E443370D7601}" {
+       m_bScheduleAction 1
+       m_fActionDelay 725
+       m_Spawn GC_PrefabSpawn "{239A1C128A58C35E}" {
+        m_sLocation "Phase3_Creeping3"
+        m_sPrefab "{F5FAFFDBC271088C}PrefabsEditable/EffectsModules/Mortar/EffectModule_Zoned_MortarBarrage_Creeping.et"
+       }
+      }
+     }
+    }
+    GC_Event "{A0902325B5E98DAF}" {
+     m_sName "Pre-Phase 4"
+     m_aConditions {
+      GC_GameModeStateCondition "{7AC5993D8B74C1D9}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{3635EDAB58E21CD5}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{6B2EBEDAFD6E11DB}" {
+         m_sArea "GC_MigrationArea_4CFE6F6A050A6564"
+         m_Targets GC_CharacterAreaTargets "{4C3BFFBEA9CB3C99}" {
+          m_iWho 2
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{B5D834F9A557F187}" {
+          m_fRequiredShare 0.75
+         }
+         m_Capture GC_AreaCaptureOptions "{05AF52A5611747E4}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{0F304451BD890B91}" {
+           m_sLocation "Point Charlie"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_MissionFlagCondition "{060B45A8AA24EA8A}" {
+         m_sFlagName "Within Time Limit"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{BAD974834BC967C6}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_sTitle "Phase 3 Lost"
+       m_sMessage "We can see that Point Charlie is lost to the enemy!"
+      }
+     }
+    }
+    GC_Event "{E0FAB201F07590D2}" {
+     m_sName "Holdout Timer Limit Reached"
+     m_aConditions {
+      GC_GameModeStateCondition "{9CD6020F30928C37}" {
+       m_eGameModeState 1
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2AC74C59ABD2F67D}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2100
+       m_sTitle "35 Minutes reached!"
+       m_sMessage "Excellent work, now head to the Extraction Point!"
+      }
+      GC_FlagAction "{1A344C91813C59B6}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2100
+       m_sFlagName "Within Time Limit"
+       m_iOperation 4
+      }
+     }
+    }
+    GC_Event "{7081DFA5346B1620}" {
+     m_sName "Extraction Success"
+     m_aConditions {
+      GC_GameModeStateCondition "{15BE5321FBC3A767}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{94F1DC8722021CA8}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{C35F3E5B7176CB3C}" {
+         m_sArea "GC_MigrationArea_2596AC202F75F5FA"
+         m_Targets GC_CharacterAreaTargets "{AEAA4EC030DD2A98}" {
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{7A8FD47BDF9F88BA}" {
+          m_fRequiredShare 1
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{C91341CEF8014121}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_MissionFlagCondition "{C32D719583B56D8A}" {
+         m_sFlagName "Within Time Limit"
+         m_bRequireFalse 1
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{10F047FF2EBB63E5}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_sTitle "Extraction Complete!"
+       m_sMessage "All surviving units has reached the point."
+      }
+     }
+    }
+    GC_Event "{9B536A6DB69D3322}" {
+     m_sName "Extraction Failed"
+     m_aConditions {
+      GC_GameModeStateCondition "{2CFA9E8A6715353E}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{B93724BDC9483349}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{991254CD301852A8}" {
+         m_sArea "GC_MigrationArea_2596AC202F75F5FA"
+         m_Targets GC_CharacterAreaTargets "{E20535F4C1376710}" {
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{7617E01EA517E7A8}" {
+          m_fRequiredShare 1
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{CFA70820D25C6A75}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_MissionFlagCondition "{DB12A7F155EEBD8A}" {
+         m_sFlagName "Within Time Limit"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9C5176ABD29948E5}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_sTitle "Delaying Action Failed!"
+       m_sMessage "You extracted prematurely. COWARDS!"
+      }
+     }
+    }
+    GC_Event "{9EB4BC89DCFBA936}" {
+     m_sName "US Casualties Limit"
+     m_aConditions {
+      GC_GameModeStateCondition "{8714B8A1823756E3}" {
+       m_eGameModeState 1
+      }
+      GC_CustomScriptCondition "{08D4132B65D250BC}" {
+       m_Script GC_PeakFactionPopulationCheck "{4040F19417D41437}" {
+        m_sFaction "US"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{105BF76D4E1146D7}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_sTitle "Mission Failed!"
+       m_sMessage "We have taken too many losses!"
+      }
+     }
+    }
+   }
+  }
+  GC_PhaseEntitySet "{0ECD72694ABE0C45}" {
+   m_aTemporaryNames {
+    "Unit1" "Unit2" "Unit3" "Unit4" "Unit5" "Unit6" "Unit7" "Unit8" "Unit9" "Unit10"
+   }
+   m_sCapturedPrefix "PhaseUnit"
+  }
+ }
+ coords 6619.349 96.656 1222.996
+}
+GenericEntity : "{47789BA6E9CA2928}Prefabs/MP/Campaign/SupplyDepots/SupplyCache_S_FIA_03_Campaign.et" {
+ coords 6665.457 96.656 1183.417
+ angles 0 90 0
+ {
+  GenericEntity {
+   ID "5D45393876460D01"
+   components {
+    SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+     m_aContainers {
+      SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+       m_bEnableResourceGain 0
+      }
+     }
+    }
+   }
+   {
+    GenericEntity {
+     ID "5D453938619FC380"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5D453938619FC381"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5D453938619FC383"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
