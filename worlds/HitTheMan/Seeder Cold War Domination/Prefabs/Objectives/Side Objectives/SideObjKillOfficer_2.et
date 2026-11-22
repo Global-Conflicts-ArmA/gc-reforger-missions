@@ -1,0 +1,1150 @@
+GC_RadiusAreaEntity Side_Obj_Trigger : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ ID "61F339AC7B7B5324"
+ components {
+  GC_MissionEntityNameComponent "{687B6415AEFF598E}" {
+   m_sMissionName "Side_Obj_Trigger"
+  }
+  GC_BoundAreaFlagComponent "{4FF45E0D1B94B596}" {
+   m_Observer GC_AreaFlagObserver "{715219BF60BF2F57}" {
+    m_sFlag "SideAOClear"
+    m_Area GC_AreaCondition "{9EEB65805643D27D}" {
+     m_sArea "Side_Obj_Trigger"
+     m_Targets GC_CharacterAreaTargets "{8C665B62DD61027F}" {
+      m_iWho 2
+      m_aFactions {
+       "USSR"
+      }
+     }
+     m_Requirement GC_LocalFactionShare "{3E15AABF077F9C42}" {
+      m_fRequiredShare 0.6
+     }
+    }
+   }
+  }
+ }
+ coords 3014.99 222.395 7578.47
+ m_fRadius 250
+ {
+  $grp GenericEntity : "{144F1136AB4DB0E8}Prefabs/Compositions/Slotted/SlotFlatSmall/LivingArea_S_FIA_01.et" {
+   Prop_LivingArea2 {
+    ID "688AADE00309B8AD"
+    coords 37.163 -1.25 18.775
+    angles -0.785 -107.245 1.491
+   }
+   Prop_LivingArea1 {
+    ID "688AADE00309B8C0"
+    coords 25.898 -1.076 30.09
+    angles -5.692 -172.695 -1.915
+   }
+  }
+  GenericEntity Seperatist_Supplies : "{2CD070D1419FF6DC}worlds/HitTheMan/Seeder Cold War Domination/Prefabs/Rewards/Seperatists_Supplies.et" {
+   ID "688AADE00309B8CF"
+   coords 22.695 -1.718 -17.409
+   angles -2.816 150.039 -2.495
+  }
+  GenericEntity Prop_Maintenance : "{3D72BF835223B352}Prefabs/Compositions/Slotted/SlotFlatSmall/VehicleMaintenance_S_FIA_01.et" {
+   ID "688AADE00309B8F3"
+   coords 53.722 -2.663 -15.678
+   angles -1.505 -50.831 1.847
+  }
+  GenericEntity Seperatists_Supplies_Markers : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+   ID "688AADE00309B8E0"
+   components {
+    GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+     m_sImageSetOrImage "{C9D19DBFDE7AD72D}UI/Imagesets/Conflict/conflict-icons.imageset"
+     m_sHighlightImageSet ""
+     m_sQuadName "SupplyDepot"
+     m_Color 0.251 0.502 0 1
+     m_fSize 25
+     m_bWorldScale 1
+     m_sDescription "Seperatists Supplies"
+     m_iZOrder 0
+     m_iHoverZOrder -1
+    }
+    GC_MissionEntityNameComponent "{687E957E6CB352E3}" {
+     m_sMissionName "Seperatists_Supplies_Markers"
+    }
+   }
+   coords 25.695 -1.892 -18.13
+   angleY 90
+  }
+  GenericEntity Prop_Hospital : "{760BD4105816358C}Prefabs/Compositions/Slotted/SlotFlatMedium/FieldHospital_M_FIA_01.et" {
+   ID "688AADE00309B8E2"
+   coords 10.032 -1.166 -27.824
+   angles -4.266 63.374 -0.521
+  }
+  $grp GenericEntity {
+   VehicleSpawner_2 {
+    ID "688AADE00309B093"
+    components {
+     GC_MissionEntityNameComponent "{687B64176B3BF4CF}" {
+      m_sMissionName "VehicleSpawner_2"
+     }
+     GC_MissionAnchorSpawnerComponent "{AE6A283035C014A1}" {
+      m_sRequiredFlag "VehicleSpawner"
+      m_aDelaySeconds {
+       10
+      }
+      m_Spawn GC_CrewedVehicleSpawn "{C72D54A43C63A633}" {
+       m_sPrefab "{29FB8893F52B807B}Prefabs/Vehicles/Tracked/M113/M113A2_APC_FIA.et"
+       m_aCrewGroups {
+        GC_SpawnCrewGroup "{5272FD8D6AD904C2}" {
+         m_aStations {
+          GC_SpawnCrewStation "{06D1191D5111FB72}" {
+           m_bPassengers 0
+           m_aCharacters {
+            "{140B6687EDDBF1FC}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/1990/Character_SEP_1990_Crew.et"
+            "{140B6687EDDBF1FC}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/1990/Character_SEP_1990_Crew.et"
+           }
+          }
+         }
+         m_bKeepGunnersSeated 1
+         m_bUseAvailableInitialWaypoints 1
+         m_fWaypointDelay 0
+         m_aWaypoints {
+          "Def_WP_Vehicle_2"
+         }
+        }
+       }
+      }
+     }
+    }
+    coords 19.608 -1.069 -11.383
+    angles -3.126 -22.423 3.014
+    {
+     SCR_AIWaypoint Def_WP_Vehicle_2 : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
+      ID "688AADE00309F793"
+      components {
+       GC_MissionEntityNameComponent "{687B641704C8459E}" {
+        m_sMissionName "Def_WP_Vehicle_2"
+       }
+      }
+      coords -0.111 -0.32 -0.037
+      angles -1.732 56.843 -2.649
+      CompletionRadius 4
+     }
+    }
+   }
+   VehicleSpawner_1 {
+    ID "688AADE00309B801"
+    components {
+     GC_MissionEntityNameComponent "{687B6417639D9303}" {
+      m_sMissionName "VehicleSpawner_1"
+     }
+     GC_MissionAnchorSpawnerComponent "{06AF74D1F135E3C6}" {
+      m_sRequiredFlag "VehicleSpawner"
+      m_aDelaySeconds {
+       10
+      }
+      m_Spawn GC_CrewedVehicleSpawn "{394108672FC2D08E}" {
+       m_sPrefab "{0144F571F1998FC4}Prefabs/Vehicles/Tracked/BMP1/BMP1_FIA.et"
+       m_aCrewGroups {
+        GC_SpawnCrewGroup "{1665F7DB46B14114}" {
+         m_aStations {
+          GC_SpawnCrewStation "{413B1B31BD76D574}" {
+           m_bPassengers 0
+           m_aCharacters {
+            "{140B6687EDDBF1FC}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/1990/Character_SEP_1990_Crew.et"
+            "{140B6687EDDBF1FC}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/1990/Character_SEP_1990_Crew.et"
+           }
+          }
+         }
+         m_bKeepGunnersSeated 1
+         m_bUseAvailableInitialWaypoints 1
+         m_fWaypointDelay 0
+         m_aWaypoints {
+          "Def_WP_Vehicle_1"
+         }
+        }
+       }
+      }
+     }
+    }
+    coords -117.113 6.633 -46.405
+    angles -0.914 -92.684 2.019
+    {
+     SCR_AIWaypoint Def_WP_Vehicle_1 : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
+      ID "688AADE00309B803"
+      components {
+       GC_MissionEntityNameComponent "{687B64173CF4FEC0}" {
+        m_sMissionName "Def_WP_Vehicle_1"
+       }
+      }
+      coords -0.189 -1.028 1.438
+      angles -6.619 56.352 5.747
+      CompletionRadius 4
+     }
+    }
+   }
+   AI_Squad_Spawner_3 {
+    ID "688AADE00309B802"
+    components {
+     GC_MissionEntityNameComponent "{687B6414471E243B}" {
+      m_sMissionName "AI_Squad_Spawner_3"
+     }
+     GC_MissionAnchorSpawnerComponent "{B2011595E032C545}" {
+      m_sRequiredFlag "VehicleSpawner"
+      m_aDelaySeconds {
+       20
+      }
+      m_Spawn GC_AIGroupSpawn "{07EB4A7EA21879DD}" {
+       m_sPrefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
+       m_sEntityName "AI_Squad_Spawner_3"
+       m_aWaypoints {
+        "Def_WP_3"
+       }
+      }
+     }
+    }
+    coords 11.07 13.52 180.646
+    angles 1.065 17.453 -3.4
+    {
+     SCR_DefendWaypoint Def_WP_3 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
+      ID "688AADE00309B805"
+      components {
+       GC_MissionEntityNameComponent "{687B641679F9B890}" {
+        m_sMissionName "Def_WP_3"
+       }
+      }
+      coords 3.005 0.421 2.12
+      angles 1.192 -0.05 -1.194
+     }
+    }
+   }
+   VehicleSpawner_3 {
+    ID "688AADE0030A1488"
+    components {
+     GC_MissionEntityNameComponent "{687B6417639D9303}" {
+      m_sMissionName "VehicleSpawner_1"
+     }
+     GC_MissionAnchorSpawnerComponent "{E5475700127C5708}" {
+      m_sRequiredFlag "VehicleSpawner"
+      m_aDelaySeconds {
+       15
+      }
+      m_Spawn GC_CrewedVehicleSpawn "{E92CD9B4C94676CD}" {
+       m_sPrefab "{1A407760EEAE4156}Prefabs/Vehicles/Static/BaconZU23/BaconZU23_Turret_Deployed.et"
+       m_aCrewGroups {
+        GC_SpawnCrewGroup "{EAB0C3D48CEBFF41}" {
+         m_aStations {
+          GC_SpawnCrewStation "{6B17A903E75D079B}" {
+           m_bPassengers 0
+           m_aCharacters {
+            "{140B6687EDDBF1FC}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/1990/Character_SEP_1990_Crew.et"
+            "{140B6687EDDBF1FC}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/1990/Character_SEP_1990_Crew.et"
+           }
+          }
+         }
+         m_bKeepGunnersSeated 1
+        }
+       }
+      }
+     }
+    }
+    coords 129.861 -8.589 -149.27
+    angles 6.359 -117.785 5.381
+   }
+   AI_Squad_Spawner_5 {
+    ID "688AADE0030A8AD7"
+    components {
+     GC_MissionEntityNameComponent "{687B64147C408003}" {
+      m_sMissionName "AI_Squad_Spawner_5"
+     }
+     GC_MissionAnchorSpawnerComponent "{3D77F2D226BA6408}" {
+      m_sRequiredFlag "VehicleSpawner"
+      m_aDelaySeconds {
+       20
+      }
+      m_Spawn GC_AIGroupSpawn "{3DA9F1FB4B44472C}" {
+       m_sPrefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
+       m_sEntityName "AI_Squad_Spawner_5"
+       m_aWaypoints {
+        "Def_WP_5"
+       }
+      }
+     }
+    }
+    coords 19.083 -1.128 -6.338
+    angles 2.569 -4.893 2.163
+    {
+     SCR_DefendWaypoint Def_WP_5 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
+      ID "688AADE0030AEE61"
+      components {
+       GC_MissionEntityNameComponent "{687B641679F9B890}" {
+        m_sMissionName "Def_WP_5"
+       }
+      }
+      coords 3.005 0.421 2.12
+      angles 1.192 -0.05 -1.194
+     }
+    }
+   }
+   VehicleSpawner_6 {
+    ID "688AADE0030AEE62"
+    components {
+     GC_MissionEntityNameComponent "{687B6417639D9303}" {
+      m_sMissionName "VehicleSpawner_1"
+     }
+     GC_MissionAnchorSpawnerComponent "{1154D9ACA4C89347}" {
+      m_sRequiredFlag "VehicleSpawner"
+      m_aDelaySeconds {
+       15
+      }
+      m_Spawn GC_CrewedVehicleSpawn "{935AB41183622788}" {
+       m_sPrefab "{1A407760EEAE4156}Prefabs/Vehicles/Static/BaconZU23/BaconZU23_Turret_Deployed.et"
+       m_aCrewGroups {
+        GC_SpawnCrewGroup "{8BB76BD96474334F}" {
+         m_aStations {
+          GC_SpawnCrewStation "{0B2702492B39749E}" {
+           m_bPassengers 0
+           m_aCharacters {
+            "{140B6687EDDBF1FC}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/1990/Character_SEP_1990_Crew.et"
+            "{140B6687EDDBF1FC}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/1990/Character_SEP_1990_Crew.et"
+           }
+          }
+         }
+         m_bKeepGunnersSeated 1
+        }
+       }
+      }
+     }
+    }
+    coords -114.659 25.687 -193.624
+    angles 3.63 -118.05 2.77
+   }
+   AI_Squad_Spawner_1 {
+    ID "688AADE0030B2354"
+    components {
+     GC_MissionEntityNameComponent "{687B6417A3F754DE}" {
+      m_sMissionName "AI_Squad_Spawner_1"
+     }
+     GC_MissionAnchorSpawnerComponent "{A901AE9D804B77C3}" {
+      m_sRequiredFlag "VehicleSpawner"
+      m_aDelaySeconds {
+       20
+      }
+      m_Spawn GC_AIGroupSpawn "{E66FA4DC2B97FC2D}" {
+       m_sPrefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
+       m_sEntityName "AI_Squad_Spawner_1"
+       m_aWaypoints {
+        "Def_WP_1"
+       }
+      }
+     }
+    }
+    coords -101.083 20.181 -195.63
+    angles -7.129 -0.611 2.458
+    {
+     SCR_DefendWaypoint Def_WP_1 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
+      ID "688AADE0030B66B7"
+      components {
+       GC_MissionEntityNameComponent "{687B641679F9B890}" {
+        m_sMissionName "Def_WP_1"
+       }
+      }
+      coords 3.005 0.421 2.12
+      angles 1.192 -0.05 -1.194
+     }
+    }
+   }
+   AI_Squad_Spawner_11 {
+    ID "688AADE0030B561B"
+    components {
+     GC_MissionEntityNameComponent "{687B64147B456C18}" {
+      m_sMissionName "AI_Squad_Spawner_9"
+     }
+     GC_MissionAnchorSpawnerComponent "{4A84EC6AC963E0C8}" {
+      m_sRequiredFlag "VehicleSpawner"
+      m_aDelaySeconds {
+       20
+      }
+      m_Spawn GC_AIGroupSpawn "{A0112DB4945788C0}" {
+       m_sPrefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
+       m_sEntityName "AI_Squad_Spawner_11"
+       m_aWaypoints {
+        "Def_WP_11"
+       }
+      }
+     }
+    }
+    coords 155.099 -14.701 -254.608
+    angles -4.311 13.484 2.648
+    {
+     SCR_DefendWaypoint Def_WP_11 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
+      ID "688AADE0030B561A"
+      components {
+       GC_MissionEntityNameComponent "{687B641679F9B890}" {
+        m_sMissionName "Def_WP_9"
+       }
+      }
+      coords 3.005 0.421 2.12
+      angles 1.192 -0.05 -1.194
+     }
+    }
+   }
+   VehicleSpawner_5 {
+    ID "688AADE0030BC7D5"
+    components {
+     GC_MissionEntityNameComponent "{687B6417639D9303}" {
+      m_sMissionName "VehicleSpawner_1"
+     }
+     GC_MissionAnchorSpawnerComponent "{9867E526CD238569}" {
+      m_sRequiredFlag "VehicleSpawner"
+      m_aDelaySeconds {
+       15
+      }
+      m_Spawn GC_CrewedVehicleSpawn "{D433F25459D054C1}" {
+       m_sPrefab "{1A407760EEAE4156}Prefabs/Vehicles/Static/BaconZU23/BaconZU23_Turret_Deployed.et"
+       m_aCrewGroups {
+        GC_SpawnCrewGroup "{4B6BF5EEFDD3BCFD}" {
+         m_aStations {
+          GC_SpawnCrewStation "{B81B64BF73694E60}" {
+           m_bPassengers 0
+           m_aCharacters {
+            "{140B6687EDDBF1FC}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/1990/Character_SEP_1990_Crew.et"
+            "{140B6687EDDBF1FC}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/1990/Character_SEP_1990_Crew.et"
+           }
+          }
+         }
+         m_bKeepGunnersSeated 1
+        }
+       }
+      }
+     }
+    }
+    coords -42.065 11.502 109.599
+    angles 7.183 -38.119 -4.125
+   }
+   AI_Squad_Spawner_10 {
+    ID "688AADE0030C1BA3"
+    components {
+     GC_MissionEntityNameComponent "{687B64147B456C18}" {
+      m_sMissionName "AI_Squad_Spawner_9"
+     }
+     GC_MissionAnchorSpawnerComponent "{FD058D82D505FA4A}" {
+      m_sRequiredFlag "VehicleSpawner"
+      m_aDelaySeconds {
+       20
+      }
+      m_Spawn GC_AIGroupSpawn "{B20881C745B83D4E}" {
+       m_sPrefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
+       m_sEntityName "AI_Squad_Spawner_10"
+       m_aWaypoints {
+        "Def_WP_10"
+       }
+      }
+     }
+    }
+    coords -80.876 4.9 -53.994
+    angles -3.614 1.917 1.074
+    {
+     SCR_DefendWaypoint Def_WP_10 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
+      ID "688AADE0030C8AB9"
+      components {
+       GC_MissionEntityNameComponent "{687B641679F9B890}" {
+        m_sMissionName "Def_WP_9"
+       }
+      }
+      coords 3.005 0.421 2.12
+      angles 1.192 -0.05 -1.194
+     }
+    }
+   }
+   AI_Squad_Spawner_6 {
+    ID "688AADE0030C2B2C"
+    components {
+     GC_MissionEntityNameComponent "{687B64147DECEF9F}" {
+      m_sMissionName "AI_Squad_Spawner_6"
+     }
+     GC_MissionAnchorSpawnerComponent "{F00591A8E2170ECC}" {
+      m_sRequiredFlag "VehicleSpawner"
+      m_aDelaySeconds {
+       20
+      }
+      m_Spawn GC_AIGroupSpawn "{6C5A70A54BDAECFD}" {
+       m_sPrefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
+       m_sEntityName "AI_Squad_Spawner_6"
+       m_aWaypoints {
+        "Def_WP_6"
+       }
+      }
+     }
+    }
+    coords 161.525 -8.84 -66.098
+    angles 26.861 -54.983 63.264
+    {
+     SCR_DefendWaypoint Def_WP_6 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
+      ID "688AADE0030C1BAC"
+      components {
+       GC_MissionEntityNameComponent "{687B641679F9B890}" {
+        m_sMissionName "Def_WP_6"
+       }
+      }
+      coords 3.005 0.421 2.12
+      angles 1.192 -0.05 -1.194
+     }
+    }
+   }
+   AI_Squad_Spawner_7 {
+    ID "688AADE0030CDF80"
+    components {
+     GC_MissionEntityNameComponent "{687B64147F249B6E}" {
+      m_sMissionName "AI_Squad_Spawner_7"
+     }
+     GC_MissionAnchorSpawnerComponent "{8CDA7B6F185F82DF}" {
+      m_sRequiredFlag "VehicleSpawner"
+      m_aDelaySeconds {
+       20
+      }
+      m_Spawn GC_AIGroupSpawn "{C3997566AD985413}" {
+       m_sPrefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
+       m_sEntityName "AI_Squad_Spawner_7"
+       m_aWaypoints {
+        "Def_WP_7"
+       }
+      }
+     }
+    }
+    coords 167.553 -8.517 121.232
+    angles -3.644 -8.628 7.773
+    {
+     SCR_DefendWaypoint Def_WP_7 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
+      ID "688AADE0030D409A"
+      components {
+       GC_MissionEntityNameComponent "{687B641679F9B890}" {
+        m_sMissionName "Def_WP_7"
+       }
+      }
+      coords 3.005 0.421 2.12
+      angles 1.192 -0.05 -1.194
+     }
+    }
+   }
+   VehicleSpawner_4 {
+    ID "688AADE0030DA156"
+    components {
+     GC_MissionEntityNameComponent "{687B641773BF2B80}" {
+      m_sMissionName "VehicleSpawner_4"
+     }
+     GC_MissionAnchorSpawnerComponent "{37FCFF95AA598592}" {
+      m_sRequiredFlag "VehicleSpawner"
+      m_aDelaySeconds {
+       10
+      }
+      m_Spawn GC_CrewedVehicleSpawn "{ECA107BA1803F182}" {
+       m_sPrefab "{4355537BD75ED98A}worlds/HitTheMan/Prefabs/Vehicles/T72A_Green_AI.et"
+       m_aCrewGroups {
+        GC_SpawnCrewGroup "{10EDECF3A7A6BB53}" {
+         m_aStations {
+          GC_SpawnCrewStation "{6EB8B45E0019741E}" {
+           m_bPassengers 0
+           m_aCharacters {
+            "{140B6687EDDBF1FC}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/1990/Character_SEP_1990_Crew.et"
+            "{140B6687EDDBF1FC}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/1990/Character_SEP_1990_Crew.et"
+            "{140B6687EDDBF1FC}Prefabs/Characters/Factions/OPFOR/GC_SEPARATIST/1990/Character_SEP_1990_Crew.et"
+           }
+          }
+         }
+         m_bKeepGunnersSeated 1
+         m_bUseAvailableInitialWaypoints 1
+         m_fWaypointDelay 0
+         m_aWaypoints {
+          "Def_WP_Vehicle_4"
+         }
+        }
+       }
+      }
+     }
+    }
+    coords 40.158 -1.515 -26.886
+    angles 0.857 -136.505 0.813
+   }
+   AI_Squad_Spawner_12 {
+    ID "688AADE0030DA157"
+    components {
+     GC_MissionEntityNameComponent "{687B64147B456C18}" {
+      m_sMissionName "AI_Squad_Spawner_9"
+     }
+     GC_MissionAnchorSpawnerComponent "{80CCE17BA5F84A29}" {
+      m_sRequiredFlag "VehicleSpawner"
+      m_aDelaySeconds {
+       20
+      }
+      m_Spawn GC_AIGroupSpawn "{D28330AB36357819}" {
+       m_sPrefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
+       m_sEntityName "AI_Squad_Spawner_12"
+       m_aWaypoints {
+        "Def_WP_12"
+       }
+      }
+     }
+    }
+    coords -11.274 7.224 302.179
+    angles -30.015 -1.394 10.246
+    {
+     SCR_DefendWaypoint Def_WP_12 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
+      ID "688AADE0030D9DAA"
+      components {
+       GC_MissionEntityNameComponent "{687B641679F9B890}" {
+        m_sMissionName "Def_WP_9"
+       }
+      }
+      coords 3.005 0.421 2.12
+      angles 1.192 -0.05 -1.194
+     }
+    }
+   }
+   AI_Squad_Spawner_4 {
+    ID "688AADE0030E1B59"
+    components {
+     GC_MissionEntityNameComponent "{687B6414421F56EA}" {
+      m_sMissionName "AI_Squad_Spawner_4"
+     }
+     GC_MissionAnchorSpawnerComponent "{5DFFF38EA4D7C834}" {
+      m_sRequiredFlag "VehicleSpawner"
+      m_aDelaySeconds {
+       20
+      }
+      m_Spawn GC_AIGroupSpawn "{0491A0B45CB571F3}" {
+       m_sPrefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
+       m_sEntityName "AI_Squad_Spawner_4"
+       m_aWaypoints {
+        "Def_WP_4"
+       }
+      }
+     }
+    }
+    coords 30.623 1.445 -189.982
+    angles 15.871 -17.129 1.077
+    {
+     SCR_DefendWaypoint Def_WP_4 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
+      ID "688AADE0030E4E76"
+      components {
+       GC_MissionEntityNameComponent "{687B641679F9B890}" {
+        m_sMissionName "Def_WP_4"
+       }
+      }
+      coords 3.005 0.421 2.12
+      angles 1.192 -0.05 -1.194
+     }
+    }
+   }
+   AI_Squad_Spawner_8 {
+    ID "688AADE0030E5481"
+    components {
+     GC_MissionEntityNameComponent "{687B6414796182E0}" {
+      m_sMissionName "AI_Squad_Spawner_8"
+     }
+     GC_MissionAnchorSpawnerComponent "{B40472CB7260FB54}" {
+      m_sRequiredFlag "VehicleSpawner"
+      m_aDelaySeconds {
+       20
+      }
+      m_Spawn GC_AIGroupSpawn "{E9E8D5FD87C256E5}" {
+       m_sPrefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
+       m_sEntityName "AI_Squad_Spawner_8"
+       m_aWaypoints {
+        "Def_WP_8"
+       }
+      }
+     }
+    }
+    coords 284.623 -25.392 -19.606
+    angles -2.436 -2.674 -1.08
+    {
+     SCR_DefendWaypoint Def_WP_8 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
+      ID "688AADE0030E5482"
+      components {
+       GC_MissionEntityNameComponent "{687B641679F9B890}" {
+        m_sMissionName "Def_WP_8"
+       }
+      }
+      coords 3.005 0.421 2.12
+      angles 1.192 -0.05 -1.194
+     }
+    }
+   }
+   AI_Squad_Spawner_2 {
+    ID "688AADE0030EC5BE"
+    components {
+     GC_MissionEntityNameComponent "{687B64144ACF4A86}" {
+      m_sMissionName "AI_Squad_Spawner_2"
+     }
+     GC_MissionAnchorSpawnerComponent "{C24762992AE40CF7}" {
+      m_sRequiredFlag "VehicleSpawner"
+      m_aDelaySeconds {
+       20
+      }
+      m_Spawn GC_AIGroupSpawn "{2C58F63EBA2ED3FA}" {
+       m_sPrefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
+       m_sEntityName "AI_Squad_Spawner_2"
+       m_aWaypoints {
+        "Def_WP_2"
+       }
+      }
+     }
+    }
+    coords -133.682 9.091 68.446
+    angles -6.201 83.091 -1.634
+    {
+     SCR_DefendWaypoint Def_WP_2 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
+      ID "688AADE0030F6459"
+      components {
+       GC_MissionEntityNameComponent "{687B641679F9B890}" {
+        m_sMissionName "Def_WP_2"
+       }
+      }
+      coords 3.005 0.421 2.12
+      angles 1.192 -0.05 -1.194
+     }
+    }
+   }
+   AI_Squad_Spawner_9 {
+    ID "688AADE0030FAE79"
+    components {
+     GC_MissionEntityNameComponent "{687B64147B456C18}" {
+      m_sMissionName "AI_Squad_Spawner_9"
+     }
+     GC_MissionAnchorSpawnerComponent "{F1C0AB8B5C19A088}" {
+      m_sRequiredFlag "VehicleSpawner"
+      m_aDelaySeconds {
+       20
+      }
+      m_Spawn GC_AIGroupSpawn "{678EEFFADD3FFAD7}" {
+       m_sPrefab "{1FABF63E0F58019F}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_RifleSquad.et"
+       m_sEntityName "AI_Squad_Spawner_9"
+       m_aWaypoints {
+        "Def_WP_9"
+       }
+      }
+     }
+    }
+    coords -195.385 15.624 159.52
+    angles -1.288 1.231 4.739
+    {
+     SCR_DefendWaypoint Def_WP_9 : "{FAD1D789EE291964}Prefabs/AI/Waypoints/AIWaypoint_Defend_Large.et" {
+      ID "688AADE0030FAE78"
+      components {
+       GC_MissionEntityNameComponent "{687B641679F9B890}" {
+        m_sMissionName "Def_WP_9"
+       }
+      }
+      coords 3.005 0.421 2.12
+      angles 1.192 -0.05 -1.194
+     }
+    }
+   }
+  }
+  PolylineShapeEntity AO_Draw : "{8F470B543A20D963}Prefabs/Logic/Mission/MapShape.et" {
+   ID "688AADE0030FAE7F"
+   components {
+    GC_MapShapeComponent "{8F470B543A20D962}" {
+     m_LineColor 0 0 0 1
+     m_bFillEnabled 1
+     m_FillColor 0.259 0.267 0.686 0.49
+     m_bInvertFill 0
+     m_fLineWidth 5
+     m_bWorldLineWidth 1
+    }
+    GC_MissionEntityNameComponent "{687AB83A8359F4B8}" {
+     m_sMissionName "AODraw"
+    }
+   }
+   coords 0 0 0
+   Points {
+    ShapePoint "{68897245CDDBCD84}" {
+     Position 229.925 17.117 95.908
+    }
+    ShapePoint "{68897245CF1E7F2C}" {
+     Position 244.6 23.94 49.036
+    }
+    ShapePoint "{68897245C829586B}" {
+     Position 247.89 25.874 0.677
+    }
+    ShapePoint "{68897245C893D1D6}" {
+     Position 243.624 26.964 -48.453
+    }
+    ShapePoint "{68897245C9AE5592}" {
+     Position 229.54 26.56 -94.852
+    }
+    ShapePoint "{68897245CA9298BE}" {
+     Position 206.922 23.827 -138.08
+    }
+    ShapePoint "{68897245CB791752}" {
+     Position 175.553 18.198 -175.675
+    }
+    ShapePoint "{68897245CBF092BC}" {
+     Position 138.037 11.562 -207.229
+    }
+    ShapePoint "{68897245C4C8ED9B}" {
+     Position 97.179 5.449 -232.378
+    }
+    ShapePoint "{68897245C555D0B1}" {
+     Position 50.563 -1.504 -245.897
+    }
+    ShapePoint "{68897245C6034A18}" {
+     Position -0.046 -8.628 -250.916
+    }
+    ShapePoint "{68897245C6E7C866}" {
+     Position -48.969 -14.541 -244.876
+    }
+    ShapePoint "{68897245C7747A89}" {
+     Position -98.947 -19.832 -230.748
+    }
+    ShapePoint "{68897245C15E7D08}" {
+     Position -138.204 -22.736 -206.501
+    }
+    ShapePoint "{68897245C1C035E0}" {
+     Position -175.784 -26.335 -177.046
+    }
+    ShapePoint "{68897245C27E74B3}" {
+     Position -207.201 -29.338 -138.423
+    }
+    ShapePoint "{68897245C2CDC1EE}" {
+     Position -228.129 -38.334 -94.124
+    }
+    ShapePoint "{68897245FC5706F8}" {
+     Position -242.587 -36.887 -47.563
+    }
+    ShapePoint "{68897245FD2C9EA6}" {
+     Position -247.872 -35.984 1.258
+    }
+    ShapePoint "{68897245FDA5BED1}" {
+     Position -244.505 -33.177 49.955
+    }
+    ShapePoint "{68897245FE6F04AC}" {
+     Position -230.362 -30.346 95.136
+    }
+    ShapePoint "{68897245FF2487B2}" {
+     Position -209.028 -29.727 138.609
+    }
+    ShapePoint "{68897245F9BD3E6E}" {
+     Position -175.926 -29.742 174.831
+    }
+    ShapePoint "{68897245FA345B2D}" {
+     Position -136.809 -33.155 205.72
+    }
+    ShapePoint "{68897245FA9AE385}" {
+     Position -95.917 -29.656 229.271
+    }
+    ShapePoint "{68897245FB7E030D}" {
+     Position -47.194 -25.438 245.259
+    }
+    ShapePoint "{68897245F55F8527}" {
+     Position 2.351 -18.461 250.159
+    }
+    ShapePoint "{68897245F63F51E8}" {
+     Position 49.877 -9.582 246.175
+    }
+    ShapePoint "{68897245F683DFD2}" {
+     Position 95.829 0.485 231.763
+    }
+    ShapePoint "{68897245F76FD788}" {
+     Position 140.07 11.177 210.299
+    }
+    ShapePoint "{68897245F045E00B}" {
+     Position 176.804 15.394 177.751
+    }
+    ShapePoint "{68897245F1178617}" {
+     Position 208.005 16.336 139.812
+    }
+   }
+   LineColor 0 0.1255 0.502 1
+  }
+  GenericEntity Prop_Ammo : "{8E49E48C2BD0BFE3}Prefabs/Compositions/Slotted/SlotFlatSmall/AmmoStorage_S_FIA_01.et" {
+   ID "688AADE0030FAE7E"
+   coords 22.543 -1.106 6.674
+   angles 1.043 28.525 0.567
+  }
+  GenericEntity Prop_Supply : "{AB1A97B1BAE8C395}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_01.et" {
+   ID "688AADE0030FAE4A"
+   coords 31.327 -1.305 -3.86
+   angles 3.532 -0.62 -1.221
+  }
+  $grp SCR_AIGroup : "{CBC76AF6C9126ED2}Prefabs/Groups/OPFOR/GC_SEPARATIST/1990/Group_SEP_1990_FireTeam.et" {
+   AI_Squad_Inside_5 {
+    ID "688AADE003005DA2"
+    components {
+     GC_MissionEntityNameComponent "{687B64143B7F98DC}" {
+      m_sMissionName "AI_Squad_Inside_5"
+     }
+    }
+    coords -16.699 2.173 29.501
+    angles -1.538 115.669 3.197
+    m_bSnapToTerrain 0
+    m_aStaticWaypoints {
+     "Def_Inside_WP_5"
+    }
+    {
+     SCR_DefendWaypoint Def_Inside_WP_5 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
+      ID "688AADE00300F29E"
+      components {
+       GC_MissionEntityNameComponent "{687B6414F0BF7FD8}" {
+        m_sMissionName "Def_Inside_WP_5"
+       }
+      }
+      coords 0.014 0 -0.226
+      angles 0 -23.125 0
+      CompletionRadius 6
+     }
+    }
+   }
+   AI_Squad_Inside_1 {
+    ID "688AADE00300F29D"
+    components {
+     GC_MissionEntityNameComponent "{687B6414127D1E8D}" {
+      m_sMissionName "AI_Squad_Inside_1"
+     }
+    }
+    coords 6.194 -0.545 18.775
+    angles 4.8 -147.943 -5.415
+    m_bSnapToTerrain 0
+    m_aStaticWaypoints {
+     "Def_Inside_WP_1"
+    }
+    {
+     SCR_DefendWaypoint Def_Inside_WP_1 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
+      ID "688AADE0030123C3"
+      components {
+       GC_MissionEntityNameComponent "{687B6414C85DC13A}" {
+        m_sMissionName "Def_Inside_WP_1"
+       }
+      }
+      coords 0.014 0 -0.226
+      angles 0 -23.125 0
+      CompletionRadius 6
+     }
+    }
+   }
+   AI_Squad_Inside_8 {
+    ID "688AADE0030134D2"
+    components {
+     GC_MissionEntityNameComponent "{687B64143706E1C0}" {
+      m_sMissionName "AI_Squad_Inside_8"
+     }
+    }
+    coords 20.77 1.609 -27.788
+    angles 4.571 23.363 -4.453
+    m_bSnapToTerrain 0
+    m_aStaticWaypoints {
+     "Def_Inside_WP_8"
+    }
+    {
+     SCR_DefendWaypoint Def_Inside_WP_8 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
+      ID "688AADE0030101BE"
+      components {
+       GC_MissionEntityNameComponent "{687B6414EDAD6E9A}" {
+        m_sMissionName "Def_Inside_WP_8"
+       }
+      }
+      coords 0.014 0 -0.226
+      angles 0 -23.125 0
+      CompletionRadius 6
+     }
+    }
+   }
+   AI_Squad_Inside_2 {
+    ID "688AADE00301372D"
+    components {
+     GC_MissionEntityNameComponent "{687B64143EC58CD3}" {
+      m_sMissionName "AI_Squad_Inside_2"
+     }
+    }
+    coords 25.112 -1.115 29.285
+    angles -3.377 -172.892 -1.614
+    m_bSnapToTerrain 0
+    m_aStaticWaypoints {
+     "Def_Inside_WP_2"
+    }
+    {
+     SCR_DefendWaypoint Def_Inside_WP_2 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
+      ID "688AADE0030134D3"
+      components {
+       GC_MissionEntityNameComponent "{687B6414FB23C9AF}" {
+        m_sMissionName "Def_Inside_WP_2"
+       }
+      }
+      coords 0.014 0 -0.226
+      angles 0 -23.125 0
+      CompletionRadius 6
+     }
+    }
+   }
+   AI_Squad_Inside_4 {
+    ID "688AADE00301834B"
+    components {
+     GC_MissionEntityNameComponent "{687B641439A04819}" {
+      m_sMissionName "AI_Squad_Inside_4"
+     }
+    }
+    coords 51.068 5.963 14.791
+    angles 3.431 165.972 4.027
+    m_bSnapToTerrain 0
+    m_aStaticWaypoints {
+     "Def_Inside_WP_4"
+    }
+    {
+     SCR_DefendWaypoint Def_Inside_WP_4 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
+      ID "688AADE0030185EE"
+      components {
+       GC_MissionEntityNameComponent "{687B6414F6A773AF}" {
+        m_sMissionName "Def_Inside_WP_4"
+       }
+      }
+      coords 0.014 0 -0.226
+      angles 0 -23.125 0
+      CompletionRadius 6
+     }
+    }
+   }
+   AI_Squad_Inside_3 {
+    ID "688AADE00301C690"
+    components {
+     GC_MissionEntityNameComponent "{687B641438201B65}" {
+      m_sMissionName "AI_Squad_Inside_3"
+     }
+    }
+    coords 35.22 -1.336 19.742
+    angles -1.447 -120.498 2.235
+    m_bSnapToTerrain 0
+    m_aStaticWaypoints {
+     "Def_Inside_WP_3"
+    }
+    {
+     SCR_DefendWaypoint Def_Inside_WP_3 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
+      ID "688AADE00301C697"
+      components {
+       GC_MissionEntityNameComponent "{687B6414F567E43A}" {
+        m_sMissionName "Def_Inside_WP_3"
+       }
+      }
+      coords 0.014 0 -0.226
+      angles 0 -23.125 0
+      CompletionRadius 6
+     }
+    }
+   }
+   AI_Squad_Inside_Officer {
+    ID "688AADE0030211BE"
+    components {
+     GC_MissionEntityNameComponent "{687B6414127D1E8D}" {
+      m_sMissionName "AI_Squad_Inside_Officer"
+     }
+    }
+    coords 6.251 -0.311 21.997
+    angles 1.267 -148.74 -8.9
+    m_aUnitPrefabSlots {
+     "{CF74EFC594D28E61}worlds/HitTheMan/Seeder Cold War Domination/Prefabs/Objectives/Side Objectives/Character_SEP_1990_PL_DomiOfficer.et"
+    }
+    m_bSnapToTerrain 0
+    m_aStaticWaypoints {
+     "Def_Inside_WP_10"
+    }
+    {
+     SCR_DefendWaypoint Def_Inside_WP_10 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
+      ID "688AADE003028A05"
+      components {
+       GC_MissionEntityNameComponent "{687B6414C85DC13A}" {
+        m_sMissionName "Def_Inside_WP_1"
+       }
+      }
+      coords 0.014 0 -0.226
+      angles 0 -23.125 0
+      CompletionRadius 1
+     }
+    }
+   }
+   AI_Squad_Inside_9 {
+    ID "688AADE003029255"
+    components {
+     GC_MissionEntityNameComponent "{687B6414309719E6}" {
+      m_sMissionName "AI_Squad_Inside_9"
+     }
+    }
+    coords 37.515 4.694 -5.704
+    angles -8.38 -84.82 0.374
+    m_bSnapToTerrain 0
+    m_aStaticWaypoints {
+     "Def_Inside_WP_9"
+    }
+    {
+     SCR_DefendWaypoint Def_Inside_WP_9 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
+      ID "688AADE00302D033"
+      components {
+       GC_MissionEntityNameComponent "{687B6414EF26F347}" {
+        m_sMissionName "Def_Inside_WP_9"
+       }
+      }
+      coords 0.014 0 -0.226
+      angles 0 -23.125 0
+      CompletionRadius 6
+     }
+    }
+   }
+   AI_Squad_Inside_6 {
+    ID "688AADE0030FAE4C"
+    components {
+     GC_MissionEntityNameComponent "{687B641434CCBB4E}" {
+      m_sMissionName "AI_Squad_Inside_6"
+     }
+    }
+    coords 2.547 -0.858 -23.642
+    angles -2.965 65.154 0.441
+    m_bSnapToTerrain 0
+    m_aStaticWaypoints {
+     "Def_Inside_WP_6"
+    }
+    {
+     SCR_DefendWaypoint Def_Inside_WP_6 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
+      ID "688AADE0030FAE53"
+      components {
+       GC_MissionEntityNameComponent "{687B6414F2C1441E}" {
+        m_sMissionName "Def_Inside_WP_6"
+       }
+      }
+      coords 2.673 0 -3.33
+      angles 0 -23.125 0
+      CompletionRadius 6
+     }
+    }
+   }
+   AI_Squad_Inside_7 {
+    ID "688AADE0030FAE52"
+    components {
+     GC_MissionEntityNameComponent "{687B641435AFD652}" {
+      m_sMissionName "AI_Squad_Inside_7"
+     }
+    }
+    coords 8.744 -0.725 -35.208
+    angles -3.073 64.083 -0.69
+    m_bSnapToTerrain 0
+    m_aStaticWaypoints {
+     "Def_Inside_WP_7"
+    }
+    {
+     SCR_DefendWaypoint Def_Inside_WP_7 : "{A70634B518C5C3B8}Prefabs/AI/Waypoints/AIWaypoint_Defend_Small.et" {
+      ID "688AADE0030028B3"
+      components {
+       GC_MissionEntityNameComponent "{687B6414EC0A39C0}" {
+        m_sMissionName "Def_Inside_WP_7"
+       }
+      }
+      coords 0.014 0 -0.226
+      angles 0 -23.125 0
+      CompletionRadius 6
+     }
+    }
+   }
+  }
+  GenericEntity Prop_HQ : "{CD02EBFB0E2E274E}Prefabs/Compositions/Slotted/SlotFlatSmall/Headquarters_S_FIA_01.et" {
+   ID "688AADE00302D031"
+   coords 5.573 -0.453 19.704
+   angles -9.027 160.074 -4.201
+  }
+  GenericEntity Prop_Antenna : "{FB26A800AC01D85A}Prefabs/Compositions/Slotted/SlotFlatSmall/Antenna_S_FIA_01.et" {
+   ID "688AADE00302D043"
+   coords -17.49 2.176 29.541
+   angles -0.953 123.222 3.613
+  }
+ }
+}
