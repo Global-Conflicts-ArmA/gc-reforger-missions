@@ -1,0 +1,137 @@
+GC_LobbyGameMode : "{A79C4E0A43DEB821}Prefabs/MP/Modes/GC_LobbyGameMode.et" {
+ ID "CFE0680AD00F5F6D"
+ components {
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{FA0B96E6CAB1C105}" {
+     m_sName "TimeLimit (event 3, 3900s)"
+     m_Advanced GC_EventOptions "{70416E92A7C0F226}" {
+      m_fDelay 3900
+     }
+     m_aActions {
+      GC_MessageAction "{FCD7A8D9481352AD}" {
+       m_sTitle "Time Limit Reached!"
+       m_sMessage ""
+      }
+     }
+    }
+   }
+   m_aBriefings {
+    GC_Briefing "{55743DF3CEC75B55}" {
+     m_iOrder 0
+     m_sTitle "MISSION DESCRIPTION"
+     m_sContent "USSR Motor Rifle Company (-) (BTR-70s) assaults a power plant within a town held by anti-Soviet separatists."\
+     ""\
+     "Mission by Gabe"
+     m_eAudience 1
+    }
+    GC_Briefing "{407436B7729B9CD8}" {
+     m_iOrder 1
+     m_sTitle "SITUATION ENEMY"
+     m_sContent "Spotted to our south-east: A USSR Motor Rifle company consisting of up to 2x platoons and up to 7x BTR-70s is en-route to take back control of the town. Given the importance of the power plant, as well as its favorable defensive setup, we expect that they will aim to clear out and occupy it. This cannot happen or we will lose the town."\
+     ""
+     m_aFactionKeys {
+      "GC_SEPARATIST"
+     }
+    }
+    GC_Briefing "{6401A1A66CBAA027}" {
+     m_iOrder 2
+     m_sTitle "SITUATION ENEMY"
+     m_sContent "In a defensive posture within the marked AO/objective."\
+     ""\
+     "Up to 3x infantry squads and an HQ squad equipped with AK variants, including PKMs, and RPGs."\
+     ""
+     m_aFactionKeys {
+      "USSR"
+     }
+    }
+    GC_Briefing "{5E385D1DA1BEED27}" {
+     m_iOrder 3
+     m_sTitle "SITUATION FRIENDLY"
+     m_sContent "Located at the power plant parking lot."\
+     ""\
+     "Up to 3x infantry squads equipped with AK variants and RPGs. We have 2x medics, 2x sharpshooters, plus an extra 1x machine gunner (PKMs) and 1x RPG gunner in addition to those in our standard infantry squads. Only the platoon leader and platoon sergeant have radios, but we optionally can utilize the runner to share information if need be."\
+     ""\
+     "We have a crate in our spawn with 30x shovels, 10x backpacks, 1x M2, 1x tripod, 3x M2 ammo boxes, and more sandbags than we can possibly employ."\
+     ""\
+     ""
+     m_aFactionKeys {
+      "GC_SEPARATIST"
+     }
+    }
+    GC_Briefing "{533AC6BA06B8FEF0}" {
+     m_iOrder 4
+     m_sTitle "SITUATION FRIENDLY"
+     m_sContent "We are a USSR Motor Rifle company consisting of up to 2x platoons, company HQ, and up to 7x BTR-70s en-route to take back control of the town located to our north-west. Specifically, we are tasked with assaulting and establishing control of the power plant, including the immediate surrounding buildings/structures."
+     m_aFactionKeys {
+      "USSR"
+     }
+    }
+    GC_Briefing "{DFDBB0859279E19E}" {
+     m_iOrder 5
+     m_sTitle "MISSION"
+     m_sContent "Defend the power plant against the Soviets. Consider the objective lost if we become overwhelmed and fail to make up greater than 10% of those within said objective area for any amount of time. Our mission is failed if we lose the power plant."
+     m_aFactionKeys {
+      "GC_SEPARATIST"
+     }
+    }
+    GC_Briefing "{03ED17C24481A8BD}" {
+     m_iOrder 6
+     m_sTitle "MISSION"
+     m_sContent "Conduct an assault on the town and decisively occupy the power plant and immediately surrounding vicinity/structures. Once we've occupied the objective area with a 90% or greater majority, we may consider it secured. Mission success upon securing the power plant or rendering the enemy forces combat-ineffective (85% casualties)."
+     m_aFactionKeys {
+      "USSR"
+     }
+    }
+    GC_Briefing "{53A3DE6F072BA879}" {
+     m_iOrder 7
+     m_sTitle "COMSIG"
+     m_sContent "Datsyuk-HQ"\
+     "	Datsyuk-1"\
+     "	Datsyuk-2"\
+     "	Datsyuk-3"\
+     ""\
+     "Platoon Net (42 MHz)"\
+     ""
+     m_aFactionKeys {
+      "GC_SEPARATIST"
+     }
+    }
+    GC_Briefing "{5E89411C34DB959C}" {
+     m_iOrder 8
+     m_sTitle "COMSIG"
+     m_sContent "310 - Coy HQ"\
+     "	311 HQ - 1 Plt HQ"\
+     "		311 - 1 Plt 1 Squad"\
+     "		312 - 1 Plt 2 Squad"\
+     "		313 - 1 Plt 3 Squad"\
+     "	314 HQ - 2 Plt HQ"\
+     "		314 - 2 Plt 1 Squad"\
+     "		315 - 2 Plt 2 Squad"\
+     "		316 - 2 Plt 3 Squad"\
+     ""\
+     "Coy Net (42 MHz)"
+     m_aFactionKeys {
+      "USSR"
+     }
+    }
+    GC_Briefing "{4841A7126E85ABC2}" {
+     m_iOrder 9
+     m_sTitle "MISSION NOTES (MUST READ)"
+     m_sContent "Setup freeze timer does NOT limit Separatists (timer exists for Separatists just to notify of when USSR will be free to move out of their spawn)."\
+     ""\
+     "Setup freeze timer limits USSR to their immediate spawn area."\
+     ""\
+     "AO limits Separatists. AO does NOT affect USSR whatsoever."\
+     ""\
+     "If the USSR forces make up 90% of the population in the objective area for any amount of time, it will be considered taken. Should the power plant be taken, USSR wins!"\
+     ""\
+     "There is an 60 minute time limit starting after the 5 minute setup freeze timer concludes."\
+     ""\
+     "If either side takes 85% casualties, they will be considered defeated."
+     m_eAudience 2
+    }
+   }
+  }
+ }
+}

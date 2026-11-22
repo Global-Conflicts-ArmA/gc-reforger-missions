@@ -1,0 +1,545 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{670C3B197F1190F9}" {
+     NavmeshFile "{E08B16AADAB901D8}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Soldier.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{04F808CEFD545B32}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Vehicle.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{6D7CE9C2F346F22E}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_LowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 6289.698 207.735 6684.861
+}
+GC_LobbyGameMode GC_MigratedMission : "{5085435F92A07A30}worlds/Gabe/PowerStruggle/TVT97PowerStruggle_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bDateOverride 1
+   m_iDay 12
+   m_iMonth 5
+   m_iYear 1990
+  }
+  GC_PeakFactionPopulationComponent "{5B52C81BC2CB87CE}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{A84A0C9211B51911}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 300.000000
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{B25CA9B825BA6A33}" {
+     m_sName "Enfield0"
+    }
+    GC_MissionFlag "{FDEAB8EE1BCF212D}" {
+     m_sName "Enfield1"
+    }
+    GC_MissionFlag "{F85C108A734B7B51}" {
+     m_sName "Enfield2"
+    }
+    GC_MissionFlag "{40CB9A6F2C7E2D2B}" {
+     m_sName "Enfield3"
+    }
+    GC_MissionFlag "{990B3DF91825A328}" {
+     m_sName "Enfield4"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{67E81A28209A4167}" {
+     m_sName "GC_MigrationStartupSampling"
+     m_aConditions {
+      GC_ConditionGroup "{AD91F232324A68F1}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{20E953B6CD8E6A33}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{80A2A338197C6F31}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{73BEB9755E0C1FDA}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_FlagSamplingAction "{20E953B6CD8E6A33}" {
+       m_iDrawCount 1
+       m_aFlags {
+        "Enfield0"
+        "Enfield1"
+        "Enfield2"
+        "Enfield3"
+        "Enfield4"
+       }
+      }
+     }
+    }
+    GC_Event "{631619B988EBD228}" {
+     m_sName "USSRVictoryByCasualties"
+     m_aConditions {
+      GC_CustomScriptCondition "{976DB3AC73BBAD14}" {
+       m_Script GC_PeakFactionPopulationCheck "{E476518AE2ACC216}" {
+        m_sFaction "GC_SEPARATIST"
+        m_fRatio 0.85
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6F4A875186D83C55}" {
+       m_sMessage "USSRVictoryByCasualties"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5A0FCE3BF39EE81E}" {
+     m_sName "USSRVictoryByCasualties (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{57AAC6F2919619EF}" {
+       m_sEventName "USSRVictoryByCasualties"
+      }
+     }
+     m_Advanced GC_EventOptions "{F422EAFB23A58613}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_MessageAction "{EFEBC94F31DFC7F3}" {
+       m_sTitle "Separatists have taken significant casualties - USSR victory!"
+       m_sMessage ""
+      }
+     }
+    }
+    GC_Event "{24D2C701223EBC16}" {
+     m_sName "SeparatistVictoryByCasualties"
+     m_aConditions {
+      GC_CustomScriptCondition "{EA596888C9F883D7}" {
+       m_Script GC_PeakFactionPopulationCheck "{5D2389C0F54A381B}" {
+        m_sFaction "USSR"
+        m_fRatio 0.85
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{BDF3E342D6825DFF}" {
+       m_sMessage "SeparatistVictoryByCasualties"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{447EB0F8F2BD4290}" {
+     m_sName "SeparatistVictoryByCasualties (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F00D271F1BF83180}" {
+       m_sEventName "SeparatistVictoryByCasualties"
+      }
+     }
+     m_Advanced GC_EventOptions "{5A22DFF7599A7CAA}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_MessageAction "{062928AE753B9380}" {
+       m_sTitle "USSR has taken significant casualties - Separatists victory!"
+       m_sMessage ""
+      }
+     }
+    }
+    GC_Event "{F64F0C896948B28E}" {
+     m_sName "USSRVictoryByObjective"
+     m_aConditions {
+      GC_AreaCondition "{24D0623B1BCE80C8}" {
+       m_sArea "ObjTrigger_PowerPlant"
+       m_Targets GC_CharacterAreaTargets "{42E3EDF0D4998625}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{77BD39039266BC3F}" {
+        m_fRequiredShare 0.9
+       }
+       m_Capture GC_AreaCaptureOptions "{B7963F71C851D846}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+        m_Messages GC_CaptureMessages "{B9CB8260745EB054}" {
+         m_sLocation "the power plant"
+         m_sCaptured "The %1 has taken control of %2."
+         m_sCapturing ""
+         m_sCaptureInterrupted ""
+         m_sLost ""
+         m_sLosing ""
+         m_sLossInterrupted ""
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C894D36C870427F5}" {
+       m_sMessage "USSRVictoryByObjective"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7C751A3C50BC1435}" {
+     m_sName "USSRVictoryByObjective (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{69A9D54CFBBD1096}" {
+       m_sEventName "USSRVictoryByObjective"
+      }
+     }
+     m_Advanced GC_EventOptions "{E2C6EA45136A6191}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_MessageAction "{2AA6F2428328E783}" {
+       m_sTitle "The Soviets have taken the power plant. USSR victory!"
+       m_sMessage ""
+      }
+     }
+    }
+    GC_Event "{C145A0A3B46416A5}" {
+     m_sName "GC_MigratedSpawn_FC6328D33F545CC4"
+     m_aConditions {
+      GC_GameModeStateCondition "{BBF05AD264A1EA57}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{323DFF561D874216}" {
+       m_sFlagName "Enfield0"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6FDE3F71C8A7C0CC}" {
+       m_sMessage "GC_MigratedSpawn_FC6328D33F545CC4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6479922C3CFB3242}" {
+     m_sName "GC_MigratedSpawn_FC6328D33F545CC4 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7CC51314B325806A}" {
+       m_sEventName "GC_MigratedSpawn_FC6328D33F545CC4"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{6479922C3CFB3242}" {
+       m_Spawn GC_PrefabSpawn "{0AAF64D3AC492E14}" {
+        m_sLocation "Enfield0"
+        m_sPrefab "{775DFB7F4529A122}Prefabs/Weapons/Rifles/L42A1/Rifle_L42A1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{F45D8E822E0AC89C}" {
+     m_sName "GC_MigratedSpawn_273A16C8C115221A"
+     m_aConditions {
+      GC_GameModeStateCondition "{5AFA1F50083B60AC}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{1CD49A8653777C2C}" {
+       m_sFlagName "Enfield1"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{17A8F44F0DA68E22}" {
+       m_sMessage "GC_MigratedSpawn_273A16C8C115221A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CBF769D160686E2D}" {
+     m_sName "GC_MigratedSpawn_273A16C8C115221A (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E8406209DCC51BC2}" {
+       m_sEventName "GC_MigratedSpawn_273A16C8C115221A"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{CBF769D160686E2D}" {
+       m_Spawn GC_PrefabSpawn "{EBE64BD23E161E1C}" {
+        m_sLocation "Enfield1"
+        m_sPrefab "{775DFB7F4529A122}Prefabs/Weapons/Rifles/L42A1/Rifle_L42A1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{49F12912F270424C}" {
+     m_sName "GC_MigratedSpawn_43FA6E118BB4932A"
+     m_aConditions {
+      GC_GameModeStateCondition "{B66E1A22264ADDA1}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{2C665F7306A35F69}" {
+       m_sFlagName "Enfield2"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{06997A2C06227015}" {
+       m_sMessage "GC_MigratedSpawn_43FA6E118BB4932A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8FE7E78340782E74}" {
+     m_sName "GC_MigratedSpawn_43FA6E118BB4932A (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5E74BF0C060E1A65}" {
+       m_sEventName "GC_MigratedSpawn_43FA6E118BB4932A"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{8FE7E78340782E74}" {
+       m_Spawn GC_PrefabSpawn "{42946AD9680D095D}" {
+        m_sLocation "Enfield2"
+        m_sPrefab "{775DFB7F4529A122}Prefabs/Weapons/Rifles/L42A1/Rifle_L42A1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{75D7140931AB0EFC}" {
+     m_sName "GC_MigratedSpawn_B0BAC16C030EF695"
+     m_aConditions {
+      GC_GameModeStateCondition "{AB3F64FBEF5E1629}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{61C0B9A2FE919091}" {
+       m_sFlagName "Enfield3"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4F4C996A7A38262A}" {
+       m_sMessage "GC_MigratedSpawn_B0BAC16C030EF695"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E06713513EB416FE}" {
+     m_sName "GC_MigratedSpawn_B0BAC16C030EF695 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CE352DF2CD4A3EC9}" {
+       m_sEventName "GC_MigratedSpawn_B0BAC16C030EF695"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{E06713513EB416FE}" {
+       m_Spawn GC_PrefabSpawn "{AE3A86A9ECE8C940}" {
+        m_sLocation "Enfield3"
+        m_sPrefab "{775DFB7F4529A122}Prefabs/Weapons/Rifles/L42A1/Rifle_L42A1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{9A2BE4FCD54D07C9}" {
+     m_sName "GC_MigratedSpawn_2B1952E767562ECA"
+     m_aConditions {
+      GC_GameModeStateCondition "{45DC7EEEFF65131B}" {
+       m_eGameModeState GAME
+      }
+      GC_MissionFlagCondition "{D82CA308CA02DB33}" {
+       m_sFlagName "Enfield4"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0429CE7D02A86D30}" {
+       m_sMessage "GC_MigratedSpawn_2B1952E767562ECA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FAAED630C61F1B2C}" {
+     m_sName "GC_MigratedSpawn_2B1952E767562ECA (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CA63D232D59389BB}" {
+       m_sEventName "GC_MigratedSpawn_2B1952E767562ECA"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{FAAED630C61F1B2C}" {
+       m_Spawn GC_PrefabSpawn "{544B3BC7036B4D2C}" {
+        m_sLocation "Enfield4"
+        m_sPrefab "{775DFB7F4529A122}Prefabs/Weapons/Rifles/L42A1/Rifle_L42A1.et"
+       }
+      }
+     }
+    }
+    GC_Event "{29137E006E1FE8E5}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{C4EDCA830BAFEE94}" {
+       m_fSeconds 300.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{AB3BBFB55F700016}" {
+       m_aEntities {
+        "SetupTimerUSSR"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 6313.582 204.979 6736.232
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792821E9332}" {
+        m_sCallsign "3"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB7928490AEEE}" {
+        m_sCallsign "0"
+       }
+       SCR_CallsignInfo "{55CCB79284BA6D27}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB79284A2F6C9}" {
+        m_sCallsign "2"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+       }
+       SCR_CallsignInfo "{64E2F896E232A50B}" {
+       }
+       SCR_CallsignInfo "{64E2F896FFC45153}" {
+       }
+       SCR_CallsignInfo "{64E2F896FFF772BB}" {
+       }
+       SCR_CallsignInfo "{64E2F896F01D8C83}" {
+       }
+       SCR_CallsignInfo "{64E2F896F044B7B6}" {
+       }
+      }
+     }
+    }
+    SCR_Faction "{62EB308733CA83DD}" {
+     m_bShowInWelcomeScreenIfNonPlayable 1
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{58B2B630FDD64B73}" {
+        m_sCallsign "Datsyuk"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B7A}" {
+        m_sCallsign ""
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{58B2B630FDD64B65}" {
+        m_sCallsign "HQ"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B6B}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B69}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B6F}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{61C8F1ACD8ABED54}" {
+        m_sCallsign "4"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign " "
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GC_RadiusAreaEntity ObjTrigger_PowerPlant : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 6518.394 202.374 6525.055
+ m_fRadius 85
+}
+GenericEntity : "{A0E432F0BBED71B4}PrefabsEditable/Auto/Props/Military/AmmoBoxes/US/E_EquipmentBoxWooden_Equipment_01_US.et" {
+ components {
+  SCR_SoundDataComponent "{5C53391603B5CF41}" {
+   Enabled 1
+  }
+  SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+   Enabled 1
+   MultiSlots {
+    MultiSlotConfiguration "{66E10EFC90B0BF46}" {
+     SlotTemplate InventoryStorageSlot M14Mines {
+      Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
+     }
+     NumSlots 1000
+    }
+    MultiSlotConfiguration "{67316E162FBB96A3}" {
+     SlotTemplate InventoryStorageSlot M14Mines {
+      Prefab "{25F3E9A9A45B3C58}Prefabs/Items/Equipment/Backpacks/Backpack_Para_Bergen.et"
+     }
+     NumSlots 10
+    }
+    MultiSlotConfiguration "{673368D9DFF340CE}" {
+     SlotTemplate InventoryStorageSlot M14Mines {
+      Prefab "{9B625CAE6DEE1DAB}Prefabs/Items/Equipment/Tripods/M2/Part_M2_Gun.et"
+     }
+     NumSlots 1
+    }
+    MultiSlotConfiguration "{673368D9DD5C0C76}" {
+     SlotTemplate InventoryStorageSlot M14Mines {
+      Prefab "{6A3EF260029FE220}Prefabs/Items/Equipment/Tripods/M2/Part_M3_Tripod.et"
+     }
+     NumSlots 1
+    }
+    MultiSlotConfiguration "{673EBD8B127F414E}" {
+     SlotTemplate InventoryStorageSlot ammo50 {
+      Prefab "{25CE9A2A7EAD5B9D}Prefabs/Weapons/Magazines/Box_127x99_M2_100rnd_AP.et"
+     }
+     NumSlots 3
+    }
+    MultiSlotConfiguration "{673EBD8D98528795}" {
+     SlotTemplate EquipmentStorageSlot etool {
+      Prefab "{6E35D94130954509}Prefabs/Items/Equipment/Accessories/ETool_ALICE/ETool_ALICE_FreeRoamBuilding_Gadget.et"
+     }
+     NumSlots 30
+    }
+   }
+  }
+  ActionsManagerComponent "{5476B36C403D4CC0}" {
+   Enabled 1
+  }
+ }
+ coords 6539.175 200.156 6456.969
+ angles 0 -79.493 0
+}
+GenericEntity : "{A10A168FDA3FA657}PrefabLibrary/DefaultLibrary/Props/Industrial/ConcretePanel_01_stack.et" {
+ coords 6511.279 214.118 6518.436
+ angles -1.221 -86.423 0.058
+}
+SCR_EditorRestrictionZoneEntity SetupTimerUSSR : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 7059.321 215.539 5971.092
+}
