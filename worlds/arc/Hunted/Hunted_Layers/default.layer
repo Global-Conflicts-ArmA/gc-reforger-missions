@@ -1,0 +1,561 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 386.23 52.161 4168.582
+}
+GC_LobbyGameMode GC_MigratedMission : "{7A1F6637594E9096}worlds/arc/Hunted/Hunted_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{62EAA4D74FB05835}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 10
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{3FA9CE5FE6DFA771}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{06C000DD347D6CAF}" {
+     m_sName "OPTIONAL_1"
+     m_aConditions {
+      GC_EntityDamageCondition "{5D6F7D7FB781D26F}" {
+       m_sEntityName "BTR70_Base1"
+      }
+     }
+    }
+    GC_MissionFlag "{CC63D4DDD21FF696}" {
+     m_sName "OPTIONAL_2"
+    }
+    GC_MissionFlag "{82BBB14D5CA16422}" {
+     m_sName "OPTIONAL_3"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{8C2DCD3C10F2C5B9}" {
+     m_sName "US_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{3C736C99532AA067}" {
+       m_Script GC_PeakFactionPopulationCheck "{0627DDC2E990C8D4}" {
+        m_sFaction "RHS_USAF"
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{BF59252BB429C608}" {
+       m_sMessage "US_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9C651E0316D7BB79}" {
+     m_sName "US_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{54B9320A4326B2EB}" {
+       m_sEventName "US_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{86594BA252031DA6}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{138DF114F669B213}" {
+       m_sTitle "DEFEAT"
+       m_sMessage "All rangers have been eliminated."
+      }
+     }
+    }
+    GC_Event "{08AF4FE48612C13C}" {
+     m_sName "US_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{913A7C7A47DD7093}" {
+       m_sEventName "US_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{87FBD58D4B0283B3}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{415B6F535023CE98}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+    GC_Event "{FBDE8F173BA4AA1B}" {
+     m_sName "TIME_LIMIT (4505s)"
+     m_Advanced GC_EventOptions "{366E37F9E0E9E1ED}" {
+      m_fDelay 4505
+     }
+     m_aActions {
+      GC_MessageAction "{37BD89E6F183D935}" {
+       m_sTitle "DEFEAT"
+       m_sMessage "Time limit reached, extraction no longer possible."
+      }
+     }
+    }
+    GC_Event "{2A9038D16C33C746}" {
+     m_sName "TIME_LIMIT (4515s)"
+     m_Advanced GC_EventOptions "{A44FE9CAAB3353FC}" {
+      m_fDelay 4515
+     }
+     m_aActions {
+      GC_EndMissionAction "{6FE8CF32C439E85D}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+    GC_Event "{54C6DB33DA4FFA05}" {
+     m_sName "US_EXTRACT_1"
+     m_aConditions {
+      GC_GameModeStateCondition "{3CF66F696554FA45}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{188E691C9AEC4356}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{E9836001F34BEB80}" {
+         m_sArea "GC_MigrationArea_US_EXTRACT"
+         m_Targets GC_CharacterAreaTargets "{0F57FCCDA819636B}" {
+          m_aFactions {
+           "RHS_USAF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{852FAA01E5C1E511}" {
+          m_fRequiredShare 0.9
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{3BC0E562012DBA9A}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+        GC_MissionFlagCondition "{B7C81F4ECD33EF19}" {
+         m_sFlagName "OPTIONAL_1"
+         m_bRequireFalse 1
+        }
+        GC_MissionFlagCondition "{D7D6951697FACF1B}" {
+         m_sFlagName "OPTIONAL_2"
+         m_bRequireFalse 1
+        }
+        GC_MissionFlagCondition "{8C397181ADA92B19}" {
+         m_sFlagName "OPTIONAL_3"
+         m_bRequireFalse 1
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{45422A70A10B4A91}" {
+       m_sMessage "US_EXTRACT_1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CFDC0D9558F437CF}" {
+     m_sName "US_EXTRACT_1 (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{1BC313F14CB15768}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{D3FC4E9A5DB97AB4}" {
+       m_sEventName "US_EXTRACT_1"
+      }
+     }
+     m_Advanced GC_EventOptions "{C89366F74DA81B7E}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{9EA8518E8EB979EC}" {
+       m_sTitle "MINOR VICTORY"
+       m_sMessage "The rangers have made it to the extraction point without dealing with any optional objectives."
+      }
+     }
+    }
+    GC_Event "{E7BD131EDC52C9E5}" {
+     m_sName "US_EXTRACT_1 (15s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{BC8D9A305332CE26}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{5427CAAE01DE2D46}" {
+       m_sEventName "US_EXTRACT_1"
+      }
+     }
+     m_Advanced GC_EventOptions "{9B18E89C1B657BC0}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{0E34971B2034315D}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+    GC_Event "{B9BD28BFCC7885E8}" {
+     m_sName "US_EXTRACT_2"
+     m_aConditions {
+      GC_GameModeStateCondition "{C7E53AF31077E914}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{B85FE792AF742690}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{A45A144820074635}" {
+         m_sArea "GC_MigrationArea_US_EXTRACT"
+         m_Targets GC_CharacterAreaTargets "{28F865A4BEB1408D}" {
+          m_aFactions {
+           "RHS_USAF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{D6AB91FE50F061DF}" {
+          m_fRequiredShare 0.9
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{8779582080E9BF06}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+        GC_ConditionCount "{578B2C22F0B9FC74}" {
+         m_iComparison 1
+         m_iRequiredCount 3
+         m_aConditions {
+          GC_MissionFlagCondition "{1FFCC333402BE064}" {
+           m_sFlagName "OPTIONAL_1"
+          }
+          GC_MissionFlagCondition "{7E04539E0D4932AD}" {
+           m_sFlagName "OPTIONAL_2"
+          }
+          GC_MissionFlagCondition "{6D4F11810D3EB832}" {
+           m_sFlagName "OPTIONAL_3"
+          }
+         }
+        }
+        GC_ConditionCount "{6E90951050A17DA5}" {
+         m_iComparison 0
+         m_iRequiredCount 0
+         m_aConditions {
+          GC_MissionFlagCondition "{DEDE4A477A21DD5C}" {
+           m_sFlagName "OPTIONAL_1"
+          }
+          GC_MissionFlagCondition "{BDC6E504DAF14715}" {
+           m_sFlagName "OPTIONAL_2"
+          }
+          GC_MissionFlagCondition "{9FEC480AC08044B5}" {
+           m_sFlagName "OPTIONAL_3"
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{17AE022EB4ED9B87}" {
+       m_sMessage "US_EXTRACT_2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{DE3DA8E85CD03370}" {
+     m_sName "US_EXTRACT_2 (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{E4511F702F4AEF36}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{BAFCF736D733F295}" {
+       m_sEventName "US_EXTRACT_2"
+      }
+     }
+     m_Advanced GC_EventOptions "{160872436393EF89}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{3BB9B0A4C513AB7C}" {
+       m_sTitle "VICTORY"
+       m_sMessage "The rangers have made it to the extraction point and dealt with 1 of 2 optional objectives."
+      }
+     }
+    }
+    GC_Event "{7BDFDCC38A7679B6}" {
+     m_sName "US_EXTRACT_2 (15s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{609C5EB870521C2B}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{373E63CCFC3511D2}" {
+       m_sEventName "US_EXTRACT_2"
+      }
+     }
+     m_Advanced GC_EventOptions "{00FF1A75C54A017F}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{C12FF7A303ABAB4A}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+    GC_Event "{ED35A2EB32E37EA1}" {
+     m_sName "US_EXTRACT_3"
+     m_aConditions {
+      GC_GameModeStateCondition "{ABA85D40F0E4E7A7}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{C6E76BF33F419FB8}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{C0EE94DC4F761A42}" {
+         m_sArea "GC_MigrationArea_US_EXTRACT"
+         m_Targets GC_CharacterAreaTargets "{9FB96878E46C13EC}" {
+          m_aFactions {
+           "RHS_USAF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{56437FB9881593E4}" {
+          m_fRequiredShare 0.9
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{572B5378B15AD14F}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+        GC_ConditionCount "{19BE56CA8211166E}" {
+         m_iComparison 0
+         m_iRequiredCount 2
+         m_aConditions {
+          GC_MissionFlagCondition "{8DF5EE3CF826E5C4}" {
+           m_sFlagName "OPTIONAL_1"
+          }
+          GC_MissionFlagCondition "{F7E9B19F86B9351D}" {
+           m_sFlagName "OPTIONAL_2"
+          }
+          GC_MissionFlagCondition "{A088C0A183C2C9B7}" {
+           m_sFlagName "OPTIONAL_3"
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{35B5D877E3277BB5}" {
+       m_sMessage "US_EXTRACT_3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6E08339EB20F7422}" {
+     m_sName "US_EXTRACT_3 (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{8EE51BB3810CF3D0}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{39B0951DD4E9EE17}" {
+       m_sEventName "US_EXTRACT_3"
+      }
+     }
+     m_Advanced GC_EventOptions "{1B566ADB9AC9C9E2}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{07F7BDCB1A7F707B}" {
+       m_sTitle "MAJOR VICTORY"
+       m_sMessage "The rangers have made it to the extraction point and dealt all optional objectives."
+      }
+     }
+    }
+    GC_Event "{2F40F838FC4E3885}" {
+     m_sName "US_EXTRACT_3 (15s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{27450BC70DE37060}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{576B3EDB5B5E0C6A}" {
+       m_sEventName "US_EXTRACT_3"
+      }
+     }
+     m_Advanced GC_EventOptions "{53FBBB01230E0F7F}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{56B0BB30B38A9A1A}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+    GC_Event "{3243CA403EC52632}" {
+     m_sName "ASSIGN_WAYPOINTS (5s)"
+     m_Advanced GC_EventOptions "{CD962C020F84BBAD}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_AssignWaypointsAction "{A9CCC812C1849C1D}" {
+       m_sGroupName "BRIDGEPATROL"
+       m_aWaypoints {
+        "BRIDGEPATROLWP1"
+        "BRIDGEPATROLWP2"
+        "BRIDGEPATROLWP3"
+        "BRIDGEPATROLWP4"
+        "BRIDGEPATROLCYCLE"
+       }
+      }
+      GC_AssignWaypointsAction "{4192258E2D408832}" {
+       m_sGroupName "FACTORYPATROL"
+       m_aWaypoints {
+        "FACTORYPATROLWP1"
+        "FACTORYPATROLWP2"
+        "FACTORYPATROLWP3"
+        "FACTORYPATROLWP4"
+        "FACTORYPATROLCYCLE"
+       }
+      }
+      GC_AssignWaypointsAction "{7F2BF1F8EC4A0C1B}" {
+       m_sGroupName "FORESTPATROL"
+       m_aWaypoints {
+        "FORESTPATROLWP1"
+        "FORESTPATROLWP2"
+        "FORESTPATROLWP3"
+        "FORESTPATROLWP4"
+        "FORESTPATROLCYCLE"
+       }
+      }
+      GC_AssignWaypointsAction "{94A4F3521BD609ED}" {
+       m_sGroupName "FORESTPATROL2"
+       m_aWaypoints {
+        "FORESTPATROL2WP1"
+        "FORESTPATROL2WP2"
+        "FORESTPATROL2WP3"
+        "FORESTPATROL2WP4"
+        "FORESTPATROL2CYCLE"
+       }
+      }
+      GC_AssignWaypointsAction "{84F7B948D94F4099}" {
+       m_sGroupName "RIVERPATROL"
+       m_aWaypoints {
+        "RIVERPATROLWP1"
+        "RIVERPATROLWP2"
+        "RIVERPATROLWP3"
+        "RIVERPATROLWP4"
+        "RIVERPATROLCYCLE"
+       }
+      }
+      GC_AssignWaypointsAction "{C5D34F138C6BC662}" {
+       m_sGroupName "SOUTHPATROL"
+       m_aWaypoints {
+        "SOUTHPATROLWP1"
+        "SOUTHPATROLWP2"
+        "SOUTHPATROLWP3"
+        "SOUTHPATROLWP4"
+        "SOUTHPATROLCYCLE"
+       }
+      }
+      GC_AssignWaypointsAction "{94FB2A7B72D2F1D6}" {
+       m_sGroupName "TOWNPATROL"
+       m_aWaypoints {
+        "TOWNPATROLWP1"
+        "TOWNPATROLWP2"
+        "TOWNPATROLWP3"
+        "TOWNPATROLWP4"
+        "TOWNPATROLCYCLE"
+       }
+      }
+      GC_AssignWaypointsAction "{7F06AAAA6BD8A9B9}" {
+       m_sGroupName "VILLAGEPATROL"
+       m_aWaypoints {
+        "VILLAGEPATROLWP1"
+        "VILLAGEPATROLWP2"
+        "VILLAGEPATROLWP3"
+        "VILLAGEPATROLWP4"
+        "VILLAGEPATROLCYCLE"
+       }
+      }
+      GC_AssignWaypointsAction "{47B769CDE97B36DA}" {
+       m_sGroupName "VILLAGEPATROL2"
+       m_aWaypoints {
+        "VILLAGEPATROL2WP1"
+        "VILLAGEPATROL2WP2"
+        "VILLAGEPATROL2WP3"
+        "VILLAGEPATROL2WP4"
+        "VILLAGEPATROL2CYCLE"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 404.459 52.016 4167.401
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792CE18FB44}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792CE02ECFA}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{55CCB792CE2A44BD}" {
+        m_sCallsign "4"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+      }
+      m_sCallsignGroupFormat "%2-%3"
+      m_sCallsignCharacterFormat "%2-%3: %4"
+     }
+    }
+   }
+  }
+ }
+}
+GC_RadiusAreaEntity GC_MigrationArea_US_EXTRACT : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 3354.785 24.828 3516.499
+ m_fRadius 50
+}
