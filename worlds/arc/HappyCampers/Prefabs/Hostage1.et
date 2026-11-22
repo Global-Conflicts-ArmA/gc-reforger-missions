@@ -1,0 +1,47 @@
+SCR_ChimeraCharacter : "{E024A74F8A4BC644}Prefabs/Characters/Factions/CIV/Businessman/Character_CIV_Businessman_1.et" {
+ ID "520EC961A090B1EE"
+ components {
+  GC_MissionInteractionComponent "{8C9355870C3C69B7}" {
+   m_sActionName "Extract"
+   m_sCallFlag "HOSTAGE_1_EXTRACT"
+   m_aFactions {
+    "UK"
+   }
+  }
+  GC_MissionEntityNameComponent "{65E137A0741CEA2F}" {
+   m_sMissionName "hostage_1"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Jacket {
+     Prefab "{43D84EA05C66258C}Prefabs/Characters/Uniforms/Jacket_Denim_01/Jacket_Denim_01_base.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{6925E6C63EBCF623}Prefabs/Characters/Uniforms/Pants_Trousers_01/Pants_Trousers_01_DarkBrown.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{60DCBCECAC6C6E65}" {
+     TargetStorage "Pants/Pants_Trousers_01_DarkBrown.et"
+    }
+   }
+  }
+  ActionsManagerComponent "{520EA1D2F659CE02}" {
+   additionalActions {
+    GC_MissionInteractionAction "{65E137A0741CEAC9}" {
+     ParentContextList {
+      "LowerTorso"
+     }
+     UIInfo SCR_ActionUIInfo "{65E137A0741CEACB}" {
+      Name "Extract"
+     }
+     ActionTitle "Extract"
+     VisibilityRange 10
+     Duration 3
+    }
+   }
+  }
+ }
+}

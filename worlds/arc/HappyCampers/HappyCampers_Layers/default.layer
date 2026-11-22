@@ -1,0 +1,818 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{65E0A3C69E0CA6A0}" {
+     NavmeshFile "{C54FCF0DC85B9642}worlds/Gamemaster/Navmeshes/GM_Ruha_navmesh_soldiers.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{301510D49B59DE2C}worlds/Gamemaster/Navmeshes/GM_Ruha_navmesh_vehicles.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{806B3036EA17E548}worlds/Gamemaster/Navmeshes/GM_Ruha_navmesh_lowres.nmn"
+    }
+   }
+  }
+ }
+ coords 2759.753 63.434 107.974
+}
+GC_LobbyGameMode GC_MigratedMission : "{F1A716CC8929D7F5}worlds/arc/HappyCampers/HappyCampers_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{65DCB72F2BB1199A}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 7
+     m_iStartingMinutes 50
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 1
+   m_iMonth 10
+   m_iYear 2025
+  }
+  GC_PeakFactionPopulationComponent "{8940A8A98C2B09C2}" {
+  }
+  GC_LivingAndDeadAIComponent "{23DD16665575F67B}" {
+   m_sFaction "CIV"
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{7DAEE0EBFE8FE170}" {
+     m_sName "HOSTAGE_1_EXTRACT"
+    }
+    GC_MissionFlag "{8626689E4743183D}" {
+     m_sName "HOSTAGE_1_KIA"
+     m_aConditions {
+      GC_EntityDamageCondition "{19825CFC1E4F7887}" {
+       m_sEntityName "hostage_1"
+      }
+     }
+    }
+    GC_MissionFlag "{350E7C0AEF11D2F9}" {
+     m_sName "HOSTAGE_1_RESOLVED"
+    }
+    GC_MissionFlag "{A87FB038E9124517}" {
+     m_sName "HOSTAGE_2_EXTRACT"
+    }
+    GC_MissionFlag "{D93070D0EE065AB3}" {
+     m_sName "HOSTAGE_2_KIA"
+     m_aConditions {
+      GC_EntityDamageCondition "{858E7EA914C5C61A}" {
+       m_sEntityName "hostage_2"
+      }
+     }
+    }
+    GC_MissionFlag "{F58B8BEA65885960}" {
+     m_sName "HOSTAGE_2_RESOLVED"
+    }
+    GC_MissionFlag "{DDF72FE3221ABE7C}" {
+     m_sName "HOSTAGE_3_EXTRACT"
+    }
+    GC_MissionFlag "{30AF6EAE70AAD98E}" {
+     m_sName "HOSTAGE_3_KIA"
+     m_aConditions {
+      GC_EntityDamageCondition "{92F085C07C6EDEE8}" {
+       m_sEntityName "hostage_3"
+      }
+     }
+    }
+    GC_MissionFlag "{2E3B7C1F4E1F3913}" {
+     m_sName "HOSTAGE_3_RESOLVED"
+    }
+    GC_MissionFlag "{CA1C621EC6B5F734}" {
+     m_sName "HOSTAGE_4_EXTRACT"
+    }
+    GC_MissionFlag "{664AFEF32EB9B57B}" {
+     m_sName "HOSTAGE_4_KIA"
+     m_aConditions {
+      GC_EntityDamageCondition "{6ABE73D669BFA639}" {
+       m_sEntityName "hostage_4"
+      }
+     }
+    }
+    GC_MissionFlag "{CF815B7407C30E03}" {
+     m_sName "HOSTAGE_4_RESOLVED"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{01CBA2E32F2DA010}" {
+     m_sName "HOSTAGE_1_EXTRACT"
+     m_aConditions {
+      GC_MissionFlagCondition "{07E16710EEDC85DF}" {
+       m_sFlagName "HOSTAGE_1_EXTRACT"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{92E35A56D3B1C564}" {
+       m_sMessage "HOSTAGE_1_EXTRACT"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{21D7252F7AA3FCDA}" {
+     m_sName "HOSTAGE_1_EXTRACT (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8B85D8CB116152C0}" {
+       m_sEventName "HOSTAGE_1_EXTRACT"
+      }
+     }
+     m_Advanced GC_EventOptions "{F592F6921D97BB68}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_AssignWaypointsAction "{3C7AE0607DD2D685}" {
+       m_sGroupName "HOSTAGE_1_GROUP"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "HOSTAGEWP"
+       }
+      }
+     }
+    }
+    GC_Event "{5C1900C578FB5672}" {
+     m_sName "HOSTAGE_1_RESOLVED"
+     m_aConditions {
+      GC_ConditionGroup "{C7149265A62EC590}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_AreaCondition "{DDD9830B19B7C4A5}" {
+         m_sArea "GC_MigrationArea_HOSTAGE_1_SUCCESS"
+         m_Targets GC_NamedAreaTargets "{34E1EC926126A12F}" {
+          m_aNames {
+           "hostage_1"
+          }
+          m_bCountMissingAsOutside 1
+          m_bExcludeDestroyed 1
+         }
+         m_Requirement GC_LivingProportion "{65097FC08B08A8BB}" {
+          m_fRequiredProportion 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{DD071790415B084D}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_MissionFlagCondition "{9BA58E3A2AA7BEFD}" {
+         m_sFlagName "HOSTAGE_1_KIA"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A0D244CB89AB21F0}" {
+       m_sMessage "HOSTAGE_1_RESOLVED"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7327D4FF9E9B56A1}" {
+     m_sName "HOSTAGE_1_RESOLVED (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9653CC0F12E20CDF}" {
+       m_sEventName "HOSTAGE_1_RESOLVED"
+      }
+     }
+     m_Advanced GC_EventOptions "{FFC4E521DE7C1C68}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_FlagAction "{19BB933DD121DC56}" {
+       m_sFlagName "HOSTAGE_1_RESOLVED"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{CB633FC331F13DCB}" {
+     m_sName "HOSTAGE_2_EXTRACT"
+     m_aConditions {
+      GC_MissionFlagCondition "{3DB98DD90CE43B45}" {
+       m_sFlagName "HOSTAGE_2_EXTRACT"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{65A5855635EBCD6D}" {
+       m_sMessage "HOSTAGE_2_EXTRACT"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E718BF6AD833CE5D}" {
+     m_sName "HOSTAGE_2_EXTRACT (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{61D8763061236F72}" {
+       m_sEventName "HOSTAGE_2_EXTRACT"
+      }
+     }
+     m_Advanced GC_EventOptions "{80F74187880BE6CC}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_AssignWaypointsAction "{F3F6690A7CA2D43E}" {
+       m_sGroupName "HOSTAGE_2_GROUP"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "HOSTAGEWP"
+       }
+      }
+     }
+    }
+    GC_Event "{216B249041D8F159}" {
+     m_sName "HOSTAGE_2_RESOLVED"
+     m_aConditions {
+      GC_ConditionGroup "{23FED6C63A32D936}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_AreaCondition "{F0B4ACE1E22533AA}" {
+         m_sArea "GC_MigrationArea_HOSTAGE_2_SUCCESS"
+         m_Targets GC_NamedAreaTargets "{865A0B7DF0229B14}" {
+          m_aNames {
+           "hostage_2"
+          }
+          m_bCountMissingAsOutside 1
+          m_bExcludeDestroyed 1
+         }
+         m_Requirement GC_LivingProportion "{8C235A5517E0232F}" {
+          m_fRequiredProportion 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{E7494EEAF7B3989F}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_MissionFlagCondition "{0D1C974ED85B5034}" {
+         m_sFlagName "HOSTAGE_2_KIA"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{EC05C239C2EBE2B5}" {
+       m_sMessage "HOSTAGE_2_RESOLVED"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{4CD729AB119FD941}" {
+     m_sName "HOSTAGE_2_RESOLVED (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A441882E086083A7}" {
+       m_sEventName "HOSTAGE_2_RESOLVED"
+      }
+     }
+     m_Advanced GC_EventOptions "{0661838B70B8648F}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_FlagAction "{2C024A407E518FEE}" {
+       m_sFlagName "HOSTAGE_2_RESOLVED"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{AFB681BC42226467}" {
+     m_sName "HOSTAGE_3_EXTRACT"
+     m_aConditions {
+      GC_MissionFlagCondition "{ADCA0DEDFD78E7A9}" {
+       m_sFlagName "HOSTAGE_3_EXTRACT"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5D3F3AB347C479D9}" {
+       m_sMessage "HOSTAGE_3_EXTRACT"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FA9114C15CE70C7A}" {
+     m_sName "HOSTAGE_3_EXTRACT (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A524719003FB2B15}" {
+       m_sEventName "HOSTAGE_3_EXTRACT"
+      }
+     }
+     m_Advanced GC_EventOptions "{555C19BDCC554152}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_AssignWaypointsAction "{ADD6C1B0BE75AC8C}" {
+       m_sGroupName "HOSTAGE_3_GROUP"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "HOSTAGEWP"
+       }
+      }
+     }
+    }
+    GC_Event "{D7A8C15EF5EB781B}" {
+     m_sName "HOSTAGE_3_RESOLVED"
+     m_aConditions {
+      GC_ConditionGroup "{425FA22151643330}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_AreaCondition "{7E35B4126281EDFB}" {
+         m_sArea "GC_MigrationArea_HOSTAGE_3_SUCCESS"
+         m_Targets GC_NamedAreaTargets "{923467BACAE0B582}" {
+          m_aNames {
+           "hostage_3"
+          }
+          m_bCountMissingAsOutside 1
+          m_bExcludeDestroyed 1
+         }
+         m_Requirement GC_LivingProportion "{967C7F1CF9CEDC6A}" {
+          m_fRequiredProportion 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{D6BCEE7A1032189A}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_MissionFlagCondition "{00F626EA051AFA58}" {
+         m_sFlagName "HOSTAGE_3_KIA"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{055CAEE49D721116}" {
+       m_sMessage "HOSTAGE_3_RESOLVED"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{06B58677EBD02822}" {
+     m_sName "HOSTAGE_3_RESOLVED (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4B14F5D1DD69BA23}" {
+       m_sEventName "HOSTAGE_3_RESOLVED"
+      }
+     }
+     m_Advanced GC_EventOptions "{4B4D462D8EBC1539}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_FlagAction "{9D890937CC3E0723}" {
+       m_sFlagName "HOSTAGE_3_RESOLVED"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{1EF47E3442755F5E}" {
+     m_sName "HOSTAGE_4_EXTRACT"
+     m_aConditions {
+      GC_MissionFlagCondition "{E2AB14304ECC911E}" {
+       m_sFlagName "HOSTAGE_4_EXTRACT"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8DE781959662BC8D}" {
+       m_sMessage "HOSTAGE_4_EXTRACT"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B40356417D688AB8}" {
+     m_sName "HOSTAGE_4_EXTRACT (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{60D1FC926309D149}" {
+       m_sEventName "HOSTAGE_4_EXTRACT"
+      }
+     }
+     m_Advanced GC_EventOptions "{EB306BB41B64E46A}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_AssignWaypointsAction "{E60F44D1052B27AB}" {
+       m_sGroupName "HOSTAGE_4_GROUP"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "HOSTAGEWP"
+       }
+      }
+     }
+    }
+    GC_Event "{B9FF9F9118F67529}" {
+     m_sName "HOSTAGE_4_RESOLVED"
+     m_aConditions {
+      GC_ConditionGroup "{4E15F9FF551C2DC5}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_AreaCondition "{F30FE01FFC1B4615}" {
+         m_sArea "GC_MigrationArea_HOSTAGE_4_SUCCESS"
+         m_Targets GC_NamedAreaTargets "{87586BDEEE3FF16E}" {
+          m_aNames {
+           "hostage_4"
+          }
+          m_bCountMissingAsOutside 1
+          m_bExcludeDestroyed 1
+         }
+         m_Requirement GC_LivingProportion "{D4C36127EEEF865B}" {
+          m_fRequiredProportion 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{AE42EF06D27775EF}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_MissionFlagCondition "{8F52F427737C055B}" {
+         m_sFlagName "HOSTAGE_4_KIA"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{15EE38CC598D58BC}" {
+       m_sMessage "HOSTAGE_4_RESOLVED"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3F2667CB4804E4FB}" {
+     m_sName "HOSTAGE_4_RESOLVED (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B8D37DB9FB1953E7}" {
+       m_sEventName "HOSTAGE_4_RESOLVED"
+      }
+     }
+     m_Advanced GC_EventOptions "{7F4BF83BE14C3B11}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_FlagAction "{DB1C9D827053D52D}" {
+       m_sFlagName "HOSTAGE_4_RESOLVED"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{C58CDC8E4C46E8E8}" {
+     m_sName "UK_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{FAA1C0D8B5BC3D09}" {
+       m_Script GC_PeakFactionPopulationCheck "{0405C20ACDEE06DF}" {
+        m_sFaction "UK"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{23B554D1A97F4947}" {
+       m_sMessage "UK_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BD6DAAFD79549614}" {
+     m_sName "UK_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{FE6D009CC0DA6797}" {
+       m_sEventName "UK_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{7ECF9D5F221003D9}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{3E31466940941794}" {
+       m_sTitle "DEFEAT"
+       m_sMessage "The SAS have taken significant casualties."
+      }
+      GC_EndMissionAction "{D74AD956CBDDA83A}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{F5D5C22F8C3292A3}" {
+     m_sName "TIME_LIMIT (3605s)"
+     m_Advanced GC_EventOptions "{1E3EAE32CE178591}" {
+      m_fDelay 3605
+     }
+     m_aActions {
+      GC_MessageAction "{1B1817165C30DD9D}" {
+       m_sTitle "DEFEAT"
+       m_sMessage "Time limit reached."
+      }
+     }
+    }
+    GC_Event "{002293AB47DEF24E}" {
+     m_sName "TIME_LIMIT (3615s)"
+     m_Advanced GC_EventOptions "{6FC935F601BE97B2}" {
+      m_fDelay 3615
+     }
+     m_aActions {
+      GC_EndMissionAction "{FF1A0F9EAD7865D7}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{4D8281DE3B92FA1B}" {
+     m_sName "EXTRACTED"
+     m_aConditions {
+      GC_GameModeStateCondition "{E6F2AE427747D481}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{52E75E7429D432BB}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionCount "{F56DA42B3BA2862D}" {
+         m_iComparison 0
+         m_iRequiredCount 3
+         m_aConditions {
+          GC_MissionFlagCondition "{12848474F47C3218}" {
+           m_sFlagName "HOSTAGE_1_RESOLVED"
+          }
+          GC_MissionFlagCondition "{6C09C1AF265B6F2D}" {
+           m_sFlagName "HOSTAGE_2_RESOLVED"
+          }
+          GC_MissionFlagCondition "{D6F51DF4E9543858}" {
+           m_sFlagName "HOSTAGE_3_RESOLVED"
+          }
+          GC_MissionFlagCondition "{154E626DE79CCB18}" {
+           m_sFlagName "HOSTAGE_4_RESOLVED"
+          }
+         }
+        }
+        GC_ConditionCount "{396BED6F7E70F014}" {
+         m_iComparison 0
+         m_iRequiredCount 0
+         m_aConditions {
+          GC_AreaCondition "{6B42E5DF51AD3DC4}" {
+           m_sArea "GC_MigrationArea_HOSTAGE_1_SUCCESS"
+           m_Targets GC_NamedAreaTargets "{0B0CA1A3F7C1E991}" {
+            m_aNames {
+             "hostage_1"
+            }
+            m_bCountMissingAsOutside 1
+            m_bExcludeDestroyed 1
+           }
+           m_Requirement GC_LivingProportion "{F5A245A9E2797A47}" {
+            m_fRequiredProportion 1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{821638AF05FAD21F}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_AreaCondition "{EBA27032EECF2143}" {
+           m_sArea "GC_MigrationArea_HOSTAGE_2_SUCCESS"
+           m_Targets GC_NamedAreaTargets "{2F85834728E9CE7F}" {
+            m_aNames {
+             "hostage_2"
+            }
+            m_bCountMissingAsOutside 1
+            m_bExcludeDestroyed 1
+           }
+           m_Requirement GC_LivingProportion "{1EF9380726762D48}" {
+            m_fRequiredProportion 1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{77A70BD225AD2578}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_AreaCondition "{B09CB1A11218708D}" {
+           m_sArea "GC_MigrationArea_HOSTAGE_3_SUCCESS"
+           m_Targets GC_NamedAreaTargets "{745BD928EEF3C994}" {
+            m_aNames {
+             "hostage_3"
+            }
+            m_bCountMissingAsOutside 1
+            m_bExcludeDestroyed 1
+           }
+           m_Requirement GC_LivingProportion "{B30DD85D2C793238}" {
+            m_fRequiredProportion 1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{D8449575B88B07CC}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_AreaCondition "{DAA4C380FF575391}" {
+           m_sArea "GC_MigrationArea_HOSTAGE_4_SUCCESS"
+           m_Targets GC_NamedAreaTargets "{A678A55B219909DE}" {
+            m_aNames {
+             "hostage_4"
+            }
+            m_bCountMissingAsOutside 1
+            m_bExcludeDestroyed 1
+           }
+           m_Requirement GC_LivingProportion "{16FBB3CA394C1CC7}" {
+            m_fRequiredProportion 1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{84FEEF3430A7EE85}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{80D9DB38EB79BC6E}" {
+       m_sMessage "EXTRACTED"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{64D307730586C1FA}" {
+     m_sName "EXTRACTED (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{3249BBC68019D9FB}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{697D79EFA6302EC3}" {
+       m_sEventName "EXTRACTED"
+      }
+     }
+     m_Advanced GC_EventOptions "{5CDB2F5A93AA5730}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{522BD4C589166423}" {
+       m_sTitle "VICTORY"
+       m_sMessage "All surviving hostages have been successfully extracted."
+      }
+     }
+    }
+    GC_Event "{3622F17B0CBE7B67}" {
+     m_sName "EXTRACTED (15s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{B9E921094446AF8C}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{D94DF78CCD4FF2A3}" {
+       m_sEventName "EXTRACTED"
+      }
+     }
+     m_Advanced GC_EventOptions "{4BBEA540C1BB12CA}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{F732BDF2B6A50046}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{2E57E44E2CA1E1A2}" {
+     m_sName "HOS_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{0353FAC6094F11BA}" {
+       m_Script GC_LivingAndDeadAICheck "{CB97462A3D831BE6}" {
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9CE5E9EBF89E3239}" {
+       m_sMessage "HOS_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{DDB017DAC5E7F1CC}" {
+     m_sName "HOS_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2EBBE98FE248B9BB}" {
+       m_sEventName "HOS_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{A76C0DA19627A660}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{29C330CEEC8197CE}" {
+       m_sTitle "DEFEAT"
+       m_sMessage "All hostages have been killed."
+      }
+     }
+    }
+    GC_Event "{725A2FE1E18441F0}" {
+     m_sName "HOS_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{738495569390E2C5}" {
+       m_sEventName "HOS_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{C176E40137734D31}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{355DFD12A957F578}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{3F3EFEEEF863EB45}" {
+     m_sName "INIT_WAYPOINTS (5s)"
+     m_Advanced GC_EventOptions "{FCFBCB55BEBBC78D}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_AssignWaypointsAction "{1620481731FB8AA9}" {
+       m_sGroupName "SEPFT1"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "SEPFT1WP1"
+        "SEPFT1WP2"
+        "SEPFT1WP3"
+        "SEPFT1WP4"
+        "SEPFT1WPCYCLE"
+       }
+      }
+      GC_AssignWaypointsAction "{11BE439B65741774}" {
+       m_sGroupName "SEPFT2"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "SEPFT2WP1"
+        "SEPFT2WP2"
+        "SEPFT2WP3"
+        "SEPFT2WP4"
+        "SEPFT2WP5"
+        "SEPFT2WPCYCLE"
+       }
+      }
+      GC_AssignWaypointsAction "{FC2E7CDE83B18EEE}" {
+       m_sGroupName "SEPHQ"
+       m_bReplaceExisting 1
+       m_aWaypoints {
+        "SEPHQWP"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 2756.432 63.393 108.838
+}
+GC_RadiusAreaEntity GC_MigrationArea_HOSTAGE_1_SUCCESS : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 3161.175 75.862 158.322
+ m_fRadius 25
+}
+GC_RadiusAreaEntity GC_MigrationArea_HOSTAGE_2_SUCCESS : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 3160.748 75.841 158.401
+ m_fRadius 25
+}
+GC_RadiusAreaEntity GC_MigrationArea_HOSTAGE_3_SUCCESS : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 3161.115 75.865 157.99
+ m_fRadius 25
+}
+GC_RadiusAreaEntity GC_MigrationArea_HOSTAGE_4_SUCCESS : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 3161.588 75.885 158.091
+ m_fRadius 25
+}
