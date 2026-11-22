@@ -1,0 +1,280 @@
+SCR_AIWorld : "{3D0FE80570D5BFCC}Prefabs/AI/SCR_AIWorld_Anizay.et" {
+ coords 4025.469 149.128 7997.678
+}
+GC_LobbyGameMode GC_MigratedMission : "{6C377038A7511C9D}worlds/anteante101/RoleReversal/RoleReversal_GC_Settings.et" {
+ components {
+  GC_PeakFactionPopulationComponent "{BE03AACA67B24E44}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{D59AD031AA2EA724}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 15
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{99B77F37808E6068}" {
+     m_sName "HVT Killed OP4"
+     m_aConditions {
+      GC_CustomScriptCondition "{E17AFED6B607A1E3}" {
+       m_Script GC_PeakFactionPopulationCheck "{D849910610274BE7}" {
+        m_sFaction "CIV"
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{057C7498514D99F3}" {
+       m_sMessage "HVT Killed OP4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0FEF9A6FB7E83ACA}" {
+     m_sName "HVT Killed OP4 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F901FAA26FCA6CA7}" {
+       m_sEventName "HVT Killed OP4"
+      }
+     }
+     m_Advanced GC_EventOptions "{A6DDCADB9EF0F369}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{C70AE18940EA78E0}" {
+       m_sTitle "HVT DEAD"
+       m_sMessage "HVT is kiled. Make the infidels pay!!!"
+       m_aFactions {
+        "GC_INSURGENT"
+       }
+      }
+     }
+    }
+    GC_Event "{397BDD5C72FFC3EB}" {
+     m_sName "HVT KILLED US"
+     m_aConditions {
+      GC_CustomScriptCondition "{5EEFF3306947144B}" {
+       m_Script GC_PeakFactionPopulationCheck "{74E36CC86B495900}" {
+        m_sFaction "CIV"
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6A81CA48183BDDD7}" {
+       m_sMessage "HVT KILLED US"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2BE34D7D573A64AC}" {
+     m_sName "HVT KILLED US (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DF6A5E0DF0BC5318}" {
+       m_sEventName "HVT KILLED US"
+      }
+     }
+     m_Advanced GC_EventOptions "{D931D34DE12892BB}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{AEAD90526F6CE291}" {
+       m_sTitle "HVT DEAD"
+       m_sMessage "HVT IS DEAD. Good job. Fall back and extract."
+       m_aFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{21CF36B990497D52}" {
+     m_sName "us killed"
+     m_aConditions {
+      GC_CustomScriptCondition "{14572CD5686FB844}" {
+       m_Script GC_PeakFactionPopulationCheck "{CEB9FF3DE7E0EB9C}" {
+        m_sFaction "US"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2BD13B7C63BB3732}" {
+       m_sMessage "us killed"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F961DBA82FB1283B}" {
+     m_sName "us killed (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{93DA24FA88A5CB13}" {
+       m_sEventName "us killed"
+      }
+     }
+     m_Advanced GC_EventOptions "{6ABC2F40C475D312}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{88CAD3646151A2CF}" {
+       m_sTitle "US KILLED"
+       m_sMessage "The US are combat ineffective"
+       m_aFactions {
+        "GC_INSURGENT" "US"
+       }
+      }
+     }
+    }
+    GC_Event "{AE164D08FF643544}" {
+     m_sName "OP4"
+     m_aConditions {
+      GC_CustomScriptCondition "{8911F39EE670E444}" {
+       m_Script GC_PeakFactionPopulationCheck "{431F1A2049C345E5}" {
+        m_sFaction "GC_INSURGENT"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7FAC4EEA970B3ED8}" {
+       m_sMessage "OP4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{356A6D580D44B621}" {
+     m_sName "OP4 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CCA82B2A8F110471}" {
+       m_sEventName "OP4"
+      }
+     }
+     m_Advanced GC_EventOptions "{C3EA77DB68C35EA2}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{35A9C55887637313}" {
+       m_sTitle "THE INSURGENTS KILLED"
+       m_sMessage "The insurgents are combat ineffective."
+       m_aFactions {
+        "US" "GC_INSURGENT"
+       }
+      }
+     }
+    }
+    GC_Event "{FE59775BE92FEA63}" {
+     m_sName "hvt extracted"
+     m_aConditions {
+      GC_AreaCondition "{8077D02038E011E1}" {
+       m_sArea "EXTRACT_TRIGGER"
+       m_Targets GC_CharacterAreaTargets "{8ED478BFB4191213}" {
+        m_aFactions {
+         "CIV"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{E19B1A8B9C3F8111}" {
+        m_fRequiredShare 0.1
+        m_aIgnoredFactions {
+         "US" "GC_INSURGENT"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{9154294B5CAEEB18}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{44323D829C0C6450}" {
+       m_sMessage "hvt extracted"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{597775F12CDF995E}" {
+     m_sName "hvt extracted (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F9C43BD3DB36C72C}" {
+       m_sEventName "hvt extracted"
+      }
+     }
+     m_Advanced GC_EventOptions "{6432BB9E46816C63}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{88FD77DCC1F7230D}" {
+       m_sTitle "HVT EXTRACTED"
+       m_sMessage "THE INSURGENTS WON"
+      }
+     }
+    }
+    GC_Event "{11941C7C9944C941}" {
+     m_sName "Outcome 68CD501F8C8A4829"
+     m_aConditions {
+      GC_AreaCondition "{9739FA70156E3419}" {
+       m_sArea "delet_ao"
+       m_Targets GC_CharacterAreaTargets "{D06A76611934570E}" {
+        m_aFactions {
+         "GC_INSURGENT"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{AC2A18AF255158B4}" {
+        m_fRequiredShare 1
+        m_aIgnoredFactions {
+         "US" "CIV"
+        }
+       }
+       m_Capture GC_AreaCaptureOptions "{53A49F2F66F737DD}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0ACCADF009271A1D}" {
+       m_sMessage "Outcome 68CD501F8C8A4829"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B8A3D270853A9F03}" {
+     m_sName "Outcome 68CD501F8C8A4829 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{34848B137C39C7C8}" {
+       m_sEventName "Outcome 68CD501F8C8A4829"
+      }
+     }
+     m_Advanced GC_EventOptions "{9AF045674C7D767F}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{D47AD38776B6E49E}" {
+       m_aEntities {
+        "civao"
+       }
+      }
+     }
+    }
+    GC_Event "{E51793F3ACC0BB3D}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{2FFD3FCA82BEC4CC}" {
+       m_fSeconds 15.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{3A67FC8661D3426E}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+        "GC_MigrationStartingZone2"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 3972.279 146.908 8049.595
+}
