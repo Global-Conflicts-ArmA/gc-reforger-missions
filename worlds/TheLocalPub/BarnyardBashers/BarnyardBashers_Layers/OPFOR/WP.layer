@@ -1,0 +1,93 @@
+SCR_EntityWaypoint WP_A1 : "{1B0E3436C30FA211}Prefabs/AI/Waypoints/AIWaypoint_Attack.et" {
+ coords 3325.309 203.536 7488.326
+ AIBehaviorTree "{A3755C1F88DED8D6}AI/BehaviorTrees/Waypoints/WP_Move.bt"
+}
+$grp AIWaypointCycle : "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et" {
+ WP_C1 {
+  coords 2984.346 192.412 6203.707
+  CycleWaypoints {
+   "WP_M1"
+   "WP_M2"
+  }
+ }
+ WP_C2 {
+  coords 3642.829 222.06 7208.03
+  CycleWaypoints {
+   "WP_M3"
+   "WP_M4"
+  }
+ }
+}
+SCR_DefendWaypoint WP_L1 : "{4ECD14650D82F5CA}Prefabs/AI/Waypoints/AIWaypoint_Loiter_CO.et" {
+ coords 3003.519 189.756 6921.269
+ CompletionRadius 200
+}
+$grp SCR_AIWaypoint : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
+ WP_M1 {
+  coords 3055.243 194.314 6136.292
+  AIBehaviorTreeMoveTo "{62D36413D46F02A6}AI/BehaviorTrees/Waypoints/WP_Patrol.bt"
+  CompletionRadius 1
+  m_aSettings {
+   SCR_AIGroupFormationSetting "{6A10F648C7E26716}" {
+    m_eFormation Column
+   }
+  }
+ }
+ WP_M2 {
+  coords 2871.938 182.344 6299.604
+  AIBehaviorTreeMoveTo "{62D36413D46F02A6}AI/BehaviorTrees/Waypoints/WP_Patrol.bt"
+  CompletionRadius 1
+  m_aSettings {
+   SCR_AIGroupFormationSetting "{6A10F648C7E26716}" {
+    m_eFormation Column
+   }
+  }
+ }
+ WP_M3 {
+  coords 3679.485 234.503 7109.758
+  AIBehaviorTreeMoveTo "{62D36413D46F02A6}AI/BehaviorTrees/Waypoints/WP_Patrol.bt"
+  CompletionRadius 1
+  m_aSettings {
+   SCR_AIGroupFormationSetting "{6A10F648C7E26716}" {
+    m_eFormation Column
+   }
+  }
+ }
+ WP_M4 {
+  coords 3532.379 203.892 7303.597
+  AIBehaviorTreeMoveTo "{62D36413D46F02A6}AI/BehaviorTrees/Waypoints/WP_Patrol.bt"
+  CompletionRadius 1
+  m_aSettings {
+   SCR_AIGroupFormationSetting "{6A10F648C7E26716}" {
+    m_eFormation Column
+   }
+  }
+ }
+}
+$grp SCR_DefendWaypoint : "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et" {
+ WP_D1 {
+  coords 2477.512 252.553 7078.785
+  CompletionRadius 150
+  m_bFastInit 1
+ }
+ WP_D5 {
+  coords 3265.322 210.783 7480.044
+  CompletionRadius 150
+  m_bFastInit 1
+ }
+ WP_D6 {
+  coords 2727.377 184.115 6749.833
+  CompletionRadius 150
+  m_bFastInit 1
+ }
+ WP_D2 {
+  coords 3161.316 222.486 6634.71
+  CompletionRadius 200
+  m_bFastInit 1
+ }
+ WP_D4 {
+  coords 3005.81 210.015 7255.573
+  CompletionRadius 150
+  m_bFastInit 1
+ }
+}
