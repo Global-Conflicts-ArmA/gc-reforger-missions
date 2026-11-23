@@ -1,0 +1,1545 @@
+SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A2995A7E8BC2}" {
+     NavmeshFile "{D8EF7131FB31AF97}worlds/GameMaster/Navmeshes/GM_Arland.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A299509CF377}" {
+     NavmeshFile "{A0AEEB1E7EF474FA}worlds/GameMaster/Navmeshes/GM_Arland_vehicles.nmn"
+    }
+   }
+  }
+ }
+ coords 3863.556 0 3599.315
+}
+GC_LobbyGameMode GC_MigratedMission : "{D3AC994F0863B7FA}worlds/TheLocalPub/BebbleIslandRaid/BebbleIslandRaid_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 3
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{644918C3EBBB9630}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 3
+    }
+   }
+   m_bRandomWeatherChanges 1
+  }
+  GC_PeakFactionPopulationComponent "{A87E66BEE9F0E7CC}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{30398FD96A61F1C3}" {
+     m_sName "AMMO1"
+    }
+    GC_MissionFlag "{9FBE97B39A1E8AF4}" {
+     m_sName "AmmoCompleted"
+    }
+    GC_MissionFlag "{9FEEA37874ED3527}" {
+     m_sName "AmmoSpawn1"
+    }
+    GC_MissionFlag "{A5C5879B536E2671}" {
+     m_sName "AmmoSpawn2"
+    }
+    GC_MissionFlag "{BACBF593E11EC89A}" {
+     m_sName "AmmoSpawn3"
+    }
+    GC_MissionFlag "{FFF304B284115235}" {
+     m_sName "Fuel1"
+    }
+    GC_MissionFlag "{86D5CCEEA6665000}" {
+     m_sName "Fuel2"
+    }
+    GC_MissionFlag "{6B407A9663155941}" {
+     m_sName "Fuel3"
+    }
+    GC_MissionFlag "{5E484EA88469EE40}" {
+     m_sName "FuelCompleted"
+    }
+    GC_MissionFlag "{2AF5AFD250BCDB9F}" {
+     m_sName "HVTCompleted"
+    }
+    GC_MissionFlag "{F61DDC6C2D999C54}" {
+     m_sName "HVTDead"
+    }
+    GC_MissionFlag "{43836B856C97F93F}" {
+     m_sName "Heli1"
+     m_aConditions {
+      GC_EntityDamageCondition "{72C9CCB82F527BE6}" {
+       m_sEntityName "MI_1"
+      }
+     }
+    }
+    GC_MissionFlag "{CD612D15E56C8B24}" {
+     m_sName "Heli2"
+     m_aConditions {
+      GC_EntityDamageCondition "{425096B6454F8447}" {
+       m_sEntityName "MI_2"
+      }
+     }
+    }
+    GC_MissionFlag "{10A9BBBE43C2E5E9}" {
+     m_sName "Heli3"
+    }
+    GC_MissionFlag "{8E56A52509123CEA}" {
+     m_sName "Heli4"
+    }
+    GC_MissionFlag "{E3FFBB00360FD70F}" {
+     m_sName "Heli5"
+    }
+    GC_MissionFlag "{1B91C6114D364EA0}" {
+     m_sName "Heli6"
+    }
+    GC_MissionFlag "{12DDCFFB9A66D548}" {
+     m_sName "HeliCompleted"
+    }
+    GC_MissionFlag "{1929CD634B621022}" {
+     m_sName "IntelCompleted"
+    }
+    GC_MissionFlag "{313743273688C0BB}" {
+     m_sName "MajorWin"
+    }
+    GC_MissionFlag "{E166C8F4F6D95B60}" {
+     m_sName "MinorWin"
+    }
+    GC_MissionFlag "{6BE3B4E1D5D09260}" {
+     m_sName "RadioCompleted"
+    }
+    GC_MissionFlag "{C58ED4B9B30C390D}" {
+     m_sName "RadioDead"
+     m_aConditions {
+      GC_EntityDamageCondition "{E61CF61409A75666}" {
+       m_sEntityName "RadioTruck"
+      }
+     }
+    }
+    GC_MissionFlag "{B29FBA9559D5B6D5}" {
+     m_sName "RegWin"
+    }
+    GC_MissionFlag "{469E15474B5AC37D}" {
+     m_sName "TotalWin"
+    }
+    GC_MissionFlag "{11C1274214D0CFAD}" {
+     m_sName "ZU1"
+    }
+    GC_MissionFlag "{6798149B514E11F9}" {
+     m_sName "ZU2"
+    }
+    GC_MissionFlag "{E81384728437DA1A}" {
+     m_sName "ZU3"
+    }
+    GC_MissionFlag "{3EF0CF5E1AB91699}" {
+     m_sName "ZU4"
+    }
+    GC_MissionFlag "{D7E5AA802D402DB5}" {
+     m_sName "ZU5"
+    }
+    GC_MissionFlag "{73BF7C03B2E50A34}" {
+     m_sName "ZU6"
+    }
+    GC_MissionFlag "{D14F539CAF01DF25}" {
+     m_sName "ZUCompleted"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{21785E567F868149}" {
+     m_sName "GC_MigrationStartupSampling"
+     m_aConditions {
+      GC_ConditionGroup "{BA7902AEF0713D87}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{7C0731A22D9A14DA}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{EF1E93E60C9E2770}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{AF88B990D8BDEDC0}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_FlagSamplingAction "{7C0731A22D9A14DA}" {
+       m_iDrawCount 1
+       m_aFlags {
+        "AmmoSpawn1"
+        "AmmoSpawn2"
+        "AmmoSpawn3"
+       }
+      }
+     }
+    }
+    GC_Event "{E992F1CAD4F72404}" {
+     m_sName "HeliFlag"
+     m_aConditions {
+      GC_GameModeStateCondition "{91890A1C6C39AC76}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{497F6067D1A1EF26}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{D6A9EA6C8DCA445F}" {
+         m_sFlagName "Heli1"
+        }
+        GC_MissionFlagCondition "{904C347FDF8F5012}" {
+         m_sFlagName "Heli2"
+        }
+        GC_MissionFlagCondition "{E4C7A767ECB05680}" {
+         m_sFlagName "Heli3"
+        }
+        GC_MissionFlagCondition "{632A8EA13DD624EB}" {
+         m_sFlagName "Heli4"
+        }
+        GC_MissionFlagCondition "{2549384FF1252E18}" {
+         m_sFlagName "Heli5"
+        }
+        GC_MissionFlagCondition "{3758875F007BECC8}" {
+         m_sFlagName "Heli6"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{76853305DFCCDF10}" {
+       m_sMessage "HeliFlag"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C27F27CC66B21643}" {
+     m_sName "HeliFlag (1s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{6466CF86C99345EE}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{80A9D366A1986B23}" {
+       m_sEventName "HeliFlag"
+      }
+     }
+     m_Advanced GC_EventOptions "{93991E7310FD4D13}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_FlagAction "{BB8AA3B596A24E91}" {
+       m_sFlagName "HeliCompleted"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{1CF6B072CABAD618}" {
+     m_sName "HeliFlag (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{3F61220166DDE06F}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{F73A667CF4195F04}" {
+       m_sEventName "HeliFlag"
+      }
+     }
+     m_Advanced GC_EventOptions "{E9F679E9F6A1B7ED}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{D7F5B30910F2CB07}" {
+       m_sTitle "PRIMARY OBJECTIVE COMPLETED"
+       m_sMessage "ALL helicopters have been destroyed, our primary objective has been completed."\
+       "We can either do our optional objectives or extract back to our staging our now!"
+       m_aFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{9715FF54EE9E86F3}" {
+     m_sName "ZUFlag"
+     m_aConditions {
+      GC_GameModeStateCondition "{24983387A92BA0BB}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{EDACFDAF41737226}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{6BC4740F46096CCD}" {
+         m_sFlagName "ZU1"
+        }
+        GC_MissionFlagCondition "{B5E1B2BF3418ECEE}" {
+         m_sFlagName "ZU2"
+        }
+        GC_MissionFlagCondition "{F8F586FD33D8F0C3}" {
+         m_sFlagName "ZU3"
+        }
+        GC_MissionFlagCondition "{806FEAED6DF16AAC}" {
+         m_sFlagName "ZU4"
+        }
+        GC_MissionFlagCondition "{A6EC034A1EF89F32}" {
+         m_sFlagName "ZU5"
+        }
+        GC_MissionFlagCondition "{94B1B6B40CBA6281}" {
+         m_sFlagName "ZU6"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5DA1840D1AD47F9D}" {
+       m_sMessage "ZUFlag"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0EC6A27BEC425F49}" {
+     m_sName "ZUFlag (1s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{D6B3C0C0EB89E87B}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{357DE1269168C521}" {
+       m_sEventName "ZUFlag"
+      }
+     }
+     m_Advanced GC_EventOptions "{AFBDCE32AE35A4EB}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_FlagAction "{D2EB8A6E9E645944}" {
+       m_sFlagName "ZUCompleted"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{DFBB648A12259E37}" {
+     m_sName "ZUFlag (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{B20E5F540BCCE73A}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{09EC9005470182F5}" {
+       m_sEventName "ZUFlag"
+      }
+     }
+     m_Advanced GC_EventOptions "{EAE835A0A4E79E25}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{4AA868BC6A1A8F28}" {
+       m_sTitle "AAA destroyed"
+       m_sMessage "Optional objective completed."\
+       "All AAA pieces have been destroyed."
+       m_aFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{B139CA4645BBF5A8}" {
+     m_sName "AmmoFlag"
+     m_aConditions {
+      GC_GameModeStateCondition "{D2E10C5ACFBD0ADD}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{B8D7199D6689CD27}" {
+       m_sFlagName "AMMO1"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{BACE9E83CB6FDA29}" {
+       m_sMessage "AmmoFlag"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BEB0F0126FA23F2A}" {
+     m_sName "AmmoFlag (1s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{E2D8FDDB95090457}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{2FF7D3AB8D41CF59}" {
+       m_sEventName "AmmoFlag"
+      }
+     }
+     m_Advanced GC_EventOptions "{267B925641E107E5}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_FlagAction "{503A212ECC5002BF}" {
+       m_sFlagName "AmmoCompleted"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{78A959B2358EE8D9}" {
+     m_sName "AmmoFlag (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{3474D15CC35B5FC9}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{0293BF646121036A}" {
+       m_sEventName "AmmoFlag"
+      }
+     }
+     m_Advanced GC_EventOptions "{306191513A90A4A8}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{99B8B3D0CCAA6A5A}" {
+       m_sTitle "Ammo facility destroyed"
+       m_sMessage "Optional objective completed."\
+       "The ammo facility has been destroyed."
+       m_aFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{1E24CD71E66577E0}" {
+     m_sName "HVTFlag"
+     m_aConditions {
+      GC_GameModeStateCondition "{4408350BF35AABE0}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{457696042028A71F}" {
+       m_sFlagName "HVTDead"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{CC65D673738AFDE4}" {
+       m_sMessage "HVTFlag"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{38BFC2C56948AE13}" {
+     m_sName "HVTFlag (1s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{FF1E61E851998173}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{8C2849B86926C198}" {
+       m_sEventName "HVTFlag"
+      }
+     }
+     m_Advanced GC_EventOptions "{DFE270A9FB52DDE2}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_FlagAction "{ED3D75959208DB71}" {
+       m_sFlagName "HVTCompleted"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{21FCC200C9D8BF5D}" {
+     m_sName "HVTFlag (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{7074F132334194C9}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{C6BC9067CF39A1FD}" {
+       m_sEventName "HVTFlag"
+      }
+     }
+     m_Advanced GC_EventOptions "{E6C0CF2B1F1CB37D}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{C60EB4B6182A9237}" {
+       m_sTitle "HVT killed"
+       m_sMessage "Optional objective completed."\
+       "The island commander has been killed."\
+       ""
+       m_aFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{1C3D6A2FA5F57D9C}" {
+     m_sName "RadioFlag"
+     m_aConditions {
+      GC_MissionFlagCondition "{60C0F220626F2ACD}" {
+       m_sFlagName "RadioDead"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{207444CE43F8458D}" {
+       m_sMessage "RadioFlag"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0805B1CF16DB7A6D}" {
+     m_sName "RadioFlag (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2D4DF5D31EE23232}" {
+       m_sEventName "RadioFlag"
+      }
+     }
+     m_Advanced GC_EventOptions "{562A91CE3395A8A2}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_FlagAction "{C09AD86A48746B5C}" {
+       m_sFlagName "RadioCompleted"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{C9517BE520AD32D1}" {
+     m_sName "RadioFlag (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6D6E61ECB68AF2DB}" {
+       m_sEventName "RadioFlag"
+      }
+     }
+     m_Advanced GC_EventOptions "{2F6981F8FFD907BE}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{E40067E53F012889}" {
+       m_sTitle "Radio tower destroyed"
+       m_sMessage "Optional objective completed."\
+       "The communications tower at Signal hill has been destroyed."\
+       ""
+       m_aFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{830BD106517368CE}" {
+     m_sName "IntelFlag"
+     m_aConditions {
+      GC_AreaCondition "{50796DB467758D5C}" {
+       m_sArea "Presensetrigger"
+       m_Targets GC_NamedAreaTargets "{6F425D1157ABB47D}" {
+        m_aNames {
+         "IntelFolder"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{A56817F70582F850}" {
+        m_fRequiredProportion 0.1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{15E08FB305EE0A6F}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2CB708EB6BA812CD}" {
+       m_sMessage "IntelFlag"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5D0665BA3447C344}" {
+     m_sName "IntelFlag (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4B7C23ED8A9FD4E8}" {
+       m_sEventName "IntelFlag"
+      }
+     }
+     m_Advanced GC_EventOptions "{94DA21E93246D611}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_FlagAction "{EA3FC003C44E99BB}" {
+       m_sFlagName "IntelCompleted"
+       m_iOperation 1
+       m_iAmount 1
+      }
+      GC_MessageAction "{2A5E2EC09280D9B4}" {
+       m_sTitle "Intel secured"
+       m_sMessage "Optional objective completed."\
+       "The intel was located and secured back to our staging area."
+       m_aFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{616F22D9ECDE3FA4}" {
+     m_sName "FuelFlag"
+     m_aConditions {
+      GC_GameModeStateCondition "{B9913ECFADA6D9B8}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{247FEDB8B3BC17BD}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{34544C48F929DD34}" {
+         m_sFlagName "Fuel1"
+        }
+        GC_MissionFlagCondition "{1577EDAB313B7626}" {
+         m_sFlagName "Fuel2"
+        }
+        GC_MissionFlagCondition "{D6AB17A4E5CD1A3C}" {
+         m_sFlagName "Fuel3"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8CCF79F09902F170}" {
+       m_sMessage "FuelFlag"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7600FFA46389FCCD}" {
+     m_sName "FuelFlag (1s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{EB1AD5DFE6C7EC20}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{C78401FE22154C9B}" {
+       m_sEventName "FuelFlag"
+      }
+     }
+     m_Advanced GC_EventOptions "{9D1B2C8488B8A824}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_FlagAction "{E2EFFD3A05E0795C}" {
+       m_sFlagName "FuelCompleted"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{6BDB68BCF494EDCC}" {
+     m_sName "FuelFlag (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{A1EE60A7417EF541}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{9E9B2E7731399107}" {
+       m_sEventName "FuelFlag"
+      }
+     }
+     m_Advanced GC_EventOptions "{6F2A58593BFB3934}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{44C0917509A54D4F}" {
+       m_sTitle "Fuel storage destroyed"
+       m_sMessage "Optional objective completed."\
+       "The fuel storage at the harbour has been destroyed."
+       m_aFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{74BBA75FC9DFC322}" {
+     m_sName "RandomAmmoSpawnLoc1"
+     m_aConditions {
+      GC_GameModeStateCondition "{68628765C7945037}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{C7F3B20F16737FAD}" {
+       m_sFlagName "AmmoSpawn1"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E0F0F7AEF6CF037C}" {
+       m_sMessage "RandomAmmoSpawnLoc1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C588B63B963E46D1}" {
+     m_sName "RandomAmmoSpawnLoc1 (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{6A11E57AAC894E18}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{8C4E6AE1F5670462}" {
+       m_sEventName "RandomAmmoSpawnLoc1"
+      }
+     }
+     m_Advanced GC_EventOptions "{47F1AC81189BAAB7}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{4A415F3B0A43DC47}" {
+       m_Spawn GC_PrefabSpawn "{60F24C44D17DF982}" {
+        m_sLocation "AmmoLoc1"
+        m_sPrefab "{8D9D32DB3A70FD7A}worlds/TheLocalPub/BebbleIslandRaid/Prefabs/Props/Military/Camps/AmmoBox.et"
+       }
+      }
+     }
+    }
+    GC_Event "{7CDE06B0C9FF1DC4}" {
+     m_sName "RandomAmmoSpawnLoc2"
+     m_aConditions {
+      GC_GameModeStateCondition "{774C1ABC2A139A03}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{870CAD03AB4AE852}" {
+       m_sFlagName "AmmoSpawn2"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0308408DD8ECBAFF}" {
+       m_sMessage "RandomAmmoSpawnLoc2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{918C5CF99AAA51F0}" {
+     m_sName "RandomAmmoSpawnLoc2 (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{139340044BF5D275}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{603646C5B39CF805}" {
+       m_sEventName "RandomAmmoSpawnLoc2"
+      }
+     }
+     m_Advanced GC_EventOptions "{0D821C2D82C20224}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{095542E850A68264}" {
+       m_Spawn GC_PrefabSpawn "{B6EBEB224AF65AB4}" {
+        m_sLocation "AmmoLoc2"
+        m_sPrefab "{8D9D32DB3A70FD7A}worlds/TheLocalPub/BebbleIslandRaid/Prefabs/Props/Military/Camps/AmmoBox.et"
+       }
+      }
+     }
+    }
+    GC_Event "{E2687B46BE5EB034}" {
+     m_sName "RandomAmmoSpawnLoc3"
+     m_aConditions {
+      GC_GameModeStateCondition "{A4FE9F625537CA86}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{36ED926D0EA29F70}" {
+       m_sFlagName "AmmoSpawn3"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F46A91364BBE5654}" {
+       m_sMessage "RandomAmmoSpawnLoc3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2B4ED2798B7CD49D}" {
+     m_sName "RandomAmmoSpawnLoc3 (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{0A901B8C3967B146}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{67A50D9B33024734}" {
+       m_sEventName "RandomAmmoSpawnLoc3"
+      }
+     }
+     m_Advanced GC_EventOptions "{CA942486DE272529}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{8D3E84DB39CF2D6A}" {
+       m_Spawn GC_PrefabSpawn "{47E6BC7635FC8DD7}" {
+        m_sLocation "AmmoLoc3"
+        m_sPrefab "{8D9D32DB3A70FD7A}worlds/TheLocalPub/BebbleIslandRaid/Prefabs/Props/Military/Camps/AmmoBox.et"
+       }
+      }
+     }
+    }
+    GC_Event "{8A97A3385D81A29E}" {
+     m_sName "BLUFORDEAD"
+     m_aConditions {
+      GC_CustomScriptCondition "{A3FC74871A3599BF}" {
+       m_Script GC_PeakFactionPopulationCheck "{986F3DC3CA3739E3}" {
+        m_sFaction "UK"
+        m_fRatio 0.85
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0F0E51B7C3602DEE}" {
+       m_sMessage "BLUFORDEAD"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D7F6C4556A41084F}" {
+     m_sName "BLUFORDEAD (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5284FBC59B34341A}" {
+       m_sEventName "BLUFORDEAD"
+      }
+     }
+     m_Advanced GC_EventOptions "{7B082C110FC9FDD6}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{624E63E5A10A4174}" {
+       m_sTitle "BLUFOR DEFEAT"
+       m_sMessage "The SBS Squadron has taken to many casualties."\
+       "The remainder of troops have either been captured of withdrawn from the island."\
+       ""\
+       "Well done Argentina!"\
+       "Mission will end soon..."
+      }
+     }
+    }
+    GC_Event "{A876D128FDF7F55B}" {
+     m_sName "BLUFORDEAD (17s)"
+     m_aConditions {
+      GC_MissionEventCondition "{38941E22B79901CB}" {
+       m_sEventName "BLUFORDEAD"
+      }
+     }
+     m_Advanced GC_EventOptions "{78FB7BD4300FC473}" {
+      m_fDelay 17
+     }
+     m_aActions {
+      GC_EndMissionAction "{7D111882AAB0389C}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{4F20C94E6F59057E}" {
+     m_sName "TOTALFLAG"
+     m_aConditions {
+      GC_ConditionGroup "{D005D1829D97616E}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{16E0BDFE6D2BB424}" {
+         m_sFlagName "RadioCompleted"
+        }
+        GC_MissionFlagCondition "{4D1B492C5D245892}" {
+         m_sFlagName "HeliCompleted"
+        }
+        GC_MissionFlagCondition "{B8E37736423CBCF0}" {
+         m_sFlagName "ZUCompleted"
+        }
+        GC_MissionFlagCondition "{DACA170369261361}" {
+         m_sFlagName "FuelCompleted"
+        }
+        GC_MissionFlagCondition "{F4EAF17026926D85}" {
+         m_sFlagName "AmmoCompleted"
+        }
+        GC_MissionFlagCondition "{CD2AF09E83C64A97}" {
+         m_sFlagName "HVTCompleted"
+        }
+        GC_MissionFlagCondition "{7FC82A74727BA986}" {
+         m_sFlagName "IntelCompleted"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{AD4D2647AFDADFD8}" {
+       m_sMessage "TOTALFLAG"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{52B259DFCC1B373A}" {
+     m_sName "TOTALFLAG (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CBC6A933EB144DEF}" {
+       m_sEventName "TOTALFLAG"
+      }
+     }
+     m_Advanced GC_EventOptions "{7E532B6FAB5E66D6}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_FlagAction "{A46AC506801AE817}" {
+       m_sFlagName "MajorWin"
+       m_iOperation 4
+      }
+      GC_FlagAction "{388D47A5278021C3}" {
+       m_sFlagName "RegWin"
+       m_iOperation 4
+      }
+      GC_FlagAction "{ED3DD5A2B07A8934}" {
+       m_sFlagName "MinorWin"
+       m_iOperation 4
+      }
+      GC_FlagAction "{F654A7A14017FE95}" {
+       m_sFlagName "TotalWin"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{24E66B0F0A87E3CC}" {
+     m_sName "MAJORFLAG"
+     m_aConditions {
+      GC_GameModeStateCondition "{C523A159B895E17E}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{1AB7DB0142735BAB}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{3CFF1AE18472DB4A}" {
+         m_sFlagName "HeliCompleted"
+        }
+        GC_ConditionCount "{B23DF2F80CC2F715}" {
+         m_iComparison 1
+         m_iRequiredCount 5
+         m_aConditions {
+          GC_MissionFlagCondition "{5FB7AF9DE899BCE7}" {
+           m_sFlagName "RadioCompleted"
+          }
+          GC_MissionFlagCondition "{C628B97D38DE4845}" {
+           m_sFlagName "ZUCompleted"
+          }
+          GC_MissionFlagCondition "{C9B5D98B7D193057}" {
+           m_sFlagName "FuelCompleted"
+          }
+          GC_MissionFlagCondition "{3823A5103437B9B2}" {
+           m_sFlagName "AmmoCompleted"
+          }
+          GC_MissionFlagCondition "{B468576D87792FED}" {
+           m_sFlagName "HVTCompleted"
+          }
+          GC_MissionFlagCondition "{4EFC8A06393E6EFC}" {
+           m_sFlagName "IntelCompleted"
+          }
+         }
+        }
+        GC_ConditionCount "{CF1B2249D52E6434}" {
+         m_iComparison 0
+         m_iRequiredCount 3
+         m_aConditions {
+          GC_MissionFlagCondition "{C6071E4D07343FB4}" {
+           m_sFlagName "RadioCompleted"
+          }
+          GC_MissionFlagCondition "{7F3F67132F2E1E27}" {
+           m_sFlagName "ZUCompleted"
+          }
+          GC_MissionFlagCondition "{8E7E937763369608}" {
+           m_sFlagName "FuelCompleted"
+          }
+          GC_MissionFlagCondition "{C195D05988A156B2}" {
+           m_sFlagName "AmmoCompleted"
+          }
+          GC_MissionFlagCondition "{B81B2B7037845BF3}" {
+           m_sFlagName "HVTCompleted"
+          }
+          GC_MissionFlagCondition "{8EE022F017C147A9}" {
+           m_sFlagName "IntelCompleted"
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D86972625D27444D}" {
+       m_sMessage "MAJORFLAG"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7265915ED5A5BA55}" {
+     m_sName "MAJORFLAG (1s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{6457490058E5C1C3}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{4252C2EC1A90AA61}" {
+       m_sEventName "MAJORFLAG"
+      }
+     }
+     m_Advanced GC_EventOptions "{1720E9827B5A970C}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_FlagAction "{5F50E122F46E96F5}" {
+       m_sFlagName "MajorWin"
+       m_iOperation 1
+       m_iAmount 1
+      }
+      GC_FlagAction "{CD8D0FEC178301D2}" {
+       m_sFlagName "RegWin"
+       m_iOperation 4
+      }
+     }
+    }
+    GC_Event "{F621BCCCB5E9ADE0}" {
+     m_sName "REGULARFLAG"
+     m_aConditions {
+      GC_GameModeStateCondition "{78A4DC33CE4D736C}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{C8B669C97BC00622}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{712DEDFCA8B002CB}" {
+         m_sFlagName "HeliCompleted"
+        }
+        GC_ConditionCount "{DD208878897A3481}" {
+         m_iComparison 1
+         m_iRequiredCount 3
+         m_aConditions {
+          GC_MissionFlagCondition "{358A422D8DC9158F}" {
+           m_sFlagName "RadioCompleted"
+          }
+          GC_MissionFlagCondition "{A249802E2375547C}" {
+           m_sFlagName "ZUCompleted"
+          }
+          GC_MissionFlagCondition "{4B2337D8CEE31A92}" {
+           m_sFlagName "FuelCompleted"
+          }
+          GC_MissionFlagCondition "{8C52962B074FA85B}" {
+           m_sFlagName "AmmoCompleted"
+          }
+          GC_MissionFlagCondition "{D78EE981CD992826}" {
+           m_sFlagName "HVTCompleted"
+          }
+          GC_MissionFlagCondition "{6641A61192B30C66}" {
+           m_sFlagName "IntelCompleted"
+          }
+         }
+        }
+        GC_ConditionCount "{7DD6D672E6D5B8AF}" {
+         m_iComparison 0
+         m_iRequiredCount 1
+         m_aConditions {
+          GC_MissionFlagCondition "{EEF577C5C3F1AF18}" {
+           m_sFlagName "RadioCompleted"
+          }
+          GC_MissionFlagCondition "{E982584EDE28DA1A}" {
+           m_sFlagName "ZUCompleted"
+          }
+          GC_MissionFlagCondition "{22BBC2B9B3F716C5}" {
+           m_sFlagName "FuelCompleted"
+          }
+          GC_MissionFlagCondition "{B4E25720B6DBE83F}" {
+           m_sFlagName "AmmoCompleted"
+          }
+          GC_MissionFlagCondition "{0C9774640EF7B194}" {
+           m_sFlagName "HVTCompleted"
+          }
+          GC_MissionFlagCondition "{287374F100BF78D2}" {
+           m_sFlagName "IntelCompleted"
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8DB78B384B7E4B33}" {
+       m_sMessage "REGULARFLAG"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5F100FC1692F74C2}" {
+     m_sName "REGULARFLAG (1s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{3CAE0F66757BBBF3}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{47C117BB4A657966}" {
+       m_sEventName "REGULARFLAG"
+      }
+     }
+     m_Advanced GC_EventOptions "{BC7579B47F18F97C}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_FlagAction "{29FC3BE7BA0F745C}" {
+       m_sFlagName "MinorWin"
+       m_iOperation 4
+      }
+      GC_FlagAction "{98774C48850D096E}" {
+       m_sFlagName "RegWin"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{64B8037B8A047B3D}" {
+     m_sName "MINORFLAG"
+     m_aConditions {
+      GC_MissionFlagCondition "{E6CFCA5138B5BD7D}" {
+       m_sFlagName "HeliCompleted"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A2E8333D8A5E9742}" {
+       m_sMessage "MINORFLAG"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{23EE84D8D59BC1ED}" {
+     m_sName "MINORFLAG (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5AA4A272F939F646}" {
+       m_sEventName "MINORFLAG"
+      }
+     }
+     m_Advanced GC_EventOptions "{3B10666B778F69A5}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_FlagAction "{FED6CEC1278FB790}" {
+       m_sFlagName "MinorWin"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{F61113B5F8C51774}" {
+     m_sName "Total win"
+     m_aConditions {
+      GC_ConditionGroup "{77E7070A7C3FAF2F}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{19A863865038489D}" {
+         m_sFlagName "TotalWin"
+        }
+        GC_AreaCondition "{0D01157A2BAB76F6}" {
+         m_sArea "GC_MigrationArea_BLUExtract"
+         m_Targets GC_CharacterAreaTargets "{8133DEACBE718385}" {
+          m_aFactions {
+           "UK"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{CBE9B22B43924B48}" {
+          m_fRequiredShare 0.3
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{1C9AA08978350FAA}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{74886B3BBDB68674}" {
+       m_sMessage "Total win"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A18AFE38D94A59FF}" {
+     m_sName "Total win (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{70D80435B9C197A6}" {
+       m_sEventName "Total win"
+      }
+     }
+     m_Advanced GC_EventOptions "{8F862B3FBB7A168A}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{ABEF053C014B0B59}" {
+       m_sTitle "TOTAL UK VICTORY"
+       m_sMessage "Cracking job lads, you smashed em!"\
+       "We managed to complete our main objective, all optional objectives, and also extract."\
+       ""\
+       "Well done!"\
+       "Mission will end soon..."
+       m_aFactions {
+        "UK"
+       }
+      }
+      GC_MessageAction "{9F498AF9CE25028D}" {
+       m_sTitle "TOTAL UK VICTORY"
+       m_sMessage "The United Kingdom has managed to compelete their main objective, all their optional objectives, and extract."\
+       ""\
+       "Better luck next time."\
+       "Mission will end soon..."
+       m_aFactions {
+        "GC_ARG"
+       }
+      }
+     }
+    }
+    GC_Event "{55F3D9CE8DD93144}" {
+     m_sName "Total win (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B417EB01112D0A5E}" {
+       m_sEventName "Total win"
+      }
+     }
+     m_Advanced GC_EventOptions "{0710D0F425244BD8}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{CFA970C054A3C968}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{3E30DF9B295571CD}" {
+     m_sName "Major win"
+     m_aConditions {
+      GC_ConditionGroup "{8819A9A2C79DC9EC}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{2789863A8309EC21}" {
+         m_sFlagName "MajorWin"
+        }
+        GC_AreaCondition "{DDB677264024FF9A}" {
+         m_sArea "GC_MigrationArea_BLUExtract"
+         m_Targets GC_CharacterAreaTargets "{AE1C64EDE7F7A8D2}" {
+          m_aFactions {
+           "UK"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{C83A61081C699E92}" {
+          m_fRequiredShare 0.3
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{6B6BF13E3CE9E785}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{481565EAEFB8571D}" {
+       m_sMessage "Major win"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B14D120155354FB5}" {
+     m_sName "Major win (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5B32400256EAEAF0}" {
+       m_sEventName "Major win"
+      }
+     }
+     m_Advanced GC_EventOptions "{304CDBE31CDEFC8A}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{BE67913AA9A61B4D}" {
+       m_sTitle "MAJOR UK VICTORY"
+       m_sMessage "Smashing job lads, you blew em to bits!"\
+       "We managed to complete our main objective, 4/6 optional objectives, and also extract."\
+       ""\
+       "Well done!"\
+       "Mission will end soon..."
+       m_aFactions {
+        "UK"
+       }
+      }
+      GC_MessageAction "{4CB85ED577EED4EA}" {
+       m_sTitle "MAJOR UK VICTORY"
+       m_sMessage "The United Kingdom has managed to compelete their main objective, 4/6 optional objectives, and extract."\
+       ""\
+       "Better luck next time."\
+       "Mission will end soon..."
+       m_aFactions {
+        "GC_ARG"
+       }
+      }
+     }
+    }
+    GC_Event "{769123AA4348E28C}" {
+     m_sName "Major win (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6BBB49B5598FAA69}" {
+       m_sEventName "Major win"
+      }
+     }
+     m_Advanced GC_EventOptions "{463C8ADF7FAD9857}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{48E8CBF2C02BAC98}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{899588094802170D}" {
+     m_sName "Reg win"
+     m_aConditions {
+      GC_ConditionGroup "{F5FE6E7E3B96427B}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{61816B45ED06DCF5}" {
+         m_sFlagName "RegWin"
+        }
+        GC_AreaCondition "{2924848251FE31DC}" {
+         m_sArea "GC_MigrationArea_BLUExtract"
+         m_Targets GC_CharacterAreaTargets "{5EC328B2A5ECA0A5}" {
+          m_aFactions {
+           "UK"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{C7B65CF7DA7FFD46}" {
+          m_fRequiredShare 0.3
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{0FAF46AB41FC69FA}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A99D097B1937CB11}" {
+       m_sMessage "Reg win"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8C3EE8CE4F91E4E6}" {
+     m_sName "Reg win (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{013CE04FD1A6110F}" {
+       m_sEventName "Reg win"
+      }
+     }
+     m_Advanced GC_EventOptions "{C1CBC3EACDF4B2E9}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{EA8FD1DCB276351D}" {
+       m_sTitle "UK VICTORY"
+       m_sMessage "Good effort lads, we sure made a dent today."\
+       "We managed to complete our main objective, 2/6 optional objectives, and also extract."\
+       ""\
+       "Well done!"\
+       "Mission will end soon..."
+       m_aFactions {
+        "UK"
+       }
+      }
+      GC_MessageAction "{4403D910C806CC3D}" {
+       m_sTitle "UK VICTORY"
+       m_sMessage "The United Kingdom has managed to compelete their main objective, 2/6 optional objectives, and extract."\
+       ""\
+       "Better luck next time."\
+       "Mission will end soon..."
+       m_aFactions {
+        "GC_ARG"
+       }
+      }
+     }
+    }
+    GC_Event "{2FEF895A5169BA82}" {
+     m_sName "Reg win (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F95934B73665E527}" {
+       m_sEventName "Reg win"
+      }
+     }
+     m_Advanced GC_EventOptions "{118043A087BE29F7}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{37E8CD7616F48BC0}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{F67B9484118715D0}" {
+     m_sName "Minor win"
+     m_aConditions {
+      GC_ConditionGroup "{4F9BF8296F4E03D1}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{A4B4D09595E59D65}" {
+         m_sFlagName "MinorWin"
+        }
+        GC_AreaCondition "{8F81E7C5A379D380}" {
+         m_sArea "GC_MigrationArea_BLUExtract"
+         m_Targets GC_CharacterAreaTargets "{6C770542B645256F}" {
+          m_aFactions {
+           "UK"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{E5566099E6DB1794}" {
+          m_fRequiredShare 0.3
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{B5340F67833F339A}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{01A5D9845895055A}" {
+       m_sMessage "Minor win"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A359D7428482E53B}" {
+     m_sName "Minor win (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C545BD379113CB80}" {
+       m_sEventName "Minor win"
+      }
+     }
+     m_Advanced GC_EventOptions "{31D807EDC96AFEC1}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{505D58F9C320B0D5}" {
+       m_sTitle "MINOR UK VICTORY"
+       m_sMessage "Well done lads."\
+       "We managed to complete our main objective and extract, but failed to complete any optional objectives."\
+       ""\
+       "Well done!"\
+       "Mission will end soon..."
+       m_aFactions {
+        "UK"
+       }
+      }
+      GC_MessageAction "{4531640E77C1C29D}" {
+       m_sTitle "MINOR UK VICTORY"
+       m_sMessage "The United Kingdom has managed to compelete their main objective and extract, without completing any optional objectives."\
+       ""\
+       "Better luck next time."\
+       "Mission will end soon..."
+       m_aFactions {
+        "GC_ARG"
+       }
+      }
+     }
+    }
+    GC_Event "{DB149F2CE1B0E6D9}" {
+     m_sName "Minor win (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{75CAF52345E44F90}" {
+       m_sEventName "Minor win"
+      }
+     }
+     m_Advanced GC_EventOptions "{23C3A51A8E398FE8}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{B4FD55164C63522C}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{08B3F294201EF73B}" {
+     m_sName "GC_MigratedSpawn_02B88EF3A5131258 (0s)"
+     m_aActions {
+      GC_SpawnAction "{08B3F294201EF73B}" {
+       m_Spawn GC_CrewedVehicleSpawn "{425E63B584D12687}" {
+        m_sLocation "UAZ_PKM1"
+        m_sPrefab "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{8E68A07A1327A8FB}" {
+          m_aStations {
+           GC_SpawnCrewStation "{BDC405AE0AE334AE}" {
+            m_bGunners 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{BB64738FA06CE9D1}Prefabs/Characters/Factions/OPFOR/GC_ARG/1980_Regulars/Character_GC_ARG_1980_RF.et"
+            }
+           }
+           GC_SpawnCrewStation "{6C92F0E8C02F2F4F}" {
+            m_bDriver 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{BB64738FA06CE9D1}Prefabs/Characters/Factions/OPFOR/GC_ARG/1980_Regulars/Character_GC_ARG_1980_RF.et"
+            }
+           }
+           GC_SpawnCrewStation "{CBC791D3CFBF7A2E}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{BB64738FA06CE9D1}Prefabs/Characters/Factions/OPFOR/GC_ARG/1980_Regulars/Character_GC_ARG_1980_RF.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Vic1_m1"
+           "Vic1_m2"
+           "Vic1_m3"
+           "Vic1_m4"
+           "Vic1_m5"
+           "VC1_1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 3781.905 0 3511.617
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{652544E87DFA8253}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_sCallsignCharacterWithRoleFormat "%1-%2%3%4"
+     }
+    }
+   }
+  }
+ }
+}
