@@ -1,0 +1,54 @@
+$grp GenericEntity {
+ TPLoc1 {
+  coords 3503.631 57.5 1926.728
+  angles 0 -180 0
+ }
+ TPLoc2 {
+  coords 2289.885 56.425 345.148
+  angles 0 180 0
+ }
+}
+$grp GenericEntity : "{4A7B7EF936B349A7}Prefabs/Logic/Mission/TeleportInteraction.et" {
+ TP2 {
+  components {
+   GC_TeleportInteractionComponent "{B3632A2C9CA24FDF}" {
+    m_sActionName "Teleport: South Insert"
+    m_sDestinationName "TPLoc2"
+    m_aFactions {
+     "GC_Federal"
+    }
+    m_sRequiredFlag "SetupComplete"
+   }
+   ActionsManagerComponent "{F097C296BF6748C5}" {
+    additionalActions {
+     GC_MissionInteractionAction "{404C2C5909834FF5}" {
+      ActionTitle "Teleport2"
+     }
+    }
+   }
+  }
+  coords 864.781 66.949 369.779
+  angles 0 40.537 0
+ }
+ TP1 {
+  components {
+   GC_TeleportInteractionComponent "{B3632A2C9CA24FDF}" {
+    m_sActionName "Teleport: North Insert"
+    m_sDestinationName "TPLoc1"
+    m_aFactions {
+     "GC_Federal"
+    }
+    m_sRequiredFlag "SetupComplete"
+   }
+   ActionsManagerComponent "{F097C296BF6748C5}" {
+    additionalActions {
+     GC_MissionInteractionAction "{404C2C5909834FF5}" {
+      ActionTitle "Teleport1"
+     }
+    }
+   }
+  }
+  coords 858.11 67.248 375.533
+  angles 0 42.51 0
+ }
+}

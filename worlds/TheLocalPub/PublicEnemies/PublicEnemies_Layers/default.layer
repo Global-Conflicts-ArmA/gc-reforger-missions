@@ -1,0 +1,600 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 2449.879 54.698 567.766
+}
+GC_LobbyGameMode GC_MigratedMission : "{669EB652B3B55159}worlds/TheLocalPub/PublicEnemies/PublicEnemies_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 22
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{68AD304EAC9D6DCB}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 22
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 22
+   m_iMonth 3
+   m_iYear 1945
+  }
+  GC_PeakFactionPopulationComponent "{83B67BDE526FC3B6}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{2216C88EB52DED96}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 60
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{13B742F194FF89A1}" {
+     m_sName "BossesDead"
+    }
+    GC_MissionFlag "{2700E51DC77FED39}" {
+     m_sName "BrownBossDead"
+    }
+    GC_MissionFlag "{BB49DE62AEBB9AB9}" {
+     m_sName "EndMission"
+    }
+    GC_MissionFlag "{20416A9A9403DB99}" {
+     m_sName "GreyBossDead"
+    }
+    GC_MissionFlag "{C4591EC8A55F3932}" {
+     m_sName "SetupComplete"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{FBF49877A13D0CC2}" {
+     m_sName "SetupCompleted (60s)"
+     m_Advanced GC_EventOptions "{D41650D1C5C7ED1E}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_FlagAction "{7019EC9FFFF93982}" {
+       m_sFlagName "SetupComplete"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{EDECA305BAFA18D7}" {
+     m_sName "DeadBossMessage"
+     m_aConditions {
+      GC_ConditionGroup "{95786F36B2236839}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{1D0251FD6DF06BEC}" {
+         m_sFlagName "BrownBossDead"
+        }
+        GC_MissionFlagCondition "{48CFB8B5F2DC3854}" {
+         m_sFlagName "GreyBossDead"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4E8AEBA38E426D3D}" {
+       m_sMessage "DeadBossMessage"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{925DE14F956ED093}" {
+     m_sName "DeadBossMessage (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{71085C8736438B89}" {
+       m_sEventName "DeadBossMessage"
+      }
+     }
+     m_Advanced GC_EventOptions "{23D73B2238F01890}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{DB45FF7036210093}" {
+       m_sTitle "THE BOSSES ARE DEAD"
+       m_sMessage "How could this happen!? How did they know we were here!?"\
+       "All those years of hard work... gone."\
+       ""\
+       "Don't let those pigs flee! KILL them before they can get away."
+       m_aFactions {
+        "GC_Mobster"
+       }
+      }
+      GC_MessageAction "{C1111B0563434A9B}" {
+       m_sTitle "THE BOSSES ARE DEAD"
+       m_sMessage "Go go go! Get out of here quickly!"\
+       "Everyone flee in any direction, we'll all meet at the RV tomorrow."\
+       ""\
+       "(A victory prompt will appear when enough officers have fled atleast 200m radius from the compound)"
+       m_aFactions {
+        "GC_Federal"
+       }
+      }
+     }
+    }
+    GC_Event "{46DE61759D311704}" {
+     m_sName "DeadBossFlag"
+     m_aConditions {
+      GC_ConditionGroup "{B0AF137264C12BD5}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{F25C3AB94FCE737B}" {
+         m_sFlagName "BrownBossDead"
+        }
+        GC_MissionFlagCondition "{0A3704DB34B817C1}" {
+         m_sFlagName "GreyBossDead"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DB133DB2E8F1B86F}" {
+       m_sMessage "DeadBossFlag"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BE0DB83F4741CB15}" {
+     m_sName "DeadBossFlag (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F9B916AAB2D03E03}" {
+       m_sEventName "DeadBossFlag"
+      }
+     }
+     m_Advanced GC_EventOptions "{CF22596A9967D212}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_FlagAction "{F5B7AC5F926BB479}" {
+       m_sFlagName "BossesDead"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{0A4E0DA83CE82B9D}" {
+     m_sName "OpforMajorWin"
+     m_aConditions {
+      GC_GameModeStateCondition "{8A0E4BB12DA1EF51}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{5BB4D76E12CE0EAE}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_CustomScriptCondition "{73D020A62FCA7B66}" {
+         m_Script GC_PeakFactionPopulationCheck "{30BF451FCD01F3D2}" {
+          m_sFaction "GC_Federal"
+          m_fRatio 0.9
+         }
+        }
+        GC_MissionFlagCondition "{DA0C0BE454F9B3EC}" {
+         m_sFlagName "BrownBossDead"
+         m_bRequireFalse 1
+        }
+        GC_MissionFlagCondition "{32C328ECE47BD8B4}" {
+         m_sFlagName "GreyBossDead"
+         m_bRequireFalse 1
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{48E13F0C6D61BAC9}" {
+       m_sMessage "OpforMajorWin"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{68DC9D67DEF82F57}" {
+     m_sName "OpforMajorWin (1s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{B321A3E1E73C2F8B}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{DBC9B3EE247236EB}" {
+       m_sEventName "OpforMajorWin"
+      }
+     }
+     m_Advanced GC_EventOptions "{48828831D9BC1A09}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{88834649A9787D08}" {
+       m_sTitle "MOBSTER VICTORY - Federal agents destroyed"
+       m_sMessage "Well done chaps!"\
+       "This is a day for the criminal history books. This day of peace shall always be remembered."\
+       ""\
+       "Not only did we negotiated peace and spread the word to the rest of our mobs, but also slaughtered a whole corrupt group of pigs."\
+       "The cease fire is now in affect."\
+       ""\
+       "Mission will end soon... "
+       m_aFactions {
+        "GC_Mobster"
+       }
+      }
+      GC_MessageAction "{93B179AAF9AC61D1}" {
+       m_sTitle "MOBSTER VICTORY - Federal agents destroyed"
+       m_sMessage "THIS IS THE ATTORNEY GENERAL!"\
+       ""\
+       "I just heard on the news that those two warring mobs have just made peace tonight... while under assault from a contingent of FBI officers."\
+       "Why was this not cleared? Why did I not hear of this?"\
+       "You'll all be speaking to me first thing tomorrow morning.... or what's left of you anyways."\
+       ""\
+       "Mission will end soon..."
+       m_aFactions {
+        "GC_Federal"
+       }
+      }
+     }
+    }
+    GC_Event "{EBC8D3338273446E}" {
+     m_sName "OpforMajorWin (0.01s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{72D43C3CAAD20A88}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{8FE3D54D54124FCE}" {
+       m_sEventName "OpforMajorWin"
+      }
+     }
+     m_Advanced GC_EventOptions "{8F9278ED7FB76B59}" {
+      m_fDelay 0.01
+     }
+     m_aActions {
+      GC_EventControlAction "{66BF680FC3EBE988}" {
+       m_sEventName "OpforRegularWin"
+       m_iOperation 1
+      }
+      GC_EventControlAction "{8E86C63F7BBAF30C}" {
+       m_sEventName "PyrrhicEnd"
+       m_iOperation 1
+      }
+     }
+    }
+    GC_Event "{D1CB9C3639535C07}" {
+     m_sName "OpforRegularWin"
+     m_aConditions {
+      GC_MissionFlagCondition "{3DA181397BCB5392}" {
+       m_sFlagName "EndMission"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E65FECA77D079782}" {
+       m_sMessage "OpforRegularWin"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{19DEF8D9C7BBFFC8}" {
+     m_sName "OpforRegularWin (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{414E31C48A331072}" {
+       m_sEventName "OpforRegularWin"
+      }
+     }
+     m_Advanced GC_EventOptions "{1280F5B3BEA70EA4}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{55372E1AF2D6DF1C}" {
+       m_sTitle "MOBSTER VICTORY - Peace negotiated"
+       m_sMessage "Well done chaps!"\
+       "This is a day for the criminal history books. This day of peace shall always be remembered."\
+       ""\
+       "We've negotiated peace and spread the word to the rest of our mobs."\
+       "The cease fire is now in affect."\
+       ""\
+       "Mission will end soon... "
+       m_aFactions {
+        "GC_Mobster"
+       }
+      }
+      GC_MessageAction "{00766388271147D0}" {
+       m_sTitle "MOBSTER VICTORY - Peace negotiated"
+       m_sMessage "THIS IS THE ATTORNEY GENERAL!"\
+       ""\
+       "I just heard on the news that those two warring mobs have just made peace tonight... while under assault from a contingent of FBI officers."\
+       "Why was this not cleared? Why did I not hear of this?"\
+       "You'll all be speaking to me first thing tomorrow morning!"\
+       ""\
+       "Mission will end soon..."
+       m_aFactions {
+        "GC_Federal"
+       }
+      }
+     }
+    }
+    GC_Event "{F2275FD07C410C00}" {
+     m_sName "PyrrhicEnd"
+     m_aConditions {
+      GC_ConditionGroup "{8DA6D17E60CBAA94}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_CustomScriptCondition "{3E4DC6560BF25AFA}" {
+         m_Script GC_PeakFactionPopulationCheck "{18E2EE23E1C260F0}" {
+          m_sFaction "GC_Federal"
+          m_fRatio 0.9
+         }
+        }
+        GC_MissionFlagCondition "{365C649CDC954CC9}" {
+         m_sFlagName "BrownBossDead"
+        }
+        GC_MissionFlagCondition "{5B0EEE223429719D}" {
+         m_sFlagName "GreyBossDead"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8E8574C137DF2493}" {
+       m_sMessage "PyrrhicEnd"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5F720DF3AF4C12CA}" {
+     m_sName "PyrrhicEnd (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{0E4FDA0376F6EA81}" {
+       m_sEventName "PyrrhicEnd"
+      }
+     }
+     m_Advanced GC_EventOptions "{68E363AC96E70C80}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{616703C55C08866E}" {
+       m_sTitle "MOBSTER PYRRHIC DEFEAT | FEDERAL PYRRHIC VICTORY"
+       m_sMessage "These are bleak times."\
+       "We were ambushed by a contingent of corrupt federal officers while attempting to negotiate peace and end this mob war."\
+       "Tragically, our bosses were hit and did not survive — though we made sure those dirty feds paid the price."\
+       "Mission will conclude shortly…"
+       m_aFactions {
+        "GC_Mobster"
+       }
+      }
+      GC_MessageAction "{85D3EFFB1257F4F7}" {
+       m_sTitle "MOBSTER PYRRHIC DEFEAT | FEDERAL PYRRHIC VICTORY"
+       m_sMessage "We’ve taken a heavy beating."\
+       "While we succeeded in eliminating both mob bosses, we lost so many men in the process that any gains from our corrupt dealings will be difficult to recover. Rebuilding our position will take years."\
+       "We may have just shot ourselves in the foot."\
+       "Mission will conclude shortly…"
+       m_aFactions {
+        "GC_Federal"
+       }
+      }
+     }
+    }
+    GC_Event "{7E8EDACFB8C34693}" {
+     m_sName "BluforMajorWin"
+     m_aConditions {
+      GC_CustomScriptCondition "{F8879D4E3BD6BB11}" {
+       m_Script GC_PeakFactionPopulationCheck "{527AEC1C22FC63EB}" {
+        m_sFaction "GC_Mobster"
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{035F7B747EBDB286}" {
+       m_sMessage "BluforMajorWin"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F712C9BF92A4EC7D}" {
+     m_sName "BluforMajorWin (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2FD8C8761B9EB720}" {
+       m_sEventName "BluforMajorWin"
+      }
+     }
+     m_Advanced GC_EventOptions "{9D819C21C5D7BC78}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{6CBBFED20AEB3CC9}" {
+       m_sTitle "FEDERAL VICTORY - Mobsters destroyed"
+       m_sMessage "Amazing work, gentlemen."\
+       "We’ve not only stopped the peace negotiations and protected our interests, but we’ve also rid the underworld of those so-called “mobsters” seeking peace."\
+       ""\
+       "Well done."\
+       ""\
+       "Mission will conclude shortly..."
+       m_aFactions {
+        "GC_Federal"
+       }
+      }
+      GC_MessageAction "{465DE6F7361D1FEF}" {
+       m_sTitle "FEDERAL VICTORY - Mobsters destroyed"
+       m_sMessage "Today is a tragedy."\
+       "We spent years working toward this moment, only for it to be undone by corrupt federal agents. Many men died trying to build something better for everyone."\
+       "May God rest their souls."\
+       ""\
+       "Mission will conclude shortly..."\
+       ""\
+       ""
+       m_aFactions {
+        "GC_Mobster"
+       }
+      }
+     }
+    }
+    GC_Event "{76127219865E850D}" {
+     m_sName "BluforMajorWin (0.1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C11880785A256D98}" {
+       m_sEventName "BluforMajorWin"
+      }
+     }
+     m_Advanced GC_EventOptions "{B11B02BEE76D7EE0}" {
+      m_fDelay 0.1
+     }
+     m_aActions {
+      GC_EventControlAction "{67D3FD69571E2AF1}" {
+       m_sEventName "DeadBossFlag"
+       m_iOperation 1
+      }
+      GC_EventControlAction "{A1042BD11FF7FFC8}" {
+       m_sEventName "DeadBossMessage"
+       m_iOperation 1
+      }
+     }
+    }
+    GC_Event "{4E6E8EDE09FF2BB2}" {
+     m_sName "BluforRegularWin"
+     m_aConditions {
+      GC_ConditionGroup "{57D74780946A5641}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{603BF9CD34DA9C23}" {
+         m_sFlagName "BossesDead"
+        }
+        GC_AreaCondition "{DDBD4D319F2F1C15}" {
+         m_sArea "GC_MigrationArea_FederalExtract"
+         m_Targets GC_CharacterAreaTargets "{EB94582BE5578369}" {
+          m_aFactions {
+           "GC_Federal"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{0A96D7743EAB34D9}" {
+          m_fRequiredShare 0.66
+          m_bWholeMission 1
+          m_bAtMost 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{4C9418B522ED08CC}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5C1F6E4EEB37585E}" {
+       m_sMessage "BluforRegularWin"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{EA136D0C435EBFFD}" {
+     m_sName "BluforRegularWin (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5A46ACFF8FB8872F}" {
+       m_sEventName "BluforRegularWin"
+      }
+     }
+     m_Advanced GC_EventOptions "{F37E603FE0C034A8}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{36BE4212018F4E19}" {
+       m_sTitle "FEDERAL VICTORY - Mobsters decapitated"
+       m_sMessage "Great work, gentlemen!"\
+       "Our decapitation strike has killed the mob bosses and stopped peace negotiations. We've protected our interests."\
+       ""\
+       "Well done."\
+       ""\
+       "Mission will conclude shortly..."
+       m_aFactions {
+        "GC_Federal"
+       }
+      }
+      GC_MessageAction "{0799D6671C6B84A5}" {
+       m_sTitle "FEDERAL VICTORY - Mobsters decapitated"
+       m_sMessage "Today is a tragedy."\
+       "We spent years working toward this moment, only for it to be undone by corrupt federal agents who managed to also flee. Our great leaders shall be remembered."\
+       "May God rest their souls."\
+       ""\
+       "Mission will conclude shortly..."\
+       ""\
+       ""
+       m_aFactions {
+        "GC_Mobster"
+       }
+      }
+     }
+    }
+    GC_Event "{5ACF965CC7CF436D}" {
+     m_sName "GC_MigrationAreaStatus_AAD55873DFCB456E"
+     m_aConditions {
+      GC_AreaCondition "{131E326F418BBF09}" {
+       m_sArea "MeetingTrigger"
+       m_Targets GC_NamedAreaTargets "{7523D40B04B0A3CF}" {
+        m_aNames {
+         "BrownMobBoss" "GreyMobBoss"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{693E259E35EB0719}" {
+        m_fRequiredProportion 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{C0EA02B7A6E7976E}" {
+        m_fSeconds 1350
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+        m_Messages GC_CaptureMessages "{6922688A542F694C}" {
+         m_sLocation "the location"
+         m_aFactions {
+          "GC_Mobster"
+         }
+         m_sCaptured "MEETING COMPLETED! Quickly get to the telephone on the ground floor in the brown lodge and spread the word!"
+         m_sCapturing "The meeting has begun inside the lodge. (Bosses don't leave)"
+         m_sCaptureInterrupted ""
+         m_sLost ""
+         m_sLosing ""
+         m_sLossInterrupted "The meeting has been interupted. A mob boss has left the building."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C2F3F4CB6836CE47}" {
+       m_sMessage "GC_MigrationAreaStatus_AAD55873DFCB456E"
+       m_iDelivery 2
+      }
+      GC_FlagAction "{3618C184057BF7BA}" {
+       m_sFlagName "MeetingCompleted"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{6F30C6AA752FBC5B}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{E808F2AF18CA0FB7}" {
+       m_fSeconds 60.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{2B1002B179BA0AB2}" {
+       m_aEntities {
+        "BluforSetup"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 2449.227 50.082 596.014
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{68A76936E1E3F9CC}" : "{934A933E262AAE53}worlds/TheLocalPub/PublicEnemies/Configs/Factions/GC_Federal.conf" {
+     UIInfo SCR_FactionUIInfo "{528C961236B7DCD3}" {
+     }
+    }
+    SCR_Faction "{68A9349EF459F058}" : "{CAACDEAAF4508D82}worlds/TheLocalPub/PublicEnemies/Configs/Factions/GC_Mobsters.conf" {
+    }
+   }
+  }
+ }
+}

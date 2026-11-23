@@ -1,0 +1,30 @@
+GC_RadiusAreaEntity GC_MigrationArea_FederalExtract : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 2768.091 54.638 1005.655
+ m_fRadius 200
+}
+GenericEntity TelephoneInteract1 : "{B48D431A323D4564}Prefabs/Logic/Mission/Interaction.et" {
+ components {
+  GC_MissionInteractionComponent "{DCEC291493734CD4}" {
+   m_sActionName "Spread the word! (END MISSION)"
+   m_sCallFlag "EndMission"
+   m_bSingleUse 1
+   m_sRequiredFlag "MeetingCompleted"
+  }
+  ActionsManagerComponent "{ADA66F0D5EA84AC2}" {
+   additionalActions {
+    GC_MissionInteractionAction "{4F65BF8AFE944D18}" {
+     VisibilityRange -3.1
+     Duration 5
+    }
+   }
+  }
+ }
+ coords 2779.871 61.771 1024.401
+}
+GC_RadiusAreaEntity MeetingTrigger : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 2774.278 60.981 1021.933
+ m_fRadius 15
+}
+SCR_EditorRestrictionZoneEntity BluforSetup : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 860.465 65.058 369.418
+}
