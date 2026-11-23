@@ -1,0 +1,2452 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 0 0 0
+}
+GC_LobbyGameMode GC_MigratedMission : "{6A3B1474DC47FE67}worlds/Til/CompanyTeamCounterAttack/CompanyTeamCounterAttack_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{662D2CB0E8301EF1}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 12
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{7F1B80A6F1AF3D0D}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{EB49D82110D24FD9}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 300
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{532CF7E7B4CD951E}" {
+     m_sName "US Defeat"
+     m_aConditions {
+      GC_CustomScriptCondition "{62D8CE3CE971CC55}" {
+       m_Script GC_PeakFactionPopulationCheck "{F03EA438B64D2F3C}" {
+        m_sFaction "US"
+        m_fRatio 0.75
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6B08C1AA92B7ACF0}" {
+       m_sMessage "US Defeat"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{383A8400C32EA071}" {
+     m_sName "US Defeat (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{060ADED92CB73917}" {
+       m_sEventName "US Defeat"
+      }
+     }
+     m_Advanced GC_EventOptions "{D3D9D5017A320C29}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{27290943542B9179}" {
+       m_sTitle "US DEFEAT"
+       m_sMessage "The tank and mechanized infantrry company team suffered heavy casualties."
+      }
+     }
+    }
+    GC_Event "{0DF017FBD9DF8BAD}" {
+     m_sName "US Victory"
+     m_aConditions {
+      GC_ConditionGroup "{FD047EE2651010DB}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{93A2BA9EC963AB82}" {
+         m_sArea "cap_pauhu"
+         m_Targets GC_NamedAreaTargets "{F0BFAD2C6B08EFEA}" {
+          m_aNames {
+           "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+          }
+          m_bCountMissingAsOutside 1
+          m_bExcludeDestroyed 1
+         }
+         m_Requirement GC_LivingProportion "{4268443FAEAEAAD7}" {
+          m_fRequiredProportion 0.2
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{36582C80B1D66E57}" {
+          m_fSeconds 120
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{61CE34D37D1B6A7C}" {
+           m_sLocation "Pauhu"
+           m_aFactions {
+            "US"
+           }
+           m_sCaptured "US forces assaulted %2."
+           m_sCapturing "US forces are assaulting %2."
+           m_sCaptureInterrupted "US forces are no longer assaulting %2."
+           m_sLost "US forces lost control of %2."
+           m_sLosing "US forces are losing control of %2."
+           m_sLossInterrupted "US forces are no longer losing control of %2."
+          }
+         }
+        }
+        GC_ConditionGroup "{C37F9F996CB8E7BF}" {
+         m_iMatch 1
+         m_aConditions {
+          GC_AreaCondition "{A197336324428957}" {
+           m_sArea "cap_koskelankyla"
+           m_Targets GC_NamedAreaTargets "{07B3435DBA5167AD}" {
+            m_aNames {
+             "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+            }
+            m_bCountMissingAsOutside 1
+            m_bExcludeDestroyed 1
+           }
+           m_Requirement GC_LivingProportion "{949369F887C95BE4}" {
+            m_fRequiredProportion 0.2
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{F6F0FD3F16E7ACB4}" {
+            m_fSeconds 120
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+            m_Messages GC_CaptureMessages "{7B3299D2E0CBF5FD}" {
+             m_sLocation "Koskelankyla"
+             m_aFactions {
+              "US"
+             }
+             m_sCaptured "US forces assaulted %2."
+             m_sCapturing "US forces are assaulting %2."
+             m_sCaptureInterrupted "US forces are no longer assaulting %2."
+             m_sLost "US forces lost control of %2."
+             m_sLosing "US forces are losing control of %2."
+             m_sLossInterrupted "US forces are no longer losing control of %2."
+            }
+           }
+          }
+          GC_AreaCondition "{234E4B7B4AEBBE9D}" {
+           m_sArea "cap_virpimaki"
+           m_Targets GC_NamedAreaTargets "{98A3B03997BD2716}" {
+            m_aNames {
+             "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+            }
+            m_bCountMissingAsOutside 1
+            m_bExcludeDestroyed 1
+           }
+           m_Requirement GC_LivingProportion "{9E877B48519F22A0}" {
+            m_fRequiredProportion 0.2
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{2BA0D28ED7640908}" {
+            m_fSeconds 120
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+            m_Messages GC_CaptureMessages "{84C00EEC35357E71}" {
+             m_sLocation "Virpimaki"
+             m_aFactions {
+              "US"
+             }
+             m_sCaptured "US forces assaulted %2."
+             m_sCapturing "US forces are assaulting %2."
+             m_sCaptureInterrupted "US forces are no longer assaulting %2."
+             m_sLost "US forces lost control of %2."
+             m_sLosing "US forces are losing control of %2."
+             m_sLossInterrupted "US forces are no longer losing control of %2."
+            }
+           }
+          }
+         }
+        }
+        GC_ConditionGroup "{9D25D87523E6E54C}" {
+         m_iMatch 1
+         m_aConditions {
+          GC_ConditionGroup "{0E15EE5D6C1549FF}" {
+           m_iMatch 0
+           m_aConditions {
+            GC_AreaCondition "{13F67C7CA05D4C35}" {
+             m_sArea "cap_ruha"
+             m_Targets GC_NamedAreaTargets "{3D3E589C627EBA0C}" {
+              m_aNames {
+               "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+              }
+              m_bCountMissingAsOutside 1
+              m_bExcludeDestroyed 1
+             }
+             m_Requirement GC_LivingProportion "{396E76D01B141EF1}" {
+              m_fRequiredProportion 0.2
+              m_bWholeNumberQuotient 1
+             }
+             m_Capture GC_AreaCaptureOptions "{6BA40CA5DFE48B14}" {
+              m_fSeconds 120
+              m_bUseElapsedTime 1
+              m_iInterruption 3
+              m_bStopAfterFirstChange 1
+              m_Messages GC_CaptureMessages "{1593A22627CE1E39}" {
+               m_sLocation "Ruha"
+               m_aFactions {
+                "US"
+               }
+               m_sCaptured "US forces assaulted %2."
+               m_sCapturing "US forces are assaulting %2."
+               m_sCaptureInterrupted "US forces are no longer assaulting %2."
+               m_sLost "US forces lost control of %2."
+               m_sLosing "US forces are losing control of %2."
+               m_sLossInterrupted "US forces are no longer losing control of %2."
+              }
+             }
+            }
+            GC_AreaCondition "{35595D3579FB3F6F}" {
+             m_sArea "cap_muilunkyla"
+             m_Targets GC_NamedAreaTargets "{A2B7DDFCBE4C6ED8}" {
+              m_aNames {
+               "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+              }
+              m_bCountMissingAsOutside 1
+              m_bExcludeDestroyed 1
+             }
+             m_Requirement GC_LivingProportion "{729F5B23AC8FD499}" {
+              m_fRequiredProportion 0.2
+              m_bWholeNumberQuotient 1
+             }
+             m_Capture GC_AreaCaptureOptions "{B2E0E87DBE858C48}" {
+              m_fSeconds 120
+              m_bUseElapsedTime 1
+              m_iInterruption 3
+              m_bStopAfterFirstChange 1
+              m_Messages GC_CaptureMessages "{07A13CF970594223}" {
+               m_sLocation "Muilunkyla"
+               m_aFactions {
+                "US"
+               }
+               m_sCaptured "US forces assaulted %2."
+               m_sCapturing "US forces are assaulting %2."
+               m_sCaptureInterrupted "US forces are no longer assaulting %2."
+               m_sLost "US forces lost control of %2."
+               m_sLosing "US forces are losing control of %2."
+               m_sLossInterrupted "US forces are no longer losing control of %2."
+              }
+             }
+            }
+            GC_AreaCondition "{10CB8B963AD1C2E3}" {
+             m_sArea "cap_ruhanpera"
+             m_Targets GC_NamedAreaTargets "{0EA8765F622AD307}" {
+              m_aNames {
+               "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+              }
+              m_bCountMissingAsOutside 1
+              m_bExcludeDestroyed 1
+             }
+             m_Requirement GC_LivingProportion "{9EC1F3CBFF22AD16}" {
+              m_fRequiredProportion 0.2
+              m_bWholeNumberQuotient 1
+             }
+             m_Capture GC_AreaCaptureOptions "{8D6E843EA8C42317}" {
+              m_fSeconds 120
+              m_bUseElapsedTime 1
+              m_iInterruption 3
+              m_bStopAfterFirstChange 1
+              m_Messages GC_CaptureMessages "{917F07607556056F}" {
+               m_sLocation "Ruhanpera"
+               m_aFactions {
+                "US"
+               }
+               m_sCaptured "US forces assaulted %2."
+               m_sCapturing "US forces are assaulting %2."
+               m_sCaptureInterrupted "US forces are no longer assaulting %2."
+               m_sLost "US forces lost control of %2."
+               m_sLosing "US forces are losing control of %2."
+               m_sLossInterrupted "US forces are no longer losing control of %2."
+              }
+             }
+            }
+           }
+          }
+          GC_ConditionGroup "{4FA24E8A5B51376D}" {
+           m_iMatch 0
+           m_aConditions {
+            GC_AreaCondition "{76D5465F611F9D22}" {
+             m_sArea "cap_latvamuilu"
+             m_Targets GC_NamedAreaTargets "{E9E52BD605292690}" {
+              m_aNames {
+               "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+              }
+              m_bCountMissingAsOutside 1
+              m_bExcludeDestroyed 1
+             }
+             m_Requirement GC_LivingProportion "{B09B23629C77E6C5}" {
+              m_fRequiredProportion 0.2
+              m_bWholeNumberQuotient 1
+             }
+             m_Capture GC_AreaCaptureOptions "{56B20AF9C89DC205}" {
+              m_fSeconds 120
+              m_bUseElapsedTime 1
+              m_iInterruption 3
+              m_bStopAfterFirstChange 1
+              m_Messages GC_CaptureMessages "{271EDEE276AB396A}" {
+               m_sLocation "Latvamuilu"
+               m_aFactions {
+                "US"
+               }
+               m_sCaptured "US forces assaulted %2."
+               m_sCapturing "US forces are assaulting %2."
+               m_sCaptureInterrupted "US forces are no longer assaulting %2."
+               m_sLost "US forces lost control of %2."
+               m_sLosing "US forces are losing control of %2."
+               m_sLossInterrupted "US forces are no longer losing control of %2."
+              }
+             }
+            }
+            GC_AreaCondition "{4D0F664E68F435AE}" {
+             m_sArea "cap_lehto"
+             m_Targets GC_NamedAreaTargets "{D48D2420F8A4E08C}" {
+              m_aNames {
+               "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+              }
+              m_bCountMissingAsOutside 1
+              m_bExcludeDestroyed 1
+             }
+             m_Requirement GC_LivingProportion "{52A626E7E9E95BBB}" {
+              m_fRequiredProportion 0.2
+              m_bWholeNumberQuotient 1
+             }
+             m_Capture GC_AreaCaptureOptions "{CB56BAA9692FADE7}" {
+              m_fSeconds 120
+              m_bUseElapsedTime 1
+              m_iInterruption 3
+              m_bStopAfterFirstChange 1
+              m_Messages GC_CaptureMessages "{A84DCFFFBE80E1F6}" {
+               m_sLocation "Lehto"
+               m_aFactions {
+                "US"
+               }
+               m_sCaptured "US forces assaulted %2."
+               m_sCapturing "US forces are assaulting %2."
+               m_sCaptureInterrupted "US forces are no longer assaulting %2."
+               m_sLost "US forces lost control of %2."
+               m_sLosing "US forces are losing control of %2."
+               m_sLossInterrupted "US forces are no longer losing control of %2."
+              }
+             }
+            }
+            GC_AreaCondition "{467200DA718E0DA7}" {
+             m_sArea "cap_valimaki"
+             m_Targets GC_NamedAreaTargets "{B2BAE909B3DF76B7}" {
+              m_aNames {
+               "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+              }
+              m_bCountMissingAsOutside 1
+              m_bExcludeDestroyed 1
+             }
+             m_Requirement GC_LivingProportion "{B2CED1C07AE42025}" {
+              m_fRequiredProportion 0.2
+              m_bWholeNumberQuotient 1
+             }
+             m_Capture GC_AreaCaptureOptions "{F47E9A189BB19106}" {
+              m_fSeconds 120
+              m_bUseElapsedTime 1
+              m_iInterruption 3
+              m_bStopAfterFirstChange 1
+              m_Messages GC_CaptureMessages "{DF7F7CF9AEA8ED7F}" {
+               m_sLocation "Valimaki"
+               m_aFactions {
+                "US"
+               }
+               m_sCaptured "US forces assaulted %2."
+               m_sCapturing "US forces are assaulting %2."
+               m_sCaptureInterrupted "US forces are no longer assaulting %2."
+               m_sLost "US forces lost control of %2."
+               m_sLosing "US forces are losing control of %2."
+               m_sLossInterrupted "US forces are no longer losing control of %2."
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9F8FC9748F073755}" {
+       m_sMessage "US Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AF69AC4BD9A1CCBB}" {
+     m_sName "US Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C8F455E1C4FC3F20}" {
+       m_sEventName "US Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{57CFBD85291956F7}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{1CC8B66B0ABC8170}" {
+       m_sTitle "US VICTORY"
+       m_sMessage "The tank and mechanized infantry company team accomplished its mission."
+      }
+     }
+    }
+    GC_Event "{7D54D579D2547E5D}" {
+     m_sName "Delete NVA AI: 1+2"
+     m_aConditions {
+      GC_AreaCondition "{08ACBFF52463E2AC}" {
+       m_sArea "coy_3_trigger"
+       m_Targets GC_CharacterAreaTargets "{38D28F04CF4ED58F}" {
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{3962E665DBACAE0B}" {
+        m_fRequiredShare 0.01
+        m_bWholeMission 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{684A8BDE0B982D84}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E34342309B63FA38}" {
+       m_sMessage "Delete NVA AI: 1+2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{47AD01BB4EEAA4CA}" {
+     m_sName "Delete NVA AI: 1+2 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{54B2B72F0526A23F}" {
+       m_sEventName "Delete NVA AI: 1+2"
+      }
+     }
+     m_Advanced GC_EventOptions "{01E9AB7E950B633D}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{5D0AAC77F5748A20}" {
+       m_aEntities {
+        "nva_1_1"
+        "nva_1_2"
+        "nva_1_3"
+        "nva_1_hq"
+        "nva_2_1"
+        "nva_2_2"
+        "nva_2_3"
+        "nva_2_hq"
+       }
+      }
+     }
+    }
+    GC_Event "{09FA4AE75F1263B5}" {
+     m_sName "Delete US AI: Koskelankyla"
+     m_aConditions {
+      GC_AreaCondition "{8432F89D968DCFFA}" {
+       m_sArea "cap_koskelankyla"
+       m_Targets GC_NamedAreaTargets "{3BEBEA246E69EF20}" {
+        m_aNames {
+         "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{851811F767587660}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{2C875D3086E7A2CF}" {
+        m_fSeconds 120
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B978782972D1BFEF}" {
+       m_sMessage "Delete US AI: Koskelankyla"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{39959670C26A5AA5}" {
+     m_sName "Delete US AI: Koskelankyla (120s)"
+     m_aConditions {
+      GC_MissionEventCondition "{318F00E23917984E}" {
+       m_sEventName "Delete US AI: Koskelankyla"
+      }
+     }
+     m_Advanced GC_EventOptions "{E390671912112F58}" {
+      m_fDelay 120
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{2AB6E2332FCCF08A}" {
+       m_aEntities {
+        "us_koskelankyla_1"
+        "us_koskelankyla_2"
+       }
+      }
+     }
+    }
+    GC_Event "{080D1A679ED71915}" {
+     m_sName "Delete US AI: Latvamuilu"
+     m_aConditions {
+      GC_AreaCondition "{F88D6CF04C74FD1B}" {
+       m_sArea "cap_latvamuilu"
+       m_Targets GC_NamedAreaTargets "{FC37C53CDC8AE524}" {
+        m_aNames {
+         "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{656A9E709E6E6070}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{19506972A750EE65}" {
+        m_fSeconds 120
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{406DB3D461BFC862}" {
+       m_sMessage "Delete US AI: Latvamuilu"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0CF467C26226A409}" {
+     m_sName "Delete US AI: Latvamuilu (120s)"
+     m_aConditions {
+      GC_MissionEventCondition "{84AAF1952F590A78}" {
+       m_sEventName "Delete US AI: Latvamuilu"
+      }
+     }
+     m_Advanced GC_EventOptions "{5808783D90C114CB}" {
+      m_fDelay 120
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{0D9A1EC9B83976D2}" {
+       m_aEntities {
+        "us_latvamuilu_1"
+        "us_latvamuilu_2"
+       }
+      }
+     }
+    }
+    GC_Event "{416052ACE850A342}" {
+     m_sName "Delete US AI: Lehto"
+     m_aConditions {
+      GC_AreaCondition "{55ABE980F61853D4}" {
+       m_sArea "cap_lehto"
+       m_Targets GC_NamedAreaTargets "{EE3442509EF3BC03}" {
+        m_aNames {
+         "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{D7CDC4AD55711E03}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{36F7B9CF2051E4DA}" {
+        m_fSeconds 120
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E3EC77BF2A1D4F48}" {
+       m_sMessage "Delete US AI: Lehto"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7FF1C6B714FD4BB6}" {
+     m_sName "Delete US AI: Lehto (120s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D1B772828975BDE9}" {
+       m_sEventName "Delete US AI: Lehto"
+      }
+     }
+     m_Advanced GC_EventOptions "{26274072B2FFD3DE}" {
+      m_fDelay 120
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{B251FC8A0D6F4917}" {
+       m_aEntities {
+        "us_lehto_1"
+        "us_lehto_2"
+       }
+      }
+     }
+    }
+    GC_Event "{DF3FB0AB5D0A77D3}" {
+     m_sName "Delete US AI: Muilunkyla"
+     m_aConditions {
+      GC_AreaCondition "{ECF91862D0F562E6}" {
+       m_sArea "cap_muilunkyla"
+       m_Targets GC_NamedAreaTargets "{250D1A978F296521}" {
+        m_aNames {
+         "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{8FB6473CF4FE2CD3}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{31B087E5A40F7D39}" {
+        m_fSeconds 120
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{19EB4AD75482585F}" {
+       m_sMessage "Delete US AI: Muilunkyla"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C8D0CD79E50B2ACF}" {
+     m_sName "Delete US AI: Muilunkyla (120s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A5137B19B0B9FBA3}" {
+       m_sEventName "Delete US AI: Muilunkyla"
+      }
+     }
+     m_Advanced GC_EventOptions "{5420A6BBD7BABC5C}" {
+      m_fDelay 120
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{F0E5CACE476B3339}" {
+       m_aEntities {
+        "us_muilunkyla_1"
+        "us_muilunkyla_2"
+       }
+      }
+     }
+    }
+    GC_Event "{32FC27E6E3493B8E}" {
+     m_sName "Delete US AI: Pauhu"
+     m_aConditions {
+      GC_AreaCondition "{51FA14747DAED9CF}" {
+       m_sArea "cap_pauhu"
+       m_Targets GC_NamedAreaTargets "{67C9BBEDC564226B}" {
+        m_aNames {
+         "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{1E12AE52E8B05E13}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{FBF0DE0ABC8FAB00}" {
+        m_fSeconds 120
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8AEC35DA31DE6342}" {
+       m_sMessage "Delete US AI: Pauhu"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{DC04C5E2C96DA73B}" {
+     m_sName "Delete US AI: Pauhu (120s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1CAA82B80EE00A4F}" {
+       m_sEventName "Delete US AI: Pauhu"
+      }
+     }
+     m_Advanced GC_EventOptions "{309B0374FFE9B8CC}" {
+      m_fDelay 120
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{E35A97534CB4D1F8}" {
+       m_aEntities {
+        "us_pauhu_1"
+        "us_pauhu_2"
+       }
+      }
+     }
+    }
+    GC_Event "{1BB24F34E74C9DD8}" {
+     m_sName "Delete US AI: Ruha"
+     m_aConditions {
+      GC_AreaCondition "{A0175E2D899B22BD}" {
+       m_sArea "cap_ruha"
+       m_Targets GC_NamedAreaTargets "{1DB889B33A6B61A4}" {
+        m_aNames {
+         "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{CE0B1DF59D2BDE41}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{265A9B615A97A11B}" {
+        m_fSeconds 120
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{75315180185EBCC0}" {
+       m_sMessage "Delete US AI: Ruha"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5430D2A71C506D06}" {
+     m_sName "Delete US AI: Ruha (120s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8E15AD1C37A1AD9A}" {
+       m_sEventName "Delete US AI: Ruha"
+      }
+     }
+     m_Advanced GC_EventOptions "{BF10770A972F4088}" {
+      m_fDelay 120
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{1C652D9273CF1442}" {
+       m_aEntities {
+        "us_ruha_1"
+        "us_ruha_2"
+       }
+      }
+     }
+    }
+    GC_Event "{7F7377A373CB030B}" {
+     m_sName "Delete US AI: Ruhanpera"
+     m_aConditions {
+      GC_AreaCondition "{9D16B404E0ED354F}" {
+       m_sArea "cap_ruhanpera"
+       m_Targets GC_NamedAreaTargets "{6AC0E655ECDAE999}" {
+        m_aNames {
+         "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{BCB5D5663275B148}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{ED0DCDE0817FD39B}" {
+        m_fSeconds 120
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4DEEDF667A852556}" {
+       m_sMessage "Delete US AI: Ruhanpera"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{48904650ABF021B4}" {
+     m_sName "Delete US AI: Ruhanpera (120s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E429ACFC653B99E5}" {
+       m_sEventName "Delete US AI: Ruhanpera"
+      }
+     }
+     m_Advanced GC_EventOptions "{ED9750FF4D12A295}" {
+      m_fDelay 120
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{44C66F97242D6C7F}" {
+       m_aEntities {
+        "us_ruhanpera_1"
+        "us_ruhanpera_2"
+       }
+      }
+     }
+    }
+    GC_Event "{2A521653FE84825F}" {
+     m_sName "Delete US AI: Valimaki"
+     m_aConditions {
+      GC_AreaCondition "{03F29BA627492A1B}" {
+       m_sArea "cap_valimaki"
+       m_Targets GC_NamedAreaTargets "{C065522EC98270B8}" {
+        m_aNames {
+         "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{3E7592D68142402B}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{D11F931117342BB3}" {
+        m_fSeconds 120
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2AA470783CEFCC17}" {
+       m_sMessage "Delete US AI: Valimaki"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{92B6586699204B92}" {
+     m_sName "Delete US AI: Valimaki (120s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F2C4EDC3ABB51B61}" {
+       m_sEventName "Delete US AI: Valimaki"
+      }
+     }
+     m_Advanced GC_EventOptions "{F9A50B93A0DA98D2}" {
+      m_fDelay 120
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{89AEB9B60A2B38E4}" {
+       m_aEntities {
+        "us_valimaki_1"
+        "us_valimaki_2"
+       }
+      }
+     }
+    }
+    GC_Event "{B1B21E32C74CF677}" {
+     m_sName "Delete US AI: Virpimaki"
+     m_aConditions {
+      GC_AreaCondition "{9D2D005D2D7A3B47}" {
+       m_sArea "cap_virpimaki"
+       m_Targets GC_NamedAreaTargets "{AF6561AFD68D2719}" {
+        m_aNames {
+         "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{3345588C1B4183B5}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{C92032FCC688C7D0}" {
+        m_fSeconds 120
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{BADE4A634299B421}" {
+       m_sMessage "Delete US AI: Virpimaki"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{64CC910D04161E19}" {
+     m_sName "Delete US AI: Virpimaki (120s)"
+     m_aConditions {
+      GC_MissionEventCondition "{7AB2CCB05BE25028}" {
+       m_sEventName "Delete US AI: Virpimaki"
+      }
+     }
+     m_Advanced GC_EventOptions "{04FD401B7EB40083}" {
+      m_fDelay 120
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{9BC1B2BF546FC52E}" {
+       m_aEntities {
+        "us_virpimaki_1"
+        "us_virpimaki_2"
+       }
+      }
+     }
+    }
+    GC_Event "{EC2136BCE5728C9C}" {
+     m_sName "GC_MigratedSpawn_8F2EA64D96BD43AE"
+     m_aConditions {
+      GC_AreaCondition "{77AA95345F20D9DC}" {
+       m_sArea "coy_3_trigger"
+       m_Targets GC_CharacterAreaTargets "{375B7D238866D97F}" {
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{562A422D9EA94439}" {
+        m_fRequiredShare 0.01
+        m_bWholeMission 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{304C7DAE3D74F5A7}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{138526DCFD50F2A6}" {
+       m_sMessage "GC_MigratedSpawn_8F2EA64D96BD43AE"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0ED0B73EA461B479}" {
+     m_sName "GC_MigratedSpawn_8F2EA64D96BD43AE (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1D17753D4F73CA1B}" {
+       m_sEventName "GC_MigratedSpawn_8F2EA64D96BD43AE"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{0ED0B73EA461B479}" {
+       m_Spawn GC_AIGroupSpawn "{4B2FE65393BCADE5}" {
+        m_sLocation "GC_Spawner_8F2EA64D96BD43AE"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+       }
+      }
+     }
+    }
+    GC_Event "{05E2838C72F83DEC}" {
+     m_sName "GC_MigratedSpawn_D67C2F84E5841875"
+     m_aConditions {
+      GC_AreaCondition "{EFAA6E004BAA2913}" {
+       m_sArea "coy_3_trigger"
+       m_Targets GC_CharacterAreaTargets "{7FD71D769210CC9A}" {
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{97C3A6007D2F9214}" {
+        m_fRequiredShare 0.01
+        m_bWholeMission 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{09C55AF4C313B805}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7A75DEEF362B8CC7}" {
+       m_sMessage "GC_MigratedSpawn_D67C2F84E5841875"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{44C81619B7064185}" {
+     m_sName "GC_MigratedSpawn_D67C2F84E5841875 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F1DE5C7E6728E3CB}" {
+       m_sEventName "GC_MigratedSpawn_D67C2F84E5841875"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{44C81619B7064185}" {
+       m_Spawn GC_AIGroupSpawn "{ECA3EE4CA6992818}" {
+        m_sLocation "GC_Spawner_D67C2F84E5841875"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+       }
+      }
+     }
+    }
+    GC_Event "{59F22AC77A83AD67}" {
+     m_sName "GC_MigratedSpawn_924C4FE9793D22EE"
+     m_aConditions {
+      GC_AreaCondition "{6D6683A79D07237B}" {
+       m_sArea "coy_3_trigger"
+       m_Targets GC_CharacterAreaTargets "{D368D067BD601912}" {
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{ED19F04D61509482}" {
+        m_fRequiredShare 0.01
+        m_bWholeMission 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{C3C539B8888A2BD7}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B5B3B37C22EE286D}" {
+       m_sMessage "GC_MigratedSpawn_924C4FE9793D22EE"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6D992A5DDF01A8A1}" {
+     m_sName "GC_MigratedSpawn_924C4FE9793D22EE (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{EC98C1D712E8A854}" {
+       m_sEventName "GC_MigratedSpawn_924C4FE9793D22EE"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{6D992A5DDF01A8A1}" {
+       m_Spawn GC_AIGroupSpawn "{AB94C1EBFDFE12A1}" {
+        m_sLocation "GC_Spawner_924C4FE9793D22EE"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+       }
+      }
+     }
+    }
+    GC_Event "{6DBD2ACB2248CBA2}" {
+     m_sName "GC_MigratedSpawn_C02FBAB833FA268F"
+     m_aConditions {
+      GC_AreaCondition "{F4EE7564FD73D719}" {
+       m_sArea "coy_3_trigger"
+       m_Targets GC_CharacterAreaTargets "{7DE4D6D9E78C2FED}" {
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{4E6BBB72ACD0E460}" {
+        m_fRequiredShare 0.01
+        m_bWholeMission 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{90AFFA3E50D96F09}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1824811294447725}" {
+       m_sMessage "GC_MigratedSpawn_C02FBAB833FA268F"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A46B414B0D0AE828}" {
+     m_sName "GC_MigratedSpawn_C02FBAB833FA268F (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{EE421AE40A9260C7}" {
+       m_sEventName "GC_MigratedSpawn_C02FBAB833FA268F"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{A46B414B0D0AE828}" {
+       m_Spawn GC_AIGroupSpawn "{FF4B7FAB4F3E2EB4}" {
+        m_sLocation "GC_Spawner_C02FBAB833FA268F"
+        m_sPrefab "{ECE5B52C1476B039}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_CHQ.et"
+       }
+      }
+     }
+    }
+    GC_Event "{77E6B4C590FFCE9C}" {
+     m_sName "GC_MigratedSpawn_71A5502686498BA1"
+     m_aConditions {
+      GC_AreaCondition "{7D315A97D86149DB}" {
+       m_sArea "coy_3_trigger"
+       m_Targets GC_CharacterAreaTargets "{3C72DFB6FF23AFB5}" {
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{2B65272D158CEC90}" {
+        m_fRequiredShare 0.01
+        m_bWholeMission 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{DE0A66C626D330AD}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DB92F418556D0AF2}" {
+       m_sMessage "GC_MigratedSpawn_71A5502686498BA1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A9C229F9505811F7}" {
+     m_sName "GC_MigratedSpawn_71A5502686498BA1 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4EA77D32B4989319}" {
+       m_sEventName "GC_MigratedSpawn_71A5502686498BA1"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{A9C229F9505811F7}" {
+       m_Spawn GC_AIGroupSpawn "{EC0D49ABD669B62A}" {
+        m_sLocation "GC_Spawner_71A5502686498BA1"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+       }
+      }
+     }
+    }
+    GC_Event "{6A6F64FAEBEEFF02}" {
+     m_sName "GC_MigratedSpawn_3DDCD676E54B6D96"
+     m_aConditions {
+      GC_AreaCondition "{1854E3404EEEA678}" {
+       m_sArea "coy_3_trigger"
+       m_Targets GC_CharacterAreaTargets "{1F45AFA0A8B1A618}" {
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{E3A0297B33E41751}" {
+        m_fRequiredShare 0.01
+        m_bWholeMission 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{D228B2827DD79F03}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E76510B6869CE489}" {
+       m_sMessage "GC_MigratedSpawn_3DDCD676E54B6D96"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{DB79847DABAF737B}" {
+     m_sName "GC_MigratedSpawn_3DDCD676E54B6D96 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3817D9A63A79DAD1}" {
+       m_sEventName "GC_MigratedSpawn_3DDCD676E54B6D96"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{DB79847DABAF737B}" {
+       m_Spawn GC_AIGroupSpawn "{FB313DDBAB0418E1}" {
+        m_sLocation "GC_Spawner_3DDCD676E54B6D96"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+       }
+      }
+     }
+    }
+    GC_Event "{DDF8DAD951A7EEBD}" {
+     m_sName "GC_MigratedSpawn_71631A49C957FB53"
+     m_aConditions {
+      GC_AreaCondition "{04F305FAE744EA19}" {
+       m_sArea "coy_3_trigger"
+       m_Targets GC_CharacterAreaTargets "{1AB971C0F135740C}" {
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{D8A014324FA57A4F}" {
+        m_fRequiredShare 0.01
+        m_bWholeMission 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{25559B4406DF28CE}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FFDC8A12BCEAFDFD}" {
+       m_sMessage "GC_MigratedSpawn_71631A49C957FB53"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7D8F91E822690AB3}" {
+     m_sName "GC_MigratedSpawn_71631A49C957FB53 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{19D9F615AE0B5C05}" {
+       m_sEventName "GC_MigratedSpawn_71631A49C957FB53"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{7D8F91E822690AB3}" {
+       m_Spawn GC_AIGroupSpawn "{5FA3EB4EA6DA3991}" {
+        m_sLocation "GC_Spawner_71631A49C957FB53"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+       }
+      }
+     }
+    }
+    GC_Event "{7552CABF57152430}" {
+     m_sName "GC_MigratedSpawn_60CFC6B0C2ACE295"
+     m_aConditions {
+      GC_AreaCondition "{0AB4293AA68B1D33}" {
+       m_sArea "coy_3_trigger"
+       m_Targets GC_CharacterAreaTargets "{79699527555935D4}" {
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{752D2B158E31E4D7}" {
+        m_fRequiredShare 0.01
+        m_bWholeMission 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{8A7ACBBD65BB0026}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4AC97CD0C54F26D8}" {
+       m_sMessage "GC_MigratedSpawn_60CFC6B0C2ACE295"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{EAB3BD86B6D73892}" {
+     m_sName "GC_MigratedSpawn_60CFC6B0C2ACE295 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D33C8D97B7FAD120}" {
+       m_sEventName "GC_MigratedSpawn_60CFC6B0C2ACE295"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{EAB3BD86B6D73892}" {
+       m_Spawn GC_AIGroupSpawn "{0A0513CAFA23126F}" {
+        m_sLocation "GC_Spawner_60CFC6B0C2ACE295"
+        m_sPrefab "{F357F0DCAC2F8A5B}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_PHQ.et"
+       }
+      }
+     }
+    }
+    GC_Event "{EB946D6683B02E21}" {
+     m_sName "GC_MigratedSpawn_54A3DABE1FD99337"
+     m_aConditions {
+      GC_AreaCondition "{7630940A741731ED}" {
+       m_sArea "coy_3_trigger"
+       m_Targets GC_CharacterAreaTargets "{6ADF57B8BCD5241B}" {
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{C25121057DE3B049}" {
+        m_fRequiredShare 0.01
+        m_bWholeMission 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{807B545B93FD61A3}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0769AFCC61F3942B}" {
+       m_sMessage "GC_MigratedSpawn_54A3DABE1FD99337"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{17BB82535F2CCC9F}" {
+     m_sName "GC_MigratedSpawn_54A3DABE1FD99337 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BC4FBA8C2CE9A196}" {
+       m_sEventName "GC_MigratedSpawn_54A3DABE1FD99337"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{17BB82535F2CCC9F}" {
+       m_Spawn GC_AIGroupSpawn "{204E24FDCFBCA66B}" {
+        m_sLocation "GC_Spawner_54A3DABE1FD99337"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+       }
+      }
+     }
+    }
+    GC_Event "{CED413A72D52ADBF}" {
+     m_sName "GC_MigratedSpawn_5CA263881DF2B0B6"
+     m_aConditions {
+      GC_AreaCondition "{C496EADEEF5BD62B}" {
+       m_sArea "coy_3_trigger"
+       m_Targets GC_CharacterAreaTargets "{499A005393FD7761}" {
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{EAE676CCE9A9CCBB}" {
+        m_fRequiredShare 0.01
+        m_bWholeMission 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{CCE1E4A224384462}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{CEF6ACADEA6B8D31}" {
+       m_sMessage "GC_MigratedSpawn_5CA263881DF2B0B6"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FAD27D1828A2E5CF}" {
+     m_sName "GC_MigratedSpawn_5CA263881DF2B0B6 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{029714BDB2A3A56E}" {
+       m_sEventName "GC_MigratedSpawn_5CA263881DF2B0B6"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{FAD27D1828A2E5CF}" {
+       m_Spawn GC_AIGroupSpawn "{7FE1E1EE63B8FA8F}" {
+        m_sLocation "GC_Spawner_5CA263881DF2B0B6"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+       }
+      }
+     }
+    }
+    GC_Event "{1D3678AB3FA05358}" {
+     m_sName "GC_MigratedSpawn_9B460662AB5A2EFC"
+     m_aConditions {
+      GC_AreaCondition "{24ED7E8CD2EA053F}" {
+       m_sArea "coy_3_trigger"
+       m_Targets GC_CharacterAreaTargets "{407249D26E2BE207}" {
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{235E729A8F0AFE83}" {
+        m_fRequiredShare 0.01
+        m_bWholeMission 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{6E29B134C6625CFB}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A04F36E3A4759A41}" {
+       m_sMessage "GC_MigratedSpawn_9B460662AB5A2EFC"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D0CBAB5C7106E5E0}" {
+     m_sName "GC_MigratedSpawn_9B460662AB5A2EFC (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{434DDC02649AF905}" {
+       m_sEventName "GC_MigratedSpawn_9B460662AB5A2EFC"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{D0CBAB5C7106E5E0}" {
+       m_Spawn GC_AIGroupSpawn "{BF27F4E714DFF236}" {
+        m_sLocation "GC_Spawner_9B460662AB5A2EFC"
+        m_sPrefab "{84EEEF18361F752D}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_RifleSquad.et"
+       }
+      }
+     }
+    }
+    GC_Event "{8AA1C34CDF70DE17}" {
+     m_sName "GC_MigratedSpawn_B8E151F69D95A88A"
+     m_aConditions {
+      GC_AreaCondition "{A72873C40EE879D2}" {
+       m_sArea "coy_3_trigger"
+       m_Targets GC_CharacterAreaTargets "{FD9EFB582934A31D}" {
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{E270CB3613EC0EEB}" {
+        m_fRequiredShare 0.01
+        m_bWholeMission 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{C5618616C6A8AC77}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{38F71CC2B0D6529D}" {
+       m_sMessage "GC_MigratedSpawn_B8E151F69D95A88A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{918A830DA3CBF2AB}" {
+     m_sName "GC_MigratedSpawn_B8E151F69D95A88A (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8E1B4ED1CC14F056}" {
+       m_sEventName "GC_MigratedSpawn_B8E151F69D95A88A"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{918A830DA3CBF2AB}" {
+       m_Spawn GC_AIGroupSpawn "{6AC14A9A12997669}" {
+        m_sLocation "GC_Spawner_B8E151F69D95A88A"
+        m_sPrefab "{F357F0DCAC2F8A5B}Prefabs/Groups/OPFOR/GC_NVA/Group_NVA_PHQ.et"
+       }
+      }
+     }
+    }
+    GC_Event "{AE77134C486C8F6D}" {
+     m_sName "GC_MigratedSpawn_8999FBD7D4EB9C6F"
+     m_aConditions {
+      GC_AreaCondition "{6937BA2CA627883C}" {
+       m_sArea "GC_MigrationArea_atk_koskelankyla"
+       m_Targets GC_NamedAreaTargets "{9737FB0A0F4A5D8C}" {
+        m_aNames {
+         "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{C4921CCEC010794A}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{FD178FD5E70F22CE}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DAF791C9E2B27DC3}" {
+       m_sMessage "GC_MigratedSpawn_8999FBD7D4EB9C6F"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{49497B101C740343}" {
+     m_sName "GC_MigratedSpawn_8999FBD7D4EB9C6F (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B5C9C20B6851D95F}" {
+       m_sEventName "GC_MigratedSpawn_8999FBD7D4EB9C6F"
+      }
+     }
+     m_Advanced GC_EventOptions "{DC833CF912EE4B4C}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{568424AF2772A12F}" {
+       m_Spawn GC_AIGroupSpawn "{1CEBC5EB98B1ACB5}" {
+        m_sLocation "sp_koskelankyla_1"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_sEntityName "us_koskelankyla_1"
+        m_aWaypoints {
+         "def5"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9EDD47C1CD00E57A}" {
+     m_sName "GC_MigratedSpawn_2CD91316AD12456F"
+     m_aConditions {
+      GC_AreaCondition "{D7E3749B996D03D4}" {
+       m_sArea "GC_MigrationArea_atk_koskelankyla"
+       m_Targets GC_NamedAreaTargets "{9E9307563BFF3695}" {
+        m_aNames {
+         "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{180EA53706C251C1}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{F84C9861202BB6C5}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0738AFFF81257CF3}" {
+       m_sMessage "GC_MigratedSpawn_2CD91316AD12456F"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7BC7638BB0D88656}" {
+     m_sName "GC_MigratedSpawn_2CD91316AD12456F (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8FA20F262D62A048}" {
+       m_sEventName "GC_MigratedSpawn_2CD91316AD12456F"
+      }
+     }
+     m_Advanced GC_EventOptions "{5E2837F978B1AAAE}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{AD73CFF40FFA4BE1}" {
+       m_Spawn GC_AIGroupSpawn "{270D4D425FDDFCD7}" {
+        m_sLocation "sp_koskelankyla_2"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_sEntityName "us_koskelankyla_2"
+        m_aWaypoints {
+         "def7"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A25A77D92DC715B4}" {
+     m_sName "GC_MigratedSpawn_9E252AA4E21B0C18"
+     m_aConditions {
+      GC_AreaCondition "{D86A90A030FCFCC0}" {
+       m_sArea "GC_MigrationArea_atk_pauhu"
+       m_Targets GC_NamedAreaTargets "{7A918EB436557340}" {
+        m_aNames {
+         "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{A85B123276A1A203}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{AADEE6EBB50522DC}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D7C61135FD4FDE27}" {
+       m_sMessage "GC_MigratedSpawn_9E252AA4E21B0C18"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{48CBBE9B593B1642}" {
+     m_sName "GC_MigratedSpawn_9E252AA4E21B0C18 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{527CAB637AABB3F1}" {
+       m_sEventName "GC_MigratedSpawn_9E252AA4E21B0C18"
+      }
+     }
+     m_Advanced GC_EventOptions "{2FEB3146390B236D}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{8493D38C30E06C32}" {
+       m_Spawn GC_AIGroupSpawn "{653AC7956381284D}" {
+        m_sLocation "sp_pauhu_1"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_sEntityName "us_pauhu_1"
+        m_aWaypoints {
+         "def2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{AA9FA5F11AAAECE4}" {
+     m_sName "GC_MigratedSpawn_EB19DB15270DEEFF"
+     m_aConditions {
+      GC_AreaCondition "{E660DAF7F8DAC289}" {
+       m_sArea "GC_MigrationArea_atk_pauhu"
+       m_Targets GC_NamedAreaTargets "{4CB0EF59E92E4E5C}" {
+        m_aNames {
+         "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{6988857E8A00E75A}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{F03B18AFB6E344BC}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{306273F4C834D7E6}" {
+       m_sMessage "GC_MigratedSpawn_EB19DB15270DEEFF"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B6862F3B79B770E4}" {
+     m_sName "GC_MigratedSpawn_EB19DB15270DEEFF (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A140F5B32E210B62}" {
+       m_sEventName "GC_MigratedSpawn_EB19DB15270DEEFF"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{B6862F3B79B770E4}" {
+       m_Spawn GC_AIGroupSpawn "{8A8FCDDFB4886955}" {
+        m_sLocation "sp_pauhu_2"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_sEntityName "us_pauhu_2"
+        m_aWaypoints {
+         "def1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B7F6977630AB5FBC}" {
+     m_sName "GC_MigratedSpawn_2DA12F4C6BF4F6D6"
+     m_aConditions {
+      GC_AreaCondition "{24697E276BA77CC6}" {
+       m_sArea "GC_MigrationArea_atk_virpimaki"
+       m_Targets GC_NamedAreaTargets "{6A3349148BE7BA63}" {
+        m_aNames {
+         "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{3A115A2DFBBD6159}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{86E056428CDD9397}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A183F059A0145E7C}" {
+       m_sMessage "GC_MigratedSpawn_2DA12F4C6BF4F6D6"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3615894808DF0E14}" {
+     m_sName "GC_MigratedSpawn_2DA12F4C6BF4F6D6 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E8A2FE05E209C6C7}" {
+       m_sEventName "GC_MigratedSpawn_2DA12F4C6BF4F6D6"
+      }
+     }
+     m_Advanced GC_EventOptions "{DFA1C0BFE8F7360F}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{0A432DF85503B8E0}" {
+       m_Spawn GC_AIGroupSpawn "{A10142946CCA6320}" {
+        m_sLocation "sp_virpimaki_1"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_sEntityName "us_virpimaki_1"
+        m_aWaypoints {
+         "def10"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F6671C3D9E4C10D6}" {
+     m_sName "GC_MigratedSpawn_0E70DA3CDB2C2C48"
+     m_aConditions {
+      GC_AreaCondition "{776D12CC24C5DAB6}" {
+       m_sArea "GC_MigrationArea_atk_virpimaki"
+       m_Targets GC_NamedAreaTargets "{77E2B2965E1355DD}" {
+        m_aNames {
+         "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{871C818D095F3EF0}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{F3B128CDED702944}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3A4388C515CF4F58}" {
+       m_sMessage "GC_MigratedSpawn_0E70DA3CDB2C2C48"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3FDF430B0BD70DFD}" {
+     m_sName "GC_MigratedSpawn_0E70DA3CDB2C2C48 (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BF468640E09D23D9}" {
+       m_sEventName "GC_MigratedSpawn_0E70DA3CDB2C2C48"
+      }
+     }
+     m_Advanced GC_EventOptions "{63C98CCE19E36FC2}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_SpawnAction "{D3A4E4916C3CFFFB}" {
+       m_Spawn GC_AIGroupSpawn "{7B6185650809817A}" {
+        m_sLocation "sp_virpimaki_2"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_sEntityName "us_virpimaki_2"
+        m_aWaypoints {
+         "def23"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3A38D5AE01522EDE}" {
+     m_sName "GC_MigratedSpawn_4C21D7B8F70528D4"
+     m_aConditions {
+      GC_AreaCondition "{9A0E9D74EA41A953}" {
+       m_sArea "GC_MigrationArea_atk_latvamuilu"
+       m_Targets GC_NamedAreaTargets "{9813683E10E66FD8}" {
+        m_aNames {
+         "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{5B74CDC83A1DCA9A}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{52B20A90A921F491}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F7F3BD0CA52DF2E9}" {
+       m_sMessage "GC_MigratedSpawn_4C21D7B8F70528D4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{67DEA53EF7F939CD}" {
+     m_sName "GC_MigratedSpawn_4C21D7B8F70528D4 (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5533583250583000}" {
+       m_sEventName "GC_MigratedSpawn_4C21D7B8F70528D4"
+      }
+     }
+     m_Advanced GC_EventOptions "{798A3AA738C59A95}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_SpawnAction "{C37C7F74B8440AAB}" {
+       m_Spawn GC_AIGroupSpawn "{3B0CE044AFE83A88}" {
+        m_sLocation "sp_latvamuilu_1"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_sEntityName "us_latvamuilui_1"
+        m_aWaypoints {
+         "def20"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{947DF77FCBE0CBC9}" {
+     m_sName "GC_MigratedSpawn_7C285086C85BA4FC"
+     m_aConditions {
+      GC_AreaCondition "{541C15E2E09FD3D7}" {
+       m_sArea "GC_MigrationArea_atk_latvamuilu"
+       m_Targets GC_NamedAreaTargets "{E3D961618D658228}" {
+        m_aNames {
+         "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{F5CD9955531EA88C}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{63ECE72E97B9B2DE}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{35D0E6743719BB97}" {
+       m_sMessage "GC_MigratedSpawn_7C285086C85BA4FC"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8B603FAB23C8EF1A}" {
+     m_sName "GC_MigratedSpawn_7C285086C85BA4FC (30s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1EA1803B675E1C87}" {
+       m_sEventName "GC_MigratedSpawn_7C285086C85BA4FC"
+      }
+     }
+     m_Advanced GC_EventOptions "{51C8981243039918}" {
+      m_fDelay 30
+     }
+     m_aActions {
+      GC_SpawnAction "{D4121AC69CF422EB}" {
+       m_Spawn GC_AIGroupSpawn "{2B2199EEE8A2C1A2}" {
+        m_sLocation "sp_latvamuilu_2"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_sEntityName "us_latvamuilui_2"
+        m_aWaypoints {
+         "def19"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{BC9616270D09F95C}" {
+     m_sName "GC_MigratedSpawn_94E7BF108EAF5F3F"
+     m_aConditions {
+      GC_AreaCondition "{B1A2E8EC510E812E}" {
+       m_sArea "GC_MigrationArea_atk_muilunkyla"
+       m_Targets GC_NamedAreaTargets "{B36A573BD6F9D16D}" {
+        m_aNames {
+         "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{3ACD2D6011FA0A79}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{51EE123FDE8F5819}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{EC0CF2A59B9B01CE}" {
+       m_sMessage "GC_MigratedSpawn_94E7BF108EAF5F3F"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{29B4B96652061582}" {
+     m_sName "GC_MigratedSpawn_94E7BF108EAF5F3F (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6C75D613361ED940}" {
+       m_sEventName "GC_MigratedSpawn_94E7BF108EAF5F3F"
+      }
+     }
+     m_Advanced GC_EventOptions "{BA7663AF64F277BC}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{E6B183CF6DCFEE35}" {
+       m_Spawn GC_AIGroupSpawn "{54BCDD7761ABC0C1}" {
+        m_sLocation "sp_muilunkyla_1"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_sEntityName "us_muilunkyla_1"
+        m_aWaypoints {
+         "def15"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3516D7E2ABF283D1}" {
+     m_sName "GC_MigratedSpawn_B27D9E23F41F354F"
+     m_aConditions {
+      GC_AreaCondition "{7146288C048A2EB2}" {
+       m_sArea "GC_MigrationArea_atk_muilunkyla"
+       m_Targets GC_NamedAreaTargets "{611915A2FD3F5228}" {
+        m_aNames {
+         "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{D74EDDB8D4312DB9}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{708244246D256C6F}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{16AC6694895E6556}" {
+       m_sMessage "GC_MigratedSpawn_B27D9E23F41F354F"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6C3B36A4CDC1E597}" {
+     m_sName "GC_MigratedSpawn_B27D9E23F41F354F (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CCED65446DC67AB4}" {
+       m_sEventName "GC_MigratedSpawn_B27D9E23F41F354F"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{6C3B36A4CDC1E597}" {
+       m_Spawn GC_AIGroupSpawn "{8F5C3413A7162176}" {
+        m_sLocation "sp_muilunkyla_2"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_sEntityName "us_muilunkyla_2"
+        m_aWaypoints {
+         "def16"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B430AD8176014528}" {
+     m_sName "GC_MigratedSpawn_72862B0515E53237"
+     m_aConditions {
+      GC_AreaCondition "{00BEF1148C29E03F}" {
+       m_sArea "GC_MigrationArea_atk_ruha"
+       m_Targets GC_NamedAreaTargets "{1085710D1D196459}" {
+        m_aNames {
+         "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{31F930D5CE2CB633}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{15FB95CDD995BFB9}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{32BF1B058B0B721A}" {
+       m_sMessage "GC_MigratedSpawn_72862B0515E53237"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{65DB7FF23368C251}" {
+     m_sName "GC_MigratedSpawn_72862B0515E53237 (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C0947EA3AFB4BA3D}" {
+       m_sEventName "GC_MigratedSpawn_72862B0515E53237"
+      }
+     }
+     m_Advanced GC_EventOptions "{DF95D69A453AB94F}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_SpawnAction "{52D08070D4EF7A26}" {
+       m_Spawn GC_AIGroupSpawn "{01532232DA1AA881}" {
+        m_sLocation "sp_ruha_1"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_sEntityName "us_ruha_1"
+        m_aWaypoints {
+         "def12"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{D4E2FCEF401E8C27}" {
+     m_sName "GC_MigratedSpawn_15AAE3E50109E68E"
+     m_aConditions {
+      GC_AreaCondition "{91589CF18975DF8C}" {
+       m_sArea "GC_MigrationArea_atk_ruha"
+       m_Targets GC_NamedAreaTargets "{7FFF11E9414638F3}" {
+        m_aNames {
+         "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{259C9242A6C0CF4E}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{A01723373A43C812}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8757D4F3804258CE}" {
+       m_sMessage "GC_MigratedSpawn_15AAE3E50109E68E"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E574856D63E5A33A}" {
+     m_sName "GC_MigratedSpawn_15AAE3E50109E68E (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A260D0B8912F06C4}" {
+       m_sEventName "GC_MigratedSpawn_15AAE3E50109E68E"
+      }
+     }
+     m_Advanced GC_EventOptions "{D395087D6CCA6A84}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{BCDDBB3CDE07937D}" {
+       m_Spawn GC_AIGroupSpawn "{991F5EEDA94E50BB}" {
+        m_sLocation "sp_ruha_2"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_sEntityName "us_ruha_2"
+        m_aWaypoints {
+         "def14"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3CC55294537D87C0}" {
+     m_sName "GC_MigratedSpawn_DAFCB957FEB982A0"
+     m_aConditions {
+      GC_AreaCondition "{C862A97BEA46210C}" {
+       m_sArea "GC_MigrationArea_atk_ruhanpera"
+       m_Targets GC_NamedAreaTargets "{8F712A1F2A8CAC21}" {
+        m_aNames {
+         "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{CEC40974F8FB8845}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{0CC86FEE9B56625B}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DBEAE6AD225AD92E}" {
+       m_sMessage "GC_MigratedSpawn_DAFCB957FEB982A0"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9F4DB26A932CAE5F}" {
+     m_sName "GC_MigratedSpawn_DAFCB957FEB982A0 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8C2E7B728A25B368}" {
+       m_sEventName "GC_MigratedSpawn_DAFCB957FEB982A0"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{9F4DB26A932CAE5F}" {
+       m_Spawn GC_AIGroupSpawn "{A0BB8754B3BCB365}" {
+        m_sLocation "sp_ruhanpera_1"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_sEntityName "us_ruhanpera_1"
+        m_aWaypoints {
+         "def31"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F4EABC360E33839B}" {
+     m_sName "GC_MigratedSpawn_70CEA043606D378B"
+     m_aConditions {
+      GC_AreaCondition "{309278CFB18891E5}" {
+       m_sArea "GC_MigrationArea_atk_ruhanpera"
+       m_Targets GC_NamedAreaTargets "{67757407452ED96F}" {
+        m_aNames {
+         "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{491A67ECB51C73E0}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{0E63AA8012EBBFE3}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F530143947CF743A}" {
+       m_sMessage "GC_MigratedSpawn_70CEA043606D378B"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{464691A431564EA3}" {
+     m_sName "GC_MigratedSpawn_70CEA043606D378B (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8B37FD1CF7C8559D}" {
+       m_sEventName "GC_MigratedSpawn_70CEA043606D378B"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{464691A431564EA3}" {
+       m_Spawn GC_AIGroupSpawn "{13349033EE08BD36}" {
+        m_sLocation "sp_ruhanpera_2"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_sEntityName "us_ruhanpera_2"
+        m_aWaypoints {
+         "def35"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E480475F19C7E27F}" {
+     m_sName "GC_MigratedSpawn_7919B3E1D81BBD74"
+     m_aConditions {
+      GC_AreaCondition "{AA169F06E7ECE36C}" {
+       m_sArea "GC_MigrationArea_atk_lehto"
+       m_Targets GC_NamedAreaTargets "{75B03977DE15474D}" {
+        m_aNames {
+         "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{829638EB728A1242}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{D7138FCCA0A4E0B1}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F1B2CAE5560BBFC2}" {
+       m_sMessage "GC_MigratedSpawn_7919B3E1D81BBD74"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C457BBA72F58FA9D}" {
+     m_sName "GC_MigratedSpawn_7919B3E1D81BBD74 (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DC3200E11B334BB0}" {
+       m_sEventName "GC_MigratedSpawn_7919B3E1D81BBD74"
+      }
+     }
+     m_Advanced GC_EventOptions "{DAF9F679B3824015}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{96D08EA74321402E}" {
+       m_Spawn GC_AIGroupSpawn "{239A02B9C07707B9}" {
+        m_sLocation "sp_lehto_1"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_sEntityName "us_lehto_1"
+        m_aWaypoints {
+         "def28"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{56D7EF2417371BAF}" {
+     m_sName "GC_MigratedSpawn_7DB5BF4B6A880AF8"
+     m_aConditions {
+      GC_AreaCondition "{FAA6214CBDF8EFC5}" {
+       m_sArea "GC_MigrationArea_atk_lehto"
+       m_Targets GC_NamedAreaTargets "{0C54F8492D0AFD7C}" {
+        m_aNames {
+         "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{64204252236B6E35}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{14BE74A9A0ED8B31}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9D4C48C997C9CE2B}" {
+       m_sMessage "GC_MigratedSpawn_7DB5BF4B6A880AF8"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E7B3135446813840}" {
+     m_sName "GC_MigratedSpawn_7DB5BF4B6A880AF8 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{33DDEA6E8D7462F0}" {
+       m_sEventName "GC_MigratedSpawn_7DB5BF4B6A880AF8"
+      }
+     }
+     m_Advanced GC_EventOptions "{21CE98673D71E628}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{E2DE673BA648EF22}" {
+       m_Spawn GC_AIGroupSpawn "{5CCB306CEA372317}" {
+        m_sLocation "sp_lehto_2"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_sEntityName "us_lehto_2"
+        m_aWaypoints {
+         "def29"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{7A52A85E035FA42A}" {
+     m_sName "GC_MigratedSpawn_C9A0F38F88BF94E4"
+     m_aConditions {
+      GC_AreaCondition "{D3EB6F0F45B72483}" {
+       m_sArea "GC_MigrationArea_atk_valimaki"
+       m_Targets GC_NamedAreaTargets "{8D769CD8BE955E05}" {
+        m_aNames {
+         "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{E9D50C9660A97581}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{0A84C2369A0136CB}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{86AAF1FF7E09BDD7}" {
+       m_sMessage "GC_MigratedSpawn_C9A0F38F88BF94E4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1A672987541AECB0}" {
+     m_sName "GC_MigratedSpawn_C9A0F38F88BF94E4 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B1644119A3903F97}" {
+       m_sEventName "GC_MigratedSpawn_C9A0F38F88BF94E4"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{1A672987541AECB0}" {
+       m_Spawn GC_AIGroupSpawn "{1FD0DA39D976653F}" {
+        m_sLocation "sp_valimaki_1"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_sEntityName "us_valimaki_1"
+        m_aWaypoints {
+         "def36"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{60AA26F8A2A89E73}" {
+     m_sName "GC_MigratedSpawn_D621F03FF9E0014C"
+     m_aConditions {
+      GC_AreaCondition "{D482FD5D49CF0A9F}" {
+       m_sArea "GC_MigrationArea_atk_valimaki"
+       m_Targets GC_NamedAreaTargets "{48F373A934814B09}" {
+        m_aNames {
+         "M2A2_31" "M2A2_32" "M2A2_33" "M2A2_34"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{1777D9ED6EDDD26A}" {
+        m_fRequiredProportion 0.2
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{47E376D6B0E48469}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{76374240E8C372C0}" {
+       m_sMessage "GC_MigratedSpawn_D621F03FF9E0014C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{EB1F5841C4A22558}" {
+     m_sName "GC_MigratedSpawn_D621F03FF9E0014C (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{91B1851EE446452A}" {
+       m_sEventName "GC_MigratedSpawn_D621F03FF9E0014C"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{EB1F5841C4A22558}" {
+       m_Spawn GC_AIGroupSpawn "{06FA6F2DD948420F}" {
+        m_sLocation "sp_valimaki_2"
+        m_sPrefab "{88F48844D5C43BF2}Prefabs/Groups/BLUFOR/US/Army/1986/2nd AD Bradley Mech (Woodland)/Group_US_1986_BDU_Brad_RifleSquad_M60_AI.et"
+        m_sEntityName "us_valimaki_2"
+        m_aWaypoints {
+         "def38"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{FD87507F9B49768A}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{278C14817A7166A2}" {
+       m_fSeconds 300.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{EB0787D8DC9CAE5E}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+        "GC_MigrationStartingZone2"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" : "{4F81B91B436B51FE}Configs/Callsigns/Callsigns_US_Armor.conf" {
+     }
+    }
+    SCR_Faction "{652F615735715119}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3%4"
+      m_sCallsignCharacterWithRoleFormat "%3 %4"
+     }
+    }
+   }
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 5186.945 70.864 7482.794
+}
