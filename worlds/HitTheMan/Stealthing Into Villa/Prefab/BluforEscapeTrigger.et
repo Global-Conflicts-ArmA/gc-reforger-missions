@@ -1,0 +1,30 @@
+GC_RadiusAreaEntity EscapeAOTrigger : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ ID "66EC24B8865C248C"
+ components {
+  RplComponent "{66EC24B8865C24B5}" {
+   Streamable Disabled
+  }
+  Hierarchy "{66EC24B8865C24BD}" {
+  }
+  GC_BoundAreaFlagComponent "{1EBFD5F61FD31381}" {
+   m_Observer GC_AreaFlagObserver "{9513DCD0146A73C5}" {
+    m_sFlag "BluforEscaped"
+    m_Area GC_AreaCondition "{1C58F37677F55AFB}" {
+     m_sArea "EscapeAOTrigger"
+     m_Targets GC_CharacterAreaTargets "{4089F31D664235B3}" {
+      m_iWho 2
+      m_aFactions {
+       "US"
+      }
+     }
+     m_Requirement GC_LocalFactionShare "{9E0CEEB5F9E4D60D}" {
+      m_fRequiredShare 0.05
+      m_bAtMost 1
+     }
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ m_fRadius 1500
+}
