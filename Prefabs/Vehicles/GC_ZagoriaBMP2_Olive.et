@@ -1,0 +1,453 @@
+Vehicle : "{1EF865DC4E3F7E0B}IFV/BMP2/BMP2_Olive_test.et" {
+ components {
+  VehicleWheeledSimulation "{731B26FCA2F19855}" {
+   Simulation Wheeled "{17A8A285A915DF73}" {
+    Engine Engine Engine {
+     Inertia 3
+     MaxPower 6
+     MaxTorque 2750
+     RpmMaxPower 2200
+     RpmMaxTorque 1400
+     Steepness 75
+     Friction 265
+     RpmIdle 600
+     RpmRedline 2400
+     RpmMax 2600
+    }
+    Clutch Clutch Clutch {
+     MaxClutchTorque 12000
+    }
+    Gearbox Gearbox Gearbox {
+     Forward {
+      12 10 8 7 6 5 4 3
+     }
+     Reverse 11
+     Output "Diff_A"
+    }
+    Differentials {
+     Differential Diff_A {
+      Type Locked
+      Ratio 1
+      Strength 1
+      Output0 "DIFFB"
+      Output1 "DIFFA3"
+     }
+     Differential diffa1 {
+      Type Locked
+      Strength 1
+      "Anti slip" 10000
+      "Anti slip torque" 20000
+      Output0 "diff02"
+      Output1 "diff04"
+     }
+     Differential diffa2 {
+      Type Locked
+      Strength 1
+      "Anti slip" 10000
+      "Anti slip torque" 20000
+      Output0 "diff03"
+      Output1 "diff06"
+     }
+     Differential DIFFB {
+      Type Locked
+      Strength 1
+      Output0 "diffa1"
+      Output1 "diffa2"
+     }
+     Differential DIFFA3 {
+      Type Locked
+      Strength 1
+      Output0 "diff05"
+      Output1 "diff07"
+     }
+    }
+    Axles {
+     Axle "{4D8B26DF957A8E1C}" {
+      TorqueShare 0.5
+      HasHandbrake 1
+      Differential Differential diff01 {
+       Type LSD
+       Ratio 1
+       Output0 "Wheel_L01"
+       Output1 "Wheel_R01"
+      }
+      Suspension Suspension "{4D8B26DFF8859A7B}" {
+       MaxSteeringAngle 30
+       SpringRate 800
+       CompressionDamper 15000
+       RelaxationDamper 35000
+       MaxTravelUp 0.1
+       MaxTravelDown 0.1
+      }
+      Wheel Wheel "{4D8B26DFFE211745}" {
+       Radius 0.31
+       Mass 150
+       Ratio 0.95
+       BrakeTorque 35000
+      }
+      Tyre Tyre "{697D3CF3E02A27EB}" {
+       Roughness 0.5
+       LongitudinalFriction 2.5
+       LateralFriction 3
+       RollingResistance 1
+       RollingDrag 1
+       Tread 0.8
+      }
+      WheelPositions {
+       WheelPosition Wheel_L01 {
+        PivotID "v_wheel_l_01"
+       }
+       WheelPosition Wheel_R01 {
+        PivotID "v_wheel_r_01"
+       }
+      }
+     }
+     Axle "{4D8B26DF8CF2F3D8}" {
+      TorqueShare 0.5
+      Differential Differential diff02 {
+       Type LSD
+       Ratio 1
+       "Anti slip" 300
+       "Anti slip torque" 600
+       Output0 "Wheel_L02"
+       Output1 "Wheel_R02"
+      }
+      Suspension Suspension "{4D8B26DF2B10AE05}" {
+       MaxSteeringAngle 30
+       SpringRate 800
+       CompressionDamper 15000
+       RelaxationDamper 35000
+       MaxTravelUp 0.1
+       MaxTravelDown 0.1
+      }
+      Wheel Wheel "{4D8B26DF30A4E4D7}" {
+       Radius 0.31
+       Mass 150
+       Ratio 0.95
+       BrakeTorque 20000
+      }
+      Tyre Tyre "{697D3CF3E02A27EF}" {
+       Roughness 0.5
+       LongitudinalFriction 2.5
+       LateralFriction 3
+       RollingResistance 1
+       RollingDrag 1
+       Tread 0.8
+      }
+      WheelPositions {
+       WheelPosition Wheel_L02 {
+        PivotID "v_wheel_l_02"
+       }
+       WheelPosition Wheel_R02 {
+        PivotID "v_wheel_r_02"
+       }
+      }
+     }
+     Axle "{697D3CF3E02A27E3}" {
+      TorqueShare 0.5
+      HasHandbrake 1
+      Differential Differential diff03 {
+       Type LSD
+       Ratio 1
+       "Anti slip" 300
+       "Anti slip torque" 600
+       Output0 "Wheel_L03"
+       Output1 "Wheel_R03"
+      }
+      Suspension Suspension "{697D3CF3E02A27E5}" {
+       MaxSteeringAngle 30
+       SpringRate 800
+       CompressionDamper 15000
+       RelaxationDamper 35000
+       MaxTravelUp 0.1
+       MaxTravelDown 0.1
+      }
+      Wheel Wheel "{697D3CF3E02A27E6}" {
+       Radius 0.31
+       Mass 150
+       Ratio 0.95
+       BrakeTorque 20000
+      }
+      Tyre Tyre "{697D3CF3E02A27F9}" {
+       Roughness 0.5
+       LongitudinalFriction 2.5
+       LateralFriction 3
+       RollingResistance 1
+       RollingDrag 1
+       Tread 0.8
+      }
+      WheelPositions {
+       WheelPosition Wheel_L03 {
+        PivotID "v_wheel_l_03"
+       }
+       WheelPosition Wheel_R03 {
+        PivotID "v_wheel_r_03"
+       }
+      }
+     }
+     Axle "{697D3CF3E02A27FB}" {
+      TorqueShare 0.5
+      HasHandbrake 1
+      Differential Differential diff04 {
+       Type LSD
+       Ratio 1
+       "Anti slip" 300
+       "Anti slip torque" 600
+       Output0 "Wheel_L04"
+       Output1 "Wheel_R04"
+      }
+      Suspension Suspension "{697D3CF3E02A27FA}" {
+       SpringRate 800
+       CompressionDamper 15000
+       RelaxationDamper 35000
+       MaxTravelUp 0.1
+       MaxTravelDown 0.1
+      }
+      Wheel Wheel "{697D3CF3E02A67C2}" {
+       Radius 0.31
+       Mass 150
+       Ratio 0.95
+       BrakeTorque 20000
+      }
+      Tyre Tyre "{697D3CF3E02A67C5}" {
+       Roughness 0.5
+       LongitudinalFriction 2.5
+       LateralFriction 3
+       RollingResistance 1
+       RollingDrag 1
+       Tread 0.8
+      }
+      WheelPositions {
+       WheelPosition Wheel_L04 {
+        PivotID "v_wheel_l_09"
+       }
+       WheelPosition Wheel_R04 {
+        PivotID "v_wheel_r_09"
+       }
+      }
+     }
+     Axle "{697D3CF3E02A67C6}" {
+      TorqueShare 0.5
+      HasHandbrake 1
+      Differential Differential diff05 {
+       Type LSD
+       Ratio 1
+       "Anti slip" 300
+       "Anti slip torque" 600
+       Output0 "Wheel_L05"
+       Output1 "Wheel_R05"
+      }
+      Suspension Suspension "{697D3CF3E02A67C9}" {
+       MaxSteeringAngle -30
+       SpringRate 800
+       CompressionDamper 15000
+       RelaxationDamper 35000
+       MaxTravelUp 0.1
+       MaxTravelDown 0.1
+      }
+      Wheel Wheel "{697D3CF3E029DC6B}" {
+       Radius 0.31
+       Mass 150
+       Ratio 0.95
+       BrakeTorque 20000
+      }
+      Tyre Tyre "{697D3CF3E029DC6A}" {
+       Roughness 0.5
+       LongitudinalFriction 2.5
+       LateralFriction 3
+       RollingResistance 1
+       RollingDrag 1
+       Tread 0.8
+      }
+      WheelPositions {
+       WheelPosition Wheel_L05 {
+        PivotID "v_wheel_l_05"
+       }
+       WheelPosition Wheel_R05 {
+        PivotID "v_wheel_r_05"
+       }
+      }
+     }
+     Axle "{697D3CF3E029DC69}" {
+      TorqueShare 0.5
+      HasHandbrake 1
+      Differential Differential diff06 {
+       Type LSD
+       Ratio 1
+       "Anti slip" 300
+       "Anti slip torque" 600
+       Output0 "Wheel_L06"
+       Output1 "Wheel_R06"
+      }
+      Suspension Suspension "{697D3CF3E029DC68}" {
+       MaxSteeringAngle -30
+       SpringRate 800
+       CompressionDamper 15000
+       RelaxationDamper 35000
+       MaxTravelUp 0.1
+       MaxTravelDown 0.1
+      }
+      Wheel Wheel "{697D3CF3E029DC6F}" {
+       Radius 0.31
+       Mass 150
+       Ratio 0.95
+       BrakeTorque 20000
+      }
+      Tyre Tyre "{697D3CF3E029DC6E}" {
+       Roughness 0.5
+       LongitudinalFriction 2.5
+       LateralFriction 3
+       RollingResistance 1
+       RollingDrag 1
+       Tread 0.8
+      }
+      WheelPositions {
+       WheelPosition Wheel_L06 {
+        PivotID "v_wheel_l_06"
+       }
+       WheelPosition Wheel_R06 {
+        PivotID "v_wheel_r_06"
+       }
+      }
+     }
+     Axle "{697D3CF3E029DC6D}" {
+      TorqueShare 0.5
+      HasHandbrake 1
+      Differential Differential diff07 {
+       Type LSD
+       Ratio 1
+       Output0 "Wheel_L07"
+       Output1 "Wheel_R07"
+      }
+      Suspension Suspension "{697D3CF3E029DC13}" {
+       MaxSteeringAngle -30
+       SpringRate 800
+       CompressionDamper 15000
+       RelaxationDamper 35000
+       MaxTravelUp 0.1
+       MaxTravelDown 0.1
+      }
+      Wheel Wheel "{697D3CF3E029DC11}" {
+       Radius 0.31
+       Mass 150
+       Ratio 0.95
+       BrakeTorque 20000
+      }
+      Tyre Tyre "{697D3CF3E029DC17}" {
+       Roughness 0.5
+       LongitudinalFriction 2.5
+       LateralFriction 3
+       RollingResistance 1
+       RollingDrag 1
+       Tread 0.8
+      }
+      WheelPositions {
+       WheelPosition Wheel_L07 {
+        PivotID "v_wheel_l_07"
+       }
+       WheelPosition Wheel_R07 {
+        PivotID "v_wheel_r_07"
+       }
+      }
+     }
+     Axle "{697D3CF3E029DC16}" {
+      TorqueShare 0.5
+      Differential Differential diff08 {
+       Type LSD
+       Ratio 1
+       Output0 "wheel_l08"
+       Output1 "wheel_r08"
+      }
+      Suspension Suspension "{697D3CF3E029DC14}" {
+       MaxSteeringAngle -30
+       SpringRate 800
+       CompressionDamper 15000
+       RelaxationDamper 35000
+       MaxTravelUp 0.1
+       MaxTravelDown 0.1
+      }
+      Wheel Wheel "{697D3CF3E029DC1B}" {
+       Radius 0.31
+       Mass 150
+       Ratio 0.95
+       BrakeTorque 20000
+      }
+      Tyre Tyre "{697D3CF3E029DC1A}" {
+       Roughness 0.5
+       LongitudinalFriction 2.5
+       LateralFriction 3
+       RollingResistance 1
+       RollingDrag 1
+       Tread 0.8
+      }
+      WheelPositions {
+       WheelPosition wheel_l08 {
+        PivotID "v_wheel_l_08"
+       }
+       WheelPosition wheel_r08 {
+        PivotID "v_wheel_r_08"
+       }
+      }
+     }
+    }
+    Aerodynamics Aerodynamics "{5562A623B55A4C07}" {
+     ReferenceArea 6
+    }
+    Pacejka Pacejka "{697D3CF3E029DC1F}" {
+     Longitudinal PacejkaLongitudinal "{697D3CF3E029DC1D}" {
+      b0 1.65
+      b1 -110
+      b2 2500
+      b3 15
+      b4 250
+      b5 0.075
+      b6 0
+      b7 0.055
+      b8 -0.024
+      b9 0.014
+      b10 0.26
+     }
+     Lateral PacejkaLateral "{697D3CF3E029DC02}" {
+      a0 1.2
+      a1 -55
+      a2 1750
+      a3 1900
+      a4 7.2
+      a5 0.014
+      a6 -0.24
+      a7 1
+      a8 -0.03
+      a9 -0.001
+      a10 -0.15
+      a11 -8.5
+      a12 -0.29
+      a13 17.8
+      a14 -2.4
+     }
+     Aligning PacejkaAligning "{697D3CF3E029DC07}" {
+      c0 2.2
+      c1 -4.3
+      c2 -4.4
+      c3 -1.9
+      c4 -9.6
+      c5 0.023
+      c6 0
+      c7 0.044
+      c8 -0.58
+      c9 0.18
+      c10 0.043
+      c11 0.048
+      c12 -0.004
+      c13 -0.18
+      c14 0.14
+      c16 -1.029
+      c17 0.27
+      c18 -1.1
+     }
+    }
+    NoiseSteerSensitivity 0.5
+    RoughnessSensitivity 0.5
+   }
+  }
+ }
+}

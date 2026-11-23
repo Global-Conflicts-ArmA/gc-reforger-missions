@@ -1,0 +1,1131 @@
+SCR_AIWorld : "{3DE6090FC602E566}Prefabs/AI/SCR_AIWorld_Takistan.et" {
+ coords 8966.602 291.922 5365.137
+}
+GC_LobbyGameMode GC_MigratedMission : "{03BA6E897088C2EB}worlds/Jub/OperationArrowheadMulladostPass/OperationArrowheadMulladostPass_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 17
+   m_bRandomStartingDaytime 1
+   m_bRandomStartingDaytimeRange 1
+   m_iRangeHoursStart 11
+   m_iRangeHoursEnd 18
+   m_bDateOverride 1
+   m_iDay 3
+   m_iMonth 5
+   m_iYear 2009
+  }
+  GC_PeakFactionPopulationComponent "{874042A23AF068C1}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{D1F503112C009BEF}" {
+     m_sName "DEF_TIME_LIMIT"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{331954209B9210E1}" {
+     m_sName "DEF_TIME_LIMIT (4800s)"
+     m_Advanced GC_EventOptions "{D3680180766C6058}" {
+      m_fDelay 4800
+     }
+     m_aActions {
+      GC_FlagAction "{1FD0CDE5EC9898CC}" {
+       m_sFlagName "DEF_TIME_LIMIT"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{268C1C63A678E500}" {
+     m_sName "DEF_TIME_LIMIT (1800s)"
+     m_Advanced GC_EventOptions "{1C2365B37A1B32EA}" {
+      m_fDelay 1800
+     }
+     m_aActions {
+      GC_MessageAction "{4421215547BDE9A6}" {
+       m_sTitle "MISSION Failed"
+       m_sMessage "You have reached the time limit."\
+       "MISSION FAILED"
+      }
+     }
+    }
+    GC_Event "{3789560D6BFB821C}" {
+     m_sName "US_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{099E843AE22231B5}" {
+       m_Script GC_PeakFactionPopulationCheck "{24C98366AC84F8F7}" {
+        m_sFaction "US"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{90BA043EFA05C952}" {
+       m_sMessage "US_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{864A3EBD07BEFD37}" {
+     m_sName "US_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{17908FAEE16C4FBC}" {
+       m_sEventName "US_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{7BFD46F034BD5C48}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{572988DA50A1983D}" {
+       m_sTitle "DEFEAT"
+       m_sMessage "Your element has taken significant casualties. GAMEOVER"
+      }
+     }
+    }
+    GC_Event "{C406233A6B09B581}" {
+     m_sName "Outcome 6A6C1AF0B14A7997"
+     m_aConditions {
+      GC_AreaCondition "{E22304D64197DF7E}" {
+       m_sArea "trig1"
+       m_Targets GC_CharacterAreaTargets "{55DCC531DCADF9FA}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{521D5AF8BBC3A4E3}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{401301A7EBED9C5D}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{83D6F28F5C932AAF}" {
+       m_sMessage "Outcome 6A6C1AF0B14A7997"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{08FB748B387DE257}" {
+     m_sName "Outcome 6A6C1AF0B14A7997 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3584F4D23F28AE42}" {
+       m_sEventName "Outcome 6A6C1AF0B14A7997"
+      }
+     }
+     m_Advanced GC_EventOptions "{F1BB8AA027C2BD08}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{91E4A5ECE0A31AD5}" {
+       m_sTitle "INCOMING XMISSION"
+       m_sMessage "A'6 THIS IS A2'2, WE HAVE PROOVED THE ROUTE UP TO THE AMBUSH.... BREAK.... TKA HAVE SET AP MINES BEFORE THE AT MINES MARKED ON MAP. TROOPS IN CONTACT, REQUESTING SUPPORT, OVER."\
+       ""\
+       ""\
+       "A 1'6 this is A '6 Actual, proceed with your mission and support A2'2, out."
+      }
+     }
+    }
+    GC_Event "{E729D0EBAA39E67A}" {
+     m_sName "Victory"
+     m_aConditions {
+      GC_AreaCondition "{3E35E2440EEAAC27}" {
+       m_sArea "trig3"
+       m_Targets GC_CharacterAreaTargets "{02A26C2AAD731979}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{5980FAD1EF641EF2}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{BDBC0985899335F2}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_Messages GC_CaptureMessages "{DB0B223D3E9B8B97}" {
+         m_sLocation "Mulladost"
+         m_aFactions {
+          "US"
+         }
+         m_sCaptured "The %1 has taken control of %2."
+         m_sCapturing "The %1 is taking control of %2."
+         m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+         m_sLost "The %1 has lost control of %2."
+         m_sLosing "The %1 is losing control of %2."
+         m_sLossInterrupted "The %1 is no longer losing control of %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9C608534006C1445}" {
+       m_sMessage "Victory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FB1AE618DCEEA8A4}" {
+     m_sName "Victory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{58D9EE52DE1311FC}" {
+       m_sEventName "Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{4184646E91F1807E}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{69CA74CFAE90BE47}" {
+       m_sTitle "Mission victory"
+       m_sMessage "Mulladost is clear of TKA; Mission complete!"\
+       ""\
+       "GMs may end now or fight out any final contacts"
+      }
+     }
+    }
+    GC_Event "{FD5DA899B2D60EFC}" {
+     m_sName "Victory (0.1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{361061E7614B3418}" {
+       m_sEventName "Victory"
+      }
+     }
+     m_Advanced GC_EventOptions "{1A4DAF67E5EA0D38}" {
+      m_fDelay 0.1
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{7F8C844D495849AF}" {
+       m_aEntities {
+        "trig3"
+       }
+      }
+     }
+    }
+    GC_Event "{559A7DD72BAE2D4B}" {
+     m_sName "GC_MigrationSpawnCapture_0559B562AD094382"
+     m_aConditions {
+      GC_AreaCondition "{0019C68FBFCB6AC8}" {
+       m_sArea "trig2"
+       m_Targets GC_CharacterAreaTargets "{4BB0A632C43AD64E}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{8EC1C3623029B17F}" {
+        m_fRequiredShare 0.1
+       }
+       m_Capture GC_AreaCaptureOptions "{2D02580F0D27C156}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FEDF1C2879A177FC}" {
+       m_sMessage "GC_MigrationSpawnCapture_0559B562AD094382"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{66CFD7B975092B6F}" {
+     m_sName "GC_MigratedSpawn_C4842A4E59C65D80"
+     m_aConditions {
+      GC_MissionEventCondition "{233B78BE872C9230}" {
+       m_sEventName "GC_MigrationSpawnCapture_0559B562AD094382"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A3D7896B69738213}" {
+       m_sMessage "GC_MigratedSpawn_C4842A4E59C65D80"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C21D227826AFEAE3}" {
+     m_sName "GC_MigratedSpawn_C4842A4E59C65D80 (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C550480CE69D31E9}" {
+       m_sEventName "GC_MigratedSpawn_C4842A4E59C65D80"
+      }
+     }
+     m_Advanced GC_EventOptions "{B88DBBD52399FBFB}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{C1251EC2DFD46CA2}" {
+       m_Spawn GC_CrewedVehicleSpawn "{6EF7FB99DBBFB02B}" {
+        m_sLocation "QRFBMP1"
+        m_sPrefab "{68A65EFA9B616798}Prefabs/Vehicles/Tracked/BMP1/BMP1_Desert.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{C05EE62AC62C4FC8}" {
+          m_aStations {
+           GC_SpawnCrewStation "{C8714D85AE56BF97}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{3CE9ED2330A2793A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Vic_GUNR.et"
+             "{3CE9ED2330A2793A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Vic_GUNR.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "FM1.1"
+           "FM1.2"
+           "SND1"
+          }
+         }
+         GC_SpawnCrewGroup "{D418284F17EC8194}" {
+          m_aStations {
+           GC_SpawnCrewStation "{8D093101C164D5F4}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{92E1FCD527319EC9}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_SL.et"
+             "{2C2031FC799B0EEC}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_SrRifleman.et"
+             "{581D9CB4D35A3203}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AT1.et"
+             "{3449A8546F9EBD2D}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AT2.et"
+             "{23AFF7E5ACF2A14A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AutoRifleman.et"
+             "{21A1481C0C4345AF}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Rifleman.et"
+             "{21A1481C0C4345AF}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "FM1.1"
+           "FM1.2"
+           "SND1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9DF3F9189F348BC1}" {
+     m_sName "GC_MigratedSpawn_2E139ECCFB1E1541"
+     m_aConditions {
+      GC_MissionEventCondition "{F502B206A58527AA}" {
+       m_sEventName "GC_MigrationSpawnCapture_0559B562AD094382"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{72AD987EA8E61D15}" {
+       m_sMessage "GC_MigratedSpawn_2E139ECCFB1E1541"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2C904C10326D574D}" {
+     m_sName "GC_MigratedSpawn_2E139ECCFB1E1541 (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E4BD99AF7E3B21B5}" {
+       m_sEventName "GC_MigratedSpawn_2E139ECCFB1E1541"
+      }
+     }
+     m_Advanced GC_EventOptions "{30E0A46B4C828FB6}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{03A570AA70C79285}" {
+       m_Spawn GC_CrewedVehicleSpawn "{1D4FAC38F0265355}" {
+        m_sLocation "QRFBMP2"
+        m_sPrefab "{68A65EFA9B616798}Prefabs/Vehicles/Tracked/BMP1/BMP1_Desert.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{8B888A06ECE9B911}" {
+          m_aStations {
+           GC_SpawnCrewStation "{54D26867BFB42016}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{3CE9ED2330A2793A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Vic_GUNR.et"
+             "{3CE9ED2330A2793A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Vic_GUNR.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "FM2.1"
+           "FM2.2"
+           "SND1"
+          }
+         }
+         GC_SpawnCrewGroup "{556AFC7C227EB634}" {
+          m_aStations {
+           GC_SpawnCrewStation "{E62A521996DD2068}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{92E1FCD527319EC9}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_SL.et"
+             "{2C2031FC799B0EEC}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_SrRifleman.et"
+             "{581D9CB4D35A3203}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AT1.et"
+             "{3449A8546F9EBD2D}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AT2.et"
+             "{23AFF7E5ACF2A14A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AutoRifleman.et"
+             "{21A1481C0C4345AF}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Rifleman.et"
+             "{21A1481C0C4345AF}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "FM2.1"
+           "FM2.2"
+           "SND2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3F705B20175115E7}" {
+     m_sName "GC_MigratedSpawn_7F744E1EB4C5D1C4"
+     m_aConditions {
+      GC_MissionEventCondition "{C58C0825577FCD84}" {
+       m_sEventName "GC_MigrationSpawnCapture_0559B562AD094382"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B2B7C392B0270CA2}" {
+       m_sMessage "GC_MigratedSpawn_7F744E1EB4C5D1C4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{659401F34A15D13B}" {
+     m_sName "GC_MigratedSpawn_7F744E1EB4C5D1C4 (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{447AB6255AF2F453}" {
+       m_sEventName "GC_MigratedSpawn_7F744E1EB4C5D1C4"
+      }
+     }
+     m_Advanced GC_EventOptions "{27A66A99256793F7}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{415967B77EAB3BC7}" {
+       m_Spawn GC_CrewedVehicleSpawn "{10CE6CEF9AE8B580}" {
+        m_sLocation "QRFBMP3"
+        m_sPrefab "{0BF3D7C254ABFCBC}Prefabs/Vehicles/GC_ZagoriaBMP2_Olive.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{C95B56A1F18D07B7}" {
+          m_aStations {
+           GC_SpawnCrewStation "{FB4676FAB1D64C22}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{3CE9ED2330A2793A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Vic_GUNR.et"
+             "{3CE9ED2330A2793A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Vic_GUNR.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "FM3.1"
+           "FM3.2"
+           "SND1"
+          }
+         }
+         GC_SpawnCrewGroup "{9B52FA1CEDA78619}" {
+          m_aStations {
+           GC_SpawnCrewStation "{F292D52D331343E6}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{92E1FCD527319EC9}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_SL.et"
+             "{2C2031FC799B0EEC}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_SrRifleman.et"
+             "{581D9CB4D35A3203}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AT1.et"
+             "{3449A8546F9EBD2D}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AT2.et"
+             "{23AFF7E5ACF2A14A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AutoRifleman.et"
+             "{21A1481C0C4345AF}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Rifleman.et"
+             "{21A1481C0C4345AF}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "FM3.1"
+           "FM3.2"
+           "SND3"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{67EC7D6E2F0785D4}" {
+     m_sName "GC_MigratedSpawn_F4DAD80315C49BEF"
+     m_aConditions {
+      GC_MissionEventCondition "{77AB37761C41E7F1}" {
+       m_sEventName "GC_MigrationSpawnCapture_0559B562AD094382"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{912A3F5397FC1A26}" {
+       m_sMessage "GC_MigratedSpawn_F4DAD80315C49BEF"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{303458972D7FEE53}" {
+     m_sName "GC_MigratedSpawn_F4DAD80315C49BEF (60s)"
+     m_aConditions {
+      GC_MissionEventCondition "{102F282AEAB74D49}" {
+       m_sEventName "GC_MigratedSpawn_F4DAD80315C49BEF"
+      }
+     }
+     m_Advanced GC_EventOptions "{EDD1F0C8E925EB3D}" {
+      m_fDelay 60
+     }
+     m_aActions {
+      GC_SpawnAction "{A8D3C3755222CB0A}" {
+       m_Spawn GC_CrewedVehicleSpawn "{011465FF12BA149E}" {
+        m_sLocation "QRFBMP4"
+        m_sPrefab "{0BF3D7C254ABFCBC}Prefabs/Vehicles/GC_ZagoriaBMP2_Olive.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{D7429D4C2C1613B4}" {
+          m_aStations {
+           GC_SpawnCrewStation "{8B343F5432BFF4A5}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{3CE9ED2330A2793A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Vic_GUNR.et"
+             "{3CE9ED2330A2793A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Vic_GUNR.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "FM4.1"
+           "FM4.2"
+           "SND4"
+          }
+         }
+         GC_SpawnCrewGroup "{804635A477124548}" {
+          m_aStations {
+           GC_SpawnCrewStation "{3335E79252475AF0}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{92E1FCD527319EC9}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_SL.et"
+             "{2C2031FC799B0EEC}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_SrRifleman.et"
+             "{581D9CB4D35A3203}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AT1.et"
+             "{3449A8546F9EBD2D}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AT2.et"
+             "{23AFF7E5ACF2A14A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AutoRifleman.et"
+             "{21A1481C0C4345AF}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Rifleman.et"
+             "{21A1481C0C4345AF}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "FM4.1"
+           "FM4.2"
+           "SND4"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F01501594A31DB23}" {
+     m_sName "GC_MigratedSpawn_BDDFBA2CCA12BD65"
+     m_aConditions {
+      GC_MissionEventCondition "{50C6B30017865E23}" {
+       m_sEventName "GC_MigrationSpawnCapture_0559B562AD094382"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FC2F205F00AEDC84}" {
+       m_sMessage "GC_MigratedSpawn_BDDFBA2CCA12BD65"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{36C3A797452B8F4D}" {
+     m_sName "GC_MigratedSpawn_BDDFBA2CCA12BD65 (180s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6FFC7C65974B096B}" {
+       m_sEventName "GC_MigratedSpawn_BDDFBA2CCA12BD65"
+      }
+     }
+     m_Advanced GC_EventOptions "{26B7959D88FD50CF}" {
+      m_fDelay 180
+     }
+     m_aActions {
+      GC_SpawnAction "{659F93A639F03B26}" {
+       m_Spawn GC_CrewedVehicleSpawn "{FA4CEF8006C2539A}" {
+        m_sLocation "QRFBMP5"
+        m_sPrefab "{0BF3D7C254ABFCBC}Prefabs/Vehicles/GC_ZagoriaBMP2_Olive.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{D4577241B35E4967}" {
+          m_aStations {
+           GC_SpawnCrewStation "{693CCE602C5A4799}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{3CE9ED2330A2793A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Vic_GUNR.et"
+             "{3CE9ED2330A2793A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Vic_GUNR.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "FM2.1"
+           "FM2.2"
+           "SND2"
+          }
+         }
+         GC_SpawnCrewGroup "{524CE0A99AD03D5F}" {
+          m_aStations {
+           GC_SpawnCrewStation "{8F973F66CB841C51}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{92E1FCD527319EC9}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_SL.et"
+             "{2C2031FC799B0EEC}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_SrRifleman.et"
+             "{581D9CB4D35A3203}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AT1.et"
+             "{3449A8546F9EBD2D}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AT2.et"
+             "{23AFF7E5ACF2A14A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AutoRifleman.et"
+             "{21A1481C0C4345AF}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Rifleman.et"
+             "{21A1481C0C4345AF}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "FM4.1"
+           "FM4.2"
+           "SND4"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{73CF2A2353986653}" {
+     m_sName "GC_MigratedSpawn_67BE4170630CD628"
+     m_aConditions {
+      GC_MissionEventCondition "{7A193C1764CA4963}" {
+       m_sEventName "GC_MigrationSpawnCapture_0559B562AD094382"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{AC9D843650AC22E9}" {
+       m_sMessage "GC_MigratedSpawn_67BE4170630CD628"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A34508590BFE85B6}" {
+     m_sName "GC_MigratedSpawn_67BE4170630CD628 (200s)"
+     m_aConditions {
+      GC_MissionEventCondition "{61B60271523E34B3}" {
+       m_sEventName "GC_MigratedSpawn_67BE4170630CD628"
+      }
+     }
+     m_Advanced GC_EventOptions "{61D23CB59E5F0FDD}" {
+      m_fDelay 200
+     }
+     m_aActions {
+      GC_SpawnAction "{9947025058B680E6}" {
+       m_Spawn GC_CrewedVehicleSpawn "{F082CCDBF469EAE4}" {
+        m_sLocation "QRFBMP6"
+        m_sPrefab "{0BF3D7C254ABFCBC}Prefabs/Vehicles/GC_ZagoriaBMP2_Olive.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{D7AA5BBF8C2596D4}" {
+          m_aStations {
+           GC_SpawnCrewStation "{117B0DBFB69B95C2}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{3CE9ED2330A2793A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Vic_GUNR.et"
+             "{3CE9ED2330A2793A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Vic_GUNR.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "FM3.1"
+           "FM3.2"
+           "SND3"
+          }
+         }
+         GC_SpawnCrewGroup "{2EDA2D286A8C6442}" {
+          m_aStations {
+           GC_SpawnCrewStation "{A0E196E73DE986B8}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{92E1FCD527319EC9}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_SL.et"
+             "{2C2031FC799B0EEC}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_SrRifleman.et"
+             "{581D9CB4D35A3203}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AT1.et"
+             "{3449A8546F9EBD2D}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AT2.et"
+             "{23AFF7E5ACF2A14A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AutoRifleman.et"
+             "{21A1481C0C4345AF}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Rifleman.et"
+             "{21A1481C0C4345AF}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "SND1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{44C094B8F00BD6D9}" {
+     m_sName "GC_MigratedSpawn_EAA8573927389F35"
+     m_aConditions {
+      GC_MissionEventCondition "{E30FDFA8828409A8}" {
+       m_sEventName "GC_MigrationSpawnCapture_0559B562AD094382"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6A1B21996939C3A4}" {
+       m_sMessage "GC_MigratedSpawn_EAA8573927389F35"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E7E59B3C2B7E3E5C}" {
+     m_sName "GC_MigratedSpawn_EAA8573927389F35 (90s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D559E2A467FC9BC0}" {
+       m_sEventName "GC_MigratedSpawn_EAA8573927389F35"
+      }
+     }
+     m_Advanced GC_EventOptions "{DF4005B8DE4A0401}" {
+      m_fDelay 90
+     }
+     m_aActions {
+      GC_SpawnAction "{C4AEAFA78386F98B}" {
+       m_Spawn GC_CrewedVehicleSpawn "{076AA6B5FEDFCBC8}" {
+        m_sLocation "QRFBMP7"
+        m_sPrefab "{0BF3D7C254ABFCBC}Prefabs/Vehicles/GC_ZagoriaBMP2_Olive.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{353E924DA8261B59}" {
+          m_aStations {
+           GC_SpawnCrewStation "{FEABFBBABC910AEA}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{3CE9ED2330A2793A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Vic_GUNR.et"
+             "{3CE9ED2330A2793A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Vic_GUNR.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "FM4.1"
+           "FM4.2"
+           "SND4"
+          }
+         }
+         GC_SpawnCrewGroup "{04FF91FC1B800FB2}" {
+          m_aStations {
+           GC_SpawnCrewStation "{4FACA1141820EAA5}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{92E1FCD527319EC9}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_SL.et"
+             "{2C2031FC799B0EEC}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_SrRifleman.et"
+             "{581D9CB4D35A3203}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AT1.et"
+             "{3449A8546F9EBD2D}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AT2.et"
+             "{23AFF7E5ACF2A14A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AutoRifleman.et"
+             "{21A1481C0C4345AF}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Rifleman.et"
+             "{21A1481C0C4345AF}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "SND4"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{BEB0A636E5B7E026}" {
+     m_sName "GC_MigratedSpawn_30CA4E09567EB660"
+     m_aConditions {
+      GC_MissionEventCondition "{271C899212D75320}" {
+       m_sEventName "GC_MigrationSpawnCapture_0559B562AD094382"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D128A17DD2570EFD}" {
+       m_sMessage "GC_MigratedSpawn_30CA4E09567EB660"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E19DC47B4EBD6C69}" {
+     m_sName "GC_MigratedSpawn_30CA4E09567EB660 (102s)"
+     m_aConditions {
+      GC_MissionEventCondition "{644D5F5CD94742C5}" {
+       m_sEventName "GC_MigratedSpawn_30CA4E09567EB660"
+      }
+     }
+     m_Advanced GC_EventOptions "{48C286C361640DE2}" {
+      m_fDelay 102
+     }
+     m_aActions {
+      GC_SpawnAction "{D0C75CD0DAEC62A4}" {
+       m_Spawn GC_CrewedVehicleSpawn "{7828CA86239C1D04}" {
+        m_sLocation "QRFM113.1"
+        m_sPrefab "{18378FFFC82F30BF}Prefabs/Vehicles/Tracked/M113/M113_APC.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{4A6FBF9186CB20A8}" {
+          m_aStations {
+           GC_SpawnCrewStation "{A45179F04D999691}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{3CE9ED2330A2793A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Vic_GUNR.et"
+             "{3CE9ED2330A2793A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Vic_GUNR.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "FM1.1"
+           "FM1.2"
+           "SND1"
+          }
+         }
+         GC_SpawnCrewGroup "{C2C98519883D84FD}" {
+          m_aStations {
+           GC_SpawnCrewStation "{679F4020CFDDF98E}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{92E1FCD527319EC9}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_SL.et"
+             "{2C2031FC799B0EEC}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_SrRifleman.et"
+             "{581D9CB4D35A3203}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AT1.et"
+             "{3449A8546F9EBD2D}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AT2.et"
+             "{23AFF7E5ACF2A14A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AutoRifleman.et"
+             "{21A1481C0C4345AF}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Rifleman.et"
+             "{21A1481C0C4345AF}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "SND1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{AC270C4BFD699B8B}" {
+     m_sName "GC_MigratedSpawn_41EE30DEF9F874CE"
+     m_aConditions {
+      GC_MissionEventCondition "{C29D8324F932CF38}" {
+       m_sEventName "GC_MigrationSpawnCapture_0559B562AD094382"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{891CD685F4C3090B}" {
+       m_sMessage "GC_MigratedSpawn_41EE30DEF9F874CE"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B9EA0DE79900AB31}" {
+     m_sName "GC_MigratedSpawn_41EE30DEF9F874CE (109.3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9A2713F9E7712AD1}" {
+       m_sEventName "GC_MigratedSpawn_41EE30DEF9F874CE"
+      }
+     }
+     m_Advanced GC_EventOptions "{D69186EE1D7FFD95}" {
+      m_fDelay 109.3
+     }
+     m_aActions {
+      GC_SpawnAction "{CAA8FE5F4C2A4345}" {
+       m_Spawn GC_CrewedVehicleSpawn "{016BE03E48CCFFDE}" {
+        m_sLocation "QRFM113.2"
+        m_sPrefab "{18378FFFC82F30BF}Prefabs/Vehicles/Tracked/M113/M113_APC.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{9E8AF6EABE0A6C99}" {
+          m_aStations {
+           GC_SpawnCrewStation "{F79E4E4EF3A5B7A8}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{3CE9ED2330A2793A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Vic_GUNR.et"
+             "{3CE9ED2330A2793A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Vic_GUNR.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "FM2.1"
+           "FM2.2"
+           "SND2"
+          }
+         }
+         GC_SpawnCrewGroup "{276CC43808F561D5}" {
+          m_aStations {
+           GC_SpawnCrewStation "{23BB758D29C0D9E1}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{92E1FCD527319EC9}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_SL.et"
+             "{2C2031FC799B0EEC}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_SrRifleman.et"
+             "{581D9CB4D35A3203}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AT1.et"
+             "{3449A8546F9EBD2D}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AT2.et"
+             "{23AFF7E5ACF2A14A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AutoRifleman.et"
+             "{21A1481C0C4345AF}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Rifleman.et"
+             "{21A1481C0C4345AF}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "FM2.1"
+           "FM2.2"
+           "SND2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{CC536F80B904C723}" {
+     m_sName "GC_MigratedSpawn_03A22BD164EFDC44"
+     m_aConditions {
+      GC_MissionEventCondition "{177FA934C6F77886}" {
+       m_sEventName "GC_MigrationSpawnCapture_0559B562AD094382"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B8D021DDF4CA4B43}" {
+       m_sMessage "GC_MigratedSpawn_03A22BD164EFDC44"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7D0E85F3B0466EAA}" {
+     m_sName "GC_MigratedSpawn_03A22BD164EFDC44 (116.9s)"
+     m_aConditions {
+      GC_MissionEventCondition "{59727D90A1B88FE3}" {
+       m_sEventName "GC_MigratedSpawn_03A22BD164EFDC44"
+      }
+     }
+     m_Advanced GC_EventOptions "{403075C71B472BC9}" {
+      m_fDelay 116.9
+     }
+     m_aActions {
+      GC_SpawnAction "{B5F5C8B60CA01959}" {
+       m_Spawn GC_CrewedVehicleSpawn "{1A5D6BEAE56C8A18}" {
+        m_sLocation "QRFM113.3"
+        m_sPrefab "{18378FFFC82F30BF}Prefabs/Vehicles/Tracked/M113/M113_APC.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{FA0C9DD4A9AC5313}" {
+          m_aStations {
+           GC_SpawnCrewStation "{BA649133DB9B240E}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{3CE9ED2330A2793A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Vic_GUNR.et"
+             "{3CE9ED2330A2793A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Vic_GUNR.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "FM3.1"
+           "FM3.2"
+           "SND3"
+          }
+         }
+         GC_SpawnCrewGroup "{3828BB803D348778}" {
+          m_aStations {
+           GC_SpawnCrewStation "{223AB7F3FDA31094}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{92E1FCD527319EC9}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_SL.et"
+             "{2C2031FC799B0EEC}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_SrRifleman.et"
+             "{581D9CB4D35A3203}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AT1.et"
+             "{3449A8546F9EBD2D}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AT2.et"
+             "{23AFF7E5ACF2A14A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AutoRifleman.et"
+             "{21A1481C0C4345AF}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Rifleman.et"
+             "{21A1481C0C4345AF}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "FM3.1"
+           "FM3.2"
+           "SND3"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{7B0C49E869702B35}" {
+     m_sName "GC_MigratedSpawn_F1062AD660E637BF"
+     m_aConditions {
+      GC_MissionEventCondition "{EB338E81465B1CAC}" {
+       m_sEventName "GC_MigrationSpawnCapture_0559B562AD094382"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B7A4B35A03852621}" {
+       m_sMessage "GC_MigratedSpawn_F1062AD660E637BF"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5CE81D857A0349C7}" {
+     m_sName "GC_MigratedSpawn_F1062AD660E637BF (109s)"
+     m_aConditions {
+      GC_MissionEventCondition "{88D367A92C480B49}" {
+       m_sEventName "GC_MigratedSpawn_F1062AD660E637BF"
+      }
+     }
+     m_Advanced GC_EventOptions "{FC9BDF0D6332FD4E}" {
+      m_fDelay 109
+     }
+     m_aActions {
+      GC_SpawnAction "{D889F3164B58B081}" {
+       m_Spawn GC_CrewedVehicleSpawn "{7A4B22817B49DD85}" {
+        m_sLocation "QRFM113.4"
+        m_sPrefab "{18378FFFC82F30BF}Prefabs/Vehicles/Tracked/M113/M113_APC.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{E8904464C4D89732}" {
+          m_aStations {
+           GC_SpawnCrewStation "{B30DC388991A9081}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{3CE9ED2330A2793A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Vic_GUNR.et"
+             "{3CE9ED2330A2793A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Vic_GUNR.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "FM4.1"
+           "FM4.2"
+           "SND1"
+          }
+         }
+         GC_SpawnCrewGroup "{0C024F8BE9DA10C2}" {
+          m_aStations {
+           GC_SpawnCrewStation "{F1F87EDA9048ED90}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{92E1FCD527319EC9}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_SL.et"
+             "{2C2031FC799B0EEC}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_SrRifleman.et"
+             "{581D9CB4D35A3203}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AT1.et"
+             "{3449A8546F9EBD2D}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AT2.et"
+             "{23AFF7E5ACF2A14A}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_AutoRifleman.et"
+             "{21A1481C0C4345AF}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Rifleman.et"
+             "{21A1481C0C4345AF}Prefabs/Characters/Factions/INDFOR/GC_TKA/Takistan Army 1992-2012 (TKA)/Character_GC_TKA_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "FM4.1"
+           "FM4.2"
+           "SND4"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+   m_aAuthoredRespawns {
+    GC_AuthoredFactionRespawn "{E0DB35C37A6471AD}" {
+     m_sFaction "US"
+     m_iTickets 20
+     m_iIntervalMs 60
+     m_bWave 1
+    }
+   }
+  }
+ }
+ coords 7858.976 502.084 5489.346
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_aFriendlyFactionsIds {
+      "UK"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "1"
+       }
+      }
+      m_sCallsignGroupFormat "%2-%3"
+      m_sCallsignCharacterFormat "%2-%3: %4"
+     }
+    }
+    SCR_Faction "{61500924662B6062}" {
+     m_aFriendlyFactionsIds {
+      "RHS_USAF"
+     }
+    }
+   }
+  }
+ }
+}
+GC_RadiusAreaEntity trig1 : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 1388.586 428.36 6786.043
+ m_fRadius 46.8
+}
+GC_RadiusAreaEntity trig2 : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 2035.174 303.99 7688.88
+ m_fRadius 200
+}
+GC_RadiusAreaEntity trig3 : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 2035.174 303.99 7688.88
+ m_fRadius 200
+}

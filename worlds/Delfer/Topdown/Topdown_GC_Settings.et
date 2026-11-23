@@ -3,14 +3,261 @@ GC_LobbyGameMode : "{A79C4E0A43DEB821}Prefabs/MP/Modes/GC_LobbyGameMode.et" {
  components {
   GC_LobbyManager "{6A137A39106A4973}" {
    m_aMissionEvents + {
-    GC_Event "{A1867187EE053576}" {
-     m_sName "Initialize faction respawn tickets"
+    GC_Event "{BE1F74D9A43AC6CC}" {
+     m_sName "time (event 3, 3600s)"
+     m_Advanced GC_EventOptions "{89F68A584C3B1039}" {
+      m_fDelay 3600
+     }
      m_aActions {
-      GC_RespawnTicketsAction "{5F4C8C035AE11644}" {
-       m_sFaction "GC_TKA"
-       m_iOperation 0
-       m_iAmount 8
+      GC_MessageAction "{03ADC2E383433C37}" {
+       m_sTitle "Time Limit Reached"
+       m_sMessage "If Blufor controls the trench objective, they win."
       }
+     }
+    }
+    GC_Event "{6822188EA148888E}" {
+     m_sName "time (event 3, 3300s)"
+     m_Advanced GC_EventOptions "{C05DF68D4C4CE47A}" {
+      m_fDelay 3300
+     }
+     m_aActions {
+      GC_MessageAction "{A26F72F507E38D46}" {
+       m_sTitle "5 Minutes Remaining"
+       m_sMessage ""
+      }
+     }
+    }
+   }
+   m_aBriefings {
+    GC_Briefing "{961CAF63DB2D7C47}" {
+     m_iOrder 0
+     m_sTitle "Situation"
+     m_sContent "Enemy forces are committing a significant force to push us out of our trench line in a previously quiet sector. They have gained significant ground already and are already within grenade range of our troops at the front line."\
+     ""\
+     "Note there are scatterable AT/AP Minefields marked on your map. These marks are general areas, only the trenches themselves are truly safe."
+     m_aFactionKeys {
+      "GC_TKA"
+     }
+    }
+    GC_Briefing "{084F75D46E459702}" {
+     m_iOrder 1
+     m_sTitle "Overview"
+     m_sContent "A Russian Company (-) attempt to dislodge CDF Foreign Legion from a trench system on a drone saturated front line."\
+     ""\
+     "<h2>Notes</h2>"\
+     "• 8 Respawns for CDF."
+     m_eAudience 1
+    }
+    GC_Briefing "{42EFB02BC7C68C90}" {
+     m_iOrder 2
+     m_sTitle "Situation"
+     m_sContent "We have gained a foothold in the enemy's trench line and our lead platoon (AI) is actively engaged within grenade range. If we can push the enemy out of their trench system we can continue onward to capture their position in depth at the farm."\
+     ""\
+     "Note there are scatterable AT/AP Minefields marked on your map. These marks are general areas, only the trenches themselves are truly safe."
+     m_aFactionKeys {
+      "RHS_AFRF"
+     }
+    }
+    GC_Briefing "{E4632FE6FA5DE9E0}" {
+     m_iOrder 3
+     m_sTitle "Situation Enemy"
+     m_sContent "We are dealing with a company (-), with the lead platoon heavily attritted while gaining lodgment but still effective. They have a fresh platoon on ground now and we are expecting imminent reinforcements. Some elements are marked on your map."\
+     ""\
+     "They are wearing dark green digital camo, and are using AK74s, PKPs, RPGs and UBGL's with some optics amongst their squads."\
+     ""\
+     "They have moderate UAS support (including droppers) and some old IFV's they may commit to their push."\
+     ""\
+     "They have no counter-UAS."\
+     ""\
+     "MLCOA: Rapidly reinforce their progress and push us out of our trench line"\
+     "MDCOA: Utilize UAS to identify and destroy our HQ and prevent medevac/reinforcement along our supply route, before using our trenchline as a base of fire to push onwards to our position at the farm."
+     m_aFactionKeys {
+      "GC_TKA"
+     }
+    }
+    GC_Briefing "{7BBAE1BBA619D59C}" {
+     m_iOrder 4
+     m_sTitle "Mission Notes"
+     m_sContent "<h2>END CONDITIONS</h2>"\
+     "<b>OPFOR VICTORY</b>"\
+     "• Both the Trench System and Farm objectives are secured."\
+     "OR"\
+     "•90% of BLUFOR personnel are killed."\
+     ""\
+     "<b>BLUFOR VICTORY</b>"\
+     "• BLUFOR retains control of the Trench System when the 60-minute time limit expires."\
+     "OR"\
+     "• 70% of OPFOR personnel are killed."\
+     ""\
+     "<h2>NOTES</h2>"\
+     "• Time limit: 60 minutes."\
+     "• Force ratio: 2.4:1 (OPFOR:BLUFOR)."\
+     "• OPFOR Company HQ and BLUFOR Platoon Leader must be slotted. These roles are expected to lead their respective forces using the drone feed, at least until all respawns are in play."\
+     "• Trench System capture timer: 2 minutes."\
+     "• Farm capture timer: 5 minutes."\
+     "• Objectives can be retaken."
+    }
+    GC_Briefing "{56316A01013E36B9}" {
+     m_iOrder 5
+     m_sTitle "Situation Enemy"
+     m_sContent "Our lead platoon (AI) is in grenade range of a platoon of CDF foreign legion fighters, with reinforcements being sent to reinforce their position now. Some elements are marked on your map. They are occupying positions in depth at the farm as well."\
+     ""\
+     "They are wearing green brown striped camouflage and are using M16s, M240s, RPGs and UBGL's."\
+     ""\
+     "They have limited offensive UAS support, if any."\
+     ""\
+     "They have no counter-UAS."
+     m_aFactionKeys {
+      "RHS_AFRF"
+     }
+    }
+    GC_Briefing "{0FCBFCD76F237881}" {
+     m_iOrder 6
+     m_sTitle "Situation Friendly"
+     m_sContent "We have a platoon (-) (AI) committed in the trench line that we've lost communications with, and two squads (Players) prepared to reinforce them at the farm"\
+     ""\
+     "Our Platoon HQ is located in the rear with our drone operator and medics with their medevac vehicle."
+     m_aFactionKeys {
+      "GC_TKA"
+     }
+    }
+    GC_Briefing "{A5C07D821D29E828}" {
+     m_iOrder 7
+     m_sTitle "Situation Friendly"
+     m_sContent "We have a platoon (-) (AI) committed in the trench line that we've lost communications with, with a fresh platoon (Players) in the rear most trench."\
+     ""\
+     "A second reinforcement platoon (Players) is on their way from 022 022."\
+     ""\
+     "Our COY HQ is located at 018 036 with our drone operators, medical personnel and our vehicles."
+     m_aFactionKeys {
+      "RHS_AFRF"
+     }
+    }
+    GC_Briefing "{65C7843BBBFF2288}" {
+     m_iOrder 8
+     m_sTitle "Mission"
+     m_sContent "Our Platoon must delay the capture of our trench position for 60 minutes. "
+     m_aFactionKeys {
+      "GC_TKA"
+     }
+    }
+    GC_Briefing "{980E8D5A4A97FBC0}" {
+     m_iOrder 9
+     m_sTitle "Mission"
+     m_sContent "Our Company must capture and hold the trench system within 60 minutes. The farm position should be taken if feasible."
+     m_aFactionKeys {
+      "RHS_AFRF"
+     }
+    }
+    GC_Briefing "{98D474DD09927EC3}" {
+     m_iOrder 10
+     m_sTitle "Execution"
+     m_sContent "The CO and his drone operator should remain at their HQ position and lead the battle via drone feed at least until all respawns have been used and given tasks."
+     m_aFactionKeys {
+      "GC_TKA"
+     }
+    }
+    GC_Briefing "{93EACBEBFF7DFB8E}" {
+     m_iOrder 11
+     m_sTitle "Execution"
+     m_sContent "The CO and his drone operator should remain at their HQ position and lead the battle via drone feed. "
+     m_aFactionKeys {
+      "RHS_AFRF"
+     }
+    }
+    GC_Briefing "{F65E84F0E8FB7745}" {
+     m_iOrder 12
+     m_sTitle "Service and Support"
+     m_sContent "Located at Platoon HQ:"\
+     ""\
+     "2x Recon Drone"\
+     "1x FPV Drone"\
+     ""\
+     "1x Medevac M113 (Seats 5+1 Driver)"\
+     "1x Unarmed Humvee (Seats 4)"\
+     "1x 50 cal Humvee (Seats 4+1 Gunner)"
+     m_aFactionKeys {
+      "GC_TKA"
+     }
+    }
+    GC_Briefing "{7F164F42EC29B517}" {
+     m_iOrder 13
+     m_sTitle "Service and Support"
+     m_sContent "Service and Support:"\
+     ""\
+     "Located at COY HQ:"\
+     ""\
+     "1x Recon Drone"\
+     "1x Dropper Drone (Grenade)"\
+     ""\
+     "1x Medevac Van (Seats 4+1 Driver)"\
+     "2x UAZ (Seats 5)"\
+     "1x BMP-2 (Seats 6+3 Crew) (Can also be used as an armored medevac)"
+     m_aFactionKeys {
+      "RHS_AFRF"
+     }
+    }
+    GC_Briefing "{498C96E3A4D8AD51}" {
+     m_iOrder 14
+     m_sTitle "Command and Signals"
+     m_sContent "Succession of Command:"\
+     ""\
+     "Platoon Leader"\
+     "Drone Operator "\
+     "1 SL"\
+     "2 SL"\
+     ""\
+     "Platoon net: 48.0MHz"\
+     "Drone net: 47.0MHz"
+     m_aFactionKeys {
+      "GC_TKA"
+     }
+    }
+    GC_Briefing "{AB0377DBBE3D2F99}" {
+     m_iOrder 15
+     m_sTitle "Command and Signals"
+     m_sContent "Succession of Command:"\
+     ""\
+     "110 Coy Commander"\
+     "->Drone Operator"\
+     ""\
+     "121 HQ Platoon Leader"\
+     "->121 Platoon Sgt ->121 -> 122 -> 123"\
+     ""\
+     "131 HQ Platoon Leader"\
+     "->131 Platoon Sgt ->131 -> 132 -> 133"\
+     ""\
+     "Company Net: 42.0MHz"\
+     "Drone Net: 41.0MHz "\
+     ""
+     m_aFactionKeys {
+      "RHS_AFRF"
+     }
+    }
+    GC_Briefing "{3456A8D7A4549581}" {
+     m_iOrder 16
+     m_sTitle "Mission Notes"
+     m_sContent "8 Respawns."\
+     ""\
+     "Platoon Lead / Drone Op should lead from their HQ using drone feed to guide the squads, at least until all respawns have been given tasks."\
+     ""\
+     "There are a limited number of vehicles and respawns should wait until they are in functional sized elements (4-5) before moving to the front."\
+     ""\
+     "Medics also spawn at the HQ with a protected medevac vehicle. "\
+     "Actually medevac your casualties it will be cool."
+     m_aFactionKeys {
+      "GC_TKA"
+     }
+    }
+    GC_Briefing "{65159119FDE952E6}" {
+     m_iOrder 17
+     m_sTitle "Mission Notes"
+     m_sContent "Company CO / Drone Op should lead from their HQ using drone feed to guide the platoons."\
+     ""\
+     "Medics also spawn at the HQ with a medevac vac or a BMP that can be used for that as well."\
+     "Actually medevac your casualties it will be cool."
+     m_aFactionKeys {
+      "RHS_AFRF"
      }
     }
    }
