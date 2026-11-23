@@ -1,0 +1,183 @@
+SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
+ coords 12875.355 0 9622.063
+}
+GC_LobbyGameMode GC_MigratedMission : "{B920CE36FFB1330A}worlds/TheLocalPub/CleanHouse/CleanHouse_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 12
+   m_bRandomStartingWeather 1
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{68B15610677B19F4}" {
+     m_iStartingHour 12
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 14
+   m_iMonth 7
+   m_iYear 2002
+  }
+  GC_PeakFactionPopulationComponent "{AC9D2E86E7480E43}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{257A220E28E29E23}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 120
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{FB067653ECF947EF}" {
+     m_sName "SetupFinished"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{3E62A26FB0943333}" {
+     m_sName "SetupTimer (120s)"
+     m_Advanced GC_EventOptions "{E14BBFF550F78D68}" {
+      m_fDelay 120
+     }
+     m_aActions {
+      GC_FlagAction "{C037F82A01553413}" {
+       m_sFlagName "SetupFinished"
+       m_iOperation 1
+       m_iAmount 1
+      }
+      GC_MessageAction "{2DE8CAA278165BED}" {
+       m_sTitle "Teleports activated"
+       m_sMessage "You can now teleport to the insert locations via the coloured doors"
+       m_aFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{D74618C6811C9191}" {
+     m_sName "SetupTimer (props) (240s)"
+     m_Advanced GC_EventOptions "{F27E50CC89AD1665}" {
+      m_fDelay 240
+     }
+     m_aActions {
+      GC_FlagAction "{B0BF7F76AE2E4E63}" {
+       m_sFlagName "SetupFinished"
+       m_iOperation 1
+       m_iAmount 1
+      }
+      GC_MessageAction "{D23AD7C65369FD6B}" {
+       m_sTitle "Teleports activated"
+       m_sMessage "You can now teleport to the insert locations via the coloured doors"
+       m_aFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{EAEA54D09C517C8C}" {
+     m_sName "RUWin (props)"
+     m_aConditions {
+      GC_CustomScriptCondition "{6DEB099D9663C20B}" {
+       m_Script GC_PeakFactionPopulationCheck "{674C8272969E3701}" {
+        m_sFaction "RHS_AFRF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9FEFA4DA1A1EDEFF}" {
+       m_sMessage "RUWin (props)"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B3DF1DD5E185D373}" {
+     m_sName "RUWin (props) (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D2F7C2CF1876B85A}" {
+       m_sEventName "RUWin (props)"
+      }
+     }
+     m_Advanced GC_EventOptions "{6281A7CDA21D30B8}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_MessageAction "{D1209D57EE91BA9B}" {
+       m_sTitle "RUSSIAN FEDERATION VICTORY"
+       m_sMessage ""
+       m_aFactions {
+        "RHS_AFRF"
+       }
+      }
+      GC_MessageAction "{A1CD545E3E9BF4D8}" {
+       m_sTitle "RUSSIAN FEDERATION VICTORY"
+       m_sMessage ""
+       m_aFactions {
+        "GC_SEPARATIST"
+       }
+      }
+     }
+    }
+    GC_Event "{1DE960849DD023FB}" {
+     m_sName "SEPWin (props)"
+     m_aConditions {
+      GC_CustomScriptCondition "{DFDD5B9878053E14}" {
+       m_Script GC_PeakFactionPopulationCheck "{7443AF50160229B7}" {
+        m_sFaction "RHS_AFRF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B1B2ADC2BC2FD52B}" {
+       m_sMessage "SEPWin (props)"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{957B0E6D988E8A8F}" {
+     m_sName "SEPWin (props) (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CD71E9FA6B4907CD}" {
+       m_sEventName "SEPWin (props)"
+      }
+     }
+     m_Advanced GC_EventOptions "{A010113179E601A6}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_MessageAction "{41A86CDFA66BB719}" {
+       m_sTitle "SEPARATIST VICTORY"
+       m_sMessage ""
+       m_aFactions {
+        "RHS_AFRF"
+       }
+      }
+      GC_MessageAction "{9D39FF81ECC3A0F5}" {
+       m_sTitle "SEPARATIST VICTORY"
+       m_sMessage ""
+       m_aFactions {
+        "GC_SEPARATIST"
+       }
+      }
+     }
+    }
+    GC_Event "{3E062778C5F2B087}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{720E0B1890BF32E5}" {
+       m_fSeconds 120.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{CECE44ECADCF567A}" {
+       m_aEntities {
+        "Setupzone"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 13294.985 0 9615.088
+ m_eJipMode DISABLED
+}
