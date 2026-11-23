@@ -1,0 +1,875 @@
+SCR_AIWorld : "{3D0FE80570D5BFCC}Prefabs/AI/SCR_AIWorld_Anizay.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{64EF613827D811A2}" {
+     NavmeshFile "{E08B16AADAB901D8}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Soldier.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{04F808CEFD545B32}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_Vehicle.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{6D7CE9C2F346F22E}Worlds/Bystrany/Navmeshes/Nav_GM_Bystrany_LowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 3299.942 213.431 7871.862
+}
+GC_LobbyGameMode GC_MigratedMission : "{A66939D2AEE78A7C}worlds/TheLocalPub/RiverStandoff/RiverStandoff_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 18
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6A76DEAF5EA415A7}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 18
+    }
+   }
+   m_bDateOverride 1
+   m_iDay 5
+   m_iMonth 10
+   m_iYear 1986
+  }
+  GC_PeakFactionPopulationComponent "{47F2682008837FCD}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{2B6BC601BA1490E8}" {
+     m_sName "AmmoDead"
+     m_aConditions {
+      GC_EntityDamageCondition "{04A738B4527102E9}" {
+       m_sEntityName "M923A1_ammo_MERDC1"
+      }
+     }
+    }
+    GC_MissionFlag "{3C4CD261788FF666}" {
+     m_sName "BradDead"
+     m_aConditions {
+      GC_EntityDamageCondition "{0EB0F077F0D0085D}" {
+       m_sEntityName "M2A2_BUSK_OD1"
+      }
+     }
+    }
+    GC_MissionFlag "{7A3818EBCB509C5A}" {
+     m_sName "CommandDead"
+     m_aConditions {
+      GC_EntityDamageCondition "{6E44C640B1EE43C7}" {
+       m_sEntityName "M923A1_command_MERDC1"
+      }
+     }
+    }
+    GC_MissionFlag "{2FC82027E66E7A11}" {
+     m_sName "FuelDead"
+     m_aConditions {
+      GC_EntityDamageCondition "{3B55EC925A258726}" {
+       m_sEntityName "M923A1_tanker_MERDC1"
+      }
+     }
+    }
+    GC_MissionFlag "{0AFF6AF94AA6A756}" {
+     m_sName "RepairDead"
+     m_aConditions {
+      GC_EntityDamageCondition "{8605D9EDC2130BD3}" {
+       m_sEntityName "M923A1_repair_MERDC1"
+      }
+     }
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{AA84E32C629505C3}" {
+     m_sName "USSR_MajWin"
+     m_aConditions {
+      GC_GameModeStateCondition "{633B83DC203DA3FF}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{DB6C0E87AF53CEE0}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionCount "{F427E5841C574CD4}" {
+         m_iComparison 2
+         m_iRequiredCount 5
+         m_aConditions {
+          GC_MissionFlagCondition "{9B959B29262102EF}" {
+           m_sFlagName "BradDead"
+          }
+          GC_MissionFlagCondition "{7D3384CF98490B0F}" {
+           m_sFlagName "AmmoDead"
+          }
+          GC_MissionFlagCondition "{E57BC776063DE144}" {
+           m_sFlagName "RepairDead"
+          }
+          GC_MissionFlagCondition "{07E3F9593274C825}" {
+           m_sFlagName "FuelDead"
+          }
+          GC_MissionFlagCondition "{F11598E1AE0B41CF}" {
+           m_sFlagName "CommandDead"
+          }
+         }
+        }
+        GC_AreaCondition "{F9BFDF2155545CB2}" {
+         m_sArea "GC_MigrationArea_Extracted"
+         m_Targets GC_CharacterAreaTargets "{C4F01E09D483FEA8}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{A5E97095E7338CF2}" {
+          m_fRequiredShare 0.666
+          m_bWholeMission 1
+          m_bAtMost 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{2F3728E0A7086179}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{CDEC39DE2DF8E08F}" {
+       m_sMessage "USSR_MajWin"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{21CC06A80E8DA73A}" {
+     m_sName "USSR_MajWin (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{5800CA1AE53E47F5}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{309CCA56B1C98BEB}" {
+       m_sEventName "USSR_MajWin"
+      }
+     }
+     m_Advanced GC_EventOptions "{AE1480310594E267}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{D6683244350701B0}" {
+       m_sTitle "USSR MAJOR VICTORY"
+       m_sMessage "USSR forces have managed to strike the convoy and destroy all vehicles before extracting out the AO."\
+       ""\
+       "Good job!"\
+       "Mission will conclude shortly.."
+      }
+     }
+    }
+    GC_Event "{E4D8FAD2694105B8}" {
+     m_sName "USSR_RegWin"
+     m_aConditions {
+      GC_GameModeStateCondition "{AA9B11385693F957}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{76F2A84184598EBF}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionCount "{F58EF258354C08FE}" {
+         m_iComparison 2
+         m_iRequiredCount 4
+         m_aConditions {
+          GC_MissionFlagCondition "{1F967B281DCDFC13}" {
+           m_sFlagName "BradDead"
+          }
+          GC_MissionFlagCondition "{6F29F1752B75D3DB}" {
+           m_sFlagName "AmmoDead"
+          }
+          GC_MissionFlagCondition "{91E58F4548C9BB60}" {
+           m_sFlagName "RepairDead"
+          }
+          GC_MissionFlagCondition "{3264996F7487A396}" {
+           m_sFlagName "FuelDead"
+          }
+          GC_MissionFlagCondition "{DB50AB75A42FB7AA}" {
+           m_sFlagName "CommandDead"
+          }
+         }
+        }
+        GC_AreaCondition "{3D2687554572F7B6}" {
+         m_sArea "GC_MigrationArea_Extracted"
+         m_Targets GC_CharacterAreaTargets "{36909471A24836AB}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{82202C13EECB2438}" {
+          m_fRequiredShare 0.666
+          m_bWholeMission 1
+          m_bAtMost 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{6DA62BA0B9E72F79}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{56494BBD3664F1F2}" {
+       m_sMessage "USSR_RegWin"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AB46D76A6DA591D7}" {
+     m_sName "USSR_RegWin (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{4A2AE80814B5EBFA}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{3057766E5F70B31B}" {
+       m_sEventName "USSR_RegWin"
+      }
+     }
+     m_Advanced GC_EventOptions "{52FE15086EC3C15E}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{04A0BEBB96D6E3A4}" {
+       m_sTitle "USSR REGULAR VICTORY"
+       m_sMessage "USSR forces have managed to strike the convoy destroying at least 4 vehicles and extracted out the AO."\
+       ""\
+       "Good job!"\
+       "Mission will conclude shortly.."
+      }
+     }
+    }
+    GC_Event "{C303788D9772F7B5}" {
+     m_sName "USSR_MinWin"
+     m_aConditions {
+      GC_GameModeStateCondition "{A83531C4A75A923D}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{00E6CE1084427B01}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionCount "{698F62DC48E78A54}" {
+         m_iComparison 2
+         m_iRequiredCount 2
+         m_aConditions {
+          GC_MissionFlagCondition "{B93CDAC7BDE3E28D}" {
+           m_sFlagName "BradDead"
+          }
+          GC_MissionFlagCondition "{E4C1A03BA07C8D46}" {
+           m_sFlagName "AmmoDead"
+          }
+          GC_MissionFlagCondition "{B4E7067873C04FA0}" {
+           m_sFlagName "RepairDead"
+          }
+          GC_MissionFlagCondition "{D0EE4C1CB409519F}" {
+           m_sFlagName "FuelDead"
+          }
+          GC_MissionFlagCondition "{489A7AA102754714}" {
+           m_sFlagName "CommandDead"
+          }
+         }
+        }
+        GC_AreaCondition "{022084B2A02728F9}" {
+         m_sArea "GC_MigrationArea_Extracted"
+         m_Targets GC_CharacterAreaTargets "{16B3958E3C0258D6}" {
+          m_aFactions {
+           "USSR"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{050DEEF4766CDA3D}" {
+          m_fRequiredShare 0.666
+          m_bWholeMission 1
+          m_bAtMost 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{CB829BDF93D28EB4}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E42EB8CF8BF4EDF2}" {
+       m_sMessage "USSR_MinWin"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{30ADE42ABF980EA9}" {
+     m_sName "USSR_MinWin (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{A58A7473040CCB4E}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{0132BB8C0A15DBCD}" {
+       m_sEventName "USSR_MinWin"
+      }
+     }
+     m_Advanced GC_EventOptions "{8FF5CC8F8B97CA23}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{B698B7D26DAA1055}" {
+       m_sTitle "USSR MINOR VICTORY"
+       m_sMessage "USSR forces have managed to strike the convoy destroying at least 2 vehicles and extracted out the AO."
+      }
+     }
+    }
+    GC_Event "{B0A8D01C62344708}" {
+     m_sName "USSR_RegWinFlagClear"
+     m_aConditions {
+      GC_GameModeStateCondition "{D34D9562F596B95D}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionCount "{56DBF3C44BB52723}" {
+       m_iComparison 2
+       m_iRequiredCount 5
+       m_aConditions {
+        GC_MissionFlagCondition "{2EA7DCB4EB6161B1}" {
+         m_sFlagName "BradDead"
+        }
+        GC_MissionFlagCondition "{E7E6628D764490FE}" {
+         m_sFlagName "AmmoDead"
+        }
+        GC_MissionFlagCondition "{B2D1F4A38AA75878}" {
+         m_sFlagName "RepairDead"
+        }
+        GC_MissionFlagCondition "{C3A24B23C3F6429F}" {
+         m_sFlagName "FuelDead"
+        }
+        GC_MissionFlagCondition "{94099AC87ECAD10F}" {
+         m_sFlagName "CommandDead"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F338C3A6EBB9B145}" {
+       m_sMessage "USSR_RegWinFlagClear"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{27D92A36ACD3DD68}" {
+     m_sName "USSR_RegWinFlagClear (1s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{A60D2C21A242E3E9}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{3FB124827F1406B1}" {
+       m_sEventName "USSR_RegWinFlagClear"
+      }
+     }
+     m_Advanced GC_EventOptions "{3D48233EADB17877}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{D3971D8BE6382B78}" {
+       m_sTitle "Major win achievable"
+       m_sMessage "We've destroyed ALL vehicles. Extract to the marker now to achieve a major victory."
+       m_aFactions {
+        "USSR"
+       }
+      }
+     }
+    }
+    GC_Event "{C963CDF08E2BAF76}" {
+     m_sName "USSR_MinWinFlagClear"
+     m_aConditions {
+      GC_GameModeStateCondition "{0BFF2092BDDF587F}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionCount "{6A0AD2872DCC3E60}" {
+       m_iComparison 2
+       m_iRequiredCount 4
+       m_aConditions {
+        GC_MissionFlagCondition "{E9DA5CFD3F666F31}" {
+         m_sFlagName "BradDead"
+        }
+        GC_MissionFlagCondition "{5ED744717D662776}" {
+         m_sFlagName "AmmoDead"
+        }
+        GC_MissionFlagCondition "{B370B9A786E99F32}" {
+         m_sFlagName "RepairDead"
+        }
+        GC_MissionFlagCondition "{3B861DA6E4D31D7D}" {
+         m_sFlagName "FuelDead"
+        }
+        GC_MissionFlagCondition "{65FF73E8739246DE}" {
+         m_sFlagName "CommandDead"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0F795DD33B9D52F3}" {
+       m_sMessage "USSR_MinWinFlagClear"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{59ADADC801C96EE8}" {
+     m_sName "USSR_MinWinFlagClear (1s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{3AB497F21C6B7FB1}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{ACE01B07727FB54F}" {
+       m_sEventName "USSR_MinWinFlagClear"
+      }
+     }
+     m_Advanced GC_EventOptions "{DF45E82105BCB15B}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{D0661FEF3626254F}" {
+       m_sTitle "Regular win achievable"
+       m_sMessage "We've destroyed enough vehicles to claim a regular win if we extract now or go for more vehicle."
+       m_aFactions {
+        "USSR"
+       }
+      }
+     }
+    }
+    GC_Event "{1C61C336B4FE1841}" {
+     m_sName "USSR_MinWinMessage"
+     m_aConditions {
+      GC_GameModeStateCondition "{D6D4F1DD342B8829}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionCount "{AA3008192D625169}" {
+       m_iComparison 2
+       m_iRequiredCount 2
+       m_aConditions {
+        GC_MissionFlagCondition "{B7A3F2012FD71335}" {
+         m_sFlagName "BradDead"
+        }
+        GC_MissionFlagCondition "{748368DBD0B1E29C}" {
+         m_sFlagName "AmmoDead"
+        }
+        GC_MissionFlagCondition "{8235861143A96CAC}" {
+         m_sFlagName "RepairDead"
+        }
+        GC_MissionFlagCondition "{2E8376CAF3456BBC}" {
+         m_sFlagName "FuelDead"
+        }
+        GC_MissionFlagCondition "{F4DE9F76415803D4}" {
+         m_sFlagName "CommandDead"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1DF3C2AA94BE8F84}" {
+       m_sMessage "USSR_MinWinMessage"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FF216E422917DAB8}" {
+     m_sName "USSR_MinWinMessage (1s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{BD536F31AB816D96}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{1AE8718940B13B4E}" {
+       m_sEventName "USSR_MinWinMessage"
+      }
+     }
+     m_Advanced GC_EventOptions "{26A9134E245BD8B7}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{616B95FF1450F704}" {
+       m_sTitle "Minor win achievable"
+       m_sMessage "We've destroyed enough vehicles to claim a minor win if we extract now or go for more vehicle."
+       m_aFactions {
+        "USSR"
+       }
+      }
+     }
+    }
+    GC_Event "{80C1BD872A791A23}" {
+     m_sName "US_Win"
+     m_aConditions {
+      GC_CustomScriptCondition "{713E142F0B62B8F5}" {
+       m_Script GC_PeakFactionPopulationCheck "{5E9D3873B3EF7DEE}" {
+        m_sFaction "USSR"
+        m_fRatio 0.85
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{040F0F653067AC71}" {
+       m_sMessage "US_Win"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1D78D1C2DD4B8C06}" {
+     m_sName "US_Win (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{865A132359AEAEA6}" {
+       m_sEventName "US_Win"
+      }
+     }
+     m_Advanced GC_EventOptions "{6833D9D1CD70A561}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{D963006E74ECED2F}" {
+       m_sTitle "US VICTORY"
+       m_sMessage "The US convoy has managed to repel the Soviet ambush and live to tell the tale."\
+       ""\
+       "Good job!"\
+       "Mission will conclude shortly..."
+      }
+     }
+    }
+    GC_Event "{C5E91C5CC1045358}" {
+     m_sName "QRFMessage"
+     m_aConditions {
+      GC_AreaCondition "{36B3302A08EEF99D}" {
+       m_sArea "GC_MigrationArea_QRF"
+       m_Targets GC_CharacterAreaTargets "{FCEDA1966AC57DF4}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{4D598EC4531E27A7}" {
+        m_fRequiredShare 0.25
+        m_bWholeMission 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{635ADBAFEB1D082D}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C4301C1E66FE01E6}" {
+       m_sMessage "QRFMessage"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{65822F57739611BC}" {
+     m_sName "QRFMessage (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DE21F83CB2EA9E44}" {
+       m_sEventName "QRFMessage"
+      }
+     }
+     m_Advanced GC_EventOptions "{7885799825213577}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{A398EB33EA14CE5E}" {
+       m_sTitle "Reinforcements enroute"
+       m_sMessage "QRF is closing in on the convoy. They should be arriving within the next 5mins."
+       m_aFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{7E8C604FF4A88043}" {
+     m_sName "GC_MigratedSpawn_3D52B5F74E501074"
+     m_aConditions {
+      GC_AreaCondition "{B861990300698B0A}" {
+       m_sArea "GC_MigrationArea_QRF"
+       m_Targets GC_CharacterAreaTargets "{EE8DF356B17067A5}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{7F3BA7137E38728B}" {
+        m_fRequiredShare 0.25
+        m_bWholeMission 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{94DCBE3DC9F874E4}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{705A252DFD5EF1B0}" {
+       m_sMessage "GC_MigratedSpawn_3D52B5F74E501074"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{68F1E0ABEDB0AD42}" {
+     m_sName "GC_MigratedSpawn_3D52B5F74E501074 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B72C429DF9426E35}" {
+       m_sEventName "GC_MigratedSpawn_3D52B5F74E501074"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{68F1E0ABEDB0AD42}" {
+       m_Spawn GC_CrewedVehicleSpawn "{18A6AD218AD57918}" {
+        m_sLocation "Spawner_Humvee1"
+        m_sPrefab "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MERDC.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{E40ABE4DFE3B94C3}" {
+          m_aStations {
+           GC_SpawnCrewStation "{756217E0D4E9F528}" {
+            m_bGunners 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{693510F02BFBD475}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/7th ID/Character_US_7ID_1986_RiflemanAT_1.et"
+            }
+           }
+           GC_SpawnCrewStation "{B40A89E58B8FBF0E}" {
+            m_bDriver 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{6AD8688D62B00FEE}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/7th ID/Character_US_7ID_1986_TeamLead_1.et"
+            }
+           }
+           GC_SpawnCrewStation "{060B170AEF67359D}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{9E0BB79D41D9565F}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/7th ID/Character_US_7ID_1986_Grenadier_1.et"
+             "{C5F4F63AFD7EEFD0}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/7th ID/Character_US_7ID_1986_AutoRifleman_1.et"
+             "{693510F02BFBD475}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/7th ID/Character_US_7ID_1986_RiflemanAT_1.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "WP_QRF"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A721530E1AC54D5F}" {
+     m_sName "GC_MigratedSpawn_1F6464E9FE054795"
+     m_aConditions {
+      GC_AreaCondition "{C95B67658ECB0BD8}" {
+       m_sArea "GC_MigrationArea_QRF"
+       m_Targets GC_CharacterAreaTargets "{091186E8C2DA4BFD}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{49E7B76A6E0B284E}" {
+        m_fRequiredShare 0.25
+        m_bWholeMission 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{F4F23EB985ADD8C4}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{CF6D6B6F7C5FCD74}" {
+       m_sMessage "GC_MigratedSpawn_1F6464E9FE054795"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{01B194094AF7F922}" {
+     m_sName "GC_MigratedSpawn_1F6464E9FE054795 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C2B83AAD01B752E7}" {
+       m_sEventName "GC_MigratedSpawn_1F6464E9FE054795"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{01B194094AF7F922}" {
+       m_Spawn GC_CrewedVehicleSpawn "{1F56F32AA0253530}" {
+        m_sLocation "Spawner_Humvee2"
+        m_sPrefab "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MERDC.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{6E696383FAA0806C}" {
+          m_aStations {
+           GC_SpawnCrewStation "{A8614D1401D6C7DC}" {
+            m_bGunners 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{693510F02BFBD475}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/7th ID/Character_US_7ID_1986_RiflemanAT_1.et"
+            }
+           }
+           GC_SpawnCrewStation "{C574F9899596CF4F}" {
+            m_bDriver 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{6AD8688D62B00FEE}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/7th ID/Character_US_7ID_1986_TeamLead_1.et"
+            }
+           }
+           GC_SpawnCrewStation "{FC740C1D50CC5E28}" {
+            m_bDriver 0
+            m_bGunners 0
+            m_aCharacters {
+             "{9E0BB79D41D9565F}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/7th ID/Character_US_7ID_1986_Grenadier_1.et"
+             "{C5F4F63AFD7EEFD0}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/7th ID/Character_US_7ID_1986_AutoRifleman_1.et"
+             "{693510F02BFBD475}Prefabs/Characters/Factions/BLUFOR/US_Army/1986/7th ID/Character_US_7ID_1986_RiflemanAT_1.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "WP_QRF"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4B509B6B5FA356AE}" {
+     m_sName "GC_MigratedSpawn_C8A3BB99C0DCE500"
+     m_aConditions {
+      GC_AreaCondition "{4A460B7BB7E4CFDB}" {
+       m_sArea "GC_MigrationArea_QRF"
+       m_Targets GC_CharacterAreaTargets "{E89559040C34E242}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{2B1F08164B887A6D}" {
+        m_fRequiredShare 0.25
+        m_bWholeMission 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{0CF42F14DBA3102A}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D5ABC1E631BD9055}" {
+       m_sMessage "GC_MigratedSpawn_C8A3BB99C0DCE500"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{05BA34D6A3912AD3}" {
+     m_sName "GC_MigratedSpawn_C8A3BB99C0DCE500 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B162F55A12E29142}" {
+       m_sEventName "GC_MigratedSpawn_C8A3BB99C0DCE500"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{05BA34D6A3912AD3}" {
+       m_Spawn GC_AIGroupSpawn "{DA997DC0172D59E7}" {
+        m_sLocation "Spawner_Inf1"
+        m_sPrefab "{D935DD01ADA2B253}Prefabs/Groups/BLUFOR/US/Army/1986/7th ID (Woodland)/Group_US_Army_7ID_1986_RifleSquad.et"
+        m_aWaypoints {
+         "WP_QRF"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{624CBFAD0908F0C2}" {
+     m_sName "GC_MigratedSpawn_D699A4FA36F94C1A"
+     m_aConditions {
+      GC_AreaCondition "{BEFFB87F2320713F}" {
+       m_sArea "GC_MigrationArea_QRF"
+       m_Targets GC_CharacterAreaTargets "{4B4513F27B7006F7}" {
+        m_aFactions {
+         "USSR"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{B2AF3729A4BA94D8}" {
+        m_fRequiredShare 0.25
+        m_bWholeMission 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{726ADCCDEB422ADB}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9261C3AE080AEEAB}" {
+       m_sMessage "GC_MigratedSpawn_D699A4FA36F94C1A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{ABB7F539FCD4BDE2}" {
+     m_sName "GC_MigratedSpawn_D699A4FA36F94C1A (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F2B74E1A3BC5A5B8}" {
+       m_sEventName "GC_MigratedSpawn_D699A4FA36F94C1A"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{ABB7F539FCD4BDE2}" {
+       m_Spawn GC_AIGroupSpawn "{EEDB08BB900D6346}" {
+        m_sLocation "Spawner_Inf2"
+        m_sPrefab "{D935DD01ADA2B253}Prefabs/Groups/BLUFOR/US/Army/1986/7th ID (Woodland)/Group_US_Army_7ID_1986_RifleSquad.et"
+        m_aWaypoints {
+         "WP_QRF"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 3300.584 213.431 7872.085
+ {
+  RadioManagerEntity {
+   ID "A79C4E0A43DEB824"
+   coords -26.889 38.579 -2.478
+  }
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   coords 0 -0.002 -0.002
+  }
+  ItemPreviewManagerEntity : "{9F18C476AB860F3B}Prefabs/World/Game/ItemPreviewManager.et" {
+   ID "5ED9088735FF2DD5"
+   coords -12.245 1 -7.528
+  }
+  SCR_EditorSettingsEntity {
+   ID "61B4E967E6C20362"
+   coords 0 0 0
+   m_bIsUnlimitedEditorLegal 1
+  }
+ }
+}
