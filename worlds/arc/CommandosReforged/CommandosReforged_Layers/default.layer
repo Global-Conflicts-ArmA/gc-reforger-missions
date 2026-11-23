@@ -1,0 +1,545 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{6476AAAF3ABCCA31}" {
+     NavmeshFile "{D8EF7131FB31AF97}worlds/GameMaster/Navmeshes/GM_Arland.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{A0AEEB1E7EF474FA}worlds/GameMaster/Navmeshes/GM_Arland_vehicles.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{804386FFEB7B7EFD}worlds/MP/Navmeshes/LowResArland.nmn"
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ Formations {
+  AIFormationDefinition "{56ACE3951AA8D3EB}" {
+   Offsets {
+    0 0 0
+    0 0 -2
+    0 0 -4
+    0 0 -6
+    0 0 -8
+    0 0 -10
+    0 0 -12
+    0 0 -14
+    0 0 -16
+    0 0 -18
+    0 0 -20
+   }
+  }
+ }
+}
+GC_LobbyGameMode GC_MigratedMission : "{81102165D77F87F3}worlds/arc/CommandosReforged/CommandosReforged_GC_Settings.et" {
+ components {
+  GC_CommandosManager "{659C5DFB11CD048A}" {
+   m_sDefectorPageTitle "YOU ARE THE DEFECTOR (QUIET,SECRET)"
+   m_sDefectorPageContent "You intend to defect and no one knows. Keep this secret, if you are found you will be executed."\
+   ""\
+   "You must complete your objectives bellow in the briefing."\
+   "Don't get caught, don't raise suspicious."\
+   ""\
+   "This is not a free pass to comit a mass shooting."\
+   "You are only allowed to complete your objectives."\
+   "You may only kill opfor players if in self-defense."\
+   "If you die you fail your objective."\
+   ""\
+   "Once your objective is complete escape the base without being found out."\
+   "NO ADDITONAL SABOTAGING!!"
+   m_aObjectives {
+    GC_CommandosObjective "{65BB1908ED43E40C}" {
+     m_sName "Power Station"
+     m_sBriefing "Sabotage the power station (Interaction)"
+     m_sCompletionMessage "The %1 has been sabotaged!"
+     m_iCompletionDelay 60
+     m_eKind 0
+     m_sAvailabilityFlag "Commandos_3D25673E82EEBDFC_Active"
+     m_sCompletionFlag "Commandos_3D25673E82EEBDFC_Complete"
+    }
+    GC_CommandosObjective "{65BB19096B1C7DAC}" {
+     m_sName "Prototype Tank"
+     m_sBriefing "Photograph the Prototype Tank (Interaction)"
+     m_sCompletionMessage "Photograph the Prototype Tank"
+     m_iCompletionDelay 60
+     m_eKind 0
+     m_sAvailabilityFlag "Commandos_1BA68D19ED96E03C_Active"
+     m_sCompletionFlag "Commandos_1BA68D19ED96E03C_Complete"
+    }
+    GC_CommandosObjective "{65BC1223BA5886E7}" {
+     m_sName "Research Documents"
+     m_sBriefing "Steal the research documents"
+     m_sCompletionMessage "The %1 have been stolen!"
+     m_iCompletionDelay 60
+     m_eKind 0
+     m_sAvailabilityFlag "Commandos_0C376E59F2318E17_Active"
+     m_sCompletionFlag "Commandos_0C376E59F2318E17_Complete"
+    }
+    GC_CommandosObjective "{65BC1222A9EDDED6}" {
+     m_sName "Flight Manifest"
+     m_sBriefing "Steal the Flight Manifest"
+     m_sCompletionMessage "The %1 has been stolen!"
+     m_iCompletionDelay 60
+     m_eKind 0
+     m_sAvailabilityFlag "Commandos_899462435248CD77_Active"
+     m_sCompletionFlag "Commandos_899462435248CD77_Complete"
+    }
+    GC_CommandosObjective "{65BC2E081BADC210}" {
+     m_sName "Monitoring System"
+     m_sBriefing "Install the Monitoring System near the runway intersection"
+     m_sCompletionMessage "The %1 has been installed!"
+     m_iCompletionDelay 60
+     m_eKind 0
+     m_sAvailabilityFlag "Commandos_940C5DE684E0D984_Active"
+     m_sCompletionFlag "Commandos_940C5DE684E0D984_Complete"
+    }
+    GC_CommandosObjective "{65BC2E0D667D8881}" {
+     m_sName "Air Fuel Depot"
+     m_sBriefing "Sabotage the Air Fuel Depot (Interaction)"
+     m_sCompletionMessage "The %1 has been sabotaged!"
+     m_iCompletionDelay 60
+     m_eKind 0
+     m_sAvailabilityFlag "Commandos_1378DD4794848160_Active"
+     m_sCompletionFlag "Commandos_1378DD4794848160_Complete"
+    }
+    GC_CommandosObjective "{65BC2E0CF9419532}" {
+     m_sName "Il-76"
+     m_sBriefing "Sabotage the Il-76's Engines (Interaction)"
+     m_sCompletionMessage "The %1 has been neutralized!"
+     m_iCompletionDelay 60
+     m_eKind 0
+     m_sAvailabilityFlag "Commandos_1366E89ED1B4F42F_Active"
+     m_sCompletionFlag "Commandos_1366E89ED1B4F42F_Complete"
+    }
+    GC_CommandosObjective "{65BC2E00D36D4F71}" {
+     m_sName "Stool Sample"
+     m_sBriefing "Collect the Pilot's Stool Sample from the bunkers"
+     m_sCompletionMessage "The %1 has been collected!"
+     m_iCompletionDelay 60
+     m_eKind 0
+     m_sAvailabilityFlag "Commandos_ECC503E338C07B46_Active"
+     m_sCompletionFlag "Commandos_ECC503E338C07B46_Complete"
+    }
+    GC_CommandosObjective "{65BC2E04BA771F0D}" {
+     m_sName "SU-57s"
+     m_sBriefing "Sabotage atleast ONE of the SU-57s (Interaction)"
+     m_sCompletionMessage "The %1 has been sabotaged!"
+     m_iCompletionDelay 60
+     m_eKind 0
+     m_sAvailabilityFlag "Commandos_73DDDB2095549EE2_Active"
+     m_sCompletionFlag "Commandos_73DDDB2095549EE2_Complete"
+    }
+    GC_CommandosObjective "{65E45BDC308A67EA}" {
+     m_sName "Intel"
+     m_sBriefing "Steal the intel from the officer's quarters"
+     m_sCompletionMessage "The %1 has been stolen!"
+     m_iCompletionDelay 60
+     m_eKind 0
+     m_sAvailabilityFlag "Commandos_8FE6316EB1213023_Active"
+     m_sCompletionFlag "Commandos_8FE6316EB1213023_Complete"
+    }
+    GC_CommandosObjective "{65BB2B77B9ECE3C8}" {
+     m_sName "Black Hawk"
+     m_sBriefing "Destroy the Blackhawk using explosives"
+     m_sCompletionMessage "The %1 has been destroyed!"
+     m_iCompletionDelay 60
+     m_eKind 1
+     m_sAvailabilityFlag "Commandos_BFE64AAAE1A1EE3B_Active"
+     m_sCompletionFlag "Commandos_BFE64AAAE1A1EE3B_Complete"
+    }
+    GC_CommandosObjective "{65BB2B77DAD50836}" {
+     m_sName "Mi-24s"
+     m_sBriefing "Destroy atleast ONE of the Mi-24s with explosives"
+     m_sCompletionMessage "The %1 have been destroyed!"
+     m_iCompletionDelay 60
+     m_eKind 1
+     m_sAvailabilityFlag "Commandos_A3F0475AE284360D_Active"
+     m_sCompletionFlag "Commandos_A3F0475AE284360D_Complete"
+    }
+    GC_CommandosObjective "{65BC2E0AE820AA97}" {
+     m_sName "Radar"
+     m_sBriefing "Destroy the Radar using explosives"
+     m_sCompletionMessage "The %1 has been destroyed!"
+     m_iCompletionDelay 60
+     m_eKind 1
+     m_sAvailabilityFlag "Commandos_B6D77DBD833050CE_Active"
+     m_sCompletionFlag "Commandos_B6D77DBD833050CE_Complete"
+    }
+    GC_CommandosObjective "{65BC2E01C4FC7F86}" {
+     m_sName "Ammo Dump"
+     m_sBriefing "Destroy the Ammo Dump shed using explosives"
+     m_sCompletionMessage "The %1 has been neutralized!"
+     m_iCompletionDelay 60
+     m_eKind 1
+     m_sAvailabilityFlag "Commandos_7BCA7AD081D53B82_Active"
+     m_sCompletionFlag "Commandos_7BCA7AD081D53B82_Complete"
+    }
+    GC_CommandosObjective "{65E45BD76165E932}" {
+     m_sName "Base Commander"
+     m_sBriefing "Kill the Base Commander, being tracked by a drone (Marker on map moves)"
+     m_sCompletionMessage "The %1 has been neutralized!"
+     m_iCompletionDelay 60
+     m_eKind 2
+     m_sAvailabilityFlag "Commandos_6B80AB889B9DA4FE_Active"
+     m_sCompletionFlag "Commandos_6B80AB889B9DA4FE_Complete"
+    }
+    GC_CommandosObjective "{65E46E83B3E951D1}" {
+     m_sName "Political Officer"
+     m_sBriefing "Kill the Political Officer, being tracked by a drone (Marker on map moves)"
+     m_sCompletionMessage "The %1 has been neutralized!"
+     m_iCompletionDelay 60
+     m_eKind 2
+     m_sAvailabilityFlag "Commandos_6059CD2E4DEBA5A2_Active"
+     m_sCompletionFlag "Commandos_6059CD2E4DEBA5A2_Complete"
+    }
+    GC_CommandosObjective "{65FE1DECFD7E6750}" {
+     m_sName "Scientist"
+     m_sBriefing "Kill the Scientist, being tracked by a drone (Marker on map moves)"
+     m_sCompletionMessage "The %1 has been neutralized!"
+     m_iCompletionDelay 60
+     m_eKind 2
+     m_sAvailabilityFlag "Commandos_8EE399D8C5946A32_Active"
+     m_sCompletionFlag "Commandos_8EE399D8C5946A32_Complete"
+    }
+    GC_CommandosObjective "{65FE1DE6EE051CDF}" {
+     m_sName "Air Traffic Controller"
+     m_sBriefing "Kill the Air Traffic Controller, being tracked by a drone (Marker on map moves)"
+     m_sCompletionMessage "The %1 has been neutralized!"
+     m_iCompletionDelay 60
+     m_eKind 2
+     m_sAvailabilityFlag "Commandos_5825E5023219FE60_Active"
+     m_sCompletionFlag "Commandos_5825E5023219FE60_Complete"
+    }
+    GC_CommandosObjective "{65E46E86EAA11372}" {
+     m_sName "Mi-8"
+     m_sBriefing "Destroy the MI-8 using an Igla (Cache Marked on map)"
+     m_sCompletionMessage "The %1 has been neutralized!"
+     m_iCompletionDelay 60
+     m_eKind 3
+     m_sAvailabilityFlag "Commandos_C2B2EFB1A7BC60B2_Active"
+     m_sCompletionFlag "Commandos_C2B2EFB1A7BC60B2_Complete"
+     m_fChance 0.5
+     m_aExcludedRoles {
+      "Political Officer"
+      "Base Commander"
+      "Dog Handler"
+      "Dog"
+      "Pilot"
+      "Co-Pilot"
+      "Crew"
+     }
+    }
+    GC_CommandosObjective "{65F27573FB51061D}" {
+     m_sName "Assassinate Base Commander"
+     m_sBriefing "Assassinate the Base Commander"
+     m_sCompletionMessage "The Base Commander has been assassinated!"
+     m_iCompletionDelay 60
+     m_eKind 3
+     m_sAvailabilityFlag "Commandos_DCFBAE1EE1F2E433_Active"
+     m_sCompletionFlag "Commandos_DCFBAE1EE1F2E433_Complete"
+     m_fChance 0.5
+     m_aExcludedRoles {
+      "Political Officer"
+      "Base Commander"
+      "Dog Handler"
+      "Dog"
+      "Pilot"
+      "Co-Pilot"
+      "Crew"
+     }
+    }
+    GC_CommandosObjective "{65FE1DE08226E680}" {
+     m_sName "Assassinate Political Officer"
+     m_sBriefing "Assassinate the Political Officer"
+     m_sCompletionMessage "The Political Officer has been assassinated!"
+     m_iCompletionDelay 60
+     m_eKind 3
+     m_sAvailabilityFlag "Commandos_381771463108DA65_Active"
+     m_sCompletionFlag "Commandos_381771463108DA65_Complete"
+     m_fChance 0.5
+     m_aExcludedRoles {
+      "Political Officer"
+      "Base Commander"
+      "Dog Handler"
+      "Dog"
+      "Pilot"
+      "Co-Pilot"
+      "Crew"
+     }
+    }
+    GC_CommandosObjective "{65FE1DE082DB9717}" {
+     m_sName "Assassinate Scientist"
+     m_sBriefing "Assassinate the Scientist"
+     m_sCompletionMessage "The Scientist has been assassinated!"
+     m_iCompletionDelay 60
+     m_eKind 3
+     m_sAvailabilityFlag "Commandos_8BDFBE1F36B6BB4E_Active"
+     m_sCompletionFlag "Commandos_8BDFBE1F36B6BB4E_Complete"
+     m_fChance 0.5
+     m_aExcludedRoles {
+      "Political Officer"
+      "Base Commander"
+      "Dog Handler"
+      "Dog"
+      "Pilot"
+      "Co-Pilot"
+      "Crew"
+      "Scientist"
+     }
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{53B82B94DD54C221}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{0AC8137EAF3AFD3C}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{CBCB88A7A0CCF217}" {
+     m_sName "Commandos_0C376E59F2318E17_Active"
+    }
+    GC_MissionFlag "{1707488EBE069860}" {
+     m_sName "Commandos_0C376E59F2318E17_Complete"
+    }
+    GC_MissionFlag "{BCDADC817FC32071}" {
+     m_sName "Commandos_1366E89ED1B4F42F_Active"
+    }
+    GC_MissionFlag "{1CF44C0B6C97275E}" {
+     m_sName "Commandos_1366E89ED1B4F42F_Complete"
+    }
+    GC_MissionFlag "{7A61CFE173C1D992}" {
+     m_sName "Commandos_1378DD4794848160_Active"
+    }
+    GC_MissionFlag "{EA365196159377E8}" {
+     m_sName "Commandos_1378DD4794848160_Complete"
+    }
+    GC_MissionFlag "{D595348ABD315FF3}" {
+     m_sName "Commandos_1BA68D19ED96E03C_Active"
+    }
+    GC_MissionFlag "{6D5AF0D413EA63F1}" {
+     m_sName "Commandos_1BA68D19ED96E03C_Complete"
+    }
+    GC_MissionFlag "{86CC411CF929E1D1}" {
+     m_sName "Commandos_3D25673E82EEBDFC_Active"
+    }
+    GC_MissionFlag "{37D9930D216BCCBE}" {
+     m_sName "Commandos_3D25673E82EEBDFC_Complete"
+    }
+    GC_MissionFlag "{378756FB2687BC2F}" {
+     m_sName "Commandos_73DDDB2095549EE2_Active"
+    }
+    GC_MissionFlag "{1F8FF0796F50ABB9}" {
+     m_sName "Commandos_73DDDB2095549EE2_Complete"
+    }
+    GC_MissionFlag "{01540AE5EA5985D9}" {
+     m_sName "Commandos_899462435248CD77_Active"
+    }
+    GC_MissionFlag "{D90BC02D4A4820D6}" {
+     m_sName "Commandos_899462435248CD77_Complete"
+    }
+    GC_MissionFlag "{7872401DAA2F7F8A}" {
+     m_sName "Commandos_8FE6316EB1213023_Active"
+    }
+    GC_MissionFlag "{C242605CE32E3FFC}" {
+     m_sName "Commandos_8FE6316EB1213023_Complete"
+    }
+    GC_MissionFlag "{C0112CFB051C62D9}" {
+     m_sName "Commandos_940C5DE684E0D984_Active"
+    }
+    GC_MissionFlag "{1DC7EE00681330FC}" {
+     m_sName "Commandos_940C5DE684E0D984_Complete"
+    }
+    GC_MissionFlag "{C0394DDAEA493BCF}" {
+     m_sName "Commandos_ECC503E338C07B46_Active"
+    }
+    GC_MissionFlag "{ED301EADCC88CA29}" {
+     m_sName "Commandos_ECC503E338C07B46_Complete"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{65A981B00003DBAF}" {
+     m_sName "RU_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{B8815A78C6E1F1A7}" {
+       m_Script GC_PeakFactionPopulationCheck "{C87BCDF4FB6E89F2}" {
+        m_sFaction "RHS_AFRF"
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F848A953C92351E2}" {
+       m_sMessage "RU_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{50108045A9248347}" {
+     m_sName "RU_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9B31CD64D0D4B844}" {
+       m_sEventName "RU_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{D160D84C7CC1A0B7}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{F2E88A6112D94A67}" {
+       m_sTitle "AMERICAN VICTORY"
+       m_sMessage "The guards have been wiped out by the CIA team, giving them free reign over the base."
+      }
+     }
+    }
+    GC_Event "{27BCDE113AC241C1}" {
+     m_sName "RU_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C6770131F7752C76}" {
+       m_sEventName "RU_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{0C8E5E1D533AC660}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{89B375A6EC9E791E}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+    GC_Event "{5259742C8654D88D}" {
+     m_sName "US_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{931779FA9046ED0F}" {
+       m_Script GC_PeakFactionPopulationCheck "{67D36F4AD4251F18}" {
+        m_sFaction "RHS_USAF"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B8BA0B883BF0813E}" {
+       m_sMessage "US_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F919E9A7FADC4C8F}" {
+     m_sName "US_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{94C46E0913E2F00B}" {
+       m_sEventName "US_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{FE1C89A79B767136}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{79AE233B88D03A27}" {
+       m_sTitle "RUSSIAN VICTORY"
+       m_sMessage "The CIA team has taken significant casualties."
+      }
+     }
+    }
+    GC_Event "{0A5F20E93123FE05}" {
+     m_sName "US_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2B1C514A11D7D960}" {
+       m_sEventName "US_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{67632692FDCFA148}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{144972521C57B6FF}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{39FCC3E3F6443226}" {
+     m_sName "TIME_LIMIT (4805s)"
+     m_Advanced GC_EventOptions "{663A72F3E81E9579}" {
+      m_fDelay 4805
+     }
+     m_aActions {
+      GC_MessageAction "{BD81D6BF319F79B8}" {
+       m_sTitle "RUSSIAN VICTORY"
+       m_sMessage "Time limit reached. The window for the CIA team's operation has closed."
+      }
+     }
+    }
+    GC_Event "{7A78478845029D9D}" {
+     m_sName "TIME_LIMIT (4815s)"
+     m_Advanced GC_EventOptions "{356CA10E64B60017}" {
+      m_fDelay 4815
+     }
+     m_aActions {
+      GC_EndMissionAction "{63E9D8DB025324AC}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{9AFC9F0D03D8F1DD}" {
+     m_sName "Release staging zones"
+     m_aActions {
+      GC_DeleteEntitiesAction "{174551C82A4EAC82}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+        "GC_MigrationStartingZone2"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 1339.142 39 2266.699
+ PlayerControllerPrefab "{30319F56A7F20B33}worlds/arc/CommandosReforged/Prefabs/DefaultPlayerControllerMP_Coop_Commandos.et"
+}
+Vehicle Mi8MT_armed1_Comandos1 : "{405EE651B23BF8AE}worlds/arc/CommandosReforged/Prefabs/Mi8MT_armed1_Comandos.et" {
+ coords 1391.602 36.85 2676.979
+ angles 0 -104.036 0
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{6144B0BE2EAC6897}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneMedium.et" {
+ coords 3268.057 2.186 2870.736
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone2 : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 1356.416 44.761 2725.343
+ m_fWarnRadius 1000
+ m_fZoneRadius 1700
+ m_fZoneTeleportedRadius 1700
+ {
+  GenericEntity {
+   ID "59D673B36B893D84"
+   components {
+    SCR_CustomAreaMeshComponent "{59D673B22B1EBC57}" {
+     m_fRadius 900
+    }
+   }
+  }
+ }
+}
