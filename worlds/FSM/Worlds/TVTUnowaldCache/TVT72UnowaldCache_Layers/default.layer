@@ -1,0 +1,314 @@
+SCR_AIWorld : "{33A5B976E41B0A4C}Prefabs/AI/SCR_AIWorld_BadOrb_GC.et" {
+}
+GC_LobbyGameMode GC_MigratedMission : "{A33502EEEC66DDD9}worlds/FSM/Worlds/TVTUnowaldCache/TVT72UnowaldCache_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 14
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6460503045067C9A}" {
+     m_sWeatherPresetName "Cloudy"
+     m_iStartingHour 18
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{DCD3BC080202E62A}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{EF614A579CC306B5}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 240
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{4448C5B87D4DA9BC}" {
+     m_sName "Cache Destroyed"
+     m_aConditions {
+      GC_EntityDamageCondition "{FD16747ED1C0B517}" {
+       m_sEntityName "GC_Damage_7DA3BA86BF501E66"
+      }
+     }
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{2E1FC664ADE8A87F}" {
+     m_sName "Attacker loses"
+     m_aConditions {
+      GC_CustomScriptCondition "{5EBC2EB0BFCAE4BB}" {
+       m_Script GC_PeakFactionPopulationCheck "{9D4438D3440BA93A}" {
+        m_sFaction "GC_CDF"
+        m_fRatio 0.85
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9437DAF6BC5729D0}" {
+       m_sMessage "Attacker loses"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A0206EF7A5C00A6A}" {
+     m_sName "Attacker loses (180s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F88FD40481BC899A}" {
+       m_sEventName "Attacker loses"
+      }
+     }
+     m_Advanced GC_EventOptions "{5798381AE57969BA}" {
+      m_fDelay 180
+     }
+     m_aActions {
+      GC_EndMissionAction "{7526A61326713B02}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_CDF"
+       }
+      }
+     }
+    }
+    GC_Event "{6801E501ECD6D928}" {
+     m_sName "Attacker loses (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{4177BAE5AC2BBEAA}" {
+       m_sEventName "Attacker loses"
+      }
+     }
+     m_Advanced GC_EventOptions "{52B64C42F6D312C0}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_MessageAction "{6A9999861F89FF54}" {
+       m_sTitle "CDF have taken too many Casualties"
+       m_sMessage "CDF loses, mission will end in 3 minutes or GMs can end it"
+      }
+     }
+    }
+    GC_Event "{ED91FE53EDD60311}" {
+     m_sName "Attacker Wins"
+     m_aConditions {
+      GC_CustomScriptCondition "{6F11F0D79BBE040A}" {
+       m_Script GC_PeakFactionPopulationCheck "{0A4C4C831B4D47C9}" {
+        m_sFaction "GC_SEPARATIST"
+        m_fRatio 0.85
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{BF8EF82A23F935B8}" {
+       m_sMessage "Attacker Wins"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5724320EDC4F7BB6}" {
+     m_sName "Attacker Wins (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{06A2A5E590564304}" {
+       m_sEventName "Attacker Wins"
+      }
+     }
+     m_Advanced GC_EventOptions "{F42588420DD0FFB2}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{46C7F2F1B47DF613}" {
+       m_sTitle "CDF VICTORY"
+       m_sMessage "Separatists have retreated due to casualties. Mission will end in 3 minutes or GMs can end it"
+      }
+     }
+    }
+    GC_Event "{5B919AF95A52F74F}" {
+     m_sName "Attacker Wins (180s)"
+     m_aConditions {
+      GC_MissionEventCondition "{586B26345D2D7D04}" {
+       m_sEventName "Attacker Wins"
+      }
+     }
+     m_Advanced GC_EventOptions "{256AE8F9255BC1B5}" {
+      m_fDelay 180
+     }
+     m_aActions {
+      GC_EndMissionAction "{CE951B231B3B3661}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_CDF"
+       }
+      }
+     }
+    }
+    GC_Event "{7A70AAA73A9269D4}" {
+     m_sName "Blufor Wins"
+     m_aConditions {
+      GC_MissionFlagCondition "{31E4FD2D0C6AF7BE}" {
+       m_sFlagName "Cache Destroyed"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{08208FE1C1CE906A}" {
+       m_sMessage "Blufor Wins"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CD85BB2D4D76F90D}" {
+     m_sName "Blufor Wins (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B0DE3719054B772C}" {
+       m_sEventName "Blufor Wins"
+      }
+     }
+     m_Advanced GC_EventOptions "{6C32D0DE3D9A0128}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{0FBE841F405A63DC}" {
+       m_sTitle "CDF VICTORY"
+       m_sMessage "The Separatists have destroyed the cache"
+      }
+     }
+    }
+    GC_Event "{27D52A68B948CC53}" {
+     m_sName "Blufor Wins (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{CF82C95EFDCD2A30}" {
+       m_sEventName "Blufor Wins"
+      }
+     }
+     m_Advanced GC_EventOptions "{DCA59807A2077D62}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{B81119CEDAC514A0}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GC_CDF"
+       }
+      }
+     }
+    }
+    GC_Event "{2CEF876F31ADF2CB}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{51E4C2FE39CFC9DB}" {
+       m_fSeconds 240.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{65226938E90D71DD}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 3392.284 247.979 9646.774
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   coords 0 -0.001 0.001
+   Factions + {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     UIInfo SCR_FactionUIInfo "{528C961236B7DCD3}" {
+      Name "3 RCR"
+      Icon ""
+     }
+     m_sFactionFlag ""
+     m_FactionFlagMaterial "{362AC46447DBE58B}Assets/Props/Fabric/Flags/Data/Flag_1_2_Red.emat"
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CD021D5C}" {
+        m_sCallsign " "
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign " "
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign " "
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign " "
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign " "
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign " "
+       }
+       SCR_CallsignInfo "{64A03B989829CAA4}" {
+       }
+       SCR_CallsignInfo "{64A03B989AFEB5FF}" {
+       }
+       SCR_CallsignInfo "{64A03B989B0AA583}" {
+       }
+      }
+     }
+    }
+    SCR_Faction "{62EB308733CA83DD}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "Sparta"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "Somalia "
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "Strelkov"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat ""
+      m_sCallsignCharacterWithRoleFormat ""
+     }
+     m_iFactionRadioFrequency 42000
+    }
+    SCR_Faction "{648D46336748B246}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{648D3C2E4F6005BD}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{648D3C2E5C3EA0C1}" {
+       }
+      }
+     }
+     m_iFactionRadioFrequency 48000
+    }
+   }
+  }
+  ItemPreviewManagerEntity : "{9F18C476AB860F3B}Prefabs/World/Game/ItemPreviewManager.et" {
+   ID "5ED9088735FF2DD5"
+   coords 94.911 6.369 -40.385
+  }
+  SCR_EditorSettingsEntity {
+   ID "61B4E967E6C20362"
+   coords 0 -0.001 0.001
+   m_bIsUnlimitedEditorLegal 1
+  }
+ }
+}
+SCR_EditorRestrictionZoneEntity GC_MigrationStartingZone1 : "{B2A519402E9AC209}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneLarge.et" {
+ coords 1206.083 158.262 4853.982
+ m_fWarnRadius 120
+ m_fZoneRadius 150
+ m_fZoneTeleportedRadius 160
+ {
+  GenericEntity {
+   ID "59D673B36B893D84"
+   components {
+    SCR_CustomAreaMeshComponent "{59D673B22B1EBC57}" {
+     m_fRadius 125
+    }
+   }
+  }
+ }
+}

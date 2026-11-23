@@ -1,0 +1,118 @@
+GenericEntity : "{A7930B258A9B4CA8}Prefabs/Props/Military/Sandbags/Sandbag_01_wall_plastic.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  SignalsManagerComponent "{648469AB83102418}" {
+  }
+  MeshObject "{5872F0EB7FA40561}" {
+   ClutterOccluder 0
+  }
+  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+   "Additional hit zones" {
+    SCR_HitZone Default {
+     DamageThreshold 0
+     "Collision multiplier" 0.05
+     "Kinetic multiplier" 0.9
+    }
+   }
+   m_fBaseHealth 3500
+   m_fForceToDamageScale 0.1
+   m_fDamageThresholdMaximum 25000
+  }
+  SCR_EditableEntityComponent "{58EEFD4A6A2F37F4}" : "{996046FE206C699A}Prefabs/Editor/Components/Default_SCR_EditableEntityComponent.ct" {
+   Enabled 0
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "#AR-EditableEntity_Sandbag_01_wall_plastic_Name"
+    m_Image "{1211B98A9C1C3678}UI/Textures/EditorPreviews/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_plastic.edds"
+    m_sFaction "US"
+    m_aAuthoredLabels {
+     11
+    }
+    m_aAutoLabels {
+     108 1 121
+    }
+   }
+  }
+  SCR_ExplosiveChargeInventoryItemComponent "{648469AADB2221ED}" {
+   Attributes SCR_ItemAttributeCollection "{648469AABFF2A4EE}" {
+    ItemDisplayName UIInfo "{648469A5373C7CF1}" {
+     Name "Placeable Sandbag Wall Tall Window"
+     Description "Placeable Sandbag Wall Tall Window"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{648469A53657F0F8}" {
+     Weight 2
+     SizeSetupStrategy Manual
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{648469A535B1A543}" {
+     AnimationAttachments {
+      AnimationAttachmentInfo "{648D550036A38533}" {
+       AnimGraph "{B43CAEC6CB16C36D}Assets/Items/Equipment/workspaces/Shovel_ETool_US.agr"
+       AnimInstance "{5956FB1DD71F9183}Assets/Items/Equipment/workspaces/Shovel_ETool_US.asi"
+       BindingName "Gadget"
+      }
+     }
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{648469A1BC167E0B}" {
+      CameraDistanceToItem 6
+      PreviewModel "{8644C452B46FBF5C}Assets/Props/Military/Sandbags/Sandbag_01_wall.xob"
+     }
+    }
+    m_Size SLOT_2x1
+   }
+  }
+  SCR_PlaceableItemComponent "{648469AAD380E6B2}" {
+   m_bCanAttachToDynamicObject 1
+   m_bCanAttachAngled 1
+   m_eMeasurementMethod FROM_CENTER_OF_MASS
+   m_fMaxPlacementDistance 3
+   m_ePlacementType XYZ
+  }
+  SCR_PreviewEntityComponent "{58EEFD4A6A2FF580}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
+   Enabled 0
+   m_bRuntime 0
+   m_aEntries {
+    SCR_BasePreviewEntry "{648469A8D60BB6F6}" {
+     m_iParentID -1
+     m_Mesh "{8644C452B46FBF5C}Assets/Props/Military/Sandbags/Sandbag_01_wall.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0 0 0
+     m_vAngles 0 0 0
+    }
+   }
+  }
+  WeaponComponent "{648469A4D6BF5A85}" {
+   WeaponType SmokeGrenade
+   shouldHandleObstruction 0
+   WeaponSlotType "throwable"
+  }
+  WeaponAnimationComponent "{648469AB8B82ED29}" {
+   AnimGraph "{B43CAEC6CB16C36D}Assets/Items/Equipment/workspaces/Shovel_ETool_US.agr"
+   AnimInstance "{5956FB1DD71F9183}Assets/Items/Equipment/workspaces/Shovel_ETool_US.asi"
+   AnimInjection AnimationAttachmentInfo "{648469A5F820B063}" {
+    AnimGraph "{B43CAEC6CB16C36D}Assets/Items/Equipment/workspaces/Shovel_ETool_US.agr"
+    AnimInstance "{5956FB1DD71F9183}Assets/Items/Equipment/workspaces/Shovel_ETool_US.asi"
+    BindingName "Weapon"
+   }
+   BindWithInjection 1
+   AutoVariablesBind 1
+  }
+  RplComponent "{5624A88DC2D9928D}" {
+   Enabled 1
+   "Rpl State Override" Runtime
+   "Parent Node From Parent Entity" 0
+  }
+  Hierarchy "{648469AB8035E5A8}" {
+  }
+  ActionsManagerComponent "{648D550230CB95FE}" {
+   ActionContexts {
+    UserActionContext "{648D550235E88A7D}" {
+    }
+   }
+  }
+ }
+ coords 2313.413 16.7 3754.141
+ Flags 3
+}
