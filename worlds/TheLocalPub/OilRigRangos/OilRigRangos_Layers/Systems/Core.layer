@@ -1,0 +1,69 @@
+$grp GenericEntity : "{B48D431A323D4564}Prefabs/Logic/Mission/Interaction.et" {
+ BombDetonator {
+  components {
+   GC_MissionInteractionComponent "{DCEC291493734CD4}" {
+    m_sActionName "Detonate Bomb"
+    m_sCallFlag "DropBomb"
+    m_bSingleUse 1
+    m_aFactions {
+     "ECO"
+    }
+    m_sRequiredFlag "UnlockBomb"
+   }
+   ActionsManagerComponent "{ADA66F0D5EA84AC2}" {
+    additionalActions {
+     GC_MissionInteractionAction "{4F65BF8AFE944D18}" {
+      ActionTitle "Detonate bomb"
+     }
+    }
+   }
+  }
+  coords 4859.477 28.177 1721.992
+ }
+ BombDefuserOpforDead {
+  components {
+   GC_MissionInteractionComponent "{DCEC291493734CD4}" {
+    m_sActionName "ENTER CODE (DEFUSE BOMB)"
+    m_sCallFlag "BombDefused"
+    m_bSingleUse 1
+    m_aFactions {
+     "UK"
+    }
+    m_sRequiredFlag "BombDefuseable"
+   }
+   ActionsManagerComponent "{ADA66F0D5EA84AC2}" {
+    additionalActions {
+     GC_MissionInteractionAction "{4F65BF8AFE944D18}" {
+      ActionTitle "DEFUSE BOMB "
+     }
+    }
+   }
+  }
+  coords 4859.477 28.177 1721.992
+ }
+ BombDefuser {
+  components {
+   GC_MissionInteractionComponent "{DCEC291493734CD4}" {
+    m_sActionName "DEFUSE BOMB (20 second)"
+    m_sCallFlag "BombCaptured"
+    m_bSingleUse 1
+    m_aFactions {
+     "UK"
+    }
+   }
+   ActionsManagerComponent "{ADA66F0D5EA84AC2}" {
+    additionalActions {
+     GC_MissionInteractionAction "{4F65BF8AFE944D18}" {
+      ActionTitle "DEFUSE BOMB "
+      Duration 20
+     }
+    }
+   }
+  }
+  coords 4859.477 28.177 1721.992
+ }
+}
+GC_RadiusAreaEntity CivChecker : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 4856.047 36.843 1727.852
+ m_fRadius 100
+}

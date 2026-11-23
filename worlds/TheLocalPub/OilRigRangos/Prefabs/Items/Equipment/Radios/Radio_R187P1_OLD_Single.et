@@ -1,0 +1,144 @@
+GenericEntity : "{5879D8E9C56E358D}Prefabs/Items/Core/Radio_base.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  BaseRadioComponent "{5A30BAE7673C63CA}" {
+   "Encryption key" "whale"
+   "Turned on" 1
+   Transceivers {
+    RadioTransceiver "{6668BB7BFD817510}" {
+     ChannelFrequency 38000
+     "Transmitting Range" 4000
+     "Min tunable frequency" 27000
+     "Max tunable frequency" 52000
+     "Frequency resolution" 100
+    }
+   }
+  }
+  InventoryItemComponent "{5222EB4D0C73006B}" {
+   Attributes SCR_ItemAttributeCollection "{5222EB4D0A2B466B}" {
+    ItemDisplayName UIInfo "{5222EB4D07D865FA}" {
+     Name "#RHS-Item_R187_Name •"
+     Description "#RHS-Item_R187_Description"
+     Icon "{BF7C73DE63B1FFB7}UI/Textures/VON/R148-100px_UI.edds"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes PhysicalAttributes {
+     Weight 0.7
+     SizeSetupStrategy Manual
+     ItemVolume 250
+     RestingUP Forward
+     RestingAdditiveOffsetLS 0 0 0.18
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{6668BB7BFD817506}" {
+     AnimationInstance "{5B6413B9125EE731}Assets/Items/Equipment/workspaces/Radio_R148_player.asi"
+     AnimationAttachments {
+      AnimationAttachmentInfo "{6668BB7BFD817539}" {
+       AnimGraph "{4512B6E152A948B4}Assets/Items/Equipment/workspaces/Radio_R148.agr"
+       AnimInstance "{5B6413B9125EE731}Assets/Items/Equipment/workspaces/Radio_R148_player.asi"
+       BindingName "Gadget"
+      }
+     }
+     AllowInspection 1
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{6668BB7BFD81753F}" {
+      CameraOrbitAngles -40 -10 0
+      CameraDistanceToItem 0.31
+      CameraOffset 0 -0.1 0
+      FOV 40
+     }
+     SCR_VONPreviewAttributes "{6668BB7BFD817531}" {
+      CameraOrbitAngles -30 0 45
+      CameraDistanceToItem 0.7
+      FOV 40
+     }
+    }
+    CommonItemType "RADIO"
+    m_SlotType SLOT_GADGETS_STORAGE
+   }
+  }
+  MeshObject "{5A30BAE7673C63D1}" {
+   Object "{E8E5E7FCEF0E01CB}Assets/Items/Equipment/Radios/Radio_R187P1/r187p1_OLD.xob"
+  }
+  RigidBody "{5A30BAE7673C63D3}" {
+   Mass 3
+   CenterOfMass 0 0.1 0
+   LinearDamping 0.5
+   AngularDamping 0.5
+   ModelGeometry 1
+   CCDRadius 0.028
+  }
+  ProcAnimComponent "{6668BB7BFD817528}" {
+   Parameters {
+    ProcAnimParams "{6668BB7BFD81752B}" {
+     ResourceName "{DE57211A364C1700}Assets/Items/Equipment/Radios/Radio_R148/Radio_R148_01.pap"
+     BoneNames {
+      "i_channel01"
+     }
+     SimulationDistance 20
+     SimulateOnDedicatedServer 0
+    }
+   }
+  }
+  SCR_RadioComponent "{5A30BAE7673C63D4}" {
+   m_eAnimVariable R148
+   m_bIsVisibleEquipped 1
+   m_iRadioType R187P1
+  }
+  SCR_SoundDataComponent "{5B18D20ED0099A17}" {
+   m_aAudioSourceConfiguration {
+    SCR_AudioSourceConfiguration "{5B1A6513F7AD9FD9}" {
+     m_sSoundProject "{1891A02BEBE555C6}Sounds/Items/Equipment/Radios/Azart/Items_Radio_Azart_Inspection_Actions.acp"
+    }
+    SCR_AudioSourceConfiguration "{5B1A6513FF22FC0A}" {
+     m_sSoundProject "{1891A02BEBE555C6}Sounds/Items/Equipment/Radios/Azart/Items_Radio_Azart_Inspection_Actions.acp"
+    }
+    SCR_AudioSourceConfiguration "{5B1A651380D7F397}" {
+     m_sSoundProject "{1891A02BEBE555C6}Sounds/Items/Equipment/Radios/Azart/Items_Radio_Azart_Inspection_Actions.acp"
+    }
+    SCR_AudioSourceConfiguration "{5C5A9C871ACD6C4B}" {
+     m_sSoundProject "{1891A02BEBE555C6}Sounds/Items/Equipment/Radios/Azart/Items_Radio_Azart_Inspection_Actions.acp"
+    }
+    SCR_AudioSourceConfiguration "{5C5A9C8713158BCE}" {
+     m_sSoundProject "{1891A02BEBE555C6}Sounds/Items/Equipment/Radios/Azart/Items_Radio_Azart_Inspection_Actions.acp"
+    }
+   }
+  }
+  ActionsManagerComponent "{508AB5952B584B2E}" {
+   ActionContexts {
+    UserActionContext "{508AC2ABEC97066C}" {
+     ContextName "default"
+     Position PointInfo "{508AC2ABEAC4A0F5}" {
+      Offset 0.0353 0.1059 0.0202
+     }
+     Radius 0.135
+    }
+    UserActionContext "{6668BB7BFD8175DA}" {
+     ContextName "knob_channel"
+     Position PointInfo "{6668BB7BFD8175DB}" {
+      Offset 0.0755 0.1576 -0.0056
+     }
+     Radius 0.3
+    }
+   }
+   additionalActions {
+    SCR_EquipItemAction "{553AEBE8806A957C}" : "{068D8D646964D12A}Prefabs/Characters/Core/Actions/EquipGadgetAction.conf" {
+    }
+    SCR_RadioTuningUserAction "{6668BB7BFD8175D0}" {
+     ParentContextList {
+      "knob_channel"
+     }
+     UIInfo UIInfo "{6668BB7BFD8175D1}" {
+     }
+    }
+    SCR_RadioTuningUserAction "{6668BB7BFD8175D3}" {
+     ParentContextList {
+      "knob_channel"
+     }
+     UIInfo UIInfo "{6668BB7BFD8175D4}" {
+     }
+     m_bTuneUp 1
+    }
+   }
+  }
+ }
+}

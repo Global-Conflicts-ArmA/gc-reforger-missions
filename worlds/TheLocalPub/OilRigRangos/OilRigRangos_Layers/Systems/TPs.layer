@@ -1,0 +1,86 @@
+$grp GenericEntity {
+ TP4 {
+  coords 4860.345 1506.191 1717.394
+ }
+ TP3 {
+  coords 7728.993 0 637.651
+ }
+ TP2 {
+  coords 2702.135 1.031 1872.023
+ }
+ TP1 {
+  coords 5799.986 1.75 3563.625
+ }
+}
+GenericEntity AirfieldTP : "{4A7B7EF936B349A7}Prefabs/Logic/Mission/TeleportInteraction.et" {
+ components {
+  GC_TeleportInteractionComponent "{B3632A2C9CA24FDF}" {
+   m_sActionName "Teleport: Boat Insert 1 (NORTH-EAST)"
+   m_sDestinationName "TP1"
+   m_aFactions {
+    "UK"
+   }
+   m_sInteractionKey "404C2C5909834FF5"
+  }
+  GC_TeleportInteractionComponent "{30B8C97D39604896}" {
+   m_sActionName "Teleport: Boat insert 2 WEST)"
+   m_sDestinationName "TP2"
+   m_aFactions {
+    "UK"
+   }
+   m_sInteractionKey "664E9A481B886FD6"
+  }
+  GC_TeleportInteractionComponent "{FFDB3EB997E691DD}" {
+   m_sActionName "Teleport: Boat insert 3 (EAST)"
+   m_sDestinationName "TP3"
+   m_aFactions {
+    "UK"
+   }
+   m_sInteractionKey "673CF99806DAA564"
+  }
+  GC_TeleportInteractionComponent "{83CC25E8F9735A42}" {
+   m_sActionName "Teleport: Parachute insert (Above rig)"
+   m_sDestinationName "TP4"
+   m_aFactions {
+    "UK"
+   }
+   m_sInteractionKey "673CF998F7B9AAFF"
+  }
+  ActionsManagerComponent "{F097C296BF6748C5}" {
+   additionalActions {
+    GC_MissionInteractionAction "{404C2C5909834FF5}" {
+     ActionTitle "insert1"
+     m_sInteractionKey "404C2C5909834FF5"
+    }
+    GC_MissionInteractionAction "{664E9A481B886FD6}" {
+     ParentContextList {
+      "MissionInteraction"
+     }
+     ActionTitle "insert2"
+     "Sort Priority" 1
+     m_sInteractionKey "664E9A481B886FD6"
+    }
+    GC_MissionInteractionAction "{673CF99806DAA564}" {
+     ParentContextList {
+      "MissionInteraction"
+     }
+     ActionTitle "insert3"
+     "Sort Priority" 2
+     m_sInteractionKey "673CF99806DAA564"
+    }
+    GC_MissionInteractionAction "{673CF998F7B9AAFF}" {
+     ParentContextList {
+      "MissionInteraction"
+     }
+     ActionTitle "insert4"
+     "Sort Priority" 3
+     m_sInteractionKey "673CF998F7B9AAFF"
+    }
+   }
+  }
+ }
+ coords 4895.826 29.963 11759.215
+}
+GenericEntity : "{A80E80B60FEAE52D}PrefabsEditable/Auto/Structures/Military/Flags/E_FlagPole_02_V1_UK.et" {
+ coords 4895.815 28.593 11759.223
+}

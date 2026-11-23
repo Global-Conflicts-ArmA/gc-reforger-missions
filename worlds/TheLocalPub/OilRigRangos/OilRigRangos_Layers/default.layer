@@ -1,0 +1,1320 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 5964.159 27.842 11688.681
+}
+GC_LobbyGameMode GC_MigratedMission : "{9A2C68C7B83310EF}worlds/TheLocalPub/OilRigRangos/OilRigRangos_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bRandomStartingDaytime 1
+   m_bRandomStartingWeather 1
+   m_bRandomWeatherChanges 1
+   m_bDateOverride 1
+   m_iDay 1
+   m_iMonth 5
+   m_iYear 2020
+  }
+  GC_PeakFactionPopulationComponent "{DDB0A26DDB7AB142}" {
+   m_aObservedFlags {
+    GC_PeakFactionPopulationFlag "{E6733D2698DEF982}" {
+     m_sName "Hostage<"
+     m_sFaction "CIV"
+     m_fRatio 1
+    }
+   }
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{A803640987736333}" {
+     m_sName "BombArmed"
+    }
+    GC_MissionFlag "{2B705FA1175CC03D}" {
+     m_sName "BombCaptured"
+    }
+    GC_MissionFlag "{03C6312ACD25AAEF}" {
+     m_sName "BombDefuseable"
+    }
+    GC_MissionFlag "{977FCC22EB1762C4}" {
+     m_sName "BombDefused"
+    }
+    GC_MissionFlag "{F9AD1761784C488B}" {
+     m_sName "DropBomb"
+    }
+    GC_MissionFlag "{DC63295343DF67DE}" {
+     m_sName "Hostage>"
+    }
+    GC_MissionFlag "{CD19B00FC0727306}" {
+     m_sName "UnlockBomb"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{60DE0B2EC404B1E5}" {
+     m_sName "DeleteOpforSlots"
+     m_aConditions {
+      GC_GameModeStateCondition "{891FC38BF58BFECA}" {
+       m_eGameModeState 1
+      }
+     }
+     m_aActions {
+      GC_CustomScriptAction "{50B670B4813279D3}" {
+       m_bScheduleAction 1
+       m_fActionDelay 300
+       m_Script GC_RemoveOpenSlotsScript "{40B01DF75C1A42E5}" {
+        m_aFactions {
+         "ECO"
+        }
+       }
+      }
+      GC_CustomScriptAction "{2AEB0F04DEB965D4}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1
+       m_Script GC_RemoveOpenSlotsScript "{F83D4147A7C58C8C}" {
+        m_aFactions {
+         "CIV"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E85A3E0946084EEF}" {
+     m_sName "FLAGSET"
+     m_aConditions {
+      GC_GameModeStateCondition "{195E52F2EB5FE654}" {
+       m_eGameModeState 1
+      }
+     }
+     m_aActions {
+      GC_FlagAction "{F7137357419CF9B3}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1
+       m_sFlagName "BombArmed"
+       m_iOperation 1
+       m_iAmount 1
+      }
+      GC_FlagAction "{CE8416CF2DB16B45}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1
+       m_sFlagName "Hostage>"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{4F56D0648AB47F1E}" {
+     m_sName "CLEARFLAGS"
+     m_aConditions {
+      GC_GameModeStateCondition "{CCBF510AA2628723}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{3C2D2BBCB76E6E61}" {
+       m_sFlagName "Hostage<"
+      }
+     }
+     m_aActions {
+      GC_FlagAction "{23E26EF0D9955FB1}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0.1
+       m_sFlagName "Hostage>"
+       m_iOperation 4
+      }
+      GC_EventControlAction "{5FFEE0DC2B9F6EB9}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0.1
+       m_sEventName "UKMajVic"
+       m_iOperation 1
+      }
+     }
+    }
+    GC_Event "{A739FACFB8127427}" {
+     m_sName "BombDefused"
+     m_aConditions {
+      GC_GameModeStateCondition "{59D99BE2B9C2B82A}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{CB69B300F223CAD0}" {
+       m_sFlagName "BombCaptured"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8BCE1761339E553B}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1
+       m_sTitle "BOMB DEFUSED"
+       m_sMessage "The Royal Marines have managed to defuse the bomb, our plan has been ruined!"\
+       "Maybe we can escape and try again another day."\
+       ""\
+       "Kill the remaining Royal Marines so we can flee, do as we please with the hostage from this point on, they're useless to us now."
+       m_aFactions {
+        "ECO"
+       }
+      }
+      GC_MessageAction "{34477DFFB4C80233}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1
+       m_sTitle "BOMB DEFUSED"
+       m_sMessage "We've managed to defuse the bomb and complete our primary objective."\
+       "We must now defeat the remaining ECO warriors and rescue the hostages."
+       m_aFactions {
+        "UK"
+       }
+      }
+      GC_FlagAction "{BDBDD45D9560BD82}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1
+       m_sFlagName "BombDefused"
+       m_iOperation 1
+       m_iAmount 1
+      }
+      GC_FlagAction "{7D6BD8E296BD121E}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1
+       m_sFlagName "BombArmed"
+       m_iOperation 4
+      }
+      GC_EventControlAction "{EA24AA0A0C8C1544}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1
+       m_sEventName "ECOWinMaj1"
+       m_iOperation 1
+      }
+     }
+    }
+    GC_Event "{6875C78D7ABBD890}" {
+     m_sName "UKMajVic"
+     m_aConditions {
+      GC_GameModeStateCondition "{9394017263F796D0}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{310CED65F01E54E5}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{E8143B91708EDF34}" {
+         m_sFlagName "BombDefused"
+        }
+        GC_MissionFlagCondition "{806D49F4115C80F0}" {
+         m_sFlagName "Hostage>"
+        }
+        GC_CustomScriptCondition "{764C1B010D6E809D}" {
+         m_Script GC_PeakFactionPopulationCheck "{7E2A7A103D46ADB2}" {
+          m_sFaction "ECO"
+          m_fRatio 0.9
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_EventControlAction "{E17172480DEF662F}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1
+       m_sEventName "UKMinVic"
+       m_iOperation 1
+      }
+      GC_EventControlAction "{245AFDCF1EC81906}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1
+       m_sEventName "UKWinPyr/ECOMinWin"
+       m_iOperation 1
+      }
+      GC_EventControlAction "{E448946C577A5CD7}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1
+       m_sEventName "ECOWinMaj1"
+       m_iOperation 1
+      }
+      GC_MessageAction "{337F656F2B480688}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_sTitle "UK MAJOR VICTORY"
+       m_sMessage "42cmdo have managed to defuse the bomb, destroy the ECO terrorists, and also keep 50%+ of the hostages alive."\
+       ""\
+       "Very well done troop!"\
+       ""\
+       "Mission will end soon...."
+      }
+     }
+    }
+    GC_Event "{0E857C8B85E29FC5}" {
+     m_sName "UKMinVic"
+     m_aConditions {
+      GC_GameModeStateCondition "{CB9EFD106792C597}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{0C5B32F2171AF6BD}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{0F792571AF433C57}" {
+         m_sFlagName "BombDefused"
+        }
+        GC_MissionFlagCondition "{21A7B6C00B1AEE8D}" {
+         m_sFlagName "Hostage<"
+        }
+        GC_CustomScriptCondition "{8BA9AF3AE8D4D78C}" {
+         m_Script GC_PeakFactionPopulationCheck "{D2F201E1882A9377}" {
+          m_sFaction "ECO"
+          m_fRatio 0.9
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_EventControlAction "{2CC37D2316BE636F}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1
+       m_sEventName "UKWinPyr/ECOMinWin"
+       m_iOperation 1
+      }
+      GC_EventControlAction "{60CE54C267B38F8E}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1
+       m_sEventName "ECOWinMaj1"
+       m_iOperation 1
+      }
+      GC_MessageAction "{707681BC27035770}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_sTitle "UK MINOR VICTORY"
+       m_sMessage "42cmdo have managed to defuse the bomb, destroy the ECO terrorists, but sadly less then 50% of the hostages are still alive."\
+       ""\
+       "Good effort troop. Return to base for debrief."\
+       ""\
+       "Mission will end soon...."
+      }
+     }
+    }
+    GC_Event "{2CFF6FB73B896DCB}" {
+     m_sName "UKWinPyr/ECOMinWin"
+     m_aConditions {
+      GC_GameModeStateCondition "{CE22405C1ECF4E27}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{022D326191C23CF3}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{C99BDF912ED6B04E}" {
+         m_sFlagName "BombDefused"
+        }
+        GC_CustomScriptCondition "{65572A4417555C28}" {
+         m_Script GC_PeakFactionPopulationCheck "{FDE5F2DFC541C3F6}" {
+          m_sFaction "UK"
+          m_fRatio 0.87
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{295198181F31EA80}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_sTitle "Minor Victory"
+       m_sMessage "While our bomb was defused, we've still managed to kill the British commando troop, thus allowing us to flee and try again another day."\
+       ""\
+       "Minor Victory"\
+       "Mission will end soon..."
+       m_aFactions {
+        "ECO"
+       }
+      }
+      GC_MessageAction "{CDEA9098D7E32639}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_sTitle "Pyrrhic Victory"
+       m_sMessage "While 42cmdo managed to complete thier primary object and save the environment, they lost their whole troop."\
+       "Victory but at what cost?"\
+       ""\
+       "Pyrrhic vctory"\
+       "Mission will end soon..."
+       m_aFactions {
+        "UK"
+       }
+      }
+     }
+    }
+    GC_Event "{8574B292D1B2595D}" {
+     m_sName "ECOWinMaj1"
+     m_aConditions {
+      GC_GameModeStateCondition "{3CEA2A5FEB2612F6}" {
+       m_eGameModeState 1
+      }
+     }
+     m_aActions {
+      GC_EventControlAction "{587AE322186B704C}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2095
+       m_sEventName "ECODead"
+       m_iOperation 1
+      }
+      GC_MessageAction "{9F02142C5F5AD3FA}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2095
+       m_sTitle "It's about to blow!"
+       m_sMessage "The time has come... Embrace your end."
+      }
+      GC_FlagAction "{085333CB94CB8B81}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2100
+       m_sFlagName "DropBomb"
+       m_iOperation 1
+       m_iAmount 1
+      }
+      GC_MessageAction "{F4C4B817DBBBC67A}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1800
+       m_sTitle "Not long left!"
+       m_sMessage "Only 5mins remains untill this place goes sky high!"
+      }
+      GC_MessageAction "{90ADA0465F101152}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2110
+       m_sTitle "ECO MAJOR VICTORY"
+       m_sMessage "The rig has exploded!"\
+       "The Earth Contamination Outfit managed to defend their bomb for 35mins. Today will become one of the worst Environmental disasters of modern times."\
+       ""\
+       "ECO major victory."\
+       "Mission will end shortly..."
+      }
+     }
+    }
+    GC_Event "{41F88084A2639975}" {
+     m_sName "ECOMajWin2"
+     m_aConditions {
+      GC_GameModeStateCondition "{669298043232FF47}" {
+       m_eGameModeState 1
+      }
+      GC_CustomScriptCondition "{734DBCB17A130C69}" {
+       m_Script GC_PeakFactionPopulationCheck "{3C4F2F40A6FEE0D4}" {
+        m_sFaction "UK"
+        m_fRatio 0.87
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{92C73F8D49301576}" {
+       m_bScheduleAction 1
+       m_fActionDelay 5
+       m_sTitle "ECO MAJOR VICTORY"
+       m_sMessage "The Earth Contamination Outfit has managed to kill the British 42cmdo troop."\
+       "Nobody can make it to the rig time to stop ECO!"\
+       "The rig is doomed!"\
+       ""\
+       "(You can now manually detonate the bomb by interacting with it)"\
+       ""\
+       "ECO major victory."\
+       "Mission will end shortly..."
+      }
+      GC_FlagAction "{E7CB19A5CDB7BC29}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1
+       m_sFlagName "UnlockBomb"
+       m_iOperation 1
+       m_iAmount 1
+      }
+      GC_EventControlAction "{238036854F49AF4A}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0.1
+       m_sEventName "ECODead"
+       m_iOperation 1
+      }
+     }
+    }
+    GC_Event "{14F9CCCD451BCCA8}" {
+     m_sName "ECODead"
+     m_aConditions {
+      GC_GameModeStateCondition "{AD15E41995B37914}" {
+       m_eGameModeState 1
+      }
+      GC_CustomScriptCondition "{5060D536998309E2}" {
+       m_Script GC_PeakFactionPopulationCheck "{060146B32ED2B4FA}" {
+        m_sFaction "ECO"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_FlagAction "{195BF0217B0C05D7}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1
+       m_sFlagName "BombDefuseable"
+       m_iOperation 1
+       m_iAmount 1
+      }
+      GC_MessageAction "{E9B5E1C4D97F7247}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3
+       m_sTitle "DEFUSE CODE LOCATED"
+       m_sMessage "We've managed to find the codes to defuse the bomb on one of the ECO warriors. "\
+       ""\
+       "QUICKLY get to the bomb and defuse it by interacting with its control panel before it explodes!"\
+       ""\
+       "Go Go Go!"
+      }
+      GC_DeleteEntitiesAction "{4DAD5CE802237C90}" {
+       m_bScheduleAction 1
+       m_fActionDelay 0.5
+       m_aEntities {
+        "BombDefuser"
+       }
+      }
+     }
+    }
+    GC_Event "{7A1E1A8EDDA7E11A}" {
+     m_sName "GC_MigratedSpawn_646380E5F87040CD"
+     m_aConditions {
+      GC_GameModeStateCondition "{627BC53AFD13AD54}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{F862223AAD0B470A}" {
+       m_sFlagName "DropBomb"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{93187A358AA8D17B}" {
+       m_sMessage "GC_MigratedSpawn_646380E5F87040CD"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5D935A4C7391930C}" {
+     m_sName "GC_MigratedSpawn_646380E5F87040CD (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6D34BD897A47B02A}" {
+       m_sEventName "GC_MigratedSpawn_646380E5F87040CD"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{5D935A4C7391930C}" {
+       m_Spawn GC_PrefabSpawn "{1A446D3502B42A23}" {
+        m_sLocation "BigBomb1"
+        m_sPrefab "{D4700A8D41E53F1E}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_Tnt_Large.et"
+       }
+      }
+     }
+    }
+    GC_Event "{92374D7B54E33E26}" {
+     m_sName "GC_MigratedSpawn_4B2078E92BC02CDB"
+     m_aConditions {
+      GC_GameModeStateCondition "{50EF7B74B90B1071}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{C5700FACD82FB40A}" {
+       m_sFlagName "DropBomb"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E996CB6BD3B1EED8}" {
+       m_sMessage "GC_MigratedSpawn_4B2078E92BC02CDB"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2ECAA9E53700E7A2}" {
+     m_sName "GC_MigratedSpawn_4B2078E92BC02CDB (2s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9D45D91C9335FEB5}" {
+       m_sEventName "GC_MigratedSpawn_4B2078E92BC02CDB"
+      }
+     }
+     m_Advanced GC_EventOptions "{68F38EECB2A30110}" {
+      m_fDelay 2
+     }
+     m_aActions {
+      GC_SpawnAction "{C7CE3410BB481E60}" {
+       m_Spawn GC_PrefabSpawn "{D23EE5C236A236E6}" {
+        m_sLocation "BigBomb2"
+        m_sPrefab "{D4700A8D41E53F1E}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_Tnt_Large.et"
+       }
+      }
+     }
+    }
+    GC_Event "{13AA7158D129BA94}" {
+     m_sName "GC_MigratedSpawn_FF6C27171D0E8696"
+     m_aConditions {
+      GC_GameModeStateCondition "{3263F4B1EB0F08FA}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{2BA201D9163B1F47}" {
+       m_sFlagName "DropBomb"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1F7563528762D2A7}" {
+       m_sMessage "GC_MigratedSpawn_FF6C27171D0E8696"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D97091C4450F597F}" {
+     m_sName "GC_MigratedSpawn_FF6C27171D0E8696 (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{206595B508FD09E5}" {
+       m_sEventName "GC_MigratedSpawn_FF6C27171D0E8696"
+      }
+     }
+     m_Advanced GC_EventOptions "{A4A4326359E0EF79}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{890F15141BA61FEC}" {
+       m_Spawn GC_PrefabSpawn "{B4DDA6E398878755}" {
+        m_sLocation "BigBomb3"
+        m_sPrefab "{D4700A8D41E53F1E}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_Tnt_Large.et"
+       }
+      }
+     }
+    }
+    GC_Event "{398FBA5D090DE3A5}" {
+     m_sName "GC_MigratedSpawn_9C459F6FFE1AC3FA"
+     m_aConditions {
+      GC_GameModeStateCondition "{47E16CCD68A3EA5A}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{DB211B2C9EFAB7B6}" {
+       m_sFlagName "DropBomb"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E61519F820B6F158}" {
+       m_sMessage "GC_MigratedSpawn_9C459F6FFE1AC3FA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6B95BF3D4A63FDDC}" {
+     m_sName "GC_MigratedSpawn_9C459F6FFE1AC3FA (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1BB94B0F631FB381}" {
+       m_sEventName "GC_MigratedSpawn_9C459F6FFE1AC3FA"
+      }
+     }
+     m_Advanced GC_EventOptions "{21C089F04B666F5E}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{EEFF713CB2D316CC}" {
+       m_Spawn GC_PrefabSpawn "{AB4D452E4347AF42}" {
+        m_sLocation "GC_Spawner_9C459F6FFE1AC3FA"
+        m_sPrefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{5915C65C3C8F4283}" {
+     m_sName "GC_MigratedSpawn_8A4F79A555DA49F1"
+     m_aConditions {
+      GC_GameModeStateCondition "{731C1F8DAF74D242}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{606572957F159658}" {
+       m_sFlagName "DropBomb"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4139C453E88CA619}" {
+       m_sMessage "GC_MigratedSpawn_8A4F79A555DA49F1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{585E240CEF531BED}" {
+     m_sName "GC_MigratedSpawn_8A4F79A555DA49F1 (2s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5E82AF8E40025E69}" {
+       m_sEventName "GC_MigratedSpawn_8A4F79A555DA49F1"
+      }
+     }
+     m_Advanced GC_EventOptions "{705B9BBAF5E1A2A0}" {
+      m_fDelay 2
+     }
+     m_aActions {
+      GC_SpawnAction "{5267AA874F992CC4}" {
+       m_Spawn GC_PrefabSpawn "{C13EC208F909E38A}" {
+        m_sLocation "GC_Spawner_8A4F79A555DA49F1"
+        m_sPrefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{80056023AA62D494}" {
+     m_sName "GC_MigratedSpawn_EAA04543A7659C35"
+     m_aConditions {
+      GC_GameModeStateCondition "{E2D78CDABFB560C0}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{1AA64DEA97704612}" {
+       m_sFlagName "DropBomb"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B25100E88A01BD07}" {
+       m_sMessage "GC_MigratedSpawn_EAA04543A7659C35"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{EE91C1774E944990}" {
+     m_sName "GC_MigratedSpawn_EAA04543A7659C35 (4s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B48A2EE0F7A8DD22}" {
+       m_sEventName "GC_MigratedSpawn_EAA04543A7659C35"
+      }
+     }
+     m_Advanced GC_EventOptions "{DD7091A2106C300D}" {
+      m_fDelay 4
+     }
+     m_aActions {
+      GC_SpawnAction "{7642114115FA2AF3}" {
+       m_Spawn GC_PrefabSpawn "{06677BA21A9E635B}" {
+        m_sLocation "GC_Spawner_EAA04543A7659C35"
+        m_sPrefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{6DEF62C2553C0B8D}" {
+     m_sName "GC_MigratedSpawn_D77A9BD81FD25DC4"
+     m_aConditions {
+      GC_GameModeStateCondition "{10C7B9DCEE6E8148}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{79813607FD28A720}" {
+       m_sFlagName "DropBomb"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{AE2E8AD78BA5ED5E}" {
+       m_sMessage "GC_MigratedSpawn_D77A9BD81FD25DC4"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{11C07A3E0504038E}" {
+     m_sName "GC_MigratedSpawn_D77A9BD81FD25DC4 (4s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1040B9DC0DA5D436}" {
+       m_sEventName "GC_MigratedSpawn_D77A9BD81FD25DC4"
+      }
+     }
+     m_Advanced GC_EventOptions "{7FBA24289D7FBAD6}" {
+      m_fDelay 4
+     }
+     m_aActions {
+      GC_SpawnAction "{04581DE7CEF51306}" {
+       m_Spawn GC_PrefabSpawn "{B9CA1B1A6A58A929}" {
+        m_sLocation "GC_Spawner_D77A9BD81FD25DC4"
+        m_sPrefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{4277BD8544D09177}" {
+     m_sName "GC_MigratedSpawn_D1F106BB7C531A8A"
+     m_aConditions {
+      GC_GameModeStateCondition "{C22C66C4A353ED09}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{87B6FE80DAFC9EAD}" {
+       m_sFlagName "DropBomb"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{45CB8A359375A8B9}" {
+       m_sMessage "GC_MigratedSpawn_D1F106BB7C531A8A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{65D43266AF1A0649}" {
+     m_sName "GC_MigratedSpawn_D1F106BB7C531A8A (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{487D9CA25E32B759}" {
+       m_sEventName "GC_MigratedSpawn_D1F106BB7C531A8A"
+      }
+     }
+     m_Advanced GC_EventOptions "{3927CAD952BB4A42}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{23A7B9C18B906FDE}" {
+       m_Spawn GC_PrefabSpawn "{2B543A3E4EE15E1E}" {
+        m_sLocation "GC_Spawner_D1F106BB7C531A8A"
+        m_sPrefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{4A1C5B7E1BF88AF7}" {
+     m_sName "GC_MigratedSpawn_73B61649083354AC"
+     m_aConditions {
+      GC_GameModeStateCondition "{BDE798F5A94A4091}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{DBB61A6419465226}" {
+       m_sFlagName "DropBomb"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F4ECB6BB67E81BFB}" {
+       m_sMessage "GC_MigratedSpawn_73B61649083354AC"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C48AA4713ED7EBCF}" {
+     m_sName "GC_MigratedSpawn_73B61649083354AC (2.3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A6D4D571E1AA2914}" {
+       m_sEventName "GC_MigratedSpawn_73B61649083354AC"
+      }
+     }
+     m_Advanced GC_EventOptions "{D8356DFDF27B01A4}" {
+      m_fDelay 2.3
+     }
+     m_aActions {
+      GC_SpawnAction "{F3D028C96BC4D712}" {
+       m_Spawn GC_PrefabSpawn "{CD9855DB6E5F9147}" {
+        m_sLocation "GC_Spawner_73B61649083354AC"
+        m_sPrefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{7E88605B78F2B9BC}" {
+     m_sName "GC_MigratedSpawn_1226C351C31D7D19"
+     m_aConditions {
+      GC_GameModeStateCondition "{8C4C3399980653E0}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{00B5B173FA2FB13C}" {
+       m_sFlagName "DropBomb"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A34107A62DF56379}" {
+       m_sMessage "GC_MigratedSpawn_1226C351C31D7D19"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{30CB41EC1BE28F39}" {
+     m_sName "GC_MigratedSpawn_1226C351C31D7D19 (1.5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A20D72BF6F6D0FD3}" {
+       m_sEventName "GC_MigratedSpawn_1226C351C31D7D19"
+      }
+     }
+     m_Advanced GC_EventOptions "{2F61F5B16761E588}" {
+      m_fDelay 1.5
+     }
+     m_aActions {
+      GC_SpawnAction "{C698C488BCD74474}" {
+       m_Spawn GC_PrefabSpawn "{60821DF8FBFA2346}" {
+        m_sLocation "GC_Spawner_1226C351C31D7D19"
+        m_sPrefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{B60AEA185D5128F0}" {
+     m_sName "GC_MigratedSpawn_A387A629A21B2B08"
+     m_aConditions {
+      GC_GameModeStateCondition "{4D93E6ACDE050644}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{03CC7C780C72D518}" {
+       m_sFlagName "DropBomb"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3E7EC80FD0D5BC66}" {
+       m_sMessage "GC_MigratedSpawn_A387A629A21B2B08"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7DC7E476E5201922}" {
+     m_sName "GC_MigratedSpawn_A387A629A21B2B08 (3.6s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B7A9E6A48A5A1FBF}" {
+       m_sEventName "GC_MigratedSpawn_A387A629A21B2B08"
+      }
+     }
+     m_Advanced GC_EventOptions "{249A643C013B3C05}" {
+      m_fDelay 3.6
+     }
+     m_aActions {
+      GC_SpawnAction "{42FAB69D141C8121}" {
+       m_Spawn GC_PrefabSpawn "{2817C230E6429417}" {
+        m_sLocation "GC_Spawner_A387A629A21B2B08"
+        m_sPrefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{959E87775B49DA5E}" {
+     m_sName "GC_MigratedSpawn_7AE3CD9C897E2A33"
+     m_aConditions {
+      GC_GameModeStateCondition "{5FF9BB7A3D3B739D}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{C4AED8760E7A2288}" {
+       m_sFlagName "DropBomb"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{EC1B73C4E07799F7}" {
+       m_sMessage "GC_MigratedSpawn_7AE3CD9C897E2A33"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D7EA4C5A21D5A00C}" {
+     m_sName "GC_MigratedSpawn_7AE3CD9C897E2A33 (0.5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8936EA1923109261}" {
+       m_sEventName "GC_MigratedSpawn_7AE3CD9C897E2A33"
+      }
+     }
+     m_Advanced GC_EventOptions "{F1E29A6E15137CA5}" {
+      m_fDelay 0.5
+     }
+     m_aActions {
+      GC_SpawnAction "{4CE292282CB49FF8}" {
+       m_Spawn GC_PrefabSpawn "{D5DF0766F2CD5CE1}" {
+        m_sLocation "GC_Spawner_7AE3CD9C897E2A33"
+        m_sPrefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{F567316D11FC1C11}" {
+     m_sName "GC_MigratedSpawn_2525F03BCB8C5127"
+     m_aConditions {
+      GC_GameModeStateCondition "{3E9B3669CEDF40AA}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{0E2F6D7E84E5FA60}" {
+       m_sFlagName "DropBomb"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{904BEE6A2EC6F518}" {
+       m_sMessage "GC_MigratedSpawn_2525F03BCB8C5127"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{405D9195399463A6}" {
+     m_sName "GC_MigratedSpawn_2525F03BCB8C5127 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DF72D0735B0A9009}" {
+       m_sEventName "GC_MigratedSpawn_2525F03BCB8C5127"
+      }
+     }
+     m_Advanced GC_EventOptions "{7C825D2BB78B6D41}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{F13BEAD632CE04FC}" {
+       m_Spawn GC_PrefabSpawn "{8C3B7608073F0F78}" {
+        m_sLocation "GC_Spawner_2525F03BCB8C5127"
+        m_sPrefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{D7993C3D42F5F74C}" {
+     m_sName "GC_MigratedSpawn_228481143CB61C38"
+     m_aConditions {
+      GC_GameModeStateCondition "{86D75570932E3449}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{4988DEE810F3BEE9}" {
+       m_sFlagName "DropBomb"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9F220253A6FF73FF}" {
+       m_sMessage "GC_MigratedSpawn_228481143CB61C38"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E42677DADBE7EF88}" {
+     m_sName "GC_MigratedSpawn_228481143CB61C38 (1.5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8990879B7AFA57E4}" {
+       m_sEventName "GC_MigratedSpawn_228481143CB61C38"
+      }
+     }
+     m_Advanced GC_EventOptions "{470C98C6E379AFBB}" {
+      m_fDelay 1.5
+     }
+     m_aActions {
+      GC_SpawnAction "{9116D179B56B4E14}" {
+       m_Spawn GC_PrefabSpawn "{A1D0DD826E00D61B}" {
+        m_sLocation "GC_Spawner_228481143CB61C38"
+        m_sPrefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{24A94E727165F391}" {
+     m_sName "GC_MigratedSpawn_B4990846D89BBB28"
+     m_aConditions {
+      GC_GameModeStateCondition "{38C381B48869E680}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{0EBAE59E7D7F68FC}" {
+       m_sFlagName "DropBomb"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F929C6240DBE1732}" {
+       m_sMessage "GC_MigratedSpawn_B4990846D89BBB28"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{12349AF7CB6C1AA2}" {
+     m_sName "GC_MigratedSpawn_B4990846D89BBB28 (2s)"
+     m_aConditions {
+      GC_MissionEventCondition "{776948B54FA80140}" {
+       m_sEventName "GC_MigratedSpawn_B4990846D89BBB28"
+      }
+     }
+     m_Advanced GC_EventOptions "{332101BEDDDA1340}" {
+      m_fDelay 2
+     }
+     m_aActions {
+      GC_SpawnAction "{9AE2D338B9BBE951}" {
+       m_Spawn GC_PrefabSpawn "{D37FDA56583DFAC9}" {
+        m_sLocation "GC_Spawner_B4990846D89BBB28"
+        m_sPrefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{7A674ADA427A77D9}" {
+     m_sName "GC_MigratedSpawn_DE5A70A23A16350A"
+     m_aConditions {
+      GC_GameModeStateCondition "{11335C62E6161F3C}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{3AD8C8FE1071BFDA}" {
+       m_sFlagName "DropBomb"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A24DFFDC5E0AAB1F}" {
+       m_sMessage "GC_MigratedSpawn_DE5A70A23A16350A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3BFB81169C5B425C}" {
+     m_sName "GC_MigratedSpawn_DE5A70A23A16350A (6s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BB39C12BCBA2AAD0}" {
+       m_sEventName "GC_MigratedSpawn_DE5A70A23A16350A"
+      }
+     }
+     m_Advanced GC_EventOptions "{849B2539696FDF98}" {
+      m_fDelay 6
+     }
+     m_aActions {
+      GC_SpawnAction "{3705F293AE73AD35}" {
+       m_Spawn GC_PrefabSpawn "{64E2054B7C1D0D27}" {
+        m_sLocation "GC_Spawner_DE5A70A23A16350A"
+        m_sPrefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{5DEED4539C8EA712}" {
+     m_sName "GC_MigratedSpawn_B7FEA4FDD4DD293B"
+     m_aConditions {
+      GC_GameModeStateCondition "{8948F6AA4A1D5579}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{A42118D29932C7BA}" {
+       m_sFlagName "DropBomb"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{054F3CBAC7A56C47}" {
+       m_sMessage "GC_MigratedSpawn_B7FEA4FDD4DD293B"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9D665BB691C87FA4}" {
+     m_sName "GC_MigratedSpawn_B7FEA4FDD4DD293B (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{863A69584B8E1963}" {
+       m_sEventName "GC_MigratedSpawn_B7FEA4FDD4DD293B"
+      }
+     }
+     m_Advanced GC_EventOptions "{31653A9E0470B9B7}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{E2B2D9EACDD52FC5}" {
+       m_Spawn GC_PrefabSpawn "{54826C5951822B4C}" {
+        m_sLocation "GC_Spawner_B7FEA4FDD4DD293B"
+        m_sPrefab "{48DE06CF94DC6DAA}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage_fire.et"
+       }
+      }
+     }
+    }
+    GC_Event "{30D9F3BED1C3891F}" {
+     m_sName "GC_MigratedSpawn_92465A657853844D"
+     m_aConditions {
+      GC_GameModeStateCondition "{3D850E769B4925C5}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{ACD407D16891DA88}" {
+       m_sFlagName "DropBomb"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{85EFFFC6CD414741}" {
+       m_sMessage "GC_MigratedSpawn_92465A657853844D"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2A1E847F6168BDCE}" {
+     m_sName "GC_MigratedSpawn_92465A657853844D (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8245F2A200A29E6B}" {
+       m_sEventName "GC_MigratedSpawn_92465A657853844D"
+      }
+     }
+     m_Advanced GC_EventOptions "{BB86FCCE38FFD074}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{F541CA2C70012892}" {
+       m_Spawn GC_PrefabSpawn "{E873BEB8734A9EFA}" {
+        m_sLocation "GC_Spawner_92465A657853844D"
+        m_sPrefab "{48DE06CF94DC6DAA}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage_fire.et"
+       }
+      }
+     }
+    }
+    GC_Event "{92E8E1AEE7334357}" {
+     m_sName "GC_MigratedSpawn_36762559F0811802"
+     m_aConditions {
+      GC_GameModeStateCondition "{6ABA5791EDD6C902}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{90F5028E46DBF6F3}" {
+       m_sFlagName "DropBomb"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{621D7A9E84A2B336}" {
+       m_sMessage "GC_MigratedSpawn_36762559F0811802"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{DFE92A38496FB04A}" {
+     m_sName "GC_MigratedSpawn_36762559F0811802 (2.5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{0966970FEA0ECA95}" {
+       m_sEventName "GC_MigratedSpawn_36762559F0811802"
+      }
+     }
+     m_Advanced GC_EventOptions "{016F547A52BD7A33}" {
+      m_fDelay 2.5
+     }
+     m_aActions {
+      GC_SpawnAction "{B37D2C8AC60121D6}" {
+       m_Spawn GC_PrefabSpawn "{C041EC80CDDFC30A}" {
+        m_sLocation "GC_Spawner_36762559F0811802"
+        m_sPrefab "{48DE06CF94DC6DAA}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage_fire.et"
+       }
+      }
+     }
+    }
+    GC_Event "{3B5ED6F8011C8768}" {
+     m_sName "GC_MigratedSpawn_326A37EEB106DD1B"
+     m_aConditions {
+      GC_GameModeStateCondition "{501D7175DE091871}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{C4C8FD199DC81474}" {
+       m_sFlagName "DropBomb"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{32A2E2BA82BA5AC3}" {
+       m_sMessage "GC_MigratedSpawn_326A37EEB106DD1B"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0A918016CC2996BB}" {
+     m_sName "GC_MigratedSpawn_326A37EEB106DD1B (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{10CB100EA9A5A00E}" {
+       m_sEventName "GC_MigratedSpawn_326A37EEB106DD1B"
+      }
+     }
+     m_Advanced GC_EventOptions "{54C817B01A9CCDB4}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{15B8CF8EE9E5BDAB}" {
+       m_Spawn GC_PrefabSpawn "{E7C37419ADD32AE0}" {
+        m_sLocation "GC_Spawner_326A37EEB106DD1B"
+        m_sPrefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{5B6B48FF21760877}" {
+     m_sName "GC_MigratedSpawn_CD4131561C75A8DD"
+     m_aConditions {
+      GC_GameModeStateCondition "{269831DC5106C25C}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{F65F5F1D848AABA5}" {
+       m_sFlagName "DropBomb"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D7A17D6F0716788E}" {
+       m_sMessage "GC_MigratedSpawn_CD4131561C75A8DD"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1BE4B9466BC38D8D}" {
+     m_sName "GC_MigratedSpawn_CD4131561C75A8DD (2.5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DD3A33AB49347B76}" {
+       m_sEventName "GC_MigratedSpawn_CD4131561C75A8DD"
+      }
+     }
+     m_Advanced GC_EventOptions "{B9693CA7A38F0DF3}" {
+      m_fDelay 2.5
+     }
+     m_aActions {
+      GC_SpawnAction "{715EAA81B134A446}" {
+       m_Spawn GC_PrefabSpawn "{021418555B9F4896}" {
+        m_sLocation "GC_Spawner_CD4131561C75A8DD"
+        m_sPrefab "{F0A075BFC366CE55}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage.et"
+       }
+      }
+     }
+    }
+    GC_Event "{53EDF3D096FD1D65}" {
+     m_sName "GC_MigratedSpawn_1E840E31C1BBEA81"
+     m_aConditions {
+      GC_GameModeStateCondition "{966816ADD8E3C3A4}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{678DA1A915F0EA9C}" {
+       m_sFlagName "DropBomb"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DFA562121F00C506}" {
+       m_sMessage "GC_MigratedSpawn_1E840E31C1BBEA81"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{14B650E265C890B1}" {
+     m_sName "GC_MigratedSpawn_1E840E31C1BBEA81 (4s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D2905A93DF24C69D}" {
+       m_sEventName "GC_MigratedSpawn_1E840E31C1BBEA81"
+      }
+     }
+     m_Advanced GC_EventOptions "{384562E185D669AB}" {
+      m_fDelay 4
+     }
+     m_aActions {
+      GC_SpawnAction "{4167FC81A5518103}" {
+       m_Spawn GC_PrefabSpawn "{659A768F680AAFA0}" {
+        m_sLocation "GC_Spawner_1E840E31C1BBEA81"
+        m_sPrefab "{48DE06CF94DC6DAA}worlds/TheLocalPub/OilRigRangos/Prefabs/Weapons/Warheads/Explosions/Explosion_nodamage_fire.et"
+       }
+      }
+     }
+    }
+    GC_Event "{27D7B4C6579E7DDD}" {
+     m_sName "GC_MigratedSpawn_ADAED19A283CED56"
+     m_aConditions {
+      GC_GameModeStateCondition "{C9EFF5930544ECB6}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{A9C037BFE01F870C}" {
+       m_sFlagName "DropBomb"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F7BC765E3D1BD15D}" {
+       m_sMessage "GC_MigratedSpawn_ADAED19A283CED56"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8FE26CB4A30EF16D}" {
+     m_sName "GC_MigratedSpawn_ADAED19A283CED56 (7s)"
+     m_aConditions {
+      GC_MissionEventCondition "{903972CC0D56A91F}" {
+       m_sEventName "GC_MigratedSpawn_ADAED19A283CED56"
+      }
+     }
+     m_Advanced GC_EventOptions "{6A1DC70A20166D97}" {
+      m_fDelay 7
+     }
+     m_aActions {
+      GC_SpawnAction "{11499C6626BF4357}" {
+       m_Spawn GC_PrefabSpawn "{F3E0CAF5696B5278}" {
+        m_sLocation "Nuke"
+        m_sPrefab "{FC359D25E07FB239}Prefabs/Systems/Explosions/BombWarhead_TacNuke_Init.et"
+       }
+      }
+     }
+    }
+   }
+   m_aAreaFlagObservers {
+    GC_AreaFlagObserver "{9701234B50AB1AF9}" {
+     m_sFlag "Hostage<"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{F2C55244AC1D266D}" {
+      m_sArea "CivChecker"
+      m_Targets GC_CharacterAreaTargets "{B9141F319DB63183}" {
+       m_aFactions {
+        "CIV"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{5072021B9AF4C6C3}" {
+       m_fRequiredShare 0.49
+       m_bAtMost 1
+       m_aIgnoredFactions {
+        "UK" "ECO"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 6027.628 0 11724.013
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{6854D86151966894}" : "{DE288250A40C53B2}worlds/TheLocalPub/OilRigRangos/Configs/Factions/ECOTERROR.conf" {
+    }
+   }
+  }
+ }
+}
