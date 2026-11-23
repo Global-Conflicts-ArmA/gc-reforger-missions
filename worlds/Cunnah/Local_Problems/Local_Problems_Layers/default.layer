@@ -1,0 +1,1561 @@
+SCR_AIWorld : "{33A5B976E41B0A4C}Prefabs/AI/SCR_AIWorld_BadOrb_GC.et" {
+}
+GC_LobbyGameMode GC_MigratedMission : "{0970C0003D248BFB}worlds/Cunnah/Local_Problems/Local_Problems_GC_Settings.et" {
+ components {
+  GC_PeakFactionPopulationComponent "{EB6C16E3E96DD443}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{156A79AAEE65203A}" {
+     m_sName "Extract_Ambush"
+    }
+    GC_MissionFlag "{B9E9AF78EFAF8D83}" {
+     m_sName "Inf_Assault"
+    }
+    GC_MissionFlag "{FB6392CC38E2494F}" {
+     m_sName "OPFOR_In_Town_Timer_Expired"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{496F9DBE0AE21127}" {
+     m_sName "Bomber_Run (5s)"
+     m_Advanced GC_EventOptions "{65A5FB9E8B47B2A3}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_AssignWaypointsAction "{6D5D37C39AF68D6E}" {
+       m_sGroupName "Bomber"
+       m_aWaypoints {
+        "Bomber_Target"
+       }
+      }
+     }
+    }
+    GC_Event "{7737F5AB771AF8BD}" {
+     m_sName "Explode_Bomb"
+     m_aConditions {
+      GC_AreaCondition "{A0661412FC309C0C}" {
+       m_sArea "GC_MigrationArea_Bomber_Det"
+       m_Targets GC_NamedAreaTargets "{A0EA38053C4CE214}" {
+        m_aNames {
+         "Bomber_Vic"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{DCADC8D45B7F1B18}" {
+        m_fRequiredProportion 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{7A8E4B39DF28654F}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E9916FDE55088D58}" {
+       m_sMessage "Explode_Bomb"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A010F78CB1F07DB2}" {
+     m_sName "Explode_Bomb (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{18025AD03350C686}" {
+       m_sEventName "Explode_Bomb"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{B946AAA1A525C868}" {
+       m_Spawn GC_PrefabSpawn "{976B2B70E79AE25D}" {
+        m_sLocation "Bomber_Vic"
+        m_sPrefab "{72BEEF40AF179763}Prefabs/Weapons/Warheads/Explosions/Explosion_Tnt_Large.et"
+       }
+      }
+     }
+    }
+    GC_Event "{F7B6257772E3C93B}" {
+     m_sName "Explode_Bomb (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2DAD6B85C5F803F8}" {
+       m_sEventName "Explode_Bomb"
+      }
+     }
+     m_Advanced GC_EventOptions "{E2BD7AFF5421BB94}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{A86E31EF706BFFB3}" {
+       m_Spawn GC_PrefabSpawn "{E9F5A76A937181EE}" {
+        m_sLocation "Bomber_Target_Vic"
+        m_sPrefab "{72BEEF40AF179763}Prefabs/Weapons/Warheads/Explosions/Explosion_Tnt_Large.et"
+       }
+      }
+     }
+    }
+    GC_Event "{FCF2D917D229F989}" {
+     m_sName "Attack_Commence (40s)"
+     m_Advanced GC_EventOptions "{963DEB77324EED5D}" {
+      m_fDelay 40
+     }
+     m_aActions {
+      GC_AssignWaypointsAction "{B7594433B38ED880}" {
+       m_sGroupName "Tech_2"
+       m_aWaypoints {
+        "WP_Tech_Move_2"
+        "WP_Tech_Ambush"
+       }
+      }
+      GC_AssignWaypointsAction "{FBE0B72C02869699}" {
+       m_sGroupName "Tech_1"
+       m_aWaypoints {
+        "WP_Tech_Move_1"
+        "WP_Tech_Ambush"
+       }
+      }
+      GC_FlagAction "{0739F1DF803429B6}" {
+       m_sFlagName "Inf_Assault"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{D2FFA39F055C9984}" {
+     m_sName "OPFOR_In_Town"
+     m_aConditions {
+      GC_GameModeStateCondition "{EFA37C1E79739949}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{D8224498D336C5C4}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_GameModeStateCondition "{F001FE6A130ED03F}" {
+         m_eGameModeState 1
+        }
+        GC_MissionFlagCondition "{56219A798DA253CC}" {
+         m_sFlagName "OPFOR_In_Town_Timer_Expired"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C904E398B7DFB001}" {
+       m_sMessage "OPFOR_In_Town"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{DD304EC22CDCA99C}" {
+     m_sName "OPFOR_In_Town (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{FA485D01157928B8}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{D28CB8B85B6E6D7D}" {
+       m_sEventName "OPFOR_In_Town"
+      }
+     }
+     m_Advanced GC_EventOptions "{81094B4143DE7503}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_FlagAction "{6631B9C97F715684}" {
+       m_sFlagName "Extract_Ambush"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{82536F800EF33EB4}" {
+     m_sName "Extraction"
+     m_aConditions {
+      GC_AreaCondition "{792B447671C7F65D}" {
+       m_sArea "GC_MigrationArea_Garrison_Extracted"
+       m_Targets GC_CharacterAreaTargets "{A51723CBBA1809AB}" {
+        m_aFactions {
+         "HVT"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{3598993D7BB156AB}" {
+        m_fRequiredShare 1
+        m_bWholeMission 1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{6CB8044011CC8E1E}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4FBA4A9FD84CCADC}" {
+       m_sMessage "Extraction"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AFDC3AD3B6AE411E}" {
+     m_sName "Extraction (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{09D2C75DF8CCD299}" {
+       m_sEventName "Extraction"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C85E35ADB8F3D1D9}" {
+       m_sTitle "RUSSIAN VICTORY!"
+       m_sMessage "The HVT has evacuated the area."
+      }
+     }
+    }
+    GC_Event "{1C0FB6F0D48B9399}" {
+     m_sName "Extraction (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{2E4847509AD4BEDA}" {
+       m_sEventName "Extraction"
+      }
+     }
+     m_Advanced GC_EventOptions "{E9A002F3DBA6B32C}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_EndMissionAction "{0BB8A9F1D3120EFD}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GARRISON"
+       }
+      }
+      GC_EndMissionAction "{C32E143E9BAA161F}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_AFRF"
+       }
+      }
+     }
+    }
+    GC_Event "{B380EB90D38E2151}" {
+     m_sName "Garrison Dead"
+     m_aConditions {
+      GC_CustomScriptCondition "{46B257285700D257}" {
+       m_Script GC_PeakFactionPopulationCheck "{C6590BAD893424E2}" {
+        m_sFaction "HVT"
+        m_fRatio 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{D46BB994032BAD60}" {
+       m_sMessage "Garrison Dead"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9563F8C60318D4A1}" {
+     m_sName "Garrison Dead (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{49D0A631F6E2C064}" {
+       m_sEventName "Garrison Dead"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{818CD3F54D11A8A7}" {
+       m_sTitle "RUSSIAN DEFEAT!"
+       m_sMessage "The HVT has been killed."
+      }
+     }
+    }
+    GC_Event "{6902D7D88DE33E6A}" {
+     m_sName "Garrison Dead (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C1BB2076C50506F8}" {
+       m_sEventName "Garrison Dead"
+      }
+     }
+     m_Advanced GC_EventOptions "{A4E09B5DB2AE33C3}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_EndMissionAction "{42E4F22AB5B25CD9}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "GARRISON"
+       }
+      }
+     }
+    }
+    GC_Event "{0096ED2978C59139}" {
+     m_sName "Timer (15s)"
+     m_Advanced GC_EventOptions "{8F7A19FE28C61610}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_FlagAction "{3146B136CB9B15C9}" {
+       m_sFlagName "OPFOR_In_Town_Timer_Expired"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{9EED386212EFC215}" {
+     m_sName "Truck_Blockade"
+     m_aConditions {
+      GC_AreaCondition "{5F7DE7075D669045}" {
+       m_sArea "truck_blockade_trigger"
+       m_Targets GC_CharacterAreaTargets "{66318088D67D31AF}" {
+        m_iWho 2
+        m_aFactions {
+         "RHS_AFRF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{4E1E67F1DA2A331C}" {
+        m_fRequiredShare 0.01
+       }
+       m_Capture GC_AreaCaptureOptions "{E98817D9DABA936C}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C1487453EDFCCC07}" {
+       m_sMessage "Truck_Blockade"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2C3DBC883DFB496A}" {
+     m_sName "Truck_Blockade (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{638BCA0FC6F9FC4B}" {
+       m_sEventName "Truck_Blockade"
+      }
+     }
+     m_Advanced GC_EventOptions "{512DEA767DA281A0}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_AssignWaypointsAction "{6690FE786BED7C86}" {
+       m_sGroupName "truck_blockade"
+       m_aWaypoints {
+        "truck_blockade_wp"
+       }
+      }
+     }
+    }
+    GC_Event "{3730AB8AF1BC21D1}" {
+     m_sName "GC_MigratedSpawn_2EA1B01836737D60"
+     m_aConditions {
+      GC_ConditionGroup "{54BB8CCEA56DA08A}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{B2C662A09D10F48A}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{41E2DC6C4D943A34}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{C3AC462630A53C78}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E980F6B6BA52F0E2}" {
+       m_sMessage "GC_MigratedSpawn_2EA1B01836737D60"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E25E526A3966E889}" {
+     m_sName "GC_MigratedSpawn_2EA1B01836737D60 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{ABDB31FF480EEEA4}" {
+       m_sEventName "GC_MigratedSpawn_2EA1B01836737D60"
+      }
+     }
+     m_Advanced GC_EventOptions "{EDBF50FAD8523DFD}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{B2C662A09D10F48A}" {
+       m_Spawn GC_CrewedVehicleSpawn "{D44C8B67C80D3AE7}" {
+        m_sLocation "Bomber_Vic_Spawner"
+        m_sPrefab "{F66EAD0D2016B6BA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_blue.et"
+        m_sEntityName "Bomber_Vic"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{728550E62CE48FE2}" {
+          m_sGroupName "Bomber"
+          m_aStations {
+           GC_SpawnCrewStation "{2B7AA1D91E94139F}" {
+            m_aCharacters {
+             "{035F8F1CEF3B187F}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_CottonShirt_4.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{C41D6D36A72C6344}" {
+     m_sName "GC_MigratedSpawn_B8F270315504BDB0"
+     m_aConditions {
+      GC_ConditionGroup "{6DFB72B6A552B465}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{88247B740FDE8657}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{C623634E053CAFCB}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{274F37FA9062743C}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9DEB18FF5456EF91}" {
+       m_sMessage "GC_MigratedSpawn_B8F270315504BDB0"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F144CC846754E6DE}" {
+     m_sName "GC_MigratedSpawn_B8F270315504BDB0 (1s)"
+     m_aConditions {
+      GC_MissionEventCondition "{286CF2E5EDEA6819}" {
+       m_sEventName "GC_MigratedSpawn_B8F270315504BDB0"
+      }
+     }
+     m_Advanced GC_EventOptions "{EE8490E7C8FE404E}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_SpawnAction "{88247B740FDE8657}" {
+       m_Spawn GC_CrewedVehicleSpawn "{413C71C1B6198D6E}" {
+        m_sLocation "Tech_Spawn_2"
+        m_sPrefab "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{1754BE31ECC33E4B}" {
+          m_sGroupName "Tech_2"
+          m_aStations {
+           GC_SpawnCrewStation "{4BDB68D8DC1C9785}" {
+            m_aCharacters {
+             "{972EEF8AAC363A48}worlds/Cunnah/Prefabs/Characters/Factions/INDFOR/Militia/Character_Milita_SL.et"
+             "{2EEF27FF5AE60DBD}worlds/Cunnah/Prefabs/Characters/Factions/INDFOR/Militia/Character_Militia_Rifleman_3.et"
+             "{CB736B0656039AD6}worlds/Cunnah/Prefabs/Characters/Factions/INDFOR/Militia/Character_Militia_Rifleman_2.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{8D57A762C0034C45}" {
+     m_sName "GC_MigratedSpawn_36044A4380F3B4CE (0s)"
+     m_aActions {
+      GC_SpawnAction "{8D57A762C0034C45}" {
+       m_Spawn GC_CrewedVehicleSpawn "{D62F45F1A0376119}" {
+        m_sLocation "Tech_Spawn_1"
+        m_sPrefab "{22B327C6752EC4D4}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM_FIA.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{7769637831A74D92}" {
+          m_sGroupName "Tech_1"
+          m_aStations {
+           GC_SpawnCrewStation "{33CFD132C8250215}" {
+            m_aCharacters {
+             "{972EEF8AAC363A48}worlds/Cunnah/Prefabs/Characters/Factions/INDFOR/Militia/Character_Milita_SL.et"
+             "{B64AFD690DBA23AD}worlds/Cunnah/Prefabs/Characters/Factions/INDFOR/Militia/Character_Militia_Rifleman.et"
+             "{CB736B0656039AD6}worlds/Cunnah/Prefabs/Characters/Factions/INDFOR/Militia/Character_Militia_Rifleman_2.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{184D19617FA2CD08}" {
+     m_sName "GC_MigratedSpawn_821A25FE56FF7A25"
+     m_aConditions {
+      GC_GameModeStateCondition "{3191FC1F1BACF82C}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{B2D3ECCA7828CB6F}" {
+       m_sFlagName "Inf_Assault"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{123605ABF26B18CD}" {
+       m_sMessage "GC_MigratedSpawn_821A25FE56FF7A25"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E2214F8A72B7FFD9}" {
+     m_sName "GC_MigratedSpawn_821A25FE56FF7A25 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{221264756B246642}" {
+       m_sEventName "GC_MigratedSpawn_821A25FE56FF7A25"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{E2214F8A72B7FFD9}" {
+       m_Spawn GC_AIGroupSpawn "{D9F44E358ACC7CE3}" {
+        m_sLocation "Inf_West_Spawner"
+        m_sPrefab "{E86B8D95400DA31C}worlds/Cunnah/Prefabs/Groups/INDFOR/Militia/Militia_Rifle_Squad.et"
+        m_aWaypoints {
+         "WP_Assault"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{6BFF698E7FCD4FE8}" {
+     m_sName "GC_MigratedSpawn_821A25FE56FF7A25 (120s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9D3CE466E4F89E83}" {
+       m_sEventName "GC_MigratedSpawn_821A25FE56FF7A25"
+      }
+     }
+     m_Advanced GC_EventOptions "{2965F714A39E363D}" {
+      m_fDelay 120
+     }
+     m_aActions {
+      GC_SpawnAction "{3019C1D1D0898BA2}" {
+       m_Spawn GC_AIGroupSpawn "{96F1384D2A6F0BC7}" {
+        m_sLocation "Inf_West_Spawner"
+        m_sPrefab "{E86B8D95400DA31C}worlds/Cunnah/Prefabs/Groups/INDFOR/Militia/Militia_Rifle_Squad.et"
+        m_aWaypoints {
+         "WP_Assault"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A8DCAF57BBDE5ECE}" {
+     m_sName "GC_MigratedSpawn_10BA80B88DBC2704"
+     m_aConditions {
+      GC_GameModeStateCondition "{27149E552A9EEBB8}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{8066EAB0D103BEAF}" {
+       m_sFlagName "Inf_Assault"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8395CBBD134454AF}" {
+       m_sMessage "GC_MigratedSpawn_10BA80B88DBC2704"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8913F259A693C12F}" {
+     m_sName "GC_MigratedSpawn_10BA80B88DBC2704 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1C25AD249CC261A5}" {
+       m_sEventName "GC_MigratedSpawn_10BA80B88DBC2704"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{8913F259A693C12F}" {
+       m_Spawn GC_AIGroupSpawn "{7867DF3A1E896106}" {
+        m_sLocation "Inf_South_Spawner"
+        m_sPrefab "{E86B8D95400DA31C}worlds/Cunnah/Prefabs/Groups/INDFOR/Militia/Militia_Rifle_Squad.et"
+        m_aWaypoints {
+         "WP_Assault"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{417BB8FD208D043D}" {
+     m_sName "GC_MigratedSpawn_10BA80B88DBC2704 (120s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3B8EDBDF13844E22}" {
+       m_sEventName "GC_MigratedSpawn_10BA80B88DBC2704"
+      }
+     }
+     m_Advanced GC_EventOptions "{2F9110F0A33D840E}" {
+      m_fDelay 120
+     }
+     m_aActions {
+      GC_SpawnAction "{C200559CAC33745A}" {
+       m_Spawn GC_AIGroupSpawn "{5732FB544511F227}" {
+        m_sLocation "Inf_South_Spawner"
+        m_sPrefab "{E86B8D95400DA31C}worlds/Cunnah/Prefabs/Groups/INDFOR/Militia/Militia_Rifle_Squad.et"
+        m_aWaypoints {
+         "WP_Assault"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{653FF32917F33A52}" {
+     m_sName "GC_MigratedSpawn_A570E34F372E8836"
+     m_aConditions {
+      GC_GameModeStateCondition "{5B5526BEAE783CAD}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{1F7CB0E1530C2AC9}" {
+       m_sFlagName "Inf_Assault"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B75DAFB67834FA58}" {
+       m_sMessage "GC_MigratedSpawn_A570E34F372E8836"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{660AF05876F054CA}" {
+     m_sName "GC_MigratedSpawn_A570E34F372E8836 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{94A485FD7ECC4CC9}" {
+       m_sEventName "GC_MigratedSpawn_A570E34F372E8836"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{660AF05876F054CA}" {
+       m_Spawn GC_AIGroupSpawn "{D8317B266A848DF0}" {
+        m_sLocation "Inf_North_Spawner"
+        m_sPrefab "{E86B8D95400DA31C}worlds/Cunnah/Prefabs/Groups/INDFOR/Militia/Militia_Rifle_Squad.et"
+        m_aWaypoints {
+         "WP_Assault"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F0E3D3324ACDFD23}" {
+     m_sName "GC_MigratedSpawn_A570E34F372E8836 (120s)"
+     m_aConditions {
+      GC_MissionEventCondition "{524C174397EB7A9D}" {
+       m_sEventName "GC_MigratedSpawn_A570E34F372E8836"
+      }
+     }
+     m_Advanced GC_EventOptions "{ED5E05DFB4B68C4F}" {
+      m_fDelay 120
+     }
+     m_aActions {
+      GC_SpawnAction "{7178D7ECE2F8E39B}" {
+       m_Spawn GC_AIGroupSpawn "{7D35BD9661CB0FDA}" {
+        m_sLocation "Inf_North_Spawner"
+        m_sPrefab "{E86B8D95400DA31C}worlds/Cunnah/Prefabs/Groups/INDFOR/Militia/Militia_Rifle_Squad.et"
+        m_aWaypoints {
+         "WP_Assault"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{008B4D6A7F9897B1}" {
+     m_sName "GC_MigratedSpawn_B4B15CDAED248F23"
+     m_aConditions {
+      GC_GameModeStateCondition "{9565FA6C06802C3A}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{632C48AB7A1F78AA}" {
+       m_sFlagName "Inf_Assault"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{728AC45E530833BA}" {
+       m_sMessage "GC_MigratedSpawn_B4B15CDAED248F23"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E6AD395628932230}" {
+     m_sName "GC_MigratedSpawn_B4B15CDAED248F23 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{5D615E9CF5A4E113}" {
+       m_sEventName "GC_MigratedSpawn_B4B15CDAED248F23"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{E6AD395628932230}" {
+       m_Spawn GC_AIGroupSpawn "{57D03D58FB16D20C}" {
+        m_sLocation "Inf_East_Spawner"
+        m_sPrefab "{E86B8D95400DA31C}worlds/Cunnah/Prefabs/Groups/INDFOR/Militia/Militia_Rifle_Squad.et"
+        m_aWaypoints {
+         "WP_Secure"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E1D94992D4297941}" {
+     m_sName "GC_MigratedSpawn_B4B15CDAED248F23 (120s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9679D71BA5C957A6}" {
+       m_sEventName "GC_MigratedSpawn_B4B15CDAED248F23"
+      }
+     }
+     m_Advanced GC_EventOptions "{368A0C7850D6037A}" {
+      m_fDelay 120
+     }
+     m_aActions {
+      GC_SpawnAction "{9AE12A8F31828B55}" {
+       m_Spawn GC_AIGroupSpawn "{0D0126333374985C}" {
+        m_sLocation "Inf_East_Spawner"
+        m_sPrefab "{E86B8D95400DA31C}worlds/Cunnah/Prefabs/Groups/INDFOR/Militia/Militia_Rifle_Squad.et"
+        m_aWaypoints {
+         "WP_Secure"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4A81CDE4AED41189}" {
+     m_sName "GC_MigratedSpawn_B4B15CDAED248F23 (240s)"
+     m_aConditions {
+      GC_MissionEventCondition "{49C3CC52B1550520}" {
+       m_sEventName "GC_MigratedSpawn_B4B15CDAED248F23"
+      }
+     }
+     m_Advanced GC_EventOptions "{11D211AF360852F9}" {
+      m_fDelay 240
+     }
+     m_aActions {
+      GC_SpawnAction "{87BB2F31D9A0472A}" {
+       m_Spawn GC_AIGroupSpawn "{C45634EC6F3834A4}" {
+        m_sLocation "Inf_East_Spawner"
+        m_sPrefab "{E86B8D95400DA31C}worlds/Cunnah/Prefabs/Groups/INDFOR/Militia/Militia_Rifle_Squad.et"
+        m_aWaypoints {
+         "WP_Secure"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{016288DA93AD2F8F}" {
+     m_sName "GC_MigratedSpawn_F88220F60B11AF5B (0s)"
+     m_aActions {
+      GC_SpawnAction "{016288DA93AD2F8F}" {
+       m_Spawn GC_CrewedVehicleSpawn "{972A63355D24462B}" {
+        m_sLocation "BRDM_1"
+        m_sPrefab "{254289B9C09904AB}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{48CD62AFC2190283}" {
+          m_aStations {
+           GC_SpawnCrewStation "{1B49E80AE733089A}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{972EEF8AAC363A48}worlds/Cunnah/Prefabs/Characters/Factions/INDFOR/Militia/Character_Milita_SL.et"
+             "{B64AFD690DBA23AD}worlds/Cunnah/Prefabs/Characters/Factions/INDFOR/Militia/Character_Militia_Rifleman.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{215D7831B5632842}" {
+     m_sName "GC_MigratedSpawn_AA11B06AB6F6DB59 (0s)"
+     m_aActions {
+      GC_SpawnAction "{215D7831B5632842}" {
+       m_Spawn GC_CrewedVehicleSpawn "{E953B10693E0473E}" {
+        m_sLocation "BRDM_2"
+        m_sPrefab "{254289B9C09904AB}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{A475888F5AF9E9EE}" {
+          m_aStations {
+           GC_SpawnCrewStation "{A15C6FFA7BF81D93}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{972EEF8AAC363A48}worlds/Cunnah/Prefabs/Characters/Factions/INDFOR/Militia/Character_Milita_SL.et"
+             "{CB736B0656039AD6}worlds/Cunnah/Prefabs/Characters/Factions/INDFOR/Militia/Character_Militia_Rifleman_2.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{98966C8F528411FF}" {
+     m_sName "GC_MigratedSpawn_05C3BA43D885C125"
+     m_aConditions {
+      GC_GameModeStateCondition "{1D17ACC60BB5484A}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{EC0345A521548258}" {
+       m_sFlagName "Extract_Ambush"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{282D5B9D7AA2668F}" {
+       m_sMessage "GC_MigratedSpawn_05C3BA43D885C125"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BC918D090C704D2D}" {
+     m_sName "GC_MigratedSpawn_05C3BA43D885C125 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BF66CF968398B793}" {
+       m_sEventName "GC_MigratedSpawn_05C3BA43D885C125"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{BC918D090C704D2D}" {
+       m_Spawn GC_AIGroupSpawn "{91A6E789BDF60B4D}" {
+        m_sLocation "Ambush_AT_Spawner_1"
+        m_sPrefab "{6B10747A3401270A}worlds/Cunnah/Prefabs/Groups/INDFOR/Militia/Militia_AT_Team.et"
+        m_aWaypoints {
+         "WP_Secure"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F2248A158476F3D7}" {
+     m_sName "GC_MigratedSpawn_A58A32CB76FD6F12"
+     m_aConditions {
+      GC_GameModeStateCondition "{41A5CFDB7D440AD0}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{6B359A3CEED9E840}" {
+       m_sFlagName "Extract_Ambush"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{84A2C23DC94BD1EF}" {
+       m_sMessage "GC_MigratedSpawn_A58A32CB76FD6F12"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{4B512EBACDE9E595}" {
+     m_sName "GC_MigratedSpawn_A58A32CB76FD6F12 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{FF3004B5DAC314F9}" {
+       m_sEventName "GC_MigratedSpawn_A58A32CB76FD6F12"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{4B512EBACDE9E595}" {
+       m_Spawn GC_AIGroupSpawn "{21787E76AEBB0D63}" {
+        m_sLocation "Ambush_AT_Spawner_2"
+        m_sPrefab "{6B10747A3401270A}worlds/Cunnah/Prefabs/Groups/INDFOR/Militia/Militia_AT_Team.et"
+        m_aWaypoints {
+         "WP_Secure"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{70DD73B3DAB90B7A}" {
+     m_sName "GC_MigratedSpawn_C8E96ADAC86C96A6"
+     m_aConditions {
+      GC_GameModeStateCondition "{FCCD313E41AF304C}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{92CD959507BEDAE6}" {
+       m_sFlagName "Extract_Ambush"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{BC4FD43D9A680282}" {
+       m_sMessage "GC_MigratedSpawn_C8E96ADAC86C96A6"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{651C56AFB8385945}" {
+     m_sName "GC_MigratedSpawn_C8E96ADAC86C96A6 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{290A7DB6BE223881}" {
+       m_sEventName "GC_MigratedSpawn_C8E96ADAC86C96A6"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{651C56AFB8385945}" {
+       m_Spawn GC_AIGroupSpawn "{AE077F5105419970}" {
+        m_sLocation "Ambush_Spawner_1"
+        m_sPrefab "{E86B8D95400DA31C}worlds/Cunnah/Prefabs/Groups/INDFOR/Militia/Militia_Rifle_Squad.et"
+        m_aWaypoints {
+         "WP_Ambush_Defend_1"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E51115F4978A133A}" {
+     m_sName "GC_MigratedSpawn_190BE16AA836CEF6"
+     m_aConditions {
+      GC_GameModeStateCondition "{F035FBE6A77F916B}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{895D4A6A50C0F335}" {
+       m_sFlagName "Extract_Ambush"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6FB6096D8E57B08C}" {
+       m_sMessage "GC_MigratedSpawn_190BE16AA836CEF6"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8C61305B189CFC58}" {
+     m_sName "GC_MigratedSpawn_190BE16AA836CEF6 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F4F39A6B6B1D3AA0}" {
+       m_sEventName "GC_MigratedSpawn_190BE16AA836CEF6"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{8C61305B189CFC58}" {
+       m_Spawn GC_AIGroupSpawn "{1C4BA2A0C29BDBB3}" {
+        m_sLocation "Ambush_Spawner_2"
+        m_sPrefab "{E86B8D95400DA31C}worlds/Cunnah/Prefabs/Groups/INDFOR/Militia/Militia_Rifle_Squad.et"
+        m_aWaypoints {
+         "WP_Ambush_Defend_2"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{89A1F163E6BACFA1}" {
+     m_sName "GC_MigratedSpawn_86D629EFBF5F16B5"
+     m_aConditions {
+      GC_GameModeStateCondition "{FC083391DA17F222}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{FE353BD9EB8434FE}" {
+       m_sFlagName "Extract_Ambush"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A5B091C5ECACBCC5}" {
+       m_sMessage "GC_MigratedSpawn_86D629EFBF5F16B5"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{324D1EAB1AC0E990}" {
+     m_sName "GC_MigratedSpawn_86D629EFBF5F16B5 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C27569CC5B6BE789}" {
+       m_sEventName "GC_MigratedSpawn_86D629EFBF5F16B5"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{324D1EAB1AC0E990}" {
+       m_Spawn GC_CrewedVehicleSpawn "{A250D2751CADD874}" {
+        m_sLocation "Tech_Spawn_3"
+        m_sPrefab "{22B327C6752EC4D4}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM_FIA.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{A3C2E0A4B1174A63}" {
+          m_sGroupName "Tech_3"
+          m_aStations {
+           GC_SpawnCrewStation "{DF2EE4E0538A4AF1}" {
+            m_aCharacters {
+             "{972EEF8AAC363A48}worlds/Cunnah/Prefabs/Characters/Factions/INDFOR/Militia/Character_Milita_SL.et"
+             "{B64AFD690DBA23AD}worlds/Cunnah/Prefabs/Characters/Factions/INDFOR/Militia/Character_Militia_Rifleman.et"
+             "{CB736B0656039AD6}worlds/Cunnah/Prefabs/Characters/Factions/INDFOR/Militia/Character_Militia_Rifleman_2.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "Ambush_Vic_Middle"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{95D22C76F5E415D7}" {
+     m_sName "GC_MigratedSpawn_8F554247CDB6B02C"
+     m_aConditions {
+      GC_GameModeStateCondition "{1D96E3CC24B55753}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{020DF5CF6A177EB8}" {
+       m_sFlagName "Extract_Ambush"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F990568DF8F6476B}" {
+       m_sMessage "GC_MigratedSpawn_8F554247CDB6B02C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8DD99E54E8ECA6D6}" {
+     m_sName "GC_MigratedSpawn_8F554247CDB6B02C (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{718A05C43BAE10ED}" {
+       m_sEventName "GC_MigratedSpawn_8F554247CDB6B02C"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{8DD99E54E8ECA6D6}" {
+       m_Spawn GC_AIGroupSpawn "{9EC29545C8224CDD}" {
+        m_sLocation "Ambush_Spawner_3"
+        m_sPrefab "{E86B8D95400DA31C}worlds/Cunnah/Prefabs/Groups/INDFOR/Militia/Militia_Rifle_Squad.et"
+        m_aWaypoints {
+         "WP_Ambush_Defend_3"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{047FA265E855A2E8}" {
+     m_sName "GC_MigratedSpawn_C473C8C0DFF514D1"
+     m_aConditions {
+      GC_GameModeStateCondition "{2DE4A2A999BF7851}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{6719FFEF6CCB2E74}" {
+       m_sFlagName "Extract_Ambush"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F94F9565077EF0F3}" {
+       m_sMessage "GC_MigratedSpawn_C473C8C0DFF514D1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{E939F09A8ACF7AA9}" {
+     m_sName "GC_MigratedSpawn_C473C8C0DFF514D1 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{FD1082DF1BE88884}" {
+       m_sEventName "GC_MigratedSpawn_C473C8C0DFF514D1"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{E939F09A8ACF7AA9}" {
+       m_Spawn GC_CrewedVehicleSpawn "{91DAEF8315DB68EC}" {
+        m_sLocation "Tech_Spawn_4"
+        m_sPrefab "{22B327C6752EC4D4}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM_FIA.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{B96323E2B8C80738}" {
+          m_sGroupName "Tech_4"
+          m_aStations {
+           GC_SpawnCrewStation "{D4DF3FFC18D9E301}" {
+            m_aCharacters {
+             "{972EEF8AAC363A48}worlds/Cunnah/Prefabs/Characters/Factions/INDFOR/Militia/Character_Milita_SL.et"
+             "{B64AFD690DBA23AD}worlds/Cunnah/Prefabs/Characters/Factions/INDFOR/Militia/Character_Militia_Rifleman.et"
+             "{CB736B0656039AD6}worlds/Cunnah/Prefabs/Characters/Factions/INDFOR/Militia/Character_Militia_Rifleman_2.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "WP_Vic_Move_Road"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3C2D3087E7CBFFBC}" {
+     m_sName "GC_MigratedSpawn_BAD276D3A529DDE2"
+     m_aConditions {
+      GC_GameModeStateCondition "{A0ABFA176E0C5657}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{BA710EA854A10552}" {
+       m_sFlagName "Extract_Ambush"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5096E7C9B3D64D3E}" {
+       m_sMessage "GC_MigratedSpawn_BAD276D3A529DDE2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D2537CEEC9C32480}" {
+     m_sName "GC_MigratedSpawn_BAD276D3A529DDE2 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{6B7CE4F08E3DCEA0}" {
+       m_sEventName "GC_MigratedSpawn_BAD276D3A529DDE2"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{D2537CEEC9C32480}" {
+       m_Spawn GC_AIGroupSpawn "{4D241E270556B3C0}" {
+        m_sLocation "Ambush_Spawner_4"
+        m_sPrefab "{E86B8D95400DA31C}worlds/Cunnah/Prefabs/Groups/INDFOR/Militia/Militia_Rifle_Squad.et"
+        m_aWaypoints {
+         "WP_Ambush_Defend_4"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{12F97462D73F512F}" {
+     m_sName "GC_MigratedSpawn_3A5204A2BE35B323"
+     m_aConditions {
+      GC_GameModeStateCondition "{2967BFAA4107B50A}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{170F4906A62400ED}" {
+       m_sFlagName "Extract_Ambush"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{352CA43E6C3754EE}" {
+       m_sMessage "GC_MigratedSpawn_3A5204A2BE35B323"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9C0AE45C233ED19E}" {
+     m_sName "GC_MigratedSpawn_3A5204A2BE35B323 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{F13ECD35F0BD4EF8}" {
+       m_sEventName "GC_MigratedSpawn_3A5204A2BE35B323"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{9C0AE45C233ED19E}" {
+       m_Spawn GC_AIGroupSpawn "{A41D429ABE98B75F}" {
+        m_sLocation "Ambush_Spawner_5"
+        m_sPrefab "{E86B8D95400DA31C}worlds/Cunnah/Prefabs/Groups/INDFOR/Militia/Militia_Rifle_Squad.et"
+        m_aWaypoints {
+         "WP_Ambush_Defend_5"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{1DC100D48305E37F}" {
+     m_sName "GC_MigratedSpawn_6D402ED504110A16"
+     m_aConditions {
+      GC_GameModeStateCondition "{F91D042987BA8085}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{EAA6538533DD9514}" {
+       m_sFlagName "Extract_Ambush"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{146200CDC9ACAAF3}" {
+       m_sMessage "GC_MigratedSpawn_6D402ED504110A16"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0FBCE428965AB694}" {
+     m_sName "GC_MigratedSpawn_6D402ED504110A16 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D25E171B4B9AAA2F}" {
+       m_sEventName "GC_MigratedSpawn_6D402ED504110A16"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{0FBCE428965AB694}" {
+       m_Spawn GC_AIGroupSpawn "{F8CEFD8810C9EC1E}" {
+        m_sLocation "Ambush_Spawner_6"
+        m_sPrefab "{6B10747A3401270A}worlds/Cunnah/Prefabs/Groups/INDFOR/Militia/Militia_AT_Team.et"
+        m_aWaypoints {
+         "WP_Ambush_Defend_4"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{EB8DA65985EC3F36}" {
+     m_sName "GC_MigratedSpawn_E0B4FC8D86B65369"
+     m_aConditions {
+      GC_GameModeStateCondition "{EB7627C81C3421CB}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{8001BBFDB6C21346}" {
+       m_sFlagName "Extract_Ambush"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{EA03F1AB77D60889}" {
+       m_sMessage "GC_MigratedSpawn_E0B4FC8D86B65369"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{993AEBD746CBE240}" {
+     m_sName "GC_MigratedSpawn_E0B4FC8D86B65369 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8D8D1A9509552F9D}" {
+       m_sEventName "GC_MigratedSpawn_E0B4FC8D86B65369"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{993AEBD746CBE240}" {
+       m_Spawn GC_AIGroupSpawn "{1CAAD5F97A17DD69}" {
+        m_sLocation "Ambush_Spawner_7"
+        m_sPrefab "{6B10747A3401270A}worlds/Cunnah/Prefabs/Groups/INDFOR/Militia/Militia_AT_Team.et"
+        m_aWaypoints {
+         "WP_Ambush_Defend_5"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{5CE0AE3CA62D9CBC}" {
+     m_sName "GC_MigratedSpawn_2D6C7D798F4598FE"
+     m_aConditions {
+      GC_GameModeStateCondition "{187FBB5E38CC1E4F}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{8CB151D8A20FF8CD}" {
+       m_sFlagName "Extract_Ambush"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{890C56C6B0A3B47A}" {
+       m_sMessage "GC_MigratedSpawn_2D6C7D798F4598FE"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{261530224F0D1320}" {
+     m_sName "GC_MigratedSpawn_2D6C7D798F4598FE (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9B639EBC2EA4B444}" {
+       m_sEventName "GC_MigratedSpawn_2D6C7D798F4598FE"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{261530224F0D1320}" {
+       m_Spawn GC_AIGroupSpawn "{DE0A49DBCE70B1B6}" {
+        m_sLocation "Ambush_Spawner_8"
+        m_sPrefab "{6B10747A3401270A}worlds/Cunnah/Prefabs/Groups/INDFOR/Militia/Militia_AT_Team.et"
+        m_aWaypoints {
+         "WP_Ambush_Defend_7"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4D1806E3CF4BD410}" {
+     m_sName "GC_MigratedSpawn_21A0B2AC5510AAB1"
+     m_aConditions {
+      GC_GameModeStateCondition "{E6209258173C2EE1}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{A89DE3283752992C}" {
+       m_sFlagName "Extract_Ambush"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FCD25F3160D4ACCD}" {
+       m_sMessage "GC_MigratedSpawn_21A0B2AC5510AAB1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F6F8F09A6DD4EBAA}" {
+     m_sName "GC_MigratedSpawn_21A0B2AC5510AAB1 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{34F6FCE841EE415D}" {
+       m_sEventName "GC_MigratedSpawn_21A0B2AC5510AAB1"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{F6F8F09A6DD4EBAA}" {
+       m_Spawn GC_AIGroupSpawn "{3358A40295B0E32F}" {
+        m_sLocation "Ambush_Spawner_9"
+        m_sPrefab "{7B626931CD41BC3F}worlds/Cunnah/Prefabs/Groups/INDFOR/Militia/Militia_MG_Team.et"
+        m_aWaypoints {
+         "WP_Ambush_Defend_6"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{A4A09D306121787A}" {
+     m_sName "GC_MigratedSpawn_16FE037553C46919"
+     m_aConditions {
+      GC_GameModeStateCondition "{787054203ACACB7B}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{CE39DE36501F96EE}" {
+       m_sFlagName "Extract_Ambush"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9C1AF08FDD359B6F}" {
+       m_sMessage "GC_MigratedSpawn_16FE037553C46919"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{039290B921F21F44}" {
+     m_sName "GC_MigratedSpawn_16FE037553C46919 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3D370792048FB336}" {
+       m_sEventName "GC_MigratedSpawn_16FE037553C46919"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{039290B921F21F44}" {
+       m_Spawn GC_AIGroupSpawn "{10622399AC791E20}" {
+        m_sLocation "Ambush_Spawner_10"
+        m_sPrefab "{6B10747A3401270A}worlds/Cunnah/Prefabs/Groups/INDFOR/Militia/Militia_AT_Team.et"
+        m_aWaypoints {
+         "WP_Ambush_Defend_8"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{1B49E123FA0F9058}" {
+     m_sName "GC_MigratedSpawn_5D8014051B5B3953"
+     m_aConditions {
+      GC_GameModeStateCondition "{102A7802E22160BB}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{9D1BDE27B08188A4}" {
+       m_sFlagName "Extract_Ambush"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{53A35AF4629C419F}" {
+       m_sMessage "GC_MigratedSpawn_5D8014051B5B3953"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{39F53B64F73D570F}" {
+     m_sName "GC_MigratedSpawn_5D8014051B5B3953 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D80AB4B562D4F885}" {
+       m_sEventName "GC_MigratedSpawn_5D8014051B5B3953"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{39F53B64F73D570F}" {
+       m_Spawn GC_PrefabSpawn "{B477697B4A53B1BE}" {
+        m_sLocation "GC_Spawner_5D8014051B5B3953"
+        m_sPrefab "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et"
+       }
+      }
+     }
+    }
+    GC_Event "{2C8D61D66B0A2CDF}" {
+     m_sName "GC_MigratedSpawn_F937B08E949F7574 (0s)"
+     m_aActions {
+      GC_SpawnAction "{2C8D61D66B0A2CDF}" {
+       m_Spawn GC_CrewedVehicleSpawn "{50C89E527728934C}" {
+        m_sLocation "GC_Spawner_F937B08E949F7574"
+        m_sPrefab "{076B33106723D087}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_engineer_FIA.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{D8777A950BB21458}" {
+          m_sGroupName "truck_blockade"
+          m_aStations {
+           GC_SpawnCrewStation "{A1176EE5BDD1A886}" {
+            m_bGunners 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{C943F3CC53D187B6}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_Turtleneck_1.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3236E33B0C151C2F}" {
+     m_sName "GC_MigratedSpawn_C9E8A5FD391DE096 (0s)"
+     m_aActions {
+      GC_SpawnAction "{3236E33B0C151C2F}" {
+       m_Spawn GC_CrewedVehicleSpawn "{1C54492FF83C584B}" {
+        m_sLocation "Road_Block_Tech"
+        m_sPrefab "{1DF4C30C130D8FAD}Prefabs/Vehicles/Wheeled/K4386/K4386_Armed_Camo.et"
+        m_sEntityName "Bomber_Target_Vic"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{505E20762AE2D341}" {
+          m_aStations {
+           GC_SpawnCrewStation "{0C34ACB2B766D952}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+            }
+           }
+          }
+         }
+        }
+        m_bAllowDuplicateName 1
+       }
+      }
+     }
+    }
+    GC_Event "{4ED1C2B22B18AA92}" {
+     m_sName "GC_MigratedSpawn_72E514D0D4CE01EB (0s)"
+     m_aActions {
+      GC_SpawnAction "{4ED1C2B22B18AA92}" {
+       m_Spawn GC_CrewedVehicleSpawn "{CC63CF7BA1D0E510}" {
+        m_sLocation "Road_Block_Tech2"
+        m_sPrefab "{1DF4C30C130D8FAD}Prefabs/Vehicles/Wheeled/K4386/K4386_Armed_Camo.et"
+        m_sEntityName "Bomber_Target_Vic"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{7E3EAA31A57A42E8}" {
+          m_aStations {
+           GC_SpawnCrewStation "{CA2D2262A20C96B3}" {
+            m_bPassengers 0
+            m_aCharacters {
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+             "{7CCAB195F5A1D9CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Rifleman.et"
+            }
+           }
+          }
+         }
+        }
+        m_bAllowDuplicateName 1
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 4762.247 165.219 3610.154
+ {
+  SCR_FactionManager FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_aFriendlyFactionsIds {
+      "GARRISON" "HVT"
+     }
+    }
+    SCR_Faction "{6522D4FAE53AADFE}" : "{8053DB656DD18B14}Configs/Factions/FIA.conf" {
+     FactionKey "MILITIA"
+     FactionColor 0.3613 0 0.1299 1
+     UIInfo SCR_FactionUIInfo "{5570936866E0AD08}" {
+      Name "Militia"
+      Icon "{5A6CDAD1B8C99034}Missions/Cunnah/Rocky_Start_Icon.edds"
+     }
+     m_OutlineFactionColor 0.109 0 0.041 1
+     m_NotificationFactionColor 0.68 0 0.233 1
+     m_NotificationTextFactionColor 0.361 0 0.13 1
+     m_bIsPlayable 0
+     m_FactionLabel NONE
+     m_aFriendlyFactionsIds {
+      "CIV"
+     }
+     m_sFactionBackground "{81BF3B1DCC106577}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_FIA.imageset"
+    }
+    SCR_Faction "{651F3D81EA226BBE}" {
+     FactionKey "GARRISON"
+     FactionColor 0.555 0.002 0 1
+     UIInfo SCR_FactionUIInfo "{5977478D568C0938}" {
+      Name "Garrison"
+      Icon "{B6039E827FFCE3CD}UI/Textures/Editor/EditableEntities/Factions/RHS_Rus_Icon.edds"
+      m_sNameUpper "Garrison"
+     }
+     m_OutlineFactionColor 0.555 0.002 0 1
+     m_NotificationFactionColor 0.555 0.002 0 1
+     m_NotificationTextFactionColor 0.555 0.002 0 1
+     m_sFactionFlag "{72E8159766C00C3D}UI/Textures/Flags/rhs_flag_rus.edds"
+     m_FactionFlagMaterial "{15AB376863D1724E}Assets/Props/Fabric/Flags/Data/Flag_1_2_Russia.emat"
+     m_aFriendlyFactionsIds {
+      "RHS_AFRF" "HVT"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{5977478D568C0922}" {
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{5977478D568C092A}" {
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{5977478D568C092E}" {
+        m_sCallsign "Governor"
+       }
+       SCR_CallsignInfo "{5977478D568C092D}" {
+        m_sCallsign "Patrol 1"
+       }
+       SCR_CallsignInfo "{6522D4E6CFCD53BD}" {
+        m_sCallsign "Patrol 2"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3 :%4"
+     }
+     m_sFactionRadioEncryptionKey "coldBorscht"
+     m_iFactionRadioFrequency 42000
+    }
+    SCR_Faction "{6692E71F671E2E2C}" {
+     FactionKey "HVT"
+     FactionColor 0.555 0.002 0 1
+     UIInfo SCR_FactionUIInfo "{6692E71F671E2FDE}" {
+      Name "HVT"
+      Icon "{B6039E827FFCE3CD}UI/Textures/Editor/EditableEntities/Factions/RHS_Rus_Icon.edds"
+      m_sNameUpper "HVT"
+     }
+     m_OutlineFactionColor 0.555 0.002 0 1
+     m_NotificationFactionColor 0.555 0.002 0 1
+     m_NotificationTextFactionColor 0.555 0.002 0 1
+     m_sFactionFlag "{72E8159766C00C3D}UI/Textures/Flags/rhs_flag_rus.edds"
+     m_FactionFlagMaterial "{15AB376863D1724E}Assets/Props/Fabric/Flags/Data/Flag_1_2_Russia.emat"
+     m_aFriendlyFactionsIds {
+      "RHS_AFRF" "GARRISON"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{6692E71F671E2FC7}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{6692E71F671E2FC5}" {
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{6692E71F671E2FC3}" {
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{6692E71F671E2FC0}" {
+        m_sCallsign "Governor"
+       }
+       SCR_CallsignInfo "{6692E71F671E2FC1}" {
+        m_sCallsign "Patrol 1"
+       }
+       SCR_CallsignInfo "{6692E71F671E2FCE}" {
+        m_sCallsign "Patrol 2"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3 :%4"
+     }
+     m_sFactionRadioEncryptionKey "coldBorscht"
+     m_iFactionRadioFrequency 42000
+    }
+   }
+  }
+ }
+}
