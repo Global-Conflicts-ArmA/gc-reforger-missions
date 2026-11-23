@@ -1,0 +1,1176 @@
+GC_LobbyGameMode GC_MigratedMission : "{D3578F017DC61B5C}worlds/HotMic/AssadsLastStandV2/AssadsLastStandV2_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 1
+   m_bRandomStartingWeather 1
+   m_bRandomWeatherChanges 1
+  }
+  GC_PeakFactionPopulationComponent "{41F36678DD1A21CD}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{03D9FB457643035D}" {
+     m_sName "assad"
+    }
+    GC_MissionFlag "{76851C5225B91FBE}" {
+     m_sName "son1"
+    }
+    GC_MissionFlag "{9C18CBF574119A8F}" {
+     m_sName "son2"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{7F113AA6E82A6B0F}" {
+     m_sName "Casualty Warning"
+     m_aConditions {
+      GC_CustomScriptCondition "{637A79680727A99E}" {
+       m_Script GC_PeakFactionPopulationCheck "{F0CBD1FAC8CF2703}" {
+        m_sFaction "RHS_USAF"
+        m_fRatio 0.75
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{30818F8B9F7CAF0F}" {
+       m_sMessage "Casualty Warning"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BE0E3F380A5EF725}" {
+     m_sName "Casualty Warning (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3D709D9BEE557861}" {
+       m_sEventName "Casualty Warning"
+      }
+     }
+     m_Advanced GC_EventOptions "{232DD84E056B155C}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{788F8F58D2939491}" {
+       m_sTitle "Too many casualties taken!"
+       m_sMessage "Your platoon has sustained 75% casualties, withdraw immediately."
+      }
+     }
+    }
+    GC_Event "{4A53818A4244550D}" {
+     m_sName "Minor Defeat by Kills"
+     m_aConditions {
+      GC_ConditionGroup "{A1E702EB9788B1D6}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_CustomScriptCondition "{DCF2DB16CDA51647}" {
+         m_Script GC_PeakFactionPopulationCheck "{5B794BF1D5320FC4}" {
+          m_sFaction "RHS_USAF"
+          m_fRatio 0.75
+         }
+        }
+        GC_AreaCondition "{67FC8C18A46553D4}" {
+         m_sArea "GC_MigrationArea_Extract"
+         m_Targets GC_CharacterAreaTargets "{606D8F32E62A8BE1}" {
+          m_aFactions {
+           "RHS_USAF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{C02F33FE46B0708D}" {
+          m_fRequiredShare 0.75
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{7424BB671257CEAB}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C9635EFFDB3AF0D3}" {
+       m_sMessage "Minor Defeat by Kills"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{30E31E65DC5EDF40}" {
+     m_sName "Minor Defeat by Kills (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9ABE355EC27E80C8}" {
+       m_sEventName "Minor Defeat by Kills"
+      }
+     }
+     m_Advanced GC_EventOptions "{F043A01983D59D7A}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{761E606F2F83F719}" {
+       m_sTitle "Minor Defeat"
+       m_sMessage "US forces withdrew after taking too many casualties."
+      }
+     }
+    }
+    GC_Event "{65129571B01E757A}" {
+     m_sName "Minor Defeat by Kills (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8EEA6ADB20D4A7AF}" {
+       m_sEventName "Minor Defeat by Kills"
+      }
+     }
+     m_Advanced GC_EventOptions "{E4CCF22746ADF845}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{E158AC63957CDB41}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+    GC_Event "{505ACA9A13776DA1}" {
+     m_sName "Major Defeat"
+     m_aConditions {
+      GC_ConditionGroup "{338DBE70079098C8}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_CustomScriptCondition "{B6C4E52C1E556F59}" {
+         m_Script GC_PeakFactionPopulationCheck "{F046F5A465F96090}" {
+          m_sFaction "RHS_USAF"
+          m_fRatio 0.9
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{2CD3902096AF2013}" {
+       m_sMessage "Major Defeat"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{A8018C446D53C4CC}" {
+     m_sName "Major Defeat (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{22AF076D45D9D163}" {
+       m_sEventName "Major Defeat"
+      }
+     }
+     m_Advanced GC_EventOptions "{2395E7192110033B}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{6050269DAAE8027D}" {
+       m_sTitle "Major Defeat"
+       m_sMessage "US forces sustained 90% casualties."
+      }
+     }
+    }
+    GC_Event "{F6DBF9040DA44CE4}" {
+     m_sName "QRF A"
+     m_aConditions {
+      GC_AreaCondition "{7A9E5ABDFBED378F}" {
+       m_sArea "OBJ_A_TAKEN"
+       m_Targets GC_CharacterAreaTargets "{25680215607F4FD8}" {
+        m_iWho 2
+        m_aFactions {
+         "RHS_USAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{03CAB6D37A488ED1}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{49F6F167BD7AE07F}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FF833289F853C8D5}" {
+       m_sMessage "QRF A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D54BC2F0902411BA}" {
+     m_sName "QRF A (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{466F710D6EAF6774}" {
+       m_sEventName "QRF A"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{5EF005E273BEF71F}" {
+       m_Spawn GC_CrewedVehicleSpawn "{041D35BC52FA8D61}" {
+        m_sLocation "spawntruck"
+        m_sPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{638932627F5ABE9C}" {
+          m_aStations {
+           GC_SpawnCrewStation "{33379BC0EC2EFC4F}" {
+            m_aCharacters {
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "wp1"
+           "wp2"
+           "wp3"
+           "AIWP_SearchDestroy_1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{FCD4BD135CAC5C8D}" {
+     m_sName "QRF A (3s)"
+     m_aConditions {
+      GC_MissionEventCondition "{BD986DE5C7C9D7C8}" {
+       m_sEventName "QRF A"
+      }
+     }
+     m_Advanced GC_EventOptions "{82A938A631A524EE}" {
+      m_fDelay 3
+     }
+     m_aActions {
+      GC_SpawnAction "{BC1D4FD56145F25A}" {
+       m_Spawn GC_CrewedVehicleSpawn "{CCAA2F718A881CDE}" {
+        m_sLocation "spawntruck2"
+        m_sPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{E6EF3C5195956F4E}" {
+          m_aStations {
+           GC_SpawnCrewStation "{1B8438164CC29BDC}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "wp1"
+           "wp2"
+           "wp3"
+           "AIWP_SearchDestroy_1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{D911C99DE289F931}" {
+     m_sName "QRF A (8s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E247B48320BDEB95}" {
+       m_sEventName "QRF A"
+      }
+     }
+     m_Advanced GC_EventOptions "{D276F8D4F03F9F49}" {
+      m_fDelay 8
+     }
+     m_aActions {
+      GC_SpawnAction "{FFC8B2AE96376E20}" {
+       m_Spawn GC_CrewedVehicleSpawn "{B975182DF65A8CA7}" {
+        m_sLocation "spawntruck3"
+        m_sPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{65221949013F71F0}" {
+          m_aStations {
+           GC_SpawnCrewStation "{FE20ECC6362D96A3}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "wp1"
+           "wp2"
+           "wp3"
+           "AIWP_SearchDestroy_1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E28430C1990B8D55}" {
+     m_sName "QRF A (11s)"
+     m_aConditions {
+      GC_MissionEventCondition "{DF03ABC23F179529}" {
+       m_sEventName "QRF A"
+      }
+     }
+     m_Advanced GC_EventOptions "{0B2BE2B152648BAA}" {
+      m_fDelay 11
+     }
+     m_aActions {
+      GC_SpawnAction "{A8E940FDF9D845C9}" {
+       m_Spawn GC_CrewedVehicleSpawn "{2A9EEFA35D67EB09}" {
+        m_sLocation "spawntruck4"
+        m_sPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{7C096782C9004CBC}" {
+          m_aStations {
+           GC_SpawnCrewStation "{18ABEEB350AA9A22}" {
+            m_aCharacters {
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "wp1"
+           "wp2"
+           "wp3"
+           "AIWP_SearchDestroy_1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{30909CB9B351D3D3}" {
+     m_sName "QRF B"
+     m_aConditions {
+      GC_AreaCondition "{DE81638F11B02389}" {
+       m_sArea "OBJ_B_TAKEN"
+       m_Targets GC_CharacterAreaTargets "{A67DE65AEA6584AD}" {
+        m_iWho 2
+        m_aFactions {
+         "RHS_USAF"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{841AD7D549E9C0BA}" {
+        m_fRequiredShare 0.001
+       }
+       m_Capture GC_AreaCaptureOptions "{B3B3639E6C22EA80}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C80DC690DFEC22A1}" {
+       m_sMessage "QRF B"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C0E6B06F56966E8B}" {
+     m_sName "QRF B (7s)"
+     m_aConditions {
+      GC_MissionEventCondition "{600C388B466D5F21}" {
+       m_sEventName "QRF B"
+      }
+     }
+     m_Advanced GC_EventOptions "{B7D0A6A7793E2AC8}" {
+      m_fDelay 7
+     }
+     m_aActions {
+      GC_SpawnAction "{6B65D74C874A40A8}" {
+       m_Spawn GC_CrewedVehicleSpawn "{C08C1E4B05198682}" {
+        m_sLocation "spawntruck13"
+        m_sPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{298B82B75CE5BC6E}" {
+          m_aStations {
+           GC_SpawnCrewStation "{7D83C2BD20B63408}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{C18E05B3F6ACAB13}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_AT.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{C18E05B3F6ACAB13}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_AT.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{C18E05B3F6ACAB13}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_AT.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "wp16"
+           "wp15"
+           "wp14"
+           "AIWP_SearchAndDestroy_1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{2D915A53E9E32A10}" {
+     m_sName "QRF B (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{ED7AD1F06509609F}" {
+       m_sEventName "QRF B"
+      }
+     }
+     m_Advanced GC_EventOptions "{F37A65112DC3397B}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{721B1A5FCC64EB02}" {
+       m_Spawn GC_CrewedVehicleSpawn "{6F7456A08F7F7DB8}" {
+        m_sLocation "spawntruck17"
+        m_sPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{A52BB9DC197B0879}" {
+          m_aStations {
+           GC_SpawnCrewStation "{7807E9D27444C13A}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{C18E05B3F6ACAB13}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_AT.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{C18E05B3F6ACAB13}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_AT.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{C18E05B3F6ACAB13}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_AT.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "wp16"
+           "wp15"
+           "wp14"
+           "AIWP_SearchAndDestroy_1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B0BB6D61EFBADBF6}" {
+     m_sName "QRF B (8s)"
+     m_aConditions {
+      GC_MissionEventCondition "{EB138B5F7EFCBBF9}" {
+       m_sEventName "QRF B"
+      }
+     }
+     m_Advanced GC_EventOptions "{DFD52ABE2066C298}" {
+      m_fDelay 8
+     }
+     m_aActions {
+      GC_SpawnAction "{E87284619ED2E51A}" {
+       m_Spawn GC_CrewedVehicleSpawn "{59F3EE6C61185439}" {
+        m_sLocation "spawntruck6"
+        m_sPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{65E5AA6425BF2196}" {
+          m_aStations {
+           GC_SpawnCrewStation "{50882F45561C9349}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{C18E05B3F6ACAB13}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_AT.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{C18E05B3F6ACAB13}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_AT.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{C18E05B3F6ACAB13}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_AT.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "wp16"
+           "wp15"
+           "wp14"
+           "AIWP_SearchAndDestroy_1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3F98A19DC8B35139}" {
+     m_sName "QRF B (11s)"
+     m_aConditions {
+      GC_MissionEventCondition "{0A8B51B258D073C2}" {
+       m_sEventName "QRF B"
+      }
+     }
+     m_Advanced GC_EventOptions "{63F9B8E4DDA177AC}" {
+      m_fDelay 11
+     }
+     m_aActions {
+      GC_SpawnAction "{C9E46E06029DEC5C}" {
+       m_Spawn GC_CrewedVehicleSpawn "{3A7739A015B93666}" {
+        m_sLocation "spawntruck16"
+        m_sPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{467ADEACB1AA46AB}" {
+          m_aStations {
+           GC_SpawnCrewStation "{433E4EEC14E212D0}" {
+            m_bGunners 0
+            m_aCharacters {
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{C18E05B3F6ACAB13}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_AT.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{C18E05B3F6ACAB13}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_AT.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{C18E05B3F6ACAB13}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_AT.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "wp13"
+           "wp15"
+           "wp14"
+           "AIWP_SearchAndDestroy_1"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E903E782539D82EA}" {
+     m_sName "Spawn Trucks A"
+     m_aConditions {
+      GC_ConditionGroup "{FF68C5378D75E66A}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{1F2BD6C41BEAF3DF}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{98CE58C0744053B0}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{A4C82CD51C153035}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{77AD4CA33CDFBA66}" {
+       m_bScheduleAction 1
+       m_fActionDelay 50
+       m_bScheduleFromStaging 1
+       m_Spawn GC_CrewedVehicleSpawn "{4772BD7B034E3CF2}" {
+        m_sLocation "Stationary1"
+        m_sPrefab "{B8C827A45C1347A4}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_USAF_D.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{B85A96C09543F6C8}" {
+          m_aStations {
+           GC_SpawnCrewStation "{B7D8C2F447E1480B}" {
+            m_bDriver 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{717358E7C4AB8520}" {
+       m_bScheduleAction 1
+       m_fActionDelay 60
+       m_bScheduleFromStaging 1
+       m_Spawn GC_CrewedVehicleSpawn "{0A908A657F34C9B8}" {
+        m_sLocation "spawntruck8"
+        m_sPrefab "{FD109F3702AAB392}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{A1C15D8377BEC19F}" {
+          m_aStations {
+           GC_SpawnCrewStation "{1A0020394899AB7A}" {
+            m_bDriver 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{F537D2A0B350C098}" {
+       m_bScheduleAction 1
+       m_fActionDelay 70
+       m_bScheduleFromStaging 1
+       m_Spawn GC_CrewedVehicleSpawn "{F21E4425D5B29772}" {
+        m_sLocation "spawntruck9"
+        m_sPrefab "{FD109F3702AAB392}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{942AEE6D4F196FC2}" {
+          m_aStations {
+           GC_SpawnCrewStation "{373A4A1AA953FBEC}" {
+            m_bDriver 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E7478783F1016480}" {
+     m_sName "Spawn Trucks B"
+     m_aConditions {
+      GC_ConditionGroup "{8D22E074E348EB36}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{4336128CD5073E4F}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{12D6CEA51EB46481}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{E37B973BDED0992B}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{B233A227AB077EB7}" {
+       m_bScheduleAction 1
+       m_fActionDelay 10
+       m_bScheduleFromStaging 1
+       m_Spawn GC_CrewedVehicleSpawn "{4065867000164EC5}" {
+        m_sLocation "Stationary2"
+        m_sPrefab "{B8C827A45C1347A4}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_USAF_D.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{EB2A09A433CC6FCA}" {
+          m_aStations {
+           GC_SpawnCrewStation "{8A9ECF776D9A3165}" {
+            m_bDriver 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{F6B3E1A176457D84}" {
+       m_bScheduleAction 1
+       m_fActionDelay 20
+       m_bScheduleFromStaging 1
+       m_Spawn GC_CrewedVehicleSpawn "{8CEC2F8E0544DB6D}" {
+        m_sLocation "spawntruck5"
+        m_sPrefab "{FD109F3702AAB392}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{17EE50582163665C}" {
+          m_aStations {
+           GC_SpawnCrewStation "{3581B33E36A1E093}" {
+            m_bDriver 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{0E513F681A9B82F1}" {
+       m_bScheduleAction 1
+       m_fActionDelay 30
+       m_bScheduleFromStaging 1
+       m_Spawn GC_CrewedVehicleSpawn "{A3982FFB9248D4E6}" {
+        m_sLocation "spawntruck14"
+        m_sPrefab "{FD109F3702AAB392}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{2BD4F69EAF7C2F39}" {
+          m_aStations {
+           GC_SpawnCrewStation "{C55EAA0F4D1CDFE9}" {
+            m_bDriver 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{0AD8131C1110D6D7}" {
+       m_bScheduleAction 1
+       m_fActionDelay 40
+       m_bScheduleFromStaging 1
+       m_Spawn GC_CrewedVehicleSpawn "{8DEABC4802CDDFE4}" {
+        m_sLocation "spawntruck10"
+        m_sPrefab "{FD109F3702AAB392}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{67A563A01460B3C1}" {
+          m_aStations {
+           GC_SpawnCrewStation "{129CCF3467CA5933}" {
+            m_bDriver 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{A6B570B621566EAE}" {
+       m_bScheduleAction 1
+       m_fActionDelay 80
+       m_bScheduleFromStaging 1
+       m_Spawn GC_CrewedVehicleSpawn "{5C7E31BE1580E0AE}" {
+        m_sLocation "spawntruck7"
+        m_sPrefab "{FD109F3702AAB392}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{7FC70A24758A8AE6}" {
+          m_aStations {
+           GC_SpawnCrewStation "{44AC89DE79CF177C}" {
+            m_bDriver 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{E417F82BEA7137D5}worlds/arc/AAS/CentralAnizay/Prefabs/Character_GC_INSURGENT_AAS_Rifleman.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B8DD5798553C3777}" {
+     m_sName "USMC Wins"
+     m_aConditions {
+      GC_GameModeStateCondition "{DB3932BDB3A9A637}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{8828B844A803AED6}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{EBA5DD4B81196DDB}" {
+         m_sArea "GC_MigrationArea_Extract"
+         m_Targets GC_CharacterAreaTargets "{52DA2A447588668A}" {
+          m_aFactions {
+           "RHS_USAF"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{ED5F09F697798C42}" {
+          m_fRequiredShare 0.75
+          m_bWholeMission 1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{352A72E42BC94B8F}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+        GC_ConditionGroup "{2C9FBD40177A362C}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_MissionFlagCondition "{08B8ACCED430A535}" {
+           m_sFlagName "son1"
+          }
+          GC_MissionFlagCondition "{1EEFF4F7F5CEFD82}" {
+           m_sFlagName "son2"
+          }
+          GC_MissionFlagCondition "{B367F93D93A25838}" {
+           m_sFlagName "assad"
+          }
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{E2E13E12D22A8199}" {
+       m_sMessage "USMC Wins"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D9C0AD6BA2024C21}" {
+     m_sName "USMC Wins (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{358A37285E6E119D}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{D9556EC36889B71C}" {
+       m_sEventName "USMC Wins"
+      }
+     }
+     m_Advanced GC_EventOptions "{E91BD65F978E753F}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{3F464619973FC122}" {
+       m_sTitle "US Victory"
+       m_sMessage "US forces extracted after eliminating all targets."
+      }
+     }
+    }
+    GC_Event "{E375485515B0E5C7}" {
+     m_sName "USMC Wins (15s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{55EDFDFB2F346C4A}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{49DBF55F26DFDDD3}" {
+       m_sEventName "USMC Wins"
+      }
+     }
+     m_Advanced GC_EventOptions "{631FEC7ABB313E5F}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{0676D49AEAB12E58}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+    GC_Event "{0AF9D953A30AF5D9}" {
+     m_sName "Son 1"
+     m_aConditions {
+      GC_GameModeStateCondition "{864251FCE3C7137B}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{8B945CF57B933A8F}" {
+       m_sFlagName "son1"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{6FE108A557707803}" {
+       m_sMessage "Son 1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{27E5AC23E6707000}" {
+     m_sName "Son 1 (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{B9D5FB509E5A59C1}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{6EFCE2D6DB39B3E5}" {
+       m_sEventName "Son 1"
+      }
+     }
+     m_Advanced GC_EventOptions "{DC43278456364496}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{82E0C99D81FC92EB}" {
+       m_sTitle "Target eliminated"
+       m_sMessage "One of the targets has been eliminated."
+      }
+     }
+    }
+    GC_Event "{490752A4C5BDE443}" {
+     m_sName "Son 2"
+     m_aConditions {
+      GC_GameModeStateCondition "{D70E37C35AD4DEAD}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{0E5DE3D87357E1E4}" {
+       m_sFlagName "son2"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{34A1540CE2095A62}" {
+       m_sMessage "Son 2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{97E4B03174A60D55}" {
+     m_sName "Son 2 (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{97776995EBA5C557}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{B8BF719599A36F48}" {
+       m_sEventName "Son 2"
+      }
+     }
+     m_Advanced GC_EventOptions "{185521AD19E1BECB}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{6535CE8ECE18E777}" {
+       m_sTitle "Target eliminated"
+       m_sMessage "One of the targets has been eliminated."
+      }
+     }
+    }
+    GC_Event "{97CFBA1BA4E10D31}" {
+     m_sName "Assad"
+     m_aConditions {
+      GC_GameModeStateCondition "{D473B92B4D14B3FD}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{9ED49BB2899401A5}" {
+       m_sFlagName "assad"
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0367C31F38391F63}" {
+       m_sMessage "Assad"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{2D2E0081A8A39352}" {
+     m_sName "Assad (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{C8394C33D957C30E}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{221D45C190F438BB}" {
+       m_sEventName "Assad"
+      }
+     }
+     m_Advanced GC_EventOptions "{A418B1E6AB55ED2C}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{3042EF29222B114D}" {
+       m_sTitle "Target eliminated"
+       m_sMessage "One of the targets has been eliminated."
+      }
+     }
+    }
+    GC_Event "{9E17FCBB1894CEB0}" {
+     m_sName "All"
+     m_aConditions {
+      GC_GameModeStateCondition "{1597465AC5FAEE4C}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{64D5F78D251CB79A}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{4CF2AF5A37F9E2BF}" {
+         m_sFlagName "son1"
+        }
+        GC_MissionFlagCondition "{88F569267A239BD5}" {
+         m_sFlagName "son2"
+        }
+        GC_MissionFlagCondition "{B5580D01983F0ACC}" {
+         m_sFlagName "assad"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{94179346103F5EF0}" {
+       m_sMessage "All"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{93E4D8E16E97AB0A}" {
+     m_sName "All (15s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{5720B57845D932C5}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{92917B483A19E844}" {
+       m_sEventName "All"
+      }
+     }
+     m_Advanced GC_EventOptions "{9E2ADE158B014911}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_MessageAction "{F20A1D9256732E4C}" {
+       m_sTitle "Targets eliminated"
+       m_sMessage "All targets have been eliminated, extract back to the airfield."
+      }
+     }
+    }
+    GC_Event "{52D532424638C2AC}" {
+     m_sName "Time Limit (4500s)"
+     m_Advanced GC_EventOptions "{289E8B83EE94B338}" {
+      m_fDelay 4500
+     }
+     m_aActions {
+      GC_MessageAction "{6B218FA30EDF8786}" {
+       m_sTitle "15 minutes remaining!"
+       m_sMessage "The time window is closing."
+      }
+     }
+    }
+    GC_Event "{82681D6B9A442C07}" {
+     m_sName "Time Limit (5400s)"
+     m_Advanced GC_EventOptions "{8256496BEC75D62D}" {
+      m_fDelay 5400
+     }
+     m_aActions {
+      GC_MessageAction "{2F72341CA591FD12}" {
+       m_sTitle "Minor Defeat"
+       m_sMessage "US forces were unable to complete the mission in the time window."
+      }
+     }
+    }
+    GC_Event "{00D37A1C71A5EAC5}" {
+     m_sName "Time Limit (5520s)"
+     m_Advanced GC_EventOptions "{BFDEE5B3B6F0C38E}" {
+      m_fDelay 5520
+     }
+     m_aActions {
+      GC_EndMissionAction "{A44DE1D6B1CDB4AA}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "RHS_USAF"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 8545.548 111.529 6776.313
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     UIInfo SCR_FactionUIInfo "{5CC8B5EDA0CDBD62}" {
+      Icon "{ED1038E34084270B}UI/Textures/Editor/EditableEntities/Factions/rhs_faction_us_usmc.edds"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{66276DE2833B02BD}" {
+        m_sCallsign "4"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GC_RadiusAreaEntity GC_MigrationArea_Extract : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 8513.6 111.531 6856.349
+ m_fRadius 400
+}
+GC_RadiusAreaEntity OBJ_A_TAKEN : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 5801.006 260.293 905.743
+ m_fRadius 100
+}
+GC_RadiusAreaEntity OBJ_B_TAKEN : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 7110.036 319.598 3617.711
+ m_fRadius 100
+}
