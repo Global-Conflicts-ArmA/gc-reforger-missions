@@ -1,0 +1,621 @@
+SCR_AIWorld : "{66048E60E9D7AB77}Prefabs/AI/SCR_AIWorld_Zarichne.et" {
+ coords 4427.636 19.531 2156.829
+}
+GC_LobbyGameMode GC_MigratedMission : "{844368188CBB66BA}worlds/arc/HeavenAndHell/HeavenAndHell_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6466EAA3CA87DC26}" {
+     m_sWeatherPresetName "Rainy"
+     m_iStartingHour 10
+     m_iStartingMinutes 30
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{7FC3D417E987535D}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{AB63E6DAFF99618A}" {
+     m_sName "US_CAP_A"
+     m_aConditions {
+      GC_AreaCondition "{6AC98461A99D37A8}" {
+       m_sArea "CAP_A"
+       m_Targets GC_CharacterAreaTargets "{66EC846D8353CC18}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{B655AEBECFDAACEA}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{268EE4FD0F227E9C}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+        m_Messages GC_CaptureMessages "{2A37FBF9F35DD8E9}" {
+         m_sLocation "an objective"
+         m_sCaptured "The %1 has taken control of %2."
+         m_sCapturing "The %1 is taking control of %2."
+         m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+         m_sLost "The %1 has lost control of %2."
+         m_sLosing "The %1 is losing control of %2."
+         m_sLossInterrupted "The %1 is no longer losing control of %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{EBCA8977C598CDCF}" {
+       m_sMessage "US_CAP_A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7B114DA308BA8BBE}" {
+     m_sName "US_CAP_A (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3B3F9871695F36B9}" {
+       m_sEventName "US_CAP_A"
+      }
+     }
+     m_Advanced GC_EventOptions "{32EF4921681EBA98}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_RespawnTicketsAction "{5EB014AB0ECDC0FE}" {
+       m_sFaction "US"
+       m_iOperation 1
+       m_iAmount 10
+       m_bRetryCasualties 1
+      }
+      GC_SpawnAction "{03138D9C580CB062}" {
+       m_Spawn GC_CrewedVehicleSpawn "{99C187FDA4D0A097}" {
+        m_sLocation "ABTR1Spawn"
+        m_sPrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{AFD75FCB2B19FF71}" {
+          m_bPassengers 0
+          m_bShareIdleGunnerGroup 1
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "ABTR1Wp"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{B8568FF001928F28}" {
+       m_Spawn GC_CrewedVehicleSpawn "{71EFFB3970F474D2}" {
+        m_sLocation "ABTR2Spawn"
+        m_sPrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{46B62AF2BBAB30D4}" {
+          m_bPassengers 0
+          m_bShareIdleGunnerGroup 1
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "ABTR2Wp"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{E3BE9CCCE9BE33E5}" {
+     m_sName "US_CAP_B"
+     m_aConditions {
+      GC_AreaCondition "{48DAE258053AC0E3}" {
+       m_sArea "CAP_B"
+       m_Targets GC_CharacterAreaTargets "{A88D72D240A05EB3}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{8DB535049A25D482}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{618E41DCB55A0A71}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+        m_Messages GC_CaptureMessages "{0E2C4A0771177AC6}" {
+         m_sLocation "an objective"
+         m_sCaptured "The %1 has taken control of %2."
+         m_sCapturing "The %1 is taking control of %2."
+         m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+         m_sLost "The %1 has lost control of %2."
+         m_sLosing "The %1 is losing control of %2."
+         m_sLossInterrupted "The %1 is no longer losing control of %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FEAE00FB1085AADC}" {
+       m_sMessage "US_CAP_B"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{6AD5F96C14598012}" {
+     m_sName "US_CAP_B (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1FE32142D1EA3BF5}" {
+       m_sEventName "US_CAP_B"
+      }
+     }
+     m_Advanced GC_EventOptions "{5F597B913C449738}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_RespawnTicketsAction "{0C8C338B827475B6}" {
+       m_sFaction "US"
+       m_iOperation 1
+       m_iAmount 10
+       m_bRetryCasualties 1
+      }
+      GC_SpawnAction "{661849196F15268B}" {
+       m_Spawn GC_CrewedVehicleSpawn "{5E517FF607A9DDB2}" {
+        m_sLocation "BBTR1Spawn"
+        m_sPrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{9CC89DB3D23F8430}" {
+          m_bPassengers 0
+          m_bShareIdleGunnerGroup 1
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "BBTR1Wp"
+          }
+         }
+        }
+       }
+      }
+      GC_SpawnAction "{E685B2CDA0CCEABC}" {
+       m_Spawn GC_CrewedVehicleSpawn "{5B583387A55430EA}" {
+        m_sLocation "BBTR2Spawn"
+        m_sPrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{7B2F016519E5F22E}" {
+          m_bPassengers 0
+          m_bShareIdleGunnerGroup 1
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "BBTR2Wp"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{0E0B55681746C264}" {
+     m_sName "US_CAP_C"
+     m_aConditions {
+      GC_AreaCondition "{FF4045C557B96693}" {
+       m_sArea "CAP_C"
+       m_Targets GC_CharacterAreaTargets "{CB7D4B0626059B7F}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{52D20E2FEBA90D80}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{0A511FEC38EA67C9}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+        m_Messages GC_CaptureMessages "{38C301E4635B2BFA}" {
+         m_sLocation "an objective"
+         m_sCaptured "The %1 has taken control of %2."
+         m_sCapturing "The %1 is taking control of %2."
+         m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+         m_sLost "The %1 has lost control of %2."
+         m_sLosing "The %1 is losing control of %2."
+         m_sLossInterrupted "The %1 is no longer losing control of %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{A312375F550EA65A}" {
+       m_sMessage "US_CAP_C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0DFA2CFCE9D4D35E}" {
+     m_sName "US_CAP_C (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{16E4737386F133C9}" {
+       m_sEventName "US_CAP_C"
+      }
+     }
+     m_Advanced GC_EventOptions "{CF972BE0EB767E43}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_RespawnTicketsAction "{8E58E3A004B47081}" {
+       m_sFaction "US"
+       m_iOperation 1
+       m_iAmount 10
+       m_bRetryCasualties 1
+      }
+      GC_SpawnAction "{5CA0C94D35942D83}" {
+       m_Spawn GC_CrewedVehicleSpawn "{8920CA6346AADA41}" {
+        m_sLocation "CBTRSpawn"
+        m_sPrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{AA4DA7A0B4E3F445}" {
+          m_bPassengers 0
+          m_bShareIdleGunnerGroup 1
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "CBTRWp"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{AD2EF17A42CFDBD1}" {
+     m_sName "US_CAP_D"
+     m_aConditions {
+      GC_AreaCondition "{9BFAFA155AD86FDB}" {
+       m_sArea "CAP_D"
+       m_Targets GC_CharacterAreaTargets "{ED8DE324E85DD7E4}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{E4D3020D52D7146F}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{37DF29ED51D9E575}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+        m_Messages GC_CaptureMessages "{F4EDF5EE645F438B}" {
+         m_sLocation "an objective"
+         m_sCaptured "The %1 has taken control of %2."
+         m_sCapturing "The %1 is taking control of %2."
+         m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+         m_sLost "The %1 has lost control of %2."
+         m_sLosing "The %1 is losing control of %2."
+         m_sLossInterrupted "The %1 is no longer losing control of %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{49E0C596A6E14F94}" {
+       m_sMessage "US_CAP_D"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{12D070D7C3BDC813}" {
+     m_sName "US_CAP_D (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{20B1E5558719019D}" {
+       m_sEventName "US_CAP_D"
+      }
+     }
+     m_Advanced GC_EventOptions "{C6E6B72C748E5439}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_RespawnTicketsAction "{F80F9B11FE7FBCE9}" {
+       m_sFaction "US"
+       m_iOperation 1
+       m_iAmount 10
+       m_bRetryCasualties 1
+      }
+      GC_SpawnAction "{547C03CE068187AF}" {
+       m_Spawn GC_CrewedVehicleSpawn "{7A7FBD6C61BD4F27}" {
+        m_sLocation "DBTRSpawn"
+        m_sPrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{ADD465D549F97E39}" {
+          m_bPassengers 0
+          m_bShareIdleGunnerGroup 1
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "DBTRWp"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{1ED3DD5E1762C210}" {
+     m_sName "US_VICTORY"
+     m_aConditions {
+      GC_ConditionGroup "{13C32EA088B1AC00}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{EE6BEE1ACE3E352B}" {
+         m_sArea "CAP_A"
+         m_Targets GC_CharacterAreaTargets "{6024EA1E25882734}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{5E63CE63C1A14A9A}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{08C5BF5FF120C13A}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{E333578FD16F681F}" {
+         m_sArea "CAP_B"
+         m_Targets GC_CharacterAreaTargets "{96742608ECABF784}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{5ECE764B593A2C72}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{6FAD2A7FE17BA8AA}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{24101783B63846EC}" {
+         m_sArea "CAP_C"
+         m_Targets GC_CharacterAreaTargets "{F486EB60B0509EB0}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{7B8D72F6EF0A45BB}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{D3F6A772B270568B}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{46CAEEE84FFD7071}" {
+         m_sArea "CAP_D"
+         m_Targets GC_CharacterAreaTargets "{58A1130C00C208DE}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{CE33955EFC4DD600}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{B3B27AB744E411FF}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{B19F809BB1E4754A}" {
+       m_sMessage "US_VICTORY"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F5B2490838BCE188}" {
+     m_sName "US_VICTORY (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C40077CE29E1B1DD}" {
+       m_sEventName "US_VICTORY"
+      }
+     }
+     m_Advanced GC_EventOptions "{C65205C9AA70E64F}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{113C040FBB1D2848}" {
+       m_sTitle "VICTORY"
+       m_sMessage "All 4 objectives have been secured."
+      }
+     }
+    }
+    GC_Event "{273B09CE4EE4ADEF}" {
+     m_sName "US_VICTORY (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{58564E973C99B57A}" {
+       m_sEventName "US_VICTORY"
+      }
+     }
+     m_Advanced GC_EventOptions "{F302D2EC0CCC24F9}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{2B51FC4975A19C00}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{35F4A313A6F076CE}" {
+     m_sName "US_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{2917615826B77200}" {
+       m_Script GC_PeakFactionPopulationCheck "{3A51D7EE3AEE15E2}" {
+        m_sFaction "US"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{64D026832D60AE2B}" {
+       m_sMessage "US_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{93EFC78DC319746F}" {
+     m_sName "US_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B32B0F924DA3BEC6}" {
+       m_sEventName "US_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{75AFC8574E791C97}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{562773B47EB58E6B}" {
+       m_sTitle "DEFEAT"
+       m_sMessage "US Forces have taken significant casualties."
+      }
+     }
+    }
+    GC_Event "{12EF6574B3165158}" {
+     m_sName "US_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D66A3D322DA2D64E}" {
+       m_sEventName "US_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{C0AE0ABD687BB332}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{C41E5878CBDD4E8F}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{0355F9A3EB5A02F9}" {
+     m_sName "TIME_LIMIT (7205s)"
+     m_Advanced GC_EventOptions "{8507F5BC77664FFB}" {
+      m_fDelay 7205
+     }
+     m_aActions {
+      GC_MessageAction "{304B59F027430D28}" {
+       m_sTitle "DEFEAT"
+       m_sMessage "Time limit reached."
+      }
+     }
+    }
+    GC_Event "{EADFFE362D92FD0B}" {
+     m_sName "TIME_LIMIT (7215s)"
+     m_Advanced GC_EventOptions "{61D7724CD3C774E9}" {
+      m_fDelay 7215
+     }
+     m_aActions {
+      GC_EndMissionAction "{EE669873BA277D5A}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+   }
+   m_aAuthoredRespawns {
+    GC_AuthoredFactionRespawn "{3F094DBD2F0CC791}" {
+     m_sFaction "US"
+     m_iTickets 0
+     m_iIntervalMs 0
+     m_bAllowDynamicTickets 1
+    }
+   }
+  }
+ }
+ coords 4447.782 19.653 2115.093
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "0"
+       }
+       SCR_CallsignInfo "{55CCB792CE18FB44}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792CE02ECFA}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792CE2A44BD}" {
+        m_sCallsign "3"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+      }
+      m_sCallsignGroupFormat "%2-%3"
+      m_sCallsignCharacterFormat "%2-%3: %4"
+      m_sCallsignCharacterWithRoleFormat "%2-%3: %4"
+     }
+    }
+   }
+  }
+ }
+}
+GC_RadiusAreaEntity CAP_C : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 2571.344 10.954 1990.28
+ m_fRadius 25
+}
+GC_RadiusAreaEntity CAP_A : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 2819.698 17.478 2291.478
+ m_fRadius 25
+}
+GC_RadiusAreaEntity CAP_B : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 2679.919 7.903 2486.762
+ m_fRadius 25
+}
+GC_RadiusAreaEntity CAP_D : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 2341.746 9 2302.246
+ m_fRadius 25
+}

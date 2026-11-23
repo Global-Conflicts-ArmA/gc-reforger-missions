@@ -1,0 +1,367 @@
+SCR_AIWorld : "{3D0FE80570D5BFCC}Prefabs/AI/SCR_AIWorld_Anizay.et" {
+ coords 6305.391 239.838 1477.817
+}
+GC_LobbyGameMode GC_MigratedMission : "{FA674333F971F839}worlds/arc/HotBoxes/HotBoxes_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{645ECEA44BF1E141}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 11
+     m_iStartingMinutes 30
+    }
+   }
+  }
+  GC_PeakFactionPopulationComponent "{BD819473757E9171}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{3CCD3E11CB45A5CD}" {
+     m_sName "US_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{98B57DE67DF4F9A3}" {
+       m_Script GC_PeakFactionPopulationCheck "{3934C61B499752F5}" {
+        m_sFaction "US"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{FCCCD6DCCEACBE0F}" {
+       m_sMessage "US_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{FD83C44C8D88C198}" {
+     m_sName "US_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{622067C1803F7A36}" {
+       m_sEventName "US_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{309CDC07D394261C}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{A1A12C9043B9BA2F}" {
+       m_sTitle "DEFEAT"
+       m_sMessage "US forces are retreating due to casualties."
+      }
+     }
+    }
+    GC_Event "{55E95A26F6FC4C73}" {
+     m_sName "US_KIA (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{AA079795925ED7FF}" {
+       m_sEventName "US_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{83FF6A5B5D5AF0C2}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{0E8D5B58E1E19B3D}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{3FF5EDA587F6B52F}" {
+     m_sName "TIME_LIMIT (5405s)"
+     m_Advanced GC_EventOptions "{D00739A111A95C60}" {
+      m_fDelay 5405
+     }
+     m_aActions {
+      GC_MessageAction "{36F9144335ACBC27}" {
+       m_sTitle "DEFEAT"
+       m_sMessage "Time limit reached. FOB Nauzad has fallen."
+      }
+     }
+    }
+    GC_Event "{3F1A26A8213D40B6}" {
+     m_sName "TIME_LIMIT (5415s)"
+     m_Advanced GC_EventOptions "{C50FAAA36A09D9E5}" {
+      m_fDelay 5415
+     }
+     m_aActions {
+      GC_EndMissionAction "{26BB0990B758B804}" {
+       m_iResult 2
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+    GC_Event "{DAE17910583A26F2}" {
+     m_sName "OBJ2"
+     m_aConditions {
+      GC_AreaCondition "{B2850D1A4BEFF9EE}" {
+       m_sArea "GC_MigrationArea_US_OBJ2"
+       m_Targets GC_CharacterAreaTargets "{607747181E65EC2B}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{54C046555648EAB9}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{9955FD2F62001655}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+        m_Messages GC_CaptureMessages "{9B8E64CB403AAF3A}" {
+         m_sLocation "the second village"
+         m_sCaptured "The %1 has taken control of %2."
+         m_sCapturing "The %1 is taking control of %2."
+         m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+         m_sLost "The %1 has lost control of %2."
+         m_sLosing "The %1 is losing control of %2."
+         m_sLossInterrupted "The %1 is no longer losing control of %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{00A0C84596C4BC0F}" {
+       m_sMessage "OBJ2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{4D6B76514DEBA772}" {
+     m_sName "OBJ2 (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{D0D9989F89AD8570}" {
+       m_sEventName "OBJ2"
+      }
+     }
+     m_Advanced GC_EventOptions "{E6FE54DD9B206AD6}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_SpawnAction "{19AA375051E83F1E}" {
+       m_Spawn GC_AIGroupSpawn "{C3BA043C51C2B086}" {
+        m_sLocation "FOBAttackers1Spawn"
+        m_sPrefab "{E552DABF3636C2AD}Prefabs/Groups/OPFOR/Group_USSR_RifleSquad.et"
+        m_aWaypoints {
+         "FriendlyDefWP1"
+        }
+       }
+      }
+      GC_SpawnAction "{8EA90040E946FCD9}" {
+       m_Spawn GC_AIGroupSpawn "{21A0F4DF23BA8ADE}" {
+        m_sLocation "FOBAttackers2Spawn"
+        m_sPrefab "{E552DABF3636C2AD}Prefabs/Groups/OPFOR/Group_USSR_RifleSquad.et"
+        m_aWaypoints {
+         "FriendlyDefWP1"
+        }
+       }
+      }
+      GC_SpawnAction "{83760FC051F79497}" {
+       m_Spawn GC_AIGroupSpawn "{575C46079172D4D3}" {
+        m_sLocation "FOBAttackers3Spawn"
+        m_sPrefab "{E552DABF3636C2AD}Prefabs/Groups/OPFOR/Group_USSR_RifleSquad.et"
+        m_aWaypoints {
+         "FriendlyDefWP2"
+        }
+       }
+      }
+      GC_SpawnAction "{DCD7F8813AC44A9B}" {
+       m_Spawn GC_CrewedVehicleSpawn "{12C3A9B385B9EEF1}" {
+        m_sLocation "FOBBTRInterceptSpawn"
+        m_sPrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{F5A37303E5F231DF}" {
+          m_bShareIdleGunnerGroup 1
+          m_fWaypointDelay 5
+          m_aWaypoints {
+           "FOBBTRInterceptWP"
+          }
+         }
+        }
+       }
+      }
+      GC_MessageAction "{8A2A7963BD241EB6}" {
+       m_sTitle "MISSION UPDATE"
+       m_sMessage "FOB Nauzad reports an attack is imminent as the Soviets are aware of your platoon's progress."
+      }
+     }
+    }
+    GC_Event "{BF1C07DAB504596F}" {
+     m_sName "VICTORY"
+     m_aConditions {
+      GC_ConditionGroup "{991EC921F3322465}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{9BAD8BDA2B599212}" {
+         m_sArea "GC_MigrationArea_US_OBJ1"
+         m_Targets GC_CharacterAreaTargets "{ECC702D0D76FA4EC}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{08856D4405AA5BCE}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{421D55B6F6A6B816}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+          m_Messages GC_CaptureMessages "{3E43A364BC1918DC}" {
+           m_sLocation "the first village"
+           m_sCaptured "The %1 has taken control of %2."
+           m_sCapturing "The %1 is taking control of %2."
+           m_sCaptureInterrupted "The %1 is no longer taking control of %2."
+           m_sLost "The %1 has lost control of %2."
+           m_sLosing "The %1 is losing control of %2."
+           m_sLossInterrupted "The %1 is no longer losing control of %2."
+          }
+         }
+        }
+        GC_AreaCondition "{0B75649058A2DBE6}" {
+         m_sArea "GC_MigrationArea_US_OBJ2"
+         m_Targets GC_CharacterAreaTargets "{F3F93FC4254C13B5}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{A8A026F4EEB27335}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{0C29A40679A42F46}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_AreaCondition "{B4A382C10FB995DC}" {
+         m_sArea "GC_MigrationArea_US_FOB"
+         m_Targets GC_CharacterAreaTargets "{B8791B1118763D23}" {
+          m_iWho 2
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{F99736B15CC377FF}" {
+          m_fRequiredShare 1
+         }
+         m_Capture GC_AreaCaptureOptions "{539A00C0CA2F16DF}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{06A81CB31385EF6D}" {
+       m_sMessage "VICTORY"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0F0A6EA00B86073D}" {
+     m_sName "VICTORY (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{52D8A4AE0BA5E6E1}" {
+       m_sEventName "VICTORY"
+      }
+     }
+     m_Advanced GC_EventOptions "{7ED8F14509F238EC}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{A712B46282A3A591}" {
+       m_sTitle "VICTORY"
+       m_sMessage "The MSR has been cleared and FOB Nauzad is secure."
+      }
+     }
+    }
+    GC_Event "{FEF360A1660989C0}" {
+     m_sName "VICTORY (15s)"
+     m_aConditions {
+      GC_MissionEventCondition "{E092A1F0D3CFC138}" {
+       m_sEventName "VICTORY"
+      }
+     }
+     m_Advanced GC_EventOptions "{E019E3487C8B3952}" {
+      m_fDelay 15
+     }
+     m_aActions {
+      GC_EndMissionAction "{514D38840C01D4D6}" {
+       m_iResult 1
+       m_bAnnounceOnly 1
+       m_aWinningFactions {
+        "US"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 6308.994 240.673 1494.553
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "1"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{645F086BB5290F95}" {
+        m_sCallsign "8"
+       }
+      }
+      m_sCallsignGroupFormat "%2-%3"
+      m_sCallsignCharacterFormat "%2-%3: %4"
+      m_sCallsignCharacterWithRoleFormat "%2-%3: %4"
+     }
+    }
+   }
+  }
+ }
+}
+GC_RadiusAreaEntity GC_MigrationArea_US_FOB : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 4615.033 135.445 5949.924
+ m_fRadius 250
+}
+GC_RadiusAreaEntity GC_MigrationArea_US_OBJ1 : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 6339.558 227.01 3139.604
+ m_fRadius 100
+}
+GC_RadiusAreaEntity GC_MigrationArea_US_OBJ2 : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 5210.34 170.639 5063.451
+ m_fRadius 100
+}

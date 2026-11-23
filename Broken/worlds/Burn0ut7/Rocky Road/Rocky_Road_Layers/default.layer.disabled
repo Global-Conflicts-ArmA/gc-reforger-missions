@@ -1,0 +1,179 @@
+SCR_AIWorld : "{3D0FE80570D5BFCC}Prefabs/AI/SCR_AIWorld_Anizay.et" {
+}
+GC_LobbyGameMode GC_MigratedMission : "{9EC1386D367975D1}worlds/Burn0ut7/Rocky Road/Rocky_Road_GC_Settings.et" {
+ components {
+  GC_PeakFactionPopulationComponent "{957755E7FA7A791C}" {
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{F1F28EFAE8D1DAAC}" {
+     m_sName "t1d"
+    }
+    GC_MissionFlag "{A75BDFFBD27E0360}" {
+     m_sName "t2d"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{4383C6CEBCC7E9B0}" {
+     m_sName "INS VIctory"
+     m_aConditions {
+      GC_CustomScriptCondition "{F3BEF3E45701CD6A}" {
+       m_Script GC_PeakFactionPopulationCheck "{7AADF4102DEF0887}" {
+        m_sFaction "US"
+        m_fRatio 0.9
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{AE50999F0A446845}" {
+       m_sMessage "INS VIctory"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3C1951EB4BFEE178}" {
+     m_sName "INS VIctory (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1DEC5E2E8092B068}" {
+       m_sEventName "INS VIctory"
+      }
+     }
+     m_Advanced GC_EventOptions "{BD40116E905CAC28}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{7BB35DB741DC1E4F}" {
+       m_sTitle "INSURGENT VICTORY"
+       m_sMessage "US forces suffered severe casualties."
+      }
+     }
+    }
+    GC_Event "{17F18AF30B574705}" {
+     m_sName "Blufor Capture"
+     m_aConditions {
+      GC_AreaCondition "{8511C7039C00BCD7}" {
+       m_sArea "GC_MigrationArea_4186CA7E024BAC32"
+       m_Targets GC_NamedAreaTargets "{8CAF37754E924CC8}" {
+        m_aNames {
+         "Truck_1" "Truck_2"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{4BFE5CC98242B484}" {
+        m_fRequiredProportion 0.5
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{CC71421B18719641}" {
+        m_fSeconds 300
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+        m_Messages GC_CaptureMessages "{E04A773EA66D6D75}" {
+         m_sLocation "the Bath House"
+         m_sCaptured "US forces delivered the trucks to %2."
+         m_sCapturing "US forces are delivering the trucks to %2."
+         m_sCaptureInterrupted "US forces are no longer delivering the trucks to %2."
+         m_sLost "Abandoned presence at %2."
+         m_sLosing "Abandoning presence at %2."
+         m_sLossInterrupted "No longer abandoning presence at %2."
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5D33D4FBF372DB28}" {
+       m_sMessage "Blufor Capture"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1CE2BFDD280BF240}" {
+     m_sName "Blufor Capture (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{AC50E402B3DD25EC}" {
+       m_sEventName "Blufor Capture"
+      }
+     }
+     m_Advanced GC_EventOptions "{5F71219C616BF51E}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{AA567D4BD350D765}" {
+       m_sTitle "US VICTORY"
+       m_sMessage "The truck was delivered."
+      }
+     }
+    }
+    GC_Event "{E02DF6846C517449}" {
+     m_sName "Trucks destroyed"
+     m_aConditions {
+      GC_GameModeStateCondition "{D9C6C6DB2266D343}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{9B6D4C882ECBBC7F}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{32A5DEE80499A50A}" {
+         m_sFlagName "t1d"
+        }
+        GC_MissionFlagCondition "{1BFDF389333A9D9D}" {
+         m_sFlagName "t2d"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{F1BB16241A15069D}" {
+       m_sMessage "Trucks destroyed"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{4712B28330880FBD}" {
+     m_sName "Trucks destroyed (5s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{C8522F7D0D324352}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{650AC2671AA9763D}" {
+       m_sEventName "Trucks destroyed"
+      }
+     }
+     m_Advanced GC_EventOptions "{4F7E67ACECA38A5D}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{20500C5E02302C91}" {
+       m_sTitle "US DEFEAT"
+       m_sMessage "Both trucks were destroyed."
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 0 0 0
+}
+GC_RadiusAreaEntity GC_MigrationArea_4186CA7E024BAC32 : "{2C4447C53A1E450B}Prefabs/Logic/Mission/RadiusArea.et" {
+ coords 8353.646 77.579 5215.299
+ m_fRadius 30
+}
+GenericEntity : "{924D4B5FA0B24B22}Prefabs/Logic/Mission/MapMarker.et" {
+ components {
+  GC_BriefingMarkerComponent "{00C8292F836D4D6F}" {
+   m_sImageSetOrImage "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+   m_sHighlightImageSet "{67B3A6DC2D712B52}UI/Textures/Icons/icons_mapMarkersUI-glow.imageset"
+   m_sQuadName "flag"
+   m_Color 0.22 0.227 1 1
+   m_fSize 50
+   m_bWorldScale 0
+   m_sDescription ""
+   m_iZOrder 0
+   m_iHoverZOrder 10000
+  }
+ }
+ coords 8353.444 77.875 5215.021
+ angleY 90
+}

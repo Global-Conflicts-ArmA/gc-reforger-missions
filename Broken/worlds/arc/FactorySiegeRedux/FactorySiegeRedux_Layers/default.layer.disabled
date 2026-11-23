@@ -1,0 +1,162 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 5588.98 0 8741.006
+}
+GC_LobbyGameMode GC_MigratedMission : "{D01B46D924B9B12F}worlds/arc/FactorySiegeRedux/FactorySiegeRedux_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_bRandomStartingDaytimeRange 1
+   m_iRangeHoursStart 6
+   m_iRangeHoursEnd 18
+   m_bRandomStartingWeather 1
+  }
+  GC_PeakFactionPopulationComponent "{DAA26A273F3BAB07}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{B1EE5685006D5110}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 120
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionEvents + {
+    GC_Event "{26E91F998C07FBB8}" {
+     m_sName "US_KIA"
+     m_aConditions {
+      GC_CustomScriptCondition "{3B84E2618F4EF7BB}" {
+       m_Script GC_PeakFactionPopulationCheck "{CC773A7E01E4197B}" {
+        m_sFaction "US"
+        m_fRatio 0.8
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{19F28B7E01A38167}" {
+       m_sMessage "US_KIA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0ABEB2EB070D2814}" {
+     m_sName "US_KIA (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8C017224254F4034}" {
+       m_sEventName "US_KIA"
+      }
+     }
+     m_Advanced GC_EventOptions "{58F13458FFB84F3A}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{210848A503152709}" {
+       m_sTitle "AFRF VICTORY"
+       m_sMessage "American forces have taken significant casualties."
+      }
+     }
+    }
+    GC_Event "{6F48274D137446E3}" {
+     m_sName "OBJ_H"
+     m_aConditions {
+      GC_AreaCondition "{43E63819993ACDEC}" {
+       m_sArea "GC_MigrationArea_OBJ_H"
+       m_Targets GC_CharacterAreaTargets "{AE5DD0106A9FFD68}" {
+        m_iWho 2
+        m_aFactions {
+         "US"
+        }
+       }
+       m_Requirement GC_LocalFactionShare "{691272F4A61FBD0E}" {
+        m_fRequiredShare 1
+       }
+       m_Capture GC_AreaCaptureOptions "{87089A9FF8B6753F}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{CD47AE00C24E855C}" {
+       m_sMessage "OBJ_H"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{3C3830ED825F8FE8}" {
+     m_sName "OBJ_H (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{A1268FD3D55DA2C2}" {
+       m_sEventName "OBJ_H"
+      }
+     }
+     m_Advanced GC_EventOptions "{50D50805DC7EFBFD}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{EB91204F78C4AE24}" {
+       m_sTitle "US VICTORY"
+       m_sMessage "Obj. Hera has been secured by American forces."
+      }
+     }
+    }
+    GC_Event "{281E2E79704E5895}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{DC2CD57F0943C7E0}" {
+       m_fSeconds 120.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{E0CBCDDEAFEE723E}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 5597.715 0 8731.453
+}
+PolylineShapeEntity GC_MigrationArea_OBJ_H {
+ coords 4487.158 20.808 10494.218
+ Points {
+  ShapePoint "{6908A08ADF82D924}" {
+   Position 55.821 0 -60.093
+  }
+  ShapePoint "{6908A08AD88511B9}" {
+   Position 72.012 0 -67.795
+  }
+  ShapePoint "{6908A08AD9708117}" {
+   Position 92.144 0 -62.01
+  }
+  ShapePoint "{6908A08ADAE93566}" {
+   Position 92.441 0 -51.354
+  }
+  ShapePoint "{6908A08AD4B43A9C}" {
+   Position 97.391 0 -50.343
+  }
+  ShapePoint "{6908A08AD6CF5AD3}" {
+   Position 92.23 0 -7.316
+  }
+  ShapePoint "{6908A08AD77B7399}" {
+   Position 87.16 0 44.904
+  }
+  ShapePoint "{6908A08AD00AC2FE}" {
+   Position 86.087 0 53.202
+  }
+  ShapePoint "{6908A08AD12E66BA}" {
+   Position 95.201 0 68.066
+  }
+  ShapePoint "{6908A08AD265F81E}" {
+   Position 92.56 0 85.292
+  }
+  ShapePoint "{6908A08AACCB84AD}" {
+   Position 19.808 0 75.222
+  }
+  ShapePoint "{6908A08AAED84724}" {
+   Position 33.721 0 -27.67
+  }
+ }
+ IsClosed 1
+}

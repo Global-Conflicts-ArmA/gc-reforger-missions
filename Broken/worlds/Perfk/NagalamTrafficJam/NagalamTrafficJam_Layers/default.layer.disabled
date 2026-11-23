@@ -1,0 +1,3883 @@
+SCR_MapEntity MapEntity_Kunar1 : "{C24FAF6F2DDD6735}Prefabs/MapEntity_Kunar.et" {
+ coords 2893.479 10 3198.098
+}
+SCR_AIWorld : "{E2A016456BBC697D}Prefabs/SCR_AIWorld_Kunar.et" {
+ coords 267.998 39.667 3101.905
+}
+GC_LobbyGameMode GC_MigratedMission : "{320FE4DD67F831CD}worlds/Perfk/NagalamTrafficJam/NagalamTrafficJam_GC_Settings.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{6B71E9A8B1A8C501}" {
+   m_iStartingHours 7
+  }
+  GC_PeakFactionPopulationComponent "{981854A1A1F00ADF}" {
+  }
+  SCR_PlayersRestrictionZoneManagerComponent "{F93137C38603CC84}" {
+  }
+  GC_LobbyFreezeComponent "{E81E75BC287148D0}" {
+   m_iAuthoredCountdownSeconds 300
+   m_bLockLimitedEditorAfterStaging 1
+  }
+
+  GC_LobbyManager "{6A137A39106A4973}" {
+   m_aMissionFlags + {
+    GC_MissionFlag "{4612437FBEB0A501}" {
+     m_sName "Ambush_01_Random"
+    }
+    GC_MissionFlag "{F496AD7E12707B03}" {
+     m_sName "Ambush_02_Random"
+    }
+    GC_MissionFlag "{5416085A8BA69B96}" {
+     m_sName "Ambush_03_Random"
+    }
+    GC_MissionFlag "{A5121C0E88AE3A32}" {
+     m_sName "Ambush_04_Random"
+    }
+    GC_MissionFlag "{5F53C529F7CC0930}" {
+     m_sName "Ambush_05_Random"
+    }
+    GC_MissionFlag "{424A3DC73C90EC0B}" {
+     m_sName "Mission_Started"
+    }
+   }
+   m_aMissionEvents + {
+    GC_Event "{B1F62C7B25BF609E}" {
+     m_sName "GC_MigrationStartupSampling"
+     m_aConditions {
+      GC_ConditionGroup "{FFECB3661628579E}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_GameModeStateCondition "{51FD2DCC837180D3}" {
+         m_eGameModeState 0
+        }
+        GC_GameModeStateCondition "{CD6C387EC636CC54}" {
+         m_eGameModeState 1787356801
+        }
+        GC_GameModeStateCondition "{042EB098593CD239}" {
+         m_eGameModeState 1787356802
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_FlagSamplingAction "{51FD2DCC837180D3}" {
+       m_iDrawCount 1
+       m_aFlags {
+        "Ambush_01_Random"
+        "Ambush_02_Random"
+        "Ambush_03_Random"
+        "Ambush_04_Random"
+        "Ambush_05_Random"
+       }
+      }
+     }
+    }
+    GC_Event "{58F562E00462EB84}" {
+     m_sName "Start_Mission"
+     m_aConditions {
+      GC_GameModeStateCondition "{B076C200290A63C6}" {
+       m_eGameModeState 1
+      }
+      GC_MissionFlagCondition "{B0070036E2C110E3}" {
+       m_sFlagName "Mission_Started"
+       m_bRequireFalse 1
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{79FC4E4A9F745BEB}" {
+       m_sMessage "Start_Mission"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{D5BA366D33B91A4E}" {
+     m_sName "Start_Mission (1s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{9333182C04B33294}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{AD291BF033AAA652}" {
+       m_sEventName "Start_Mission"
+      }
+     }
+     m_Advanced GC_EventOptions "{7597E6257C15FB79}" {
+      m_fDelay 1
+     }
+     m_aActions {
+      GC_FlagAction "{DF6470755DDB4503}" {
+       m_sFlagName "Mission_Started"
+       m_iOperation 1
+       m_iAmount 1
+      }
+     }
+    }
+    GC_Event "{9A1A063318AFBC1F}" {
+     m_sName "RunOverRoad"
+     m_aConditions {
+      GC_AreaCondition "{FAAE75E6FA5A263C}" {
+       m_sArea "PresenceTrigger_Runaway"
+       m_Targets GC_NamedAreaTargets "{411CA89284E0AC81}" {
+        m_aNames {
+         "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{B3AA36B01CF3388D}" {
+        m_fRequiredProportion 0.1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{554E18F5C24C0EDE}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3235ECEA1443D48E}" {
+       m_sMessage "RunOverRoad"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{70708BC12D444A66}" {
+     m_sName "RunOverRoad (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{1CCD0D193898D776}" {
+       m_sEventName "RunOverRoad"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{17538264144BC68E}" {
+       m_Spawn GC_AIGroupSpawn "{980291AE3ADFEA04}" {
+        m_sLocation "spawn_Runaway"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "wp_Runaway"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{D0249C33CADC191E}" {
+     m_sName "Spawn_Hiltop"
+     m_aConditions {
+      GC_ConditionGroup "{0454F69D06AC0346}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_MissionFlagCondition "{9E869A5C15A5FD39}" {
+         m_sFlagName "Mission_Started"
+        }
+        GC_AreaCondition "{A3868546230082A7}" {
+         m_sArea "GC_MigrationArea_BluforOnHilltop"
+         m_Targets GC_CharacterAreaTargets "{6CFA21E154898690}" {
+          m_aFactions {
+           "US"
+          }
+         }
+         m_Requirement GC_LocalFactionShare "{C0512CE40A3A9777}" {
+          m_fRequiredShare 0
+         }
+         m_Capture GC_AreaCaptureOptions "{061AAE6B1F834ABC}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+         }
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{BB70AE7FFBAED4DC}" {
+       m_sMessage "Spawn_Hiltop"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BE398BA9923DE0B8}" {
+     m_sName "Spawn_Hiltop (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{9E9AA506479ECFD2}" {
+       m_sEventName "Spawn_Hiltop"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{5CFAFC5F19CDBE12}" {
+       m_Spawn GC_AIGroupSpawn "{26702BCCC34AAFB3}" {
+        m_sLocation "Spawn_hiltop_1"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "WP_SD_Hilltop"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F627482EEA0B4BF4}" {
+     m_sName "Spawn_Hiltop (10s)"
+     m_aConditions {
+      GC_MissionEventCondition "{C435499525529AC1}" {
+       m_sEventName "Spawn_Hiltop"
+      }
+     }
+     m_Advanced GC_EventOptions "{BE472AA0F510D4A7}" {
+      m_fDelay 10
+     }
+     m_aActions {
+      GC_SpawnAction "{03F04EBCC94BD864}" {
+       m_Spawn GC_AIGroupSpawn "{530891AD97FF15C5}" {
+        m_sLocation "Spawn_hiltop_1"
+        m_sPrefab "{247DB5CD3CBA7418}worlds/Perfk/Prefabs/Groups/PK_MUJ_03_AT_Fighters.et"
+        m_aWaypoints {
+         "WP_SD_Hilltop"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{79B0E05FB4CBF1FD}" {
+     m_sName "ambush_BlockedRoadStone"
+     m_aConditions {
+      GC_ConditionGroup "{A32FEE7328B31F7C}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{D3C9C770D9D467A6}" {
+         m_sArea "PresenceTrigger_QRF"
+         m_Targets GC_NamedAreaTargets "{36DEB37D98C7DB1E}" {
+          m_aNames {
+           "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+          }
+          m_bCountMissingAsOutside 1
+          m_bExcludeDestroyed 1
+         }
+         m_Requirement GC_LivingProportion "{32781C255E888D0A}" {
+          m_fRequiredProportion 0.1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{E311D4E6A7C53999}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_MissionFlagCondition "{37119B6A6C17FAEE}" {
+         m_sFlagName "Mission_Started"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{C88DD02BAEFC9785}" {
+       m_sMessage "ambush_BlockedRoadStone"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{AD220EB985CEECDD}" {
+     m_sName "ambush_BlockedRoadStone (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{67151E3B13D5AAC7}" {
+       m_sEventName "ambush_BlockedRoadStone"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{CF78C8C7D9818B80}" {
+       m_Spawn GC_PrefabSpawn "{0A4A7CBCD8D48645}" {
+        m_sLocation "Spawn_ambush_stoneRoad"
+        m_sPrefab "{6650B2B969248F4C}Prefabs/Structures/Rock/Afghan_Rock/GraniteCliff_Afghan_03.et"
+       }
+      }
+      GC_SpawnAction "{2A5F30008FE53477}" {
+       m_Spawn GC_PrefabSpawn "{E30C9704DEE500E0}" {
+        m_sLocation "Spawn_ambush_stoneexplosion"
+        m_sPrefab "{3A3331F61766D055}PrefabsEditable/EffectsModules/Mortar/EffectModule_MortarShell.et"
+       }
+      }
+     }
+    }
+    GC_Event "{4BA63E6448C4143D}" {
+     m_sName "ambush_BlockedRoadStone (30s)"
+     m_aConditions {
+      GC_MissionEventCondition "{3CBE1E1B58F69FAA}" {
+       m_sEventName "ambush_BlockedRoadStone"
+      }
+     }
+     m_Advanced GC_EventOptions "{1EC1089AC9274573}" {
+      m_fDelay 30
+     }
+     m_aActions {
+      GC_MessageAction "{D62E3F4ACFCC2036}" {
+       m_sTitle "Intel"
+       m_sMessage "All stations, this is Higher. MSR Toyota is blocked. Recommend reroute via ASR Dodge for return trip. Cause: enemy explosives triggered landslide. Out."
+      }
+     }
+    }
+    GC_Event "{C37A26E504696C80}" {
+     m_sName "US Casualty Hint"
+     m_aConditions {
+      GC_CustomScriptCondition "{230EA4F22CFB996C}" {
+       m_Script GC_PeakFactionPopulationCheck "{B021CC4ACD987668}" {
+        m_sFaction "US"
+        m_fRatio 0.85
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{AA54BF70CF4B6028}" {
+       m_sMessage "US Casualty Hint"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{B8C25BBB8FC745B7}" {
+     m_sName "US Casualty Hint (5s)"
+     m_aConditions {
+      GC_MissionEventCondition "{8920EAB663D30A0B}" {
+       m_sEventName "US Casualty Hint"
+      }
+     }
+     m_Advanced GC_EventOptions "{14D3DCC8B5B14CD9}" {
+      m_fDelay 5
+     }
+     m_aActions {
+      GC_MessageAction "{9CAEE768B1FC1B23}" {
+       m_sTitle "US Casualty 85%"
+       m_sMessage "US Forces have lost more than 85%, GM please consider if the missions should be ended at this time."
+      }
+     }
+    }
+    GC_Event "{7789384EAB3707F6}" {
+     m_sName "Time Limit (3600s)"
+     m_Advanced GC_EventOptions "{67A921ECD12AF31A}" {
+      m_fDelay 3600
+      m_bDisabled 1
+     }
+     m_aActions {
+      GC_MessageAction "{8C3F23C8392F13A2}" {
+       m_sTitle "Timelimit"
+       m_sMessage "The 60 min timelimit have been met. GM please consider if the missions should be ended at this time."
+      }
+     }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    GC_Event "{8EE99A240E34A2CE}" {
+     m_sName "GC_TownSpawnActive"
+     m_aConditions {
+      GC_GameModeStateCondition "{103A4CB893E9DA36}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{16198EFD7375CB42}" {
+       m_iMatch 1
+       m_aConditions {
+        GC_MissionFlagCondition "{C418DF26B03DC48E}" {
+         m_sFlagName "Mission_Started"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{C5323041953410D8}" {
+       m_bScheduleAction 1
+       m_fActionDelay 180
+       m_Spawn GC_AIGroupSpawn "{75BB92D269E726B6}" {
+        m_sLocation "Spawn_3_Route_B_F1_2"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_3_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{1417645E077A2046}" {
+       m_bScheduleAction 1
+       m_fActionDelay 181
+       m_Spawn GC_AIGroupSpawn "{CF5B8145064B9373}" {
+        m_sLocation "Spawn_7_Route_A_F1_2"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_7_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{3C60B635BF2BE4AB}" {
+       m_bScheduleAction 1
+       m_fActionDelay 183
+       m_Spawn GC_AIGroupSpawn "{642E5EE72247B4C9}" {
+        m_sLocation "Spawn_1_Route_B_F1_2"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_1_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{44622BBAEB160A6B}" {
+       m_bScheduleAction 1
+       m_fActionDelay 185
+       m_Spawn GC_AIGroupSpawn "{08666CEFF224C3FB}" {
+        m_sLocation "Spawn_4_Route_A_F1_2"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_4_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{65CA61F0FC662956}" {
+       m_bScheduleAction 1
+       m_fActionDelay 187
+       m_Spawn GC_AIGroupSpawn "{76A88334A0C6A077}" {
+        m_sLocation "Spawn_6_Route_A_F1_2"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_6_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{709A459C2C576ABB}" {
+       m_bScheduleAction 1
+       m_fActionDelay 7560
+       m_Spawn GC_AIGroupSpawn "{48BA225BC07A32D0}" {
+        m_sLocation "Spawn_1_Route_A_F1_"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_1_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{1BC2A1770987F4A5}" {
+       m_bScheduleAction 1
+       m_fActionDelay 7560
+       m_Spawn GC_AIGroupSpawn "{6A507FC7A5B7DB09}" {
+        m_sLocation "Spawn_1_Route_B_F1_"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_1_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{2D9A51497E7F03FF}" {
+       m_bScheduleAction 1
+       m_fActionDelay 7560
+       m_Spawn GC_AIGroupSpawn "{F9C43371B4C307A8}" {
+        m_sLocation "Spawn_2_Route_A_F1_"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_2_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{44A009D6864267BE}" {
+       m_bScheduleAction 1
+       m_fActionDelay 7560
+       m_Spawn GC_AIGroupSpawn "{A6335436196B285F}" {
+        m_sLocation "Spawn_3_Route_A_F1_"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_3_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{549DF2E17BC8BCA7}" {
+       m_bScheduleAction 1
+       m_fActionDelay 7560
+       m_Spawn GC_AIGroupSpawn "{7311BCC9B84E0455}" {
+        m_sLocation "Spawn_3_Route_B_F1_"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_3_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{F12C9E35EC08200A}" {
+       m_bScheduleAction 1
+       m_fActionDelay 7560
+       m_Spawn GC_AIGroupSpawn "{06D55CA941E08593}" {
+        m_sLocation "Spawn_4_Route_A_F1_"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_4_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{E45E584DDBC57BAB}" {
+       m_bScheduleAction 1
+       m_fActionDelay 7560
+       m_Spawn GC_AIGroupSpawn "{48B76AB1B6DC11E4}" {
+        m_sLocation "Spawn_5_Route_A_F1_"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_5_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{E3B867C93E39FD9B}" {
+       m_bScheduleAction 1
+       m_fActionDelay 7560
+       m_Spawn GC_AIGroupSpawn "{A4EFC538C2C35404}" {
+        m_sLocation "Spawn_5_Route_B_F1_"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_5_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{F66B6CAFA46D6E37}" {
+       m_bScheduleAction 1
+       m_fActionDelay 7560
+       m_Spawn GC_AIGroupSpawn "{FE10345E8DA123C3}" {
+        m_sLocation "Spawn_6_Route_A_F1_"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_6_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{2E2F4F7B5D6945F4}" {
+       m_bScheduleAction 1
+       m_fActionDelay 7560
+       m_Spawn GC_AIGroupSpawn "{0011B7BFDB67BF3D}" {
+        m_sLocation "Spawn_6_Route_B_F1_"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_6_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{443E7FE5B810624B}" {
+       m_bScheduleAction 1
+       m_fActionDelay 7560
+       m_Spawn GC_AIGroupSpawn "{DB5A9097D3340D49}" {
+        m_sLocation "Spawn_7_Route_B_F1_"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_7_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{74D07DF928E9308A}" {
+       m_bScheduleAction 1
+       m_fActionDelay 7560
+       m_Spawn GC_AIGroupSpawn "{797C91F986236D87}" {
+        m_sLocation "Spawn_7_Route_A_F1_"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_7_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{93975888F1F8D6B6}" {
+       m_bScheduleAction 1
+       m_fActionDelay 7560
+       m_Spawn GC_AIGroupSpawn "{B07701B9989CCDBD}" {
+        m_sLocation "Spawn_8_Route_A_F1_"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_8_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{F8F375D5DFCE839A}" {
+       m_bScheduleAction 1
+       m_fActionDelay 7560
+       m_Spawn GC_AIGroupSpawn "{6A0F522584165177}" {
+        m_sLocation "Spawn_9_Route_A_F1_"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_9_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{2B0479013DC6C063}" {
+       m_bScheduleAction 1
+       m_fActionDelay 361
+       m_Spawn GC_AIGroupSpawn "{CC86FA31BC3005AB}" {
+        m_sLocation "Spawn_2_Route_A_F1_2"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_2_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{C35B7F37F5A27221}" {
+       m_bScheduleAction 1
+       m_fActionDelay 363
+       m_Spawn GC_AIGroupSpawn "{1EB7A2D0586218AE}" {
+        m_sLocation "Spawn_5_Route_A_F1_2"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_5_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{0047589ABA7AFBC0}" {
+       m_bScheduleAction 1
+       m_fActionDelay 365
+       m_Spawn GC_AIGroupSpawn "{9214B9BD2F4663DB}" {
+        m_sLocation "Spawn_8_Route_A_F1_2"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_8_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{BE51AD88E7A68EC1}" {
+       m_bScheduleAction 1
+       m_fActionDelay 541
+       m_Spawn GC_AIGroupSpawn "{2E1FE555BD34F7A9}" {
+        m_sLocation "Spawn_1_Route_A_F1_3"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_1_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{E979C68F3782596B}" {
+       m_bScheduleAction 1
+       m_fActionDelay 543
+       m_Spawn GC_AIGroupSpawn "{FE885EEDB38A252D}" {
+        m_sLocation "Spawn_1_Route_B_F1_3"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_1_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{1D918B3D84ADC61F}" {
+       m_bScheduleAction 1
+       m_fActionDelay 545
+       m_Spawn GC_AIGroupSpawn "{BF9121319B7589DC}" {
+        m_sLocation "Spawn_2_Route_A_F1_3"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_2_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{8698A67CA1E83D3E}" {
+       m_bScheduleAction 1
+       m_fActionDelay 547
+       m_Spawn GC_AIGroupSpawn "{47D8246386CD12F2}" {
+        m_sLocation "Spawn_3_Route_B_F1_3"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_3_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{619455DA3CBC7E10}" {
+       m_bScheduleAction 1
+       m_fActionDelay 240.5
+       m_Spawn GC_AIGroupSpawn "{1D6AD51B780ACCA3}" {
+        m_sLocation "Spawn_5_Route_A_F1_3"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_5_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{C58D2E95BEF83731}" {
+       m_bScheduleAction 1
+       m_fActionDelay 549
+       m_Spawn GC_AIGroupSpawn "{3BB7DD4C193DCA9F}" {
+        m_sLocation "Spawn_7_Route_A_F1_3"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_7_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{1BEDE600AA654459}" {
+       m_bScheduleAction 1
+       m_fActionDelay 721
+       m_Spawn GC_AIGroupSpawn "{F590D0FE7C1F4E70}" {
+        m_sLocation "Spawn_5_Route_A_F1_4"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_5_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{D4F5EB5579C1E1BE}" {
+       m_bScheduleAction 1
+       m_fActionDelay 723
+       m_Spawn GC_AIGroupSpawn "{4C570B60330C4FDA}" {
+        m_sLocation "Spawn_5_Route_B_F1_3"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_5_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{1C34306F8E7CA7E5}" {
+       m_bScheduleAction 1
+       m_fActionDelay 725
+       m_Spawn GC_AIGroupSpawn "{D7626F3C1453F5E3}" {
+        m_sLocation "Spawn_9_Route_A_F1_2"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_9_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{31770CB645143BA0}" {
+       m_bScheduleAction 1
+       m_fActionDelay 901
+       m_Spawn GC_AIGroupSpawn "{2129F125C35AF374}" {
+        m_sLocation "Spawn_1_Route_B_F1_4"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_1_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{CC718AC99F4C3949}" {
+       m_bScheduleAction 1
+       m_fActionDelay 903
+       m_Spawn GC_AIGroupSpawn "{E429673EA0EEE282}" {
+        m_sLocation "Spawn_3_Route_A_F1_2"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_3_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{C478F1DBCF3ED605}" {
+       m_bScheduleAction 1
+       m_fActionDelay 905
+       m_Spawn GC_AIGroupSpawn "{0CEB9B965989A0B8}" {
+        m_sLocation "Spawn_3_Route_B_F1_4"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_3_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{2F20B533217CDA15}" {
+       m_bScheduleAction 1
+       m_fActionDelay 907
+       m_Spawn GC_AIGroupSpawn "{BD3685D31FA8E082}" {
+        m_sLocation "Spawn_8_Route_A_F1_3"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_8_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{D5590E7A0D4255EF}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1081
+       m_Spawn GC_AIGroupSpawn "{A10AC9D26D2064A7}" {
+        m_sLocation "Spawn_6_Route_A_F1_3"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_6_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{B9BC8B303EBB43A4}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1083
+       m_Spawn GC_AIGroupSpawn "{ECCDD22BF0C4E77C}" {
+        m_sLocation "Spawn_7_Route_B_F1_2"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_7_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{C962939F8DA708F7}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1085
+       m_Spawn GC_AIGroupSpawn "{4F1ED390A61922C3}" {
+        m_sLocation "Spawn_9_Route_A_F1_3"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_9_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{7EB1FC458CBEC4C3}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1261
+       m_Spawn GC_AIGroupSpawn "{72EB70BE5690DB5E}" {
+        m_sLocation "Spawn_1_Route_A_F1_4"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_1_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{7B7D702FE32898D1}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1263
+       m_Spawn GC_AIGroupSpawn "{67073BF3A5DBE291}" {
+        m_sLocation "Spawn_1_Route_B_F1_5"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_1_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{6E6BFE9051BA7E76}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1265
+       m_Spawn GC_AIGroupSpawn "{6261E055DBD996D9}" {
+        m_sLocation "Spawn_2_Route_A_F1_4"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_2_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{48A5EF6F6684EC70}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1267
+       m_Spawn GC_AIGroupSpawn "{980D88EF711E437A}" {
+        m_sLocation "Spawn_3_Route_B_F1_5"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_3_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{35D16B9752AB0870}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1269
+       m_Spawn GC_AIGroupSpawn "{BCEE92229A162209}" {
+        m_sLocation "Spawn_4_Route_A_F1_3"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_4_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{671C9286D332E986}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1271
+       m_Spawn GC_AIGroupSpawn "{81FAE21797AEF86F}" {
+        m_sLocation "Spawn_5_Route_A_F1_5"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_5_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{615B7D655AE0B918}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1273
+       m_Spawn GC_AIGroupSpawn "{CF1C87A5DB5E1EB4}" {
+        m_sLocation "Spawn_6_Route_A_F1_4"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_6_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{5964AFF2523573A1}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1275
+       m_Spawn GC_AIGroupSpawn "{FE64AEDE3723DC09}" {
+        m_sLocation "Spawn_7_Route_A_F1_4"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_7_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{8A679909D1930C7A}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1277
+       m_Spawn GC_AIGroupSpawn "{72DDDDC230DB0B13}" {
+        m_sLocation "Spawn_8_Route_A_F1_4"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_8_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{5C014A658E299898}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1279
+       m_Spawn GC_AIGroupSpawn "{E2369619D0872590}" {
+        m_sLocation "Spawn_9_Route_A_F1_4"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_9_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{D31474E563546466}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1441
+       m_Spawn GC_AIGroupSpawn "{F9C0D2028FEBBAEB}" {
+        m_sLocation "Spawn_1_Route_A_F1_5"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_1_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{AE65CBA988C29B58}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1443
+       m_Spawn GC_AIGroupSpawn "{207E92B4C26B66BE}" {
+        m_sLocation "Spawn_7_Route_B_F1_3"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_7_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{0C6AD976CD0742C3}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1621
+       m_Spawn GC_AIGroupSpawn "{4A441D9112E32908}" {
+        m_sLocation "Spawn_2_Route_A_F1_5"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_2_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{BD24172A14B5A806}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1623
+       m_Spawn GC_AIGroupSpawn "{4F21D928EE6FCB90}" {
+        m_sLocation "Spawn_7_Route_B_F1_4"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_7_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{79DFF6C5EE5C8AB5}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1625
+       m_Spawn GC_AIGroupSpawn "{5A0CD9D68A148924}" {
+        m_sLocation "Spawn_7_Route_A_F1_5"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_7_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{DC7DDCE153154FCB}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1627
+       m_Spawn GC_AIGroupSpawn "{989BA6FCE140EF0B}" {
+        m_sLocation "Spawn_8_Route_A_F1_5"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_8_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{D44868517BE3C400}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1801
+       m_Spawn GC_AIGroupSpawn "{F54CC8325B1DD982}" {
+        m_sLocation "Spawn_1_Route_A_F1_6"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_1_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{5441BF1FD6705EA2}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1803
+       m_Spawn GC_AIGroupSpawn "{C5AAECA38593D4AD}" {
+        m_sLocation "Spawn_1_Route_B_F1_6"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_1_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{C6574E6EEFA795E8}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1805
+       m_Spawn GC_AIGroupSpawn "{26267C438B9F5F34}" {
+        m_sLocation "Spawn_3_Route_B_F1_6"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_3_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{336A5362102CADFA}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1807
+       m_Spawn GC_AIGroupSpawn "{B64C5DF16F8B899D}" {
+        m_sLocation "Spawn_5_Route_A_F1_6"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_5_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{D74D9FA04E9373DE}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1809
+       m_Spawn GC_AIGroupSpawn "{DFD6D032A82DFE44}" {
+        m_sLocation "Spawn_7_Route_A_MG_6"
+        m_sPrefab "{6FD18265B1F81D25}worlds/Perfk/Prefabs/Groups/PK_MUJ_03_MG_Fighters.et"
+        m_aWaypoints {
+         "Spawn_7_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{1DB7D6D15634F35B}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1981
+       m_Spawn GC_AIGroupSpawn "{1CD7D395AEE1C72F}" {
+        m_sLocation "Spawn_1_Route_A_F1_7"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_1_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{083E31CD79CC0490}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1983
+       m_Spawn GC_AIGroupSpawn "{67C92D22544601D7}" {
+        m_sLocation "Spawn_3_Route_B_AT_7"
+        m_sPrefab "{247DB5CD3CBA7418}worlds/Perfk/Prefabs/Groups/PK_MUJ_03_AT_Fighters.et"
+        m_aWaypoints {
+         "Spawn_3_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{ADEAA8A05ECA804F}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1985
+       m_Spawn GC_AIGroupSpawn "{5AE94CA6EE09C46D}" {
+        m_sLocation "Spawn_4_Route_A_F1_4"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_4_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{3F4248B9ED3B0758}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1987
+       m_Spawn GC_AIGroupSpawn "{3D6E398EB6092DE3}" {
+        m_sLocation "Spawn_5_Route_A_F1_7"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_5_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{10A780EED2D211A6}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1989
+       m_Spawn GC_AIGroupSpawn "{675C59E1A8CA3ADE}" {
+        m_sLocation "Spawn_6_Route_A_AT_5"
+        m_sPrefab "{247DB5CD3CBA7418}worlds/Perfk/Prefabs/Groups/PK_MUJ_03_AT_Fighters.et"
+        m_aWaypoints {
+         "Spawn_6_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{850A298F8E594A89}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1991
+       m_Spawn GC_AIGroupSpawn "{5D24A8AC5E05BE07}" {
+        m_sLocation "Spawn_7_Route_A_F1_6"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_7_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{284343344B42EE0C}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1993
+       m_Spawn GC_AIGroupSpawn "{E4AD411BD03E3EB6}" {
+        m_sLocation "Spawn_8_Route_A_F1_6"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_8_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{933CC6E48FF51458}" {
+       m_bScheduleAction 1
+       m_fActionDelay 1995
+       m_Spawn GC_AIGroupSpawn "{A5162813942D6332}" {
+        m_sLocation "Spawn_9_Route_A_F1_5"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_9_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{821B1CB5CAF0749F}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2161
+       m_Spawn GC_AIGroupSpawn "{9BB84FAE91B01CC6}" {
+        m_sLocation "Spawn_1_Route_A_F1_8"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_1_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{FAB225284286C60B}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2163
+       m_Spawn GC_AIGroupSpawn "{DACAE3F90288DE56}" {
+        m_sLocation "Spawn_3_Route_B_F1_7"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_3_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{A10EF0C40A872245}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2165
+       m_Spawn GC_AIGroupSpawn "{093F7CC46032CDDA}" {
+        m_sLocation "Spawn_6_Route_A_F1_5"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_6_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{0064AF41A6812514}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2167
+       m_Spawn GC_AIGroupSpawn "{4205A7280C15915D}" {
+        m_sLocation "Spawn_9_Route_A_F1_6"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_9_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{8528A8959F1D50ED}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2341
+       m_Spawn GC_AIGroupSpawn "{9614371257688BAE}" {
+        m_sLocation "Spawn_7_Route_B_F1_5"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_7_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{67F342AC5706E9AA}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2343
+       m_Spawn GC_AIGroupSpawn "{25000BA5E498C9D4}" {
+        m_sLocation "Spawn_8_Route_A_F1_7"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_8_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{2BED4606D0C99F51}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2345
+       m_Spawn GC_AIGroupSpawn "{21366A6CEB25E607}" {
+        m_sLocation "Spawn_9_Route_A_F1_7"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_9_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{D957B3C3D959EC7B}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2347
+       m_Spawn GC_AIGroupSpawn "{CF1C430251E20D8E}" {
+        m_sLocation "Spawn_6_Route_A_F1_6"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_6_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{B59AC349E055C4C6}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2349
+       m_Spawn GC_AIGroupSpawn "{DA00AA3960F796B9}" {
+        m_sLocation "Spawn_7_Route_A_F1_7"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_7_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{DF548468B588491E}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2351
+       m_Spawn GC_AIGroupSpawn "{927B85AB860186B5}" {
+        m_sLocation "Spawn_1_Route_A_F1_9"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_1_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{110CEDBA8AB29E7D}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2353
+       m_Spawn GC_AIGroupSpawn "{C2D3BD359898A581}" {
+        m_sLocation "Spawn_2_Route_A_F1_6"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_2_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{B1D69AC9EAA2E333}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2355
+       m_Spawn GC_AIGroupSpawn "{7F9D4EF1DAE714F1}" {
+        m_sLocation "Spawn_3_Route_A_F1_3"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_3_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{CC3435134EEAA5D4}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2357
+       m_Spawn GC_AIGroupSpawn "{36E7EEE10B758E9F}" {
+        m_sLocation "Spawn_4_Route_A_F1_5"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_4_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{4766E8261159761E}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2359
+       m_Spawn GC_AIGroupSpawn "{D60EE7ADAD8AFC08}" {
+        m_sLocation "Spawn_5_Route_A_F1_8"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_5_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{A232EADA842E7168}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2521
+       m_Spawn GC_AIGroupSpawn "{C1B65F6B5DCCC681}" {
+        m_sLocation "Spawn_1_Route_A_F1_10"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_1_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{16CF5DEFE09D36E2}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2523
+       m_Spawn GC_AIGroupSpawn "{454E4F5197CD0279}" {
+        m_sLocation "Spawn_3_Route_B_MG_8"
+        m_sPrefab "{6FD18265B1F81D25}worlds/Perfk/Prefabs/Groups/PK_MUJ_03_MG_Fighters.et"
+        m_aWaypoints {
+         "Spawn_3_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{474F1BEBE02DF132}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2525
+       m_Spawn GC_AIGroupSpawn "{52410539674E813E}" {
+        m_sLocation "Spawn_5_Route_B_F1_4"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_5_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{6551B722293039F5}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2701
+       m_Spawn GC_AIGroupSpawn "{06258327942D8D49}" {
+        m_sLocation "Spawn_4_Route_A_F1_6"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_4_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{36A6AB33CDEA806E}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2703
+       m_Spawn GC_AIGroupSpawn "{778C3BE4BF02400D}" {
+        m_sLocation "Spawn_5_Route_A_F1_9"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_5_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{9E30A7758A08F6EA}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2705
+       m_Spawn GC_AIGroupSpawn "{1F77AAEBE43B6273}" {
+        m_sLocation "Spawn_7_Route_A_F1_8"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_7_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{C421A96B11761E23}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2707
+       m_Spawn GC_AIGroupSpawn "{8A1A0567FAD152E7}" {
+        m_sLocation "Spawn_9_Route_A_F1_8"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_9_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{6AC58A08493E65C3}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2709
+       m_Spawn GC_AIGroupSpawn "{E48BD587D2AC6F30}" {
+        m_sLocation "Spawn_4_Route_A_F1_7"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_4_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{0BA4D3D3ECC522A3}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2881
+       m_Spawn GC_AIGroupSpawn "{72E6771BAFC32712}" {
+        m_sLocation "Spawn_2_Route_A_F1_7"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_2_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{0BF35B83C296ADBC}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2883
+       m_Spawn GC_AIGroupSpawn "{2AC69199ED43E082}" {
+        m_sLocation "Spawn_3_Route_B_F1_8"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_3_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{4880A5E59409F31A}" {
+       m_bScheduleAction 1
+       m_fActionDelay 2885
+       m_Spawn GC_AIGroupSpawn "{FB5392A9C232EE90}" {
+        m_sLocation "Spawn_6_Route_B_F1_2"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_6_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{54B4399E58B6F99C}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3061
+       m_Spawn GC_AIGroupSpawn "{B1139B7BFEDBEE81}" {
+        m_sLocation "Spawn_1_Route_B_AT_7"
+        m_sPrefab "{247DB5CD3CBA7418}worlds/Perfk/Prefabs/Groups/PK_MUJ_03_AT_Fighters.et"
+        m_aWaypoints {
+         "Spawn_1_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{27B27CBB73535200}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3063
+       m_Spawn GC_AIGroupSpawn "{43ACD29DF03E0D11}" {
+        m_sLocation "Spawn_1_Route_A_F1_11"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_1_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{DBD12E34300EBD32}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3065
+       m_Spawn GC_AIGroupSpawn "{8DB776D83DCC33D6}" {
+        m_sLocation "Spawn_4_Route_A_F1_8"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_4_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{D436C1F2F2F4C602}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3067
+       m_Spawn GC_AIGroupSpawn "{91AB3E9FFE9F7087}" {
+        m_sLocation "Spawn_8_Route_A_F1_8"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_8_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{C8FCF80E7C7BE22C}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3241
+       m_Spawn GC_AIGroupSpawn "{A0D3C7CC40D9155E}" {
+        m_sLocation "Spawn_2_Route_A_F1_8"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_2_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{3D4B7D6AB242CA3B}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3243
+       m_Spawn GC_AIGroupSpawn "{F6BD4B7D9779805B}" {
+        m_sLocation "Spawn_4_Route_A_F1_9"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_4_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{B6789E4A7B4E5F62}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3245
+       m_Spawn GC_AIGroupSpawn "{1F44813C07B6651B}" {
+        m_sLocation "Spawn_6_Route_A_F1_7"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_6_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{F5DC0B16D5E347B4}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3247
+       m_Spawn GC_AIGroupSpawn "{0E22C5F28B17A0B9}" {
+        m_sLocation "Spawn_9_Route_A_F1_9"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_9_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{1534CF30DD07CAB4}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3421
+       m_Spawn GC_AIGroupSpawn "{8A402DFFA5C62BD4}" {
+        m_sLocation "Spawn_3_Route_A_F1_4"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_3_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{AE46758F68BE9FFE}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3423
+       m_Spawn GC_AIGroupSpawn "{95FED36F70EF57CF}" {
+        m_sLocation "Spawn_3_Route_B_F1_9"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_3_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{DCEE054FA80E472D}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3425
+       m_Spawn GC_AIGroupSpawn "{1D75849AC0315CDF}" {
+        m_sLocation "Spawn_5_Route_B_F1_5"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_5_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{A761F57673870771}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3427
+       m_Spawn GC_AIGroupSpawn "{1472B754D052D41B}" {
+        m_sLocation "Spawn_5_Route_A_F1_10"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_5_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{1971AFCD2AA2C956}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3429
+       m_Spawn GC_AIGroupSpawn "{3BFAAF98F2F28E9B}" {
+        m_sLocation "Spawn_7_Route_B_F1_6"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_7_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{77642AF3BE8E39EA}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3431
+       m_Spawn GC_AIGroupSpawn "{2475B7CE9219FCBD}" {
+        m_sLocation "Spawn_7_Route_A_F1_9"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_7_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{9668A1DF75FF1C5D}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3601
+       m_Spawn GC_AIGroupSpawn "{A62CB575466D38C0}" {
+        m_sLocation "Spawn_1_Route_A_AT_12"
+        m_sPrefab "{247DB5CD3CBA7418}worlds/Perfk/Prefabs/Groups/PK_MUJ_03_AT_Fighters.et"
+        m_aWaypoints {
+         "Spawn_1_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{659DC32D5DCC5D48}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3603
+       m_Spawn GC_AIGroupSpawn "{DDC9D3C2F55D00D4}" {
+        m_sLocation "Spawn_2_Route_A_MG_9"
+        m_sPrefab "{6FD18265B1F81D25}worlds/Perfk/Prefabs/Groups/PK_MUJ_03_MG_Fighters.et"
+        m_aWaypoints {
+         "Spawn_2_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{5533057FCCE3B818}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3605
+       m_Spawn GC_AIGroupSpawn "{56B9BE8E1F60153F}" {
+        m_sLocation "Spawn_4_Route_A_F1_10"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_4_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{EE578D88B5C894C5}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3607
+       m_Spawn GC_AIGroupSpawn "{86E4F9F9E52EDECE}" {
+        m_sLocation "Spawn_7_Route_A_F1_10"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_7_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{469568D887C8997E}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3609
+       m_Spawn GC_AIGroupSpawn "{6DD35E570ECC7872}" {
+        m_sLocation "Spawn_8_Route_A_F1_9"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_8_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{0787951F8900E207}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3611
+       m_Spawn GC_AIGroupSpawn "{08DF0251865BCBD5}" {
+        m_sLocation "Spawn_4_Route_A_F1_11"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_4_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{2D2307A563D0D665}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3613
+       m_Spawn GC_AIGroupSpawn "{190EF77BB0C225AF}" {
+        m_sLocation "Spawn_8_Route_A_F1_10"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_8_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{49FE0A38FA887A39}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3781
+       m_Spawn GC_AIGroupSpawn "{F32ECEB21BC518C3}" {
+        m_sLocation "Spawn_1_Route_B_F1_7"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_1_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{CB1DBE1F1BBE856C}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3783
+       m_Spawn GC_AIGroupSpawn "{CD691AD5F74623CC}" {
+        m_sLocation "Spawn_2_Route_A_F1_9"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_2_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{E5C6F4069C2F0309}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3785
+       m_Spawn GC_AIGroupSpawn "{B58E942982E2BFCE}" {
+        m_sLocation "Spawn_3_Route_A_F1_5"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_3_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{06DDA4F821823F84}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3787
+       m_Spawn GC_AIGroupSpawn "{0EF6A86EEC193374}" {
+        m_sLocation "Spawn_3_Route_B_F1_10"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_3_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{56F04B551DCE6858}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3789
+       m_Spawn GC_AIGroupSpawn "{6A03C70E319CDB2C}" {
+        m_sLocation "Spawn_4_Route_A_F1_12"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_4_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{499FF32AAB511D44}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3791
+       m_Spawn GC_AIGroupSpawn "{114FB72A53335ACB}" {
+        m_sLocation "Spawn_5_Route_A_F1_11"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_5_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{3AE1BFA4F438E0D6}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3793
+       m_Spawn GC_AIGroupSpawn "{2C4F2D13DD7B18A2}" {
+        m_sLocation "Spawn_5_Route_B_F1_6"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_5_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{48EE4243DFE9AF25}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3795
+       m_Spawn GC_AIGroupSpawn "{92A20C44AD3FD890}" {
+        m_sLocation "Spawn_6_Route_A_F1_8"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_6_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{DFD11B75B64CDC1E}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3797
+       m_Spawn GC_AIGroupSpawn "{F426B1E6A3FE862F}" {
+        m_sLocation "Spawn_6_Route_B_F1_3"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_6_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{C0FA5C6D0F147632}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3799
+       m_Spawn GC_AIGroupSpawn "{B28A40736FD9016D}" {
+        m_sLocation "Spawn_7_Route_A_F1_11"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_7_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{3F0B722E8C8F86C1}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3801
+       m_Spawn GC_AIGroupSpawn "{F12F327C5E48F6D6}" {
+        m_sLocation "Spawn_7_Route_B_F1_7"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_7_Route_B"
+        }
+       }
+      }
+      GC_SpawnAction "{B8AEE1137778FE95}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3803
+       m_Spawn GC_AIGroupSpawn "{011A014BA34E1F20}" {
+        m_sLocation "Spawn_8_Route_A_F1_11"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_8_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{E15A5512B60FFC44}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3805
+       m_Spawn GC_AIGroupSpawn "{50AC03C4DD248810}" {
+        m_sLocation "Spawn_9_Route_A_F1_10"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_9_Route_A"
+        }
+       }
+      }
+      GC_SpawnAction "{E835F8E76775B9EA}" {
+       m_bScheduleAction 1
+       m_fActionDelay 3807
+       m_Spawn GC_AIGroupSpawn "{23E7B7A5A9678536}" {
+        m_sLocation "Spawn_1_Route_A_F1_12"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Spawn_1_Route_A"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{EEAC3B5FE8DB986D}" {
+     m_sName "GC_MigratedSpawn_28DE54EBF6110AD3"
+     m_aConditions {
+      GC_AreaCondition "{054157E214BE1067}" {
+       m_sArea "PresenceTrigger_QRF"
+       m_Targets GC_NamedAreaTargets "{49A8B84DA035DB72}" {
+        m_aNames {
+         "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+        }
+        m_bCountMissingAsOutside 1
+        m_bExcludeDestroyed 1
+       }
+       m_Requirement GC_LivingProportion "{DAEE1A25F29170E7}" {
+        m_fRequiredProportion 0.1
+        m_bWholeNumberQuotient 1
+       }
+       m_Capture GC_AreaCaptureOptions "{37B7999A93105D3C}" {
+        m_fSeconds 0
+        m_bUseElapsedTime 1
+        m_iInterruption 3
+        m_bStopAfterFirstChange 1
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DBD30E411636A472}" {
+       m_sMessage "GC_MigratedSpawn_28DE54EBF6110AD3"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{095C01187BEE6163}" {
+     m_sName "GC_MigratedSpawn_28DE54EBF6110AD3 (0s)"
+     m_aConditions {
+      GC_MissionEventCondition "{B44D22B63B8357F0}" {
+       m_sEventName "GC_MigratedSpawn_28DE54EBF6110AD3"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{095C01187BEE6163}" {
+       m_Spawn GC_PrefabSpawn "{62BE5DB48363A9B7}" {
+        m_sLocation "GC_Spawner_28DE54EBF6110AD3"
+        m_sPrefab "{6650B2B969248F4C}Prefabs/Structures/Rock/Afghan_Rock/GraniteCliff_Afghan_03.et"
+       }
+      }
+     }
+    }
+    GC_Event "{FA6F6DEE3E6EA072}" {
+     m_sName "GC_MigratedSpawn_DADE6807C43D59CB"
+     m_aConditions {
+      GC_GameModeStateCondition "{D103824916C8305E}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{366B48688141628C}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{EDEEF031A5A14753}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_AreaCondition "{15DD458A1B49E3B9}" {
+           m_sArea "PresenceTrigger_QRF"
+           m_Targets GC_NamedAreaTargets "{E5659C1E2B3DFFF4}" {
+            m_aNames {
+             "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+            }
+            m_bCountMissingAsOutside 1
+            m_bExcludeDestroyed 1
+           }
+           m_Requirement GC_LivingProportion "{E397FA93ADE1A640}" {
+            m_fRequiredProportion 0.1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{426DF1CE541BABED}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_MissionFlagCondition "{8F3E1CDCFA29B3AA}" {
+           m_sFlagName "Ambush_01_Random"
+          }
+         }
+        }
+        GC_MissionFlagCondition "{806EB72557BA49D9}" {
+         m_sFlagName "Ambush_01_Trigger"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{3775F7C06056292F}" {
+       m_sMessage "GC_MigratedSpawn_DADE6807C43D59CB"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{254857C5BF6DF5F7}" {
+     m_sName "GC_MigratedSpawn_DADE6807C43D59CB (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{C60140E89F6C8101}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{B53C9E23B3CE50FF}" {
+       m_sEventName "GC_MigratedSpawn_DADE6807C43D59CB"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{254857C5BF6DF5F7}" {
+       m_Spawn GC_AIGroupSpawn "{B3A6D788BD1D4BBA}" {
+        m_sLocation "ambush_01_inf"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Ambush_01_SD"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{5005D131FB5250CF}" {
+     m_sName "GC_MigratedSpawn_7102EA3ABBD9856A"
+     m_aConditions {
+      GC_GameModeStateCondition "{7AF898F11F2C98E1}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{AE947FA256FE17AF}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{B05F5000AC70E5B2}" {
+         m_sArea "PresenceTrigger_QRF"
+         m_Targets GC_NamedAreaTargets "{B165CD5110BB418E}" {
+          m_aNames {
+           "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+          }
+          m_bCountMissingAsOutside 1
+          m_bExcludeDestroyed 1
+         }
+         m_Requirement GC_LivingProportion "{89A6C224D6E04FC2}" {
+          m_fRequiredProportion 0.1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{E1062C7A8E83F681}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_MissionFlagCondition "{E0751833520A91FD}" {
+         m_sFlagName "Ambush_01_Random"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{78C3956EB86FC1EC}" {
+       m_sMessage "GC_MigratedSpawn_7102EA3ABBD9856A"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{8B64F9BBED608067}" {
+     m_sName "GC_MigratedSpawn_7102EA3ABBD9856A (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{7FE8A541603EC6E5}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{57563D7DEE3309BA}" {
+       m_sEventName "GC_MigratedSpawn_7102EA3ABBD9856A"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{8B64F9BBED608067}" {
+       m_Spawn GC_CrewedVehicleSpawn "{23CBCC9260451FE8}" {
+        m_sLocation "ambush_01_inf2"
+        m_sPrefab "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{9E067F54D0368281}" {
+          m_aStations {
+           GC_SpawnCrewStation "{505CFB7FD3B20E36}" {
+            m_bDriver 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{559ECF2D38FC5FBA}" {
+     m_sName "GC_MigratedSpawn_84E9F219FE49DCDA"
+     m_aConditions {
+      GC_GameModeStateCondition "{50823DE95155C133}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{2C2F04DF47ADB253}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{53337723409BA23E}" {
+         m_sArea "PresenceTrigger_QRF"
+         m_Targets GC_NamedAreaTargets "{0540BB615D7C7E6B}" {
+          m_aNames {
+           "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+          }
+          m_bCountMissingAsOutside 1
+          m_bExcludeDestroyed 1
+         }
+         m_Requirement GC_LivingProportion "{F132892CCC56A87D}" {
+          m_fRequiredProportion 0.1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{5B358A1C02491469}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_MissionFlagCondition "{6B90CD8154DC254B}" {
+         m_sFlagName "Ambush_01_Random"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8B815D30B357EEB2}" {
+       m_sMessage "GC_MigratedSpawn_84E9F219FE49DCDA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{057AF5D203E715E3}" {
+     m_sName "GC_MigratedSpawn_84E9F219FE49DCDA (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{CB5AB0FE4258D4A6}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{75D6672EA95A645F}" {
+       m_sEventName "GC_MigratedSpawn_84E9F219FE49DCDA"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{057AF5D203E715E3}" {
+       m_Spawn GC_CrewedVehicleSpawn "{F53A34E30D4C8B94}" {
+        m_sLocation "ambush_01_inf3"
+        m_sPrefab "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{CF96B11613BD0877}" {
+          m_aStations {
+           GC_SpawnCrewStation "{B79B4841649B44F7}" {
+            m_bDriver 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{37965E90DCD01591}" {
+     m_sName "GC_MigratedSpawn_8148DFED742B7A85"
+     m_aConditions {
+      GC_GameModeStateCondition "{12D096B9E41D4DB3}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{87AC25C1BCD06370}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{AF5FDA26EDCB0FD2}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_AreaCondition "{F209BEDAFBA5A253}" {
+           m_sArea "PresenceTrigger_QRF"
+           m_Targets GC_NamedAreaTargets "{6EADC8F83737887F}" {
+            m_aNames {
+             "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+            }
+            m_bCountMissingAsOutside 1
+            m_bExcludeDestroyed 1
+           }
+           m_Requirement GC_LivingProportion "{41AAA96447918981}" {
+            m_fRequiredProportion 0.1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{21147CAB151B12CA}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_MissionFlagCondition "{FFE70DAE5AF6EAD7}" {
+           m_sFlagName "Ambush_01_Random"
+          }
+         }
+        }
+        GC_MissionFlagCondition "{C436FB3F3E06A2CD}" {
+         m_sFlagName "Ambush_01_Trigger"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1823B0DAFCEF11BC}" {
+       m_sMessage "GC_MigratedSpawn_8148DFED742B7A85"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{BA60D7E642F71BFE}" {
+     m_sName "GC_MigratedSpawn_8148DFED742B7A85 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{48274FF61F0504AC}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{96297EF347CA1F54}" {
+       m_sEventName "GC_MigratedSpawn_8148DFED742B7A85"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{BA60D7E642F71BFE}" {
+       m_Spawn GC_AIGroupSpawn "{66624CDE8C494E70}" {
+        m_sLocation "ambush_01_inf4"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Ambush_01_SD"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{890B54B6DC30643F}" {
+     m_sName "GC_MigratedSpawn_D66E8904A8B67666"
+     m_aConditions {
+      GC_GameModeStateCondition "{A89C1E4C7440450B}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{32169942BED506B4}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{A28F1494BBCF76C7}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_AreaCondition "{7C36A96233C3861C}" {
+           m_sArea "PresenceTrigger_QRF"
+           m_Targets GC_NamedAreaTargets "{64D65B617E38110C}" {
+            m_aNames {
+             "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+            }
+            m_bCountMissingAsOutside 1
+            m_bExcludeDestroyed 1
+           }
+           m_Requirement GC_LivingProportion "{73DFC0CAE72A70A7}" {
+            m_fRequiredProportion 0.1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{494628A6A5872AB1}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_MissionFlagCondition "{F0B6CFB2DE9930AF}" {
+           m_sFlagName "Ambush_01_Random"
+          }
+         }
+        }
+        GC_MissionFlagCondition "{97C5DADA8A9CE90A}" {
+         m_sFlagName "Ambush_01_Trigger"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{7B56A7E812CB5B13}" {
+       m_sMessage "GC_MigratedSpawn_D66E8904A8B67666"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{1DBBF0622F0F4C5A}" {
+     m_sName "GC_MigratedSpawn_D66E8904A8B67666 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{9A088A77EDBDE8B4}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{3715F89DFA4DAE8E}" {
+       m_sEventName "GC_MigratedSpawn_D66E8904A8B67666"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{1DBBF0622F0F4C5A}" {
+       m_Spawn GC_AIGroupSpawn "{698CC9B06493A27A}" {
+        m_sLocation "ambush_02_inf5"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Ambush_02_SD"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{6D2C9E72FEE4B84A}" {
+     m_sName "GC_MigratedSpawn_85A9975463D80E32"
+     m_aConditions {
+      GC_GameModeStateCondition "{C8F6C28B056DACDC}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{76B50FFD425B30A8}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{E4ABA892AACBF078}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_AreaCondition "{EEB81023869188B6}" {
+           m_sArea "PresenceTrigger_QRF"
+           m_Targets GC_NamedAreaTargets "{D9AF0ACFD815867D}" {
+            m_aNames {
+             "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+            }
+            m_bCountMissingAsOutside 1
+            m_bExcludeDestroyed 1
+           }
+           m_Requirement GC_LivingProportion "{E5891650044EB3D4}" {
+            m_fRequiredProportion 0.1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{A650B18355402F39}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_MissionFlagCondition "{AB62042131A27F30}" {
+           m_sFlagName "Ambush_02_Random"
+          }
+         }
+        }
+        GC_MissionFlagCondition "{B4C36F4FCC23A0AA}" {
+         m_sFlagName "Ambush_02_Trigger"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0449BA13334E28D9}" {
+       m_sMessage "GC_MigratedSpawn_85A9975463D80E32"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{CB9DFFF586AD2DB6}" {
+     m_sName "GC_MigratedSpawn_85A9975463D80E32 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{DF4B8E5DC22675FE}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{33AA0E143B9B84DA}" {
+       m_sEventName "GC_MigratedSpawn_85A9975463D80E32"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{CB9DFFF586AD2DB6}" {
+       m_Spawn GC_CrewedVehicleSpawn "{D231015D9CECF777}" {
+        m_sLocation "ambush_02_Truck"
+        m_sPrefab "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{E9FE27A326793172}" {
+          m_aStations {
+           GC_SpawnCrewStation "{43FD52C6BBA51A47}" {
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Ambush_02_SD"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{FC017E800552652D}" {
+     m_sName "GC_MigratedSpawn_156126D9646BF3CC"
+     m_aConditions {
+      GC_GameModeStateCondition "{23A34B1FA9D3A1F5}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{3B956CDAE5B149FB}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{EA4C778A638A0C0E}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_AreaCondition "{5CAEBE849BA3B0B5}" {
+           m_sArea "PresenceTrigger_QRF"
+           m_Targets GC_NamedAreaTargets "{BAEA9205269F7FED}" {
+            m_aNames {
+             "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+            }
+            m_bCountMissingAsOutside 1
+            m_bExcludeDestroyed 1
+           }
+           m_Requirement GC_LivingProportion "{E5602B18131AC4C3}" {
+            m_fRequiredProportion 0.1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{F95D6A4BF3066CEC}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_MissionFlagCondition "{19BAE35D0A9B8985}" {
+           m_sFlagName "Ambush_02_Random"
+          }
+         }
+        }
+        GC_MissionFlagCondition "{C98516EE64F81C0F}" {
+         m_sFlagName "Ambush_02_Trigger"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{4162721DE16D7C3B}" {
+       m_sMessage "GC_MigratedSpawn_156126D9646BF3CC"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{C912824DA55BA6D6}" {
+     m_sName "GC_MigratedSpawn_156126D9646BF3CC (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{81CA917490219BEF}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{7EF3ED1BE4AB42AA}" {
+       m_sEventName "GC_MigratedSpawn_156126D9646BF3CC"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{C912824DA55BA6D6}" {
+       m_Spawn GC_CrewedVehicleSpawn "{A097E68873040D85}" {
+        m_sLocation "ambush_02_TruckBlock"
+        m_sPrefab "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{208BE42AF86237F6}" {
+          m_aStations {
+           GC_SpawnCrewStation "{8FC54284C384DA85}" {
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+            }
+           }
+          }
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Ambush_02_forceMove"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{FBA2B4EC09103B98}" {
+     m_sName "GC_MigratedSpawn_EDD188BA9E75B7D9"
+     m_aConditions {
+      GC_GameModeStateCondition "{52A152783E5D274C}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{E0B135FA49DFBA69}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{66C3B5536DB3FD90}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_AreaCondition "{8A7BB1F3167664FD}" {
+           m_sArea "PresenceTrigger_QRF"
+           m_Targets GC_NamedAreaTargets "{F9F6F2A9CE4A0EF9}" {
+            m_aNames {
+             "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+            }
+            m_bCountMissingAsOutside 1
+            m_bExcludeDestroyed 1
+           }
+           m_Requirement GC_LivingProportion "{9992CD495D1414C8}" {
+            m_fRequiredProportion 0.1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{69F228498E2853CA}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_MissionFlagCondition "{69934B82E7BA468A}" {
+           m_sFlagName "Ambush_02_Random"
+          }
+         }
+        }
+        GC_MissionFlagCondition "{F0AD239ED5FB15DA}" {
+         m_sFlagName "Ambush_02_Trigger"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DC631913FB0FFC99}" {
+       m_sMessage "GC_MigratedSpawn_EDD188BA9E75B7D9"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{35F237AF1D695B7A}" {
+     m_sName "GC_MigratedSpawn_EDD188BA9E75B7D9 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{56517381EDA68F07}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{36A07306E6471CB6}" {
+       m_sEventName "GC_MigratedSpawn_EDD188BA9E75B7D9"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{35F237AF1D695B7A}" {
+       m_Spawn GC_CrewedVehicleSpawn "{B995B4CDE58CAC8A}" {
+        m_sLocation "ambush_02_truck"
+        m_sPrefab "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{2AE50C0FC1818F9B}" {
+          m_aStations {
+           GC_SpawnCrewStation "{1D253535155987D9}" {
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Ambush_02_SD"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{5EA65B79EB5993AA}" {
+     m_sName "GC_MigratedSpawn_507FA53570F81F0D"
+     m_aConditions {
+      GC_GameModeStateCondition "{4DDF325A361516CA}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{84995EFB4CF9B2CE}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{71DD4E04113ED08E}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_AreaCondition "{3E57146918462BCF}" {
+           m_sArea "PresenceTrigger_QRF"
+           m_Targets GC_NamedAreaTargets "{AE44AADD9F599CD7}" {
+            m_aNames {
+             "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+            }
+            m_bCountMissingAsOutside 1
+            m_bExcludeDestroyed 1
+           }
+           m_Requirement GC_LivingProportion "{0A06E90E1A44A0A4}" {
+            m_fRequiredProportion 0.1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{0B8ED8B8CDF0FCFE}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_MissionFlagCondition "{67BC283ACACE1AEF}" {
+           m_sFlagName "Ambush_03_Random"
+          }
+         }
+        }
+        GC_MissionFlagCondition "{3DFFD85FEEC9A51B}" {
+         m_sFlagName "Ambush_03_Trigger"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{AD18C38C245B8C79}" {
+       m_sMessage "GC_MigratedSpawn_507FA53570F81F0D"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9B2B86FCA60263A4}" {
+     m_sName "GC_MigratedSpawn_507FA53570F81F0D (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{E87EC82D10DEED53}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{C570C3E87FB5E8A5}" {
+       m_sEventName "GC_MigratedSpawn_507FA53570F81F0D"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{9B2B86FCA60263A4}" {
+       m_Spawn GC_AIGroupSpawn "{3148123A54C04954}" {
+        m_sLocation "Ambush_03_inf4"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Ambush_03_SD"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{82849505C68B51E6}" {
+     m_sName "GC_MigratedSpawn_32FCEBD30FB162A2"
+     m_aConditions {
+      GC_GameModeStateCondition "{C49C2BE0E35DB52A}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{86ACBAB72A42461C}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{5FA173936416414B}" {
+         m_sArea "PresenceTrigger_QRF"
+         m_Targets GC_NamedAreaTargets "{BF751E1C6275354A}" {
+          m_aNames {
+           "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+          }
+          m_bCountMissingAsOutside 1
+          m_bExcludeDestroyed 1
+         }
+         m_Requirement GC_LivingProportion "{519E9A484DBB6E00}" {
+          m_fRequiredProportion 0.1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{A84E8079B4914854}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_MissionFlagCondition "{4CA9AF2FA0DE4E31}" {
+         m_sFlagName "Ambush_03_Random"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{25B85EFAE2EDBAD5}" {
+       m_sMessage "GC_MigratedSpawn_32FCEBD30FB162A2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{0FF25E35431635FA}" {
+     m_sName "GC_MigratedSpawn_32FCEBD30FB162A2 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{CE9BD9D4D5A06186}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{A36DCBA700124506}" {
+       m_sEventName "GC_MigratedSpawn_32FCEBD30FB162A2"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{0FF25E35431635FA}" {
+       m_Spawn GC_PrefabSpawn "{6C0F5BF14809F858}" {
+        m_sLocation "ambush_03_mine"
+        m_sPrefab "{F5C61D19C5FE5209}worlds/Perfk/PrefabsEditable/EffectsModules/Mine/PK_EffectModule_MineField_Single_USSR.et"
+       }
+      }
+     }
+    }
+    GC_Event "{ACE5FBD575F6E555}" {
+     m_sName "GC_MigratedSpawn_3C6BBA498003887F"
+     m_aConditions {
+      GC_GameModeStateCondition "{142B233841120A16}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{4E99645FB15BCB2A}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{0EC83BD16741D816}" {
+         m_sArea "PresenceTrigger_QRF"
+         m_Targets GC_NamedAreaTargets "{F461879FD3E189F1}" {
+          m_aNames {
+           "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+          }
+          m_bCountMissingAsOutside 1
+          m_bExcludeDestroyed 1
+         }
+         m_Requirement GC_LivingProportion "{D27FDAF6883222FC}" {
+          m_fRequiredProportion 0.1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{2558F56D130FF185}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_MissionFlagCondition "{553E12CDCE73BBC0}" {
+         m_sFlagName "Ambush_03_Random"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{DF92494BDB343276}" {
+       m_sMessage "GC_MigratedSpawn_3C6BBA498003887F"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{44C8CA6E5A55E2E3}" {
+     m_sName "GC_MigratedSpawn_3C6BBA498003887F (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{758D4BE02B302EB4}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{CE0CBB23BA550B6B}" {
+       m_sEventName "GC_MigratedSpawn_3C6BBA498003887F"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{44C8CA6E5A55E2E3}" {
+       m_Spawn GC_PrefabSpawn "{1692B2443A86B92E}" {
+        m_sLocation "ambush_03_mine2"
+        m_sPrefab "{F5C61D19C5FE5209}worlds/Perfk/PrefabsEditable/EffectsModules/Mine/PK_EffectModule_MineField_Single_USSR.et"
+       }
+      }
+     }
+    }
+    GC_Event "{721B0D225CABA046}" {
+     m_sName "GC_MigratedSpawn_CAF5F7410E21CF1E"
+     m_aConditions {
+      GC_GameModeStateCondition "{9E6FB9283E26064A}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{C10710333F19BD40}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{680460166E944F20}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_AreaCondition "{CD59697213B52C3C}" {
+           m_sArea "PresenceTrigger_QRF"
+           m_Targets GC_NamedAreaTargets "{D470466CBB47BCAB}" {
+            m_aNames {
+             "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+            }
+            m_bCountMissingAsOutside 1
+            m_bExcludeDestroyed 1
+           }
+           m_Requirement GC_LivingProportion "{489FAFFBB8F27B8D}" {
+            m_fRequiredProportion 0.1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{6447FFD1F2CC6474}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_MissionFlagCondition "{E84D4A897C547550}" {
+           m_sFlagName "Ambush_03_Random"
+          }
+         }
+        }
+        GC_MissionFlagCondition "{0C0B9E6D822217DA}" {
+         m_sFlagName "Ambush_03_Trigger"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{25B41F6763765A32}" {
+       m_sMessage "GC_MigratedSpawn_CAF5F7410E21CF1E"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F659D1B108C930F3}" {
+     m_sName "GC_MigratedSpawn_CAF5F7410E21CF1E (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{2D38F537C863844F}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{1E46B7AE30BB8DAB}" {
+       m_sEventName "GC_MigratedSpawn_CAF5F7410E21CF1E"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{F659D1B108C930F3}" {
+       m_Spawn GC_AIGroupSpawn "{ADB5091605FB1B6B}" {
+        m_sLocation "Ambush_03_inf2"
+        m_sPrefab "{247DB5CD3CBA7418}worlds/Perfk/Prefabs/Groups/PK_MUJ_03_AT_Fighters.et"
+        m_aWaypoints {
+         "Ambush_03_SD"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{062C197F9302039B}" {
+     m_sName "GC_MigratedSpawn_A3933628305E8957"
+     m_aConditions {
+      GC_GameModeStateCondition "{929D5C3EC7E3778F}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{FE16FCA9F2660357}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{8228AB9B896E9AA4}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_AreaCondition "{B379118902C42CE5}" {
+           m_sArea "PresenceTrigger_QRF"
+           m_Targets GC_NamedAreaTargets "{32C3DB6179955244}" {
+            m_aNames {
+             "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+            }
+            m_bCountMissingAsOutside 1
+            m_bExcludeDestroyed 1
+           }
+           m_Requirement GC_LivingProportion "{DCB34D89AFAFC50E}" {
+            m_fRequiredProportion 0.1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{CD8E683F7A325E03}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_MissionFlagCondition "{50CAD2B6E0C5439C}" {
+           m_sFlagName "Ambush_03_Random"
+          }
+         }
+        }
+        GC_MissionFlagCondition "{69A737251EEC26C1}" {
+         m_sFlagName "Ambush_03_Trigger"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8139375AAB2306D4}" {
+       m_sMessage "GC_MigratedSpawn_A3933628305E8957"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F0B14E87E13A9039}" {
+     m_sName "GC_MigratedSpawn_A3933628305E8957 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{DE3527B4ACFF6298}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{6FC9C1C828A760CD}" {
+       m_sEventName "GC_MigratedSpawn_A3933628305E8957"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{F0B14E87E13A9039}" {
+       m_Spawn GC_AIGroupSpawn "{C4EDA43D937CB4C9}" {
+        m_sLocation "Ambush_03_inf3"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Ambush_03_SD"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{2769FEE7A77EDD91}" {
+     m_sName "GC_MigratedSpawn_74928F691071ECF7"
+     m_aConditions {
+      GC_GameModeStateCondition "{8E89529322A935BF}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{5FF39FCC349C93A1}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{187FA7B83383E126}" {
+         m_sArea "PresenceTrigger_QRF"
+         m_Targets GC_NamedAreaTargets "{43A48D673E2B6D8B}" {
+          m_aNames {
+           "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+          }
+          m_bCountMissingAsOutside 1
+          m_bExcludeDestroyed 1
+         }
+         m_Requirement GC_LivingProportion "{B33B095E6FB753F7}" {
+          m_fRequiredProportion 0.1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{A13555B1342B3CAA}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_MissionFlagCondition "{1E70CA7235FDAEDA}" {
+         m_sFlagName "Ambush_04_Random"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{BAC9C9E0CDCC23FE}" {
+       m_sMessage "GC_MigratedSpawn_74928F691071ECF7"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{00C72F29E006DEA8}" {
+     m_sName "GC_MigratedSpawn_74928F691071ECF7 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{D83ABEB79EBD6BF3}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{A8FB6DBC2D9FD32B}" {
+       m_sEventName "GC_MigratedSpawn_74928F691071ECF7"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{00C72F29E006DEA8}" {
+       m_Spawn GC_PrefabSpawn "{66545776B8A33503}" {
+        m_sLocation "ambush_04_mine"
+        m_sPrefab "{F5C61D19C5FE5209}worlds/Perfk/PrefabsEditable/EffectsModules/Mine/PK_EffectModule_MineField_Single_USSR.et"
+       }
+      }
+     }
+    }
+    GC_Event "{A9265B6DDFE6EEC6}" {
+     m_sName "GC_MigratedSpawn_88FED0718AF15CAB"
+     m_aConditions {
+      GC_GameModeStateCondition "{F1F9030314428A44}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{4D7010770F6B0A89}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{2971093F184B8EC1}" {
+         m_sArea "PresenceTrigger_QRF"
+         m_Targets GC_NamedAreaTargets "{2049CC8D0343CF84}" {
+          m_aNames {
+           "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+          }
+          m_bCountMissingAsOutside 1
+          m_bExcludeDestroyed 1
+         }
+         m_Requirement GC_LivingProportion "{7DE827DE5963FF04}" {
+          m_fRequiredProportion 0.1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{9189744CC4B98B49}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_MissionFlagCondition "{B7F2D34573B00B94}" {
+         m_sFlagName "Ambush_04_Random"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{12941E34ACFB9242}" {
+       m_sMessage "GC_MigratedSpawn_88FED0718AF15CAB"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F85B4409286CAC98}" {
+     m_sName "GC_MigratedSpawn_88FED0718AF15CAB (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{091D0E24BD9845EC}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{55A48BEDAAD11C57}" {
+       m_sEventName "GC_MigratedSpawn_88FED0718AF15CAB"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{F85B4409286CAC98}" {
+       m_Spawn GC_PrefabSpawn "{B15E0FFE72717EC1}" {
+        m_sLocation "ambush_04_mine2"
+        m_sPrefab "{F5C61D19C5FE5209}worlds/Perfk/PrefabsEditable/EffectsModules/Mine/PK_EffectModule_MineField_Single_USSR.et"
+       }
+      }
+     }
+    }
+    GC_Event "{0280C391CA89932E}" {
+     m_sName "GC_MigratedSpawn_8C706604E2159C4C"
+     m_aConditions {
+      GC_GameModeStateCondition "{0991BF8313DDBEC7}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{9DADECFF0A04BE78}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{822F31BB74FB5C3E}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_AreaCondition "{00D9FDDC1B325C72}" {
+           m_sArea "PresenceTrigger_QRF"
+           m_Targets GC_NamedAreaTargets "{A72C38590C90BE6E}" {
+            m_aNames {
+             "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+            }
+            m_bCountMissingAsOutside 1
+            m_bExcludeDestroyed 1
+           }
+           m_Requirement GC_LivingProportion "{203B7E60070E5BE1}" {
+            m_fRequiredProportion 0.1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{4A1D759EDC461A75}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_MissionFlagCondition "{477B5BDEC7A6FF5C}" {
+           m_sFlagName "Ambush_04_Random"
+          }
+         }
+        }
+        GC_MissionFlagCondition "{9CEFE22982F8E471}" {
+         m_sFlagName "Ambush_04_Trigger"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{852FDAF36185C657}" {
+       m_sMessage "GC_MigratedSpawn_8C706604E2159C4C"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9719A98C2D066F33}" {
+     m_sName "GC_MigratedSpawn_8C706604E2159C4C (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{07AC114677E9C41B}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{0C5E0C61C468DB98}" {
+       m_sEventName "GC_MigratedSpawn_8C706604E2159C4C"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{9719A98C2D066F33}" {
+       m_Spawn GC_AIGroupSpawn "{036CA10BADA7D953}" {
+        m_sLocation "Ambush_04_inf5"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Ambush_04_SD"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{8910BB254A8A272B}" {
+     m_sName "GC_MigratedSpawn_8797E031B4CDB7A0"
+     m_aConditions {
+      GC_GameModeStateCondition "{E040770D311751FD}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{87B4B73AE6511E46}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{EDA05A761D30E063}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_AreaCondition "{46553AA81B9FFF0A}" {
+           m_sArea "PresenceTrigger_QRF"
+           m_Targets GC_NamedAreaTargets "{EE79342C18435B26}" {
+            m_aNames {
+             "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+            }
+            m_bCountMissingAsOutside 1
+            m_bExcludeDestroyed 1
+           }
+           m_Requirement GC_LivingProportion "{835685CEE3D0BB7D}" {
+            m_fRequiredProportion 0.1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{0A7453A43AE380F1}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_MissionFlagCondition "{93D991BD6FD2615F}" {
+           m_sFlagName "Ambush_04_Random"
+          }
+         }
+        }
+        GC_MissionFlagCondition "{39E210FCF18CE485}" {
+         m_sFlagName "Ambush_04_Trigger"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{8F5455BDDDFAC4F2}" {
+       m_sMessage "GC_MigratedSpawn_8797E031B4CDB7A0"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7C231DCC8A9B5682}" {
+     m_sName "GC_MigratedSpawn_8797E031B4CDB7A0 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{DAC739B7567EF090}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{26CA515B5ACA43F1}" {
+       m_sEventName "GC_MigratedSpawn_8797E031B4CDB7A0"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{7C231DCC8A9B5682}" {
+       m_Spawn GC_AIGroupSpawn "{0276C36031B89920}" {
+        m_sLocation "Ambush_04_inf6"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Ambush_04_SD"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{3B02334D0BB883FA}" {
+     m_sName "GC_MigratedSpawn_9BCBE5B0DE6CE4D7"
+     m_aConditions {
+      GC_GameModeStateCondition "{7F97D48E114BBD91}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{F9BF26294C468883}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{706A93FFE0E17636}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_AreaCondition "{CF72694C7DCAB35D}" {
+           m_sArea "PresenceTrigger_QRF"
+           m_Targets GC_NamedAreaTargets "{39A2A5E88EC041E6}" {
+            m_aNames {
+             "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+            }
+            m_bCountMissingAsOutside 1
+            m_bExcludeDestroyed 1
+           }
+           m_Requirement GC_LivingProportion "{ED5641FF5CF2A07C}" {
+            m_fRequiredProportion 0.1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{A4B3CE3827964F9B}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_MissionFlagCondition "{6F0CA215E54B7816}" {
+           m_sFlagName "Ambush_04_Random"
+          }
+         }
+        }
+        GC_MissionFlagCondition "{593CBC7C98FD43CC}" {
+         m_sFlagName "Ambush_04_Trigger"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{058F5917601DA3F6}" {
+       m_sMessage "GC_MigratedSpawn_9BCBE5B0DE6CE4D7"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{22D84E355C07581F}" {
+     m_sName "GC_MigratedSpawn_9BCBE5B0DE6CE4D7 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{B8446BCD59432903}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{6F57805357FDAF0F}" {
+       m_sEventName "GC_MigratedSpawn_9BCBE5B0DE6CE4D7"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{22D84E355C07581F}" {
+       m_Spawn GC_CrewedVehicleSpawn "{3CCDED594883D893}" {
+        m_sLocation "Ambush_04_Truck2"
+        m_sPrefab "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{A4D129B52CFD4FBD}" {
+          m_aStations {
+           GC_SpawnCrewStation "{957753861C14DBD2}" {
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Ambush_04_SD"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{4FA4DA94E75CF6C5}" {
+     m_sName "GC_MigratedSpawn_0F579FEA808556C2"
+     m_aConditions {
+      GC_GameModeStateCondition "{B045F96A84F4532A}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{918B11301F18678E}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{2CF941C0D99DCF4D}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_AreaCondition "{020A9FFA282D0064}" {
+           m_sArea "PresenceTrigger_QRF"
+           m_Targets GC_NamedAreaTargets "{2951F339B824951C}" {
+            m_aNames {
+             "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+            }
+            m_bCountMissingAsOutside 1
+            m_bExcludeDestroyed 1
+           }
+           m_Requirement GC_LivingProportion "{728EF9E3897315E4}" {
+            m_fRequiredProportion 0.1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{ADA3C9620013563B}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_MissionFlagCondition "{F29B95296828022E}" {
+           m_sFlagName "Ambush_04_Random"
+          }
+         }
+        }
+        GC_MissionFlagCondition "{1F67BBCC6C04AC15}" {
+         m_sFlagName "Ambush_04_Trigger"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{32E7705697C0C78E}" {
+       m_sMessage "GC_MigratedSpawn_0F579FEA808556C2"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{9D503CBEB1FBB2BA}" {
+     m_sName "GC_MigratedSpawn_0F579FEA808556C2 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{4C7099898FC43985}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{017B4FEB2E87D250}" {
+       m_sEventName "GC_MigratedSpawn_0F579FEA808556C2"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{9D503CBEB1FBB2BA}" {
+       m_Spawn GC_CrewedVehicleSpawn "{C605F50D4BB2B8C1}" {
+        m_sLocation "Ambush_04_Truck3"
+        m_sPrefab "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{4792B7A598463A1E}" {
+          m_aStations {
+           GC_SpawnCrewStation "{B3EF55B5AE870837}" {
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Ambush_04_SD"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{9CD44D4D25675637}" {
+     m_sName "GC_MigratedSpawn_69795696B37AEF19"
+     m_aConditions {
+      GC_GameModeStateCondition "{A72CD362E069A631}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{B6490A13FBFB6823}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{E5B6921C70A05F6E}" {
+         m_sArea "PresenceTrigger_QRF"
+         m_Targets GC_NamedAreaTargets "{DCF8CBD3688DEE23}" {
+          m_aNames {
+           "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+          }
+          m_bCountMissingAsOutside 1
+          m_bExcludeDestroyed 1
+         }
+         m_Requirement GC_LivingProportion "{95227EB315A60E3C}" {
+          m_fRequiredProportion 0.1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{F6FA6B169407D0A5}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_MissionFlagCondition "{9FEDB746A977B6A2}" {
+         m_sFlagName "Ambush_05_Random"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9E57D5529BD1B92D}" {
+       m_sMessage "GC_MigratedSpawn_69795696B37AEF19"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{55A4A95211B55C19}" {
+     m_sName "GC_MigratedSpawn_69795696B37AEF19 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{1DF29975B865C0DA}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{E30294E30DEDDA6C}" {
+       m_sEventName "GC_MigratedSpawn_69795696B37AEF19"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{55A4A95211B55C19}" {
+       m_Spawn GC_PrefabSpawn "{55F8752B4D9F674B}" {
+        m_sLocation "ambush_05_mine3"
+        m_sPrefab "{F5C61D19C5FE5209}worlds/Perfk/PrefabsEditable/EffectsModules/Mine/PK_EffectModule_MineField_Single_USSR.et"
+       }
+      }
+     }
+    }
+    GC_Event "{C4DF3BE23DEC553D}" {
+     m_sName "GC_MigratedSpawn_4C6D0ABAEF2F72CA"
+     m_aConditions {
+      GC_GameModeStateCondition "{F3613B56F37B418F}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{AB245CB5EBA2738F}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{D3CE654419053C55}" {
+         m_sArea "PresenceTrigger_QRF"
+         m_Targets GC_NamedAreaTargets "{F33BAE92D9E68140}" {
+          m_aNames {
+           "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+          }
+          m_bCountMissingAsOutside 1
+          m_bExcludeDestroyed 1
+         }
+         m_Requirement GC_LivingProportion "{5358B9F763826969}" {
+          m_fRequiredProportion 0.1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{E3A89CCD5D457CB2}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_MissionFlagCondition "{C72DB24F6E34729D}" {
+         m_sFlagName "Ambush_05_Random"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{1A492068CD5C6C90}" {
+       m_sMessage "GC_MigratedSpawn_4C6D0ABAEF2F72CA"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7796CDD62C290267}" {
+     m_sName "GC_MigratedSpawn_4C6D0ABAEF2F72CA (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{734A10A33E8D2B7B}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{72104F6955D16771}" {
+       m_sEventName "GC_MigratedSpawn_4C6D0ABAEF2F72CA"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{7796CDD62C290267}" {
+       m_Spawn GC_PrefabSpawn "{A6C158F43ECEBC9B}" {
+        m_sLocation "GC_Spawner_4C6D0ABAEF2F72CA"
+        m_sPrefab "{B67A4797AED7B3BC}Prefabs/Structures/Wreck/ikarus.et"
+       }
+      }
+     }
+    }
+    GC_Event "{107A163CAB8DE0EB}" {
+     m_sName "GC_MigratedSpawn_091AE87FF7E50494"
+     m_aConditions {
+      GC_GameModeStateCondition "{EC7F9A53C7006797}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{2F210420EB42FEBD}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{B6A3E8286B3AA78E}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_AreaCondition "{AF97148C158864F6}" {
+           m_sArea "PresenceTrigger_QRF"
+           m_Targets GC_NamedAreaTargets "{E1F88F2B851F832D}" {
+            m_aNames {
+             "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+            }
+            m_bCountMissingAsOutside 1
+            m_bExcludeDestroyed 1
+           }
+           m_Requirement GC_LivingProportion "{550520FB8A577E91}" {
+            m_fRequiredProportion 0.1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{CA6A4A2C83E4B2DA}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_MissionFlagCondition "{7955E54C78C372AE}" {
+           m_sFlagName "Ambush_04_Random"
+          }
+         }
+        }
+        GC_MissionFlagCondition "{08E7AE8994CA31B6}" {
+         m_sFlagName "Ambush_04_Trigger"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{85E6B4D38B13F4BC}" {
+       m_sMessage "GC_MigratedSpawn_091AE87FF7E50494"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{F72038BCB2537CF8}" {
+     m_sName "GC_MigratedSpawn_091AE87FF7E50494 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{C24361206EED91CF}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{DE8682FCD21BA176}" {
+       m_sEventName "GC_MigratedSpawn_091AE87FF7E50494"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{F72038BCB2537CF8}" {
+       m_Spawn GC_AIGroupSpawn "{9940E60C1A286E40}" {
+        m_sLocation "Ambush_05_AT"
+        m_sPrefab "{247DB5CD3CBA7418}worlds/Perfk/Prefabs/Groups/PK_MUJ_03_AT_Fighters.et"
+        m_aWaypoints {
+         "Ambush_05_SD"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{F4C84DB4E646E651}" {
+     m_sName "GC_MigratedSpawn_7040F9C724FA3399"
+     m_aConditions {
+      GC_GameModeStateCondition "{F5AA69F3C08C3135}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{2C56A31F12B27F6C}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_AreaCondition "{FD968B27B6F95E5E}" {
+         m_sArea "PresenceTrigger_QRF"
+         m_Targets GC_NamedAreaTargets "{D7435C33413E5BDB}" {
+          m_aNames {
+           "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+          }
+          m_bCountMissingAsOutside 1
+          m_bExcludeDestroyed 1
+         }
+         m_Requirement GC_LivingProportion "{125AD6A11FCD105D}" {
+          m_fRequiredProportion 0.1
+          m_bWholeNumberQuotient 1
+         }
+         m_Capture GC_AreaCaptureOptions "{3C0D5723BF983C01}" {
+          m_fSeconds 0
+          m_bUseElapsedTime 1
+          m_iInterruption 3
+          m_bStopAfterFirstChange 1
+         }
+        }
+        GC_MissionFlagCondition "{214E16ADF9170C42}" {
+         m_sFlagName "Ambush_05_Random"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{5224327625CA9732}" {
+       m_sMessage "GC_MigratedSpawn_7040F9C724FA3399"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{7CE0F47C106421F4}" {
+     m_sName "GC_MigratedSpawn_7040F9C724FA3399 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{606383FD4FB598FB}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{8EDC73D0D378A7AA}" {
+       m_sEventName "GC_MigratedSpawn_7040F9C724FA3399"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{7CE0F47C106421F4}" {
+       m_Spawn GC_CrewedVehicleSpawn "{F911D214F9248B34}" {
+        m_sLocation "ambush_01_inf5"
+        m_sPrefab "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{F1ED0C3A9152BFD6}" {
+          m_aStations {
+           GC_SpawnCrewStation "{EA378BD3CF9A6BD7}" {
+            m_bDriver 0
+            m_bPassengers 0
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{EB1E649841419DDF}" {
+     m_sName "GC_MigratedSpawn_A6C53D82ECD91749"
+     m_aConditions {
+      GC_GameModeStateCondition "{BC9D8D40A97EC5E3}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{E67B0662E004DD62}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{8ECB3BD0BE8E055F}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_AreaCondition "{3DFF7CE665E5EF99}" {
+           m_sArea "PresenceTrigger_QRF"
+           m_Targets GC_NamedAreaTargets "{973C0A31A06DC1EE}" {
+            m_aNames {
+             "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+            }
+            m_bCountMissingAsOutside 1
+            m_bExcludeDestroyed 1
+           }
+           m_Requirement GC_LivingProportion "{F8C17C9D4F2BE8FB}" {
+            m_fRequiredProportion 0.1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{1DF98DC61488DD7E}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_MissionFlagCondition "{D4C2A59537D3D1F8}" {
+           m_sFlagName "Ambush_05_Random"
+          }
+         }
+        }
+        GC_MissionFlagCondition "{912CBC96B4307397}" {
+         m_sFlagName "Ambush_05_Trigger"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{0D84766C7098197C}" {
+       m_sMessage "GC_MigratedSpawn_A6C53D82ECD91749"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{601692683BD7BF43}" {
+     m_sName "GC_MigratedSpawn_A6C53D82ECD91749 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{89556565EA68F4C6}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{2E84B92E0E4158E2}" {
+       m_sEventName "GC_MigratedSpawn_A6C53D82ECD91749"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{601692683BD7BF43}" {
+       m_Spawn GC_AIGroupSpawn "{096F83D02B2FE412}" {
+        m_sLocation "Ambush_05_inf2"
+        m_sPrefab "{23DFFD3FDEECE9D7}worlds/Perfk/Prefabs/Groups/PK_MUJ_04_Fighters.et"
+        m_aWaypoints {
+         "Ambush_05_SD"
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{B6D508CA83031276}" {
+     m_sName "GC_MigratedSpawn_3C2586ED18F92DD1"
+     m_aConditions {
+      GC_GameModeStateCondition "{50BDC2837854DF31}" {
+       m_eGameModeState 1
+      }
+      GC_ConditionGroup "{D3DB968E73068DFD}" {
+       m_iMatch 0
+       m_aConditions {
+        GC_ConditionGroup "{F527F88C385CDA5F}" {
+         m_iMatch 0
+         m_aConditions {
+          GC_AreaCondition "{447D6766D0F35476}" {
+           m_sArea "PresenceTrigger_QRF"
+           m_Targets GC_NamedAreaTargets "{9222F89407EC0641}" {
+            m_aNames {
+             "M2A2_BUSK_Desert1" "M2A2_BUSK_Desert2" "M1025_armed_M2HB_GulfWar1" "M1025_armed_M2HB_GulfWar2" "M923A1_repair_GulfWar1" "M923A1_transport_covered_GulfWar1" "M997_maxi_ambulance_GulfWar1" "M923A1_transport_covered_GulfWar2" "M998_covered_long_GulfWar1" "M923A1_transport_covered_GulfWar3"
+            }
+            m_bCountMissingAsOutside 1
+            m_bExcludeDestroyed 1
+           }
+           m_Requirement GC_LivingProportion "{8786BA2DAAB5B41D}" {
+            m_fRequiredProportion 0.1
+            m_bWholeNumberQuotient 1
+           }
+           m_Capture GC_AreaCaptureOptions "{778E456E7F6BD47E}" {
+            m_fSeconds 0
+            m_bUseElapsedTime 1
+            m_iInterruption 3
+            m_bStopAfterFirstChange 1
+           }
+          }
+          GC_MissionFlagCondition "{5AC689A5646C98F1}" {
+           m_sFlagName "Ambush_05_Random"
+          }
+         }
+        }
+        GC_MissionFlagCondition "{1FDFBF36B6EC10A7}" {
+         m_sFlagName "Ambush_05_Trigger"
+        }
+       }
+      }
+     }
+     m_aActions {
+      GC_MessageAction "{9D3B1EF939174237}" {
+       m_sMessage "GC_MigratedSpawn_3C2586ED18F92DD1"
+       m_iDelivery 2
+      }
+     }
+    }
+    GC_Event "{5BAB65F09E412CA0}" {
+     m_sName "GC_MigratedSpawn_3C2586ED18F92DD1 (0s)"
+     m_aConditions {
+      GC_GameModeStateCondition "{A3900CB4EAAC921A}" {
+       m_eGameModeState 1
+      }
+      GC_MissionEventCondition "{C94469DF1A70E503}" {
+       m_sEventName "GC_MigratedSpawn_3C2586ED18F92DD1"
+      }
+     }
+     m_aActions {
+      GC_SpawnAction "{5BAB65F09E412CA0}" {
+       m_Spawn GC_CrewedVehicleSpawn "{4BAB6DB7CFBDC1BB}" {
+        m_sLocation "Ambush_05_Truck4"
+        m_sPrefab "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+        m_aCrewGroups {
+         GC_SpawnCrewGroup "{3102D27945F7CA9C}" {
+          m_aStations {
+           GC_SpawnCrewStation "{F2CE53888C6D6485}" {
+            m_aCharacters {
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+             "{194436870AE9258D}Prefabs/Characters/Factions/OPFOR/GC_INSURGENT/Afghan Insurgents/Character_GC_INS_Afghan_Rifleman.et"
+            }
+           }
+          }
+          m_bKeepGunnersSeated 1
+          m_bSeparateOrderedGunners 1
+          m_fWaypointDelay 0
+          m_aWaypoints {
+           "Ambush_05_SD"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    GC_Event "{2266CC9BA78B8319}" {
+     m_sName "Release staging zones"
+     m_aConditions {
+      GC_TimerCondition "{06758C7767092B93}" {
+       m_fSeconds 300.000000
+      }
+     }
+     m_aActions {
+      GC_DeleteEntitiesAction "{8493AD0186782BE8}" {
+       m_aEntities {
+        "GC_MigrationStartingZone1"
+       }
+      }
+     }
+    }
+   }
+   m_aAreaFlagObservers {
+    GC_AreaFlagObserver "{FBD247051C802030}" {
+     m_sFlag "Ambush_01_Trigger"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{89A84899066AF28A}" {
+      m_sArea "GC_MigrationArea_Ambush_01_Trigger_4A79C89EB50C5662"
+      m_Targets GC_CharacterAreaTargets "{F8144430E7C32345}" {
+       m_aFactions {
+        "US"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{982079B91436A1C2}" {
+       m_fRequiredShare 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{CF47D09614E43361}" {
+     m_sFlag "Ambush_01_Trigger"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{2F590CC9B19C85CE}" {
+      m_sArea "GC_MigrationArea_Ambush_01_Trigger_40F1F5085623AF54"
+      m_Targets GC_CharacterAreaTargets "{7A1AB35233603B5C}" {
+       m_aFactions {
+        "GC_TKA"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{E1915B1BC14C6A8A}" {
+       m_fRequiredShare 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{FCEA2800051286D3}" {
+     m_sFlag "Ambush_02_Trigger"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{82470180208D6E09}" {
+      m_sArea "GC_MigrationArea_Ambush_02_Trigger_1FEB71CB32615A83"
+      m_Targets GC_CharacterAreaTargets "{68174717670A466F}" {
+       m_aFactions {
+        "GC_TKA"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{544267A5EDA39114}" {
+       m_fRequiredShare 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{8E7633081D8B901A}" {
+     m_sFlag "Ambush_02_Trigger"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{502764C6F76B3AD6}" {
+      m_sArea "GC_MigrationArea_Ambush_02_Trigger_CC2CB51C3CBF2081"
+      m_Targets GC_CharacterAreaTargets "{4A0A2AEFFD21C20C}" {
+       m_aFactions {
+        "US"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{2728E25228E0D9AA}" {
+       m_fRequiredShare 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{39B8B3FC9AAC0DB9}" {
+     m_sFlag "Ambush_03_Trigger"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{B74898E2F434410B}" {
+      m_sArea "GC_MigrationArea_Ambush_03_Trigger_923A59A3852FA952"
+      m_Targets GC_CharacterAreaTargets "{27F905DCA8A1B202}" {
+       m_aFactions {
+        "GC_TKA"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{28AB08EB37167195}" {
+       m_fRequiredShare 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{D684C68AB1101484}" {
+     m_sFlag "Ambush_03_Trigger"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{6EF24AE95192F5B5}" {
+      m_sArea "GC_MigrationArea_Ambush_03_Trigger_FA4EBF4B59811E54"
+      m_Targets GC_CharacterAreaTargets "{E9D4B50BD7E93CC5}" {
+       m_aFactions {
+        "US"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{20C6CE958E94BD15}" {
+       m_fRequiredShare 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{7C2F93912933C5B5}" {
+     m_sFlag "Ambush_04_Trigger"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{BDADEEB75CF900A0}" {
+      m_sArea "GC_MigrationArea_Ambush_04_Trigger_4FE1D379D3675394"
+      m_Targets GC_CharacterAreaTargets "{049E770EC3429E5E}" {
+       m_aFactions {
+        "GC_TKA"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{1A2606D0DBDFBE78}" {
+       m_fRequiredShare 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{7B704A23BD895076}" {
+     m_sFlag "Ambush_04_Trigger"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{4CA03758F7329C08}" {
+      m_sArea "GC_MigrationArea_Ambush_04_Trigger_8084666580524F11"
+      m_Targets GC_CharacterAreaTargets "{CF92AA59638E2BBD}" {
+       m_aFactions {
+        "US"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{B6064FB78C5347C5}" {
+       m_fRequiredShare 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{A0C72720A30CD3E1}" {
+     m_sFlag "Ambush_05_Trigger"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{E235E083D8EE5C9D}" {
+      m_sArea "GC_MigrationArea_Ambush_05_Trigger_EE3B4A93CE5F6637"
+      m_Targets GC_CharacterAreaTargets "{B866334B74428052}" {
+       m_aFactions {
+        "US"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{049B39FF3B290302}" {
+       m_fRequiredShare 1
+      }
+     }
+    }
+    GC_AreaFlagObserver "{507C3706C4095D72}" {
+     m_sFlag "Ambush_05_Trigger"
+     m_bStopAfterMatchChange 1
+     m_Area GC_AreaCondition "{30B67EE17B97F481}" {
+      m_sArea "GC_MigrationArea_Ambush_05_Trigger_EA9D1B1EBE092F09"
+      m_Targets GC_CharacterAreaTargets "{3B0B6DB5C695C412}" {
+       m_aFactions {
+        "GC_TKA"
+       }
+      }
+      m_Requirement GC_LocalFactionShare "{8EAAA4D3D5375847}" {
+       m_fRequiredShare 1
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 2850.667 9.929 3182.794
+ {
+  SCR_FactionManager {
+   ID "6ADC9BB66394BE46"
+   Factions + {
+    SCR_Faction "{655D481EFA969864}" {
+     UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
+      Name "ANA"
+      Icon "{7D9A08C4F71CB8FC}worlds/Perfk/Images/Faction_Flags/Roundel_of_Afghanistan.edds"
+      m_sNameUpper "ANA"
+     }
+     m_sFactionFlag "{7D9A08C4F71CB8FC}worlds/Perfk/Images/Faction_Flags/Roundel_of_Afghanistan.edds"
+     m_aFriendlyFactionsIds {
+      "US"
+     }
+    }
+   }
+  }
+  SCR_EditorSettingsEntity {
+   ID "61B4E967E6C20362"
+   m_bIsUnlimitedEditorLegal 1
+   m_EditorManagerPrefab "{23C09F78414E6B35}Prefabs/Editor/GC_EditorManagerStagedAccess.et"
+  }
+ }
+}
